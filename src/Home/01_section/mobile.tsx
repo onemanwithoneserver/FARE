@@ -35,13 +35,13 @@ export default function Mobile() {
 
     return (
         <section
-            className="w-full min-h-[calc(100vh-64px)] px-3 py-6 sm:px-6 sm:py-8 flex flex-col items-center justify-center overflow-hidden text-center relative font-['Outfit']"
+            className="w-full min-h-[calc(100vh-64px)] px-4 py-8 sm:px-6 sm:py-10 flex flex-col items-center justify-center overflow-hidden text-center relative font-['Outfit']"
             style={{ background: 'linear-gradient(180deg, #F8F9FC 0%, #EEF4FF 100%)' }}
         >
             <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
             <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: false }} className="w-full flex flex-col items-center">
-                <motion.div variants={item} className="flex items-center gap-2.5 mb-3 justify-center">
+                <motion.div variants={item} className="flex items-center gap-2.5 mb-3.5 justify-center">
                     <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
                     <span className="font-semibold text-[9px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
                         Skill Enhancement For Real Estate
@@ -49,27 +49,27 @@ export default function Mobile() {
                     <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
                 </motion.div>
 
-                <h1 className="text-[2.75rem] leading-[0.94] font-black tracking-[-0.02em] mb-3">
+                <h1 className="text-[2.75rem] leading-[0.94] font-black tracking-[-0.02em] mb-3.5">
                     <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line1}</motion.span>
                     <motion.span variants={item} className="block gold-gradient-text">{data.headline.line2}</motion.span>
                     <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line3}</motion.span>
                     <motion.span variants={item} className="block" style={{ color: MUTED_BLUE }}>{data.headline.line4}</motion.span>
                 </h1>
 
-                <motion.div variants={item} className="mb-2.5">
+                <motion.div variants={item} className="mb-3">
                     <p className="text-[15px] font-medium leading-[1.6]" style={{ color: '#3A4A63' }}>
                         {data.subtitle}
                     </p>
                 </motion.div>
 
-                <motion.div variants={item} className="text-[10.5px] font-medium mb-4" style={{ color: GOLD }}>
+                <motion.div variants={item} className="text-[10.5px] font-medium mb-5" style={{ color: GOLD }}>
                     {data.capabilities[0]} <span className="text-[#CBD5E1] mx-1">·</span>
                     {data.capabilities[1]} <span className="text-[#CBD5E1] mx-1">·</span>
                     {data.capabilities[2]} <span className="text-[#CBD5E1] mx-1">·</span>
                     {data.capabilities[3]}
                 </motion.div>
 
-                <motion.div variants={item} className="flex flex-col w-full gap-2.5 max-w-[280px] mb-3">
+                <motion.div variants={item} className="flex flex-col w-full gap-3 max-w-[280px] mb-4">
                     <button
                         className="text-white font-semibold w-full py-3.5 rounded-[2px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98]"
                         style={{
@@ -87,23 +87,23 @@ export default function Mobile() {
                     </button>
                 </motion.div>
 
-                <div className="relative w-full flex justify-center mt-1 z-20 h-[255px] sm:h-[285px]">
-                    <div style={{ transform: "scale(0.48)", transformOrigin: "top center", width: "840px" }} className="max-w-none">
-            <div className="w-full relative flex items-center justify-center z-20" style={{ minHeight: '480px' }}>
+                <div className="relative w-full flex justify-center mt-3 z-20 h-[320px] sm:h-[350px]">
+                    <div style={{ transform: "scale(0.44)", transformOrigin: "top center", width: "760px" }} className="max-w-none">
+            <div className="w-full relative flex items-center justify-center z-20" style={{ minHeight: '520px' }}>
                 <motion.div
                     initial={{ opacity: 0, y: 30, scale: 0.97, rotateY: 4, rotateX: 2 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1, rotateY: 4, rotateX: 2 }}
                     whileHover={{ scale: 1.02, rotateY: 2, rotateX: 1, y: -10 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative w-[840px] safari-shadow rounded-[4px] overflow-hidden"
+                    className="relative w-[760px] safari-shadow rounded-[4px] overflow-hidden"
                     style={{
                         transformPerspective: 2000,
                         border: '1px solid rgba(11, 29, 58, 0.08)'
                     }}
                 >
                     <div className="glass-safari border-b border-black/[0.06]">
-                        <div className="h-[36px] w-full flex items-center px-4 gap-3">
+                        <div className="h-[38px] w-full flex items-center px-4 gap-3">
                             <div className="flex items-center gap-[7px]">
                                 <div className="w-[11px] h-[11px] rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
                                 <div className="w-[11px] h-[11px] rounded-full bg-[#FEBC2E] border border-[#D89E24]"></div>
@@ -125,13 +125,13 @@ export default function Mobile() {
                         </div>
                     </div>
 
-                    <div className="flex" style={{ height: '390px' }}>
+                    <div className="flex" style={{ height: '440px' }}>
                         <div
-                            className="w-[185px] flex flex-col pt-3 pb-3 flex-shrink-0"
+                            className="w-[175px] flex flex-col pt-4 pb-4 flex-shrink-0"
                             style={{ background: NAVY_DEEP, borderRight: `1px solid rgba(255,255,255,0.06)` }}
                         >
-                            <div className="px-5 mb-3.5 flex items-center">
-                                <img src={logo} alt="FARE" className="h-20 w-auto brightness-0 invert opacity-100" />
+                            <div className="px-5 mb-4 flex items-center">
+                                <img src={logo} alt="FARE" className="h-22 w-auto brightness-0 invert opacity-100" />
                             </div>
                             <div className="flex flex-col gap-0.5 px-3 flex-1">
                                 <SidebarItem icon={<Home size={13} />} label="Dashboard" active />
@@ -140,7 +140,7 @@ export default function Mobile() {
                                 <SidebarItem icon={<BarChart2 size={13} />} label="Functional Skills" />
                                 <SidebarItem icon={<CheckCircle size={13} />} label="Habits" />
                             </div>
-                            <div className="px-4 flex items-center gap-2.5 pt-3 border-t border-white/[0.06]">
+                            <div className="px-4 flex items-center gap-2.5 pt-3.5 border-t border-white/[0.06]">
                                 <div className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-[9px]" style={{ background: GOLD, color: NAVY_DEEP }}>{data.dashboard.userInitials}</div>
                                 <div className="flex flex-col">
                                     <span className="text-white text-[11px] font-semibold">{data.dashboard.userName}</span>
@@ -149,37 +149,39 @@ export default function Mobile() {
                             </div>
                         </div>
 
-                        <div className="flex-1 p-4 flex flex-col overflow-hidden" style={{ background: NAVY_SURFACE }}>
-                            <div className="flex justify-between items-start mb-3.5">
-                                <div>
-                                    <h2 className="text-white text-[18px] font-bold leading-snug">{data.dashboard.greeting}</h2>
-                                    <p className="text-white/40 text-[10.5px] font-medium mt-0.5">{data.dashboard.date}</p>
+                        <div className="flex-1 p-5 flex flex-col justify-between overflow-hidden" style={{ background: NAVY_SURFACE }}>
+                            <div>
+                                <div className="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h2 className="text-white text-[18px] font-bold leading-snug">{data.dashboard.greeting}</h2>
+                                        <p className="text-white/40 text-[10.5px] font-medium mt-0.5">{data.dashboard.date}</p>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <Search size={14} className="text-white/40" strokeWidth={2} />
+                                        <Bell size={14} className="text-white/40" strokeWidth={2} />
+                                        <div className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-[9px]" style={{ background: NAVY, color: 'white', border: `1.5px solid ${GOLD}40` }}>{data.dashboard.userInitials}</div>
+                                    </div>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <Search size={14} className="text-white/40" strokeWidth={2} />
-                                    <Bell size={14} className="text-white/40" strokeWidth={2} />
-                                    <div className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-[9px]" style={{ background: NAVY, color: 'white', border: `1.5px solid ${GOLD}40` }}>{data.dashboard.userInitials}</div>
-                                </div>
-                            </div>
 
-                            <div className="grid grid-cols-2 gap-2 mb-3.5">
-                                {data.dashboard.stats.map(s => (
-                                    <DashCard
-                                        key={s.id}
-                                        icon={s.icon}
-                                        iconColor={s.color}
-                                        title={s.label}
-                                        subtitle={s.subtitle}
-                                        value={s.val}
-                                        valueColor={s.color}
-                                        progress={s.progress}
-                                        progressColor={s.color}
-                                    />
-                                ))}
+                                <div className="grid grid-cols-2 gap-2.5 mb-4">
+                                    {data.dashboard.stats.map(s => (
+                                        <DashCard
+                                            key={s.id}
+                                            icon={s.icon}
+                                            iconColor={s.color}
+                                            title={s.label}
+                                            subtitle={s.subtitle}
+                                            value={s.val}
+                                            valueColor={s.color}
+                                            progress={s.progress}
+                                            progressColor={s.color}
+                                        />
+                                    ))}
+                                </div>
                             </div>
 
                             <div>
-                                <div className="flex justify-between items-center mb-2">
+                                <div className="flex justify-between items-center mb-2.5">
                                     <h3 className="text-[9px] font-bold text-white/30 tracking-[0.15em] uppercase">Upcoming</h3>
                                     <button className="text-[9px] font-semibold text-white/40 hover:text-white/60 transition-colors flex items-center gap-1 border border-white/[0.08] px-2.5 py-1 rounded-[2px]">
                                         View All <ArrowRight size={8} />
@@ -207,7 +209,7 @@ export default function Mobile() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false }}
                     transition={{ delay: 0.5, duration: 0.6 }}
-                    className="absolute top-1 left-[-25px] z-30"
+                    className="absolute top-1 -left-2 z-30"
                 >
                     <motion.div
                         animate={{ y: [0, -12, 0] }}
@@ -229,7 +231,7 @@ export default function Mobile() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false }}
                     transition={{ delay: 0.7, duration: 0.6 }}
-                    className="absolute top-14 -right-2 z-30"
+                    className="absolute top-14 -right-1 z-30"
                 >
                     <motion.div
                         animate={{ y: [0, -15, 0] }}
@@ -253,7 +255,7 @@ export default function Mobile() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false }}
                     transition={{ delay: 0.9, duration: 0.6 }}
-                    className="absolute bottom-10 left-[-18px] z-30"
+                    className="absolute bottom-12 -left-2 z-30"
                 >
                     <motion.div
                         animate={{ y: [0, -10, 0] }}
@@ -275,7 +277,7 @@ export default function Mobile() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false }}
                     transition={{ delay: 1.1, duration: 0.6 }}
-                    className="absolute bottom-1 right-1 z-30"
+                    className="absolute bottom-2 right-1 z-30"
                 >
                     <motion.div
                         animate={{ y: [0, -12, 0] }}
@@ -299,7 +301,7 @@ export default function Mobile() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: false }}
                     transition={{ delay: 1.8, duration: 1.2 }}
-                    className="absolute -bottom-8 right-3 z-30 -rotate-[4deg]"
+                    className="absolute -bottom-10 right-3 z-30 -rotate-[4deg]"
                 >
                     <span
                         className="text-[26px] italic font-medium drop-shadow-sm whitespace-pre-line"
@@ -312,7 +314,7 @@ export default function Mobile() {
                     </div>
                 </div>
 
-                <motion.div variants={item} className="mt-4 text-[9.5px] font-medium tracking-[0.04em]" style={{ color: MUTED_BLUE }}>
+                <motion.div variants={item} className="mt-6 text-[9.5px] font-medium tracking-[0.04em]" style={{ color: MUTED_BLUE }}>
                     {data.footerLinks[0]} <span className="mx-1 text-[#CBD5E1]">·</span> {data.footerLinks[1]} <span className="mx-1 text-[#CBD5E1]">·</span> {data.footerLinks[2]}
                 </motion.div>
             </motion.div>
