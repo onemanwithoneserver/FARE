@@ -11,7 +11,7 @@ export default function App() {
   const navigate = useNavigate()
   const location = useLocation()
   
-  const currentPath = location.pathname.split('/')[1] || 'home'
+  const currentPath = location.pathname.split('/')[2] || 'home'
   const view = currentPath.charAt(0).toUpperCase() + currentPath.slice(1)
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function App() {
   }, [])
 
   const handleViewChange = (newView: string) => {
-    navigate(`/${newView.toLowerCase()}`)
+    navigate(`/${newView.toLowerCase()}/${currentPath}`)
   }
 
   return (
@@ -52,9 +52,10 @@ export default function App() {
       <main className={`flex-1 w-full overflow-hidden bg-[#f0f2f5] relative ${isHeaderVisible ? 'h-[calc(100vh-60px)]' : 'h-screen'}`}>
         <MobileViewport isMobile={isMobile}>
           <Routes>
-            <Route path="/" element={<Navigate to="/home" replace />} />
-            <Route path="/home" element={<Home isMobile={isMobile} />} />
-            <Route path="/forms" element={<Home isMobile={isMobile} />} />
+            <Route path="/" element={<Navigate to={`/${viewMode}/home`} replace />} />
+            <Route path="/:viewMode" element={<Navigate to={`/${viewMode}/home`} replace />} />
+            <Route path="/:viewMode/home" element={<Home isMobile={isMobile} />} />
+            <Route path="/:viewMode/forms" element={<Home isMobile={isMobile} />} />
           </Routes>
         </MobileViewport>
       </main>

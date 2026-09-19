@@ -16,7 +16,6 @@ export default function Desktop() {
             className="w-full min-h-screen flex justify-center py-24 px-12 font-['Inter',sans-serif] relative overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)` }}
         >
-            {/* Subtle atmospheric glow */}
             <div className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[150px] pointer-events-none"></div>
             <div className="absolute bottom-0 left-1/4 w-[900px] h-[700px] bg-gradient-radial from-[#0D2654]/60 to-transparent rounded-full blur-[150px] pointer-events-none"></div>
 
@@ -24,28 +23,26 @@ export default function Desktop() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="mb-16"
                 >
                     <h2 className="text-[3.5rem] font-black tracking-[-0.02em] mb-2 uppercase leading-[1.05] text-white">
-                        One Platform.
+                        {data.headline.line1}
                     </h2>
                     <h2 className="text-[3.5rem] font-black tracking-[-0.02em] uppercase leading-[1.05] text-white">
-                        <span className="gold-gradient-text">Four Ways</span> to build<br />capability.
+                        <span className="gold-gradient-text">{data.headline.line2}</span> {data.headline.line3}<br />{data.headline.line4}
                     </h2>
                     <p className="mt-6 font-medium text-[16px] max-w-[500px] leading-relaxed" style={{ color: MUTED_BLUE }}>
-                        Designed around the way real estate professionals learn and develop.
+                        {data.subtitle}
                     </p>
                 </motion.div>
 
                 <div className="flex gap-12 w-full mt-4">
-
-                    {/* Left side: Tabs */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         className="w-[360px] flex flex-col gap-4"
                     >
@@ -92,49 +89,36 @@ export default function Desktop() {
                         })}
                     </motion.div>
 
-                    {/* Right side: Safari Preview */}
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         className="flex-1"
                     >
-                        {/* Realistic Safari Window (Dark mode matching Hero) */}
                         <div className="rounded-[4px] overflow-hidden safari-shadow border border-white/[0.08] flex flex-col h-full bg-[#0D2654]">
-
-                            {/* Safari Chrome / Toolbar */}
                             <div className="h-[44px] glass-safari-dark flex items-center px-4 relative border-b border-white/[0.04]">
-                                {/* Traffic Lights */}
                                 <div className="flex items-center gap-[8px] absolute left-4">
                                     <div className="w-[11px] h-[11px] rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
                                     <div className="w-[11px] h-[11px] rounded-full bg-[#FEBC2E] border border-[#D89E24]"></div>
                                     <div className="w-[11px] h-[11px] rounded-full bg-[#27C840] border border-[#1AAB29]"></div>
                                 </div>
-
-                                {/* Navigation Arrows */}
                                 <div className="flex items-center gap-3 absolute left-[88px] text-white/40">
                                     <ChevronLeft size={14} strokeWidth={2.5} />
                                     <ChevronRight size={14} strokeWidth={2.5} />
                                 </div>
-
-                                {/* URL Pill */}
                                 <div className="flex-1 flex justify-center mx-32">
                                     <div className="bg-[#1C1C1E] rounded-[4px] px-4 py-1.5 flex items-center justify-center gap-1.5 min-w-[280px] border border-white/[0.04]">
                                         <Lock size={10} className="text-white/40" />
-                                        <span className="text-[11px] text-white/60 font-medium tracking-wide">app.fare.academy</span>
+                                        <span className="text-[11px] text-white/60 font-medium tracking-wide">{data.browser.url}</span>
                                     </div>
                                 </div>
-
-                                {/* Right Icons */}
                                 <div className="flex items-center gap-3 absolute right-4 text-white/40">
                                     <RotateCw size={13} strokeWidth={2} />
                                     <Plus size={14} strokeWidth={2} />
                                     <Menu size={14} strokeWidth={2} className="ml-1" />
                                 </div>
                             </div>
-
-                            {/* Safari Content Area (Dashboard Preview) */}
                             <div className="flex-1 p-8 relative min-h-[520px]" style={{ background: NAVY_SURFACE }}>
                                 <AnimatePresence mode="wait">
                                     {activeTab === '01' && (
@@ -152,22 +136,22 @@ export default function Desktop() {
                                                         <BookOpen size={18} strokeWidth={2} />
                                                     </div>
                                                     <div>
-                                                        <div className="text-[#6B8AFF] text-[9px] font-bold tracking-[0.15em] mb-1">KNOWLEDGE BANK</div>
-                                                        <div className="text-[18px] font-bold text-white">RERA Regulations — Module 3</div>
+                                                        <div className="text-[#6B8AFF] text-[9px] font-bold tracking-[0.15em] mb-1">{data.browser.content['01'].tag}</div>
+                                                        <div className="text-[18px] font-bold text-white">{data.browser.content['01'].title}</div>
                                                     </div>
                                                 </div>
                                                 <div className="bg-[#6B8AFF]/10 px-3 py-1.5 rounded-[2px] text-[11px] font-semibold text-[#6B8AFF] border border-[#6B8AFF]/20">
-                                                    Q 4 of 12
+                                                    {data.browser.content['01'].progress}
                                                 </div>
                                             </div>
                                             <div className="w-full h-[4px] bg-white/[0.04] rounded-full mb-8 overflow-hidden">
                                                 <div className="h-full bg-[#6B8AFF] w-[33%] rounded-full"></div>
                                             </div>
                                             <div className="bg-white/[0.03] p-6 rounded-[4px] mb-6 border border-white/[0.06] floating-card-shadow">
-                                                <p className="text-[14px] font-medium leading-relaxed text-white">Under RERA, what is the maximum penalty a developer can face for non-disclosure of project details?</p>
+                                                <p className="text-[14px] font-medium leading-relaxed text-white">{data.browser.content['01'].question}</p>
                                             </div>
                                             <div className="grid grid-cols-2 gap-3">
-                                                {['A. 5% of estimated cost', 'B. 10% of project value', 'C. ₹10 lakh flat fine', 'D. 3 years imprisonment'].map((opt, i) => (
+                                                {data.browser.content['01'].options.map((opt, i) => (
                                                     <button key={i} className="bg-white/[0.02] hover:bg-white/[0.05] border border-white/[0.06] hover:border-[#6B8AFF]/40 p-4 rounded-[4px] text-left text-[12.5px] text-white/80 transition-all duration-300 font-medium">
                                                         {opt}
                                                     </button>
@@ -191,32 +175,32 @@ export default function Desktop() {
                                                         <Target size={18} strokeWidth={2} />
                                                     </div>
                                                     <div>
-                                                        <div className="text-[#34D399] text-[9px] font-bold tracking-[0.15em] mb-1">SKILL PRACTICE</div>
-                                                        <div className="text-[18px] font-bold text-white">Mock: Objection Handling</div>
+                                                        <div className="text-[#34D399] text-[9px] font-bold tracking-[0.15em] mb-1">{data.browser.content['02'].tag}</div>
+                                                        <div className="text-[18px] font-bold text-white">{data.browser.content['02'].title}</div>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center gap-2 bg-[#34D399]/10 px-3 py-1.5 rounded-[2px] border border-[#34D399]/20">
                                                     <div className="w-1.5 h-1.5 bg-[#34D399] rounded-full animate-pulse"></div>
-                                                    <span className="text-[11px] font-semibold text-[#34D399]">Live Session</span>
+                                                    <span className="text-[11px] font-semibold text-[#34D399]">{data.browser.content['02'].status}</span>
                                                 </div>
                                             </div>
                                             <div className="flex gap-4 mb-6">
                                                 <div className="flex-1 bg-white/[0.03] p-5 rounded-[4px] border border-white/[0.06] floating-card-shadow relative overflow-hidden">
                                                     <div className="w-9 h-9 rounded-[2px] bg-[#34D399]/10 text-[#34D399] flex items-center justify-center text-[12px] font-bold mb-3">T</div>
-                                                    <div className="font-bold text-[13px] mb-1 text-white">Priya Mehta</div>
-                                                    <div className="text-[11px] text-white/40 mb-5">Trainer · Certified</div>
+                                                    <div className="font-bold text-[13px] mb-1 text-white">{data.browser.content['02'].trainer.name}</div>
+                                                    <div className="text-[11px] text-white/40 mb-5">{data.browser.content['02'].trainer.role}</div>
                                                     <div className="w-full bg-[#34D399]/10 rounded-[2px] p-2.5 text-[11px] text-[#34D399] border border-[#34D399]/20 font-semibold flex items-center justify-center">Speaking...</div>
                                                 </div>
                                                 <div className="flex-1 bg-white/[0.03] p-5 rounded-[4px] border border-white/[0.06] floating-card-shadow relative overflow-hidden">
                                                     <div className="w-9 h-9 rounded-[2px] bg-white/[0.05] text-white/80 flex items-center justify-center text-[12px] font-bold mb-3">R</div>
-                                                    <div className="font-bold text-[13px] mb-1 text-white">Rahul Sharma</div>
-                                                    <div className="text-[11px] text-white/40 mb-5">Learner · L2</div>
+                                                    <div className="font-bold text-[13px] mb-1 text-white">{data.browser.content['02'].learner.name}</div>
+                                                    <div className="text-[11px] text-white/40 mb-5">{data.browser.content['02'].learner.role}</div>
                                                     <div className="w-full bg-white/[0.02] rounded-[2px] p-2.5 text-[11px] text-white/50 border border-white/[0.04] font-medium flex items-center justify-center">Listening</div>
                                                 </div>
                                             </div>
                                             <div className="bg-white/[0.03] p-6 rounded-[4px] border border-white/[0.06] floating-card-shadow">
                                                 <div className="text-[#34D399] text-[9px] font-bold tracking-[0.15em] mb-3">SCENARIO</div>
-                                                <p className="text-[13.5px] text-white/80 leading-relaxed font-medium">"The buyer says: 'I'll wait 6 months — prices might drop.' How do you respond without being pushy?"</p>
+                                                <p className="text-[13.5px] text-white/80 leading-relaxed font-medium">{data.browser.content['02'].scenario}</p>
                                             </div>
                                         </motion.div>
                                     )}
@@ -236,30 +220,27 @@ export default function Desktop() {
                                                         <BarChart2 size={18} strokeWidth={2} />
                                                     </div>
                                                     <div>
-                                                        <div className="text-[#A78BFA] text-[9px] font-bold tracking-[0.15em] mb-1">FUNCTIONAL SKILLS</div>
-                                                        <div className="text-[18px] font-bold text-white">Capability Benchmark</div>
+                                                        <div className="text-[#A78BFA] text-[9px] font-bold tracking-[0.15em] mb-1">{data.browser.content['03'].tag}</div>
+                                                        <div className="text-[18px] font-bold text-white">{data.browser.content['03'].title}</div>
                                                     </div>
                                                 </div>
                                                 <div className="bg-[#A78BFA]/10 border border-[#A78BFA]/20 px-3 py-1.5 rounded-[2px] text-[11px] font-bold text-[#A78BFA]">
-                                                    82nd %ile
+                                                    {data.browser.content['03'].percentile}
                                                 </div>
                                             </div>
                                             <div className="flex flex-col gap-5 bg-white/[0.03] p-8 rounded-[4px] border border-white/[0.06] floating-card-shadow">
-                                                {[
-                                                    { label: 'Communication', val: 88, peer: 72 },
-                                                    { label: 'Market Knowledge', val: 74, peer: 68 },
-                                                    { label: 'Ethics', val: 91, peer: 80 },
-                                                    { label: 'Client Mgmt', val: 65, peer: 71 },
-                                                    { label: 'Documentation', val: 78, peer: 65 },
-                                                ].map((skill, i) => (
-                                                    <div key={i}>
-                                                        <div className="flex justify-between text-[11.5px] mb-2.5">
-                                                            <span className="text-white/80 font-semibold">{skill.label}</span>
-                                                            <span className="text-white/40 font-medium">Peer {skill.peer}% <strong className="text-[#A78BFA] ml-2">{skill.val}%</strong></span>
+                                                {data.browser.content['03'].skills.map((skill, idx) => (
+                                                    <div key={idx} className="w-full">
+                                                        <div className="flex justify-between items-end mb-2">
+                                                            <span className="text-[12px] font-semibold text-white/90">{skill.label}</span>
+                                                            <div className="flex gap-4">
+                                                                <span className="text-[10px] text-white/40">Peer: {skill.peer}</span>
+                                                                <span className="text-[10px] font-bold text-[#A78BFA]">You: {skill.val}</span>
+                                                            </div>
                                                         </div>
-                                                        <div className="w-full h-[5px] bg-white/[0.04] rounded-full overflow-hidden relative">
-                                                            <div className="absolute top-0 left-0 h-full bg-white/[0.1] rounded-full transition-all duration-1000" style={{ width: `${skill.peer}%` }}></div>
-                                                            <div className="absolute top-0 left-0 h-full bg-[#A78BFA] rounded-full transition-all duration-1000" style={{ width: `${skill.val}%` }}></div>
+                                                        <div className="w-full h-[6px] bg-white/[0.04] rounded-full overflow-hidden relative border border-white/[0.02]">
+                                                            <div className="absolute top-0 bottom-0 left-0 bg-white/20 rounded-full" style={{ width: `${skill.peer}%` }}></div>
+                                                            <div className="absolute top-0 bottom-0 left-0 bg-[#A78BFA] rounded-full shadow-[0_0_8px_rgba(167,139,250,0.5)]" style={{ width: `${skill.val}%` }}></div>
                                                         </div>
                                                     </div>
                                                 ))}
@@ -278,36 +259,39 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-8">
                                                 <div className="flex items-center gap-3">
-                                                    <div className="w-10 h-10 rounded-[2px] bg-[#D5AA45]/10 flex items-center justify-center text-[#D5AA45]">
+                                                    <div className="w-10 h-10 rounded-[2px] flex items-center justify-center" style={{ background: 'rgba(213,170,69,0.1)', color: '#D5AA45' }}>
                                                         <CheckCircle size={18} strokeWidth={2} />
                                                     </div>
                                                     <div>
-                                                        <div className="text-[#D5AA45] text-[9px] font-bold tracking-[0.15em] mb-1">DAILY HABITS</div>
-                                                        <div className="text-[18px] font-bold text-white">Habit Tracker</div>
+                                                        <div className="text-[9px] font-bold tracking-[0.15em] mb-1" style={{ color: '#D5AA45' }}>{data.browser.content['04'].tag}</div>
+                                                        <div className="text-[18px] font-bold text-white">{data.browser.content['04'].title}</div>
                                                     </div>
                                                 </div>
-                                                <div className="bg-[#D5AA45]/10 border border-[#D5AA45]/20 px-3 py-1.5 rounded-[2px] text-[11px] font-bold text-[#D5AA45] flex items-center gap-1.5">
-                                                    🔥 12-day streak
+                                                <div className="flex items-center gap-2 border px-3 py-1.5 rounded-[2px]" style={{ borderColor: 'rgba(213,170,69,0.2)', background: 'rgba(213,170,69,0.1)' }}>
+                                                    <div className="text-[14px]">🔥</div>
+                                                    <span className="text-[11px] font-bold" style={{ color: '#D5AA45' }}>{data.browser.content['04'].streak}</span>
                                                 </div>
                                             </div>
-
-                                            <div className="bg-white/[0.03] p-8 rounded-[4px] border border-white/[0.06] floating-card-shadow mb-5">
-                                                <div className="grid grid-cols-7 gap-2.5 mb-1">
-                                                    {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
-                                                        <div key={i} className="text-[10px] text-center text-white/40 font-bold mb-2">{d}</div>
-                                                    ))}
-                                                    {Array.from({ length: 28 }).map((_, i) => (
-                                                        <div key={i} className={`rounded-[2px] border aspect-square transition-colors duration-300 ${[4, 11, 18, 19, 27].includes(i) ? 'bg-white/[0.02] border-white/[0.04]' : 'bg-[#D5AA45] border-[#D5AA45]'}`}></div>
-                                                    ))}
-                                                </div>
-                                            </div>
-
-                                            <div className="bg-white/[0.03] p-5 rounded-[4px] border border-white/[0.06] floating-card-shadow flex justify-between items-center">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-2.5 h-2.5 rounded-full bg-[#D5AA45]"></div>
-                                                    <span className="text-[12.5px] text-white font-semibold">Morning market review</span>
-                                                </div>
-                                                <span className="text-[11px] text-[#D5AA45] font-bold">12d 🔥</span>
+                                            <div className="flex flex-col gap-3">
+                                                {data.browser.content['04'].habits.map((habit, idx) => (
+                                                    <div key={idx} className="flex items-center justify-between bg-white/[0.03] p-5 rounded-[4px] border border-white/[0.06] floating-card-shadow group hover:bg-white/[0.05] transition-colors">
+                                                        <div className="flex items-center gap-4">
+                                                            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${habit.status === 'done' ? 'bg-[#D5AA45] border-[#D5AA45]' : 'border-white/20'}`}>
+                                                                {habit.status === 'done' && <CheckCircle size={12} className="text-[#0D2654]" strokeWidth={3} />}
+                                                            </div>
+                                                            <span className={`text-[13px] font-medium transition-colors ${habit.status === 'done' ? 'text-white/40 line-through' : 'text-white/90'}`}>
+                                                                {habit.label}
+                                                            </span>
+                                                        </div>
+                                                        {habit.status === 'done' ? (
+                                                            <span className="text-[10px] font-bold text-[#D5AA45]">Completed</span>
+                                                        ) : (
+                                                            <button className="text-[10px] font-bold text-white/30 hover:text-white/80 transition-colors uppercase tracking-wider">
+                                                                Mark Done
+                                                            </button>
+                                                        )}
+                                                    </div>
+                                                ))}
                                             </div>
                                         </motion.div>
                                     )}
@@ -315,7 +299,6 @@ export default function Desktop() {
                             </div>
                         </div>
                     </motion.div>
-
                 </div>
             </div>
         </section>
