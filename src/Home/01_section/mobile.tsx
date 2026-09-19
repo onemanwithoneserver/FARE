@@ -87,9 +87,9 @@ export default function Mobile() {
                     </button>
                 </motion.div>
 
-                <div className="relative w-full flex justify-center mt-3 z-20 h-[320px] sm:h-[350px]">
+                <div className="relative w-full flex justify-center mt-2 z-20 h-[225px] sm:h-[240px]">
                     <div style={{ transform: "scale(0.44)", transformOrigin: "top center", width: "760px" }} className="max-w-none">
-            <div className="w-full relative flex items-center justify-center z-20" style={{ minHeight: '520px' }}>
+            <div className="w-full relative flex items-center justify-center z-20" style={{ minHeight: '480px' }}>
                 <motion.div
                     initial={{ opacity: 0, y: 30, scale: 0.97, rotateY: 4, rotateX: 2 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1, rotateY: 4, rotateX: 2 }}
@@ -301,7 +301,7 @@ export default function Mobile() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: false }}
                     transition={{ delay: 1.8, duration: 1.2 }}
-                    className="absolute -bottom-10 right-3 z-30 -rotate-[4deg]"
+                    className="absolute -bottom-8 right-3 z-30 -rotate-[4deg]"
                 >
                     <span
                         className="text-[26px] italic font-medium drop-shadow-sm whitespace-pre-line"
@@ -314,7 +314,7 @@ export default function Mobile() {
                     </div>
                 </div>
 
-                <motion.div variants={item} className="mt-6 text-[9.5px] font-medium tracking-[0.04em]" style={{ color: MUTED_BLUE }}>
+                <motion.div variants={item} className="mt-2 text-[9.5px] font-medium tracking-[0.04em]" style={{ color: MUTED_BLUE }}>
                     {data.footerLinks[0]} <span className="mx-1 text-[#CBD5E1]">·</span> {data.footerLinks[1]} <span className="mx-1 text-[#CBD5E1]">·</span> {data.footerLinks[2]}
                 </motion.div>
             </motion.div>
