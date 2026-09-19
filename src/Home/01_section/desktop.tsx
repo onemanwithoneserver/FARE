@@ -120,13 +120,14 @@ export default function Desktop() {
 
                 <div className="flex-1 relative flex items-center justify-end z-20" style={{ minHeight: '600px' }}>
                     <motion.div
-                        initial={{ opacity: 0, y: 30, scale: 0.97 }}
-                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                        initial={{ opacity: 0, y: 30, scale: 0.97, rotateY: 4, rotateX: 2 }}
+                        whileInView={{ opacity: 1, y: 0, scale: 1, rotateY: 4, rotateX: 2 }}
+                        whileHover={{ scale: 1.02, rotateY: 2, rotateX: 1, y: -10 }}
                         viewport={{ once: false }}
-                        transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                         className="relative w-full max-w-[780px] safari-shadow rounded-[4px] overflow-hidden"
                         style={{
-                            transform: 'perspective(2000px) rotateY(-2deg) rotateX(1deg)',
+                            transformPerspective: 2000,
                             border: '1px solid rgba(11, 29, 58, 0.08)'
                         }}
                     >
@@ -158,12 +159,8 @@ export default function Desktop() {
                                 className="w-[170px] flex flex-col pt-5 pb-4 flex-shrink-0"
                                 style={{ background: NAVY_DEEP, borderRight: `1px solid rgba(255,255,255,0.06)` }}
                             >
-                                <div className="px-5 mb-6 flex items-center gap-2">
-                                    <img src={logo} alt="FARE" className="h-5 w-auto brightness-0 invert opacity-90" />
-                                    <div className="flex flex-col leading-none">
-                                        <span className="text-white font-bold text-[10px] tracking-[0.08em]">FARE</span>
-                                        <span className="text-[7px] font-semibold tracking-[0.12em] uppercase" style={{ color: GOLD_MID }}>Academy</span>
-                                    </div>
+                                <div className="px-5 mb-6 flex items-center h-[24px]">
+                                    <img src={logo} alt="FARE" className="h-6 w-auto brightness-0 invert opacity-100" />
                                 </div>
                                 <div className="flex flex-col gap-0.5 px-3 flex-1">
                                     <SidebarItem icon={<Home size={13} />} label="Dashboard" active />
@@ -233,72 +230,97 @@ export default function Desktop() {
                         </div>
                     </motion.div>
 
+                    {/* Floating Cards */}
                     <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
-                        transition={{ delay: 0.7, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute top-4 left-[-50px] fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3 z-30 animate-float"
+                        transition={{ delay: 0.5, duration: 0.6 }}
+                        className="absolute top-4 left-[-50px] z-30"
                     >
-                        <div className="w-9 h-9 rounded-[3px] bg-[#6B8AFF]/10 flex items-center justify-center text-[#6B8AFF]">
-                            <BookOpen size={17} strokeWidth={2} />
-                        </div>
-                        <div>
-                            <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[0].label}</div>
-                            <div className="text-[9px] font-medium" style={{ color: MUTED_BLUE }}>{data.dashboard.stats[0].subtitle}</div>
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ delay: 0.9, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute top-24 -right-4 fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3 z-30 animate-float-delayed"
-                    >
-                        <div className="w-9 h-9 rounded-[3px] bg-[#34D399]/10 flex items-center justify-center text-[#34D399]">
-                            <Target size={17} strokeWidth={2} />
-                        </div>
-                        <div>
-                            <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[1].label}</div>
-                            <div className="text-[9px] font-medium flex items-center gap-1" style={{ color: MUTED_BLUE }}>
-                                Mocks w/ Trainers <ArrowRight size={8} />
+                        <motion.div
+                            animate={{ y: [0, -12, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
+                        >
+                            <div className="w-9 h-9 rounded-[3px] bg-[#6B8AFF]/10 flex items-center justify-center text-[#6B8AFF]">
+                                <BookOpen size={17} strokeWidth={2} />
                             </div>
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ delay: 1.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute bottom-24 left-[-30px] fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3 z-30 animate-float-slow"
-                    >
-                        <div className="w-9 h-9 rounded-[3px] bg-[#A78BFA]/10 flex items-center justify-center text-[#A78BFA]">
-                            <BarChart2 size={17} strokeWidth={2} />
-                        </div>
-                        <div>
-                            <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[2].label}</div>
-                            <div className="text-[9px] font-medium" style={{ color: MUTED_BLUE }}>{data.dashboard.stats[2].subtitle}</div>
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ delay: 1.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute bottom-4 right-0 fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3 z-30 animate-float-delayed-2"
-                    >
-                        <div className="w-9 h-9 rounded-[3px] flex items-center justify-center" style={{ background: `${GOLD_MID}15`, color: GOLD_MID }}>
-                            <CheckCircle size={17} strokeWidth={2} />
-                        </div>
-                        <div>
-                            <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[3].label}</div>
-                            <div className="text-[9px] font-medium flex items-center gap-1" style={{ color: MUTED_BLUE }}>
-                                Habit Tracker <ArrowRight size={8} />
+                            <div>
+                                <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[0].label}</div>
+                                <div className="text-[9px] font-medium" style={{ color: MUTED_BLUE }}>{data.dashboard.stats[0].subtitle}</div>
                             </div>
-                        </div>
+                        </motion.div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ delay: 0.7, duration: 0.6 }}
+                        className="absolute top-24 -right-4 z-30"
+                    >
+                        <motion.div
+                            animate={{ y: [0, -15, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                            className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
+                        >
+                            <div className="w-9 h-9 rounded-[3px] bg-[#34D399]/10 flex items-center justify-center text-[#34D399]">
+                                <Target size={17} strokeWidth={2} />
+                            </div>
+                            <div>
+                                <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[1].label}</div>
+                                <div className="text-[9px] font-medium flex items-center gap-1" style={{ color: MUTED_BLUE }}>
+                                    Mocks w/ Trainers <ArrowRight size={8} />
+                                </div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ delay: 0.9, duration: 0.6 }}
+                        className="absolute bottom-24 left-[-30px] z-30"
+                    >
+                        <motion.div
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                            className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
+                        >
+                            <div className="w-9 h-9 rounded-[3px] bg-[#A78BFA]/10 flex items-center justify-center text-[#A78BFA]">
+                                <BarChart2 size={17} strokeWidth={2} />
+                            </div>
+                            <div>
+                                <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[2].label}</div>
+                                <div className="text-[9px] font-medium" style={{ color: MUTED_BLUE }}>{data.dashboard.stats[2].subtitle}</div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ delay: 1.1, duration: 0.6 }}
+                        className="absolute bottom-4 right-0 z-30"
+                    >
+                        <motion.div
+                            animate={{ y: [0, -12, 0] }}
+                            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                            className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
+                        >
+                            <div className="w-9 h-9 rounded-[3px] flex items-center justify-center" style={{ background: `${GOLD_MID}15`, color: GOLD_MID }}>
+                                <CheckCircle size={17} strokeWidth={2} />
+                            </div>
+                            <div>
+                                <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[3].label}</div>
+                                <div className="text-[9px] font-medium flex items-center gap-1" style={{ color: MUTED_BLUE }}>
+                                    Habit Tracker <ArrowRight size={8} />
+                                </div>
+                            </div>
+                        </motion.div>
                     </motion.div>
 
                     <motion.div
