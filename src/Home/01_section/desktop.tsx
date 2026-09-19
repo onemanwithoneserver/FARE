@@ -34,7 +34,7 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden relative font-['Outfit']"
+        <section className="w-full flex items-center justify-center overflow-hidden relative font-['Outfit']"
             style={{ background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)` }}
         >
             <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
@@ -47,7 +47,7 @@ export default function Desktop() {
                 <circle cx="150" cy="150" r="140" stroke={GOLD} strokeWidth="0.8" fill="none" />
             </svg>
 
-            <div className="max-w-[1440px] w-full px-12 py-12 flex items-center justify-between gap-10 relative z-10">
+            <div className="max-w-360 w-full px-12 -py-60 flex items-center justify-between gap-10 relative z-10">
 
                 <motion.div
                     variants={container}

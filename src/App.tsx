@@ -3,6 +3,7 @@ import MobileViewport from './Components/MobileViewport'
 import Header, { type ViewMode } from './Components/Header'
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
 import Home from './Home'
+import OpenPlot from './OpenPlot'
 
 export default function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
@@ -57,6 +58,7 @@ export default function App() {
             <Route path="/" element={<Navigate to={`/${defaultInitialMode}/home`} replace />} />
             <Route path="/:mode" element={<Navigate to={`/${viewMode}/home`} replace />} />
             <Route path="/:mode/home" element={<Home isMobile={isMobile} />} />
+            <Route path="/:mode/open-plots" element={<OpenPlot isMobile={isMobile} />} />
             <Route path="/:mode/forms" element={<Home isMobile={isMobile} />} />
             <Route path="*" element={<Navigate to={`/${defaultInitialMode}/home`} replace />} />
           </Routes>
