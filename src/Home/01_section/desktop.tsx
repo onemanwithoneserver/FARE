@@ -5,7 +5,8 @@ import {
     Search, Bell, Lock, ChevronLeft, ChevronRight, Share2, Plus, Layers, Home
 } from 'lucide-react';
 import logo from '../../Components/FARE_Logo/SVG/Primary Logo.svg';
-import { data } from './data';
+import { getData } from './data';
+import { useLanguage } from '../../context/LanguageContext';
 import React from 'react';
 
 const NAVY = '#0B1D3A';
@@ -16,6 +17,9 @@ const GOLD_MID = '#D5AA45';
 const MUTED_BLUE = '#7B8DAA';
 
 export default function Desktop() {
+    const { language } = useLanguage();
+    const data = getData(language);
+
     const container: Variants = {
         hidden: { opacity: 0 },
         show: {

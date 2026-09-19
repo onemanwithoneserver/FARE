@@ -1,15 +1,12 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { ArrowRight, BookOpen, Target, BarChart2 } from 'lucide-react';
+import { ArrowRight, BookOpen, Target, BarChart2, CheckCircle } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
-import React from 'react';
 
 const NAVY = '#0B1D3A';
-const NAVY_DEEP = '#071A49';
 const GOLD = '#C99A2E';
 const GOLD_MID = '#D5AA45';
-const MUTED_BLUE = '#7B8DAA';
 
 export default function Mobile() {
     const { language } = useLanguage();
@@ -32,50 +29,54 @@ export default function Mobile() {
         }
     };
 
-    const subheadlineParts = data.subheadline.includes('. ') ? data.subheadline.split('. ') : [data.subheadline];
-
     return (
-        <section className="w-full pt-[90px] pb-16 flex flex-col items-center justify-start overflow-hidden relative font-['Outfit']"
-            style={{ background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)` }}
+        <section className="w-full pt-[90px] pb-14 flex flex-col items-center justify-start overflow-hidden relative font-['Outfit']"
+            style={{ background: `linear-gradient(160deg, #FFFFFF 0%, #F8FAFD 40%, #EEF4FF 100%)` }}
         >
             <div className="absolute top-20 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></div>
             <div className="absolute bottom-20 left-[-50px] w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[50px] pointer-events-none z-0"></div>
 
-            <div className="w-full px-6 flex flex-col relative z-10">
+            <div className="w-full px-5 flex flex-col items-center relative z-10">
                 <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false }}
-                    className="flex flex-col items-start w-full relative z-40"
+                    className="flex flex-col items-center text-center w-full relative z-40"
                 >
-                    <motion.div variants={item} className="flex items-center gap-2.5 mb-4">
-                        <div className="w-8 h-[1.5px]" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }}></div>
-                        <span className="font-semibold text-[9.5px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
+                    {/* Tagline */}
+                    <motion.div variants={item} className="flex items-center gap-2 mb-5">
+                        <div className="w-6 h-[1.5px]" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }}></div>
+                        <span className="font-semibold text-[9px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
                             {data.tagline}
                         </span>
+                        <div className="w-6 h-[1.5px]" style={{ background: `linear-gradient(90deg, ${GOLD_MID}, ${GOLD})` }}></div>
                     </motion.div>
 
-                    <h1 className="text-[2.75rem] sm:text-[3.25rem] leading-[0.95] font-black tracking-[-0.03em] mb-5">
-                        <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line1}</motion.span>
-                        <motion.span variants={item} className="block gold-gradient-text">{data.headline.line2}</motion.span>
-                        <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line3}</motion.span>
-                    </h1>
+                    {/* Headline — centered, 1-2 lines */}
+                    <motion.h1 variants={item} className="text-[2.25rem] sm:text-[2.5rem] leading-[1.08] font-black tracking-[-0.03em] mb-5" style={{ color: NAVY }}>
+                        {data.headline}
+                    </motion.h1>
 
-                    <motion.div variants={item} className="mb-4">
-                        <h2 className="text-[18px] font-bold leading-tight" style={{ color: NAVY_DEEP }}>
-                            {subheadlineParts[0]}{subheadlineParts.length > 1 ? '.' : ''}
-                            {subheadlineParts.length > 1 && <span className="block text-[#C99A2E] mt-1">{subheadlineParts.slice(1).join('. ')}</span>}
+                    {/* Subheadline */}
+                    <motion.div variants={item} className="mb-1.5">
+                        <h2 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>
+                            {data.subheadline}
+                        </h2>
+                    </motion.div>
+                    <motion.div variants={item} className="mb-5">
+                        <h2 className="text-[16px] font-bold leading-snug" style={{ color: GOLD }}>
+                            {data.subheadlineAccent}
                         </h2>
                     </motion.div>
 
-                    <motion.div variants={item} className="mb-8">
-                        <p className="text-[15px] font-medium leading-[1.6]" style={{ color: '#3A4A63' }}>
-                            {data.description}
-                        </p>
-                    </motion.div>
+                    {/* Description */}
+                    <motion.p variants={item} className="text-[14.5px] font-medium leading-[1.65] mb-8 max-w-[420px]" style={{ color: '#3A4A63' }}>
+                        {data.description}
+                    </motion.p>
 
-                    <motion.div variants={item} className="flex flex-col w-full gap-3 mb-8">
+                    {/* CTA Buttons */}
+                    <motion.div variants={item} className="flex flex-col w-full gap-3 mb-8 max-w-[380px]">
                         <button
                             className="w-full text-white text-[13.5px] font-semibold px-6 py-3.5 rounded-[4px] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5"
                             style={{
@@ -97,54 +98,72 @@ export default function Mobile() {
                         </button>
                     </motion.div>
 
-                    <motion.div variants={item} className="flex flex-col gap-2 w-full">
-                        <div className="flex flex-wrap gap-x-2 gap-y-1.5 text-[11px] font-medium" style={{ color: MUTED_BLUE }}>
-                            {data.features.split(' · ').map((f, i) => (
-                                <React.Fragment key={i}>
-                                    <span>{f}</span>
-                                    {i < data.features.split(' · ').length - 1 && <span className="text-[#C99A2E]">·</span>}
-                                </React.Fragment>
-                            ))}
-                        </div>
-                        <div className="text-[10.5px] italic text-[#0B1D3A]/60 mt-2 border-t border-[#0B1D3A]/10 pt-2">
-                            {data.footerText}
-                        </div>
+                    {/* Feature Pills */}
+                    <motion.div variants={item} className="flex flex-wrap justify-center gap-2 mb-4">
+                        {data.features.map((f, i) => (
+                            <span key={i} className="px-3 py-1 rounded-full text-[11px] font-semibold border border-[#0B1D3A]/10 bg-white text-[#3A4A63] shadow-[0_1px_2px_rgba(11,29,58,0.04)]">
+                                {f}
+                            </span>
+                        ))}
                     </motion.div>
+
+                    <motion.p variants={item} className="text-[10.5px] italic text-[#0B1D3A]/50">
+                        {data.footerText}
+                    </motion.p>
                 </motion.div>
 
-                {/* Mobile Illustration */}
-                <motion.div 
+                {/* Dashboard Illustration */}
+                <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="w-full mt-12 relative z-20"
+                    className="w-full mt-10 relative z-20"
                 >
-                    <div className="w-full bg-gradient-to-br from-[#0B1D3A] to-[#071A49] rounded-2xl p-6 shadow-2xl flex flex-col gap-4 overflow-hidden border border-[#C99A2E]/20 relative">
-                        <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#C99A2E]/20 rounded-full blur-2xl"></div>
-                        
-                        <h3 className="text-white text-lg font-bold mb-2 flex items-center gap-2 relative z-10">
-                            <Target className="text-[#C99A2E]" size={20} /> {data.dashboard.title}
-                        </h3>
+                    <div className="w-full bg-gradient-to-br from-[#0B1D3A] to-[#071A49] rounded-2xl p-5 shadow-[0_20px_50px_-15px_rgba(11,29,58,0.3)] border border-[#C99A2E]/15 overflow-hidden relative">
+                        <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#C99A2E]/15 rounded-full blur-2xl"></div>
 
-                        <div className="flex flex-col gap-2.5 relative z-10">
-                            {data.dashboard.stats.slice(0, 3).map((stat, i) => {
+                        <div className="flex items-center justify-between mb-4 relative z-10">
+                            <h3 className="text-white text-[15px] font-bold flex items-center gap-2">
+                                <Target className="text-[#C99A2E]" size={18} /> {data.dashboard.title}
+                            </h3>
+                            <div className="flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#34D399] animate-pulse"></div>
+                                <span className="text-white/70 text-[10px] font-medium">{data.dashboard.floatingBadge.title}</span>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col gap-3 relative z-10">
+                            {data.dashboard.stats.map((stat, i) => {
                                 const icons = [
-                                    <BookOpen size={14} />,
-                                    <BarChart2 size={14} />,
-                                    <Target size={14} />
+                                    <BookOpen size={14} key="bo" />,
+                                    <BarChart2 size={14} key="ba" />,
+                                    <Target size={14} key="ta" />,
+                                    <CheckCircle size={14} key="cc" />
                                 ];
                                 return (
-                                <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center justify-between backdrop-blur-sm">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white" style={{ color: stat.color }}>
+                                    <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-3.5 flex items-center gap-3">
+                                        <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0" style={{ color: stat.color }}>
                                             {icons[i]}
                                         </div>
-                                        <span className="text-white/90 font-medium text-[13px]">{stat.title}</span>
+                                        <div className="flex-1 min-w-0">
+                                            <span className="text-white/90 font-medium text-[13px] block truncate">{stat.title}</span>
+                                            <div className="flex items-center gap-2 mt-1.5">
+                                                <div className="h-1 flex-1 bg-white/10 rounded-full overflow-hidden">
+                                                    <motion.div
+                                                        initial={{ width: 0 }}
+                                                        whileInView={{ width: stat.progress }}
+                                                        transition={{ duration: 1.2, delay: 0.3 + (i * 0.12), ease: [0.16, 1, 0.3, 1] }}
+                                                        className="h-full rounded-full"
+                                                        style={{ backgroundColor: stat.color }}
+                                                    />
+                                                </div>
+                                                <span className="text-white/50 text-[10px] font-semibold">{stat.progress}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span className="text-white/50 text-[11px]">{stat.progress}</span>
-                                </div>
-                            )})}
+                                );
+                            })}
                         </div>
                     </div>
                 </motion.div>

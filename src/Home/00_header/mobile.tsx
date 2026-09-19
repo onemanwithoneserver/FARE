@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import { Menu, X, Search, ArrowRight, Plus, Building2, MapPin, Globe, Check } from 'lucide-react';
 import logo from '../../Components/FARE_Logo/SVG/Primary Logo.svg';
-import { data } from './data';
+import { getData } from './data';
 
 export default function Mobile() {
     const navigate = useNavigate();
@@ -12,6 +12,7 @@ export default function Mobile() {
     const isMobileMode = location.pathname.startsWith('/mobile');
     const currentMode = isMobileMode ? 'mobile' : 'desktop';
     const { language, setLanguage } = useLanguage();
+    const data = getData(language);
 
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);

@@ -4,7 +4,8 @@ import {
     BookOpen, Target, BarChart2, CheckCircle, ArrowRight, Play,
     Search, Bell, Lock, ChevronLeft, ChevronRight, Share2, Plus, Layers, Home
 } from 'lucide-react';
-import { data } from './data';
+import { getData } from './data';
+import { useLanguage } from '../../context/LanguageContext';
 import logo from '../../Components/FARE_Logo/SVG/Primary Logo.svg';
 import React from 'react';
 
@@ -16,6 +17,9 @@ const GOLD_MID = '#D5AA45';
 const MUTED_BLUE = '#7B8DAA';
 
 export default function Mobile() {
+    const { language } = useLanguage();
+    const data = getData(language);
+
     const container: Variants = {
         hidden: { opacity: 0 },
         show: {

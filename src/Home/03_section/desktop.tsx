@@ -4,11 +4,14 @@ import {
     ArrowRight, Building2, GraduationCap, UserCheck, CheckCircle, 
     TrendingUp, Star, Users, Award, ShieldCheck, Sparkles 
 } from 'lucide-react';
-import { data } from './data';
+import { getData } from './data';
+import { useLanguage } from '../../context/LanguageContext';
 
 const MUTED_SLATE = '#5A6E8C';
 
 export default function Desktop() {
+    const { language } = useLanguage();
+    const data = getData(language);
     const [activePersonaId, setActivePersonaId] = useState('companies');
     const [waitlistEmail, setWaitlistEmail] = useState('');
     const [waitlistJoined, setWaitlistJoined] = useState(false);

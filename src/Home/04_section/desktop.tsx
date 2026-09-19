@@ -1,9 +1,12 @@
 import { motion } from 'motion/react';
 import { ArrowRight, ShieldCheck, Users, BarChart2 } from 'lucide-react';
-import { data } from './data';
+import { getData } from './data';
+import { useLanguage } from '../../context/LanguageContext';
 import bgImage from '../../assets/bg-04.jpg';
 
 export default function Desktop() {
+    const { language } = useLanguage();
+    const data = getData(language);
     const containerVariant = {
         hidden: { opacity: 0 },
         show: {

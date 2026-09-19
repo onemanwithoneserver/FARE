@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
-import { data } from './data';
+import { getData } from './data';
 import logo from '../../Components/FARE_Logo/SVG/Primary Logo.svg';
 import { Search, ArrowRight, X, ChevronDown, Building2, MapPin, Globe, Check } from 'lucide-react';
 
@@ -12,6 +12,7 @@ export default function Desktop() {
     const isMobileMode = location.pathname.startsWith('/mobile');
     const currentMode = isMobileMode ? 'mobile' : 'desktop';
     const { language, setLanguage } = useLanguage();
+    const data = getData(language);
 
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSearchExpanded, setIsSearchExpanded] = useState(false);
@@ -66,14 +67,14 @@ export default function Desktop() {
                 src={logo}
                 alt="FARE"
                 className={`w-auto max-w-none transition-all duration-300 group-hover:scale-[1.02] ${
-                    isScrolled ? 'h-[68px] my-[-6px]' : 'h-[90px] my-[-10px]'
+                    isScrolled ? 'h-[52px] my-[-4px]' : 'h-[74px] my-[-8px]'
                 }`}
             />
         </div>
     );
 
     const NavElement = (
-        <nav className="hidden md:flex items-center gap-7 lg:gap-9">
+        <nav className="flex items-center gap-5 lg:gap-7 xl:gap-8 justify-center">
             {data.navLinks.map((link, idx) => {
                 const hasSubItems = link.subItems && link.subItems.length > 0;
                 const isDropdownOpen = activeDropdown === link.title;
@@ -88,7 +89,7 @@ export default function Desktop() {
                         >
                             <button
                                 onClick={() => setActiveDropdown(isDropdownOpen ? null : link.title)}
-                                className="flex items-center gap-1 text-[14px] font-medium text-[#0B1D3A]/90 hover:text-[#C99A2E] transition-colors duration-300 cursor-pointer py-1.5 group"
+                                className="flex items-center gap-1 text-[13.5px] lg:text-[14px] font-medium text-[#0B1D3A]/90 hover:text-[#C99A2E] transition-colors duration-300 cursor-pointer py-1.5 group whitespace-nowrap"
                             >
                                 <span>{link.title}</span>
                                 <ChevronDown
@@ -154,7 +155,7 @@ export default function Desktop() {
                     <a
                         key={idx}
                         href={link.href}
-                        className="relative text-[14px] font-medium text-[#0B1D3A]/90 hover:text-[#C99A2E] transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-[#C99A2E] after:transition-all after:duration-300 hover:after:w-full"
+                        className="relative text-[13.5px] lg:text-[14px] font-medium text-[#0B1D3A]/90 hover:text-[#C99A2E] transition-colors duration-300 whitespace-nowrap after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-[#C99A2E] after:transition-all after:duration-300 hover:after:w-full"
                     >
                         {link.title}
                     </a>
@@ -175,16 +176,16 @@ export default function Desktop() {
                 <header 
                     className={`transition-all duration-300 pointer-events-auto flex items-center justify-between relative ${
                         isScrolled
-                            ? 'w-full max-w-[1240px] h-[56px] px-6 lg:px-8 bg-white/95 backdrop-blur-xl border border-white/90 shadow-[0_12px_32px_-10px_rgba(11,29,58,0.12),0_1px_3px_rgba(11,29,58,0.05)] rounded-full mx-auto'
+                            ? 'w-full max-w-[1240px] h-[58px] px-6 lg:px-8 bg-white/95 backdrop-blur-xl border border-white/90 shadow-[0_12px_32px_-10px_rgba(11,29,58,0.12),0_1px_3px_rgba(11,29,58,0.05)] rounded-full mx-auto'
                             : 'w-full h-[68px] px-8 lg:px-14 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.07] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none'
                     }`}
                 >
-                    <div className="flex items-center">
-                        {isScrolled ? NavElement : LogoElement}
+                    <div className="flex items-center shrink-0">
+                        {LogoElement}
                     </div>
                     
-                    <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
-                        {isScrolled ? LogoElement : NavElement}
+                    <div className="hidden md:flex items-center justify-center flex-1 mx-3 lg:mx-6">
+                        {NavElement}
                     </div>
 
                     <div className="flex items-center gap-3 lg:gap-4">

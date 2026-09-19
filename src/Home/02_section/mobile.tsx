@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { data } from './data';
+import { useState, useEffect } from 'react';
+import { getData } from './data';
+import { useLanguage } from '../../context/LanguageContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
     BookOpen, Target, BarChart2, CheckCircle, ArrowRight, Menu, Lock, 
@@ -11,6 +12,8 @@ const NAVY_DEEP = '#071A49';
 const MUTED_BLUE = '#7B8DAA';
 
 export default function Mobile() {
+    const { language } = useLanguage();
+    const data = getData(language);
     const [activeTab, setActiveTab] = useState('01');
 
     const [currentQIndex, setCurrentQIndex] = useState(0);
@@ -30,6 +33,10 @@ export default function Mobile() {
 
     const [activeHabitId, setActiveHabitId] = useState('h1');
     const [habitsData, setHabitsData] = useState(data.browser.content['04'].habits);
+
+    useEffect(() => {
+        setHabitsData(data.browser.content['04'].habits);
+    }, [language]);
 
     const quizQuestions = data.browser.content['01'].questions;
     const totalQuestions = quizQuestions.length;

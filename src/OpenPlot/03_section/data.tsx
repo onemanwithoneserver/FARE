@@ -4,6 +4,8 @@ export const dataEn = {
     title: "Section 3 - Explore FARE",
     headline: "Everything you need to build a better-trained Open Plot team.",
     subtitle: "Use the tabs to explore how FARE can fit into your organisation.",
+    journeyLabel: "Journey",
+    evaluateLabel: "Evaluate Based On",
     tabs: [
         { id: "tab1", title: "Custom Onboarding" },
         { id: "tab2", title: "Knowledge Bank" },
@@ -106,6 +108,8 @@ export const dataTe = {
     title: "సెక్షన్ 3 — FAREని అన్వేషించండి",
     headline: "మెరుగైన Open Plot టీమ్ను నిర్మించడానికి అవసరమైన ప్రతిదీ.",
     subtitle: "FARE మీ Organisationకు ఎలా సరిపోతుందో తెలుసుకోవడానికి Tabsను ఉపయోగించండి.",
+    journeyLabel: "జర్నీ",
+    evaluateLabel: "ఆధారంగా మూల్యాంకనం",
     tabs: [
         { id: "tab1", title: "Custom Onboarding" },
         { id: "tab2", title: "Knowledge Bank" },

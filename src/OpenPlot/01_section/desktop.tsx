@@ -1,15 +1,12 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { ArrowRight, BookOpen, Target, CheckCircle, BarChart2 } from 'lucide-react';
+import { ArrowRight, BookOpen, Target, CheckCircle, BarChart2, Sparkles, Award } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
-import React from 'react';
 
 const NAVY = '#0B1D3A';
-const NAVY_DEEP = '#071A49';
 const GOLD = '#C99A2E';
 const GOLD_MID = '#D5AA45';
-const MUTED_BLUE = '#7B8DAA';
 
 export default function Desktop() {
     const { language } = useLanguage();
@@ -19,7 +16,7 @@ export default function Desktop() {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
-            transition: { staggerChildren: 0.08, delayChildren: 0.15 }
+            transition: { staggerChildren: 0.08, delayChildren: 0.1 }
         }
     };
 
@@ -28,160 +25,206 @@ export default function Desktop() {
         show: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
+            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
         }
     };
 
-    const subheadlineParts = data.subheadline.includes('. ') ? data.subheadline.split('. ') : [data.subheadline];
-
     return (
-        <section className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center overflow-x-clip relative font-['Outfit']"
-            style={{ background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)` }}
+        <section
+            className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center overflow-x-clip relative font-['Outfit']"
+            style={{ background: `linear-gradient(160deg, #FFFFFF 0%, #F8FAFD 40%, #EEF4FF 100%)` }}
         >
-            <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
-            <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[90px] pointer-events-none z-0"></div>
+            {/* Ambient background glows */}
+            <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></div>
+            <div className="absolute bottom-1/4 left-1/4 w-[450px] h-[450px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
 
-            <svg className="absolute top-20 left-[10%] w-[400px] h-[400px] opacity-[0.05] pointer-events-none z-0" viewBox="0 0 400 400" fill="none">
-                <path d="M50 350 Q200 50 350 350" stroke={GOLD} strokeWidth="1.5" fill="none" />
-            </svg>
+            <div className="max-w-[1280px] w-full px-8 lg:px-12 py-16 lg:py-24 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-center">
+                    
+                    {/* LEFT COLUMN: Text Content & CTAs */}
+                    <motion.div
+                        variants={container}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: false }}
+                        className="lg:col-span-7 flex flex-col items-start text-left"
+                    >
+                        {/* Tagline */}
+                        <motion.div variants={item} className="flex items-center gap-3 mb-5">
+                            <div className="w-8 h-[2px]" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }}></div>
+                            <span className="font-bold text-[11px] tracking-[0.22em] uppercase" style={{ color: GOLD }}>
+                                {data.tagline}
+                            </span>
+                        </motion.div>
 
-            <div className="max-w-[1440px] w-full px-12 py-12 flex flex-col md:flex-row items-center justify-between gap-10 relative z-10">
-                <motion.div
-                    variants={container}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: false }}
-                    className="flex flex-col items-start w-full md:w-1/2 relative z-40"
-                >
-                    <motion.div variants={item} className="flex items-center gap-3 mb-5">
-                        <div className="w-10 h-[1.5px]" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }}></div>
-                        <span className="font-semibold text-[10.5px] tracking-[0.22em] uppercase" style={{ color: GOLD }}>
-                            {data.tagline}
-                        </span>
-                    </motion.div>
+                        {/* Main Headline (1 - 2 lines) */}
+                        <motion.h1
+                            variants={item}
+                            className="text-[2.75rem] xl:text-[3.5rem] leading-[1.1] font-black tracking-[-0.03em] mb-5 text-[#0B1D3A]"
+                        >
+                            {data.headline}
+                        </motion.h1>
 
-                    <h1 className="text-[4rem] lg:text-[4.75rem] leading-[0.96] font-black tracking-[-0.03em] mb-7">
-                        <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line1}</motion.span>
-                        <motion.span variants={item} className="block gold-gradient-text">{data.headline.line2}</motion.span>
-                        <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line3}</motion.span>
-                    </h1>
+                        {/* Subheadline & Subheadline Accent */}
+                        <motion.div variants={item} className="mb-4">
+                            <h2 className="text-[19px] xl:text-[21px] font-bold leading-snug text-[#0B1D3A]">
+                                {data.subheadline}
+                            </h2>
+                            <h2 className="text-[19px] xl:text-[21px] font-bold leading-snug" style={{ color: GOLD }}>
+                                {data.subheadlineAccent}
+                            </h2>
+                        </motion.div>
 
-                    <motion.div variants={item} className="mb-4">
-                        <h2 className="text-[20px] lg:text-[22px] font-bold leading-tight" style={{ color: NAVY_DEEP }}>
-                            {subheadlineParts[0]}{subheadlineParts.length > 1 ? '.' : ''}
-                            {subheadlineParts.length > 1 && <span className="block text-[#C99A2E] mt-1">{subheadlineParts.slice(1).join('. ')}</span>}
-                        </h2>
-                    </motion.div>
-
-                    <motion.div variants={item} className="mb-8">
-                        <p className="text-[16px] font-medium leading-[1.6] max-w-[480px]" style={{ color: '#3A4A63' }}>
+                        {/* Description */}
+                        <motion.p
+                            variants={item}
+                            className="text-[15.5px] font-medium leading-[1.7] text-[#3A4A63] mb-8 max-w-[580px]"
+                        >
                             {data.description}
-                        </p>
-                    </motion.div>
+                        </motion.p>
 
-                    <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-10">
-                        <button
-                            className="text-white text-[13.5px] font-semibold px-7 py-3.5 rounded-[4px] hover:shadow-[0_12px_24px_rgba(11,29,58,0.2),0_0_0_1px_rgba(201,154,46,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
-                            style={{
-                                background: NAVY,
-                                boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`
-                            }}
-                        >
-                            {data.buttons.primary} <ArrowRight size={15} strokeWidth={2.5} />
-                        </button>
-                        <button
-                            className="text-[13.5px] font-semibold px-7 py-3.5 rounded-[4px] hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border"
-                            style={{
-                                color: NAVY,
-                                borderColor: `${NAVY}15`,
-                                background: 'white',
-                                boxShadow: '0 1px 3px rgba(11,29,58,0.03)'
-                            }}
-                        >
-                            {data.buttons.secondary} <ArrowRight size={14} strokeWidth={2.5} />
-                        </button>
-                    </motion.div>
+                        {/* CTA Buttons */}
+                        <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-8">
+                            <button
+                                className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[6px] hover:shadow-[0_12px_24px_rgba(11,29,58,0.22),0_0_0_1px_rgba(201,154,46,0.2)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 shadow-[0_4px_14px_rgba(11,29,58,0.18)]"
+                                style={{ background: NAVY }}
+                            >
+                                {data.buttons.primary} <ArrowRight size={15} strokeWidth={2.5} />
+                            </button>
+                            <button
+                                className="text-[14px] font-semibold px-7 py-3.5 rounded-[6px] hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border bg-white shadow-[0_2px_8px_rgba(11,29,58,0.04)]"
+                                style={{
+                                    color: NAVY,
+                                    borderColor: `${NAVY}25`
+                                }}
+                            >
+                                {data.buttons.secondary} <ArrowRight size={14} strokeWidth={2.5} />
+                            </button>
+                        </motion.div>
 
-                    <motion.div variants={item} className="flex flex-col gap-2">
-                        <div className="flex flex-wrap gap-x-2 gap-y-1 text-[12px] font-medium" style={{ color: MUTED_BLUE }}>
-                            {data.features.split(' · ').map((f, i) => (
-                                <React.Fragment key={i}>
-                                    <span>{f}</span>
-                                    {i < data.features.split(' · ').length - 1 && <span className="text-[#C99A2E]">·</span>}
-                                </React.Fragment>
+                        {/* Feature Pills */}
+                        <motion.div variants={item} className="flex flex-wrap gap-2 mb-4">
+                            {data.features.map((f, i) => (
+                                <span
+                                    key={i}
+                                    className="px-3.5 py-1.5 rounded-full text-[12px] font-semibold border border-[#0B1D3A]/10 bg-white/80 backdrop-blur-sm text-[#3A4A63] shadow-[0_1px_3px_rgba(11,29,58,0.04)] hover:border-[#C99A2E]/40 hover:text-[#C99A2E] transition-colors cursor-default"
+                                >
+                                    {f}
+                                </span>
                             ))}
-                        </div>
-                        <div className="text-[11.5px] italic text-[#0B1D3A]/60 mt-1">
+                        </motion.div>
+
+                        {/* Footer text */}
+                        <motion.p variants={item} className="text-[12px] italic text-[#0B1D3A]/55">
                             {data.footerText}
-                        </div>
+                        </motion.p>
                     </motion.div>
-                </motion.div>
 
-                {/* Right side illustration tailored for Open Plot Companies */}
-                <motion.div 
-                    initial={{ opacity: 0, x: 40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    className="w-full md:w-1/2 flex justify-end relative z-20"
-                >
-                    <div className="relative w-full max-w-[550px] aspect-square">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1D3A] to-[#071A49] rounded-2xl p-8 shadow-2xl flex flex-col gap-4 overflow-hidden border border-[#C99A2E]/20">
-                            <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#C99A2E]/20 rounded-full blur-2xl"></div>
-                            
-                            <h3 className="text-white text-xl font-bold mb-4 z-10 flex items-center gap-2">
-                                <Target className="text-[#C99A2E]" /> {data.dashboard.title}
-                            </h3>
+                    {/* RIGHT COLUMN: Interactive Dashboard Visual */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="lg:col-span-5 relative w-full"
+                    >
+                        {/* Glow effect behind card */}
+                        <div className="absolute -inset-1 bg-gradient-to-r from-[#C99A2E]/20 to-[#60A5FA]/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
 
-                            <div className="flex-1 flex flex-col gap-3 z-10">
+                        {/* Card container */}
+                        <div className="relative bg-gradient-to-br from-[#0B1D3A] via-[#0F2751] to-[#071A49] rounded-2xl p-7 xl:p-8 shadow-[0_25px_60px_-15px_rgba(11,29,58,0.4)] border border-[#C99A2E]/20 overflow-hidden">
+                            {/* Inner decorative light spots */}
+                            <div className="absolute -top-16 -right-16 w-56 h-56 bg-[#C99A2E]/15 rounded-full blur-3xl pointer-events-none"></div>
+                            <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-[#60A5FA]/12 rounded-full blur-2xl pointer-events-none"></div>
+
+                            {/* Card Header */}
+                            <div className="flex items-center justify-between mb-6 relative z-10 border-b border-white/[0.08] pb-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C99A2E] to-[#D5AA45] flex items-center justify-center shadow-[0_4px_12px_rgba(201,154,46,0.3)]">
+                                        <Target className="text-[#0B1D3A]" size={20} strokeWidth={2.5} />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-white text-[16px] font-bold tracking-tight">
+                                            {data.dashboard.title}
+                                        </h3>
+                                        <p className="text-white/50 text-[11px] font-medium flex items-center gap-1.5 mt-0.5">
+                                            <Sparkles size={11} className="text-[#C99A2E]" /> Open Plot Training Matrix
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
+                                    <div className="w-2 h-2 rounded-full bg-[#34D399] animate-pulse"></div>
+                                    <span className="text-white/80 text-[11px] font-semibold tracking-wide">
+                                        {data.dashboard.floatingBadge.title}
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Stats List */}
+                            <div className="flex flex-col gap-3.5 relative z-10 mb-6">
                                 {data.dashboard.stats.map((stat, i) => {
                                     const icons = [
-                                        <BookOpen size={16} />,
-                                        <BarChart2 size={16} />,
-                                        <Target size={16} />,
-                                        <CheckCircle size={16} />
+                                        <BookOpen size={16} key="bo" />,
+                                        <BarChart2 size={16} key="ba" />,
+                                        <Target size={16} key="ta" />,
+                                        <CheckCircle size={16} key="cc" />
                                     ];
                                     return (
-                                    <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center justify-between backdrop-blur-sm hover:bg-white/10 transition-colors">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white" style={{ color: stat.color }}>
-                                                {icons[i]}
+                                        <div
+                                            key={i}
+                                            className="bg-white/[0.04] border border-white/[0.08] hover:border-white/[0.18] rounded-xl p-3.5 xl:p-4 hover:bg-white/[0.07] transition-all duration-300"
+                                        >
+                                            <div className="flex items-center justify-between mb-2">
+                                                <div className="flex items-center gap-2.5">
+                                                    <div
+                                                        className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center shrink-0"
+                                                        style={{ color: stat.color }}
+                                                    >
+                                                        {icons[i]}
+                                                    </div>
+                                                    <span className="text-white/90 font-semibold text-[13.5px]">
+                                                        {stat.title}
+                                                    </span>
+                                                </div>
+                                                <span
+                                                    className="font-bold text-[13px] tracking-tight"
+                                                    style={{ color: stat.color }}
+                                                >
+                                                    {stat.progress}
+                                                </span>
                                             </div>
-                                            <span className="text-white/90 font-medium text-sm">{stat.title}</span>
-                                        </div>
-                                        <div className="flex items-center gap-3 w-1/3">
+
+                                            {/* Animated Progress Bar */}
                                             <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                                                <motion.div 
+                                                <motion.div
                                                     initial={{ width: 0 }}
                                                     whileInView={{ width: stat.progress }}
-                                                    transition={{ duration: 1, delay: 0.5 + (i * 0.2) }}
+                                                    transition={{ duration: 1.2, delay: 0.3 + (i * 0.15), ease: [0.16, 1, 0.3, 1] }}
                                                     className="h-full rounded-full"
                                                     style={{ backgroundColor: stat.color }}
                                                 />
                                             </div>
-                                            <span className="text-white/50 text-xs">{stat.progress}</span>
                                         </div>
-                                    </div>
-                                )})}
+                                    );
+                                })}
+                            </div>
+
+                            {/* Bottom Card Footer Banner */}
+                            <div className="relative z-10 bg-white/[0.05] border border-white/[0.08] rounded-xl p-3 flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                    <Award size={16} className="text-[#C99A2E]" />
+                                    <span className="text-white/70 text-[11.5px] font-medium">
+                                        {data.dashboard.floatingBadge.subtitle}
+                                    </span>
+                                </div>
+                                <span className="text-[#34D399] text-[11px] font-bold uppercase tracking-wider bg-[#34D399]/15 px-2 py-0.5 rounded">
+                                    Active
+                                </span>
                             </div>
                         </div>
+                    </motion.div>
 
-                        {/* Floating decorative elements */}
-                        <motion.div
-                            animate={{ y: [-10, 10, -10] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -left-8 top-1/4 bg-white p-4 rounded-xl shadow-xl border border-[#0B1D3A]/5 flex items-center gap-3"
-                        >
-                            <div className="w-10 h-10 rounded-full bg-[#E2F5E9] flex items-center justify-center text-[#059669]">
-                                <CheckCircle size={20} />
-                            </div>
-                            <div>
-                                <p className="text-[#0B1D3A] font-bold text-sm">{data.dashboard.floatingBadge.title}</p>
-                                <p className="text-[#0B1D3A]/50 text-xs">{data.dashboard.floatingBadge.subtitle}</p>
-                            </div>
-                        </motion.div>
-                    </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );
