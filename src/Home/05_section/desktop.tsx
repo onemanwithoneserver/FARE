@@ -12,7 +12,7 @@ export default function Desktop() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full text-white py-1.5 px-12 font-['Inter',sans-serif] relative overflow-hidden"
+            className="w-full text-white py-1.5 px-12 font-['Outfit',sans-serif] relative overflow-hidden"
             style={{ background: NAVY_DEEP, borderTop: '1px solid rgba(255,255,255,0.06)' }}
         >
             <div className="max-w-[1300px] w-full mx-auto flex justify-between items-center relative z-10 min-h-[50px]">

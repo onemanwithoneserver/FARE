@@ -43,7 +43,7 @@ export default function App() {
         <button
           onClick={() => setIsHeaderVisible(true)}
           title="Press Ctrl+M to toggle header"
-          className="fixed top-3 right-3 z-50 px-3 py-1.5 bg-[#1e293b] text-white text-xs font-semibold rounded-lg shadow-lg flex items-center gap-1.5 hover:bg-[#0f172a] transition-all cursor-pointer opacity-90 hover:opacity-100"
+          className="fixed top-3 right-3 z-50 px-3 py-1.5 bg-[#1e293b] text-white text-xs font-semibold rounded-[4px] shadow-lg flex items-center gap-1.5 hover:bg-[#0f172a] transition-all cursor-pointer opacity-90 hover:opacity-100"
         >
           <span>Header Hidden (Ctrl+M)</span>
         </button>

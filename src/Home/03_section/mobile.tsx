@@ -26,7 +26,7 @@ export default function Mobile() {
 
     return (
         <section
-            className="w-full py-16 px-4 flex flex-col items-center font-['Inter',sans-serif] relative overflow-hidden"
+            className="w-full py-16 px-4 flex flex-col items-center font-['Outfit',sans-serif] relative overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F5F7FB 100%)' }}
         >
             <div className="w-full max-w-[460px] flex flex-col items-center text-center relative z-10">
@@ -37,14 +37,14 @@ export default function Mobile() {
                     {data.headline.subtitle}
                 </p>
 
-                <div className="flex gap-1.5 w-full mb-6 p-1 rounded-[8px] bg-[#EEF2F6] border border-[#0B1D3A]/[0.06]">
+                <div className="flex gap-1.5 w-full mb-6 p-1 rounded-[4px] bg-[#EEF2F6] border border-[#0B1D3A]/[0.06]">
                     {data.personas.map((persona) => {
                         const isActive = activePersonaId === persona.id;
                         return (
                             <button
                                 key={persona.id}
                                 onClick={() => setActivePersonaId(persona.id)}
-                                className={`flex-1 py-2 px-2 rounded-[6px] flex flex-col items-center gap-1 text-[10px] font-bold transition-all ${
+                                className={`flex-1 py-2 px-2 rounded-[4px] flex flex-col items-center gap-1 text-[10px] font-bold transition-all ${
                                     isActive
                                     ? 'bg-white text-[#0B1D3A] border border-[#0B1D3A]/[0.1] shadow-sm'
                                     : 'text-[#5A6E8C]'
@@ -68,7 +68,7 @@ export default function Mobile() {
                         transition={{ duration: 0.3 }}
                         className="w-full flex flex-col gap-4 text-left"
                     >
-                        <div className="p-5 rounded-[8px] bg-white border border-[#0B1D3A]/[0.08] shadow-[0_4px_16px_rgba(11,29,58,0.06)]">
+                        <div className="p-5 rounded-[4px] bg-white border border-[#0B1D3A]/[0.08] shadow-[0_4px_16px_rgba(11,29,58,0.06)]">
                             <div className="inline-flex items-center text-[9px] font-black tracking-wider uppercase px-2.5 py-1 rounded-[3px] mb-3 border"
                                  style={{ color: activePersona.color, borderColor: `${activePersona.color}35`, background: `${activePersona.color}10` }}>
                                 {activePersona.badge}
@@ -96,7 +96,7 @@ export default function Mobile() {
 
                             {activePersona.id === 'professionals' ? (
                                 waitlistJoined ? (
-                                    <div className="p-3 rounded-[5px] bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-2 text-[#059669] text-[11px] font-bold">
+                                    <div className="p-3 rounded-[4px] bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-2 text-[#059669] text-[11px] font-bold">
                                         <ShieldCheck size={16} />
                                         <span>You are registered for VIP Early Access!</span>
                                     </div>
@@ -108,11 +108,11 @@ export default function Mobile() {
                                             value={waitlistEmail}
                                             onChange={(e) => setWaitlistEmail(e.target.value)}
                                             placeholder="Enter your work email"
-                                            className="bg-[#F8FAFC] border border-[#0B1D3A]/[0.12] rounded-[5px] px-3 py-2 text-[11.5px] text-[#0B1D3A] placeholder-[#5A6E8C]/60 focus:outline-none"
+                                            className="bg-[#F8FAFC] border border-[#0B1D3A]/[0.12] rounded-[4px] px-3 py-2 text-[11.5px] text-[#0B1D3A] placeholder-[#5A6E8C]/60 focus:outline-none"
                                         />
                                         <button
                                             type="submit"
-                                            className="w-full py-2.5 rounded-[5px] font-black text-[11.5px] text-[#071A49]"
+                                            className="w-full py-2.5 rounded-[4px] font-black text-[11.5px] text-[#071A49]"
                                             style={{ background: 'linear-gradient(90deg, #C99A2E, #E2C068)' }}
                                         >
                                             Join Exclusive Access
@@ -121,7 +121,7 @@ export default function Mobile() {
                                 )
                             ) : (
                                 <button
-                                    className="w-fit py-3 px-6 rounded-[5px] font-black text-[12px] text-white flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] transition-transform"
+                                    className="w-fit py-3 px-6 rounded-[4px] font-black text-[12px] text-white flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] transition-transform"
                                     style={{ background: `linear-gradient(90deg, ${activePersona.color}, ${activePersona.color}dd)` }}
                                 >
                                     <span>{activePersona.cta}</span>
@@ -130,7 +130,7 @@ export default function Mobile() {
                             )}
                         </div>
 
-                        <div className="p-4 rounded-[8px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.08]">
+                        <div className="p-4 rounded-[4px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.08]">
                             {activePersona.id === 'companies' && activePersona.metrics && (
                                 <div className="flex flex-col">
                                     <div className="flex items-center justify-between mb-3">
@@ -160,7 +160,7 @@ export default function Mobile() {
                                 <div className="flex flex-col gap-2.5">
                                     <div className="text-[10px] font-black text-[#059669] uppercase mb-1">Active Coach Courses</div>
                                     {activePersona.courses.map((course, idx) => (
-                                        <div key={idx} className="bg-white p-3 rounded-[5px] border border-[#0B1D3A]/[0.06] flex items-center justify-between shadow-sm">
+                                        <div key={idx} className="bg-white p-3 rounded-[4px] border border-[#0B1D3A]/[0.06] flex items-center justify-between shadow-sm">
                                             <div className="text-[11.5px] font-bold text-[#0B1D3A] leading-tight pr-2">
                                                 {course.title}
                                             </div>
@@ -177,7 +177,7 @@ export default function Mobile() {
                                 <div className="flex flex-col gap-2">
                                     <div className="text-[10px] font-black text-[#C99A2E] uppercase mb-1">Skill Roadmap</div>
                                     {activePersona.milestones.map((m, idx) => (
-                                        <div key={idx} className="bg-white p-2.5 rounded-[5px] border border-[#0B1D3A]/[0.06] flex items-center justify-between text-[11px] shadow-sm">
+                                        <div key={idx} className="bg-white p-2.5 rounded-[4px] border border-[#0B1D3A]/[0.06] flex items-center justify-between text-[11px] shadow-sm">
                                             <span className="font-bold text-[#0B1D3A]">{m.level}</span>
                                             <span className="text-[9.5px] font-bold text-[#C99A2E]">{m.status}</span>
                                         </div>

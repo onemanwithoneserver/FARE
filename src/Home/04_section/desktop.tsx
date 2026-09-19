@@ -9,7 +9,7 @@ const MUTED_BLUE = '#7B8DAA';
 export default function Desktop() {
     return (
         <section
-            className="w-full py-20 px-12 flex justify-center font-['Inter',sans-serif] relative overflow-hidden"
+            className="w-full py-20 px-12 flex justify-center font-['Outfit',sans-serif] relative overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)` }}
         >
             <div className="absolute inset-0 pointer-events-none">
@@ -28,7 +28,7 @@ export default function Desktop() {
                 className="max-w-[1240px] w-full relative z-10"
             >
                 <div
-                    className="w-full rounded-[10px] p-14 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-dark"
+                    className="w-full rounded-[4px] p-14 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-dark"
                     style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)', border: '1px solid rgba(255,255,255,0.1)' }}
                 >
                     <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-[#D5AA45]/15 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
@@ -46,7 +46,7 @@ export default function Desktop() {
                             whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(213,170,69,0.5)' }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                            className="font-black text-[13px] px-8 py-3.5 rounded-[6px] transition-all duration-300 flex items-center gap-2.5 cursor-pointer text-[#071A49] uppercase tracking-wider"
+                            className="font-black text-[13px] px-8 py-3.5 rounded-[4px] transition-all duration-300 flex items-center gap-2.5 cursor-pointer text-[#071A49] uppercase tracking-wider"
                             style={{ background: 'linear-gradient(90deg, #C99A2E 0%, #D5AA45 50%, #E2C068 100%)' }}
                         >
                             <span>{data.buttons.primary}</span>
@@ -55,7 +55,7 @@ export default function Desktop() {
                         <motion.button
                             whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.08)' }}
                             whileTap={{ scale: 0.98 }}
-                            className="bg-white/[0.04] text-white font-bold text-[13px] px-8 py-3.5 rounded-[6px] border border-white/15 transition-all duration-300 cursor-pointer"
+                            className="bg-white/[0.04] text-white font-bold text-[13px] px-8 py-3.5 rounded-[4px] border border-white/15 transition-all duration-300 cursor-pointer"
                         >
                             {data.buttons.secondary}
                         </motion.button>

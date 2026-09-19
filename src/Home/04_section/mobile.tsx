@@ -9,7 +9,7 @@ const MUTED_BLUE = '#7B8DAA';
 export default function Mobile() {
     return (
         <section
-            className="w-full py-14 px-4 flex justify-center font-['Inter',sans-serif] relative overflow-hidden"
+            className="w-full py-14 px-4 flex justify-center font-['Outfit',sans-serif] relative overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)` }}
         >
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
@@ -22,7 +22,7 @@ export default function Mobile() {
                 className="w-full max-w-[460px] relative z-10"
             >
                 <div
-                    className="w-full rounded-[8px] p-5 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-dark"
+                    className="w-full rounded-[4px] p-5 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-dark"
                     style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)', border: '1px solid rgba(255,255,255,0.1)' }}
                 >
                     <h2 className="text-[1.85rem] leading-[1.05] font-black tracking-[-0.02em] text-white uppercase mb-2.5">
@@ -36,14 +36,14 @@ export default function Mobile() {
                     <div className="flex flex-col gap-2 w-full mb-5">
                         <button
                             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                            className="w-full py-3 px-4 rounded-[5px] font-black text-[11.5px] flex items-center justify-center gap-1.5 text-[#071A49] uppercase tracking-wider shadow-md"
+                            className="w-full py-3 px-4 rounded-[4px] font-black text-[11.5px] flex items-center justify-center gap-1.5 text-[#071A49] uppercase tracking-wider shadow-md"
                             style={{ background: 'linear-gradient(90deg, #C99A2E, #E2C068)' }}
                         >
                             <span>{data.buttons.primary}</span>
                             <ArrowRight size={13} strokeWidth={2.5} />
                         </button>
                         <button
-                            className="w-full py-2.5 px-4 rounded-[5px] font-bold text-[11.5px] text-white bg-white/[0.04] border border-white/10"
+                            className="w-full py-2.5 px-4 rounded-[4px] font-bold text-[11.5px] text-white bg-white/[0.04] border border-white/10"
                         >
                             {data.buttons.secondary}
                         </button>

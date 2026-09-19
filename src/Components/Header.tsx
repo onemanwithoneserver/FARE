@@ -28,10 +28,10 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
       </div>
 
       <div className="hidden md:flex items-center justify-center flex-1">
-        <div className="flex bg-[#f8fafc] p-1 rounded-xl border border-[#e2e8f0] shadow-sm">
+        <div className="flex bg-[#f8fafc] p-1 rounded-[4px] border border-[#e2e8f0] shadow-sm">
           <button
             onClick={() => onViewModeChange('desktop')}
-            className={`flex items-center gap-2 px-5 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
+            className={`flex items-center gap-2 px-5 py-1.5 rounded-[4px] text-sm font-semibold transition-all duration-200 ${
               !isMobile 
                 ? 'bg-[#1e293b] text-white shadow-md' 
                 : 'text-[#64748b] hover:text-[#0f172a] hover:bg-[#f1f5f9]'
@@ -42,7 +42,7 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
           </button>
           <button
             onClick={() => onViewModeChange('mobile')}
-            className={`flex items-center gap-2 px-5 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
+            className={`flex items-center gap-2 px-5 py-1.5 rounded-[4px] text-sm font-semibold transition-all duration-200 ${
               isMobile 
                 ? 'bg-[#1e293b] text-white shadow-md' 
                 : 'text-[#64748b] hover:text-[#0f172a] hover:bg-[#f1f5f9]'
@@ -71,14 +71,14 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
         
         <div className="w-px h-8 bg-[#e2e8f0] hidden sm:block"></div>
         
-        <button className="text-[#64748b] hover:text-[#0f172a] transition-colors p-2 rounded-lg hover:bg-[#f8fafc]">
+        <button className="text-[#64748b] hover:text-[#0f172a] transition-colors p-2 rounded-[4px] hover:bg-[#f8fafc]">
           <Moon className="w-5 h-5" />
         </button>
         <button 
           onClick={onClose}
           title="Close header (Press Ctrl+M to reopen)"
           aria-label="Close header"
-          className="w-9 h-9 rounded-lg border border-[#e2e8f0] text-[#64748b] hover:text-[#0f172a] hover:bg-[#f8fafc] transition-all flex items-center justify-center shadow-sm cursor-pointer"
+          className="w-9 h-9 rounded-[4px] border border-[#e2e8f0] text-[#64748b] hover:text-[#0f172a] hover:bg-[#f8fafc] transition-all flex items-center justify-center shadow-sm cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>

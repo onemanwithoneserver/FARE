@@ -34,7 +34,7 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden relative font-['Inter',sans-serif]"
+        <section className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden relative font-['Outfit',sans-serif]"
             style={{ background: `linear-gradient(135deg, #F8F9FC 0%, #F5F7FB 40%, #EEF4FF 100%)` }}
         >
             <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#DDEAFF]/40 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></div>

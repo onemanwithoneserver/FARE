@@ -26,7 +26,7 @@ export default function Desktop() {
 
     return (
         <section
-            className="w-full py-20 px-12 flex justify-center font-['Inter',sans-serif] relative overflow-hidden"
+            className="w-full py-20 px-12 flex justify-center font-['Outfit',sans-serif] relative overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F5F7FB 100%)' }}
         >
             <motion.div 
@@ -61,7 +61,7 @@ export default function Desktop() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.7, delay: 0.1 }}
-                    className="flex gap-3 w-full max-w-[840px] mb-8 p-1.5 rounded-[10px] bg-[#EEF2F6] border border-[#0B1D3A]/[0.06] shadow-inner"
+                    className="flex gap-3 w-full max-w-[840px] mb-8 p-1.5 rounded-[4px] bg-[#EEF2F6] border border-[#0B1D3A]/[0.06] shadow-inner"
                 >
                     {data.personas.map((persona) => {
                         const isActive = activePersonaId === persona.id;
@@ -69,7 +69,7 @@ export default function Desktop() {
                             <button
                                 key={persona.id}
                                 onClick={() => setActivePersonaId(persona.id)}
-                                className={`flex-1 py-3 px-5 rounded-[8px] flex items-center justify-center gap-2.5 transition-all duration-300 font-bold text-[13px] cursor-pointer relative ${
+                                className={`flex-1 py-3 px-5 rounded-[4px] flex items-center justify-center gap-2.5 transition-all duration-300 font-bold text-[13px] cursor-pointer relative ${
                                     isActive
                                     ? 'bg-white text-[#0B1D3A] border border-[#0B1D3A]/[0.1] shadow-md scale-[1.01]'
                                     : 'text-[#5A6E8C] hover:text-[#0B1D3A] hover:bg-white/50'
@@ -96,7 +96,7 @@ export default function Desktop() {
                         <motion.div 
                             whileHover={{ y: -3 }}
                             transition={{ duration: 0.3 }}
-                            className="col-span-5 flex flex-col p-8 lg:p-9 rounded-[10px] bg-white border border-[#0B1D3A]/[0.06] shadow-[0_20px_60px_rgba(11,29,58,0.04)] relative overflow-hidden"
+                            className="col-span-5 flex flex-col p-8 lg:p-9 rounded-[4px] bg-white border border-[#0B1D3A]/[0.06] shadow-[0_20px_60px_rgba(11,29,58,0.04)] relative overflow-hidden"
                         >
                             <div className="relative z-10">
                                 <div className="inline-flex items-center gap-2 text-[10.5px] font-black tracking-[0.18em] uppercase px-3 py-1.5 rounded-[4px] mb-5 border"
@@ -134,7 +134,7 @@ export default function Desktop() {
                             <div className="relative z-10 pt-6 border-t border-[#0B1D3A]/[0.06] mt-auto">
                                 {activePersona.id === 'professionals' ? (
                                     waitlistJoined ? (
-                                        <div className="p-3.5 rounded-[6px] bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-2.5 text-[#059669] text-[12.5px] font-bold">
+                                        <div className="p-3.5 rounded-[4px] bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-2.5 text-[#059669] text-[12.5px] font-bold">
                                             <ShieldCheck size={18} />
                                             <span>You are registered for VIP priority early access!</span>
                                         </div>
@@ -146,11 +146,11 @@ export default function Desktop() {
                                                 value={waitlistEmail}
                                                 onChange={(e) => setWaitlistEmail(e.target.value)}
                                                 placeholder="Enter your work email"
-                                                className="flex-1 bg-[#F8FAFC] border border-[#0B1D3A]/[0.12] rounded-[6px] px-3.5 py-2.5 text-[12.5px] text-[#0B1D3A] placeholder-[#5A6E8C]/60 focus:outline-none focus:border-[#C99A2E]"
+                                                className="flex-1 bg-[#F8FAFC] border border-[#0B1D3A]/[0.12] rounded-[4px] px-3.5 py-2.5 text-[12.5px] text-[#0B1D3A] placeholder-[#5A6E8C]/60 focus:outline-none focus:border-[#C99A2E]"
                                             />
                                             <button
                                                 type="submit"
-                                                className="px-5 py-2.5 rounded-[6px] font-black text-[12.5px] text-[#071A49] transition-all cursor-pointer whitespace-nowrap shadow-sm hover:brightness-105"
+                                                className="px-5 py-2.5 rounded-[4px] font-black text-[12.5px] text-[#071A49] transition-all cursor-pointer whitespace-nowrap shadow-sm hover:brightness-105"
                                                 style={{ background: 'linear-gradient(90deg, #C99A2E, #E2C068)' }}
                                             >
                                                 Join Now
@@ -159,7 +159,7 @@ export default function Desktop() {
                                     )
                                 ) : (
                                     <button
-                                        className="w-fit py-3.5 px-8 rounded-[6px] font-black text-[13px] text-white transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_4px_14px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] hover:-translate-y-0.5"
+                                        className="w-fit py-3.5 px-8 rounded-[4px] font-black text-[13px] text-white transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_4px_14px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] hover:-translate-y-0.5"
                                         style={{ background: `linear-gradient(90deg, ${activePersona.color}, ${activePersona.color}dd)` }}
                                     >
                                         <span>{activePersona.cta}</span>
@@ -172,13 +172,13 @@ export default function Desktop() {
                         <motion.div 
                             whileHover={{ y: -3 }}
                             transition={{ duration: 0.3 }}
-                            className="col-span-7 p-8 lg:p-9 rounded-[10px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] shadow-[0_20px_60px_rgba(11,29,58,0.03)] flex flex-col justify-center relative overflow-hidden"
+                            className="col-span-7 p-8 lg:p-9 rounded-[4px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] shadow-[0_20px_60px_rgba(11,29,58,0.03)] flex flex-col justify-center relative overflow-hidden"
                         >
                             {activePersona.id === 'companies' && activePersona.metrics && (
                                 <div className="flex flex-col relative z-10">
                                     <div className="flex items-center justify-between mb-6">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-[6px] bg-[#2563EB]/10 text-[#2563EB] flex items-center justify-center border border-[#2563EB]/20 shadow-sm">
+                                            <div className="w-10 h-10 rounded-[4px] bg-[#2563EB]/10 text-[#2563EB] flex items-center justify-center border border-[#2563EB]/20 shadow-sm">
                                                 <TrendingUp size={19} />
                                             </div>
                                             <div>
@@ -191,7 +191,7 @@ export default function Desktop() {
                                         </span>
                                     </div>
 
-                                    <div className="flex flex-col gap-5 bg-white p-6 rounded-[8px] border border-[#0B1D3A]/[0.06] shadow-sm">
+                                    <div className="flex flex-col gap-5 bg-white p-6 rounded-[4px] border border-[#0B1D3A]/[0.06] shadow-sm">
                                         {activePersona.metrics.teams.map((team, idx) => (
                                             <div key={idx} className="w-full">
                                                 <div className="flex justify-between items-center mb-2">
@@ -215,7 +215,7 @@ export default function Desktop() {
                                 <div className="flex flex-col relative z-10">
                                     <div className="flex items-center justify-between mb-5">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-[6px] bg-[#059669]/10 text-[#059669] flex items-center justify-center border border-[#059669]/20 shadow-sm">
+                                            <div className="w-10 h-10 rounded-[4px] bg-[#059669]/10 text-[#059669] flex items-center justify-center border border-[#059669]/20 shadow-sm">
                                                 <GraduationCap size={19} />
                                             </div>
                                             <div>
@@ -233,7 +233,7 @@ export default function Desktop() {
                                             <motion.div 
                                                 key={idx} 
                                                 whileHover={{ scale: 1.01 }}
-                                                className="bg-white hover:border-[#059669]/40 p-4.5 rounded-[8px] border border-[#0B1D3A]/[0.06] transition-all flex items-center justify-between shadow-sm group"
+                                                className="bg-white hover:border-[#059669]/40 p-4.5 rounded-[4px] border border-[#0B1D3A]/[0.06] transition-all flex items-center justify-between shadow-sm group"
                                             >
                                                 <div>
                                                     <div className="text-[13px] font-bold text-[#0B1D3A] group-hover:text-[#059669] transition-colors mb-0.5">
@@ -255,7 +255,7 @@ export default function Desktop() {
                                 <div className="flex flex-col relative z-10">
                                     <div className="flex items-center justify-between mb-5">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-[6px] bg-[#C99A2E]/10 text-[#C99A2E] flex items-center justify-center border border-[#C99A2E]/20 shadow-sm">
+                                            <div className="w-10 h-10 rounded-[4px] bg-[#C99A2E]/10 text-[#C99A2E] flex items-center justify-center border border-[#C99A2E]/20 shadow-sm">
                                                 <ShieldCheck size={19} />
                                             </div>
                                             <div>
@@ -273,7 +273,7 @@ export default function Desktop() {
                                             <motion.div 
                                                 key={idx} 
                                                 whileHover={{ scale: 1.01 }}
-                                                className="bg-white p-4 rounded-[8px] border border-[#0B1D3A]/[0.06] flex items-center justify-between shadow-sm"
+                                                className="bg-white p-4 rounded-[4px] border border-[#0B1D3A]/[0.06] flex items-center justify-between shadow-sm"
                                             >
                                                 <div>
                                                     <div className="text-[13.5px] font-bold text-[#0B1D3A] mb-0.5">{m.level}</div>

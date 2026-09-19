@@ -85,7 +85,7 @@ export default function Mobile() {
 
     return (
         <section
-            className="w-full flex flex-col items-center justify-center py-16 px-4 font-['Inter',sans-serif] relative overflow-hidden"
+            className="w-full flex flex-col items-center justify-center py-16 px-4 font-['Outfit',sans-serif] relative overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)` }}
         >
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
@@ -123,7 +123,7 @@ export default function Mobile() {
                             <button
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
-                                className={`w-full text-left p-3.5 rounded-[8px] transition-all duration-300 flex flex-col gap-1.5 relative overflow-hidden group cursor-pointer ${
+                                className={`w-full text-left p-3.5 rounded-[4px] transition-all duration-300 flex flex-col gap-1.5 relative overflow-hidden group cursor-pointer ${
                                     isActive
                                     ? 'bg-white/[0.05] border border-white/[0.12] shadow-lg scale-[1.01]'
                                     : 'bg-transparent border border-transparent hover:bg-white/[0.02]'
@@ -174,7 +174,7 @@ export default function Mobile() {
                 >
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#D5AA45]/20 rounded-full blur-[40px] pointer-events-none"></div>
 
-                    <div className="rounded-[10px] overflow-hidden safari-shadow border border-white/[0.12] flex flex-col bg-[#0D2654] text-left relative luxury-shadow-dark z-10">
+                    <div className="rounded-[4px] overflow-hidden safari-shadow border border-white/[0.12] flex flex-col bg-[#0D2654] text-left relative luxury-shadow-dark z-10">
                         <div className="h-10 glass-safari-dark flex items-center px-4 relative border-b border-white/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.2)]">
                             <div className="flex items-center gap-[6px]">
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#FF5F56] border border-[#E0443E]/50"></div>
@@ -207,7 +207,7 @@ export default function Mobile() {
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-9 h-9 rounded-[6px] bg-[#6B8AFF]/15 flex items-center justify-center text-[#6B8AFF] shadow-[0_0_10px_rgba(107,138,255,0.25)] border border-[#6B8AFF]/30">
+                                                <div className="w-9 h-9 rounded-[4px] bg-[#6B8AFF]/15 flex items-center justify-center text-[#6B8AFF] shadow-[0_0_10px_rgba(107,138,255,0.25)] border border-[#6B8AFF]/30">
                                                     <BookOpen size={17} strokeWidth={2} />
                                                 </div>
                                                 <div>
@@ -259,7 +259,7 @@ export default function Mobile() {
                                         </div>
 
                                         {isSubmitted && !showReview ? (
-                                            <div className="bg-white/[0.02] backdrop-blur-md p-5 rounded-[8px] border border-white/[0.1] shadow-lg flex flex-col items-center text-center">
+                                            <div className="bg-white/[0.02] backdrop-blur-md p-5 rounded-[4px] border border-white/[0.1] shadow-lg flex flex-col items-center text-center">
                                                 <div className="w-12 h-12 rounded-full bg-[#C99A2E]/20 border border-[#D5AA45]/40 flex items-center justify-center text-[#D5AA45] mb-3">
                                                     <Award size={24} />
                                                 </div>
@@ -312,7 +312,7 @@ export default function Mobile() {
                                                     />
                                                 </div>
 
-                                                <div className="bg-white/[0.02] backdrop-blur-sm p-4 rounded-[6px] mb-3.5 border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
+                                                <div className="bg-white/[0.02] backdrop-blur-sm p-4 rounded-[4px] mb-3.5 border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
                                                     <div className="flex items-center justify-between mb-1.5">
                                                         <span className="text-[9px] font-black text-[#6B8AFF] tracking-wider uppercase">Q {currentQIndex + 1} of {totalQuestions}</span>
                                                         {isSubmitted && (
@@ -348,7 +348,7 @@ export default function Mobile() {
                                                             <button 
                                                                 key={i} 
                                                                 onClick={() => handleSelectOption(i)}
-                                                                className={`border p-2.5 rounded-[6px] text-left text-[11px] font-medium flex items-start gap-2 transition-all cursor-pointer ${btnStyle}`}
+                                                                className={`border p-2.5 rounded-[4px] text-left text-[11px] font-medium flex items-start gap-2 transition-all cursor-pointer ${btnStyle}`}
                                                             >
                                                                 <span className={`w-4 h-4 rounded-[3px] flex items-center justify-center text-[9px] font-black shrink-0 ${isSelected ? 'bg-[#6B8AFF] text-white' : 'bg-white/10 text-white/60'}`}>
                                                                     {letter}
@@ -360,7 +360,7 @@ export default function Mobile() {
                                                 </div>
 
                                                 {isSubmitted && currentQuestion.explanation && (
-                                                    <div className="bg-[#6B8AFF]/10 border border-[#6B8AFF]/30 p-3 rounded-[5px] mb-3 text-[10.5px] leading-relaxed text-white/90">
+                                                    <div className="bg-[#6B8AFF]/10 border border-[#6B8AFF]/30 p-3 rounded-[4px] mb-3 text-[10.5px] leading-relaxed text-white/90">
                                                         <span className="font-bold text-[#6B8AFF] mr-1">Explanation:</span>
                                                         {currentQuestion.explanation}
                                                     </div>
@@ -421,7 +421,7 @@ export default function Mobile() {
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-9 h-9 rounded-[6px] bg-[#34D399]/15 flex items-center justify-center text-[#34D399] shadow-[0_0_10px_rgba(52,211,153,0.25)] border border-[#34D399]/30">
+                                                <div className="w-9 h-9 rounded-[4px] bg-[#34D399]/15 flex items-center justify-center text-[#34D399] shadow-[0_0_10px_rgba(52,211,153,0.25)] border border-[#34D399]/30">
                                                     <Target size={17} strokeWidth={2} />
                                                 </div>
                                                 <div>
@@ -449,7 +449,7 @@ export default function Mobile() {
                                             </div>
                                         </div>
 
-                                        <div className="bg-[#0A1630] p-3.5 rounded-[6px] border border-[#34D399]/25 shadow-[inset_0_0_15px_rgba(0,0,0,0.5)] mb-3">
+                                        <div className="bg-[#0A1630] p-3.5 rounded-[4px] border border-[#34D399]/25 shadow-[inset_0_0_15px_rgba(0,0,0,0.5)] mb-3">
                                             <div className="text-[#34D399] text-[8.5px] font-black tracking-wider uppercase mb-1">OBJECTION: {currentScenario.title}</div>
                                             <p className="text-[11.5px] text-white/90 leading-relaxed font-medium italic">{currentScenario.buyerPrompt}</p>
                                         </div>
@@ -461,7 +461,7 @@ export default function Mobile() {
                                                     <button
                                                         key={opt.id}
                                                         onClick={() => setSelectedMockOption(opt.id)}
-                                                        className={`p-2.5 rounded-[6px] border text-left transition-all ${
+                                                        className={`p-2.5 rounded-[4px] border text-left transition-all ${
                                                             isSelected
                                                             ? 'bg-[#34D399]/15 border-[#34D399]'
                                                             : 'bg-white/[0.03] border-white/[0.06]'
@@ -482,7 +482,7 @@ export default function Mobile() {
                                         </div>
 
                                         {selectedResponseData && (
-                                            <div className="bg-[#0D2654] border border-[#34D399]/30 p-3 rounded-[5px]">
+                                            <div className="bg-[#0D2654] border border-[#34D399]/30 p-3 rounded-[4px]">
                                                 <div className="flex items-center gap-1.5 text-[#34D399] text-[10px] font-bold mb-1">
                                                     <Sparkles size={12} />
                                                     <span>Feedback:</span>
@@ -504,7 +504,7 @@ export default function Mobile() {
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-9 h-9 rounded-[6px] bg-[#A78BFA]/15 flex items-center justify-center text-[#A78BFA] shadow-[0_0_10px_rgba(167,139,250,0.25)] border border-[#A78BFA]/30">
+                                                <div className="w-9 h-9 rounded-[4px] bg-[#A78BFA]/15 flex items-center justify-center text-[#A78BFA] shadow-[0_0_10px_rgba(167,139,250,0.25)] border border-[#A78BFA]/30">
                                                     <BarChart2 size={17} strokeWidth={2} />
                                                 </div>
                                                 <div>
@@ -517,7 +517,7 @@ export default function Mobile() {
                                             </div>
                                         </div>
 
-                                        <div className="flex flex-col gap-3.5 bg-white/[0.02] backdrop-blur-sm p-4 rounded-[6px] border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.15)] mb-3">
+                                        <div className="flex flex-col gap-3.5 bg-white/[0.02] backdrop-blur-sm p-4 rounded-[4px] border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.15)] mb-3">
                                             {data.browser.content['03'].skills.map((skill) => {
                                                 const currentVal = skillValues[skill.id] || skill.val;
                                                 return (
@@ -566,7 +566,7 @@ export default function Mobile() {
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-9 h-9 rounded-[6px] flex items-center justify-center shadow-[0_0_10px_rgba(213,170,69,0.25)] border border-[#D5AA45]/30" style={{ background: 'rgba(213,170,69,0.15)', color: '#D5AA45' }}>
+                                                <div className="w-9 h-9 rounded-[4px] flex items-center justify-center shadow-[0_0_10px_rgba(213,170,69,0.25)] border border-[#D5AA45]/30" style={{ background: 'rgba(213,170,69,0.15)', color: '#D5AA45' }}>
                                                     <CheckCircle size={17} strokeWidth={2} />
                                                 </div>
                                                 <div>
@@ -599,7 +599,7 @@ export default function Mobile() {
                                             })}
                                         </div>
 
-                                        <div className="bg-white/[0.02] p-3.5 rounded-[6px] border border-white/[0.08] mb-3">
+                                        <div className="bg-white/[0.02] p-3.5 rounded-[4px] border border-white/[0.08] mb-3">
                                             <div className="flex justify-between items-center mb-2.5">
                                                 <div className="text-[11.5px] font-bold text-white leading-tight">{activeHabit.label}</div>
                                                 <span className="text-[9.5px] text-[#D5AA45] font-semibold">{Math.round((activeHabit.completedDays.length / 30) * 100)}%</span>

@@ -88,7 +88,7 @@ export default function Desktop() {
 
     return (
         <section
-            className="w-full min-h-screen flex justify-center py-24 px-12 font-['Inter',sans-serif] relative overflow-hidden"
+            className="w-full min-h-screen flex justify-center py-24 px-12 font-['Outfit',sans-serif] relative overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)` }}
         >
             <div className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[150px] pointer-events-none"></div>
@@ -130,7 +130,7 @@ export default function Desktop() {
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`w-full text-left p-4.5 rounded-[8px] transition-all duration-400 flex gap-3.5 cursor-pointer group relative overflow-hidden ${
+                                    className={`w-full text-left p-4.5 rounded-[4px] transition-all duration-400 flex gap-3.5 cursor-pointer group relative overflow-hidden ${
                                         isActive
                                         ? 'bg-white/[0.05] border border-white/[0.12] luxury-shadow scale-[1.01]'
                                         : 'bg-transparent border border-transparent hover:bg-white/[0.02]'
@@ -180,7 +180,7 @@ export default function Desktop() {
                     >
                         <div className="absolute top-1/2 -left-8 w-16 h-16 bg-[#D5AA45]/20 rounded-full blur-[20px] -translate-y-1/2 pointer-events-none"></div>
 
-                        <div className="rounded-[10px] overflow-hidden safari-shadow border border-white/[0.12] flex flex-col h-full bg-[#0D2654] relative luxury-shadow-dark">
+                        <div className="rounded-[4px] overflow-hidden safari-shadow border border-white/[0.12] flex flex-col h-full bg-[#0D2654] relative luxury-shadow-dark">
                             <div className="h-[44px] glass-safari-dark flex items-center px-4 relative border-b border-white/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.2)] z-20">
                                 <div className="flex items-center gap-[8px] absolute left-4">
                                     <div className="w-[11px] h-[11px] rounded-full bg-[#FF5F56] border border-[#E0443E]/50"></div>
@@ -188,7 +188,7 @@ export default function Desktop() {
                                     <div className="w-[11px] h-[11px] rounded-full bg-[#27C840] border border-[#1AAB29]/50"></div>
                                 </div>
                                 <div className="flex-1 flex justify-center items-center">
-                                    <div className="bg-[#1C1C1E]/80 backdrop-blur-md rounded-[6px] px-24 py-1 flex items-center justify-center gap-2 border border-white/[0.05] shadow-inner">
+                                    <div className="bg-[#1C1C1E]/80 backdrop-blur-md rounded-[4px] px-24 py-1 flex items-center justify-center gap-2 border border-white/[0.05] shadow-inner">
                                         <Lock size={11} className="text-[#34D399]" />
                                         <span className="text-[11px] text-white/70 font-medium tracking-wide">{data.browser.url}</span>
                                     </div>
@@ -215,7 +215,7 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-5">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[8px] bg-[#6B8AFF]/15 flex items-center justify-center text-[#6B8AFF] shadow-[0_0_15px_rgba(107,138,255,0.25)] border border-[#6B8AFF]/30">
+                                                    <div className="w-11 h-11 rounded-[4px] bg-[#6B8AFF]/15 flex items-center justify-center text-[#6B8AFF] shadow-[0_0_15px_rgba(107,138,255,0.25)] border border-[#6B8AFF]/30">
                                                         <BookOpen size={20} strokeWidth={2} />
                                                     </div>
                                                     <div>
@@ -275,7 +275,7 @@ export default function Desktop() {
                                                 <motion.div
                                                     initial={{ opacity: 0, scale: 0.95 }}
                                                     animate={{ opacity: 1, scale: 1 }}
-                                                    className="bg-white/[0.03] backdrop-blur-md p-8 rounded-[10px] border border-white/[0.12] shadow-[0_12px_40px_rgba(0,0,0,0.3)] flex flex-col items-center text-center"
+                                                    className="bg-white/[0.03] backdrop-blur-md p-8 rounded-[4px] border border-white/[0.12] shadow-[0_12px_40px_rgba(0,0,0,0.3)] flex flex-col items-center text-center"
                                                 >
                                                     <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#C99A2E]/25 to-[#D5AA45]/10 border border-[#D5AA45]/50 flex items-center justify-center text-[#D5AA45] mb-4 shadow-[0_0_25px_rgba(213,170,69,0.35)]">
                                                         <Award size={32} />
@@ -291,15 +291,15 @@ export default function Desktop() {
                                                     </div>
 
                                                     <div className="grid grid-cols-3 gap-4 w-full mb-6">
-                                                        <div className="bg-white/[0.03] p-4 rounded-[6px] border border-white/[0.06]">
+                                                        <div className="bg-white/[0.03] p-4 rounded-[4px] border border-white/[0.06]">
                                                             <div className="text-[20px] font-black text-[#10B981]">{score}</div>
                                                             <div className="text-[11px] font-medium text-white/50">Correct</div>
                                                         </div>
-                                                        <div className="bg-white/[0.03] p-4 rounded-[6px] border border-white/[0.06]">
+                                                        <div className="bg-white/[0.03] p-4 rounded-[4px] border border-white/[0.06]">
                                                             <div className="text-[20px] font-black text-[#EF4444]">{totalQuestions - score}</div>
                                                             <div className="text-[11px] font-medium text-white/50">Incorrect</div>
                                                         </div>
-                                                        <div className="bg-white/[0.03] p-4 rounded-[6px] border border-white/[0.06]">
+                                                        <div className="bg-white/[0.03] p-4 rounded-[4px] border border-white/[0.06]">
                                                             <div className="text-[20px] font-black text-[#6B8AFF]">{answeredCount}</div>
                                                             <div className="text-[11px] font-medium text-white/50">Attempted</div>
                                                         </div>
@@ -308,14 +308,14 @@ export default function Desktop() {
                                                     <div className="flex gap-4 w-full">
                                                         <button
                                                             onClick={() => setShowReview(true)}
-                                                            className="flex-1 py-3 px-5 rounded-[6px] bg-[#6B8AFF] hover:bg-[#5879f5] text-white font-bold text-[13px] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(107,138,255,0.4)] cursor-pointer"
+                                                            className="flex-1 py-3 px-5 rounded-[4px] bg-[#6B8AFF] hover:bg-[#5879f5] text-white font-bold text-[13px] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(107,138,255,0.4)] cursor-pointer"
                                                         >
                                                             <Eye size={16} />
                                                             <span>Review Answers & Explanations</span>
                                                         </button>
                                                         <button
                                                             onClick={handleRestartQuiz}
-                                                            className="py-3 px-5 rounded-[6px] bg-white/[0.05] hover:bg-white/[0.1] text-white font-bold text-[13px] border border-white/10 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                                                            className="py-3 px-5 rounded-[4px] bg-white/[0.05] hover:bg-white/[0.1] text-white font-bold text-[13px] border border-white/10 transition-all flex items-center justify-center gap-2 cursor-pointer"
                                                         >
                                                             <RotateCcw size={15} />
                                                             <span>Retake Quiz</span>
@@ -333,7 +333,7 @@ export default function Desktop() {
                                                         />
                                                     </div>
 
-                                                    <div className="bg-white/[0.02] backdrop-blur-sm p-6 rounded-[8px] mb-4 border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+                                                    <div className="bg-white/[0.02] backdrop-blur-sm p-6 rounded-[4px] mb-4 border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
                                                         <div className="flex items-center justify-between mb-3">
                                                             <span className="text-[11px] font-black text-[#6B8AFF] tracking-wider uppercase">Question {currentQIndex + 1} of {totalQuestions}</span>
                                                             {isSubmitted && (
@@ -372,7 +372,7 @@ export default function Desktop() {
                                                                 <button 
                                                                     key={i} 
                                                                     onClick={() => handleSelectOption(i)}
-                                                                    className={`border p-4 rounded-[6px] text-left text-[12.5px] transition-all duration-300 font-medium cursor-pointer flex items-start gap-3 group ${btnStyle}`}
+                                                                    className={`border p-4 rounded-[4px] text-left text-[12.5px] transition-all duration-300 font-medium cursor-pointer flex items-start gap-3 group ${btnStyle}`}
                                                                 >
                                                                     <span className={`w-5 h-5 rounded-[4px] flex items-center justify-center text-[10.5px] font-black shrink-0 ${isSelected ? 'bg-[#6B8AFF] text-white' : 'bg-white/10 text-white/60 group-hover:bg-[#6B8AFF]/30 group-hover:text-white'}`}>
                                                                         {letter}
@@ -384,7 +384,7 @@ export default function Desktop() {
                                                     </div>
 
                                                     {isSubmitted && currentQuestion.explanation && (
-                                                        <div className="bg-[#6B8AFF]/10 border border-[#6B8AFF]/30 p-4 rounded-[6px] mb-4 text-[12px] leading-relaxed text-white/90">
+                                                        <div className="bg-[#6B8AFF]/10 border border-[#6B8AFF]/30 p-4 rounded-[4px] mb-4 text-[12px] leading-relaxed text-white/90">
                                                             <span className="font-bold text-[#6B8AFF] mr-1.5">Explanation:</span>
                                                             {currentQuestion.explanation}
                                                         </div>
@@ -394,7 +394,7 @@ export default function Desktop() {
                                                         <button
                                                             onClick={() => setCurrentQIndex(prev => Math.max(0, prev - 1))}
                                                             disabled={currentQIndex === 0}
-                                                            className={`flex items-center gap-1.5 px-4 py-2 rounded-[5px] text-[12px] font-semibold border transition-all ${
+                                                            className={`flex items-center gap-1.5 px-4 py-2 rounded-[4px] text-[12px] font-semibold border transition-all ${
                                                                 currentQIndex === 0
                                                                 ? 'opacity-30 cursor-not-allowed border-transparent text-white/30'
                                                                 : 'border-white/10 text-white/80 hover:text-white hover:bg-white/5 cursor-pointer'
@@ -407,7 +407,7 @@ export default function Desktop() {
                                                         {isSubmitted && showReview && (
                                                             <button
                                                                 onClick={() => setShowReview(false)}
-                                                                className="px-4 py-2 rounded-[5px] text-[12px] font-bold text-white bg-white/[0.08] hover:bg-white/[0.12] border border-white/10 cursor-pointer"
+                                                                className="px-4 py-2 rounded-[4px] text-[12px] font-bold text-white bg-white/[0.08] hover:bg-white/[0.12] border border-white/10 cursor-pointer"
                                                             >
                                                                 Back to Scorecard
                                                             </button>
@@ -416,7 +416,7 @@ export default function Desktop() {
                                                         {currentQIndex < totalQuestions - 1 ? (
                                                             <button
                                                                 onClick={() => setCurrentQIndex(prev => Math.min(totalQuestions - 1, prev + 1))}
-                                                                className="flex items-center gap-1.5 px-5 py-2 rounded-[5px] text-[12px] font-bold bg-[#6B8AFF] hover:bg-[#5879f5] text-white transition-all shadow-[0_0_15px_rgba(107,138,255,0.3)] cursor-pointer"
+                                                                className="flex items-center gap-1.5 px-5 py-2 rounded-[4px] text-[12px] font-bold bg-[#6B8AFF] hover:bg-[#5879f5] text-white transition-all shadow-[0_0_15px_rgba(107,138,255,0.3)] cursor-pointer"
                                                             >
                                                                 <span>Next</span>
                                                                 <ChevronRight size={14} />
@@ -424,7 +424,7 @@ export default function Desktop() {
                                                         ) : !isSubmitted ? (
                                                             <button
                                                                 onClick={() => setIsSubmitted(true)}
-                                                                className="flex items-center gap-2 px-6 py-2.5 rounded-[5px] text-[12.5px] font-black bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E2C068] hover:brightness-110 text-[#071A49] transition-all shadow-[0_0_20px_rgba(213,170,69,0.4)] cursor-pointer uppercase tracking-wider"
+                                                                className="flex items-center gap-2 px-6 py-2.5 rounded-[4px] text-[12.5px] font-black bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E2C068] hover:brightness-110 text-[#071A49] transition-all shadow-[0_0_20px_rgba(213,170,69,0.4)] cursor-pointer uppercase tracking-wider"
                                                             >
                                                                 <span>Submit & Get Score</span>
                                                                 <ArrowRight size={14} strokeWidth={3} />
@@ -432,7 +432,7 @@ export default function Desktop() {
                                                         ) : (
                                                             <button
                                                                 onClick={() => setShowReview(false)}
-                                                                className="px-5 py-2 rounded-[5px] text-[12px] font-bold bg-[#6B8AFF] hover:bg-[#5879f5] text-white transition-all cursor-pointer"
+                                                                className="px-5 py-2 rounded-[4px] text-[12px] font-bold bg-[#6B8AFF] hover:bg-[#5879f5] text-white transition-all cursor-pointer"
                                                             >
                                                                 View Scorecard
                                                             </button>
@@ -454,7 +454,7 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-6">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[8px] bg-[#34D399]/15 flex items-center justify-center text-[#34D399] shadow-[0_0_15px_rgba(52,211,153,0.25)] border border-[#34D399]/30">
+                                                    <div className="w-11 h-11 rounded-[4px] bg-[#34D399]/15 flex items-center justify-center text-[#34D399] shadow-[0_0_15px_rgba(52,211,153,0.25)] border border-[#34D399]/30">
                                                         <Target size={20} strokeWidth={2} />
                                                     </div>
                                                     <div>
@@ -484,9 +484,9 @@ export default function Desktop() {
                                             </div>
 
                                             <div className="flex gap-4 mb-4">
-                                                <div className="flex-1 bg-white/[0.03] p-4 rounded-[8px] border border-white/[0.08] shadow-[0_8px_24px_rgba(0,0,0,0.15)] flex items-center justify-between">
+                                                <div className="flex-1 bg-white/[0.03] p-4 rounded-[4px] border border-white/[0.08] shadow-[0_8px_24px_rgba(0,0,0,0.15)] flex items-center justify-between">
                                                     <div className="flex items-center gap-3">
-                                                        <div className="w-10 h-10 rounded-[6px] bg-[#34D399]/15 text-[#34D399] flex items-center justify-center text-[15px] font-bold border border-[#34D399]/20">P</div>
+                                                        <div className="w-10 h-10 rounded-[4px] bg-[#34D399]/15 text-[#34D399] flex items-center justify-center text-[15px] font-bold border border-[#34D399]/20">P</div>
                                                         <div>
                                                             <div className="font-bold text-[13px] text-white">{data.browser.content['02'].trainer.name}</div>
                                                             <div className="text-[10.5px] text-white/50">{data.browser.content['02'].trainer.role}</div>
@@ -499,7 +499,7 @@ export default function Desktop() {
                                                 </div>
                                             </div>
 
-                                            <div className="bg-[#0A1630] p-5 rounded-[8px] border border-[#34D399]/25 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] mb-4">
+                                            <div className="bg-[#0A1630] p-5 rounded-[4px] border border-[#34D399]/25 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] mb-4">
                                                 <div className="flex items-center justify-between mb-2">
                                                     <span className="text-[#34D399] text-[9.5px] font-black tracking-[0.2em]">BUYER OBJECTION</span>
                                                     <span className="text-white/40 text-[10.5px] font-medium">{currentScenario.title}</span>
@@ -517,7 +517,7 @@ export default function Desktop() {
                                                         <button
                                                             key={opt.id}
                                                             onClick={() => setSelectedMockOption(opt.id)}
-                                                            className={`p-3.5 rounded-[6px] border text-left transition-all cursor-pointer relative overflow-hidden ${
+                                                            className={`p-3.5 rounded-[4px] border text-left transition-all cursor-pointer relative overflow-hidden ${
                                                                 isSelected
                                                                 ? 'bg-[#34D399]/15 border-[#34D399] shadow-[0_0_15px_rgba(52,211,153,0.25)]'
                                                                 : 'bg-white/[0.03] border-white/[0.06] hover:bg-white/[0.06] hover:border-white/20'
@@ -543,7 +543,7 @@ export default function Desktop() {
                                                         initial={{ opacity: 0, height: 0 }}
                                                         animate={{ opacity: 1, height: 'auto' }}
                                                         exit={{ opacity: 0, height: 0 }}
-                                                        className="bg-gradient-to-r from-[#0D2654] to-[#113069] border border-[#34D399]/30 p-4 rounded-[6px] shadow-lg"
+                                                        className="bg-gradient-to-r from-[#0D2654] to-[#113069] border border-[#34D399]/30 p-4 rounded-[4px] shadow-lg"
                                                     >
                                                         <div className="flex items-center justify-between mb-2">
                                                             <div className="flex items-center gap-2">
@@ -578,7 +578,7 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-6">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[8px] bg-[#A78BFA]/15 flex items-center justify-center text-[#A78BFA] shadow-[0_0_15px_rgba(167,139,250,0.25)] border border-[#A78BFA]/30">
+                                                    <div className="w-11 h-11 rounded-[4px] bg-[#A78BFA]/15 flex items-center justify-center text-[#A78BFA] shadow-[0_0_15px_rgba(167,139,250,0.25)] border border-[#A78BFA]/30">
                                                         <BarChart2 size={20} strokeWidth={2} />
                                                     </div>
                                                     <div>
@@ -586,13 +586,13 @@ export default function Desktop() {
                                                         <div className="text-[18px] font-bold text-white tracking-tight">{data.browser.content['03'].title}</div>
                                                     </div>
                                                 </div>
-                                                <div className="bg-[#A78BFA]/15 border border-[#A78BFA]/35 px-4 py-2 rounded-[6px] text-[12px] font-black text-[#A78BFA] tracking-wide shadow-[0_0_12px_rgba(167,139,250,0.15)] flex items-center gap-2">
+                                                <div className="bg-[#A78BFA]/15 border border-[#A78BFA]/35 px-4 py-2 rounded-[4px] text-[12px] font-black text-[#A78BFA] tracking-wide shadow-[0_0_12px_rgba(167,139,250,0.15)] flex items-center gap-2">
                                                     <span>{computedPercentile}th %ile Rank</span>
                                                     <span className="text-[10px] font-semibold text-white/50">(Avg {peerAvg}%)</span>
                                                 </div>
                                             </div>
 
-                                            <div className="flex flex-col gap-4 bg-white/[0.02] p-6 rounded-[8px] border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm mb-4">
+                                            <div className="flex flex-col gap-4 bg-white/[0.02] p-6 rounded-[4px] border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm mb-4">
                                                 {data.browser.content['03'].skills.map((skill) => {
                                                     const currentVal = skillValues[skill.id] || skill.val;
                                                     const delta = currentVal - skill.peer;
@@ -619,7 +619,7 @@ export default function Desktop() {
                                                                     max="100"
                                                                     value={currentVal}
                                                                     onChange={(e) => handleSkillChange(skill.id, parseInt(e.target.value))}
-                                                                    className="w-full accent-[#A78BFA] cursor-pointer h-2 bg-[#0A1630] rounded-lg appearance-none"
+                                                                    className="w-full accent-[#A78BFA] cursor-pointer h-2 bg-[#0A1630] rounded-[4px] appearance-none"
                                                                 />
                                                             </div>
                                                         </div>
@@ -627,7 +627,7 @@ export default function Desktop() {
                                                 })}
                                             </div>
 
-                                            <div className="flex items-center justify-between bg-white/[0.03] p-4 rounded-[6px] border border-white/[0.06]">
+                                            <div className="flex items-center justify-between bg-white/[0.03] p-4 rounded-[4px] border border-white/[0.06]">
                                                 <div className="text-[12px] text-white/70">
                                                     Overall Real Estate Competency: <strong className="text-white">{overallUserSkill}%</strong> (Tier: {overallUserSkill >= 85 ? 'Elite Tier' : 'Senior Practitioner'})
                                                 </div>
@@ -653,7 +653,7 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-6">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[8px] bg-[#D5AA45]/15 flex items-center justify-center text-[#D5AA45] shadow-[0_0_15px_rgba(213,170,69,0.25)] border border-[#D5AA45]/30">
+                                                    <div className="w-11 h-11 rounded-[4px] bg-[#D5AA45]/15 flex items-center justify-center text-[#D5AA45] shadow-[0_0_15px_rgba(213,170,69,0.25)] border border-[#D5AA45]/30">
                                                         <CheckCircle size={20} strokeWidth={2} />
                                                     </div>
                                                     <div>
@@ -661,7 +661,7 @@ export default function Desktop() {
                                                         <div className="text-[18px] font-bold text-white tracking-tight">{data.browser.content['04'].title}</div>
                                                     </div>
                                                 </div>
-                                                <div className="flex items-center gap-2.5 border px-4 py-2 rounded-[6px] shadow-[0_0_12px_rgba(213,170,69,0.15)]" style={{ borderColor: 'rgba(213,170,69,0.3)', background: 'rgba(213,170,69,0.1)' }}>
+                                                <div className="flex items-center gap-2.5 border px-4 py-2 rounded-[4px] shadow-[0_0_12px_rgba(213,170,69,0.15)]" style={{ borderColor: 'rgba(213,170,69,0.3)', background: 'rgba(213,170,69,0.1)' }}>
                                                     <Flame size={16} className="text-[#D5AA45]" />
                                                     <span className="text-[12px] font-black tracking-wide" style={{ color: '#D5AA45' }}>
                                                         {activeHabit.completedDays.length} / 30 Days ({Math.round((activeHabit.completedDays.length / 30) * 100)}%)
@@ -676,7 +676,7 @@ export default function Desktop() {
                                                         <button
                                                             key={h.id}
                                                             onClick={() => setActiveHabitId(h.id)}
-                                                            className={`px-3.5 py-2 rounded-[6px] text-[11.5px] font-bold border transition-all cursor-pointer whitespace-nowrap ${
+                                                            className={`px-3.5 py-2 rounded-[4px] text-[11.5px] font-bold border transition-all cursor-pointer whitespace-nowrap ${
                                                                 isSelected
                                                                 ? 'bg-[#D5AA45]/20 text-[#F3D887] border-[#D5AA45]/60 shadow-[0_0_12px_rgba(213,170,69,0.25)]'
                                                                 : 'bg-white/[0.03] text-white/50 border-white/[0.06] hover:text-white'
@@ -688,7 +688,7 @@ export default function Desktop() {
                                                 })}
                                             </div>
 
-                                            <div className="bg-white/[0.02] p-6 rounded-[8px] border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)] mb-4">
+                                            <div className="bg-white/[0.02] p-6 rounded-[4px] border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)] mb-4">
                                                 <div className="flex items-center justify-between mb-4">
                                                     <div>
                                                         <div className="text-[13.5px] font-bold text-white">{activeHabit.label}</div>
@@ -709,7 +709,7 @@ export default function Desktop() {
                                                             <button
                                                                 key={dayNum}
                                                                 onClick={() => toggleDayCompletion(dayNum)}
-                                                                className={`h-11 rounded-[6px] border flex flex-col items-center justify-center transition-all cursor-pointer group ${
+                                                                className={`h-11 rounded-[4px] border flex flex-col items-center justify-center transition-all cursor-pointer group ${
                                                                     isDone
                                                                     ? 'bg-[#D5AA45] border-[#D5AA45] text-[#071A49] shadow-[0_0_10px_rgba(213,170,69,0.4)] scale-100'
                                                                     : 'bg-white/[0.03] border-white/[0.06] text-white/40 hover:border-white/20 hover:text-white'
@@ -725,15 +725,15 @@ export default function Desktop() {
                                             </div>
 
                                             <div className="grid grid-cols-3 gap-3">
-                                                <div className="bg-white/[0.03] p-3 rounded-[6px] border border-white/[0.06] text-center">
+                                                <div className="bg-white/[0.03] p-3 rounded-[4px] border border-white/[0.06] text-center">
                                                     <div className="text-[16px] font-black text-[#D5AA45]">{activeHabit.completedDays.length} Days</div>
                                                     <div className="text-[10.5px] text-white/50">Completed in Matrix</div>
                                                 </div>
-                                                <div className="bg-white/[0.03] p-3 rounded-[6px] border border-white/[0.06] text-center">
+                                                <div className="bg-white/[0.03] p-3 rounded-[4px] border border-white/[0.06] text-center">
                                                     <div className="text-[16px] font-black text-[#10B981]">{30 - activeHabit.completedDays.length} Days</div>
                                                     <div className="text-[10.5px] text-white/50">Remaining</div>
                                                 </div>
-                                                <div className="bg-white/[0.03] p-3 rounded-[6px] border border-white/[0.06] text-center">
+                                                <div className="bg-white/[0.03] p-3 rounded-[4px] border border-white/[0.06] text-center">
                                                     <div className="text-[16px] font-black text-[#6B8AFF]">{Math.round((activeHabit.completedDays.length / 30) * 100)}%</div>
                                                     <div className="text-[10.5px] text-white/50">Habit Consistency Index</div>
                                                 </div>
