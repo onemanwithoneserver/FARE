@@ -51,7 +51,7 @@ const MobileViewport = forwardRef<HTMLDivElement, MobileViewportProps>(
           className={`
             relative shrink-0 overflow-hidden bg-fare-surface
             md:shadow-2xl transform-gpu translate-x-0 translate-y-0
-            w-full md:max-w-[390px] md:aspect-[390/844] h-full md:h-[min(90vh,844px)]
+            w-full md:max-w-97.5 md:aspect-390/844 h-full md:h-[min(90vh,844px)]
             transition-all duration-500 ease-out md:hover:shadow-xl
             ${className}
           `}
