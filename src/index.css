@@ -2,14 +2,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-fare-primary: #8b5cf6;
-  --color-fare-surface: #ffffff;
-  --color-fare-surface-alt: #f1f5f9;
-  --color-fare-background: #0f172a;
-  --color-fare-border: #e2e8f0;
-  --color-fare-text-primary: #0f172a;
+  --color-fare-navy: #0B1D3A;
+  --color-fare-navy-deep: #071A49;
+  --color-fare-navy-light: #102B63;
+  --color-fare-navy-surface: #0D2654;
+  --color-fare-gold: #C99A2E;
+  --color-fare-gold-mid: #D5AA45;
+  --color-fare-gold-light: #E4C46A;
+  --color-fare-bg: #F8F9FC;
+  --color-fare-bg-blue: #EEF4FF;
+  --color-fare-bg-blue-soft: #DDEAFF;
+  --color-fare-text-primary: #0B1D3A;
   --color-fare-text-secondary: #475569;
-  --color-fare-text-muted: #94a3b8;
+  --color-fare-text-muted: #7B8DAA;
+  --color-fare-border: #e2e8f0;
 }
 
 @layer base {
@@ -22,22 +28,19 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: #f7f8fa;
-    color: #111111;
+    background-color: #F8F9FC;
+    color: #0B1D3A;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
-  /* Reset border radius for structural elements based on guidelines */
+
   .rounded-lg { border-radius: 4px !important; }
   .rounded-xl { border-radius: 4px !important; }
   .rounded-2xl { border-radius: 4px !important; }
   .rounded-3xl { border-radius: 4px !important; }
   .rounded-md { border-radius: 2px !important; }
-  
-  /* Retain circular radius ONLY for specific classes we control via utility */
   .rounded-full { border-radius: 9999px !important; }
 
   ::-webkit-scrollbar {
@@ -47,101 +50,132 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(148, 163, 184, 0.3);
+    background: rgba(11, 29, 58, 0.15);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(148, 163, 184, 0.5);
+    background: rgba(11, 29, 58, 0.25);
   }
 }
 
 @layer utilities {
+  /* === Shadow System === */
   .luxury-shadow-sm {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 1px 2px rgba(11, 29, 58, 0.04), 0 2px 4px rgba(11, 29, 58, 0.02);
   }
-
   .luxury-shadow {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03), 0 12px 24px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 1px 3px rgba(11, 29, 58, 0.04), 0 4px 12px rgba(11, 29, 58, 0.03), 0 12px 24px rgba(11, 29, 58, 0.02);
   }
-
   .luxury-shadow-lg {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.04), 0 32px 80px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(11, 29, 58, 0.04), 0 12px 32px rgba(11, 29, 58, 0.06), 0 32px 80px rgba(11, 29, 58, 0.06);
   }
-
   .luxury-shadow-dark {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 16px 48px rgba(0, 0, 0, 0.3), 0 32px 80px rgba(0, 0, 0, 0.2);
   }
+  .safari-shadow {
+    box-shadow:
+      0 2px 4px rgba(11, 29, 58, 0.04),
+      0 8px 24px rgba(11, 29, 58, 0.08),
+      0 24px 48px rgba(11, 29, 58, 0.1),
+      0 48px 96px rgba(11, 29, 58, 0.12);
+  }
+  .floating-card-shadow {
+    box-shadow:
+      0 2px 8px rgba(11, 29, 58, 0.06),
+      0 8px 24px rgba(11, 29, 58, 0.08),
+      0 16px 48px rgba(11, 29, 58, 0.04);
+  }
 
+  /* === Glass Effects === */
   .glass-light {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
   }
-
   .glass-dark {
-    background: rgba(10, 17, 40, 0.7);
+    background: rgba(11, 29, 58, 0.7);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
   }
-  
   .glass-safari {
-    background: rgba(250, 250, 252, 0.85);
+    background: rgba(250, 250, 252, 0.92);
     backdrop-filter: blur(40px) saturate(200%);
     -webkit-backdrop-filter: blur(40px) saturate(200%);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .fare-glass-card {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+  .fare-glass-nav {
+    background: rgba(248, 249, 252, 0.82);
+    backdrop-filter: blur(32px) saturate(180%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
   }
 
-  .glass-safari-dark {
-    background: rgba(40, 40, 42, 0.85);
-    backdrop-filter: blur(40px) saturate(200%);
-    -webkit-backdrop-filter: blur(40px) saturate(200%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
+  /* === Borders === */
   .luxury-border-light {
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
-
   .luxury-border {
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(11, 29, 58, 0.06);
   }
 
-  .premium-gradient-text {
-    background: linear-gradient(135deg, #111111 0%, #333333 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
+  /* === Text Gradients === */
   .gold-gradient-text {
-    background: linear-gradient(135deg, #A88645 0%, #D4AF37 50%, #F5D76E 100%);
+    background: linear-gradient(135deg, #C99A2E 0%, #D5AA45 50%, #E4C46A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
-  /* Animations */
+  .fare-navy-gradient-text {
+    background: linear-gradient(135deg, #071A49 0%, #0B1D3A 50%, #102B63 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* === Animations === */
   @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-5px); }
   }
-  
+  @keyframes float-alt {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-  
-  .animate-float-delayed {
-    animation: float 7s ease-in-out 1.5s infinite;
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
   }
-  
+  .animate-float-delayed {
+    animation: float-alt 7s ease-in-out 2s infinite;
+  }
+  .animate-float-delayed-2 {
+    animation: float 7.5s ease-in-out 3.5s infinite;
+  }
+
   @keyframes gradient-x {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
-  
   .animate-gradient-x {
     background-size: 200% 200%;
     animation: gradient-x 15s ease infinite;
   }
-}
 
+  /* === Reduced Motion === */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-float-slow,
+    .animate-float-delayed,
+    .animate-float-delayed-2,
+    .animate-gradient-x {
+      animation: none !important;
+    }
+  }
+}

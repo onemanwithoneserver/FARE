@@ -1,59 +1,129 @@
+import { motion } from 'motion/react';
+import type { Variants } from 'motion/react';
+import { ArrowRight, Play, BookOpen, Target, BarChart2, CheckCircle } from 'lucide-react';
+
+const NAVY = '#0B1D3A';
+const GOLD = '#C99A2E';
+const GOLD_MID = '#D5AA45';
+const MUTED_BLUE = '#7B8DAA';
+
 export default function Mobile() {
+    const container: Variants = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: { staggerChildren: 0.08, delayChildren: 0.1 }
+        }
+    };
+
+    const item: Variants = {
+        hidden: { opacity: 0, y: 14 },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+        }
+    };
+
     return (
-        <section className="w-full bg-gradient-to-b from-[#FAFBFD] to-[#F1F3F7] min-h-[calc(100vh-64px)] px-6 py-12 flex flex-col items-center justify-center overflow-hidden text-center relative">
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#D4AF37]/[0.04] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
+        <section
+            className="w-full min-h-[calc(100vh-64px)] px-6 py-12 flex flex-col items-center justify-center overflow-hidden text-center relative font-['Inter',sans-serif]"
+            style={{ background: 'linear-gradient(180deg, #F8F9FC 0%, #EEF4FF 100%)' }}
+        >
+            <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
-            <div className="flex items-center gap-3 mb-6 justify-center animate-fade-in-up">
-                <div className="w-6 h-[1px] bg-gradient-to-r from-transparent to-[#D4AF37]"></div>
-                <span className="text-[#D4AF37] font-bold text-[10px] tracking-[0.25em] uppercase">
-                    Finishing Academy for Real Estate
-                </span>
-                <div className="w-6 h-[1px] bg-gradient-to-l from-transparent to-[#D4AF37]"></div>
-            </div>
+            <motion.div variants={container} initial="hidden" animate="show" className="w-full flex flex-col items-center">
+                {/* Eyebrow */}
+                <motion.div variants={item} className="flex items-center gap-2.5 mb-5 justify-center">
+                    <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
+                    <span className="font-semibold text-[9px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
+                        Skill Enhancement For Real Estate
+                    </span>
+                    <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
+                </motion.div>
 
-            <h1 className="text-[2.75rem] leading-[0.95] font-black tracking-[-0.02em] mb-6">
-                <span className="block text-[#0A1128] animate-fade-in-up">LEARN.</span>
-                <span className="block text-[#D4AF37] animate-fade-in-up delay-100">PRACTISE.</span>
-                <span className="block text-[#0A1128] animate-fade-in-up delay-200">BENCHMARK.</span>
-                <span className="block text-[#94A3B8] animate-fade-in-up delay-300">BUILD HABITS.</span>
-            </h1>
+                {/* Headline */}
+                <h1 className="text-[2.75rem] leading-[0.94] font-black tracking-[-0.02em] mb-5">
+                    <motion.span variants={item} className="block" style={{ color: NAVY }}>LEARN.</motion.span>
+                    <motion.span variants={item} className="block gold-gradient-text">PRACTISE.</motion.span>
+                    <motion.span variants={item} className="block" style={{ color: NAVY }}>BENCHMARK.</motion.span>
+                    <motion.span variants={item} className="block" style={{ color: MUTED_BLUE }}>BUILD HABITS.</motion.span>
+                </h1>
 
-            <div className="mb-10 animate-fade-in-up delay-400">
-                <p className="text-lg text-[#0A1128] font-medium mb-2.5 leading-relaxed">
-                    A custom learning platform built specifically for real estate.
-                </p>
-                <p className="text-[11px] text-slate-400 font-medium tracking-wide">
-                    Knowledge • Skills • Capability • Habits
-                </p>
-            </div>
+                {/* Supporting copy */}
+                <motion.div variants={item} className="mb-4">
+                    <p className="text-[15px] font-medium leading-[1.6]" style={{ color: '#3A4A63' }}>
+                        A custom learning platform built specifically for real estate.
+                    </p>
+                </motion.div>
 
-            <div className="flex flex-col w-full gap-3.5 max-w-[300px] mb-10 animate-fade-in-up delay-500">
-                <button className="bg-[#0A1128] text-white font-semibold w-full py-3.5 rounded-lg hover:bg-[#0A1128]/90 transition-all duration-300 shadow-[0_4px_16px_rgba(10,17,40,0.2)] flex items-center justify-center gap-2.5 active:scale-[0.98]">
-                    Explore FARE
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                </button>
-                <button className="bg-white border border-[#0A1128]/15 text-[#0A1128] font-semibold w-full py-3.5 rounded-lg hover:bg-[#0A1128]/[0.03] transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98]">
-                    How It Works
-                </button>
-            </div>
+                {/* Capability line */}
+                <motion.div variants={item} className="text-[10.5px] font-medium mb-8" style={{ color: GOLD }}>
+                    Knowledge <span className="text-[#CBD5E1] mx-1">·</span>
+                    Skills <span className="text-[#CBD5E1] mx-1">·</span>
+                    Capability <span className="text-[#CBD5E1] mx-1">·</span>
+                    Habits
+                </motion.div>
 
-            <div className="w-full relative h-[280px] bg-[#0A1128] rounded-2xl overflow-hidden mt-4 animate-fade-in-up delay-600 shadow-[0_20px_50px_rgba(10,17,40,0.3),0_0_0_1px_rgba(255,255,255,0.06)]">
-                <div className="h-7 bg-gradient-to-b from-[#1A2340] to-[#0F172A] w-full flex items-center px-3 gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-[#FF5F57]"></div>
-                    <div className="w-2 h-2 rounded-full bg-[#FEBC2E]"></div>
-                    <div className="w-2 h-2 rounded-full bg-[#28C840]"></div>
-                </div>
-                <div className="p-4 h-full flex flex-col gap-4 opacity-50">
-                    <div className="w-3/4 h-6 bg-white/[0.04] rounded-lg"></div>
-                    <div className="w-full h-20 bg-white/[0.04] rounded-lg"></div>
-                    <div className="w-full h-24 bg-white/[0.04] rounded-lg"></div>
-                </div>
-            </div>
+                {/* CTA Buttons */}
+                <motion.div variants={item} className="flex flex-col w-full gap-3 max-w-[280px] mb-10">
+                    <button
+                        className="text-white font-semibold w-full py-3.5 rounded-[2px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98]"
+                        style={{
+                            background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)`,
+                            boxShadow: '0 2px 8px rgba(11,29,58,0.2)'
+                        }}
+                    >
+                        Explore FARE <ArrowRight size={14} strokeWidth={2.5} />
+                    </button>
+                    <button
+                        className="font-semibold w-full py-3.5 rounded-[2px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border"
+                        style={{ color: NAVY, borderColor: `${NAVY}15`, background: 'white' }}
+                    >
+                        <Play size={13} strokeWidth={2.5} fill={NAVY} /> How It Works
+                    </button>
+                </motion.div>
 
-            <div className="mt-8 text-[10px] font-semibold text-slate-400 uppercase tracking-[0.15em] animate-fade-in-up delay-700">
-                For Real Estate Companies • Trainers • Professionals
-            </div>
+                {/* Simplified Dashboard Preview */}
+                <motion.div
+                    variants={item}
+                    className="w-full max-w-[340px] rounded-[4px] overflow-hidden safari-shadow"
+                    style={{ border: '1px solid rgba(11,29,58,0.08)' }}
+                >
+                    {/* Mini Safari toolbar */}
+                    <div className="h-7 glass-safari flex items-center px-3 gap-1.5 border-b border-black/[0.04]">
+                        <div className="w-[7px] h-[7px] rounded-full bg-[#FF5F56]"></div>
+                        <div className="w-[7px] h-[7px] rounded-full bg-[#FEBC2E]"></div>
+                        <div className="w-[7px] h-[7px] rounded-full bg-[#27C840]"></div>
+                        <div className="flex-1 text-center text-[7px] font-medium text-[#999]">app.fare.academy</div>
+                    </div>
+                    {/* Dashboard content */}
+                    <div className="p-4 flex flex-col gap-3" style={{ background: '#0D2654' }}>
+                        <div className="text-white text-[13px] font-bold">Good morning, Rahul</div>
+                        <div className="grid grid-cols-2 gap-2">
+                            {[
+                                { label: 'Knowledge', val: '68%', color: '#6B8AFF', icon: <BookOpen size={12} /> },
+                                { label: 'Skills', val: '4/10', color: '#34D399', icon: <Target size={12} /> },
+                                { label: 'Functional', val: '82nd', color: '#A78BFA', icon: <BarChart2 size={12} /> },
+                                { label: 'Habits', val: '7/7', color: GOLD_MID, icon: <CheckCircle size={12} /> },
+                            ].map((c, i) => (
+                                <div key={i} className="rounded-[2px] p-3" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                                    <div className="flex items-center gap-1.5 mb-2" style={{ color: c.color }}>
+                                        {c.icon}
+                                        <span className="text-[9px] font-semibold text-white/70">{c.label}</span>
+                                    </div>
+                                    <div className="text-[14px] font-bold" style={{ color: c.color }}>{c.val}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </motion.div>
 
+                {/* Footer text */}
+                <motion.div variants={item} className="mt-8 text-[9.5px] font-medium tracking-[0.04em]" style={{ color: MUTED_BLUE }}>
+                    For Real Estate Companies <span className="mx-1 text-[#CBD5E1]">·</span> Trainers <span className="mx-1 text-[#CBD5E1]">·</span> Professionals
+                </motion.div>
+            </motion.div>
         </section>
     );
 }
