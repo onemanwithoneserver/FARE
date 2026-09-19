@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { ArrowRight, BookOpen, Target, BarChart2 } from 'lucide-react';
-import { data } from './data';
+import { useLanguage } from '../../context/LanguageContext';
+import { getData } from './data';
 import React from 'react';
 
 const NAVY = '#0B1D3A';
@@ -11,6 +12,9 @@ const GOLD_MID = '#D5AA45';
 const MUTED_BLUE = '#7B8DAA';
 
 export default function Mobile() {
+    const { language } = useLanguage();
+    const data = getData(language);
+
     const container: Variants = {
         hidden: { opacity: 0 },
         show: {
@@ -27,6 +31,8 @@ export default function Mobile() {
             transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
         }
     };
+
+    const subheadlineParts = data.subheadline.includes('. ') ? data.subheadline.split('. ') : [data.subheadline];
 
     return (
         <section className="w-full pt-[90px] pb-16 flex flex-col items-center justify-start overflow-hidden relative font-['Outfit']"
@@ -46,11 +52,11 @@ export default function Mobile() {
                     <motion.div variants={item} className="flex items-center gap-2.5 mb-4">
                         <div className="w-8 h-[1.5px]" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }}></div>
                         <span className="font-semibold text-[9.5px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            Skill Enhancement For Real Estate
+                            {data.tagline}
                         </span>
                     </motion.div>
 
-                    <h1 className="text-[3.25rem] leading-[0.95] font-black tracking-[-0.03em] mb-5">
+                    <h1 className="text-[2.75rem] sm:text-[3.25rem] leading-[0.95] font-black tracking-[-0.03em] mb-5">
                         <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line1}</motion.span>
                         <motion.span variants={item} className="block gold-gradient-text">{data.headline.line2}</motion.span>
                         <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line3}</motion.span>
@@ -58,8 +64,8 @@ export default function Mobile() {
 
                     <motion.div variants={item} className="mb-4">
                         <h2 className="text-[18px] font-bold leading-tight" style={{ color: NAVY_DEEP }}>
-                            {data.subheadline.split('. ')[0]}.
-                            <span className="block text-[#C99A2E] mt-1">{data.subheadline.split('. ')[1]}</span>
+                            {subheadlineParts[0]}{subheadlineParts.length > 1 ? '.' : ''}
+                            {subheadlineParts.length > 1 && <span className="block text-[#C99A2E] mt-1">{subheadlineParts.slice(1).join('. ')}</span>}
                         </h2>
                     </motion.div>
 
@@ -118,25 +124,27 @@ export default function Mobile() {
                         <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#C99A2E]/20 rounded-full blur-2xl"></div>
                         
                         <h3 className="text-white text-lg font-bold mb-2 flex items-center gap-2 relative z-10">
-                            <Target className="text-[#C99A2E]" size={20} /> Open Plot Mastery
+                            <Target className="text-[#C99A2E]" size={20} /> {data.dashboard.title}
                         </h3>
 
                         <div className="flex flex-col gap-2.5 relative z-10">
-                            {[
-                                { title: "Custom Onboarding", icon: <BookOpen size={14} />, progress: "100%", color: "#34D399" },
-                                { title: "Knowledge Bank", icon: <BarChart2 size={14} />, progress: "85%", color: "#60A5FA" },
-                                { title: "Skill Practice", icon: <Target size={14} />, progress: "70%", color: "#C99A2E" }
-                            ].map((stat, i) => (
+                            {data.dashboard.stats.slice(0, 3).map((stat, i) => {
+                                const icons = [
+                                    <BookOpen size={14} />,
+                                    <BarChart2 size={14} />,
+                                    <Target size={14} />
+                                ];
+                                return (
                                 <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center justify-between backdrop-blur-sm">
                                     <div className="flex items-center gap-3">
                                         <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white" style={{ color: stat.color }}>
-                                            {stat.icon}
+                                            {icons[i]}
                                         </div>
                                         <span className="text-white/90 font-medium text-[13px]">{stat.title}</span>
                                     </div>
                                     <span className="text-white/50 text-[11px]">{stat.progress}</span>
                                 </div>
-                            ))}
+                            )})}
                         </div>
                     </div>
                 </motion.div>

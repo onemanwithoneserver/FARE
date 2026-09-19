@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Menu, X, Search, ArrowRight, Plus, Building2, MapPin } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
+import { Menu, X, Search, ArrowRight, Plus, Building2, MapPin, Globe, Check } from 'lucide-react';
 import logo from '../../Components/FARE_Logo/SVG/Primary Logo.svg';
 import { data } from './data';
 
@@ -10,10 +11,12 @@ export default function Mobile() {
     const location = useLocation();
     const isMobileMode = location.pathname.startsWith('/mobile');
     const currentMode = isMobileMode ? 'mobile' : 'desktop';
+    const { language, setLanguage } = useLanguage();
 
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+    const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
 
@@ -68,16 +71,80 @@ export default function Mobile() {
                         />
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
+                        {/* Globe Language Switcher */}
+                        <div className="relative">
+                            <button
+                                onClick={() => {
+                                    setIsLangDropdownOpen(!isLangDropdownOpen);
+                                    if (isSearchExpanded) setIsSearchExpanded(false);
+                                }}
+                                aria-label="Change language"
+                                title="Change language / భాషను మార్చండి"
+                                className={`px-2 py-1.5 text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.05] transition-colors flex items-center gap-1 cursor-pointer ${
+                                    isLangDropdownOpen 
+                                        ? 'bg-[#0B1D3A] text-white shadow-xs rounded-[4px]' 
+                                        : (isScrolled ? 'rounded-full' : 'rounded-[4px]')
+                                }`}
+                            >
+                                <Globe size={16} className={isLangDropdownOpen ? 'text-[#E2C068]' : 'text-[#0B1D3A]/70'} />
+                                <span className="text-[11px] font-bold uppercase">{language === 'te' ? 'తెలుగు' : 'EN'}</span>
+                            </button>
+
+                            <AnimatePresence>
+                                {isLangDropdownOpen && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 6, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: 6, scale: 0.95 }}
+                                        transition={{ duration: 0.15 }}
+                                        className="absolute top-[calc(100%+8px)] right-0 w-[155px] bg-white/98 backdrop-blur-xl border border-[#0B1D3A]/15 shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded-xl p-1.5 z-50 pointer-events-auto"
+                                    >
+                                        <div className="text-[9.5px] font-bold uppercase tracking-wider text-[#0B1D3A]/45 px-2 py-1">
+                                            {language === 'te' ? 'భాషను ఎంచుకోండి' : 'Select Language'}
+                                        </div>
+                                        <button
+                                            onClick={() => { setLanguage('en'); setIsLangDropdownOpen(false); }}
+                                            className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[12.5px] transition-all cursor-pointer ${
+                                                language === 'en' 
+                                                    ? 'bg-[#0B1D3A] text-white font-bold' 
+                                                    : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
+                                            }`}
+                                        >
+                                            <span className="flex items-center gap-2">
+                                                <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${language === 'en' ? 'bg-white/20 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]'}`}>EN</span>
+                                                <span>English</span>
+                                            </span>
+                                            {language === 'en' && <Check size={13} className="text-[#E2C068]" />}
+                                        </button>
+                                        <button
+                                            onClick={() => { setLanguage('te'); setIsLangDropdownOpen(false); }}
+                                            className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[12.5px] transition-all cursor-pointer mt-1 ${
+                                                language === 'te' 
+                                                    ? 'bg-[#0B1D3A] text-white font-bold' 
+                                                    : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
+                                            }`}
+                                        >
+                                            <span className="flex items-center gap-2">
+                                                <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${language === 'te' ? 'bg-[#C99A2E]/30 text-[#E2C068]' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]'}`}>TE</span>
+                                                <span>తెలుగు</span>
+                                            </span>
+                                            {language === 'te' && <Check size={13} className="text-[#E2C068]" />}
+                                        </button>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+
                         <button
                             onClick={() => {
                                 setIsSearchExpanded(!isSearchExpanded);
                                 if (isOpen) setIsOpen(false);
                             }}
                             aria-label="Search"
-                            className={`p-2 text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] transition-colors ${isScrolled ? 'rounded-full' : 'rounded-[4px]'}`}
+                            className={`p-1.5 text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] transition-colors ${isScrolled ? 'rounded-full' : 'rounded-[4px]'}`}
                         >
-                            <Search size={19} strokeWidth={2} />
+                            <Search size={18} strokeWidth={2} />
                         </button>
 
                         <button

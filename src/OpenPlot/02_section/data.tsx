@@ -1,4 +1,6 @@
-export const data = {
+import type { Language } from '../../context/LanguageContext';
+
+export const dataEn = {
     title: "Section 2 - Four Ways to Use FARE",
     headline: {
         line1: "One platform.",
@@ -37,5 +39,52 @@ export const data = {
             color: "#F472B6"
         }
     ],
-    cta: "Explore How FARE Works ↓"
+    cta: "Explore How FARE Works ↓",
+    learnMore: "Learn more"
 };
+
+export const dataTe = {
+    title: "సెక్షన్ 2 — FAREని ఉపయోగించే నాలుగు మార్గాలు",
+    headline: {
+        line1: "ఒకే ప్లాట్ఫారమ్.",
+        line2: "మీ టీమ్ను బలోపేతం చేయడానికి",
+        line3: "నాలుగు మార్గాలు.",
+        line4: ""
+    },
+    subtitle: "మీరు కొత్త Associateను Onboard చేస్తున్నా, Project Launch కోసం టీమ్ను సిద్ధం చేస్తున్నా, Sales Skillsను మెరుగుపరుస్తున్నా లేదా Trainer కోసం చూస్తున్నా — మీ టీమ్ను అభివృద్ధి చేయడానికి FARE ఒక Structured విధానాన్ని అందిస్తుంది.",
+    cards: [
+        {
+            tag: "ONBOARD",
+            title: "Custom Onboarding",
+            desc: "మీ Company, Projects, Products మరియు Sales Fundamentalsను కవర్ చేసే Structured Learning Journey ద్వారా ప్రతి కొత్త Associateను సరైన విధంగా ప్రారంభించండి.",
+            icon: "BookOpen",
+            color: "#34D399"
+        },
+        {
+            tag: "KNOW",
+            title: "Knowledge Bank",
+            desc: "Knowledgeను Build మరియు Measure చేయడానికి మీ టీమ్కు Ready-made Real Estate మరియు Open Plot Quizzes అందించండి.",
+            icon: "BarChart2",
+            color: "#60A5FA"
+        },
+        {
+            tag: "PRACTISE",
+            title: "Custom Learning System",
+            desc: "Coursesను దాటి Mocks, Daily Habits మరియు Sales Forecast Tools ద్వారా మీ టీమ్ రోజువారీ అభివృద్ధికి అనుగుణమైన Learning Systemను రూపొందించండి.",
+            icon: "Target",
+            color: "#C99A2E"
+        },
+        {
+            tag: "SOURCE",
+            title: "Trainer Directory",
+            desc: "Expertise, Real Estate Segment, Format, Delivery, Experience మరియు Availability ఆధారంగా Trainersను కనుగొని వారితో కనెక్ట్ అవ్వండి.",
+            icon: "Users",
+            color: "#F472B6"
+        }
+    ],
+    cta: "FARE ఎలా పనిచేస్తుందో తెలుసుకోండి ↓",
+    learnMore: "మరింత తెలుసుకోండి"
+};
+
+export const getData = (lang: Language = 'en') => lang === 'te' ? dataTe : dataEn;
+export const data = dataEn;

@@ -1,4 +1,6 @@
-export const data = {
+import type { Language } from '../../context/LanguageContext';
+
+export const dataEn = {
     title: "Section 6 - Final CTA",
     headline: "Make training work harder for your team.",
     subtitle: "Build a structured learning and development system for your Open Plot business with FARE.",
@@ -7,3 +9,16 @@ export const data = {
         secondary: "Take the Free Evaluation Test"
     }
 };
+
+export const dataTe = {
+    title: "సెక్షన్ 6 — Final CTA",
+    headline: "మీ టీమ్ కోసం Trainingను మరింత ప్రభావవంతంగా మార్చండి.",
+    subtitle: "FAREతో మీ Open Plot Business కోసం Structured Learning and Development Systemను నిర్మించండి.",
+    buttons: {
+        primary: "డెమో కోసం రిజిస్టర్ చేయండి",
+        secondary: "Free Evaluation Test తీసుకోండి"
+    }
+};
+
+export const getData = (lang: Language = 'en') => lang === 'te' ? dataTe : dataEn;
+export const data = dataEn;

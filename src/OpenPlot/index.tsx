@@ -1,10 +1,11 @@
-﻿import Header from "../Home/00_header";
+import Header from "../Home/00_header";
 import Section01 from "./01_section";
 import Section02 from "./02_section";
 import Section03 from "./03_section";
 import Section04 from "./04_section";
 import Section05 from "./05_section";
-import Section06 from "./06_section";
+import CtaSection from "../Home/04_section";
+import Footer from "../Home/05_section";
 
 export default function OpenPlot({ isMobile }: { isMobile: boolean }) {
   return (
@@ -15,7 +16,8 @@ export default function OpenPlot({ isMobile }: { isMobile: boolean }) {
       <Section03 isMobile={isMobile} />
       <Section04 isMobile={isMobile} />
       <Section05 isMobile={isMobile} />
-      <Section06 isMobile={isMobile} />
+      <CtaSection isMobile={isMobile} />
+      <Footer isMobile={isMobile} />
     </div>
   );
 }

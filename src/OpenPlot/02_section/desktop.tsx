@@ -1,12 +1,16 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { BookOpen, BarChart2, Target, Users, ArrowDown } from 'lucide-react';
-import { data } from './data';
+import { useLanguage } from '../../context/LanguageContext';
+import { getData } from './data';
 
 const NAVY = '#0B1D3A';
 const GOLD = '#C99A2E';
 
 export default function Desktop() {
+    const { language } = useLanguage();
+    const data = getData(language);
+
     const container: Variants = {
         hidden: { opacity: 0 },
         show: {
@@ -31,6 +35,8 @@ export default function Desktop() {
         Users: <Users size={24} strokeWidth={2} />
     };
 
+    const sectionSubtitle = data.title.includes(' - ') ? data.title.split(' - ')[1] : data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
+
     return (
         <section className="w-full py-32 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
@@ -45,11 +51,11 @@ export default function Desktop() {
                 >
                     <motion.div variants={item} className="mb-4">
                         <span className="text-[12px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            {data.title.split(' - ')[1]}
+                            {sectionSubtitle}
                         </span>
                     </motion.div>
                     
-                    <motion.h2 variants={item} className="text-[3.5rem] leading-[1.05] font-black tracking-[-0.02em] mb-6 max-w-[800px]" style={{ color: NAVY }}>
+                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[800px]" style={{ color: NAVY }}>
                         {data.headline.line1} <span className="text-[#C99A2E]">{data.headline.line2}</span> {data.headline.line3} {data.headline.line4}
                     </motion.h2>
 
@@ -92,7 +98,7 @@ export default function Desktop() {
                             </p>
 
                             <div className="mt-8 flex items-center gap-2 text-[13px] font-semibold opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" style={{ color: card.color }}>
-                                Learn more <ArrowDown size={14} className="-rotate-90" />
+                                {data.learnMore} <ArrowDown size={14} className="-rotate-90" />
                             </div>
                         </motion.div>
                     ))}

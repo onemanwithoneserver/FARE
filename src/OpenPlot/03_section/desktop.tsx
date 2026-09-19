@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { data } from './data';
+import { useLanguage } from '../../context/LanguageContext';
+import { getData } from './data';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function Desktop() {
+    const { language } = useLanguage();
+    const data = getData(language);
     const [activeTab, setActiveTab] = useState(data.tabs[0].id);
 
     const activeContent = data.tabContent[activeTab as keyof typeof data.tabContent] as any;

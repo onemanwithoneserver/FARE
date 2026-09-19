@@ -1,4 +1,6 @@
-export const data = {
+import type { Language } from '../../context/LanguageContext';
+
+export const dataEn = {
     title: "Section 3 - Explore FARE",
     headline: "Everything you need to build a better-trained Open Plot team.",
     subtitle: "Use the tabs to explore how FARE can fit into your organisation.",
@@ -99,3 +101,108 @@ export const data = {
         }
     }
 };
+
+export const dataTe = {
+    title: "సెక్షన్ 3 — FAREని అన్వేషించండి",
+    headline: "మెరుగైన Open Plot టీమ్ను నిర్మించడానికి అవసరమైన ప్రతిదీ.",
+    subtitle: "FARE మీ Organisationకు ఎలా సరిపోతుందో తెలుసుకోవడానికి Tabsను ఉపయోగించండి.",
+    tabs: [
+        { id: "tab1", title: "Custom Onboarding" },
+        { id: "tab2", title: "Knowledge Bank" },
+        { id: "tab3", title: "Custom LMS" },
+        { id: "tab4", title: "Trainer Directory" }
+    ],
+    tabContent: {
+        tab1: {
+            title: "ప్రతి కొత్త Associateను సరైన విధంగా ప్రారంభించండి.",
+            desc: "ప్రతి కొత్త Joiner కోసం Structured Onboarding Journeyను రూపొందించండి — ప్రతి కొత్త Associate కోసం ప్రతిసారి Trainerపై ఆధారపడాల్సిన అవసరం లేకుండా.",
+            sections: [
+                {
+                    heading: "Real Estate Fundamentals",
+                    items: ["Industry Basics", "Real Estate Terminology", "Stakeholders", "Transaction Process"]
+                },
+                {
+                    heading: "Open Plot Knowledge",
+                    items: ["Plot Fundamentals", "Layout Concepts", "Approvals", "Product Understanding"]
+                },
+                {
+                    heading: "Company Knowledge",
+                    items: ["Company Introduction", "Processes", "Roles & Responsibilities", "Policies"]
+                },
+                {
+                    heading: "Project Knowledge",
+                    items: ["Project Details", "Location", "Product", "Infrastructure & Amenities", "Pricing & Payment Plans"]
+                },
+                {
+                    heading: "Sales Foundation",
+                    items: ["Lead Handling", "Customer Profiling", "Pitching", "Follow-up"]
+                }
+            ],
+            journey: "Assign → Learn → Quiz → Complete",
+            footerText: "ఒక్కసారి రూపొందించండి. ప్రతి కొత్త Associateకు ఒకే విధమైన Onboarding ఇవ్వండి.",
+            buttons: ["మీ Onboarding Programను రూపొందించండి"]
+        },
+        tab2: {
+            title: "Ready-made Knowledge. Ready to Test.",
+            desc: "Open Plot Salesలో నమ్మకంగా పనిచేయడానికి మీ టీమ్కు అవసరమైన Knowledgeను కవర్ చేసే Structured Quizzes అందించండి.",
+            sections: [
+                {
+                    heading: "Knowledge Areas",
+                    items: ["Real Estate Fundamentals", "Open Plot Knowledge", "Project & Product Knowledge", "Location & Market Knowledge", "Legal & Approvals", "Sales Knowledge"]
+                },
+                {
+                    heading: "దీనిని ఉపయోగించే విధానాలు",
+                    items: [
+                        "New Joiners: Onboarding సమయంలో Foundational Knowledgeను పరీక్షించండి.",
+                        "Knowledge Checks: మీ టీమ్కు ఎంత Knowledge ఉందో Regularగా పరీక్షించండి.",
+                        "Pre-Training Assessment: Training Program ప్రారంభించే ముందు Knowledge Gapsను అర్థం చేసుకోండి.",
+                        "Project Launch Preparation: Marketలోకి వెళ్లే ముందు Project మరియు Product Knowledgeను పరీక్షించండి.",
+                        "Continuous Learning: Regular Quizzes ద్వారా Knowledgeను Activeగా ఉంచండి."
+                    ]
+                }
+            ],
+            footerText: "మీ టీమ్కు తెలుసని ఊహించకండి. కొలవండి.",
+            buttons: ["Knowledge Bankను Explore చేయండి", "Free Evaluation Test తీసుకోండి"]
+        },
+        tab3: {
+            title: "Trainingను రోజువారీ Practiceగా మార్చండి.",
+            desc: "మీ Organisation కోసం Customised Learning Environmentను రూపొందించండి — Trainingను Ground Levelలో నిజంగా జరిగే Activitiesతో అనుసంధానించండి.",
+            sections: [
+                {
+                    heading: "Platform Features",
+                    items: [
+                        "Courses: Company-specific, Role-specific మరియు Project-specific Learning Journeysను రూపొందించండి.",
+                        "Mocks with Trainers: Guided Mock Sessions ద్వారా Real Customer Conversations, Sales Situations మరియు Objectionsను Practice చేయండి.",
+                        "Daily Habits: Associates Consistent Sales Behaviourను నిర్మించుకునేలా Daily Activitiesను రూపొందించి Track చేయండి.",
+                        "Sales Forecast: Associates మరియు Managers Sales Activityను Plan, Track మరియు Forecast చేయడానికి Structured విధానాన్ని అందించండి."
+                    ]
+                }
+            ],
+            journey: "Learn → Practise → Track → Improve",
+            footerText: "Trainingను దాటి ముందుకు వెళ్లండి. Continuous Development కోసం ఒక Systemను నిర్మించండి.",
+            buttons: ["Custom LMSను Explore చేయండి"]
+        },
+        tab4: {
+            title: "Trainer అవసరమా? సరైన Trainerను కనుగొనండి.",
+            desc: "మీ టీమ్కు Specialised Training అవసరమైనప్పుడు, మీ Requirement మరియు Real Estate Segmentను అర్థం చేసుకునే Trainersను కనుగొనండి.",
+            sections: [
+                {
+                    heading: "Trainersను ఈ అంశాల ఆధారంగా కనుగొనండి",
+                    items: [
+                        "Expertise: Sales, Communication, Digital & Technology, Leadership, Marketing, Product Knowledge, Functional Skills",
+                        "Real Estate Segment: Residential, Plotted Development, Commercial, Generic Real Estate",
+                        "Training Format: Workshops, Half-Day Sessions, Full-Day Sessions, Mocks, Bootcamps, Coaching, Mentoring",
+                        "Delivery: Online, Offline, Blended, Recorded"
+                    ]
+                }
+            ],
+            evaluateBasedOn: "Experience · Expertise · RE Segment · Methodology · Format · Delivery · Pricing · Availability",
+            journey: "Discover → Shortlist → Compare → Request",
+            footerText: "అవసరమైనప్పుడు సరైన Trainerను మీ Learning Programలోకి తీసుకురండి.",
+            buttons: ["Trainer Directoryను Explore చేయండి"]
+        }
+    }
+};
+
+export const getData = (lang: Language = 'en') => lang === 'te' ? dataTe : dataEn;
+export const data = dataEn;

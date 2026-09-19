@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { data } from './data';
+import { useLanguage } from '../../context/LanguageContext';
+import { getData } from './data';
 import { ArrowRight, CheckCircle, ClipboardList } from 'lucide-react';
 import React from 'react';
 
@@ -9,6 +10,9 @@ const NAVY_DEEP = '#071A49';
 const GOLD = '#C99A2E';
 
 export default function Mobile() {
+    const { language } = useLanguage();
+    const data = getData(language);
+
     const container: Variants = {
         hidden: { opacity: 0 },
         show: {
@@ -21,6 +25,8 @@ export default function Mobile() {
         hidden: { opacity: 0, y: 15 },
         show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
     };
+
+    const sectionSubtitle = data.title.includes(' - ') ? data.title.split(' - ')[1] : data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
 
     return (
         <section className="w-full py-20 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
@@ -36,14 +42,14 @@ export default function Mobile() {
                 >
                     <motion.div variants={item} className="mb-3">
                         <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            {data.title.split(' - ')[1]}
+                            {sectionSubtitle}
                         </span>
                     </motion.div>
                     
-                    <motion.h2 variants={item} className="text-[2.25rem] leading-[1.1] font-black tracking-[-0.02em] mb-5" style={{ color: NAVY }}>
+                    <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-5" style={{ color: NAVY }}>
                         {data.headline.split(' ').map((word, i) => (
                             <React.Fragment key={i}>
-                                {word === 'Open' || word === 'Plot' ? <span className="text-[#C99A2E]">{word} </span> : <span>{word} </span>}
+                                {word === 'Open' || word === 'Plot' || word.includes('Open') || word.includes('Plot') ? <span className="text-[#C99A2E]">{word} </span> : <span>{word} </span>}
                             </React.Fragment>
                         ))}
                     </motion.h2>
@@ -93,7 +99,7 @@ export default function Mobile() {
                                     <ClipboardList size={20} />
                                 </div>
                                 <div>
-                                    <h3 className="text-[16px] font-bold text-[#0B1D3A]">Evaluation Flow</h3>
+                                    <h3 className="text-[16px] font-bold text-[#0B1D3A]">{data.illustrationData.title}</h3>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { data } from './data';
+import { useLanguage } from '../../context/LanguageContext';
+import { getData } from './data';
 import { ArrowRight, Check, Settings2, Sparkles } from 'lucide-react';
 import React from 'react';
 
@@ -8,6 +9,9 @@ const NAVY = '#0B1D3A';
 const NAVY_DEEP = '#071A49';
 
 export default function Desktop() {
+    const { language } = useLanguage();
+    const data = getData(language);
+
     const container: Variants = {
         hidden: { opacity: 0 },
         show: {
@@ -20,6 +24,9 @@ export default function Desktop() {
         hidden: { opacity: 0, y: 20 },
         show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
     };
+
+    const sectionSubtitle = data.title.includes(' - ') ? data.title.split(' - ')[1] : data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
+    const headlineSentences = data.headline.includes('. ') ? data.headline.split('. ') : [data.headline];
 
     return (
         <section className="w-full py-32 bg-white relative font-['Outfit'] overflow-hidden">
@@ -38,14 +45,14 @@ export default function Desktop() {
                         <motion.div variants={item} className="mb-4 flex items-center gap-2 text-[#C99A2E]">
                             <Settings2 size={16} />
                             <span className="text-[12px] font-bold tracking-[0.2em] uppercase">
-                                {data.title.split(' - ')[1]}
+                                {sectionSubtitle}
                             </span>
                         </motion.div>
                         
-                        <motion.h2 variants={item} className="text-[3rem] leading-[1.05] font-black tracking-[-0.02em] mb-8" style={{ color: NAVY }}>
-                            {data.headline.split('. ').map((sentence, i) => (
+                        <motion.h2 variants={item} className="text-[2.75rem] lg:text-[3rem] leading-[1.08] font-black tracking-[-0.02em] mb-8" style={{ color: NAVY }}>
+                            {headlineSentences.map((sentence, i) => (
                                 <React.Fragment key={i}>
-                                    {i === 0 ? <span>{sentence}. </span> : <span className="text-[#C99A2E]">{sentence}</span>}
+                                    {i === 0 ? <span>{sentence}{headlineSentences.length > 1 ? '. ' : ''}</span> : <span className="text-[#C99A2E]">{sentence}</span>}
                                 </React.Fragment>
                             ))}
                         </motion.h2>

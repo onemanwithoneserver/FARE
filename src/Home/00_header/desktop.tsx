@@ -1,21 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
 import { data } from './data';
 import logo from '../../Components/FARE_Logo/SVG/Primary Logo.svg';
-import { Search, ArrowRight, X, ChevronDown, Building2, MapPin } from 'lucide-react';
+import { Search, ArrowRight, X, ChevronDown, Building2, MapPin, Globe, Check } from 'lucide-react';
 
 export default function Desktop() {
     const navigate = useNavigate();
     const location = useLocation();
     const isMobileMode = location.pathname.startsWith('/mobile');
     const currentMode = isMobileMode ? 'mobile' : 'desktop';
+    const { language, setLanguage } = useLanguage();
 
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+    const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const searchInputRef = useRef<HTMLInputElement>(null);
+    const langDropdownRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleScroll = (e?: Event) => {
@@ -30,12 +34,20 @@ export default function Desktop() {
             }
         };
 
+        const handleClickOutside = (e: MouseEvent) => {
+            if (langDropdownRef.current && !langDropdownRef.current.contains(e.target as Node)) {
+                setIsLangDropdownOpen(false);
+            }
+        };
+
         document.addEventListener('scroll', handleScroll, { capture: true, passive: true });
         window.addEventListener('scroll', handleScroll, { passive: true });
+        document.addEventListener('mousedown', handleClickOutside);
         handleScroll();
         return () => {
             document.removeEventListener('scroll', handleScroll, { capture: true });
             window.removeEventListener('scroll', handleScroll);
+            document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
 
@@ -188,6 +200,68 @@ export default function Desktop() {
                         >
                             {isSearchExpanded ? <X size={18} strokeWidth={2.5} /> : <Search size={19} strokeWidth={2} />}
                         </button>
+
+                        {/* Globe Icon Language Switcher with Dropdown */}
+                        <div className="relative" ref={langDropdownRef}>
+                            <button
+                                onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
+                                className={`flex items-center gap-1.5 px-2.5 py-1.5 text-[12.5px] font-semibold transition-all duration-200 cursor-pointer ${
+                                    isLangDropdownOpen
+                                        ? 'bg-[#0B1D3A] text-white shadow-sm'
+                                        : 'text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06]'
+                                } ${isScrolled ? 'rounded-full' : 'rounded-[4px]'}`}
+                                title="Change language / భాషను మార్చండి"
+                                aria-label="Change language"
+                            >
+                                <Globe size={16} className={isLangDropdownOpen ? 'text-[#E2C068]' : 'text-[#0B1D3A]/70'} />
+                                <span className="text-[11.5px] font-bold uppercase tracking-wider">{language === 'te' ? 'తెలుగు' : 'EN'}</span>
+                                <ChevronDown size={12} className={`transition-transform duration-200 ${isLangDropdownOpen ? 'rotate-180 text-[#E2C068]' : 'text-[#0B1D3A]/50'}`} />
+                            </button>
+
+                            <AnimatePresence>
+                                {isLangDropdownOpen && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 6, scale: 0.96 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: 6, scale: 0.96 }}
+                                        transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                                        className="absolute top-[calc(100%+8px)] right-0 w-[170px] bg-white/98 backdrop-blur-xl border border-[#0B1D3A]/15 shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded-xl p-1.5 z-50 pointer-events-auto"
+                                    >
+                                        <div className="text-[10px] font-bold uppercase tracking-wider text-[#0B1D3A]/45 px-2.5 py-1">
+                                            {language === 'te' ? 'భాషను ఎంచుకోండి' : 'Select Language'}
+                                        </div>
+                                        <button
+                                            onClick={() => { setLanguage('en'); setIsLangDropdownOpen(false); }}
+                                            className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[13px] transition-all cursor-pointer ${
+                                                language === 'en' 
+                                                    ? 'bg-[#0B1D3A] text-white font-bold' 
+                                                    : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
+                                            }`}
+                                        >
+                                            <span className="flex items-center gap-2">
+                                                <span className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded ${language === 'en' ? 'bg-white/20 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]'}`}>EN</span>
+                                                <span>English</span>
+                                            </span>
+                                            {language === 'en' && <Check size={14} className="text-[#E2C068]" />}
+                                        </button>
+                                        <button
+                                            onClick={() => { setLanguage('te'); setIsLangDropdownOpen(false); }}
+                                            className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[13px] transition-all cursor-pointer mt-1 ${
+                                                language === 'te' 
+                                                    ? 'bg-[#0B1D3A] text-white font-bold' 
+                                                    : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
+                                            }`}
+                                        >
+                                            <span className="flex items-center gap-2">
+                                                <span className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded ${language === 'te' ? 'bg-[#C99A2E]/30 text-[#E2C068]' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]'}`}>TE</span>
+                                                <span>తెలుగు</span>
+                                            </span>
+                                            {language === 'te' && <Check size={14} className="text-[#E2C068]" />}
+                                        </button>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
 
                         <div className="w-[1px] h-4 bg-[#0B1D3A]/10 shrink-0"></div>
 

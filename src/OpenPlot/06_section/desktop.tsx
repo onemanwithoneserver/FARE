@@ -1,10 +1,14 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { data } from './data';
+import { useLanguage } from '../../context/LanguageContext';
+import { getData } from './data';
 import { ArrowRight } from 'lucide-react';
-import bgImage from '../../assets/bg-04.jpg'; // Assuming the same background image is available
+import bgImage from '../../assets/bg-04.jpg';
 
 export default function Desktop() {
+    const { language } = useLanguage();
+    const data = getData(language);
+
     const containerVariant: Variants = {
         hidden: { opacity: 0 },
         show: {

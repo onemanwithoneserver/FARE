@@ -28,7 +28,8 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
         </div>
       </div>
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center gap-2 sm:gap-4">
+        {/* Device Mode Switcher */}
         <div className="flex bg-[#f8fafc] p-0.5 md:p-1 rounded-[4px] border border-[#e2e8f0] shadow-sm">
           <button
             onClick={() => onViewModeChange('desktop')}
