@@ -31,7 +31,7 @@ const MobileViewport = forwardRef<HTMLDivElement, MobileViewportProps>(
           ref={setRef}
           role="main"
           aria-label="Desktop Viewport"
-          className={`h-full w-full overflow-y-auto scrollbar-hide bg-cremp-background @container transition-base ${className}`}
+          className={`h-full w-full overflow-y-auto scrollbar-hide bg-fare-background @container transition-base ${className}`}
           {...props}
         >
           {children}
@@ -42,14 +42,14 @@ const MobileViewport = forwardRef<HTMLDivElement, MobileViewportProps>(
       <div
         role="region"
         aria-label="Mobile Preview Environment"
-        className="flex items-center justify-center h-full w-full overflow-y-auto scrollbar-hide box-border bg-cremp-surface-alt md:p-[clamp(16px,4vh,40px)] p-0 transition-base"
+        className="flex items-center justify-center h-full w-full overflow-y-auto scrollbar-hide box-border bg-fare-surface-alt md:p-[clamp(16px,4vh,40px)] p-0 transition-base"
       >
         <div
           ref={setRef}
           role="region"
           aria-label="Mobile Device Simulator"
           className={`
-            relative shrink-0 overflow-hidden bg-cremp-surface
+            relative shrink-0 overflow-hidden bg-fare-surface
             md:shadow-2xl transform-gpu translate-x-0 translate-y-0
             w-full md:max-w-[390px] md:aspect-[390/844] h-full md:h-[min(90vh,844px)]
             transition-all duration-500 ease-out md:hover:shadow-xl
@@ -59,7 +59,7 @@ const MobileViewport = forwardRef<HTMLDivElement, MobileViewportProps>(
         >
           <div
             ref={mobileInnerRef}
-            className="h-full w-full overflow-y-auto overflow-x-hidden scrollbar-hide @container bg-cremp-background"
+            className="h-full w-full overflow-y-auto overflow-x-hidden scrollbar-hide @container bg-fare-background"
           >
             {children}
           </div>

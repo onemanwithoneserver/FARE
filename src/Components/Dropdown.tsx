@@ -69,12 +69,12 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         document.addEventListener("touchstart", handleClickOutside, {
           passive: true,
         });
-        window.addEventListener("cremp-dropdown-open", handleCloseOthers);
+        window.addEventListener("fare-dropdown-open", handleCloseOthers);
       }
       return () => {
         document.removeEventListener("mousedown", handleClickOutside);
         document.removeEventListener("touchstart", handleClickOutside);
-        window.removeEventListener("cremp-dropdown-open", handleCloseOthers);
+        window.removeEventListener("fare-dropdown-open", handleCloseOthers);
       };
     }, [isOpen, dropdownId]);
     const toggleOpen = (e: React.MouseEvent | React.TouchEvent) => {
@@ -84,7 +84,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
       setIsOpen(nextState);
       if (nextState) {
         window.dispatchEvent(
-          new CustomEvent("cremp-dropdown-open", {
+          new CustomEvent("fare-dropdown-open", {
             detail: { id: dropdownId },
           }),
         );
@@ -110,12 +110,12 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           className={`
             w-full flex items-center justify-between gap-2
             ${sizeClasses[size]}
-            bg-white/80 dark:bg-cremp-surface/80 backdrop-blur-md
-            border border-cremp-border rounded-lg font-semibold text-cremp-text-primary
+            bg-white/80 dark:bg-fare-surface/80 backdrop-blur-md
+            border border-fare-border rounded-lg font-semibold text-fare-text-primary
             shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer
-            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cremp-primary/50 focus-visible:border-cremp-primary
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fare-primary/50 focus-visible:border-fare-primary
             disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-sm
-            ${isOpen ? "border-cremp-primary/50 shadow-md ring-1 ring-cremp-primary/20" : "hover:border-cremp-text-muted/30"}
+            ${isOpen ? "border-fare-primary/50 shadow-md ring-1 ring-fare-primary/20" : "hover:border-fare-text-muted/30"}
           `}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
@@ -125,7 +125,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           </span>
           <ChevronDown
             size={16}
-            className={`transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-cremp-primary" : "text-cremp-text-muted"}`}
+            className={`transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-fare-primary" : "text-fare-text-muted"}`}
           />
         </button>
         <AnimatePresence>
@@ -136,7 +136,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute z-[99999] w-full min-w-max mt-2 py-1.5 bg-white/95 dark:bg-cremp-surface/95 backdrop-blur-xl backdrop-saturate-150 border border-white/20 dark:border-white/10 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] overflow-y-auto overflow-x-hidden max-h-[60vh] scrollbar-thin"
+              className="absolute z-[99999] w-full min-w-max mt-2 py-1.5 bg-white/95 dark:bg-fare-surface/95 backdrop-blur-xl backdrop-saturate-150 border border-white/20 dark:border-white/10 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] overflow-y-auto overflow-x-hidden max-h-[60vh] scrollbar-thin"
               role="listbox"
             >
               {options.map((opt) => {
@@ -157,8 +157,8 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
                       ${opt.disabled ? "opacity-50 cursor-not-allowed" : ""}
                       ${
                         isSelected
-                          ? "text-cremp-primary bg-cremp-primary/10 font-semibold"
-                          : "text-cremp-text-secondary hover:text-cremp-text-primary hover:bg-cremp-surface-alt dark:hover:bg-cremp-surface-alt/50"
+                          ? "text-fare-primary bg-fare-primary/10 font-semibold"
+                          : "text-fare-text-secondary hover:text-fare-text-primary hover:bg-fare-surface-alt dark:hover:bg-fare-surface-alt/50"
                       }
                     `}
                   >
@@ -175,7 +175,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
                       >
                         <Check
                           size={16}
-                          className="shrink-0 text-cremp-primary"
+                          className="shrink-0 text-fare-primary"
                         />
                       </motion.div>
                     )}
