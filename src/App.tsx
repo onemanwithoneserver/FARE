@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import MobileViewport from './Components/MobileViewport'
 import Header, { type ViewMode } from './Components/Header'
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
-import Home from './pages/Home'
+import Home from './Home'
 
 export default function App() {
   const [viewMode, setViewMode] = useState<ViewMode>('desktop')
