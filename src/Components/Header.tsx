@@ -1,4 +1,4 @@
-import { Monitor, Smartphone, Moon, X } from 'lucide-react'
+import { Monitor, Smartphone, X } from 'lucide-react'
 import Dropdown from './Dropdown'
 
 export type ViewMode = 'desktop' | 'mobile';
@@ -20,67 +20,64 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
   ];
 
   return (
-    <header className="h-[60px] bg-white border-b border-[#e2e8f0] px-4 md:px-6 flex items-center justify-between shrink-0 shadow-sm z-50">
-      <div className="flex items-center gap-6">
-        <div className="text-[#1e293b] font-black text-xl tracking-wide">
+    <header className="h-[60px] bg-white border-b border-[#e2e8f0] px-3 sm:px-4 md:px-6 flex items-center justify-between shrink-0 shadow-sm z-50 gap-2 sm:gap-4">
+      <div className="flex items-center gap-3 md:gap-6 shrink-0">
+        <div className="text-[#1e293b] font-black text-lg md:text-xl tracking-wide">
           FARE
         </div>
       </div>
 
-      <div className="hidden md:flex items-center justify-center flex-1">
-        <div className="flex bg-[#f8fafc] p-1 rounded-[4px] border border-[#e2e8f0] shadow-sm">
+      <div className="flex items-center justify-center">
+        <div className="flex bg-[#f8fafc] p-0.5 md:p-1 rounded-[4px] border border-[#e2e8f0] shadow-sm">
           <button
             onClick={() => onViewModeChange('desktop')}
-            className={`flex items-center gap-2 px-5 py-1.5 rounded-[4px] text-sm font-semibold transition-all duration-200 ${
+            title="Desktop View"
+            className={`flex items-center gap-1.5 px-2.5 sm:px-4 md:px-5 py-1 md:py-1.5 rounded-[4px] text-xs md:text-sm font-semibold transition-all duration-200 cursor-pointer ${
               !isMobile 
                 ? 'bg-[#1e293b] text-white shadow-md' 
                 : 'text-[#64748b] hover:text-[#0f172a] hover:bg-[#f1f5f9]'
             }`}
           >
-            <Monitor className="w-4 h-4" />
-            <span>Desktop</span>
+            <Monitor className="w-4 h-4 shrink-0" />
+            <span className="hidden sm:inline">Desktop</span>
           </button>
           <button
             onClick={() => onViewModeChange('mobile')}
-            className={`flex items-center gap-2 px-5 py-1.5 rounded-[4px] text-sm font-semibold transition-all duration-200 ${
+            title="Mobile View"
+            className={`flex items-center gap-1.5 px-2.5 sm:px-4 md:px-5 py-1 md:py-1.5 rounded-[4px] text-xs md:text-sm font-semibold transition-all duration-200 cursor-pointer ${
               isMobile 
                 ? 'bg-[#1e293b] text-white shadow-md' 
                 : 'text-[#64748b] hover:text-[#0f172a] hover:bg-[#f1f5f9]'
             }`}
           >
-            <Smartphone className="w-4 h-4" />
-            <span>Mobile</span>
+            <Smartphone className="w-4 h-4 shrink-0" />
+            <span className="hidden sm:inline">Mobile</span>
           </button>
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-3">
-          <span className="text-[10px] font-bold tracking-widest text-[#94a3b8] uppercase hidden sm:block">
+      <div className="flex items-center gap-2 sm:gap-3 md:gap-4 shrink-0">
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] font-bold tracking-widest text-[#94a3b8] uppercase hidden md:block">
             View
           </span>
-          <div className="w-[140px]">
+          <div className="w-[100px] sm:w-[125px] md:w-[140px]">
             <Dropdown 
               options={dropdownOptions} 
               value={view} 
               onChange={onViewChange} 
-              size="md"
+              size="sm"
             />
           </div>
         </div>
         
-        <div className="w-px h-8 bg-[#e2e8f0] hidden sm:block"></div>
-        
-        <button className="text-[#64748b] hover:text-[#0f172a] transition-colors p-2 rounded-[4px] hover:bg-[#f8fafc]">
-          <Moon className="w-5 h-5" />
-        </button>
         <button 
           onClick={onClose}
           title="Close header (Press Ctrl+M to reopen)"
           aria-label="Close header"
-          className="w-9 h-9 rounded-[4px] border border-[#e2e8f0] text-[#64748b] hover:text-[#0f172a] hover:bg-[#f8fafc] transition-all flex items-center justify-center shadow-sm cursor-pointer"
+          className="w-8 h-8 sm:w-9 sm:h-9 rounded-[4px] border border-[#e2e8f0] text-[#64748b] hover:text-[#0f172a] hover:bg-[#f8fafc] transition-all flex items-center justify-center shadow-sm cursor-pointer shrink-0"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
     </header>
