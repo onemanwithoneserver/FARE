@@ -42,7 +42,9 @@ export default function Mobile() {
                 >
                     <div className="flex flex-col">
                         <motion.div variants={item} className="mb-3 flex items-center gap-2 text-[#C99A2E]">
-                            <Settings2 size={14} />
+                            <div className="w-5 h-5 rounded-md bg-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0">
+                                <Settings2 size={11} className="text-white" />
+                            </div>
                             <span className="text-[10px] font-bold tracking-[0.2em] uppercase">
                                 {sectionSubtitle}
                             </span>
@@ -83,16 +85,19 @@ export default function Mobile() {
                         </h3>
                         
                         <div className="flex flex-col gap-4 relative z-10">
-                            {data.features.map((feature, idx) => (
-                                <div key={idx} className="flex items-start gap-3">
-                                    <div className="w-5 h-5 rounded-full bg-[#F8FAFD] border border-[#0B1D3A]/10 flex items-center justify-center shrink-0 mt-0.5">
-                                        <Check size={10} className="text-[#0B1D3A]" strokeWidth={3} />
+                            {data.features.map((feature, idx) => {
+                                const featureColors = ['bg-[#10B981]', 'bg-[#3B82F6]', 'bg-[#8B5CF6]', 'bg-[#F59E0B]', 'bg-[#EC4899]', 'bg-[#06B6D4]'];
+                                return (
+                                    <div key={idx} className="flex items-start gap-3">
+                                        <div className={`w-5 h-5 rounded-full ${featureColors[idx % featureColors.length]} flex items-center justify-center shrink-0 text-white shadow-sm mt-0.5`}>
+                                            <Check size={10} className="text-white" strokeWidth={3} />
+                                        </div>
+                                        <span className="text-[14px] font-semibold text-[#0B1D3A]/80 leading-snug">
+                                            {feature}
+                                        </span>
                                     </div>
-                                    <span className="text-[14px] font-semibold text-[#0B1D3A]/80 leading-snug">
-                                        {feature}
-                                    </span>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </motion.div>
 

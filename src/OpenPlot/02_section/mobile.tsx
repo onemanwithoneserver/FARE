@@ -29,10 +29,10 @@ export default function Mobile() {
     };
 
     const icons = {
-        BookOpen: <BookOpen size={20} strokeWidth={2.5} />,
-        BarChart2: <BarChart2 size={20} strokeWidth={2.5} />,
-        Target: <Target size={20} strokeWidth={2.5} />,
-        Users: <Users size={20} strokeWidth={2.5} />
+        BookOpen: <BookOpen size={20} strokeWidth={2.2} className="text-white" />,
+        BarChart2: <BarChart2 size={20} strokeWidth={2.2} className="text-white" />,
+        Target: <Target size={20} strokeWidth={2.2} className="text-white" />,
+        Users: <Users size={20} strokeWidth={2.2} className="text-white" />
     };
 
     const sectionSubtitle = data.title.includes(' - ') ? data.title.split(' - ')[1] : data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
@@ -80,10 +80,10 @@ export default function Mobile() {
                             <div className="absolute top-0 right-0 w-24 h-24 opacity-[0.08] blur-[30px] rounded-bl-full" style={{ background: card.color }}></div>
                             
                             <div className="flex items-center justify-between mb-4">
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-sm" style={{ backgroundColor: `${card.color}15`, color: card.color }}>
+                                <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-md text-white" style={{ backgroundColor: card.color }}>
                                     {icons[card.icon as keyof typeof icons]}
                                 </div>
-                                <div className="px-2.5 py-1 rounded-full text-[9px] font-bold tracking-wider uppercase border" style={{ color: card.color, backgroundColor: `${card.color}08`, borderColor: `${card.color}20` }}>
+                                <div className="px-2.5 py-1 rounded-full text-[9px] font-bold tracking-wider uppercase border" style={{ color: card.color, backgroundColor: `${card.color}10`, borderColor: `${card.color}25` }}>
                                     {card.tag}
                                 </div>
                             </div>

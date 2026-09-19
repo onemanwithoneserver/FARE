@@ -125,7 +125,10 @@ export default function Mobile() {
 
                         <div className="flex items-center justify-between mb-4 relative z-10">
                             <h3 className="text-white text-[15px] font-bold flex items-center gap-2">
-                                <Target className="text-[#C99A2E]" size={18} /> {data.dashboard.title}
+                                <div className="w-7 h-7 rounded-lg bg-[#C99A2E] flex items-center justify-center text-white shadow-sm">
+                                    <Target className="text-white" size={15} strokeWidth={2.5} />
+                                </div>
+                                {data.dashboard.title}
                             </h3>
                             <div className="flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
                                 <div className="w-1.5 h-1.5 rounded-full bg-[#34D399] animate-pulse"></div>
@@ -136,14 +139,14 @@ export default function Mobile() {
                         <div className="flex flex-col gap-3 relative z-10">
                             {data.dashboard.stats.map((stat, i) => {
                                 const icons = [
-                                    <BookOpen size={14} key="bo" />,
-                                    <BarChart2 size={14} key="ba" />,
-                                    <Target size={14} key="ta" />,
-                                    <CheckCircle size={14} key="cc" />
+                                    <BookOpen size={14} key="bo" className="text-white" />,
+                                    <BarChart2 size={14} key="ba" className="text-white" />,
+                                    <Target size={14} key="ta" className="text-white" />,
+                                    <CheckCircle size={14} key="cc" className="text-white" />
                                 ];
                                 return (
                                     <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-3.5 flex items-center gap-3">
-                                        <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0" style={{ color: stat.color }}>
+                                        <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm text-white" style={{ backgroundColor: stat.color }}>
                                             {icons[i]}
                                         </div>
                                         <div className="flex-1 min-w-0">

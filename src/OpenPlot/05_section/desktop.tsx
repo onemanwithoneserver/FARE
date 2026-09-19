@@ -42,8 +42,10 @@ export default function Desktop() {
                 >
                     {/* Left Column: Heading and Context */}
                     <div className="w-full md:w-[45%] flex flex-col">
-                        <motion.div variants={item} className="mb-4 flex items-center gap-2 text-[#C99A2E]">
-                            <Settings2 size={16} />
+                        <motion.div variants={item} className="mb-4 flex items-center gap-2.5 text-[#C99A2E]">
+                            <div className="w-6 h-6 rounded-md bg-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0">
+                                <Settings2 size={13} className="text-white" />
+                            </div>
                             <span className="text-[12px] font-bold tracking-[0.2em] uppercase">
                                 {sectionSubtitle}
                             </span>
@@ -94,16 +96,19 @@ export default function Desktop() {
                             </h3>
                             
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 relative z-10">
-                                {data.features.map((feature, idx) => (
-                                    <div key={idx} className="flex items-start gap-3 group">
-                                        <div className="w-6 h-6 rounded-full bg-[#F8FAFD] border border-[#0B1D3A]/10 flex items-center justify-center shrink-0 group-hover:bg-[#C99A2E]/10 group-hover:border-[#C99A2E]/30 transition-colors">
-                                            <Check size={12} className="text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors" strokeWidth={3} />
+                                {data.features.map((feature, idx) => {
+                                    const featureColors = ['bg-[#10B981]', 'bg-[#3B82F6]', 'bg-[#8B5CF6]', 'bg-[#F59E0B]', 'bg-[#EC4899]', 'bg-[#06B6D4]'];
+                                    return (
+                                        <div key={idx} className="flex items-start gap-3 group">
+                                            <div className={`w-6 h-6 rounded-full ${featureColors[idx % featureColors.length]} flex items-center justify-center shrink-0 text-white shadow-sm transition-transform duration-200 group-hover:scale-110 mt-0.5`}>
+                                                <Check size={12} className="text-white" strokeWidth={3} />
+                                            </div>
+                                            <span className="text-[15px] font-semibold text-[#0B1D3A]/80 leading-snug group-hover:text-[#0B1D3A] transition-colors">
+                                                {feature}
+                                            </span>
                                         </div>
-                                        <span className="text-[15px] font-semibold text-[#0B1D3A]/80 leading-snug group-hover:text-[#0B1D3A] transition-colors">
-                                            {feature}
-                                        </span>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </motion.div>
                     </div>

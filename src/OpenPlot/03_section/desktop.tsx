@@ -7,17 +7,17 @@ import { CheckCircle2, ArrowRight, BookOpen, BarChart2, Target, Users } from 'lu
 const GOLD = '#C99A2E';
 
 const TAB_ICONS: Record<string, React.ReactNode> = {
-    tab1: <BookOpen size={20} />,
-    tab2: <BarChart2 size={20} />,
-    tab3: <Target size={20} />,
-    tab4: <Users size={20} />
+    tab1: <BookOpen size={17} className="text-white" />,
+    tab2: <BarChart2 size={17} className="text-white" />,
+    tab3: <Target size={17} className="text-white" />,
+    tab4: <Users size={17} className="text-white" />
 };
 
 const TAB_COLORS: Record<string, string> = {
-    tab1: '#34D399',
-    tab2: '#60A5FA',
-    tab3: '#C99A2E',
-    tab4: '#F472B6'
+    tab1: '#10B981',
+    tab2: '#3B82F6',
+    tab3: '#F59E0B',
+    tab4: '#EC4899'
 };
 
 export default function Desktop() {
@@ -51,15 +51,18 @@ export default function Desktop() {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-[14px] font-semibold transition-all duration-300 border ${
+                            className={`flex items-center gap-3 px-5 py-3 rounded-xl text-[14px] font-semibold transition-all duration-300 border ${
                                 activeTab === tab.id
                                     ? 'bg-white/10 border-[#C99A2E]/40 text-white shadow-[0_4px_20px_rgba(201,154,46,0.12)]'
-                                    : 'bg-white/[0.03] border-white/[0.08] text-white/50 hover:text-white/80 hover:bg-white/[0.06]'
+                                    : 'bg-white/[0.03] border-white/[0.08] text-white/60 hover:text-white hover:bg-white/[0.06]'
                             }`}
                         >
-                            <span style={{ color: activeTab === tab.id ? TAB_COLORS[tab.id] : undefined }}>
+                            <div 
+                                className="w-7 h-7 rounded-lg flex items-center justify-center text-white shrink-0 shadow-sm"
+                                style={{ backgroundColor: TAB_COLORS[tab.id] }}
+                            >
                                 {TAB_ICONS[tab.id]}
-                            </span>
+                            </div>
                             {tab.title}
                         </button>
                     ))}
@@ -85,13 +88,15 @@ export default function Desktop() {
                                     {activeContent.sections.map((section: { heading: string; items: string[] }, idx: number) => (
                                         <div key={idx}>
                                             <h4 className="text-[13px] font-bold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: activeColor }}>
-                                                <div className="w-1 h-4 rounded-full" style={{ backgroundColor: activeColor }}></div>
+                                                <div className="w-1.5 h-4 rounded-full" style={{ backgroundColor: activeColor }}></div>
                                                 {section.heading}
                                             </h4>
-                                            <ul className="flex flex-col gap-2">
+                                            <ul className="flex flex-col gap-2.5">
                                                 {section.items.map((item: string, i: number) => (
-                                                    <li key={i} className="flex items-start gap-2 text-[14px] text-white/80">
-                                                        <CheckCircle2 size={15} className="text-[#34D399] shrink-0 mt-0.5" />
+                                                    <li key={i} className="flex items-start gap-2.5 text-[14px] text-white/85">
+                                                        <div className="w-4 h-4 rounded-full bg-[#10B981] flex items-center justify-center text-white shrink-0 mt-0.5 shadow-sm">
+                                                            <CheckCircle2 size={11} strokeWidth={3} className="text-white" />
+                                                        </div>
                                                         <span className="leading-snug">{item}</span>
                                                     </li>
                                                 ))}

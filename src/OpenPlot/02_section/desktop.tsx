@@ -29,10 +29,10 @@ export default function Desktop() {
     };
 
     const icons = {
-        BookOpen: <BookOpen size={24} strokeWidth={2} />,
-        BarChart2: <BarChart2 size={24} strokeWidth={2} />,
-        Target: <Target size={24} strokeWidth={2} />,
-        Users: <Users size={24} strokeWidth={2} />
+        BookOpen: <BookOpen size={24} strokeWidth={2.2} className="text-white" />,
+        BarChart2: <BarChart2 size={24} strokeWidth={2.2} className="text-white" />,
+        Target: <Target size={24} strokeWidth={2.2} className="text-white" />,
+        Users: <Users size={24} strokeWidth={2.2} className="text-white" />
     };
 
     const sectionSubtitle = data.title.includes(' - ') ? data.title.split(' - ')[1] : data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
@@ -81,10 +81,10 @@ export default function Desktop() {
                             <div className="absolute top-0 right-0 w-32 h-32 opacity-10 blur-[40px] transition-opacity duration-500 group-hover:opacity-30 rounded-bl-full" style={{ background: card.color }}></div>
                             
                             <div className="flex items-start justify-between mb-6">
-                                <div className="w-14 h-14 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-sm" style={{ backgroundColor: `${card.color}15`, color: card.color }}>
+                                <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-md text-white" style={{ backgroundColor: card.color }}>
                                     {icons[card.icon as keyof typeof icons]}
                                 </div>
-                                <div className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase border" style={{ color: card.color, backgroundColor: `${card.color}08`, borderColor: `${card.color}20` }}>
+                                <div className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase border" style={{ color: card.color, backgroundColor: `${card.color}10`, borderColor: `${card.color}25` }}>
                                     {card.tag}
                                 </div>
                             </div>

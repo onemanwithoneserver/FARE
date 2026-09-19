@@ -141,7 +141,7 @@ export default function Desktop() {
                             <div className="flex items-center justify-between mb-6 relative z-10 border-b border-white/[0.08] pb-4">
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C99A2E] to-[#D5AA45] flex items-center justify-center shadow-[0_4px_12px_rgba(201,154,46,0.3)]">
-                                        <Target className="text-[#0B1D3A]" size={20} strokeWidth={2.5} />
+                                        <Target className="text-white" size={20} strokeWidth={2.5} />
                                     </div>
                                     <div>
                                         <h3 className="text-white text-[16px] font-bold tracking-tight">
@@ -164,10 +164,10 @@ export default function Desktop() {
                             <div className="flex flex-col gap-3.5 relative z-10 mb-6">
                                 {data.dashboard.stats.map((stat, i) => {
                                     const icons = [
-                                        <BookOpen size={16} key="bo" />,
-                                        <BarChart2 size={16} key="ba" />,
-                                        <Target size={16} key="ta" />,
-                                        <CheckCircle size={16} key="cc" />
+                                        <BookOpen size={16} key="bo" className="text-white" />,
+                                        <BarChart2 size={16} key="ba" className="text-white" />,
+                                        <Target size={16} key="ta" className="text-white" />,
+                                        <CheckCircle size={16} key="cc" className="text-white" />
                                     ];
                                     return (
                                         <div
@@ -177,8 +177,8 @@ export default function Desktop() {
                                             <div className="flex items-center justify-between mb-2">
                                                 <div className="flex items-center gap-2.5">
                                                     <div
-                                                        className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center shrink-0"
-                                                        style={{ color: stat.color }}
+                                                        className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 shadow-sm text-white"
+                                                        style={{ backgroundColor: stat.color }}
                                                     >
                                                         {icons[i]}
                                                     </div>
@@ -211,8 +211,10 @@ export default function Desktop() {
 
                             {/* Bottom Card Footer Banner */}
                             <div className="relative z-10 bg-white/[0.05] border border-white/[0.08] rounded-xl p-3 flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <Award size={16} className="text-[#C99A2E]" />
+                                <div className="flex items-center gap-2.5">
+                                    <div className="w-6 h-6 rounded-md bg-[#C99A2E] flex items-center justify-center text-white shadow-sm">
+                                        <Award size={13} className="text-white" />
+                                    </div>
                                     <span className="text-white/70 text-[11.5px] font-medium">
                                         {data.dashboard.floatingBadge.subtitle}
                                     </span>

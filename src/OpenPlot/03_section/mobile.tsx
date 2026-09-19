@@ -7,17 +7,17 @@ import { CheckCircle2, ArrowRight, BookOpen, BarChart2, Target, Users } from 'lu
 const GOLD = '#C99A2E';
 
 const TAB_ICONS: Record<string, React.ReactNode> = {
-    tab1: <BookOpen size={18} />,
-    tab2: <BarChart2 size={18} />,
-    tab3: <Target size={18} />,
-    tab4: <Users size={18} />
+    tab1: <BookOpen size={16} className="text-white" />,
+    tab2: <BarChart2 size={16} className="text-white" />,
+    tab3: <Target size={16} className="text-white" />,
+    tab4: <Users size={16} className="text-white" />
 };
 
 const TAB_COLORS: Record<string, string> = {
-    tab1: '#34D399',
-    tab2: '#60A5FA',
-    tab3: '#C99A2E',
-    tab4: '#F472B6'
+    tab1: '#10B981',
+    tab2: '#3B82F6',
+    tab3: '#F59E0B',
+    tab4: '#EC4899'
 };
 
 export default function Mobile() {
@@ -49,15 +49,18 @@ export default function Mobile() {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-2 px-4 py-3 rounded-xl text-[12.5px] font-semibold transition-all duration-300 border ${
+                            className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-[12px] font-semibold transition-all duration-300 border ${
                                 activeTab === tab.id
-                                    ? 'bg-white/10 border-[#C99A2E]/40 text-white'
+                                    ? 'bg-white/10 border-[#C99A2E]/40 text-white shadow-sm'
                                     : 'bg-white/[0.03] border-white/[0.08] text-white/50'
                             }`}
                         >
-                            <span style={{ color: activeTab === tab.id ? TAB_COLORS[tab.id] : undefined }}>
+                            <div 
+                                className="w-6 h-6 rounded-md flex items-center justify-center text-white shrink-0 shadow-sm"
+                                style={{ backgroundColor: TAB_COLORS[tab.id] }}
+                            >
                                 {TAB_ICONS[tab.id]}
-                            </span>
+                            </div>
                             <span className="truncate">{tab.title}</span>
                         </button>
                     ))}
@@ -83,13 +86,15 @@ export default function Mobile() {
                                     {activeContent.sections.map((section: { heading: string; items: string[] }, idx: number) => (
                                         <div key={idx}>
                                             <h4 className="text-[12px] font-bold uppercase tracking-wider mb-2.5 flex items-center gap-2" style={{ color: activeColor }}>
-                                                <div className="w-1 h-3.5 rounded-full" style={{ backgroundColor: activeColor }}></div>
+                                                <div className="w-1.5 h-3.5 rounded-full" style={{ backgroundColor: activeColor }}></div>
                                                 {section.heading}
                                             </h4>
                                             <ul className="flex flex-col gap-2">
                                                 {section.items.map((item: string, i: number) => (
                                                     <li key={i} className="flex items-start gap-2 text-[13px] text-white/80">
-                                                        <CheckCircle2 size={14} className="text-[#34D399] shrink-0 mt-0.5" />
+                                                        <div className="w-4 h-4 rounded-full bg-[#10B981] flex items-center justify-center text-white shrink-0 mt-0.5 shadow-sm">
+                                                            <CheckCircle2 size={10} strokeWidth={3} className="text-white" />
+                                                        </div>
                                                         <span className="leading-snug">{item}</span>
                                                     </li>
                                                 ))}

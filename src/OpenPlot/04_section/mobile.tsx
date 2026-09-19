@@ -62,7 +62,9 @@ export default function Mobile() {
                     <motion.div variants={item} className="flex flex-col gap-3 mb-8">
                         {data.testAreas.map((area, idx) => (
                             <div key={idx} className="flex items-start gap-2.5">
-                                <CheckCircle size={16} className="text-[#34D399] shrink-0 mt-0.5" />
+                                <div className="w-4 h-4 rounded-full bg-[#10B981] flex items-center justify-center text-white shrink-0 mt-0.5 shadow-sm">
+                                    <CheckCircle size={10} strokeWidth={3} className="text-white" />
+                                </div>
                                 <span className="text-[14px] font-semibold" style={{ color: NAVY }}>{area}</span>
                             </div>
                         ))}
@@ -95,8 +97,8 @@ export default function Mobile() {
                         
                         <div className="flex items-center justify-between mb-6 relative z-10">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-[#0B1D3A] flex items-center justify-center text-white shadow-sm">
-                                    <ClipboardList size={20} />
+                                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-sm">
+                                    <ClipboardList size={18} className="text-white" />
                                 </div>
                                 <div>
                                     <h3 className="text-[16px] font-bold text-[#0B1D3A]">{data.illustrationData.title}</h3>
@@ -105,16 +107,19 @@ export default function Mobile() {
                         </div>
 
                         <div className="flex flex-col gap-3 relative z-10">
-                            {data.evaluationFlow.split(' → ').map((step, i) => (
-                                <div key={i} className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full bg-[#F8FAFD] border border-[#0B1D3A]/10 flex items-center justify-center text-[#0B1D3A] font-bold text-[13px]">
-                                        {i + 1}
+                            {data.evaluationFlow.split(' → ').map((step, i) => {
+                                const stepColors = ['bg-[#3B82F6]', 'bg-[#10B981]', 'bg-[#8B5CF6]', 'bg-[#F59E0B]'];
+                                return (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <div className={`w-7 h-7 rounded-lg ${stepColors[i % stepColors.length]} flex items-center justify-center text-white font-bold text-[12px] shrink-0 shadow-sm`}>
+                                            {i + 1}
+                                        </div>
+                                        <div className="flex-1 bg-white border border-[#0B1D3A]/5 shadow-sm rounded-lg p-3">
+                                            <span className="text-[14px] font-semibold text-[#0B1D3A]">{step}</span>
+                                        </div>
                                     </div>
-                                    <div className="flex-1 bg-white border border-[#0B1D3A]/5 shadow-sm rounded-lg p-3">
-                                        <span className="text-[14px] font-semibold text-[#0B1D3A]">{step}</span>
-                                    </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 </motion.div>
