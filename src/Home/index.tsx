@@ -8,7 +8,7 @@ import Section06 from "./06_section";
 
 export default function Home({ isMobile }: { isMobile: boolean }) {
   return (
-    <div className="w-full min-h-screen flex flex-col bg-[#eef2f6] font-sans">
+    <div className="w-full min-h-screen flex flex-col bg-[#F7F8FA] font-['Inter',system-ui,sans-serif]">
       <Header isMobile={isMobile} />
       <Section01 isMobile={isMobile} />
       <Section02 isMobile={isMobile} />
