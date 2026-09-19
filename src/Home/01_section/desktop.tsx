@@ -159,8 +159,8 @@ export default function Desktop() {
                                 className="w-[170px] flex flex-col pt-5 pb-4 flex-shrink-0"
                                 style={{ background: NAVY_DEEP, borderRight: `1px solid rgba(255,255,255,0.06)` }}
                             >
-                                <div className="px-5 mb-6 flex items-center h-[24px]">
-                                    <img src={logo} alt="FARE" className="h-6 w-auto brightness-0 invert opacity-100" />
+                                <div className="px-5 mb-6 flex items-center">
+                                    <img src={logo} alt="FARE" className="h-24 w-auto brightness-0 invert opacity-100" />
                                 </div>
                                 <div className="flex flex-col gap-0.5 px-3 flex-1">
                                     <SidebarItem icon={<Home size={13} />} label="Dashboard" active />
