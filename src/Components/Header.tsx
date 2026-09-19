@@ -17,6 +17,7 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
   const dropdownOptions = [
     { value: 'home', label: 'Home' },
     { value: 'open-plots', label: 'Open Plots' },
+    { value: 're-companies', label: 'RE Companies' },
     { value: 'forms', label: 'Forms' }
   ];
 

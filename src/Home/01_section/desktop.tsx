@@ -67,11 +67,15 @@ export default function Desktop() {
                         </span>
                     </motion.div>
 
-                    <h1 className="text-[5rem] leading-[0.92] font-black tracking-[-0.03em] mb-7">
-                        <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line1}</motion.span>
-                        <motion.span variants={item} className="block gold-gradient-text">{data.headline.line2}</motion.span>
-                        <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line3}</motion.span>
-                        <motion.span variants={item} className="block" style={{ color: MUTED_BLUE }}>{data.headline.line4}</motion.span>
+                    <h1 className={`font-black mb-7 ${
+                        language === 'te'
+                            ? 'text-[3.6rem] leading-[1.1] tracking-wider my-2'
+                            : 'text-[5rem] leading-[0.92] tracking-[-0.03em]'
+                    }`}>
+                        <motion.span variants={item} className={`block ${language === 'te' ? 'py-1' : ''}`} style={{ color: NAVY }}>{data.headline.line1}</motion.span>
+                        <motion.span variants={item} className={`block gold-gradient-text ${language === 'te' ? 'py-1' : ''}`}>{data.headline.line2}</motion.span>
+                        <motion.span variants={item} className={`block ${language === 'te' ? 'py-1' : ''}`} style={{ color: NAVY }}>{data.headline.line3}</motion.span>
+                        <motion.span variants={item} className={`block ${language === 'te' ? 'py-1' : ''}`} style={{ color: MUTED_BLUE }}>{data.headline.line4}</motion.span>
                     </h1>
 
                     <motion.div variants={item} className="mb-5">

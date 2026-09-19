@@ -5,6 +5,8 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-
 import Home from './Home'
 import OpenPlot from './OpenPlot'
 
+import RE_Companies from './RE_Companies'
+
 export default function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
   const navigate = useNavigate()
@@ -59,6 +61,7 @@ export default function App() {
             <Route path="/:mode" element={<Navigate to={`/${viewMode}/home`} replace />} />
             <Route path="/:mode/home" element={<Home isMobile={isMobile} />} />
             <Route path="/:mode/open-plots" element={<OpenPlot isMobile={isMobile} />} />
+            <Route path="/:mode/re-companies" element={<RE_Companies isMobile={isMobile} />} />
             <Route path="/:mode/forms" element={<Home isMobile={isMobile} />} />
             <Route path="*" element={<Navigate to={`/${defaultInitialMode}/home`} replace />} />
           </Routes>

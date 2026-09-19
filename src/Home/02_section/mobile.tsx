@@ -109,7 +109,11 @@ export default function Mobile() {
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     className="mb-8 flex flex-col items-center"
                 >
-                    <h2 className="text-[2rem] font-black tracking-[-0.02em] uppercase leading-[1.05] text-white">
+                    <h2 className={`font-black uppercase leading-[1.05] text-white ${
+                        language === 'te'
+                            ? 'text-[1.5rem] leading-[1.25] tracking-wider py-0.5'
+                            : 'text-[2rem] tracking-[-0.02em]'
+                    }`}>
                         {data.headline.line1} <span className="gold-gradient-text">{data.headline.line2}</span> {data.headline.line3} {data.headline.line4}
                     </h2>
                     <p className="mt-3 font-medium text-[12.5px] leading-relaxed mx-auto max-w-[320px]" style={{ color: MUTED_BLUE }}>

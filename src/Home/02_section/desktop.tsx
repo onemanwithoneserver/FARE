@@ -113,7 +113,11 @@ export default function Desktop() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="mb-20 flex flex-col items-center text-center max-w-[850px]"
                 >
-                    <h2 className="text-[3.5rem] font-black tracking-[-0.02em] mb-2 uppercase leading-[1.05] text-white">
+                    <h2 className={`font-black mb-2 text-white ${
+                        language === 'te'
+                            ? 'text-[2.5rem] leading-[1.2] tracking-wider py-1'
+                            : 'text-[3.5rem] tracking-[-0.02em] uppercase leading-[1.05]'
+                    }`}>
                         {data.headline.line1} <span className="gold-gradient-text">{data.headline.line2}</span> {data.headline.line3} {data.headline.line4}
                     </h2>
                     <p className="mt-6 font-medium text-[16px] max-w-[560px] leading-relaxed" style={{ color: MUTED_BLUE }}>

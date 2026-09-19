@@ -42,7 +42,11 @@ export default function Mobile() {
                     <div className="w-8 h-[1px] bg-[#C99A2E]"></div>
                 </div>
 
-                <h2 className="text-[1.85rem] leading-[1.05] font-black tracking-[-0.02em] uppercase text-[#0B1D3A] mb-2">
+                <h2 className={`font-black mb-2 text-[#0B1D3A] ${
+                    language === 'te'
+                        ? 'text-[1.45rem] leading-[1.25] tracking-wider py-0.5'
+                        : 'text-[1.85rem] leading-[1.05] tracking-[-0.02em] uppercase'
+                }`}>
                     {data.headline.line1} <span className="gold-gradient-text">{data.headline.line2}</span>
                 </h2>
                 <p className="text-[12px] font-medium leading-relaxed mb-6" style={{ color: MUTED_SLATE }}>

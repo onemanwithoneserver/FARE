@@ -53,11 +53,15 @@ export default function Mobile() {
                     <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
                 </motion.div>
 
-                <h1 className="text-[2.75rem] leading-[0.94] font-black tracking-[-0.02em] mb-3.5">
-                    <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line1}</motion.span>
-                    <motion.span variants={item} className="block gold-gradient-text">{data.headline.line2}</motion.span>
-                    <motion.span variants={item} className="block" style={{ color: NAVY }}>{data.headline.line3}</motion.span>
-                    <motion.span variants={item} className="block" style={{ color: MUTED_BLUE }}>{data.headline.line4}</motion.span>
+                <h1 className={`font-black mb-3.5 ${
+                    language === 'te'
+                        ? 'text-[2.1rem] leading-[1.15] tracking-wide my-1.5'
+                        : 'text-[2.75rem] leading-[0.94] tracking-[-0.02em]'
+                }`}>
+                    <motion.span variants={item} className={`block ${language === 'te' ? 'py-0.5' : ''}`} style={{ color: NAVY }}>{data.headline.line1}</motion.span>
+                    <motion.span variants={item} className={`block gold-gradient-text ${language === 'te' ? 'py-0.5' : ''}`}>{data.headline.line2}</motion.span>
+                    <motion.span variants={item} className={`block ${language === 'te' ? 'py-0.5' : ''}`} style={{ color: NAVY }}>{data.headline.line3}</motion.span>
+                    <motion.span variants={item} className={`block ${language === 'te' ? 'py-0.5' : ''}`} style={{ color: MUTED_BLUE }}>{data.headline.line4}</motion.span>
                 </h1>
 
                 <motion.div variants={item} className="mb-3">

@@ -36,12 +36,6 @@ export default function Desktop() {
             className="w-full py-20 px-12 flex justify-center font-['Outfit'] relative overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F4F7FB 100%)' }}
         >
-            <div className="absolute top-8 left-10 hidden xl:flex flex-col gap-2 text-[10px] font-black tracking-[0.25em] text-[#0B1D3A]/20 pointer-events-none uppercase">
-                {data.sideTextLeft.map((t, idx) => <span key={idx}>{t}</span>)}
-            </div>
-            <div className="absolute top-8 right-10 hidden xl:flex flex-col gap-2 text-[10px] font-black tracking-[0.25em] text-[#0B1D3A]/20 pointer-events-none uppercase text-right">
-                {data.sideTextRight.map((t, idx) => <span key={idx}>{t}</span>)}
-            </div>
 
             <motion.div
                 animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }}
@@ -65,7 +59,11 @@ export default function Desktop() {
                         <div className="w-12 h-[1px] bg-[#C99A2E]"></div>
                     </div>
 
-                    <h2 className="text-[3.25rem] leading-[1.05] font-black tracking-[-0.02em] uppercase text-[#0B1D3A] mb-3.5">
+                    <h2 className={`font-black mb-3.5 text-[#0B1D3A] ${
+                        language === 'te'
+                            ? 'text-[2.25rem] xl:text-[2.65rem] leading-[1.25] tracking-wider py-1'
+                            : 'text-[3.25rem] leading-[1.05] tracking-[-0.02em] uppercase'
+                    }`}>
                         {data.headline.line1} <span className="gold-gradient-text">{data.headline.line2}</span>
                     </h2>
                     <p className="text-[15px] font-medium leading-relaxed max-w-[660px]" style={{ color: MUTED_SLATE }}>
