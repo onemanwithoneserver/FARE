@@ -42,17 +42,17 @@ const MobileViewport = forwardRef<HTMLDivElement, MobileViewportProps>(
       <div
         role="region"
         aria-label="Mobile Preview Environment"
-        className="flex items-center justify-center h-full w-full overflow-y-auto scrollbar-hide box-border bg-fare-surface-alt md:p-[clamp(16px,4vh,40px)] p-0 transition-base"
+        className="flex items-center justify-center h-full w-full overflow-hidden box-border bg-[#0f172a]/5 md:bg-[#0f172a]/10 md:p-4 lg:p-6 transition-base"
       >
         <div
           ref={setRef}
           role="region"
           aria-label="Mobile Device Simulator"
           className={`
-            relative shrink-0 overflow-hidden bg-fare-surface
-            md:shadow-2xl transform-gpu translate-x-0 translate-y-0
-            w-full md:max-w-97.5 md:aspect-390/844 h-full md:h-[min(90vh,844px)]
-            transition-all duration-500 ease-out md:hover:shadow-xl
+            relative shrink-0 overflow-hidden bg-white
+            w-full h-full md:max-w-[430px] md:h-[min(100%,880px)]
+            md:rounded-[36px] md:border-[8px] md:border-[#1e293b] md:shadow-2xl
+            flex flex-col transition-all duration-300 ease-out
             ${className}
           `}
           {...props}

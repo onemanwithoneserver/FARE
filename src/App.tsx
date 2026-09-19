@@ -9,8 +9,11 @@ export default function App() {
   const navigate = useNavigate()
   const location = useLocation()
 
+  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth < 768
+  const defaultInitialMode: ViewMode = isSmallScreen ? 'mobile' : 'desktop'
+
   const pathSegments = location.pathname.split('/').filter(Boolean)
-  const currentModeFromUrl: ViewMode = pathSegments[0] === 'mobile' ? 'mobile' : 'desktop'
+  const currentModeFromUrl: ViewMode = pathSegments[0] === 'mobile' ? 'mobile' : (pathSegments[0] === 'desktop' ? 'desktop' : defaultInitialMode)
   const currentViewFromUrl = pathSegments[1] || 'home'
   
   const viewMode: ViewMode = currentModeFromUrl
@@ -50,7 +53,7 @@ export default function App() {
         <button
           onClick={() => setIsHeaderVisible(true)}
           title="Press Ctrl+M to toggle header"
-          className="fixed top-3 right-[#071A49] z-50 px-3 py-1.5 bg-[#1e293b] text-white text-xs font-semibold rounded-[4px] shadow-lg flex items-center gap-1.5 hover:bg-[#0f172a] transition-all cursor-pointer opacity-90 hover:opacity-100"
+          className="fixed top-3 right-3 z-50 px-3 py-1.5 bg-[#1e293b] text-white text-xs font-semibold rounded-[4px] shadow-lg flex items-center gap-1.5 hover:bg-[#0f172a] transition-all cursor-pointer opacity-90 hover:opacity-100"
         >
           <span>Header Hidden (Ctrl+M)</span>
         </button>
@@ -59,11 +62,11 @@ export default function App() {
       <main className={`flex-1 w-full overflow-hidden bg-[#f0f2f5] relative ${isHeaderVisible ? 'h-[calc(100vh-60px)]' : 'h-screen'}`}>
         <MobileViewport isMobile={isMobile}>
           <Routes>
-            <Route path="/" element={<Navigate to="/desktop/home" replace />} />
+            <Route path="/" element={<Navigate to={`/${defaultInitialMode}/home`} replace />} />
             <Route path="/:mode" element={<Navigate to={`/${viewMode}/home`} replace />} />
             <Route path="/:mode/home" element={<Home isMobile={isMobile} />} />
             <Route path="/:mode/forms" element={<Home isMobile={isMobile} />} />
-            <Route path="*" element={<Navigate to="/desktop/home" replace />} />
+            <Route path="*" element={<Navigate to={`/${defaultInitialMode}/home`} replace />} />
           </Routes>
         </MobileViewport>
       </main>
