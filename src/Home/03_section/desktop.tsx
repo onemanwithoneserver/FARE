@@ -120,9 +120,9 @@ export default function Desktop() {
                         className="w-full grid grid-cols-12 gap-7 items-stretch"
                     >
                         <motion.div 
-                            whileHover={{ y: -3 }}
+                            whileHover={{ y: -5, boxShadow: '0 25px 50px -12px rgba(11,29,58,0.25)' }}
                             transition={{ duration: 0.3 }}
-                            className="col-span-5 flex flex-col p-8 lg:p-9 rounded-[4px] bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_15px_40px_rgba(11,29,58,0.05)] relative overflow-hidden"
+                            className="col-span-5 flex flex-col p-8 lg:p-9 rounded-[6px] bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_20px_40px_-10px_rgba(11,29,58,0.15)] relative overflow-hidden"
                         >
                             <div className="relative z-10">
                                 <div className="inline-flex items-center gap-2 text-[9.5px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded-[4px] mb-5 bg-[#EEF4FF] text-[#2563EB] border border-[#2563EB]/20">
@@ -147,7 +147,7 @@ export default function Desktop() {
                                             transition={{ delay: 0.05 * i }}
                                             className="flex items-center gap-3 text-[12.5px] text-[#2C3E55] font-medium"
                                         >
-                                            <div className="w-5 h-5 rounded-[4px] bg-[#EEF4FF] text-[#2563EB] border border-[#2563EB]/20 flex items-center justify-center shrink-0">
+                                            <div className="w-5 h-5 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white shadow-sm flex items-center justify-center shrink-0">
                                                 <CheckCircle size={12} strokeWidth={2.5} />
                                             </div>
                                             <span>{feat}</span>
@@ -193,16 +193,16 @@ export default function Desktop() {
                         </motion.div>
 
                         <motion.div 
-                            whileHover={{ y: -3 }}
+                            whileHover={{ y: -5, boxShadow: '0 25px 50px -12px rgba(11,29,58,0.25)' }}
                             transition={{ duration: 0.3 }}
-                            className="col-span-7 p-8 lg:p-9 rounded-[4px] bg-white border border-[#0B1D3A]/[0.08] shadow-[0_15px_40px_rgba(11,29,58,0.04)] flex flex-col justify-between relative overflow-hidden"
+                            className="col-span-7 p-8 lg:p-9 rounded-[6px] bg-white border border-[#0B1D3A]/[0.08] shadow-[0_20px_40px_-10px_rgba(11,29,58,0.12)] flex flex-col justify-between relative overflow-hidden"
                         >
                             {activePersona.id === 'companies' && activePersona.metrics && (
                                 <div className="flex flex-col relative z-10 h-full justify-between">
                                     <div>
                                         <div className="flex items-center justify-between mb-6">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 rounded-[4px] bg-[#EEF4FF] text-[#2563EB] flex items-center justify-center border border-[#2563EB]/20 shadow-sm">
+                                                <div className="w-10 h-10 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white flex items-center justify-center shadow-sm">
                                                     <TrendingUp size={19} />
                                                 </div>
                                                 <div>
@@ -238,7 +238,7 @@ export default function Desktop() {
 
                                     <div className="grid grid-cols-3 gap-4 pt-5 border-t border-[#0B1D3A]/[0.08]">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-9 h-9 rounded-[4px] bg-[#EEF4FF] text-[#2563EB] flex items-center justify-center shrink-0">
+                                            <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white flex items-center justify-center shrink-0 shadow-sm">
                                                 <Users size={16} />
                                             </div>
                                             <div>
@@ -247,7 +247,7 @@ export default function Desktop() {
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-3">
-                                            <div className="w-9 h-9 rounded-[4px] bg-[#EEF4FF] text-[#2563EB] flex items-center justify-center shrink-0">
+                                            <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white flex items-center justify-center shrink-0 shadow-sm">
                                                 <TrendingUp size={16} />
                                             </div>
                                             <div>
@@ -256,8 +256,8 @@ export default function Desktop() {
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-3">
-                                            <div className="w-9 h-9 rounded-[4px] bg-[#FEF3C7] text-[#B45309] flex items-center justify-center shrink-0">
-                                                <Star size={16} fill="#B45309" />
+                                            <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#FBBF24] to-[#D97706] text-white flex items-center justify-center shrink-0 shadow-sm">
+                                                <Star size={16} strokeWidth={2.5} />
                                             </div>
                                             <div>
                                                 <div className="text-[15px] font-black text-[#0B1D3A]">4.8/5</div>
@@ -273,7 +273,7 @@ export default function Desktop() {
                                     <div>
                                         <div className="flex items-center justify-between mb-5">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 rounded-[4px] bg-[#ECFDF5] text-[#059669] flex items-center justify-center border border-[#059669]/20 shadow-sm">
+                                                <div className="w-10 h-10 rounded-[4px] bg-gradient-to-br from-[#34D399] to-[#059669] text-white flex items-center justify-center shadow-sm">
                                                     <GraduationCap size={19} />
                                                 </div>
                                                 <div>
@@ -312,7 +312,7 @@ export default function Desktop() {
                                     <div className="grid grid-cols-3 gap-4 pt-5 border-t border-[#0B1D3A]/[0.08]">
                                         {activePersona.metrics?.stats.map((stat, idx) => (
                                             <div key={idx} className="flex items-center gap-3">
-                                                <div className="w-9 h-9 rounded-[4px] bg-[#ECFDF5] text-[#059669] flex items-center justify-center shrink-0">
+                                                <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#34D399] to-[#059669] text-white flex items-center justify-center shrink-0 shadow-sm">
                                                     <Award size={16} />
                                                 </div>
                                                 <div>
@@ -330,7 +330,7 @@ export default function Desktop() {
                                     <div>
                                         <div className="flex items-center justify-between mb-5">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 rounded-[4px] bg-[#FEF3C7] text-[#B45309] flex items-center justify-center border border-[#B45309]/20 shadow-sm">
+                                                <div className="w-10 h-10 rounded-[4px] bg-gradient-to-br from-[#FBBF24] to-[#D97706] text-white flex items-center justify-center shadow-sm">
                                                     <ShieldCheck size={19} />
                                                 </div>
                                                 <div>
@@ -372,7 +372,7 @@ export default function Desktop() {
                                     <div className="grid grid-cols-3 gap-4 pt-5 border-t border-[#0B1D3A]/[0.08]">
                                         {activePersona.metrics?.stats.map((stat, idx) => (
                                             <div key={idx} className="flex items-center gap-3">
-                                                <div className="w-9 h-9 rounded-[4px] bg-[#FEF3C7] text-[#B45309] flex items-center justify-center shrink-0">
+                                                <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#FBBF24] to-[#D97706] text-white flex items-center justify-center shrink-0 shadow-sm">
                                                     <Sparkles size={16} />
                                                 </div>
                                                 <div>

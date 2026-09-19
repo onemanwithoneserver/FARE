@@ -36,11 +36,11 @@ export default function Mobile() {
     return (
         <section
             className="w-full min-h-[calc(100vh-64px)] px-4 py-8 sm:px-6 sm:py-10 flex flex-col items-center justify-center overflow-hidden text-center relative font-['Outfit']"
-            style={{ background: 'linear-gradient(180deg, #F8F9FC 0%, #EEF4FF 100%)' }}
+            style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #EEF4FF 100%)' }}
         >
-            <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
-            <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: false }} className="w-full flex flex-col items-center">
+            <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: false }} className="w-full flex flex-col items-center relative z-40">
                 <motion.div variants={item} className="flex items-center gap-2.5 mb-3.5 justify-center">
                     <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
                     <span className="font-semibold text-[9px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
@@ -62,26 +62,19 @@ export default function Mobile() {
                     </p>
                 </motion.div>
 
-                <motion.div variants={item} className="text-[10.5px] font-medium mb-5" style={{ color: GOLD }}>
-                    {data.capabilities[0]} <span className="text-[#CBD5E1] mx-1">·</span>
-                    {data.capabilities[1]} <span className="text-[#CBD5E1] mx-1">·</span>
-                    {data.capabilities[2]} <span className="text-[#CBD5E1] mx-1">·</span>
-                    {data.capabilities[3]}
-                </motion.div>
-
                 <motion.div variants={item} className="flex flex-col w-full gap-3 max-w-[280px] mb-4">
                     <button
-                        className="text-white font-semibold w-full py-3.5 rounded-[2px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98]"
+                        className="text-white font-semibold w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98]"
                         style={{
-                            background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)`,
-                            boxShadow: '0 2px 8px rgba(11,29,58,0.2)'
+                            background: NAVY,
+                            boxShadow: '0 2px 8px rgba(11,29,58,0.15)'
                         }}
                     >
                         {data.buttons.primary} <ArrowRight size={14} strokeWidth={2.5} />
                     </button>
                     <button
-                        className="font-semibold w-full py-3.5 rounded-[2px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border"
-                        style={{ color: NAVY, borderColor: `${NAVY}15`, background: 'white' }}
+                        className="font-semibold w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border"
+                        style={{ color: NAVY, borderColor: `${NAVY}15`, background: 'white', boxShadow: '0 1px 3px rgba(11,29,58,0.03)' }}
                     >
                         <Play size={13} strokeWidth={2.5} fill={NAVY} /> {data.buttons.secondary}
                     </button>
@@ -96,10 +89,11 @@ export default function Mobile() {
                     whileHover={{ scale: 1.02, rotateY: 2, rotateX: 1, y: -10 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative w-[760px] safari-shadow rounded-[4px] overflow-hidden"
+                    className="relative w-[760px] safari-shadow rounded-[6px] overflow-hidden bg-white/80 backdrop-blur-md"
                     style={{
                         transformPerspective: 2000,
-                        border: '1px solid rgba(11, 29, 58, 0.08)'
+                        border: '1px solid rgba(11, 29, 58, 0.08)',
+                        boxShadow: '0 20px 40px -10px rgba(11,29,58,0.2), 0 10px 20px -10px rgba(11,29,58,0.1)'
                     }}
                 >
                     <div className="glass-safari border-b border-black/[0.06]">
@@ -215,8 +209,8 @@ export default function Mobile() {
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                         className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
                     >
-                        <div className="w-9 h-9 rounded-[3px] bg-[#6B8AFF]/10 flex items-center justify-center text-[#6B8AFF]">
-                            <BookOpen size={17} strokeWidth={2} />
+                        <div className="w-9 h-9 rounded-[3px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-sm">
+                            <BookOpen size={17} strokeWidth={2.5} />
                         </div>
                         <div>
                             <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[0].label}</div>
@@ -237,8 +231,8 @@ export default function Mobile() {
                         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                         className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
                     >
-                        <div className="w-9 h-9 rounded-[3px] bg-[#34D399]/10 flex items-center justify-center text-[#34D399]">
-                            <Target size={17} strokeWidth={2} />
+                        <div className="w-9 h-9 rounded-[3px] bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-sm">
+                            <Target size={17} strokeWidth={2.5} />
                         </div>
                         <div>
                             <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[1].label}</div>
@@ -254,19 +248,29 @@ export default function Mobile() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false }}
                     transition={{ delay: 0.9, duration: 0.6 }}
-                    className="absolute bottom-12 -left-2 z-30"
+                    className="absolute bottom-12 -left-6 z-30"
                 >
                     <motion.div
                         animate={{ y: [0, -10, 0] }}
                         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                        className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
+                        className="bg-white/90 backdrop-blur-xl floating-card-shadow rounded-[4px] p-3 flex flex-col gap-1.5 border border-[#0B1D3A]/[0.06]"
                     >
-                        <div className="w-9 h-9 rounded-[3px] bg-[#A78BFA]/10 flex items-center justify-center text-[#A78BFA]">
-                            <BarChart2 size={17} strokeWidth={2} />
+                        <div className="flex items-center gap-1 justify-center">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                                <svg key={star} className="w-[12px] h-[12px]" style={{ fill: 'url(#goldGradientMobile)' }} viewBox="0 0 20 20">
+                                    <defs>
+                                        <linearGradient id="goldGradientMobile" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stopColor="#C99A2E" />
+                                            <stop offset="100%" stopColor="#D5AA45" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                            ))}
                         </div>
-                        <div>
-                            <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[2].label}</div>
-                            <div className="text-[9px] font-medium" style={{ color: MUTED_BLUE }}>{data.dashboard.stats[2].subtitle}</div>
+                        <div className="text-center">
+                            <div className="font-bold text-[11px]" style={{ color: NAVY }}>Average</div>
+                            <div className="text-[8px] font-medium" style={{ color: MUTED_BLUE }}>10k+ Agents</div>
                         </div>
                     </motion.div>
                 </motion.div>
@@ -283,8 +287,8 @@ export default function Mobile() {
                         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
                         className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
                     >
-                        <div className="w-9 h-9 rounded-[3px] flex items-center justify-center" style={{ background: `${GOLD_MID}15`, color: GOLD_MID }}>
-                            <CheckCircle size={17} strokeWidth={2} />
+                        <div className="w-9 h-9 rounded-[3px] flex items-center justify-center text-white shadow-sm" style={{ background: `linear-gradient(135deg, ${GOLD} 0%, ${GOLD_MID} 100%)` }}>
+                            <CheckCircle size={17} strokeWidth={2.5} />
                         </div>
                         <div>
                             <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[3].label}</div>

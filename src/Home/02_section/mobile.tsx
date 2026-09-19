@@ -207,8 +207,8 @@ export default function Mobile() {
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-9 h-9 rounded-[4px] bg-[#6B8AFF]/15 flex items-center justify-center text-[#6B8AFF] shadow-[0_0_10px_rgba(107,138,255,0.25)] border border-[#6B8AFF]/30">
-                                                    <BookOpen size={17} strokeWidth={2} />
+                                                <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(107,138,255,0.3)]">
+                                                    <BookOpen size={17} strokeWidth={2.5} />
                                                 </div>
                                                 <div>
                                                     <div className="text-[#6B8AFF] text-[8px] font-black tracking-[0.15em] mb-0.5">{data.browser.content['01'].tag}</div>
@@ -421,8 +421,8 @@ export default function Mobile() {
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-9 h-9 rounded-[4px] bg-[#34D399]/15 flex items-center justify-center text-[#34D399] shadow-[0_0_10px_rgba(52,211,153,0.25)] border border-[#34D399]/30">
-                                                    <Target size={17} strokeWidth={2} />
+                                                <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(52,211,153,0.3)]">
+                                                    <Target size={17} strokeWidth={2.5} />
                                                 </div>
                                                 <div>
                                                     <div className="text-[#34D399] text-[8px] font-black tracking-[0.15em] mb-0.5">{data.browser.content['02'].tag}</div>
@@ -504,8 +504,8 @@ export default function Mobile() {
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-9 h-9 rounded-[4px] bg-[#A78BFA]/15 flex items-center justify-center text-[#A78BFA] shadow-[0_0_10px_rgba(167,139,250,0.25)] border border-[#A78BFA]/30">
-                                                    <BarChart2 size={17} strokeWidth={2} />
+                                                <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(167,139,250,0.3)]">
+                                                    <BarChart2 size={17} strokeWidth={2.5} />
                                                 </div>
                                                 <div>
                                                     <div className="text-[#A78BFA] text-[8px] font-black tracking-[0.15em] mb-0.5">{data.browser.content['03'].tag}</div>
@@ -567,7 +567,7 @@ export default function Mobile() {
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
                                                 <div className="w-9 h-9 rounded-[4px] flex items-center justify-center shadow-[0_0_10px_rgba(213,170,69,0.25)] border border-[#D5AA45]/30" style={{ background: 'rgba(213,170,69,0.15)', color: '#D5AA45' }}>
-                                                    <CheckCircle size={17} strokeWidth={2} />
+                                                    <CheckCircle size={17} strokeWidth={2.5} />
                                                 </div>
                                                 <div>
                                                     <div className="text-[8px] font-black tracking-[0.15em] mb-0.5" style={{ color: '#D5AA45' }}>{data.browser.content['04'].tag}</div>

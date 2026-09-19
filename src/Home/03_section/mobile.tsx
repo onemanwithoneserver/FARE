@@ -80,7 +80,7 @@ export default function Mobile() {
                         transition={{ duration: 0.3 }}
                         className="w-full flex flex-col gap-4 text-left"
                     >
-                        <div className="p-5 rounded-[4px] bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_4px_16px_rgba(11,29,58,0.06)]">
+                        <div className="p-5 rounded-[6px] bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_10px_30px_-5px_rgba(11,29,58,0.1)]">
                             <div className="inline-flex items-center text-[8.5px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded-[4px] mb-3 bg-[#EEF4FF] text-[#2563EB] border border-[#2563EB]/20">
                                 {activePersona.badge}
                             </div>
@@ -97,7 +97,7 @@ export default function Mobile() {
                             <div className="flex flex-col gap-2 mb-5">
                                 {activePersona.features.map((feat, i) => (
                                     <div key={i} className="flex items-center gap-2 text-[11px] text-[#2C3E55] font-medium">
-                                        <div className="w-4 h-4 rounded-[4px] bg-[#EEF4FF] text-[#2563EB] border border-[#2563EB]/20 flex items-center justify-center shrink-0">
+                                        <div className="w-4 h-4 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white shadow-sm flex items-center justify-center shrink-0">
                                             <CheckCircle size={10} strokeWidth={2.5} />
                                         </div>
                                         <span className="leading-snug">{feat}</span>

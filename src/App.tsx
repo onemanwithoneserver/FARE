@@ -41,7 +41,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col h-screen w-full bg-[#eef2f6] font-sans relative">
-      {isHeaderVisible ? (
+      {isHeaderVisible && (
         <Header 
           viewMode={viewMode}
           onViewModeChange={handleViewModeChange}
@@ -49,14 +49,6 @@ export default function App() {
           onViewChange={handleViewChange}
           onClose={() => setIsHeaderVisible(false)}
         />
-      ) : (
-        <button
-          onClick={() => setIsHeaderVisible(true)}
-          title="Press Ctrl+M to toggle header"
-          className="fixed top-3 right-3 z-50 px-3 py-1.5 bg-[#1e293b] text-white text-xs font-semibold rounded-[4px] shadow-lg flex items-center gap-1.5 hover:bg-[#0f172a] transition-all cursor-pointer opacity-90 hover:opacity-100"
-        >
-          <span>Header Hidden (Ctrl+M)</span>
-        </button>
       )}
 
       <main className={`flex-1 w-full overflow-hidden bg-[#f0f2f5] relative ${isHeaderVisible ? 'h-[calc(100vh-60px)]' : 'h-screen'}`}>

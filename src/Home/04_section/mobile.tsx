@@ -39,7 +39,7 @@ export default function Mobile() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: false, margin: "-50px" }}
-                className="w-full max-w-[460px] relative z-10"
+                className="w-full max-w-[460px] relative z-40"
             >
                 <div
                     className="w-full rounded-[4px] pt-10 pb-6 flex flex-col items-center text-center relative overflow-hidden shadow-2xl"
@@ -68,7 +68,7 @@ export default function Mobile() {
                     <motion.div variants={itemVariant} className="flex flex-col items-center gap-3 mb-10 w-full px-5 relative z-10">
                         <motion.button
                             whileTap={{ scale: 0.98 }}
-                            className="w-full font-bold text-[12px] py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] uppercase tracking-[0.05em]"
+                            className="w-full font-bold text-[12px] py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] uppercase tracking-[0.05em] shadow-[0_10px_20px_-5px_rgba(213,170,69,0.2)]"
                             style={{ background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' }}
                         >
                             <span>{data.buttons.primary}</span>
@@ -91,11 +91,15 @@ export default function Mobile() {
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                             >
                                 <div className="flex items-center gap-4 p-4">
-                                    <div className="shrink-0">
+                                    <motion.div 
+                                        className="shrink-0"
+                                        whileHover={{ rotate: 10, scale: 1.1 }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                    >
                                         {i === 0 && <ShieldCheck size={24} strokeWidth={2} className="text-[#34D399]" />}
                                         {i === 1 && <Users size={24} strokeWidth={2} className="text-[#6B8AFF]" />}
                                         {i === 2 && <BarChart2 size={24} strokeWidth={2} className="text-[#D5AA45]" />}
-                                    </div>
+                                    </motion.div>
                                     <div className="text-left flex-1">
                                         <div className="text-[13px] font-bold text-white mb-1 leading-[1.2]">{badge.title}</div>
                                         <div className="text-[11px] text-white/50 font-medium">{badge.subtitle}</div>

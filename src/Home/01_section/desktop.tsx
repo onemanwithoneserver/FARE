@@ -35,15 +35,15 @@ export default function Desktop() {
 
     return (
         <section className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden relative font-['Outfit']"
-            style={{ background: `linear-gradient(135deg, #F8F9FC 0%, #F5F7FB 40%, #EEF4FF 100%)` }}
+            style={{ background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)` }}
         >
-            <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#DDEAFF]/40 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></div>
-            <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
+            <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
+            <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[90px] pointer-events-none z-0"></div>
 
-            <svg className="absolute top-20 left-[10%] w-[400px] h-[400px] opacity-[0.04] pointer-events-none z-0" viewBox="0 0 400 400" fill="none">
+            <svg className="absolute top-20 left-[10%] w-[400px] h-[400px] opacity-[0.05] pointer-events-none z-0" viewBox="0 0 400 400" fill="none">
                 <path d="M50 350 Q200 50 350 350" stroke={GOLD} strokeWidth="1.5" fill="none" />
             </svg>
-            <svg className="absolute bottom-20 right-[5%] w-[300px] h-[300px] opacity-[0.03] pointer-events-none z-0" viewBox="0 0 300 300" fill="none">
+            <svg className="absolute bottom-20 right-[5%] w-[300px] h-[300px] opacity-[0.04] pointer-events-none z-0" viewBox="0 0 300 300" fill="none">
                 <circle cx="150" cy="150" r="140" stroke={GOLD} strokeWidth="0.8" fill="none" />
             </svg>
 
@@ -54,7 +54,7 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false }}
-                    className="flex flex-col items-start w-[42%] min-w-[420px] relative z-20"
+                    className="flex flex-col items-start w-[42%] min-w-[420px] relative z-40"
                 >
                     <motion.div variants={item} className="flex items-center gap-3 mb-5">
                         <div className="w-10 h-[1.5px]" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }}></div>
@@ -76,59 +76,42 @@ export default function Desktop() {
                         </p>
                     </motion.div>
 
-                    <motion.div variants={item} className="flex items-center gap-3 mb-9 text-[12.5px] font-medium" style={{ color: GOLD }}>
-                        <BookOpen size={14} strokeWidth={2} />
-                        <span>{data.capabilities[0]}</span>
-                        <span className="text-[#CBD5E1]">·</span>
-                        <BarChart2 size={14} strokeWidth={2} />
-                        <span>{data.capabilities[1]}</span>
-                        <span className="text-[#CBD5E1]">·</span>
-                        <Layers size={14} strokeWidth={2} />
-                        <span>{data.capabilities[2]}</span>
-                        <span className="text-[#CBD5E1]">·</span>
-                        <Target size={14} strokeWidth={2} />
-                        <span>{data.capabilities[3]}</span>
-                    </motion.div>
-
                     <motion.div variants={item} className="flex items-center gap-4 mb-10">
                         <button
-                            className="text-white text-[13.5px] font-semibold px-7 py-3.5 rounded-[2px] hover:shadow-[0_12px_32px_rgba(11,29,58,0.25)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
+                            className="text-white text-[13.5px] font-semibold px-7 py-3.5 rounded-[4px] hover:shadow-[0_12px_24px_rgba(11,29,58,0.2),0_0_0_1px_rgba(201,154,46,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
                             style={{
-                                background: `linear-gradient(135deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)`,
-                                boxShadow: `0 2px 8px rgba(11,29,58,0.2), 0 8px 24px rgba(11,29,58,0.12)`
+                                background: NAVY,
+                                boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`
                             }}
                         >
                             {data.buttons.primary} <ArrowRight size={15} strokeWidth={2.5} />
                         </button>
                         <button
-                            className="text-[13.5px] font-semibold px-7 py-3.5 rounded-[2px] hover:bg-[#F0F2F7] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border"
+                            className="text-[13.5px] font-semibold px-7 py-3.5 rounded-[4px] hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border"
                             style={{
                                 color: NAVY,
-                                borderColor: `${NAVY}20`,
+                                borderColor: `${NAVY}15`,
                                 background: 'white',
-                                boxShadow: '0 1px 3px rgba(11,29,58,0.04)'
+                                boxShadow: '0 1px 3px rgba(11,29,58,0.03)'
                             }}
                         >
                             <Play size={14} strokeWidth={2.5} fill={NAVY} /> {data.buttons.secondary}
                         </button>
                     </motion.div>
-
-                    <motion.div variants={item} className="text-[11px] font-medium tracking-[0.04em]" style={{ color: MUTED_BLUE }}>
-                        {data.footerLinks[0]} <span className="mx-1.5 text-[#CBD5E1]">·</span> {data.footerLinks[1]} <span className="mx-1.5 text-[#CBD5E1]">·</span> {data.footerLinks[2]}
-                    </motion.div>
                 </motion.div>
 
                 <div className="flex-1 relative flex items-center justify-end z-20" style={{ minHeight: '600px' }}>
                     <motion.div
-                        initial={{ opacity: 0, y: 30, scale: 0.97, rotateY: 4, rotateX: 2 }}
-                        whileInView={{ opacity: 1, y: 0, scale: 1, rotateY: 4, rotateX: 2 }}
-                        whileHover={{ scale: 1.02, rotateY: 2, rotateX: 1, y: -10 }}
+                        initial={{ opacity: 0, y: 40, scale: 0.95, rotateY: 5, rotateX: 3 }}
+                        whileInView={{ opacity: 1, y: 0, scale: 1, rotateY: 5, rotateX: 3 }}
+                        whileHover={{ scale: 1.01, rotateY: 2, rotateX: 1, y: -5 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative w-full max-w-[780px] safari-shadow rounded-[4px] overflow-hidden"
+                        className="relative w-full max-w-[780px] safari-shadow rounded-[6px] overflow-hidden bg-white/80 backdrop-blur-md"
                         style={{
                             transformPerspective: 2000,
-                            border: '1px solid rgba(11, 29, 58, 0.08)'
+                            border: '1px solid rgba(11, 29, 58, 0.08)',
+                            boxShadow: '0 30px 60px -12px rgba(11,29,58,0.25), 0 18px 36px -18px rgba(11,29,58,0.15)'
                         }}
                     >
                         <div className="glass-safari border-b border-black/[0.06]">
@@ -242,8 +225,8 @@ export default function Desktop() {
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                             className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
                         >
-                            <div className="w-9 h-9 rounded-[3px] bg-[#6B8AFF]/10 flex items-center justify-center text-[#6B8AFF]">
-                                <BookOpen size={17} strokeWidth={2} />
+                            <div className="w-9 h-9 rounded-[3px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-sm">
+                                <BookOpen size={17} strokeWidth={2.5} />
                             </div>
                             <div>
                                 <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[0].label}</div>
@@ -264,8 +247,8 @@ export default function Desktop() {
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                             className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
                         >
-                            <div className="w-9 h-9 rounded-[3px] bg-[#34D399]/10 flex items-center justify-center text-[#34D399]">
-                                <Target size={17} strokeWidth={2} />
+                            <div className="w-9 h-9 rounded-[3px] bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-sm">
+                                <Target size={17} strokeWidth={2.5} />
                             </div>
                             <div>
                                 <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[1].label}</div>
@@ -281,19 +264,29 @@ export default function Desktop() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
                         transition={{ delay: 0.9, duration: 0.6 }}
-                        className="absolute bottom-24 left-[-30px] z-30"
+                        className="absolute bottom-24 left-[-40px] z-30"
                     >
                         <motion.div
                             animate={{ y: [0, -10, 0] }}
                             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                            className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
+                            className="bg-white/90 backdrop-blur-xl floating-card-shadow rounded-[4px] p-4 flex flex-col gap-2 border border-[#0B1D3A]/[0.06]"
                         >
-                            <div className="w-9 h-9 rounded-[3px] bg-[#A78BFA]/10 flex items-center justify-center text-[#A78BFA]">
-                                <BarChart2 size={17} strokeWidth={2} />
+                            <div className="flex items-center gap-1">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <svg key={star} className="w-[14px] h-[14px]" style={{ fill: 'url(#goldGradient)' }} viewBox="0 0 20 20">
+                                        <defs>
+                                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stopColor="#C99A2E" />
+                                                <stop offset="100%" stopColor="#D5AA45" />
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                ))}
                             </div>
                             <div>
-                                <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[2].label}</div>
-                                <div className="text-[9px] font-medium" style={{ color: MUTED_BLUE }}>{data.dashboard.stats[2].subtitle}</div>
+                                <div className="font-bold text-[12.5px]" style={{ color: NAVY }}>Average Rating</div>
+                                <div className="text-[10px] font-medium" style={{ color: MUTED_BLUE }}>Trusted by 10,000+ Agents</div>
                             </div>
                         </motion.div>
                     </motion.div>
@@ -310,8 +303,8 @@ export default function Desktop() {
                             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
                             className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
                         >
-                            <div className="w-9 h-9 rounded-[3px] flex items-center justify-center" style={{ background: `${GOLD_MID}15`, color: GOLD_MID }}>
-                                <CheckCircle size={17} strokeWidth={2} />
+                            <div className="w-9 h-9 rounded-[3px] flex items-center justify-center text-white shadow-sm" style={{ background: `linear-gradient(135deg, ${GOLD} 0%, ${GOLD_MID} 100%)` }}>
+                                <CheckCircle size={17} strokeWidth={2.5} />
                             </div>
                             <div>
                                 <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[3].label}</div>

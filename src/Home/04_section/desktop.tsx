@@ -17,11 +17,6 @@ export default function Desktop() {
         show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } }
     };
 
-    const lineVariant = {
-        hidden: { height: 0, opacity: 0 },
-        show: { height: "100%", opacity: 0.8, transition: { duration: 1, ease: "easeInOut" as const } }
-    };
-
     return (
         <section
             className="w-full min-h-screen py-20 px-12 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
@@ -55,32 +50,80 @@ export default function Desktop() {
                 className="absolute bottom-[-100px] right-[-100px] w-[800px] h-[400px] bg-gradient-to-tl from-[#071A49] to-transparent -rotate-12 z-0 pointer-events-none"
             ></motion.div>
 
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute top-12 left-12 z-10 flex gap-4 h-[100px]">
-                <motion.div variants={lineVariant} className="w-[1px] bg-gradient-to-b from-[#C99A2E] to-[#C99A2E]/0"></motion.div>
-                <div className="flex flex-col gap-1.5 text-[10px] font-bold tracking-[0.25em] text-white/60">
-                    {data.cornerLabels.topLeft.map((t, i) => <motion.span key={i} variants={itemVariant}>{t}</motion.span>)}
+            {/* Top Left Corner Labels with Beside & Below Animated Lines */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute top-6 left-6 xl:top-8 xl:left-8 z-50 flex flex-col pointer-events-none">
+                <div className="flex gap-3.5 items-stretch">
+                    <motion.div
+                        animate={{ opacity: [0.4, 1, 0.4], scaleY: [0.85, 1.05, 0.85] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        className="w-[2px] rounded-full bg-gradient-to-b from-[#C99A2E] via-[#F4D068] to-transparent origin-top"
+                    />
+                    <div className="flex flex-col gap-1 text-[10px] xl:text-[11px] font-extrabold tracking-[0.25em] text-white/90 text-left drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        {data.cornerLabels.topLeft.map((t, i) => <motion.span key={i} variants={itemVariant}>{t}</motion.span>)}
+                    </div>
                 </div>
+                <motion.div
+                    animate={{ opacity: [0.4, 1, 0.4], scaleX: [0.75, 1.05, 0.75] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                    className="h-[2px] w-full mt-2.5 rounded-full bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-transparent origin-left"
+                />
             </motion.div>
             
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute bottom-12 left-12 z-10 flex gap-4 h-[100px] items-end">
-                <motion.div variants={lineVariant} className="w-[1px] bg-gradient-to-t from-[#C99A2E] to-[#C99A2E]/0"></motion.div>
-                <div className="flex flex-col gap-1.5 text-[10px] font-bold tracking-[0.25em] text-white/60 pb-1">
-                    {data.cornerLabels.bottomLeft.map((t, i) => <motion.span key={i} variants={itemVariant}>{t}</motion.span>)}
+            {/* Bottom Left Corner Labels with Beside & Below Animated Lines */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute bottom-6 left-6 xl:bottom-8 xl:left-8 z-50 flex flex-col pointer-events-none">
+                <div className="flex gap-3.5 items-stretch">
+                    <motion.div
+                        animate={{ opacity: [0.4, 1, 0.4], scaleY: [0.85, 1.05, 0.85] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        className="w-[2px] rounded-full bg-gradient-to-t from-[#C99A2E] via-[#F4D068] to-transparent origin-bottom"
+                    />
+                    <div className="flex flex-col gap-1 text-[10px] xl:text-[11px] font-extrabold tracking-[0.25em] text-white/90 text-left drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] pb-0.5">
+                        {data.cornerLabels.bottomLeft.map((t, i) => <motion.span key={i} variants={itemVariant}>{t}</motion.span>)}
+                    </div>
                 </div>
+                <motion.div
+                    animate={{ opacity: [0.4, 1, 0.4], scaleX: [0.75, 1.05, 0.75] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                    className="h-[2px] w-full mt-2.5 rounded-full bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-transparent origin-left"
+                />
             </motion.div>
 
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute top-12 right-12 z-10 flex gap-4 h-[100px]">
-                <div className="flex flex-col items-end gap-1.5 text-[10px] font-bold tracking-[0.25em] text-white/60 text-right">
-                    {data.cornerLabels.topRight.map((t, i) => <motion.span key={i} variants={itemVariant}>{t}</motion.span>)}
+            {/* Top Right Corner Labels with Beside & Below Animated Lines */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute top-6 right-6 xl:top-8 xl:right-8 z-50 flex flex-col items-end pointer-events-none">
+                <div className="flex gap-3.5 items-stretch justify-end">
+                    <div className="flex flex-col items-end gap-1 text-[10px] xl:text-[11px] font-extrabold tracking-[0.25em] text-white/90 text-right drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        {data.cornerLabels.topRight.map((t, i) => <motion.span key={i} variants={itemVariant}>{t}</motion.span>)}
+                    </div>
+                    <motion.div
+                        animate={{ opacity: [0.4, 1, 0.4], scaleY: [0.85, 1.05, 0.85] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        className="w-[2px] rounded-full bg-gradient-to-b from-[#C99A2E] via-[#F4D068] to-transparent origin-top"
+                    />
                 </div>
-                <motion.div variants={lineVariant} className="w-[1px] bg-gradient-to-b from-[#C99A2E] to-[#C99A2E]/0"></motion.div>
+                <motion.div
+                    animate={{ opacity: [0.4, 1, 0.4], scaleX: [0.75, 1.05, 0.75] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                    className="h-[2px] w-full mt-2.5 rounded-full bg-gradient-to-l from-[#C99A2E] via-[#F4D068] to-transparent origin-right"
+                />
             </motion.div>
 
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute bottom-12 right-12 z-10 flex gap-4 h-[100px] items-end">
-                <div className="flex flex-col items-end gap-1.5 text-[10px] font-bold tracking-[0.25em] text-white/60 text-right pb-1">
-                    {data.cornerLabels.bottomRight.map((t, i) => <motion.span key={i} variants={itemVariant}>{t}</motion.span>)}
+            {/* Bottom Right Corner Labels with Beside & Below Animated Lines */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute bottom-6 right-6 xl:bottom-8 xl:right-8 z-50 flex flex-col items-end pointer-events-none">
+                <div className="flex gap-3.5 items-stretch justify-end">
+                    <div className="flex flex-col items-end gap-1 text-[10px] xl:text-[11px] font-extrabold tracking-[0.25em] text-white/90 text-right drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] pb-0.5">
+                        {data.cornerLabels.bottomRight.map((t, i) => <motion.span key={i} variants={itemVariant}>{t}</motion.span>)}
+                    </div>
+                    <motion.div
+                        animate={{ opacity: [0.4, 1, 0.4], scaleY: [0.85, 1.05, 0.85] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        className="w-[2px] rounded-full bg-gradient-to-t from-[#C99A2E] via-[#F4D068] to-transparent origin-bottom"
+                    />
                 </div>
-                <motion.div variants={lineVariant} className="w-[1px] bg-gradient-to-t from-[#C99A2E] to-[#C99A2E]/0"></motion.div>
+                <motion.div
+                    animate={{ opacity: [0.4, 1, 0.4], scaleX: [0.75, 1.05, 0.75] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                    className="h-[2px] w-full mt-2.5 rounded-full bg-gradient-to-l from-[#C99A2E] via-[#F4D068] to-transparent origin-right"
+                />
             </motion.div>
 
             <motion.div
@@ -88,7 +131,7 @@ export default function Desktop() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: false, margin: "-100px" }}
-                className="max-w-[1250px] w-full relative z-10"
+                className="max-w-[1060px] xl:max-w-[1120px] w-full relative z-20"
             >
                 <div
                     className="w-full rounded-[4px] pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden shadow-[0_0_50px_rgba(4,16,41,0.5)]"
@@ -120,10 +163,10 @@ export default function Desktop() {
 
                     <motion.div variants={itemVariant} className="flex items-center justify-center gap-5 mb-16 px-10 relative z-10">
                         <motion.button
-                            whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(213,170,69,0.3)' }}
+                            whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(213,170,69,0.4)', y: -2 }}
                             whileTap={{ scale: 0.98 }}
                             className="font-bold text-[13px] px-8 py-3.5 rounded-[4px] transition-all duration-300 flex items-center gap-2.5 cursor-pointer text-[#071A49] uppercase tracking-[0.05em]"
-                            style={{ background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' }}
+                            style={{ background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)', boxShadow: '0 10px 20px -5px rgba(213,170,69,0.2)' }}
                         >
                             <span>{data.buttons.primary}</span>
                             <ArrowRight size={16} strokeWidth={2.5} />
@@ -146,11 +189,15 @@ export default function Desktop() {
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                             >
                                 <div className="flex items-start gap-4 px-8">
-                                    <div className="mt-0.5">
+                                    <motion.div 
+                                        className="mt-0.5"
+                                        whileHover={{ rotate: 10, scale: 1.1 }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                    >
                                         {i === 0 && <ShieldCheck size={26} strokeWidth={2} className="text-[#34D399]" />}
                                         {i === 1 && <Users size={26} strokeWidth={2} className="text-[#6B8AFF]" />}
                                         {i === 2 && <BarChart2 size={26} strokeWidth={2} className="text-[#D5AA45]" />}
-                                    </div>
+                                    </motion.div>
                                     <div className="text-left">
                                         <div className="text-[13px] font-bold text-white mb-1.5 leading-[1.3]">{badge.title}</div>
                                         <div className="text-[12px] text-white/50 font-medium">{badge.subtitle}</div>

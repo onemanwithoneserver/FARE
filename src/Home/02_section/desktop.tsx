@@ -215,8 +215,8 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-5">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[4px] bg-[#6B8AFF]/15 flex items-center justify-center text-[#6B8AFF] shadow-[0_0_15px_rgba(107,138,255,0.25)] border border-[#6B8AFF]/30">
-                                                        <BookOpen size={20} strokeWidth={2} />
+                                                    <div className="w-11 h-11 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(107,138,255,0.3)]">
+                                                        <BookOpen size={20} strokeWidth={2.5} />
                                                     </div>
                                                     <div>
                                                         <div className="text-[#6B8AFF] text-[10px] font-black tracking-[0.2em] mb-1">{data.browser.content['01'].tag}</div>
@@ -324,14 +324,7 @@ export default function Desktop() {
                                                 </motion.div>
                                             ) : (
                                                 <div className="flex flex-col">
-                                                    <div className="w-full h-[5px] bg-white/[0.06] rounded-full mb-5 overflow-hidden border border-white/[0.08] shadow-[inset_0_1px_2px_rgba(0,0,0,0.3)]">
-                                                        <motion.div 
-                                                            initial={false}
-                                                            animate={{ width: `${((currentQIndex + 1) / totalQuestions) * 100}%` }} 
-                                                            transition={{ duration: 0.35, ease: "easeOut" }}
-                                                            className="h-full bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] rounded-full shadow-[0_0_10px_rgba(213,170,69,0.5)]"
-                                                        />
-                                                    </div>
+
 
                                                     <div className="bg-white/[0.02] backdrop-blur-sm p-6 rounded-[4px] mb-4 border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
                                                         <div className="flex items-center justify-between mb-3">
@@ -454,8 +447,8 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-6">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[4px] bg-[#34D399]/15 flex items-center justify-center text-[#34D399] shadow-[0_0_15px_rgba(52,211,153,0.25)] border border-[#34D399]/30">
-                                                        <Target size={20} strokeWidth={2} />
+                                                    <div className="w-11 h-11 rounded-[4px] bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(52,211,153,0.3)]">
+                                                        <Target size={20} strokeWidth={2.5} />
                                                     </div>
                                                     <div>
                                                         <div className="text-[#34D399] text-[10px] font-black tracking-[0.2em] mb-1">{data.browser.content['02'].tag}</div>
@@ -578,8 +571,8 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-6">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[4px] bg-[#A78BFA]/15 flex items-center justify-center text-[#A78BFA] shadow-[0_0_15px_rgba(167,139,250,0.25)] border border-[#A78BFA]/30">
-                                                        <BarChart2 size={20} strokeWidth={2} />
+                                                    <div className="w-11 h-11 rounded-[4px] bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(167,139,250,0.3)]">
+                                                        <BarChart2 size={20} strokeWidth={2.5} />
                                                     </div>
                                                     <div>
                                                         <div className="text-[#A78BFA] text-[10px] font-black tracking-[0.2em] mb-1">{data.browser.content['03'].tag}</div>
@@ -653,8 +646,8 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-6">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[4px] bg-[#D5AA45]/15 flex items-center justify-center text-[#D5AA45] shadow-[0_0_15px_rgba(213,170,69,0.25)] border border-[#D5AA45]/30">
-                                                        <CheckCircle size={20} strokeWidth={2} />
+                                                    <div className="w-11 h-11 rounded-[4px] bg-gradient-to-br from-[#FBBF24] to-[#D97706] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(213,170,69,0.3)]">
+                                                        <CheckCircle size={20} strokeWidth={2.5} />
                                                     </div>
                                                     <div>
                                                         <div className="text-[10px] font-black tracking-[0.2em] mb-1" style={{ color: '#D5AA45' }}>{data.browser.content['04'].tag}</div>
