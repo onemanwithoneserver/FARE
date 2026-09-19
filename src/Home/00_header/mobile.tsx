@@ -8,7 +8,7 @@ export default function Mobile() {
                 <img
                     src={logo}
                     alt="FARE — Skill Enhancement for Real Estate"
-                    className="h-[40px] w-auto"
+                    className="h-[80px] w-auto"
                 />
             </div>
 

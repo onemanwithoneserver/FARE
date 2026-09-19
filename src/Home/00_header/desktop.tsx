@@ -9,7 +9,7 @@ export default function Desktop() {
                 <img
                     src={logo}
                     alt="FARE — Skill Enhancement for Real Estate"
-                    className="h-[56px] w-auto transition-transform duration-500 group-hover:scale-[1.01]"
+                    className="h-[112px] w-auto transition-transform duration-500 group-hover:scale-[1.01]"
                 />
             </div>
 
