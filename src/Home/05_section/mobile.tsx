@@ -2,32 +2,40 @@ import logo from '../../Components/FARE_Logo/SVG/Primary Logo.svg';
 
 export default function Mobile() {
     return (
-        <footer className="w-full bg-[#050914] py-5 px-5 flex flex-col font-['Inter',sans-serif] border-t border-white/[0.04] items-center text-center gap-4">
+        <footer className="w-full bg-[#111] text-white py-12 px-6 border-t border-[#333] font-['Inter',sans-serif]">
+            <div className="w-full flex flex-col gap-10">
+                
+                {/* Brand & Copyright */}
+                <div className="flex flex-col gap-5">
+                    <img src={logo} alt="FARE Logo" className="h-8 w-auto brightness-0 invert opacity-90" />
+                    <p className="text-[13px] text-[#888] leading-relaxed">
+                        The finishing academy for real estate professionals. Built to elevate industry standards.
+                    </p>
+                </div>
 
-            <div className="flex items-center gap-3">
-                <img src={logo} alt="FARE Logo" className="h-6 w-auto brightness-0 invert opacity-70" style={{ filter: 'brightness(0) invert(1)' }} />
-                <div className="w-px h-3 bg-white/[0.08]"></div>
-                <span className="text-slate-500 text-[10px] font-medium">
-                    Finishing Academy for Real Estate
-                </span>
+                {/* Links */}
+                <div className="grid grid-cols-2 gap-8">
+                    <div className="flex flex-col gap-4">
+                        <span className="text-[11px] font-bold tracking-[0.2em] text-[#555] uppercase">Platform</span>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">For Companies</a>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">For Trainers</a>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">For Professionals</a>
+                    </div>
+                    <div className="flex flex-col gap-4">
+                        <span className="text-[11px] font-bold tracking-[0.2em] text-[#555] uppercase">Company</span>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">About Us</a>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">Contact</a>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">Privacy</a>
+                    </div>
+                </div>
+
+                <div className="pt-8 border-t border-[#333]">
+                    <div className="text-[12px] text-[#666] font-medium text-center">
+                        © {new Date().getFullYear()} FARE. All rights reserved.
+                    </div>
+                </div>
+
             </div>
-
-            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
-                {['Platform', 'Companies', 'Trainers', 'About', 'Privacy', 'Terms'].map((link, idx) => (
-                    <a
-                        key={idx}
-                        href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="text-[10px] font-medium text-slate-500 hover:text-slate-300 transition-colors duration-200"
-                    >
-                        {link}
-                    </a>
-                ))}
-            </div>
-
-            <span className="text-[10px] text-slate-600 font-medium">
-                © 2026 FARE
-            </span>
-
         </footer>
     );
 }

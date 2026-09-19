@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -22,13 +22,23 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: #f4f5f7;
-    color: #333333;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f7f8fa;
+    color: #111111;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
+  /* Reset border radius for structural elements based on guidelines */
+  .rounded-lg { border-radius: 4px !important; }
+  .rounded-xl { border-radius: 4px !important; }
+  .rounded-2xl { border-radius: 4px !important; }
+  .rounded-3xl { border-radius: 4px !important; }
+  .rounded-md { border-radius: 2px !important; }
+  
+  /* Retain circular radius ONLY for specific classes we control via utility */
+  .rounded-full { border-radius: 9999px !important; }
 
   ::-webkit-scrollbar {
     width: 6px;
@@ -46,186 +56,92 @@
 }
 
 @layer utilities {
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .luxury-shadow-sm {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  .luxury-shadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03), 0 12px 24px rgba(0, 0, 0, 0.02);
   }
 
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-32px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  .luxury-shadow-lg {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.04), 0 32px 80px rgba(0, 0, 0, 0.05);
   }
 
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(32px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes gentleFloat {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
-  }
-
-  @keyframes glowPulse {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
-    }
-    50% {
-      box-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
-    }
-  }
-
-  @keyframes subtleGradientShift {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 0.5s ease-out both;
-  }
-
-  .animate-slide-in-left {
-    animation: slideInLeft 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  .animate-slide-in-right {
-    animation: slideInRight 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  .animate-gentle-float {
-    animation: gentleFloat 6s ease-in-out infinite;
-  }
-
-  .animate-gentle-float-delayed {
-    animation: gentleFloat 7s ease-in-out 1s infinite;
-  }
-
-  .animate-gentle-float-slow {
-    animation: gentleFloat 8s ease-in-out 0.5s infinite;
-  }
-
-  .animate-gentle-float-slower {
-    animation: gentleFloat 9s ease-in-out 2s infinite;
-  }
-
-  .animate-shimmer {
-    background-size: 200% 100%;
-    animation: shimmer 3s ease-in-out infinite;
-  }
-
-  .animate-glow-pulse {
-    animation: glowPulse 4s ease-in-out infinite;
-  }
-
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  .delay-400 { animation-delay: 400ms; }
-  .delay-500 { animation-delay: 500ms; }
-  .delay-600 { animation-delay: 600ms; }
-  .delay-700 { animation-delay: 700ms; }
-
-  .premium-shadow-sm {
-    box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.04),
-      0 4px 12px rgba(0, 0, 0, 0.03);
-  }
-
-  .premium-shadow {
-    box-shadow:
-      0 1px 3px rgba(0, 0, 0, 0.06),
-      0 6px 16px rgba(0, 0, 0, 0.04),
-      0 20px 40px rgba(0, 0, 0, 0.03);
-  }
-
-  .premium-shadow-lg {
-    box-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.06),
-      0 8px 24px rgba(0, 0, 0, 0.06),
-      0 32px 64px rgba(0, 0, 0, 0.06);
-  }
-
-  .premium-shadow-dark {
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.3),
-      0 16px 48px rgba(0, 0, 0, 0.25),
-      0 0 40px rgba(59, 130, 246, 0.06);
-  }
-
-  .premium-shadow-float {
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.12),
-      0 2px 8px rgba(0, 0, 0, 0.06);
+  .luxury-shadow-dark {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 16px 48px rgba(0, 0, 0, 0.3), 0 32px 80px rgba(0, 0, 0, 0.2);
   }
 
   .glass-light {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
   }
 
   .glass-dark {
-    background: rgba(16, 23, 42, 0.8);
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    background: rgba(10, 17, 40, 0.7);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+  }
+  
+  .glass-safari {
+    background: rgba(250, 250, 252, 0.85);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 
-  .premium-border-light {
-    border: 1px solid rgba(255, 255, 255, 0.12);
+  .glass-safari-dark {
+    background: rgba(40, 40, 42, 0.85);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  .premium-border-subtle {
-    border: 1px solid rgba(226, 232, 240, 0.6);
+  .luxury-border-light {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .luxury-border {
+    border: 1px solid rgba(0, 0, 0, 0.06);
   }
 
   .premium-gradient-text {
-    background: linear-gradient(135deg, #D4AF37 0%, #F5D76E 50%, #D4AF37 100%);
+    background: linear-gradient(135deg, #111111 0%, #333333 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #A88645 0%, #D4AF37 50%, #F5D76E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float 7s ease-in-out 1.5s infinite;
+  }
+  
+  @keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 15s ease infinite;
+  }
 }
+

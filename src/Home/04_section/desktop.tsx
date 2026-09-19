@@ -1,50 +1,53 @@
+import { motion } from 'motion/react';
+import { ArrowRight } from 'lucide-react';
+
 export default function Desktop() {
     return (
-        <section className="w-full bg-[#0A1128] flex flex-col items-center justify-center font-['Inter',sans-serif] relative overflow-hidden py-24 px-6">
+        <section className="w-full bg-[#fdfdfd] py-24 px-12 flex justify-center font-['Inter',sans-serif] relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-radial from-[#D4AF37]/[0.04] to-transparent rounded-full blur-[100px]"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-[#D4AF37]/[0.03] to-transparent rounded-full blur-[100px]"></div>
             </div>
 
-            <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.03]">
-                <div className="absolute top-10 left-32 text-[18rem] font-black text-transparent" style={{ WebkitTextStroke: '1.5px white' }}>02</div>
-                <div className="absolute bottom-10 right-32 text-[18rem] font-black text-transparent" style={{ WebkitTextStroke: '1.5px white' }}>04</div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[28rem] font-black text-transparent" style={{ WebkitTextStroke: '1.5px white' }}>03</div>
-            </div>
+            <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="max-w-[1200px] w-full relative z-10"
+            >
+                <div className="w-full bg-[#111] rounded-lg p-16 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-dark border border-[#333]">
+                    
+                    {/* Inner glowing core */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-radial from-[#D4AF37]/10 to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
-            <div className="z-10 flex flex-col items-center text-center max-w-[850px] animate-fade-in-up">
+                    <div className="flex items-center gap-4 mb-8 relative z-10">
+                        <div className="w-10 h-[2px] bg-gradient-to-r from-transparent to-[#D4AF37]"></div>
+                        <span className="text-[#D4AF37] font-bold text-[12px] tracking-[0.25em] uppercase">
+                            Ready to Transform?
+                        </span>
+                        <div className="w-10 h-[2px] bg-gradient-to-l from-transparent to-[#D4AF37]"></div>
+                    </div>
 
-                <div className="flex items-center gap-4 mb-7">
-                    <div className="w-8 h-[1px] bg-gradient-to-r from-transparent to-[#D4AF37]"></div>
-                    <span className="text-[#D4AF37] font-bold text-[11px] tracking-[0.25em] uppercase">
-                        Take The Next Step
-                    </span>
-                    <div className="w-8 h-[1px] bg-gradient-to-l from-transparent to-[#D4AF37]"></div>
+                    <h2 className="text-[4.5rem] leading-[0.95] font-black tracking-[-0.02em] text-white uppercase mb-8 relative z-10">
+                        The Standard<br/>For Excellence.
+                    </h2>
+
+                    <p className="text-[#999] text-[16px] font-medium max-w-[600px] leading-relaxed mb-10 relative z-10">
+                        Join top real estate companies, trainers, and professionals who use FARE to build, practise, and benchmark capabilities.
+                    </p>
+
+                    <div className="flex items-center gap-5 relative z-10">
+                        <button className="bg-[#D4AF37] text-[#111] font-bold px-8 py-4 rounded-md hover:bg-[#F5D76E] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.3)] flex items-center gap-3">
+                            Start Free Trial
+                            <ArrowRight size={18} strokeWidth={2.5} />
+                        </button>
+                        <button className="bg-transparent border border-[#333] text-white font-bold px-8 py-4 rounded-md hover:bg-white/[0.05] hover:border-[#555] transition-all duration-300">
+                            Book a Demo
+                        </button>
+                    </div>
+
                 </div>
-
-                <h2 className="text-[5rem] leading-[0.98] font-black tracking-[-0.02em] uppercase mb-7">
-                    <span className="block text-white">Build Better</span>
-                    <span className="block text-[#D4AF37]">Capability</span>
-                    <span className="block text-white">In Real Estate.</span>
-                </h2>
-
-                <p className="text-slate-400 font-medium text-[16px] max-w-[560px] mb-10 leading-relaxed">
-                    FARE brings real-estate-specific learning, practical skill development and continuous improvement together in one platform.
-                </p>
-
-                <div className="flex items-center gap-5 mb-10">
-                    <button className="bg-[#D4AF37] text-[#0A1128] font-bold px-9 py-3.5 rounded-xl hover:bg-[#D4AF37]/90 hover:scale-[1.03] hover:shadow-[0_12px_32px_rgba(212,175,55,0.3)] active:scale-[0.98] transition-all duration-300 shadow-[0_4px_16px_rgba(212,175,55,0.2)] flex items-center gap-2.5">
-                        FOR COMPANIES <span>→</span>
-                    </button>
-                    <button className="bg-transparent border border-white/15 text-white font-bold px-9 py-3.5 rounded-xl hover:bg-white/[0.04] hover:border-white/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5">
-                        FOR TRAINERS <span>→</span>
-                    </button>
-                </div>
-
-                <button className="text-slate-400 hover:text-white transition-all duration-300 text-[13px] font-medium hover:translate-x-1">
-                    Professional? Join the waitlist <span>→</span>
-                </button>
-            </div>
-
+            </motion.div>
         </section>
     );
 }

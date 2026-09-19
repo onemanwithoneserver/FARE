@@ -2,32 +2,35 @@ import logo from '../../Components/FARE_Logo/SVG/Primary Logo.svg';
 
 export default function Desktop() {
     return (
-        <footer className="w-full bg-[#050914] py-5 px-12 flex justify-center font-['Inter',sans-serif] border-t border-white/[0.04]">
-            <div className="max-w-[1400px] w-full flex items-center justify-between">
-
-                <div className="flex items-center gap-4">
-                    <img src={logo} alt="FARE Logo" className="h-7 w-auto brightness-0 invert opacity-70" style={{ filter: 'brightness(0) invert(1)' }} />
-                    <div className="w-px h-4 bg-white/[0.08]"></div>
-                    <span className="text-slate-500 text-[11px] font-medium">
-                        Finishing Academy for Real Estate
-                    </span>
+        <footer className="w-full bg-[#111] text-white py-12 px-12 border-t border-[#333] font-['Inter',sans-serif]">
+            <div className="max-w-[1400px] w-full mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+                
+                {/* Brand & Copyright */}
+                <div className="flex flex-col gap-6 max-w-[300px]">
+                    <img src={logo} alt="FARE Logo" className="h-8 w-auto brightness-0 invert opacity-90" />
+                    <p className="text-[13px] text-[#888] leading-relaxed">
+                        The finishing academy for real estate professionals. Built to elevate industry standards.
+                    </p>
+                    <div className="text-[12px] text-[#666] font-medium mt-4">
+                        © {new Date().getFullYear()} FARE. All rights reserved.
+                    </div>
                 </div>
 
-                <div className="flex items-center gap-7">
-                    {['Platform', 'For Companies', 'For Trainers', 'Directory', 'About', 'Contact', 'Privacy', 'Terms'].map((link, idx) => (
-                        <a
-                            key={idx}
-                            href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="text-[11px] font-medium text-slate-500 hover:text-slate-300 transition-colors duration-200"
-                        >
-                            {link}
-                        </a>
-                    ))}
+                {/* Links */}
+                <div className="flex gap-20">
+                    <div className="flex flex-col gap-4">
+                        <span className="text-[11px] font-bold tracking-[0.2em] text-[#555] uppercase">Platform</span>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">For Companies</a>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">For Trainers</a>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">For Professionals</a>
+                    </div>
+                    <div className="flex flex-col gap-4">
+                        <span className="text-[11px] font-bold tracking-[0.2em] text-[#555] uppercase">Company</span>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">About Us</a>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">Contact</a>
+                        <a href="#" className="text-[13px] text-[#aaa] hover:text-white transition-colors">Privacy Policy</a>
+                    </div>
                 </div>
-
-                <span className="text-[11px] text-slate-600 font-medium">
-                    © 2026 FARE
-                </span>
 
             </div>
         </footer>

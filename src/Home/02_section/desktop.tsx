@@ -1,222 +1,287 @@
 import { useState } from 'react';
 import { data } from './data';
+import { motion, AnimatePresence } from 'motion/react';
+import { ChevronLeft, ChevronRight, Lock, RotateCw, Plus, Menu } from 'lucide-react';
 
 export default function Desktop() {
     const [activeTab, setActiveTab] = useState('01');
 
     return (
-        <section className="w-full bg-[#060B18] min-h-screen text-white flex justify-center py-20 px-12 font-['Inter',sans-serif] relative overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] bg-blue-900/15 rounded-full blur-[150px] pointer-events-none"></div>
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+        <section className="w-full bg-[#f9fafc] min-h-screen text-[#111] flex justify-center py-24 px-12 font-['Inter',sans-serif] relative overflow-hidden">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] bg-blue-500/5 rounded-full blur-[150px] pointer-events-none"></div>
 
             <div className="max-w-[1400px] w-full flex flex-col z-10">
-                <div className="mb-14 animate-fade-in-up">
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="mb-16"
+                >
                     <h2 className="text-[3.5rem] font-black tracking-[-0.02em] mb-2 uppercase leading-[1.05]">
                         One Platform.
                     </h2>
                     <h2 className="text-[3.5rem] font-black tracking-[-0.02em] uppercase leading-[1.05]">
-                        <span className="text-[#D4AF37]">Four Ways</span> to build<br />capability.
+                        <span className="gold-gradient-text">Four Ways</span> to build<br />capability.
                     </h2>
-                    <p className="mt-6 text-slate-400 font-medium text-[15px] max-w-[500px] leading-relaxed">
+                    <p className="mt-6 text-[#444] font-medium text-[16px] max-w-[500px] leading-relaxed">
                         Designed around the way real estate professionals learn and develop.
                     </p>
-                </div>
+                </motion.div>
 
-                <div className="flex gap-10 w-full mt-4">
+                <div className="flex gap-12 w-full mt-4">
 
-                    <div className="w-[340px] flex flex-col gap-3 animate-slide-in-left">
+                    <motion.div 
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="w-[360px] flex flex-col gap-4"
+                    >
                         {data.tabs.map((tab) => {
                             const isActive = activeTab === tab.id;
                             return (
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`w-full text-left p-5 rounded-xl border transition-all duration-400 flex gap-4 cursor-pointer group ${
+                                    className={`w-full text-left p-6 rounded-lg transition-all duration-400 flex gap-4 cursor-pointer group ${
                                         isActive
-                                        ? 'bg-[#111B33] border-[#3b82f6]/20 shadow-[0_0_24px_rgba(59,130,246,0.08),inset_0_1px_0_rgba(255,255,255,0.04)]'
-                                        : 'bg-transparent border-transparent hover:bg-white/[0.03]'
+                                        ? 'bg-white luxury-shadow border luxury-border'
+                                        : 'bg-transparent border border-transparent hover:bg-black/[0.02]'
                                     }`}
                                 >
-                                    <span className={`text-xl font-bold transition-colors duration-300 ${isActive ? 'text-[#3b82f6]' : 'text-slate-600 group-hover:text-slate-500'}`}>
+                                    <span className={`text-xl font-black transition-colors duration-300 ${isActive ? 'text-[#0A1128]' : 'text-[#888] group-hover:text-[#555]'}`}>
                                         {tab.id}
                                     </span>
                                     <div className="flex flex-col">
-                                        <div className="flex items-center gap-2">
-                                            <span className={`font-bold text-[13px] tracking-wide transition-colors duration-300 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-300'}`}>
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <span className={`font-bold text-[14px] tracking-wide transition-colors duration-300 ${isActive ? 'text-[#111]' : 'text-[#666] group-hover:text-[#333]'}`}>
                                                 {tab.title}
                                             </span>
                                         </div>
-                                        <span className={`text-[11px] mt-1 transition-colors duration-300 ${isActive ? 'text-[#3b82f6]/80' : 'text-slate-600'}`}>
+                                        <span className={`text-[12px] font-medium transition-colors duration-300 ${isActive ? 'text-[#555]' : 'text-[#999]'}`}>
                                             {tab.subtitle}
                                         </span>
-                                        {isActive && (
-                                            <p className="text-[12px] text-slate-300/80 mt-3.5 leading-relaxed animate-fade-in">
-                                                {tab.desc}
-                                            </p>
-                                        )}
+                                        <AnimatePresence>
+                                            {isActive && (
+                                                <motion.p 
+                                                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto', marginTop: 12 }}
+                                                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                                                    className="text-[13px] text-[#555] leading-relaxed overflow-hidden"
+                                                >
+                                                    {tab.desc}
+                                                </motion.p>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
                                 </button>
                             );
                         })}
-                    </div>
+                    </motion.div>
 
-                    <div className="flex-1 animate-slide-in-right">
-                        <div className="rounded-2xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.06),0_0_60px_rgba(59,130,246,0.05)]">
-
-                            <div className="h-[52px] bg-gradient-to-b from-[#3D3D3D] to-[#2A2A2A] flex items-center px-4 relative border-b border-white/[0.06]">
-                                <div className="flex items-center gap-[7px] mr-6">
-                                    <div className="w-[11px] h-[11px] rounded-full bg-[#FF5F57] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.2)]"></div>
-                                    <div className="w-[11px] h-[11px] rounded-full bg-[#FEBC2E] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.2)]"></div>
-                                    <div className="w-[11px] h-[11px] rounded-full bg-[#28C840] shadow-[inset_0_-1px_1px_rgba(0,0,0,0.2)]"></div>
+                    <motion.div 
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex-1"
+                    >
+                        {/* Realistic Safari Window */}
+                        <div className="rounded-xl overflow-hidden luxury-shadow-lg border luxury-border bg-white flex flex-col h-full">
+                            
+                            {/* Safari Chrome / Toolbar */}
+                            <div className="h-[52px] bg-[#f5f5f7] flex items-center px-4 relative border-b border-[#e5e5ea]">
+                                {/* Traffic Lights */}
+                                <div className="flex items-center gap-[8px] absolute left-4">
+                                    <div className="w-[12px] h-[12px] rounded-full bg-[#FF5F56] border border-[#E0443E] shadow-sm"></div>
+                                    <div className="w-[12px] h-[12px] rounded-full bg-[#FEBC2E] border border-[#D89E24] shadow-sm"></div>
+                                    <div className="w-[12px] h-[12px] rounded-full bg-[#27C840] border border-[#1AAB29] shadow-sm"></div>
                                 </div>
 
-                                <div className="flex items-center gap-3 mr-4">
-                                    <svg className="w-3.5 h-3.5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                                    <svg className="w-3.5 h-3.5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                                {/* Navigation Arrows */}
+                                <div className="flex items-center gap-4 absolute left-24 text-[#888]">
+                                    <ChevronLeft size={16} strokeWidth={2.5} className="opacity-40" />
+                                    <ChevronRight size={16} strokeWidth={2.5} className="opacity-40" />
                                 </div>
 
-                                <div className="flex-1 flex justify-center">
-                                    <div className="bg-[#1A1A1A]/80 rounded-lg px-5 py-[6px] flex items-center gap-2.5 min-w-[300px] justify-center border border-white/[0.06]">
-                                        <svg className="w-3 h-3 text-white/25" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-                                        <span className="text-[11px] text-white/40 font-medium">fare.app/dashboard</span>
+                                {/* URL Pill */}
+                                <div className="flex-1 flex justify-center mx-40">
+                                    <div className="bg-white rounded-md px-4 py-1.5 flex items-center justify-center gap-2 min-w-[320px] max-w-[450px] shadow-[0_1px_2px_rgba(0,0,0,0.05)] border border-[#d1d1d6]">
+                                        <Lock size={12} className="text-[#333]" />
+                                        <span className="text-[12px] text-[#111] font-medium tracking-wide">fare.app</span>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-3 ml-4">
-                                    <svg className="w-3.5 h-3.5 text-white/25" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
-                                    <svg className="w-3.5 h-3.5 text-white/25" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
+                                {/* Right Icons */}
+                                <div className="flex items-center gap-4 absolute right-4 text-[#888]">
+                                    <RotateCw size={14} strokeWidth={2.5} className="hover:text-[#333] cursor-pointer transition-colors" />
+                                    <Plus size={16} strokeWidth={2.5} className="hover:text-[#333] cursor-pointer transition-colors" />
+                                    <Menu size={16} strokeWidth={2.5} className="hover:text-[#333] cursor-pointer transition-colors ml-2" />
                                 </div>
                             </div>
 
-                            <div className="bg-[#0C1222] p-7 relative min-h-[480px] border-t border-white/[0.02]">
-                                <div className="absolute inset-0 shadow-[inset_0_2px_8px_rgba(0,0,0,0.2)] pointer-events-none rounded-b-2xl"></div>
-
-                                {activeTab === '01' && (
-                                    <div className="animate-fade-in h-full flex flex-col relative z-10">
-                                        <div className="flex items-center justify-between mb-7">
-                                            <div>
-                                                <div className="text-[#3b82f6] text-[10px] font-bold tracking-[0.15em] mb-1.5">KNOWLEDGE BANK</div>
-                                                <div className="text-[17px] font-bold text-white">RERA Regulations — Module 3</div>
-                                            </div>
-                                            <div className="bg-[#1E293B] px-4 py-1.5 rounded-full text-[11px] font-semibold text-slate-300 border border-white/[0.06]">
-                                                Q 4 of 12
-                                            </div>
-                                        </div>
-                                        <div className="w-full h-[3px] bg-[#1E293B] rounded-full mb-7 overflow-hidden">
-                                            <div className="h-full bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] w-[33%] rounded-full shadow-[0_0_12px_rgba(59,130,246,0.4)]"></div>
-                                        </div>
-                                        <div className="bg-[#151E30] p-5 rounded-xl mb-5 border border-white/[0.04]">
-                                            <p className="text-[13px] font-medium leading-relaxed">Under RERA, what is the maximum penalty a developer can face for non-disclosure of project details?</p>
-                                        </div>
-                                        <div className="grid grid-cols-2 gap-3">
-                                            {['A. 5% of estimated cost', 'B. 10% of project value', 'C. ₹10 lakh flat fine', 'D. 3 years imprisonment'].map((opt, i) => (
-                                                <button key={i} className="bg-[#151E30]/60 hover:bg-[#1A2540] border border-white/[0.04] hover:border-[#3b82f6]/20 p-4 rounded-xl text-left text-[13px] text-slate-300 transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.06)] cursor-pointer">
-                                                    {opt}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {activeTab === '02' && (
-                                    <div className="animate-fade-in h-full flex flex-col relative z-10">
-                                        <div className="flex items-center justify-between mb-7">
-                                            <div>
-                                                <div className="text-green-400 text-[10px] font-bold tracking-[0.15em] mb-1.5">SKILL PRACTICE</div>
-                                                <div className="text-[17px] font-bold text-white">Mock: Objection Handling</div>
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                                <span className="text-[11px] font-semibold text-green-400">Live Session</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex gap-4 mb-5">
-                                            <div className="flex-1 bg-[#151E30] p-5 rounded-xl border border-white/[0.04] relative overflow-hidden">
-                                                <div className="w-9 h-9 rounded-full bg-green-900/40 text-green-400 flex items-center justify-center text-[11px] font-bold mb-3">T</div>
-                                                <div className="font-bold text-[13px] mb-1">Priya Mehta</div>
-                                                <div className="text-[11px] text-slate-400 mb-5">Trainer · Certified</div>
-                                                <div className="w-full bg-[#0C1222] rounded-lg p-2.5 text-[11px] text-green-400 border border-green-500/15 font-medium">Speaking...</div>
-                                            </div>
-                                            <div className="flex-1 bg-[#151E30] p-5 rounded-xl border border-white/[0.04]">
-                                                <div className="w-9 h-9 rounded-full bg-yellow-900/40 text-yellow-400 flex items-center justify-center text-[11px] font-bold mb-3">R</div>
-                                                <div className="font-bold text-[13px] mb-1">Rahul Sharma</div>
-                                                <div className="text-[11px] text-slate-400 mb-5">Learner · L2</div>
-                                                <div className="w-full bg-[#0C1222] rounded-lg p-2.5 text-[11px] text-yellow-400 border border-yellow-500/15 font-medium">Listening</div>
-                                            </div>
-                                        </div>
-                                        <div className="bg-[#151E30]/60 p-5 rounded-xl border border-white/[0.04]">
-                                            <div className="text-green-400 text-[10px] font-bold tracking-[0.15em] mb-2.5">SCENARIO</div>
-                                            <p className="text-[13px] text-slate-300 leading-relaxed">"The buyer says: 'I'll wait 6 months — prices might drop.' How do you respond without being pushy?"</p>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {activeTab === '03' && (
-                                    <div className="animate-fade-in h-full flex flex-col relative z-10">
-                                        <div className="flex items-center justify-between mb-7">
-                                            <div>
-                                                <div className="text-purple-400 text-[10px] font-bold tracking-[0.15em] mb-1.5">FUNCTIONAL SKILLS</div>
-                                                <div className="text-[17px] font-bold text-white">Capability Benchmark</div>
-                                            </div>
-                                            <div className="bg-purple-900/25 border border-purple-500/15 px-4 py-1.5 rounded-full text-[11px] font-semibold text-purple-300">
-                                                82nd %ile
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-col gap-5">
-                                            {[
-                                                { label: 'Communication', val: 88, peer: 72 },
-                                                { label: 'Market Knowledge', val: 74, peer: 68 },
-                                                { label: 'Ethics', val: 91, peer: 80 },
-                                                { label: 'Client Mgmt', val: 65, peer: 71 },
-                                                { label: 'Documentation', val: 78, peer: 65 },
-                                            ].map((skill, i) => (
-                                                <div key={i}>
-                                                    <div className="flex justify-between text-[11px] mb-2.5">
-                                                        <span className="text-slate-300 font-medium">{skill.label}</span>
-                                                        <span className="text-slate-400">Peer {skill.peer}% <strong className="text-white ml-2">{skill.val}%</strong></span>
-                                                    </div>
-                                                    <div className="w-full h-[5px] bg-[#1E293B] rounded-full overflow-hidden relative">
-                                                        <div className="absolute top-0 left-0 h-full bg-slate-600/60 rounded-full transition-all duration-700" style={{ width: `${skill.peer}%` }}></div>
-                                                        <div className="absolute top-0 left-0 h-full bg-purple-500 rounded-full shadow-[0_0_12px_rgba(168,85,247,0.4)] transition-all duration-700" style={{ width: `${skill.val}%` }}></div>
-                                                    </div>
+                            {/* Safari Content Area (Dashboard Preview) */}
+                            <div className="bg-[#fcfcfd] flex-1 p-8 relative min-h-[520px]">
+                                <AnimatePresence mode="wait">
+                                    {activeTab === '01' && (
+                                        <motion.div 
+                                            key="01"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -10 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="h-full flex flex-col relative z-10 max-w-[600px] mx-auto"
+                                        >
+                                            <div className="flex items-center justify-between mb-8">
+                                                <div>
+                                                    <div className="text-blue-600 text-[10px] font-bold tracking-[0.15em] mb-2">KNOWLEDGE BANK</div>
+                                                    <div className="text-[20px] font-bold text-[#111]">RERA Regulations — Module 3</div>
                                                 </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
+                                                <div className="bg-blue-50 px-4 py-1.5 rounded-full text-[12px] font-semibold text-blue-700 border border-blue-100">
+                                                    Q 4 of 12
+                                                </div>
+                                            </div>
+                                            <div className="w-full h-[4px] bg-[#eee] rounded-full mb-8 overflow-hidden">
+                                                <div className="h-full bg-blue-500 w-[33%] rounded-full"></div>
+                                            </div>
+                                            <div className="bg-white p-6 rounded-lg mb-6 border border-[#eaeaea] luxury-shadow-sm">
+                                                <p className="text-[14px] font-medium leading-relaxed text-[#222]">Under RERA, what is the maximum penalty a developer can face for non-disclosure of project details?</p>
+                                            </div>
+                                            <div className="grid grid-cols-2 gap-4">
+                                                {['A. 5% of estimated cost', 'B. 10% of project value', 'C. ₹10 lakh flat fine', 'D. 3 years imprisonment'].map((opt, i) => (
+                                                    <button key={i} className="bg-white hover:bg-[#fafafa] border border-[#eaeaea] hover:border-blue-300 p-5 rounded-lg text-left text-[13px] text-[#444] transition-all duration-300 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] cursor-pointer font-medium">
+                                                        {opt}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </motion.div>
+                                    )}
 
-                                {activeTab === '04' && (
-                                    <div className="animate-fade-in h-full flex flex-col relative z-10">
-                                        <div className="flex items-center justify-between mb-5">
-                                            <div>
-                                                <div className="text-yellow-500 text-[10px] font-bold tracking-[0.15em] mb-1.5">DAILY HABITS</div>
-                                                <div className="text-[17px] font-bold text-white">Habit Tracker</div>
+                                    {activeTab === '02' && (
+                                        <motion.div 
+                                            key="02"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -10 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="h-full flex flex-col relative z-10 max-w-[600px] mx-auto"
+                                        >
+                                            <div className="flex items-center justify-between mb-8">
+                                                <div>
+                                                    <div className="text-emerald-600 text-[10px] font-bold tracking-[0.15em] mb-2">SKILL PRACTICE</div>
+                                                    <div className="text-[20px] font-bold text-[#111]">Mock: Objection Handling</div>
+                                                </div>
+                                                <div className="flex items-center gap-2 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-100">
+                                                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                                                    <span className="text-[12px] font-semibold text-emerald-700">Live Session</span>
+                                                </div>
                                             </div>
-                                            <div className="bg-orange-900/25 border border-orange-500/15 px-3.5 py-1.5 rounded-full text-[11px] font-semibold text-orange-400 flex items-center gap-1.5">
-                                                🔥 12-day streak
+                                            <div className="flex gap-5 mb-6">
+                                                <div className="flex-1 bg-white p-6 rounded-lg border border-[#eaeaea] luxury-shadow-sm relative overflow-hidden">
+                                                    <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[12px] font-bold mb-4">T</div>
+                                                    <div className="font-bold text-[14px] mb-1 text-[#111]">Priya Mehta</div>
+                                                    <div className="text-[12px] text-[#666] mb-6">Trainer · Certified</div>
+                                                    <div className="w-full bg-emerald-50/50 rounded-md p-3 text-[12px] text-emerald-700 border border-emerald-100 font-semibold flex items-center justify-center">Speaking...</div>
+                                                </div>
+                                                <div className="flex-1 bg-white p-6 rounded-lg border border-[#eaeaea] luxury-shadow-sm relative overflow-hidden">
+                                                    <div className="w-10 h-10 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-[12px] font-bold mb-4">R</div>
+                                                    <div className="font-bold text-[14px] mb-1 text-[#111]">Rahul Sharma</div>
+                                                    <div className="text-[12px] text-[#666] mb-6">Learner · L2</div>
+                                                    <div className="w-full bg-[#f9fafc] rounded-md p-3 text-[12px] text-[#666] border border-[#eaeaea] font-medium flex items-center justify-center">Listening</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="grid grid-cols-7 gap-2 flex-1 mb-4">
-                                            {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
-                                                <div key={i} className="text-[10px] text-center text-slate-500 font-bold mb-1">{d}</div>
-                                            ))}
-                                            {Array.from({ length: 28 }).map((_, i) => (
-                                                <div key={i} className={`rounded-lg border border-white/[0.04] aspect-square transition-colors duration-300 ${[4, 11, 18, 19, 27].includes(i) ? 'bg-[#151E30]' : 'bg-yellow-600/25'}`}></div>
-                                            ))}
-                                        </div>
-                                        <div className="bg-[#151E30]/60 p-4 rounded-xl border border-white/[0.04] flex justify-between items-center">
-                                            <div className="flex items-center gap-2.5">
-                                                <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                                                <span className="text-[12px] text-slate-300 font-medium">Morning market review</span>
+                                            <div className="bg-white p-6 rounded-lg border border-[#eaeaea] luxury-shadow-sm">
+                                                <div className="text-emerald-600 text-[10px] font-bold tracking-[0.15em] mb-3">SCENARIO</div>
+                                                <p className="text-[14px] text-[#444] leading-relaxed font-medium">"The buyer says: 'I'll wait 6 months — prices might drop.' How do you respond without being pushy?"</p>
                                             </div>
-                                            <span className="text-[11px] text-orange-400 font-bold">12d 🔥</span>
-                                        </div>
-                                    </div>
-                                )}
+                                        </motion.div>
+                                    )}
 
+                                    {activeTab === '03' && (
+                                        <motion.div 
+                                            key="03"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -10 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="h-full flex flex-col relative z-10 max-w-[600px] mx-auto"
+                                        >
+                                            <div className="flex items-center justify-between mb-8">
+                                                <div>
+                                                    <div className="text-indigo-600 text-[10px] font-bold tracking-[0.15em] mb-2">FUNCTIONAL SKILLS</div>
+                                                    <div className="text-[20px] font-bold text-[#111]">Capability Benchmark</div>
+                                                </div>
+                                                <div className="bg-indigo-50 border border-indigo-100 px-4 py-1.5 rounded-full text-[12px] font-bold text-indigo-700">
+                                                    82nd %ile
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-col gap-6 bg-white p-8 rounded-lg border border-[#eaeaea] luxury-shadow-sm">
+                                                {[
+                                                    { label: 'Communication', val: 88, peer: 72 },
+                                                    { label: 'Market Knowledge', val: 74, peer: 68 },
+                                                    { label: 'Ethics', val: 91, peer: 80 },
+                                                    { label: 'Client Mgmt', val: 65, peer: 71 },
+                                                    { label: 'Documentation', val: 78, peer: 65 },
+                                                ].map((skill, i) => (
+                                                    <div key={i}>
+                                                        <div className="flex justify-between text-[12px] mb-3">
+                                                            <span className="text-[#333] font-semibold">{skill.label}</span>
+                                                            <span className="text-[#888] font-medium">Peer {skill.peer}% <strong className="text-indigo-600 ml-3">{skill.val}%</strong></span>
+                                                        </div>
+                                                        <div className="w-full h-[6px] bg-[#f0f0f0] rounded-full overflow-hidden relative">
+                                                            <div className="absolute top-0 left-0 h-full bg-[#d1d1d6] rounded-full transition-all duration-1000" style={{ width: `${skill.peer}%` }}></div>
+                                                            <div className="absolute top-0 left-0 h-full bg-indigo-500 rounded-full transition-all duration-1000" style={{ width: `${skill.val}%` }}></div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </motion.div>
+                                    )}
+
+                                    {activeTab === '04' && (
+                                        <motion.div 
+                                            key="04"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -10 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="h-full flex flex-col relative z-10 max-w-[600px] mx-auto"
+                                        >
+                                            <div className="flex items-center justify-between mb-8">
+                                                <div>
+                                                    <div className="text-amber-600 text-[10px] font-bold tracking-[0.15em] mb-2">DAILY HABITS</div>
+                                                    <div className="text-[20px] font-bold text-[#111]">Habit Tracker</div>
+                                                </div>
+                                                <div className="bg-amber-50 border border-amber-100 px-4 py-1.5 rounded-full text-[12px] font-bold text-amber-700 flex items-center gap-1.5">
+                                                    🔥 12-day streak
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="bg-white p-8 rounded-lg border border-[#eaeaea] luxury-shadow-sm mb-6">
+                                                <div className="grid grid-cols-7 gap-3 mb-2">
+                                                    {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
+                                                        <div key={i} className="text-[11px] text-center text-[#999] font-bold mb-2">{d}</div>
+                                                    ))}
+                                                    {Array.from({ length: 28 }).map((_, i) => (
+                                                        <div key={i} className={`rounded-md border aspect-square transition-colors duration-300 ${[4, 11, 18, 19, 27].includes(i) ? 'bg-[#fcfcfd] border-[#eee]' : 'bg-amber-400 border-amber-500'}`}></div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="bg-white p-5 rounded-lg border border-[#eaeaea] luxury-shadow-sm flex justify-between items-center">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                                                    <span className="text-[13px] text-[#222] font-semibold">Morning market review</span>
+                                                </div>
+                                                <span className="text-[12px] text-amber-600 font-bold">12d 🔥</span>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                 </div>
             </div>
