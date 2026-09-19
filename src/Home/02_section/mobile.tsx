@@ -216,7 +216,7 @@ export default function Mobile() {
                                                 </div>
                                             </div>
                                             {!isSubmitted ? (
-                                                <span className="bg-[#6B8AFF]/15 px-2 py-0.5 rounded-[4px] text-[10px] font-bold text-[#6B8AFF] border border-[#6B8AFF]/30">
+                                                <span className="bg-[#D5AA45]/15 px-2 py-0.5 rounded-[4px] text-[10px] font-bold text-[#F3D887] border border-[#D5AA45]/35">
                                                     {answeredCount}/{totalQuestions}
                                                 </span>
                                             ) : (
@@ -229,28 +229,28 @@ export default function Mobile() {
                                             )}
                                         </div>
 
-                                        <div className="grid grid-cols-6 gap-1 mb-4">
+                                        <div className="grid grid-cols-6 gap-1 mb-3.5 p-1 rounded-[4px] bg-white/[0.02] border border-white/[0.05]">
                                             {quizQuestions.map((_, i) => {
                                                 const isAnswered = userAnswers[i] !== undefined;
                                                 const isCurrent = currentQIndex === i;
-                                                let pillBg = 'bg-white/[0.04] text-white/40 border-white/[0.06]';
+                                                let pillBg = 'bg-white/[0.04] text-white/70 border-white/[0.08]';
 
                                                 if (isSubmitted) {
                                                     const isCorrect = userAnswers[i] === quizQuestions[i].correctIndex;
                                                     pillBg = isCorrect 
-                                                        ? 'bg-[#10B981]/25 text-[#10B981] border-[#10B981]/50' 
-                                                        : 'bg-[#EF4444]/25 text-[#EF4444] border-[#EF4444]/50';
+                                                        ? 'bg-[#10B981]/25 text-[#10B981] border-[#10B981]/50 font-black' 
+                                                        : 'bg-[#EF4444]/25 text-[#EF4444] border-[#EF4444]/50 font-black';
                                                 } else if (isCurrent) {
-                                                    pillBg = 'bg-[#6B8AFF] text-white border-[#6B8AFF] shadow-[0_0_8px_rgba(107,138,255,0.6)]';
+                                                    pillBg = 'bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] text-[#071A49] font-black border-[#E4C46A] shadow-[0_1px_8px_rgba(213,170,69,0.45)]';
                                                 } else if (isAnswered) {
-                                                    pillBg = 'bg-[#6B8AFF]/20 text-[#6B8AFF] border-[#6B8AFF]/40';
+                                                    pillBg = 'bg-[#D5AA45]/15 text-[#F3D887] border-[#D5AA45]/40 font-bold';
                                                 }
 
                                                 return (
                                                     <button
                                                         key={i}
                                                         onClick={() => setCurrentQIndex(i)}
-                                                        className={`h-6 rounded-[3px] font-black text-[10px] border transition-all flex items-center justify-center cursor-pointer ${pillBg}`}
+                                                        className={`h-6 rounded-[3px] text-[10px] border transition-all flex items-center justify-center cursor-pointer ${pillBg}`}
                                                     >
                                                         {i + 1}
                                                     </button>
@@ -284,17 +284,17 @@ export default function Mobile() {
                                                         <div className="text-[9px] text-white/50">Answered</div>
                                                     </div>
                                                 </div>
-                                                <div className="flex flex-col gap-2 w-full">
+                                                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full mt-1">
                                                     <button
                                                         onClick={() => setShowReview(true)}
-                                                        className="w-full py-2.5 rounded-[4px] bg-[#6B8AFF] text-white font-bold text-[11.5px] flex items-center justify-center gap-1.5 shadow-md"
+                                                        className="w-full sm:w-auto px-4 py-2.5 rounded-[4px] bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] hover:brightness-110 text-[#071A49] font-bold text-[11.5px] transition-all flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(201,154,46,0.25)] cursor-pointer active:scale-[0.98]"
                                                     >
                                                         <Eye size={13} />
                                                         <span>Review Answers & Explanations</span>
                                                     </button>
                                                     <button
                                                         onClick={handleRestartQuiz}
-                                                        className="w-full py-2 rounded-[4px] bg-white/[0.05] text-white/80 font-bold text-[11px] border border-white/10 flex items-center justify-center gap-1.5"
+                                                        className="w-full sm:w-auto px-3.5 py-2 rounded-[4px] bg-white/[0.06] hover:bg-white/[0.12] text-white/90 hover:text-white font-semibold text-[11px] border border-white/15 transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.98]"
                                                     >
                                                         <RotateCcw size={12} />
                                                         <span>Retake Quiz</span>
@@ -303,18 +303,18 @@ export default function Mobile() {
                                             </div>
                                         ) : (
                                             <div className="flex flex-col">
-                                                <div className="w-full h-[3px] bg-white/[0.04] rounded-full mb-4 border border-white/[0.05] overflow-hidden">
+                                                <div className="w-full h-[4px] bg-white/[0.06] rounded-full mb-3.5 border border-white/[0.08] overflow-hidden">
                                                     <motion.div 
                                                         initial={false}
                                                         animate={{ width: `${((currentQIndex + 1) / totalQuestions) * 100}%` }} 
                                                         transition={{ duration: 0.3 }}
-                                                        className="h-full bg-[#6B8AFF] rounded-full shadow-[0_0_8px_#6B8AFF]" 
+                                                        className="h-full bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] rounded-full shadow-[0_0_8px_rgba(213,170,69,0.5)]" 
                                                     />
                                                 </div>
 
                                                 <div className="bg-white/[0.02] backdrop-blur-sm p-4 rounded-[4px] mb-3.5 border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
                                                     <div className="flex items-center justify-between mb-1.5">
-                                                        <span className="text-[9px] font-black text-[#6B8AFF] tracking-wider uppercase">Q {currentQIndex + 1} of {totalQuestions}</span>
+                                                        <span className="text-[9px] font-black text-[#D5AA45] tracking-wider uppercase">Q {currentQIndex + 1} of {totalQuestions}</span>
                                                         {isSubmitted && (
                                                             <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-[3px] ${userAnswers[currentQIndex] === currentQuestion.correctIndex ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#EF4444]/20 text-[#EF4444]'}`}>
                                                                 {userAnswers[currentQIndex] === currentQuestion.correctIndex ? 'Correct' : 'Incorrect'}
@@ -341,7 +341,7 @@ export default function Mobile() {
                                                                 btnStyle = 'bg-white/[0.02] border-white/[0.04] text-white/40';
                                                             }
                                                         } else if (isSelected) {
-                                                            btnStyle = 'bg-[#6B8AFF]/25 border-[#6B8AFF] text-white';
+                                                            btnStyle = 'bg-[#D5AA45]/20 border-[#D5AA45] text-white';
                                                         }
 
                                                         return (
@@ -350,7 +350,7 @@ export default function Mobile() {
                                                                 onClick={() => handleSelectOption(i)}
                                                                 className={`border p-2.5 rounded-[4px] text-left text-[11px] font-medium flex items-start gap-2 transition-all cursor-pointer ${btnStyle}`}
                                                             >
-                                                                <span className={`w-4 h-4 rounded-[3px] flex items-center justify-center text-[9px] font-black shrink-0 ${isSelected ? 'bg-[#6B8AFF] text-white' : 'bg-white/10 text-white/60'}`}>
+                                                                <span className={`w-4 h-4 rounded-[3px] flex items-center justify-center text-[9px] font-black shrink-0 ${isSelected ? 'bg-[#D5AA45] text-[#071A49]' : 'bg-white/10 text-white/60'}`}>
                                                                     {letter}
                                                                 </span>
                                                                 <span className="leading-tight">{opt}</span>
@@ -360,8 +360,8 @@ export default function Mobile() {
                                                 </div>
 
                                                 {isSubmitted && currentQuestion.explanation && (
-                                                    <div className="bg-[#6B8AFF]/10 border border-[#6B8AFF]/30 p-3 rounded-[4px] mb-3 text-[10.5px] leading-relaxed text-white/90">
-                                                        <span className="font-bold text-[#6B8AFF] mr-1">Explanation:</span>
+                                                    <div className="bg-[#D5AA45]/10 border border-[#D5AA45]/30 p-3 rounded-[4px] mb-3 text-[10.5px] leading-relaxed text-white/90">
+                                                        <span className="font-bold text-[#F3D887] mr-1">Explanation:</span>
                                                         {currentQuestion.explanation}
                                                     </div>
                                                 )}
@@ -383,7 +383,7 @@ export default function Mobile() {
                                                     {currentQIndex < totalQuestions - 1 ? (
                                                         <button
                                                             onClick={() => setCurrentQIndex(prev => Math.min(totalQuestions - 1, prev + 1))}
-                                                            className="flex items-center gap-1 px-4 py-1.5 rounded-[4px] text-[11px] font-bold bg-[#6B8AFF] text-white shadow-sm"
+                                                            className="flex items-center gap-1 px-4 py-1.5 rounded-[4px] text-[11px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#071A49] shadow-sm"
                                                         >
                                                             <span>Next</span>
                                                             <ChevronRight size={12} />
@@ -399,7 +399,7 @@ export default function Mobile() {
                                                     ) : (
                                                         <button
                                                             onClick={() => setShowReview(false)}
-                                                            className="px-3 py-1.5 rounded-[4px] text-[11px] font-bold bg-[#6B8AFF] text-white"
+                                                            className="px-3 py-1.5 rounded-[4px] text-[11px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#071A49]"
                                                         >
                                                             Scorecard
                                                         </button>

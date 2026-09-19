@@ -227,7 +227,7 @@ export default function Desktop() {
                                                 {!isSubmitted ? (
                                                     <div className="flex items-center gap-2">
                                                         <span className="text-[11.5px] font-medium text-white/50">Answered:</span>
-                                                        <span className="bg-[#6B8AFF]/15 px-3 py-1 rounded-[4px] text-[12px] font-bold text-[#6B8AFF] border border-[#6B8AFF]/30">
+                                                        <span className="bg-[#D5AA45]/15 px-3 py-1 rounded-[4px] text-[12px] font-bold text-[#F3D887] border border-[#D5AA45]/35 shadow-sm">
                                                             {answeredCount} / {totalQuestions}
                                                         </span>
                                                     </div>
@@ -242,28 +242,28 @@ export default function Desktop() {
                                                 )}
                                             </div>
 
-                                            <div className="grid grid-cols-12 gap-1.5 mb-5">
+                                            <div className="grid grid-cols-12 gap-1.5 mb-5 p-1.5 rounded-[6px] bg-white/[0.02] border border-white/[0.05]">
                                                 {quizQuestions.map((_, i) => {
                                                     const isAnswered = userAnswers[i] !== undefined;
                                                     const isCurrent = currentQIndex === i;
-                                                    let pillBg = 'bg-white/[0.04] text-white/40 border-white/[0.06]';
+                                                    let pillBg = 'bg-white/[0.04] text-white/70 border-white/[0.08] hover:bg-white/[0.09] hover:text-white hover:border-white/20';
 
                                                     if (isSubmitted) {
                                                         const isCorrect = userAnswers[i] === quizQuestions[i].correctIndex;
                                                         pillBg = isCorrect 
-                                                            ? 'bg-[#10B981]/25 text-[#10B981] border-[#10B981]/50 shadow-[0_0_8px_rgba(16,185,129,0.3)]' 
-                                                            : 'bg-[#EF4444]/25 text-[#EF4444] border-[#EF4444]/50';
+                                                            ? 'bg-[#10B981]/25 text-[#10B981] border-[#10B981]/50 shadow-[0_0_8px_rgba(16,185,129,0.3)] font-black' 
+                                                            : 'bg-[#EF4444]/25 text-[#EF4444] border-[#EF4444]/50 font-black';
                                                     } else if (isCurrent) {
-                                                        pillBg = 'bg-[#6B8AFF] text-white border-[#6B8AFF] shadow-[0_0_12px_rgba(107,138,255,0.7)] scale-105';
+                                                        pillBg = 'bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] text-[#071A49] font-black border-[#E4C46A] shadow-[0_2px_12px_rgba(213,170,69,0.45)] scale-[1.04] ring-2 ring-[#D5AA45]/20';
                                                     } else if (isAnswered) {
-                                                        pillBg = 'bg-[#6B8AFF]/20 text-[#6B8AFF] border-[#6B8AFF]/40';
+                                                        pillBg = 'bg-[#D5AA45]/15 text-[#F3D887] border-[#D5AA45]/40 shadow-[0_0_8px_rgba(213,170,69,0.15)] font-bold';
                                                     }
 
                                                     return (
                                                         <button
                                                             key={i}
                                                             onClick={() => setCurrentQIndex(i)}
-                                                            className={`h-7 rounded-[4px] font-black text-[11px] border transition-all flex items-center justify-center cursor-pointer ${pillBg}`}
+                                                            className={`h-7.5 rounded-[4px] text-[11px] border transition-all flex items-center justify-center cursor-pointer ${pillBg}`}
                                                         >
                                                             {i + 1}
                                                         </button>
@@ -305,37 +305,37 @@ export default function Desktop() {
                                                         </div>
                                                     </div>
 
-                                                    <div className="flex gap-4 w-full">
+                                                    <div className="flex flex-wrap items-center justify-center gap-3 mt-1">
                                                         <button
                                                             onClick={() => setShowReview(true)}
-                                                            className="flex-1 py-3 px-5 rounded-[4px] bg-[#6B8AFF] hover:bg-[#5879f5] text-white font-bold text-[13px] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(107,138,255,0.4)] cursor-pointer"
+                                                            className="px-5 py-2.5 rounded-[4px] bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] hover:brightness-110 text-[#071A49] font-bold text-[12.5px] transition-all flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(201,154,46,0.3)] hover:shadow-[0_6px_22px_rgba(201,154,46,0.45)] cursor-pointer active:scale-[0.98]"
                                                         >
-                                                            <Eye size={16} />
+                                                            <Eye size={15} />
                                                             <span>Review Answers & Explanations</span>
                                                         </button>
                                                         <button
                                                             onClick={handleRestartQuiz}
-                                                            className="py-3 px-5 rounded-[4px] bg-white/[0.05] hover:bg-white/[0.1] text-white font-bold text-[13px] border border-white/10 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                                                            className="px-4 py-2.5 rounded-[4px] bg-white/[0.06] hover:bg-white/[0.12] text-white/90 hover:text-white font-semibold text-[12.5px] border border-white/15 hover:border-white/30 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]"
                                                         >
-                                                            <RotateCcw size={15} />
+                                                            <RotateCcw size={14} />
                                                             <span>Retake Quiz</span>
                                                         </button>
                                                     </div>
                                                 </motion.div>
                                             ) : (
                                                 <div className="flex flex-col">
-                                                    <div className="w-full h-[4px] bg-white/[0.04] rounded-full mb-5 overflow-hidden border border-white/[0.05]">
+                                                    <div className="w-full h-[5px] bg-white/[0.06] rounded-full mb-5 overflow-hidden border border-white/[0.08] shadow-[inset_0_1px_2px_rgba(0,0,0,0.3)]">
                                                         <motion.div 
                                                             initial={false}
                                                             animate={{ width: `${((currentQIndex + 1) / totalQuestions) * 100}%` }} 
-                                                            transition={{ duration: 0.3 }}
-                                                            className="h-full bg-[#6B8AFF] rounded-full shadow-[0_0_10px_#6B8AFF]"
+                                                            transition={{ duration: 0.35, ease: "easeOut" }}
+                                                            className="h-full bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] rounded-full shadow-[0_0_10px_rgba(213,170,69,0.5)]"
                                                         />
                                                     </div>
 
                                                     <div className="bg-white/[0.02] backdrop-blur-sm p-6 rounded-[4px] mb-4 border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
                                                         <div className="flex items-center justify-between mb-3">
-                                                            <span className="text-[11px] font-black text-[#6B8AFF] tracking-wider uppercase">Question {currentQIndex + 1} of {totalQuestions}</span>
+                                                            <span className="text-[11px] font-black text-[#D5AA45] tracking-wider uppercase">Question {currentQIndex + 1} of {totalQuestions}</span>
                                                             {isSubmitted && (
                                                                 <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-[4px] ${userAnswers[currentQIndex] === currentQuestion.correctIndex ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#EF4444]/20 text-[#EF4444]'}`}>
                                                                     {userAnswers[currentQIndex] === currentQuestion.correctIndex ? 'Correct' : 'Incorrect'}
@@ -352,7 +352,7 @@ export default function Desktop() {
                                                             const isSelected = userAnswers[currentQIndex] === i;
                                                             const isCorrect = i === currentQuestion.correctIndex;
                                                             
-                                                            let btnStyle = 'bg-white/[0.03] border-white/[0.06] text-white/80 hover:bg-[#6B8AFF]/10 hover:border-[#6B8AFF]/40 hover:text-white';
+                                                            let btnStyle = 'bg-white/[0.03] border-white/[0.06] text-white/80 hover:bg-[#D5AA45]/10 hover:border-[#D5AA45]/30 hover:text-white';
 
                                                             if (isSubmitted) {
                                                                 if (isCorrect) {
@@ -363,7 +363,7 @@ export default function Desktop() {
                                                                     btnStyle = 'bg-white/[0.02] border-white/[0.04] text-white/40';
                                                                 }
                                                             } else if (isSelected) {
-                                                                btnStyle = 'bg-[#6B8AFF]/25 border-[#6B8AFF] text-white shadow-[0_0_15px_rgba(107,138,255,0.3)] scale-[1.01]';
+                                                                btnStyle = 'bg-[#D5AA45]/20 border-[#D5AA45] text-white shadow-[0_0_15px_rgba(213,170,69,0.3)] scale-[1.01]';
                                                             }
 
                                                             const letter = String.fromCharCode(65 + i);
@@ -374,7 +374,7 @@ export default function Desktop() {
                                                                     onClick={() => handleSelectOption(i)}
                                                                     className={`border p-4 rounded-[4px] text-left text-[12.5px] transition-all duration-300 font-medium cursor-pointer flex items-start gap-3 group ${btnStyle}`}
                                                                 >
-                                                                    <span className={`w-5 h-5 rounded-[4px] flex items-center justify-center text-[10.5px] font-black shrink-0 ${isSelected ? 'bg-[#6B8AFF] text-white' : 'bg-white/10 text-white/60 group-hover:bg-[#6B8AFF]/30 group-hover:text-white'}`}>
+                                                                    <span className={`w-5 h-5 rounded-[4px] flex items-center justify-center text-[10.5px] font-black shrink-0 ${isSelected ? 'bg-[#D5AA45] text-[#071A49]' : 'bg-white/10 text-white/60 group-hover:bg-[#D5AA45]/30 group-hover:text-white'}`}>
                                                                         {letter}
                                                                     </span>
                                                                     <span className="leading-snug">{opt}</span>
@@ -384,8 +384,8 @@ export default function Desktop() {
                                                     </div>
 
                                                     {isSubmitted && currentQuestion.explanation && (
-                                                        <div className="bg-[#6B8AFF]/10 border border-[#6B8AFF]/30 p-4 rounded-[4px] mb-4 text-[12px] leading-relaxed text-white/90">
-                                                            <span className="font-bold text-[#6B8AFF] mr-1.5">Explanation:</span>
+                                                        <div className="bg-[#D5AA45]/10 border border-[#D5AA45]/30 p-4 rounded-[4px] mb-4 text-[12px] leading-relaxed text-white/90">
+                                                            <span className="font-bold text-[#F3D887] mr-1.5">Explanation:</span>
                                                             {currentQuestion.explanation}
                                                         </div>
                                                     )}
@@ -416,7 +416,7 @@ export default function Desktop() {
                                                         {currentQIndex < totalQuestions - 1 ? (
                                                             <button
                                                                 onClick={() => setCurrentQIndex(prev => Math.min(totalQuestions - 1, prev + 1))}
-                                                                className="flex items-center gap-1.5 px-5 py-2 rounded-[4px] text-[12px] font-bold bg-[#6B8AFF] hover:bg-[#5879f5] text-white transition-all shadow-[0_0_15px_rgba(107,138,255,0.3)] cursor-pointer"
+                                                                className="flex items-center gap-1.5 px-5 py-2 rounded-[4px] text-[12px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] hover:brightness-110 text-[#071A49] transition-all shadow-[0_2px_10px_rgba(201,154,46,0.3)] cursor-pointer"
                                                             >
                                                                 <span>Next</span>
                                                                 <ChevronRight size={14} />
@@ -432,7 +432,7 @@ export default function Desktop() {
                                                         ) : (
                                                             <button
                                                                 onClick={() => setShowReview(false)}
-                                                                className="px-5 py-2 rounded-[4px] text-[12px] font-bold bg-[#6B8AFF] hover:bg-[#5879f5] text-white transition-all cursor-pointer"
+                                                                className="px-5 py-2 rounded-[4px] text-[12px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] hover:brightness-110 text-[#071A49] transition-all shadow-md cursor-pointer"
                                                             >
                                                                 View Scorecard
                                                             </button>
