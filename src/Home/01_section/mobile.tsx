@@ -203,7 +203,6 @@ export default function Mobile() {
                     </div>
                 </motion.div>
 
-                {/* Floating Cards */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
