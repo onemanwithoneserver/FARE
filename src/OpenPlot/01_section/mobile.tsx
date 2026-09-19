@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { ArrowRight, BookOpen, Target, CheckCircle, BarChart2 } from 'lucide-react';
+import { ArrowRight, BookOpen, Target, BarChart2 } from 'lucide-react';
 import { data } from './data';
 import React from 'react';
 

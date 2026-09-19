@@ -41,7 +41,7 @@ export default function Desktop() {
                     </motion.div>
                     
                     <motion.h2 variants={item} className="text-[3.5rem] leading-[1.05] font-black tracking-[-0.02em] mb-6" style={{ color: NAVY }}>
-                        {data.headline.split(' ').map((word, i, arr) => (
+                        {data.headline.split(' ').map((word, i) => (
                             <React.Fragment key={i}>
                                 {word === 'Open' || word === 'Plot' ? <span className="text-[#C99A2E]">{word} </span> : <span>{word} </span>}
                             </React.Fragment>

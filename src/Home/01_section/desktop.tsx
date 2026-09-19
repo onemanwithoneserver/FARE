@@ -34,7 +34,7 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full flex items-center justify-center overflow-hidden relative font-['Outfit']"
+        <section className="w-full flex items-center justify-center overflow-x-clip relative font-['Outfit'] pt-6 pb-16"
             style={{ background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)` }}
         >
             <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
@@ -47,7 +47,7 @@ export default function Desktop() {
                 <circle cx="150" cy="150" r="140" stroke={GOLD} strokeWidth="0.8" fill="none" />
             </svg>
 
-            <div className="max-w-360 w-full px-12 -py-60 flex items-center justify-between gap-10 relative z-10">
+            <div className="max-w-360 w-full px-12 flex items-center justify-between gap-10 relative z-20">
 
                 <motion.div
                     variants={container}
@@ -218,12 +218,12 @@ export default function Desktop() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
                         transition={{ delay: 0.5, duration: 0.6 }}
-                        className="absolute top-4 left-[-50px] z-30"
+                        className="absolute top-6 left-[-45px] z-30 pointer-events-auto"
                     >
                         <motion.div
-                            animate={{ y: [0, -12, 0] }}
+                            animate={{ y: [0, -10, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
+                            className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3 shadow-lg"
                         >
                             <div className="w-9 h-9 rounded-[3px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-sm">
                                 <BookOpen size={17} strokeWidth={2.5} />

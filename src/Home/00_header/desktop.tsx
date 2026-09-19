@@ -1,10 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { data } from './data';
 import logo from '../../Components/FARE_Logo/SVG/Primary Logo.svg';
 import { Search, ArrowRight, X, ChevronDown, Building2, MapPin } from 'lucide-react';
 
 export default function Desktop() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const isMobileMode = location.pathname.startsWith('/mobile');
+    const currentMode = isMobileMode ? 'mobile' : 'desktop';
+
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSearchExpanded, setIsSearchExpanded] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
@@ -12,17 +18,25 @@ export default function Desktop() {
     const searchInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 30) {
+        const handleScroll = (e?: Event) => {
+            let scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+            if (e && e.target && (e.target as HTMLElement).scrollTop !== undefined) {
+                scrollTop = (e.target as HTMLElement).scrollTop;
+            }
+            if (scrollTop > 20) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
             }
         };
 
+        document.addEventListener('scroll', handleScroll, { capture: true, passive: true });
         window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll();
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            document.removeEventListener('scroll', handleScroll, { capture: true });
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     useEffect(() => {
@@ -32,7 +46,10 @@ export default function Desktop() {
     }, [isSearchExpanded]);
 
     const LogoElement = (
-        <div className="flex items-center cursor-pointer group py-0 shrink-0">
+        <div 
+            onClick={() => navigate(`/${currentMode}/home`)}
+            className="flex items-center cursor-pointer group py-0 shrink-0"
+        >
             <img
                 src={logo}
                 alt="FARE"
@@ -85,7 +102,15 @@ export default function Desktop() {
                                                 <a
                                                     key={sIdx}
                                                     href={sub.href}
-                                                    onClick={() => setActiveDropdown(null)}
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setActiveDropdown(null);
+                                                        if (sub.title === 'Open Plots' || sub.href === '#open-plots') {
+                                                            navigate(`/${currentMode}/open-plots`);
+                                                        } else {
+                                                            navigate(`/${currentMode}/home`);
+                                                        }
+                                                    }}
                                                     className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-[#F0F4FA] transition-all group/sub cursor-pointer"
                                                 >
                                                     <div className={`p-2.5 rounded-lg shrink-0 mt-0.5 transition-all duration-300 shadow-sm group-hover/sub:scale-105 group-hover/sub:shadow-md ${
@@ -127,21 +152,19 @@ export default function Desktop() {
     );
 
     return (
-        <div className="w-full relative z-50">
-            <div className="w-full h-[68px] pointer-events-none opacity-0" aria-hidden="true" />
-
+        <div className="w-full sticky top-0 z-40 pointer-events-auto">
             <div 
-                className={`w-full transition-all duration-300 ease-out fixed left-0 right-0 z-50 ${
+                className={`w-full transition-all duration-300 ease-out ${
                     isScrolled 
-                        ? 'top-2.5 flex justify-center px-6 pointer-events-none' 
-                        : 'top-0 w-full pointer-events-auto'
+                        ? 'pt-2.5 pb-1 flex justify-center px-6' 
+                        : 'py-0 w-full'
                 }`}
             >
                 <header 
                     className={`transition-all duration-300 pointer-events-auto flex items-center justify-between relative ${
                         isScrolled
-                            ? 'w-full max-w-[1240px] h-[56px] px-6 lg:px-8 bg-white/92 backdrop-blur-xl border border-white/90 shadow-[0_12px_32px_-10px_rgba(11,29,58,0.12),0_1px_3px_rgba(11,29,58,0.05)] rounded-full mx-auto'
-                            : 'w-full h-[68px] px-8 lg:px-14 bg-white/85 backdrop-blur-md border-b border-[#0B1D3A]/[0.07] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-[4px]'
+                            ? 'w-full max-w-[1240px] h-[56px] px-6 lg:px-8 bg-white/95 backdrop-blur-xl border border-white/90 shadow-[0_12px_32px_-10px_rgba(11,29,58,0.12),0_1px_3px_rgba(11,29,58,0.05)] rounded-full mx-auto'
+                            : 'w-full h-[68px] px-8 lg:px-14 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.07] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none'
                     }`}
                 >
                     <div className="flex items-center">

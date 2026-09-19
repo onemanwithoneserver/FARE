@@ -1,29 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import type { Variants } from 'motion/react';
 import { data } from './data';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
-import React from 'react';
-
-const GOLD = '#C99A2E';
 
 export default function Mobile() {
     const [activeTab, setActiveTab] = useState(data.tabs[0].id);
 
-    const activeContent = data.tabContent[activeTab as keyof typeof data.tabContent];
-
-    const container: Variants = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1, delayChildren: 0.1 }
-        }
-    };
-
-    const item: Variants = {
-        hidden: { opacity: 0, y: 15 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-    };
+    const activeContent = data.tabContent[activeTab as keyof typeof data.tabContent] as any;
 
     return (
         <section className="w-full py-16 bg-[#0B1D3A] text-white relative font-['Outfit'] overflow-hidden">
@@ -77,11 +60,11 @@ export default function Mobile() {
                                     <p className="text-[14.5px] text-white/70 leading-relaxed mb-6">{activeContent.desc}</p>
                                     
                                     <div className="flex flex-col gap-6 mb-2">
-                                        {activeContent.sections.map((section, idx) => (
+                                        {activeContent.sections.map((section: { heading: string; items: string[] }, idx: number) => (
                                             <div key={idx}>
                                                 <h4 className="text-[13px] font-bold text-[#C99A2E] uppercase tracking-wider mb-2.5">{section.heading}</h4>
                                                 <ul className="flex flex-col gap-2">
-                                                    {section.items.map((item, i) => (
+                                                    {section.items.map((item: string, i: number) => (
                                                         <li key={i} className="flex items-start gap-2 text-[13.5px] text-white/80">
                                                             <CheckCircle2 size={16} className="text-[#34D399] shrink-0 mt-0.5" />
                                                             <span className="leading-snug">{item}</span>
@@ -98,7 +81,7 @@ export default function Mobile() {
                                         <div>
                                             <h4 className="text-[11px] font-bold text-white/50 uppercase tracking-wider mb-2">Journey</h4>
                                             <div className="flex flex-wrap items-center gap-1.5 font-semibold text-[#C99A2E] text-[13px]">
-                                                {activeContent.journey.split(' → ').map((step, i, arr) => (
+                                                {activeContent.journey.split(' → ').map((step: string, i: number, arr: string[]) => (
                                                     <React.Fragment key={i}>
                                                         <span>{step}</span>
                                                         {i < arr.length - 1 && <ArrowRight size={12} className="text-white/40" />}
@@ -120,7 +103,7 @@ export default function Mobile() {
                                     <div className="bg-gradient-to-br from-[#102B63] to-[#071A49] rounded-xl p-5 border border-[#C99A2E]/20 mt-2">
                                         <p className="text-[14px] font-bold italic mb-5 text-center text-white/90">"{activeContent.footerText}"</p>
                                         <div className="flex flex-col gap-2.5 w-full">
-                                            {activeContent.buttons.map((btn, idx) => (
+                                            {activeContent.buttons.map((btn: string, idx: number) => (
                                                 <button
                                                     key={idx}
                                                     className={`w-full py-3 px-4 rounded-md text-[13px] font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${

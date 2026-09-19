@@ -15,12 +15,13 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
   const isMobile = viewMode === 'mobile';
   
   const dropdownOptions = [
-    { value: 'Home', label: 'Home' },
-    { value: 'Forms', label: 'Forms' }
+    { value: 'home', label: 'Home' },
+    { value: 'open-plots', label: 'Open Plots' },
+    { value: 'forms', label: 'Forms' }
   ];
 
   return (
-    <header className="h-[60px] bg-white border-b border-[#e2e8f0] px-3 sm:px-4 md:px-6 flex items-center justify-between shrink-0 shadow-sm z-50 gap-2 sm:gap-4">
+    <header className="h-[60px] bg-white border-b border-[#e2e8f0] px-3 sm:px-4 md:px-6 flex items-center justify-between shrink-0 shadow-sm relative z-[100] gap-2 sm:gap-4 pointer-events-auto">
       <div className="flex items-center gap-3 md:gap-6 shrink-0">
         <div className="text-[#1e293b] font-black text-lg md:text-xl tracking-wide">
           FARE
@@ -61,7 +62,7 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
           <span className="text-[10px] font-bold tracking-widest text-[#94a3b8] uppercase hidden md:block">
             View
           </span>
-          <div className="w-[100px] sm:w-[125px] md:w-[140px]">
+          <div className="w-[120px] sm:w-[145px] md:w-[160px]">
             <Dropdown 
               options={dropdownOptions} 
               value={view} 

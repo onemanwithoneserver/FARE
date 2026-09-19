@@ -19,7 +19,7 @@ export default function App() {
   
   const viewMode: ViewMode = currentModeFromUrl
   const isMobile = viewMode === 'mobile'
-  const view = currentViewFromUrl.charAt(0).toUpperCase() + currentViewFromUrl.slice(1)
+  const view = currentViewFromUrl
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -37,7 +37,7 @@ export default function App() {
   }
 
   const handleViewChange = (newView: string) => {
-    navigate(`/${viewMode}/${newView.toLowerCase()}`)
+    navigate(`/${viewMode}/${newView}`)
   }
 
   return (

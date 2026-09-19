@@ -6,7 +6,6 @@ import React from 'react';
 
 const NAVY = '#0B1D3A';
 const NAVY_DEEP = '#071A49';
-const GOLD = '#C99A2E';
 
 export default function Mobile() {
     const container: Variants = {
@@ -43,7 +42,7 @@ export default function Mobile() {
                         </motion.div>
                         
                         <motion.h2 variants={item} className="text-[2.25rem] leading-[1.1] font-black tracking-[-0.02em] mb-6" style={{ color: NAVY }}>
-                            {data.headline.split('. ').map((sentence, i, arr) => (
+                            {data.headline.split('. ').map((sentence, i) => (
                                 <React.Fragment key={i}>
                                     {i === 0 ? <span>{sentence}. </span> : <span className="text-[#C99A2E] block mt-1">{sentence}</span>}
                                 </React.Fragment>

@@ -2,7 +2,6 @@ import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { BookOpen, BarChart2, Target, Users, ArrowDown } from 'lucide-react';
 import { data } from './data';
-import React from 'react';
 
 const NAVY = '#0B1D3A';
 const GOLD = '#C99A2E';

@@ -1,10 +1,16 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, Search, ArrowRight, Plus, Building2, MapPin } from 'lucide-react';
 import logo from '../../Components/FARE_Logo/SVG/Primary Logo.svg';
 import { data } from './data';
 
 export default function Mobile() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const isMobileMode = location.pathname.startsWith('/mobile');
+    const currentMode = isMobileMode ? 'mobile' : 'desktop';
+
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSearchExpanded, setIsSearchExpanded] = useState(false);
@@ -12,38 +18,47 @@ export default function Mobile() {
     const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 20) {
+        const handleScroll = (e?: Event) => {
+            let scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+            if (e && e.target && (e.target as HTMLElement).scrollTop !== undefined) {
+                scrollTop = (e.target as HTMLElement).scrollTop;
+            }
+            if (scrollTop > 20) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
             }
         };
 
+        document.addEventListener('scroll', handleScroll, { capture: true, passive: true });
         window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll();
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            document.removeEventListener('scroll', handleScroll, { capture: true });
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     return (
-        <div className="w-full relative z-50">
-            <div className="w-full h-[60px] pointer-events-none opacity-0" aria-hidden="true" />
-
+        <div className="w-full sticky top-0 z-40 pointer-events-auto">
             <div 
-                className={`w-full transition-all duration-300 fixed left-0 right-0 z-50 ${
+                className={`w-full transition-all duration-300 ${
                     isScrolled 
-                        ? 'top-2 flex justify-center px-3.5 pointer-events-none' 
-                        : 'top-0 w-full pointer-events-auto'
+                        ? 'pt-2 pb-1 flex justify-center px-3.5' 
+                        : 'py-0 w-full'
                 }`}
             >
                 <header 
-                    className={`transition-all duration-300 pointer-events-auto flex items-center justify-between ${
+                    className={`transition-all duration-300 pointer-events-auto flex items-center justify-between relative ${
                         isScrolled
-                            ? 'w-full h-[48px] px-5 bg-white/92 backdrop-blur-xl border border-white/90 shadow-[0_8px_24px_-8px_rgba(11,29,58,0.14)] rounded-full'
-                            : 'w-full h-[60px] px-5 bg-white/85 backdrop-blur-md border-b border-[#0B1D3A]/[0.06] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-[4px]'
+                            ? 'w-full h-[48px] px-5 bg-white/95 backdrop-blur-xl border border-white/90 shadow-[0_8px_24px_-8px_rgba(11,29,58,0.14)] rounded-full'
+                            : 'w-full h-[60px] px-5 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.06] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none'
                     }`}
                 >
-                    <div className="flex items-center cursor-pointer py-0 shrink-0">
+                    <div 
+                        onClick={() => navigate(`/${currentMode}/home`)}
+                        className="flex items-center cursor-pointer py-0 shrink-0"
+                    >
                         <img
                             src={logo}
                             alt="FARE — Skill Enhancement for Real Estate"
@@ -154,7 +169,15 @@ export default function Mobile() {
                                                                     <a
                                                                         key={sIdx}
                                                                         href={sub.href}
-                                                                        onClick={() => setIsOpen(false)}
+                                                                        onClick={(e) => {
+                                                                            e.preventDefault();
+                                                                            setIsOpen(false);
+                                                                            if (sub.title === 'Open Plots' || sub.href === '#open-plots') {
+                                                                                navigate(`/${currentMode}/open-plots`);
+                                                                            } else {
+                                                                                navigate(`/${currentMode}/home`);
+                                                                            }
+                                                                        }}
                                                                         className="flex items-start gap-3 p-3 rounded-lg bg-[#F8FAFD] border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/50 hover:bg-[#F0F4FA] transition-all cursor-pointer group"
                                                                     >
                                                                         <div className={`p-2.5 rounded-lg shrink-0 mt-0.5 shadow-sm ${

@@ -41,7 +41,7 @@ export default function Mobile() {
                     </motion.div>
                     
                     <motion.h2 variants={item} className="text-[2.25rem] leading-[1.1] font-black tracking-[-0.02em] mb-5" style={{ color: NAVY }}>
-                        {data.headline.split(' ').map((word, i, arr) => (
+                        {data.headline.split(' ').map((word, i) => (
                             <React.Fragment key={i}>
                                 {word === 'Open' || word === 'Plot' ? <span className="text-[#C99A2E]">{word} </span> : <span>{word} </span>}
                             </React.Fragment>
