@@ -82,7 +82,7 @@ export default function Mobile() {
                                 {activePersona.desc}
                             </p>
 
-                            <div className="flex flex-col gap-2 mb-5">
+                            <div className="flex flex-col gap-2 mb-6">
                                 {activePersona.features.map((feat, i) => (
                                     <div key={i} className="flex items-center gap-2 text-[11.5px] text-[#2C3E55]">
                                         <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 border"
@@ -121,7 +121,7 @@ export default function Mobile() {
                                 )
                             ) : (
                                 <button
-                                    className="w-full py-3 px-4 rounded-[5px] font-black text-[12px] text-white flex items-center justify-center gap-1.5"
+                                    className="w-fit py-3 px-6 rounded-[5px] font-black text-[12px] text-white flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] transition-transform"
                                     style={{ background: `linear-gradient(90deg, ${activePersona.color}, ${activePersona.color}dd)` }}
                                 >
                                     <span>{activePersona.cta}</span>

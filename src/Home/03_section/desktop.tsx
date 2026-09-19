@@ -96,7 +96,7 @@ export default function Desktop() {
                         <motion.div 
                             whileHover={{ y: -3 }}
                             transition={{ duration: 0.3 }}
-                            className="col-span-5 flex flex-col justify-between p-8 lg:p-9 rounded-[10px] bg-white border border-[#0B1D3A]/[0.08] shadow-[0_12px_40px_rgba(11,29,58,0.06)] relative overflow-hidden"
+                            className="col-span-5 flex flex-col p-8 lg:p-9 rounded-[10px] bg-white border border-[#0B1D3A]/[0.06] shadow-[0_20px_60px_rgba(11,29,58,0.04)] relative overflow-hidden"
                         >
                             <div className="relative z-10">
                                 <div className="inline-flex items-center gap-2 text-[10.5px] font-black tracking-[0.18em] uppercase px-3 py-1.5 rounded-[4px] mb-5 border"
@@ -131,7 +131,7 @@ export default function Desktop() {
                                 </div>
                             </div>
 
-                            <div className="relative z-10 pt-4 border-t border-[#0B1D3A]/[0.08]">
+                            <div className="relative z-10 pt-6 border-t border-[#0B1D3A]/[0.06] mt-auto">
                                 {activePersona.id === 'professionals' ? (
                                     waitlistJoined ? (
                                         <div className="p-3.5 rounded-[6px] bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-2.5 text-[#059669] text-[12.5px] font-bold">
@@ -159,7 +159,7 @@ export default function Desktop() {
                                     )
                                 ) : (
                                     <button
-                                        className="w-full py-3.5 px-6 rounded-[6px] font-black text-[13px] text-white transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md hover:brightness-110"
+                                        className="w-fit py-3.5 px-8 rounded-[6px] font-black text-[13px] text-white transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_4px_14px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] hover:-translate-y-0.5"
                                         style={{ background: `linear-gradient(90deg, ${activePersona.color}, ${activePersona.color}dd)` }}
                                     >
                                         <span>{activePersona.cta}</span>
@@ -172,7 +172,7 @@ export default function Desktop() {
                         <motion.div 
                             whileHover={{ y: -3 }}
                             transition={{ duration: 0.3 }}
-                            className="col-span-7 p-8 lg:p-9 rounded-[10px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.08] shadow-[0_12px_40px_rgba(11,29,58,0.04)] flex flex-col justify-center relative overflow-hidden"
+                            className="col-span-7 p-8 lg:p-9 rounded-[10px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] shadow-[0_20px_60px_rgba(11,29,58,0.03)] flex flex-col justify-center relative overflow-hidden"
                         >
                             {activePersona.id === 'companies' && activePersona.metrics && (
                                 <div className="flex flex-col relative z-10">
