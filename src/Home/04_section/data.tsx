@@ -1,21 +1,18 @@
 export const data = {
     title: "04_section",
     headline: {
-        eyebrow: "Ready to Transform?",
-        line1: "The Standard",
-        line2: "For Excellence.",
-        mobileLine1: "Build",
-        mobileLine2: "Better",
-        mobileLine3: "Capability",
-        mobileLine4: "In Real\nEstate."
+        eyebrow: "Transform Your Advisory Standard",
+        line1: "The Institutional Standard",
+        line2: "For Real Estate Excellence.",
+        subtitle: "Join premier developers, certified master trainers, and top 5% real estate practitioners who rely on FARE to build, practise, and benchmark capabilities."
     },
-    subtitle: "Join top real estate companies, trainers, and professionals who use FARE to build, practise, and benchmark capabilities.",
-    mobileSubtitle: "FARE brings real-estate-specific learning, practical skill development and continuous improvement together in one platform.",
     buttons: {
-        primary: "Start Free Trial",
-        secondary: "Book a Demo",
-        mobileCompanies: "FOR COMPANIES",
-        mobileTrainers: "FOR TRAINERS"
+        primary: "Start Free Capability Assessment",
+        secondary: "Schedule Enterprise Briefing"
     },
-    waitlist: "Professional? Join the waitlist"
+    trustBadges: [
+        { label: "100% RERA & Legal Framework Compliant", icon: "shield" },
+        { label: "Live Simulated AI & Master Coach Labs", icon: "target" },
+        { label: "Real-Time Top 5% Peer Benchmarks", icon: "chart" }
+    ]
 };

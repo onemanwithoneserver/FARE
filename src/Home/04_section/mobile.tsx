@@ -1,78 +1,73 @@
 import { motion } from 'motion/react';
-import type { Variants } from 'motion/react';
+import { ArrowRight, ShieldCheck, Target, BarChart2, Sparkles } from 'lucide-react';
 import { data } from './data';
 
 const NAVY = '#0B1D3A';
 const NAVY_DEEP = '#071A49';
-const GOLD = '#C99A2E';
-const GOLD_MID = '#D5AA45';
 const MUTED_BLUE = '#7B8DAA';
 
 export default function Mobile() {
-    const container: Variants = {
-        hidden: { opacity: 0 },
-        show: { opacity: 1, transition: { staggerChildren: 0.1 } }
-    };
-    
-    const item: Variants = {
-        hidden: { opacity: 0, y: 15 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-    };
-
     return (
         <section
-            className="w-full flex flex-col items-center justify-center font-['Inter',sans-serif] relative overflow-hidden py-16 px-6 text-center"
+            className="w-full py-16 px-4 flex justify-center font-['Inter',sans-serif] relative overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)` }}
         >
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[80px]"></div>
-            </div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
-            <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.02]">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[14rem] font-black text-transparent" style={{ WebkitTextStroke: '1.5px white' }}>04</div>
-            </div>
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.8 }}
+                className="w-full max-w-[460px] relative z-10"
+            >
+                <div
+                    className="w-full rounded-[8px] p-6 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-dark"
+                    style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)', border: '1px solid rgba(255,255,255,0.1)' }}
+                >
+                    <div className="flex items-center gap-2 mb-3 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08]">
+                        <Sparkles size={11} className="text-[#D5AA45]" />
+                        <span className="font-bold text-[9px] tracking-[0.2em] uppercase text-[#F3D887]">
+                            {data.headline.eyebrow}
+                        </span>
+                    </div>
 
-            <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: false }} className="z-10 flex flex-col items-center w-full">
+                    <h2 className="text-[2rem] leading-[1.05] font-black tracking-[-0.02em] text-white uppercase mb-3">
+                        {data.headline.line1} <span className="gold-gradient-text">{data.headline.line2}</span>
+                    </h2>
 
-                <motion.div variants={item} className="flex items-center gap-2 mb-5 justify-center">
-                    <div className="w-4 h-[1.5px]" style={{ background: `linear-gradient(90deg, transparent, ${GOLD})` }}></div>
-                    <span className="font-bold text-[9px] tracking-[0.25em] uppercase" style={{ color: GOLD_MID }}>
-                        {data.headline.eyebrow}
-                    </span>
-                    <div className="w-4 h-[1.5px]" style={{ background: `linear-gradient(270deg, transparent, ${GOLD})` }}></div>
-                </motion.div>
+                    <p className="text-[12px] font-medium leading-relaxed mb-6" style={{ color: MUTED_BLUE }}>
+                        {data.headline.subtitle}
+                    </p>
 
-                <motion.h2 variants={item} className="text-[2.75rem] leading-[0.98] font-black tracking-[-0.02em] uppercase mb-6 whitespace-pre-line">
-                    <span className="block text-white">{data.headline.mobileLine1}</span>
-                    <span className="block text-white">{data.headline.mobileLine2}</span>
-                    <span className="block" style={{ color: GOLD_MID }}>{data.headline.mobileLine3}</span>
-                    <span className="block text-white">{data.headline.mobileLine4}</span>
-                </motion.h2>
+                    <div className="flex flex-col gap-2.5 w-full mb-6">
+                        <button
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            className="w-full py-3.5 px-5 rounded-[5px] font-black text-[12px] flex items-center justify-center gap-2 text-[#071A49] uppercase tracking-wider shadow-lg"
+                            style={{ background: 'linear-gradient(90deg, #C99A2E, #E2C068)' }}
+                        >
+                            <span>{data.buttons.primary}</span>
+                            <ArrowRight size={14} strokeWidth={2.5} />
+                        </button>
+                        <button
+                            className="w-full py-3 px-5 rounded-[5px] font-bold text-[12px] text-white bg-white/[0.04] border border-white/10"
+                        >
+                            {data.buttons.secondary}
+                        </button>
+                    </div>
 
-                <motion.p variants={item} className="font-medium text-[12px] mb-8 max-w-[300px] leading-relaxed" style={{ color: MUTED_BLUE }}>
-                    {data.mobileSubtitle}
-                </motion.p>
-
-                <motion.div variants={item} className="flex flex-col gap-3.5 w-full max-w-[300px] mb-8">
-                    <button
-                        className="font-bold py-3.5 rounded-[2px] transition-all duration-300 shadow-[0_4px_16px_rgba(201,154,46,0.2)] w-full flex items-center justify-center gap-2 active:scale-[0.98]"
-                        style={{ background: `linear-gradient(135deg, ${GOLD_MID} 0%, ${GOLD} 100%)`, color: NAVY_DEEP }}
-                    >
-                        {data.buttons.mobileCompanies} <span>→</span>
-                    </button>
-                    <button
-                        className="bg-transparent text-white font-bold py-3.5 rounded-[2px] transition-all duration-300 w-full flex items-center justify-center gap-2 active:scale-[0.98]"
-                        style={{ border: '1px solid rgba(255,255,255,0.15)' }}
-                    >
-                        {data.buttons.mobileTrainers} <span>→</span>
-                    </button>
-                </motion.div>
-
-                <motion.button variants={item} className="transition-all duration-300 text-[11px] font-medium" style={{ color: MUTED_BLUE }}>
-                    {data.waitlist.split('?')[0]}? <span className="text-white">{data.waitlist.split('?')[1]?.trim()} <span>→</span></span>
-                </motion.button>
+                    <div className="flex flex-col gap-2 w-full pt-4 border-t border-white/[0.08] text-left">
+                        {data.trustBadges.map((badge, i) => (
+                            <div key={i} className="flex items-center gap-2 text-[11px] font-medium text-white/80">
+                                {i === 0 && <ShieldCheck size={14} className="text-[#34D399] shrink-0" />}
+                                {i === 1 && <Target size={14} className="text-[#6B8AFF] shrink-0" />}
+                                {i === 2 && <BarChart2 size={14} className="text-[#A78BFA] shrink-0" />}
+                                <span>{badge.label}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </motion.div>
-
         </section>
     );
 }
