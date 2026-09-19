@@ -43,6 +43,14 @@
   .rounded-md { border-radius: 2px !important; }
   .rounded-full { border-radius: 9999px !important; }
 
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
   }

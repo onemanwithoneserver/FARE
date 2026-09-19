@@ -33,17 +33,17 @@ export default function Mobile() {
                         {data.headline.subtitle}
                     </p>
 
-                    <div className="flex flex-col gap-2 w-full mb-5">
+                    <div className="flex flex-col items-center gap-2.5 w-full mb-5">
                         <button
                             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                            className="w-full py-3 px-4 rounded-[4px] font-black text-[11.5px] flex items-center justify-center gap-1.5 text-[#071A49] uppercase tracking-wider shadow-md"
+                            className="w-fit py-3 px-6 rounded-[4px] font-black text-[11.5px] flex items-center justify-center gap-1.5 text-[#071A49] uppercase tracking-wider shadow-md active:scale-[0.98]"
                             style={{ background: 'linear-gradient(90deg, #C99A2E, #E2C068)' }}
                         >
                             <span>{data.buttons.primary}</span>
                             <ArrowRight size={13} strokeWidth={2.5} />
                         </button>
                         <button
-                            className="w-full py-2.5 px-4 rounded-[4px] font-bold text-[11.5px] text-white bg-white/[0.04] border border-white/10"
+                            className="w-fit py-2.5 px-6 rounded-[4px] font-bold text-[11.5px] text-white bg-white/[0.04] border border-white/10 active:scale-[0.98]"
                         >
                             {data.buttons.secondary}
                         </button>

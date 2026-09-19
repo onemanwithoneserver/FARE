@@ -5,14 +5,17 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-
 import Home from './Home'
 
 export default function App() {
-  const [viewMode, setViewMode] = useState<ViewMode>('desktop')
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
-  const isMobile = viewMode === 'mobile'
   const navigate = useNavigate()
   const location = useLocation()
+
+  const pathSegments = location.pathname.split('/').filter(Boolean)
+  const currentModeFromUrl: ViewMode = pathSegments[0] === 'mobile' ? 'mobile' : 'desktop'
+  const currentViewFromUrl = pathSegments[1] || 'home'
   
-  const currentPath = location.pathname.split('/')[2] || 'home'
-  const view = currentPath.charAt(0).toUpperCase() + currentPath.slice(1)
+  const viewMode: ViewMode = currentModeFromUrl
+  const isMobile = viewMode === 'mobile'
+  const view = currentViewFromUrl.charAt(0).toUpperCase() + currentViewFromUrl.slice(1)
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -25,8 +28,12 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
+  const handleViewModeChange = (newMode: ViewMode) => {
+    navigate(`/${newMode}/${currentViewFromUrl}`)
+  }
+
   const handleViewChange = (newView: string) => {
-    navigate(`/${newView.toLowerCase()}/${currentPath}`)
+    navigate(`/${viewMode}/${newView.toLowerCase()}`)
   }
 
   return (
@@ -34,7 +41,7 @@ export default function App() {
       {isHeaderVisible ? (
         <Header 
           viewMode={viewMode}
-          onViewModeChange={setViewMode}
+          onViewModeChange={handleViewModeChange}
           view={view}
           onViewChange={handleViewChange}
           onClose={() => setIsHeaderVisible(false)}
@@ -43,7 +50,7 @@ export default function App() {
         <button
           onClick={() => setIsHeaderVisible(true)}
           title="Press Ctrl+M to toggle header"
-          className="fixed top-3 right-3 z-50 px-3 py-1.5 bg-[#1e293b] text-white text-xs font-semibold rounded-[4px] shadow-lg flex items-center gap-1.5 hover:bg-[#0f172a] transition-all cursor-pointer opacity-90 hover:opacity-100"
+          className="fixed top-3 right-[#071A49] z-50 px-3 py-1.5 bg-[#1e293b] text-white text-xs font-semibold rounded-[4px] shadow-lg flex items-center gap-1.5 hover:bg-[#0f172a] transition-all cursor-pointer opacity-90 hover:opacity-100"
         >
           <span>Header Hidden (Ctrl+M)</span>
         </button>
@@ -52,10 +59,11 @@ export default function App() {
       <main className={`flex-1 w-full overflow-hidden bg-[#f0f2f5] relative ${isHeaderVisible ? 'h-[calc(100vh-60px)]' : 'h-screen'}`}>
         <MobileViewport isMobile={isMobile}>
           <Routes>
-            <Route path="/" element={<Navigate to={`/${viewMode}/home`} replace />} />
-            <Route path="/:viewMode" element={<Navigate to={`/${viewMode}/home`} replace />} />
-            <Route path="/:viewMode/home" element={<Home isMobile={isMobile} />} />
-            <Route path="/:viewMode/forms" element={<Home isMobile={isMobile} />} />
+            <Route path="/" element={<Navigate to="/desktop/home" replace />} />
+            <Route path="/:mode" element={<Navigate to={`/${viewMode}/home`} replace />} />
+            <Route path="/:mode/home" element={<Home isMobile={isMobile} />} />
+            <Route path="/:mode/forms" element={<Home isMobile={isMobile} />} />
+            <Route path="*" element={<Navigate to="/desktop/home" replace />} />
           </Routes>
         </MobileViewport>
       </main>
