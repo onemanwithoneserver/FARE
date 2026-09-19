@@ -1,10 +1,9 @@
 export const data = {
     title: "03_section",
     headline: {
-        eyebrow: "Tailored Capability Pathways",
         line1: "What Brings You",
         line2: "To FARE?",
-        subtitle: "Choose your path to scale organizational excellence, monetize domain expertise, or accelerate personal career growth."
+        subtitle: "Choose your pathway to scale organizational excellence, monetize domain expertise, or accelerate personal career growth."
     },
     personas: [
         {
@@ -14,7 +13,7 @@ export const data = {
             desc: "Train, develop, and benchmark your advisory teams and channel partners with real-estate-specific simulation modules.",
             cta: "Schedule Enterprise Briefing",
             badge: "Institutional Solution",
-            color: "#6B8AFF",
+            color: "#2563EB",
             metrics: {
                 title: "TEAM CAPABILITY UPLIFT",
                 trend: "+18.4% Closing Velocity",
@@ -37,7 +36,7 @@ export const data = {
             desc: "Author proprietary courses, design real-world scenario mocks, and mentor the next generation of real estate leaders.",
             cta: "Apply As Certified Coach",
             badge: "Creator Ecosystem",
-            color: "#34D399",
+            color: "#059669",
             courses: [
                 { title: "RERA Compliance & Title Diligence · Level 3", learners: 342, rating: "4.9 ★" },
                 { title: "Ultra-Luxury Objection Handling Mock Lab", learners: 518, rating: "5.0 ★" },
@@ -56,7 +55,7 @@ export const data = {
             desc: "Master high-ticket negotiations, benchmark against top 5% industry performers, and earn accredited credentials.",
             cta: "Join Exclusive Early Access",
             badge: "Individual Growth",
-            color: "#D5AA45",
+            color: "#C99A2E",
             milestones: [
                 { level: "Associate Advisor", req: "RERA & Title Diligence Certified", status: "Completed" },
                 { level: "Senior Negotiator", req: "High-Ticket Mock Objection Mastery", status: "In Progress" },

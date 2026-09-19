@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck, Target, BarChart2, Sparkles } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Target, BarChart2 } from 'lucide-react';
 import { data } from './data';
 
 const NAVY = '#0B1D3A';
@@ -25,13 +25,6 @@ export default function Mobile() {
                     className="w-full rounded-[8px] p-6 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-dark"
                     style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)', border: '1px solid rgba(255,255,255,0.1)' }}
                 >
-                    <div className="flex items-center gap-2 mb-3 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08]">
-                        <Sparkles size={11} className="text-[#D5AA45]" />
-                        <span className="font-bold text-[9px] tracking-[0.2em] uppercase text-[#F3D887]">
-                            {data.headline.eyebrow}
-                        </span>
-                    </div>
-
                     <h2 className="text-[2rem] leading-[1.05] font-black tracking-[-0.02em] text-white uppercase mb-3">
                         {data.headline.line1} <span className="gold-gradient-text">{data.headline.line2}</span>
                     </h2>

@@ -1,7 +1,6 @@
 export const data = {
     title: "04_section",
     headline: {
-        eyebrow: "Transform Your Advisory Standard",
         line1: "The Institutional Standard",
         line2: "For Real Estate Excellence.",
         subtitle: "Join premier developers, certified master trainers, and top 5% real estate practitioners who rely on FARE to build, practise, and benchmark capabilities."
