@@ -1,17 +1,24 @@
 export const data = {
     title: "04_section",
+    academyText: "FARE ACADEMY",
     headline: {
-        line1: "The Institutional Standard",
-        line2: "For Real Estate Excellence.",
-        subtitle: "Join premier developers, certified master trainers, and top 5% real estate practitioners who rely on FARE to build, practise, and benchmark capabilities."
+        line1: "THE INSTITUTIONAL STANDARD",
+        line2: "FOR REAL ESTATE EXCELLENCE.",
+        subtitle: "Empowering professionals and organizations with real-world learning, practical tools, and benchmarks to build stronger people and a stronger real estate industry."
     },
     buttons: {
-        primary: "Start Free Capability Assessment",
+        primary: "EXPLORE FARE CAPABILITY PLATFORM",
         secondary: "Schedule Enterprise Briefing"
     },
     trustBadges: [
-        { label: "100% RERA & Legal Framework Compliant", icon: "shield" },
-        { label: "Live Simulated AI & Master Coach Labs", icon: "target" },
-        { label: "Real-Time Top 5% Peer Benchmarks", icon: "chart" }
-    ]
+        { title: "100% RERA & Legal Framework Compliant", subtitle: "Trusted. Compliant. Future Ready.", icon: "shield" },
+        { title: "Live Simulated AI & Master Coach Labs", subtitle: "Learn by Doing. Perform in Real Life.", icon: "target" },
+        { title: "Real-Time Top 5% Peer Benchmarks", subtitle: "Measure. Improve. Stay Ahead.", icon: "chart" }
+    ],
+    cornerLabels: {
+        topLeft: ["LEARN", "PRACTISE", "BENCHMARK", "BUILD"],
+        bottomLeft: ["BETTER", "PEOPLE", "BRIGHTER", "TOMORROW"],
+        topRight: ["REAL", "ESTATE", "PEOPLE", "PROGRESS"],
+        bottomRight: ["KNOWLEDGE", "CREATES", "OPPORTUNITY"]
+    }
 };

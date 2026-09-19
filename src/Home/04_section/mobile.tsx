@@ -1,64 +1,112 @@
 import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck, Target, BarChart2 } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Users, BarChart2 } from 'lucide-react';
 import { data } from './data';
-
-const NAVY = '#0B1D3A';
-const NAVY_DEEP = '#071A49';
-const MUTED_BLUE = '#7B8DAA';
+import bgImage from '../../assets/bg-04.jpg';
 
 export default function Mobile() {
+    const containerVariant = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+        }
+    };
+
+    const itemVariant = {
+        hidden: { opacity: 0, y: 15 },
+        show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } }
+    };
+
     return (
         <section
-            className="w-full py-14 px-4 flex justify-center font-['Outfit'] relative overflow-hidden"
-            style={{ background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)` }}
+            className="w-full min-h-screen py-16 px-4 flex flex-col items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
         >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
+            <div 
+                className="absolute inset-0 z-0"
+                style={{ 
+                    backgroundImage: `url(${bgImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 100%)',
+                    WebkitMaskImage: '-webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%)'
+                }}
+            ></div>
+
+            <div className="absolute inset-0 bg-[#071a49]/70 backdrop-blur-[2px] z-0"></div>
 
             <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.7 }}
+                variants={containerVariant}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: false, margin: "-50px" }}
                 className="w-full max-w-[460px] relative z-10"
             >
                 <div
-                    className="w-full rounded-[4px] p-5 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-dark"
-                    style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)', border: '1px solid rgba(255,255,255,0.1)' }}
+                    className="w-full rounded-[4px] pt-10 pb-6 flex flex-col items-center text-center relative overflow-hidden shadow-2xl"
+                    style={{ background: 'linear-gradient(135deg, rgba(11, 29, 58, 0.85) 0%, rgba(7, 26, 73, 0.95) 100%)', border: '1px solid rgba(255,255,255,0.1)' }}
                 >
-                    <h2 className="text-[1.85rem] leading-[1.05] font-black tracking-[-0.02em] text-white uppercase mb-2.5">
-                        {data.headline.line1} <span className="gold-gradient-text">{data.headline.line2}</span>
-                    </h2>
+                    <motion.div 
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[80px] pointer-events-none"
+                    ></motion.div>
 
-                    <p className="text-[11.5px] font-medium leading-relaxed mb-5" style={{ color: MUTED_BLUE }}>
+                    <motion.div variants={itemVariant} className="flex items-center gap-3 mb-5 relative z-10">
+                        <div className="h-[1px] w-8 bg-gradient-to-l from-[#C99A2E] to-transparent opacity-60"></div>
+                        <span className="text-[10px] font-bold tracking-[0.2em] text-[#E2C068] uppercase">{data.academyText}</span>
+                        <div className="h-[1px] w-8 bg-gradient-to-r from-[#C99A2E] to-transparent opacity-60"></div>
+                    </motion.div>
+
+                    <motion.h2 variants={itemVariant} className="text-[1.8rem] leading-[1.1] font-black tracking-tight text-white uppercase mb-4 px-2 w-full relative z-10">
+                        {data.headline.line1} <span className="text-[#C99A2E]">{data.headline.line2}</span>
+                    </motion.h2>
+
+                    <motion.p variants={itemVariant} className="text-[13px] font-medium leading-[1.6] mb-8 text-white/70 px-5 relative z-10">
                         {data.headline.subtitle}
-                    </p>
+                    </motion.p>
 
-                    <div className="flex flex-col items-center gap-2.5 w-full mb-5">
-                        <button
-                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                            className="w-fit py-3 px-6 rounded-[4px] font-black text-[11.5px] flex items-center justify-center gap-1.5 text-[#071A49] uppercase tracking-wider shadow-md active:scale-[0.98]"
-                            style={{ background: 'linear-gradient(90deg, #C99A2E, #E2C068)' }}
+                    <motion.div variants={itemVariant} className="flex flex-col items-center gap-3 mb-10 w-full px-5 relative z-10">
+                        <motion.button
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full font-bold text-[12px] py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] uppercase tracking-[0.05em]"
+                            style={{ background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' }}
                         >
                             <span>{data.buttons.primary}</span>
-                            <ArrowRight size={13} strokeWidth={2.5} />
-                        </button>
-                        <button
-                            className="w-fit py-2.5 px-6 rounded-[4px] font-bold text-[11.5px] text-white bg-white/[0.04] border border-white/10 active:scale-[0.98]"
+                            <ArrowRight size={15} strokeWidth={2.5} />
+                        </motion.button>
+                        <motion.button
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full bg-[#071A49]/50 text-white font-semibold text-[13px] py-3 rounded-[4px] border border-white/10 transition-all duration-300 cursor-pointer"
                         >
                             {data.buttons.secondary}
-                        </button>
-                    </div>
+                        </motion.button>
+                    </motion.div>
 
-                    <div className="flex flex-col gap-2 w-full pt-3.5 border-t border-white/[0.08] text-left">
+                    <motion.div variants={itemVariant} className="flex flex-col items-center w-full px-2 relative z-10">
                         {data.trustBadges.map((badge, i) => (
-                            <div key={i} className="flex items-center gap-2 text-[10.5px] font-medium text-white/80">
-                                {i === 0 && <ShieldCheck size={13} className="text-[#34D399] shrink-0" />}
-                                {i === 1 && <Target size={13} className="text-[#6B8AFF] shrink-0" />}
-                                {i === 2 && <BarChart2 size={13} className="text-[#A78BFA] shrink-0" />}
-                                <span>{badge.label}</span>
-                            </div>
+                            <motion.div 
+                                key={i} 
+                                className="flex flex-col items-center w-full"
+                                whileHover={{ scale: 1.02 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                            >
+                                <div className="flex items-center gap-4 p-4">
+                                    <div className="shrink-0">
+                                        {i === 0 && <ShieldCheck size={24} strokeWidth={2} className="text-[#34D399]" />}
+                                        {i === 1 && <Users size={24} strokeWidth={2} className="text-[#6B8AFF]" />}
+                                        {i === 2 && <BarChart2 size={24} strokeWidth={2} className="text-[#D5AA45]" />}
+                                    </div>
+                                    <div className="text-left flex-1">
+                                        <div className="text-[13px] font-bold text-white mb-1 leading-[1.2]">{badge.title}</div>
+                                        <div className="text-[11px] text-white/50 font-medium">{badge.subtitle}</div>
+                                    </div>
+                                </div>
+                                {i !== 2 && (
+                                    <div className="w-[80%] h-[1px] bg-white/10 my-1"></div>
+                                )}
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </motion.div>
         </section>
