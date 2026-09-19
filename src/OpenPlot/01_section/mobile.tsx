@@ -44,7 +44,6 @@ export default function Mobile() {
                     viewport={{ once: false }}
                     className="flex flex-col items-center text-center w-full relative z-40"
                 >
-                    {/* Tagline */}
                     <motion.div variants={item} className="flex items-center gap-2 mb-5">
                         <div className="w-6 h-[1.5px]" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }}></div>
                         <span className="font-semibold text-[9px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
@@ -53,12 +52,10 @@ export default function Mobile() {
                         <div className="w-6 h-[1.5px]" style={{ background: `linear-gradient(90deg, ${GOLD_MID}, ${GOLD})` }}></div>
                     </motion.div>
 
-                    {/* Headline — centered, 1-2 lines */}
                     <motion.h1 variants={item} className="text-[2.25rem] sm:text-[2.5rem] leading-[1.08] font-black tracking-[-0.03em] mb-5" style={{ color: NAVY }}>
                         {data.headline}
                     </motion.h1>
 
-                    {/* Subheadline */}
                     <motion.div variants={item} className="mb-1.5">
                         <h2 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>
                             {data.subheadline}
@@ -70,12 +67,10 @@ export default function Mobile() {
                         </h2>
                     </motion.div>
 
-                    {/* Description */}
                     <motion.p variants={item} className="text-[14.5px] font-medium leading-[1.65] mb-8 max-w-[420px]" style={{ color: '#3A4A63' }}>
                         {data.description}
                     </motion.p>
 
-                    {/* CTA Buttons */}
                     <motion.div variants={item} className="flex flex-col w-full gap-3 mb-8 max-w-[380px]">
                         <button
                             className="w-full text-white text-[13.5px] font-semibold px-6 py-3.5 rounded-[4px] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5"
@@ -98,7 +93,6 @@ export default function Mobile() {
                         </button>
                     </motion.div>
 
-                    {/* Feature Pills */}
                     <motion.div variants={item} className="flex flex-wrap justify-center gap-2 mb-4">
                         {data.features.map((f, i) => (
                             <span key={i} className="px-3 py-1 rounded-full text-[11px] font-semibold border border-[#0B1D3A]/10 bg-white text-[#3A4A63] shadow-[0_1px_2px_rgba(11,29,58,0.04)]">
@@ -112,7 +106,6 @@ export default function Mobile() {
                     </motion.p>
                 </motion.div>
 
-                {/* Dashboard Illustration */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}

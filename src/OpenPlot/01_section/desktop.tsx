@@ -34,14 +34,12 @@ export default function Desktop() {
             className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center overflow-x-clip relative font-['Outfit']"
             style={{ background: `linear-gradient(160deg, #FFFFFF 0%, #F8FAFD 40%, #EEF4FF 100%)` }}
         >
-            {/* Ambient background glows */}
             <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></div>
             <div className="absolute bottom-1/4 left-1/4 w-[450px] h-[450px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
 
             <div className="max-w-[1280px] w-full px-8 lg:px-12 py-16 lg:py-24 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-center">
-                    
-                    {/* LEFT COLUMN: Text Content & CTAs */}
+
                     <motion.div
                         variants={container}
                         initial="hidden"
@@ -49,7 +47,6 @@ export default function Desktop() {
                         viewport={{ once: false }}
                         className="lg:col-span-7 flex flex-col items-start text-left"
                     >
-                        {/* Tagline */}
                         <motion.div variants={item} className="flex items-center gap-3 mb-5">
                             <div className="w-8 h-[2px]" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }}></div>
                             <span className="font-bold text-[11px] tracking-[0.22em] uppercase" style={{ color: GOLD }}>
@@ -57,7 +54,6 @@ export default function Desktop() {
                             </span>
                         </motion.div>
 
-                        {/* Main Headline (1 - 2 lines) */}
                         <motion.h1
                             variants={item}
                             className="text-[2.75rem] xl:text-[3.5rem] leading-[1.1] font-black tracking-[-0.03em] mb-5 text-[#0B1D3A]"
@@ -65,7 +61,6 @@ export default function Desktop() {
                             {data.headline}
                         </motion.h1>
 
-                        {/* Subheadline & Subheadline Accent */}
                         <motion.div variants={item} className="mb-4">
                             <h2 className="text-[19px] xl:text-[21px] font-bold leading-snug text-[#0B1D3A]">
                                 {data.subheadline}
@@ -75,7 +70,6 @@ export default function Desktop() {
                             </h2>
                         </motion.div>
 
-                        {/* Description */}
                         <motion.p
                             variants={item}
                             className="text-[15.5px] font-medium leading-[1.7] text-[#3A4A63] mb-8 max-w-[580px]"
@@ -83,7 +77,6 @@ export default function Desktop() {
                             {data.description}
                         </motion.p>
 
-                        {/* CTA Buttons */}
                         <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-8">
                             <button
                                 className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[6px] hover:shadow-[0_12px_24px_rgba(11,29,58,0.22),0_0_0_1px_rgba(201,154,46,0.2)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 shadow-[0_4px_14px_rgba(11,29,58,0.18)]"
@@ -102,7 +95,6 @@ export default function Desktop() {
                             </button>
                         </motion.div>
 
-                        {/* Feature Pills */}
                         <motion.div variants={item} className="flex flex-wrap gap-2 mb-4">
                             {data.features.map((f, i) => (
                                 <span
@@ -114,13 +106,11 @@ export default function Desktop() {
                             ))}
                         </motion.div>
 
-                        {/* Footer text */}
                         <motion.p variants={item} className="text-[12px] italic text-[#0B1D3A]/55">
                             {data.footerText}
                         </motion.p>
                     </motion.div>
 
-                    {/* RIGHT COLUMN: Interactive Dashboard Visual */}
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -128,16 +118,12 @@ export default function Desktop() {
                         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         className="lg:col-span-5 relative w-full"
                     >
-                        {/* Glow effect behind card */}
                         <div className="absolute -inset-1 bg-gradient-to-r from-[#C99A2E]/20 to-[#60A5FA]/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
 
-                        {/* Card container */}
                         <div className="relative bg-gradient-to-br from-[#0B1D3A] via-[#0F2751] to-[#071A49] rounded-2xl p-7 xl:p-8 shadow-[0_25px_60px_-15px_rgba(11,29,58,0.4)] border border-[#C99A2E]/20 overflow-hidden">
-                            {/* Inner decorative light spots */}
                             <div className="absolute -top-16 -right-16 w-56 h-56 bg-[#C99A2E]/15 rounded-full blur-3xl pointer-events-none"></div>
                             <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-[#60A5FA]/12 rounded-full blur-2xl pointer-events-none"></div>
 
-                            {/* Card Header */}
                             <div className="flex items-center justify-between mb-6 relative z-10 border-b border-white/[0.08] pb-4">
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C99A2E] to-[#D5AA45] flex items-center justify-center shadow-[0_4px_12px_rgba(201,154,46,0.3)]">
@@ -160,7 +146,6 @@ export default function Desktop() {
                                 </div>
                             </div>
 
-                            {/* Stats List */}
                             <div className="flex flex-col gap-3.5 relative z-10 mb-6">
                                 {data.dashboard.stats.map((stat, i) => {
                                     const icons = [
@@ -194,7 +179,6 @@ export default function Desktop() {
                                                 </span>
                                             </div>
 
-                                            {/* Animated Progress Bar */}
                                             <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                                                 <motion.div
                                                     initial={{ width: 0 }}
@@ -209,7 +193,6 @@ export default function Desktop() {
                                 })}
                             </div>
 
-                            {/* Bottom Card Footer Banner */}
                             <div className="relative z-10 bg-white/[0.05] border border-white/[0.08] rounded-xl p-3 flex items-center justify-between">
                                 <div className="flex items-center gap-2.5">
                                     <div className="w-6 h-6 rounded-md bg-[#C99A2E] flex items-center justify-center text-white shadow-sm">

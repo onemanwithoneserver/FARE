@@ -16,7 +16,7 @@ export default function App() {
   const pathSegments = location.pathname.split('/').filter(Boolean)
   const currentModeFromUrl: ViewMode = pathSegments[0] === 'mobile' ? 'mobile' : (pathSegments[0] === 'desktop' ? 'desktop' : defaultInitialMode)
   const currentViewFromUrl = pathSegments[1] || 'home'
-  
+
   const viewMode: ViewMode = currentModeFromUrl
   const isMobile = viewMode === 'mobile'
   const view = currentViewFromUrl
@@ -43,7 +43,7 @@ export default function App() {
   return (
     <div className="flex flex-col h-screen w-full bg-[#eef2f6] font-sans relative">
       {isHeaderVisible && (
-        <Header 
+        <Header
           viewMode={viewMode}
           onViewModeChange={handleViewModeChange}
           view={view}

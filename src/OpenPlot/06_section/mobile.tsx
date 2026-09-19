@@ -3,7 +3,7 @@ import type { Variants } from 'motion/react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
 import { ArrowRight } from 'lucide-react';
-import bgImage from '../../assets/bg-04.jpg'; // Assuming the same background image is available
+import bgImage from '../../assets/bg-04.jpg';
 
 export default function Mobile() {
     const { language } = useLanguage();
@@ -26,9 +26,9 @@ export default function Mobile() {
         <section
             className="w-full py-20 px-5 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
         >
-            <div 
+            <div
                 className="absolute inset-0 z-0"
-                style={{ 
+                style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -48,13 +48,13 @@ export default function Mobile() {
             >
                 <div
                     className="w-full rounded-[4px] pt-14 pb-12 flex flex-col items-center text-center relative overflow-hidden shadow-[0_0_30px_rgba(4,16,41,0.5)]"
-                    style={{ 
-                        background: 'linear-gradient(135deg, rgba(8, 22, 51, 0.95) 0%, rgba(5, 15, 38, 0.98) 100%)', 
+                    style={{
+                        background: 'linear-gradient(135deg, rgba(8, 22, 51, 0.95) 0%, rgba(5, 15, 38, 0.98) 100%)',
                         border: '1px solid rgba(255,255,255,0.08)',
                         boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.02)'
                     }}
                 >
-                    <motion.div 
+                    <motion.div
                         animate={{ scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
                         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                         className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-full blur-[60px] pointer-events-none"

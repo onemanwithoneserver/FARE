@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-    Lock, Menu, BookOpen, Target, BarChart2, CheckCircle, ArrowRight, 
-    Share2, ChevronLeft, ChevronRight, Award, RotateCcw, Eye, Sparkles, 
+import {
+    Lock, Menu, BookOpen, Target, BarChart2, CheckCircle, ArrowRight,
+    Share2, ChevronLeft, ChevronRight, Award, RotateCcw, Eye, Sparkles,
     Flame, Check, RefreshCw
 } from 'lucide-react';
 
@@ -86,7 +86,7 @@ export default function Desktop() {
         setHabitsData(prev => prev.map(h => {
             if (h.id !== activeHabitId) return h;
             const exists = h.completedDays.includes(dayNumber);
-            const newDays = exists 
+            const newDays = exists
                 ? h.completedDays.filter(d => d !== dayNumber)
                 : [...h.completedDays, dayNumber].sort((a, b) => a - b);
             return { ...h, completedDays: newDays };
@@ -144,8 +144,8 @@ export default function Desktop() {
                                     }`}
                                 >
                                     {isActive && (
-                                        <motion.div 
-                                            layoutId="activeTabIndicator" 
+                                        <motion.div
+                                            layoutId="activeTabIndicator"
                                             className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#C99A2E] via-[#D5AA45] to-[#E2C068]"
                                         />
                                     )}
@@ -257,8 +257,8 @@ export default function Desktop() {
 
                                                     if (isSubmitted) {
                                                         const isCorrect = userAnswers[i] === quizQuestions[i].correctIndex;
-                                                        pillBg = isCorrect 
-                                                            ? 'bg-[#10B981]/25 text-[#10B981] border-[#10B981]/50 shadow-[0_0_8px_rgba(16,185,129,0.3)] font-black' 
+                                                        pillBg = isCorrect
+                                                            ? 'bg-[#10B981]/25 text-[#10B981] border-[#10B981]/50 shadow-[0_0_8px_rgba(16,185,129,0.3)] font-black'
                                                             : 'bg-[#EF4444]/25 text-[#EF4444] border-[#EF4444]/50 font-black';
                                                     } else if (isCurrent) {
                                                         pillBg = 'bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] text-[#071A49] font-black border-[#E4C46A] shadow-[0_2px_12px_rgba(213,170,69,0.45)] scale-[1.04] ring-2 ring-[#D5AA45]/20';
@@ -292,7 +292,7 @@ export default function Desktop() {
                                                     <h3 className="text-[30px] font-black text-white tracking-tight mb-2">
                                                         {score} / {totalQuestions} <span className="text-[18px] font-bold text-white/50">({accuracy}%)</span>
                                                     </h3>
-                                                    
+
                                                     <div className="inline-block px-4 py-1.5 rounded-full bg-[#D5AA45]/15 border border-[#D5AA45]/30 text-[12px] font-bold text-[#F3D887] mb-6 shadow-sm">
                                                         {accuracy >= 80 ? 'Master Real Estate Strategist (Top 5%)' : accuracy >= 50 ? 'Certified Real Estate Practitioner' : 'Developing Associate'}
                                                     </div>
@@ -351,7 +351,7 @@ export default function Desktop() {
                                                         {currentQuestion.options.map((opt, i) => {
                                                             const isSelected = userAnswers[currentQIndex] === i;
                                                             const isCorrect = i === currentQuestion.correctIndex;
-                                                            
+
                                                             let btnStyle = 'bg-white/[0.03] border-white/[0.06] text-white/80 hover:bg-[#D5AA45]/10 hover:border-[#D5AA45]/30 hover:text-white';
 
                                                             if (isSubmitted) {
@@ -369,8 +369,8 @@ export default function Desktop() {
                                                             const letter = String.fromCharCode(65 + i);
 
                                                             return (
-                                                                <button 
-                                                                    key={i} 
+                                                                <button
+                                                                    key={i}
                                                                     onClick={() => handleSelectOption(i)}
                                                                     className={`border p-4 rounded-[4px] text-left text-[12.5px] transition-all duration-300 font-medium cursor-pointer flex items-start gap-3 group ${btnStyle}`}
                                                                 >
@@ -462,7 +462,7 @@ export default function Desktop() {
                                                         <div className="text-[18px] font-bold text-white tracking-tight">{data.browser.content['02'].title}</div>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div className="flex items-center gap-2">
                                                     {data.browser.content['02'].scenarios.map((sc, i) => (
                                                         <button
@@ -472,7 +472,7 @@ export default function Desktop() {
                                                                 setSelectedMockOption(null);
                                                             }}
                                                             className={`px-3 py-1 rounded-[4px] text-[11px] font-bold border transition-all cursor-pointer ${
-                                                                activeScenarioIdx === i 
+                                                                activeScenarioIdx === i
                                                                 ? 'bg-[#34D399]/20 text-[#34D399] border-[#34D399]/40 shadow-[0_0_10px_rgba(52,211,153,0.2)]'
                                                                 : 'bg-white/[0.04] text-white/50 border-white/[0.08] hover:text-white'
                                                             }`}
@@ -611,7 +611,7 @@ export default function Desktop() {
                                                                     </span>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                             <div className="flex items-center gap-3">
                                                                 <input
                                                                     type="range"

@@ -4,19 +4,19 @@ export const dataEn = {
     title: "Header",
     navLinks: [
         { title: "Platform", href: "#platform" },
-        { 
-            title: "For Companies", 
+        {
+            title: "For Companies",
             href: "#for-companies",
             subItems: [
-                { 
-                    title: "Residential & Commercial", 
-                    desc: "Skill diagnostic labs for real estate developers & agency teams", 
-                    href: "#residential-commercial" 
+                {
+                    title: "Residential & Commercial",
+                    desc: "Skill diagnostic labs for real estate developers & agency teams",
+                    href: "#residential-commercial"
                 },
-                { 
-                    title: "Open Plots", 
-                    desc: "Specialized training for land & plot sales professionals", 
-                    href: "#open-plots" 
+                {
+                    title: "Open Plots",
+                    desc: "Specialized training for land & plot sales professionals",
+                    href: "#open-plots"
                 }
             ]
         },
@@ -30,19 +30,19 @@ export const dataTe = {
     title: "Header",
     navLinks: [
         { title: "ప్లాట్‌ఫారమ్", href: "#platform" },
-        { 
-            title: "కంపెనీల కోసం", 
+        {
+            title: "కంపెనీల కోసం",
             href: "#for-companies",
             subItems: [
-                { 
-                    title: "రెసిడెన్షియల్ & కమర్షియల్", 
-                    desc: "రియల్ ఎస్టేట్ డెవలపర్లు మరియు ఏజెన్సీ బృందాల కోసం స్కిల్ డయాగ్నోస్టిక్ ల్యాబ్‌లు", 
-                    href: "#residential-commercial" 
+                {
+                    title: "రెసిడెన్షియల్ & కమర్షియల్",
+                    desc: "రియల్ ఎస్టేట్ డెవలపర్లు మరియు ఏజెన్సీ బృందాల కోసం స్కిల్ డయాగ్నోస్టిక్ ల్యాబ్‌లు",
+                    href: "#residential-commercial"
                 },
-                { 
-                    title: "ఓపెన్ ప్లాట్స్", 
-                    desc: "భూమి & ప్లాట్ సేల్స్ నిపుణుల కోసం ప్రత్యేక శిక్షణ", 
-                    href: "#open-plots" 
+                {
+                    title: "ఓపెన్ ప్లాట్స్",
+                    desc: "భూమి & ప్లాట్ సేల్స్ నిపుణుల కోసం ప్రత్యేక శిక్షణ",
+                    href: "#open-plots"
                 }
             ]
         },

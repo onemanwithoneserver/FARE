@@ -31,9 +31,9 @@ export default function Mobile() {
     return (
         <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
-            
+
             <div className="w-full px-6 relative z-10">
-                <motion.div 
+                <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
@@ -49,7 +49,7 @@ export default function Mobile() {
                                 {sectionSubtitle}
                             </span>
                         </motion.div>
-                        
+
                         <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-6" style={{ color: NAVY }}>
                             {headlineSentences.map((sentence, i) => (
                                 <React.Fragment key={i}>
@@ -74,16 +74,16 @@ export default function Mobile() {
                         </motion.div>
                     </div>
 
-                    <motion.div 
+                    <motion.div
                         variants={item}
                         className="bg-white border border-[#0B1D3A]/10 rounded-2xl p-6 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative"
                     >
                         <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/5 rounded-bl-full rounded-tr-2xl"></div>
-                        
+
                         <h3 className="text-[18px] font-bold mb-6 relative z-10" style={{ color: NAVY_DEEP }}>
                             {data.featuresHeading}
                         </h3>
-                        
+
                         <div className="flex flex-col gap-4 relative z-10">
                             {data.features.map((feature, idx) => {
                                 const featureColors = ['bg-[#10B981]', 'bg-[#3B82F6]', 'bg-[#8B5CF6]', 'bg-[#F59E0B]', 'bg-[#EC4899]', 'bg-[#06B6D4]'];

@@ -45,21 +45,21 @@ export default function Mobile() {
 
     return (
         <div className="w-full sticky top-0 z-40 pointer-events-auto">
-            <div 
+            <div
                 className={`w-full transition-all duration-300 ${
-                    isScrolled 
-                        ? 'pt-2 pb-1 flex justify-center px-3.5' 
+                    isScrolled
+                        ? 'pt-2 pb-1 flex justify-center px-3.5'
                         : 'py-0 w-full'
                 }`}
             >
-                <header 
+                <header
                     className={`transition-all duration-300 pointer-events-auto flex items-center justify-between relative ${
                         isScrolled
                             ? 'w-full h-[48px] px-5 bg-white/95 backdrop-blur-xl border border-white/90 shadow-[0_8px_24px_-8px_rgba(11,29,58,0.14)] rounded-full'
                             : 'w-full h-[60px] px-5 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.06] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none'
                     }`}
                 >
-                    <div 
+                    <div
                         onClick={() => navigate(`/${currentMode}/home`)}
                         className="flex items-center cursor-pointer py-0 shrink-0"
                     >
@@ -73,7 +73,6 @@ export default function Mobile() {
                     </div>
 
                     <div className="flex items-center gap-1.5">
-                        {/* Globe Language Switcher */}
                         <div className="relative">
                             <button
                                 onClick={() => {
@@ -83,8 +82,8 @@ export default function Mobile() {
                                 aria-label="Change language"
                                 title="Change language / భాషను మార్చండి"
                                 className={`px-2 py-1.5 text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.05] transition-colors flex items-center gap-1 cursor-pointer ${
-                                    isLangDropdownOpen 
-                                        ? 'bg-[#0B1D3A] text-white shadow-xs rounded-[4px]' 
+                                    isLangDropdownOpen
+                                        ? 'bg-[#0B1D3A] text-white shadow-xs rounded-[4px]'
                                         : (isScrolled ? 'rounded-full' : 'rounded-[4px]')
                                 }`}
                             >
@@ -107,8 +106,8 @@ export default function Mobile() {
                                         <button
                                             onClick={() => { setLanguage('en'); setIsLangDropdownOpen(false); }}
                                             className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[12.5px] transition-all cursor-pointer ${
-                                                language === 'en' 
-                                                    ? 'bg-[#0B1D3A] text-white font-bold' 
+                                                language === 'en'
+                                                    ? 'bg-[#0B1D3A] text-white font-bold'
                                                     : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
                                             }`}
                                         >
@@ -121,8 +120,8 @@ export default function Mobile() {
                                         <button
                                             onClick={() => { setLanguage('te'); setIsLangDropdownOpen(false); }}
                                             className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[12.5px] transition-all cursor-pointer mt-1 ${
-                                                language === 'te' 
-                                                    ? 'bg-[#0B1D3A] text-white font-bold' 
+                                                language === 'te'
+                                                    ? 'bg-[#0B1D3A] text-white font-bold'
                                                     : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
                                             }`}
                                         >
@@ -249,8 +248,8 @@ export default function Mobile() {
                                                                         className="flex items-start gap-3 p-3 rounded-lg bg-[#F8FAFD] border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/50 hover:bg-[#F0F4FA] transition-all cursor-pointer group"
                                                                     >
                                                                         <div className={`p-2.5 rounded-lg shrink-0 mt-0.5 shadow-sm ${
-                                                                            sIdx === 0 
-                                                                                ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068]' 
+                                                                            sIdx === 0
+                                                                                ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068]'
                                                                                 : 'bg-gradient-to-br from-[#071A49] to-[#0F2D6B] text-[#34D399]'
                                                                         }`}>
                                                                             {sIdx === 0 ? <Building2 size={18} strokeWidth={2} /> : <MapPin size={18} strokeWidth={2} />}
@@ -307,7 +306,7 @@ export default function Mobile() {
                                         >
                                             Login
                                         </a>
-                                        <button 
+                                        <button
                                             onClick={() => setIsOpen(false)}
                                             className="bg-[#0B1D3A] text-white text-[13px] font-semibold px-5 py-2 rounded-[4px] shadow-sm flex items-center gap-1.5"
                                         >

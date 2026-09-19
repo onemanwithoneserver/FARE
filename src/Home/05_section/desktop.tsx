@@ -25,13 +25,13 @@ export default function Desktop() {
             viewport={{ once: false }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="w-full text-white py-2.5 px-8 lg:px-12 font-['Outfit'] relative overflow-hidden"
-            style={{ 
-                background: 'linear-gradient(180deg, #071A49 0%, #030D26 100%)', 
-                borderTop: '1px solid rgba(255, 255, 255, 0.08)' 
+            style={{
+                background: 'linear-gradient(180deg, #071A49 0%, #030D26 100%)',
+                borderTop: '1px solid rgba(255, 255, 255, 0.08)'
             }}
         >
             <div className="max-w-[1300px] w-full mx-auto flex justify-between items-center relative z-10 min-h-[50px] gap-4">
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, x: -15 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false }}
@@ -45,7 +45,7 @@ export default function Desktop() {
                     </span>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, x: 15 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false }}

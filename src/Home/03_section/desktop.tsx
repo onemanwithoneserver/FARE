@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-    ArrowRight, Building2, GraduationCap, UserCheck, CheckCircle, 
-    TrendingUp, Star, Users, Award, ShieldCheck, Sparkles 
+import {
+    ArrowRight, Building2, GraduationCap, UserCheck, CheckCircle,
+    TrendingUp, Star, Users, Award, ShieldCheck, Sparkles
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
@@ -43,7 +43,7 @@ export default function Desktop() {
                 {data.sideTextRight.map((t, idx) => <span key={idx}>{t}</span>)}
             </div>
 
-            <motion.div 
+            <motion.div
                 animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-gradient-radial from-[#EEF4FF]/70 to-transparent rounded-full blur-[140px] pointer-events-none"
@@ -73,7 +73,7 @@ export default function Desktop() {
                     </p>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
@@ -122,7 +122,7 @@ export default function Desktop() {
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                         className="w-full grid grid-cols-12 gap-7 items-stretch"
                     >
-                        <motion.div 
+                        <motion.div
                             whileHover={{ y: -5, boxShadow: '0 25px 50px -12px rgba(11,29,58,0.25)' }}
                             transition={{ duration: 0.3 }}
                             className="col-span-5 flex flex-col p-8 lg:p-9 rounded-[6px] bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_20px_40px_-10px_rgba(11,29,58,0.15)] relative overflow-hidden"
@@ -143,8 +143,8 @@ export default function Desktop() {
 
                                 <div className="flex flex-col gap-3 mb-6">
                                     {activePersona.features.map((feat, i) => (
-                                        <motion.div 
-                                            key={i} 
+                                        <motion.div
+                                            key={i}
                                             initial={{ opacity: 0, x: -10 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 0.05 * i }}
@@ -195,7 +195,7 @@ export default function Desktop() {
                             </div>
                         </motion.div>
 
-                        <motion.div 
+                        <motion.div
                             whileHover={{ y: -5, boxShadow: '0 25px 50px -12px rgba(11,29,58,0.25)' }}
                             transition={{ duration: 0.3 }}
                             className="col-span-7 p-8 lg:p-9 rounded-[6px] bg-white border border-[#0B1D3A]/[0.08] shadow-[0_20px_40px_-10px_rgba(11,29,58,0.12)] flex flex-col justify-between relative overflow-hidden"
@@ -292,8 +292,8 @@ export default function Desktop() {
 
                                         <div className="flex flex-col gap-3 mb-6">
                                             {activePersona.courses.map((course, idx) => (
-                                                <motion.div 
-                                                    key={idx} 
+                                                <motion.div
+                                                    key={idx}
                                                     whileHover={{ scale: 1.01 }}
                                                     className="bg-[#F8FAFD] hover:border-[#059669]/40 p-4 rounded-[4px] border border-[#0B1D3A]/[0.06] transition-all flex items-center justify-between shadow-sm group"
                                                 >
@@ -349,8 +349,8 @@ export default function Desktop() {
 
                                         <div className="flex flex-col gap-3 mb-6">
                                             {activePersona.milestones.map((m, idx) => (
-                                                <motion.div 
-                                                    key={idx} 
+                                                <motion.div
+                                                    key={idx}
                                                     whileHover={{ scale: 1.01 }}
                                                     className="bg-[#F8FAFD] p-4 rounded-[4px] border border-[#0B1D3A]/[0.06] flex items-center justify-between shadow-sm"
                                                 >
@@ -359,10 +359,10 @@ export default function Desktop() {
                                                         <div className="text-[11px] text-[#5A6E8C]">{m.req}</div>
                                                     </div>
                                                     <span className={`text-[10px] font-black px-2.5 py-1 rounded-[4px] uppercase tracking-wider ${
-                                                        m.status === 'Completed' 
-                                                        ? 'bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0]' 
-                                                        : m.status === 'In Progress' 
-                                                        ? 'bg-[#FEF3C7] text-[#B45309] border border-[#FDE68A]' 
+                                                        m.status === 'Completed'
+                                                        ? 'bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0]'
+                                                        : m.status === 'In Progress'
+                                                        ? 'bg-[#FEF3C7] text-[#B45309] border border-[#FDE68A]'
                                                         : 'bg-[#F1F5F9] text-[#64748B]'
                                                     }`}>
                                                         {m.status}

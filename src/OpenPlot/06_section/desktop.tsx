@@ -26,9 +26,9 @@ export default function Desktop() {
         <section
             className="w-full py-32 px-12 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
         >
-            <div 
+            <div
                 className="absolute inset-0 z-0"
-                style={{ 
+                style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -39,7 +39,7 @@ export default function Desktop() {
 
             <div className="absolute inset-0 bg-[#041029]/70 z-0"></div>
 
-            <motion.div 
+            <motion.div
                 animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-[10%] right-[20%] w-[600px] h-[350px] border-b-[1.5px] border-[#C99A2E]/60 rounded-[100%] rotate-12 z-0 pointer-events-none blur-[0.5px]"
@@ -54,13 +54,13 @@ export default function Desktop() {
             >
                 <div
                     className="w-full rounded-[4px] pt-20 pb-16 flex flex-col items-center text-center relative overflow-hidden shadow-[0_0_50px_rgba(4,16,41,0.5)]"
-                    style={{ 
-                        background: 'linear-gradient(135deg, rgba(8, 22, 51, 0.95) 0%, rgba(5, 15, 38, 0.98) 100%)', 
+                    style={{
+                        background: 'linear-gradient(135deg, rgba(8, 22, 51, 0.95) 0%, rgba(5, 15, 38, 0.98) 100%)',
                         border: '1px solid rgba(255,255,255,0.08)',
                         boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.02)'
                     }}
                 >
-                    <motion.div 
+                    <motion.div
                         animate={{ scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
                         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                         className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-full blur-[100px] pointer-events-none"

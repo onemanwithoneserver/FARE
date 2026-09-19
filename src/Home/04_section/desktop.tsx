@@ -24,9 +24,9 @@ export default function Desktop() {
         <section
             className="w-full min-h-screen py-20 px-12 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
         >
-            <div 
+            <div
                 className="absolute inset-0 z-0"
-                style={{ 
+                style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -37,23 +37,22 @@ export default function Desktop() {
 
             <div className="absolute inset-0 bg-[#041029]/60 z-0"></div>
 
-            <motion.div 
+            <motion.div
                 animate={{ opacity: [0.4, 0.6, 0.4] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-[#0B2A6B]/50 to-transparent -rotate-45 transform -translate-x-1/4 -translate-y-1/4 z-0 pointer-events-none"
             ></motion.div>
-            <motion.div 
+            <motion.div
                 animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-[-50px] right-[10%] w-[600px] h-[350px] border-b-[1.5px] border-[#C99A2E]/60 rounded-[100%] rotate-12 z-0 pointer-events-none blur-[0.5px]"
             ></motion.div>
-            <motion.div 
+            <motion.div
                 animate={{ opacity: [0.7, 1, 0.7] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute bottom-[-100px] right-[-100px] w-[800px] h-[400px] bg-gradient-to-tl from-[#071A49] to-transparent -rotate-12 z-0 pointer-events-none"
             ></motion.div>
 
-            {/* Top Left Corner Labels with Beside & Below Animated Lines */}
             <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute top-6 left-6 xl:top-8 xl:left-8 z-50 flex flex-col pointer-events-none">
                 <div className="flex gap-3.5 items-stretch">
                     <motion.div
@@ -71,8 +70,7 @@ export default function Desktop() {
                     className="h-[2px] w-full mt-2.5 rounded-full bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-transparent origin-left"
                 />
             </motion.div>
-            
-            {/* Bottom Left Corner Labels with Beside & Below Animated Lines */}
+
             <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute bottom-6 left-6 xl:bottom-8 xl:left-8 z-50 flex flex-col pointer-events-none">
                 <div className="flex gap-3.5 items-stretch">
                     <motion.div
@@ -91,7 +89,6 @@ export default function Desktop() {
                 />
             </motion.div>
 
-            {/* Top Right Corner Labels with Beside & Below Animated Lines */}
             <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute top-6 right-6 xl:top-8 xl:right-8 z-50 flex flex-col items-end pointer-events-none">
                 <div className="flex gap-3.5 items-stretch justify-end">
                     <div className="flex flex-col items-end gap-1 text-[10px] xl:text-[11px] font-extrabold tracking-[0.25em] text-white/90 text-right drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
@@ -110,7 +107,6 @@ export default function Desktop() {
                 />
             </motion.div>
 
-            {/* Bottom Right Corner Labels with Beside & Below Animated Lines */}
             <motion.div initial="hidden" whileInView="show" viewport={{ once: false }} className="absolute bottom-6 right-6 xl:bottom-8 xl:right-8 z-50 flex flex-col items-end pointer-events-none">
                 <div className="flex gap-3.5 items-stretch justify-end">
                     <div className="flex flex-col items-end gap-1 text-[10px] xl:text-[11px] font-extrabold tracking-[0.25em] text-white/90 text-right drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] pb-0.5">
@@ -138,13 +134,13 @@ export default function Desktop() {
             >
                 <div
                     className="w-full rounded-[4px] pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden shadow-[0_0_50px_rgba(4,16,41,0.5)]"
-                    style={{ 
-                        background: 'linear-gradient(135deg, rgba(8, 22, 51, 0.95) 0%, rgba(5, 15, 38, 0.98) 100%)', 
+                    style={{
+                        background: 'linear-gradient(135deg, rgba(8, 22, 51, 0.95) 0%, rgba(5, 15, 38, 0.98) 100%)',
                         border: '1px solid rgba(255,255,255,0.08)',
                         boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.02)'
                     }}
                 >
-                    <motion.div 
+                    <motion.div
                         animate={{ scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
                         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                         className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-full blur-[100px] pointer-events-none"
@@ -185,14 +181,14 @@ export default function Desktop() {
 
                     <motion.div variants={itemVariant} className="flex items-center justify-center w-full px-8 relative z-10">
                         {data.trustBadges.map((badge, i) => (
-                            <motion.div 
-                                key={i} 
+                            <motion.div
+                                key={i}
                                 className="flex items-center"
                                 whileHover={{ y: -2 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                             >
                                 <div className="flex items-start gap-4 px-8">
-                                    <motion.div 
+                                    <motion.div
                                         className="mt-0.5"
                                         whileHover={{ rotate: 10, scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}

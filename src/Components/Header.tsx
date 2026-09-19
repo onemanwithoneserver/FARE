@@ -13,7 +13,7 @@ interface HeaderProps {
 
 export default function Header({ viewMode, onViewModeChange, view, onViewChange, onClose }: HeaderProps) {
   const isMobile = viewMode === 'mobile';
-  
+
   const dropdownOptions = [
     { value: 'home', label: 'Home' },
     { value: 'open-plots', label: 'Open Plots' },
@@ -29,14 +29,13 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
       </div>
 
       <div className="flex items-center justify-center gap-2 sm:gap-4">
-        {/* Device Mode Switcher */}
         <div className="flex bg-[#f8fafc] p-0.5 md:p-1 rounded-[4px] border border-[#e2e8f0] shadow-sm">
           <button
             onClick={() => onViewModeChange('desktop')}
             title="Desktop View"
             className={`flex items-center gap-1.5 px-2.5 sm:px-4 md:px-5 py-1 md:py-1.5 rounded-[4px] text-xs md:text-sm font-semibold transition-all duration-200 cursor-pointer ${
-              !isMobile 
-                ? 'bg-[#1e293b] text-white shadow-md' 
+              !isMobile
+                ? 'bg-[#1e293b] text-white shadow-md'
                 : 'text-[#64748b] hover:text-[#0f172a] hover:bg-[#f1f5f9]'
             }`}
           >
@@ -47,8 +46,8 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
             onClick={() => onViewModeChange('mobile')}
             title="Mobile View"
             className={`flex items-center gap-1.5 px-2.5 sm:px-4 md:px-5 py-1 md:py-1.5 rounded-[4px] text-xs md:text-sm font-semibold transition-all duration-200 cursor-pointer ${
-              isMobile 
-                ? 'bg-[#1e293b] text-white shadow-md' 
+              isMobile
+                ? 'bg-[#1e293b] text-white shadow-md'
                 : 'text-[#64748b] hover:text-[#0f172a] hover:bg-[#f1f5f9]'
             }`}
           >
@@ -64,16 +63,16 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
             View
           </span>
           <div className="w-[120px] sm:w-[145px] md:w-[160px]">
-            <Dropdown 
-              options={dropdownOptions} 
-              value={view} 
-              onChange={onViewChange} 
+            <Dropdown
+              options={dropdownOptions}
+              value={view}
+              onChange={onViewChange}
               size="sm"
             />
           </div>
         </div>
-        
-        <button 
+
+        <button
           onClick={onClose}
           title="Close header (Press Ctrl+M to reopen)"
           aria-label="Close header"

@@ -24,9 +24,9 @@ export default function Mobile() {
         <section
             className="w-full min-h-screen py-16 px-4 flex flex-col items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
         >
-            <div 
+            <div
                 className="absolute inset-0 z-0"
-                style={{ 
+                style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -48,7 +48,7 @@ export default function Mobile() {
                     className="w-full rounded-[4px] pt-10 pb-6 flex flex-col items-center text-center relative overflow-hidden shadow-2xl"
                     style={{ background: 'linear-gradient(135deg, rgba(11, 29, 58, 0.85) 0%, rgba(7, 26, 73, 0.95) 100%)', border: '1px solid rgba(255,255,255,0.1)' }}
                 >
-                    <motion.div 
+                    <motion.div
                         animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                         className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[80px] pointer-events-none"
@@ -87,14 +87,14 @@ export default function Mobile() {
 
                     <motion.div variants={itemVariant} className="flex flex-col items-center w-full px-2 relative z-10">
                         {data.trustBadges.map((badge, i) => (
-                            <motion.div 
-                                key={i} 
+                            <motion.div
+                                key={i}
                                 className="flex flex-col items-center w-full"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                             >
                                 <div className="flex items-center gap-4 p-4">
-                                    <motion.div 
+                                    <motion.div
                                         className="shrink-0"
                                         whileHover={{ rotate: 10, scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}

@@ -31,9 +31,8 @@ export default function Mobile() {
     return (
         <section className="w-full py-20 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
             <div className="w-full px-6 relative z-10 flex flex-col gap-12">
-                
-                {/* Content */}
-                <motion.div 
+
+                <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
@@ -45,7 +44,7 @@ export default function Mobile() {
                             {sectionSubtitle}
                         </span>
                     </motion.div>
-                    
+
                     <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-5" style={{ color: NAVY }}>
                         {data.headline.split(' ').map((word, i) => (
                             <React.Fragment key={i}>
@@ -84,8 +83,7 @@ export default function Mobile() {
                     </motion.p>
                 </motion.div>
 
-                {/* Visual */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "-50px" }}
@@ -94,7 +92,7 @@ export default function Mobile() {
                 >
                     <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.1)] border border-[#0B1D3A]/5 relative z-10 overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-2xl"></div>
-                        
+
                         <div className="flex items-center justify-between mb-6 relative z-10">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-sm">

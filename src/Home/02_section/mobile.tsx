@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-    BookOpen, Target, BarChart2, CheckCircle, ArrowRight, Menu, Lock, 
-    ChevronLeft, ChevronRight, Award, RotateCcw, Eye, Sparkles, Flame, Check, RefreshCw 
+import {
+    BookOpen, Target, BarChart2, CheckCircle, ArrowRight, Menu, Lock,
+    ChevronLeft, ChevronRight, Award, RotateCcw, Eye, Sparkles, Flame, Check, RefreshCw
 } from 'lucide-react';
 
 const NAVY = '#0B1D3A';
@@ -83,7 +83,7 @@ export default function Mobile() {
         setHabitsData(prev => prev.map(h => {
             if (h.id !== activeHabitId) return h;
             const exists = h.completedDays.includes(dayNumber);
-            const newDays = exists 
+            const newDays = exists
                 ? h.completedDays.filter(d => d !== dayNumber)
                 : [...h.completedDays, dayNumber].sort((a, b) => a - b);
             return { ...h, completedDays: newDays };
@@ -137,8 +137,8 @@ export default function Mobile() {
                                 }`}
                             >
                                 {isActive && (
-                                    <motion.div 
-                                        layoutId="activeTabIndicatorMobile" 
+                                    <motion.div
+                                        layoutId="activeTabIndicatorMobile"
                                         className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#C99A2E] via-[#D5AA45] to-[#E2C068]"
                                     />
                                 )}
@@ -201,7 +201,7 @@ export default function Mobile() {
 
                         <div className="flex-1 p-4 relative min-h-[440px] flex items-center justify-center overflow-hidden" style={{ background: 'radial-gradient(circle at top right, #112D60, #0D2654)' }}>
                             <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-                            
+
                             <AnimatePresence mode="wait">
                                 {activeTab === '01' && (
                                     <motion.div
@@ -244,8 +244,8 @@ export default function Mobile() {
 
                                                 if (isSubmitted) {
                                                     const isCorrect = userAnswers[i] === quizQuestions[i].correctIndex;
-                                                    pillBg = isCorrect 
-                                                        ? 'bg-[#10B981]/25 text-[#10B981] border-[#10B981]/50 font-black' 
+                                                    pillBg = isCorrect
+                                                        ? 'bg-[#10B981]/25 text-[#10B981] border-[#10B981]/50 font-black'
                                                         : 'bg-[#EF4444]/25 text-[#EF4444] border-[#EF4444]/50 font-black';
                                                 } else if (isCurrent) {
                                                     pillBg = 'bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] text-[#071A49] font-black border-[#E4C46A] shadow-[0_1px_8px_rgba(213,170,69,0.45)]';
@@ -311,11 +311,11 @@ export default function Mobile() {
                                         ) : (
                                             <div className="flex flex-col">
                                                 <div className="w-full h-[4px] bg-white/[0.06] rounded-full mb-3.5 border border-white/[0.08] overflow-hidden">
-                                                    <motion.div 
+                                                    <motion.div
                                                         initial={false}
-                                                        animate={{ width: `${((currentQIndex + 1) / totalQuestions) * 100}%` }} 
+                                                        animate={{ width: `${((currentQIndex + 1) / totalQuestions) * 100}%` }}
                                                         transition={{ duration: 0.3 }}
-                                                        className="h-full bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] rounded-full shadow-[0_0_8px_rgba(213,170,69,0.5)]" 
+                                                        className="h-full bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] rounded-full shadow-[0_0_8px_rgba(213,170,69,0.5)]"
                                                     />
                                                 </div>
 
@@ -352,8 +352,8 @@ export default function Mobile() {
                                                         }
 
                                                         return (
-                                                            <button 
-                                                                key={i} 
+                                                            <button
+                                                                key={i}
                                                                 onClick={() => handleSelectOption(i)}
                                                                 className={`border p-2.5 rounded-[4px] text-left text-[11px] font-medium flex items-start gap-2 transition-all cursor-pointer ${btnStyle}`}
                                                             >
@@ -445,8 +445,8 @@ export default function Mobile() {
                                                             setSelectedMockOption(null);
                                                         }}
                                                         className={`px-2 py-0.5 rounded-[3px] text-[9.5px] font-bold border ${
-                                                            activeScenarioIdx === i 
-                                                            ? 'bg-[#34D399]/20 text-[#34D399] border-[#34D399]/40' 
+                                                            activeScenarioIdx === i
+                                                            ? 'bg-[#34D399]/20 text-[#34D399] border-[#34D399]/40'
                                                             : 'bg-white/[0.04] text-white/50 border-white/[0.08]'
                                                         }`}
                                                     >

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { 
+import {
     BookOpen, Target, BarChart2, CheckCircle, ArrowRight, Play,
     Search, Bell, Lock, ChevronLeft, ChevronRight, Share2, Plus, Layers, Home
 } from 'lucide-react';

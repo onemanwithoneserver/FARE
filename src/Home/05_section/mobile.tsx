@@ -25,13 +25,13 @@ export default function Mobile() {
             viewport={{ once: false }}
             transition={{ duration: 0.5 }}
             className="w-full text-white py-3.5 px-4 font-['Outfit'] relative overflow-hidden"
-            style={{ 
-                background: 'linear-gradient(180deg, #071A49 0%, #030D26 100%)', 
-                borderTop: '1px solid rgba(255, 255, 255, 0.08)' 
+            style={{
+                background: 'linear-gradient(180deg, #071A49 0%, #030D26 100%)',
+                borderTop: '1px solid rgba(255, 255, 255, 0.08)'
             }}
         >
             <div className="w-full max-w-[460px] mx-auto flex flex-col gap-3 relative z-10 text-left">
-                <div 
+                <div
                     className="flex flex-wrap items-center gap-2.5 cursor-pointer"
                     onClick={() => handleNavigation('home')}
                 >

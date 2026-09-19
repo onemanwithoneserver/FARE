@@ -33,7 +33,6 @@ export default function Mobile() {
             <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/8 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></div>
 
             <div className="w-full px-5 relative z-10">
-                {/* Header — centered, 1-2 lines */}
                 <div className="flex flex-col items-center text-center mb-10">
                     <h2 className="text-[1.75rem] sm:text-[2rem] leading-[1.12] font-black tracking-[-0.02em] mb-3">
                         {data.headline}
@@ -43,7 +42,6 @@ export default function Mobile() {
                     </p>
                 </div>
 
-                {/* Tab Buttons — 2x2 grid for mobile */}
                 <div className="grid grid-cols-2 gap-2 mb-8">
                     {data.tabs.map(tab => (
                         <button
@@ -55,7 +53,7 @@ export default function Mobile() {
                                     : 'bg-white/[0.03] border-white/[0.08] text-white/50'
                             }`}
                         >
-                            <div 
+                            <div
                                 className="w-6 h-6 rounded-md flex items-center justify-center text-white shrink-0 shadow-sm"
                                 style={{ backgroundColor: TAB_COLORS[tab.id] }}
                             >
@@ -66,7 +64,6 @@ export default function Mobile() {
                     ))}
                 </div>
 
-                {/* Tab Content */}
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeTab}
@@ -77,7 +74,6 @@ export default function Mobile() {
                         className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden backdrop-blur-sm"
                     >
                         <div className="p-6 flex flex-col gap-7">
-                            {/* Content */}
                             <div className="flex flex-col">
                                 <h3 className="text-[20px] font-bold mb-3 leading-tight">{activeContent.title}</h3>
                                 <p className="text-[14px] text-white/65 leading-relaxed mb-6">{activeContent.desc}</p>
@@ -104,7 +100,6 @@ export default function Mobile() {
                                 </div>
                             </div>
 
-                            {/* Journey + Evaluate + CTA */}
                             <div className="flex flex-col gap-4 border-t border-white/[0.08] pt-5">
                                 {activeContent.journey && (
                                     <div>
@@ -131,7 +126,6 @@ export default function Mobile() {
                                     </div>
                                 )}
 
-                                {/* CTA */}
                                 <div className="bg-gradient-to-br from-[#0F2751] to-[#071A49] rounded-xl p-5 border border-[#C99A2E]/20 mt-1">
                                     <p className="text-[13.5px] font-bold italic mb-4 text-center text-white/85 leading-snug">"{activeContent.footerText}"</p>
                                     <div className="flex flex-col gap-2.5 w-full">

@@ -40,9 +40,9 @@ export default function Mobile() {
     return (
         <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
-            
+
             <div className="w-full px-6 relative z-10">
-                <motion.div 
+                <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
@@ -54,7 +54,7 @@ export default function Mobile() {
                             {sectionSubtitle}
                         </span>
                     </motion.div>
-                    
+
                     <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }}>
                         {data.headline.line1} <span className="text-[#C99A2E]">{data.headline.line2}</span><br /> {data.headline.line3} {data.headline.line4}
                     </motion.h2>
@@ -64,7 +64,7 @@ export default function Mobile() {
                     </motion.p>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
@@ -72,13 +72,13 @@ export default function Mobile() {
                     className="flex flex-col gap-4 relative"
                 >
                     {data.cards.map((card, index) => (
-                        <motion.div 
-                            key={index} 
+                        <motion.div
+                            key={index}
                             variants={item}
                             className="bg-white border border-[#0B1D3A]/10 rounded-2xl p-6 shadow-[0_4px_15px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
                         >
                             <div className="absolute top-0 right-0 w-24 h-24 opacity-[0.08] blur-[30px] rounded-bl-full" style={{ background: card.color }}></div>
-                            
+
                             <div className="flex items-center justify-between mb-4">
                                 <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-md text-white" style={{ backgroundColor: card.color }}>
                                     {icons[card.icon as keyof typeof icons]}
@@ -87,11 +87,11 @@ export default function Mobile() {
                                     {card.tag}
                                 </div>
                             </div>
-                            
+
                             <h3 className="text-[18px] font-bold mb-2" style={{ color: NAVY }}>
                                 {card.title}
                             </h3>
-                            
+
                             <p className="text-[14px] font-medium leading-relaxed" style={{ color: '#596780' }}>
                                 {card.desc}
                             </p>
@@ -99,7 +99,7 @@ export default function Mobile() {
                     ))}
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}

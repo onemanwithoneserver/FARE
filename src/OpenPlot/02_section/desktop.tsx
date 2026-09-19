@@ -40,9 +40,9 @@ export default function Desktop() {
     return (
         <section className="w-full py-32 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
-            
+
             <div className="max-w-[1240px] mx-auto px-12 relative z-10">
-                <motion.div 
+                <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
@@ -54,7 +54,7 @@ export default function Desktop() {
                             {sectionSubtitle}
                         </span>
                     </motion.div>
-                    
+
                     <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[800px]" style={{ color: NAVY }}>
                         {data.headline.line1} <span className="text-[#C99A2E]">{data.headline.line2}</span> {data.headline.line3} {data.headline.line4}
                     </motion.h2>
@@ -64,7 +64,7 @@ export default function Desktop() {
                     </motion.p>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
@@ -72,14 +72,14 @@ export default function Desktop() {
                     className="grid grid-cols-2 gap-6 relative"
                 >
                     {data.cards.map((card, index) => (
-                        <motion.div 
-                            key={index} 
+                        <motion.div
+                            key={index}
                             variants={item}
                             whileHover={{ y: -5, transition: { duration: 0.3 } }}
                             className="bg-white border border-[#0B1D3A]/10 rounded-2xl p-8 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.05)] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.12)] transition-all duration-300 group cursor-pointer relative overflow-hidden"
                         >
                             <div className="absolute top-0 right-0 w-32 h-32 opacity-10 blur-[40px] transition-opacity duration-500 group-hover:opacity-30 rounded-bl-full" style={{ background: card.color }}></div>
-                            
+
                             <div className="flex items-start justify-between mb-6">
                                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-md text-white" style={{ backgroundColor: card.color }}>
                                     {icons[card.icon as keyof typeof icons]}
@@ -88,11 +88,11 @@ export default function Desktop() {
                                     {card.tag}
                                 </div>
                             </div>
-                            
+
                             <h3 className="text-[22px] font-bold mb-3" style={{ color: NAVY }}>
                                 {card.title}
                             </h3>
-                            
+
                             <p className="text-[15px] font-medium leading-relaxed" style={{ color: '#596780' }}>
                                 {card.desc}
                             </p>
@@ -104,7 +104,7 @@ export default function Desktop() {
                     ))}
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}

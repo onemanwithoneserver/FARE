@@ -31,9 +31,8 @@ export default function Desktop() {
     return (
         <section className="w-full py-32 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
             <div className="max-w-[1240px] mx-auto px-12 relative z-10 flex items-center justify-between gap-16">
-                
-                {/* Left Side: Content */}
-                <motion.div 
+
+                <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
@@ -45,7 +44,7 @@ export default function Desktop() {
                             {sectionSubtitle}
                         </span>
                     </motion.div>
-                    
+
                     <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6" style={{ color: NAVY }}>
                         {data.headline.split(' ').map((word, i) => (
                             <React.Fragment key={i}>
@@ -84,8 +83,7 @@ export default function Desktop() {
                     </motion.p>
                 </motion.div>
 
-                {/* Right Side: Visual */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, x: 40, rotateY: 10 }}
                     whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
                     viewport={{ once: false, margin: "-100px" }}
@@ -94,7 +92,7 @@ export default function Desktop() {
                 >
                     <div className="bg-white rounded-3xl p-8 shadow-[0_20px_50px_-12px_rgba(11,29,58,0.15)] border border-[#0B1D3A]/5 relative z-10 overflow-hidden transform-gpu">
                         <div className="absolute top-0 right-0 w-40 h-40 bg-[#C99A2E]/10 rounded-full blur-3xl"></div>
-                        
+
                         <div className="flex items-center justify-between mb-8 relative z-10">
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md">
@@ -126,15 +124,13 @@ export default function Desktop() {
                             })}
                         </div>
 
-                        {/* Decorative Chart snippet */}
                         <div className="mt-8 pt-6 border-t border-[#0B1D3A]/5 flex items-end gap-2 h-20 opacity-40">
                             {[40, 70, 45, 90, 65, 80].map((h, i) => (
                                 <div key={i} className="flex-1 bg-gradient-to-t from-[#0B1D3A]/20 to-transparent rounded-t-sm" style={{ height: `${h}%` }}></div>
                             ))}
                         </div>
                     </div>
-                    
-                    {/* Background decorative blob */}
+
                     <div className="absolute -inset-4 bg-gradient-to-tr from-[#0B1D3A]/5 to-[#C99A2E]/10 rounded-[2rem] -z-10 blur-xl"></div>
                 </motion.div>
             </div>

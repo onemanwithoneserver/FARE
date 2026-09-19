@@ -30,12 +30,10 @@ export default function Desktop() {
 
     return (
         <section className="w-full py-28 bg-[#0B1D3A] text-white relative font-['Outfit'] overflow-hidden">
-            {/* Decorative */}
             <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/8 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
             <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-gradient-radial from-[#60A5FA]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0"></div>
 
             <div className="max-w-[1240px] mx-auto px-12 relative z-10">
-                {/* Header — centered, 1-2 lines */}
                 <div className="flex flex-col items-center text-center mb-16">
                     <h2 className="text-[2.75rem] lg:text-[3.25rem] leading-[1.08] font-black tracking-[-0.02em] mb-5 max-w-[800px]">
                         {data.headline}
@@ -45,7 +43,6 @@ export default function Desktop() {
                     </p>
                 </div>
 
-                {/* Tab Buttons */}
                 <div className="flex justify-center gap-3 mb-12">
                     {data.tabs.map(tab => (
                         <button
@@ -57,7 +54,7 @@ export default function Desktop() {
                                     : 'bg-white/[0.03] border-white/[0.08] text-white/60 hover:text-white hover:bg-white/[0.06]'
                             }`}
                         >
-                            <div 
+                            <div
                                 className="w-7 h-7 rounded-lg flex items-center justify-center text-white shrink-0 shadow-sm"
                                 style={{ backgroundColor: TAB_COLORS[tab.id] }}
                             >
@@ -68,7 +65,6 @@ export default function Desktop() {
                     ))}
                 </div>
 
-                {/* Tab Content */}
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeTab}
@@ -79,7 +75,6 @@ export default function Desktop() {
                         className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden backdrop-blur-sm"
                     >
                         <div className="p-10 flex flex-col lg:flex-row gap-10">
-                            {/* Left: Content */}
                             <div className="flex-1 flex flex-col">
                                 <h3 className="text-[26px] font-bold mb-4 leading-tight">{activeContent.title}</h3>
                                 <p className="text-[15px] text-white/65 leading-relaxed mb-8">{activeContent.desc}</p>
@@ -106,7 +101,6 @@ export default function Desktop() {
                                 </div>
                             </div>
 
-                            {/* Right: Journey + CTA */}
                             <div className="w-[300px] shrink-0 flex flex-col gap-5">
                                 {activeContent.journey && (
                                     <div className="bg-white/[0.06] rounded-xl p-6 border border-white/[0.08]">
@@ -136,7 +130,6 @@ export default function Desktop() {
                                     </div>
                                 )}
 
-                                {/* CTA Block */}
                                 <div className="bg-gradient-to-br from-[#0F2751] to-[#071A49] rounded-xl p-6 border border-[#C99A2E]/20 shadow-[0_8px_30px_rgba(0,0,0,0.2)] mt-auto">
                                     <p className="text-[14px] font-bold italic mb-5 text-white/85 text-center leading-snug">"{activeContent.footerText}"</p>
                                     <div className="flex flex-col gap-2.5 w-full">

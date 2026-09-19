@@ -59,7 +59,7 @@ export default function Desktop() {
     }, [isSearchExpanded]);
 
     const LogoElement = (
-        <div 
+        <div
             onClick={() => navigate(`/${currentMode}/home`)}
             className="flex items-center justify-center cursor-pointer group py-0 shrink-0"
         >
@@ -125,8 +125,8 @@ export default function Desktop() {
                                             className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-[#F0F4FA] transition-all group/sub cursor-pointer"
                                         >
                                             <div className={`p-2.5 rounded-lg shrink-0 mt-0.5 transition-all duration-300 shadow-sm group-hover/sub:scale-105 group-hover/sub:shadow-md ${
-                                                sIdx === 0 
-                                                    ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068] group-hover/sub:from-[#C99A2E] group-hover/sub:to-[#E2C068] group-hover/sub:text-[#0B1D3A]' 
+                                                sIdx === 0
+                                                    ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068] group-hover/sub:from-[#C99A2E] group-hover/sub:to-[#E2C068] group-hover/sub:text-[#0B1D3A]'
                                                     : 'bg-gradient-to-br from-[#071A49] to-[#0F2D6B] text-[#34D399] group-hover/sub:from-[#34D399] group-hover/sub:to-[#059669] group-hover/sub:text-white'
                                             }`}>
                                                 {sIdx === 0 ? <Building2 size={18} strokeWidth={2} /> : <MapPin size={18} strokeWidth={2} />}
@@ -166,8 +166,8 @@ export default function Desktop() {
                 onClick={() => setIsSearchExpanded(!isSearchExpanded)}
                 aria-label="Toggle search dialog"
                 className={`flex items-center justify-center w-9 h-9 transition-all duration-200 cursor-pointer ${
-                    isSearchExpanded 
-                        ? 'bg-[#0B1D3A] text-white shadow-md rounded-full' 
+                    isSearchExpanded
+                        ? 'bg-[#0B1D3A] text-white shadow-md rounded-full'
                         : `text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06] ${isScrolled ? 'rounded-full' : 'rounded-[4px]'}`
                 }`}
                 title="Search platform"
@@ -175,7 +175,6 @@ export default function Desktop() {
                 {isSearchExpanded ? <X size={18} strokeWidth={2.5} /> : <Search size={19} strokeWidth={2} />}
             </button>
 
-            {/* Globe Icon Language Switcher with Dropdown */}
             <div className="relative" ref={langDropdownRef}>
                 <button
                     onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
@@ -207,8 +206,8 @@ export default function Desktop() {
                             <button
                                 onClick={() => { setLanguage('en'); setIsLangDropdownOpen(false); }}
                                 className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[13px] transition-all cursor-pointer ${
-                                    language === 'en' 
-                                        ? 'bg-[#0B1D3A] text-white font-bold' 
+                                    language === 'en'
+                                        ? 'bg-[#0B1D3A] text-white font-bold'
                                         : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
                                 }`}
                             >
@@ -221,8 +220,8 @@ export default function Desktop() {
                             <button
                                 onClick={() => { setLanguage('te'); setIsLangDropdownOpen(false); }}
                                 className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[13px] transition-all cursor-pointer mt-1 ${
-                                    language === 'te' 
-                                        ? 'bg-[#0B1D3A] text-white font-bold' 
+                                    language === 'te'
+                                        ? 'bg-[#0B1D3A] text-white font-bold'
                                         : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
                                 }`}
                             >
@@ -255,14 +254,14 @@ export default function Desktop() {
 
     return (
         <div className="w-full sticky top-0 z-40 pointer-events-auto">
-            <div 
+            <div
                 className={`w-full transition-all duration-300 ease-out ${
-                    isScrolled 
-                        ? 'pt-2.5 pb-1 flex justify-center px-4 lg:px-6' 
+                    isScrolled
+                        ? 'pt-2.5 pb-1 flex justify-center px-4 lg:px-6'
                         : 'py-0 w-full'
                 }`}
             >
-                <header 
+                <header
                     className={`transition-all duration-300 pointer-events-auto flex items-center justify-between relative ${
                         isScrolled
                             ? 'w-full max-w-[1320px] h-[58px] px-5 lg:px-7 bg-white/95 backdrop-blur-xl border border-white/90 shadow-[0_12px_32px_-10px_rgba(11,29,58,0.12),0_1px_3px_rgba(11,29,58,0.05)] rounded-full mx-auto'
@@ -271,17 +270,14 @@ export default function Desktop() {
                 >
                     {isScrolled ? (
                         <>
-                            {/* Left Column: First 3 Nav Links */}
                             <div className="hidden md:flex flex-1 items-center justify-start gap-3 lg:gap-5 xl:gap-7">
                                 {data.navLinks.slice(0, 3).map((link, idx) => renderNavLink(link, idx))}
                             </div>
-                            
-                            {/* Center Column: Logo ONLY while scrolling */}
+
                             <div className="flex items-center justify-center shrink-0 px-2 lg:px-6">
                                 {LogoElement}
                             </div>
 
-                            {/* Right Column: Remaining Nav Links + Controls */}
                             <div className="flex-1 flex items-center justify-end gap-2.5 lg:gap-4 xl:gap-5">
                                 <div className="hidden lg:flex items-center gap-3 lg:gap-5 xl:gap-7 mr-1">
                                     {data.navLinks.slice(3).map((link, idx) => renderNavLink(link, idx + 3))}
@@ -291,22 +287,18 @@ export default function Desktop() {
                         </>
                     ) : (
                         <>
-                            {/* Unscrolled: Logo on the Left */}
                             <div className="flex items-center shrink-0">
                                 {LogoElement}
                             </div>
-                            
-                            {/* Unscrolled: All Nav Links in the Center */}
+
                             <nav className="hidden md:flex items-center justify-center flex-1 mx-3 lg:mx-6 gap-5 lg:gap-7 xl:gap-8">
                                 {data.navLinks.map((link, idx) => renderNavLink(link, idx))}
                             </nav>
 
-                            {/* Unscrolled: Controls on the Right */}
                             {RightControls}
                         </>
                     )}
 
-                    {/* Floating Search Dialog Below Header */}
                     <AnimatePresence>
                         {isSearchExpanded && (
                             <motion.div
