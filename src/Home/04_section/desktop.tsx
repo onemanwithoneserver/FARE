@@ -9,7 +9,7 @@ const MUTED_BLUE = '#7B8DAA';
 export default function Desktop() {
     return (
         <section
-            className="w-full py-20 px-12 flex justify-center font-['Outfit',sans-serif] relative overflow-hidden"
+            className="w-full py-20 px-12 flex justify-center font-['Outfit'] relative overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)` }}
         >
             <div className="absolute inset-0 pointer-events-none">

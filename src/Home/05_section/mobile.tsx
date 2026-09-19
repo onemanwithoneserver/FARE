@@ -12,7 +12,7 @@ export default function Mobile() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.5 }}
-            className="w-full text-white py-2 px-4 font-['Outfit',sans-serif] relative overflow-hidden"
+            className="w-full text-white py-2 px-4 font-['Outfit'] relative overflow-hidden"
             style={{ background: NAVY_DEEP, borderTop: '1px solid rgba(255,255,255,0.06)' }}
         >
             <div className="w-full max-w-[460px] mx-auto flex flex-col gap-2 relative z-10 text-left">

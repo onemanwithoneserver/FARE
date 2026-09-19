@@ -26,7 +26,7 @@ export default function Mobile() {
 
     return (
         <section
-            className="w-full py-16 px-4 flex flex-col items-center font-['Outfit',sans-serif] relative overflow-hidden"
+            className="w-full py-16 px-4 flex flex-col items-center font-['Outfit'] relative overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F5F7FB 100%)' }}
         >
             <div className="w-full max-w-[460px] flex flex-col items-center text-center relative z-10">

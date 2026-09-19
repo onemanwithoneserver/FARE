@@ -26,7 +26,7 @@ export default function Desktop() {
 
     return (
         <section
-            className="w-full py-20 px-12 flex justify-center font-['Outfit',sans-serif] relative overflow-hidden"
+            className="w-full py-20 px-12 flex justify-center font-['Outfit'] relative overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F5F7FB 100%)' }}
         >
             <motion.div 

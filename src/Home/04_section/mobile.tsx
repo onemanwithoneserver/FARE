@@ -9,7 +9,7 @@ const MUTED_BLUE = '#7B8DAA';
 export default function Mobile() {
     return (
         <section
-            className="w-full py-14 px-4 flex justify-center font-['Outfit',sans-serif] relative overflow-hidden"
+            className="w-full py-14 px-4 flex justify-center font-['Outfit'] relative overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)` }}
         >
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
