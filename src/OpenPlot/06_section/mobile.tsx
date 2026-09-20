@@ -25,7 +25,7 @@ export default function Mobile() {
         show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
     };
 
-    const sectionSubtitle = data.title.includes(' - ') ? data.title.split(' - ')[1] : data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
+    // Remove unused sectionSubtitle definition
     const headlineSentences = data.headline.includes('. ') ? data.headline.split('. ') : [data.headline];
 
     return (
@@ -42,17 +42,11 @@ export default function Mobile() {
                 >
                     <div className="flex flex-col">
                         <motion.div variants={item} className="mb-3 flex items-center gap-2 text-[#C99A2E]">
-                            <div className="w-5 h-5 rounded-md bg-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0">
+                            <div className="w-5 h-5 rounded-md bg-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0 mt-0.5">
                                 <Settings2 size={11} className="text-white" />
                             </div>
                             <span className="text-[10px] font-bold tracking-[0.2em] uppercase">
-                                {sectionSubtitle}
-                            </span>
-                        </motion.div>
-
-                        <motion.div variants={item} className="mb-4">
-                            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
-                                {data.overline}
+                                {data.title === data.overline ? data.title : `${data.title} — ${data.overline}`}
                             </span>
                         </motion.div>
                         <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-6" style={{ color: NAVY }}>

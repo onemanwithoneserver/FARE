@@ -68,7 +68,7 @@ export default function Desktop() {
 
                     <motion.div variants={itemVariant} className="flex items-center gap-5 mb-7 relative z-10">
                         <div className="h-[1px] w-14 bg-gradient-to-l from-[#C99A2E] to-transparent opacity-60"></div>
-                        <span className="text-[12px] font-bold tracking-[0.3em] text-[#E2C068] uppercase">{data.title.split(' - ')[1]}</span>
+                        <span className="text-[12px] font-bold tracking-[0.3em] text-[#E2C068] uppercase">{data.overline}</span>
                         <div className="h-[1px] w-14 bg-gradient-to-r from-[#C99A2E] to-transparent opacity-60"></div>
                     </motion.div>
 
