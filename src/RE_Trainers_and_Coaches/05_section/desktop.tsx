@@ -38,7 +38,6 @@ export default function Desktop() {
         Settings: <Settings size={20} className="text-white" />
     };
 
-
     return (
         <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-1/4 -left-[200px] w-[500px] h-[500px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[80px] pointer-events-none"></div>

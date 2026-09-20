@@ -36,7 +36,6 @@ export default function Desktop() {
         PenTool: <PenTool size={20} strokeWidth={2.2} />
     };
 
-
     const activeTabData = data.tabs.find(t => t.id === activeTab) || data.tabs[0];
 
     return (
@@ -61,7 +60,7 @@ export default function Desktop() {
                 </motion.div>
 
                 <div className="flex flex-col lg:flex-row gap-12 items-start">
-                    {/* Tabs Sidebar */}
+                    
                     <div className="w-full lg:w-[380px] shrink-0 flex flex-col gap-3">
                         {data.tabs.map((tab) => {
                             const isActive = activeTab === tab.id;
@@ -94,7 +93,6 @@ export default function Desktop() {
                         })}
                     </div>
 
-                    {/* Tab Content Area */}
                     <div className="flex-1 bg-[#F8FAFD] border border-[#0B1D3A]/5 rounded-3xl p-10 lg:p-14 min-h-[500px] flex flex-col justify-center relative overflow-hidden">
                         <AnimatePresence mode="wait">
                             <motion.div

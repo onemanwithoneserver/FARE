@@ -34,7 +34,6 @@ export default function Mobile() {
         Users: <Users size={20} strokeWidth={2.2} className="text-white" />
     };
 
-
     return (
         <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[60px] pointer-events-none"></div>

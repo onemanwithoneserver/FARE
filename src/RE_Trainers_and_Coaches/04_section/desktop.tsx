@@ -4,7 +4,6 @@ import { Home, Map, Building2, Layers, GraduationCap, Briefcase, RefreshCcw, Cro
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
-
 export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);
@@ -41,7 +40,6 @@ export default function Desktop() {
         Handshake: <Handshake size={24} className="text-white" />
     };
 
-
     return (
         <section className="w-full py-20 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-1/4 -right-[200px] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[80px] pointer-events-none"></div>
@@ -65,7 +63,6 @@ export default function Desktop() {
                     </motion.h2>
                 </motion.div>
 
-                {/* Segments Section */}
                 <div className="mb-24">
                     <motion.h3 
                         initial={{ opacity: 0, y: 20 }}
@@ -108,7 +105,6 @@ export default function Desktop() {
                     </motion.div>
                 </div>
 
-                {/* Learners Section */}
                 <div className="relative">
                     <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-12 lg:p-16 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-[#C99A2E]/10 rounded-full blur-[80px]"></div>

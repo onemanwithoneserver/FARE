@@ -336,7 +336,6 @@ export default function Desktop() {
                                             ) : (
                                                 <div className="flex flex-col">
 
-
                                                     <div className="bg-white/[0.02] backdrop-blur-sm p-6 rounded-[4px] mb-4 border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
                                                         <div className="flex items-center justify-between mb-3">
                                                             <span className="text-[11px] font-black text-[#D5AA45] tracking-wider uppercase">Question {currentQIndex + 1} of {totalQuestions}</span>

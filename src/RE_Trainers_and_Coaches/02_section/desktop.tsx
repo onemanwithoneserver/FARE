@@ -6,7 +6,6 @@ import { getData } from './data';
 
 const GOLD = '#C99A2E';
 
-
 export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);

@@ -25,7 +25,6 @@ export default function Desktop() {
         show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
     };
 
-
     return (
         <section className="w-full py-32 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
             <div className="max-w-[1240px] mx-auto px-12 relative z-10 flex items-center justify-between gap-16">

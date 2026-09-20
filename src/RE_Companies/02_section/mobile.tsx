@@ -23,7 +23,6 @@ export default function Mobile() {
         show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
     };
 
-
     return (
         <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="w-full px-6 relative z-10">

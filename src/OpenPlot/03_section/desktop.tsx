@@ -34,7 +34,6 @@ export default function Desktop() {
         Users: <Users size={24} strokeWidth={2.2} className="text-white" />
     };
 
-
     return (
         <section className="w-full py-32 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[80px] pointer-events-none"></div>

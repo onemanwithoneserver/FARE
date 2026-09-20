@@ -6,7 +6,6 @@ import { getData } from './data';
 
 const GOLD = '#C99A2E';
 
-
 export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);
@@ -27,7 +26,6 @@ export default function Desktop() {
             transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
         }
     };
-
 
     return (
         <section className="w-full py-20 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
@@ -61,8 +59,7 @@ export default function Desktop() {
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-8 items-stretch max-w-[1000px] mx-auto mb-20 relative">
-                    
-                    {/* You Bring */}
+
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -91,14 +88,12 @@ export default function Desktop() {
                         </ul>
                     </motion.div>
 
-                    {/* Plus Icon */}
                     <div className="flex items-center justify-center">
                         <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white/30">
                             <Plus size={24} strokeWidth={3} />
                         </div>
                     </div>
 
-                    {/* FARE Brings */}
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -129,7 +124,6 @@ export default function Desktop() {
 
                 </div>
 
-                {/* Together */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}

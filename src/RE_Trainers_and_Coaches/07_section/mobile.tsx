@@ -36,7 +36,6 @@ export default function Mobile() {
         PenTool: <PenTool size={18} strokeWidth={2.2} />
     };
 
-
     const activeTabData = data.tabs.find(t => t.id === activeTab) || data.tabs[0];
 
     return (
@@ -61,7 +60,7 @@ export default function Mobile() {
                 </motion.div>
 
                 <div className="flex flex-col gap-6">
-                    {/* Tabs Dropdown/List for Mobile */}
+                    
                     <div className="flex overflow-x-auto gap-3 pb-2 -mx-6 px-6 snap-x hide-scrollbar">
                         {data.tabs.map((tab) => {
                             const isActive = activeTab === tab.id;
@@ -91,7 +90,6 @@ export default function Mobile() {
                         })}
                     </div>
 
-                    {/* Tab Content Area */}
                     <div className="bg-[#F8FAFD] border border-[#0B1D3A]/5 rounded-2xl p-6 relative overflow-hidden">
                         <AnimatePresence mode="wait">
                             <motion.div

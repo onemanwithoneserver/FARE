@@ -4,7 +4,6 @@ import { Globe, Users, Shuffle, Wrench, PlayCircle, Radio, Flame, Target, UserCh
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
-
 export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);
@@ -71,7 +70,6 @@ export default function Desktop() {
                     </motion.p>
                 </motion.div>
 
-                {/* Delivery Modes Section */}
                 <div className="mb-24">
                     <motion.h3 
                         initial={{ opacity: 0, y: 20 }}
@@ -112,7 +110,6 @@ export default function Desktop() {
                     </motion.div>
                 </div>
 
-                {/* Program Types Section */}
                 <div className="relative">
                     <motion.h3 
                         initial={{ opacity: 0, y: 20 }}

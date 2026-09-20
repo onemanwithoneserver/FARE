@@ -6,7 +6,6 @@ import { getData } from './data';
 
 const GOLD = '#C99A2E';
 
-
 export default function Mobile() {
     const { language } = useLanguage();
     const data = getData(language);
@@ -27,7 +26,6 @@ export default function Mobile() {
             transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
         }
     };
-
 
     return (
         <section className="w-full py-12 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
@@ -61,8 +59,7 @@ export default function Mobile() {
                 </motion.div>
 
                 <div className="flex flex-col gap-6 mb-16">
-                    
-                    {/* You Bring */}
+
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -91,14 +88,12 @@ export default function Mobile() {
                         </ul>
                     </motion.div>
 
-                    {/* Plus Icon */}
                     <div className="flex items-center justify-center">
                         <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/30">
                             <Plus size={20} strokeWidth={3} />
                         </div>
                     </div>
 
-                    {/* FARE Brings */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -129,7 +124,6 @@ export default function Mobile() {
 
                 </div>
 
-                {/* Together */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

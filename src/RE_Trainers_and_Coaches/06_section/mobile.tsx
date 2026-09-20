@@ -4,7 +4,6 @@ import { Globe, Users, Shuffle, Wrench, PlayCircle, Radio, Flame, Target, UserCh
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
-
 export default function Mobile() {
     const { language } = useLanguage();
     const data = getData(language);
@@ -42,7 +41,6 @@ export default function Mobile() {
         UsersRound: <UsersRound size={18} className="text-white" />
     };
 
-
     return (
         <section className="w-full py-12 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[60px] pointer-events-none"></div>
@@ -66,7 +64,6 @@ export default function Mobile() {
                     </motion.h2>
                 </motion.div>
 
-                {/* Delivery Modes Section */}
                 <div className="mb-16">
                     <motion.h3 
                         initial={{ opacity: 0, y: 20 }}
@@ -106,7 +103,6 @@ export default function Mobile() {
                     </motion.div>
                 </div>
 
-                {/* Program Types Section */}
                 <div className="relative">
                     <motion.h3 
                         initial={{ opacity: 0, y: 20 }}
