@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 2 — Common Training Challenges in Open Plot Companies",
+    overline: "Challenges",
+    title: "Common Training Challenges in Open Plot Companies",
     subtitle: "Training is important. But making it work consistently is a challenge.",
     challenges: [
         "Training Motivation Fades Quickly",
@@ -19,7 +20,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 2 — Open Plot కంపెనీలలో సాధారణ Training Challenges",
+    overline: "Challenges",
+    title: "Open Plot కంపెనీలలో సాధారణ Training Challenges",
     subtitle: "Training ముఖ్యమే. కానీ దాన్ని నిరంతరం కొనసాగించడం ఒక సవాలు.",
     challenges: [
         "Training Motivation త్వరగా తగ్గిపోతుంది",

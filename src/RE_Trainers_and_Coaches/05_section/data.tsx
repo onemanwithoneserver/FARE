@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 5 — What Skills Can You Launch?",
+    overline: "Skills Launch",
+    title: "What Skills Can You Launch?",
     headline: "From Traditional Real Estate Skills to New-Age Digital Capabilities",
     subtitle: "FARE gives trainers the flexibility to create programs across the complete real estate skill ecosystem.",
     categories: [
@@ -104,7 +105,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 5 — మీరు ఏ స్కిల్స్ ప్రారంభించవచ్చు?",
+    overline: "Skills Launch",
+    title: "మీరు ఏ స్కిల్స్ ప్రారంభించవచ్చు?",
     headline: "సాంప్రదాయ రియల్ ఎస్టేట్ నైపుణ్యాల నుండి కొత్త-తరం డిజిటల్ సామర్థ్యాల వరకు",
     subtitle: "FARE శిక్షకులకు పూర్తి రియల్ ఎస్టేట్ స్కిల్ ఎకోసిస్టమ్‌లో ప్రోగ్రామ్‌లను సృష్టించే సౌలభ్యాన్ని అందిస్తుంది.",
     categories: [

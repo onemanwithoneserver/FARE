@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 5 - How It Works",
+    overline: "How It Works",
+    title: "How It Works",
     headline: "From project knowledge to sales performance.",
     steps: [
         {
@@ -34,7 +35,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 5 — ఇది ఎలా పనిచేస్తుంది",
+    overline: "How It Works",
+    title: "ఇది ఎలా పనిచేస్తుంది",
     headline: "ప్రాజెక్ట్ నాలెడ్జ్ నుండి సేల్స్ పెర్ఫార్మెన్స్ వరకు.",
     steps: [
         {

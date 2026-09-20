@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 9 — Want to Become an RE Trainer or Coach?",
+    overline: "Become a Trainer",
+    title: "Want to Become an RE Trainer or Coach?",
     headline: "You don't have to be a trainer already.",
     description: "If you are an experienced Real Estate Professional and want to start your journey as an RE Trainer or Coach, FARE can help you understand how to convert your experience into a structured training offering.",
     exploreHeading: "We can help you explore:",
@@ -19,7 +20,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 9 — మీరు RE ట్రైనర్ లేదా కోచ్ కావాలనుకుంటున్నారా?",
+    overline: "Become a Trainer",
+    title: "మీరు RE ట్రైనర్ లేదా కోచ్ కావాలనుకుంటున్నారా?",
     headline: "మీరు ఇప్పటికే ట్రైనర్‌గా ఉండాల్సిన అవసరం లేదు.",
     description: "మీరు అనుభవజ్ఞుడైన రియల్ ఎస్టేట్ ప్రొఫెషనల్ అయితే మరియు RE ట్రైనర్ లేదా కోచ్‌గా మీ ప్రయాణాన్ని ప్రారంభించాలనుకుంటే, మీ అనుభవాన్ని స్ట్రక్చర్డ్ ట్రైనింగ్ ఆఫర్‌గా ఎలా మార్చుకోవాలో అర్థం చేసుకోవడానికి FARE మీకు సహాయపడుతుంది.",
     exploreHeading: "వీటిని అన్వేషించడానికి మేము మీకు సహాయపడతాము:",

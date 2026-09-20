@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 2 - Four Ways to Use FARE",
+    overline: "Capabilities",
+    title: "Four Ways to Use FARE",
     headline: {
         line1: "One platform.",
         line2: "Four ways",
@@ -44,7 +45,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 2 — FAREని ఉపయోగించే నాలుగు మార్గాలు",
+    overline: "Capabilities",
+    title: "FAREని ఉపయోగించే నాలుగు మార్గాలు",
     headline: {
         line1: "ఒకే ప్లాట్ఫారమ్.",
         line2: "మీ టీమ్ను బలోపేతం చేయడానికి",

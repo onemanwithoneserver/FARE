@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 7 — Explore What FARE Can Do for Trainers",
+    overline: "Explore",
+    title: "Explore What FARE Can Do for Trainers",
     headline: "One platform. Multiple ways to grow your training practice.",
     tabs: [
         {
@@ -64,7 +65,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 7 — ట్రైనర్స్ కోసం FARE ని అన్వేషించండి",
+    overline: "Explore",
+    title: "ట్రైనర్స్ కోసం FARE ని అన్వేషించండి",
     headline: "ఒకే ప్లాట్‌ఫారమ్. మీ ట్రైనింగ్ ప్రాక్టీస్‌ను పెంచుకోవడానికి బహుళ మార్గాలు.",
     tabs: [
         {

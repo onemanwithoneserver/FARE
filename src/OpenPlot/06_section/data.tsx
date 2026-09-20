@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 5 - Custom Solutions",
+    overline: "Custom Solutions",
+    title: "Custom Solutions",
     headline: "Your business is different. Your learning system can be too.",
     desc1: "Every Open Plot company has its own:",
     highlights: "Products · Locations · Processes · Sales Approach · Team Structure · Training Requirements",
@@ -24,7 +25,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 5 — Custom Solutions",
+    overline: "Custom Solutions",
+    title: "Custom Solutions",
     headline: "మీ Business ప్రత్యేకమైనది. మీ Learning System కూడా అలాగే ఉండవచ్చు.",
     desc1: "ప్రతి Open Plot Companyకు ప్రత్యేకంగా ఉంటాయి:",
     highlights: "Products · Locations · Processes · Sales Approach · Team Structure · Training Requirements",

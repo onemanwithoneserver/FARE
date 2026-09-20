@@ -34,7 +34,7 @@ export default function Mobile() {
         PenTool: <PenTool size={20} strokeWidth={2.2} className="text-white" />
     };
 
-    const sectionTitle = data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
+    const sectionTitle = data.title;
 
     return (
         <section className="w-full py-12 bg-white relative font-['Outfit'] overflow-hidden">
@@ -49,6 +49,11 @@ export default function Mobile() {
                     className="flex flex-col items-center text-center mb-12"
                 >
 
+                    <motion.div variants={item} className="mb-4">
+                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                            {data.overline}
+                        </span>
+                    </motion.div>
                     <motion.h2 variants={item} className="text-[2.25rem] leading-[1.15] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }}>
                         {data.headline}
                     </motion.h2>

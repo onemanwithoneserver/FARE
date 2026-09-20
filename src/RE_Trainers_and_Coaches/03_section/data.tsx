@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 3 — What You Can Do With FARE",
+    overline: "Capabilities",
+    title: "What You Can Do With FARE",
     headline: "Turn your expertise into a complete learning experience.",
     cards: [
         {
@@ -37,7 +38,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 3 — FARE తో మీరు ఏమి చేయగలరు",
+    overline: "Capabilities",
+    title: "FARE తో మీరు ఏమి చేయగలరు",
     headline: "మీ నైపుణ్యాన్ని పూర్తి అభ్యాస అనుభవంగా మార్చండి.",
     cards: [
         {

@@ -50,6 +50,11 @@ export default function Mobile() {
                             </span>
                         </motion.div>
 
+                        <motion.div variants={item} className="mb-4">
+                            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                                {data.overline}
+                            </span>
+                        </motion.div>
                         <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-6" style={{ color: NAVY }}>
                             {headlineSentences.map((sentence, i) => (
                                 <React.Fragment key={i}>

@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 2 — Common Challenges for RE Trainers & Coaches",
+    overline: "Challenges",
+    title: "Common Challenges for RE Trainers & Coaches",
     subtitle: "Real estate training doesn't end in the classroom.",
     challenges: [
         "Connection with learners often ends after the training session",
@@ -18,7 +19,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 2 — సాధారణ సవాళ్లు",
+    overline: "Challenges",
+    title: "సాధారణ సవాళ్లు",
     subtitle: "రియల్ ఎస్టేట్ ట్రైనింగ్ కేవలం తరగతి గదితో ముగియదు. అభ్యాసకుల దీర్ఘకాలిక విజయం కోసం ట్రైనర్స్ ఎదుర్కొనే ప్రత్యేక సవాళ్లు.",
     challenges: [
         "ట్రైనింగ్ సెషన్ తర్వాత అభ్యాసకులతో కనెక్షన్ ముగిసిపోతుంది",

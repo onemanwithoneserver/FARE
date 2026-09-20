@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 6 - Customise FARE Around Your Business",
+    overline: "Customise",
+    title: "Customise FARE Around Your Business",
     headline: "Every project is different. Your learning system can be too.",
     desc1: "FARE can be customised around your:",
     highlights: "Projects · Products · Sales Process · Channel Partner Program · Team Structure · Training Requirements",
@@ -26,7 +27,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 6 — మీ వ్యాపారానికి అనుగుణంగా FAREని కస్టమైజ్ చేయండి",
+    overline: "Customise",
+    title: "మీ వ్యాపారానికి అనుగుణంగా FAREని కస్టమైజ్ చేయండి",
     headline: "ప్రతి ప్రాజెక్ట్ భిన్నంగా ఉంటుంది. మీ లెర్నింగ్ సిస్టమ్ కూడా అలానే ఉండవచ్చు.",
     desc1: "FARE వీటి ఆధారంగా కస్టమైజ్ చేయబడుతుంది:",
     highlights: "ప్రాజెక్ట్స్ · ప్రొడక్ట్స్ · సేల్స్ ప్రాసెస్ · ఛానల్ పార్ట్నర్ ప్రోగ్రామ్ · టీమ్ స్ట్రక్చర్ · ట్రైనింగ్ రిక్వైర్‌మెంట్స్",

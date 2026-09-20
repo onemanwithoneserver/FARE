@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 6 — Modes of Training & Program Types",
+    overline: "Training Modes",
+    title: "Modes of Training & Program Types",
     headline: "Train the way your learners learn best.",
     modesHeading: "Choose Your Delivery Mode",
     modes: [
@@ -75,7 +76,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 6 — శిక్షణా విధానాలు & ప్రోగ్రామ్ రకాలు",
+    overline: "Training Modes",
+    title: "శిక్షణా విధానాలు & ప్రోగ్రామ్ రకాలు",
     headline: "సరిగ్గా మీకు కావలసిన విధంగా శిక్షణను అందించండి.",
     modesHeading: "ఫ్లెక్సిబుల్ డెలివరీ మోడ్స్",
     modes: [

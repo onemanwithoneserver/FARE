@@ -29,19 +29,18 @@ export default function Mobile() {
     };
 
     const icons = [
-        <TrendingDown size={20} className="text-[#EF4444]" />,
-        <RefreshCcw size={20} className="text-[#F59E0B]" />,
-        <AlertCircle size={20} className="text-[#3B82F6]" />,
-        <BarChart2 size={20} className="text-[#8B5CF6]" />,
-        <Users size={20} className="text-[#EC4899]" />,
-        <Target size={20} className="text-[#10B981]" />,
-        <HelpCircle size={20} className="text-[#6366F1]" />,
-        <Clock size={20} className="text-[#F97316]" />,
-        <Award size={20} className="text-[#06B6D4]" />
+        { icon: <TrendingDown size={20} />, color: "#EF4444" },
+        { icon: <RefreshCcw size={20} />, color: "#F59E0B" },
+        { icon: <AlertCircle size={20} />, color: "#3B82F6" },
+        { icon: <BarChart2 size={20} />, color: "#8B5CF6" },
+        { icon: <Users size={20} />, color: "#EC4899" },
+        { icon: <Target size={20} />, color: "#10B981" },
+        { icon: <HelpCircle size={20} />, color: "#6366F1" },
+        { icon: <Clock size={20} />, color: "#F97316" },
+        { icon: <Award size={20} />, color: "#06B6D4" }
     ];
 
-    const sectionTitle = data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
-    const sectionPrefix = data.title.includes(' — ') ? data.title.split(' — ')[0] : 'Section 2';
+    const sectionTitle = data.title;
 
     return (
         <section className="w-full py-20 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
@@ -57,7 +56,7 @@ export default function Mobile() {
                 >
                     <motion.div variants={item} className="mb-4">
                         <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            {sectionPrefix}
+                            {data.overline}
                         </span>
                     </motion.div>
 
@@ -83,8 +82,8 @@ export default function Mobile() {
                             variants={item}
                             className="bg-white border border-[#0B1D3A]/5 rounded-xl p-5 shadow-[0_2px_10px_-2px_rgba(11,29,58,0.03)] flex items-center gap-4"
                         >
-                            <div className="p-2.5 rounded-full bg-[#F8FAFD] shrink-0">
-                                {icons[index]}
+                            <div className="p-2.5 rounded-xl text-white shadow-sm shrink-0" style={{ backgroundColor: icons[index].color }}>
+                                {icons[index].icon}
                             </div>
                             <h3 className="text-[15px] font-bold leading-snug text-left" style={{ color: NAVY }}>
                                 {challenge}

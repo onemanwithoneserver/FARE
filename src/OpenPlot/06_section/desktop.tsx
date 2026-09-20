@@ -50,6 +50,11 @@ export default function Desktop() {
                             </span>
                         </motion.div>
 
+                        <motion.div variants={item} className="mb-4">
+                            <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                                {data.overline}
+                            </span>
+                        </motion.div>
                         <motion.h2 variants={item} className="text-[2.75rem] lg:text-[3rem] leading-[1.08] font-black tracking-[-0.02em] mb-8" style={{ color: NAVY }}>
                             {headlineSentences.map((sentence, i) => (
                                 <React.Fragment key={i}>

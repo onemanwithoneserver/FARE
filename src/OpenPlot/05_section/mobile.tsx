@@ -7,7 +7,6 @@ import React from 'react';
 
 const NAVY = '#0B1D3A';
 const NAVY_DEEP = '#071A49';
-const GOLD = '#C99A2E';
 
 export default function Mobile() {
     const { language } = useLanguage();
@@ -26,7 +25,6 @@ export default function Mobile() {
         show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
     };
 
-    const sectionSubtitle = data.title.includes(' - ') ? data.title.split(' - ')[1] : data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
 
     return (
         <section className="w-full py-20 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
@@ -39,12 +37,12 @@ export default function Mobile() {
                     viewport={{ once: false, margin: "-50px" }}
                     className="flex flex-col w-full"
                 >
-                    <motion.div variants={item} className="mb-3">
-                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            {sectionSubtitle}
+
+                    <motion.div variants={item} className="mb-4">
+                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                            {data.overline}
                         </span>
                     </motion.div>
-
                     <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-5" style={{ color: NAVY }}>
                         {data.headline.split(' ').map((word, i) => (
                             <React.Fragment key={i}>

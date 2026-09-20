@@ -46,6 +46,11 @@ export default function Mobile() {
                         </div>
                     </motion.div>
 
+                    <motion.div variants={item} className="mb-4">
+                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                            {data.overline}
+                        </span>
+                    </motion.div>
                     <motion.h2 variants={item} className="text-[2.25rem] leading-[1.1] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }}>
                         {data.headline}
                     </motion.h2>

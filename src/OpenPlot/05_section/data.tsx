@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 4 - Free Evaluation",
+    overline: "Evaluation",
+    title: "Free Evaluation",
     headline: "How strong is your team's Open Plot knowledge?",
     desc1: "Don't wait for performance issues to tell you where the gaps are.",
     desc2: "Take the FARE Free Evaluation Test and get a snapshot of your team's knowledge across key areas.",
@@ -23,7 +24,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 4 — Free Evaluation",
+    overline: "Evaluation",
+    title: "Free Evaluation",
     headline: "మీ టీమ్కు Open Plot Knowledge ఎంత బలంగా ఉంది?",
     desc1: "Performance Issues బయటపడే వరకు Knowledge Gaps ఎక్కడున్నాయో తెలుసుకోవడానికి వేచి ఉండకండి.",
     desc2: "FARE Free Evaluation Test తీసుకుని, మీ టీమ్ Knowledgeను ముఖ్యమైన అంశాల్లో అంచనా వేయండి.",

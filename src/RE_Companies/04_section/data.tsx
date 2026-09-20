@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 4 - Explore FARE Custom RE LMS",
+    overline: "Explore",
+    title: "Explore FARE Custom RE LMS",
     headline: "See how FARE works for your organisation.",
     subtitle: "Use the tabs to explore how FARE can fit into your learning ecosystem.",
     journeyLabel: "Journey",
@@ -116,7 +117,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 4 — FARE కస్టమ్ RE LMS అన్వేషించండి",
+    overline: "Explore",
+    title: "FARE కస్టమ్ RE LMS అన్వేషించండి",
     headline: "FARE మీ ఆర్గనైజేషన్ కోసం ఎలా పనిచేస్తుందో చూడండి.",
     subtitle: "FARE మీ లెర్నింగ్ ఎకోసిస్టమ్‌లో ఎలా సరిపోతుందో తెలుసుకోవడానికి ట్యాబ్‌లను ఉపయోగించండి.",
     journeyLabel: "జర్నీ",

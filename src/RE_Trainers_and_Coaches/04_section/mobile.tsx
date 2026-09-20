@@ -55,6 +55,11 @@ export default function Mobile() {
                     className="flex flex-col items-center text-center mb-16"
                 >
 
+                    <motion.div variants={item} className="mb-4">
+                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                            {data.overline}
+                        </span>
+                    </motion.div>
                     <motion.h2 variants={item} className="text-[2.25rem] leading-[1.15] font-black tracking-[-0.02em] mb-4 text-white">
                         {data.headline}
                     </motion.h2>

@@ -46,6 +46,11 @@ export default function Desktop() {
                         </div>
                     </motion.div>
 
+                    <motion.div variants={item} className="mb-4">
+                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                            {data.overline}
+                        </span>
+                    </motion.div>
                     <motion.h2 variants={item} className="text-[3.25rem] lg:text-[4rem] leading-[1.05] font-black tracking-[-0.03em] mb-8" style={{ color: NAVY }}>
                         {data.headline}
                     </motion.h2>

@@ -42,9 +42,19 @@ export default function Desktop() {
                     className="flex flex-col items-center text-center mb-24"
                 >
 
+                    <motion.div variants={item} className="mb-4">
+                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                            {data.overline}
+                        </span>
+                    </motion.div>
                     <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-4 text-white">
                         {data.headline}
                     </motion.h2>
+                    <motion.div variants={item} className="mb-4">
+                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                            {data.overline}
+                        </span>
+                    </motion.div>
                     <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em]" style={{ color: GOLD }}>
                         {data.headlineAccent}
                     </motion.h2>

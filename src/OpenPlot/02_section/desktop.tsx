@@ -29,19 +29,18 @@ export default function Desktop() {
     };
 
     const icons = [
-        <TrendingDown size={24} className="text-[#EF4444]" />,
-        <RefreshCcw size={24} className="text-[#F59E0B]" />,
-        <AlertCircle size={24} className="text-[#3B82F6]" />,
-        <BarChart2 size={24} className="text-[#8B5CF6]" />,
-        <Users size={24} className="text-[#EC4899]" />,
-        <Target size={24} className="text-[#10B981]" />,
-        <HelpCircle size={24} className="text-[#6366F1]" />,
-        <Clock size={24} className="text-[#F97316]" />,
-        <Award size={24} className="text-[#06B6D4]" />
+        { icon: <TrendingDown size={24} />, color: "#EF4444" },
+        { icon: <RefreshCcw size={24} />, color: "#F59E0B" },
+        { icon: <AlertCircle size={24} />, color: "#3B82F6" },
+        { icon: <BarChart2 size={24} />, color: "#8B5CF6" },
+        { icon: <Users size={24} />, color: "#EC4899" },
+        { icon: <Target size={24} />, color: "#10B981" },
+        { icon: <HelpCircle size={24} />, color: "#6366F1" },
+        { icon: <Clock size={24} />, color: "#F97316" },
+        { icon: <Award size={24} />, color: "#06B6D4" }
     ];
 
-    const sectionTitle = data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
-    const sectionPrefix = data.title.includes(' — ') ? data.title.split(' — ')[0] : 'Section 2';
+    const sectionTitle = data.title;
 
     return (
         <section className="w-full py-32 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
@@ -57,7 +56,7 @@ export default function Desktop() {
                 >
                     <motion.div variants={item} className="mb-4">
                         <span className="text-[12px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            {sectionPrefix}
+                            {data.overline}
                         </span>
                     </motion.div>
 
@@ -84,8 +83,8 @@ export default function Desktop() {
                             whileHover={{ y: -5, transition: { duration: 0.3 } }}
                             className="bg-white border border-[#0B1D3A]/5 rounded-2xl p-8 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.03)] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] transition-all duration-300 group relative overflow-hidden flex flex-col justify-center items-center text-center h-[180px]"
                         >
-                            <div className="mb-4 p-3 rounded-full bg-[#F8FAFD] group-hover:scale-110 transition-transform duration-300">
-                                {icons[index]}
+                            <div className="mb-4 p-3.5 rounded-xl text-white shadow-md group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: icons[index].color }}>
+                                {icons[index].icon}
                             </div>
                             <h3 className="text-[17px] font-bold leading-tight" style={{ color: NAVY }}>
                                 {challenge}

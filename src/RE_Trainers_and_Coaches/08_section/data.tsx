@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 8 — You Bring the Expertise. FARE Brings the Platform.",
+    overline: "The Platform",
+    title: "You Bring the Expertise. FARE Brings the Platform.",
     headline: "You bring the expertise. FARE brings the platform.",
     headlineAccent: "FARE brings the audience.",
     youBring: {
@@ -20,7 +21,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 8 — మీరు నైపుణ్యాన్ని తీసుకురండి",
+    overline: "The Platform",
+    title: "మీరు నైపుణ్యాన్ని తీసుకురండి",
     headline: "మీరు నైపుణ్యాన్ని తీసుకురండి.",
     headlineAccent: "FARE ప్లాట్‌ఫారమ్‌ను అందిస్తుంది.",
     youBring: {

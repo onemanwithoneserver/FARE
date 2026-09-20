@@ -34,7 +34,7 @@ export default function Desktop() {
         PenTool: <PenTool size={24} strokeWidth={2.2} className="text-white" />
     };
 
-    const sectionTitle = data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
+    const sectionTitle = data.title;
 
     return (
         <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
@@ -49,6 +49,11 @@ export default function Desktop() {
                     className="flex flex-col items-center text-center mb-20"
                 >
 
+                    <motion.div variants={item} className="mb-4">
+                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                            {data.overline}
+                        </span>
+                    </motion.div>
                     <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[800px]" style={{ color: NAVY }}>
                         {data.headline}
                     </motion.h2>

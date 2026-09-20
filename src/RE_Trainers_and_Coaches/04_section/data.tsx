@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 4 — FARE LMS Is For",
+    overline: "Segments",
+    title: "FARE LMS Is For",
     headline: "One RE Learning Platform. Every Segment. Every Learner.",
     segmentsHeading: "All Types of Real Estate Segments",
     segments: [
@@ -66,7 +67,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 4 — FARE LMS ఎవరికోసం",
+    overline: "Segments",
+    title: "FARE LMS ఎవరికోసం",
     headline: "రియల్ ఎస్టేట్‌లోని ప్రతి సెగ్మెంట్ మరియు ప్రతి అభ్యాసకుడి కోసం నిర్మించబడింది.",
     segmentsHeading: "రియల్ ఎస్టేట్ సెగ్మెంట్‌ల అంతటా శిక్షణ ఇవ్వండి",
     segments: [

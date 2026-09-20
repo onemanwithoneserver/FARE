@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 3 - Four Ways FARE Strengthens Your Sales Ecosystem",
+    overline: "Capabilities",
+    title: "Four Ways FARE Strengthens Your Sales Ecosystem",
     headline: {
         line1: "One Custom Learning System.",
         line2: "Four powerful ways",
@@ -44,7 +45,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 3 — FARE మీ సేల్స్ ఎకోసిస్టమ్‌ను బలోపేతం చేసే నాలుగు మార్గాలు",
+    overline: "Capabilities",
+    title: "FARE మీ సేల్స్ ఎకోసిస్టమ్‌ను బలోపేతం చేసే నాలుగు మార్గాలు",
     headline: {
         line1: "ఒక కస్టమ్ లెర్నింగ్ సిస్టమ్.",
         line2: "మీ టీమ్‌ను అభివృద్ధి చేయడానికి",

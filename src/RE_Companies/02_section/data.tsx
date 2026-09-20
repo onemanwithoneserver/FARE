@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 2 - Common Sales & Training Challenges",
+    overline: "Challenges",
+    title: "Common Sales & Training Challenges",
     headline: "Your teams know the product. But are they able to sell it effectively?",
     challenges: [
         "Pre-Sales Calls Fail to Create Impact",
@@ -19,7 +20,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 2 — సాధారణ సేల్స్ & ట్రైనింగ్ సవాళ్లు",
+    overline: "Challenges",
+    title: "సాధారణ సేల్స్ & ట్రైనింగ్ సవాళ్లు",
     headline: "మీ టీమ్‌కు ప్రొడక్ట్ తెలుసు. కానీ వారు దాన్ని సమర్థవంతంగా విక్రయించగలుగుతున్నారా?",
     challenges: [
         "ప్రీ-సేల్స్ కాల్స్ ప్రభావం చూపడంలో విఫలమవుతున్నాయి",

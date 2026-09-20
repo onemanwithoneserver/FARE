@@ -1,7 +1,8 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 3 - Explore FARE",
+    overline: "Explore",
+    title: "Explore FARE",
     headline: "Everything you need to build a better-trained Open Plot team.",
     subtitle: "Use the tabs to explore how FARE can fit into your organisation.",
     journeyLabel: "Journey",
@@ -105,7 +106,8 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 3 — FAREని అన్వేషించండి",
+    overline: "Explore",
+    title: "FAREని అన్వేషించండి",
     headline: "మెరుగైన Open Plot టీమ్ను నిర్మించడానికి అవసరమైన ప్రతిదీ.",
     subtitle: "FARE మీ Organisationకు ఎలా సరిపోతుందో తెలుసుకోవడానికి Tabsను ఉపయోగించండి.",
     journeyLabel: "జర్నీ",
