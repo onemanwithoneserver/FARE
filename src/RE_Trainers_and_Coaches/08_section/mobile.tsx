@@ -1,0 +1,168 @@
+import { motion } from 'motion/react';
+import type { Variants } from 'motion/react';
+import { User, Server, Plus, ArrowRight } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
+import { getData } from './data';
+
+const NAVY = '#0B1D3A';
+const GOLD = '#C99A2E';
+
+export default function Mobile() {
+    const { language } = useLanguage();
+    const data = getData(language);
+
+    const container: Variants = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+        }
+    };
+
+    const item: Variants = {
+        hidden: { opacity: 0, y: 15 },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+        }
+    };
+
+    const sectionPrefix = data.title.includes(' — ') ? data.title.split(' — ')[0] : 'Section 8';
+
+    return (
+        <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
+
+            <div className="px-6 relative z-10">
+                <motion.div
+                    variants={container}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: false, margin: "-50px" }}
+                    className="flex flex-col items-center text-center mb-16"
+                >
+                    <motion.div variants={item} className="mb-4">
+                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
+                            {sectionPrefix}
+                        </span>
+                    </motion.div>
+
+                    <motion.h2 variants={item} className="text-[2.25rem] leading-[1.15] font-black tracking-[-0.02em] mb-2" style={{ color: NAVY }}>
+                        {data.headline}
+                    </motion.h2>
+                    <motion.h2 variants={item} className="text-[2.25rem] leading-[1.15] font-black tracking-[-0.02em]" style={{ color: GOLD }}>
+                        {data.headlineAccent}
+                    </motion.h2>
+                </motion.div>
+
+                <div className="flex flex-col gap-6 mb-16">
+                    
+                    {/* You Bring */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, margin: "-50px" }}
+                        transition={{ duration: 0.6 }}
+                        className="bg-white border border-[#0B1D3A]/10 rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
+                    >
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#C99A2E]/5 rounded-bl-full blur-[20px]"></div>
+                        
+                        <div className="flex items-center gap-3 mb-6 relative z-10">
+                            <div className="w-12 h-12 rounded-xl bg-[#F8FAFD] border border-[#0B1D3A]/5 flex items-center justify-center text-[#C99A2E]">
+                                <User size={20} strokeWidth={2.5} />
+                            </div>
+                            <h3 className="text-[20px] font-bold" style={{ color: NAVY }}>
+                                {data.youBring.title}
+                            </h3>
+                        </div>
+
+                        <ul className="flex flex-col gap-3 relative z-10">
+                            {data.youBring.items.map((item, idx) => (
+                                <li key={idx} className="flex items-center gap-3 text-[14.5px] font-medium text-[#596780]">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] shrink-0"></div>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </motion.div>
+
+                    {/* Plus Icon */}
+                    <div className="flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-[#0B1D3A]/5 flex items-center justify-center text-[#0B1D3A]/30">
+                            <Plus size={20} strokeWidth={3} />
+                        </div>
+                    </div>
+
+                    {/* FARE Brings */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, margin: "-50px" }}
+                        transition={{ duration: 0.6 }}
+                        className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-2xl p-6 shadow-xl relative overflow-hidden"
+                    >
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#60A5FA]/10 rounded-bl-full blur-[30px]"></div>
+                        
+                        <div className="flex items-center gap-3 mb-6 relative z-10">
+                            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-[#60A5FA] backdrop-blur-sm">
+                                <Server size={20} strokeWidth={2.5} />
+                            </div>
+                            <h3 className="text-[20px] font-bold text-white">
+                                {data.fareBrings.title}
+                            </h3>
+                        </div>
+
+                        <ul className="flex flex-col gap-3 relative z-10">
+                            {data.fareBrings.items.map((item, idx) => (
+                                <li key={idx} className="flex items-center gap-3 text-[14.5px] font-medium text-white/80">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#60A5FA] shrink-0"></div>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </motion.div>
+
+                </div>
+
+                {/* Together */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.6 }}
+                    className="bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-2xl p-6 flex flex-col items-center relative overflow-hidden"
+                >
+                    <h3 className="text-[16px] font-bold text-[#0B1D3A] mb-5 uppercase tracking-widest text-center">
+                        {data.together.title}
+                    </h3>
+                    
+                    <div className="flex flex-col items-center gap-3 w-full">
+                        {data.together.flow.map((step, idx) => (
+                            <div key={idx} className="flex flex-col items-center gap-3 w-full">
+                                <span className="text-[15px] font-bold text-[#3A4A63] bg-white px-5 py-3 rounded-xl border border-[#0B1D3A]/5 shadow-sm w-full text-center">
+                                    {step}
+                                </span>
+                                {idx < data.together.flow.length - 1 && (
+                                    <ArrowRight size={18} className="text-[#C99A2E] rotate-90" strokeWidth={2.5} />
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="mt-12 text-center"
+                >
+                    <p className="text-[14px] font-medium text-[#596780] italic">
+                        "{data.footerText}"
+                    </p>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
