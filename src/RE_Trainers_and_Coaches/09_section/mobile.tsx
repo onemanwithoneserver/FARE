@@ -27,7 +27,6 @@ export default function Mobile() {
         }
     };
 
-    const sectionPrefix = data.title.includes(' — ') ? data.title.split(' — ')[0] : 'Section 9';
 
     return (
         <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
@@ -44,9 +43,6 @@ export default function Mobile() {
                     <motion.div variants={item} className="mb-5">
                         <div className="bg-[#F8FAFD] border border-[#0B1D3A]/5 px-3 py-1.5 rounded-full flex items-center gap-1.5">
                             <Sparkles size={14} className="text-[#C99A2E]" />
-                            <span className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: NAVY }}>
-                                {sectionPrefix}
-                            </span>
                         </div>
                     </motion.div>
 

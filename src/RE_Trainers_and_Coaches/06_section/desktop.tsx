@@ -4,8 +4,6 @@ import { Globe, Users, Shuffle, Wrench, PlayCircle, Radio, Flame, Target, UserCh
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
-const NAVY = '#0B1D3A';
-const GOLD = '#C99A2E';
 
 export default function Desktop() {
     const { language } = useLanguage();
@@ -45,11 +43,10 @@ export default function Desktop() {
     };
 
     const sectionTitle = data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
-    const sectionPrefix = data.title.includes(' — ') ? data.title.split(' — ')[0] : 'Section 6';
 
     return (
-        <section className="w-full py-32 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#E0E7FF]/40 to-transparent rounded-full blur-[80px] pointer-events-none"></div>
+        <section className="w-full py-32 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
             <div className="max-w-[1240px] mx-auto px-12 relative z-10">
                 <motion.div
@@ -59,17 +56,12 @@ export default function Desktop() {
                     viewport={{ once: false, margin: "-100px" }}
                     className="flex flex-col items-center text-center mb-24"
                 >
-                    <motion.div variants={item} className="mb-4">
-                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            {sectionPrefix}
-                        </span>
-                    </motion.div>
 
-                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[800px]" style={{ color: NAVY }}>
+                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[800px] text-white">
                         {data.headline}
                     </motion.h2>
 
-                    <motion.p variants={item} className="text-[18px] font-medium leading-[1.6]" style={{ color: '#596780' }}>
+                    <motion.p variants={item} className="text-[18px] font-medium leading-[1.6] text-white/70">
                         {sectionTitle}
                     </motion.p>
                 </motion.div>
@@ -80,7 +72,7 @@ export default function Desktop() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
-                        className="text-[22px] font-bold mb-10 text-center" style={{ color: NAVY }}
+                        className="text-[22px] font-bold mb-10 text-center text-white"
                     >
                         {data.modesHeading}
                     </motion.h3>
@@ -97,17 +89,17 @@ export default function Desktop() {
                                 key={index}
                                 variants={item}
                                 whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                                className="bg-white border border-[#0B1D3A]/10 rounded-2xl p-8 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.03)] hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.08)] transition-all duration-300 relative overflow-hidden text-center group"
+                                className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.06] transition-all duration-300 relative overflow-hidden text-center group"
                             >
                                 <div className="absolute top-0 right-0 w-24 h-24 opacity-5 blur-[30px] rounded-bl-full transition-opacity duration-500 group-hover:opacity-20" style={{ background: mode.color }}></div>
 
                                 <div className="w-16 h-16 rounded-2xl mx-auto flex items-center justify-center shadow-lg mb-6 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: mode.color }}>
                                     {modeIcons[mode.icon as keyof typeof modeIcons]}
                                 </div>
-                                <h4 className="text-[20px] font-bold mb-3" style={{ color: NAVY }}>
+                                <h4 className="text-[20px] font-bold mb-3 text-white">
                                     {mode.title}
                                 </h4>
-                                <p className="text-[15px] font-medium text-[#596780] leading-relaxed">
+                                <p className="text-[15px] font-medium text-white/70 leading-relaxed">
                                     {mode.desc}
                                 </p>
                             </motion.div>
@@ -121,7 +113,7 @@ export default function Desktop() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
-                        className="text-[22px] font-bold mb-10 text-center" style={{ color: NAVY }}
+                        className="text-[22px] font-bold mb-10 text-center text-white"
                     >
                         {data.typesHeading}
                     </motion.h3>
@@ -137,17 +129,17 @@ export default function Desktop() {
                             <motion.div
                                 key={index}
                                 variants={item}
-                                className="bg-white border border-[#0B1D3A]/5 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full"
+                                className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 hover:bg-white/[0.06] hover:border-white/10 transition-all duration-300 flex flex-col h-full"
                             >
                                 <div className="flex items-center gap-4 mb-4">
                                     <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: type.color }}>
                                         {typeIcons[type.icon as keyof typeof typeIcons]}
                                     </div>
-                                    <h4 className="text-[16px] font-bold leading-tight" style={{ color: NAVY }}>
+                                    <h4 className="text-[16px] font-bold leading-tight text-white">
                                         {type.title}
                                     </h4>
                                 </div>
-                                <p className="text-[14px] font-medium text-[#596780] leading-relaxed">
+                                <p className="text-[14px] font-medium text-white/70 leading-relaxed">
                                     {type.desc}
                                 </p>
                             </motion.div>
@@ -160,7 +152,7 @@ export default function Desktop() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8 }}
-                    className="mt-24 max-w-[900px] mx-auto bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-3xl p-10 text-center relative overflow-hidden shadow-2xl"
+                    className="mt-24 max-w-[900px] mx-auto bg-white/[0.02] border border-white/10 rounded-3xl p-10 text-center relative overflow-hidden"
                 >
                     <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/10 rounded-full blur-[60px]"></div>
                     <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#60A5FA]/10 rounded-full blur-[60px]"></div>

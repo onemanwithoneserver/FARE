@@ -6,7 +6,6 @@ import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
 const NAVY = '#0B1D3A';
-const GOLD = '#C99A2E';
 
 export default function Desktop() {
     const { language } = useLanguage();
@@ -37,7 +36,6 @@ export default function Desktop() {
         PenTool: <PenTool size={20} strokeWidth={2.2} />
     };
 
-    const sectionPrefix = data.title.includes(' — ') ? data.title.split(' — ')[0] : 'Section 7';
 
     const activeTabData = data.tabs.find(t => t.id === activeTab) || data.tabs[0];
 
@@ -51,11 +49,6 @@ export default function Desktop() {
                     viewport={{ once: false, margin: "-100px" }}
                     className="flex flex-col items-center text-center mb-16"
                 >
-                    <motion.div variants={item} className="mb-4">
-                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            {sectionPrefix}
-                        </span>
-                    </motion.div>
 
                     <motion.h2 variants={item} className="text-[3rem] lg:text-[3.25rem] leading-[1.1] font-black tracking-[-0.02em] mb-6 max-w-[800px]" style={{ color: NAVY }}>
                         {data.headline}

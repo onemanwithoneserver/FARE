@@ -4,8 +4,8 @@ import { User, Server, Plus, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
-const NAVY = '#0B1D3A';
 const GOLD = '#C99A2E';
+
 
 export default function Desktop() {
     const { language } = useLanguage();
@@ -28,11 +28,10 @@ export default function Desktop() {
         }
     };
 
-    const sectionPrefix = data.title.includes(' — ') ? data.title.split(' — ')[0] : 'Section 8';
 
     return (
-        <section className="w-full py-32 bg-white relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+        <section className="w-full py-32 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="max-w-[1240px] mx-auto px-12 relative z-10">
                 <motion.div
@@ -42,13 +41,8 @@ export default function Desktop() {
                     viewport={{ once: false, margin: "-100px" }}
                     className="flex flex-col items-center text-center mb-24"
                 >
-                    <motion.div variants={item} className="mb-4">
-                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            {sectionPrefix}
-                        </span>
-                    </motion.div>
 
-                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }}>
+                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-4 text-white">
                         {data.headline}
                     </motion.h2>
                     <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em]" style={{ color: GOLD }}>
@@ -64,22 +58,22 @@ export default function Desktop() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false, margin: "-100px" }}
                         transition={{ duration: 0.8 }}
-                        className="bg-white border border-[#0B1D3A]/10 rounded-3xl p-10 shadow-[0_10px_40px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden group hover:border-[#0B1D3A]/20 transition-colors"
+                        className="bg-white/[0.03] border border-white/10 rounded-3xl p-10 hover:bg-white/[0.06] transition-colors relative overflow-hidden group"
                     >
-                        <div className="absolute top-0 left-0 w-32 h-32 bg-[#C99A2E]/5 rounded-br-full blur-2xl transition-all duration-500 group-hover:bg-[#C99A2E]/10 group-hover:blur-3xl"></div>
+                        <div className="absolute top-0 left-0 w-32 h-32 bg-[#C99A2E]/10 rounded-br-full blur-2xl transition-all duration-500 group-hover:bg-[#C99A2E]/20 group-hover:blur-3xl"></div>
                         
                         <div className="flex items-center gap-4 mb-8 relative z-10">
-                            <div className="w-14 h-14 rounded-2xl bg-[#F8FAFD] border border-[#0B1D3A]/5 flex items-center justify-center text-[#C99A2E]">
+                            <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-[#C99A2E]">
                                 <User size={24} strokeWidth={2.5} />
                             </div>
-                            <h3 className="text-[24px] font-bold" style={{ color: NAVY }}>
+                            <h3 className="text-[24px] font-bold text-white">
                                 {data.youBring.title}
                             </h3>
                         </div>
 
                         <ul className="flex flex-col gap-4 relative z-10">
                             {data.youBring.items.map((item, idx) => (
-                                <li key={idx} className="flex items-center gap-3 text-[16px] font-medium text-[#596780]">
+                                <li key={idx} className="flex items-center gap-3 text-[16px] font-medium text-white/70">
                                     <div className="w-2 h-2 rounded-full bg-[#C99A2E]"></div>
                                     {item}
                                 </li>
@@ -89,7 +83,7 @@ export default function Desktop() {
 
                     {/* Plus Icon */}
                     <div className="flex items-center justify-center">
-                        <div className="w-12 h-12 rounded-full bg-[#0B1D3A]/5 flex items-center justify-center text-[#0B1D3A]/30">
+                        <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white/30">
                             <Plus size={24} strokeWidth={3} />
                         </div>
                     </div>
@@ -100,7 +94,7 @@ export default function Desktop() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false, margin: "-100px" }}
                         transition={{ duration: 0.8 }}
-                        className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-3xl p-10 shadow-xl relative overflow-hidden group"
+                        className="bg-white/[0.03] border border-white/10 rounded-3xl p-10 hover:bg-white/[0.06] transition-colors relative overflow-hidden group"
                     >
                         <div className="absolute top-0 right-0 w-48 h-48 bg-[#60A5FA]/10 rounded-bl-full blur-3xl transition-all duration-500 group-hover:bg-[#60A5FA]/20 group-hover:blur-[60px]"></div>
                         
@@ -115,7 +109,7 @@ export default function Desktop() {
 
                         <ul className="flex flex-col gap-4 relative z-10">
                             {data.fareBrings.items.map((item, idx) => (
-                                <li key={idx} className="flex items-center gap-3 text-[16px] font-medium text-white/80">
+                                <li key={idx} className="flex items-center gap-3 text-[16px] font-medium text-white/70">
                                     <div className="w-2 h-2 rounded-full bg-[#60A5FA]"></div>
                                     {item}
                                 </li>
@@ -131,16 +125,16 @@ export default function Desktop() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8 }}
-                    className="max-w-[1000px] mx-auto bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-3xl p-10 flex flex-col items-center relative overflow-hidden"
+                    className="max-w-[1000px] mx-auto bg-white/[0.02] border border-white/10 rounded-3xl p-10 flex flex-col items-center relative overflow-hidden"
                 >
-                    <h3 className="text-[20px] font-bold text-[#0B1D3A] mb-8 uppercase tracking-widest text-center">
+                    <h3 className="text-[20px] font-bold text-white mb-8 uppercase tracking-widest text-center">
                         {data.together.title}
                     </h3>
                     
                     <div className="flex items-center justify-center gap-6 flex-wrap">
                         {data.together.flow.map((step, idx) => (
                             <div key={idx} className="flex items-center gap-6">
-                                <span className="text-[18px] font-bold text-[#3A4A63] bg-white px-6 py-3 rounded-xl border border-[#0B1D3A]/5 shadow-sm">
+                                <span className="text-[18px] font-bold text-white bg-white/5 px-6 py-3 rounded-xl border border-white/10 shadow-sm">
                                     {step}
                                 </span>
                                 {idx < data.together.flow.length - 1 && (
@@ -158,7 +152,7 @@ export default function Desktop() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="mt-16 text-center"
                 >
-                    <p className="text-[18px] font-medium text-[#596780] italic">
+                    <p className="text-[18px] font-medium text-white/50 italic">
                         "{data.footerText}"
                     </p>
                 </motion.div>

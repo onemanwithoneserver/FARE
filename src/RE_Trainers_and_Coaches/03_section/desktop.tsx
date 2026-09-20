@@ -5,7 +5,6 @@ import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
 const NAVY = '#0B1D3A';
-const GOLD = '#C99A2E';
 
 export default function Desktop() {
     const { language } = useLanguage();
@@ -36,7 +35,6 @@ export default function Desktop() {
     };
 
     const sectionTitle = data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
-    const sectionPrefix = data.title.includes(' — ') ? data.title.split(' — ')[0] : 'Section 3';
 
     return (
         <section className="w-full py-32 bg-white relative font-['Outfit'] overflow-hidden">
@@ -50,11 +48,6 @@ export default function Desktop() {
                     viewport={{ once: false, margin: "-100px" }}
                     className="flex flex-col items-center text-center mb-20"
                 >
-                    <motion.div variants={item} className="mb-4">
-                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            {sectionPrefix}
-                        </span>
-                    </motion.div>
 
                     <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[800px]" style={{ color: NAVY }}>
                         {data.headline}

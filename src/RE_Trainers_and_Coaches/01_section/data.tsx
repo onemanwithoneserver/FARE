@@ -27,7 +27,31 @@ export const dataEn = {
     }
 };
 
-export const dataTe = { ...dataEn };
+export const dataTe = {
+    tagline: "RE Trainers & Coaches కోసం FARE",
+    headline: "చివరికి, ట్రైనర్స్ కోసం ఒక Custom RE LMS.",
+    subheadline: "మీ నైపుణ్యాన్ని మరింత శక్తివంతమైన అభ్యాస అనుభవంగా మార్చండి.",
+    description: "మీ అభ్యాసకులతో కనెక్ట్ కావడానికి, స్ట్రక్చర్డ్ ప్రోగ్రామ్స్ అందించడానికి, మాక్స్ ద్వారా ప్రాక్టీస్ చేయడానికి మరియు రియల్ ఎస్టేట్ ట్రైనింగ్ కోసం చూస్తున్న సంస్థలను చేరుకోవడానికి FARE ని ఉపయోగించండి.",
+    features: ["మీ నైపుణ్యం", "మీ కంటెంట్", "మీ అభ్యాసకులు", "Powered by FARE"],
+    buttons: {
+        primary: "FARE for Trainers అన్వేషించండి",
+        secondary: "డెమో షెడ్యూల్ చేయండి"
+    },
+    dashboard: {
+        title: "మొత్తం అభ్యాసకులు (Total Learners)",
+        floatingBadge: {
+            title: "Live Class: Sales Pitch",
+            subtitle: "Top Rated Trainer"
+        },
+        stats: [
+            { title: "Active Courses", progress: "12", color: "#60A5FA" },
+            { title: "Completed Mocks", progress: "450+", color: "#34D399" },
+            { title: "Mentoring Sessions", progress: "85", color: "#C99A2E" },
+            { title: "Avg. Learner Score", progress: "92%", color: "#F472B6" }
+        ]
+    },
+    footerText: "*FARE ప్లాట్‌ఫారమ్ మరియు అభ్యాసకులను అందిస్తుంది. మీరు శిక్షణను అందిస్తారు."
+};
 
 export const getData = (lang: Language = 'en') => lang === 'te' ? dataTe : dataEn;
 export const data = dataEn;

@@ -4,8 +4,8 @@ import { Unlink, UserX, ListChecks, Clock, MonitorX, Globe, Building2, FileEdit,
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
-const NAVY = '#0B1D3A';
 const GOLD = '#C99A2E';
+
 
 export default function Desktop() {
     const { language } = useLanguage();
@@ -28,22 +28,22 @@ export default function Desktop() {
         }
     };
 
-    const icons = [
-        <Unlink size={24} className="text-[#EF4444]" />,
-        <UserX size={24} className="text-[#F59E0B]" />,
-        <ListChecks size={24} className="text-[#3B82F6]" />,
-        <Clock size={24} className="text-[#8B5CF6]" />,
-        <MonitorX size={24} className="text-[#EC4899]" />,
-        <Globe size={24} className="text-[#10B981]" />,
-        <Building2 size={24} className="text-[#6366F1]" />,
-        <FileEdit size={24} className="text-[#F97316]" />
+    const iconData = [
+        { Icon: Unlink, color: "#EF4444" },
+        { Icon: UserX, color: "#F59E0B" },
+        { Icon: ListChecks, color: "#3B82F6" },
+        { Icon: Clock, color: "#8B5CF6" },
+        { Icon: MonitorX, color: "#EC4899" },
+        { Icon: Globe, color: "#10B981" },
+        { Icon: Building2, color: "#6366F1" },
+        { Icon: FileEdit, color: "#F97316" }
     ];
 
     const sectionTitle = data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
 
     return (
-        <section className="w-full py-32 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#E0E7FF]/40 to-transparent rounded-full blur-[80px] pointer-events-none"></div>
+        <section className="w-full py-32 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
             <div className="max-w-[1240px] mx-auto px-12 relative z-10">
                 <motion.div
@@ -59,11 +59,11 @@ export default function Desktop() {
                         </span>
                     </motion.div>
 
-                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.25rem] leading-[1.1] font-black tracking-[-0.02em] mb-6 max-w-[850px]" style={{ color: NAVY }}>
+                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.25rem] leading-[1.1] font-black tracking-[-0.02em] mb-6 max-w-[850px] text-white">
                         {sectionTitle}
                     </motion.h2>
 
-                    <motion.p variants={item} className="text-[18px] font-medium leading-[1.6] max-w-[680px]" style={{ color: '#596780' }}>
+                    <motion.p variants={item} className="text-[18px] font-medium leading-[1.6] max-w-[680px] text-white/70">
                         {data.subtitle}
                     </motion.p>
                 </motion.div>
@@ -75,24 +75,30 @@ export default function Desktop() {
                     viewport={{ once: false, margin: "-100px" }}
                     className="grid grid-cols-2 lg:grid-cols-4 gap-5 relative mb-20"
                 >
-                    {data.challenges.map((challenge, index) => (
-                        <motion.div
-                            key={index}
-                            variants={item}
-                            whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                            className="bg-white border border-[#0B1D3A]/5 rounded-2xl p-7 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.03)] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] transition-all duration-300 group relative overflow-hidden flex flex-col items-center text-center"
-                        >
-                            <div className="mb-5 p-3.5 rounded-2xl bg-[#F8FAFD] group-hover:scale-110 transition-transform duration-300 border border-[#0B1D3A]/5">
-                                {icons[index]}
-                            </div>
-                            <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-[#0B1D3A]/30 mb-2">
-                                {String(index + 1).padStart(2, '0')}
-                            </span>
-                            <h3 className="text-[15px] font-bold leading-snug" style={{ color: NAVY }}>
-                                {challenge}
-                            </h3>
-                        </motion.div>
-                    ))}
+                    {data.challenges.map((challenge, index) => {
+                        const { Icon, color } = iconData[index];
+                        return (
+                            <motion.div
+                                key={index}
+                                variants={item}
+                                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+                                className="bg-white/[0.03] border border-white/10 rounded-2xl p-7 hover:bg-white/[0.06] transition-all duration-300 group relative overflow-hidden flex flex-col items-center text-center"
+                            >
+                                <div 
+                                    className="mb-5 p-3.5 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-md"
+                                    style={{ backgroundColor: color }}
+                                >
+                                    <Icon size={24} className="text-white" />
+                                </div>
+                                <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-white/20 mb-2">
+                                    {String(index + 1).padStart(2, '0')}
+                                </span>
+                                <h3 className="text-[15px] font-bold leading-snug text-white">
+                                    {challenge}
+                                </h3>
+                            </motion.div>
+                        );
+                    })}
                 </motion.div>
 
                 <motion.div
@@ -100,7 +106,7 @@ export default function Desktop() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8 }}
-                    className="max-w-[800px] mx-auto text-center bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-3xl p-12 shadow-2xl relative overflow-hidden"
+                    className="max-w-[800px] mx-auto text-center bg-white/[0.05] border border-white/10 rounded-3xl p-12 shadow-2xl relative overflow-hidden"
                 >
                     <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/10 rounded-full blur-3xl"></div>
                     <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#60A5FA]/10 rounded-full blur-3xl"></div>

@@ -4,8 +4,8 @@ import { ArrowRight, BookOpen, Target, CheckCircle, BarChart2, Sparkles, Award }
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
-const NAVY = '#0B1D3A';
 const GOLD = '#C99A2E';
+const NAVY = '#0B1D3A';
 const GOLD_MID = '#D5AA45';
 
 export default function Desktop() {

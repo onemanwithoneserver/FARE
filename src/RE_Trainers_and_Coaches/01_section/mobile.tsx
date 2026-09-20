@@ -4,8 +4,8 @@ import { ArrowRight, BookOpen, Target, BarChart2, CheckCircle } from 'lucide-rea
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
-const NAVY = '#0B1D3A';
 const GOLD = '#C99A2E';
+const NAVY = '#0B1D3A';
 const GOLD_MID = '#D5AA45';
 
 export default function Mobile() {
