@@ -30,7 +30,7 @@ export default function Desktop() {
 
 
     return (
-        <section className="w-full py-32 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-20 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="max-w-[1240px] mx-auto px-12 relative z-10">
@@ -63,7 +63,7 @@ export default function Desktop() {
                         <div className="absolute top-0 left-0 w-32 h-32 bg-[#C99A2E]/10 rounded-br-full blur-2xl transition-all duration-500 group-hover:bg-[#C99A2E]/20 group-hover:blur-3xl"></div>
                         
                         <div className="flex items-center gap-4 mb-8 relative z-10">
-                            <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-[#C99A2E]">
+                            <div className="w-14 h-14 rounded-2xl bg-[#C99A2E] flex items-center justify-center text-white shadow-[0_4px_15px_rgba(201,154,46,0.3)]">
                                 <User size={24} strokeWidth={2.5} />
                             </div>
                             <h3 className="text-[24px] font-bold text-white">
@@ -99,7 +99,7 @@ export default function Desktop() {
                         <div className="absolute top-0 right-0 w-48 h-48 bg-[#60A5FA]/10 rounded-bl-full blur-3xl transition-all duration-500 group-hover:bg-[#60A5FA]/20 group-hover:blur-[60px]"></div>
                         
                         <div className="flex items-center gap-4 mb-8 relative z-10">
-                            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-[#60A5FA] backdrop-blur-sm">
+                            <div className="w-14 h-14 rounded-2xl bg-[#60A5FA] flex items-center justify-center text-white shadow-[0_4px_15px_rgba(96,165,250,0.3)]">
                                 <Server size={24} strokeWidth={2.5} />
                             </div>
                             <h3 className="text-[24px] font-bold text-white">

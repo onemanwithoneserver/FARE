@@ -43,7 +43,7 @@ export default function Mobile() {
 
 
     return (
-        <section className="w-full py-20 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-12 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[60px] pointer-events-none"></div>
 
             <div className="px-6 relative z-10">

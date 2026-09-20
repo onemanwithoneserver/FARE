@@ -37,7 +37,7 @@ export default function Mobile() {
     const sectionTitle = data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
 
     return (
-        <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-12 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
 
             <div className="px-6 relative z-10">

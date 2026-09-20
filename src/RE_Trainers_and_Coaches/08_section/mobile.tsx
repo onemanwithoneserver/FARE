@@ -30,7 +30,7 @@ export default function Mobile() {
 
 
     return (
-        <section className="w-full py-20 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-12 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[60px] pointer-events-none"></div>
 
             <div className="px-6 relative z-10">
@@ -63,7 +63,7 @@ export default function Mobile() {
                         <div className="absolute top-0 right-0 w-24 h-24 bg-[#C99A2E]/10 rounded-bl-full blur-[20px]"></div>
                         
                         <div className="flex items-center gap-3 mb-6 relative z-10">
-                            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-[#C99A2E]">
+                            <div className="w-12 h-12 rounded-xl bg-[#C99A2E] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(201,154,46,0.3)]">
                                 <User size={20} strokeWidth={2.5} />
                             </div>
                             <h3 className="text-[20px] font-bold text-white">
@@ -99,7 +99,7 @@ export default function Mobile() {
                         <div className="absolute top-0 right-0 w-32 h-32 bg-[#60A5FA]/10 rounded-bl-full blur-[30px]"></div>
                         
                         <div className="flex items-center gap-3 mb-6 relative z-10">
-                            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-[#60A5FA] backdrop-blur-sm">
+                            <div className="w-12 h-12 rounded-xl bg-[#60A5FA] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(96,165,250,0.3)]">
                                 <Server size={20} strokeWidth={2.5} />
                             </div>
                             <h3 className="text-[20px] font-bold text-white">

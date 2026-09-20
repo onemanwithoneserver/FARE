@@ -42,7 +42,7 @@ export default function Desktop() {
     const sectionTitle = data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
 
     return (
-        <section className="w-full py-32 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-20 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
             <div className="max-w-[1240px] mx-auto px-12 relative z-10">

@@ -40,7 +40,7 @@ export default function Desktop() {
     const activeTabData = data.tabs.find(t => t.id === activeTab) || data.tabs[0];
 
     return (
-        <section className="w-full py-32 bg-white relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="max-w-[1240px] mx-auto px-12 relative z-10">
                 <motion.div
                     variants={container}

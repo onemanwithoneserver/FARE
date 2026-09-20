@@ -40,7 +40,7 @@ export default function Desktop() {
 
 
     return (
-        <section className="w-full py-32 bg-white relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="absolute top-1/4 -left-[200px] w-[500px] h-[500px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
             <div className="max-w-[1240px] mx-auto px-12 relative z-10">

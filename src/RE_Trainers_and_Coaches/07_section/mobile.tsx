@@ -40,7 +40,7 @@ export default function Mobile() {
     const activeTabData = data.tabs.find(t => t.id === activeTab) || data.tabs[0];
 
     return (
-        <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-12 bg-white relative font-['Outfit'] overflow-hidden">
             <div className="px-6 relative z-10">
                 <motion.div
                     variants={container}

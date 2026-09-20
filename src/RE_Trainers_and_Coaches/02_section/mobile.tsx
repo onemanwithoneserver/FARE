@@ -42,7 +42,7 @@ export default function Mobile() {
     const sectionTitle = data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
 
     return (
-        <section className="w-full py-20 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-12 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
             <div className="px-6 relative z-10">
                 <motion.div
                     variants={container}
