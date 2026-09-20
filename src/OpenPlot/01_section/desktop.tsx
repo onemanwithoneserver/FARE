@@ -31,7 +31,7 @@ export default function Desktop() {
 
     return (
         <section
-            className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center overflow-x-clip relative font-['Outfit']"
+            className="w-full -mt-8 lg:-mt-16 flex items-center justify-center overflow-x-clip relative font-['Outfit']"
             style={{ background: `linear-gradient(160deg, #FFFFFF 0%, #F8FAFD 40%, #EEF4FF 100%)` }}
         >
             <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></div>

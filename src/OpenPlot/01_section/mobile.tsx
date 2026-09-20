@@ -30,7 +30,7 @@ export default function Mobile() {
     };
 
     return (
-        <section className="w-full pt-[90px] pb-14 flex flex-col items-center justify-start overflow-hidden relative font-['Outfit']"
+        <section className="w-full pt-[50px] -mt-6 pb-14 flex flex-col items-center justify-start overflow-hidden relative font-['Outfit']"
             style={{ background: `linear-gradient(160deg, #FFFFFF 0%, #F8FAFD 40%, #EEF4FF 100%)` }}
         >
             <div className="absolute top-20 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></div>
