@@ -1,49 +1,47 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 5 - Custom Solutions",
-    headline: "Your business is different. Your learning system can be too.",
-    desc1: "Every Open Plot company has its own:",
-    highlights: "Products · Locations · Processes · Sales Approach · Team Structure · Training Requirements",
-    desc2: "FARE can be customised around your organisation.",
-    featuresHeading: "Custom Solutions Can Include",
-    features: [
-        "Custom onboarding programs",
-        "Company-specific courses",
-        "Project & product courses",
-        "Custom quizzes",
-        "Custom assessments",
-        "Mock templates",
-        "Daily habit programs",
-        "Custom LMS",
-        "Trainer-led programs"
+    title: "Section 4 - Free Evaluation",
+    headline: "How strong is your team's Open Plot knowledge?",
+    desc1: "Don't wait for performance issues to tell you where the gaps are.",
+    desc2: "Take the FARE Free Evaluation Test and get a snapshot of your team's knowledge across key areas.",
+    testAreas: [
+        "Real Estate Fundamentals",
+        "Open Plot Knowledge",
+        "Product Knowledge",
+        "Location & Market Knowledge",
+        "Sales Knowledge"
     ],
-    ctaHeading: "Have a Specific Requirement?",
-    ctaDesc: "Tell us what you want your team to learn, practise or improve.",
-    ctaButton: "Talk to FARE"
+    evaluationFlow: "21 Questions → Score → Knowledge Snapshot",
+    primaryButton: "Take the Free Evaluation Test",
+    secondaryButton: "Evaluate My Team",
+    footerText: "Use the evaluation as a starting point for identifying learning and training requirements.",
+    illustrationData: {
+        title: "Evaluation Flow",
+        subtitle: "Standardized Assessment"
+    }
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 5 — Custom Solutions",
-    headline: "మీ Business ప్రత్యేకమైనది. మీ Learning System కూడా అలాగే ఉండవచ్చు.",
-    desc1: "ప్రతి Open Plot Companyకు ప్రత్యేకంగా ఉంటాయి:",
-    highlights: "Products · Locations · Processes · Sales Approach · Team Structure · Training Requirements",
-    desc2: "మీ Organisation చుట్టూ FAREను Customise చేయవచ్చు.",
-    featuresHeading: "Custom Solutionsలో ఇవి ఉండవచ్చు:",
-    features: [
-        "Custom Onboarding Programs",
-        "Company-specific Courses",
-        "Project & Product Courses",
-        "Custom Quizzes",
-        "Custom Assessments",
-        "Mock Templates",
-        "Daily Habit Programs",
-        "Custom LMS",
-        "Trainer-led Programs"
+    title: "సెక్షన్ 4 — Free Evaluation",
+    headline: "మీ టీమ్కు Open Plot Knowledge ఎంత బలంగా ఉంది?",
+    desc1: "Performance Issues బయటపడే వరకు Knowledge Gaps ఎక్కడున్నాయో తెలుసుకోవడానికి వేచి ఉండకండి.",
+    desc2: "FARE Free Evaluation Test తీసుకుని, మీ టీమ్ Knowledgeను ముఖ్యమైన అంశాల్లో అంచనా వేయండి.",
+    testAreas: [
+        "Real Estate Fundamentals",
+        "Open Plot Knowledge",
+        "Product Knowledge",
+        "Location & Market Knowledge",
+        "Sales Knowledge"
     ],
-    ctaHeading: "ప్రత్యేకమైన Requirement ఉందా?",
-    ctaDesc: "మీ టీమ్ ఏమి Learn చేయాలి, Practise చేయాలి లేదా Improve చేయాలి అనుకుంటున్నారో మాకు చెప్పండి.",
-    ctaButton: "FAREతో మాట్లాడండి"
+    evaluationFlow: "21 Questions → Score → Knowledge Snapshot",
+    primaryButton: "Free Evaluation Test తీసుకోండి",
+    secondaryButton: "నా టీమ్ను Evaluate చేయండి",
+    footerText: "Learning మరియు Training Requirementsను గుర్తించడానికి ఈ Evaluationను ఒక Starting Pointగా ఉపయోగించండి.",
+    illustrationData: {
+        title: "ఎవాల్యుయేషన్ ఫ్లో",
+        subtitle: "ప్రామాణిక మదింపు"
+    }
 };
 
 export const getData = (lang: Language = 'en') => lang === 'te' ? dataTe : dataEn;

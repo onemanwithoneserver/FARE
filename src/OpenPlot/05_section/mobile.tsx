@@ -2,11 +2,12 @@ import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
-import { ArrowRight, Check, Settings2, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle, ClipboardList } from 'lucide-react';
 import React from 'react';
 
 const NAVY = '#0B1D3A';
 const NAVY_DEEP = '#071A49';
+const GOLD = '#C99A2E';
 
 export default function Mobile() {
     const { language } = useLanguage();
@@ -26,89 +27,99 @@ export default function Mobile() {
     };
 
     const sectionSubtitle = data.title.includes(' - ') ? data.title.split(' - ')[1] : data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
-    const headlineSentences = data.headline.includes('. ') ? data.headline.split('. ') : [data.headline];
 
     return (
-        <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
+        <section className="w-full py-20 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+            <div className="w-full px-6 relative z-10 flex flex-col gap-12">
 
-            <div className="w-full px-6 relative z-10">
                 <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-50px" }}
-                    className="flex flex-col gap-10"
+                    className="flex flex-col w-full"
                 >
-                    <div className="flex flex-col">
-                        <motion.div variants={item} className="mb-3 flex items-center gap-2 text-[#C99A2E]">
-                            <div className="w-5 h-5 rounded-md bg-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0">
-                                <Settings2 size={11} className="text-white" />
+                    <motion.div variants={item} className="mb-3">
+                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
+                            {sectionSubtitle}
+                        </span>
+                    </motion.div>
+
+                    <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-5" style={{ color: NAVY }}>
+                        {data.headline.split(' ').map((word, i) => (
+                            <React.Fragment key={i}>
+                                {word === 'Open' || word === 'Plot' || word.includes('Open') || word.includes('Plot') ? <span className="text-[#C99A2E]">{word} </span> : <span>{word} </span>}
+                            </React.Fragment>
+                        ))}
+                    </motion.h2>
+
+                    <motion.div variants={item} className="mb-6 flex flex-col gap-2.5">
+                        <p className="text-[15px] font-bold" style={{ color: NAVY_DEEP }}>{data.desc1}</p>
+                        <p className="text-[14.5px] font-medium leading-[1.6]" style={{ color: '#596780' }}>{data.desc2}</p>
+                    </motion.div>
+
+                    <motion.div variants={item} className="flex flex-col gap-3 mb-8">
+                        {data.testAreas.map((area, idx) => (
+                            <div key={idx} className="flex items-start gap-2.5">
+                                <div className="w-4 h-4 rounded-full bg-[#10B981] flex items-center justify-center text-white shrink-0 mt-0.5 shadow-sm">
+                                    <CheckCircle size={10} strokeWidth={3} className="text-white" />
+                                </div>
+                                <span className="text-[14px] font-semibold" style={{ color: NAVY }}>{area}</span>
                             </div>
-                            <span className="text-[10px] font-bold tracking-[0.2em] uppercase">
-                                {sectionSubtitle}
-                            </span>
-                        </motion.div>
+                        ))}
+                    </motion.div>
 
-                        <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-6" style={{ color: NAVY }}>
-                            {headlineSentences.map((sentence, i) => (
-                                <React.Fragment key={i}>
-                                    {i === 0 ? <span>{sentence}{headlineSentences.length > 1 ? '. ' : ''}</span> : <span className="text-[#C99A2E] block mt-1">{sentence}</span>}
-                                </React.Fragment>
-                            ))}
-                        </motion.h2>
+                    <motion.div variants={item} className="flex flex-col gap-3 mb-6 w-full">
+                        <button className="w-full bg-[#0B1D3A] text-white px-6 py-3.5 rounded-[4px] text-[13.5px] font-semibold flex items-center justify-center gap-2 shadow-sm">
+                            {data.primaryButton} <ArrowRight size={15} />
+                        </button>
+                        <button className="w-full bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-3.5 rounded-[4px] text-[13.5px] font-semibold flex items-center justify-center gap-2 shadow-sm">
+                            {data.secondaryButton}
+                        </button>
+                    </motion.div>
 
-                        <motion.div variants={item} className="mb-6">
-                            <p className="text-[15px] font-semibold mb-3" style={{ color: NAVY }}>{data.desc1}</p>
-                            <div className="flex flex-wrap gap-2 mb-5">
-                                {data.highlights.split(' · ').map((highlight, idx) => (
-                                    <div key={idx} className="bg-[#F8FAFD] text-[#0B1D3A] border border-[#0B1D3A]/10 px-2.5 py-1 rounded-md text-[12px] font-semibold">
-                                        {highlight}
-                                    </div>
-                                ))}
+                    <motion.p variants={item} className="text-[12px] font-medium italic text-center" style={{ color: '#7B8DAA' }}>
+                        {data.footerText}
+                    </motion.p>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="w-full relative"
+                >
+                    <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.1)] border border-[#0B1D3A]/5 relative z-10 overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-2xl"></div>
+
+                        <div className="flex items-center justify-between mb-6 relative z-10">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-sm">
+                                    <ClipboardList size={18} className="text-white" />
+                                </div>
+                                <div>
+                                    <h3 className="text-[16px] font-bold text-[#0B1D3A]">{data.illustrationData.title}</h3>
+                                </div>
                             </div>
-                            <p className="text-[14.5px] font-medium leading-[1.6]" style={{ color: '#596780' }}>
-                                <Sparkles size={14} className="inline text-[#C99A2E] mr-1.5 -mt-1" />
-                                {data.desc2}
-                            </p>
-                        </motion.div>
-                    </div>
+                        </div>
 
-                    <motion.div
-                        variants={item}
-                        className="bg-white border border-[#0B1D3A]/10 rounded-2xl p-6 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative"
-                    >
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/5 rounded-bl-full rounded-tr-2xl"></div>
-
-                        <h3 className="text-[18px] font-bold mb-6 relative z-10" style={{ color: NAVY_DEEP }}>
-                            {data.featuresHeading}
-                        </h3>
-
-                        <div className="flex flex-col gap-4 relative z-10">
-                            {data.features.map((feature, idx) => {
-                                const featureColors = ['bg-[#10B981]', 'bg-[#3B82F6]', 'bg-[#8B5CF6]', 'bg-[#F59E0B]', 'bg-[#EC4899]', 'bg-[#06B6D4]'];
+                        <div className="flex flex-col gap-3 relative z-10">
+                            {data.evaluationFlow.split(' → ').map((step, i) => {
+                                const stepColors = ['bg-[#3B82F6]', 'bg-[#10B981]', 'bg-[#8B5CF6]', 'bg-[#F59E0B]'];
                                 return (
-                                    <div key={idx} className="flex items-start gap-3">
-                                        <div className={`w-5 h-5 rounded-full ${featureColors[idx % featureColors.length]} flex items-center justify-center shrink-0 text-white shadow-sm mt-0.5`}>
-                                            <Check size={10} className="text-white" strokeWidth={3} />
+                                    <div key={i} className="flex items-center gap-3">
+                                        <div className={`w-7 h-7 rounded-lg ${stepColors[i % stepColors.length]} flex items-center justify-center text-white font-bold text-[12px] shrink-0 shadow-sm`}>
+                                            {i + 1}
                                         </div>
-                                        <span className="text-[14px] font-semibold text-[#0B1D3A]/80 leading-snug">
-                                            {feature}
-                                        </span>
+                                        <div className="flex-1 bg-white border border-[#0B1D3A]/5 shadow-sm rounded-lg p-3">
+                                            <span className="text-[14px] font-semibold text-[#0B1D3A]">{step}</span>
+                                        </div>
                                     </div>
                                 );
                             })}
                         </div>
-                    </motion.div>
-
-                    <motion.div variants={item} className="bg-gradient-to-br from-[#F8FAFD] to-[#EEF4FF] border border-[#0B1D3A]/5 rounded-xl p-6 shadow-sm flex flex-col items-center text-center">
-                        <h3 className="text-[16px] font-bold mb-2" style={{ color: NAVY_DEEP }}>{data.ctaHeading}</h3>
-                        <p className="text-[13px] font-medium text-[#596780] mb-5">{data.ctaDesc}</p>
-                        <button className="w-full bg-[#0B1D3A] text-white px-6 py-3.5 rounded-[4px] text-[13.5px] font-semibold flex items-center justify-center gap-2 shadow-sm">
-                            {data.ctaButton} <ArrowRight size={15} />
-                        </button>
-                    </motion.div>
-
+                    </div>
                 </motion.div>
             </div>
         </section>

@@ -1,89 +1,39 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    title: "Section 2 - Four Ways to Use FARE",
-    headline: {
-        line1: "One platform.",
-        line2: "Four ways",
-        line3: "to strengthen",
-        line4: "your team."
-    },
-    subtitle: "Whether you're onboarding a new Associate, preparing a team for a project launch, improving sales skills or looking for a trainer — FARE gives your organisation a structured way to develop people.",
-    cards: [
-        {
-            tag: "ONBOARD",
-            title: "Custom Onboarding",
-            desc: "Get every new Associate started with a structured learning journey covering your company, projects, products and sales fundamentals.",
-            icon: "BookOpen",
-            color: "#34D399"
-        },
-        {
-            tag: "KNOW",
-            title: "Knowledge Bank",
-            desc: "Give your team access to ready-made real estate and Open Plot quizzes to build and measure knowledge.",
-            icon: "BarChart2",
-            color: "#60A5FA"
-        },
-        {
-            tag: "PRACTISE",
-            title: "Custom Learning System",
-            desc: "Go beyond courses with Mocks, Daily Habits and Sales Forecast tools designed around your team's day-to-day development.",
-            icon: "Target",
-            color: "#C99A2E"
-        },
-        {
-            tag: "SOURCE",
-            title: "Trainer Directory",
-            desc: "Discover and connect with trainers based on expertise, real estate segment, format, delivery, experience and availability.",
-            icon: "Users",
-            color: "#F472B6"
-        }
+    title: "Section 2 — Common Training Challenges in Open Plot Companies",
+    subtitle: "Training is important. But making it work consistently is a challenge.",
+    challenges: [
+        "Training Motivation Fades Quickly",
+        "Senior Teams Keep Repeating New-Joiner Training",
+        "Learning Doesn't Translate Into Practical Situations",
+        "Training Is Difficult to Manage & Track",
+        "Limited Access to Relevant Open Plot Trainers",
+        "New Challenges Require New & Specialised Skills",
+        "Knowledge Gaps Are Difficult to Measure",
+        "Training Is Event-Driven, Not Continuous",
+        "Limited Specialised Training for Senior Teams"
     ],
-    cta: "Explore How FARE Works ↓",
-    learnMore: "Learn more"
+    transitionTitle: "What if training could become a continuous system — not just an occasional activity?",
+    transitionSubtitle: "That's where FARE comes in."
 };
 
 export const dataTe = {
-    title: "సెక్షన్ 2 — FAREని ఉపయోగించే నాలుగు మార్గాలు",
-    headline: {
-        line1: "ఒకే ప్లాట్ఫారమ్.",
-        line2: "మీ టీమ్ను బలోపేతం చేయడానికి",
-        line3: "నాలుగు మార్గాలు.",
-        line4: ""
-    },
-    subtitle: "మీరు కొత్త Associateను Onboard చేస్తున్నా, Project Launch కోసం టీమ్ను సిద్ధం చేస్తున్నా, Sales Skillsను మెరుగుపరుస్తున్నా లేదా Trainer కోసం చూస్తున్నా — మీ టీమ్ను అభివృద్ధి చేయడానికి FARE ఒక Structured విధానాన్ని అందిస్తుంది.",
-    cards: [
-        {
-            tag: "ONBOARD",
-            title: "Custom Onboarding",
-            desc: "మీ Company, Projects, Products మరియు Sales Fundamentalsను కవర్ చేసే Structured Learning Journey ద్వారా ప్రతి కొత్త Associateను సరైన విధంగా ప్రారంభించండి.",
-            icon: "BookOpen",
-            color: "#34D399"
-        },
-        {
-            tag: "KNOW",
-            title: "Knowledge Bank",
-            desc: "Knowledgeను Build మరియు Measure చేయడానికి మీ టీమ్కు Ready-made Real Estate మరియు Open Plot Quizzes అందించండి.",
-            icon: "BarChart2",
-            color: "#60A5FA"
-        },
-        {
-            tag: "PRACTISE",
-            title: "Custom Learning System",
-            desc: "Coursesను దాటి Mocks, Daily Habits మరియు Sales Forecast Tools ద్వారా మీ టీమ్ రోజువారీ అభివృద్ధికి అనుగుణమైన Learning Systemను రూపొందించండి.",
-            icon: "Target",
-            color: "#C99A2E"
-        },
-        {
-            tag: "SOURCE",
-            title: "Trainer Directory",
-            desc: "Expertise, Real Estate Segment, Format, Delivery, Experience మరియు Availability ఆధారంగా Trainersను కనుగొని వారితో కనెక్ట్ అవ్వండి.",
-            icon: "Users",
-            color: "#F472B6"
-        }
+    title: "సెక్షన్ 2 — Open Plot కంపెనీలలో సాధారణ Training Challenges",
+    subtitle: "Training ముఖ్యమే. కానీ దాన్ని నిరంతరం కొనసాగించడం ఒక సవాలు.",
+    challenges: [
+        "Training Motivation త్వరగా తగ్గిపోతుంది",
+        "Senior Teams కొత్త Associatesకు Trainingను పదేపదే ఇవ్వాల్సి వస్తుంది",
+        "Learning Practical Situationsలోకి మారడం లేదు",
+        "Trainingను Manage & Track చేయడం కష్టం",
+        "Relevant Open Plot Trainersకు పరిమితమైన యాక్సెస్",
+        "కొత్త Challengesకు కొత్త & Specialised Skills అవసరం",
+        "Knowledge Gapsను Measure చేయడం కష్టం",
+        "Training Continuousగా కాకుండా Event-Drivenగా ఉంటుంది",
+        "Senior Teams కోసం Specialised Training పరిమితంగా ఉంటుంది"
     ],
-    cta: "FARE ఎలా పనిచేస్తుందో తెలుసుకోండి ↓",
-    learnMore: "మరింత తెలుసుకోండి"
+    transitionTitle: "Training ఒకసారి జరిగే activity కాకుండా, Continuous Systemగా మారితే?",
+    transitionSubtitle: "అక్కడే FARE వస్తుంది."
 };
 
 export const getData = (lang: Language = 'en') => lang === 'te' ? dataTe : dataEn;

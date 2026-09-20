@@ -1,138 +1,156 @@
-import { motion } from 'motion/react';
-import type { Variants } from 'motion/react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
-import { ArrowRight, CheckCircle, ClipboardList } from 'lucide-react';
-import React from 'react';
+import { CheckCircle2, ArrowRight, BookOpen, BarChart2, Target, Users } from 'lucide-react';
 
-const NAVY = '#0B1D3A';
-const NAVY_DEEP = '#071A49';
 const GOLD = '#C99A2E';
+
+const TAB_ICONS: Record<string, React.ReactNode> = {
+    tab1: <BookOpen size={17} className="text-white" />,
+    tab2: <BarChart2 size={17} className="text-white" />,
+    tab3: <Target size={17} className="text-white" />,
+    tab4: <Users size={17} className="text-white" />
+};
+
+const TAB_COLORS: Record<string, string> = {
+    tab1: '#10B981',
+    tab2: '#3B82F6',
+    tab3: '#F59E0B',
+    tab4: '#EC4899'
+};
 
 export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);
+    const [activeTab, setActiveTab] = useState(data.tabs[0].id);
 
-    const container: Variants = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-        }
-    };
-
-    const item: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
-    };
-
-    const sectionSubtitle = data.title.includes(' - ') ? data.title.split(' - ')[1] : data.title.includes(' — ') ? data.title.split(' — ')[1] : data.title;
+    const activeContent = data.tabContent[activeTab as keyof typeof data.tabContent] as any;
+    const activeColor = TAB_COLORS[activeTab] || GOLD;
 
     return (
-        <section className="w-full py-32 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
-            <div className="max-w-[1240px] mx-auto px-12 relative z-10 flex items-center justify-between gap-16">
+        <section className="w-full py-28 bg-[#0B1D3A] text-white relative font-['Outfit'] overflow-hidden">
+            <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/8 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
+            <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-gradient-radial from-[#60A5FA]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0"></div>
 
-                <motion.div
-                    variants={container}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: false, margin: "-100px" }}
-                    className="flex-1 max-w-[560px]"
-                >
-                    <motion.div variants={item} className="mb-4">
-                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            {sectionSubtitle}
-                        </span>
-                    </motion.div>
+            <div className="max-w-[1240px] mx-auto px-12 relative z-10">
+                <div className="flex flex-col items-center text-center mb-16">
+                    <h2 className="text-[2.75rem] lg:text-[3.25rem] leading-[1.08] font-black tracking-[-0.02em] mb-5 max-w-[800px]">
+                        {data.headline}
+                    </h2>
+                    <p className="text-[17px] font-medium leading-[1.6] text-white/60 max-w-[600px]">
+                        {data.subtitle}
+                    </p>
+                </div>
 
-                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6" style={{ color: NAVY }}>
-                        {data.headline.split(' ').map((word, i) => (
-                            <React.Fragment key={i}>
-                                {word === 'Open' || word === 'Plot' || word.includes('Open') || word.includes('Plot') ? <span className="text-[#C99A2E]">{word} </span> : <span>{word} </span>}
-                            </React.Fragment>
-                        ))}
-                    </motion.h2>
-
-                    <motion.div variants={item} className="mb-8 flex flex-col gap-3">
-                        <p className="text-[17px] font-bold" style={{ color: NAVY_DEEP }}>{data.desc1}</p>
-                        <p className="text-[16px] font-medium leading-[1.6]" style={{ color: '#596780' }}>{data.desc2}</p>
-                    </motion.div>
-
-                    <motion.div variants={item} className="grid grid-cols-2 gap-y-4 gap-x-6 mb-10">
-                        {data.testAreas.map((area, idx) => (
-                            <div key={idx} className="flex items-start gap-2.5">
-                                <div className="w-5 h-5 rounded-full bg-[#10B981] flex items-center justify-center text-white shrink-0 mt-0.5 shadow-sm">
-                                    <CheckCircle size={13} strokeWidth={2.5} className="text-white" />
-                                </div>
-                                <span className="text-[15px] font-semibold" style={{ color: NAVY }}>{area}</span>
+                <div className="flex justify-center gap-3 mb-12">
+                    {data.tabs.map(tab => (
+                        <button
+                            key={tab.id}
+                            onClick={() => setActiveTab(tab.id)}
+                            className={`flex items-center gap-3 px-5 py-3 rounded-xl text-[14px] font-semibold transition-all duration-300 border ${
+                                activeTab === tab.id
+                                    ? 'bg-white/10 border-[#C99A2E]/40 text-white shadow-[0_4px_20px_rgba(201,154,46,0.12)]'
+                                    : 'bg-white/[0.03] border-white/[0.08] text-white/60 hover:text-white hover:bg-white/[0.06]'
+                            }`}
+                        >
+                            <div
+                                className="w-7 h-7 rounded-lg flex items-center justify-center text-white shrink-0 shadow-sm"
+                                style={{ backgroundColor: TAB_COLORS[tab.id] }}
+                            >
+                                {TAB_ICONS[tab.id]}
                             </div>
-                        ))}
-                    </motion.div>
-
-                    <motion.div variants={item} className="flex items-center gap-4 mb-8">
-                        <button className="bg-[#0B1D3A] text-white px-7 py-3.5 rounded-[4px] text-[13.5px] font-semibold hover:shadow-[0_8px_24px_rgba(11,29,58,0.2)] hover:bg-[#102B63] transition-all flex items-center gap-2">
-                            {data.primaryButton} <ArrowRight size={15} />
+                            {tab.title}
                         </button>
-                        <button className="bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-7 py-3.5 rounded-[4px] text-[13.5px] font-semibold hover:bg-[#0B1D3A]/5 transition-all flex items-center gap-2 shadow-sm">
-                            {data.secondaryButton}
-                        </button>
-                    </motion.div>
+                    ))}
+                </div>
 
-                    <motion.p variants={item} className="text-[13px] font-medium italic" style={{ color: '#7B8DAA' }}>
-                        {data.footerText}
-                    </motion.p>
-                </motion.div>
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={activeTab}
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -16 }}
+                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                        className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden backdrop-blur-sm"
+                    >
+                        <div className="p-10 flex flex-col lg:flex-row gap-10">
+                            <div className="flex-1 flex flex-col">
+                                <h3 className="text-[26px] font-bold mb-4 leading-tight">{activeContent.title}</h3>
+                                <p className="text-[15px] text-white/65 leading-relaxed mb-8">{activeContent.desc}</p>
 
-                <motion.div
-                    initial={{ opacity: 0, x: 40, rotateY: 10 }}
-                    whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-                    viewport={{ once: false, margin: "-100px" }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    className="flex-1 max-w-[500px] relative perspective-1000"
-                >
-                    <div className="bg-white rounded-3xl p-8 shadow-[0_20px_50px_-12px_rgba(11,29,58,0.15)] border border-[#0B1D3A]/5 relative z-10 overflow-hidden transform-gpu">
-                        <div className="absolute top-0 right-0 w-40 h-40 bg-[#C99A2E]/10 rounded-full blur-3xl"></div>
-
-                        <div className="flex items-center justify-between mb-8 relative z-10">
-                            <div className="flex items-center gap-3">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md">
-                                    <ClipboardList size={22} className="text-white" />
-                                </div>
-                                <div>
-                                    <h3 className="text-[18px] font-bold text-[#0B1D3A]">{data.illustrationData.title}</h3>
-                                    <p className="text-[13px] font-medium text-[#7B8DAA]">{data.illustrationData.subtitle}</p>
-                                </div>
-                            </div>
-                            <div className="px-3 py-1 bg-[#C99A2E]/10 text-[#C99A2E] text-[11px] font-bold uppercase tracking-wider rounded-full border border-[#C99A2E]/20">
-                                Free
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col gap-4 relative z-10">
-                            {data.evaluationFlow.split(' → ').map((step, i) => {
-                                const stepColors = ['bg-[#3B82F6]', 'bg-[#10B981]', 'bg-[#8B5CF6]', 'bg-[#F59E0B]'];
-                                return (
-                                    <div key={i} className="flex items-center gap-4 group">
-                                        <div className={`w-10 h-10 rounded-xl ${stepColors[i % stepColors.length]} flex items-center justify-center text-white font-bold text-[14px] shadow-sm shrink-0`}>
-                                            {i + 1}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+                                    {activeContent.sections.map((section: { heading: string; items: string[] }, idx: number) => (
+                                        <div key={idx}>
+                                            <h4 className="text-[13px] font-bold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: activeColor }}>
+                                                <div className="w-1.5 h-4 rounded-full" style={{ backgroundColor: activeColor }}></div>
+                                                {section.heading}
+                                            </h4>
+                                            <ul className="flex flex-col gap-2.5">
+                                                {section.items.map((item: string, i: number) => (
+                                                    <li key={i} className="flex items-start gap-2.5 text-[14px] text-white/85">
+                                                        <div className="w-4 h-4 rounded-full bg-[#10B981] flex items-center justify-center text-white shrink-0 mt-0.5 shadow-sm">
+                                                            <CheckCircle2 size={11} strokeWidth={3} className="text-white" />
+                                                        </div>
+                                                        <span className="leading-snug">{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
-                                        <div className="flex-1 bg-white border border-[#0B1D3A]/5 shadow-sm rounded-xl p-4 group-hover:shadow-md group-hover:border-[#C99A2E]/30 transition-all">
-                                            <span className="text-[15px] font-semibold text-[#0B1D3A]">{step}</span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="w-[300px] shrink-0 flex flex-col gap-5">
+                                {activeContent.journey && (
+                                    <div className="bg-white/[0.06] rounded-xl p-6 border border-white/[0.08]">
+                                        <h4 className="text-[11px] font-bold text-white/45 uppercase tracking-[0.15em] mb-4">{data.journeyLabel}</h4>
+                                        <div className="flex flex-col gap-2">
+                                            {activeContent.journey.split(' → ').map((step: string, i: number, arr: string[]) => (
+                                                <div key={i} className="flex items-center gap-2.5">
+                                                    <div className="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold text-white/60">{i + 1}</div>
+                                                    <span className="text-[14px] font-semibold" style={{ color: activeColor }}>{step}</span>
+                                                    {i < arr.length - 1 && (
+                                                        <ArrowRight size={12} className="text-white/30 ml-auto" />
+                                                    )}
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
-                                );
-                            })}
-                        </div>
+                                )}
 
-                        <div className="mt-8 pt-6 border-t border-[#0B1D3A]/5 flex items-end gap-2 h-20 opacity-40">
-                            {[40, 70, 45, 90, 65, 80].map((h, i) => (
-                                <div key={i} className="flex-1 bg-gradient-to-t from-[#0B1D3A]/20 to-transparent rounded-t-sm" style={{ height: `${h}%` }}></div>
-                            ))}
-                        </div>
-                    </div>
+                                {activeContent.evaluateBasedOn && (
+                                    <div className="bg-white/[0.06] rounded-xl p-6 border border-white/[0.08]">
+                                        <h4 className="text-[11px] font-bold text-white/45 uppercase tracking-[0.15em] mb-3">{data.evaluateLabel}</h4>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {activeContent.evaluateBasedOn.split(' · ').map((tag: string, i: number) => (
+                                                <span key={i} className="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/[0.08] text-[12px] font-medium text-white/80">{tag}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
 
-                    <div className="absolute -inset-4 bg-gradient-to-tr from-[#0B1D3A]/5 to-[#C99A2E]/10 rounded-[2rem] -z-10 blur-xl"></div>
-                </motion.div>
+                                <div className="bg-gradient-to-br from-[#0F2751] to-[#071A49] rounded-xl p-6 border border-[#C99A2E]/20 shadow-[0_8px_30px_rgba(0,0,0,0.2)] mt-auto">
+                                    <p className="text-[14px] font-bold italic mb-5 text-white/85 text-center leading-snug">"{activeContent.footerText}"</p>
+                                    <div className="flex flex-col gap-2.5 w-full">
+                                        {activeContent.buttons.map((btn: string, idx: number) => (
+                                            <button
+                                                key={idx}
+                                                className={`w-full py-3 px-4 rounded-lg text-[13px] font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                                                    idx === 0
+                                                        ? 'bg-[#C99A2E] text-[#0B1D3A] hover:bg-[#D5AA45] shadow-lg hover:shadow-xl'
+                                                        : 'bg-white/10 text-white hover:bg-white/15'
+                                                }`}
+                                            >
+                                                {btn} <ArrowRight size={14} />
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
             </div>
         </section>
     );
