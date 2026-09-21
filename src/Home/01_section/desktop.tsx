@@ -268,38 +268,6 @@ export default function Desktop() {
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ delay: 0.9, duration: 0.6 }}
-                        className="absolute bottom-24 left-[-40px] z-30"
-                    >
-                        <motion.div
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                            className="bg-white/90 backdrop-blur-xl floating-card-shadow rounded-[4px] p-4 flex flex-col gap-2 border border-[#0B1D3A]/[0.06]"
-                        >
-                            <div className="flex items-center gap-1">
-                                {[1, 2, 3, 4, 5].map((star) => (
-                                    <svg key={star} className="w-[14px] h-[14px]" style={{ fill: 'url(#goldGradient)' }} viewBox="0 0 20 20">
-                                        <defs>
-                                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" stopColor="#C99A2E" />
-                                                <stop offset="100%" stopColor="#D5AA45" />
-                                            </linearGradient>
-                                        </defs>
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                ))}
-                            </div>
-                            <div>
-                                <div className="font-bold text-[12.5px]" style={{ color: NAVY }}>Average Rating</div>
-                                <div className="text-[10px] font-medium" style={{ color: MUTED_BLUE }}>Trusted by 10,000+ Agents</div>
-                            </div>
-                        </motion.div>
-                    </motion.div>
-
-                    <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
