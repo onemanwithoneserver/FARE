@@ -7,7 +7,7 @@ import {
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
 
-const MUTED_SLATE = '#5A6E8C';
+const GOLD = '#C99A2E';
 
 export default function Desktop() {
     const { language } = useLanguage();
@@ -18,11 +18,16 @@ export default function Desktop() {
 
     const activePersona = data.personas.find(p => p.id === activePersonaId) || data.personas[0];
 
-    const getTabIcon = (id: string, isActive: boolean) => {
-        const strokeColor = isActive ? '#FFFFFF' : '#0B1D3A';
-        if (id === 'companies') return <Building2 size={18} stroke={strokeColor} />;
-        if (id === 'trainers') return <GraduationCap size={18} stroke={strokeColor} />;
-        return <UserCheck size={18} stroke={strokeColor} />;
+    const getIcon = (id: string, size: number = 24) => {
+        if (id === 'companies') return <Building2 size={size} strokeWidth={2.2} />;
+        if (id === 'trainers') return <GraduationCap size={size} strokeWidth={2.2} />;
+        return <UserCheck size={size} strokeWidth={2.2} />;
+    };
+
+    const getPersonaColor = (id: string) => {
+        if (id === 'companies') return '#34D399';
+        if (id === 'trainers') return '#60A5FA';
+        return '#C99A2E';
     };
 
     const handleJoinWaitlist = (e: React.FormEvent) => {
@@ -31,171 +36,201 @@ export default function Desktop() {
         setWaitlistJoined(true);
     };
 
+    const activeColor = getPersonaColor(activePersonaId);
+
     return (
         <section
-            className="w-full py-20 px-12 flex justify-center font-['Outfit'] relative overflow-hidden"
-            style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F4F7FB 100%)' }}
+            className="w-full py-16 relative font-['Outfit'] overflow-hidden"
+            style={{ background: 'linear-gradient(180deg, #040C1E 0%, #071A49 50%, #040C1E 100%)' }}
         >
-
             <motion.div
-                animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }}
+                animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.08, 1] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-gradient-radial from-[#EEF4FF]/70 to-transparent rounded-full blur-[140px] pointer-events-none"
+                className="absolute top-0 right-[20%] w-[700px] h-[700px] bg-gradient-radial from-[#6B8AFF]/[0.08] to-transparent rounded-full blur-[120px] pointer-events-none"
+            />
+            <motion.div
+                animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.05, 1] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                className="absolute bottom-[-10%] left-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none"
             />
 
-            <div className="max-w-[1300px] w-full flex flex-col items-center relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full mb-10 flex flex-col items-center text-center max-w-[840px]"
-                >
-                    <div className="flex items-center gap-3 mb-3">
-                        <div className="w-12 h-[1px] bg-[#C99A2E]"></div>
-                        <span className="text-[11px] font-black tracking-[0.25em] text-[#C99A2E] uppercase">
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+                style={{
+                    backgroundImage: `radial-gradient(white 1px, transparent 1px)`,
+                    backgroundSize: '32px 32px'
+                }}
+            />
+
+            <div className="max-w-[1320px] mx-auto px-12 relative z-10">
+                <div className="flex flex-col items-center text-center mb-12">
+                    <div className="mb-5">
+                        <span
+                            className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border"
+                            style={{ color: GOLD, borderColor: `${GOLD}30`, background: `${GOLD}0A` }}
+                        >
                             {data.eyebrow}
                         </span>
-                        <div className="w-12 h-[1px] bg-[#C99A2E]"></div>
                     </div>
 
-                    <h2 className={`font-black mb-3.5 text-[#0B1D3A] ${
-                        language === 'te'
-                            ? 'text-[2.25rem] xl:text-[2.65rem] leading-[1.25] tracking-wider py-1'
-                            : 'text-[3.25rem] leading-[1.05] tracking-[-0.02em] uppercase'
-                    }`}>
+                    <h2
+                        className={`font-black mb-4 text-white ${
+                            language === 'te'
+                                ? 'text-[2.25rem] xl:text-[2.65rem] leading-[1.25] tracking-wider py-1'
+                                : 'text-[3.25rem] leading-[1.05] tracking-[-0.02em] uppercase'
+                        }`}
+                    >
                         {data.headline.line1} <span className="gold-gradient-text">{data.headline.line2}</span>
                     </h2>
-                    <p className="text-[15px] font-medium leading-relaxed max-w-[660px]" style={{ color: MUTED_SLATE }}>
+
+                    <p className="text-[16px] font-medium leading-[1.65] max-w-[700px] text-white/60">
                         {data.headline.subtitle}
                     </p>
-                </motion.div>
+                </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.7, delay: 0.1 }}
-                    className="flex gap-2 w-full max-w-[940px] mb-9 p-1.5 rounded bg-white border border-[#0B1D3A]/[0.08] shadow-[0_10px_30px_rgba(11,29,58,0.06)]"
-                >
-                    {data.personas.map((persona) => {
-                        const isActive = activePersonaId === persona.id;
-                        return (
-                            <button
-                                key={persona.id}
-                                onClick={() => setActivePersonaId(persona.id)}
-                                className={`flex-1 py-3 px-4 rounded flex items-center gap-3 transition-all duration-300 text-left cursor-pointer relative overflow-hidden ${
-                                    isActive
-                                    ? 'bg-[#071A49] text-white shadow-md scale-[1.01]'
-                                    : 'bg-transparent text-[#0B1D3A] hover:bg-[#F8FAFD]'
-                                }`}
-                            >
-                                {isActive && (
-                                    <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E2C068]" />
-                                )}
-                                <div className={`w-9 h-9 rounded flex items-center justify-center shrink-0 ${
-                                    isActive ? 'bg-white/10' : 'bg-[#EEF2F6]'
-                                }`}>
-                                    {getTabIcon(persona.id, isActive)}
-                                </div>
-                                <div className="flex flex-col min-w-0">
-                                    <span className={`font-bold text-[13px] leading-snug truncate ${isActive ? 'text-white' : 'text-[#0B1D3A]'}`}>
-                                        {persona.tag}
-                                    </span>
-                                    <span className={`text-[10.5px] font-medium leading-snug ${isActive ? 'text-[#D5AA45]' : 'text-[#5A6E8C]'}`}>
-                                        {persona.subTag}
-                                    </span>
-                                </div>
-                            </button>
-                        );
-                    })}
-                </motion.div>
+                <div className="flex flex-col lg:flex-row gap-10">
+                    {/* Left Side: Tab Controls */}
+                    <div className="w-full lg:w-[400px] shrink-0 flex flex-col gap-3">
+                        {data.personas.map((persona) => {
+                            const isActive = activePersonaId === persona.id;
+                            const color = getPersonaColor(persona.id);
 
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={activePersona.id}
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -15 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="w-full grid grid-cols-12 gap-7 items-stretch"
-                    >
+                            return (
+                                <button
+                                    key={persona.id}
+                                    onClick={() => setActivePersonaId(persona.id)}
+                                    className={`group flex items-start gap-4 p-5 rounded-lg text-left transition-all duration-400 border relative overflow-hidden ${
+                                        isActive
+                                            ? 'bg-white/10 border-white/20 text-white shadow-[0_0_30px_rgba(255,255,255,0.05)] scale-[1.02]'
+                                            : 'bg-white/[0.02] border-white/[0.05] hover:bg-white/[0.06] hover:border-white/10'
+                                    }`}
+                                >
+                                    {isActive && (
+                                        <motion.div 
+                                            layoutId="activeTabIndicator"
+                                            className="absolute inset-0 opacity-20 pointer-events-none"
+                                            style={{ background: `linear-gradient(90deg, transparent, ${color}, transparent)` }}
+                                        />
+                                    )}
+                                    <div
+                                        className={`w-12 h-12 rounded-lg flex items-center justify-center text-white shrink-0 shadow-md transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}
+                                        style={{ backgroundColor: color }}
+                                    >
+                                        {getIcon(persona.id, 24)}
+                                    </div>
+                                    <div className="flex flex-col relative z-10 pt-1">
+                                        <span className={`font-bold text-[18px] leading-tight mb-1 ${isActive ? 'text-white' : 'text-white/70 group-hover:text-white'}`}>
+                                            {persona.tag}
+                                        </span>
+                                        <span className={`text-[13px] font-medium leading-snug ${isActive ? 'text-white/80' : 'text-white/50 group-hover:text-white/70'}`}>
+                                            {persona.subTag}
+                                        </span>
+                                    </div>
+                                </button>
+                            );
+                        })}
+                    </div>
+
+                    {/* Right Side: Content Area */}
+                    <AnimatePresence mode="wait">
                         <motion.div
-                            whileHover={{ y: -5, boxShadow: '0 25px 50px -12px rgba(11,29,58,0.25)' }}
-                            transition={{ duration: 0.3 }}
-                            className="col-span-12 max-w-4xl mx-auto w-full flex flex-col p-8 lg:p-9 rounded bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_20px_40px_-10px_rgba(11,29,58,0.15)] relative overflow-hidden"
+                            key={activePersona.id}
+                            initial={{ opacity: 0, x: 20, scale: 0.98 }}
+                            animate={{ opacity: 1, x: 0, scale: 1 }}
+                            exit={{ opacity: 0, x: -20, scale: 0.98 }}
+                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                            className="flex-1 bg-[#0A1630]/60 border border-white/10 rounded-xl overflow-hidden backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] relative flex flex-col"
                         >
-                            <div className="relative z-10">
-                                <div className="inline-flex items-center gap-2 text-[9.5px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded mb-5 bg-[#EEF4FF] text-[#2563EB] border border-[#2563EB]/20">
-                                    <span>{activePersona.badge}</span>
+                            <div 
+                                className="absolute top-0 left-1/4 w-1/2 h-[2px] opacity-70 transition-colors duration-500" 
+                                style={{ background: `linear-gradient(90deg, transparent, ${activeColor}, transparent)` }} 
+                            />
+                            <div 
+                                className="absolute top-0 right-0 w-[400px] h-[400px] opacity-10 blur-[80px] pointer-events-none transition-colors duration-500 rounded-bl-full" 
+                                style={{ background: activeColor }} 
+                            />
+
+                            <div className="p-10 lg:p-12 flex flex-col flex-1 relative z-10">
+                                <div className="mb-8">
+                                    <div
+                                        className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1.5 rounded-full mb-6 border"
+                                        style={{
+                                            color: activeColor,
+                                            background: `${activeColor}15`,
+                                            borderColor: `${activeColor}30`
+                                        }}
+                                    >
+                                        <span>{activePersona.badge}</span>
+                                    </div>
+
+                                    <h3 className="text-[36px] font-black text-white leading-[1.1] mb-4 tracking-tight">
+                                        {activePersona.titleLine1} <span style={{ color: activeColor }}>{activePersona.titleLine2}</span>
+                                    </h3>
+
+                                    <p className="text-[16px] font-medium leading-relaxed text-white/70 max-w-[600px]">
+                                        {activePersona.desc}
+                                    </p>
                                 </div>
 
-                                <h3 className="text-[28px] font-black text-[#0B1D3A] leading-tight mb-3.5 tracking-tight">
-                                    {activePersona.titleLine1}<br />
-                                    <span className="gold-gradient-text">{activePersona.titleLine2}</span>
-                                </h3>
-
-                                <p className="text-[13.5px] font-medium leading-relaxed mb-6" style={{ color: MUTED_SLATE }}>
-                                    {activePersona.desc}
-                                </p>
-
-                                <div className="flex flex-col gap-3 mb-6">
+                                <div className="grid grid-cols-1 gap-4 mb-10">
                                     {activePersona.features.map((feat, i) => (
                                         <motion.div
                                             key={i}
                                             initial={{ opacity: 0, x: -10 }}
                                             animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.05 * i }}
-                                            className="flex items-center gap-3 text-[12.5px] text-[#2C3E55] font-medium"
+                                            transition={{ delay: 0.1 * i }}
+                                            className="flex items-start gap-4 text-[15px] text-white/80 font-medium bg-white/[0.02] p-4 rounded-lg border border-white/[0.05]"
                                         >
-                                            <div className="w-5 h-5 rounded bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white shadow-sm flex items-center justify-center shrink-0">
-                                                <CheckCircle size={12} strokeWidth={2.5} />
+                                            <div
+                                                className="w-6 h-6 rounded-full text-white shadow-sm flex items-center justify-center shrink-0 mt-0.5"
+                                                style={{ background: activeColor }}
+                                            >
+                                                <CheckCircle size={14} strokeWidth={2.5} />
                                             </div>
-                                            <span>{feat}</span>
+                                            <span className="leading-snug">{feat}</span>
                                         </motion.div>
                                     ))}
                                 </div>
-                            </div>
 
-                            <div className="relative z-10 pt-6 border-t border-[#0B1D3A]/[0.06] mt-auto flex items-center justify-between gap-4">
-                                {activePersona.id === 'professionals' ? (
-                                    waitlistJoined ? (
-                                        <div className="p-3 rounded bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-2 text-[#059669] text-[12px] font-bold">
-                                            <ShieldCheck size={16} />
-                                            <span>Registered for Priority Access!</span>
-                                        </div>
+                                <div className="mt-auto pt-8 border-t border-white/[0.06] flex items-center justify-between gap-4">
+                                    {activePersona.id === 'professionals' ? (
+                                        waitlistJoined ? (
+                                            <div className="p-4 rounded-lg bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-3 text-[#34D399] text-[15px] font-bold">
+                                                <ShieldCheck size={20} />
+                                                <span>Registered for Priority Access!</span>
+                                            </div>
+                                        ) : (
+                                            <form onSubmit={handleJoinWaitlist} className="flex gap-3 w-full max-w-[400px]">
+                                                <input
+                                                    type="email"
+                                                    required
+                                                    value={waitlistEmail}
+                                                    onChange={(e) => setWaitlistEmail(e.target.value)}
+                                                    placeholder="Enter work email"
+                                                    className="flex-1 bg-[#040C1E] border border-white/[0.12] rounded-lg px-4 py-3 text-[14px] text-white outline-none focus:border-[#C99A2E] placeholder-white/30 transition-colors"
+                                                />
+                                                <button
+                                                    type="submit"
+                                                    className="px-6 py-3 rounded-lg font-bold text-[14px] text-[#040C1E] transition-all cursor-pointer whitespace-nowrap hover:opacity-90 shadow-lg"
+                                                    style={{ background: `linear-gradient(90deg, ${GOLD}, #E2C068)` }}
+                                                >
+                                                    Join Now
+                                                </button>
+                                            </form>
+                                        )
                                     ) : (
-                                        <form onSubmit={handleJoinWaitlist} className="flex gap-2 w-full">
-                                            <input
-                                                type="email"
-                                                required
-                                                value={waitlistEmail}
-                                                onChange={(e) => setWaitlistEmail(e.target.value)}
-                                                placeholder="Enter work email"
-                                                className="flex-1 bg-[#F8FAFC] border border-[#0B1D3A]/[0.12] rounded px-3.5 py-2.5 text-[12.5px] text-[#0B1D3A] outline-none focus:border-[#C99A2E]"
-                                            />
-                                            <button
-                                                type="submit"
-                                                className="px-5 py-2.5 rounded font-black text-[12.5px] text-white bg-[#071A49] transition-all cursor-pointer whitespace-nowrap hover:bg-[#102B63]"
-                                            >
-                                                Join Now
-                                            </button>
-                                        </form>
-                                    )
-                                ) : (
-                                    <button
-                                        className="bg-[#0B1D3A] hover:bg-[#102B63] text-white text-[13px] font-bold px-6 py-3.5 rounded shadow-md flex items-center gap-2 transition-all cursor-pointer active:scale-[0.98]"
-                                    >
-                                        <span>{activePersona.cta}</span>
-                                        <ArrowRight size={15} />
-                                    </button>
-                                )}
+                                        <button
+                                            className="text-white text-[15px] font-bold px-8 py-4 rounded-lg shadow-lg flex items-center gap-2 transition-all cursor-pointer hover:-translate-y-1 hover:shadow-xl"
+                                            style={{ background: activeColor }}
+                                        >
+                                            <span>{activePersona.cta}</span>
+                                            <ArrowRight size={18} />
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </motion.div>
-
-
-                    </motion.div>
-                </AnimatePresence>
+                    </AnimatePresence>
+                </div>
             </div>
         </section>
     );

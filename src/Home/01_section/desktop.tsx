@@ -38,7 +38,7 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full flex items-center justify-center overflow-x-clip relative font-['Outfit'] pt-6 pb-16"
+        <section className="w-full flex items-center justify-center overflow-x-clip relative font-['Outfit'] py-16"
             style={{ background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)` }}
         >
             <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>

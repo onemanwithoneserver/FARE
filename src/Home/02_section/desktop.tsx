@@ -95,11 +95,11 @@ export default function Desktop() {
 
     return (
         <section
-            className="w-full min-h-screen flex justify-center py-24 px-12 font-['Outfit'] relative overflow-hidden"
+            className="w-full min-h-screen flex justify-center py-16 px-12 font-['Outfit'] relative overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)` }}
         >
-            <div className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[150px] pointer-events-none"></div>
-            <div className="absolute bottom-0 left-1/4 w-[900px] h-[700px] bg-gradient-radial from-[#0D2654]/60 to-transparent rounded-full blur-[150px] pointer-events-none"></div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#C99A2E]/15 to-transparent rounded-full blur-[150px] pointer-events-none"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute bottom-0 left-1/4 w-[900px] h-[700px] bg-gradient-radial from-[#0D2654]/80 to-transparent rounded-full blur-[150px] pointer-events-none"></motion.div>
 
             <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
                  style={{ backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)', backgroundSize: '100px 100px' }}>

@@ -44,7 +44,7 @@ export default function Mobile() {
     }, []);
 
     return (
-        <div className="w-full sticky top-0 z-40 pointer-events-auto">
+        <div className="w-full sticky top-0 z-50 pointer-events-auto">
             <div
                 className={`w-full transition-all duration-300 ${
                     isScrolled
@@ -55,7 +55,7 @@ export default function Mobile() {
                 <header
                     className={`transition-all duration-300 pointer-events-auto flex items-center justify-between relative ${
                         isScrolled
-                            ? 'w-full h-[48px] px-5 bg-white/95 backdrop-blur-xl border border-white/90 shadow-[0_8px_24px_-8px_rgba(11,29,58,0.14)] rounded-full'
+                            ? 'w-full h-[48px] px-5 bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 shadow-[0_8px_24px_-8px_rgba(11,29,58,0.14)] rounded-full'
                             : 'w-full h-[60px] px-5 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.06] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none'
                     }`}
                 >
@@ -66,7 +66,7 @@ export default function Mobile() {
                         <img
                             src={logo}
                             alt="FARE — Skill Enhancement for Real Estate"
-                            className={`w-auto max-w-none transition-all duration-300 ${
+                            className={`w-auto max-w-none transition-all duration-300 ${isScrolled ? 'brightness-0 invert' : ''} ${
                                 isScrolled ? 'h-[56px] my-[-4px]' : 'h-[72px] my-[-6px]'
                             }`}
                         />
@@ -81,13 +81,13 @@ export default function Mobile() {
                                 }}
                                 aria-label="Change language"
                                 title="Change language / భాషను మార్చండి"
-                                className={`px-2 py-1.5 text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.05] transition-colors flex items-center gap-1 cursor-pointer ${
+                                className={`px-2 py-1.5 transition-colors flex items-center gap-1 cursor-pointer ${isScrolled ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.05]'} ${
                                     isLangDropdownOpen
-                                        ? 'bg-[#0B1D3A] text-white shadow-xs rounded'
+                                        ? (isScrolled ? 'bg-white text-[#0B1D3A]' : 'bg-[#0B1D3A] text-white') + ' shadow-xs rounded'
                                         : (isScrolled ? 'rounded-full' : 'rounded')
                                 }`}
                             >
-                                <Globe size={16} className={isLangDropdownOpen ? 'text-[#E2C068]' : 'text-[#0B1D3A]/70'} />
+                                <Globe size={16} className={isLangDropdownOpen ? 'text-[#E2C068]' : (isScrolled ? 'text-white/70' : 'text-[#0B1D3A]/70')} />
                                 <span className="text-[11px] font-bold uppercase">{language === 'te' ? 'తెలుగు' : 'EN'}</span>
                             </button>
 
@@ -98,21 +98,21 @@ export default function Mobile() {
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: 6, scale: 0.95 }}
                                         transition={{ duration: 0.15 }}
-                                        className="absolute top-[calc(100%+8px)] right-0 w-[155px] bg-white/98 backdrop-blur-xl border border-[#0B1D3A]/15 shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded p-1.5 z-50 pointer-events-auto"
+                                        className={`absolute top-[calc(100%+8px)] right-0 w-[155px] ${isScrolled ? 'bg-[#0B1D3A]/95 border-white/10' : 'bg-white/98 border-[#0B1D3A]/15'} backdrop-blur-xl border shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded p-1.5 z-50 pointer-events-auto`}
                                     >
-                                        <div className="text-[9.5px] font-bold uppercase tracking-wider text-[#0B1D3A]/45 px-2 py-1">
+                                        <div className={`text-[9.5px] font-bold uppercase tracking-wider px-2 py-1 ${isScrolled ? 'text-white/45' : 'text-[#0B1D3A]/45'}`}>
                                             {language === 'te' ? 'భాషను ఎంచుకోండి' : 'Select Language'}
                                         </div>
                                         <button
                                             onClick={() => { setLanguage('en'); setIsLangDropdownOpen(false); }}
                                             className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[12.5px] transition-all cursor-pointer ${
                                                 language === 'en'
-                                                    ? 'bg-[#0B1D3A] text-white font-bold'
-                                                    : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
+                                                    ? (isScrolled ? 'bg-white text-[#0B1D3A] font-bold' : 'bg-[#0B1D3A] text-white font-bold')
+                                                    : (isScrolled ? 'text-white hover:bg-white/10 font-medium' : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium')
                                             }`}
                                         >
                                             <span className="flex items-center gap-2">
-                                                <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${language === 'en' ? 'bg-white/20 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]'}`}>EN</span>
+                                                <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${language === 'en' ? 'bg-white/20 text-white' : (isScrolled ? 'bg-[#0B1D3A]/10 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]')}`}>EN</span>
                                                 <span>English</span>
                                             </span>
                                             {language === 'en' && <Check size={13} className="text-[#E2C068]" />}
@@ -121,12 +121,12 @@ export default function Mobile() {
                                             onClick={() => { setLanguage('te'); setIsLangDropdownOpen(false); }}
                                             className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[12.5px] transition-all cursor-pointer mt-1 ${
                                                 language === 'te'
-                                                    ? 'bg-[#0B1D3A] text-white font-bold'
-                                                    : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
+                                                    ? (isScrolled ? 'bg-white text-[#0B1D3A] font-bold' : 'bg-[#0B1D3A] text-white font-bold')
+                                                    : (isScrolled ? 'text-white hover:bg-white/10 font-medium' : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium')
                                             }`}
                                         >
                                             <span className="flex items-center gap-2">
-                                                <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${language === 'te' ? 'bg-[#C99A2E]/30 text-[#E2C068]' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]'}`}>TE</span>
+                                                <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${language === 'te' ? 'bg-[#C99A2E]/30 text-[#E2C068]' : (isScrolled ? 'bg-[#0B1D3A]/10 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]')}`}>TE</span>
                                                 <span>తెలుగు</span>
                                             </span>
                                             {language === 'te' && <Check size={13} className="text-[#E2C068]" />}
@@ -142,7 +142,7 @@ export default function Mobile() {
                                 if (isOpen) setIsOpen(false);
                             }}
                             aria-label="Search"
-                            className={`p-1.5 text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] transition-colors ${isScrolled ? 'rounded-full' : 'rounded'}`}
+                            className={`p-1.5 transition-colors ${isScrolled ? 'text-white/75 hover:text-white hover:bg-white/10 rounded-full' : 'text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] rounded'}`}
                         >
                             <Search size={18} strokeWidth={2} />
                         </button>
@@ -153,7 +153,7 @@ export default function Mobile() {
                                 if (isSearchExpanded) setIsSearchExpanded(false);
                             }}
                             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-                            className={`p-2 text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] transition-colors duration-200 cursor-pointer ${isScrolled ? 'rounded-full' : 'rounded'}`}
+                            className={`p-2 transition-colors duration-200 cursor-pointer ${isScrolled ? 'text-white hover:bg-white/10 rounded-full' : 'text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] rounded'}`}
                         >
                             {isOpen ? <X size={22} strokeWidth={2} /> : <Menu size={22} strokeWidth={2} />}
                         </button>
@@ -166,23 +166,23 @@ export default function Mobile() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -8 }}
                                 transition={{ duration: 0.2 }}
-                                className="absolute top-[70px] left-3 right-3 bg-white/98 backdrop-blur-xl border border-white/80 shadow-[0_16px_36px_-10px_rgba(11,29,58,0.18)] rounded p-3 z-50 pointer-events-auto flex items-center gap-2"
+                                className={`absolute top-[70px] left-3 right-3 ${isScrolled ? 'bg-[#0B1D3A]/95 border-white/80' : 'bg-white/98 border-[#0B1D3A]/15'} backdrop-blur-xl border shadow-[0_16px_36px_-10px_rgba(11,29,58,0.18)] rounded p-3 z-50 pointer-events-auto flex items-center gap-2`}
                             >
-                                <Search size={16} className="text-[#0B1D3A]/50 shrink-0" />
+                                <Search size={16} className={`${isScrolled ? 'text-white/50' : 'text-[#0B1D3A]/50'} shrink-0`} />
                                 <input
                                     type="text"
                                     autoFocus
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     placeholder="Search courses, skills..."
-                                    className="bg-transparent text-[13.5px] text-[#0B1D3A] placeholder-[#0B1D3A]/40 outline-none w-full"
+                                    className={`bg-transparent text-[13.5px] ${isScrolled ? 'text-white' : 'text-[#0B1D3A]'} placeholder-[#0B1D3A]/40 outline-none w-full`}
                                 />
                                 <button
                                     onClick={() => {
                                         setIsSearchExpanded(false);
                                         setSearchQuery('');
                                     }}
-                                    className="p-1 text-[#0B1D3A]/50 hover:text-[#0B1D3A] rounded-sm"
+                                    className={`p-1 rounded-sm ${isScrolled ? 'text-white/50 hover:text-white' : 'text-[#0B1D3A]/50 hover:text-[#0B1D3A]'}`}
                                 >
                                     <X size={16} />
                                 </button>
@@ -197,7 +197,7 @@ export default function Mobile() {
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: -10, scale: 0.98 }}
                                 transition={{ duration: 0.2 }}
-                                className="absolute top-[70px] left-3 right-3 bg-white/98 backdrop-blur-xl border border-white/80 shadow-[0_20px_40px_-10px_rgba(11,29,58,0.16)] rounded flex flex-col p-6 gap-5 z-50 pointer-events-auto"
+                                className={`absolute top-[70px] left-3 right-3 ${isScrolled ? 'bg-[#0B1D3A]/95 border-white/80' : 'bg-white/98 border-[#0B1D3A]/15'} backdrop-blur-xl border shadow-[0_20px_40px_-10px_rgba(11,29,58,0.16)] rounded flex flex-col p-6 gap-5 z-50 pointer-events-auto`}
                             >
                                 <nav className="flex flex-col gap-3">
                                     {data.navLinks.map((link, idx) => {
@@ -209,11 +209,11 @@ export default function Mobile() {
                                                 <div key={idx} className="flex flex-col border-b border-[#0B1D3A]/[0.06] pb-2">
                                                     <button
                                                         onClick={() => setOpenSubMenu(isSubOpen ? null : link.title)}
-                                                        className="flex items-center justify-between text-[15px] font-bold text-[#0B1D3A] hover:text-[#C99A2E] transition-colors py-2 w-full text-left cursor-pointer"
+                                                        className={`flex items-center justify-between text-[15px] font-bold py-2 w-full text-left cursor-pointer transition-colors ${isScrolled ? 'text-white hover:text-[#C99A2E]' : 'text-[#0B1D3A] hover:text-[#C99A2E]'}`}
                                                     >
                                                         <span>{link.title}</span>
                                                         <div className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
-                                                            isSubOpen ? 'bg-[#0B1D3A] text-[#E2C068]' : 'bg-[#0B1D3A]/[0.06] text-[#0B1D3A]'
+                                                            isSubOpen ? 'bg-[#0B1D3A] text-[#E2C068]' : (isScrolled ? 'bg-[#0B1D3A]/[0.06] text-white' : 'bg-[#0B1D3A]/[0.06] text-[#0B1D3A]')
                                                         }`}>
                                                             <Plus
                                                                 size={16}
@@ -245,7 +245,7 @@ export default function Mobile() {
                                                                                 navigate(`/${currentMode}/home`);
                                                                             }
                                                                         }}
-                                                                        className="flex items-start gap-3 p-3 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/50 hover:bg-[#F0F4FA] transition-all cursor-pointer group"
+                                                                        className={`flex items-start gap-3 p-3 rounded ${isScrolled ? 'bg-[#040C1E] border-[#0B1D3A]/[0.08] hover:bg-white/10' : 'bg-[#F8FAFD] border-[#0B1D3A]/[0.08] hover:bg-[#F0F4FA]'} border hover:border-[#C99A2E]/50 transition-all cursor-pointer group`}
                                                                     >
                                                                         <div className={`p-2.5 rounded shrink-0 mt-0.5 shadow-sm ${
                                                                             sIdx === 0
@@ -255,10 +255,10 @@ export default function Mobile() {
                                                                             {sIdx === 0 ? <Building2 size={18} strokeWidth={2} /> : <MapPin size={18} strokeWidth={2} />}
                                                                         </div>
                                                                         <div className="flex flex-col">
-                                                                            <span className="text-[14px] font-bold text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors">
+                                                                            <span className={`text-[14px] font-bold group-hover:text-[#C99A2E] transition-colors ${isScrolled ? 'text-white' : 'text-[#0B1D3A]'}`}>
                                                                                 {sub.title}
                                                                             </span>
-                                                                            <span className="text-[12px] text-[#0B1D3A]/60 font-medium leading-relaxed mt-0.5">
+                                                                            <span className={`text-[12px] font-medium leading-relaxed mt-0.5 ${isScrolled ? 'text-white/60' : 'text-[#0B1D3A]/60'}`}>
                                                                                 {sub.desc}
                                                                             </span>
                                                                         </div>
@@ -276,7 +276,7 @@ export default function Mobile() {
                                                 key={idx}
                                                 href={link.href}
                                                 onClick={() => setIsOpen(false)}
-                                                className="text-[15px] font-semibold text-[#0B1D3A] hover:text-[#C99A2E] transition-colors py-2 border-b border-[#0B1D3A]/[0.06]"
+                                                className={`text-[15px] font-semibold transition-colors py-2 border-b border-[#0B1D3A]/[0.06] ${isScrolled ? 'text-white hover:text-[#C99A2E]' : 'text-[#0B1D3A] hover:text-[#C99A2E]'}`}
                                             >
                                                 {link.title}
                                             </a>
@@ -287,14 +287,14 @@ export default function Mobile() {
                                 <div className="h-[1px] w-full bg-[#0B1D3A]/[0.06]"></div>
 
                                 <div className="flex flex-col gap-3.5">
-                                    <div className="flex items-center gap-2 bg-[#F8FAFD] border border-[#0B1D3A]/[0.08] rounded px-3 py-2 text-[#0B1D3A]">
-                                        <Search size={16} className="text-[#0B1D3A]/50" />
+                                    <div className={`flex items-center gap-2 ${isScrolled ? 'bg-[#040C1E] border-[#0B1D3A]/[0.08]' : 'bg-[#F8FAFD] border-[#0B1D3A]/[0.15]'} border rounded px-3 py-2`}>
+                                        <Search size={16} className={isScrolled ? 'text-white/50' : 'text-[#0B1D3A]/50'} />
                                         <input
                                             type="text"
                                             placeholder="Search platform..."
                                             value={searchQuery}
                                             onChange={(e) => setSearchQuery(e.target.value)}
-                                            className="bg-transparent text-[13px] text-[#0B1D3A] placeholder-[#0B1D3A]/40 outline-none w-full"
+                                            className={`bg-transparent text-[13px] ${isScrolled ? 'text-white placeholder-[#0B1D3A]/40' : 'text-[#0B1D3A] placeholder-[#0B1D3A]/40'} outline-none w-full`}
                                         />
                                     </div>
 
@@ -302,13 +302,13 @@ export default function Mobile() {
                                         <a
                                             href="#login"
                                             onClick={() => setIsOpen(false)}
-                                            className="text-[14px] font-semibold text-[#0B1D3A] hover:text-[#C99A2E]"
+                                            className={`text-[14px] font-semibold hover:text-[#C99A2E] ${isScrolled ? 'text-white' : 'text-[#0B1D3A]'}`}
                                         >
                                             Login
                                         </a>
                                         <button
                                             onClick={() => setIsOpen(false)}
-                                            className="bg-[#0B1D3A] text-white text-[13px] font-semibold px-5 py-2 rounded shadow-sm flex items-center gap-1.5"
+                                            className={`${isScrolled ? 'bg-white text-[#0B1D3A]' : 'bg-[#0B1D3A] text-white'} text-[13px] font-semibold px-5 py-2 rounded shadow-sm flex items-center gap-1.5`}
                                         >
                                             Get Started <ArrowRight size={13} />
                                         </button>

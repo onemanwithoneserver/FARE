@@ -22,7 +22,7 @@ export default function Desktop() {
 
     return (
         <section
-            className="w-full min-h-screen py-20 px-12 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
+            className="w-full min-h-screen py-16 px-12 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
         >
             <div
                 className="absolute inset-0 z-0"

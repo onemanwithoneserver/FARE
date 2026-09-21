@@ -95,7 +95,7 @@ export default function Mobile() {
             className="w-full flex flex-col items-center justify-center py-16 px-4 font-['Outfit'] relative overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)` }}
         >
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/15 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
                  style={{ backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)', backgroundSize: '100px 100px' }}>

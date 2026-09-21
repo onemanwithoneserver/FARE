@@ -39,7 +39,7 @@ export default function Mobile() {
 
     return (
         <section
-            className="w-full px-4 py-8 sm:px-6 sm:py-10 flex flex-col items-center justify-center overflow-hidden text-center relative font-['Outfit']"
+            className="w-full px-4 py-16 flex flex-col items-center justify-center overflow-hidden text-center relative font-['Outfit']"
             style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #EEF4FF 100%)' }}
         >
             <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[80px] pointer-events-none"></div>

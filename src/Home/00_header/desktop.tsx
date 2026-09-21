@@ -66,7 +66,7 @@ export default function Desktop() {
             <img
                 src={logo}
                 alt="FARE"
-                className={`w-auto max-w-none transition-all duration-300 group-hover:scale-[1.02] ${
+                className={`w-auto max-w-none transition-all duration-300 group-hover:scale-[1.02] ${isScrolled ? 'brightness-0 invert' : ''} ${
                     isScrolled ? 'h-[50px] my-[-4px]' : 'h-[74px] my-[-8px]'
                 }`}
             />
@@ -87,13 +87,13 @@ export default function Desktop() {
                 >
                     <button
                         onClick={() => setActiveDropdown(isDropdownOpen ? null : link.title)}
-                        className="flex items-center gap-1 text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium text-[#0B1D3A]/90 hover:text-[#C99A2E] transition-colors duration-300 cursor-pointer py-1.5 group whitespace-nowrap"
+                        className={`flex items-center gap-1 text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium transition-colors duration-300 cursor-pointer py-1.5 group whitespace-nowrap ${isScrolled ? 'text-white/90 hover:text-[#C99A2E]' : 'text-[#0B1D3A]/90 hover:text-[#C99A2E]'}`}
                     >
                         <span>{link.title}</span>
                         <ChevronDown
                             size={13}
                             strokeWidth={2.5}
-                            className={`text-[#0B1D3A]/60 group-hover:text-[#C99A2E] transition-transform duration-300 ${
+                            className={`transition-transform duration-300 ${isScrolled ? 'text-white/60 group-hover:text-[#C99A2E]' : 'text-[#0B1D3A]/60 group-hover:text-[#C99A2E]'} ${
                                 isDropdownOpen ? 'rotate-180 text-[#C99A2E]' : ''
                             }`}
                         />
@@ -106,7 +106,7 @@ export default function Desktop() {
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: 8, scale: 0.96 }}
                                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                className="absolute top-full left-0 mt-1.5 w-[290px] bg-white/98 backdrop-blur-xl border border-[#0B1D3A]/15 shadow-[0_16px_40px_-8px_rgba(11,29,58,0.2)] rounded p-2 z-50 pointer-events-auto"
+                                className="absolute top-full left-0 mt-1.5 w-[290px] bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 shadow-[0_16px_40px_-8px_rgba(11,29,58,0.2)] rounded p-2 z-50 pointer-events-auto"
                             >
                                 <div className="flex flex-col gap-1">
                                     {link.subItems?.map((sub, sIdx) => (
@@ -122,20 +122,20 @@ export default function Desktop() {
                                                     navigate(`/${currentMode}/home`);
                                                 }
                                             }}
-                                            className="flex items-start gap-3 p-2.5 rounded hover:bg-[#F0F4FA] transition-all group/sub cursor-pointer"
+                                            className="flex items-start gap-3 p-2.5 rounded hover:bg-white/10 transition-all group/sub cursor-pointer"
                                         >
                                             <div className={`p-2.5 rounded shrink-0 mt-0.5 transition-all duration-300 shadow-sm group-hover/sub:scale-105 group-hover/sub:shadow-md ${
                                                 sIdx === 0
-                                                    ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068] group-hover/sub:from-[#C99A2E] group-hover/sub:to-[#E2C068] group-hover/sub:text-[#0B1D3A]'
+                                                    ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068] group-hover/sub:from-[#C99A2E] group-hover/sub:to-[#E2C068] group-hover/sub:text-white'
                                                     : 'bg-gradient-to-br from-[#071A49] to-[#0F2D6B] text-[#34D399] group-hover/sub:from-[#34D399] group-hover/sub:to-[#059669] group-hover/sub:text-white'
                                             }`}>
                                                 {sIdx === 0 ? <Building2 size={18} strokeWidth={2} /> : <MapPin size={18} strokeWidth={2} />}
                                             </div>
                                             <div className="flex flex-col">
-                                                <span className="text-[13.5px] font-bold text-[#0B1D3A] group-hover/sub:text-[#C99A2E] transition-colors">
+                                                <span className="text-[13.5px] font-bold text-white group-hover/sub:text-[#C99A2E] transition-colors">
                                                     {sub.title}
                                                 </span>
-                                                <span className="text-[11.5px] font-medium text-[#0B1D3A]/60 leading-snug mt-0.5">
+                                                <span className="text-[11.5px] font-medium text-white/60 leading-snug mt-0.5">
                                                     {sub.desc}
                                                 </span>
                                             </div>
@@ -153,7 +153,7 @@ export default function Desktop() {
             <a
                 key={idx}
                 href={link.href}
-                className="relative text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium text-[#0B1D3A]/90 hover:text-[#C99A2E] transition-colors duration-300 whitespace-nowrap after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-[#C99A2E] after:transition-all after:duration-300 hover:after:w-full"
+                className={`relative text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium transition-colors duration-300 whitespace-nowrap after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-[#C99A2E] after:transition-all after:duration-300 hover:after:w-full ${isScrolled ? 'text-white/90 hover:text-[#C99A2E]' : 'text-[#0B1D3A]/90 hover:text-[#C99A2E]'}`}
             >
                 {link.title}
             </a>
@@ -167,8 +167,8 @@ export default function Desktop() {
                 aria-label="Toggle search dialog"
                 className={`flex items-center justify-center w-9 h-9 transition-all duration-200 cursor-pointer ${
                     isSearchExpanded
-                        ? 'bg-[#0B1D3A] text-white shadow-md rounded-full'
-                        : `text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06] ${isScrolled ? 'rounded-full' : 'rounded'}`
+                        ? (isScrolled ? 'bg-white text-[#0B1D3A]' : 'bg-[#0B1D3A] text-white') + ' shadow-md rounded-full'
+                        : (isScrolled ? 'text-white/75 hover:text-white hover:bg-white/10' : 'text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06]') + ` ${isScrolled ? 'rounded-full' : 'rounded'}`
                 }`}
                 title="Search platform"
             >
@@ -180,15 +180,15 @@ export default function Desktop() {
                     onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
                     className={`flex items-center gap-1.5 px-2.5 py-1.5 text-[12.5px] font-semibold transition-all duration-200 cursor-pointer ${
                         isLangDropdownOpen
-                            ? 'bg-[#0B1D3A] text-white shadow-sm'
-                            : 'text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06]'
+                            ? (isScrolled ? 'bg-white text-[#0B1D3A]' : 'bg-[#0B1D3A] text-white') + ' shadow-sm'
+                            : (isScrolled ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06]')
                     } ${isScrolled ? 'rounded-full' : 'rounded'}`}
                     title="Change language / భాషను మార్చండి"
                     aria-label="Change language"
                 >
-                    <Globe size={16} className={isLangDropdownOpen ? 'text-[#E2C068]' : 'text-[#0B1D3A]/70'} />
+                    <Globe size={16} className={isLangDropdownOpen ? 'text-[#E2C068]' : (isScrolled ? 'text-white/70' : 'text-[#0B1D3A]/70')} />
                     <span className="text-[11.5px] font-bold uppercase tracking-wider">{language === 'te' ? 'తెలుగు' : 'EN'}</span>
-                    <ChevronDown size={12} className={`transition-transform duration-200 ${isLangDropdownOpen ? 'rotate-180 text-[#E2C068]' : 'text-[#0B1D3A]/50'}`} />
+                    <ChevronDown size={12} className={`transition-transform duration-200 ${isLangDropdownOpen ? 'rotate-180 text-[#E2C068]' : (isScrolled ? 'text-white/50' : 'text-[#0B1D3A]/50')}`} />
                 </button>
 
                 <AnimatePresence>
@@ -198,21 +198,21 @@ export default function Desktop() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 6, scale: 0.96 }}
                             transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                            className="absolute top-[calc(100%+8px)] right-0 w-[170px] bg-white/98 backdrop-blur-xl border border-[#0B1D3A]/15 shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded p-1.5 z-50 pointer-events-auto"
+                            className={`absolute top-[calc(100%+8px)] right-0 w-[170px] ${isScrolled ? 'bg-[#0B1D3A]/95 border-white/10' : 'bg-white/98 border-[#0B1D3A]/15'} backdrop-blur-xl border shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded p-1.5 z-50 pointer-events-auto`}
                         >
-                            <div className="text-[10px] font-bold uppercase tracking-wider text-[#0B1D3A]/45 px-2.5 py-1">
+                            <div className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 ${isScrolled ? 'text-white/45' : 'text-[#0B1D3A]/45'}`}>
                                 {language === 'te' ? 'భాషను ఎంచుకోండి' : 'Select Language'}
                             </div>
                             <button
                                 onClick={() => { setLanguage('en'); setIsLangDropdownOpen(false); }}
                                 className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[13px] transition-all cursor-pointer ${
                                     language === 'en'
-                                        ? 'bg-[#0B1D3A] text-white font-bold'
-                                        : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
+                                        ? (isScrolled ? 'bg-white text-[#0B1D3A] font-bold' : 'bg-[#0B1D3A] text-white font-bold')
+                                        : (isScrolled ? 'text-white hover:bg-white/10 font-medium' : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium')
                                 }`}
                             >
                                 <span className="flex items-center gap-2">
-                                    <span className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded ${language === 'en' ? 'bg-white/20 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]'}`}>EN</span>
+                                    <span className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded ${language === 'en' ? (isScrolled ? 'bg-white/20 text-white' : 'bg-white/20 text-white') : (isScrolled ? 'bg-[#0B1D3A]/10 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]')}`}>EN</span>
                                     <span>English</span>
                                 </span>
                                 {language === 'en' && <Check size={14} className="text-[#E2C068]" />}
@@ -221,12 +221,12 @@ export default function Desktop() {
                                 onClick={() => { setLanguage('te'); setIsLangDropdownOpen(false); }}
                                 className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[13px] transition-all cursor-pointer mt-1 ${
                                     language === 'te'
-                                        ? 'bg-[#0B1D3A] text-white font-bold'
-                                        : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
+                                        ? (isScrolled ? 'bg-white text-[#0B1D3A] font-bold' : 'bg-[#0B1D3A] text-white font-bold')
+                                        : (isScrolled ? 'text-white hover:bg-white/10 font-medium' : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium')
                                 }`}
                             >
                                 <span className="flex items-center gap-2">
-                                    <span className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded ${language === 'te' ? 'bg-[#C99A2E]/30 text-[#E2C068]' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]'}`}>TE</span>
+                                    <span className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded ${language === 'te' ? 'bg-[#C99A2E]/30 text-[#E2C068]' : (isScrolled ? 'bg-[#0B1D3A]/10 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]')}`}>TE</span>
                                     <span>తెలుగు</span>
                                 </span>
                                 {language === 'te' && <Check size={14} className="text-[#E2C068]" />}
@@ -236,16 +236,16 @@ export default function Desktop() {
                 </AnimatePresence>
             </div>
 
-            <div className="w-[1px] h-4 bg-[#0B1D3A]/10 shrink-0 hidden sm:block"></div>
+            <div className={`w-[1px] h-4 shrink-0 hidden sm:block ${isScrolled ? 'bg-white/20' : 'bg-[#0B1D3A]/10'}`}></div>
 
             <a
                 href="#login"
-                className="text-[13.5px] font-medium text-[#0B1D3A] hover:text-[#C99A2E] px-1.5 py-1 transition-colors duration-300 shrink-0 hidden xl:inline-block"
+                className={`text-[13.5px] font-medium px-1.5 py-1 transition-colors duration-300 shrink-0 hidden xl:inline-block ${isScrolled ? 'text-white hover:text-[#C99A2E]' : 'text-[#0B1D3A] hover:text-[#C99A2E]'}`}
             >
                 Login
             </a>
 
-            <button className={`bg-[#0B1D3A] text-white text-[13px] lg:text-[13.5px] font-semibold px-4 lg:px-5 py-2 hover:bg-[#102B63] hover:shadow-[0_8px_24px_rgba(11,29,58,0.25),0_0_0_1px_rgba(201,154,46,0.2)] active:scale-[0.98] transition-all duration-300 shadow-[0_2px_8px_rgba(11,29,58,0.15)] flex items-center gap-1.5 shrink-0 cursor-pointer ${isScrolled ? 'rounded-full' : 'rounded'}`}>
+            <button className={`text-[13px] lg:text-[13.5px] font-semibold px-4 lg:px-5 py-2 hover:shadow-[0_8px_24px_rgba(11,29,58,0.25),0_0_0_1px_rgba(201,154,46,0.2)] active:scale-[0.98] transition-all duration-300 shadow-[0_2px_8px_rgba(11,29,58,0.15)] flex items-center gap-1.5 shrink-0 cursor-pointer ${isScrolled ? 'bg-white text-[#0B1D3A] hover:bg-[#E2C068] rounded-full' : 'bg-[#0B1D3A] text-white hover:bg-[#102B63] rounded'}`}>
                 <span>Get Started</span>
                 <ArrowRight size={14} strokeWidth={2.5} />
             </button>
@@ -253,7 +253,7 @@ export default function Desktop() {
     );
 
     return (
-        <div className="w-full sticky top-0 z-40 pointer-events-auto">
+        <div className="w-full sticky top-0 z-50 pointer-events-auto">
             <div
                 className={`w-full transition-all duration-300 ease-out ${
                     isScrolled
@@ -264,7 +264,7 @@ export default function Desktop() {
                 <header
                     className={`transition-all duration-300 pointer-events-auto flex items-center justify-between relative ${
                         isScrolled
-                            ? 'w-full max-w-[1320px] h-[58px] px-5 lg:px-7 bg-white/95 backdrop-blur-xl border border-white/90 shadow-[0_12px_32px_-10px_rgba(11,29,58,0.12),0_1px_3px_rgba(11,29,58,0.05)] rounded-full mx-auto'
+                            ? 'w-full max-w-[1320px] h-[58px] px-5 lg:px-7 bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 shadow-[0_12px_32px_-10px_rgba(11,29,58,0.12),0_1px_3px_rgba(11,29,58,0.05)] rounded-full mx-auto'
                             : 'w-full h-[68px] px-8 lg:px-14 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.07] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none'
                     }`}
                 >
@@ -306,11 +306,9 @@ export default function Desktop() {
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: -10, scale: 0.96 }}
                                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                className={`absolute top-[calc(100%+10px)] right-4 lg:right-10 w-[420px] max-w-[90vw] bg-white/98 backdrop-blur-2xl border border-[#0B1D3A]/15 shadow-[0_20px_50px_-10px_rgba(11,29,58,0.22)] p-4 z-50 pointer-events-auto ${
-                                    isScrolled ? 'rounded' : 'rounded'
-                                }`}
+                                className={`absolute top-[calc(100%+10px)] right-4 lg:right-10 w-[420px] max-w-[90vw] ${isScrolled ? 'bg-[#0B1D3A]/95 border-white/10' : 'bg-white/98 border-[#0B1D3A]/15'} backdrop-blur-2xl border shadow-[0_20px_50px_-10px_rgba(11,29,58,0.22)] p-4 z-50 pointer-events-auto rounded`}
                             >
-                                <div className="flex items-center gap-3 bg-[#F8FAFD] border border-[#0B1D3A]/15 focus-within:border-[#C99A2E] focus-within:ring-2 focus-within:ring-[#C99A2E]/20 px-3.5 py-2.5 rounded transition-all shadow-inner">
+                                <div className={`flex items-center gap-3 ${isScrolled ? 'bg-[#040C1E] border-white/10' : 'bg-[#F8FAFD] border-[#0B1D3A]/15'} border focus-within:border-[#C99A2E] focus-within:ring-2 focus-within:ring-[#C99A2E]/20 px-3.5 py-2.5 rounded transition-all shadow-inner`}>
                                     <Search size={18} className="text-[#C99A2E] shrink-0" />
                                     <input
                                         ref={searchInputRef}
@@ -321,7 +319,7 @@ export default function Desktop() {
                                             if (e.key === 'Escape') setIsSearchExpanded(false);
                                         }}
                                         placeholder="Search courses, skills, benchmarks..."
-                                        className="bg-transparent text-[14px] text-[#0B1D3A] placeholder-[#0B1D3A]/40 outline-none w-full font-medium"
+                                        className={`bg-transparent text-[14px] ${isScrolled ? 'text-white' : 'text-[#0B1D3A]'} placeholder-[#0B1D3A]/40 outline-none w-full font-medium`}
                                     />
                                     <button
                                         onClick={() => {
@@ -329,20 +327,20 @@ export default function Desktop() {
                                             else setIsSearchExpanded(false);
                                         }}
                                         aria-label="Close search"
-                                        className="text-[#0B1D3A]/40 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/10 p-1 rounded-full transition-colors cursor-pointer shrink-0"
+                                        className={`${isScrolled ? 'text-white/40 hover:text-white hover:bg-white/10' : 'text-[#0B1D3A]/40 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/10'} p-1 rounded-full transition-colors cursor-pointer shrink-0`}
                                     >
                                         <X size={15} strokeWidth={2.5} />
                                     </button>
                                 </div>
 
-                                <div className="mt-3.5 pt-3 border-t border-[#0B1D3A]/[0.07]">
-                                    <div className="text-[11px] font-bold text-[#0B1D3A]/50 uppercase tracking-wider mb-2">Popular Searches</div>
+                                <div className={`mt-3.5 pt-3 border-t ${isScrolled ? 'border-white/10' : 'border-[#0B1D3A]/[0.07]'}`}>
+                                    <div className={`text-[11px] font-bold uppercase tracking-wider mb-2 ${isScrolled ? 'text-white/50' : 'text-[#0B1D3A]/50'}`}>Popular Searches</div>
                                     <div className="flex flex-wrap gap-1.5">
                                         {['RERA Compliance', 'Negotiation Labs', 'Capability Diagnostic', 'Peer Benchmarks'].map((tag, idx) => (
                                             <button
                                                 key={idx}
                                                 onClick={() => setSearchQuery(tag)}
-                                                className="text-[11.5px] font-medium text-[#0B1D3A]/75 bg-[#0B1D3A]/[0.04] hover:bg-[#C99A2E]/15 hover:text-[#0B1D3A] px-2.5 py-1 rounded transition-colors cursor-pointer"
+                                                className={`text-[11.5px] font-medium bg-[#0B1D3A]/[0.04] px-2.5 py-1 rounded transition-colors cursor-pointer ${isScrolled ? 'text-white/75 hover:bg-[#C99A2E]/15 hover:text-white' : 'text-[#0B1D3A]/75 hover:bg-[#C99A2E]/15 hover:text-[#0B1D3A]'}`}
                                             >
                                                 {tag}
                                             </button>
