@@ -1,8 +1,9 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { ArrowRight, BookOpen, Target, CheckCircle, BarChart2, Sparkles, Award } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
+import reTrainersHero from '../../assets/re_trainers_hero.jpg';
 
 const GOLD = '#C99A2E';
 const NAVY = '#0B1D3A';
@@ -81,15 +82,6 @@ export default function Desktop() {
                             >
                                 {data.buttons.primary} <ArrowRight size={15} strokeWidth={2.5} />
                             </button>
-                            <button
-                                className="text-[14px] font-semibold px-7 py-3.5 rounded-[6px] hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border bg-white shadow-[0_2px_8px_rgba(11,29,58,0.04)]"
-                                style={{
-                                    color: NAVY,
-                                    borderColor: `${NAVY}25`
-                                }}
-                            >
-                                {data.buttons.secondary} <ArrowRight size={14} strokeWidth={2.5} />
-                            </button>
                         </motion.div>
 
                         <motion.div variants={item} className="flex flex-wrap gap-2 mb-4">
@@ -113,96 +105,10 @@ export default function Desktop() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="lg:col-span-5 relative w-full"
+                        className="lg:col-span-5 relative w-full flex items-center justify-center"
                     >
-                        <div className="absolute -inset-1 bg-gradient-to-r from-[#C99A2E]/20 to-[#60A5FA]/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-
-                        <div className="relative bg-gradient-to-br from-[#0B1D3A] via-[#0F2751] to-[#071A49] rounded-2xl p-7 xl:p-8 shadow-[0_25px_60px_-15px_rgba(11,29,58,0.4)] border border-[#C99A2E]/20 overflow-hidden">
-                            <div className="absolute -top-16 -right-16 w-56 h-56 bg-[#C99A2E]/15 rounded-full blur-3xl pointer-events-none"></div>
-                            <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-[#60A5FA]/12 rounded-full blur-2xl pointer-events-none"></div>
-
-                            <div className="flex items-center justify-between mb-6 relative z-10 border-b border-white/[0.08] pb-4">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C99A2E] to-[#D5AA45] flex items-center justify-center shadow-[0_4px_12px_rgba(201,154,46,0.3)]">
-                                        <Target className="text-white" size={20} strokeWidth={2.5} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-white text-[16px] font-bold tracking-tight">
-                                            {data.dashboard.title}
-                                        </h3>
-                                        <p className="text-white/50 text-[11px] font-medium flex items-center gap-1.5 mt-0.5">
-                                            <Sparkles size={11} className="text-[#C99A2E]" /> RE Trainer Dashboard
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
-                                    <div className="w-2 h-2 rounded-full bg-[#34D399] animate-pulse"></div>
-                                    <span className="text-white/80 text-[11px] font-semibold tracking-wide">
-                                        {data.dashboard.floatingBadge.title}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-3.5 relative z-10 mb-6">
-                                {data.dashboard.stats.map((stat, i) => {
-                                    const icons = [
-                                        <BookOpen size={16} key="bo" className="text-white" />,
-                                        <BarChart2 size={16} key="ba" className="text-white" />,
-                                        <Target size={16} key="ta" className="text-white" />,
-                                        <CheckCircle size={16} key="cc" className="text-white" />
-                                    ];
-                                    return (
-                                        <div
-                                            key={i}
-                                            className="bg-white/[0.04] border border-white/[0.08] hover:border-white/[0.18] rounded-xl p-3.5 xl:p-4 hover:bg-white/[0.07] transition-all duration-300"
-                                        >
-                                            <div className="flex items-center justify-between mb-2">
-                                                <div className="flex items-center gap-2.5">
-                                                    <div
-                                                        className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 shadow-sm text-white"
-                                                        style={{ backgroundColor: stat.color }}
-                                                    >
-                                                        {icons[i]}
-                                                    </div>
-                                                    <span className="text-white/90 font-semibold text-[13.5px]">
-                                                        {stat.title}
-                                                    </span>
-                                                </div>
-                                                <span
-                                                    className="font-bold text-[13px] tracking-tight"
-                                                    style={{ color: stat.color }}
-                                                >
-                                                    {stat.progress}
-                                                </span>
-                                            </div>
-
-                                            <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                                                <motion.div
-                                                    initial={{ width: 0 }}
-                                                    whileInView={{ width: stat.progress }}
-                                                    transition={{ duration: 1.2, delay: 0.3 + (i * 0.15), ease: [0.16, 1, 0.3, 1] }}
-                                                    className="h-full rounded-full"
-                                                    style={{ backgroundColor: stat.color }}
-                                                />
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                            <div className="relative z-10 bg-white/[0.05] border border-white/[0.08] rounded-xl p-3 flex items-center justify-between">
-                                <div className="flex items-center gap-2.5">
-                                    <div className="w-6 h-6 rounded-md bg-[#C99A2E] flex items-center justify-center text-white shadow-sm">
-                                        <Award size={13} className="text-white" />
-                                    </div>
-                                    <span className="text-white/70 text-[11.5px] font-medium">
-                                        {data.dashboard.floatingBadge.subtitle}
-                                    </span>
-                                </div>
-                                <span className="text-[#34D399] text-[11px] font-bold uppercase tracking-wider bg-[#34D399]/15 px-2 py-0.5 rounded">
-                                    Active
-                                </span>
-                            </div>
+                        <div className="relative w-full aspect-square max-w-[500px] rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(11,29,58,0.4)] border border-white/40">
+                            <img src={reTrainersHero} alt="Real Estate Trainers Hero" className="w-full h-full object-cover" />
                         </div>
                     </motion.div>
 
