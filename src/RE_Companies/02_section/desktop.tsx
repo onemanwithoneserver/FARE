@@ -74,9 +74,9 @@ export default function Desktop() {
                         >
                             <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#EF4444]/10 to-transparent rounded-bl-full blur-[20px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></motion.div>
                             
-                            <div className="w-12 h-12 rounded bg-[#FEF2F2] flex items-center justify-center shrink-0 mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden">
-                                <div className="absolute inset-0 bg-[#EF4444]/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300"></div>
-                                <AlertCircle size={22} strokeWidth={2.5} className="text-[#EF4444] relative z-10" />
+                            <div className="w-12 h-12 rounded bg-[#EF4444] flex items-center justify-center shrink-0 mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden">
+                                <div className="absolute inset-0 bg-white/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300"></div>
+                                <AlertCircle size={22} strokeWidth={2.5} className="text-white relative z-10" />
                             </div>
                             <p className="text-[17px] font-bold text-[#0B1D3A] leading-[1.5] relative z-10">
                                 {challenge}

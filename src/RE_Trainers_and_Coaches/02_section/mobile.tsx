@@ -93,9 +93,9 @@ export default function Mobile() {
 
                                 <div 
                                     className="w-12 h-12 rounded flex items-center justify-center shrink-0 shadow-[0_4px_8px_-2px_rgba(0,0,0,0.3)] relative z-10"
-                                    style={{ backgroundColor: `${color}15`, border: `1px solid ${color}30` }}
+                                    style={{ backgroundColor: color, border: `1px solid ${color}30` }}
                                 >
-                                    <Icon size={20} style={{ color: color }} />
+                                    <Icon size={20} style={{ color: '#ffffff' }} />
                                 </div>
                                 <div className="flex flex-col gap-1 relative z-10">
                                     <span className="text-[11px] font-bold tracking-[0.1em] text-white/20 font-serif">

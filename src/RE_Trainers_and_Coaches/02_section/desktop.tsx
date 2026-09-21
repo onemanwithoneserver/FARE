@@ -102,9 +102,9 @@ export default function Desktop() {
                                     <div className="flex items-center justify-between mb-8 relative z-10">
                                         <div 
                                             className="w-14 h-14 rounded flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.3)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
-                                            style={{ backgroundColor: `${color}15`, border: `1px solid ${color}30` }}
+                                            style={{ backgroundColor: color, border: `1px solid ${color}30` }}
                                         >
-                                            <Icon size={24} style={{ color: color }} className="relative z-10" />
+                                            <Icon size={24} style={{ color: '#ffffff' }} className="relative z-10" />
                                         </div>
                                         <span className="text-[14px] font-bold tracking-[0.1em] text-white/20 group-hover:text-white/40 transition-colors font-serif">
                                             {String(index + 1).padStart(2, '0')}

@@ -61,8 +61,8 @@ export default function Mobile() {
                             variants={item}
                             className="bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded p-5 shadow-[0_2px_12px_-4px_rgba(11,29,58,0.05)] flex items-start gap-4"
                         >
-                            <div className="w-10 h-10 rounded bg-[#FEF2F2] text-white flex items-center justify-center shrink-0">
-                                <AlertCircle size={18} strokeWidth={2.5} className="text-[#EF4444]" />
+                            <div className="w-10 h-10 rounded bg-[#EF4444] flex items-center justify-center shrink-0">
+                                <AlertCircle size={18} strokeWidth={2.5} className="text-white" />
                             </div>
                             <p className="text-[15px] font-bold text-[#0B1D3A] leading-snug pt-2">
                                 {challenge}
