@@ -114,7 +114,7 @@ export default function Mobile() {
                             ? 'text-[1.5rem] leading-[1.25] tracking-wider py-0.5'
                             : 'text-[2rem] tracking-[-0.02em]'
                     }`}>
-                        {data.headline.line1} <span className="gold-gradient-text">{data.headline.line2}</span> {data.headline.line3} {data.headline.line4}
+                        <span className="gold-gradient-text">{data.headline.line1} {data.headline.line2} {data.headline.line3} {data.headline.line4}</span>
                     </h2>
                     <p className="mt-3 font-medium text-[12.5px] leading-relaxed mx-auto max-w-[320px]" style={{ color: MUTED_BLUE }}>
                         {data.subtitle}

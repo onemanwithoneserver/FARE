@@ -69,20 +69,21 @@ export default function Mobile() {
                     </motion.p>
 
                     <motion.div variants={itemVariant} className="flex flex-col items-center gap-3 mb-10 w-full px-5 relative z-10">
-                        <motion.button
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full font-bold text-[12px] py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] uppercase tracking-[0.05em] shadow-[0_10px_20px_-5px_rgba(213,170,69,0.2)]"
-                            style={{ background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' }}
-                        >
-                            <span>{data.buttons.primary}</span>
-                            <ArrowRight size={15} strokeWidth={2.5} />
-                        </motion.button>
-                        <motion.button
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full bg-[#071A49]/50 text-white font-semibold text-[13px] py-3 rounded-[4px] border border-white/10 transition-all duration-300 cursor-pointer"
-                        >
-                            {data.buttons.secondary}
-                        </motion.button>
+                        {data.buttons.map((btn, idx) => (
+                            <motion.button
+                                key={idx}
+                                whileTap={{ scale: 0.98 }}
+                                className={`w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+                                    idx === 0 
+                                    ? 'font-bold text-[12px] text-[#071A49] uppercase tracking-[0.05em] shadow-[0_10px_20px_-5px_rgba(213,170,69,0.2)]'
+                                    : 'bg-[#071A49]/50 text-white font-semibold text-[13px] border border-white/10'
+                                }`}
+                                style={idx === 0 ? { background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' } : {}}
+                            >
+                                <span>{btn}</span>
+                                {idx === 0 && <ArrowRight size={15} strokeWidth={2.5} />}
+                            </motion.button>
+                        ))}
                     </motion.div>
 
                     <motion.div variants={itemVariant} className="flex flex-col items-center w-full px-2 relative z-10">
@@ -105,7 +106,9 @@ export default function Mobile() {
                                     </motion.div>
                                     <div className="text-left flex-1">
                                         <div className="text-[13px] font-bold text-white mb-1 leading-[1.2]">{badge.title}</div>
-                                        <div className="text-[11px] text-white/50 font-medium">{badge.subtitle}</div>
+                                        {badge.subtitle && (
+                                            <div className="text-[11px] text-white/50 font-medium">{badge.subtitle}</div>
+                                        )}
                                     </div>
                                 </div>
                                 {i !== 2 && (

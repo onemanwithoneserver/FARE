@@ -88,23 +88,23 @@ export default function Desktop() {
                         {data.headline.subtitle}
                     </motion.p>
 
-                    <motion.div variants={itemVariant} className="flex items-center justify-center gap-5 mb-16 px-10 relative z-10">
-                        <motion.button
-                            whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(213,170,69,0.4)', y: -2 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="font-bold text-[13px] px-8 py-3.5 rounded-[4px] transition-all duration-300 flex items-center gap-2.5 cursor-pointer text-[#071A49] uppercase tracking-[0.05em]"
-                            style={{ background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)', boxShadow: '0 10px 20px -5px rgba(213,170,69,0.2)' }}
-                        >
-                            <span>{data.buttons.primary}</span>
-                            <ArrowRight size={16} strokeWidth={2.5} />
-                        </motion.button>
-                        <motion.button
-                            whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.05)' }}
-                            whileTap={{ scale: 0.98 }}
-                            className="bg-transparent text-white font-semibold text-[14px] px-8 py-3.5 rounded-[4px] border border-white/20 transition-all duration-300 cursor-pointer"
-                        >
-                            {data.buttons.secondary}
-                        </motion.button>
+                    <motion.div variants={itemVariant} className="flex flex-wrap items-center justify-center gap-4 mb-16 px-10 relative z-10">
+                        {data.buttons.map((btn, idx) => (
+                            <motion.button
+                                key={idx}
+                                whileHover={{ scale: 1.02, backgroundColor: idx === 0 ? undefined : 'rgba(255,255,255,0.05)', boxShadow: idx === 0 ? '0 0 30px rgba(213,170,69,0.4)' : undefined, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                className={`font-semibold text-[14px] px-8 py-3.5 rounded-[4px] transition-all duration-300 flex items-center gap-2.5 cursor-pointer ${
+                                    idx === 0 
+                                    ? 'text-[#071A49] font-bold uppercase tracking-[0.05em]' 
+                                    : 'bg-transparent text-white border border-white/20'
+                                }`}
+                                style={idx === 0 ? { background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)', boxShadow: '0 10px 20px -5px rgba(213,170,69,0.2)' } : {}}
+                            >
+                                <span>{btn}</span>
+                                {idx === 0 && <ArrowRight size={16} strokeWidth={2.5} />}
+                            </motion.button>
+                        ))}
                     </motion.div>
 
                     <motion.div variants={itemVariant} className="flex items-center justify-center w-full px-8 relative z-10">
@@ -127,7 +127,9 @@ export default function Desktop() {
                                     </motion.div>
                                     <div className="text-left">
                                         <div className="text-[13px] font-bold text-white mb-1.5 leading-[1.3]">{badge.title}</div>
-                                        <div className="text-[12px] text-white/50 font-medium">{badge.subtitle}</div>
+                                        {badge.subtitle && (
+                                            <div className="text-[12px] text-white/50 font-medium">{badge.subtitle}</div>
+                                        )}
                                     </div>
                                 </div>
                                 {i !== 2 && (

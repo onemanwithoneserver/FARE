@@ -5,7 +5,7 @@ import Section03 from "./03_section";
 import Section04 from "./04_section";
 import Section05 from "./05_section";
 import Section06 from "./06_section";
-import Footer from "../Home/05_section";
+import CtaSection from "../Home/04_section";
 
 export default function RE_Companies({ isMobile }: { isMobile: boolean }) {
   return (
@@ -17,7 +17,7 @@ export default function RE_Companies({ isMobile }: { isMobile: boolean }) {
       <Section04 isMobile={isMobile} />
       <Section05 isMobile={isMobile} />
       <Section06 isMobile={isMobile} />
-      <Footer isMobile={isMobile} />
+      <CtaSection isMobile={isMobile} />
     </div>
   );
 }

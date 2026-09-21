@@ -1,6 +1,3 @@
-﻿import Desktop from './desktop';
-import Mobile from './mobile';
-
-export default function Section({ isMobile }: { isMobile: boolean }) {
-    return isMobile ? <Mobile /> : <Desktop />;
+export default function Section(_props: { isMobile: boolean }) {
+    return null;
 }

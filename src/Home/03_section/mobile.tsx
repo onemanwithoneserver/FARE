@@ -71,7 +71,7 @@ export default function Mobile() {
                                 )}
                                 <span>{getIcon(persona.id, isActive)}</span>
                                 <span className="truncate w-full text-center leading-tight">
-                                    {persona.id === 'companies' ? 'Enterprise' : persona.id === 'trainers' ? 'Trainers' : 'Advisors'}
+                                    {persona.id === 'companies' ? 'Companies' : persona.id === 'trainers' ? 'Trainers' : 'Learners'}
                                 </span>
                             </button>
                         );

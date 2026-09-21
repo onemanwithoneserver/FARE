@@ -8,7 +8,7 @@ import Section06 from "./06_section";
 import Section07 from "./07_section";
 import Section08 from "./08_section";
 import Section09 from "./09_section";
-import Footer from "../Home/05_section";
+import CtaSection from "../Home/04_section";
 
 export default function RE_Trainers_and_Coaches({ isMobile }: { isMobile: boolean }) {
   return (
@@ -23,7 +23,7 @@ export default function RE_Trainers_and_Coaches({ isMobile }: { isMobile: boolea
       <Section07 isMobile={isMobile} />
       <Section08 isMobile={isMobile} />
       <Section09 isMobile={isMobile} />
-      <Footer isMobile={isMobile} />
+      <CtaSection isMobile={isMobile} />
     </div>
   );
 }

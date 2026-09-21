@@ -102,7 +102,7 @@ export default function Desktop() {
                                     <span className={`font-bold text-[13px] leading-snug truncate ${isActive ? 'text-white' : 'text-[#0B1D3A]'}`}>
                                         {persona.tag}
                                     </span>
-                                    <span className={`text-[10.5px] font-medium leading-tight truncate ${isActive ? 'text-[#D5AA45]' : 'text-[#5A6E8C]'}`}>
+                                    <span className={`text-[10.5px] font-medium leading-snug ${isActive ? 'text-[#D5AA45]' : 'text-[#5A6E8C]'}`}>
                                         {persona.subTag}
                                     </span>
                                 </div>

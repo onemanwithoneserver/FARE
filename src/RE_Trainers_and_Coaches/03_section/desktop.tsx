@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { Rocket, Link2, Target, PenTool, ArrowDown } from 'lucide-react';
+import { Rocket, Link2, Target, PenTool } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
@@ -96,9 +96,7 @@ export default function Desktop() {
                                 {card.desc}
                             </p>
 
-                            <div className="mt-8 flex items-center gap-2 text-[13px] font-semibold opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" style={{ color: card.color }}>
-                                {data.learnMore} <ArrowDown size={14} className="-rotate-90" />
-                            </div>
+
                         </motion.div>
                     ))}
                 </motion.div>

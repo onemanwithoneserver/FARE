@@ -4,17 +4,17 @@ export const dataEn = {
     title: "03_section",
     eyebrow: "FARE ACADEMY",
     headline: {
-        line1: "WHAT BRINGS YOU",
-        line2: "TO FARE?",
-        subtitle: "Choose your pathway to scale organizational excellence, monetize domain expertise, or accelerate personal career growth."
+        line1: "WHAT DOES FARE HAVE",
+        line2: "FOR YOU?",
+        subtitle: "Click on your role below to discover what FARE has exclusively designed for you."
     },
     sideTextLeft: ["LEARN", "PRACTISE", "BENCHMARK", "BUILD"],
     sideTextRight: ["REAL ESTATE", "PEOPLE", "PROGRESS"],
     personas: [
         {
             id: "companies",
-            tag: "Enterprise & Developers",
-            subTag: "Build high-performing teams",
+            tag: "REAL ESTATE COMPANIES",
+            subTag: "Open Plot · Residential · Commercial · Fractional · Others",
             titleLine1: "Build High-Performing",
             titleLine2: "Real Estate Teams",
             desc: "Train, develop, and benchmark your advisory teams and channel partners with real-estate-specific simulation modules.",
@@ -45,8 +45,8 @@ export const dataEn = {
         },
         {
             id: "trainers",
-            tag: "Certified Trainers & Coaches",
-            subTag: "Monetize your expertise",
+            tag: "REAL ESTATE TRAINERS & COACHES",
+            subTag: "Real Estate Subject-Matter Experts · Sales & Business Coaches · Digital & Technology Trainers · Communication & Personal Development Experts · Others",
             titleLine1: "Turn Domain Expertise",
             titleLine2: "Into Scalable Learning",
             desc: "Author proprietary courses, design real-world scenario mocks, and mentor the next generation of real estate leaders.",
@@ -77,8 +77,8 @@ export const dataEn = {
         },
         {
             id: "professionals",
-            tag: "Advisors & Brokers",
-            subTag: "Accelerate career growth",
+            tag: "REAL ESTATE LEARNERS",
+            subTag: "Freelancers · Real Estate Employees · Freshers · Career Switchers",
             titleLine1: "Build Market-Leading",
             titleLine2: "Skills That Close Deals",
             desc: "Master high-ticket negotiations, benchmark against top 5% industry performers, and earn accredited credentials.",
