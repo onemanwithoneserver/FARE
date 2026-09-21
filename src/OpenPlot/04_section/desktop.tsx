@@ -14,10 +14,10 @@ const TAB_ICONS: Record<string, React.ReactNode> = {
 };
 
 const TAB_COLORS: Record<string, string> = {
-    tab1: '#10B981',
-    tab2: '#3B82F6',
-    tab3: '#F59E0B',
-    tab4: '#EC4899'
+    tab1: '#10B981', // Emerald
+    tab2: '#3B82F6', // Blue
+    tab3: '#F59E0B', // Amber
+    tab4: '#EC4899'  // Pink
 };
 
 export default function Desktop() {
@@ -29,103 +29,53 @@ export default function Desktop() {
     const activeColor = TAB_COLORS[activeTab] || GOLD;
 
     return (
-        <section className="w-full py-16 bg-[#0B1D3A] text-white relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-16 bg-[#040C1E] text-white relative font-['Outfit'] overflow-hidden">
             
-            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-1/4 w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></motion.div>
-            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[-10%] left-1/3 w-[600px] h-[600px] bg-gradient-radial from-[#60A5FA]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
-            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-gradient-radial from-[#10B981]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
 
-            
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
                 style={{
-                    backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
-                    backgroundSize: '40px 40px'
+                    backgroundImage: `radial-gradient(white 1px, transparent 1px)`,
+                    backgroundSize: '32px 32px'
                 }}
             />
 
-            <div className="max-w-[1280px] mx-auto px-12 relative z-10">
-                <div className="flex flex-col items-center text-center mb-10">
-                    <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false }}
-                        className="mb-5"
-                    >
-                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10" style={{ color: GOLD }}>
-                            {data.overline}
-                        </span>
-                    </motion.div>
-
-                    <motion.h2 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ delay: 0.1 }}
-                        className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]"
-                    >
+            <div className="max-w-[1320px] mx-auto px-12 relative z-10">
+                <div className="flex flex-col items-center text-center mb-8">
+                    <h2 className="text-[3rem] lg:text-[3.5rem] leading-[1.05] font-black tracking-[-0.02em] mb-6 max-w-[850px] bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                         {data.headline}
-                    </motion.h2>
-                    <motion.p 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ delay: 0.2 }}
-                        className="text-[18px] font-medium leading-[1.6] text-white/70 max-w-[650px]"
-                    >
+                    </h2>
+                    <p className="text-[18px] font-medium leading-[1.6] text-white/60 max-w-[650px]">
                         {data.subtitle}
-                    </motion.p>
+                    </p>
                 </div>
 
-                
-                <div className="flex justify-center flex-wrap gap-4 mb-8 relative">
-                    
-                    <div className="absolute inset-0 pointer-events-none flex justify-center">
-                        <div className="flex gap-4">
-                            {data.tabs.map(tab => (
-                                <div key={`indicator-${tab.id}`} className="w-[180px] opacity-0"></div>
-                            ))}
-                        </div>
-                    </div>
-
+                <div className="flex flex-wrap justify-center gap-3 mb-12">
                     {data.tabs.map(tab => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`group relative flex items-center gap-3 w-[180px] px-5 py-4 rounded text-[14px] font-bold transition-all duration-400 border overflow-hidden ${
+                            className={`group flex items-center gap-3 px-6 py-3.5 rounded text-[15px] font-bold transition-all duration-400 border relative overflow-hidden ${
                                 activeTab === tab.id
-                                    ? 'bg-white/10 border-white/20 text-white shadow-[0_8px_30px_rgba(0,0,0,0.2)]'
-                                    : 'bg-white/[0.02] border-white/[0.05] text-white/50 hover:text-white/90 hover:bg-white/[0.05] hover:border-white/10'
+                                    ? 'bg-white/10 border-white/20 text-white shadow-[0_0_30px_rgba(255,255,255,0.05)] scale-[1.02]'
+                                    : 'bg-white/[0.02] border-white/[0.05] text-white/50 hover:text-white/90 hover:bg-white/[0.06] hover:border-white/10'
                             }`}
                         >
-                            
                             {activeTab === tab.id && (
                                 <motion.div 
-                                    layoutId="activeTabGlow"
-                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
-                                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                                    layoutId="activeTabIndicator"
+                                    className="absolute inset-0 opacity-20 pointer-events-none"
+                                    style={{ background: `linear-gradient(90deg, transparent, ${TAB_COLORS[tab.id]}, transparent)` }}
                                 />
                             )}
-                            
-                            
-                            {activeTab === tab.id && (
-                                <motion.div 
-                                    layoutId="activeTabBorder"
-                                    className="absolute top-0 left-0 right-0 h-[2px]"
-                                    style={{ backgroundColor: TAB_COLORS[tab.id] }}
-                                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                                />
-                            )}
-
                             <div
-                                className={`w-8 h-8 rounded flex items-center justify-center text-white shrink-0 shadow-sm transition-transform duration-300 ${activeTab === tab.id ? 'scale-110' : 'group-hover:scale-110'}`}
-                                style={{ 
-                                    backgroundColor: activeTab === tab.id ? TAB_COLORS[tab.id] : 'rgba(255,255,255,0.1)',
-                                    color: activeTab === tab.id ? 'white' : 'rgba(255,255,255,0.5)'
-                                }}
+                                className={`w-8 h-8 rounded flex items-center justify-center text-white shrink-0 shadow-md transition-transform duration-300 ${activeTab === tab.id ? 'scale-110' : 'group-hover:scale-110'}`}
+                                style={{ backgroundColor: TAB_COLORS[tab.id] }}
                             >
                                 {TAB_ICONS[tab.id]}
                             </div>
-                            <span className="relative z-10 leading-tight text-left">{tab.title}</span>
+                            <span className="relative z-10">{tab.title}</span>
                         </button>
                     ))}
                 </div>
@@ -136,34 +86,44 @@ export default function Desktop() {
                         initial={{ opacity: 0, y: 30, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -20, scale: 0.98 }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="bg-white/[0.03] border border-white/[0.08] rounded overflow-hidden backdrop-blur-md shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] relative"
+                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                        className="bg-[#0A1630]/60 border border-white/10 rounded overflow-hidden backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] relative"
                     >
                         
                         <div 
-                            className="absolute top-0 right-0 w-[400px] h-[400px] opacity-[0.07] blur-[80px] pointer-events-none transition-colors duration-500 rounded-bl-full"
-                            style={{ backgroundColor: activeColor }}
-                        ></div>
+                            className="absolute top-0 left-1/4 w-1/2 h-[1px] opacity-70 transition-colors duration-500" 
+                            style={{ background: `linear-gradient(90deg, transparent, ${activeColor}, transparent)` }} 
+                        />
+                        <div 
+                            className="absolute top-0 right-0 w-[400px] h-[400px] opacity-10 blur-[80px] pointer-events-none transition-colors duration-500 rounded-bl-full" 
+                            style={{ background: activeColor }} 
+                        />
 
-                        <div className="p-14 flex flex-col lg:flex-row gap-16 relative z-10">
+                        <div className="p-12 lg:p-14 flex flex-col lg:flex-row gap-12 relative z-10">
+                            
                             <div className="flex-1 flex flex-col">
-                                <h3 className="text-[32px] font-bold mb-5 leading-[1.1]">{activeContent.title}</h3>
-                                <p className="text-[16px] text-white/70 leading-relaxed mb-10 max-w-[650px]">{activeContent.desc}</p>
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="w-12 h-12 rounded flex items-center justify-center shadow-lg" style={{ backgroundColor: activeColor }}>
+                                        {TAB_ICONS[activeTab]}
+                                    </div>
+                                    <h3 className="text-[32px] font-bold leading-tight text-white">{activeContent.title}</h3>
+                                </div>
+                                <p className="text-[17px] text-white/70 leading-relaxed mb-10 max-w-[800px] font-medium">{activeContent.desc}</p>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                                     {activeContent.sections.map((section: { heading: string; items: string[] }, idx: number) => (
-                                        <div key={idx} className="group">
-                                            <h4 className="text-[14px] font-bold uppercase tracking-[0.1em] mb-4 flex items-center gap-3" style={{ color: activeColor }}>
-                                                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: activeColor }}></div>
+                                        <div key={idx} className="bg-white/[0.02] rounded p-6 border border-white/[0.05]">
+                                            <h4 className="text-[14px] font-bold uppercase tracking-[0.15em] mb-5 flex items-center gap-3" style={{ color: activeColor }}>
+                                                <div className="w-1.5 h-1.5 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)]" style={{ backgroundColor: activeColor }}></div>
                                                 {section.heading}
                                             </h4>
-                                            <ul className="flex flex-col gap-3.5">
+                                            <ul className="flex flex-col gap-4">
                                                 {section.items.map((item: string, i: number) => (
-                                                    <li key={i} className="flex items-start gap-3 text-[15px] text-white/80 group-hover:text-white/95 transition-colors duration-300">
-                                                        <div className="w-5 h-5 rounded-full flex items-center justify-center text-white shrink-0 mt-[2px] shadow-sm bg-white/10" style={{ color: activeColor }}>
-                                                            <CheckCircle2 size={13} strokeWidth={2.5} />
+                                                    <li key={i} className="flex items-start gap-3.5 text-[15.5px] text-white/80 font-medium">
+                                                        <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-sm bg-white/10" style={{ color: activeColor }}>
+                                                            <CheckCircle2 size={14} strokeWidth={2.5} />
                                                         </div>
-                                                        <span className="leading-[1.6]">{item}</span>
+                                                        <span className="leading-snug">{item}</span>
                                                     </li>
                                                 ))}
                                             </ul>
@@ -172,26 +132,18 @@ export default function Desktop() {
                                 </div>
                             </div>
 
-                            <div className="w-[340px] shrink-0 flex flex-col gap-6">
+                            
+                            <div className="w-full lg:w-[380px] shrink-0 flex flex-col gap-6">
                                 {activeContent.journey && (
-                                    <div className="bg-white/[0.04] rounded p-7 border border-white/[0.08] hover:bg-white/[0.06] transition-colors duration-300">
-                                        <h4 className="text-[12px] font-bold text-white/50 uppercase tracking-[0.15em] mb-5">{data.journeyLabel}</h4>
+                                    <div className="bg-[#040C1E]/50 rounded p-7 border border-white/5 backdrop-blur-md">
+                                        <h4 className="text-[12px] font-bold text-white/40 uppercase tracking-[0.2em] mb-5">{data.journeyLabel}</h4>
                                         <div className="flex flex-col gap-3">
                                             {activeContent.journey.split(' → ').map((step: string, i: number, arr: string[]) => (
-                                                <div key={i} className="flex items-center gap-3.5 group/step">
-                                                    <div 
-                                                        className="w-7 h-7 rounded-full border flex items-center justify-center text-[11px] font-bold transition-colors duration-300"
-                                                        style={{ 
-                                                            borderColor: `${activeColor}40`, 
-                                                            color: activeColor,
-                                                            backgroundColor: `${activeColor}10`
-                                                        }}
-                                                    >
-                                                        {i + 1}
-                                                    </div>
-                                                    <span className="text-[15px] font-semibold text-white/90 group-hover/step:text-white transition-colors">{step}</span>
+                                                <div key={i} className="flex items-center gap-3.5 group">
+                                                    <div className="w-8 h-8 rounded-full border-2 border-white/10 flex items-center justify-center text-[11px] font-bold text-white/50 group-hover:border-white/30 group-hover:text-white transition-colors">{i + 1}</div>
+                                                    <span className="text-[15.5px] font-bold transition-colors" style={{ color: i === arr.length - 1 ? activeColor : 'rgba(255,255,255,0.8)' }}>{step}</span>
                                                     {i < arr.length - 1 && (
-                                                        <div className="w-px h-6 bg-white/10 absolute left-[31px] -mt-8 pointer-events-none hidden"></div>
+                                                        <ArrowRight size={14} className="text-white/20 ml-auto" />
                                                     )}
                                                 </div>
                                             ))}
@@ -200,41 +152,33 @@ export default function Desktop() {
                                 )}
 
                                 {activeContent.evaluateBasedOn && (
-                                    <div className="bg-white/[0.04] rounded p-7 border border-white/[0.08] hover:bg-white/[0.06] transition-colors duration-300">
-                                        <h4 className="text-[12px] font-bold text-white/50 uppercase tracking-[0.15em] mb-4">{data.evaluateLabel}</h4>
+                                    <div className="bg-[#040C1E]/50 rounded p-7 border border-white/5 backdrop-blur-md flex-grow">
+                                        <h4 className="text-[12px] font-bold text-white/40 uppercase tracking-[0.2em] mb-4">{data.evaluateLabel}</h4>
                                         <div className="flex flex-wrap gap-2">
                                             {activeContent.evaluateBasedOn.split(' · ').map((tag: string, i: number) => (
-                                                <span key={i} className="px-3 py-1.5 rounded bg-white/[0.05] border border-white/[0.08] text-[13px] font-medium text-white/85 hover:bg-white/10 hover:border-white/20 transition-all cursor-default">
-                                                    {tag}
-                                                </span>
+                                                <span key={i} className="px-3 py-1.5 rounded bg-white/[0.04] border border-white/[0.08] text-[13px] font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-default">{tag}</span>
                                             ))}
                                         </div>
                                     </div>
                                 )}
 
-                                <div className="bg-gradient-to-br from-[#0F2751] to-[#071A49] rounded p-8 border border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.3)] mt-auto relative overflow-hidden">
-                                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-[30px]"></motion.div>
+                                <div className="bg-gradient-to-b from-white/10 to-white/5 rounded p-8 border border-white/10 shadow-[0_15px_30px_rgba(0,0,0,0.3)] mt-2 relative overflow-hidden backdrop-blur-md">
+                                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 opacity-20 blur-[30px]" style={{ background: activeColor }}></motion.div>
                                     
-                                    <p className="text-[15px] font-bold italic mb-6 text-white/90 text-center leading-[1.6] relative z-10">"{activeContent.footerText}"</p>
-                                    
+                                    <p className="text-[15px] font-medium italic mb-6 text-white/90 text-center leading-relaxed relative z-10">"{activeContent.footerText}"</p>
                                     <div className="flex flex-col gap-3 w-full relative z-10">
                                         {activeContent.buttons.map((btn: string, idx: number) => (
                                             <button
                                                 key={idx}
-                                                className={`group relative w-full py-3.5 px-5 rounded text-[14px] font-bold transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden ${
+                                                className={`group relative overflow-hidden w-full py-4 px-5 rounded text-[14px] font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
                                                     idx === 0
-                                                        ? 'text-[#0B1D3A] shadow-[0_8px_20px_rgba(201,154,46,0.3)] hover:shadow-[0_12px_25px_rgba(201,154,46,0.4)] hover:-translate-y-0.5'
-                                                        : 'bg-white/10 text-white hover:bg-white/15 border border-white/10 hover:border-white/20'
+                                                        ? 'text-[#040C1E] shadow-[0_8px_20px_-5px_rgba(255,255,255,0.2)] hover:shadow-[0_15px_25px_-5px_rgba(255,255,255,0.3)] active:scale-[0.98]'
+                                                        : 'bg-white/5 text-white hover:bg-white/10 border border-white/10 active:scale-[0.98]'
                                                 }`}
-                                                style={idx === 0 ? { background: `linear-gradient(135deg, ${GOLD} 0%, #D5AA45 100%)` } : {}}
+                                                style={idx === 0 ? { backgroundColor: 'white' } : {}}
                                             >
                                                 <span className="relative z-10">{btn}</span>
-                                                <ArrowRight size={16} strokeWidth={2.5} className="relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
-                                                
-                                                
-                                                {idx === 0 && (
-                                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.3] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                                                )}
+                                                <ArrowRight size={16} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                                             </button>
                                         ))}
                                     </div>
