@@ -31,14 +31,14 @@ export default function Desktop() {
 
     return (
         <section
-            className="w-full -mt-8 lg:-mt-16 flex items-center justify-center overflow-hidden relative font-['Outfit']"
+            className="w-full -mt-8 lg:-mt-8 flex items-center justify-center overflow-hidden relative font-['Outfit']"
             style={{ background: `linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)` }}
         >
-            {/* Soft Background Orbs */}
-            <div className="absolute top-1/4 right-[15%] w-[800px] h-[800px] bg-gradient-radial from-[#DBEAFE]/40 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
-            <div className="absolute bottom-1/4 left-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
             
-            {/* Decorative dot mesh */}
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-1/4 right-[15%] w-[800px] h-[800px] bg-gradient-radial from-[#DBEAFE]/40 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-1/4 left-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
+            
+            
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
                 style={{
                     backgroundImage: `radial-gradient(${NAVY} 1px, transparent 1px)`,
@@ -46,7 +46,7 @@ export default function Desktop() {
                 }}
             />
 
-            <div className="max-w-[1320px] w-full px-8 lg:px-12 py-20 lg:py-32 relative z-10">
+            <div className="max-w-[1320px] w-full px-8 lg:px-12 py-10 lg:py-16 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
                     <motion.div
@@ -103,7 +103,7 @@ export default function Desktop() {
 
                         <motion.div variants={item} className="flex flex-wrap items-center gap-5 mb-10">
                             <button
-                                className="group relative overflow-hidden text-white text-[15px] font-bold px-9 py-4 rounded-xl shadow-[0_8px_20px_rgba(11,29,58,0.2)] active:scale-[0.98] transition-all duration-300 flex items-center gap-3"
+                                className="group relative overflow-hidden text-white text-[15px] font-bold px-9 py-4 rounded shadow-[0_8px_20px_rgba(11,29,58,0.2)] active:scale-[0.98] transition-all duration-300 flex items-center gap-3"
                                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #132D5F 100%)` }}
                             >
                                 <span className="relative z-10">{data.buttons.primary}</span> 
@@ -114,7 +114,7 @@ export default function Desktop() {
 
                         <motion.div variants={item} className="flex flex-wrap gap-3 mb-6">
                             {data.features.map((f, i) => (
-                                <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/60 backdrop-blur-md border border-white/50 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-white transition-all cursor-default group">
+                                <div key={i} className="flex items-center gap-2 px-4 py-2 rounded bg-white/60 backdrop-blur-md border border-white/50 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-white transition-all cursor-default group">
                                     <ShieldCheck size={16} className="text-[#10B981] group-hover:scale-110 transition-transform" />
                                     <span className="text-[13px] font-bold">{f}</span>
                                 </div>
@@ -133,12 +133,12 @@ export default function Desktop() {
                         transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         className="lg:col-span-6 relative w-full flex justify-end"
                     >
-                        {/* Premium Hero Image Container */}
-                        <div className="relative w-full max-w-[650px] aspect-[4/3] lg:aspect-square rounded-[32px] overflow-hidden shadow-[0_30px_80px_-20px_rgba(11,29,58,0.4)] group z-20">
-                            {/* Inner Border */}
-                            <div className="absolute inset-0 border-[2px] border-white/20 rounded-[32px] z-20 pointer-events-none mix-blend-overlay"></div>
+                        
+                        <div className="relative w-full max-w-[650px] aspect-[4/3] lg:aspect-square rounded overflow-hidden shadow-[0_30px_80px_-20px_rgba(11,29,58,0.4)] group z-20">
                             
-                            {/* Image with subtle zoom on hover */}
+                            <div className="absolute inset-0 border-[2px] border-white/20 rounded z-20 pointer-events-none mix-blend-overlay"></div>
+                            
+                            
                             <motion.img 
                                 whileHover={{ scale: 1.05 }} 
                                 transition={{ duration: 1.5, ease: "easeOut" }}
@@ -147,9 +147,9 @@ export default function Desktop() {
                                 className="w-full h-full object-cover relative z-10" 
                             />
 
-                            {/* Floating glassmorphism element */}
-                            <div className="absolute bottom-10 left-[-20px] lg:left-10 bg-white/80 backdrop-blur-xl border border-white/60 p-5 rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] z-30 flex items-center gap-4 group-hover:translate-y-[-5px] transition-transform duration-500">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center text-white shadow-lg">
+                            
+                            <div className="absolute bottom-10 left-[-20px] lg:left-10 bg-white/80 backdrop-blur-xl border border-white/60 p-5 rounded shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] z-30 flex items-center gap-4 group-hover:translate-y-[-5px] transition-transform duration-500">
+                                <div className="w-12 h-12 rounded bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center text-white shadow-lg">
                                     <ShieldCheck size={24} />
                                 </div>
                                 <div>
@@ -159,9 +159,9 @@ export default function Desktop() {
                             </div>
                         </div>
 
-                        {/* Behind-image decorative blobs */}
-                        <div className="absolute top-[10%] right-[-10%] w-[80%] h-[80%] rounded-[40px] border-2 border-[#C99A2E]/20 rotate-6 z-10 pointer-events-none"></div>
-                        <div className="absolute top-[5%] right-[-5%] w-[80%] h-[80%] rounded-[40px] border border-[#3B82F6]/20 -rotate-3 z-10 pointer-events-none"></div>
+                        
+                        <div className="absolute top-[10%] right-[-10%] w-[80%] h-[80%] rounded border-2 border-[#C99A2E]/20 rotate-6 z-10 pointer-events-none"></div>
+                        <div className="absolute top-[5%] right-[-5%] w-[80%] h-[80%] rounded border border-[#3B82F6]/20 -rotate-3 z-10 pointer-events-none"></div>
                     </motion.div>
 
                 </div>

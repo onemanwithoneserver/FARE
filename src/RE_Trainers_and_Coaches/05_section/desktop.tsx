@@ -40,10 +40,10 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full py-32 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
-            {/* Soft premium background gradients */}
-            <div className="absolute top-[10%] left-[-10%] w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
-            <div className="absolute bottom-[10%] right-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+        <section className="w-full py-16 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+            
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[10%] left-[-10%] w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[10%] right-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none"></motion.div>
 
             <div className="max-w-[1320px] mx-auto px-12 relative z-10">
                 <motion.div
@@ -51,7 +51,7 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="flex flex-col items-center text-center mb-24"
+                    className="flex flex-col items-center text-center mb-12"
                 >
                     <motion.div variants={item} className="mb-6">
                         <span className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
@@ -72,7 +72,7 @@ export default function Desktop() {
                     </motion.p>
                 </motion.div>
 
-                <div className="columns-1 md:columns-2 gap-8 space-y-8 mb-24">
+                <div className="columns-1 md:columns-2 gap-8 space-y-8 mb-12">
                     {data.categories.map((category, index) => (
                         <motion.div
                             key={index}
@@ -80,14 +80,14 @@ export default function Desktop() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="bg-white border border-[#0B1D3A]/[0.06] rounded-[24px] p-10 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.04)] hover:shadow-[0_20px_40px_-10px_rgba(11,29,58,0.12)] transition-all duration-400 break-inside-avoid relative overflow-hidden group cursor-default"
+                            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-10 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.04)] hover:shadow-[0_20px_40px_-10px_rgba(11,29,58,0.12)] transition-all duration-400 break-inside-avoid relative overflow-hidden group cursor-default"
                         >
-                            {/* Accent gradients */}
-                            <div className="absolute top-0 right-0 w-48 h-48 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 blur-[40px] rounded-bl-full pointer-events-none" style={{ background: category.color }}></div>
+                            
+                            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-48 h-48 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 blur-[40px] rounded-bl-full pointer-events-none" style={{ background: category.color }}></motion.div>
                             <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full transition-all duration-500 ease-out" style={{ background: category.color }}></div>
 
                             <div className="flex items-center gap-5 mb-8 relative z-10">
-                                <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 relative overflow-hidden" style={{ backgroundColor: category.color }}>
+                                <div className="w-16 h-16 rounded flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 relative overflow-hidden" style={{ backgroundColor: category.color }}>
                                     <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                                     {categoryIcons[category.icon as keyof typeof categoryIcons]}
                                 </div>
@@ -98,7 +98,7 @@ export default function Desktop() {
 
                             <div className="flex flex-col gap-6 relative z-10">
                                 {category.subcategories.map((sub, idx) => (
-                                    <div key={idx} className="bg-[#F8FAFD]/50 rounded-xl p-5 border border-[#0B1D3A]/[0.03]">
+                                    <div key={idx} className="bg-[#F8FAFD]/50 rounded p-5 border border-[#0B1D3A]/[0.03]">
                                         {sub.label && (
                                             <h4 className="text-[12px] font-bold uppercase tracking-[0.15em] mb-4 flex items-center gap-2" style={{ color: category.color }}>
                                                 <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: category.color }}></div>
@@ -107,7 +107,7 @@ export default function Desktop() {
                                         )}
                                         <div className="flex flex-wrap gap-2.5">
                                             {sub.skills.map((skill, sIdx) => (
-                                                <span key={sIdx} className="bg-white border border-[#0B1D3A]/[0.06] px-3.5 py-1.5 rounded-lg text-[14px] font-medium text-[#3A4A63] hover:border-[#C99A2E]/40 hover:text-[#C99A2E] hover:shadow-[0_2px_8px_rgba(201,154,46,0.1)] transition-all duration-300 shadow-sm cursor-default">
+                                                <span key={sIdx} className="bg-white border border-[#0B1D3A]/[0.06] px-3.5 py-1.5 rounded text-[14px] font-medium text-[#3A4A63] hover:border-[#C99A2E]/40 hover:text-[#C99A2E] hover:shadow-[0_2px_8px_rgba(201,154,46,0.1)] transition-all duration-300 shadow-sm cursor-default">
                                                     {skill}
                                                 </span>
                                             ))}
@@ -126,10 +126,10 @@ export default function Desktop() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="max-w-[900px] mx-auto relative group"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/20 via-transparent to-[#C99A2E]/20 blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    <div className="bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[32px] p-16 text-center relative overflow-hidden shadow-[0_20px_50px_-15px_rgba(11,29,58,0.1)]">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none"></div>
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#3B82F6]/5 rounded-full blur-[60px] pointer-events-none"></div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/20 via-transparent to-[#C99A2E]/20 blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></motion.div>
+                    <div className="bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-16 text-center relative overflow-hidden shadow-[0_20px_50px_-15px_rgba(11,29,58,0.1)]">
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none"></motion.div>
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-64 h-64 bg-[#3B82F6]/5 rounded-full blur-[60px] pointer-events-none"></motion.div>
                         
                         <div className="relative z-10 flex flex-col items-center">
                             <h3 className="text-[28px] font-bold text-[#0B1D3A] mb-4 flex items-center justify-center gap-3">
@@ -138,7 +138,7 @@ export default function Desktop() {
                             <p className="text-[18px] font-bold text-[#64748B] mb-10 uppercase tracking-[0.2em]">
                                 {data.footerLine2}
                             </p>
-                            <div className="bg-[#F8FAFD] border border-[#0B1D3A]/10 py-5 px-10 rounded-2xl shadow-sm group-hover:border-[#C99A2E]/30 transition-colors duration-500">
+                            <div className="bg-[#F8FAFD] border border-[#0B1D3A]/10 py-5 px-10 rounded shadow-sm group-hover:border-[#C99A2E]/30 transition-colors duration-500">
                                 <p className="text-[20px] font-bold text-[#0B1D3A] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] to-[#132D5F]">
                                     {data.footerCta}
                                 </p>

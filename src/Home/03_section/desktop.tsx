@@ -76,7 +76,7 @@ export default function Desktop() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.7, delay: 0.1 }}
-                    className="flex gap-2 w-full max-w-[940px] mb-9 p-1.5 rounded-[4px] bg-white border border-[#0B1D3A]/[0.08] shadow-[0_10px_30px_rgba(11,29,58,0.06)]"
+                    className="flex gap-2 w-full max-w-[940px] mb-9 p-1.5 rounded bg-white border border-[#0B1D3A]/[0.08] shadow-[0_10px_30px_rgba(11,29,58,0.06)]"
                 >
                     {data.personas.map((persona) => {
                         const isActive = activePersonaId === persona.id;
@@ -84,7 +84,7 @@ export default function Desktop() {
                             <button
                                 key={persona.id}
                                 onClick={() => setActivePersonaId(persona.id)}
-                                className={`flex-1 py-3 px-4 rounded-[4px] flex items-center gap-3 transition-all duration-300 text-left cursor-pointer relative overflow-hidden ${
+                                className={`flex-1 py-3 px-4 rounded flex items-center gap-3 transition-all duration-300 text-left cursor-pointer relative overflow-hidden ${
                                     isActive
                                     ? 'bg-[#071A49] text-white shadow-md scale-[1.01]'
                                     : 'bg-transparent text-[#0B1D3A] hover:bg-[#F8FAFD]'
@@ -93,7 +93,7 @@ export default function Desktop() {
                                 {isActive && (
                                     <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E2C068]" />
                                 )}
-                                <div className={`w-9 h-9 rounded-[4px] flex items-center justify-center shrink-0 ${
+                                <div className={`w-9 h-9 rounded flex items-center justify-center shrink-0 ${
                                     isActive ? 'bg-white/10' : 'bg-[#EEF2F6]'
                                 }`}>
                                     {getTabIcon(persona.id, isActive)}
@@ -123,10 +123,10 @@ export default function Desktop() {
                         <motion.div
                             whileHover={{ y: -5, boxShadow: '0 25px 50px -12px rgba(11,29,58,0.25)' }}
                             transition={{ duration: 0.3 }}
-                            className="col-span-12 max-w-4xl mx-auto w-full flex flex-col p-8 lg:p-9 rounded-[6px] bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_20px_40px_-10px_rgba(11,29,58,0.15)] relative overflow-hidden"
+                            className="col-span-12 max-w-4xl mx-auto w-full flex flex-col p-8 lg:p-9 rounded bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_20px_40px_-10px_rgba(11,29,58,0.15)] relative overflow-hidden"
                         >
                             <div className="relative z-10">
-                                <div className="inline-flex items-center gap-2 text-[9.5px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded-[4px] mb-5 bg-[#EEF4FF] text-[#2563EB] border border-[#2563EB]/20">
+                                <div className="inline-flex items-center gap-2 text-[9.5px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded mb-5 bg-[#EEF4FF] text-[#2563EB] border border-[#2563EB]/20">
                                     <span>{activePersona.badge}</span>
                                 </div>
 
@@ -148,7 +148,7 @@ export default function Desktop() {
                                             transition={{ delay: 0.05 * i }}
                                             className="flex items-center gap-3 text-[12.5px] text-[#2C3E55] font-medium"
                                         >
-                                            <div className="w-5 h-5 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white shadow-sm flex items-center justify-center shrink-0">
+                                            <div className="w-5 h-5 rounded bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white shadow-sm flex items-center justify-center shrink-0">
                                                 <CheckCircle size={12} strokeWidth={2.5} />
                                             </div>
                                             <span>{feat}</span>
@@ -160,7 +160,7 @@ export default function Desktop() {
                             <div className="relative z-10 pt-6 border-t border-[#0B1D3A]/[0.06] mt-auto flex items-center justify-between gap-4">
                                 {activePersona.id === 'professionals' ? (
                                     waitlistJoined ? (
-                                        <div className="p-3 rounded-[4px] bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-2 text-[#059669] text-[12px] font-bold">
+                                        <div className="p-3 rounded bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-2 text-[#059669] text-[12px] font-bold">
                                             <ShieldCheck size={16} />
                                             <span>Registered for Priority Access!</span>
                                         </div>
@@ -172,11 +172,11 @@ export default function Desktop() {
                                                 value={waitlistEmail}
                                                 onChange={(e) => setWaitlistEmail(e.target.value)}
                                                 placeholder="Enter work email"
-                                                className="flex-1 bg-[#F8FAFC] border border-[#0B1D3A]/[0.12] rounded-[4px] px-3.5 py-2.5 text-[12.5px] text-[#0B1D3A] outline-none focus:border-[#C99A2E]"
+                                                className="flex-1 bg-[#F8FAFC] border border-[#0B1D3A]/[0.12] rounded px-3.5 py-2.5 text-[12.5px] text-[#0B1D3A] outline-none focus:border-[#C99A2E]"
                                             />
                                             <button
                                                 type="submit"
-                                                className="px-5 py-2.5 rounded-[4px] font-black text-[12.5px] text-white bg-[#071A49] transition-all cursor-pointer whitespace-nowrap hover:bg-[#102B63]"
+                                                className="px-5 py-2.5 rounded font-black text-[12.5px] text-white bg-[#071A49] transition-all cursor-pointer whitespace-nowrap hover:bg-[#102B63]"
                                             >
                                                 Join Now
                                             </button>
@@ -184,7 +184,7 @@ export default function Desktop() {
                                     )
                                 ) : (
                                     <button
-                                        className="bg-[#0B1D3A] hover:bg-[#102B63] text-white text-[13px] font-bold px-6 py-3.5 rounded-[4px] shadow-md flex items-center gap-2 transition-all cursor-pointer active:scale-[0.98]"
+                                        className="bg-[#0B1D3A] hover:bg-[#102B63] text-white text-[13px] font-bold px-6 py-3.5 rounded shadow-md flex items-center gap-2 transition-all cursor-pointer active:scale-[0.98]"
                                     >
                                         <span>{activePersona.cta}</span>
                                         <ArrowRight size={15} />

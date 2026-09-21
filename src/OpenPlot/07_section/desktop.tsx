@@ -26,7 +26,7 @@ export default function Desktop() {
         <section
             className="w-full py-40 px-12 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#040C1E]"
         >
-            {/* Background Image with advanced masking */}
+            
             <div
                 className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity"
                 style={{
@@ -38,10 +38,10 @@ export default function Desktop() {
                 }}
             ></div>
 
-            {/* Gradient Overlays */}
+            
             <div className="absolute inset-0 bg-gradient-to-b from-[#040C1E] via-[#040C1E]/80 to-[#040C1E] z-0 pointer-events-none"></div>
             
-            {/* Decorative Orbs */}
+            
             <motion.div
                 animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -62,12 +62,12 @@ export default function Desktop() {
                 className="max-w-[1040px] w-full relative z-20"
             >
                 <div
-                    className="w-full rounded-[32px] pt-24 pb-20 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] border border-white/10"
+                    className="w-full rounded pt-24 pb-20 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] border border-white/10"
                     style={{
                         background: 'linear-gradient(145deg, rgba(11,29,58,0.7) 0%, rgba(7,26,73,0.9) 100%)',
                     }}
                 >
-                    {/* Inner Glassmorphism Highlights */}
+                    
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/30 to-transparent"></div>
                     
@@ -98,7 +98,7 @@ export default function Desktop() {
                         <motion.button
                             whileHover={{ y: -2 }}
                             whileTap={{ scale: 0.98 }}
-                            className="group relative overflow-hidden font-bold text-[15px] px-10 py-4 rounded-xl transition-all duration-300 flex items-center gap-3 cursor-pointer text-[#071A49] tracking-wide shadow-[0_10px_25px_-5px_rgba(213,170,69,0.3)] hover:shadow-[0_15px_35px_-5px_rgba(213,170,69,0.4)]"
+                            className="group relative overflow-hidden font-bold text-[15px] px-10 py-4 rounded transition-all duration-300 flex items-center gap-3 cursor-pointer text-[#071A49] tracking-wide shadow-[0_10px_25px_-5px_rgba(213,170,69,0.3)] hover:shadow-[0_15px_35px_-5px_rgba(213,170,69,0.4)]"
                             style={{ background: 'linear-gradient(135deg, #D5AA45 0%, #F3D37F 50%, #D5AA45 100%)' }}
                         >
                             <span className="relative z-10">{data.buttons.primary}</span>
@@ -109,7 +109,7 @@ export default function Desktop() {
                         <motion.button
                             whileHover={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
                             whileTap={{ scale: 0.98 }}
-                            className="bg-white/5 text-white font-bold text-[15px] px-10 py-4 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
+                            className="bg-white/5 text-white font-bold text-[15px] px-10 py-4 rounded border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
                         >
                             {data.buttons.secondary}
                         </motion.button>

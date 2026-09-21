@@ -83,8 +83,8 @@ export default function Mobile() {
                                 title="Change language / భాషను మార్చండి"
                                 className={`px-2 py-1.5 text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.05] transition-colors flex items-center gap-1 cursor-pointer ${
                                     isLangDropdownOpen
-                                        ? 'bg-[#0B1D3A] text-white shadow-xs rounded-[4px]'
-                                        : (isScrolled ? 'rounded-full' : 'rounded-[4px]')
+                                        ? 'bg-[#0B1D3A] text-white shadow-xs rounded'
+                                        : (isScrolled ? 'rounded-full' : 'rounded')
                                 }`}
                             >
                                 <Globe size={16} className={isLangDropdownOpen ? 'text-[#E2C068]' : 'text-[#0B1D3A]/70'} />
@@ -98,14 +98,14 @@ export default function Mobile() {
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: 6, scale: 0.95 }}
                                         transition={{ duration: 0.15 }}
-                                        className="absolute top-[calc(100%+8px)] right-0 w-[155px] bg-white/98 backdrop-blur-xl border border-[#0B1D3A]/15 shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded-xl p-1.5 z-50 pointer-events-auto"
+                                        className="absolute top-[calc(100%+8px)] right-0 w-[155px] bg-white/98 backdrop-blur-xl border border-[#0B1D3A]/15 shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded p-1.5 z-50 pointer-events-auto"
                                     >
                                         <div className="text-[9.5px] font-bold uppercase tracking-wider text-[#0B1D3A]/45 px-2 py-1">
                                             {language === 'te' ? 'భాషను ఎంచుకోండి' : 'Select Language'}
                                         </div>
                                         <button
                                             onClick={() => { setLanguage('en'); setIsLangDropdownOpen(false); }}
-                                            className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[12.5px] transition-all cursor-pointer ${
+                                            className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[12.5px] transition-all cursor-pointer ${
                                                 language === 'en'
                                                     ? 'bg-[#0B1D3A] text-white font-bold'
                                                     : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
@@ -119,7 +119,7 @@ export default function Mobile() {
                                         </button>
                                         <button
                                             onClick={() => { setLanguage('te'); setIsLangDropdownOpen(false); }}
-                                            className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[12.5px] transition-all cursor-pointer mt-1 ${
+                                            className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[12.5px] transition-all cursor-pointer mt-1 ${
                                                 language === 'te'
                                                     ? 'bg-[#0B1D3A] text-white font-bold'
                                                     : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
@@ -142,7 +142,7 @@ export default function Mobile() {
                                 if (isOpen) setIsOpen(false);
                             }}
                             aria-label="Search"
-                            className={`p-1.5 text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] transition-colors ${isScrolled ? 'rounded-full' : 'rounded-[4px]'}`}
+                            className={`p-1.5 text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] transition-colors ${isScrolled ? 'rounded-full' : 'rounded'}`}
                         >
                             <Search size={18} strokeWidth={2} />
                         </button>
@@ -153,7 +153,7 @@ export default function Mobile() {
                                 if (isSearchExpanded) setIsSearchExpanded(false);
                             }}
                             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-                            className={`p-2 text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] transition-colors duration-200 cursor-pointer ${isScrolled ? 'rounded-full' : 'rounded-[4px]'}`}
+                            className={`p-2 text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] transition-colors duration-200 cursor-pointer ${isScrolled ? 'rounded-full' : 'rounded'}`}
                         >
                             {isOpen ? <X size={22} strokeWidth={2} /> : <Menu size={22} strokeWidth={2} />}
                         </button>
@@ -166,7 +166,7 @@ export default function Mobile() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -8 }}
                                 transition={{ duration: 0.2 }}
-                                className="absolute top-[70px] left-3 right-3 bg-white/98 backdrop-blur-xl border border-white/80 shadow-[0_16px_36px_-10px_rgba(11,29,58,0.18)] rounded-[4px] p-3 z-50 pointer-events-auto flex items-center gap-2"
+                                className="absolute top-[70px] left-3 right-3 bg-white/98 backdrop-blur-xl border border-white/80 shadow-[0_16px_36px_-10px_rgba(11,29,58,0.18)] rounded p-3 z-50 pointer-events-auto flex items-center gap-2"
                             >
                                 <Search size={16} className="text-[#0B1D3A]/50 shrink-0" />
                                 <input
@@ -182,7 +182,7 @@ export default function Mobile() {
                                         setIsSearchExpanded(false);
                                         setSearchQuery('');
                                     }}
-                                    className="p-1 text-[#0B1D3A]/50 hover:text-[#0B1D3A] rounded-[2px]"
+                                    className="p-1 text-[#0B1D3A]/50 hover:text-[#0B1D3A] rounded-sm"
                                 >
                                     <X size={16} />
                                 </button>
@@ -197,7 +197,7 @@ export default function Mobile() {
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: -10, scale: 0.98 }}
                                 transition={{ duration: 0.2 }}
-                                className="absolute top-[70px] left-3 right-3 bg-white/98 backdrop-blur-xl border border-white/80 shadow-[0_20px_40px_-10px_rgba(11,29,58,0.16)] rounded-[4px] flex flex-col p-6 gap-5 z-50 pointer-events-auto"
+                                className="absolute top-[70px] left-3 right-3 bg-white/98 backdrop-blur-xl border border-white/80 shadow-[0_20px_40px_-10px_rgba(11,29,58,0.16)] rounded flex flex-col p-6 gap-5 z-50 pointer-events-auto"
                             >
                                 <nav className="flex flex-col gap-3">
                                     {data.navLinks.map((link, idx) => {
@@ -245,9 +245,9 @@ export default function Mobile() {
                                                                                 navigate(`/${currentMode}/home`);
                                                                             }
                                                                         }}
-                                                                        className="flex items-start gap-3 p-3 rounded-lg bg-[#F8FAFD] border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/50 hover:bg-[#F0F4FA] transition-all cursor-pointer group"
+                                                                        className="flex items-start gap-3 p-3 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/50 hover:bg-[#F0F4FA] transition-all cursor-pointer group"
                                                                     >
-                                                                        <div className={`p-2.5 rounded-lg shrink-0 mt-0.5 shadow-sm ${
+                                                                        <div className={`p-2.5 rounded shrink-0 mt-0.5 shadow-sm ${
                                                                             sIdx === 0
                                                                                 ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068]'
                                                                                 : 'bg-gradient-to-br from-[#071A49] to-[#0F2D6B] text-[#34D399]'
@@ -287,7 +287,7 @@ export default function Mobile() {
                                 <div className="h-[1px] w-full bg-[#0B1D3A]/[0.06]"></div>
 
                                 <div className="flex flex-col gap-3.5">
-                                    <div className="flex items-center gap-2 bg-[#F8FAFD] border border-[#0B1D3A]/[0.08] rounded-[4px] px-3 py-2 text-[#0B1D3A]">
+                                    <div className="flex items-center gap-2 bg-[#F8FAFD] border border-[#0B1D3A]/[0.08] rounded px-3 py-2 text-[#0B1D3A]">
                                         <Search size={16} className="text-[#0B1D3A]/50" />
                                         <input
                                             type="text"
@@ -308,7 +308,7 @@ export default function Mobile() {
                                         </a>
                                         <button
                                             onClick={() => setIsOpen(false)}
-                                            className="bg-[#0B1D3A] text-white text-[13px] font-semibold px-5 py-2 rounded-[4px] shadow-sm flex items-center gap-1.5"
+                                            className="bg-[#0B1D3A] text-white text-[13px] font-semibold px-5 py-2 rounded shadow-sm flex items-center gap-1.5"
                                         >
                                             Get Started <ArrowRight size={13} />
                                         </button>

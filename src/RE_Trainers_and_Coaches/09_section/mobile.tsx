@@ -29,8 +29,8 @@ export default function Mobile() {
     };
 
     return (
-        <section className="w-full py-20 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-[20%] right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
+        <section className="w-full py-10 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[20%] right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[60px] pointer-events-none"></motion.div>
 
             <div className="px-5 relative z-10">
                 <motion.div
@@ -50,7 +50,7 @@ export default function Mobile() {
                     </motion.div>
 
                     <motion.h2 variants={item} className="text-[2.25rem] sm:text-[2.5rem] leading-[1.1] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }}>
-                        {data.headline.split(' ').map((word, i, arr) => (
+                        {data.headline.split(' ').map((word, i) => (
                             <span key={i} className={i === 2 ? "text-[#C99A2E]" : ""}>
                                 {word}{' '}
                             </span>
@@ -64,13 +64,13 @@ export default function Mobile() {
 
                 <div className="flex flex-col gap-8">
                     
-                    {/* Checklist Card */}
+                    
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, margin: "-50px" }}
                         transition={{ duration: 0.6 }}
-                        className="bg-white border border-[#0B1D3A]/[0.06] rounded-[24px] p-8 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden"
+                        className="bg-white border border-[#0B1D3A]/[0.06] rounded p-8 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden"
                     >
                         <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#C99A2E]/[0.08] rounded-full blur-3xl"></div>
                         
@@ -92,17 +92,17 @@ export default function Mobile() {
                         </div>
                     </motion.div>
 
-                    {/* Dark CTA Panel */}
+                    
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, margin: "-50px" }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="bg-gradient-to-br from-[#0B1D3A] via-[#132D5F] to-[#0B1D3A] rounded-[24px] p-8 sm:p-10 shadow-[0_20px_40px_-10px_rgba(11,29,58,0.4)] relative overflow-hidden flex flex-col items-center text-center"
+                        className="bg-gradient-to-br from-[#0B1D3A] via-[#132D5F] to-[#0B1D3A] rounded p-8 sm:p-10 shadow-[0_20px_40px_-10px_rgba(11,29,58,0.4)] relative overflow-hidden flex flex-col items-center text-center"
                     >
                         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 mix-blend-overlay"></div>
-                        <div className="absolute top-0 right-0 w-48 h-48 bg-[#C99A2E]/20 rounded-full blur-[50px] pointer-events-none"></div>
-                        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#3B82F6]/15 rounded-full blur-[50px] pointer-events-none"></div>
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-48 h-48 bg-[#C99A2E]/20 rounded-full blur-[50px] pointer-events-none"></motion.div>
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-48 h-48 bg-[#3B82F6]/15 rounded-full blur-[50px] pointer-events-none"></motion.div>
 
                         <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-6 border border-white/10 shadow-lg relative z-10">
                             <Sparkles size={24} className="text-[#C99A2E]" />
@@ -112,7 +112,7 @@ export default function Mobile() {
                             {data.footerText}
                         </h3>
 
-                        <button className="w-full bg-gradient-to-r from-[#C99A2E] to-[#B88A22] active:scale-95 text-white px-6 py-4 rounded-xl font-bold text-[16px] shadow-[0_10px_20px_-5px_rgba(201,154,46,0.4)] flex items-center justify-center gap-3 relative z-10 transition-transform">
+                        <button className="w-full bg-gradient-to-r from-[#C99A2E] to-[#B88A22] active:scale-95 text-white px-6 py-4 rounded font-bold text-[16px] shadow-[0_10px_20px_-5px_rgba(201,154,46,0.4)] flex items-center justify-center gap-3 relative z-10 transition-transform">
                             {data.ctaButton} <ArrowRight size={20} strokeWidth={2.5} />
                         </button>
                     </motion.div>

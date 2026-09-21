@@ -40,8 +40,8 @@ export default function Mobile() {
     };
 
     return (
-        <section className="w-full py-20 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
+        <section className="w-full py-10 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[60px] pointer-events-none"></motion.div>
 
             <div className="px-5 relative z-10">
                 <motion.div
@@ -49,7 +49,7 @@ export default function Mobile() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-50px" }}
-                    className="flex flex-col items-center text-center mb-16"
+                    className="flex flex-col items-center text-center mb-8"
                 >
                     <motion.div variants={item} className="mb-4">
                         <span className="inline-flex items-center px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
@@ -70,7 +70,7 @@ export default function Mobile() {
                     </motion.p>
                 </motion.div>
 
-                <div className="flex flex-col gap-6 mb-20">
+                <div className="flex flex-col gap-6 mb-10">
                     {data.categories.map((category, index) => (
                         <motion.div
                             key={index}
@@ -78,12 +78,12 @@ export default function Mobile() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.5, delay: 0 }}
-                            className="bg-white border border-[#0B1D3A]/[0.06] rounded-[20px] p-6 shadow-[0_4px_15px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
+                            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-6 shadow-[0_4px_15px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
                         >
-                            <div className="absolute top-0 right-0 w-32 h-32 opacity-[0.05] blur-[30px] rounded-bl-full pointer-events-none" style={{ background: category.color }}></div>
+                            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 opacity-[0.05] blur-[30px] rounded-bl-full pointer-events-none" style={{ background: category.color }}></motion.div>
 
                             <div className="flex items-center gap-4 mb-6 relative z-10">
-                                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md shrink-0" style={{ backgroundColor: category.color }}>
+                                <div className="w-14 h-14 rounded flex items-center justify-center shadow-md shrink-0" style={{ backgroundColor: category.color }}>
                                     {categoryIcons[category.icon as keyof typeof categoryIcons]}
                                 </div>
                                 <h3 className="text-[18px] font-bold" style={{ color: NAVY }}>
@@ -93,7 +93,7 @@ export default function Mobile() {
 
                             <div className="flex flex-col gap-5 relative z-10">
                                 {category.subcategories.map((sub, idx) => (
-                                    <div key={idx} className="bg-[#F8FAFD]/50 rounded-xl p-4 border border-[#0B1D3A]/[0.03]">
+                                    <div key={idx} className="bg-[#F8FAFD]/50 rounded p-4 border border-[#0B1D3A]/[0.03]">
                                         {sub.label && (
                                             <h4 className="text-[11px] font-bold uppercase tracking-[0.15em] mb-3 flex items-center gap-2" style={{ color: category.color }}>
                                                 <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: category.color }}></div>
@@ -102,7 +102,7 @@ export default function Mobile() {
                                         )}
                                         <div className="flex flex-wrap gap-2">
                                             {sub.skills.map((skill, sIdx) => (
-                                                <span key={sIdx} className="bg-white border border-[#0B1D3A]/[0.06] px-3 py-1.5 rounded-[8px] text-[13px] font-medium text-[#3A4A63] shadow-sm">
+                                                <span key={sIdx} className="bg-white border border-[#0B1D3A]/[0.06] px-3 py-1.5 rounded text-[13px] font-medium text-[#3A4A63] shadow-sm">
                                                     {skill}
                                                 </span>
                                             ))}
@@ -120,8 +120,8 @@ export default function Mobile() {
                     viewport={{ once: false }}
                     transition={{ duration: 0.6 }}
                 >
-                    <div className="bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[24px] p-8 text-center relative overflow-hidden shadow-[0_15px_30px_-10px_rgba(11,29,58,0.1)]">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[40px] pointer-events-none"></div>
+                    <div className="bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-8 text-center relative overflow-hidden shadow-[0_15px_30px_-10px_rgba(11,29,58,0.1)]">
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[40px] pointer-events-none"></motion.div>
                         
                         <div className="relative z-10 flex flex-col items-center">
                             <h3 className="text-[20px] font-bold text-[#0B1D3A] mb-3 flex items-center justify-center gap-2.5">
@@ -130,7 +130,7 @@ export default function Mobile() {
                             <p className="text-[14px] font-bold text-[#64748B] mb-6 uppercase tracking-[0.2em]">
                                 {data.footerLine2}
                             </p>
-                            <div className="bg-[#F8FAFD] border border-[#0B1D3A]/10 py-4 px-6 rounded-xl w-full shadow-sm">
+                            <div className="bg-[#F8FAFD] border border-[#0B1D3A]/10 py-4 px-6 rounded w-full shadow-sm">
                                 <p className="text-[15px] font-bold text-[#0B1D3A] leading-snug">
                                     {data.footerCta}
                                 </p>

@@ -29,10 +29,10 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full py-32 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
-            {/* Background effects */}
-            <div className="absolute top-[30%] left-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
-            <div className="absolute bottom-[20%] right-[10%] w-[800px] h-[800px] bg-gradient-radial from-[#3B82F6]/[0.04] to-transparent rounded-full blur-[120px] pointer-events-none"></div>
+        <section className="w-full py-16 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+            
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[30%] left-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[20%] right-[10%] w-[800px] h-[800px] bg-gradient-radial from-[#3B82F6]/[0.04] to-transparent rounded-full blur-[120px] pointer-events-none"></motion.div>
 
             <div className="absolute inset-0 opacity-[0.2] pointer-events-none z-0"
                 style={{
@@ -59,29 +59,29 @@ export default function Desktop() {
                     </motion.div>
 
                     <motion.h2 variants={item} className="text-[3.5rem] lg:text-[4.5rem] leading-[1.05] font-black tracking-[-0.03em] mb-8" style={{ color: NAVY }}>
-                        {data.headline.split(' ').map((word, i, arr) => (
+                        {data.headline.split(' ').map((word, i) => (
                             <span key={i} className={i === 2 ? "text-[#C99A2E]" : ""}>
                                 {word}{' '}
                             </span>
                         ))}
                     </motion.h2>
 
-                    <motion.p variants={item} className="text-[22px] font-medium leading-[1.65] text-[#475569] mb-20 max-w-[850px] mx-auto">
+                    <motion.p variants={item} className="text-[22px] font-medium leading-[1.65] text-[#475569] mb-10 max-w-[850px] mx-auto">
                         {data.description}
                     </motion.p>
                 </motion.div>
 
                 <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
                     
-                    {/* Left Panel: Checklist */}
+                    
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="bg-white border border-[#0B1D3A]/[0.06] rounded-[32px] p-12 shadow-[0_20px_50px_-20px_rgba(11,29,58,0.08)] relative overflow-hidden group hover:border-[#0B1D3A]/10 hover:shadow-[0_30px_60px_-20px_rgba(11,29,58,0.12)] transition-all duration-500 h-full flex flex-col"
+                        className="bg-white border border-[#0B1D3A]/[0.06] rounded p-12 shadow-[0_20px_50px_-20px_rgba(11,29,58,0.08)] relative overflow-hidden group hover:border-[#0B1D3A]/10 hover:shadow-[0_30px_60px_-20px_rgba(11,29,58,0.12)] transition-all duration-500 h-full flex flex-col"
                     >
-                        <div className="absolute -top-10 -right-10 w-48 h-48 bg-[#C99A2E]/[0.08] rounded-full blur-[40px] group-hover:bg-[#C99A2E]/[0.12] transition-colors duration-500"></div>
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-10 -right-10 w-48 h-48 bg-[#C99A2E]/[0.08] rounded-full blur-[40px] group-hover:bg-[#C99A2E]/[0.12] transition-colors duration-500"></motion.div>
                         <div className="absolute top-0 right-0 w-32 h-32 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
                         
                         <h3 className="text-[26px] font-bold mb-10 relative z-10" style={{ color: NAVY }}>
@@ -102,17 +102,17 @@ export default function Desktop() {
                         </div>
                     </motion.div>
 
-                    {/* Right Panel: Call to Action */}
+                    
                     <motion.div
                         initial={{ opacity: 0, x: 40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="bg-gradient-to-br from-[#0B1D3A] via-[#132D5F] to-[#0B1D3A] rounded-[32px] p-12 shadow-[0_30px_60px_-15px_rgba(11,29,58,0.4)] relative overflow-hidden flex flex-col items-center text-center h-full justify-center group cursor-pointer"
+                        className="bg-gradient-to-br from-[#0B1D3A] via-[#132D5F] to-[#0B1D3A] rounded p-12 shadow-[0_30px_60px_-15px_rgba(11,29,58,0.4)] relative overflow-hidden flex flex-col items-center text-center h-full justify-center group cursor-pointer"
                     >
                         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay"></div>
-                        <div className="absolute top-0 right-0 w-80 h-80 bg-[#C99A2E]/20 rounded-full blur-[80px] group-hover:bg-[#C99A2E]/30 group-hover:scale-110 transition-all duration-700 pointer-events-none"></div>
-                        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#3B82F6]/15 rounded-full blur-[80px] group-hover:bg-[#3B82F6]/25 group-hover:scale-110 transition-all duration-700 pointer-events-none"></div>
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-80 h-80 bg-[#C99A2E]/20 rounded-full blur-[80px] group-hover:bg-[#C99A2E]/30 group-hover:scale-110 transition-all duration-700 pointer-events-none"></motion.div>
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-80 h-80 bg-[#3B82F6]/15 rounded-full blur-[80px] group-hover:bg-[#3B82F6]/25 group-hover:scale-110 transition-all duration-700 pointer-events-none"></motion.div>
 
                         <div className="w-20 h-20 bg-white/5 backdrop-blur-md rounded-full flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500 shadow-xl relative z-10">
                             <Sparkles size={32} className="text-[#C99A2E]" />
@@ -122,10 +122,10 @@ export default function Desktop() {
                             {data.footerText}
                         </h3>
 
-                        <button className="bg-gradient-to-r from-[#C99A2E] to-[#B88A22] hover:from-[#D5AA45] hover:to-[#C99A2E] text-white px-10 py-5 rounded-2xl font-bold text-[18px] shadow-[0_15px_30px_-5px_rgba(201,154,46,0.5)] hover:shadow-[0_20px_40px_-5px_rgba(201,154,46,0.7)] group-hover:-translate-y-2 transition-all duration-400 flex items-center gap-4 relative z-10 w-full justify-center max-w-[360px] overflow-hidden">
+                        <button className="bg-gradient-to-r from-[#C99A2E] to-[#B88A22] hover:from-[#D5AA45] hover:to-[#C99A2E] text-white px-10 py-5 rounded font-bold text-[18px] shadow-[0_15px_30px_-5px_rgba(201,154,46,0.5)] hover:shadow-[0_20px_40px_-5px_rgba(201,154,46,0.7)] group-hover:-translate-y-2 transition-all duration-400 flex items-center gap-4 relative z-10 w-full justify-center max-w-[360px] overflow-hidden">
                             <span className="relative z-10">{data.ctaButton}</span>
                             <ArrowRight size={22} strokeWidth={3} className="relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
-                            <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded-2xl pointer-events-none"></div>
+                            <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded pointer-events-none"></div>
                         </button>
                     </motion.div>
 

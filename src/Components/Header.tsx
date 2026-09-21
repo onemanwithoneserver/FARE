@@ -31,11 +31,11 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
       </div>
 
       <div className="flex items-center justify-center gap-2 sm:gap-4">
-        <div className="flex bg-[#f8fafc] p-0.5 md:p-1 rounded-[4px] border border-[#e2e8f0] shadow-sm">
+        <div className="flex bg-[#f8fafc] p-0.5 md:p-1 rounded border border-[#e2e8f0] shadow-sm">
           <button
             onClick={() => onViewModeChange('desktop')}
             title="Desktop View"
-            className={`flex items-center gap-1.5 px-2.5 sm:px-4 md:px-5 py-1 md:py-1.5 rounded-[4px] text-xs md:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-1.5 px-2.5 sm:px-4 md:px-5 py-1 md:py-1.5 rounded text-xs md:text-sm font-semibold transition-all duration-200 cursor-pointer ${
               !isMobile
                 ? 'bg-[#1e293b] text-white shadow-md'
                 : 'text-[#64748b] hover:text-[#0f172a] hover:bg-[#f1f5f9]'
@@ -47,7 +47,7 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
           <button
             onClick={() => onViewModeChange('mobile')}
             title="Mobile View"
-            className={`flex items-center gap-1.5 px-2.5 sm:px-4 md:px-5 py-1 md:py-1.5 rounded-[4px] text-xs md:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-1.5 px-2.5 sm:px-4 md:px-5 py-1 md:py-1.5 rounded text-xs md:text-sm font-semibold transition-all duration-200 cursor-pointer ${
               isMobile
                 ? 'bg-[#1e293b] text-white shadow-md'
                 : 'text-[#64748b] hover:text-[#0f172a] hover:bg-[#f1f5f9]'
@@ -78,7 +78,7 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
           onClick={onClose}
           title="Close header (Press Ctrl+M to reopen)"
           aria-label="Close header"
-          className="w-8 h-8 sm:w-9 sm:h-9 rounded-[4px] border border-[#e2e8f0] text-[#64748b] hover:text-[#0f172a] hover:bg-[#f8fafc] transition-all flex items-center justify-center shadow-sm cursor-pointer shrink-0"
+          className="w-8 h-8 sm:w-9 sm:h-9 rounded border border-[#e2e8f0] text-[#64748b] hover:text-[#0f172a] hover:bg-[#f8fafc] transition-all flex items-center justify-center shadow-sm cursor-pointer shrink-0"
         >
           <X className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>

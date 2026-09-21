@@ -25,10 +25,10 @@ export default function Mobile() {
     };
 
     return (
-        <section className="w-full py-24 relative font-['Outfit'] overflow-hidden"
+        <section className="w-full py-12 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #F8FAFD 0%, #EEF4FF 100%)' }}
         >
-            <div className="absolute top-10 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#3B82F6]/[0.04] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-10 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#3B82F6]/[0.04] to-transparent rounded-full blur-[60px] pointer-events-none"></motion.div>
 
             <div className="w-full px-5 relative z-10">
                 <motion.div
@@ -36,7 +36,7 @@ export default function Mobile() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-50px" }}
-                    className="flex flex-col items-center text-center mb-16"
+                    className="flex flex-col items-center text-center mb-8"
                 >
                     <motion.div variants={item} className="mb-4">
                         <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
@@ -56,7 +56,7 @@ export default function Mobile() {
                     viewport={{ once: false, margin: "-50px" }}
                     className="flex flex-col gap-10 relative px-2"
                 >
-                    {/* Animated vertical connecting line */}
+                    
                     <div className="absolute top-[25px] bottom-[25px] left-[32px] w-[2px] bg-gradient-to-b from-transparent via-[#0B1D3A]/10 to-transparent">
                         <motion.div 
                             className="absolute inset-0 bg-gradient-to-b from-transparent via-[#C99A2E]/40 to-transparent"
@@ -77,7 +77,7 @@ export default function Mobile() {
                                     <span className="text-white text-[16px] font-bold font-serif">{step.number}</span>
                                 </div>
                             </div>
-                            <div className="flex flex-col pt-1 bg-white/40 backdrop-blur-sm border border-[#0B1D3A]/[0.04] p-4 rounded-2xl shadow-[0_2px_10px_-2px_rgba(11,29,58,0.03)] w-full">
+                            <div className="flex flex-col pt-1 bg-white/40 backdrop-blur-sm border border-[#0B1D3A]/[0.04] p-4 rounded shadow-[0_2px_10px_-2px_rgba(11,29,58,0.03)] w-full">
                                 <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-2">{step.title}</h3>
                                 <p className="text-[14.5px] text-[#475569] font-medium leading-[1.65]">{step.desc}</p>
                             </div>
@@ -90,9 +90,9 @@ export default function Mobile() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "-50px" }}
                     transition={{ delay: 0.4, duration: 0.6 }}
-                    className="mt-20 flex justify-center w-full"
+                    className="mt-10 flex justify-center w-full"
                 >
-                    <div className="w-full bg-white/80 backdrop-blur-xl px-5 py-6 rounded-2xl border border-[#0B1D3A]/[0.06] shadow-[0_10px_30px_-5px_rgba(11,29,58,0.08)] flex flex-col items-center justify-center gap-3 text-center">
+                    <div className="w-full bg-white/80 backdrop-blur-xl px-5 py-6 rounded border border-[#0B1D3A]/[0.06] shadow-[0_10px_30px_-5px_rgba(11,29,58,0.08)] flex flex-col items-center justify-center gap-3 text-center">
                         {data.journeyLabel.split(' → ').map((label, idx, arr) => (
                             <div key={idx} className="flex flex-col items-center gap-3">
                                 <div className="flex items-center gap-2">

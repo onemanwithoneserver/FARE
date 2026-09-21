@@ -25,14 +25,14 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full py-32 relative font-['Outfit'] overflow-hidden"
+        <section className="w-full py-16 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #EEF4FF 0%, #FFFFFF 50%, #F8FAFD 100%)' }}
         >
-            {/* Decorative background elements */}
-            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-radial from-[#DBEAFE]/40 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
             
-            {/* Subtle dot pattern */}
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-radial from-[#DBEAFE]/40 to-transparent rounded-full blur-[100px] pointer-events-none"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[100px] pointer-events-none"></motion.div>
+            
+            
             <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
                 style={{
                     backgroundImage: `radial-gradient(${NAVY} 1px, transparent 1px)`,
@@ -46,7 +46,7 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="flex flex-col items-center text-center mb-20"
+                    className="flex flex-col items-center text-center mb-10"
                 >
                     <motion.div variants={item} className="mb-5">
                         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
@@ -63,18 +63,18 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24 relative"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 relative"
                 >
                     {data.challenges.map((challenge, index) => (
                         <motion.div
                             key={index}
                             variants={item}
                             whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                            className="group bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded-[24px] p-8 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.04)] hover:shadow-[0_20px_50px_-15px_rgba(11,29,58,0.12)] transition-all duration-400 relative overflow-hidden flex flex-col"
+                            className="group bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded p-8 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.04)] hover:shadow-[0_20px_50px_-15px_rgba(11,29,58,0.12)] transition-all duration-400 relative overflow-hidden flex flex-col"
                         >
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#EF4444]/10 to-transparent rounded-bl-full blur-[20px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#EF4444]/10 to-transparent rounded-bl-full blur-[20px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></motion.div>
                             
-                            <div className="w-12 h-12 rounded-2xl bg-[#FEF2F2] flex items-center justify-center shrink-0 mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden">
+                            <div className="w-12 h-12 rounded bg-[#FEF2F2] flex items-center justify-center shrink-0 mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden">
                                 <div className="absolute inset-0 bg-[#EF4444]/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300"></div>
                                 <AlertCircle size={22} strokeWidth={2.5} className="text-[#EF4444] relative z-10" />
                             </div>
@@ -90,11 +90,11 @@ export default function Desktop() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "-100px" }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-[1000px] mx-auto bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-[32px] p-16 text-center shadow-[0_20px_60px_-15px_rgba(11,29,58,0.3)] relative overflow-hidden"
+                    className="max-w-[1000px] mx-auto bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded p-16 text-center shadow-[0_20px_60px_-15px_rgba(11,29,58,0.3)] relative overflow-hidden"
                 >
-                    <div className="absolute top-0 right-0 w-72 h-72 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none"></div>
-                    <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#60A5FA]/10 rounded-full blur-[60px] pointer-events-none"></div>
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#C99A2E]/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-72 h-72 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-72 h-72 bg-[#60A5FA]/10 rounded-full blur-[60px] pointer-events-none"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#C99A2E]/5 rounded-full blur-[80px] pointer-events-none"></motion.div>
                     
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"></div>
 

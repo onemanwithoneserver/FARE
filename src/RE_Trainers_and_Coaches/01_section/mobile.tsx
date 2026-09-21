@@ -33,7 +33,7 @@ export default function Mobile() {
         <section className="w-full pt-[60px] -mt-6 pb-20 flex flex-col items-center justify-start overflow-hidden relative font-['Outfit']"
             style={{ background: `linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)` }}
         >
-            <div className="absolute top-10 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#DBEAFE]/50 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-10 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#DBEAFE]/50 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></motion.div>
             
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
                 style={{
@@ -89,7 +89,7 @@ export default function Mobile() {
 
                     <motion.div variants={item} className="flex flex-col gap-3 mb-8 w-full max-w-[300px] mx-auto">
                         <button
-                            className="group relative overflow-hidden text-white text-[14px] font-bold w-full py-4 rounded-xl active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_8px_20px_-8px_rgba(11,29,58,0.3)]"
+                            className="group relative overflow-hidden text-white text-[14px] font-bold w-full py-4 rounded active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_8px_20px_-8px_rgba(11,29,58,0.3)]"
                             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #132D5F 100%)` }}
                         >
                             <span className="relative z-10">{data.buttons.primary}</span>
@@ -100,7 +100,7 @@ export default function Mobile() {
 
                     <motion.div variants={item} className="flex flex-wrap justify-center gap-2.5 mb-6">
                         {data.features.map((f, i) => (
-                            <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/70 backdrop-blur-md border border-white/60 shadow-[0_2px_5px_-1px_rgba(11,29,58,0.05)] text-[#0B1D3A]/80">
+                            <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-white/70 backdrop-blur-md border border-white/60 shadow-[0_2px_5px_-1px_rgba(11,29,58,0.05)] text-[#0B1D3A]/80">
                                 <Star size={14} className="text-[#F59E0B] fill-[#F59E0B]" />
                                 <span className="text-[12px] font-bold">{f}</span>
                             </div>
@@ -119,12 +119,12 @@ export default function Mobile() {
                     transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     className="w-full mt-12 relative z-20 flex items-center justify-center px-2"
                 >
-                    <div className="relative w-full aspect-square max-w-[400px] rounded-3xl overflow-hidden shadow-[0_20px_40px_-10px_rgba(11,29,58,0.3)] border-[2px] border-white/60 group">
+                    <div className="relative w-full aspect-square max-w-[400px] rounded overflow-hidden shadow-[0_20px_40px_-10px_rgba(11,29,58,0.3)] border-[2px] border-white/60 group">
                         <img src={reTrainersHero} alt="Real Estate Trainers Hero" className="w-full h-full object-cover relative z-10" />
                         
-                        {/* Floating glass badge */}
-                        <div className="absolute bottom-5 left-5 right-5 bg-white/90 backdrop-blur-xl border border-white p-4 rounded-2xl shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] z-30 flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md shrink-0">
+                        
+                        <div className="absolute bottom-5 left-5 right-5 bg-white/90 backdrop-blur-xl border border-white p-4 rounded shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] z-30 flex items-center gap-3">
+                            <div className="w-10 h-10 rounded bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md shrink-0">
                                 <Star size={20} className="fill-white" />
                             </div>
                             <div className="text-left">

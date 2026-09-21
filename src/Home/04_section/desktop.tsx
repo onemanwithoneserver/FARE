@@ -61,7 +61,7 @@ export default function Desktop() {
                 className="max-w-[1060px] xl:max-w-[1120px] w-full relative z-20"
             >
                 <div
-                    className="w-full rounded-[4px] pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden shadow-[0_0_50px_rgba(4,16,41,0.5)]"
+                    className="w-full rounded pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden shadow-[0_0_50px_rgba(4,16,41,0.5)]"
                     style={{
                         background: 'linear-gradient(135deg, rgba(8, 22, 51, 0.95) 0%, rgba(5, 15, 38, 0.98) 100%)',
                         border: '1px solid rgba(255,255,255,0.08)',
@@ -94,7 +94,7 @@ export default function Desktop() {
                                 key={idx}
                                 whileHover={{ scale: 1.02, backgroundColor: idx === 0 ? undefined : 'rgba(255,255,255,0.05)', boxShadow: idx === 0 ? '0 0 30px rgba(213,170,69,0.4)' : undefined, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
-                                className={`font-semibold text-[14px] px-8 py-3.5 rounded-[4px] transition-all duration-300 flex items-center gap-2.5 cursor-pointer ${
+                                className={`font-semibold text-[14px] px-8 py-3.5 rounded transition-all duration-300 flex items-center gap-2.5 cursor-pointer ${
                                     idx === 0 
                                     ? 'text-[#071A49] font-bold uppercase tracking-[0.05em]' 
                                     : 'bg-transparent text-white border border-white/20'

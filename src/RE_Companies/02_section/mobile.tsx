@@ -25,10 +25,10 @@ export default function Mobile() {
     };
 
     return (
-        <section className="w-full py-20 relative font-['Outfit'] overflow-hidden"
+        <section className="w-full py-10 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #EEF4FF 0%, #FFFFFF 100%)' }}
         >
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#DBEAFE]/40 to-transparent rounded-full blur-[60px] pointer-events-none"></div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#DBEAFE]/40 to-transparent rounded-full blur-[60px] pointer-events-none"></motion.div>
 
             <div className="w-full px-5 relative z-10">
                 <motion.div
@@ -59,9 +59,9 @@ export default function Mobile() {
                         <motion.div
                             key={index}
                             variants={item}
-                            className="bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded-2xl p-5 shadow-[0_2px_12px_-4px_rgba(11,29,58,0.05)] flex items-start gap-4"
+                            className="bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded p-5 shadow-[0_2px_12px_-4px_rgba(11,29,58,0.05)] flex items-start gap-4"
                         >
-                            <div className="w-10 h-10 rounded-[12px] bg-[#FEF2F2] text-white flex items-center justify-center shrink-0">
+                            <div className="w-10 h-10 rounded bg-[#FEF2F2] text-white flex items-center justify-center shrink-0">
                                 <AlertCircle size={18} strokeWidth={2.5} className="text-[#EF4444]" />
                             </div>
                             <p className="text-[15px] font-bold text-[#0B1D3A] leading-snug pt-2">
@@ -76,11 +76,11 @@ export default function Mobile() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "-50px" }}
                     transition={{ duration: 0.6 }}
-                    className="w-full rounded-[24px] p-8 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.25)] relative overflow-hidden text-center"
+                    className="w-full rounded p-8 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.25)] relative overflow-hidden text-center"
                     style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)` }}
                 >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[40px]"></div>
-                    <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#60A5FA]/10 rounded-full blur-[40px]"></div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[40px]"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-32 h-32 bg-[#60A5FA]/10 rounded-full blur-[40px]"></motion.div>
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"></div>
 
                     <h3 className="text-white text-[18px] font-medium leading-[1.4] mb-5 relative z-10">

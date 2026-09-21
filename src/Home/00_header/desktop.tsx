@@ -106,7 +106,7 @@ export default function Desktop() {
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: 8, scale: 0.96 }}
                                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                className="absolute top-full left-0 mt-1.5 w-[290px] bg-white/98 backdrop-blur-xl border border-[#0B1D3A]/15 shadow-[0_16px_40px_-8px_rgba(11,29,58,0.2)] rounded-xl p-2 z-50 pointer-events-auto"
+                                className="absolute top-full left-0 mt-1.5 w-[290px] bg-white/98 backdrop-blur-xl border border-[#0B1D3A]/15 shadow-[0_16px_40px_-8px_rgba(11,29,58,0.2)] rounded p-2 z-50 pointer-events-auto"
                             >
                                 <div className="flex flex-col gap-1">
                                     {link.subItems?.map((sub, sIdx) => (
@@ -122,9 +122,9 @@ export default function Desktop() {
                                                     navigate(`/${currentMode}/home`);
                                                 }
                                             }}
-                                            className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-[#F0F4FA] transition-all group/sub cursor-pointer"
+                                            className="flex items-start gap-3 p-2.5 rounded hover:bg-[#F0F4FA] transition-all group/sub cursor-pointer"
                                         >
-                                            <div className={`p-2.5 rounded-lg shrink-0 mt-0.5 transition-all duration-300 shadow-sm group-hover/sub:scale-105 group-hover/sub:shadow-md ${
+                                            <div className={`p-2.5 rounded shrink-0 mt-0.5 transition-all duration-300 shadow-sm group-hover/sub:scale-105 group-hover/sub:shadow-md ${
                                                 sIdx === 0
                                                     ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068] group-hover/sub:from-[#C99A2E] group-hover/sub:to-[#E2C068] group-hover/sub:text-[#0B1D3A]'
                                                     : 'bg-gradient-to-br from-[#071A49] to-[#0F2D6B] text-[#34D399] group-hover/sub:from-[#34D399] group-hover/sub:to-[#059669] group-hover/sub:text-white'
@@ -168,7 +168,7 @@ export default function Desktop() {
                 className={`flex items-center justify-center w-9 h-9 transition-all duration-200 cursor-pointer ${
                     isSearchExpanded
                         ? 'bg-[#0B1D3A] text-white shadow-md rounded-full'
-                        : `text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06] ${isScrolled ? 'rounded-full' : 'rounded-[4px]'}`
+                        : `text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06] ${isScrolled ? 'rounded-full' : 'rounded'}`
                 }`}
                 title="Search platform"
             >
@@ -182,7 +182,7 @@ export default function Desktop() {
                         isLangDropdownOpen
                             ? 'bg-[#0B1D3A] text-white shadow-sm'
                             : 'text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06]'
-                    } ${isScrolled ? 'rounded-full' : 'rounded-[4px]'}`}
+                    } ${isScrolled ? 'rounded-full' : 'rounded'}`}
                     title="Change language / భాషను మార్చండి"
                     aria-label="Change language"
                 >
@@ -198,14 +198,14 @@ export default function Desktop() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 6, scale: 0.96 }}
                             transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                            className="absolute top-[calc(100%+8px)] right-0 w-[170px] bg-white/98 backdrop-blur-xl border border-[#0B1D3A]/15 shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded-xl p-1.5 z-50 pointer-events-auto"
+                            className="absolute top-[calc(100%+8px)] right-0 w-[170px] bg-white/98 backdrop-blur-xl border border-[#0B1D3A]/15 shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded p-1.5 z-50 pointer-events-auto"
                         >
                             <div className="text-[10px] font-bold uppercase tracking-wider text-[#0B1D3A]/45 px-2.5 py-1">
                                 {language === 'te' ? 'భాషను ఎంచుకోండి' : 'Select Language'}
                             </div>
                             <button
                                 onClick={() => { setLanguage('en'); setIsLangDropdownOpen(false); }}
-                                className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[13px] transition-all cursor-pointer ${
+                                className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[13px] transition-all cursor-pointer ${
                                     language === 'en'
                                         ? 'bg-[#0B1D3A] text-white font-bold'
                                         : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
@@ -219,7 +219,7 @@ export default function Desktop() {
                             </button>
                             <button
                                 onClick={() => { setLanguage('te'); setIsLangDropdownOpen(false); }}
-                                className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-[13px] transition-all cursor-pointer mt-1 ${
+                                className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[13px] transition-all cursor-pointer mt-1 ${
                                     language === 'te'
                                         ? 'bg-[#0B1D3A] text-white font-bold'
                                         : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium'
@@ -245,7 +245,7 @@ export default function Desktop() {
                 Login
             </a>
 
-            <button className={`bg-[#0B1D3A] text-white text-[13px] lg:text-[13.5px] font-semibold px-4 lg:px-5 py-2 hover:bg-[#102B63] hover:shadow-[0_8px_24px_rgba(11,29,58,0.25),0_0_0_1px_rgba(201,154,46,0.2)] active:scale-[0.98] transition-all duration-300 shadow-[0_2px_8px_rgba(11,29,58,0.15)] flex items-center gap-1.5 shrink-0 cursor-pointer ${isScrolled ? 'rounded-full' : 'rounded-[4px]'}`}>
+            <button className={`bg-[#0B1D3A] text-white text-[13px] lg:text-[13.5px] font-semibold px-4 lg:px-5 py-2 hover:bg-[#102B63] hover:shadow-[0_8px_24px_rgba(11,29,58,0.25),0_0_0_1px_rgba(201,154,46,0.2)] active:scale-[0.98] transition-all duration-300 shadow-[0_2px_8px_rgba(11,29,58,0.15)] flex items-center gap-1.5 shrink-0 cursor-pointer ${isScrolled ? 'rounded-full' : 'rounded'}`}>
                 <span>Get Started</span>
                 <ArrowRight size={14} strokeWidth={2.5} />
             </button>
@@ -307,10 +307,10 @@ export default function Desktop() {
                                 exit={{ opacity: 0, y: -10, scale: 0.96 }}
                                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                                 className={`absolute top-[calc(100%+10px)] right-4 lg:right-10 w-[420px] max-w-[90vw] bg-white/98 backdrop-blur-2xl border border-[#0B1D3A]/15 shadow-[0_20px_50px_-10px_rgba(11,29,58,0.22)] p-4 z-50 pointer-events-auto ${
-                                    isScrolled ? 'rounded-2xl' : 'rounded-xl'
+                                    isScrolled ? 'rounded' : 'rounded'
                                 }`}
                             >
-                                <div className="flex items-center gap-3 bg-[#F8FAFD] border border-[#0B1D3A]/15 focus-within:border-[#C99A2E] focus-within:ring-2 focus-within:ring-[#C99A2E]/20 px-3.5 py-2.5 rounded-xl transition-all shadow-inner">
+                                <div className="flex items-center gap-3 bg-[#F8FAFD] border border-[#0B1D3A]/15 focus-within:border-[#C99A2E] focus-within:ring-2 focus-within:ring-[#C99A2E]/20 px-3.5 py-2.5 rounded transition-all shadow-inner">
                                     <Search size={18} className="text-[#C99A2E] shrink-0" />
                                     <input
                                         ref={searchInputRef}
@@ -342,7 +342,7 @@ export default function Desktop() {
                                             <button
                                                 key={idx}
                                                 onClick={() => setSearchQuery(tag)}
-                                                className="text-[11.5px] font-medium text-[#0B1D3A]/75 bg-[#0B1D3A]/[0.04] hover:bg-[#C99A2E]/15 hover:text-[#0B1D3A] px-2.5 py-1 rounded-md transition-colors cursor-pointer"
+                                                className="text-[11.5px] font-medium text-[#0B1D3A]/75 bg-[#0B1D3A]/[0.04] hover:bg-[#C99A2E]/15 hover:text-[#0B1D3A] px-2.5 py-1 rounded transition-colors cursor-pointer"
                                             >
                                                 {tag}
                                             </button>

@@ -41,8 +41,8 @@ export default function Mobile() {
     const sectionTitle = data.title;
 
     return (
-        <section className="w-full py-20 bg-[#040C1E] relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></div>
+        <section className="w-full py-10 bg-[#040C1E] relative font-['Outfit'] overflow-hidden">
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></motion.div>
 
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
                 style={{
@@ -57,7 +57,7 @@ export default function Mobile() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-50px" }}
-                    className="flex flex-col items-center text-center mb-16"
+                    className="flex flex-col items-center text-center mb-8"
                 >
                     <motion.div variants={item} className="mb-4">
                         <span className="inline-flex items-center px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10 shadow-[0_0_15px_rgba(201,154,46,0.15)] backdrop-blur-sm" style={{ color: GOLD }}>
@@ -79,7 +79,7 @@ export default function Mobile() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-50px" }}
-                    className="flex flex-col gap-4 mb-20"
+                    className="flex flex-col gap-4 mb-10"
                 >
                     {data.challenges.map((challenge, index) => {
                         const { Icon, color } = iconData[index];
@@ -87,12 +87,12 @@ export default function Mobile() {
                             <motion.div
                                 key={index}
                                 variants={item}
-                                className="bg-[#0A1630]/60 backdrop-blur-xl border border-white/10 rounded-[20px] p-5 flex items-center gap-5 shadow-[0_10px_20px_-5px_rgba(0,0,0,0.5)] relative overflow-hidden"
+                                className="bg-[#0A1630]/60 backdrop-blur-xl border border-white/10 rounded p-5 flex items-center gap-5 shadow-[0_10px_20px_-5px_rgba(0,0,0,0.5)] relative overflow-hidden"
                             >
-                                <div className="absolute top-0 right-0 w-24 h-24 opacity-10 blur-[20px] rounded-bl-full pointer-events-none" style={{ background: color }}></div>
+                                <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-24 h-24 opacity-10 blur-[20px] rounded-bl-full pointer-events-none" style={{ background: color }}></motion.div>
 
                                 <div 
-                                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-[0_4px_8px_-2px_rgba(0,0,0,0.3)] relative z-10"
+                                    className="w-12 h-12 rounded flex items-center justify-center shrink-0 shadow-[0_4px_8px_-2px_rgba(0,0,0,0.3)] relative z-10"
                                     style={{ backgroundColor: `${color}15`, border: `1px solid ${color}30` }}
                                 >
                                     <Icon size={20} style={{ color: color }} />
@@ -116,14 +116,14 @@ export default function Mobile() {
                     viewport={{ once: false }}
                     transition={{ duration: 0.6 }}
                 >
-                    <div className="w-full bg-gradient-to-br from-[#0F2751]/90 to-[#132D5F]/90 backdrop-blur-xl border border-white/10 rounded-[24px] p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.6)] relative overflow-hidden text-center">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/15 rounded-full blur-[40px] pointer-events-none"></div>
+                    <div className="w-full bg-gradient-to-br from-[#0F2751]/90 to-[#132D5F]/90 backdrop-blur-xl border border-white/10 rounded p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.6)] relative overflow-hidden text-center">
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/15 rounded-full blur-[40px] pointer-events-none"></motion.div>
 
                         <div className="relative z-10 flex flex-col items-center">
                             <h3 className="text-[20px] font-bold text-white mb-5 leading-tight">
                                 {data.transitionTitle}
                             </h3>
-                            <div className="inline-flex items-center justify-center gap-2.5 bg-white/5 border border-white/10 px-5 py-2.5 rounded-xl backdrop-blur-md w-full">
+                            <div className="inline-flex items-center justify-center gap-2.5 bg-white/5 border border-white/10 px-5 py-2.5 rounded backdrop-blur-md w-full">
                                 <span className="text-[15px] font-bold text-[#C99A2E] tracking-wide">
                                     {data.transitionSubtitle}
                                 </span>

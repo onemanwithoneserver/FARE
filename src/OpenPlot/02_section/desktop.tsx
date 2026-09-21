@@ -41,14 +41,14 @@ export default function Desktop() {
     ];
 
     return (
-        <section className="w-full py-32 relative font-['Outfit'] overflow-hidden"
+        <section className="w-full py-16 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #F8FAFD 0%, #F1F5FB 50%, #EDF2FF 100%)' }}
         >
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#DBEAFE]/30 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+            
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#DBEAFE]/30 to-transparent rounded-full blur-[100px] pointer-events-none"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[100px] pointer-events-none"></motion.div>
 
-            {/* Subtle dot pattern */}
+            
             <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
                 style={{
                     backgroundImage: `radial-gradient(${NAVY} 1px, transparent 1px)`,
@@ -57,13 +57,13 @@ export default function Desktop() {
             />
 
             <div className="max-w-[1280px] mx-auto px-12 relative z-10">
-                {/* Section Header */}
+                
                 <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="flex flex-col items-center text-center mb-20"
+                    className="flex flex-col items-center text-center mb-10"
                 >
                     <motion.div variants={item} className="mb-5">
                         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
@@ -80,25 +80,25 @@ export default function Desktop() {
                     </motion.p>
                 </motion.div>
 
-                {/* Challenge Cards Grid */}
+                
                 <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-80px" }}
-                    className="grid grid-cols-3 gap-5 relative mb-20"
+                    className="grid grid-cols-3 gap-5 relative mb-10"
                 >
                     {data.challenges.map((challenge, index) => (
                         <motion.div
                             key={index}
                             variants={item}
                             whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                            className="group bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded-2xl p-7 shadow-[0_1px_3px_rgba(11,29,58,0.04),0_8px_24px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_20px_50px_-15px_rgba(11,29,58,0.12),0_0_0_1px_rgba(11,29,58,0.04)] transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[200px] justify-center cursor-default"
+                            className="group bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded p-7 shadow-[0_1px_3px_rgba(11,29,58,0.04),0_8px_24px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_20px_50px_-15px_rgba(11,29,58,0.12),0_0_0_1px_rgba(11,29,58,0.04)] transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[200px] justify-center cursor-default"
                         >
-                            {/* Hover glow */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-transparent group-hover:from-[${icons[index].bg}] group-hover:to-transparent transition-all duration-500 opacity-0 group-hover:opacity-100 rounded-2xl" style={{ background: `linear-gradient(135deg, ${icons[index].bg} 0%, transparent 60%)`, opacity: 0 }}></div>
+                            
+                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-transparent group-hover:from-[${icons[index].bg}] group-hover:to-transparent transition-all duration-500 opacity-0 group-hover:opacity-100 rounded" style={{ background: `linear-gradient(135deg, ${icons[index].bg} 0%, transparent 60%)`, opacity: 0 }}></div>
 
-                            <div className="mb-5 w-14 h-14 rounded-2xl flex items-center justify-center shadow-[0_4px_12px_-2px_rgba(0,0,0,0.1)] group-hover:scale-110 group-hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 relative z-10" style={{ backgroundColor: icons[index].color, color: 'white' }}>
+                            <div className="mb-5 w-14 h-14 rounded flex items-center justify-center shadow-[0_4px_12px_-2px_rgba(0,0,0,0.1)] group-hover:scale-110 group-hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 relative z-10" style={{ backgroundColor: icons[index].color, color: 'white' }}>
                                 {icons[index].icon}
                             </div>
                             <h3 className="text-[16px] font-bold leading-tight relative z-10" style={{ color: NAVY }}>
@@ -108,21 +108,21 @@ export default function Desktop() {
                     ))}
                 </motion.div>
 
-                {/* Transition CTA */}
+                
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-[850px] mx-auto text-center rounded-3xl p-14 shadow-[0_20px_60px_-15px_rgba(11,29,58,0.3)] relative overflow-hidden"
+                    className="max-w-[850px] mx-auto text-center rounded p-14 shadow-[0_20px_60px_-15px_rgba(11,29,58,0.3)] relative overflow-hidden"
                     style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)` }}
                 >
-                    {/* Decorative glow orbs */}
-                    <div className="absolute top-0 right-0 w-72 h-72 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none"></div>
-                    <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#60A5FA]/10 rounded-full blur-[60px] pointer-events-none"></div>
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#C99A2E]/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-72 h-72 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-72 h-72 bg-[#60A5FA]/10 rounded-full blur-[60px] pointer-events-none"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#C99A2E]/5 rounded-full blur-[80px] pointer-events-none"></motion.div>
 
-                    {/* Subtle border glow on top */}
+                    
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"></div>
 
                     <h3 className="text-[28px] lg:text-[32px] font-bold text-white mb-5 relative z-10 leading-snug">

@@ -24,7 +24,7 @@ export default function Mobile() {
 
     return (
         <section
-            className="w-full py-24 px-5 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#040C1E]"
+            className="w-full py-12 px-5 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#040C1E]"
         >
             <div
                 className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity"
@@ -47,7 +47,7 @@ export default function Mobile() {
                 className="w-full relative z-20"
             >
                 <div
-                    className="w-full rounded-[24px] pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] border border-white/10"
+                    className="w-full rounded pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] border border-white/10"
                     style={{
                         background: 'linear-gradient(145deg, rgba(11,29,58,0.7) 0%, rgba(7,26,73,0.9) 100%)',
                     }}
@@ -80,7 +80,7 @@ export default function Mobile() {
                     <motion.div variants={itemVariant} className="flex flex-col gap-3.5 w-full px-6 relative z-10">
                         <motion.button
                             whileTap={{ scale: 0.98 }}
-                            className="group relative overflow-hidden w-full font-bold text-[14px] py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] shadow-[0_8px_20px_-5px_rgba(213,170,69,0.3)]"
+                            className="group relative overflow-hidden w-full font-bold text-[14px] py-4 rounded transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] shadow-[0_8px_20px_-5px_rgba(213,170,69,0.3)]"
                             style={{ background: 'linear-gradient(135deg, #D5AA45 0%, #F3D37F 50%, #D5AA45 100%)' }}
                         >
                             <span className="relative z-10">{data.buttons.primary}</span>
@@ -90,7 +90,7 @@ export default function Mobile() {
                         
                         <motion.button
                             whileTap={{ scale: 0.98 }}
-                            className="w-full bg-white/5 text-white font-bold text-[14px] py-4 rounded-xl border border-white/10 transition-all duration-300 cursor-pointer backdrop-blur-sm"
+                            className="w-full bg-white/5 text-white font-bold text-[14px] py-4 rounded border border-white/10 transition-all duration-300 cursor-pointer backdrop-blur-sm"
                         >
                             {data.buttons.secondary}
                         </motion.button>

@@ -45,7 +45,7 @@ export default function Mobile() {
                 className="w-full max-w-[460px] relative z-40"
             >
                 <div
-                    className="w-full rounded-[4px] pt-10 pb-6 flex flex-col items-center text-center relative overflow-hidden shadow-2xl"
+                    className="w-full rounded pt-10 pb-6 flex flex-col items-center text-center relative overflow-hidden shadow-2xl"
                     style={{ background: 'linear-gradient(135deg, rgba(11, 29, 58, 0.85) 0%, rgba(7, 26, 73, 0.95) 100%)', border: '1px solid rgba(255,255,255,0.1)' }}
                 >
                     <motion.div
@@ -73,7 +73,7 @@ export default function Mobile() {
                             <motion.button
                                 key={idx}
                                 whileTap={{ scale: 0.98 }}
-                                className={`w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+                                className={`w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
                                     idx === 0 
                                     ? 'font-bold text-[12px] text-[#071A49] uppercase tracking-[0.05em] shadow-[0_10px_20px_-5px_rgba(213,170,69,0.2)]'
                                     : 'bg-[#071A49]/50 text-white font-semibold text-[13px] border border-white/10'

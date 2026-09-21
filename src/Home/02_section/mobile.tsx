@@ -134,7 +134,7 @@ export default function Mobile() {
                             <button
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
-                                className={`w-full text-left p-3.5 rounded-[4px] transition-all duration-300 flex flex-col gap-1.5 relative overflow-hidden group cursor-pointer ${
+                                className={`w-full text-left p-3.5 rounded transition-all duration-300 flex flex-col gap-1.5 relative overflow-hidden group cursor-pointer ${
                                     isActive
                                     ? 'bg-white/[0.05] border border-white/[0.12] shadow-lg scale-[1.01]'
                                     : 'bg-transparent border border-transparent hover:bg-white/[0.02]'
@@ -185,7 +185,7 @@ export default function Mobile() {
                 >
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#D5AA45]/20 rounded-full blur-[40px] pointer-events-none"></div>
 
-                    <div className="rounded-[4px] overflow-hidden safari-shadow border border-white/[0.12] flex flex-col bg-[#0D2654] text-left relative luxury-shadow-dark z-10">
+                    <div className="rounded overflow-hidden safari-shadow border border-white/[0.12] flex flex-col bg-[#0D2654] text-left relative luxury-shadow-dark z-10">
                         <div className="h-10 glass-safari-dark flex items-center px-4 relative border-b border-white/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.2)]">
                             <div className="flex items-center gap-[6px]">
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#FF5F56] border border-[#E0443E]/50"></div>
@@ -193,7 +193,7 @@ export default function Mobile() {
                                 <div className="w-[10px] h-[10px] rounded-full bg-[#27C840] border border-[#1AAB29]/50"></div>
                             </div>
                             <div className="flex-1 flex justify-center mx-3">
-                                <div className="bg-[#1C1C1E]/80 backdrop-blur-md px-3 py-1 rounded-[4px] flex items-center justify-center gap-1.5 border border-white/[0.05]">
+                                <div className="bg-[#1C1C1E]/80 backdrop-blur-md px-3 py-1 rounded flex items-center justify-center gap-1.5 border border-white/[0.05]">
                                     <Lock size={10} className="text-[#34D399]" />
                                     <div className="text-[9px] text-white/70 font-medium tracking-wide">
                                         {data.browser.url}
@@ -218,7 +218,7 @@ export default function Mobile() {
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(107,138,255,0.3)]">
+                                                <div className="w-9 h-9 rounded bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(107,138,255,0.3)]">
                                                     <BookOpen size={17} strokeWidth={2.5} />
                                                 </div>
                                                 <div>
@@ -227,20 +227,20 @@ export default function Mobile() {
                                                 </div>
                                             </div>
                                             {!isSubmitted ? (
-                                                <span className="bg-[#D5AA45]/15 px-2 py-0.5 rounded-[4px] text-[10px] font-bold text-[#F3D887] border border-[#D5AA45]/35">
+                                                <span className="bg-[#D5AA45]/15 px-2 py-0.5 rounded text-[10px] font-bold text-[#F3D887] border border-[#D5AA45]/35">
                                                     {answeredCount}/{totalQuestions}
                                                 </span>
                                             ) : (
                                                 <button
                                                     onClick={handleRestartQuiz}
-                                                    className="p-1.5 rounded-[4px] bg-white/[0.05] text-white/70 hover:text-white"
+                                                    className="p-1.5 rounded bg-white/[0.05] text-white/70 hover:text-white"
                                                 >
                                                     <RotateCcw size={13} />
                                                 </button>
                                             )}
                                         </div>
 
-                                        <div className="grid grid-cols-6 gap-1 mb-3.5 p-1 rounded-[4px] bg-white/[0.02] border border-white/[0.05]">
+                                        <div className="grid grid-cols-6 gap-1 mb-3.5 p-1 rounded bg-white/[0.02] border border-white/[0.05]">
                                             {quizQuestions.map((_, i) => {
                                                 const isAnswered = userAnswers[i] !== undefined;
                                                 const isCurrent = currentQIndex === i;
@@ -261,7 +261,7 @@ export default function Mobile() {
                                                     <button
                                                         key={i}
                                                         onClick={() => setCurrentQIndex(i)}
-                                                        className={`h-6 rounded-[3px] text-[10px] border transition-all flex items-center justify-center cursor-pointer ${pillBg}`}
+                                                        className={`h-6 rounded text-[10px] border transition-all flex items-center justify-center cursor-pointer ${pillBg}`}
                                                     >
                                                         {i + 1}
                                                     </button>
@@ -270,7 +270,7 @@ export default function Mobile() {
                                         </div>
 
                                         {isSubmitted && !showReview ? (
-                                            <div className="bg-white/[0.02] backdrop-blur-md p-5 rounded-[4px] border border-white/[0.1] shadow-lg flex flex-col items-center text-center">
+                                            <div className="bg-white/[0.02] backdrop-blur-md p-5 rounded border border-white/[0.1] shadow-lg flex flex-col items-center text-center">
                                                 <div className="w-12 h-12 rounded-full bg-[#C99A2E]/20 border border-[#D5AA45]/40 flex items-center justify-center text-[#D5AA45] mb-3">
                                                     <Award size={24} />
                                                 </div>
@@ -282,15 +282,15 @@ export default function Mobile() {
                                                     {accuracy >= 80 ? 'Master Real Estate Strategist' : accuracy >= 50 ? 'Certified Practitioner' : 'Developing Associate'}
                                                 </div>
                                                 <div className="grid grid-cols-3 gap-2 w-full mb-4 text-center">
-                                                    <div className="bg-white/[0.03] p-2.5 rounded-[4px] border border-white/[0.05]">
+                                                    <div className="bg-white/[0.03] p-2.5 rounded border border-white/[0.05]">
                                                         <div className="text-[14px] font-black text-[#10B981]">{score}</div>
                                                         <div className="text-[9px] text-white/50">Correct</div>
                                                     </div>
-                                                    <div className="bg-white/[0.03] p-2.5 rounded-[4px] border border-white/[0.05]">
+                                                    <div className="bg-white/[0.03] p-2.5 rounded border border-white/[0.05]">
                                                         <div className="text-[14px] font-black text-[#EF4444]">{totalQuestions - score}</div>
                                                         <div className="text-[9px] text-white/50">Wrong</div>
                                                     </div>
-                                                    <div className="bg-white/[0.03] p-2.5 rounded-[4px] border border-white/[0.05]">
+                                                    <div className="bg-white/[0.03] p-2.5 rounded border border-white/[0.05]">
                                                         <div className="text-[14px] font-black text-[#6B8AFF]">{answeredCount}</div>
                                                         <div className="text-[9px] text-white/50">Answered</div>
                                                     </div>
@@ -298,14 +298,14 @@ export default function Mobile() {
                                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full mt-1">
                                                     <button
                                                         onClick={() => setShowReview(true)}
-                                                        className="w-full sm:w-auto px-4 py-2.5 rounded-[4px] bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] hover:brightness-110 text-[#071A49] font-bold text-[11.5px] transition-all flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(201,154,46,0.25)] cursor-pointer active:scale-[0.98]"
+                                                        className="w-full sm:w-auto px-4 py-2.5 rounded bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] hover:brightness-110 text-[#071A49] font-bold text-[11.5px] transition-all flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(201,154,46,0.25)] cursor-pointer active:scale-[0.98]"
                                                     >
                                                         <Eye size={13} />
                                                         <span>Review Answers & Explanations</span>
                                                     </button>
                                                     <button
                                                         onClick={handleRestartQuiz}
-                                                        className="w-full sm:w-auto px-3.5 py-2 rounded-[4px] bg-white/[0.06] hover:bg-white/[0.12] text-white/90 hover:text-white font-semibold text-[11px] border border-white/15 transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.98]"
+                                                        className="w-full sm:w-auto px-3.5 py-2 rounded bg-white/[0.06] hover:bg-white/[0.12] text-white/90 hover:text-white font-semibold text-[11px] border border-white/15 transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.98]"
                                                     >
                                                         <RotateCcw size={12} />
                                                         <span>Retake Quiz</span>
@@ -323,11 +323,11 @@ export default function Mobile() {
                                                     />
                                                 </div>
 
-                                                <div className="bg-white/[0.02] backdrop-blur-sm p-4 rounded-[4px] mb-3.5 border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
+                                                <div className="bg-white/[0.02] backdrop-blur-sm p-4 rounded mb-3.5 border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
                                                     <div className="flex items-center justify-between mb-1.5">
                                                         <span className="text-[9px] font-black text-[#D5AA45] tracking-wider uppercase">Q {currentQIndex + 1} of {totalQuestions}</span>
                                                         {isSubmitted && (
-                                                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-[3px] ${userAnswers[currentQIndex] === currentQuestion.correctIndex ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#EF4444]/20 text-[#EF4444]'}`}>
+                                                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${userAnswers[currentQIndex] === currentQuestion.correctIndex ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#EF4444]/20 text-[#EF4444]'}`}>
                                                                 {userAnswers[currentQIndex] === currentQuestion.correctIndex ? 'Correct' : 'Incorrect'}
                                                             </span>
                                                         )}
@@ -359,9 +359,9 @@ export default function Mobile() {
                                                             <button
                                                                 key={i}
                                                                 onClick={() => handleSelectOption(i)}
-                                                                className={`border p-2.5 rounded-[4px] text-left text-[11px] font-medium flex items-start gap-2 transition-all cursor-pointer ${btnStyle}`}
+                                                                className={`border p-2.5 rounded text-left text-[11px] font-medium flex items-start gap-2 transition-all cursor-pointer ${btnStyle}`}
                                                             >
-                                                                <span className={`w-4 h-4 rounded-[3px] flex items-center justify-center text-[9px] font-black shrink-0 ${isSelected ? 'bg-[#D5AA45] text-[#071A49]' : 'bg-white/10 text-white/60'}`}>
+                                                                <span className={`w-4 h-4 rounded flex items-center justify-center text-[9px] font-black shrink-0 ${isSelected ? 'bg-[#D5AA45] text-[#071A49]' : 'bg-white/10 text-white/60'}`}>
                                                                     {letter}
                                                                 </span>
                                                                 <span className="leading-tight">{opt}</span>
@@ -371,7 +371,7 @@ export default function Mobile() {
                                                 </div>
 
                                                 {isSubmitted && currentQuestion.explanation && (
-                                                    <div className="bg-[#D5AA45]/10 border border-[#D5AA45]/30 p-3 rounded-[4px] mb-3 text-[10.5px] leading-relaxed text-white/90">
+                                                    <div className="bg-[#D5AA45]/10 border border-[#D5AA45]/30 p-3 rounded mb-3 text-[10.5px] leading-relaxed text-white/90">
                                                         <span className="font-bold text-[#F3D887] mr-1">Explanation:</span>
                                                         {currentQuestion.explanation}
                                                     </div>
@@ -381,7 +381,7 @@ export default function Mobile() {
                                                     <button
                                                         onClick={() => setCurrentQIndex(prev => Math.max(0, prev - 1))}
                                                         disabled={currentQIndex === 0}
-                                                        className={`flex items-center gap-1 px-3 py-1.5 rounded-[4px] text-[11px] font-semibold border ${
+                                                        className={`flex items-center gap-1 px-3 py-1.5 rounded text-[11px] font-semibold border ${
                                                             currentQIndex === 0
                                                             ? 'opacity-30 border-transparent text-white/30'
                                                             : 'border-white/10 text-white/80'
@@ -394,7 +394,7 @@ export default function Mobile() {
                                                     {currentQIndex < totalQuestions - 1 ? (
                                                         <button
                                                             onClick={() => setCurrentQIndex(prev => Math.min(totalQuestions - 1, prev + 1))}
-                                                            className="flex items-center gap-1 px-4 py-1.5 rounded-[4px] text-[11px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#071A49] shadow-sm"
+                                                            className="flex items-center gap-1 px-4 py-1.5 rounded text-[11px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#071A49] shadow-sm"
                                                         >
                                                             <span>Next</span>
                                                             <ChevronRight size={12} />
@@ -402,7 +402,7 @@ export default function Mobile() {
                                                     ) : !isSubmitted ? (
                                                         <button
                                                             onClick={() => setIsSubmitted(true)}
-                                                            className="flex items-center gap-1.5 px-4 py-1.5 rounded-[4px] text-[11px] font-black bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E2C068] text-[#071A49] shadow-md uppercase tracking-wider"
+                                                            className="flex items-center gap-1.5 px-4 py-1.5 rounded text-[11px] font-black bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E2C068] text-[#071A49] shadow-md uppercase tracking-wider"
                                                         >
                                                             <span>Submit</span>
                                                             <ArrowRight size={12} strokeWidth={3} />
@@ -410,7 +410,7 @@ export default function Mobile() {
                                                     ) : (
                                                         <button
                                                             onClick={() => setShowReview(false)}
-                                                            className="px-3 py-1.5 rounded-[4px] text-[11px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#071A49]"
+                                                            className="px-3 py-1.5 rounded text-[11px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#071A49]"
                                                         >
                                                             Scorecard
                                                         </button>
@@ -432,7 +432,7 @@ export default function Mobile() {
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(52,211,153,0.3)]">
+                                                <div className="w-9 h-9 rounded bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(52,211,153,0.3)]">
                                                     <Target size={17} strokeWidth={2.5} />
                                                 </div>
                                                 <div>
@@ -448,7 +448,7 @@ export default function Mobile() {
                                                             setActiveScenarioIdx(i);
                                                             setSelectedMockOption(null);
                                                         }}
-                                                        className={`px-2 py-0.5 rounded-[3px] text-[9.5px] font-bold border ${
+                                                        className={`px-2 py-0.5 rounded text-[9.5px] font-bold border ${
                                                             activeScenarioIdx === i
                                                             ? 'bg-[#34D399]/20 text-[#34D399] border-[#34D399]/40'
                                                             : 'bg-white/[0.04] text-white/50 border-white/[0.08]'
@@ -460,7 +460,7 @@ export default function Mobile() {
                                             </div>
                                         </div>
 
-                                        <div className="bg-[#0A1630] p-3.5 rounded-[4px] border border-[#34D399]/25 shadow-[inset_0_0_15px_rgba(0,0,0,0.5)] mb-3">
+                                        <div className="bg-[#0A1630] p-3.5 rounded border border-[#34D399]/25 shadow-[inset_0_0_15px_rgba(0,0,0,0.5)] mb-3">
                                             <div className="text-[#34D399] text-[8.5px] font-black tracking-wider uppercase mb-1">OBJECTION: {currentScenario.title}</div>
                                             <p className="text-[11.5px] text-white/90 leading-relaxed font-medium italic">{currentScenario.buyerPrompt}</p>
                                         </div>
@@ -472,7 +472,7 @@ export default function Mobile() {
                                                     <button
                                                         key={opt.id}
                                                         onClick={() => setSelectedMockOption(opt.id)}
-                                                        className={`p-2.5 rounded-[4px] border text-left transition-all ${
+                                                        className={`p-2.5 rounded border text-left transition-all ${
                                                             isSelected
                                                             ? 'bg-[#34D399]/15 border-[#34D399]'
                                                             : 'bg-white/[0.03] border-white/[0.06]'
@@ -481,7 +481,7 @@ export default function Mobile() {
                                                         <div className="flex justify-between items-center mb-0.5">
                                                             <span className="text-[10.5px] font-bold text-[#34D399]">{opt.label}</span>
                                                             {isSelected && (
-                                                                <span className="text-[9.5px] font-black text-white bg-[#34D399]/30 px-1.5 py-0.5 rounded-[2px]">
+                                                                <span className="text-[9.5px] font-black text-white bg-[#34D399]/30 px-1.5 py-0.5 rounded-sm">
                                                                     {opt.score}/100
                                                                 </span>
                                                             )}
@@ -493,7 +493,7 @@ export default function Mobile() {
                                         </div>
 
                                         {selectedResponseData && (
-                                            <div className="bg-[#0D2654] border border-[#34D399]/30 p-3 rounded-[4px]">
+                                            <div className="bg-[#0D2654] border border-[#34D399]/30 p-3 rounded">
                                                 <div className="flex items-center gap-1.5 text-[#34D399] text-[10px] font-bold mb-1">
                                                     <Sparkles size={12} />
                                                     <span>Feedback:</span>
@@ -515,7 +515,7 @@ export default function Mobile() {
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(167,139,250,0.3)]">
+                                                <div className="w-9 h-9 rounded bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(167,139,250,0.3)]">
                                                     <BarChart2 size={17} strokeWidth={2.5} />
                                                 </div>
                                                 <div>
@@ -523,12 +523,12 @@ export default function Mobile() {
                                                     <div className="text-[13px] font-bold text-white leading-tight">{data.browser.content['03'].title}</div>
                                                 </div>
                                             </div>
-                                            <div className="bg-[#A78BFA]/15 border border-[#A78BFA]/30 px-2.5 py-1 rounded-[4px] text-[10px] font-black text-[#A78BFA]">
+                                            <div className="bg-[#A78BFA]/15 border border-[#A78BFA]/30 px-2.5 py-1 rounded text-[10px] font-black text-[#A78BFA]">
                                                 {computedPercentile}th %ile
                                             </div>
                                         </div>
 
-                                        <div className="flex flex-col gap-3.5 bg-white/[0.02] backdrop-blur-sm p-4 rounded-[4px] border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.15)] mb-3">
+                                        <div className="flex flex-col gap-3.5 bg-white/[0.02] backdrop-blur-sm p-4 rounded border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.15)] mb-3">
                                             {data.browser.content['03'].skills.map((skill) => {
                                                 const currentVal = skillValues[skill.id] || skill.val;
                                                 return (
@@ -553,7 +553,7 @@ export default function Mobile() {
                                             })}
                                         </div>
 
-                                        <div className="flex items-center justify-between text-[10.5px] text-white/70 bg-white/[0.03] p-2.5 rounded-[4px] border border-white/[0.05]">
+                                        <div className="flex items-center justify-between text-[10.5px] text-white/70 bg-white/[0.03] p-2.5 rounded border border-white/[0.05]">
                                             <span>Average: <strong className="text-white">{overallUserSkill}%</strong></span>
                                             <button
                                                 onClick={() => setSkillValues({ comm: 88, market: 82, nego: 78, lead: 94 })}
@@ -577,7 +577,7 @@ export default function Mobile() {
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-9 h-9 rounded-[4px] flex items-center justify-center shadow-[0_0_10px_rgba(213,170,69,0.25)] border border-[#D5AA45]/30" style={{ background: 'rgba(213,170,69,0.15)', color: '#D5AA45' }}>
+                                                <div className="w-9 h-9 rounded flex items-center justify-center shadow-[0_0_10px_rgba(213,170,69,0.25)] border border-[#D5AA45]/30" style={{ background: 'rgba(213,170,69,0.15)', color: '#D5AA45' }}>
                                                     <CheckCircle size={17} strokeWidth={2.5} />
                                                 </div>
                                                 <div>
@@ -585,7 +585,7 @@ export default function Mobile() {
                                                     <div className="text-[13px] font-bold text-white leading-tight">{data.browser.content['04'].title}</div>
                                                 </div>
                                             </div>
-                                            <div className="flex items-center gap-1.5 px-2 py-1 rounded-[4px] border border-[#D5AA45]/30 bg-[#D5AA45]/10 text-[10px] font-black" style={{ color: '#D5AA45' }}>
+                                            <div className="flex items-center gap-1.5 px-2 py-1 rounded border border-[#D5AA45]/30 bg-[#D5AA45]/10 text-[10px] font-black" style={{ color: '#D5AA45' }}>
                                                 <Flame size={12} />
                                                 <span>{activeHabit.completedDays.length}/30 D</span>
                                             </div>
@@ -598,7 +598,7 @@ export default function Mobile() {
                                                     <button
                                                         key={h.id}
                                                         onClick={() => setActiveHabitId(h.id)}
-                                                        className={`px-2.5 py-1 rounded-[4px] text-[10px] font-bold border whitespace-nowrap ${
+                                                        className={`px-2.5 py-1 rounded text-[10px] font-bold border whitespace-nowrap ${
                                                             isSelected
                                                             ? 'bg-[#D5AA45]/20 text-[#F3D887] border-[#D5AA45]/60'
                                                             : 'bg-white/[0.03] text-white/50 border-white/[0.06]'
@@ -610,7 +610,7 @@ export default function Mobile() {
                                             })}
                                         </div>
 
-                                        <div className="bg-white/[0.02] p-3.5 rounded-[4px] border border-white/[0.08] mb-3">
+                                        <div className="bg-white/[0.02] p-3.5 rounded border border-white/[0.08] mb-3">
                                             <div className="flex justify-between items-center mb-2.5">
                                                 <div className="text-[11.5px] font-bold text-white leading-tight">{activeHabit.label}</div>
                                                 <span className="text-[9.5px] text-[#D5AA45] font-semibold">{Math.round((activeHabit.completedDays.length / 30) * 100)}%</span>
@@ -623,7 +623,7 @@ export default function Mobile() {
                                                         <button
                                                             key={dayNum}
                                                             onClick={() => toggleDayCompletion(dayNum)}
-                                                            className={`h-8 rounded-[4px] border flex flex-col items-center justify-center transition-all ${
+                                                            className={`h-8 rounded border flex flex-col items-center justify-center transition-all ${
                                                                 isDone
                                                                 ? 'bg-[#D5AA45] border-[#D5AA45] text-[#071A49] shadow-sm'
                                                                 : 'bg-white/[0.03] border-white/[0.06] text-white/40'

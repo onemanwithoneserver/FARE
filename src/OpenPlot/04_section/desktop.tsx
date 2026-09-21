@@ -29,13 +29,13 @@ export default function Desktop() {
     const activeColor = TAB_COLORS[activeTab] || GOLD;
 
     return (
-        <section className="w-full py-32 bg-[#0B1D3A] text-white relative font-['Outfit'] overflow-hidden">
-            {/* Background elements */}
-            <div className="absolute top-0 right-1/4 w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></div>
-            <div className="absolute bottom-[-10%] left-1/3 w-[600px] h-[600px] bg-gradient-radial from-[#60A5FA]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
-            <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-gradient-radial from-[#10B981]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0"></div>
+        <section className="w-full py-16 bg-[#0B1D3A] text-white relative font-['Outfit'] overflow-hidden">
+            
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-1/4 w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[-10%] left-1/3 w-[600px] h-[600px] bg-gradient-radial from-[#60A5FA]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-gradient-radial from-[#10B981]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0"></motion.div>
 
-            {/* Subtle mesh grid */}
+            
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
                 style={{
                     backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
@@ -44,7 +44,7 @@ export default function Desktop() {
             />
 
             <div className="max-w-[1280px] mx-auto px-12 relative z-10">
-                <div className="flex flex-col items-center text-center mb-20">
+                <div className="flex flex-col items-center text-center mb-10">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -76,9 +76,9 @@ export default function Desktop() {
                     </motion.p>
                 </div>
 
-                {/* Tab Navigation */}
-                <div className="flex justify-center flex-wrap gap-4 mb-16 relative">
-                    {/* Animated active indicator background */}
+                
+                <div className="flex justify-center flex-wrap gap-4 mb-8 relative">
+                    
                     <div className="absolute inset-0 pointer-events-none flex justify-center">
                         <div className="flex gap-4">
                             {data.tabs.map(tab => (
@@ -91,13 +91,13 @@ export default function Desktop() {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`group relative flex items-center gap-3 w-[180px] px-5 py-4 rounded-2xl text-[14px] font-bold transition-all duration-400 border overflow-hidden ${
+                            className={`group relative flex items-center gap-3 w-[180px] px-5 py-4 rounded text-[14px] font-bold transition-all duration-400 border overflow-hidden ${
                                 activeTab === tab.id
                                     ? 'bg-white/10 border-white/20 text-white shadow-[0_8px_30px_rgba(0,0,0,0.2)]'
                                     : 'bg-white/[0.02] border-white/[0.05] text-white/50 hover:text-white/90 hover:bg-white/[0.05] hover:border-white/10'
                             }`}
                         >
-                            {/* Active Tab Glow */}
+                            
                             {activeTab === tab.id && (
                                 <motion.div 
                                     layoutId="activeTabGlow"
@@ -106,7 +106,7 @@ export default function Desktop() {
                                 />
                             )}
                             
-                            {/* Active Top Border */}
+                            
                             {activeTab === tab.id && (
                                 <motion.div 
                                     layoutId="activeTabBorder"
@@ -117,7 +117,7 @@ export default function Desktop() {
                             )}
 
                             <div
-                                className={`w-8 h-8 rounded-xl flex items-center justify-center text-white shrink-0 shadow-sm transition-transform duration-300 ${activeTab === tab.id ? 'scale-110' : 'group-hover:scale-110'}`}
+                                className={`w-8 h-8 rounded flex items-center justify-center text-white shrink-0 shadow-sm transition-transform duration-300 ${activeTab === tab.id ? 'scale-110' : 'group-hover:scale-110'}`}
                                 style={{ 
                                     backgroundColor: activeTab === tab.id ? TAB_COLORS[tab.id] : 'rgba(255,255,255,0.1)',
                                     color: activeTab === tab.id ? 'white' : 'rgba(255,255,255,0.5)'
@@ -137,9 +137,9 @@ export default function Desktop() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -20, scale: 0.98 }}
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        className="bg-white/[0.03] border border-white/[0.08] rounded-[32px] overflow-hidden backdrop-blur-md shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] relative"
+                        className="bg-white/[0.03] border border-white/[0.08] rounded overflow-hidden backdrop-blur-md shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] relative"
                     >
-                        {/* Tab Content Background Glow */}
+                        
                         <div 
                             className="absolute top-0 right-0 w-[400px] h-[400px] opacity-[0.07] blur-[80px] pointer-events-none transition-colors duration-500 rounded-bl-full"
                             style={{ backgroundColor: activeColor }}
@@ -174,7 +174,7 @@ export default function Desktop() {
 
                             <div className="w-[340px] shrink-0 flex flex-col gap-6">
                                 {activeContent.journey && (
-                                    <div className="bg-white/[0.04] rounded-2xl p-7 border border-white/[0.08] hover:bg-white/[0.06] transition-colors duration-300">
+                                    <div className="bg-white/[0.04] rounded p-7 border border-white/[0.08] hover:bg-white/[0.06] transition-colors duration-300">
                                         <h4 className="text-[12px] font-bold text-white/50 uppercase tracking-[0.15em] mb-5">{data.journeyLabel}</h4>
                                         <div className="flex flex-col gap-3">
                                             {activeContent.journey.split(' → ').map((step: string, i: number, arr: string[]) => (
@@ -200,11 +200,11 @@ export default function Desktop() {
                                 )}
 
                                 {activeContent.evaluateBasedOn && (
-                                    <div className="bg-white/[0.04] rounded-2xl p-7 border border-white/[0.08] hover:bg-white/[0.06] transition-colors duration-300">
+                                    <div className="bg-white/[0.04] rounded p-7 border border-white/[0.08] hover:bg-white/[0.06] transition-colors duration-300">
                                         <h4 className="text-[12px] font-bold text-white/50 uppercase tracking-[0.15em] mb-4">{data.evaluateLabel}</h4>
                                         <div className="flex flex-wrap gap-2">
                                             {activeContent.evaluateBasedOn.split(' · ').map((tag: string, i: number) => (
-                                                <span key={i} className="px-3 py-1.5 rounded-lg bg-white/[0.05] border border-white/[0.08] text-[13px] font-medium text-white/85 hover:bg-white/10 hover:border-white/20 transition-all cursor-default">
+                                                <span key={i} className="px-3 py-1.5 rounded bg-white/[0.05] border border-white/[0.08] text-[13px] font-medium text-white/85 hover:bg-white/10 hover:border-white/20 transition-all cursor-default">
                                                     {tag}
                                                 </span>
                                             ))}
@@ -212,8 +212,8 @@ export default function Desktop() {
                                     </div>
                                 )}
 
-                                <div className="bg-gradient-to-br from-[#0F2751] to-[#071A49] rounded-2xl p-8 border border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.3)] mt-auto relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-[30px]"></div>
+                                <div className="bg-gradient-to-br from-[#0F2751] to-[#071A49] rounded p-8 border border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.3)] mt-auto relative overflow-hidden">
+                                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-[30px]"></motion.div>
                                     
                                     <p className="text-[15px] font-bold italic mb-6 text-white/90 text-center leading-[1.6] relative z-10">"{activeContent.footerText}"</p>
                                     
@@ -221,7 +221,7 @@ export default function Desktop() {
                                         {activeContent.buttons.map((btn: string, idx: number) => (
                                             <button
                                                 key={idx}
-                                                className={`group relative w-full py-3.5 px-5 rounded-xl text-[14px] font-bold transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden ${
+                                                className={`group relative w-full py-3.5 px-5 rounded text-[14px] font-bold transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden ${
                                                     idx === 0
                                                         ? 'text-[#0B1D3A] shadow-[0_8px_20px_rgba(201,154,46,0.3)] hover:shadow-[0_12px_25px_rgba(201,154,46,0.4)] hover:-translate-y-0.5'
                                                         : 'bg-white/10 text-white hover:bg-white/15 border border-white/10 hover:border-white/20'
@@ -231,7 +231,7 @@ export default function Desktop() {
                                                 <span className="relative z-10">{btn}</span>
                                                 <ArrowRight size={16} strokeWidth={2.5} className="relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
                                                 
-                                                {/* Button hover shimmer */}
+                                                
                                                 {idx === 0 && (
                                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.3] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                                                 )}

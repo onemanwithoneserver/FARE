@@ -25,12 +25,12 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full py-32 relative font-['Outfit'] overflow-hidden"
+        <section className="w-full py-16 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #F8FAFD 0%, #EEF4FF 100%)' }}
         >
-            {/* Soft decorative background orbs */}
-            <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/[0.03] to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
-            <div className="absolute top-[40%] right-[-5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none z-0"></div>
+            
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/[0.03] to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[40%] right-[-5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none z-0"></motion.div>
 
             <div className="max-w-[1320px] mx-auto px-12 relative z-10">
                 <motion.div
@@ -38,7 +38,7 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="flex flex-col items-center text-center mb-24"
+                    className="flex flex-col items-center text-center mb-12"
                 >
                     <motion.div variants={item} className="mb-5">
                         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
@@ -58,7 +58,7 @@ export default function Desktop() {
                     viewport={{ once: false, margin: "-100px" }}
                     className="relative flex items-start justify-between gap-6"
                 >
-                    {/* Animated connecting line */}
+                    
                     <div className="absolute top-[45px] left-12 right-12 h-[2px] bg-gradient-to-r from-transparent via-[#0B1D3A]/10 to-transparent">
                         <motion.div 
                             className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"
@@ -94,8 +94,8 @@ export default function Desktop() {
                     className="mt-32 flex justify-center"
                 >
                     <div className="group relative">
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C99A2E]/20 to-transparent blur-[20px] group-hover:blur-[30px] transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
-                        <div className="bg-white/80 backdrop-blur-xl px-10 py-5 rounded-2xl border border-[#0B1D3A]/[0.06] shadow-[0_15px_40px_-10px_rgba(11,29,58,0.1)] flex flex-wrap items-center justify-center gap-4 relative z-10">
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C99A2E]/20 to-transparent blur-[20px] group-hover:blur-[30px] transition-all duration-500 opacity-0 group-hover:opacity-100"></motion.div>
+                        <div className="bg-white/80 backdrop-blur-xl px-10 py-5 rounded border border-[#0B1D3A]/[0.06] shadow-[0_15px_40px_-10px_rgba(11,29,58,0.1)] flex flex-wrap items-center justify-center gap-4 relative z-10">
                             {data.journeyLabel.split(' → ').map((label, idx, arr) => (
                                 <div key={idx} className="flex items-center gap-4">
                                     <div className="flex items-center gap-2">

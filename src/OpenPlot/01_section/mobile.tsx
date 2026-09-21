@@ -33,8 +33,8 @@ export default function Mobile() {
         <section className="w-full pt-[50px] -mt-6 pb-14 flex flex-col items-center justify-start overflow-hidden relative font-['Outfit']"
             style={{ background: `linear-gradient(165deg, #FFFFFF 0%, #F6F9FF 35%, #EDF2FF 100%)` }}
         >
-            <div className="absolute top-20 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C5D9FF]/50 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></div>
-            <div className="absolute bottom-20 left-[-50px] w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[50px] pointer-events-none z-0"></div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-20 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C5D9FF]/50 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-20 left-[-50px] w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[50px] pointer-events-none z-0"></motion.div>
 
             <div className="w-full px-5 flex flex-col items-center relative z-10">
                 <motion.div
@@ -44,7 +44,7 @@ export default function Mobile() {
                     viewport={{ once: false }}
                     className="flex flex-col items-center text-center w-full relative z-40"
                 >
-                    {/* Tagline badge */}
+                    
                     <motion.div variants={item} className="mb-5">
                         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02]">
                             <Sparkles size={11} className="text-[#C99A2E]" strokeWidth={2.5} />
@@ -54,7 +54,7 @@ export default function Mobile() {
                         </div>
                     </motion.div>
 
-                    {/* Headline */}
+                    
                     <motion.h1
                         variants={item}
                         className={`font-black mb-4 ${
@@ -67,7 +67,7 @@ export default function Mobile() {
                         {data.headline}
                     </motion.h1>
 
-                    {/* Subheadline */}
+                    
                     <motion.div variants={item} className="mb-1.5">
                         <h2 className={`font-bold ${
                             language === 'te' ? 'text-[15px] leading-normal tracking-wider py-0.5' : 'text-[16px] leading-snug'
@@ -85,15 +85,15 @@ export default function Mobile() {
                         </motion.div>
                     )}
 
-                    {/* Description */}
+                    
                     <motion.p variants={item} className="text-[14.5px] font-medium leading-[1.7] mb-8 max-w-[420px] text-[#475569]">
                         {data.description}
                     </motion.p>
 
-                    {/* CTA Button */}
+                    
                     <motion.div variants={item} className="flex flex-col gap-3 mb-8 w-full max-w-[280px] mx-auto">
                         <button
-                            className="group text-white text-[13px] font-semibold w-full py-3.5 rounded-xl active:scale-[0.97] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_8px_24px_-6px_rgba(11,29,58,0.25)] relative overflow-hidden"
+                            className="group text-white text-[13px] font-semibold w-full py-3.5 rounded active:scale-[0.97] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_8px_24px_-6px_rgba(11,29,58,0.25)] relative overflow-hidden"
                             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)` }}
                         >
                             <span className="relative z-10">{data.buttons.primary}</span>
@@ -102,22 +102,22 @@ export default function Mobile() {
                         </button>
                     </motion.div>
 
-                    {/* Feature Pills */}
+                    
                     <motion.div variants={item} className="flex flex-wrap justify-center gap-2 mb-4">
                         {data.features.map((f, i) => (
-                            <span key={i} className="px-3 py-1.5 rounded-lg text-[11px] font-semibold border border-[#0B1D3A]/[0.08] bg-white/80 text-[#475569] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06)]">
+                            <span key={i} className="px-3 py-1.5 rounded text-[11px] font-semibold border border-[#0B1D3A]/[0.08] bg-white/80 text-[#475569] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06)]">
                                 {f}
                             </span>
                         ))}
                     </motion.div>
 
-                    {/* Footer text */}
+                    
                     <motion.p variants={item} className="text-[10.5px] italic text-[#0B1D3A]/45 font-medium">
                         {data.footerText}
                     </motion.p>
                 </motion.div>
 
-                {/* Hero Image */}
+                
                 <motion.div
                     initial={{ opacity: 0, y: 30, scale: 0.95 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -125,20 +125,20 @@ export default function Mobile() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="w-full mt-10 relative z-20 flex items-center justify-center px-4"
                 >
-                    <div className="relative w-full aspect-square max-w-[400px] rounded-2xl overflow-hidden shadow-[0_25px_50px_-15px_rgba(11,29,58,0.3),0_0_0_1px_rgba(255,255,255,0.5)_inset] group">
+                    <div className="relative w-full aspect-square max-w-[400px] rounded overflow-hidden shadow-[0_25px_50px_-15px_rgba(11,29,58,0.3),0_0_0_1px_rgba(255,255,255,0.5)_inset] group">
                         <img src={openplotHero} alt="Open Plot Hero" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/20 via-transparent to-transparent pointer-events-none"></div>
 
-                        {/* Floating badge */}
+                        
                         <motion.div
                             initial={{ opacity: 0, y: 15 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false }}
                             transition={{ delay: 0.7, duration: 0.5 }}
-                            className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-xl rounded-xl p-3.5 shadow-[0_8px_24px_-6px_rgba(11,29,58,0.2)] border border-white/60"
+                            className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-xl rounded p-3.5 shadow-[0_8px_24px_-6px_rgba(11,29,58,0.2)] border border-white/60"
                         >
                             <div className="flex items-center gap-3">
-                                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-md">
+                                <div className="w-9 h-9 rounded bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-md">
                                     <Sparkles size={16} className="text-white" />
                                 </div>
                                 <div>

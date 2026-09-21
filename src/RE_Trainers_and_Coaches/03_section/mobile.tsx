@@ -38,10 +38,10 @@ export default function Mobile() {
     const sectionTitle = data.title;
 
     return (
-        <section className="w-full py-20 relative font-['Outfit'] overflow-hidden"
+        <section className="w-full py-10 relative font-['Outfit'] overflow-hidden"
             style={{ background: '#FFFFFF' }}
         >
-            <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#F1F5FB] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#F1F5FB] to-transparent rounded-full blur-[60px] pointer-events-none"></motion.div>
 
             <div className="px-5 relative z-10">
                 <motion.div
@@ -81,13 +81,13 @@ export default function Mobile() {
                         <motion.div
                             key={index}
                             variants={item}
-                            className="bg-white border border-[#0B1D3A]/[0.06] rounded-2xl p-6 shadow-[0_2px_12px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden flex flex-col"
+                            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-6 shadow-[0_2px_12px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden flex flex-col"
                         >
-                            <div className="absolute top-0 right-0 w-32 h-32 opacity-[0.05] blur-[30px] rounded-bl-full pointer-events-none" style={{ background: card.color }}></div>
+                            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 opacity-[0.05] blur-[30px] rounded-bl-full pointer-events-none" style={{ background: card.color }}></motion.div>
                             <div className="absolute left-0 top-0 bottom-0 w-1 opacity-100" style={{ background: card.color }}></div>
 
                             <div className="flex items-center justify-between mb-5 relative z-10">
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-md relative overflow-hidden" style={{ backgroundColor: card.color }}>
+                                <div className="w-12 h-12 rounded flex items-center justify-center shadow-md relative overflow-hidden" style={{ backgroundColor: card.color }}>
                                     <div className="absolute inset-0 bg-white/20 translate-y-[100%] transition-transform duration-500"></div>
                                     {icons[card.icon as keyof typeof icons]}
                                 </div>

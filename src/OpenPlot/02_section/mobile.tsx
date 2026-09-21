@@ -41,13 +41,13 @@ export default function Mobile() {
     ];
 
     return (
-        <section className="w-full py-20 relative font-['Outfit'] overflow-hidden"
+        <section className="w-full py-10 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #F8FAFD 0%, #F1F5FB 100%)' }}
         >
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#DBEAFE]/30 to-transparent rounded-full blur-[60px] pointer-events-none"></div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#DBEAFE]/30 to-transparent rounded-full blur-[60px] pointer-events-none"></motion.div>
 
             <div className="px-5 relative z-10">
-                {/* Section Header */}
+                
                 <motion.div
                     variants={container}
                     initial="hidden"
@@ -70,7 +70,7 @@ export default function Mobile() {
                     </motion.p>
                 </motion.div>
 
-                {/* Challenge Cards */}
+                
                 <motion.div
                     variants={container}
                     initial="hidden"
@@ -82,9 +82,9 @@ export default function Mobile() {
                         <motion.div
                             key={index}
                             variants={item}
-                            className="bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded-xl p-4 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] flex items-center gap-4"
+                            className="bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded p-4 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] flex items-center gap-4"
                         >
-                            <div className="p-2.5 rounded-xl text-white shadow-sm shrink-0" style={{ backgroundColor: icons[index].color }}>
+                            <div className="p-2.5 rounded text-white shadow-sm shrink-0" style={{ backgroundColor: icons[index].color }}>
                                 {icons[index].icon}
                             </div>
                             <h3 className="text-[14px] font-bold leading-snug text-left" style={{ color: NAVY }}>
@@ -94,17 +94,17 @@ export default function Mobile() {
                     ))}
                 </motion.div>
 
-                {/* Transition CTA */}
+                
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.6 }}
-                    className="w-full rounded-2xl p-8 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.25)] relative overflow-hidden text-center"
+                    className="w-full rounded p-8 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.25)] relative overflow-hidden text-center"
                     style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)` }}
                 >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[40px]"></div>
-                    <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#60A5FA]/10 rounded-full blur-[40px]"></div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[40px]"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-32 h-32 bg-[#60A5FA]/10 rounded-full blur-[40px]"></motion.div>
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"></div>
 
                     <h3 className="text-[20px] font-bold text-white mb-3 relative z-10 leading-snug">

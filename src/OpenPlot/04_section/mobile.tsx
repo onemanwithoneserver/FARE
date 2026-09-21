@@ -30,7 +30,7 @@ export default function Mobile() {
 
     return (
         <section className="w-full py-16 bg-[#0B1D3A] text-white relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/8 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/8 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></motion.div>
 
             <div className="w-full px-5 relative z-10">
                 <div className="flex flex-col items-center text-center mb-10">
@@ -47,14 +47,14 @@ export default function Mobile() {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-[12px] font-semibold transition-all duration-300 border ${
+                            className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded text-[12px] font-semibold transition-all duration-300 border ${
                                 activeTab === tab.id
                                     ? 'bg-white/10 border-[#C99A2E]/40 text-white shadow-sm'
                                     : 'bg-white/[0.03] border-white/[0.08] text-white/50'
                             }`}
                         >
                             <div
-                                className="w-6 h-6 rounded-md flex items-center justify-center text-white shrink-0 shadow-sm"
+                                className="w-6 h-6 rounded flex items-center justify-center text-white shrink-0 shadow-sm"
                                 style={{ backgroundColor: TAB_COLORS[tab.id] }}
                             >
                                 {TAB_ICONS[tab.id]}
@@ -71,7 +71,7 @@ export default function Mobile() {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -10 }}
                         transition={{ duration: 0.25 }}
-                        className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden backdrop-blur-sm"
+                        className="bg-white/[0.04] border border-white/[0.08] rounded overflow-hidden backdrop-blur-sm"
                     >
                         <div className="p-6 flex flex-col gap-7">
                             <div className="flex flex-col">
@@ -120,19 +120,19 @@ export default function Mobile() {
                                         <h4 className="text-[11px] font-bold text-white/45 uppercase tracking-[0.15em] mb-2">{data.evaluateLabel}</h4>
                                         <div className="flex flex-wrap gap-1.5">
                                             {activeContent.evaluateBasedOn.split(' · ').map((tag: string, i: number) => (
-                                                <span key={i} className="px-2 py-0.5 rounded-md bg-white/[0.06] border border-white/[0.08] text-[11px] font-medium text-white/75">{tag}</span>
+                                                <span key={i} className="px-2 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-[11px] font-medium text-white/75">{tag}</span>
                                             ))}
                                         </div>
                                     </div>
                                 )}
 
-                                <div className="bg-gradient-to-br from-[#0F2751] to-[#071A49] rounded-xl p-5 border border-[#C99A2E]/20 mt-1">
+                                <div className="bg-gradient-to-br from-[#0F2751] to-[#071A49] rounded p-5 border border-[#C99A2E]/20 mt-1">
                                     <p className="text-[13.5px] font-bold italic mb-4 text-center text-white/85 leading-snug">"{activeContent.footerText}"</p>
                                     <div className="flex flex-col gap-2.5 w-full">
                                         {activeContent.buttons.map((btn: string, idx: number) => (
                                             <button
                                                 key={idx}
-                                                className={`w-full py-3 px-4 rounded-lg text-[13px] font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                                                className={`w-full py-3 px-4 rounded text-[13px] font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
                                                     idx === 0
                                                         ? 'bg-[#C99A2E] text-[#0B1D3A] shadow-lg'
                                                         : 'bg-white/10 text-white'

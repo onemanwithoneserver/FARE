@@ -41,12 +41,12 @@ export default function Desktop() {
     const sectionTitle = data.title;
 
     return (
-        <section className="w-full py-32 bg-[#040C1E] relative font-['Outfit'] overflow-hidden">
-            {/* Premium Dark Theme Background Orbs */}
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></div>
-            <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
+        <section className="w-full py-16 bg-[#040C1E] relative font-['Outfit'] overflow-hidden">
+            
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
 
-            {/* Micro-pattern overlay for texture */}
+            
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
                 style={{
                     backgroundImage: `radial-gradient(white 1px, transparent 1px)`,
@@ -60,7 +60,7 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="flex flex-col items-center text-center mb-24"
+                    className="flex flex-col items-center text-center mb-12"
                 >
                     <motion.div variants={item} className="mb-6">
                         <span className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10 shadow-[0_0_15px_rgba(201,154,46,0.15)] backdrop-blur-sm" style={{ color: GOLD }}>
@@ -92,16 +92,16 @@ export default function Desktop() {
                                 variants={item}
                                 className="group relative"
                             >
-                                {/* Hover Glow Effect */}
-                                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl" style={{ mixBlendMode: 'overlay' }}></div>
                                 
-                                <div className="bg-[#0A1630]/60 backdrop-blur-xl border border-white/10 rounded-[24px] p-8 hover:bg-[#0E1F42]/80 hover:border-white/20 transition-all duration-400 relative overflow-hidden flex flex-col h-full shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)] group-hover:-translate-y-2">
-                                    {/* Accent corner gradient */}
-                                    <div className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-[30px] rounded-bl-full pointer-events-none" style={{ background: color }}></div>
+                                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded blur-xl" style={{ mixBlendMode: 'overlay' }}></div>
+                                
+                                <div className="bg-[#0A1630]/60 backdrop-blur-xl border border-white/10 rounded p-8 hover:bg-[#0E1F42]/80 hover:border-white/20 transition-all duration-400 relative overflow-hidden flex flex-col h-full shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)] group-hover:-translate-y-2">
+                                    
+                                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-[30px] rounded-bl-full pointer-events-none" style={{ background: color }}></motion.div>
 
                                     <div className="flex items-center justify-between mb-8 relative z-10">
                                         <div 
-                                            className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.3)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
+                                            className="w-14 h-14 rounded flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.3)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
                                             style={{ backgroundColor: `${color}15`, border: `1px solid ${color}30` }}
                                         >
                                             <Icon size={24} style={{ color: color }} className="relative z-10" />
@@ -127,16 +127,16 @@ export default function Desktop() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="max-w-[850px] mx-auto"
                 >
-                    <div className="bg-gradient-to-r from-[#0F2751]/80 via-[#132D5F] to-[#0F2751]/80 backdrop-blur-xl border border-white/10 rounded-[32px] p-12 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] relative overflow-hidden text-center group cursor-default">
-                        {/* Dynamic background lighting */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/15 rounded-full blur-[60px] group-hover:bg-[#C99A2E]/25 transition-colors duration-700 pointer-events-none"></div>
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#3B82F6]/10 rounded-full blur-[60px] group-hover:bg-[#3B82F6]/20 transition-colors duration-700 pointer-events-none"></div>
+                    <div className="bg-gradient-to-r from-[#0F2751]/80 via-[#132D5F] to-[#0F2751]/80 backdrop-blur-xl border border-white/10 rounded p-12 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] relative overflow-hidden text-center group cursor-default">
+                        
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/15 rounded-full blur-[60px] group-hover:bg-[#C99A2E]/25 transition-colors duration-700 pointer-events-none"></motion.div>
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-64 h-64 bg-[#3B82F6]/10 rounded-full blur-[60px] group-hover:bg-[#3B82F6]/20 transition-colors duration-700 pointer-events-none"></motion.div>
 
                         <div className="relative z-10 flex flex-col items-center">
                             <h3 className="text-[28px] font-bold text-white mb-6 leading-tight">
                                 {data.transitionTitle}
                             </h3>
-                            <div className="inline-flex items-center justify-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-xl backdrop-blur-md group-hover:bg-white/10 transition-colors duration-300">
+                            <div className="inline-flex items-center justify-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded backdrop-blur-md group-hover:bg-white/10 transition-colors duration-300">
                                 <span className="text-[18px] font-bold text-[#C99A2E] tracking-wide">
                                     {data.transitionSubtitle}
                                 </span>

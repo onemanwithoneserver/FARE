@@ -111,7 +111,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
             w-full flex items-center justify-between gap-2
             ${sizeClasses[size]}
             bg-white/80 dark:bg-fare-surface/80 backdrop-blur-md
-            border border-fare-border rounded-[4px] font-semibold text-fare-text-primary
+            border border-fare-border rounded font-semibold text-fare-text-primary
             shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer
             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fare-primary/50 focus-visible:border-fare-primary
             disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-sm
@@ -136,7 +136,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute z-99999 w-full min-w-max mt-2 py-1.5 bg-white/95 dark:bg-fare-surface/95 backdrop-blur-xl backdrop-saturate-150 border border-white/20 dark:border-white/10 rounded-[4px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] overflow-y-auto overflow-x-hidden max-h-[60vh] scrollbar-thin"
+              className="absolute z-99999 w-full min-w-max mt-2 py-1.5 bg-white/95 dark:bg-fare-surface/95 backdrop-blur-xl backdrop-saturate-150 border border-white/20 dark:border-white/10 rounded shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] overflow-y-auto overflow-x-hidden max-h-[60vh] scrollbar-thin"
               role="listbox"
             >
               {options.map((opt) => {
@@ -153,7 +153,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
                       }
                     }}
                     className={`
-                      flex items-center justify-between px-3 py-2.5 mx-1.5 rounded-[4px] text-sm font-medium cursor-pointer transition-all duration-200
+                      flex items-center justify-between px-3 py-2.5 mx-1.5 rounded text-sm font-medium cursor-pointer transition-all duration-200
                       ${opt.disabled ? "opacity-50 cursor-not-allowed" : ""}
                       ${
                         isSelected

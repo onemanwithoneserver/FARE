@@ -53,14 +53,14 @@ export default function Mobile() {
                     {data.headline.subtitle}
                 </p>
 
-                <div className="flex gap-1.5 w-full mb-6 p-1 rounded-[4px] bg-white border border-[#0B1D3A]/[0.08] shadow-sm">
+                <div className="flex gap-1.5 w-full mb-6 p-1 rounded bg-white border border-[#0B1D3A]/[0.08] shadow-sm">
                     {data.personas.map((persona) => {
                         const isActive = activePersonaId === persona.id;
                         return (
                             <button
                                 key={persona.id}
                                 onClick={() => setActivePersonaId(persona.id)}
-                                className={`flex-1 py-2 px-1.5 rounded-[4px] flex flex-col items-center gap-1 text-[9.5px] font-bold transition-all relative overflow-hidden ${
+                                className={`flex-1 py-2 px-1.5 rounded flex flex-col items-center gap-1 text-[9.5px] font-bold transition-all relative overflow-hidden ${
                                     isActive
                                     ? 'bg-[#071A49] text-white shadow-sm'
                                     : 'text-[#0B1D3A] hover:bg-[#F8FAFD]'
@@ -87,8 +87,8 @@ export default function Mobile() {
                         transition={{ duration: 0.3 }}
                         className="w-full flex flex-col gap-4 text-left"
                     >
-                        <div className="p-5 rounded-[6px] bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_10px_30px_-5px_rgba(11,29,58,0.1)]">
-                            <div className="inline-flex items-center text-[8.5px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded-[4px] mb-3 bg-[#EEF4FF] text-[#2563EB] border border-[#2563EB]/20">
+                        <div className="p-5 rounded bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_10px_30px_-5px_rgba(11,29,58,0.1)]">
+                            <div className="inline-flex items-center text-[8.5px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded mb-3 bg-[#EEF4FF] text-[#2563EB] border border-[#2563EB]/20">
                                 {activePersona.badge}
                             </div>
 
@@ -104,7 +104,7 @@ export default function Mobile() {
                             <div className="flex flex-col gap-2 mb-5">
                                 {activePersona.features.map((feat, i) => (
                                     <div key={i} className="flex items-center gap-2 text-[11px] text-[#2C3E55] font-medium">
-                                        <div className="w-4 h-4 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white shadow-sm flex items-center justify-center shrink-0">
+                                        <div className="w-4 h-4 rounded bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white shadow-sm flex items-center justify-center shrink-0">
                                             <CheckCircle size={10} strokeWidth={2.5} />
                                         </div>
                                         <span className="leading-snug">{feat}</span>
@@ -114,7 +114,7 @@ export default function Mobile() {
 
                             {activePersona.id === 'professionals' ? (
                                 waitlistJoined ? (
-                                    <div className="p-3 rounded-[4px] bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-2 text-[#059669] text-[11px] font-bold">
+                                    <div className="p-3 rounded bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-2 text-[#059669] text-[11px] font-bold">
                                         <ShieldCheck size={16} />
                                         <span>Registered for Priority Access!</span>
                                     </div>
@@ -126,11 +126,11 @@ export default function Mobile() {
                                             value={waitlistEmail}
                                             onChange={(e) => setWaitlistEmail(e.target.value)}
                                             placeholder="Enter work email"
-                                            className="bg-[#F8FAFC] border border-[#0B1D3A]/[0.12] rounded-[4px] px-3 py-2 text-[11.5px] text-[#0B1D3A] outline-none"
+                                            className="bg-[#F8FAFC] border border-[#0B1D3A]/[0.12] rounded px-3 py-2 text-[11.5px] text-[#0B1D3A] outline-none"
                                         />
                                         <button
                                             type="submit"
-                                            className="w-full py-2.5 rounded-[4px] font-black text-[11.5px] text-white bg-[#071A49]"
+                                            className="w-full py-2.5 rounded font-black text-[11.5px] text-white bg-[#071A49]"
                                         >
                                             Join Access
                                         </button>
@@ -138,7 +138,7 @@ export default function Mobile() {
                                 )
                             ) : (
                                 <button
-                                    className="py-2.5 px-5 rounded-[4px] font-bold text-[12px] text-white bg-[#071A49] flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98]"
+                                    className="py-2.5 px-5 rounded font-bold text-[12px] text-white bg-[#071A49] flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98]"
                                 >
                                     <span>{activePersona.cta}</span>
                                     <ArrowRight size={13} />

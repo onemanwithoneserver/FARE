@@ -27,10 +27,10 @@ export default function Mobile() {
     };
 
     return (
-        <section className="w-full py-20 relative font-['Outfit'] overflow-hidden"
+        <section className="w-full py-10 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(135deg, #F8FAFD 0%, #EEF4FF 100%)' }}
         >
-            <div className="absolute top-10 left-[-50px] w-[300px] h-[300px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-10 left-[-50px] w-[300px] h-[300px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></motion.div>
 
             <div className="w-full px-5 relative z-10 flex flex-col gap-12">
                 <motion.div
@@ -76,14 +76,14 @@ export default function Mobile() {
                     </motion.div>
 
                     <motion.div variants={item} className="flex flex-col gap-3 mb-6 w-full">
-                        <button className="group relative overflow-hidden w-full text-white px-6 py-4 rounded-xl text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_8px_20px_-8px_rgba(11,29,58,0.25)]"
+                        <button className="group relative overflow-hidden w-full text-white px-6 py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_8px_20px_-8px_rgba(11,29,58,0.25)]"
                             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)` }}
                         >
                             <span className="relative z-10">{data.primaryButton}</span> 
                             <ArrowRight size={15} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.1] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                         </button>
-                        <button className="w-full bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-4 rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform">
+                        <button className="w-full bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-4 rounded text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform">
                             {data.secondaryButton}
                         </button>
                     </motion.div>
@@ -100,12 +100,12 @@ export default function Mobile() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="w-full relative"
                 >
-                    <div className="bg-white/90 backdrop-blur-xl rounded-[24px] p-7 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.12)] border border-white relative z-10 overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[30px] pointer-events-none"></div>
+                    <div className="bg-white/90 backdrop-blur-xl rounded p-7 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.12)] border border-white relative z-10 overflow-hidden">
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[30px] pointer-events-none"></motion.div>
 
                         <div className="flex items-center justify-between mb-8 relative z-10">
                             <div className="flex items-center gap-3">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md">
+                                <div className="w-12 h-12 rounded bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md">
                                     <ClipboardList size={22} className="text-white" />
                                 </div>
                                 <div>
@@ -127,10 +127,10 @@ export default function Mobile() {
                                 
                                 return (
                                     <div key={i} className="flex items-center gap-3.5">
-                                        <div className={`w-10 h-10 rounded-[10px] ${color.bg} flex items-center justify-center text-white font-black text-[14px] shadow-sm shrink-0`}>
+                                        <div className={`w-10 h-10 rounded ${color.bg} flex items-center justify-center text-white font-black text-[14px] shadow-sm shrink-0`}>
                                             {i + 1}
                                         </div>
-                                        <div className="flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] rounded-xl p-3.5">
+                                        <div className="flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] rounded p-3.5">
                                             <span className="text-[14.5px] font-bold text-[#0B1D3A]">{step}</span>
                                         </div>
                                     </div>

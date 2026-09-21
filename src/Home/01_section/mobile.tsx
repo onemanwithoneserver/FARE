@@ -72,7 +72,7 @@ export default function Mobile() {
 
                 <motion.div variants={item} className="flex flex-col w-full gap-3 max-w-[280px] mb-4">
                     <button
-                        className="text-white font-semibold w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98]"
+                        className="text-white font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98]"
                         style={{
                             background: NAVY,
                             boxShadow: '0 2px 8px rgba(11,29,58,0.15)'
@@ -81,7 +81,7 @@ export default function Mobile() {
                         {data.buttons.primary} <ArrowRight size={14} strokeWidth={2.5} />
                     </button>
                     <button
-                        className="font-semibold w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border"
+                        className="font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border"
                         style={{ color: NAVY, borderColor: `${NAVY}15`, background: 'white', boxShadow: '0 1px 3px rgba(11,29,58,0.03)' }}
                     >
                         <Play size={13} strokeWidth={2.5} fill={NAVY} /> {data.buttons.secondary}
@@ -97,7 +97,7 @@ export default function Mobile() {
                     whileHover={{ scale: 1.02, rotateY: 2, rotateX: 1, y: -10 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative w-[760px] safari-shadow rounded-[6px] overflow-hidden bg-white/80 backdrop-blur-md"
+                    className="relative w-[760px] safari-shadow rounded overflow-hidden bg-white/80 backdrop-blur-md"
                     style={{
                         transformPerspective: 2000,
                         border: '1px solid rgba(11, 29, 58, 0.08)',
@@ -115,7 +115,7 @@ export default function Mobile() {
                                 <ChevronLeft size={13} strokeWidth={2} />
                                 <ChevronRight size={13} strokeWidth={2} />
                             </div>
-                            <div className="flex-1 mx-3 bg-white/80 border border-[#e5e5ea] rounded-[4px] px-3 py-[3px] flex items-center justify-center gap-1.5 text-[10px] font-medium text-[#666] shadow-[inset_0_0.5px_1px_rgba(0,0,0,0.04)]">
+                            <div className="flex-1 mx-3 bg-white/80 border border-[#e5e5ea] rounded px-3 py-[3px] flex items-center justify-center gap-1.5 text-[10px] font-medium text-[#666] shadow-[inset_0_0.5px_1px_rgba(0,0,0,0.04)]">
                                 <Lock size={9} strokeWidth={2.5} className="text-[#999]" />
                                 <span>{data.dashboard.url}</span>
                             </div>
@@ -185,7 +185,7 @@ export default function Mobile() {
                             <div>
                                 <div className="flex justify-between items-center mb-2.5">
                                     <h3 className="text-[9px] font-bold text-white/30 tracking-[0.15em] uppercase">Upcoming</h3>
-                                    <button className="text-[9px] font-semibold text-white/40 hover:text-white/60 transition-colors flex items-center gap-1 border border-white/[0.08] px-2.5 py-1 rounded-[2px]">
+                                    <button className="text-[9px] font-semibold text-white/40 hover:text-white/60 transition-colors flex items-center gap-1 border border-white/[0.08] px-2.5 py-1 rounded-sm">
                                         View All <ArrowRight size={8} />
                                     </button>
                                 </div>
@@ -215,9 +215,9 @@ export default function Mobile() {
                     <motion.div
                         animate={{ y: [0, -12, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
+                        className="fare-glass-card floating-card-shadow rounded p-3.5 flex items-center gap-3"
                     >
-                        <div className="w-9 h-9 rounded-[3px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-sm">
+                        <div className="w-9 h-9 rounded bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-sm">
                             <BookOpen size={17} strokeWidth={2.5} />
                         </div>
                         <div>
@@ -237,9 +237,9 @@ export default function Mobile() {
                     <motion.div
                         animate={{ y: [0, -15, 0] }}
                         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
+                        className="fare-glass-card floating-card-shadow rounded p-3.5 flex items-center gap-3"
                     >
-                        <div className="w-9 h-9 rounded-[3px] bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-sm">
+                        <div className="w-9 h-9 rounded bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-sm">
                             <Target size={17} strokeWidth={2.5} />
                         </div>
                         <div>
@@ -261,9 +261,9 @@ export default function Mobile() {
                     <motion.div
                         animate={{ y: [0, -12, 0] }}
                         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                        className="fare-glass-card floating-card-shadow rounded-[4px] p-3.5 flex items-center gap-3"
+                        className="fare-glass-card floating-card-shadow rounded p-3.5 flex items-center gap-3"
                     >
-                        <div className="w-9 h-9 rounded-[3px] flex items-center justify-center text-white shadow-sm" style={{ background: `linear-gradient(135deg, ${GOLD} 0%, ${GOLD_MID} 100%)` }}>
+                        <div className="w-9 h-9 rounded flex items-center justify-center text-white shadow-sm" style={{ background: `linear-gradient(135deg, ${GOLD} 0%, ${GOLD_MID} 100%)` }}>
                             <CheckCircle size={17} strokeWidth={2.5} />
                         </div>
                         <div>
@@ -304,7 +304,7 @@ export default function Mobile() {
 function SidebarItem({ icon, label, active = false }: { icon: React.ReactNode; label: string; active?: boolean }) {
     return (
         <div
-            className={`px-2 py-1.5 rounded-[2px] flex items-center gap-1.5 text-[8px] font-medium cursor-pointer transition-colors duration-200 ${
+            className={`px-2 py-1.5 rounded-sm flex items-center gap-1.5 text-[8px] font-medium cursor-pointer transition-colors duration-200 ${
                 active
                     ? 'font-semibold'
                     : 'text-white/50 hover:text-white/70'
@@ -334,7 +334,7 @@ function DashCard({
 }) {
     return (
         <div
-            className="rounded-[2px] p-2"
+            className="rounded-sm p-2"
             style={{
                 background: `rgba(255,255,255,0.04)`,
                 border: '1px solid rgba(255,255,255,0.06)',

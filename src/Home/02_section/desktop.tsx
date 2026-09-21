@@ -141,7 +141,7 @@ export default function Desktop() {
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`w-full text-left p-4.5 rounded-[4px] transition-all duration-400 flex gap-3.5 cursor-pointer group relative overflow-hidden ${
+                                    className={`w-full text-left p-4.5 rounded transition-all duration-400 flex gap-3.5 cursor-pointer group relative overflow-hidden ${
                                         isActive
                                         ? 'bg-white/[0.05] border border-white/[0.12] luxury-shadow scale-[1.01]'
                                         : 'bg-transparent border border-transparent hover:bg-white/[0.02]'
@@ -191,7 +191,7 @@ export default function Desktop() {
                     >
                         <div className="absolute top-1/2 -left-8 w-16 h-16 bg-[#D5AA45]/20 rounded-full blur-[20px] -translate-y-1/2 pointer-events-none"></div>
 
-                        <div className="rounded-[4px] overflow-hidden safari-shadow border border-white/[0.12] flex flex-col h-full bg-[#0D2654] relative luxury-shadow-dark">
+                        <div className="rounded overflow-hidden safari-shadow border border-white/[0.12] flex flex-col h-full bg-[#0D2654] relative luxury-shadow-dark">
                             <div className="h-[44px] glass-safari-dark flex items-center px-4 relative border-b border-white/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.2)] z-20">
                                 <div className="flex items-center gap-[8px] absolute left-4">
                                     <div className="w-[11px] h-[11px] rounded-full bg-[#FF5F56] border border-[#E0443E]/50"></div>
@@ -199,7 +199,7 @@ export default function Desktop() {
                                     <div className="w-[11px] h-[11px] rounded-full bg-[#27C840] border border-[#1AAB29]/50"></div>
                                 </div>
                                 <div className="flex-1 flex justify-center items-center">
-                                    <div className="bg-[#1C1C1E]/80 backdrop-blur-md rounded-[4px] px-24 py-1 flex items-center justify-center gap-2 border border-white/[0.05] shadow-inner">
+                                    <div className="bg-[#1C1C1E]/80 backdrop-blur-md rounded px-24 py-1 flex items-center justify-center gap-2 border border-white/[0.05] shadow-inner">
                                         <Lock size={11} className="text-[#34D399]" />
                                         <span className="text-[11px] text-white/70 font-medium tracking-wide">{data.browser.url}</span>
                                     </div>
@@ -226,7 +226,7 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-5">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(107,138,255,0.3)]">
+                                                    <div className="w-11 h-11 rounded bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(107,138,255,0.3)]">
                                                         <BookOpen size={20} strokeWidth={2.5} />
                                                     </div>
                                                     <div>
@@ -238,14 +238,14 @@ export default function Desktop() {
                                                 {!isSubmitted ? (
                                                     <div className="flex items-center gap-2">
                                                         <span className="text-[11.5px] font-medium text-white/50">Answered:</span>
-                                                        <span className="bg-[#D5AA45]/15 px-3 py-1 rounded-[4px] text-[12px] font-bold text-[#F3D887] border border-[#D5AA45]/35 shadow-sm">
+                                                        <span className="bg-[#D5AA45]/15 px-3 py-1 rounded text-[12px] font-bold text-[#F3D887] border border-[#D5AA45]/35 shadow-sm">
                                                             {answeredCount} / {totalQuestions}
                                                         </span>
                                                     </div>
                                                 ) : (
                                                     <button
                                                         onClick={handleRestartQuiz}
-                                                        className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-[4px] bg-white/[0.05] hover:bg-white/[0.1] text-white/80 hover:text-white text-[11px] font-semibold border border-white/10 transition-all cursor-pointer"
+                                                        className="flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-white/[0.05] hover:bg-white/[0.1] text-white/80 hover:text-white text-[11px] font-semibold border border-white/10 transition-all cursor-pointer"
                                                     >
                                                         <RotateCcw size={12} />
                                                         <span>Reset Quiz</span>
@@ -253,7 +253,7 @@ export default function Desktop() {
                                                 )}
                                             </div>
 
-                                            <div className="grid grid-cols-12 gap-1.5 mb-5 p-1.5 rounded-[6px] bg-white/[0.02] border border-white/[0.05]">
+                                            <div className="grid grid-cols-12 gap-1.5 mb-5 p-1.5 rounded bg-white/[0.02] border border-white/[0.05]">
                                                 {quizQuestions.map((_, i) => {
                                                     const isAnswered = userAnswers[i] !== undefined;
                                                     const isCurrent = currentQIndex === i;
@@ -274,7 +274,7 @@ export default function Desktop() {
                                                         <button
                                                             key={i}
                                                             onClick={() => setCurrentQIndex(i)}
-                                                            className={`h-7.5 rounded-[4px] text-[11px] border transition-all flex items-center justify-center cursor-pointer ${pillBg}`}
+                                                            className={`h-7.5 rounded text-[11px] border transition-all flex items-center justify-center cursor-pointer ${pillBg}`}
                                                         >
                                                             {i + 1}
                                                         </button>
@@ -286,7 +286,7 @@ export default function Desktop() {
                                                 <motion.div
                                                     initial={{ opacity: 0, scale: 0.95 }}
                                                     animate={{ opacity: 1, scale: 1 }}
-                                                    className="bg-white/[0.03] backdrop-blur-md p-8 rounded-[4px] border border-white/[0.12] shadow-[0_12px_40px_rgba(0,0,0,0.3)] flex flex-col items-center text-center"
+                                                    className="bg-white/[0.03] backdrop-blur-md p-8 rounded border border-white/[0.12] shadow-[0_12px_40px_rgba(0,0,0,0.3)] flex flex-col items-center text-center"
                                                 >
                                                     <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#C99A2E]/25 to-[#D5AA45]/10 border border-[#D5AA45]/50 flex items-center justify-center text-[#D5AA45] mb-4 shadow-[0_0_25px_rgba(213,170,69,0.35)]">
                                                         <Award size={32} />
@@ -302,15 +302,15 @@ export default function Desktop() {
                                                     </div>
 
                                                     <div className="grid grid-cols-3 gap-4 w-full mb-6">
-                                                        <div className="bg-white/[0.03] p-4 rounded-[4px] border border-white/[0.06]">
+                                                        <div className="bg-white/[0.03] p-4 rounded border border-white/[0.06]">
                                                             <div className="text-[20px] font-black text-[#10B981]">{score}</div>
                                                             <div className="text-[11px] font-medium text-white/50">Correct</div>
                                                         </div>
-                                                        <div className="bg-white/[0.03] p-4 rounded-[4px] border border-white/[0.06]">
+                                                        <div className="bg-white/[0.03] p-4 rounded border border-white/[0.06]">
                                                             <div className="text-[20px] font-black text-[#EF4444]">{totalQuestions - score}</div>
                                                             <div className="text-[11px] font-medium text-white/50">Incorrect</div>
                                                         </div>
-                                                        <div className="bg-white/[0.03] p-4 rounded-[4px] border border-white/[0.06]">
+                                                        <div className="bg-white/[0.03] p-4 rounded border border-white/[0.06]">
                                                             <div className="text-[20px] font-black text-[#6B8AFF]">{answeredCount}</div>
                                                             <div className="text-[11px] font-medium text-white/50">Attempted</div>
                                                         </div>
@@ -319,14 +319,14 @@ export default function Desktop() {
                                                     <div className="flex flex-wrap items-center justify-center gap-3 mt-1">
                                                         <button
                                                             onClick={() => setShowReview(true)}
-                                                            className="px-5 py-2.5 rounded-[4px] bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] hover:brightness-110 text-[#071A49] font-bold text-[12.5px] transition-all flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(201,154,46,0.3)] hover:shadow-[0_6px_22px_rgba(201,154,46,0.45)] cursor-pointer active:scale-[0.98]"
+                                                            className="px-5 py-2.5 rounded bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E4C46A] hover:brightness-110 text-[#071A49] font-bold text-[12.5px] transition-all flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(201,154,46,0.3)] hover:shadow-[0_6px_22px_rgba(201,154,46,0.45)] cursor-pointer active:scale-[0.98]"
                                                         >
                                                             <Eye size={15} />
                                                             <span>Review Answers & Explanations</span>
                                                         </button>
                                                         <button
                                                             onClick={handleRestartQuiz}
-                                                            className="px-4 py-2.5 rounded-[4px] bg-white/[0.06] hover:bg-white/[0.12] text-white/90 hover:text-white font-semibold text-[12.5px] border border-white/15 hover:border-white/30 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]"
+                                                            className="px-4 py-2.5 rounded bg-white/[0.06] hover:bg-white/[0.12] text-white/90 hover:text-white font-semibold text-[12.5px] border border-white/15 hover:border-white/30 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]"
                                                         >
                                                             <RotateCcw size={14} />
                                                             <span>Retake Quiz</span>
@@ -336,11 +336,11 @@ export default function Desktop() {
                                             ) : (
                                                 <div className="flex flex-col">
 
-                                                    <div className="bg-white/[0.02] backdrop-blur-sm p-6 rounded-[4px] mb-4 border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+                                                    <div className="bg-white/[0.02] backdrop-blur-sm p-6 rounded mb-4 border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
                                                         <div className="flex items-center justify-between mb-3">
                                                             <span className="text-[11px] font-black text-[#D5AA45] tracking-wider uppercase">Question {currentQIndex + 1} of {totalQuestions}</span>
                                                             {isSubmitted && (
-                                                                <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-[4px] ${userAnswers[currentQIndex] === currentQuestion.correctIndex ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#EF4444]/20 text-[#EF4444]'}`}>
+                                                                <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded ${userAnswers[currentQIndex] === currentQuestion.correctIndex ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#EF4444]/20 text-[#EF4444]'}`}>
                                                                     {userAnswers[currentQIndex] === currentQuestion.correctIndex ? 'Correct' : 'Incorrect'}
                                                                 </span>
                                                             )}
@@ -375,9 +375,9 @@ export default function Desktop() {
                                                                 <button
                                                                     key={i}
                                                                     onClick={() => handleSelectOption(i)}
-                                                                    className={`border p-4 rounded-[4px] text-left text-[12.5px] transition-all duration-300 font-medium cursor-pointer flex items-start gap-3 group ${btnStyle}`}
+                                                                    className={`border p-4 rounded text-left text-[12.5px] transition-all duration-300 font-medium cursor-pointer flex items-start gap-3 group ${btnStyle}`}
                                                                 >
-                                                                    <span className={`w-5 h-5 rounded-[4px] flex items-center justify-center text-[10.5px] font-black shrink-0 ${isSelected ? 'bg-[#D5AA45] text-[#071A49]' : 'bg-white/10 text-white/60 group-hover:bg-[#D5AA45]/30 group-hover:text-white'}`}>
+                                                                    <span className={`w-5 h-5 rounded flex items-center justify-center text-[10.5px] font-black shrink-0 ${isSelected ? 'bg-[#D5AA45] text-[#071A49]' : 'bg-white/10 text-white/60 group-hover:bg-[#D5AA45]/30 group-hover:text-white'}`}>
                                                                         {letter}
                                                                     </span>
                                                                     <span className="leading-snug">{opt}</span>
@@ -387,7 +387,7 @@ export default function Desktop() {
                                                     </div>
 
                                                     {isSubmitted && currentQuestion.explanation && (
-                                                        <div className="bg-[#D5AA45]/10 border border-[#D5AA45]/30 p-4 rounded-[4px] mb-4 text-[12px] leading-relaxed text-white/90">
+                                                        <div className="bg-[#D5AA45]/10 border border-[#D5AA45]/30 p-4 rounded mb-4 text-[12px] leading-relaxed text-white/90">
                                                             <span className="font-bold text-[#F3D887] mr-1.5">Explanation:</span>
                                                             {currentQuestion.explanation}
                                                         </div>
@@ -397,7 +397,7 @@ export default function Desktop() {
                                                         <button
                                                             onClick={() => setCurrentQIndex(prev => Math.max(0, prev - 1))}
                                                             disabled={currentQIndex === 0}
-                                                            className={`flex items-center gap-1.5 px-4 py-2 rounded-[4px] text-[12px] font-semibold border transition-all ${
+                                                            className={`flex items-center gap-1.5 px-4 py-2 rounded text-[12px] font-semibold border transition-all ${
                                                                 currentQIndex === 0
                                                                 ? 'opacity-30 cursor-not-allowed border-transparent text-white/30'
                                                                 : 'border-white/10 text-white/80 hover:text-white hover:bg-white/5 cursor-pointer'
@@ -410,7 +410,7 @@ export default function Desktop() {
                                                         {isSubmitted && showReview && (
                                                             <button
                                                                 onClick={() => setShowReview(false)}
-                                                                className="px-4 py-2 rounded-[4px] text-[12px] font-bold text-white bg-white/[0.08] hover:bg-white/[0.12] border border-white/10 cursor-pointer"
+                                                                className="px-4 py-2 rounded text-[12px] font-bold text-white bg-white/[0.08] hover:bg-white/[0.12] border border-white/10 cursor-pointer"
                                                             >
                                                                 Back to Scorecard
                                                             </button>
@@ -419,7 +419,7 @@ export default function Desktop() {
                                                         {currentQIndex < totalQuestions - 1 ? (
                                                             <button
                                                                 onClick={() => setCurrentQIndex(prev => Math.min(totalQuestions - 1, prev + 1))}
-                                                                className="flex items-center gap-1.5 px-5 py-2 rounded-[4px] text-[12px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] hover:brightness-110 text-[#071A49] transition-all shadow-[0_2px_10px_rgba(201,154,46,0.3)] cursor-pointer"
+                                                                className="flex items-center gap-1.5 px-5 py-2 rounded text-[12px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] hover:brightness-110 text-[#071A49] transition-all shadow-[0_2px_10px_rgba(201,154,46,0.3)] cursor-pointer"
                                                             >
                                                                 <span>Next</span>
                                                                 <ChevronRight size={14} />
@@ -427,7 +427,7 @@ export default function Desktop() {
                                                         ) : !isSubmitted ? (
                                                             <button
                                                                 onClick={() => setIsSubmitted(true)}
-                                                                className="flex items-center gap-2 px-6 py-2.5 rounded-[4px] text-[12.5px] font-black bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E2C068] hover:brightness-110 text-[#071A49] transition-all shadow-[0_0_20px_rgba(213,170,69,0.4)] cursor-pointer uppercase tracking-wider"
+                                                                className="flex items-center gap-2 px-6 py-2.5 rounded text-[12.5px] font-black bg-gradient-to-r from-[#C99A2E] via-[#D5AA45] to-[#E2C068] hover:brightness-110 text-[#071A49] transition-all shadow-[0_0_20px_rgba(213,170,69,0.4)] cursor-pointer uppercase tracking-wider"
                                                             >
                                                                 <span>Submit & Get Score</span>
                                                                 <ArrowRight size={14} strokeWidth={3} />
@@ -435,7 +435,7 @@ export default function Desktop() {
                                                         ) : (
                                                             <button
                                                                 onClick={() => setShowReview(false)}
-                                                                className="px-5 py-2 rounded-[4px] text-[12px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] hover:brightness-110 text-[#071A49] transition-all shadow-md cursor-pointer"
+                                                                className="px-5 py-2 rounded text-[12px] font-bold bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] hover:brightness-110 text-[#071A49] transition-all shadow-md cursor-pointer"
                                                             >
                                                                 View Scorecard
                                                             </button>
@@ -457,7 +457,7 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-6">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[4px] bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(52,211,153,0.3)]">
+                                                    <div className="w-11 h-11 rounded bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(52,211,153,0.3)]">
                                                         <Target size={20} strokeWidth={2.5} />
                                                     </div>
                                                     <div>
@@ -474,7 +474,7 @@ export default function Desktop() {
                                                                 setActiveScenarioIdx(i);
                                                                 setSelectedMockOption(null);
                                                             }}
-                                                            className={`px-3 py-1 rounded-[4px] text-[11px] font-bold border transition-all cursor-pointer ${
+                                                            className={`px-3 py-1 rounded text-[11px] font-bold border transition-all cursor-pointer ${
                                                                 activeScenarioIdx === i
                                                                 ? 'bg-[#34D399]/20 text-[#34D399] border-[#34D399]/40 shadow-[0_0_10px_rgba(52,211,153,0.2)]'
                                                                 : 'bg-white/[0.04] text-white/50 border-white/[0.08] hover:text-white'
@@ -487,22 +487,22 @@ export default function Desktop() {
                                             </div>
 
                                             <div className="flex gap-4 mb-4">
-                                                <div className="flex-1 bg-white/[0.03] p-4 rounded-[4px] border border-white/[0.08] shadow-[0_8px_24px_rgba(0,0,0,0.15)] flex items-center justify-between">
+                                                <div className="flex-1 bg-white/[0.03] p-4 rounded border border-white/[0.08] shadow-[0_8px_24px_rgba(0,0,0,0.15)] flex items-center justify-between">
                                                     <div className="flex items-center gap-3">
-                                                        <div className="w-10 h-10 rounded-[4px] bg-[#34D399]/15 text-[#34D399] flex items-center justify-center text-[15px] font-bold border border-[#34D399]/20">P</div>
+                                                        <div className="w-10 h-10 rounded bg-[#34D399]/15 text-[#34D399] flex items-center justify-center text-[15px] font-bold border border-[#34D399]/20">P</div>
                                                         <div>
                                                             <div className="font-bold text-[13px] text-white">{data.browser.content['02'].trainer.name}</div>
                                                             <div className="text-[10.5px] text-white/50">{data.browser.content['02'].trainer.role}</div>
                                                         </div>
                                                     </div>
-                                                    <div className="flex items-center gap-1.5 bg-[#34D399]/15 px-2.5 py-1 rounded-[4px] border border-[#34D399]/30 text-[10px] font-bold text-[#34D399]">
+                                                    <div className="flex items-center gap-1.5 bg-[#34D399]/15 px-2.5 py-1 rounded border border-[#34D399]/30 text-[10px] font-bold text-[#34D399]">
                                                         <div className="w-1.5 h-1.5 bg-[#34D399] rounded-full animate-pulse"></div>
                                                         <span>Evaluating</span>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div className="bg-[#0A1630] p-5 rounded-[4px] border border-[#34D399]/25 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] mb-4">
+                                            <div className="bg-[#0A1630] p-5 rounded border border-[#34D399]/25 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] mb-4">
                                                 <div className="flex items-center justify-between mb-2">
                                                     <span className="text-[#34D399] text-[9.5px] font-black tracking-[0.2em]">BUYER OBJECTION</span>
                                                     <span className="text-white/40 text-[10.5px] font-medium">{currentScenario.title}</span>
@@ -520,7 +520,7 @@ export default function Desktop() {
                                                         <button
                                                             key={opt.id}
                                                             onClick={() => setSelectedMockOption(opt.id)}
-                                                            className={`p-3.5 rounded-[4px] border text-left transition-all cursor-pointer relative overflow-hidden ${
+                                                            className={`p-3.5 rounded border text-left transition-all cursor-pointer relative overflow-hidden ${
                                                                 isSelected
                                                                 ? 'bg-[#34D399]/15 border-[#34D399] shadow-[0_0_15px_rgba(52,211,153,0.25)]'
                                                                 : 'bg-white/[0.03] border-white/[0.06] hover:bg-white/[0.06] hover:border-white/20'
@@ -529,7 +529,7 @@ export default function Desktop() {
                                                             <div className="flex items-center justify-between mb-1">
                                                                 <span className="text-[11.5px] font-bold text-[#34D399]">{opt.label}</span>
                                                                 {isSelected && (
-                                                                    <span className="text-[10.5px] font-black text-white bg-[#34D399]/40 px-2 py-0.5 rounded-[3px]">
+                                                                    <span className="text-[10.5px] font-black text-white bg-[#34D399]/40 px-2 py-0.5 rounded">
                                                                         Score: {opt.score}/100
                                                                     </span>
                                                                 )}
@@ -546,7 +546,7 @@ export default function Desktop() {
                                                         initial={{ opacity: 0, height: 0 }}
                                                         animate={{ opacity: 1, height: 'auto' }}
                                                         exit={{ opacity: 0, height: 0 }}
-                                                        className="bg-gradient-to-r from-[#0D2654] to-[#113069] border border-[#34D399]/30 p-4 rounded-[4px] shadow-lg"
+                                                        className="bg-gradient-to-r from-[#0D2654] to-[#113069] border border-[#34D399]/30 p-4 rounded shadow-lg"
                                                     >
                                                         <div className="flex items-center justify-between mb-2">
                                                             <div className="flex items-center gap-2">
@@ -555,7 +555,7 @@ export default function Desktop() {
                                                             </div>
                                                             <div className="flex gap-1.5">
                                                                 {selectedResponseData.strengths.map((str, idx) => (
-                                                                    <span key={idx} className="bg-white/[0.08] text-[9.5px] font-semibold text-white/80 px-2 py-0.5 rounded-[3px]">
+                                                                    <span key={idx} className="bg-white/[0.08] text-[9.5px] font-semibold text-white/80 px-2 py-0.5 rounded">
                                                                         {str}
                                                                     </span>
                                                                 ))}
@@ -581,7 +581,7 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-6">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[4px] bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(167,139,250,0.3)]">
+                                                    <div className="w-11 h-11 rounded bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(167,139,250,0.3)]">
                                                         <BarChart2 size={20} strokeWidth={2.5} />
                                                     </div>
                                                     <div>
@@ -589,13 +589,13 @@ export default function Desktop() {
                                                         <div className="text-[18px] font-bold text-white tracking-tight">{data.browser.content['03'].title}</div>
                                                     </div>
                                                 </div>
-                                                <div className="bg-[#A78BFA]/15 border border-[#A78BFA]/35 px-4 py-2 rounded-[4px] text-[12px] font-black text-[#A78BFA] tracking-wide shadow-[0_0_12px_rgba(167,139,250,0.15)] flex items-center gap-2">
+                                                <div className="bg-[#A78BFA]/15 border border-[#A78BFA]/35 px-4 py-2 rounded text-[12px] font-black text-[#A78BFA] tracking-wide shadow-[0_0_12px_rgba(167,139,250,0.15)] flex items-center gap-2">
                                                     <span>{computedPercentile}th %ile Rank</span>
                                                     <span className="text-[10px] font-semibold text-white/50">(Avg {peerAvg}%)</span>
                                                 </div>
                                             </div>
 
-                                            <div className="flex flex-col gap-4 bg-white/[0.02] p-6 rounded-[4px] border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm mb-4">
+                                            <div className="flex flex-col gap-4 bg-white/[0.02] p-6 rounded border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm mb-4">
                                                 {data.browser.content['03'].skills.map((skill) => {
                                                     const currentVal = skillValues[skill.id] || skill.val;
                                                     const delta = currentVal - skill.peer;
@@ -609,7 +609,7 @@ export default function Desktop() {
                                                                 <div className="flex items-center gap-4 text-right shrink-0">
                                                                     <span className="text-[11px] font-medium text-white/40">Peer: {skill.peer}%</span>
                                                                     <span className="text-[12px] font-black text-[#A78BFA]">You: {currentVal}%</span>
-                                                                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-[3px] ${delta >= 0 ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#EF4444]/20 text-[#EF4444]'}`}>
+                                                                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${delta >= 0 ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#EF4444]/20 text-[#EF4444]'}`}>
                                                                         {delta >= 0 ? `+${delta}%` : `${delta}%`}
                                                                     </span>
                                                                 </div>
@@ -622,7 +622,7 @@ export default function Desktop() {
                                                                     max="100"
                                                                     value={currentVal}
                                                                     onChange={(e) => handleSkillChange(skill.id, parseInt(e.target.value))}
-                                                                    className="w-full accent-[#A78BFA] cursor-pointer h-2 bg-[#0A1630] rounded-[4px] appearance-none"
+                                                                    className="w-full accent-[#A78BFA] cursor-pointer h-2 bg-[#0A1630] rounded appearance-none"
                                                                 />
                                                             </div>
                                                         </div>
@@ -630,7 +630,7 @@ export default function Desktop() {
                                                 })}
                                             </div>
 
-                                            <div className="flex items-center justify-between bg-white/[0.03] p-4 rounded-[4px] border border-white/[0.06]">
+                                            <div className="flex items-center justify-between bg-white/[0.03] p-4 rounded border border-white/[0.06]">
                                                 <div className="text-[12px] text-white/70">
                                                     Overall Real Estate Competency: <strong className="text-white">{overallUserSkill}%</strong> (Tier: {overallUserSkill >= 85 ? 'Elite Tier' : 'Senior Practitioner'})
                                                 </div>
@@ -656,7 +656,7 @@ export default function Desktop() {
                                         >
                                             <div className="flex items-center justify-between mb-6">
                                                 <div className="flex items-center gap-3.5">
-                                                    <div className="w-11 h-11 rounded-[4px] bg-gradient-to-br from-[#FBBF24] to-[#D97706] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(213,170,69,0.3)]">
+                                                    <div className="w-11 h-11 rounded bg-gradient-to-br from-[#FBBF24] to-[#D97706] flex items-center justify-center text-white shadow-[0_4px_12px_rgba(213,170,69,0.3)]">
                                                         <CheckCircle size={20} strokeWidth={2.5} />
                                                     </div>
                                                     <div>
@@ -664,7 +664,7 @@ export default function Desktop() {
                                                         <div className="text-[18px] font-bold text-white tracking-tight">{data.browser.content['04'].title}</div>
                                                     </div>
                                                 </div>
-                                                <div className="flex items-center gap-2.5 border px-4 py-2 rounded-[4px] shadow-[0_0_12px_rgba(213,170,69,0.15)]" style={{ borderColor: 'rgba(213,170,69,0.3)', background: 'rgba(213,170,69,0.1)' }}>
+                                                <div className="flex items-center gap-2.5 border px-4 py-2 rounded shadow-[0_0_12px_rgba(213,170,69,0.15)]" style={{ borderColor: 'rgba(213,170,69,0.3)', background: 'rgba(213,170,69,0.1)' }}>
                                                     <Flame size={16} className="text-[#D5AA45]" />
                                                     <span className="text-[12px] font-black tracking-wide" style={{ color: '#D5AA45' }}>
                                                         {activeHabit.completedDays.length} / 30 Days ({Math.round((activeHabit.completedDays.length / 30) * 100)}%)
@@ -679,7 +679,7 @@ export default function Desktop() {
                                                         <button
                                                             key={h.id}
                                                             onClick={() => setActiveHabitId(h.id)}
-                                                            className={`px-3.5 py-2 rounded-[4px] text-[11.5px] font-bold border transition-all cursor-pointer whitespace-nowrap ${
+                                                            className={`px-3.5 py-2 rounded text-[11.5px] font-bold border transition-all cursor-pointer whitespace-nowrap ${
                                                                 isSelected
                                                                 ? 'bg-[#D5AA45]/20 text-[#F3D887] border-[#D5AA45]/60 shadow-[0_0_12px_rgba(213,170,69,0.25)]'
                                                                 : 'bg-white/[0.03] text-white/50 border-white/[0.06] hover:text-white'
@@ -691,7 +691,7 @@ export default function Desktop() {
                                                 })}
                                             </div>
 
-                                            <div className="bg-white/[0.02] p-6 rounded-[4px] border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)] mb-4">
+                                            <div className="bg-white/[0.02] p-6 rounded border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)] mb-4">
                                                 <div className="flex items-center justify-between mb-4">
                                                     <div>
                                                         <div className="text-[13.5px] font-bold text-white">{activeHabit.label}</div>
@@ -699,7 +699,7 @@ export default function Desktop() {
                                                     </div>
                                                     <button
                                                         onClick={() => toggleDayCompletion(15)}
-                                                        className="px-3 py-1 bg-[#D5AA45]/20 hover:bg-[#D5AA45]/30 text-[#D5AA45] text-[11px] font-bold rounded-[4px] border border-[#D5AA45]/30 cursor-pointer"
+                                                        className="px-3 py-1 bg-[#D5AA45]/20 hover:bg-[#D5AA45]/30 text-[#D5AA45] text-[11px] font-bold rounded border border-[#D5AA45]/30 cursor-pointer"
                                                     >
                                                         Toggle Today
                                                     </button>
@@ -712,7 +712,7 @@ export default function Desktop() {
                                                             <button
                                                                 key={dayNum}
                                                                 onClick={() => toggleDayCompletion(dayNum)}
-                                                                className={`h-11 rounded-[4px] border flex flex-col items-center justify-center transition-all cursor-pointer group ${
+                                                                className={`h-11 rounded border flex flex-col items-center justify-center transition-all cursor-pointer group ${
                                                                     isDone
                                                                     ? 'bg-[#D5AA45] border-[#D5AA45] text-[#071A49] shadow-[0_0_10px_rgba(213,170,69,0.4)] scale-100'
                                                                     : 'bg-white/[0.03] border-white/[0.06] text-white/40 hover:border-white/20 hover:text-white'
@@ -728,15 +728,15 @@ export default function Desktop() {
                                             </div>
 
                                             <div className="grid grid-cols-3 gap-3">
-                                                <div className="bg-white/[0.03] p-3 rounded-[4px] border border-white/[0.06] text-center">
+                                                <div className="bg-white/[0.03] p-3 rounded border border-white/[0.06] text-center">
                                                     <div className="text-[16px] font-black text-[#D5AA45]">{activeHabit.completedDays.length} Days</div>
                                                     <div className="text-[10.5px] text-white/50">Completed in Matrix</div>
                                                 </div>
-                                                <div className="bg-white/[0.03] p-3 rounded-[4px] border border-white/[0.06] text-center">
+                                                <div className="bg-white/[0.03] p-3 rounded border border-white/[0.06] text-center">
                                                     <div className="text-[16px] font-black text-[#10B981]">{30 - activeHabit.completedDays.length} Days</div>
                                                     <div className="text-[10.5px] text-white/50">Remaining</div>
                                                 </div>
-                                                <div className="bg-white/[0.03] p-3 rounded-[4px] border border-white/[0.06] text-center">
+                                                <div className="bg-white/[0.03] p-3 rounded border border-white/[0.06] text-center">
                                                     <div className="text-[16px] font-black text-[#6B8AFF]">{Math.round((activeHabit.completedDays.length / 30) * 100)}%</div>
                                                     <div className="text-[10.5px] text-white/50">Habit Consistency Index</div>
                                                 </div>

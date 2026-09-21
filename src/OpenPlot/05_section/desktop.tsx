@@ -27,14 +27,14 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full py-32 relative font-['Outfit'] overflow-hidden"
+        <section className="w-full py-16 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(135deg, #F8FAFD 0%, #EEF4FF 100%)' }}
         >
-            {/* Background elements */}
-            <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#C5D9FF]/50 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
-            <div className="absolute bottom-[20%] right-[-5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none z-0"></div>
+            
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#C5D9FF]/50 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[20%] right-[-5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none z-0"></motion.div>
 
-            {/* Subtle Grid Pattern */}
+            
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
                 style={{
                     backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
@@ -87,14 +87,14 @@ export default function Desktop() {
                     </motion.div>
 
                     <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-8">
-                        <button className="group relative overflow-hidden text-white px-8 py-4 rounded-xl text-[14px] font-bold hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.3)] active:scale-[0.98] transition-all duration-300 flex items-center gap-3"
+                        <button className="group relative overflow-hidden text-white px-8 py-4 rounded text-[14px] font-bold hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.3)] active:scale-[0.98] transition-all duration-300 flex items-center gap-3"
                             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)` }}
                         >
                             <span className="relative z-10">{data.primaryButton}</span> 
                             <ArrowRight size={16} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.1] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                         </button>
-                        <button className="bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-8 py-4 rounded-xl text-[14px] font-bold hover:bg-[#F8FAFD] hover:border-[#0B1D3A]/30 transition-all flex items-center gap-2 shadow-sm hover:shadow-[0_8px_20px_-8px_rgba(11,29,58,0.1)] active:scale-[0.98]">
+                        <button className="bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-8 py-4 rounded text-[14px] font-bold hover:bg-[#F8FAFD] hover:border-[#0B1D3A]/30 transition-all flex items-center gap-2 shadow-sm hover:shadow-[0_8px_20px_-8px_rgba(11,29,58,0.1)] active:scale-[0.98]">
                             {data.secondaryButton}
                         </button>
                     </motion.div>
@@ -111,16 +111,16 @@ export default function Desktop() {
                     transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="flex-1 max-w-[500px] relative perspective-1000"
                 >
-                    {/* Decorative outer glow */}
+                    
                     <div className="absolute -inset-4 bg-gradient-to-tr from-[#60A5FA]/10 to-[#C99A2E]/10 rounded-[3rem] -z-10 blur-xl"></div>
 
-                    <div className="bg-white/80 backdrop-blur-xl rounded-[32px] p-10 shadow-[0_30px_60px_-15px_rgba(11,29,58,0.15)] border border-white relative z-10 overflow-hidden transform-gpu">
-                        {/* Internal corner glow */}
+                    <div className="bg-white/80 backdrop-blur-xl rounded p-10 shadow-[0_30px_60px_-15px_rgba(11,29,58,0.15)] border border-white relative z-10 overflow-hidden transform-gpu">
+                        
                         <div className="absolute top-[-50px] right-[-50px] w-48 h-48 bg-[#C99A2E]/10 rounded-full blur-3xl pointer-events-none"></div>
 
                         <div className="flex items-center justify-between mb-10 relative z-10">
                             <div className="flex items-center gap-4">
-                                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(245,158,11,0.25)] relative overflow-hidden">
+                                <div className="w-14 h-14 rounded bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(245,158,11,0.25)] relative overflow-hidden">
                                     <div className="absolute inset-0 bg-white/20 translate-y-[100%] transition-transform duration-500 hover:translate-y-0"></div>
                                     <ClipboardList size={26} className="text-white relative z-10" />
                                 </div>
@@ -146,11 +146,11 @@ export default function Desktop() {
                                 
                                 return (
                                     <div key={i} className="flex items-center gap-4 group cursor-default">
-                                        <div className={`w-12 h-12 rounded-xl ${color.bg} flex items-center justify-center text-white font-black text-[16px] shadow-sm shrink-0 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden`}>
+                                        <div className={`w-12 h-12 rounded ${color.bg} flex items-center justify-center text-white font-black text-[16px] shadow-sm shrink-0 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden`}>
                                             <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-300"></div>
                                             <span className="relative z-10">{i + 1}</span>
                                         </div>
-                                        <div className={`flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-sm rounded-xl p-4 group-hover:shadow-[0_8px_20px_-8px_rgba(11,29,58,0.1)] group-hover:border-[#C99A2E]/30 transition-all duration-300 relative overflow-hidden`}>
+                                        <div className={`flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-sm rounded p-4 group-hover:shadow-[0_8px_20px_-8px_rgba(11,29,58,0.1)] group-hover:border-[#C99A2E]/30 transition-all duration-300 relative overflow-hidden`}>
                                             <div className={`absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${color.bg}`}></div>
                                             <span className="text-[16px] font-bold text-[#0B1D3A] ml-1">{step}</span>
                                         </div>
@@ -159,7 +159,7 @@ export default function Desktop() {
                             })}
                         </div>
 
-                        {/* Animated abstract bar chart */}
+                        
                         <div className="mt-10 pt-8 border-t border-[#0B1D3A]/[0.06] flex items-end justify-between h-24 relative overflow-hidden">
                             {[40, 70, 45, 90, 65, 80, 55, 100].map((h, i) => (
                                 <motion.div 
@@ -168,7 +168,7 @@ export default function Desktop() {
                                     whileInView={{ height: `${h}%` }}
                                     viewport={{ once: false }}
                                     transition={{ duration: 1, delay: 0.5 + (i * 0.1), type: "spring", stiffness: 50 }}
-                                    className="w-[10%] bg-gradient-to-t from-[#0B1D3A]/10 to-[#0B1D3A]/5 rounded-t-md hover:from-[#C99A2E]/40 hover:to-[#C99A2E]/20 transition-colors duration-300" 
+                                    className="w-[10%] bg-gradient-to-t from-[#0B1D3A]/10 to-[#0B1D3A]/5 rounded-t hover:from-[#C99A2E]/40 hover:to-[#C99A2E]/20 transition-colors duration-300" 
                                 ></motion.div>
                             ))}
                         </div>
