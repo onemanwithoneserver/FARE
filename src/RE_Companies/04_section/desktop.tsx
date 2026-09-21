@@ -7,17 +7,17 @@ import { CheckCircle2, ArrowRight, BookOpen, BarChart2, Target, Users } from 'lu
 const GOLD = '#C99A2E';
 
 const TAB_ICONS: Record<string, React.ReactNode> = {
-    tab1: <BookOpen size={17} className="text-white" />,
-    tab2: <BarChart2 size={17} className="text-white" />,
-    tab3: <Target size={17} className="text-white" />,
-    tab4: <Users size={17} className="text-white" />
+    tab1: <BookOpen size={18} className="text-white" />,
+    tab2: <BarChart2 size={18} className="text-white" />,
+    tab3: <Target size={18} className="text-white" />,
+    tab4: <Users size={18} className="text-white" />
 };
 
 const TAB_COLORS: Record<string, string> = {
-    tab1: '#10B981',
-    tab2: '#3B82F6',
-    tab3: '#F59E0B',
-    tab4: '#EC4899'
+    tab1: '#10B981', // Emerald
+    tab2: '#3B82F6', // Blue
+    tab3: '#F59E0B', // Amber
+    tab4: '#EC4899'  // Pink
 };
 
 export default function Desktop() {
@@ -29,38 +29,53 @@ export default function Desktop() {
     const activeColor = TAB_COLORS[activeTab] || GOLD;
 
     return (
-        <section className="w-full py-28 bg-[#0B1D3A] text-white relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/8 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
-            <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-gradient-radial from-[#60A5FA]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0"></div>
+        <section className="w-full py-32 bg-[#040C1E] text-white relative font-['Outfit'] overflow-hidden">
+            {/* Dark premium background gradients */}
+            <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></div>
+            <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
 
-            <div className="max-w-[1240px] mx-auto px-12 relative z-10">
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+                style={{
+                    backgroundImage: `radial-gradient(white 1px, transparent 1px)`,
+                    backgroundSize: '32px 32px'
+                }}
+            />
+
+            <div className="max-w-[1320px] mx-auto px-12 relative z-10">
                 <div className="flex flex-col items-center text-center mb-16">
-                    <h2 className="text-[2.75rem] lg:text-[3.25rem] leading-[1.08] font-black tracking-[-0.02em] mb-5 max-w-[800px]">
+                    <h2 className="text-[3rem] lg:text-[3.5rem] leading-[1.05] font-black tracking-[-0.02em] mb-6 max-w-[850px] bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                         {data.headline}
                     </h2>
-                    <p className="text-[17px] font-medium leading-[1.6] text-white/60 max-w-[600px]">
+                    <p className="text-[18px] font-medium leading-[1.6] text-white/60 max-w-[650px]">
                         {data.subtitle}
                     </p>
                 </div>
 
-                <div className="flex justify-center gap-3 mb-12">
+                <div className="flex flex-wrap justify-center gap-3 mb-12">
                     {data.tabs.map(tab => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-3 px-5 py-3 rounded-xl text-[14px] font-semibold transition-all duration-300 border ${
+                            className={`group flex items-center gap-3 px-6 py-3.5 rounded-xl text-[15px] font-bold transition-all duration-400 border relative overflow-hidden ${
                                 activeTab === tab.id
-                                    ? 'bg-white/10 border-[#C99A2E]/40 text-white shadow-[0_4px_20px_rgba(201,154,46,0.12)]'
-                                    : 'bg-white/[0.03] border-white/[0.08] text-white/60 hover:text-white hover:bg-white/[0.06]'
+                                    ? 'bg-white/10 border-white/20 text-white shadow-[0_0_30px_rgba(255,255,255,0.05)] scale-[1.02]'
+                                    : 'bg-white/[0.02] border-white/[0.05] text-white/50 hover:text-white/90 hover:bg-white/[0.06] hover:border-white/10'
                             }`}
                         >
+                            {activeTab === tab.id && (
+                                <motion.div 
+                                    layoutId="activeTabIndicator"
+                                    className="absolute inset-0 opacity-20 pointer-events-none"
+                                    style={{ background: `linear-gradient(90deg, transparent, ${TAB_COLORS[tab.id]}, transparent)` }}
+                                />
+                            )}
                             <div
-                                className="w-7 h-7 rounded-lg flex items-center justify-center text-white shrink-0 shadow-sm"
+                                className={`w-8 h-8 rounded-lg flex items-center justify-center text-white shrink-0 shadow-md transition-transform duration-300 ${activeTab === tab.id ? 'scale-110' : 'group-hover:scale-110'}`}
                                 style={{ backgroundColor: TAB_COLORS[tab.id] }}
                             >
                                 {TAB_ICONS[tab.id]}
                             </div>
-                            {tab.title}
+                            <span className="relative z-10">{tab.title}</span>
                         </button>
                     ))}
                 </div>
@@ -68,29 +83,45 @@ export default function Desktop() {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeTab}
-                        initial={{ opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -16 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden backdrop-blur-sm"
+                        initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -20, scale: 0.98 }}
+                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                        className="bg-[#0A1630]/60 border border-white/10 rounded-[32px] overflow-hidden backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] relative"
                     >
-                        <div className="p-10 flex flex-col lg:flex-row gap-10">
-                            <div className="flex-1 flex flex-col">
-                                <h3 className="text-[26px] font-bold mb-4 leading-tight">{activeContent.title}</h3>
-                                <p className="text-[15px] text-white/65 leading-relaxed mb-8">{activeContent.desc}</p>
+                        {/* Dynamic accent glow based on active tab */}
+                        <div 
+                            className="absolute top-0 left-1/4 w-1/2 h-[1px] opacity-70 transition-colors duration-500" 
+                            style={{ background: `linear-gradient(90deg, transparent, ${activeColor}, transparent)` }} 
+                        />
+                        <div 
+                            className="absolute top-0 right-0 w-[400px] h-[400px] opacity-10 blur-[80px] pointer-events-none transition-colors duration-500 rounded-bl-full" 
+                            style={{ background: activeColor }} 
+                        />
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+                        <div className="p-12 lg:p-14 flex flex-col lg:flex-row gap-12 relative z-10">
+                            {/* Left Content Column */}
+                            <div className="flex-1 flex flex-col">
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: activeColor }}>
+                                        {TAB_ICONS[activeTab]}
+                                    </div>
+                                    <h3 className="text-[32px] font-bold leading-tight text-white">{activeContent.title}</h3>
+                                </div>
+                                <p className="text-[17px] text-white/70 leading-relaxed mb-10 max-w-[800px] font-medium">{activeContent.desc}</p>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                                     {activeContent.sections.map((section: { heading: string; items: string[] }, idx: number) => (
-                                        <div key={idx}>
-                                            <h4 className="text-[13px] font-bold uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: activeColor }}>
-                                                <div className="w-1.5 h-4 rounded-full" style={{ backgroundColor: activeColor }}></div>
+                                        <div key={idx} className="bg-white/[0.02] rounded-2xl p-6 border border-white/[0.05]">
+                                            <h4 className="text-[14px] font-bold uppercase tracking-[0.15em] mb-5 flex items-center gap-3" style={{ color: activeColor }}>
+                                                <div className="w-1.5 h-1.5 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)]" style={{ backgroundColor: activeColor }}></div>
                                                 {section.heading}
                                             </h4>
-                                            <ul className="flex flex-col gap-2.5">
+                                            <ul className="flex flex-col gap-4">
                                                 {section.items.map((item: string, i: number) => (
-                                                    <li key={i} className="flex items-start gap-2.5 text-[14px] text-white/85">
-                                                        <div className="w-4 h-4 rounded-full bg-[#10B981] flex items-center justify-center text-white shrink-0 mt-0.5 shadow-sm">
-                                                            <CheckCircle2 size={11} strokeWidth={3} className="text-white" />
+                                                    <li key={i} className="flex items-start gap-3.5 text-[15.5px] text-white/80 font-medium">
+                                                        <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-sm bg-white/10" style={{ color: activeColor }}>
+                                                            <CheckCircle2 size={14} strokeWidth={2.5} />
                                                         </div>
                                                         <span className="leading-snug">{item}</span>
                                                     </li>
@@ -101,17 +132,18 @@ export default function Desktop() {
                                 </div>
                             </div>
 
-                            <div className="w-[300px] shrink-0 flex flex-col gap-5">
+                            {/* Right Sidebar Column */}
+                            <div className="w-full lg:w-[380px] shrink-0 flex flex-col gap-6">
                                 {activeContent.journey && (
-                                    <div className="bg-white/[0.06] rounded-xl p-6 border border-white/[0.08]">
-                                        <h4 className="text-[11px] font-bold text-white/45 uppercase tracking-[0.15em] mb-4">{data.journeyLabel}</h4>
-                                        <div className="flex flex-col gap-2">
+                                    <div className="bg-[#040C1E]/50 rounded-2xl p-7 border border-white/5 backdrop-blur-md">
+                                        <h4 className="text-[12px] font-bold text-white/40 uppercase tracking-[0.2em] mb-5">{data.journeyLabel}</h4>
+                                        <div className="flex flex-col gap-3">
                                             {activeContent.journey.split(' → ').map((step: string, i: number, arr: string[]) => (
-                                                <div key={i} className="flex items-center gap-2.5">
-                                                    <div className="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold text-white/60">{i + 1}</div>
-                                                    <span className="text-[14px] font-semibold" style={{ color: activeColor }}>{step}</span>
+                                                <div key={i} className="flex items-center gap-3.5 group">
+                                                    <div className="w-8 h-8 rounded-full border-2 border-white/10 flex items-center justify-center text-[11px] font-bold text-white/50 group-hover:border-white/30 group-hover:text-white transition-colors">{i + 1}</div>
+                                                    <span className="text-[15.5px] font-bold transition-colors" style={{ color: i === arr.length - 1 ? activeColor : 'rgba(255,255,255,0.8)' }}>{step}</span>
                                                     {i < arr.length - 1 && (
-                                                        <ArrowRight size={12} className="text-white/30 ml-auto" />
+                                                        <ArrowRight size={14} className="text-white/20 ml-auto" />
                                                     )}
                                                 </div>
                                             ))}
@@ -120,29 +152,33 @@ export default function Desktop() {
                                 )}
 
                                 {activeContent.evaluateBasedOn && (
-                                    <div className="bg-white/[0.06] rounded-xl p-6 border border-white/[0.08]">
-                                        <h4 className="text-[11px] font-bold text-white/45 uppercase tracking-[0.15em] mb-3">{data.evaluateLabel}</h4>
-                                        <div className="flex flex-wrap gap-1.5">
+                                    <div className="bg-[#040C1E]/50 rounded-2xl p-7 border border-white/5 backdrop-blur-md flex-grow">
+                                        <h4 className="text-[12px] font-bold text-white/40 uppercase tracking-[0.2em] mb-4">{data.evaluateLabel}</h4>
+                                        <div className="flex flex-wrap gap-2">
                                             {activeContent.evaluateBasedOn.split(' · ').map((tag: string, i: number) => (
-                                                <span key={i} className="px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/[0.08] text-[12px] font-medium text-white/80">{tag}</span>
+                                                <span key={i} className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-[13px] font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-default">{tag}</span>
                                             ))}
                                         </div>
                                     </div>
                                 )}
 
-                                <div className="bg-gradient-to-br from-[#0F2751] to-[#071A49] rounded-xl p-6 border border-[#C99A2E]/20 shadow-[0_8px_30px_rgba(0,0,0,0.2)] mt-auto">
-                                    <p className="text-[14px] font-bold italic mb-5 text-white/85 text-center leading-snug">"{activeContent.footerText}"</p>
-                                    <div className="flex flex-col gap-2.5 w-full">
+                                <div className="bg-gradient-to-b from-white/10 to-white/5 rounded-2xl p-8 border border-white/10 shadow-[0_15px_30px_rgba(0,0,0,0.3)] mt-2 relative overflow-hidden backdrop-blur-md">
+                                    <div className="absolute top-0 right-0 w-32 h-32 opacity-20 blur-[30px]" style={{ background: activeColor }}></div>
+                                    
+                                    <p className="text-[15px] font-medium italic mb-6 text-white/90 text-center leading-relaxed relative z-10">"{activeContent.footerText}"</p>
+                                    <div className="flex flex-col gap-3 w-full relative z-10">
                                         {activeContent.buttons.map((btn: string, idx: number) => (
                                             <button
                                                 key={idx}
-                                                className={`w-full py-3 px-4 rounded-lg text-[13px] font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                                                className={`group relative overflow-hidden w-full py-4 px-5 rounded-xl text-[14px] font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
                                                     idx === 0
-                                                        ? 'bg-[#C99A2E] text-[#0B1D3A] hover:bg-[#D5AA45] shadow-lg hover:shadow-xl'
-                                                        : 'bg-white/10 text-white hover:bg-white/15'
+                                                        ? 'text-[#040C1E] shadow-[0_8px_20px_-5px_rgba(255,255,255,0.2)] hover:shadow-[0_15px_25px_-5px_rgba(255,255,255,0.3)] active:scale-[0.98]'
+                                                        : 'bg-white/5 text-white hover:bg-white/10 border border-white/10 active:scale-[0.98]'
                                                 }`}
+                                                style={idx === 0 ? { backgroundColor: 'white' } : {}}
                                             >
-                                                {btn} <ArrowRight size={14} />
+                                                <span className="relative z-10">{btn}</span>
+                                                <ArrowRight size={16} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                                             </button>
                                         ))}
                                     </div>

@@ -1,10 +1,11 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { AlertCircle } from 'lucide-react';
+import { AlertCircle, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
 const NAVY = '#0B1D3A';
+const GOLD = '#C99A2E';
 
 export default function Desktop() {
     const { language } = useLanguage();
@@ -19,13 +20,27 @@ export default function Desktop() {
     };
 
     const item: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+        hidden: { opacity: 0, y: 24 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } }
     };
 
     return (
-        <section className="w-full py-32 bg-white relative font-['Outfit'] overflow-hidden">
-            <div className="max-w-[1240px] mx-auto px-12 relative z-10">
+        <section className="w-full py-32 relative font-['Outfit'] overflow-hidden"
+            style={{ background: 'linear-gradient(180deg, #EEF4FF 0%, #FFFFFF 50%, #F8FAFD 100%)' }}
+        >
+            {/* Decorative background elements */}
+            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-radial from-[#DBEAFE]/40 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+            
+            {/* Subtle dot pattern */}
+            <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
+                style={{
+                    backgroundImage: `radial-gradient(${NAVY} 1px, transparent 1px)`,
+                    backgroundSize: '24px 24px'
+                }}
+            />
+
+            <div className="max-w-[1280px] mx-auto px-12 relative z-10">
                 <motion.div
                     variants={container}
                     initial="hidden"
@@ -33,12 +48,12 @@ export default function Desktop() {
                     viewport={{ once: false, margin: "-100px" }}
                     className="flex flex-col items-center text-center mb-20"
                 >
-                    <motion.div variants={item} className="mb-4">
-                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                    <motion.div variants={item} className="mb-5">
+                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
                             {data.overline}
                         </span>
                     </motion.div>
-                    <motion.h2 variants={item} className="text-[2.5rem] lg:text-[3rem] leading-[1.1] font-black tracking-[-0.02em] mb-6 max-w-[800px]" style={{ color: NAVY }}>
+                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]" style={{ color: NAVY }}>
                         {data.headline}
                     </motion.h2>
                 </motion.div>
@@ -48,18 +63,22 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24 relative"
                 >
                     {data.challenges.map((challenge, index) => (
                         <motion.div
                             key={index}
                             variants={item}
-                            className="bg-[#F8FAFD] border border-[#0B1D3A]/5 rounded-2xl p-6 flex items-start gap-4 hover:shadow-[0_10px_30px_-10px_rgba(11,29,58,0.1)] transition-all duration-300"
+                            whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+                            className="group bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded-[24px] p-8 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.04)] hover:shadow-[0_20px_50px_-15px_rgba(11,29,58,0.12)] transition-all duration-400 relative overflow-hidden flex flex-col"
                         >
-                            <div className="w-10 h-10 rounded-xl bg-[#EF4444] text-white shadow-sm flex items-center justify-center shrink-0">
-                                <AlertCircle size={20} strokeWidth={2.5} />
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#EF4444]/10 to-transparent rounded-bl-full blur-[20px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            
+                            <div className="w-12 h-12 rounded-2xl bg-[#FEF2F2] flex items-center justify-center shrink-0 mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden">
+                                <div className="absolute inset-0 bg-[#EF4444]/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300"></div>
+                                <AlertCircle size={22} strokeWidth={2.5} className="text-[#EF4444] relative z-10" />
                             </div>
-                            <p className="text-[16px] font-semibold text-[#0B1D3A] leading-snug pt-1.5">
+                            <p className="text-[17px] font-bold text-[#0B1D3A] leading-[1.5] relative z-10">
                                 {challenge}
                             </p>
                         </motion.div>
@@ -70,15 +89,27 @@ export default function Desktop() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "-100px" }}
-                    transition={{ duration: 0.8 }}
-                    className="bg-gradient-to-br from-[#0B1D3A] to-[#071A49] rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden"
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="max-w-[1000px] mx-auto bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-[32px] p-16 text-center shadow-[0_20px_60px_-15px_rgba(11,29,58,0.3)] relative overflow-hidden"
                 >
-                    <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 0%, #C99A2E 0%, transparent 70%)' }}></div>
-                    <h3 className="text-white text-[24px] md:text-[28px] font-medium leading-snug max-w-[800px] mx-auto mb-6 relative z-10">
+                    <div className="absolute top-0 right-0 w-72 h-72 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#60A5FA]/10 rounded-full blur-[60px] pointer-events-none"></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#C99A2E]/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"></div>
+
+                    <h3 className="text-white text-[26px] md:text-[30px] font-medium leading-[1.4] max-w-[850px] mx-auto mb-8 relative z-10">
                         {data.transitionTitle}
                     </h3>
-                    <h4 className="text-[#C99A2E] text-[32px] md:text-[40px] font-black tracking-tight relative z-10">
+                    <h4 className="text-[#C99A2E] text-[36px] md:text-[44px] font-black tracking-[-0.02em] relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                         {data.transitionSubtitle}
+                        <motion.div
+                            animate={{ x: [0, 8, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                            className="hidden sm:block"
+                        >
+                            <ArrowRight size={32} />
+                        </motion.div>
                     </h4>
                 </motion.div>
             </div>

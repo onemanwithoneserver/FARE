@@ -6,7 +6,7 @@ import { ArrowRight, Check, Settings2, Sparkles } from 'lucide-react';
 import React from 'react';
 
 const NAVY = '#0B1D3A';
-const NAVY_DEEP = '#071A49';
+const GOLD = '#C99A2E';
 
 export default function Mobile() {
     const { language } = useLanguage();
@@ -29,9 +29,9 @@ export default function Mobile() {
 
     return (
         <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
+            <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#F1F5FB] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
 
-            <div className="w-full px-6 relative z-10">
+            <div className="w-full px-5 relative z-10">
                 <motion.div
                     variants={container}
                     initial="hidden"
@@ -40,14 +40,15 @@ export default function Mobile() {
                     className="flex flex-col gap-10"
                 >
                     <div className="flex flex-col">
-                        <motion.div variants={item} className="mb-3 flex items-center gap-2 text-[#C99A2E]">
-                            <div className="w-5 h-5 rounded-md bg-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0 mt-0.5">
-                                <Settings2 size={11} className="text-white" />
-                            </div>
-                            <span className="text-[10px] font-bold tracking-[0.2em] uppercase">
+                        <motion.div variants={item} className="mb-4">
+                            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
+                                <div className="w-5 h-5 rounded-[6px] bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0">
+                                    <Settings2 size={11} className="text-white" />
+                                </div>
                                 {data.title === data.overline ? data.title : `${data.title} — ${data.overline}`}
                             </span>
                         </motion.div>
+                        
                         <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-6" style={{ color: NAVY }}>
                             {headlineSentences.map((sentence, i) => (
                                 <React.Fragment key={i}>
@@ -57,40 +58,48 @@ export default function Mobile() {
                         </motion.h2>
 
                         <motion.div variants={item} className="mb-6">
-                            <p className="text-[15px] font-semibold mb-3" style={{ color: NAVY }}>{data.desc1}</p>
-                            <div className="flex flex-wrap gap-2 mb-5">
+                            <p className="text-[16px] font-bold mb-4" style={{ color: NAVY }}>{data.desc1}</p>
+                            
+                            <div className="flex flex-wrap gap-2 mb-6">
                                 {data.highlights.split(' · ').map((highlight, idx) => (
-                                    <div key={idx} className="bg-[#F8FAFD] text-[#0B1D3A] border border-[#0B1D3A]/10 px-2.5 py-1 rounded-md text-[12px] font-semibold">
+                                    <div key={idx} className="bg-[#F8FAFD] text-[#0B1D3A] border border-[#0B1D3A]/10 px-3 py-1.5 rounded-lg text-[12px] font-semibold">
                                         {highlight}
                                     </div>
                                 ))}
                             </div>
-                            <p className="text-[14.5px] font-medium leading-[1.6]" style={{ color: '#596780' }}>
-                                <Sparkles size={14} className="inline text-[#C99A2E] mr-1.5 -mt-1" />
-                                {data.desc2}
-                            </p>
+                            
+                            <div className="bg-[#F8FAFD] rounded-xl p-4 border border-[#0B1D3A]/[0.06] flex items-start gap-3">
+                                <div className="mt-0.5 w-6 h-6 rounded-full bg-[#C99A2E]/10 flex items-center justify-center shrink-0">
+                                    <Sparkles size={12} className="text-[#C99A2E]" />
+                                </div>
+                                <p className="text-[14.5px] font-medium leading-[1.6]" style={{ color: '#475569' }}>
+                                    {data.desc2}
+                                </p>
+                            </div>
                         </motion.div>
                     </div>
 
                     <motion.div
                         variants={item}
-                        className="bg-white border border-[#0B1D3A]/10 rounded-2xl p-6 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative"
+                        className="bg-white border border-[#0B1D3A]/[0.06] rounded-[24px] p-7 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.1)] relative overflow-hidden"
                     >
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/5 rounded-bl-full rounded-tr-2xl"></div>
+                        <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[#C99A2E]/10 to-transparent rounded-bl-full pointer-events-none opacity-60"></div>
 
-                        <h3 className="text-[18px] font-bold mb-6 relative z-10" style={{ color: NAVY_DEEP }}>
+                        <h3 className="text-[18px] font-bold mb-6 relative z-10 flex items-center gap-3" style={{ color: NAVY }}>
+                            <div className="w-1.5 h-6 rounded-full" style={{ background: GOLD }}></div>
                             {data.featuresHeading}
                         </h3>
 
                         <div className="flex flex-col gap-4 relative z-10">
                             {data.features.map((feature, idx) => {
-                                const featureColors = ['bg-[#10B981]', 'bg-[#3B82F6]', 'bg-[#8B5CF6]', 'bg-[#F59E0B]', 'bg-[#EC4899]', 'bg-[#06B6D4]'];
+                                const featureColors = ['text-[#10B981]', 'text-[#3B82F6]', 'text-[#8B5CF6]', 'text-[#F59E0B]', 'text-[#EC4899]', 'text-[#06B6D4]'];
+                                const bgColors = ['bg-[#10B981]/10', 'bg-[#3B82F6]/10', 'bg-[#8B5CF6]/10', 'bg-[#F59E0B]/10', 'bg-[#EC4899]/10', 'bg-[#06B6D4]/10'];
                                 return (
-                                    <div key={idx} className="flex items-start gap-3">
-                                        <div className={`w-5 h-5 rounded-full ${featureColors[idx % featureColors.length]} flex items-center justify-center shrink-0 text-white shadow-sm mt-0.5`}>
-                                            <Check size={10} className="text-white" strokeWidth={3} />
+                                    <div key={idx} className="flex items-center gap-3.5">
+                                        <div className={`w-8 h-8 rounded-lg ${bgColors[idx % bgColors.length]} flex items-center justify-center shrink-0 shadow-sm`}>
+                                            <Check size={14} className={`${featureColors[idx % featureColors.length]}`} strokeWidth={3} />
                                         </div>
-                                        <span className="text-[14px] font-semibold text-[#0B1D3A]/80 leading-snug">
+                                        <span className="text-[14.5px] font-semibold text-[#0B1D3A]/80 leading-snug">
                                             {feature}
                                         </span>
                                     </div>
@@ -99,11 +108,14 @@ export default function Mobile() {
                         </div>
                     </motion.div>
 
-                    <motion.div variants={item} className="bg-gradient-to-br from-[#F8FAFD] to-[#EEF4FF] border border-[#0B1D3A]/5 rounded-xl p-6 shadow-sm flex flex-col items-center text-center">
-                        <h3 className="text-[16px] font-bold mb-2" style={{ color: NAVY_DEEP }}>{data.ctaHeading}</h3>
-                        <p className="text-[13px] font-medium text-[#596780] mb-5">{data.ctaDesc}</p>
-                        <button className="w-full bg-[#0B1D3A] text-white px-6 py-3.5 rounded-[4px] text-[13.5px] font-semibold flex items-center justify-center gap-2 shadow-sm">
-                            {data.ctaButton} <ArrowRight size={15} />
+                    <motion.div variants={item} className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-[20px] p-8 shadow-[0_15px_30px_-10px_rgba(11,29,58,0.2)] flex flex-col items-center text-center relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#C99A2E]/20 rounded-full blur-[30px] pointer-events-none"></div>
+                        
+                        <h3 className="text-[18px] font-bold mb-2 text-white relative z-10">{data.ctaHeading}</h3>
+                        <p className="text-[13.5px] font-medium text-white/70 mb-6 relative z-10">{data.ctaDesc}</p>
+                        
+                        <button className="group w-full bg-white text-[#0B1D3A] px-6 py-4 rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all relative z-10">
+                            {data.ctaButton} <ArrowRight size={15} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                     </motion.div>
 

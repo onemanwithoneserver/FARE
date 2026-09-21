@@ -5,6 +5,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
 const NAVY = '#0B1D3A';
+const GOLD = '#C99A2E';
 
 export default function Mobile() {
     const { language } = useLanguage();
@@ -28,44 +29,48 @@ export default function Mobile() {
     };
 
     const categoryIcons = {
-        TrendingUp: <TrendingUp size={18} className="text-white" />,
-        MessageCircle: <MessageCircle size={18} className="text-white" />,
-        Monitor: <Monitor size={18} className="text-white" />,
-        Shield: <Shield size={18} className="text-white" />,
-        Heart: <Heart size={18} className="text-white" />,
-        Megaphone: <Megaphone size={18} className="text-white" />,
-        Database: <Database size={18} className="text-white" />,
-        Settings: <Settings size={18} className="text-white" />
+        TrendingUp: <TrendingUp size={20} className="text-white relative z-10" />,
+        MessageCircle: <MessageCircle size={20} className="text-white relative z-10" />,
+        Monitor: <Monitor size={20} className="text-white relative z-10" />,
+        Shield: <Shield size={20} className="text-white relative z-10" />,
+        Heart: <Heart size={20} className="text-white relative z-10" />,
+        Megaphone: <Megaphone size={20} className="text-white relative z-10" />,
+        Database: <Database size={20} className="text-white relative z-10" />,
+        Settings: <Settings size={20} className="text-white relative z-10" />
     };
 
     return (
-        <section className="w-full py-12 bg-white relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#E0E7FF]/40 to-transparent rounded-full blur-[60px] pointer-events-none"></div>
+        <section className="w-full py-20 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+            <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[60px] pointer-events-none"></div>
 
-            <div className="px-6 relative z-10">
+            <div className="px-5 relative z-10">
                 <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-50px" }}
-                    className="flex flex-col items-center text-center mb-12"
+                    className="flex flex-col items-center text-center mb-16"
                 >
-
                     <motion.div variants={item} className="mb-4">
-                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                        <span className="inline-flex items-center px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
                             {data.overline}
                         </span>
                     </motion.div>
-                    <motion.h2 variants={item} className="text-[2.25rem] leading-[1.15] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }}>
-                        {data.headline}
+                    
+                    <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }}>
+                        {data.headline.split(' ').map((word, i, arr) => (
+                            <span key={i} className={i >= arr.length - 2 ? "text-[#C99A2E]" : ""}>
+                                {word}{' '}
+                            </span>
+                        ))}
                     </motion.h2>
 
-                    <motion.p variants={item} className="text-[15px] font-medium leading-[1.6]" style={{ color: '#596780' }}>
+                    <motion.p variants={item} className="text-[14.5px] font-medium leading-[1.65] text-[#475569]">
                         {data.subtitle}
                     </motion.p>
                 </motion.div>
 
-                <div className="flex flex-col gap-5 mb-16">
+                <div className="flex flex-col gap-6 mb-20">
                     {data.categories.map((category, index) => (
                         <motion.div
                             key={index}
@@ -73,28 +78,31 @@ export default function Mobile() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.5, delay: 0 }}
-                            className="bg-white border border-[#0B1D3A]/10 rounded-2xl p-5 shadow-[0_2px_10px_-2px_rgba(11,29,58,0.03)] relative overflow-hidden"
+                            className="bg-white border border-[#0B1D3A]/[0.06] rounded-[20px] p-6 shadow-[0_4px_15px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
                         >
-                            <div className="flex items-center gap-3 mb-5 relative z-10">
-                                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-md shrink-0" style={{ backgroundColor: category.color }}>
+                            <div className="absolute top-0 right-0 w-32 h-32 opacity-[0.05] blur-[30px] rounded-bl-full pointer-events-none" style={{ background: category.color }}></div>
+
+                            <div className="flex items-center gap-4 mb-6 relative z-10">
+                                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md shrink-0" style={{ backgroundColor: category.color }}>
                                     {categoryIcons[category.icon as keyof typeof categoryIcons]}
                                 </div>
-                                <h3 className="text-[17px] font-bold" style={{ color: NAVY }}>
+                                <h3 className="text-[18px] font-bold" style={{ color: NAVY }}>
                                     {category.title}
                                 </h3>
                             </div>
 
-                            <div className="flex flex-col gap-4 relative z-10">
+                            <div className="flex flex-col gap-5 relative z-10">
                                 {category.subcategories.map((sub, idx) => (
-                                    <div key={idx}>
+                                    <div key={idx} className="bg-[#F8FAFD]/50 rounded-xl p-4 border border-[#0B1D3A]/[0.03]">
                                         {sub.label && (
-                                            <h4 className="text-[11px] font-bold uppercase tracking-wider mb-2.5" style={{ color: category.color }}>
+                                            <h4 className="text-[11px] font-bold uppercase tracking-[0.15em] mb-3 flex items-center gap-2" style={{ color: category.color }}>
+                                                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: category.color }}></div>
                                                 {sub.label}
                                             </h4>
                                         )}
                                         <div className="flex flex-wrap gap-2">
                                             {sub.skills.map((skill, sIdx) => (
-                                                <span key={sIdx} className="bg-[#F8FAFD] border border-[#0B1D3A]/5 px-2.5 py-1 rounded-lg text-[12.5px] font-medium text-[#3A4A63]">
+                                                <span key={sIdx} className="bg-white border border-[#0B1D3A]/[0.06] px-3 py-1.5 rounded-[8px] text-[13px] font-medium text-[#3A4A63] shadow-sm">
                                                     {skill}
                                                 </span>
                                             ))}
@@ -110,19 +118,27 @@ export default function Mobile() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
-                    transition={{ duration: 0.8 }}
-                    className="p-6 bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-2xl text-center relative overflow-hidden"
+                    transition={{ duration: 0.6 }}
                 >
-                    <h3 className="text-[18px] font-bold text-[#0B1D3A] mb-2 relative z-10 flex items-center justify-center gap-2">
-                        {data.footerLine1} <Sparkles size={16} className="text-[#C99A2E]" />
-                    </h3>
-                    <p className="text-[12px] font-semibold text-[#596780] mb-6 uppercase tracking-widest relative z-10">
-                        {data.footerLine2}
-                    </p>
-                    <p className="text-[14px] font-medium text-[#3A4A63] bg-white py-3 px-4 rounded-xl border border-[#0B1D3A]/10 shadow-sm relative z-10">
-                        {data.footerCta}
-                    </p>
+                    <div className="bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[24px] p-8 text-center relative overflow-hidden shadow-[0_15px_30px_-10px_rgba(11,29,58,0.1)]">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[40px] pointer-events-none"></div>
+                        
+                        <div className="relative z-10 flex flex-col items-center">
+                            <h3 className="text-[20px] font-bold text-[#0B1D3A] mb-3 flex items-center justify-center gap-2.5">
+                                {data.footerLine1} <Sparkles size={18} className="text-[#C99A2E]" />
+                            </h3>
+                            <p className="text-[14px] font-bold text-[#64748B] mb-6 uppercase tracking-[0.2em]">
+                                {data.footerLine2}
+                            </p>
+                            <div className="bg-[#F8FAFD] border border-[#0B1D3A]/10 py-4 px-6 rounded-xl w-full shadow-sm">
+                                <p className="text-[15px] font-bold text-[#0B1D3A] leading-snug">
+                                    {data.footerCta}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </motion.div>
+
             </div>
         </section>
     );

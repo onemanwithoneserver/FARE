@@ -19,55 +19,60 @@ export default function Desktop() {
     };
 
     const item: Variants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 30 },
         show: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+            transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] }
         }
     };
 
     const iconData = [
-        { Icon: Unlink, color: "#EF4444" },
-        { Icon: UserX, color: "#F59E0B" },
-        { Icon: ListChecks, color: "#3B82F6" },
-        { Icon: Clock, color: "#8B5CF6" },
-        { Icon: MonitorX, color: "#EC4899" },
-        { Icon: Globe, color: "#10B981" },
-        { Icon: Building2, color: "#6366F1" },
-        { Icon: FileEdit, color: "#F97316" }
+        { Icon: Unlink, color: "#EF4444" }, // Red
+        { Icon: UserX, color: "#F59E0B" }, // Amber
+        { Icon: ListChecks, color: "#3B82F6" }, // Blue
+        { Icon: Clock, color: "#8B5CF6" }, // Purple
+        { Icon: MonitorX, color: "#EC4899" }, // Pink
+        { Icon: Globe, color: "#10B981" }, // Emerald
+        { Icon: Building2, color: "#6366F1" }, // Indigo
+        { Icon: FileEdit, color: "#F97316" } // Orange
     ];
 
     const sectionTitle = data.title;
 
     return (
-        <section className="w-full py-20 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[80px] pointer-events-none"></div>
+        <section className="w-full py-32 bg-[#040C1E] relative font-['Outfit'] overflow-hidden">
+            {/* Premium Dark Theme Background Orbs */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></div>
+            <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
 
-            <div className="max-w-[1240px] mx-auto px-12 relative z-10">
+            {/* Micro-pattern overlay for texture */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+                style={{
+                    backgroundImage: `radial-gradient(white 1px, transparent 1px)`,
+                    backgroundSize: '32px 32px'
+                }}
+            />
+
+            <div className="max-w-[1320px] mx-auto px-12 relative z-10">
                 <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="flex flex-col items-center text-center mb-20"
+                    className="flex flex-col items-center text-center mb-24"
                 >
-                    <motion.div variants={item} className="mb-4">
-                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            Common Challenges
-                        </span>
-                    </motion.div>
-
-                    <motion.div variants={item} className="mb-4">
-                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                    <motion.div variants={item} className="mb-6">
+                        <span className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10 shadow-[0_0_15px_rgba(201,154,46,0.15)] backdrop-blur-sm" style={{ color: GOLD }}>
                             {data.overline}
                         </span>
                     </motion.div>
-                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.25rem] leading-[1.1] font-black tracking-[-0.02em] mb-6 max-w-[850px] text-white">
+                    
+                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.05] font-black tracking-[-0.02em] mb-8 max-w-[850px] bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
                         {sectionTitle}
                     </motion.h2>
 
-                    <motion.p variants={item} className="text-[18px] font-medium leading-[1.6] max-w-[680px] text-white/70">
+                    <motion.p variants={item} className="text-[18px] font-medium leading-[1.65] max-w-[700px] text-white/60">
                         {data.subtitle}
                     </motion.p>
                 </motion.div>
@@ -77,7 +82,7 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="grid grid-cols-2 lg:grid-cols-4 gap-5 relative mb-20"
+                    className="grid grid-cols-2 lg:grid-cols-4 gap-6 relative mb-28"
                 >
                     {data.challenges.map((challenge, index) => {
                         const { Icon, color } = iconData[index];
@@ -85,42 +90,60 @@ export default function Desktop() {
                             <motion.div
                                 key={index}
                                 variants={item}
-                                whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                                className="bg-white/[0.03] border border-white/10 rounded-2xl p-7 hover:bg-white/[0.06] transition-all duration-300 group relative overflow-hidden flex flex-col items-center text-center"
+                                className="group relative"
                             >
-                                <div 
-                                    className="mb-5 p-3.5 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-md"
-                                    style={{ backgroundColor: color }}
-                                >
-                                    <Icon size={24} className="text-white" />
+                                {/* Hover Glow Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl" style={{ mixBlendMode: 'overlay' }}></div>
+                                
+                                <div className="bg-[#0A1630]/60 backdrop-blur-xl border border-white/10 rounded-[24px] p-8 hover:bg-[#0E1F42]/80 hover:border-white/20 transition-all duration-400 relative overflow-hidden flex flex-col h-full shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)] group-hover:-translate-y-2">
+                                    {/* Accent corner gradient */}
+                                    <div className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-[30px] rounded-bl-full pointer-events-none" style={{ background: color }}></div>
+
+                                    <div className="flex items-center justify-between mb-8 relative z-10">
+                                        <div 
+                                            className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.3)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
+                                            style={{ backgroundColor: `${color}15`, border: `1px solid ${color}30` }}
+                                        >
+                                            <Icon size={24} style={{ color: color }} className="relative z-10" />
+                                        </div>
+                                        <span className="text-[14px] font-bold tracking-[0.1em] text-white/20 group-hover:text-white/40 transition-colors font-serif">
+                                            {String(index + 1).padStart(2, '0')}
+                                        </span>
+                                    </div>
+                                    
+                                    <h3 className="text-[17px] font-bold leading-[1.4] text-white/90 group-hover:text-white transition-colors relative z-10">
+                                        {challenge}
+                                    </h3>
                                 </div>
-                                <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-white/20 mb-2">
-                                    {String(index + 1).padStart(2, '0')}
-                                </span>
-                                <h3 className="text-[15px] font-bold leading-snug text-white">
-                                    {challenge}
-                                </h3>
                             </motion.div>
                         );
                     })}
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
-                    transition={{ duration: 0.8 }}
-                    className="max-w-[800px] mx-auto text-center bg-white/[0.05] border border-white/10 rounded-3xl p-12 shadow-2xl relative overflow-hidden"
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="max-w-[850px] mx-auto"
                 >
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/10 rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#60A5FA]/10 rounded-full blur-3xl"></div>
+                    <div className="bg-gradient-to-r from-[#0F2751]/80 via-[#132D5F] to-[#0F2751]/80 backdrop-blur-xl border border-white/10 rounded-[32px] p-12 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] relative overflow-hidden text-center group cursor-default">
+                        {/* Dynamic background lighting */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/15 rounded-full blur-[60px] group-hover:bg-[#C99A2E]/25 transition-colors duration-700 pointer-events-none"></div>
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#3B82F6]/10 rounded-full blur-[60px] group-hover:bg-[#3B82F6]/20 transition-colors duration-700 pointer-events-none"></div>
 
-                    <h3 className="text-[26px] font-bold text-white mb-4 relative z-10 leading-snug">
-                        {data.transitionTitle}
-                    </h3>
-                    <p className="text-[20px] font-medium text-[#C99A2E] flex items-center justify-center gap-3 relative z-10">
-                        {data.transitionSubtitle} <ArrowRight size={20} className="animate-pulse" />
-                    </p>
+                        <div className="relative z-10 flex flex-col items-center">
+                            <h3 className="text-[28px] font-bold text-white mb-6 leading-tight">
+                                {data.transitionTitle}
+                            </h3>
+                            <div className="inline-flex items-center justify-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-xl backdrop-blur-md group-hover:bg-white/10 transition-colors duration-300">
+                                <span className="text-[18px] font-bold text-[#C99A2E] tracking-wide">
+                                    {data.transitionSubtitle}
+                                </span>
+                                <ArrowRight size={20} className="text-[#C99A2E] animate-pulse" />
+                            </div>
+                        </div>
+                    </div>
                 </motion.div>
             </div>
         </section>

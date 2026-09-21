@@ -5,6 +5,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
 const NAVY = '#0B1D3A';
+const GOLD = '#C99A2E';
 
 export default function Desktop() {
     const { language } = useLanguage();
@@ -19,84 +20,94 @@ export default function Desktop() {
     };
 
     const item: Variants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 30 },
         show: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+            transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] }
         }
     };
 
     const categoryIcons = {
-        TrendingUp: <TrendingUp size={20} className="text-white" />,
-        MessageCircle: <MessageCircle size={20} className="text-white" />,
-        Monitor: <Monitor size={20} className="text-white" />,
-        Shield: <Shield size={20} className="text-white" />,
-        Heart: <Heart size={20} className="text-white" />,
-        Megaphone: <Megaphone size={20} className="text-white" />,
-        Database: <Database size={20} className="text-white" />,
-        Settings: <Settings size={20} className="text-white" />
+        TrendingUp: <TrendingUp size={24} className="text-white relative z-10" />,
+        MessageCircle: <MessageCircle size={24} className="text-white relative z-10" />,
+        Monitor: <Monitor size={24} className="text-white relative z-10" />,
+        Shield: <Shield size={24} className="text-white relative z-10" />,
+        Heart: <Heart size={24} className="text-white relative z-10" />,
+        Megaphone: <Megaphone size={24} className="text-white relative z-10" />,
+        Database: <Database size={24} className="text-white relative z-10" />,
+        Settings: <Settings size={24} className="text-white relative z-10" />
     };
 
     return (
-        <section className="w-full py-20 bg-white relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-1/4 -left-[200px] w-[500px] h-[500px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
+        <section className="w-full py-32 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+            {/* Soft premium background gradients */}
+            <div className="absolute top-[10%] left-[-10%] w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute bottom-[10%] right-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
 
-            <div className="max-w-[1240px] mx-auto px-12 relative z-10">
+            <div className="max-w-[1320px] mx-auto px-12 relative z-10">
                 <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="flex flex-col items-center text-center mb-20"
+                    className="flex flex-col items-center text-center mb-24"
                 >
-
-                    <motion.div variants={item} className="mb-4">
-                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                    <motion.div variants={item} className="mb-6">
+                        <span className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
                             {data.overline}
                         </span>
                     </motion.div>
-                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.25rem] leading-[1.1] font-black tracking-[-0.02em] mb-6 max-w-[900px]" style={{ color: NAVY }}>
-                        {data.headline}
+                    
+                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[950px]" style={{ color: NAVY }}>
+                        {data.headline.split(' ').map((word, i, arr) => (
+                            <span key={i} className={i >= arr.length - 2 ? "text-[#C99A2E]" : ""}>
+                                {word}{' '}
+                            </span>
+                        ))}
                     </motion.h2>
 
-                    <motion.p variants={item} className="text-[18px] font-medium leading-[1.6] max-w-[720px]" style={{ color: '#596780' }}>
+                    <motion.p variants={item} className="text-[18px] font-medium leading-[1.65] max-w-[750px] text-[#475569]">
                         {data.subtitle}
                     </motion.p>
                 </motion.div>
 
-                <div className="columns-1 md:columns-2 gap-6 space-y-6">
+                <div className="columns-1 md:columns-2 gap-8 space-y-8 mb-24">
                     {data.categories.map((category, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-white border border-[#0B1D3A]/10 rounded-2xl p-8 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.03)] hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.08)] transition-all duration-300 break-inside-avoid relative overflow-hidden"
+                            transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                            className="bg-white border border-[#0B1D3A]/[0.06] rounded-[24px] p-10 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.04)] hover:shadow-[0_20px_40px_-10px_rgba(11,29,58,0.12)] transition-all duration-400 break-inside-avoid relative overflow-hidden group cursor-default"
                         >
-                            <div className="absolute top-0 right-0 w-24 h-24 opacity-5 blur-[30px] rounded-bl-full" style={{ background: category.color }}></div>
+                            {/* Accent gradients */}
+                            <div className="absolute top-0 right-0 w-48 h-48 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 blur-[40px] rounded-bl-full pointer-events-none" style={{ background: category.color }}></div>
+                            <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full transition-all duration-500 ease-out" style={{ background: category.color }}></div>
 
-                            <div className="flex items-center gap-4 mb-6 relative z-10">
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-md shrink-0" style={{ backgroundColor: category.color }}>
+                            <div className="flex items-center gap-5 mb-8 relative z-10">
+                                <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 relative overflow-hidden" style={{ backgroundColor: category.color }}>
+                                    <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                                     {categoryIcons[category.icon as keyof typeof categoryIcons]}
                                 </div>
-                                <h3 className="text-[20px] font-bold" style={{ color: NAVY }}>
+                                <h3 className="text-[22px] font-bold" style={{ color: NAVY }}>
                                     {category.title}
                                 </h3>
                             </div>
 
-                            <div className="flex flex-col gap-5 relative z-10">
+                            <div className="flex flex-col gap-6 relative z-10">
                                 {category.subcategories.map((sub, idx) => (
-                                    <div key={idx}>
+                                    <div key={idx} className="bg-[#F8FAFD]/50 rounded-xl p-5 border border-[#0B1D3A]/[0.03]">
                                         {sub.label && (
-                                            <h4 className="text-[13px] font-bold uppercase tracking-wider mb-3" style={{ color: category.color }}>
+                                            <h4 className="text-[12px] font-bold uppercase tracking-[0.15em] mb-4 flex items-center gap-2" style={{ color: category.color }}>
+                                                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: category.color }}></div>
                                                 {sub.label}
                                             </h4>
                                         )}
-                                        <div className="flex flex-wrap gap-2">
+                                        <div className="flex flex-wrap gap-2.5">
                                             {sub.skills.map((skill, sIdx) => (
-                                                <span key={sIdx} className="bg-[#F8FAFD] border border-[#0B1D3A]/5 px-3 py-1.5 rounded-lg text-[13.5px] font-medium text-[#3A4A63] hover:bg-white hover:border-[#C99A2E]/40 hover:text-[#C99A2E] transition-colors cursor-default shadow-sm">
+                                                <span key={sIdx} className="bg-white border border-[#0B1D3A]/[0.06] px-3.5 py-1.5 rounded-lg text-[14px] font-medium text-[#3A4A63] hover:border-[#C99A2E]/40 hover:text-[#C99A2E] hover:shadow-[0_2px_8px_rgba(201,154,46,0.1)] transition-all duration-300 shadow-sm cursor-default">
                                                     {skill}
                                                 </span>
                                             ))}
@@ -109,23 +120,31 @@ export default function Desktop() {
                 </div>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
-                    transition={{ duration: 0.8 }}
-                    className="mt-24 p-12 bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-3xl text-center relative overflow-hidden"
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="max-w-[900px] mx-auto relative group"
                 >
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/5 rounded-full blur-3xl"></div>
-                    
-                    <h3 className="text-[24px] font-bold text-[#0B1D3A] mb-2 relative z-10 flex items-center justify-center gap-3">
-                        {data.footerLine1} <Sparkles size={20} className="text-[#C99A2E]" />
-                    </h3>
-                    <p className="text-[16px] font-semibold text-[#596780] mb-8 uppercase tracking-widest relative z-10">
-                        {data.footerLine2}
-                    </p>
-                    <p className="text-[18px] font-medium text-[#3A4A63] max-w-[700px] mx-auto relative z-10 bg-white py-4 px-8 rounded-full border border-[#0B1D3A]/10 shadow-sm">
-                        {data.footerCta}
-                    </p>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/20 via-transparent to-[#C99A2E]/20 blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div className="bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[32px] p-16 text-center relative overflow-hidden shadow-[0_20px_50px_-15px_rgba(11,29,58,0.1)]">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none"></div>
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#3B82F6]/5 rounded-full blur-[60px] pointer-events-none"></div>
+                        
+                        <div className="relative z-10 flex flex-col items-center">
+                            <h3 className="text-[28px] font-bold text-[#0B1D3A] mb-4 flex items-center justify-center gap-3">
+                                {data.footerLine1} <Sparkles size={24} className="text-[#C99A2E]" />
+                            </h3>
+                            <p className="text-[18px] font-bold text-[#64748B] mb-10 uppercase tracking-[0.2em]">
+                                {data.footerLine2}
+                            </p>
+                            <div className="bg-[#F8FAFD] border border-[#0B1D3A]/10 py-5 px-10 rounded-2xl shadow-sm group-hover:border-[#C99A2E]/30 transition-colors duration-500">
+                                <p className="text-[20px] font-bold text-[#0B1D3A] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] to-[#132D5F]">
+                                    {data.footerCta}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </motion.div>
 
             </div>

@@ -6,7 +6,7 @@ import { ArrowRight, Check, Settings2, Sparkles } from 'lucide-react';
 import React from 'react';
 
 const NAVY = '#0B1D3A';
-const NAVY_DEEP = '#071A49';
+const GOLD = '#C99A2E';
 
 export default function Desktop() {
     const { language } = useLanguage();
@@ -21,34 +21,40 @@ export default function Desktop() {
     };
 
     const item: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+        hidden: { opacity: 0, y: 24 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } }
     };
 
     const headlineSentences = data.headline.includes('. ') ? data.headline.split('. ') : [data.headline];
 
     return (
         <section className="w-full py-32 bg-white relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#F8FAFD] to-transparent rounded-full blur-[80px] pointer-events-none -translate-y-1/2"></div>
+            {/* Background elements */}
+            <div className="absolute top-1/2 left-[-10%] w-[800px] h-[800px] bg-gradient-radial from-[#F1F5FB]/80 to-transparent rounded-full blur-[120px] pointer-events-none -translate-y-1/2"></div>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
-            <div className="max-w-[1240px] mx-auto px-12 relative z-10">
+            <div className="max-w-[1280px] mx-auto px-12 relative z-10">
                 <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="flex flex-col md:flex-row gap-20"
+                    className="flex flex-col md:flex-row gap-24 items-center"
                 >
-                    <div className="w-full md:w-[45%] flex flex-col">
-                        <motion.div variants={item} className="mb-4 flex items-center gap-2.5 text-[#C99A2E]">
-                            <div className="w-6 h-6 rounded-md bg-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0">
-                                <Settings2 size={13} className="text-white" />
+                    {/* Left Column - Content */}
+                    <div className="w-full md:w-[48%] flex flex-col">
+                        <motion.div variants={item} className="mb-6">
+                            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]">
+                                <div className="w-6 h-6 rounded-md bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0">
+                                    <Settings2 size={13} className="text-white" />
+                                </div>
+                                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                                    {data.title === data.overline ? data.title : `${data.title} — ${data.overline}`}
+                                </span>
                             </div>
-                            <span className="text-[12px] font-bold tracking-[0.2em] uppercase">
-                                {data.title === data.overline ? data.title : `${data.title} — ${data.overline}`}
-                            </span>
                         </motion.div>
-                        <motion.h2 variants={item} className="text-[2.75rem] lg:text-[3rem] leading-[1.08] font-black tracking-[-0.02em] mb-8" style={{ color: NAVY }}>
+                        
+                        <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-8" style={{ color: NAVY }}>
                             {headlineSentences.map((sentence, i) => (
                                 <React.Fragment key={i}>
                                     {i === 0 ? <span>{sentence}{headlineSentences.length > 1 ? '. ' : ''}</span> : <span className="text-[#C99A2E]">{sentence}</span>}
@@ -56,30 +62,43 @@ export default function Desktop() {
                             ))}
                         </motion.h2>
 
-                        <motion.div variants={item} className="mb-8">
-                            <p className="text-[16px] font-semibold mb-4" style={{ color: NAVY }}>{data.desc1}</p>
-                            <div className="flex flex-wrap gap-x-3 gap-y-2 mb-6">
+                        <motion.div variants={item} className="mb-10">
+                            <p className="text-[18px] font-bold mb-6" style={{ color: NAVY }}>{data.desc1}</p>
+                            
+                            <div className="flex flex-wrap gap-x-3 gap-y-3 mb-8">
                                 {data.highlights.split(' · ').map((highlight, idx) => (
-                                    <div key={idx} className="bg-[#F8FAFD] text-[#0B1D3A] border border-[#0B1D3A]/10 px-3 py-1.5 rounded-full text-[13px] font-semibold whitespace-nowrap">
+                                    <div key={idx} className="bg-white text-[#0B1D3A] border border-[#0B1D3A]/10 px-4 py-2 rounded-xl text-[14px] font-bold shadow-[0_2px_8px_-2px_rgba(11,29,58,0.06)] hover:border-[#C99A2E]/30 hover:text-[#C99A2E] hover:shadow-[0_4px_12px_-2px_rgba(201,154,46,0.1)] transition-all cursor-default">
                                         {highlight}
                                     </div>
                                 ))}
                             </div>
-                            <p className="text-[16px] font-medium leading-[1.6]" style={{ color: '#596780' }}>
-                                <Sparkles size={16} className="inline text-[#C99A2E] mr-2 -mt-1" />
-                                {data.desc2}
-                            </p>
+                            
+                            <div className="bg-[#F8FAFD] rounded-2xl p-5 border border-[#0B1D3A]/[0.06] flex items-start gap-4">
+                                <div className="mt-1 w-8 h-8 rounded-full bg-[#C99A2E]/10 flex items-center justify-center shrink-0">
+                                    <Sparkles size={16} className="text-[#C99A2E]" />
+                                </div>
+                                <p className="text-[16px] font-medium leading-[1.65]" style={{ color: '#475569' }}>
+                                    {data.desc2}
+                                </p>
+                            </div>
                         </motion.div>
 
-                        <motion.div variants={item} className="mt-auto bg-gradient-to-br from-[#F8FAFD] to-[#EEF4FF] border border-[#0B1D3A]/5 rounded-2xl p-8 shadow-sm">
-                            <h3 className="text-[18px] font-bold mb-2" style={{ color: NAVY_DEEP }}>{data.ctaHeading}</h3>
-                            <p className="text-[14px] font-medium text-[#596780] mb-6">{data.ctaDesc}</p>
-                            <div className="flex flex-col gap-3">
-                                <button className="bg-[#0B1D3A] text-white px-7 py-3.5 rounded-[4px] text-[13.5px] font-semibold hover:shadow-[0_8px_24px_rgba(11,29,58,0.2)] hover:bg-[#102B63] transition-all flex items-center justify-center gap-2">
-                                    {data.ctaButton} <ArrowRight size={15} />
+                        <motion.div variants={item} className="mt-4 bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-[24px] p-10 shadow-[0_20px_40px_-10px_rgba(11,29,58,0.2)] relative overflow-hidden flex flex-col gap-6">
+                            {/* Inner CTA Glow */}
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/20 rounded-full blur-[40px] pointer-events-none"></div>
+                            
+                            <div>
+                                <h3 className="text-[22px] font-bold mb-3 text-white relative z-10">{data.ctaHeading}</h3>
+                                <p className="text-[15px] font-medium text-white/70 relative z-10">{data.ctaDesc}</p>
+                            </div>
+                            
+                            <div className="flex flex-col gap-3 w-full">
+                                <button className="group relative overflow-hidden bg-white text-[#0B1D3A] w-full py-4 rounded-xl text-[14px] font-bold hover:shadow-[0_8px_20px_rgba(255,255,255,0.2)] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+                                    <span className="relative z-10">{data.ctaButton}</span> 
+                                    <ArrowRight size={16} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                                 </button>
                                 {data.secondaryCtaButton && (
-                                    <button className="bg-transparent border border-[#0B1D3A]/20 text-[#0B1D3A] px-7 py-3.5 rounded-[4px] text-[13.5px] font-semibold hover:bg-[#0B1D3A]/5 transition-all flex items-center justify-center gap-2">
+                                    <button className="bg-white/10 border border-white/20 text-white w-full py-4 rounded-xl text-[14px] font-bold hover:bg-white/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
                                         {data.secondaryCtaButton}
                                     </button>
                                 )}
@@ -87,26 +106,31 @@ export default function Desktop() {
                         </motion.div>
                     </div>
 
-                    <div className="w-full md:w-[55%] flex flex-col justify-center">
+                    {/* Right Column - Checklist */}
+                    <div className="w-full md:w-[52%] flex flex-col justify-center">
                         <motion.div
                             variants={item}
-                            className="bg-white border border-[#0B1D3A]/10 rounded-3xl p-10 shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] relative"
+                            className="bg-white border border-[#0B1D3A]/[0.06] rounded-[32px] p-12 shadow-[0_30px_60px_-15px_rgba(11,29,58,0.12)] relative overflow-hidden group"
                         >
-                            <div className="absolute top-0 right-0 w-48 h-48 bg-[#C99A2E]/5 rounded-bl-full rounded-tr-3xl"></div>
+                            {/* Decorative corner accent */}
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#C99A2E]/10 to-transparent rounded-bl-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-60"></div>
+                            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-[#60A5FA]/10 to-transparent rounded-tr-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-60"></div>
 
-                            <h3 className="text-[20px] font-bold mb-8 relative z-10" style={{ color: NAVY_DEEP }}>
+                            <h3 className="text-[24px] font-bold mb-10 relative z-10 flex items-center gap-4" style={{ color: NAVY }}>
+                                <div className="w-2 h-8 rounded-full" style={{ background: GOLD }}></div>
                                 {data.featuresHeading}
                             </h3>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 relative z-10">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8 relative z-10">
                                 {data.features.map((feature, idx) => {
-                                    const featureColors = ['bg-[#10B981]', 'bg-[#3B82F6]', 'bg-[#8B5CF6]', 'bg-[#F59E0B]', 'bg-[#EC4899]', 'bg-[#06B6D4]'];
+                                    const featureColors = ['text-[#10B981]', 'text-[#3B82F6]', 'text-[#8B5CF6]', 'text-[#F59E0B]', 'text-[#EC4899]', 'text-[#06B6D4]'];
+                                    const bgColors = ['bg-[#10B981]/10', 'bg-[#3B82F6]/10', 'bg-[#8B5CF6]/10', 'bg-[#F59E0B]/10', 'bg-[#EC4899]/10', 'bg-[#06B6D4]/10'];
                                     return (
-                                        <div key={idx} className="flex items-start gap-3 group">
-                                            <div className={`w-6 h-6 rounded-full ${featureColors[idx % featureColors.length]} flex items-center justify-center shrink-0 text-white shadow-sm transition-transform duration-200 group-hover:scale-110 mt-0.5`}>
-                                                <Check size={12} className="text-white" strokeWidth={3} />
+                                        <div key={idx} className="flex items-center gap-4 group/item">
+                                            <div className={`w-10 h-10 rounded-xl ${bgColors[idx % bgColors.length]} flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover/item:scale-110 group-hover/item:rotate-3`}>
+                                                <Check size={16} className={`${featureColors[idx % featureColors.length]}`} strokeWidth={3} />
                                             </div>
-                                            <span className="text-[15px] font-semibold text-[#0B1D3A]/80 leading-snug group-hover:text-[#0B1D3A] transition-colors">
+                                            <span className="text-[16px] font-semibold text-[#0B1D3A]/80 leading-snug group-hover/item:text-[#0B1D3A] transition-colors duration-300">
                                                 {feature}
                                             </span>
                                         </div>

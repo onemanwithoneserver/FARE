@@ -4,6 +4,8 @@ import { Home, Map, Building2, Layers, GraduationCap, Briefcase, RefreshCcw, Cro
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
+const GOLD = '#C99A2E';
+
 export default function Mobile() {
     const { language } = useLanguage();
     const data = getData(language);
@@ -26,25 +28,32 @@ export default function Mobile() {
     };
 
     const segmentIcons = {
-        Home: <Home size={18} className="text-white" />,
-        Map: <Map size={18} className="text-white" />,
-        Building2: <Building2 size={18} className="text-white" />,
-        Layers: <Layers size={18} className="text-white" />
+        Home: <Home size={18} className="text-white relative z-10" />,
+        Map: <Map size={18} className="text-white relative z-10" />,
+        Building2: <Building2 size={18} className="text-white relative z-10" />,
+        Layers: <Layers size={18} className="text-white relative z-10" />
     };
 
     const learnerIcons = {
-        GraduationCap: <GraduationCap size={20} className="text-white" />,
-        Briefcase: <Briefcase size={20} className="text-white" />,
-        RefreshCcw: <RefreshCcw size={20} className="text-white" />,
-        Crown: <Crown size={20} className="text-white" />,
-        Handshake: <Handshake size={20} className="text-white" />
+        GraduationCap: <GraduationCap size={20} className="text-white relative z-10" />,
+        Briefcase: <Briefcase size={20} className="text-white relative z-10" />,
+        RefreshCcw: <RefreshCcw size={20} className="text-white relative z-10" />,
+        Crown: <Crown size={20} className="text-white relative z-10" />,
+        Handshake: <Handshake size={20} className="text-white relative z-10" />
     };
 
     return (
-        <section className="w-full py-12 bg-[#0B1D3A] relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[60px] pointer-events-none"></div>
+        <section className="w-full py-20 bg-[#040C1E] relative font-['Outfit'] overflow-hidden">
+            <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[60px] pointer-events-none"></div>
 
-            <div className="px-6 relative z-10">
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+                style={{
+                    backgroundImage: `radial-gradient(white 1px, transparent 1px)`,
+                    backgroundSize: '24px 24px'
+                }}
+            />
+
+            <div className="px-5 relative z-10">
                 <motion.div
                     variants={container}
                     initial="hidden"
@@ -52,25 +61,27 @@ export default function Mobile() {
                     viewport={{ once: false, margin: "-50px" }}
                     className="flex flex-col items-center text-center mb-16"
                 >
-
                     <motion.div variants={item} className="mb-4">
-                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C99A2E]">
+                        <span className="inline-flex items-center px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10 shadow-[0_0_15px_rgba(201,154,46,0.15)] backdrop-blur-sm" style={{ color: GOLD }}>
                             {data.overline}
                         </span>
                     </motion.div>
-                    <motion.h2 variants={item} className="text-[2.25rem] leading-[1.15] font-black tracking-[-0.02em] mb-4 text-white">
+                    
+                    <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
                         {data.headline}
                     </motion.h2>
                 </motion.div>
 
                 <div className="mb-16">
                     <motion.h3 
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
-                        className="text-[20px] font-bold mb-8 text-center text-white"
+                        className="text-[20px] font-bold mb-8 text-center text-white flex items-center justify-center gap-3"
                     >
+                        <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-[#C99A2E]/50"></div>
                         {data.segmentsHeading}
+                        <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-[#C99A2E]/50"></div>
                     </motion.h3>
 
                     <motion.div
@@ -78,25 +89,27 @@ export default function Mobile() {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: false, margin: "-50px" }}
-                        className="flex flex-col gap-4"
+                        className="flex flex-col gap-5"
                     >
                         {data.segments.map((segment, index) => (
                             <motion.div
                                 key={index}
                                 variants={item}
-                                className="bg-white/[0.03] border border-white/10 rounded-2xl p-5"
+                                className="bg-[#0A1630]/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-[0_10px_20px_-5px_rgba(0,0,0,0.5)] relative overflow-hidden"
                             >
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-md shrink-0" style={{ backgroundColor: segment.color }}>
+                                <div className="absolute top-0 right-0 w-24 h-24 opacity-10 blur-[20px] rounded-bl-full pointer-events-none" style={{ background: segment.color }}></div>
+
+                                <div className="flex items-center gap-4 mb-5 relative z-10">
+                                    <div className="w-12 h-12 rounded-[12px] flex items-center justify-center shadow-lg shrink-0" style={{ backgroundColor: segment.color }}>
                                         {segmentIcons[segment.icon as keyof typeof segmentIcons]}
                                     </div>
-                                    <h4 className="text-[17px] font-bold text-white">
+                                    <h4 className="text-[18px] font-bold text-white leading-snug">
                                         {segment.title}
                                     </h4>
                                 </div>
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-2.5 relative z-10">
                                     {segment.items.map((it, idx) => (
-                                        <div key={idx} className="bg-white/5 border border-white/5 px-2.5 py-1 rounded-md text-[12px] font-medium text-white/70">
+                                        <div key={idx} className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-[13px] font-medium text-white/80">
                                             {it}
                                         </div>
                                     ))}
@@ -106,44 +119,49 @@ export default function Mobile() {
                     </motion.div>
                 </div>
 
-                <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-6 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/10 rounded-full blur-[50px]"></div>
-                    
-                    <motion.h3 
+                <div className="relative">
+                    <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
-                        className="text-[20px] font-bold mb-8 text-center text-white relative z-10"
+                        transition={{ duration: 0.6 }}
+                        className="bg-gradient-to-br from-[#0F2751]/80 to-[#132D5F]/40 backdrop-blur-2xl border border-white/10 rounded-[24px] p-7 relative overflow-hidden shadow-[0_20px_40px_-10px_rgba(0,0,0,0.6)]"
                     >
-                        {data.learnersHeading}
-                    </motion.h3>
+                        <div className="absolute top-0 right-0 w-48 h-48 bg-[#C99A2E]/10 rounded-full blur-[40px]"></div>
+                        
+                        <motion.h3 
+                            className="text-[22px] font-bold mb-8 text-center text-white relative z-10"
+                        >
+                            {data.learnersHeading}
+                        </motion.h3>
 
-                    <motion.div
-                        variants={container}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: false, margin: "-50px" }}
-                        className="flex flex-col gap-4 relative z-10"
-                    >
-                        {data.learners.map((learner, index) => (
-                            <motion.div
-                                key={index}
-                                variants={item}
-                                className="bg-white/[0.04] border border-white/10 rounded-xl p-4 flex items-start gap-4"
-                            >
-                                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 shadow-md" style={{ backgroundColor: learner.color }}>
-                                    {learnerIcons[learner.icon as keyof typeof learnerIcons]}
-                                </div>
-                                <div>
-                                    <h4 className="text-[15px] font-bold text-white mb-1.5 leading-tight">
-                                        {learner.title}
-                                    </h4>
-                                    <p className="text-[13px] font-medium text-white/70 leading-relaxed">
+                        <motion.div
+                            variants={container}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: false, margin: "-50px" }}
+                            className="flex flex-col gap-4 relative z-10"
+                        >
+                            {data.learners.map((learner, index) => (
+                                <motion.div
+                                    key={index}
+                                    variants={item}
+                                    className="bg-white/5 border border-white/10 rounded-[16px] p-5 flex flex-col gap-4 shadow-sm"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-12 h-12 rounded-[12px] flex items-center justify-center shrink-0 shadow-md" style={{ backgroundColor: learner.color }}>
+                                            {learnerIcons[learner.icon as keyof typeof learnerIcons]}
+                                        </div>
+                                        <h4 className="text-[17px] font-bold text-white leading-tight">
+                                            {learner.title}
+                                        </h4>
+                                    </div>
+                                    <p className="text-[14px] font-medium text-white/70 leading-relaxed">
                                         {learner.desc}
                                     </p>
-                                </div>
-                            </motion.div>
-                        ))}
+                                </motion.div>
+                            ))}
+                        </motion.div>
                     </motion.div>
                 </div>
 

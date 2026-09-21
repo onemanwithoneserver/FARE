@@ -15,38 +15,49 @@ export default function Desktop() {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
-            transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+            transition: { staggerChildren: 0.06, delayChildren: 0.15 }
         }
     };
 
     const item: Variants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 24 },
         show: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+            transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] }
         }
     };
 
     const icons = [
-        { icon: <TrendingDown size={24} />, color: "#EF4444" },
-        { icon: <RefreshCcw size={24} />, color: "#F59E0B" },
-        { icon: <AlertCircle size={24} />, color: "#3B82F6" },
-        { icon: <BarChart2 size={24} />, color: "#8B5CF6" },
-        { icon: <Users size={24} />, color: "#EC4899" },
-        { icon: <Target size={24} />, color: "#10B981" },
-        { icon: <HelpCircle size={24} />, color: "#6366F1" },
-        { icon: <Clock size={24} />, color: "#F97316" },
-        { icon: <Award size={24} />, color: "#06B6D4" }
+        { icon: <TrendingDown size={22} />, color: "#EF4444", bg: "#FEF2F2" },
+        { icon: <RefreshCcw size={22} />, color: "#F59E0B", bg: "#FFFBEB" },
+        { icon: <AlertCircle size={22} />, color: "#3B82F6", bg: "#EFF6FF" },
+        { icon: <BarChart2 size={22} />, color: "#8B5CF6", bg: "#F5F3FF" },
+        { icon: <Users size={22} />, color: "#EC4899", bg: "#FDF2F8" },
+        { icon: <Target size={22} />, color: "#10B981", bg: "#ECFDF5" },
+        { icon: <HelpCircle size={22} />, color: "#6366F1", bg: "#EEF2FF" },
+        { icon: <Clock size={22} />, color: "#F97316", bg: "#FFF7ED" },
+        { icon: <Award size={22} />, color: "#06B6D4", bg: "#ECFEFF" }
     ];
 
-    const sectionTitle = data.title;
-
     return (
-        <section className="w-full py-32 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#E0E7FF]/40 to-transparent rounded-full blur-[80px] pointer-events-none"></div>
-            
-            <div className="max-w-[1240px] mx-auto px-12 relative z-10">
+        <section className="w-full py-32 relative font-['Outfit'] overflow-hidden"
+            style={{ background: 'linear-gradient(180deg, #F8FAFD 0%, #F1F5FB 50%, #EDF2FF 100%)' }}
+        >
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#DBEAFE]/30 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+
+            {/* Subtle dot pattern */}
+            <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
+                style={{
+                    backgroundImage: `radial-gradient(${NAVY} 1px, transparent 1px)`,
+                    backgroundSize: '24px 24px'
+                }}
+            />
+
+            <div className="max-w-[1280px] mx-auto px-12 relative z-10">
+                {/* Section Header */}
                 <motion.div
                     variants={container}
                     initial="hidden"
@@ -54,60 +65,77 @@ export default function Desktop() {
                     viewport={{ once: false, margin: "-100px" }}
                     className="flex flex-col items-center text-center mb-20"
                 >
-                    <motion.div variants={item} className="mb-4">
-                        <span className="text-[12px] font-bold tracking-[0.2em] uppercase" style={{ color: GOLD }}>
+                    <motion.div variants={item} className="mb-5">
+                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
                             {data.overline}
                         </span>
                     </motion.div>
 
-                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.25rem] leading-[1.1] font-black tracking-[-0.02em] mb-6 max-w-[850px]" style={{ color: NAVY }}>
-                        {sectionTitle}
+                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]" style={{ color: NAVY }}>
+                        {data.title}
                     </motion.h2>
 
-                    <motion.p variants={item} className="text-[18px] font-medium leading-[1.6] max-w-[680px]" style={{ color: '#596780' }}>
+                    <motion.p variants={item} className="text-[18px] font-medium leading-[1.65] max-w-[650px] text-[#475569]">
                         {data.subtitle}
                     </motion.p>
                 </motion.div>
 
+                {/* Challenge Cards Grid */}
                 <motion.div
                     variants={container}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: false, margin: "-100px" }}
-                    className="grid grid-cols-3 gap-6 relative mb-20"
+                    viewport={{ once: false, margin: "-80px" }}
+                    className="grid grid-cols-3 gap-5 relative mb-20"
                 >
                     {data.challenges.map((challenge, index) => (
                         <motion.div
                             key={index}
                             variants={item}
-                            whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                            className="bg-white border border-[#0B1D3A]/5 rounded-2xl p-8 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.03)] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] transition-all duration-300 group relative overflow-hidden flex flex-col justify-center items-center text-center h-[180px]"
+                            whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+                            className="group bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded-2xl p-7 shadow-[0_1px_3px_rgba(11,29,58,0.04),0_8px_24px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_20px_50px_-15px_rgba(11,29,58,0.12),0_0_0_1px_rgba(11,29,58,0.04)] transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[200px] justify-center cursor-default"
                         >
-                            <div className="mb-4 p-3.5 rounded-xl text-white shadow-md group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: icons[index].color }}>
+                            {/* Hover glow */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-transparent group-hover:from-[${icons[index].bg}] group-hover:to-transparent transition-all duration-500 opacity-0 group-hover:opacity-100 rounded-2xl" style={{ background: `linear-gradient(135deg, ${icons[index].bg} 0%, transparent 60%)`, opacity: 0 }}></div>
+
+                            <div className="mb-5 w-14 h-14 rounded-2xl flex items-center justify-center shadow-[0_4px_12px_-2px_rgba(0,0,0,0.1)] group-hover:scale-110 group-hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 relative z-10" style={{ backgroundColor: icons[index].color, color: 'white' }}>
                                 {icons[index].icon}
                             </div>
-                            <h3 className="text-[17px] font-bold leading-tight" style={{ color: NAVY }}>
+                            <h3 className="text-[16px] font-bold leading-tight relative z-10" style={{ color: NAVY }}>
                                 {challenge}
                             </h3>
                         </motion.div>
                     ))}
                 </motion.div>
 
+                {/* Transition CTA */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
-                    transition={{ duration: 0.8 }}
-                    className="max-w-[800px] mx-auto text-center bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-3xl p-12 shadow-2xl relative overflow-hidden"
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="max-w-[850px] mx-auto text-center rounded-3xl p-14 shadow-[0_20px_60px_-15px_rgba(11,29,58,0.3)] relative overflow-hidden"
+                    style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)` }}
                 >
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/10 rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#60A5FA]/10 rounded-full blur-3xl"></div>
-                    
-                    <h3 className="text-[28px] font-bold text-white mb-4 relative z-10">
+                    {/* Decorative glow orbs */}
+                    <div className="absolute top-0 right-0 w-72 h-72 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#60A5FA]/10 rounded-full blur-[60px] pointer-events-none"></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#C99A2E]/5 rounded-full blur-[80px] pointer-events-none"></div>
+
+                    {/* Subtle border glow on top */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"></div>
+
+                    <h3 className="text-[28px] lg:text-[32px] font-bold text-white mb-5 relative z-10 leading-snug">
                         {data.transitionTitle}
                     </h3>
-                    <p className="text-[20px] font-medium text-[#C99A2E] flex items-center justify-center gap-3 relative z-10">
-                        {data.transitionSubtitle} <ArrowRight size={20} className="animate-pulse" />
+                    <p className="text-[20px] font-semibold text-[#C99A2E] flex items-center justify-center gap-3 relative z-10">
+                        {data.transitionSubtitle}
+                        <motion.span
+                            animate={{ x: [0, 6, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                            <ArrowRight size={22} />
+                        </motion.span>
                     </p>
                 </motion.div>
             </div>

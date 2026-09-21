@@ -29,37 +29,51 @@ export default function Mobile() {
     const activeColor = TAB_COLORS[activeTab] || GOLD;
 
     return (
-        <section className="w-full py-16 bg-[#0B1D3A] text-white relative font-['Outfit'] overflow-hidden">
-            <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/8 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></div>
+        <section className="w-full py-20 bg-[#040C1E] text-white relative font-['Outfit'] overflow-hidden">
+            <div className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></div>
+
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+                style={{
+                    backgroundImage: `radial-gradient(white 1px, transparent 1px)`,
+                    backgroundSize: '24px 24px'
+                }}
+            />
 
             <div className="w-full px-5 relative z-10">
                 <div className="flex flex-col items-center text-center mb-10">
-                    <h2 className="text-[1.75rem] sm:text-[2rem] leading-[1.12] font-black tracking-[-0.02em] mb-3">
+                    <h2 className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                         {data.headline}
                     </h2>
-                    <p className="text-[14px] font-medium leading-[1.6] text-white/60">
+                    <p className="text-[14.5px] font-medium leading-[1.65] text-white/60">
                         {data.subtitle}
                     </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 mb-8">
+                <div className="grid grid-cols-2 gap-2.5 mb-8">
                     {data.tabs.map(tab => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-[12px] font-semibold transition-all duration-300 border ${
+                            className={`flex flex-col items-center justify-center gap-2 px-3 py-4 rounded-2xl text-[12px] font-bold transition-all duration-300 border relative overflow-hidden ${
                                 activeTab === tab.id
-                                    ? 'bg-white/10 border-[#C99A2E]/40 text-white shadow-sm'
-                                    : 'bg-white/[0.03] border-white/[0.08] text-white/50'
+                                    ? 'bg-white/10 border-white/20 text-white shadow-[0_0_20px_rgba(255,255,255,0.05)]'
+                                    : 'bg-white/[0.02] border-white/[0.05] text-white/50'
                             }`}
                         >
+                            {activeTab === tab.id && (
+                                <motion.div 
+                                    layoutId="activeTabIndicatorMobile"
+                                    className="absolute inset-0 opacity-20 pointer-events-none"
+                                    style={{ background: `linear-gradient(180deg, transparent, ${TAB_COLORS[tab.id]}40)` }}
+                                />
+                            )}
                             <div
-                                className="w-6 h-6 rounded-md flex items-center justify-center text-white shrink-0 shadow-sm"
+                                className={`w-8 h-8 rounded-xl flex items-center justify-center text-white shadow-md transition-transform duration-300 ${activeTab === tab.id ? 'scale-110' : ''}`}
                                 style={{ backgroundColor: TAB_COLORS[tab.id] }}
                             >
                                 {TAB_ICONS[tab.id]}
                             </div>
-                            <span className="truncate">{tab.title}</span>
+                            <span className="relative z-10">{tab.title}</span>
                         </button>
                     ))}
                 </div>
@@ -67,29 +81,43 @@ export default function Mobile() {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeTab}
-                        initial={{ opacity: 0, x: 10 }}
+                        initial={{ opacity: 0, x: 15 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -10 }}
-                        transition={{ duration: 0.25 }}
-                        className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden backdrop-blur-sm"
+                        exit={{ opacity: 0, x: -15 }}
+                        transition={{ duration: 0.3 }}
+                        className="bg-[#0A1630]/60 border border-white/10 rounded-[24px] overflow-hidden backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] relative"
                     >
-                        <div className="p-6 flex flex-col gap-7">
-                            <div className="flex flex-col">
-                                <h3 className="text-[20px] font-bold mb-3 leading-tight">{activeContent.title}</h3>
-                                <p className="text-[14px] text-white/65 leading-relaxed mb-6">{activeContent.desc}</p>
+                        <div 
+                            className="absolute top-0 right-0 w-[200px] h-[200px] opacity-10 blur-[50px] pointer-events-none transition-colors duration-500 rounded-bl-full" 
+                            style={{ background: activeColor }} 
+                        />
+                        <div 
+                            className="absolute top-0 left-0 w-full h-[2px] opacity-70 transition-colors duration-500" 
+                            style={{ background: `linear-gradient(90deg, transparent, ${activeColor}, transparent)` }} 
+                        />
 
-                                <div className="flex flex-col gap-5">
+                        <div className="p-6 flex flex-col gap-8 relative z-10">
+                            <div className="flex flex-col">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-10 h-10 rounded-[10px] flex items-center justify-center shadow-lg" style={{ backgroundColor: activeColor }}>
+                                        {TAB_ICONS[activeTab]}
+                                    </div>
+                                    <h3 className="text-[20px] font-bold leading-tight text-white">{activeContent.title}</h3>
+                                </div>
+                                <p className="text-[14.5px] text-white/70 leading-relaxed mb-6 font-medium">{activeContent.desc}</p>
+
+                                <div className="flex flex-col gap-6">
                                     {activeContent.sections.map((section: { heading: string; items: string[] }, idx: number) => (
-                                        <div key={idx}>
-                                            <h4 className="text-[12px] font-bold uppercase tracking-wider mb-2.5 flex items-center gap-2" style={{ color: activeColor }}>
-                                                <div className="w-1.5 h-3.5 rounded-full" style={{ backgroundColor: activeColor }}></div>
+                                        <div key={idx} className="bg-white/[0.02] rounded-xl p-5 border border-white/[0.05]">
+                                            <h4 className="text-[12px] font-bold uppercase tracking-[0.15em] mb-4 flex items-center gap-2" style={{ color: activeColor }}>
+                                                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: activeColor }}></div>
                                                 {section.heading}
                                             </h4>
-                                            <ul className="flex flex-col gap-2">
+                                            <ul className="flex flex-col gap-3.5">
                                                 {section.items.map((item: string, i: number) => (
-                                                    <li key={i} className="flex items-start gap-2 text-[13px] text-white/80">
-                                                        <div className="w-4 h-4 rounded-full bg-[#10B981] flex items-center justify-center text-white shrink-0 mt-0.5 shadow-sm">
-                                                            <CheckCircle2 size={10} strokeWidth={3} className="text-white" />
+                                                    <li key={i} className="flex items-start gap-3 text-[14px] text-white/80">
+                                                        <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-white/10" style={{ color: activeColor }}>
+                                                            <CheckCircle2 size={11} strokeWidth={2.5} />
                                                         </div>
                                                         <span className="leading-snug">{item}</span>
                                                     </li>
@@ -100,45 +128,46 @@ export default function Mobile() {
                                 </div>
                             </div>
 
-                            <div className="flex flex-col gap-4 border-t border-white/[0.08] pt-5">
+                            <div className="flex flex-col gap-4 border-t border-white/[0.05] pt-6">
                                 {activeContent.journey && (
-                                    <div>
-                                        <h4 className="text-[11px] font-bold text-white/45 uppercase tracking-[0.15em] mb-2.5">{data.journeyLabel}</h4>
-                                        <div className="flex flex-wrap items-center gap-2 font-semibold text-[13px]" style={{ color: activeColor }}>
+                                    <div className="bg-[#040C1E]/50 rounded-xl p-5 border border-white/5">
+                                        <h4 className="text-[11px] font-bold text-white/40 uppercase tracking-[0.2em] mb-4">{data.journeyLabel}</h4>
+                                        <div className="flex flex-col gap-2.5">
                                             {activeContent.journey.split(' → ').map((step: string, i: number, arr: string[]) => (
-                                                <React.Fragment key={i}>
-                                                    <span>{step}</span>
-                                                    {i < arr.length - 1 && <ArrowRight size={12} className="text-white/30" />}
-                                                </React.Fragment>
+                                                <div key={i} className="flex items-center gap-3">
+                                                    <div className="w-6 h-6 rounded-full border border-white/10 flex items-center justify-center text-[10px] font-bold text-white/50">{i + 1}</div>
+                                                    <span className="text-[14px] font-bold" style={{ color: i === arr.length - 1 ? activeColor : 'rgba(255,255,255,0.8)' }}>{step}</span>
+                                                </div>
                                             ))}
                                         </div>
                                     </div>
                                 )}
 
                                 {activeContent.evaluateBasedOn && (
-                                    <div>
-                                        <h4 className="text-[11px] font-bold text-white/45 uppercase tracking-[0.15em] mb-2">{data.evaluateLabel}</h4>
+                                    <div className="bg-[#040C1E]/50 rounded-xl p-5 border border-white/5">
+                                        <h4 className="text-[11px] font-bold text-white/40 uppercase tracking-[0.2em] mb-3">{data.evaluateLabel}</h4>
                                         <div className="flex flex-wrap gap-1.5">
                                             {activeContent.evaluateBasedOn.split(' · ').map((tag: string, i: number) => (
-                                                <span key={i} className="px-2 py-0.5 rounded-md bg-white/[0.06] border border-white/[0.08] text-[11px] font-medium text-white/75">{tag}</span>
+                                                <span key={i} className="px-2.5 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-[12px] font-medium text-white/70">{tag}</span>
                                             ))}
                                         </div>
                                     </div>
                                 )}
 
-                                <div className="bg-gradient-to-br from-[#0F2751] to-[#071A49] rounded-xl p-5 border border-[#C99A2E]/20 mt-1">
-                                    <p className="text-[13.5px] font-bold italic mb-4 text-center text-white/85 leading-snug">"{activeContent.footerText}"</p>
-                                    <div className="flex flex-col gap-2.5 w-full">
+                                <div className="bg-gradient-to-b from-white/10 to-white/5 rounded-xl p-6 border border-white/10 shadow-[0_10px_20px_rgba(0,0,0,0.3)] mt-2">
+                                    <p className="text-[14px] font-medium italic mb-5 text-center text-white/90 leading-snug">"{activeContent.footerText}"</p>
+                                    <div className="flex flex-col gap-3 w-full">
                                         {activeContent.buttons.map((btn: string, idx: number) => (
                                             <button
                                                 key={idx}
-                                                className={`w-full py-3 px-4 rounded-lg text-[13px] font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                                                className={`w-full py-3.5 px-4 rounded-xl text-[13.5px] font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
                                                     idx === 0
-                                                        ? 'bg-[#C99A2E] text-[#0B1D3A] shadow-lg'
-                                                        : 'bg-white/10 text-white'
+                                                        ? 'text-[#040C1E] shadow-md active:scale-[0.98]'
+                                                        : 'bg-white/5 text-white border border-white/10 active:scale-[0.98]'
                                                 }`}
+                                                style={idx === 0 ? { backgroundColor: 'white' } : {}}
                                             >
-                                                {btn} <ArrowRight size={14} />
+                                                {btn} <ArrowRight size={15} strokeWidth={2.5} />
                                             </button>
                                         ))}
                                     </div>
