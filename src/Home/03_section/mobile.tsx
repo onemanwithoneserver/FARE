@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, Building2, GraduationCap, UserCheck, CheckCircle, TrendingUp, Star, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Building2, GraduationCap, UserCheck, CheckCircle, ShieldCheck } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -146,94 +146,7 @@ export default function Mobile() {
                             )}
                         </div>
 
-                        <div className="p-4 rounded-[4px] bg-white border border-[#0B1D3A]/[0.08] shadow-sm">
-                            {activePersona.id === 'companies' && activePersona.metrics && (
-                                <div className="flex flex-col">
-                                    <div className="flex items-center justify-between mb-3">
-                                        <div className="flex items-center gap-2">
-                                            <TrendingUp size={16} className="text-[#2563EB]" />
-                                            <div>
-                                                <div className="text-[8.5px] font-black text-[#2563EB] uppercase">{activePersona.metrics.tag}</div>
-                                                <div className="text-[13px] font-bold text-[#0B1D3A]">{activePersona.metrics.title}</div>
-                                            </div>
-                                        </div>
-                                        <span className="text-[9.5px] font-bold text-[#059669] bg-[#ECFDF5] border border-[#A7F3D0] px-2 py-0.5 rounded-[4px]">{activePersona.metrics.trend}</span>
-                                    </div>
 
-                                    <div className="flex flex-col gap-3 bg-[#F8FAFD] p-3 rounded-[4px] border border-[#0B1D3A]/[0.06] mb-3">
-                                        {activePersona.metrics?.teams?.map((team, idx) => (
-                                            <div key={idx} className="w-full">
-                                                <div className="flex justify-between items-center text-[11px] mb-1">
-                                                    <span className="font-bold text-[#0B1D3A]">{team.name}</span>
-                                                    <span className="font-black text-[#2563EB]">{team.score}%</span>
-                                                </div>
-                                                <div className="w-full h-1.5 bg-[#EEF2F6] rounded-full overflow-hidden relative">
-                                                    <div className="h-full bg-[#2563EB] rounded-full" style={{ width: `${team.score}%` }}></div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#0B1D3A]/[0.06] text-center">
-                                        {activePersona.metrics.stats.map((st, i) => (
-                                            <div key={i} className="flex flex-col">
-                                                <span className="text-[12px] font-black text-[#0B1D3A]">{st.val}</span>
-                                                <span className="text-[8.5px] text-[#5A6E8C] leading-tight font-medium">{st.label}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
-                            {activePersona.id === 'trainers' && activePersona.courses && (
-                                <div className="flex flex-col gap-2.5">
-                                    <div className="text-[9px] font-black text-[#059669] uppercase mb-1">Active Coach Courses</div>
-                                    {activePersona.courses.map((course, idx) => (
-                                        <div key={idx} className="bg-[#F8FAFD] p-2.5 rounded-[4px] border border-[#0B1D3A]/[0.06] flex items-center justify-between text-[11px]">
-                                            <div className="font-bold text-[#0B1D3A] leading-tight pr-2">
-                                                {course.title}
-                                            </div>
-                                            <div className="flex items-center gap-1 text-[10px] font-bold text-[#B45309] shrink-0">
-                                                <Star size={10} fill="#B45309" />
-                                                <span>{course.rating}</span>
-                                            </div>
-                                        </div>
-                                    ))}
-                                    {activePersona.metrics?.stats && (
-                                        <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#0B1D3A]/[0.06] text-center mt-1">
-                                            {activePersona.metrics.stats.map((st, i) => (
-                                                <div key={i} className="flex flex-col">
-                                                    <span className="text-[12px] font-black text-[#0B1D3A]">{st.val}</span>
-                                                    <span className="text-[8.5px] text-[#5A6E8C] leading-tight font-medium">{st.label}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-
-                            {activePersona.id === 'professionals' && activePersona.milestones && (
-                                <div className="flex flex-col gap-2">
-                                    <div className="text-[9px] font-black text-[#B45309] uppercase mb-1">Skill Roadmap</div>
-                                    {activePersona.milestones.map((m, idx) => (
-                                        <div key={idx} className="bg-[#F8FAFD] p-2.5 rounded-[4px] border border-[#0B1D3A]/[0.06] flex items-center justify-between text-[11px]">
-                                            <span className="font-bold text-[#0B1D3A]">{m.level}</span>
-                                            <span className="text-[9px] font-bold text-[#B45309]">{m.status}</span>
-                                        </div>
-                                    ))}
-                                    {activePersona.metrics?.stats && (
-                                        <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#0B1D3A]/[0.06] text-center mt-1">
-                                            {activePersona.metrics.stats.map((st, i) => (
-                                                <div key={i} className="flex flex-col">
-                                                    <span className="text-[12px] font-black text-[#0B1D3A]">{st.val}</span>
-                                                    <span className="text-[8.5px] text-[#5A6E8C] leading-tight font-medium">{st.label}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-                        </div>
                     </motion.div>
                 </AnimatePresence>
             </div>

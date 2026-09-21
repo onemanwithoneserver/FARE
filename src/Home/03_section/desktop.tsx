@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
     ArrowRight, Building2, GraduationCap, UserCheck, CheckCircle,
-    TrendingUp, Star, Users, Award, ShieldCheck, Sparkles
+    ShieldCheck
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
@@ -123,7 +123,7 @@ export default function Desktop() {
                         <motion.div
                             whileHover={{ y: -5, boxShadow: '0 25px 50px -12px rgba(11,29,58,0.25)' }}
                             transition={{ duration: 0.3 }}
-                            className="col-span-5 flex flex-col p-8 lg:p-9 rounded-[6px] bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_20px_40px_-10px_rgba(11,29,58,0.15)] relative overflow-hidden"
+                            className="col-span-12 max-w-4xl mx-auto w-full flex flex-col p-8 lg:p-9 rounded-[6px] bg-white border border-[#0B1D3A]/[0.08] border-l-[4px] border-l-[#C99A2E] shadow-[0_20px_40px_-10px_rgba(11,29,58,0.15)] relative overflow-hidden"
                         >
                             <div className="relative z-10">
                                 <div className="inline-flex items-center gap-2 text-[9.5px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded-[4px] mb-5 bg-[#EEF4FF] text-[#2563EB] border border-[#2563EB]/20">
@@ -193,199 +193,7 @@ export default function Desktop() {
                             </div>
                         </motion.div>
 
-                        <motion.div
-                            whileHover={{ y: -5, boxShadow: '0 25px 50px -12px rgba(11,29,58,0.25)' }}
-                            transition={{ duration: 0.3 }}
-                            className="col-span-7 p-8 lg:p-9 rounded-[6px] bg-white border border-[#0B1D3A]/[0.08] shadow-[0_20px_40px_-10px_rgba(11,29,58,0.12)] flex flex-col justify-between relative overflow-hidden"
-                        >
-                            {activePersona.id === 'companies' && activePersona.metrics && (
-                                <div className="flex flex-col relative z-10 h-full justify-between">
-                                    <div>
-                                        <div className="flex items-center justify-between mb-6">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white flex items-center justify-center shadow-sm">
-                                                    <TrendingUp size={19} />
-                                                </div>
-                                                <div>
-                                                    <div className="text-[9px] font-black text-[#2563EB] tracking-widest uppercase">{activePersona.metrics.tag}</div>
-                                                    <div className="text-[18px] font-bold text-[#0B1D3A]">{activePersona.metrics.title}</div>
-                                                    <div className="text-[11.5px] text-[#5A6E8C] font-medium">{activePersona.metrics.subtitle}</div>
-                                                </div>
-                                            </div>
-                                            <span className="text-[11px] font-bold px-3 py-1.5 rounded-[4px] bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0] flex items-center gap-1.5">
-                                                <TrendingUp size={13} />
-                                                {activePersona.metrics.trend}
-                                            </span>
-                                        </div>
 
-                                        <div className="flex flex-col gap-4 bg-[#F8FAFD] p-6 rounded-[4px] border border-[#0B1D3A]/[0.06] shadow-sm mb-6">
-                                            {activePersona.metrics?.teams?.map((team, idx) => (
-                                                <div key={idx} className="w-full">
-                                                    <div className="flex justify-between items-center mb-1.5">
-                                                        <span className="text-[13px] font-bold text-[#0B1D3A]">{team.name}</span>
-                                                        <div className="flex gap-4 items-center">
-                                                            <span className="text-[11px] font-medium text-[#5A6E8C]">Industry Benchmark: {team.peer}%</span>
-                                                            <span className="text-[13px] font-black text-[#2563EB]">FARE Score {team.score}%</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="w-full h-2.5 bg-[#EEF2F6] rounded-full overflow-hidden relative">
-                                                        <motion.div initial={{ width: 0 }} animate={{ width: `${team.peer}%` }} transition={{ duration: 1 }} className="absolute top-0 bottom-0 left-0 bg-[#CBD5E1] rounded-full" />
-                                                        <motion.div initial={{ width: 0 }} animate={{ width: `${team.score}%` }} transition={{ duration: 1.2, delay: 0.1 * idx }} className="absolute top-0 bottom-0 left-0 bg-[#2563EB] rounded-full shadow-[0_0_8px_rgba(37,99,235,0.4)]" />
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-3 gap-4 pt-5 border-t border-[#0B1D3A]/[0.08]">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white flex items-center justify-center shrink-0 shadow-sm">
-                                                <Users size={16} />
-                                            </div>
-                                            <div>
-                                                <div className="text-[15px] font-black text-[#0B1D3A]">500+</div>
-                                                <div className="text-[10.5px] text-[#5A6E8C] font-medium">Professionals Trained</div>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] text-white flex items-center justify-center shrink-0 shadow-sm">
-                                                <TrendingUp size={16} />
-                                            </div>
-                                            <div>
-                                                <div className="text-[15px] font-black text-[#0B1D3A]">42%</div>
-                                                <div className="text-[10.5px] text-[#5A6E8C] font-medium">Average Skill Lift</div>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#FBBF24] to-[#D97706] text-white flex items-center justify-center shrink-0 shadow-sm">
-                                                <Star size={16} strokeWidth={2.5} />
-                                            </div>
-                                            <div>
-                                                <div className="text-[15px] font-black text-[#0B1D3A]">4.8/5</div>
-                                                <div className="text-[10.5px] text-[#5A6E8C] font-medium">Client Satisfaction</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
-
-                            {activePersona.id === 'trainers' && activePersona.courses && (
-                                <div className="flex flex-col relative z-10 h-full justify-between">
-                                    <div>
-                                        <div className="flex items-center justify-between mb-5">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 rounded-[4px] bg-gradient-to-br from-[#34D399] to-[#059669] text-white flex items-center justify-center shadow-sm">
-                                                    <GraduationCap size={19} />
-                                                </div>
-                                                <div>
-                                                    <div className="text-[9px] font-black text-[#059669] tracking-widest uppercase">{activePersona.metrics?.tag}</div>
-                                                    <div className="text-[18px] font-bold text-[#0B1D3A]">{activePersona.metrics?.title}</div>
-                                                    <div className="text-[11.5px] text-[#5A6E8C] font-medium">{activePersona.metrics?.subtitle}</div>
-                                                </div>
-                                            </div>
-                                            <span className="text-[11px] font-bold px-3 py-1.5 rounded-[4px] bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0]">
-                                                {activePersona.metrics?.trend}
-                                            </span>
-                                        </div>
-
-                                        <div className="flex flex-col gap-3 mb-6">
-                                            {activePersona.courses.map((course, idx) => (
-                                                <motion.div
-                                                    key={idx}
-                                                    whileHover={{ scale: 1.01 }}
-                                                    className="bg-[#F8FAFD] hover:border-[#059669]/40 p-4 rounded-[4px] border border-[#0B1D3A]/[0.06] transition-all flex items-center justify-between shadow-sm group"
-                                                >
-                                                    <div>
-                                                        <div className="text-[13px] font-bold text-[#0B1D3A] group-hover:text-[#059669] transition-colors mb-0.5">
-                                                            {course.title}
-                                                        </div>
-                                                        <div className="text-[11px] text-[#5A6E8C]">{course.learners}</div>
-                                                    </div>
-                                                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-[4px] bg-[#FEF3C7] border border-[#FDE68A] text-[11px] font-bold text-[#B45309]">
-                                                        <Star size={12} fill="#B45309" />
-                                                        <span>{course.rating}</span>
-                                                    </div>
-                                                </motion.div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-3 gap-4 pt-5 border-t border-[#0B1D3A]/[0.08]">
-                                        {activePersona.metrics?.stats.map((stat, idx) => (
-                                            <div key={idx} className="flex items-center gap-3">
-                                                <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#34D399] to-[#059669] text-white flex items-center justify-center shrink-0 shadow-sm">
-                                                    <Award size={16} />
-                                                </div>
-                                                <div>
-                                                    <div className="text-[15px] font-black text-[#0B1D3A]">{stat.val}</div>
-                                                    <div className="text-[10.5px] text-[#5A6E8C] font-medium">{stat.label}</div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
-                            {activePersona.id === 'professionals' && activePersona.milestones && (
-                                <div className="flex flex-col relative z-10 h-full justify-between">
-                                    <div>
-                                        <div className="flex items-center justify-between mb-5">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 rounded-[4px] bg-gradient-to-br from-[#FBBF24] to-[#D97706] text-white flex items-center justify-center shadow-sm">
-                                                    <ShieldCheck size={19} />
-                                                </div>
-                                                <div>
-                                                    <div className="text-[9px] font-black text-[#B45309] tracking-widest uppercase">{activePersona.metrics?.tag}</div>
-                                                    <div className="text-[18px] font-bold text-[#0B1D3A]">{activePersona.metrics?.title}</div>
-                                                    <div className="text-[11.5px] text-[#5A6E8C] font-medium">{activePersona.metrics?.subtitle}</div>
-                                                </div>
-                                            </div>
-                                            <span className="text-[11px] font-bold px-3 py-1.5 rounded-[4px] bg-[#FEF3C7] text-[#B45309] border border-[#FDE68A]">
-                                                {activePersona.metrics?.trend}
-                                            </span>
-                                        </div>
-
-                                        <div className="flex flex-col gap-3 mb-6">
-                                            {activePersona.milestones.map((m, idx) => (
-                                                <motion.div
-                                                    key={idx}
-                                                    whileHover={{ scale: 1.01 }}
-                                                    className="bg-[#F8FAFD] p-4 rounded-[4px] border border-[#0B1D3A]/[0.06] flex items-center justify-between shadow-sm"
-                                                >
-                                                    <div>
-                                                        <div className="text-[13.5px] font-bold text-[#0B1D3A] mb-0.5">{m.level}</div>
-                                                        <div className="text-[11px] text-[#5A6E8C]">{m.req}</div>
-                                                    </div>
-                                                    <span className={`text-[10px] font-black px-2.5 py-1 rounded-[4px] uppercase tracking-wider ${
-                                                        m.status === 'Completed'
-                                                        ? 'bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0]'
-                                                        : m.status === 'In Progress'
-                                                        ? 'bg-[#FEF3C7] text-[#B45309] border border-[#FDE68A]'
-                                                        : 'bg-[#F1F5F9] text-[#64748B]'
-                                                    }`}>
-                                                        {m.status}
-                                                    </span>
-                                                </motion.div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-3 gap-4 pt-5 border-t border-[#0B1D3A]/[0.08]">
-                                        {activePersona.metrics?.stats.map((stat, idx) => (
-                                            <div key={idx} className="flex items-center gap-3">
-                                                <div className="w-9 h-9 rounded-[4px] bg-gradient-to-br from-[#FBBF24] to-[#D97706] text-white flex items-center justify-center shrink-0 shadow-sm">
-                                                    <Sparkles size={16} />
-                                                </div>
-                                                <div>
-                                                    <div className="text-[15px] font-black text-[#0B1D3A]">{stat.val}</div>
-                                                    <div className="text-[10.5px] text-[#5A6E8C] font-medium">{stat.label}</div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </motion.div>
                     </motion.div>
                 </AnimatePresence>
             </div>
