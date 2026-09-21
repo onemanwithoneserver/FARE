@@ -2,6 +2,7 @@ import Header from "./00_header";
 import Section01 from "./01_section";
 import Section03 from "./03_section";
 import Section04 from "./04_section";
+import Footer from "./05_section";
 
 export default function Home({ isMobile }: { isMobile: boolean }) {
   return (
@@ -10,6 +11,8 @@ export default function Home({ isMobile }: { isMobile: boolean }) {
       <Section01 isMobile={isMobile} />
       <Section03 isMobile={isMobile} />
       <Section04 isMobile={isMobile} />
+      <Footer isMobile={isMobile} />
     </div>
   );
 }
+

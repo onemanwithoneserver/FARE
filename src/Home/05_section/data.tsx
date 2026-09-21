@@ -1,45 +1,33 @@
 export const getData = (lang: 'en' | 'te' = 'en') => {
     if (lang === 'te') {
         return {
-            title: "05_section",
-            topLabel: "FARE",
-            headline: {
-                white: "FINISHING ACADEMY FOR",
-                gold: "REAL ESTATE"
-            },
-            description: "రియల్ ఎస్టేట్ నిపుణుల అవసరాల కోసం ప్రత్యేకంగా రూపొందించబడిన కస్టమ్ LMS.",
-            buttons: [
-                { label: "అభ్యాసకుడిగా నమోదు చేసుకోండి", path: "home" },
-                { label: "ట్రైనర్‌గా నమోదు చేసుకోండి", path: "home" },
-                { label: "కంపెనీగా నమోదు చేసుకోండి", path: "home" }
-            ],
-            features: [
-                { title: "ఉపయోగించడానికి సిద్ధంగా ఉన్న క్విజ్‌లు", icon: "quiz" },
-                { title: "సిద్ధంగా ఉన్న మాక్ దృశ్యాలు", icon: "mock" },
-                { title: "విస్తృత శ్రేణి కోర్సులు", icon: "courses" }
-            ],
-            copyright: "© {year} FARE. సర్వహక్కులు ప్రత్యేకించబడ్డాయి."
+            copyright: "© {year} FARE. సర్వహక్కులు ప్రత్యేకించబడ్డాయి.",
+            navLinks: [
+                { label: "ప్లాట్‌ఫారమ్", path: "home" },
+                { label: "ఓపెన్ ప్లాట్స్", path: "open-plots" },
+                { label: "కంపెనీల కోసం", path: "re-companies" },
+                { label: "ట్రైనర్ల కోసం", path: "re-trainers-coaches" },
+                { label: "ట్రైనర్ డైరెక్టరీ", path: "home" },
+                { label: "మా గురించి", path: "home" },
+                { label: "సంప్రదించండి", path: "home" },
+                { label: "గోప్యత", path: "home" },
+                { label: "నిబంధనలు", path: "home" }
+            ]
         };
     }
     return {
-        title: "05_section",
-        topLabel: "FARE",
-        headline: {
-            white: "FINISHING ACADEMY FOR",
-            gold: "REAL ESTATE"
-        },
-        description: "A custom LMS designed exclusively for the needs of real estate professionals.",
-        buttons: [
-            { label: "Register as a Learner", path: "home" },
-            { label: "Register as a Trainer", path: "home" },
-            { label: "Register as a Company", path: "home" }
-        ],
-        features: [
-            { title: "Ready-to-use Quizzes", icon: "quiz" },
-            { title: "Ready-made Mock Scenarios", icon: "mock" },
-            { title: "Wide Range of Courses", icon: "courses" }
-        ],
-        copyright: "© {year} FARE. All rights reserved."
+        copyright: "© {year} FARE. All rights reserved.",
+        navLinks: [
+            { label: "Platform", path: "home" },
+            { label: "Open Plots", path: "open-plots" },
+            { label: "For Companies", path: "re-companies" },
+            { label: "For Trainers", path: "re-trainers-coaches" },
+            { label: "Trainer Directory", path: "home" },
+            { label: "About", path: "home" },
+            { label: "Contact", path: "home" },
+            { label: "Privacy", path: "home" },
+            { label: "Terms", path: "home" }
+        ]
     };
 };
 
