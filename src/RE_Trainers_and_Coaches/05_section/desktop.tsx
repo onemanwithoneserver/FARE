@@ -124,22 +124,26 @@ export default function Desktop() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-[900px] mx-auto relative group"
+                    className="max-w-[950px] mx-auto relative group"
                 >
-                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/20 via-transparent to-[#C99A2E]/20 blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></motion.div>
-                    <div className="bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-16 text-center relative overflow-hidden shadow-[0_20px_50px_-15px_rgba(11,29,58,0.1)]">
-                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none"></motion.div>
-                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-64 h-64 bg-[#3B82F6]/5 rounded-full blur-[60px] pointer-events-none"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/25 via-transparent to-[#3B82F6]/25 blur-[35px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></motion.div>
+                    <div
+                        className="rounded p-16 text-center relative overflow-hidden shadow-[0_25px_60px_-15px_rgba(11,29,58,0.35)] border border-[#C99A2E]/30"
+                        style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)` }}
+                    >
+                        <motion.div animate={{ opacity: [0.25, 0.5, 0.25], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-72 h-72 bg-[#C99A2E]/15 rounded-full blur-[65px] pointer-events-none"></motion.div>
+                        <motion.div animate={{ opacity: [0.2, 0.45, 0.2], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-72 h-72 bg-[#3B82F6]/15 rounded-full blur-[65px] pointer-events-none"></motion.div>
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/50 to-transparent"></div>
                         
                         <div className="relative z-10 flex flex-col items-center">
-                            <h3 className="text-[28px] font-bold text-[#0B1D3A] mb-4 flex items-center justify-center gap-3">
-                                {data.footerLine1} <Sparkles size={24} className="text-[#C99A2E]" />
+                            <h3 className="text-[28px] lg:text-[32px] font-bold text-white mb-4 flex items-center justify-center gap-3">
+                                {data.footerLine1} <Sparkles size={26} className="text-[#C99A2E]" />
                             </h3>
-                            <p className="text-[18px] font-bold text-[#64748B] mb-10 uppercase tracking-[0.2em]">
+                            <p className="text-[16px] lg:text-[17px] font-bold text-[#CBD5E1] mb-10 uppercase tracking-[0.2em]">
                                 {data.footerLine2}
                             </p>
-                            <div className="bg-[#F8FAFD] border border-[#0B1D3A]/10 py-5 px-10 rounded shadow-sm group-hover:border-[#C99A2E]/30 transition-colors duration-500">
-                                <p className="text-[20px] font-bold text-[#0B1D3A] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] to-[#132D5F]">
+                            <div className="bg-white/[0.06] backdrop-blur-md border border-white/10 py-5 px-10 rounded shadow-[0_4px_20px_rgba(0,0,0,0.2)] group-hover:border-[#C99A2E]/40 transition-colors duration-500 max-w-[850px]">
+                                <p className="text-[20px] font-semibold text-white/95 leading-relaxed">
                                     {data.footerCta}
                                 </p>
                             </div>

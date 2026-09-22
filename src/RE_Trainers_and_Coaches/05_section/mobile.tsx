@@ -153,18 +153,23 @@ export default function Mobile() {
                     viewport={{ once: false }}
                     transition={{ duration: 0.6 }}
                 >
-                    <div className="bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-8 text-center relative overflow-hidden shadow-[0_15px_30px_-10px_rgba(11,29,58,0.1)]">
-                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[40px] pointer-events-none"></motion.div>
+                    <div
+                        className="rounded p-8 text-center relative overflow-hidden shadow-[0_20px_50px_-10px_rgba(11,29,58,0.35)] border border-[#C99A2E]/30"
+                        style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)` }}
+                    >
+                        <motion.div animate={{ opacity: [0.25, 0.5, 0.25], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-36 h-36 bg-[#C99A2E]/15 rounded-full blur-[40px] pointer-events-none"></motion.div>
+                        <motion.div animate={{ opacity: [0.2, 0.45, 0.2], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-36 h-36 bg-[#3B82F6]/15 rounded-full blur-[40px] pointer-events-none"></motion.div>
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/50 to-transparent"></div>
                         
                         <div className="relative z-10 flex flex-col items-center">
-                            <h3 className="text-[20px] font-bold text-[#0B1D3A] mb-3 flex items-center justify-center gap-2.5">
+                            <h3 className="text-[20px] font-bold text-white mb-3 flex items-center justify-center gap-2.5">
                                 {data.footerLine1} <Sparkles size={18} className="text-[#C99A2E]" />
                             </h3>
-                            <p className="text-[14px] font-bold text-[#64748B] mb-6 uppercase tracking-[0.2em]">
+                            <p className="text-[13px] font-bold text-[#CBD5E1] mb-6 uppercase tracking-[0.16em]">
                                 {data.footerLine2}
                             </p>
-                            <div className="bg-[#F8FAFD] border border-[#0B1D3A]/10 py-4 px-6 rounded w-full shadow-sm">
-                                <p className="text-[15px] font-bold text-[#0B1D3A] leading-snug">
+                            <div className="bg-white/[0.06] backdrop-blur-md border border-white/10 py-4 px-5 rounded w-full shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
+                                <p className="text-[15px] font-semibold text-white/95 leading-snug">
                                     {data.footerCta}
                                 </p>
                             </div>
