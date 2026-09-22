@@ -100,36 +100,52 @@ export default function Mobile() {
                                         transition={{ duration: 0.15 }}
                                         className={`absolute top-[calc(100%+8px)] right-0 w-[155px] ${isScrolled ? 'bg-[#0B1D3A]/95 border-white/10' : 'bg-white/98 border-[#0B1D3A]/15'} backdrop-blur-xl border shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded p-1.5 z-50 pointer-events-auto`}
                                     >
-                                        <div className={`text-[9.5px] font-bold uppercase tracking-wider px-2 py-1 ${isScrolled ? 'text-white/45' : 'text-[#0B1D3A]/45'}`}>
+                                        <div className={`text-[9.5px] font-bold uppercase tracking-wider px-2 py-1 ${isScrolled ? 'text-white/70' : 'text-[#0B1D3A]/70'}`}>
                                             {language === 'te' ? 'భాషను ఎంచుకోండి' : 'Select Language'}
                                         </div>
                                         <button
                                             onClick={() => { setLanguage('en'); setIsLangDropdownOpen(false); }}
                                             className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[12.5px] transition-all cursor-pointer ${
                                                 language === 'en'
-                                                    ? (isScrolled ? 'bg-white text-[#0B1D3A] font-bold' : 'bg-[#0B1D3A] text-white font-bold')
-                                                    : (isScrolled ? 'text-white hover:bg-white/10 font-medium' : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium')
+                                                    ? (isScrolled ? 'bg-white text-[#0B1D3A] font-bold shadow-xs' : 'bg-[#0B1D3A] text-white font-bold shadow-xs')
+                                                    : (isScrolled ? 'text-white/90 hover:bg-white/10 font-medium' : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium')
                                             }`}
                                         >
                                             <span className="flex items-center gap-2">
-                                                <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${language === 'en' ? 'bg-white/20 text-white' : (isScrolled ? 'bg-[#0B1D3A]/10 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]')}`}>EN</span>
+                                                <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${
+                                                    language === 'en'
+                                                        ? (isScrolled ? 'bg-[#0B1D3A] text-white' : 'bg-white/20 text-white')
+                                                        : (isScrolled ? 'bg-white/15 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]')
+                                                }`}>
+                                                    EN
+                                                </span>
                                                 <span>English</span>
                                             </span>
-                                            {language === 'en' && <Check size={13} className="text-[#E2C068]" />}
+                                            {language === 'en' && (
+                                                <Check size={13} strokeWidth={2.5} className={isScrolled ? 'text-[#0B1D3A]' : 'text-[#E2C068]'} />
+                                            )}
                                         </button>
                                         <button
                                             onClick={() => { setLanguage('te'); setIsLangDropdownOpen(false); }}
                                             className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[12.5px] transition-all cursor-pointer mt-1 ${
                                                 language === 'te'
-                                                    ? (isScrolled ? 'bg-white text-[#0B1D3A] font-bold' : 'bg-[#0B1D3A] text-white font-bold')
-                                                    : (isScrolled ? 'text-white hover:bg-white/10 font-medium' : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium')
+                                                    ? (isScrolled ? 'bg-white text-[#0B1D3A] font-bold shadow-xs' : 'bg-[#0B1D3A] text-white font-bold shadow-xs')
+                                                    : (isScrolled ? 'text-white/90 hover:bg-white/10 font-medium' : 'text-[#0B1D3A] hover:bg-[#F0F4FA] font-medium')
                                             }`}
                                         >
                                             <span className="flex items-center gap-2">
-                                                <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${language === 'te' ? 'bg-[#C99A2E]/30 text-[#E2C068]' : (isScrolled ? 'bg-[#0B1D3A]/10 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]')}`}>TE</span>
+                                                <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${
+                                                    language === 'te'
+                                                        ? (isScrolled ? 'bg-[#0B1D3A] text-white' : 'bg-white/20 text-white')
+                                                        : (isScrolled ? 'bg-white/15 text-white' : 'bg-[#0B1D3A]/10 text-[#0B1D3A]')
+                                                }`}>
+                                                    TE
+                                                </span>
                                                 <span>తెలుగు</span>
                                             </span>
-                                            {language === 'te' && <Check size={13} className="text-[#E2C068]" />}
+                                            {language === 'te' && (
+                                                <Check size={13} strokeWidth={2.5} className={isScrolled ? 'text-[#0B1D3A]' : 'text-[#E2C068]'} />
+                                            )}
                                         </button>
                                     </motion.div>
                                 )}
