@@ -162,29 +162,31 @@ export default function Desktop() {
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-[850px] mx-auto"
+                    className="max-w-[850px] mx-auto text-center rounded p-14 shadow-[0_20px_60px_-15px_rgba(11,29,58,0.3)] relative overflow-hidden"
+                    style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)` }}
                 >
-                    <div className="bg-gradient-to-r from-[#0F2751]/80 via-[#132D5F] to-[#0F2751]/80 backdrop-blur-xl border border-white/10 rounded p-12 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] relative overflow-hidden text-center group cursor-default">
-                        
-                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/15 rounded-full blur-[60px] group-hover:bg-[#C99A2E]/25 transition-colors duration-700 pointer-events-none"></motion.div>
-                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-64 h-64 bg-[#3B82F6]/10 rounded-full blur-[60px] group-hover:bg-[#3B82F6]/20 transition-colors duration-700 pointer-events-none"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-72 h-72 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-72 h-72 bg-[#60A5FA]/10 rounded-full blur-[60px] pointer-events-none"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#C99A2E]/5 rounded-full blur-[80px] pointer-events-none"></motion.div>
 
-                        <div className="relative z-10 flex flex-col items-center">
-                            <h3 className="text-[28px] font-bold text-white mb-6 leading-tight">
-                                {data.transitionTitle}
-                            </h3>
-                            <div className="inline-flex items-center justify-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded backdrop-blur-md group-hover:bg-white/10 transition-colors duration-300">
-                                <span className="text-[18px] font-bold text-[#C99A2E] tracking-wide">
-                                    {data.transitionSubtitle}
-                                </span>
-                                <ArrowRight size={20} className="text-[#C99A2E] animate-pulse" />
-                            </div>
-                        </div>
-                    </div>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"></div>
+
+                    <h3 className="text-[28px] lg:text-[32px] font-bold text-white mb-5 relative z-10 leading-snug">
+                        {data.transitionTitle}
+                    </h3>
+                    <p className="text-[20px] font-semibold text-[#C99A2E] flex items-center justify-center gap-3 relative z-10">
+                        {data.transitionSubtitle}
+                        <motion.span
+                            animate={{ x: [0, 6, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                            <ArrowRight size={22} />
+                        </motion.span>
+                    </p>
                 </motion.div>
             </div>
         </section>

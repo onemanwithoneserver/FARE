@@ -149,26 +149,29 @@ export default function Mobile() {
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.6 }}
+                    className="w-full rounded p-8 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.25)] relative overflow-hidden text-center"
+                    style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)` }}
                 >
-                    <div className="w-full bg-gradient-to-br from-[#0F2751]/90 to-[#132D5F]/90 backdrop-blur-xl border border-white/10 rounded p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.6)] relative overflow-hidden text-center">
-                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/15 rounded-full blur-[40px] pointer-events-none"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[40px]"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-32 h-32 bg-[#60A5FA]/10 rounded-full blur-[40px]"></motion.div>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"></div>
 
-                        <div className="relative z-10 flex flex-col items-center">
-                            <h3 className="text-[20px] font-bold text-white mb-5 leading-tight">
-                                {data.transitionTitle}
-                            </h3>
-                            <div className="inline-flex items-center justify-center gap-2.5 bg-white/5 border border-white/10 px-5 py-2.5 rounded backdrop-blur-md w-full">
-                                <span className="text-[15px] font-bold text-[#C99A2E] tracking-wide">
-                                    {data.transitionSubtitle}
-                                </span>
-                                <ArrowRight size={18} className="text-[#C99A2E] animate-pulse" />
-                            </div>
-                        </div>
-                    </div>
+                    <h3 className="text-[20px] font-bold text-white mb-3 relative z-10 leading-snug">
+                        {data.transitionTitle}
+                    </h3>
+                    <p className="text-[16px] font-semibold text-[#C99A2E] flex items-center justify-center gap-2 relative z-10 mt-4">
+                        {data.transitionSubtitle}
+                        <motion.span
+                            animate={{ x: [0, 5, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                            <ArrowRight size={16} />
+                        </motion.span>
+                    </p>
                 </motion.div>
             </div>
         </section>
