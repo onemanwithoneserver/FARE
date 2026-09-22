@@ -29,15 +29,15 @@ export default function Mobile() {
     };
 
     const icons = [
-        { icon: <TrendingDown size={18} />, color: "#EF4444" },
-        { icon: <RefreshCcw size={18} />, color: "#F59E0B" },
-        { icon: <AlertCircle size={18} />, color: "#3B82F6" },
-        { icon: <BarChart2 size={18} />, color: "#8B5CF6" },
-        { icon: <Users size={18} />, color: "#EC4899" },
-        { icon: <Target size={18} />, color: "#10B981" },
-        { icon: <HelpCircle size={18} />, color: "#6366F1" },
-        { icon: <Clock size={18} />, color: "#F97316" },
-        { icon: <Award size={18} />, color: "#06B6D4" }
+        { Icon: TrendingDown, color: "#EF4444" },
+        { Icon: RefreshCcw, color: "#F59E0B" },
+        { Icon: AlertCircle, color: "#3B82F6" },
+        { Icon: BarChart2, color: "#8B5CF6" },
+        { Icon: Users, color: "#EC4899" },
+        { Icon: Target, color: "#10B981" },
+        { Icon: HelpCircle, color: "#6366F1" },
+        { Icon: Clock, color: "#F97316" },
+        { Icon: Award, color: "#06B6D4" }
     ];
 
     return (
@@ -78,20 +78,28 @@ export default function Mobile() {
                     viewport={{ once: false, margin: "-50px" }}
                     className="flex flex-col gap-3 mb-14"
                 >
-                    {data.challenges.map((challenge, index) => (
+                    {data.challenges.map((challenge, index) => {
+                        const { Icon, color } = icons[index];
+                        return (
                         <motion.div
                             key={index}
                             variants={item}
-                            className="bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded p-4 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] flex items-center gap-4"
+                            className="bg-red-50/40 backdrop-blur-sm border border-red-100 rounded p-4 shadow-[0_2px_8px_-2px_rgba(220,38,38,0.1)] flex items-center gap-4 relative overflow-hidden"
                         >
-                            <div className="p-2.5 rounded text-white shadow-sm shrink-0" style={{ backgroundColor: icons[index].color }}>
-                                {icons[index].icon}
+                            <motion.div animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#EF4444]/15 to-transparent rounded-bl-full blur-[20px] pointer-events-none"></motion.div>
+
+                            <div 
+                                className="w-10 h-10 rounded-xl shadow-inner flex items-center justify-center shrink-0 relative overflow-hidden"
+                                style={{ backgroundColor: color }}
+                            >
+                                <Icon size={20} className="text-white relative z-10" />
                             </div>
-                            <h3 className="text-[14px] font-bold leading-snug text-left" style={{ color: NAVY }}>
+                            <h3 className="text-[14px] font-bold leading-snug text-left relative z-10" style={{ color: NAVY }}>
                                 {challenge}
                             </h3>
                         </motion.div>
-                    ))}
+                        );
+                    })}
                 </motion.div>
 
                 

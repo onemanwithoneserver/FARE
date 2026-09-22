@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { AlertCircle, ArrowRight } from 'lucide-react';
+import { PhoneOff, UserMinus, ShieldAlert, Users, TrendingDown, Repeat, HelpCircle, Clock, UserCog, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
@@ -23,6 +23,9 @@ export default function Mobile() {
         hidden: { opacity: 0, y: 15 },
         show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
     };
+
+    const colors = ["#EF4444", "#F59E0B", "#3B82F6", "#8B5CF6", "#EC4899", "#10B981", "#6366F1", "#F97316", "#06B6D4"];
+    const icons = [PhoneOff, UserMinus, ShieldAlert, Users, TrendingDown, Repeat, HelpCircle, Clock, UserCog];
 
     return (
         <section className="w-full py-10 relative font-['Outfit'] overflow-hidden"
@@ -55,20 +58,28 @@ export default function Mobile() {
                     viewport={{ once: false, margin: "-50px" }}
                     className="flex flex-col gap-3.5 mb-14"
                 >
-                    {data.challenges.map((challenge, index) => (
+                    {data.challenges.map((challenge, index) => {
+                        const color = colors[index % colors.length];
+                        const Icon = icons[index % icons.length];
+                        return (
                         <motion.div
                             key={index}
                             variants={item}
-                            className="bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded p-5 shadow-[0_2px_12px_-4px_rgba(11,29,58,0.05)] flex items-start gap-4"
+                            className="bg-red-50/40 backdrop-blur-sm border border-red-100 rounded p-5 shadow-[0_2px_12px_-4px_rgba(220,38,38,0.1)] flex items-start gap-4 relative overflow-hidden"
                         >
-                            <div className="w-10 h-10 rounded bg-[#EF4444] flex items-center justify-center shrink-0">
-                                <AlertCircle size={18} strokeWidth={2.5} className="text-white" />
+                            <motion.div animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-20 h-20 bg-gradient-radial from-[#EF4444]/15 to-transparent rounded-bl-full blur-[20px] pointer-events-none"></motion.div>
+                            <div 
+                                className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 relative overflow-hidden"
+                                style={{ backgroundColor: color }}
+                            >
+                                <Icon size={22} strokeWidth={2.5} className="text-white relative z-10" />
                             </div>
-                            <p className="text-[15px] font-bold text-[#0B1D3A] leading-snug pt-2">
+                            <p className="text-[15px] font-bold text-[#0B1D3A] leading-snug pt-1 relative z-10">
                                 {challenge}
                             </p>
                         </motion.div>
-                    ))}
+                        );
+                    })}
                 </motion.div>
 
                 <motion.div

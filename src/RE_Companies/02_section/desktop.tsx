@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { AlertCircle, ArrowRight } from 'lucide-react';
+import { PhoneOff, UserMinus, ShieldAlert, Users, TrendingDown, Repeat, HelpCircle, Clock, UserCog, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
@@ -23,6 +23,9 @@ export default function Desktop() {
         hidden: { opacity: 0, y: 24 },
         show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } }
     };
+
+    const colors = ["#EF4444", "#F59E0B", "#3B82F6", "#8B5CF6", "#EC4899", "#10B981", "#6366F1", "#F97316", "#06B6D4"];
+    const icons = [PhoneOff, UserMinus, ShieldAlert, Users, TrendingDown, Repeat, HelpCircle, Clock, UserCog];
 
     return (
         <section className="w-full py-16 relative font-['Outfit'] overflow-hidden"
@@ -65,24 +68,30 @@ export default function Desktop() {
                     viewport={{ once: false, margin: "-100px" }}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 relative"
                 >
-                    {data.challenges.map((challenge, index) => (
+                    {data.challenges.map((challenge, index) => {
+                        const color = colors[index % colors.length];
+                        const Icon = icons[index % icons.length];
+                        return (
                         <motion.div
                             key={index}
                             variants={item}
                             whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                            className="group bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded p-8 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.04)] hover:shadow-[0_20px_50px_-15px_rgba(11,29,58,0.12)] transition-all duration-400 relative overflow-hidden flex flex-col"
+                            className="group bg-red-50/40 backdrop-blur-sm border border-red-100 rounded p-8 shadow-[0_4px_20px_-4px_rgba(220,38,38,0.05)] hover:shadow-[0_20px_50px_-15px_rgba(220,38,38,0.15)] hover:bg-red-50/80 transition-all duration-400 relative overflow-hidden flex flex-col"
                         >
-                            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#EF4444]/10 to-transparent rounded-bl-full blur-[20px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></motion.div>
+                            <motion.div animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#EF4444]/15 to-transparent rounded-bl-full blur-[20px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></motion.div>
                             
-                            <div className="w-12 h-12 rounded bg-[#EF4444] flex items-center justify-center shrink-0 mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden">
-                                <div className="absolute inset-0 bg-white/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300"></div>
-                                <AlertCircle size={22} strokeWidth={2.5} className="text-white relative z-10" />
+                            <div 
+                                className="w-14 h-14 rounded-xl shadow-inner flex items-center justify-center shrink-0 mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden"
+                                style={{ backgroundColor: color }}
+                            >
+                                <Icon size={24} strokeWidth={2.5} className="text-white relative z-10" />
                             </div>
                             <p className="text-[17px] font-bold text-[#0B1D3A] leading-[1.5] relative z-10">
                                 {challenge}
                             </p>
                         </motion.div>
-                    ))}
+                        );
+                    })}
                 </motion.div>
 
                 <motion.div

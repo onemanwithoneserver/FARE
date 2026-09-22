@@ -29,15 +29,15 @@ export default function Desktop() {
     };
 
     const icons = [
-        { icon: <TrendingDown size={22} />, color: "#EF4444", bg: "#FEF2F2" },
-        { icon: <RefreshCcw size={22} />, color: "#F59E0B", bg: "#FFFBEB" },
-        { icon: <AlertCircle size={22} />, color: "#3B82F6", bg: "#EFF6FF" },
-        { icon: <BarChart2 size={22} />, color: "#8B5CF6", bg: "#F5F3FF" },
-        { icon: <Users size={22} />, color: "#EC4899", bg: "#FDF2F8" },
-        { icon: <Target size={22} />, color: "#10B981", bg: "#ECFDF5" },
-        { icon: <HelpCircle size={22} />, color: "#6366F1", bg: "#EEF2FF" },
-        { icon: <Clock size={22} />, color: "#F97316", bg: "#FFF7ED" },
-        { icon: <Award size={22} />, color: "#06B6D4", bg: "#ECFEFF" }
+        { Icon: TrendingDown, color: "#EF4444" },
+        { Icon: RefreshCcw, color: "#F59E0B" },
+        { Icon: AlertCircle, color: "#3B82F6" },
+        { Icon: BarChart2, color: "#8B5CF6" },
+        { Icon: Users, color: "#EC4899" },
+        { Icon: Target, color: "#10B981" },
+        { Icon: HelpCircle, color: "#6366F1" },
+        { Icon: Clock, color: "#F97316" },
+        { Icon: Award, color: "#06B6D4" }
     ];
 
     return (
@@ -88,24 +88,30 @@ export default function Desktop() {
                     viewport={{ once: false, margin: "-80px" }}
                     className="grid grid-cols-3 gap-5 relative mb-10"
                 >
-                    {data.challenges.map((challenge, index) => (
+                    {data.challenges.map((challenge, index) => {
+                        const { Icon, color } = icons[index];
+                        return (
                         <motion.div
                             key={index}
                             variants={item}
                             whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                            className="group bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded p-7 shadow-[0_1px_3px_rgba(11,29,58,0.04),0_8px_24px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_20px_50px_-15px_rgba(11,29,58,0.12),0_0_0_1px_rgba(11,29,58,0.04)] transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[200px] justify-center cursor-default"
+                            className="group bg-red-50/40 backdrop-blur-sm border border-red-100 rounded p-7 shadow-[0_1px_3px_rgba(220,38,38,0.05),0_8px_24px_-8px_rgba(220,38,38,0.08)] hover:shadow-[0_20px_50px_-15px_rgba(220,38,38,0.15)] hover:bg-red-50/80 transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[200px] justify-center cursor-default"
                         >
                             
-                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-transparent group-hover:from-[${icons[index].bg}] group-hover:to-transparent transition-all duration-500 opacity-0 group-hover:opacity-100 rounded" style={{ background: `linear-gradient(135deg, ${icons[index].bg} 0%, transparent 60%)`, opacity: 0 }}></div>
+                            <motion.div animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#EF4444]/15 to-transparent rounded-bl-full blur-[20px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></motion.div>
 
-                            <div className="mb-5 w-14 h-14 rounded flex items-center justify-center shadow-[0_4px_12px_-2px_rgba(0,0,0,0.1)] group-hover:scale-110 group-hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 relative z-10" style={{ backgroundColor: icons[index].color, color: 'white' }}>
-                                {icons[index].icon}
+                            <div 
+                                className="mb-5 w-14 h-14 rounded-xl shadow-inner flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 relative overflow-hidden"
+                                style={{ backgroundColor: color }}
+                            >
+                                <Icon size={24} className="text-white relative z-10" />
                             </div>
                             <h3 className="text-[16px] font-bold leading-tight relative z-10" style={{ color: NAVY }}>
                                 {challenge}
                             </h3>
                         </motion.div>
-                    ))}
+                        );
+                    })}
                 </motion.div>
 
                 

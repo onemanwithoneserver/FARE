@@ -87,21 +87,21 @@ export default function Mobile() {
                             <motion.div
                                 key={index}
                                 variants={item}
-                                className="bg-[#0A1630]/60 backdrop-blur-xl border border-white/10 rounded p-5 flex items-center gap-5 shadow-[0_10px_20px_-5px_rgba(0,0,0,0.5)] relative overflow-hidden"
+                                className="bg-gradient-to-br from-[#1A0B16]/90 to-[#0A1630]/60 backdrop-blur-xl border border-red-900/30 rounded p-5 flex items-center gap-5 shadow-[0_10px_20px_-5px_rgba(220,38,38,0.15)] relative overflow-hidden"
                             >
-                                <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-24 h-24 opacity-10 blur-[20px] rounded-bl-full pointer-events-none" style={{ background: color }}></motion.div>
+                                <motion.div animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-24 h-24 opacity-10 blur-[20px] rounded-bl-full pointer-events-none bg-red-500"></motion.div>
 
                                 <div 
-                                    className="w-12 h-12 rounded flex items-center justify-center shrink-0 shadow-[0_4px_8px_-2px_rgba(0,0,0,0.3)] relative z-10"
-                                    style={{ backgroundColor: color, border: `1px solid ${color}30` }}
+                                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-[0_4px_8px_-2px_rgba(220,38,38,0.2)] relative z-10 border border-red-500/20"
+                                    style={{ backgroundColor: color }}
                                 >
-                                    <Icon size={20} style={{ color: '#ffffff' }} />
+                                    <Icon size={20} className="text-white relative z-10" />
                                 </div>
                                 <div className="flex flex-col gap-1 relative z-10">
-                                    <span className="text-[11px] font-bold tracking-[0.1em] text-white/20 font-serif">
+                                    <span className="text-[11px] font-bold tracking-[0.1em] text-red-500/30 font-serif">
                                         {String(index + 1).padStart(2, '0')}
                                     </span>
-                                    <h3 className="text-[14.5px] font-bold leading-[1.4] text-white/90">
+                                    <h3 className="text-[14.5px] font-bold leading-[1.4] text-red-50/90">
                                         {challenge}
                                     </h3>
                                 </div>
