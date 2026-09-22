@@ -1,6 +1,16 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck, Users, BarChart2 } from 'lucide-react';
+import type { Variants } from 'motion/react';
+import {
+    ArrowRight,
+    ShieldCheck,
+    Users,
+    BarChart2,
+    GraduationCap,
+    Building2,
+    Target,
+    Sparkles
+} from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
 import bgImage from '../../assets/bg-04.jpg';
@@ -13,18 +23,6 @@ export default function Mobile() {
     const { language } = useLanguage();
     const data = getData(language);
 
-    const getActiveButtonIndex = (pathname: string): number => {
-        const pathSegments = pathname.split('/').filter(Boolean);
-        const currentRoute = pathSegments[1] || 'home';
-
-        if (currentRoute === 'open-plots') return 0;
-        if (currentRoute === 're-trainers-coaches') return 1;
-        if (currentRoute === 're-companies') return 2;
-        return -1;
-    };
-
-    const activeBtnIndex = getActiveButtonIndex(location.pathname);
-
     const handleButtonClick = (idx: number) => {
         if (idx === 0) {
             navigate(`/${currentMode}/open-plots`);
@@ -36,125 +34,230 @@ export default function Mobile() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const containerVariant = {
+    const containerVariant: Variants = {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
-            transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+            transition: { staggerChildren: 0.08, delayChildren: 0.1 }
         }
     };
 
-    const itemVariant = {
-        hidden: { opacity: 0, y: 15 },
-        show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } }
+    const itemVariant: Variants = {
+        hidden: { opacity: 0, y: 14 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
     };
+
+    const registrationOptions = [
+        {
+            title: data.buttons[0] || 'Register as a Learner',
+            subtitle: language === 'te' ? 'నిపుణులు & ఉద్యోగార్థుల కోసం' : 'Upskill with scenario-based practice',
+            accent: '#C99A2E',
+            cardBg: 'linear-gradient(135deg, rgba(201, 154, 46, 0.22) 0%, rgba(18, 22, 38, 0.98) 45%, rgba(201, 154, 46, 0.08) 100%)',
+            cardBorder: 'rgba(201, 154, 46, 0.50)',
+            iconBg: 'linear-gradient(135deg, #D5AA45 0%, #C99A2E 100%)',
+            icon: <GraduationCap size={21} strokeWidth={2.3} className="text-white" />
+        },
+        {
+            title: data.buttons[1] || 'Register as a Trainer',
+            subtitle: language === 'te' ? 'ట్రైనర్లు & నిపుణుల కోసం' : 'Author courses & mentor top talent',
+            accent: '#3B82F6',
+            cardBg: 'linear-gradient(135deg, rgba(59, 130, 246, 0.22) 0%, rgba(15, 24, 44, 0.98) 45%, rgba(59, 130, 246, 0.08) 100%)',
+            cardBorder: 'rgba(59, 130, 246, 0.50)',
+            iconBg: 'linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)',
+            icon: <Users size={21} strokeWidth={2.3} className="text-white" />
+        },
+        {
+            title: data.buttons[2] || 'Register as a Company',
+            subtitle: language === 'te' ? 'సంస్థలు & డెవలపర్ల కోసం' : 'Benchmark & train advisory teams',
+            accent: '#10B981',
+            cardBg: 'linear-gradient(135deg, rgba(16, 185, 129, 0.22) 0%, rgba(12, 28, 30, 0.98) 45%, rgba(16, 185, 129, 0.08) 100%)',
+            cardBorder: 'rgba(16, 185, 129, 0.50)',
+            iconBg: 'linear-gradient(135deg, #10B981 0%, #047857 100%)',
+            icon: <Building2 size={21} strokeWidth={2.3} className="text-white" />
+        }
+    ];
 
     return (
         <section
             className="w-full py-12 px-4 flex flex-col items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
         >
             <div
-                className="absolute inset-0 z-0 opacity-20"
+                className="absolute inset-0 z-0 opacity-40 pointer-events-none"
                 style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}
-            ></div>
+            />
 
-            <div className="absolute inset-0 bg-[#041029]/60 z-0"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020b1e]/75 via-[#041029]/55 to-[#020b1e]/85 z-0 pointer-events-none" />
 
             <motion.div
-                animate={{ opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 left-0 w-[300px] h-[300px] bg-gradient-to-br from-[#0B2A6B]/40 to-transparent -rotate-45 transform -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"
-            ></motion.div>
+                animate={{ opacity: [0.3, 0.55, 0.3] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 left-0 w-[300px] h-[300px] bg-gradient-to-br from-[#0B2A6B]/50 to-transparent -rotate-45 transform -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"
+            />
+            <motion.div
+                animate={{ opacity: [0.2, 0.45, 0.2] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute bottom-0 right-0 w-[280px] h-[280px] bg-gradient-to-tl from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[60px] pointer-events-none z-0"
+            />
 
             <motion.div
                 variants={containerVariant}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: false }}
-                className="w-full max-w-[460px] relative z-20"
+                viewport={{ once: false, margin: "-40px" }}
+                className="w-full max-w-[480px] relative z-20"
             >
                 <div
-                    className="w-full rounded-xl pt-10 pb-8 flex flex-col items-center text-center relative overflow-hidden"
-                        style={{
-                            background: 'linear-gradient(135deg, rgba(6,18,36,0.95) 0%, rgba(4,12,29,0.98) 100%)',
-                            border: '1px solid rgba(255,255,255,0.06)',
-                        }}
+                    className="w-full rounded-2xl pt-9 pb-8 px-4.5 sm:px-6 flex flex-col items-center text-center relative overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)]"
+                    style={{
+                        background: 'linear-gradient(135deg, rgba(8,22,48,0.96) 0%, rgba(4,12,30,0.98) 100%)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                    }}
                 >
-                    <motion.div
-                        animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
-                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-0 right-1/4 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[80px] pointer-events-none"
-                    ></motion.div>
+                    <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#C99A2E] to-transparent opacity-80" />
 
-                    <motion.div variants={itemVariant} className="flex items-center gap-3 mb-5 relative z-10">
-                        <div className="h-[1px] w-8 bg-gradient-to-l from-[#C99A2E] to-transparent opacity-60"></div>
-                        <span className="text-[11px] font-bold tracking-[0.25em] text-[#E2C068] uppercase">{data.academyText}</span>
-                        <div className="h-[1px] w-8 bg-gradient-to-r from-[#C99A2E] to-transparent opacity-60"></div>
+                    <div className="absolute -top-16 -right-16 w-36 h-36 bg-[#C99A2E]/[0.08] rounded-full blur-[45px] pointer-events-none" />
+                    <div className="absolute -bottom-16 -left-16 w-36 h-36 bg-[#0B2A6B]/[0.25] rounded-full blur-[45px] pointer-events-none" />
+
+                    <motion.div variants={itemVariant} className="mb-4 relative z-10">
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_10px_rgba(201,154,46,0.1)] backdrop-blur-sm">
+                            <Sparkles size={11} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
+                            <span className="font-bold text-[10px] tracking-[0.25em] text-[#E2C068] uppercase">
+                                {data.academyText}
+                            </span>
+                        </div>
                     </motion.div>
 
-                    <motion.h2 variants={itemVariant} className="text-[1.8rem] leading-[1.1] font-black tracking-tight text-white uppercase mb-4 px-2 w-full relative z-10">
+                    <motion.h2
+                        variants={itemVariant}
+                        className={`font-black tracking-tight text-white uppercase mb-3 px-2 w-full relative z-10 ${
+                            language === 'te'
+                                ? 'text-[1.5rem] leading-[1.25]'
+                                : 'text-[1.85rem] leading-[1.12]'
+                        }`}
+                    >
                         <span className="block">{data.headline.line1}</span>
-                        <span className="block text-[#C99A2E]">{data.headline.line2}</span>
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#D5AA45] via-[#F3E1A0] to-[#C99A2E]">
+                            {data.headline.line2}
+                        </span>
                     </motion.h2>
 
-                    <motion.p variants={itemVariant} className="text-[13px] font-medium max-w-[340px] leading-[1.5] mb-8 text-white/70 px-4 relative z-10">
+                    <motion.p
+                        variants={itemVariant}
+                        className="text-[13px] font-medium max-w-[360px] leading-[1.6] mb-7 text-white/70 px-2 relative z-10"
+                    >
                         {data.headline.subtitle}
                     </motion.p>
 
-                    <motion.div variants={itemVariant} className="flex flex-col items-center gap-2.5 mb-10 w-full px-5 relative z-10">
-                        {data.buttons.map((btn, idx) => {
-                            const isSelected = activeBtnIndex === idx;
+                    <motion.div variants={itemVariant} className="flex flex-col gap-3.5 w-full mb-8 relative z-10">
+                        {registrationOptions.map((opt, idx) => (
+                            <motion.button
+                                key={idx}
+                                onClick={() => handleButtonClick(idx)}
+                                whileTap={{ scale: 0.98 }}
+                                className="w-full p-4 rounded-xl transition-all duration-300 flex items-center justify-between gap-3.5 text-left cursor-pointer relative overflow-hidden group shadow-[0_8px_24px_-6px_rgba(0,0,0,0.4)]"
+                                style={{
+                                    background: opt.cardBg,
+                                    border: `1px solid ${opt.cardBorder}`
+                                }}
+                            >
+                                <div
+                                    className="w-1.5 h-10 rounded-full shrink-0 shadow-sm"
+                                    style={{ background: opt.iconBg }}
+                                />
 
-                            return (
-                                <motion.button
-                                    key={idx}
-                                    onClick={() => handleButtonClick(idx)}
-                                    whileTap={{ scale: 0.97 }}
-                                    className={`w-full py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
-                                            isSelected 
-                                                ? 'font-bold text-[12.5px] text-[#071A49] uppercase tracking-[0.05em] shadow-[0_8px_20px_-4px_rgba(213,170,69,0.3)]'
-                                                : 'bg-[#071A49]/60 text-white font-semibold text-[13px] border border-white/10 active:bg-white/10'
-                                    }`}
-                                    style={isSelected ? { 
-                                        background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' 
-                                    } : {}}
+                                <div
+                                    className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 shadow-md transition-transform duration-300 group-hover:scale-105"
+                                    style={{
+                                        background: opt.iconBg
+                                    }}
                                 >
-                                    <span>{btn}</span>
-                                    {isSelected && <ArrowRight size={15} strokeWidth={2.5} />}
-                                </motion.button>
-                            );
-                        })}
+                                    {opt.icon}
+                                </div>
+
+                                <div className="flex-1 min-w-0 pr-1">
+                                    <div className="text-[14.5px] font-black text-white tracking-tight leading-snug">
+                                        {opt.title}
+                                    </div>
+                                    <div className="text-[12px] text-white/80 font-medium leading-tight truncate mt-0.5">
+                                        {opt.subtitle}
+                                    </div>
+                                </div>
+
+                                <div
+                                    className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:translate-x-0.5"
+                                    style={{
+                                        background: opt.iconBg
+                                    }}
+                                >
+                                    <ArrowRight size={15} strokeWidth={2.8} className="text-white" />
+                                </div>
+                            </motion.button>
+                        ))}
                     </motion.div>
 
-                    <motion.div variants={itemVariant} className="flex flex-col items-center w-full max-w-[340px] mx-auto gap-2.5 px-2 relative z-10">
-                        {data.trustBadges.map((badge, i) => (
-                            <motion.div
-                                key={i}
-                                className="w-full flex items-center gap-3.5 p-3 rounded-lg bg-[#0B1D3A]/[0.04] border border-[#0B1D3A]/[0.08]"
-                                whileHover={{ scale: 1.02 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                            >
-                                <motion.div
-                                    className="shrink-0 flex items-center justify-center"
-                                    whileHover={{ rotate: 8, scale: 1.1 }}
-                                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                                >
-                                    {i === 0 && <ShieldCheck size={22} strokeWidth={2} className="text-[#34D399]" />}
-                                    {i === 1 && <Users size={22} strokeWidth={2} className="text-[#6B8AFF]" />}
-                                    {i === 2 && <BarChart2 size={22} strokeWidth={2} className="text-[#D5AA45]" />}
-                                </motion.div>
-                                <div className="text-left flex-1">
-                                    <div className="text-[13px] font-bold text-[#fff] leading-tight">{badge.title}</div>
-                                    {badge.subtitle && (
-                                        <div className="text-[11px] text-[#7B8DAA] font-medium leading-tight mt-0.5">{badge.subtitle}</div>
-                                    )}
-                                </div>
-                            </motion.div>
-                        ))}
+                    <motion.div variants={itemVariant} className="w-full pt-6 border-t border-white/[0.08] relative z-10 flex flex-col items-center">
+                        <span className="text-[10px] font-bold tracking-[0.22em] text-[#C99A2E] uppercase mb-3.5">
+                            {language === 'te' ? 'ప్లాట్‌ఫారమ్ విశేషాలు' : 'PLATFORM HIGHLIGHTS'}
+                        </span>
+
+                        <div className="grid grid-cols-1 gap-2.5 w-full">
+                            {data.trustBadges.map((badge, i) => {
+                                const badgeColors = [
+                                    {
+                                        bg: 'rgba(16, 185, 129, 0.08)',
+                                        border: 'rgba(16, 185, 129, 0.22)',
+                                        iconBg: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+                                        icon: <ShieldCheck size={18} strokeWidth={2.4} className="text-white" />
+                                    },
+                                    {
+                                        bg: 'rgba(59, 130, 246, 0.08)',
+                                        border: 'rgba(59, 130, 246, 0.22)',
+                                        iconBg: 'linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)',
+                                        icon: <Target size={18} strokeWidth={2.4} className="text-white" />
+                                    },
+                                    {
+                                        bg: 'rgba(201, 154, 46, 0.08)',
+                                        border: 'rgba(201, 154, 46, 0.22)',
+                                        iconBg: 'linear-gradient(135deg, #D5AA45 0%, #C99A2E 100%)',
+                                        icon: <BarChart2 size={18} strokeWidth={2.4} className="text-white" />
+                                    }
+                                ][i];
+
+                                return (
+                                    <div
+                                        key={i}
+                                        className="w-full flex items-center gap-3.5 p-3 rounded-xl transition-all duration-300"
+                                        style={{
+                                            background: badgeColors.bg,
+                                            border: `1px solid ${badgeColors.border}`
+                                        }}
+                                    >
+                                        <div
+                                            className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 shadow-sm"
+                                            style={{
+                                                background: badgeColors.iconBg
+                                            }}
+                                        >
+                                            {badgeColors.icon}
+                                        </div>
+                                        <div className="text-left flex-1 min-w-0">
+                                            <div className="text-[13px] font-bold text-white leading-tight">
+                                                {badge.title}
+                                            </div>
+                                            {badge.subtitle && (
+                                                <div className="text-[11px] text-white/70 font-medium leading-tight mt-0.5">
+                                                    {badge.subtitle}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </motion.div>
                 </div>
             </motion.div>
