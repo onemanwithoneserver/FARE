@@ -43,12 +43,12 @@ export default function Mobile() {
     };
 
     return (
-        <section className="w-full py-10 relative font-['Outfit'] overflow-hidden bg-[#020b1e]">
-            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[60px] pointer-events-none"></motion.div>
+        <section className="w-full py-10 relative font-['Outfit'] overflow-hidden" style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)' }}>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[60px] pointer-events-none"></motion.div>
 
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
                 style={{
-                    backgroundImage: `radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)`,
+                    backgroundImage: `radial-gradient(#0B1D3A 1px, transparent 1px)`,
                     backgroundSize: '24px 24px'
                 }}
             />
@@ -67,7 +67,7 @@ export default function Mobile() {
                         </span>
                     </motion.div>
                     
-                    <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-4 text-white">
+                    <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-4 text-[#0B1D3A]">
                         {data.headline}
                     </motion.h2>
                 </motion.div>
@@ -77,7 +77,7 @@ export default function Mobile() {
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
-                        className="text-[20px] font-bold mb-8 text-center text-white flex items-center justify-center gap-3"
+                        className="text-[20px] font-bold mb-8 text-center text-[#0B1D3A] flex items-center justify-center gap-3"
                     >
                         <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-[#C99A2E]/50"></div>
                         {data.segmentsHeading}
@@ -95,7 +95,7 @@ export default function Mobile() {
                             <motion.div
                                 key={index}
                                 variants={item}
-                                className="bg-[#071A49]/60 backdrop-blur-sm border border-white/10 rounded p-6 shadow-[0_10px_30px_-10px_rgba(2,6,23,0.45)] relative overflow-hidden"
+                                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-6 shadow-[0_10px_20px_-5px_rgba(11,29,58,0.12)] relative overflow-hidden"
                             >
                                 <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-24 h-24 opacity-10 blur-[20px] rounded-bl-full pointer-events-none" style={{ background: segment.color }}></motion.div>
 
@@ -103,13 +103,13 @@ export default function Mobile() {
                                     <div className="w-12 h-12 rounded flex items-center justify-center shadow-lg shrink-0" style={{ backgroundColor: segment.color }}>
                                         {segmentIcons[segment.icon as keyof typeof segmentIcons]}
                                     </div>
-                                    <h4 className="text-[18px] font-bold text-white leading-snug">
+                                    <h4 className="text-[18px] font-bold text-[#0B1D3A] leading-snug">
                                         {segment.title}
                                     </h4>
                                 </div>
                                 <div className="flex flex-wrap gap-2.5 relative z-10">
                                     {segment.items.map((it, idx) => (
-                                        <div key={idx} className="bg-[#071A49]/[0.06] border border-white/10 px-3 py-1.5 rounded text-[13px] font-medium text-white/80">
+                                        <div key={idx} className="bg-[#0B1D3A]/[0.04] border border-[#0B1D3A]/10 px-3 py-1.5 rounded text-[13px] font-medium text-[#475569]">
                                             {it}
                                         </div>
                                     ))}
@@ -125,12 +125,12 @@ export default function Mobile() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.6 }}
-                        className="bg-[#071A49]/60 backdrop-blur-sm border border-white/10 rounded p-7 relative overflow-hidden shadow-[0_20px_40px_-10px_rgba(2,6,23,0.45)]"
+                        className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-7 relative overflow-hidden shadow-[0_20px_40px_-10px_rgba(11,29,58,0.15)]"
                     >
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-48 h-48 bg-[#C99A2E]/10 rounded-full blur-[40px]"></motion.div>
                         
                         <motion.h3 
-                            className="text-[22px] font-bold mb-8 text-center text-white relative z-10"
+                            className="text-[22px] font-bold mb-8 text-center text-[#0B1D3A] relative z-10"
                         >
                             {data.learnersHeading}
                         </motion.h3>
