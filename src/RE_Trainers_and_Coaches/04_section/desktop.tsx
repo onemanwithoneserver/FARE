@@ -146,17 +146,17 @@ export default function Desktop() {
                             initial="hidden"
                             whileInView="show"
                             viewport={{ once: false, margin: "-100px" }}
-                            className="grid grid-cols-2 lg:grid-cols-3 gap-8 relative z-10"
+                            className="flex flex-wrap justify-center gap-6 lg:gap-8 relative z-10"
                         >
                             {data.learners.map((learner, index) => (
                                 <motion.div
                                     key={index}
                                     variants={item}
-                                    className="bg-white/5 border border-white/10 rounded p-8 hover:bg-white/10 hover:border-white/20 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.3)] transition-all duration-400 group cursor-default"
+                                    className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] bg-white/5 border border-white/10 rounded p-8 hover:bg-white/10 hover:border-white/20 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.3)] transition-all duration-400 group cursor-default flex flex-col justify-between"
                                 >
-                                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6">
-                                        <div className="w-14 h-14 rounded flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]" style={{ backgroundColor: learner.color }}>
-                                            <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded"></div>
+                                    <div className="flex items-center gap-5 mb-5">
+                                        <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]" style={{ backgroundColor: learner.color }}>
+                                            <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded-xl"></div>
                                             {learnerIcons[learner.icon as keyof typeof learnerIcons]}
                                         </div>
                                         <h4 className="text-[20px] font-bold text-white leading-tight">
