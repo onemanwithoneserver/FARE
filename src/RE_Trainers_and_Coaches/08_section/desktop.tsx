@@ -55,7 +55,7 @@ export default function Desktop() {
 
     return (
         <section
-            className="w-full py-20 relative font-['Outfit'] overflow-hidden"
+            className="w-full py-10 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 40%, #EFF5FF 80%, #F4F8FF 100%)' }}
         >
             {/* Ambient Animated Glows */}
@@ -334,14 +334,6 @@ export default function Desktop() {
                     transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                     className="mt-14 text-center flex items-center justify-center gap-6"
                 >
-                    <div className="w-16 lg:w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
-                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/80 border border-[#C99A2E]/25 shadow-[0_4px_20px_-4px_rgba(201,154,46,0.15)] backdrop-blur-md">
-                        <Sparkles size={16} className="text-[#C99A2E]" strokeWidth={2.2} />
-                        <p className="text-[20px] lg:text-[23px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
-                            {data.footerText}
-                        </p>
-                    </div>
-                    <div className="w-16 lg:w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
                 </motion.div>
             </div>
         </section>
