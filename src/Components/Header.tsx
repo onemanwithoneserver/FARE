@@ -19,6 +19,7 @@ export default function Header({ viewMode, onViewModeChange, view, onViewChange,
     { value: 'open-plots', label: 'Open Plots' },
     { value: 're-companies', label: 'RE Companies' },
     { value: 're-trainers-coaches', label: 'RE Trainers' },
+    { value: 'contact-us', label: 'Contact Us' },
     { value: 'forms', label: 'Forms' }
   ];
 

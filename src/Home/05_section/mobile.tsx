@@ -115,7 +115,7 @@ export default function Mobile() {
                                 ) : (
                                     <span className="absolute bottom-1 left-2.5 right-2.5 h-[1px] bg-[#E2C068] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center opacity-70" />
                                 )}
-                                <span className="relative z-10 transition-colors duration-200">
+                                <span className="relative z-10 underline decoration-dotted transition-colors duration-200">
                                     {link.label}
                                 </span>
                             </motion.button>

@@ -153,6 +153,12 @@ export default function Desktop() {
             <a
                 key={idx}
                 href={link.href}
+                onClick={(e) => {
+                    if (link.title === 'Contact Us' || link.title === 'సంప్రదించండి' || link.href === '#contact') {
+                        e.preventDefault();
+                        navigate(`/${currentMode}/contact-us`);
+                    }
+                }}
                 className={`relative text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium transition-colors duration-300 whitespace-nowrap pb-[2px] border-b border-dotted ${isScrolled ? 'border-white/30 text-white/90 hover:text-[#C99A2E]' : 'border-[#0B1D3A]/30 text-[#0B1D3A]/90 hover:text-[#C99A2E]'} after:content-[''] after:absolute after:bottom-[-1px] after:left-0 after:w-0 after:h-[1.5px] after:bg-[#C99A2E] after:transition-all after:duration-300 hover:after:w-full`}
             >
                 {link.title}

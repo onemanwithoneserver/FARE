@@ -121,7 +121,7 @@ export default function Desktop() {
                                 ) : (
                                     <span className="absolute bottom-1 left-3 right-3 h-[1.5px] bg-[#E2C068] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center opacity-80" />
                                 )}
-                                <span className="relative z-10 transition-colors duration-200">
+                                <span className="relative z-10 underline decoration-dotted transition-colors duration-200">
                                     {link.label}
                                 </span>
                             </motion.button>

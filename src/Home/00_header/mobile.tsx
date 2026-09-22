@@ -275,7 +275,15 @@ export default function Mobile() {
                                             <a
                                                 key={idx}
                                                 href={link.href}
-                                                onClick={() => setIsOpen(false)}
+                                                onClick={(e) => {
+                                                    if (link.title === 'Contact Us' || link.title === 'సంప్రదించండి' || link.href === '#contact') {
+                                                        e.preventDefault();
+                                                        setIsOpen(false);
+                                                        navigate(`/${currentMode}/contact-us`);
+                                                    } else {
+                                                        setIsOpen(false);
+                                                    }
+                                                }}
                                                 className={`text-[15px] font-semibold transition-colors py-2 border-b border-[#0B1D3A]/[0.06] ${isScrolled ? 'text-white hover:text-[#C99A2E]' : 'text-[#0B1D3A] hover:text-[#C99A2E]'}`}
                                             >
                                                 {link.title}

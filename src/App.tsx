@@ -7,6 +7,7 @@ import OpenPlot from './OpenPlot'
 
 import RE_Companies from './RE_Companies'
 import RE_Trainers_and_Coaches from './RE_Trainers_and_Coaches'
+import ContactUs from './ContactUs'
 
 export default function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
@@ -64,6 +65,7 @@ export default function App() {
             <Route path="/:mode/open-plots" element={<OpenPlot isMobile={isMobile} />} />
             <Route path="/:mode/re-companies" element={<RE_Companies isMobile={isMobile} />} />
             <Route path="/:mode/re-trainers-coaches" element={<RE_Trainers_and_Coaches isMobile={isMobile} />} />
+            <Route path="/:mode/contact-us" element={<ContactUs isMobile={isMobile} />} />
             <Route path="/:mode/forms" element={<Home isMobile={isMobile} />} />
             <Route path="*" element={<Navigate to={`/${defaultInitialMode}/home`} replace />} />
           </Routes>
