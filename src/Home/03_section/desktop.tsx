@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import {
-    Building2, GraduationCap, UserCheck, ArrowRight, Sparkles, CheckCircle2
+    Building2, GraduationCap, UserCheck, ArrowRight, Sparkles, ChevronRight
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
@@ -144,53 +144,41 @@ export default function Desktop() {
                                 />
 
                                 <div>
-                                    <div className="flex items-center justify-between gap-4 mb-6">
+                                    <div className="flex items-center gap-4 mb-6">
                                         <div
-                                            className="w-14 h-14 rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-110 group-hover:rotate-3 transition-transform duration-400 relative overflow-hidden"
+                                            className="w-13 h-13 xl:w-14 xl:h-14 rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-110 group-hover:rotate-3 transition-transform duration-400 relative overflow-hidden shrink-0"
                                             style={{
                                                 background: `linear-gradient(135deg, ${accent} 0%, ${accent}DD 100%)`
                                             }}
                                         >
                                             <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[-100%] transition-transform duration-700" />
-                                            {getIcon(persona.id, 26)}
+                                            {getIcon(persona.id, 24)}
                                         </div>
 
-                                        <span
-                                            className="px-3.5 py-1.5 rounded-full text-[10.5px] font-bold tracking-[0.12em] uppercase border"
-                                            style={{
-                                                color: accent,
-                                                borderColor: `${accent}35`,
-                                                backgroundColor: `${accent}10`
-                                            }}
-                                        >
-                                            {persona.badge}
-                                        </span>
-                                    </div>
-
-                                    <div className="mb-4">
-                                        <h3 className="text-[20px] xl:text-[22px] font-black tracking-tight text-[#0B1D3A] group-hover:text-[#0B1D3A] transition-colors">
+                                        <h3 className="text-[19px] xl:text-[21px] font-black tracking-tight text-[#0B1D3A] transition-colors leading-tight">
                                             {persona.tag}
                                         </h3>
-                                        <p className="text-[12px] font-semibold text-[#8492A6] mt-1 tracking-wide">
-                                            {persona.subTag}
-                                        </p>
                                     </div>
 
-                                    <h4 className="text-[18px] xl:text-[20px] font-bold text-[#0B1D3A] leading-snug mb-3">
-                                        {persona.titleLine1} <span style={{ color: accent }}>{persona.titleLine2}</span>
-                                    </h4>
-
-                                    <p className="text-[14.5px] font-medium leading-[1.65] text-[#5A6B82] mb-6">
-                                        {persona.desc}
-                                    </p>
-
-                                    <div className="flex flex-col gap-3 pt-4 border-t border-[#0B1D3A]/[0.06] mb-8">
-                                        {persona.features.map((feat, idx) => (
-                                            <div key={idx} className="flex items-start gap-3 text-[13.5px] font-medium text-[#475569] group/feat">
-                                                <div className="mt-0.5 shrink-0">
-                                                    <CheckCircle2 size={16} strokeWidth={2.4} style={{ color: accent }} />
+                                    <div className="flex flex-col gap-2.5 pt-4 border-t border-[#0B1D3A]/[0.06] mb-8">
+                                        {persona.items.map((it, idx) => (
+                                            <div
+                                                key={idx}
+                                                className="group/item flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-300 hover:translate-x-1"
+                                                style={{
+                                                    background: `linear-gradient(135deg, ${accent}0A, ${accent}03)`,
+                                                    border: `1px solid ${accent}20`
+                                                }}
+                                            >
+                                                <div
+                                                    className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover/item:scale-110 shadow-xs"
+                                                    style={{ background: `${accent}18` }}
+                                                >
+                                                    <ChevronRight size={14} strokeWidth={2.5} style={{ color: accent }} />
                                                 </div>
-                                                <span className="leading-snug">{feat}</span>
+                                                <span className="text-[14px] font-semibold text-[#0B1D3A] leading-snug">
+                                                    {it}
+                                                </span>
                                             </div>
                                         ))}
                                     </div>
@@ -211,7 +199,7 @@ export default function Desktop() {
                                             className="relative z-10 transition-transform duration-300 group-hover/btn:translate-x-1"
                                             style={{ color: accent }}
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.12] to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.12] to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                                     </button>
                                 </div>
                             </motion.div>

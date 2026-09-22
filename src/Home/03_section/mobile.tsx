@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import {
-    Building2, GraduationCap, UserCheck, ArrowRight, Sparkles, CheckCircle2
+    Building2, GraduationCap, UserCheck, ArrowRight, Sparkles, ChevronRight
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
@@ -137,52 +137,40 @@ export default function Mobile() {
                                 />
 
                                 <div>
-                                    <div className="flex items-center justify-between gap-3 mb-4">
+                                    <div className="flex items-center gap-3.5 mb-5">
                                         <div
-                                            className="w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-sm"
+                                            className="w-11 h-11 rounded-lg flex items-center justify-center text-white shadow-sm shrink-0"
                                             style={{
                                                 background: `linear-gradient(135deg, ${accent} 0%, ${accent}DD 100%)`
                                             }}
                                         >
-                                            {getIcon(persona.id, 22)}
+                                            {getIcon(persona.id, 20)}
                                         </div>
 
-                                        <span
-                                            className="px-3 py-1 rounded-full text-[9.5px] font-bold tracking-[0.1em] uppercase border"
-                                            style={{
-                                                color: accent,
-                                                borderColor: `${accent}35`,
-                                                backgroundColor: `${accent}10`
-                                            }}
-                                        >
-                                            {persona.badge}
-                                        </span>
-                                    </div>
-
-                                    <div className="mb-3">
-                                        <h3 className="text-[18px] font-black tracking-tight text-[#0B1D3A]">
+                                        <h3 className="text-[17px] sm:text-[18px] font-black tracking-tight text-[#0B1D3A] leading-tight">
                                             {persona.tag}
                                         </h3>
-                                        <p className="text-[11.5px] font-semibold text-[#8492A6] mt-0.5 tracking-wide">
-                                            {persona.subTag}
-                                        </p>
                                     </div>
 
-                                    <h4 className="text-[16px] font-bold text-[#0B1D3A] leading-snug mb-2">
-                                        {persona.titleLine1} <span style={{ color: accent }}>{persona.titleLine2}</span>
-                                    </h4>
-
-                                    <p className="text-[13.5px] font-medium leading-[1.6] text-[#5A6B82] mb-4">
-                                        {persona.desc}
-                                    </p>
-
-                                    <div className="flex flex-col gap-2.5 pt-3.5 border-t border-[#0B1D3A]/[0.06] mb-5">
-                                        {persona.features.map((feat, idx) => (
-                                            <div key={idx} className="flex items-start gap-2.5 text-[12.5px] font-medium text-[#475569]">
-                                                <div className="mt-0.5 shrink-0">
-                                                    <CheckCircle2 size={14} strokeWidth={2.4} style={{ color: accent }} />
+                                    <div className="flex flex-col gap-2 pt-3.5 border-t border-[#0B1D3A]/[0.06] mb-5">
+                                        {persona.items.map((it, idx) => (
+                                            <div
+                                                key={idx}
+                                                className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg"
+                                                style={{
+                                                    background: `linear-gradient(135deg, ${accent}0A, ${accent}03)`,
+                                                    border: `1px solid ${accent}18`
+                                                }}
+                                            >
+                                                <div
+                                                    className="w-6 h-6 rounded-full flex items-center justify-center shrink-0"
+                                                    style={{ background: `${accent}18` }}
+                                                >
+                                                    <ChevronRight size={13} strokeWidth={2.5} style={{ color: accent }} />
                                                 </div>
-                                                <span className="leading-snug">{feat}</span>
+                                                <span className="text-[13px] font-semibold text-[#0B1D3A] leading-snug">
+                                                    {it}
+                                                </span>
                                             </div>
                                         ))}
                                     </div>
