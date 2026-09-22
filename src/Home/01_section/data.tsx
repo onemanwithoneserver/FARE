@@ -4,10 +4,9 @@ import type { Language } from '../../context/LanguageContext';
 export const dataEn = {
     title: "01_section",
     headline: {
-        line1: "LEARN.",
-        line2: "PRACTISE.",
-        line3: "BENCHMARK.",
-        line4: "BUILD HABITS."
+        line1: "LEARN",
+        line2: "PRACTISE",
+        line3: "BUILD HABITS",
     },
     subtitle: "A custom learning platform built specifically for real estate.",
     capabilities: ["Knowledge", "Skills", "Capability", "Habits"],
