@@ -20,6 +20,38 @@ export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);
 
+    const pathSegments = location.pathname.split('/').filter(Boolean);
+    const currentRoute = pathSegments.find(segment =>
+        segment === 'open-plots' ||
+        segment === 're-trainers-coaches' ||
+        segment === 're-companies' ||
+        segment === 'home'
+    ) || pathSegments[1] || pathSegments[0] || 'home';
+
+    const isHomePage = currentRoute === 'home';
+    const activeBtnIndex = currentRoute === 'open-plots' ? 0
+        : currentRoute === 're-trainers-coaches' ? 1
+        : currentRoute === 're-companies' ? 2
+        : -1;
+
+    const personaButtonStyles = [
+        {
+            gradient: 'linear-gradient(135deg, #D5AA45 0%, #C99A2E 100%)',
+            border: '#E2C068',
+            shadow: '0 8px 24px -4px rgba(201,154,46,0.45)'
+        },
+        {
+            gradient: 'linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)',
+            border: '#60A5FA',
+            shadow: '0 8px 24px -4px rgba(59,130,246,0.45)'
+        },
+        {
+            gradient: 'linear-gradient(135deg, #10B981 0%, #047857 100%)',
+            border: '#34D399',
+            shadow: '0 8px 24px -4px rgba(16,185,129,0.45)'
+        }
+    ];
+
     const handleButtonClick = (idx: number) => {
         if (idx === 0) navigate(`/${currentMode}/open-plots`);
         else if (idx === 1) navigate(`/${currentMode}/re-trainers-coaches`);
@@ -80,25 +112,49 @@ export default function Desktop() {
                     </motion.p>
 
                     <motion.div variants={itemVariant} className="flex flex-wrap items-center justify-center gap-4 mb-16 px-6 relative z-10">
-                        {data.buttons.map((btn, idx) => (
-                            <motion.button
-                                key={idx}
-                                onClick={() => handleButtonClick(idx)}
-                                whileHover={{ scale: 1.03, y: -2 }}
-                                whileTap={{ scale: 0.97 }}
-                                className="group px-7 py-3.5 rounded-lg font-bold text-[15px] xl:text-[16px] text-white transition-all duration-300 cursor-pointer shadow-md border border-[#1E3A6D] hover:border-[#C99A2E]/60 hover:shadow-[0_8px_24px_-4px_rgba(201,154,46,0.25)] active:scale-95 flex items-center justify-center gap-2"
-                                style={{
-                                    background: 'linear-gradient(135deg, #071738 0%, #0B1D3A 100%)'
-                                }}
-                            >
-                                <span>{btn}</span>
-                                <ArrowRight
-                                    size={16}
-                                    strokeWidth={2.5}
-                                    className="w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]"
-                                />
-                            </motion.button>
-                        ))}
+                        {data.buttons.map((btn, idx) => {
+                            const isSelected = !isHomePage && activeBtnIndex === idx;
+                            const isUnselectedOnOtherPage = !isHomePage && activeBtnIndex !== -1 && activeBtnIndex !== idx;
+                            const persona = personaButtonStyles[idx];
+
+                            return (
+                                <motion.button
+                                    key={idx}
+                                    onClick={() => handleButtonClick(idx)}
+                                    whileHover={{ scale: 1.03, y: -2 }}
+                                    whileTap={{ scale: 0.97 }}
+                                    className={`group px-7 py-3.5 rounded-lg font-bold text-[15px] xl:text-[16px] transition-all duration-300 cursor-pointer shadow-md flex items-center justify-center gap-2 ${
+                                        isSelected
+                                            ? 'text-white'
+                                            : isUnselectedOnOtherPage
+                                            ? 'text-white/50 border border-white/10 hover:border-white/25 hover:text-white/80'
+                                            : 'text-white border border-[#1E3A6D] hover:border-[#C99A2E]/60 hover:shadow-[0_8px_24px_-4px_rgba(201,154,46,0.25)]'
+                                    }`}
+                                    style={{
+                                        background: isSelected
+                                            ? persona.gradient
+                                            : isUnselectedOnOtherPage
+                                            ? 'rgba(255, 255, 255, 0.03)'
+                                            : 'linear-gradient(135deg, #071738 0%, #0B1D3A 100%)',
+                                        borderColor: isSelected ? persona.border : undefined,
+                                        boxShadow: isSelected ? persona.shadow : undefined
+                                    }}
+                                >
+                                    <span>{btn}</span>
+                                    <ArrowRight
+                                        size={16}
+                                        strokeWidth={2.5}
+                                        className={
+                                            isSelected
+                                                ? 'w-4 opacity-100 translate-x-0 transition-all duration-300 text-white'
+                                                : isUnselectedOnOtherPage
+                                                ? 'w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-75 group-hover:translate-x-0 transition-all duration-300 text-white/70'
+                                                : 'w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]'
+                                        }
+                                    />
+                                </motion.button>
+                            );
+                        })}
                     </motion.div>
 
                     <motion.div variants={itemVariant} className="w-full pt-8 border-t border-white/[0.08] relative z-10 flex flex-col items-center">
