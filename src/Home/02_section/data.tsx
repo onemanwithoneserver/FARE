@@ -16,7 +16,7 @@ export const dataEn = {
         { id: '04', title: 'DAILY HABITS', subtitle: '(Habit Tracker)', desc: 'Build consistency with an interactive 30-day habit streak tracker without date constraints.' }
     ],
     browser: {
-        url: "app.fare.academy",
+        url: "fare.training",
         content: {
             "01": {
                 tag: "KNOWLEDGE BANK",
@@ -335,7 +335,7 @@ export const dataTe = {
         { id: '04', title: 'రోజువారీ అలవాట్లు', subtitle: '(హ్యాబిట్ ట్రాకర్)', desc: 'తేదీ పరిమితులు లేకుండా 30-రోజుల హ్యాబిట్ స్ట్రీక్ ట్రాకర్‌తో నిలకడను నిర్మించుకోండి.' }
     ],
     browser: {
-        url: "app.fare.academy",
+        url: "fare.training",
         content: {
             "01": {
                 tag: "నాలెడ్జ్ బ్యాంక్",

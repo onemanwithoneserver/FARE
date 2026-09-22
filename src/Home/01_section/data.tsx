@@ -29,7 +29,7 @@ export const dataEn = {
         userInitials: "RS",
         userName: "Rahul S.",
         userRole: "Sales Associate",
-        url: "app.fare.academy/dashboard",
+        url: "fare.training",
         stats: [
             { id: 'programs', label: 'Programs & Courses', subtitle: '6 Modules', val: '84%', progress: 84, color: '#6B8AFF', icon: <GraduationCap size={15} /> },
             { id: 'knowledge', label: 'Knowledge Bank', subtitle: 'Quizzes', val: '92%', progress: 92, color: '#38BDF8', icon: <HelpCircle size={15} /> },
@@ -73,7 +73,7 @@ export const dataTe = {
         userInitials: "RS",
         userName: "రాహుల్ S.",
         userRole: "సేల్స్ అసోసియేట్",
-        url: "app.fare.academy/dashboard",
+        url: "fare.training",
         stats: [
             { id: 'programs', label: 'ప్రోగ్రామ్స్ & కోర్సులు', subtitle: '6 మాడ్యూల్స్', val: '84%', progress: 84, color: '#6B8AFF', icon: <GraduationCap size={15} /> },
             { id: 'knowledge', label: 'నాలెడ్జ్ బ్యాంక్', subtitle: 'క్విజ్‌లు', val: '92%', progress: 92, color: '#38BDF8', icon: <HelpCircle size={15} /> },
