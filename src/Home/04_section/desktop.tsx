@@ -1,6 +1,13 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck, Users, BarChart2 } from 'lucide-react';
+import type { Variants } from 'motion/react';
+import {
+    ShieldCheck,
+    BarChart2,
+    Target,
+    Sparkles,
+    ArrowRight
+} from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
 import bgImage from '../../assets/bg-04.jpg';
@@ -13,18 +20,6 @@ export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);
 
-    const getActiveButtonIndex = (pathname: string): number => {
-        const pathSegments = pathname.split('/').filter(Boolean);
-        const currentRoute = pathSegments[1] || 'home';
-
-        if (currentRoute === 'open-plots') return 0;
-        if (currentRoute === 're-trainers-coaches') return 1;
-        if (currentRoute === 're-companies') return 2;
-        return -1;
-    };
-
-    const activeBtnIndex = getActiveButtonIndex(location.pathname);
-
     const handleButtonClick = (idx: number) => {
         if (idx === 0) navigate(`/${currentMode}/open-plots`);
         else if (idx === 1) navigate(`/${currentMode}/re-trainers-coaches`);
@@ -32,80 +27,141 @@ export default function Desktop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const containerVariant = {
+    const containerVariant: Variants = {
         hidden: { opacity: 0 },
         show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
     };
 
-    const itemVariant = {
+    const itemVariant: Variants = {
         hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 300, damping: 24 } }
+        show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
     };
 
     return (
         <section className="w-full min-h-screen py-16 px-12 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]">
             <div
-                className="absolute inset-0 z-0 opacity-30"
+                className="absolute inset-0 z-0 opacity-40 pointer-events-none"
                 style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 100%)',
-                    WebkitMaskImage: '-webkit-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%)'
                 }}
-            ></div>
+            />
 
-            <div className="absolute inset-0 bg-[#041029]/60 z-0"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020b1e]/75 via-[#041029]/55 to-[#020b1e]/85 z-0 pointer-events-none" />
 
             <motion.div animate={{ opacity: [0.4, 0.6, 0.4] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-[#0B2A6B]/50 to-transparent -rotate-45 transform -translate-x-1/4 -translate-y-1/4 z-0 pointer-events-none" />
             <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-[-50px] right-[10%] w-[600px] h-[350px] border-b-[1.5px] border-[#C99A2E]/60 rounded-[100%] rotate-12 z-0 pointer-events-none blur-[0.5px]" />
             <motion.div animate={{ opacity: [0.7, 1, 0.7] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-[-100px] right-[-100px] w-[800px] h-[400px] bg-gradient-to-tl from-[#071A49] to-transparent -rotate-12 z-0 pointer-events-none" />
 
             <motion.div variants={containerVariant} initial="hidden" whileInView="show" viewport={{ once: false, margin: '-100px' }} className="max-w-[1060px] xl:max-w-[1120px] w-full relative z-20">
-                <div className="w-full rounded pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden shadow-[0_0_50px_rgba(4,16,41,0.5)]" style={{ background: 'linear-gradient(135deg, rgba(8,22,51,0.95) 0%, rgba(5,15,38,0.98) 100%)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.02)' }}>
+                <div className="w-full rounded-2xl pt-16 pb-12 px-10 flex flex-col items-center text-center relative overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)]" style={{ background: 'linear-gradient(135deg, rgba(8,22,51,0.96) 0%, rgba(5,15,38,0.98) 100%)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#C99A2E] to-transparent opacity-80" />
                     <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[100px] pointer-events-none" />
 
-                    <motion.div variants={itemVariant} className="flex items-center gap-5 mb-7 relative z-10">
-                        <div className="h-[1px] w-14 bg-gradient-to-l from-[#C99A2E] to-transparent opacity-60" />
-                        <span className="text-[13px] font-bold tracking-[0.3em] text-[#E2C068] uppercase">{data.academyText}</span>
-                        <div className="h-[1px] w-14 bg-gradient-to-r from-[#C99A2E] to-transparent opacity-60" />
+                    <motion.div variants={itemVariant} className="mb-6 relative z-10">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-sm">
+                            <Sparkles size={13} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
+                            <span className="font-bold text-[11px] tracking-[0.28em] text-[#E2C068] uppercase">
+                                {data.academyText}
+                            </span>
+                        </div>
                     </motion.div>
 
                     <motion.h2 variants={itemVariant} className="text-[3.2rem] lg:text-[3.8rem] leading-[1.05] font-black tracking-tight text-white uppercase mb-6 w-full relative z-10">
                         <span className="block">{data.headline.line1}</span>
-                        <span className="block text-[#C99A2E]">{data.headline.line2}</span>
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#D5AA45] via-[#F3E1A0] to-[#C99A2E]">
+                            {data.headline.line2}
+                        </span>
                     </motion.h2>
 
-                    <motion.p variants={itemVariant} className="text-[15px] font-medium max-w-[700px] leading-[1.6] mb-12 text-white/70 px-10 relative z-10">{data.headline.subtitle}</motion.p>
+                    <motion.p variants={itemVariant} className="text-[16px] font-medium max-w-[720px] leading-[1.65] mb-12 text-white/75 px-6 relative z-10">
+                        {data.headline.subtitle}
+                    </motion.p>
 
-                    <motion.div variants={itemVariant} className="flex flex-wrap items-center justify-center gap-3.5 mb-16 px-10 relative z-10">
-                        {data.buttons.map((btn, idx) => {
-                            const isSelected = activeBtnIndex === idx;
-                            return (
-                                <motion.button key={idx} onClick={() => handleButtonClick(idx)} whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className={`group relative font-semibold text-[13.5px] py-3 rounded transition-all duration-300 flex items-center gap-2 cursor-pointer ${isSelected ? 'px-6 text-[#071A49] font-bold uppercase tracking-[0.05em] shadow-[0_10px_20px_-5px_rgba(213,170,69,0.3)]' : 'px-5 hover:px-6 bg-[#071A49]/60 text-white font-semibold text-[13px] border border-white/15 active:bg-white/10'}`} style={isSelected ? { background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' } : {}}>
-                                    <span>{btn}</span>
-                                    {isSelected ? <ArrowRight size={15} strokeWidth={2.5} /> : <ArrowRight size={15} strokeWidth={2.5} className="w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]" />}
-                                </motion.button>
-                            );
-                        })}
+                    <motion.div variants={itemVariant} className="flex flex-wrap items-center justify-center gap-4 mb-16 px-6 relative z-10">
+                        {data.buttons.map((btn, idx) => (
+                            <motion.button
+                                key={idx}
+                                onClick={() => handleButtonClick(idx)}
+                                whileHover={{ scale: 1.03, y: -2 }}
+                                whileTap={{ scale: 0.97 }}
+                                className="group px-7 py-3.5 rounded-lg font-bold text-[15px] xl:text-[16px] text-white transition-all duration-300 cursor-pointer shadow-md border border-[#1E3A6D] hover:border-[#C99A2E]/60 hover:shadow-[0_8px_24px_-4px_rgba(201,154,46,0.25)] active:scale-95 flex items-center justify-center gap-2"
+                                style={{
+                                    background: 'linear-gradient(135deg, #071738 0%, #0B1D3A 100%)'
+                                }}
+                            >
+                                <span>{btn}</span>
+                                <ArrowRight
+                                    size={16}
+                                    strokeWidth={2.5}
+                                    className="w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]"
+                                />
+                            </motion.button>
+                        ))}
                     </motion.div>
 
-                    <motion.div variants={itemVariant} className="grid grid-cols-3 divide-x divide-[#0B1D3A]/10 w-full max-w-[960px] mx-auto px-4 relative z-10">
-                        {data.trustBadges.map((badge, i) => (
-                            <motion.div key={i} className="flex items-center justify-center px-4 py-1" whileHover={{ y: -2 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
-                                <div className="flex items-center gap-3.5 text-left">
-                                    <motion.div className="shrink-0 flex items-center justify-center" whileHover={{ rotate: 8, scale: 1.1 }} transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
-                                        {i === 0 && <ShieldCheck size={24} strokeWidth={2} className="text-[#34D399]" />}
-                                        {i === 1 && <Users size={24} strokeWidth={2} className="text-[#6B8AFF]" />}
-                                        {i === 2 && <BarChart2 size={24} strokeWidth={2} className="text-[#D5AA45]" />}
+                    <motion.div variants={itemVariant} className="w-full pt-8 border-t border-white/[0.08] relative z-10 flex flex-col items-center">
+                        <span className="text-[11px] font-bold tracking-[0.25em] text-[#C99A2E] uppercase mb-5">
+                            {language === 'te' ? 'ప్లాట్‌ఫారమ్ విశేషాలు' : 'PLATFORM HIGHLIGHTS'}
+                        </span>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-[960px] mx-auto">
+                            {data.trustBadges.map((badge, i) => {
+                                const badgeColors = [
+                                    {
+                                        bg: 'rgba(16, 185, 129, 0.08)',
+                                        border: 'rgba(16, 185, 129, 0.22)',
+                                        iconBg: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+                                        icon: <ShieldCheck size={22} strokeWidth={2.4} className="text-white" />
+                                    },
+                                    {
+                                        bg: 'rgba(59, 130, 246, 0.08)',
+                                        border: 'rgba(59, 130, 246, 0.22)',
+                                        iconBg: 'linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)',
+                                        icon: <Target size={22} strokeWidth={2.4} className="text-white" />
+                                    },
+                                    {
+                                        bg: 'rgba(201, 154, 46, 0.08)',
+                                        border: 'rgba(201, 154, 46, 0.22)',
+                                        iconBg: 'linear-gradient(135deg, #D5AA45 0%, #C99A2E 100%)',
+                                        icon: <BarChart2 size={22} strokeWidth={2.4} className="text-white" />
+                                    }
+                                ][i];
+
+                                return (
+                                    <motion.div
+                                        key={i}
+                                        whileHover={{ y: -3, scale: 1.02 }}
+                                        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                                        className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 shadow-sm"
+                                        style={{
+                                            background: badgeColors.bg,
+                                            border: `1px solid ${badgeColors.border}`
+                                        }}
+                                    >
+                                        <div
+                                            className="w-11 h-11 rounded-lg flex items-center justify-center shrink-0 shadow-md"
+                                            style={{
+                                                background: badgeColors.iconBg
+                                            }}
+                                        >
+                                            {badgeColors.icon}
+                                        </div>
+                                        <div className="text-left flex-1 min-w-0">
+                                            <div className="text-[14px] xl:text-[14.5px] font-bold text-white leading-tight">
+                                                {badge.title}
+                                            </div>
+                                            {badge.subtitle && (
+                                                <div className="text-[12px] text-white/70 font-medium leading-tight mt-1">
+                                                    {badge.subtitle}
+                                                </div>
+                                            )}
+                                        </div>
                                     </motion.div>
-                                    <div className="flex flex-col justify-center">
-                                        <div className="text-[13.5px] xl:text-[14px] font-bold text-white leading-tight whitespace-nowrap">{badge.title}</div>
-                                        {badge.subtitle && <div className="text-[12px] text-white/60 font-medium leading-tight mt-0.5">{badge.subtitle}</div>}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                );
+                            })}
+                        </div>
                     </motion.div>
                 </div>
             </motion.div>
