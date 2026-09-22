@@ -86,7 +86,7 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-80px" }}
-                    className="grid grid-cols-3 gap-5 relative mb-10"
+                    className="flex flex-wrap justify-center gap-4 relative mb-10"
                 >
                     {data.challenges.map((challenge, index) => {
                         const { Icon, color } = icons[index];
@@ -95,18 +95,18 @@ export default function Desktop() {
                             key={index}
                             variants={item}
                             whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                            className="group bg-red-50/40 backdrop-blur-sm border border-red-100 rounded p-7 shadow-[0_1px_3px_rgba(220,38,38,0.05),0_8px_24px_-8px_rgba(220,38,38,0.08)] hover:shadow-[0_20px_50px_-15px_rgba(220,38,38,0.15)] hover:bg-red-50/80 transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[200px] justify-center cursor-default"
+                            className="w-[calc(20%-13px)] min-w-[200px] group bg-red-50/40 backdrop-blur-sm border border-red-100 rounded p-4 shadow-[0_1px_3px_rgba(220,38,38,0.05),0_8px_24px_-8px_rgba(220,38,38,0.08)] hover:shadow-[0_20px_50px_-15px_rgba(220,38,38,0.15)] hover:bg-red-50/80 transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[170px] justify-center cursor-default"
                         >
                             
                             <motion.div animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#EF4444]/15 to-transparent rounded-bl-full blur-[20px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></motion.div>
 
                             <div 
-                                className="mb-5 w-14 h-14 rounded-xl shadow-inner flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 relative overflow-hidden"
+                                className="mb-3 w-10 h-10 rounded-xl shadow-inner flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 relative overflow-hidden"
                                 style={{ backgroundColor: color }}
                             >
-                                <Icon size={24} className="text-white relative z-10" />
+                                <Icon size={20} className="text-white relative z-10" />
                             </div>
-                            <h3 className="text-[16px] font-bold leading-tight relative z-10" style={{ color: NAVY }}>
+                            <h3 className="text-[14px] font-bold leading-tight relative z-10 px-1" style={{ color: NAVY }}>
                                 {challenge}
                             </h3>
                         </motion.div>
