@@ -1,6 +1,7 @@
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { TrendingUp, MessageCircle, Monitor, Shield, Heart, Megaphone, Database, Settings, Sparkles } from 'lucide-react';
+import { TrendingUp, MessageCircle, Monitor, Shield, Heart, Megaphone, Database, Settings, Sparkles, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
@@ -10,6 +11,11 @@ const GOLD = '#C99A2E';
 export default function Mobile() {
     const { language } = useLanguage();
     const data = getData(language);
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+    const toggleAccordion = (index: number) => {
+        setOpenIndex(openIndex === index ? null : index);
+    };
 
     const container: Variants = {
         hidden: { opacity: 0 },
@@ -71,47 +77,74 @@ export default function Mobile() {
                 </motion.div>
 
                 <div className="flex flex-col gap-6 mb-10">
-                    {data.categories.map((category, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.5, delay: 0 }}
-                            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-6 shadow-[0_4px_15px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
-                        >
-                            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 opacity-[0.05] blur-[30px] rounded-bl-full pointer-events-none" style={{ background: category.color }}></motion.div>
+                    {data.categories.map((category, index) => {
+                        const isOpen = openIndex === index;
+                        return (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.5, delay: 0 }}
+                                className="bg-white border border-[#0B1D3A]/[0.06] rounded shadow-[0_4px_15px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
+                            >
+                                <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 opacity-[0.05] blur-[30px] rounded-bl-full pointer-events-none" style={{ background: category.color }}></motion.div>
 
-                            <div className="flex items-center gap-4 mb-6 relative z-10">
-                                <div className="w-14 h-14 rounded flex items-center justify-center shadow-md shrink-0" style={{ backgroundColor: category.color }}>
-                                    {categoryIcons[category.icon as keyof typeof categoryIcons]}
-                                </div>
-                                <h3 className="text-[18px] font-bold" style={{ color: NAVY }}>
-                                    {category.title}
-                                </h3>
-                            </div>
-
-                            <div className="flex flex-col gap-5 relative z-10">
-                                {category.subcategories.map((sub, idx) => (
-                                    <div key={idx} className="bg-[#F8FAFD]/50 rounded p-4 border border-[#0B1D3A]/[0.03]">
-                                        {sub.label && (
-                                            <h4 className="text-[11px] font-bold uppercase tracking-[0.15em] mb-3 flex items-center gap-2" style={{ color: category.color }}>
-                                                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: category.color }}></div>
-                                                {sub.label}
-                                            </h4>
-                                        )}
-                                        <div className="flex flex-wrap gap-2">
-                                            {sub.skills.map((skill, sIdx) => (
-                                                <span key={sIdx} className="bg-white border border-[#0B1D3A]/[0.06] px-3 py-1.5 rounded text-[13px] font-medium text-[#3A4A63] shadow-sm">
-                                                    {skill}
-                                                </span>
-                                            ))}
+                                <button
+                                    onClick={() => toggleAccordion(index)}
+                                    className="w-full text-left p-6 flex items-center justify-between relative z-10 focus:outline-none"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-14 h-14 rounded flex items-center justify-center shadow-md shrink-0 transition-transform duration-300" style={{ backgroundColor: category.color, transform: isOpen ? 'scale(1.05)' : 'scale(1)' }}>
+                                            {categoryIcons[category.icon as keyof typeof categoryIcons]}
                                         </div>
+                                        <h3 className="text-[18px] font-bold" style={{ color: NAVY }}>
+                                            {category.title}
+                                        </h3>
                                     </div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
+                                    <motion.div
+                                        animate={{ rotate: isOpen ? 180 : 0 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="shrink-0 ml-4 w-8 h-8 rounded-full border border-[#0B1D3A]/10 flex items-center justify-center bg-[#F8FAFD]"
+                                    >
+                                        <ChevronDown size={18} className="text-[#0B1D3A]/60" />
+                                    </motion.div>
+                                </button>
+
+                                <AnimatePresence initial={false}>
+                                    {isOpen && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="px-6 pb-6 flex flex-col gap-5 relative z-10 border-t border-[#0B1D3A]/[0.03] pt-4">
+                                                {category.subcategories.map((sub, idx) => (
+                                                    <div key={idx} className="bg-[#F8FAFD]/50 rounded p-4 border border-[#0B1D3A]/[0.03]">
+                                                        {sub.label && (
+                                                            <h4 className="text-[11px] font-bold uppercase tracking-[0.15em] mb-3 flex items-center gap-2" style={{ color: category.color }}>
+                                                                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: category.color }}></div>
+                                                                {sub.label}
+                                                            </h4>
+                                                        )}
+                                                        <div className="flex flex-wrap gap-2">
+                                                            {sub.skills.map((skill, sIdx) => (
+                                                                <span key={sIdx} className="bg-white border border-[#0B1D3A]/[0.06] px-3 py-1.5 rounded text-[13px] font-medium text-[#3A4A63] shadow-sm hover:shadow transition-shadow duration-300">
+                                                                    {skill}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
                 <motion.div
