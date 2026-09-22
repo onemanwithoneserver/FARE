@@ -13,13 +13,12 @@ export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);
 
-    // Logic: Identify active selected path. For 'home', no control is selected (returns null).
     const getActiveNavPath = (pathname: string): string | null => {
         const pathSegments = pathname.split('/').filter(Boolean);
         const currentRoute = pathSegments[1] || 'home';
 
         if (currentRoute === 'home' || currentRoute === '') {
-            return null; // In Home, NO control should be selected
+            return null;
         }
         if (currentRoute === 're-trainers-coaches') return 're-trainers-coaches';
         if (currentRoute === 're-companies') return 're-companies';
@@ -61,11 +60,8 @@ export default function Desktop() {
                 borderTop: '1px solid rgba(255, 255, 255, 0.07)' 
             }}
         >
-            {/* Subtle ambient lighting */}
             <div className="absolute top-0 left-1/4 w-[400px] h-[100px] bg-[#C99A2E]/[0.03] rounded-full blur-[60px] pointer-events-none" />
             <div className="absolute bottom-0 right-1/4 w-[400px] h-[100px] bg-[#3B82F6]/[0.03] rounded-full blur-[60px] pointer-events-none" />
-
-            {/* Grid background texture */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800c_1px,transparent_1px),linear-gradient(to_bottom,#8080800c_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-40" />
 
             <motion.div 
@@ -75,7 +71,6 @@ export default function Desktop() {
                 viewport={{ once: false }}
                 className="max-w-[1320px] w-full mx-auto flex justify-between items-center relative z-10 gap-4 min-h-[52px]"
             >
-                {/* Logo & Copyright */}
                 <motion.div 
                     variants={itemVariants}
                     onClick={() => handleNavigation('home')}
@@ -94,7 +89,6 @@ export default function Desktop() {
                     </span>
                 </motion.div>
 
-                {/* Nav Links with active selection logic & hover animations */}
                 <motion.div 
                     variants={itemVariants}
                     className="flex items-center gap-3 lg:gap-5 flex-wrap justify-end"

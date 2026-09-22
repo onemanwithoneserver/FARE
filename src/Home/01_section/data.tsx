@@ -1,4 +1,4 @@
-import { BookOpen, Target, CheckCircle, GraduationCap, TrendingUp, HelpCircle } from 'lucide-react';
+import { Target, CheckCircle, GraduationCap, TrendingUp, HelpCircle } from 'lucide-react';
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {

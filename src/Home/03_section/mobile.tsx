@@ -52,7 +52,6 @@ export default function Mobile() {
             className="w-full py-14 px-4 flex flex-col items-center font-['Outfit'] relative overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #F8FAFD 0%, #FFFFFF 40%, #F0F4FA 100%)' }}
         >
-            {/* Subtle animated background orbs */}
             <motion.div
                 animate={{ x: [0, 15, 0], y: [0, -10, 0], scale: [1, 1.05, 1] }}
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -71,7 +70,6 @@ export default function Mobile() {
                 viewport={{ once: false, margin: "-40px" }}
                 className="w-full max-w-[460px] flex flex-col relative z-10"
             >
-                {/* Header */}
                 <div className="flex flex-col items-center text-center mb-8">
                     <motion.div variants={item} className="mb-3.5">
                         <span
@@ -99,7 +97,6 @@ export default function Mobile() {
                     </motion.p>
                 </div>
 
-                {/* Tab Controls - horizontal scroll with snap */}
                 <motion.div variants={item} className="flex gap-2 w-full mb-6 overflow-x-auto pb-2.5 snap-x hide-scrollbar">
                     {data.personas.map((persona) => {
                         const isActive = activePersonaId === persona.id;
@@ -144,7 +141,6 @@ export default function Mobile() {
                     })}
                 </motion.div>
 
-                {/* Content Area: subTag as list */}
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activePersona.id}
@@ -162,7 +158,6 @@ export default function Mobile() {
                                 boxShadow: '0 8px 28px -4px rgba(11, 29, 58, 0.06), 0 2px 6px -2px rgba(11, 29, 58, 0.03)'
                             }}
                         >
-                            {/* Accent line */}
                             <motion.div
                                 className="absolute top-0 left-0 right-0 h-[3px]"
                                 initial={{ scaleX: 0 }}
@@ -175,7 +170,6 @@ export default function Mobile() {
                             />
 
                             <div className="relative z-10">
-                                {/* Title & description */}
                                 <motion.div
                                     initial={{ opacity: 0, x: -10 }}
                                     animate={{ opacity: 1, x: 0 }}
@@ -201,7 +195,6 @@ export default function Mobile() {
                                     </div>
                                 </motion.div>
 
-                                {/* subTag items as an animated list */}
                                 <div className="flex flex-col gap-2.5">
                                     {activePersona.subTag.split(' · ').map((subItem, i) => (
                                         <motion.div

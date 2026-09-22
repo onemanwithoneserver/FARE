@@ -13,13 +13,12 @@ export default function Mobile() {
     const { language } = useLanguage();
     const data = getData(language);
 
-    // Logic: Identify active selected path. For 'home', no control is selected (returns null).
     const getActiveNavPath = (pathname: string): string | null => {
         const pathSegments = pathname.split('/').filter(Boolean);
         const currentRoute = pathSegments[1] || 'home';
 
         if (currentRoute === 'home' || currentRoute === '') {
-            return null; // In Home, NO control should be selected
+            return null;
         }
         if (currentRoute === 're-trainers-coaches') return 're-trainers-coaches';
         if (currentRoute === 're-companies') return 're-companies';
@@ -61,7 +60,6 @@ export default function Mobile() {
                 borderTop: '1px solid rgba(255, 255, 255, 0.07)' 
             }}
         >
-            {/* Subtle background glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[280px] h-[100px] bg-[#C99A2E]/[0.03] rounded-full blur-[50px] pointer-events-none" />
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800c_1px,transparent_1px),linear-gradient(to_bottom,#8080800c_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none opacity-30" />
 
@@ -72,7 +70,6 @@ export default function Mobile() {
                 viewport={{ once: false }}
                 className="w-full mx-auto flex flex-col items-center relative z-10 gap-5"
             >
-                {/* Logo & Copyright */}
                 <motion.div 
                     variants={itemVariants}
                     onClick={() => handleNavigation('home')}
@@ -90,7 +87,6 @@ export default function Mobile() {
                     </span>
                 </motion.div>
 
-                {/* Nav Links with active route highlighting and tap/hover feedback */}
                 <motion.div 
                     variants={itemVariants}
                     className="flex flex-wrap justify-center gap-x-2 gap-y-2 w-full max-w-[340px]"

@@ -13,16 +13,14 @@ export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);
 
-    // Logic: Determine which CTA button is selected based on the active folder/page.
-    // For 'home', no control is selected (-1), keeping all 3 with identical clean styling.
     const getActiveButtonIndex = (pathname: string): number => {
         const pathSegments = pathname.split('/').filter(Boolean);
         const currentRoute = pathSegments[1] || 'home';
 
-        if (currentRoute === 'open-plots') return 0;           // "Register as a Learner"
-        if (currentRoute === 're-trainers-coaches') return 1; // "Register as a Trainer"
-        if (currentRoute === 're-companies') return 2;        // "Register as a Company"
-        return -1; // Home: no control is selected by default
+        if (currentRoute === 'open-plots') return 0;
+        if (currentRoute === 're-trainers-coaches') return 1;
+        if (currentRoute === 're-companies') return 2;
+        return -1;
     };
 
     const activeBtnIndex = getActiveButtonIndex(location.pathname);
@@ -120,8 +118,7 @@ export default function Desktop() {
                         {data.headline.subtitle}
                     </motion.p>
 
-                    {/* 3 CTA Buttons with active selection logic & hover animations */}
-                    <motion.div variants={itemVariant} className="flex flex-wrap items-center justify-center gap-4 mb-16 px-10 relative z-10">
+                    <motion.div variants={itemVariant} className="flex flex-wrap items-center justify-center gap-3.5 mb-16 px-10 relative z-10">
                         {data.buttons.map((btn, idx) => {
                             const isSelected = activeBtnIndex === idx;
 
@@ -130,7 +127,7 @@ export default function Desktop() {
                                     key={idx}
                                     onClick={() => handleButtonClick(idx)}
                                     whileHover={{ 
-                                        scale: 1.04, 
+                                        scale: 1.03, 
                                         y: -2,
                                         boxShadow: isSelected 
                                             ? '0 0 32px rgba(213,170,69,0.5)' 
@@ -139,10 +136,10 @@ export default function Desktop() {
                                         backgroundColor: isSelected ? undefined : 'rgba(255,255,255,0.08)'
                                     }}
                                     whileTap={{ scale: 0.97 }}
-                                    className={`group relative font-semibold text-[14px] px-8 py-3.5 rounded transition-all duration-300 flex items-center gap-2.5 cursor-pointer ${
+                                    className={`group relative font-semibold text-[13.5px] py-3 rounded transition-all duration-300 flex items-center gap-2 cursor-pointer ${
                                         isSelected 
-                                            ? 'text-[#071A49] font-bold uppercase tracking-[0.05em] shadow-[0_10px_20px_-5px_rgba(213,170,69,0.3)]' 
-                                            : 'bg-transparent text-white border border-white/20 hover:text-[#E2C068]'
+                                            ? 'px-6 text-[#071A49] font-bold uppercase tracking-[0.05em] shadow-[0_10px_20px_-5px_rgba(213,170,69,0.3)]' 
+                                            : 'px-5 hover:px-6 bg-transparent text-white border border-white/20 hover:text-[#E2C068]'
                                     }`}
                                     style={isSelected ? { 
                                         background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' 
@@ -150,12 +147,12 @@ export default function Desktop() {
                                 >
                                     <span>{btn}</span>
                                     {isSelected ? (
-                                        <ArrowRight size={16} strokeWidth={2.5} />
+                                        <ArrowRight size={15} strokeWidth={2.5} />
                                     ) : (
                                         <ArrowRight 
-                                            size={16} 
+                                            size={15} 
                                             strokeWidth={2.5} 
-                                            className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]" 
+                                            className="w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]" 
                                         />
                                     )}
                                 </motion.button>

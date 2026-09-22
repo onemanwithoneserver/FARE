@@ -54,7 +54,6 @@ export default function Desktop() {
             className="w-full py-20 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #F8FAFD 0%, #FFFFFF 40%, #F0F4FA 100%)' }}
         >
-            {/* Animated background orbs */}
             <motion.div
                 animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.08, 1] }}
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -74,7 +73,6 @@ export default function Desktop() {
             />
 
             <div className="max-w-[1320px] mx-auto px-12 relative z-10">
-                {/* Header */}
                 <motion.div
                     variants={headerContainer}
                     initial="hidden"
@@ -108,7 +106,6 @@ export default function Desktop() {
                     </motion.p>
                 </motion.div>
 
-                {/* Tab Controls */}
                 <motion.div
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -163,7 +160,6 @@ export default function Desktop() {
                     })}
                 </motion.div>
 
-                {/* Content Area: subTag as list */}
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activePersona.id}
@@ -183,7 +179,6 @@ export default function Desktop() {
                                 boxShadow: '0 8px 32px -4px rgba(11, 29, 58, 0.06), 0 2px 8px -2px rgba(11, 29, 58, 0.03)'
                             }}
                         >
-                            {/* Animated accent line */}
                             <motion.div
                                 className="absolute top-0 left-0 right-0 h-[3px]"
                                 initial={{ scaleX: 0 }}
@@ -195,7 +190,6 @@ export default function Desktop() {
                                 }}
                             />
 
-                            {/* Animated radial glow */}
                             <motion.div
                                 animate={{ opacity: [0.04, 0.08, 0.04], scale: [1, 1.1, 1] }}
                                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -204,7 +198,6 @@ export default function Desktop() {
                             />
 
                             <div className="relative z-10">
-                                {/* Section header */}
                                 <motion.div
                                     initial={{ opacity: 0, x: -16 }}
                                     animate={{ opacity: 1, x: 0 }}
@@ -230,7 +223,6 @@ export default function Desktop() {
                                     </div>
                                 </motion.div>
 
-                                {/* subTag items as animated list */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     {activePersona.subTag.split(' · ').map((subItem, i) => (
                                         <motion.div

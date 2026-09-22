@@ -13,16 +13,14 @@ export default function Mobile() {
     const { language } = useLanguage();
     const data = getData(language);
 
-    // Logic: Determine which CTA button is selected based on the active folder/page.
-    // For 'home', no control is selected (-1), keeping all 3 with identical clean styling.
     const getActiveButtonIndex = (pathname: string): number => {
         const pathSegments = pathname.split('/').filter(Boolean);
         const currentRoute = pathSegments[1] || 'home';
 
-        if (currentRoute === 'open-plots') return 0;           // "Register as a Learner"
-        if (currentRoute === 're-trainers-coaches') return 1; // "Register as a Trainer"
-        if (currentRoute === 're-companies') return 2;        // "Register as a Company"
-        return -1; // Home: no control is selected by default
+        if (currentRoute === 'open-plots') return 0;
+        if (currentRoute === 're-trainers-coaches') return 1;
+        if (currentRoute === 're-companies') return 2;
+        return -1;
     };
 
     const activeBtnIndex = getActiveButtonIndex(location.pathname);
@@ -107,8 +105,7 @@ export default function Mobile() {
                         {data.headline.subtitle}
                     </motion.p>
 
-                    {/* 3 Buttons on Mobile */}
-                    <motion.div variants={itemVariant} className="flex flex-col items-center gap-3 mb-10 w-full px-5 relative z-10">
+                    <motion.div variants={itemVariant} className="flex flex-col items-center gap-2.5 mb-10 w-full px-5 relative z-10">
                         {data.buttons.map((btn, idx) => {
                             const isSelected = activeBtnIndex === idx;
 
@@ -117,7 +114,7 @@ export default function Mobile() {
                                     key={idx}
                                     onClick={() => handleButtonClick(idx)}
                                     whileTap={{ scale: 0.97 }}
-                                    className={`w-full py-3.5 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+                                    className={`w-full py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
                                         isSelected 
                                             ? 'font-bold text-[12.5px] text-[#071A49] uppercase tracking-[0.05em] shadow-[0_8px_20px_-4px_rgba(213,170,69,0.3)]'
                                             : 'bg-[#071A49]/60 text-white font-semibold text-[13px] border border-white/15 active:bg-white/10'
