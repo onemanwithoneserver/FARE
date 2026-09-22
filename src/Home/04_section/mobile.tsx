@@ -1,3 +1,4 @@
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowRight, ShieldCheck, Users, BarChart2 } from 'lucide-react';
 import { getData } from './data';
@@ -5,8 +6,38 @@ import { useLanguage } from '../../context/LanguageContext';
 import bgImage from '../../assets/bg-04.jpg';
 
 export default function Mobile() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const isMobileMode = location.pathname.startsWith('/mobile');
+    const currentMode = isMobileMode ? 'mobile' : 'desktop';
     const { language } = useLanguage();
     const data = getData(language);
+
+    // Logic: Determine which CTA button is selected based on the active folder/page.
+    // For 'home', no control is selected (-1), keeping all 3 with identical clean styling.
+    const getActiveButtonIndex = (pathname: string): number => {
+        const pathSegments = pathname.split('/').filter(Boolean);
+        const currentRoute = pathSegments[1] || 'home';
+
+        if (currentRoute === 'open-plots') return 0;           // "Register as a Learner"
+        if (currentRoute === 're-trainers-coaches') return 1; // "Register as a Trainer"
+        if (currentRoute === 're-companies') return 2;        // "Register as a Company"
+        return -1; // Home: no control is selected by default
+    };
+
+    const activeBtnIndex = getActiveButtonIndex(location.pathname);
+
+    const handleButtonClick = (idx: number) => {
+        if (idx === 0) {
+            navigate(`/${currentMode}/open-plots`);
+        } else if (idx === 1) {
+            navigate(`/${currentMode}/re-trainers-coaches`);
+        } else if (idx === 2) {
+            navigate(`/${currentMode}/re-companies`);
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     const containerVariant = {
         hidden: { opacity: 0 },
         show: {
@@ -22,41 +53,48 @@ export default function Mobile() {
 
     return (
         <section
-            className="w-full min-h-screen py-16 px-4 flex flex-col items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
+            className="w-full py-12 px-4 flex flex-col items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
         >
             <div
-                className="absolute inset-0 z-0"
+                className="absolute inset-0 z-0 opacity-40"
                 style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 100%)',
-                    WebkitMaskImage: '-webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%)'
                 }}
             ></div>
 
-            <div className="absolute inset-0 bg-[#071a49]/70 backdrop-blur-[2px] z-0"></div>
+            <div className="absolute inset-0 bg-[#041029]/80 z-0"></div>
+
+            <motion.div
+                animate={{ opacity: [0.3, 0.5, 0.3] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 left-0 w-[300px] h-[300px] bg-gradient-to-br from-[#0B2A6B]/40 to-transparent -rotate-45 transform -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"
+            ></motion.div>
 
             <motion.div
                 variants={containerVariant}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: false, margin: "-50px" }}
-                className="w-full max-w-[460px] relative z-40"
+                viewport={{ once: false }}
+                className="w-full max-w-[460px] relative z-20"
             >
                 <div
-                    className="w-full rounded pt-10 pb-6 flex flex-col items-center text-center relative overflow-hidden shadow-2xl"
-                    style={{ background: 'linear-gradient(135deg, rgba(11, 29, 58, 0.85) 0%, rgba(7, 26, 73, 0.95) 100%)', border: '1px solid rgba(255,255,255,0.1)' }}
+                    className="w-full rounded-xl pt-10 pb-8 flex flex-col items-center text-center relative overflow-hidden shadow-[0_0_30px_rgba(4,16,41,0.5)]"
+                    style={{
+                        background: 'linear-gradient(135deg, rgba(8, 22, 51, 0.95) 0%, rgba(5, 15, 38, 0.98) 100%)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                    }}
                 >
                     <motion.div
-                        animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[80px] pointer-events-none"
+                        animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute top-0 right-1/4 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[80px] pointer-events-none"
                     ></motion.div>
 
                     <motion.div variants={itemVariant} className="flex items-center gap-3 mb-5 relative z-10">
                         <div className="h-[1px] w-8 bg-gradient-to-l from-[#C99A2E] to-transparent opacity-60"></div>
-                        <span className="text-[10px] font-bold tracking-[0.2em] text-[#E2C068] uppercase">{data.academyText}</span>
+                        <span className="text-[11px] font-bold tracking-[0.25em] text-[#E2C068] uppercase">{data.academyText}</span>
                         <div className="h-[1px] w-8 bg-gradient-to-r from-[#C99A2E] to-transparent opacity-60"></div>
                     </motion.div>
 
@@ -65,26 +103,34 @@ export default function Mobile() {
                         <span className="block text-[#C99A2E]">{data.headline.line2}</span>
                     </motion.h2>
 
-                    <motion.p variants={itemVariant} className="text-[13px] font-medium leading-[1.6] mb-8 text-white/70 px-5 relative z-10">
+                    <motion.p variants={itemVariant} className="text-[13px] font-medium max-w-[340px] leading-[1.5] mb-8 text-white/70 px-4 relative z-10">
                         {data.headline.subtitle}
                     </motion.p>
 
+                    {/* 3 Buttons on Mobile */}
                     <motion.div variants={itemVariant} className="flex flex-col items-center gap-3 mb-10 w-full px-5 relative z-10">
-                        {data.buttons.map((btn, idx) => (
-                            <motion.button
-                                key={idx}
-                                whileTap={{ scale: 0.98 }}
-                                className={`w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
-                                    idx === 0 
-                                    ? 'font-bold text-[12px] text-[#071A49] uppercase tracking-[0.05em] shadow-[0_10px_20px_-5px_rgba(213,170,69,0.2)]'
-                                    : 'bg-[#071A49]/50 text-white font-semibold text-[13px] border border-white/10'
-                                }`}
-                                style={idx === 0 ? { background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' } : {}}
-                            >
-                                <span>{btn}</span>
-                                {idx === 0 && <ArrowRight size={15} strokeWidth={2.5} />}
-                            </motion.button>
-                        ))}
+                        {data.buttons.map((btn, idx) => {
+                            const isSelected = activeBtnIndex === idx;
+
+                            return (
+                                <motion.button
+                                    key={idx}
+                                    onClick={() => handleButtonClick(idx)}
+                                    whileTap={{ scale: 0.97 }}
+                                    className={`w-full py-3.5 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+                                        isSelected 
+                                            ? 'font-bold text-[12.5px] text-[#071A49] uppercase tracking-[0.05em] shadow-[0_8px_20px_-4px_rgba(213,170,69,0.3)]'
+                                            : 'bg-[#071A49]/60 text-white font-semibold text-[13px] border border-white/15 active:bg-white/10'
+                                    }`}
+                                    style={isSelected ? { 
+                                        background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' 
+                                    } : {}}
+                                >
+                                    <span>{btn}</span>
+                                    {isSelected && <ArrowRight size={15} strokeWidth={2.5} />}
+                                </motion.button>
+                            );
+                        })}
                     </motion.div>
 
                     <motion.div variants={itemVariant} className="flex flex-col items-center w-full px-2 relative z-10">

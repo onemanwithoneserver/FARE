@@ -13,8 +13,21 @@ export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);
 
-    const pathSegments = location.pathname.split('/').filter(Boolean);
-    const currentPath = pathSegments[1] || 'home';
+    // Logic: Identify active selected path. For 'home', no control is selected (returns null).
+    const getActiveNavPath = (pathname: string): string | null => {
+        const pathSegments = pathname.split('/').filter(Boolean);
+        const currentRoute = pathSegments[1] || 'home';
+
+        if (currentRoute === 'home' || currentRoute === '') {
+            return null; // In Home, NO control should be selected
+        }
+        if (currentRoute === 're-trainers-coaches') return 're-trainers-coaches';
+        if (currentRoute === 're-companies') return 're-companies';
+        if (currentRoute === 'open-plots') return 'open-plots';
+        return currentRoute;
+    };
+
+    const activeNavPath = getActiveNavPath(location.pathname);
 
     const handleNavigation = (path?: string) => {
         if (!path) return;
@@ -23,7 +36,7 @@ export default function Desktop() {
     };
 
     const containerVariants: Variants = {
-        hidden: { opacity: 0, y: 15 },
+        hidden: { opacity: 0, y: 12 },
         show: {
             opacity: 1,
             y: 0,
@@ -71,47 +84,52 @@ export default function Desktop() {
                     <motion.img 
                         src={logo} 
                         alt="FARE Logo" 
-                        whileHover={{ scale: 1.04, opacity: 1 }}
-                        whileTap={{ scale: 0.98 }}
-                        transition={{ duration: 0.2 }}
-                        className="h-[42px] w-auto brightness-0 invert opacity-90 transition-all duration-300 drop-shadow-[0_2px_8px_rgba(255,255,255,0.05)]" 
+                        whileHover={{ scale: 1.05, opacity: 1, filter: 'drop-shadow(0 0 12px rgba(201,154,46,0.3))' }}
+                        whileTap={{ scale: 0.97 }}
+                        transition={{ duration: 0.25 }}
+                        className="h-[42px] w-auto brightness-0 invert opacity-90 transition-all duration-300" 
                     />
                     <span className="text-[12px] font-medium text-white/45 hidden sm:inline-block border-l border-white/10 pl-6 select-none">
                         {data.copyright.replace('{year}', new Date().getFullYear().toString())}
                     </span>
                 </motion.div>
 
-                {/* Nav Links with active page detection */}
+                {/* Nav Links with active selection logic & hover animations */}
                 <motion.div 
                     variants={itemVariants}
-                    className="flex items-center gap-4 lg:gap-6 flex-wrap justify-end"
+                    className="flex items-center gap-3 lg:gap-5 flex-wrap justify-end"
                 >
                     {data.navLinks.map((link, idx) => {
-                        const isActive = link.path === currentPath;
+                        const isSelected = activeNavPath !== null && link.path === activeNavPath;
 
                         return (
                             <motion.button 
                                 key={idx}
                                 onClick={() => handleNavigation(link.path)}
-                                whileHover={{ y: -1 }}
-                                whileTap={{ scale: 0.96 }}
-                                className={`relative text-[12.5px] font-medium transition-all duration-300 py-1 px-2 rounded-md cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
-                                    isActive
-                                        ? 'text-[#E2C068] font-semibold bg-[#E2C068]/10 shadow-[0_0_12px_rgba(226,192,104,0.15)] border border-[#E2C068]/25'
-                                        : 'text-white/60 hover:text-[#E2C068] hover:bg-white/[0.04]'
+                                whileHover={{ 
+                                    y: -2, 
+                                    scale: 1.05,
+                                    transition: { duration: 0.2, ease: "easeOut" }
+                                }}
+                                whileTap={{ scale: 0.95 }}
+                                className={`relative group text-[12.5px] font-medium transition-all duration-300 py-1.5 px-3 rounded-lg cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+                                    isSelected
+                                        ? 'text-[#E2C068] font-bold bg-[#E2C068]/12 shadow-[0_0_14px_rgba(226,192,104,0.18)] border border-[#E2C068]/30'
+                                        : 'text-white/60 hover:text-[#E2C068] hover:bg-white/[0.06] hover:shadow-[0_2px_10px_rgba(0,0,0,0.2)]'
                                 }`}
                             >
-                                {isActive && (
+                                {isSelected ? (
                                     <motion.span
                                         layoutId="activeFooterLinkDesktop"
-                                        className="w-1.5 h-1.5 rounded-full bg-[#E2C068] shadow-[0_0_6px_#E2C068]"
+                                        className="w-1.5 h-1.5 rounded-full bg-[#E2C068] shadow-[0_0_8px_#E2C068]"
                                         transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                                     />
+                                ) : (
+                                    <span className="absolute bottom-1 left-3 right-3 h-[1.5px] bg-[#E2C068] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center opacity-80" />
                                 )}
-                                <span>{link.label}</span>
-                                {!isActive && (
-                                    <span className="absolute bottom-0.5 left-2 right-2 h-[1px] bg-[#E2C068] scale-x-0 transition-transform duration-300 origin-left hover:scale-x-100" />
-                                )}
+                                <span className="relative z-10 transition-colors duration-200">
+                                    {link.label}
+                                </span>
                             </motion.button>
                         );
                     })}

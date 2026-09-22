@@ -1,3 +1,4 @@
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowRight, ShieldCheck, Users, BarChart2 } from 'lucide-react';
 import { getData } from './data';
@@ -5,8 +6,38 @@ import { useLanguage } from '../../context/LanguageContext';
 import bgImage from '../../assets/bg-04.jpg';
 
 export default function Desktop() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const isMobileMode = location.pathname.startsWith('/mobile');
+    const currentMode = isMobileMode ? 'mobile' : 'desktop';
     const { language } = useLanguage();
     const data = getData(language);
+
+    // Logic: Determine which CTA button is selected based on the active folder/page.
+    // For 'home', no control is selected (-1), keeping all 3 with identical clean styling.
+    const getActiveButtonIndex = (pathname: string): number => {
+        const pathSegments = pathname.split('/').filter(Boolean);
+        const currentRoute = pathSegments[1] || 'home';
+
+        if (currentRoute === 'open-plots') return 0;           // "Register as a Learner"
+        if (currentRoute === 're-trainers-coaches') return 1; // "Register as a Trainer"
+        if (currentRoute === 're-companies') return 2;        // "Register as a Company"
+        return -1; // Home: no control is selected by default
+    };
+
+    const activeBtnIndex = getActiveButtonIndex(location.pathname);
+
+    const handleButtonClick = (idx: number) => {
+        if (idx === 0) {
+            navigate(`/${currentMode}/open-plots`);
+        } else if (idx === 1) {
+            navigate(`/${currentMode}/re-trainers-coaches`);
+        } else if (idx === 2) {
+            navigate(`/${currentMode}/re-companies`);
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     const containerVariant = {
         hidden: { opacity: 0 },
         show: {
@@ -89,23 +120,47 @@ export default function Desktop() {
                         {data.headline.subtitle}
                     </motion.p>
 
+                    {/* 3 CTA Buttons with active selection logic & hover animations */}
                     <motion.div variants={itemVariant} className="flex flex-wrap items-center justify-center gap-4 mb-16 px-10 relative z-10">
-                        {data.buttons.map((btn, idx) => (
-                            <motion.button
-                                key={idx}
-                                whileHover={{ scale: 1.02, backgroundColor: idx === 0 ? undefined : 'rgba(255,255,255,0.05)', boxShadow: idx === 0 ? '0 0 30px rgba(213,170,69,0.4)' : undefined, y: -2 }}
-                                whileTap={{ scale: 0.98 }}
-                                className={`font-semibold text-[14px] px-8 py-3.5 rounded transition-all duration-300 flex items-center gap-2.5 cursor-pointer ${
-                                    idx === 0 
-                                    ? 'text-[#071A49] font-bold uppercase tracking-[0.05em]' 
-                                    : 'bg-transparent text-white border border-white/20'
-                                }`}
-                                style={idx === 0 ? { background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)', boxShadow: '0 10px 20px -5px rgba(213,170,69,0.2)' } : {}}
-                            >
-                                <span>{btn}</span>
-                                {idx === 0 && <ArrowRight size={16} strokeWidth={2.5} />}
-                            </motion.button>
-                        ))}
+                        {data.buttons.map((btn, idx) => {
+                            const isSelected = activeBtnIndex === idx;
+
+                            return (
+                                <motion.button
+                                    key={idx}
+                                    onClick={() => handleButtonClick(idx)}
+                                    whileHover={{ 
+                                        scale: 1.04, 
+                                        y: -2,
+                                        boxShadow: isSelected 
+                                            ? '0 0 32px rgba(213,170,69,0.5)' 
+                                            : '0 0 24px rgba(213,170,69,0.25)',
+                                        borderColor: isSelected ? undefined : 'rgba(226,192,104,0.6)',
+                                        backgroundColor: isSelected ? undefined : 'rgba(255,255,255,0.08)'
+                                    }}
+                                    whileTap={{ scale: 0.97 }}
+                                    className={`group relative font-semibold text-[14px] px-8 py-3.5 rounded transition-all duration-300 flex items-center gap-2.5 cursor-pointer ${
+                                        isSelected 
+                                            ? 'text-[#071A49] font-bold uppercase tracking-[0.05em] shadow-[0_10px_20px_-5px_rgba(213,170,69,0.3)]' 
+                                            : 'bg-transparent text-white border border-white/20 hover:text-[#E2C068]'
+                                    }`}
+                                    style={isSelected ? { 
+                                        background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' 
+                                    } : {}}
+                                >
+                                    <span>{btn}</span>
+                                    {isSelected ? (
+                                        <ArrowRight size={16} strokeWidth={2.5} />
+                                    ) : (
+                                        <ArrowRight 
+                                            size={16} 
+                                            strokeWidth={2.5} 
+                                            className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]" 
+                                        />
+                                    )}
+                                </motion.button>
+                            );
+                        })}
                     </motion.div>
 
                     <motion.div variants={itemVariant} className="flex items-center justify-center w-full px-8 relative z-10">
