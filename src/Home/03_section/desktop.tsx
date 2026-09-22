@@ -52,7 +52,6 @@ export default function Desktop() {
             className="w-full py-24 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)' }}
         >
-            {/* Ambient Background Glows */}
             <motion.div
                 animate={{ opacity: [0.3, 0.65, 0.3], scale: [1, 1.08, 1] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -64,14 +63,12 @@ export default function Desktop() {
                 className="absolute bottom-[5%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
             />
 
-            {/* Concentric Pulsing Accent Rings */}
             <motion.div
                 animate={{ scale: [1, 1.25, 1], opacity: [0.03, 0.08, 0.03] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-[#0B1D3A]/20 pointer-events-none z-0"
             />
 
-            {/* Subtle Grid Texture */}
             <div
                 className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
                 style={{
@@ -81,7 +78,6 @@ export default function Desktop() {
             />
 
             <div className="max-w-[1360px] mx-auto px-8 lg:px-12 relative z-10">
-                {/* Header */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -118,7 +114,6 @@ export default function Desktop() {
                     </motion.p>
                 </motion.div>
 
-                {/* 3*1 Format Cards Grid */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -136,7 +131,6 @@ export default function Desktop() {
                                 whileHover={{ y: -8, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
                                 className="group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/20 rounded-xl p-8 xl:p-9 flex flex-col justify-between shadow-[0_12px_36px_-12px_rgba(11,29,58,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(11,29,58,0.16)] transition-all duration-400 relative overflow-hidden h-full cursor-default"
                             >
-                                {/* Top Accent Line */}
                                 <div
                                     className="absolute top-0 left-0 right-0 h-[3.5px] transition-all duration-500 opacity-80 group-hover:opacity-100"
                                     style={{
@@ -144,14 +138,12 @@ export default function Desktop() {
                                     }}
                                 />
 
-                                {/* Ambient Corner Glow */}
                                 <div
                                     className="absolute -top-16 -right-16 w-44 h-44 rounded-full blur-[45px] opacity-[0.06] group-hover:opacity-[0.14] transition-all duration-500 pointer-events-none"
                                     style={{ background: accent }}
                                 />
 
                                 <div>
-                                    {/* Card Header: Badge & Icon */}
                                     <div className="flex items-center justify-between gap-4 mb-6">
                                         <div
                                             className="w-14 h-14 rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-110 group-hover:rotate-3 transition-transform duration-400 relative overflow-hidden"
@@ -175,7 +167,6 @@ export default function Desktop() {
                                         </span>
                                     </div>
 
-                                    {/* Tag & SubTag */}
                                     <div className="mb-4">
                                         <h3 className="text-[20px] xl:text-[22px] font-black tracking-tight text-[#0B1D3A] group-hover:text-[#0B1D3A] transition-colors">
                                             {persona.tag}
@@ -185,17 +176,14 @@ export default function Desktop() {
                                         </p>
                                     </div>
 
-                                    {/* Title Lines */}
                                     <h4 className="text-[18px] xl:text-[20px] font-bold text-[#0B1D3A] leading-snug mb-3">
                                         {persona.titleLine1} <span style={{ color: accent }}>{persona.titleLine2}</span>
                                     </h4>
 
-                                    {/* Description */}
                                     <p className="text-[14.5px] font-medium leading-[1.65] text-[#5A6B82] mb-6">
                                         {persona.desc}
                                     </p>
 
-                                    {/* Key Features Bullet Points */}
                                     <div className="flex flex-col gap-3 pt-4 border-t border-[#0B1D3A]/[0.06] mb-8">
                                         {persona.features.map((feat, idx) => (
                                             <div key={idx} className="flex items-start gap-3 text-[13.5px] font-medium text-[#475569] group/feat">
@@ -208,7 +196,6 @@ export default function Desktop() {
                                     </div>
                                 </div>
 
-                                {/* Prominent CTA Button */}
                                 <div>
                                     <button
                                         onClick={() => handleRedirect(persona.path)}

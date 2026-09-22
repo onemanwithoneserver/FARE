@@ -52,7 +52,6 @@ export default function Mobile() {
             className="w-full py-14 px-4 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)' }}
         >
-            {/* Ambient Background Glows */}
             <motion.div
                 animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -64,7 +63,6 @@ export default function Mobile() {
                 className="absolute bottom-0 left-0 w-[240px] h-[240px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[60px] pointer-events-none z-0"
             />
 
-            {/* Subtle Grid Texture */}
             <div
                 className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
                 style={{
@@ -74,7 +72,6 @@ export default function Mobile() {
             />
 
             <div className="w-full max-w-[500px] mx-auto relative z-10">
-                {/* Header */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -111,7 +108,6 @@ export default function Mobile() {
                     </motion.p>
                 </motion.div>
 
-                {/* Vertical Cards Stack */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -128,7 +124,6 @@ export default function Mobile() {
                                 variants={itemVariants}
                                 className="bg-white/95 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-xl p-6 relative overflow-hidden shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)] flex flex-col justify-between"
                             >
-                                {/* Top Accent Line */}
                                 <div
                                     className="absolute top-0 left-0 right-0 h-[3px]"
                                     style={{
@@ -136,14 +131,12 @@ export default function Mobile() {
                                     }}
                                 />
 
-                                {/* Ambient Corner Glow */}
                                 <div
                                     className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-[35px] opacity-[0.08] pointer-events-none"
                                     style={{ background: accent }}
                                 />
 
                                 <div>
-                                    {/* Card Header: Badge & Icon */}
                                     <div className="flex items-center justify-between gap-3 mb-4">
                                         <div
                                             className="w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-sm"
@@ -166,7 +159,6 @@ export default function Mobile() {
                                         </span>
                                     </div>
 
-                                    {/* Tag & SubTag */}
                                     <div className="mb-3">
                                         <h3 className="text-[18px] font-black tracking-tight text-[#0B1D3A]">
                                             {persona.tag}
@@ -176,17 +168,14 @@ export default function Mobile() {
                                         </p>
                                     </div>
 
-                                    {/* Title Lines */}
                                     <h4 className="text-[16px] font-bold text-[#0B1D3A] leading-snug mb-2">
                                         {persona.titleLine1} <span style={{ color: accent }}>{persona.titleLine2}</span>
                                     </h4>
 
-                                    {/* Description */}
                                     <p className="text-[13.5px] font-medium leading-[1.6] text-[#5A6B82] mb-4">
                                         {persona.desc}
                                     </p>
 
-                                    {/* Features Checklist */}
                                     <div className="flex flex-col gap-2.5 pt-3.5 border-t border-[#0B1D3A]/[0.06] mb-5">
                                         {persona.features.map((feat, idx) => (
                                             <div key={idx} className="flex items-start gap-2.5 text-[12.5px] font-medium text-[#475569]">
@@ -199,7 +188,6 @@ export default function Mobile() {
                                     </div>
                                 </div>
 
-                                {/* Prominent CTA Button */}
                                 <div>
                                     <button
                                         onClick={() => handleRedirect(persona.path)}

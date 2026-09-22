@@ -58,7 +58,6 @@ export default function Desktop() {
             className="w-full py-10 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 40%, #EFF5FF 80%, #F4F8FF 100%)' }}
         >
-            {/* Ambient Animated Glows */}
             <motion.div
                 animate={{ opacity: [0.35, 0.75, 0.35], scale: [1, 1.08, 1] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -75,7 +74,6 @@ export default function Desktop() {
                 className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-gradient-radial from-[#60A5FA]/[0.06] to-transparent rounded-full blur-[110px] pointer-events-none z-0"
             />
 
-            {/* Concentric Modern Radar Rings (OpenPlot Style) */}
             <motion.div
                 animate={{ scale: [1, 1.25, 1], opacity: [0.03, 0.1, 0.03] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -87,7 +85,6 @@ export default function Desktop() {
                 className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full border border-[#3B82F6]/25 pointer-events-none z-0"
             />
 
-            {/* Subtle Grid Pattern Overlay */}
             <div
                 className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
                 style={{
@@ -97,7 +94,6 @@ export default function Desktop() {
             />
 
             <div className="max-w-[1320px] mx-auto px-8 lg:px-12 relative z-10">
-                {/* Header Section */}
                 <motion.div
                     variants={container}
                     initial="hidden"
@@ -105,7 +101,6 @@ export default function Desktop() {
                     viewport={{ once: false, margin: "-60px" }}
                     className="flex flex-col items-center text-center mb-16"
                 >
-                    {/* Badge */}
                     <motion.div variants={item} className="mb-5">
                         <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-gradient-to-r from-[#C99A2E]/[0.08] via-[#C99A2E]/[0.04] to-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
                             <Sparkles size={13} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
@@ -115,7 +110,6 @@ export default function Desktop() {
                         </div>
                     </motion.div>
 
-                    {/* Headline Row 1 */}
                     <motion.h2
                         variants={item}
                         className="text-[2.75rem] lg:text-[3.75rem] leading-[1.08] font-black tracking-[-0.03em] mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#162E56] to-[#0B1D3A]"
@@ -123,7 +117,6 @@ export default function Desktop() {
                         {data.headline}
                     </motion.h2>
 
-                    {/* Headline Row 2 (Accent) */}
                     <motion.h2
                         variants={item}
                         className="text-[2.75rem] lg:text-[3.75rem] leading-[1.08] font-black tracking-[-0.03em] bg-clip-text text-transparent bg-gradient-to-r from-[#C99A2E] via-[#E2BA55] to-[#B88A22] drop-shadow-[0_4px_24px_rgba(201,154,46,0.25)]"
@@ -132,10 +125,7 @@ export default function Desktop() {
                     </motion.h2>
                 </motion.div>
 
-                {/* Two Pillars Grid with Central Nexus */}
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 xl:gap-12 items-center max-w-[1140px] mx-auto mb-14 relative">
-
-                    {/* Left Card: You Bring */}
                     <motion.div
                         initial={{ opacity: 0, x: -35, y: 15 }}
                         whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -144,20 +134,16 @@ export default function Desktop() {
                         whileHover={{ y: -6, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
                         className="group bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/35 rounded p-9 xl:p-11 transition-all duration-400 relative overflow-hidden shadow-[0_12px_36px_-12px_rgba(11,29,58,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(201,154,46,0.18)] h-full flex flex-col cursor-default"
                     >
-                        {/* Shimmer sweep effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.2] to-transparent translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-1000 pointer-events-none" />
 
-                        {/* Top-right corner ambient glow */}
                         <motion.div
                             animate={{ opacity: [0.3, 0.65, 0.3], scale: [1, 1.08, 1] }}
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                             className="absolute top-0 right-0 w-44 h-44 bg-[#C99A2E]/10 rounded-bl-full blur-[35px] transition-all duration-500 group-hover:scale-125 group-hover:bg-[#C99A2E]/15 pointer-events-none"
                         />
 
-                        {/* Left active accent bar */}
                         <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C99A2E] via-[#E2BA55] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-400" />
 
-                        {/* Header */}
                         <div className="flex items-center gap-4 xl:gap-5 mb-8 relative z-10">
                             <div className="w-14 h-14 xl:w-16 xl:h-16 rounded bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(201,154,46,0.35)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-400 relative overflow-hidden">
                                 <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[-100%] transition-transform duration-700" />
@@ -173,7 +159,6 @@ export default function Desktop() {
                             </div>
                         </div>
 
-                        {/* Items list with internal staggering */}
                         <motion.div
                             variants={listContainer}
                             initial="hidden"
@@ -194,26 +179,22 @@ export default function Desktop() {
                         </motion.div>
                     </motion.div>
 
-                    {/* Central Synergistic Nexus (+) */}
                     <div className="flex items-center justify-center py-2 lg:py-0 relative z-20">
                         <motion.div
                             whileHover={{ scale: 1.15, rotate: 90 }}
                             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                             className="w-16 h-16 rounded-full bg-white border border-[#0B1D3A]/10 shadow-[0_8px_24px_-4px_rgba(11,29,58,0.12)] flex items-center justify-center text-[#0B1D3A] hover:border-[#C99A2E]/40 hover:text-[#C99A2E] transition-colors duration-300 cursor-pointer relative"
                         >
-                            {/* Rotating dashed orbital ring */}
                             <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                                 className="absolute -inset-1.5 rounded-full border border-dashed border-[#C99A2E]/30 pointer-events-none"
                             />
-                            {/* Soft pulse glow */}
                             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#C99A2E]/10 to-[#3B82F6]/10 animate-pulse pointer-events-none" />
                             <Plus size={30} strokeWidth={2.4} className="relative z-10" />
                         </motion.div>
                     </div>
 
-                    {/* Right Card: FARE Brings */}
                     <motion.div
                         initial={{ opacity: 0, x: 35, y: 15 }}
                         whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -222,20 +203,16 @@ export default function Desktop() {
                         whileHover={{ y: -6, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
                         className="group bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#3B82F6]/35 rounded p-9 xl:p-11 transition-all duration-400 relative overflow-hidden shadow-[0_12px_36px_-12px_rgba(11,29,58,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(59,130,246,0.18)] h-full flex flex-col cursor-default"
                     >
-                        {/* Shimmer sweep effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.2] to-transparent translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-1000 pointer-events-none" />
 
-                        {/* Top-right corner ambient glow */}
                         <motion.div
                             animate={{ opacity: [0.3, 0.65, 0.3], scale: [1, 1.08, 1] }}
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                             className="absolute top-0 right-0 w-44 h-44 bg-[#3B82F6]/10 rounded-bl-full blur-[35px] transition-all duration-500 group-hover:scale-125 group-hover:bg-[#3B82F6]/15 pointer-events-none"
                         />
 
-                        {/* Right active accent bar */}
                         <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#3B82F6] via-[#60A5FA] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-400" />
 
-                        {/* Header */}
                         <div className="flex items-center gap-4 xl:gap-5 mb-8 relative z-10">
                             <div className="w-14 h-14 xl:w-16 xl:h-16 rounded bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(59,130,246,0.35)] group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-400 relative overflow-hidden">
                                 <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[-100%] transition-transform duration-700" />
@@ -251,7 +228,6 @@ export default function Desktop() {
                             </div>
                         </div>
 
-                        {/* Items list with internal staggering */}
                         <motion.div
                             variants={listContainer}
                             initial="hidden"
@@ -271,10 +247,8 @@ export default function Desktop() {
                             ))}
                         </motion.div>
                     </motion.div>
-
                 </div>
 
-                {/* Together Synergy / Ecosystem Workflow Banner (Dark Theme) */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -283,10 +257,8 @@ export default function Desktop() {
                     className="max-w-[1140px] mx-auto rounded-2xl p-10 xl:p-14 flex flex-col items-center relative overflow-hidden transition-all duration-500 group border border-white/10 shadow-[0_25px_60px_-15px_rgba(11,29,58,0.5)] hover:border-[#C99A2E]/40 hover:shadow-[0_30px_70px_-15px_rgba(201,154,46,0.15)]"
                     style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}
                 >
-                    {/* Top glowing gold hairline */}
                     <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C99A2E]/80 to-transparent" />
 
-                    {/* Ambient High-Tech Grid Texture */}
                     <div
                         className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
                         style={{
@@ -295,7 +267,6 @@ export default function Desktop() {
                         }}
                     />
 
-                    {/* Deep Ambient Neon Glow Orbs */}
                     <motion.div
                         animate={{ opacity: [0.15, 0.35, 0.15], scale: [1, 1.1, 1] }}
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -307,7 +278,6 @@ export default function Desktop() {
                         className="absolute -bottom-1/2 right-[15%] w-[500px] h-[500px] bg-[#3B82F6]/20 rounded-full blur-[90px] pointer-events-none"
                     />
 
-                    {/* Top pill badge */}
                     <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-white/15 bg-white/[0.08] shadow-inner backdrop-blur-md mb-11 relative z-10">
                         <Zap size={15} className="text-[#E2BA55] animate-pulse" />
                         <h3 className="text-[12px] font-bold text-white uppercase tracking-[0.25em] text-center">
@@ -315,9 +285,7 @@ export default function Desktop() {
                         </h3>
                     </div>
 
-                    {/* Flow steps container with staggered entrance and animated pinging arrows */}
                     <div className="relative z-10 w-full">
-                        {/* Connecting glowing flow line behind nodes */}
                         <div className="hidden lg:block absolute top-1/2 left-16 right-16 h-[1.5px] bg-gradient-to-r from-transparent via-[#C99A2E]/30 to-transparent -translate-y-1/2 pointer-events-none z-0" />
 
                         <motion.div
@@ -348,7 +316,6 @@ export default function Desktop() {
                                         whileHover={{ y: -6, scale: 1.05, transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } }}
                                         className="group/chip text-[17px] xl:text-[19px] font-bold text-white bg-white/[0.07] hover:bg-white/[0.14] px-7 py-4.5 rounded-xl border border-white/10 hover:border-[#C99A2E]/60 shadow-[0_8px_25px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_30px_rgba(201,154,46,0.25)] transition-all duration-300 cursor-default relative overflow-hidden backdrop-blur-md"
                                     >
-                                        {/* Shimmer sweep on chip hover */}
                                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent translate-x-[-120%] group-hover/chip:translate-x-[120%] transition-transform duration-700 pointer-events-none" />
                                         <span className="relative z-10 tracking-wide group-hover/chip:text-[#E2BA55] transition-colors">{step}</span>
                                     </motion.div>
@@ -377,7 +344,6 @@ export default function Desktop() {
                     </div>
                 </motion.div>
 
-                {/* Polished Bottom Callout ("FARE brings the audience.") */}
                 <motion.div
                     initial={{ opacity: 0, y: 22 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -385,6 +351,14 @@ export default function Desktop() {
                     transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                     className="mt-14 text-center flex items-center justify-center gap-6"
                 >
+                    <div className="w-16 lg:w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
+                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/80 border border-[#C99A2E]/25 shadow-[0_4px_20px_-4px_rgba(201,154,46,0.15)] backdrop-blur-md">
+                        <Sparkles size={16} className="text-[#C99A2E]" strokeWidth={2.2} />
+                        <p className="text-[20px] lg:text-[23px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
+                            {data.footerText}
+                        </p>
+                    </div>
+                    <div className="w-16 lg:w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
                 </motion.div>
             </div>
         </section>

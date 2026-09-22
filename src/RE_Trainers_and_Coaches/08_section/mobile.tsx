@@ -49,7 +49,6 @@ export default function Mobile() {
             className="w-full py-12 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 45%, #EFF5FF 85%, #F4F8FF 100%)' }}
         >
-            {/* Ambient Background Glows */}
             <motion.div
                 animate={{ opacity: [0.35, 0.65, 0.35], scale: [1, 1.08, 1] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -61,7 +60,6 @@ export default function Mobile() {
                 className="absolute bottom-10 left-[-60px] w-[280px] h-[280px] bg-gradient-radial from-[#3B82F6]/15 to-transparent rounded-full blur-[50px] pointer-events-none z-0"
             />
 
-            {/* Subtle Grid Pattern Overlay */}
             <div
                 className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
                 style={{
@@ -71,7 +69,6 @@ export default function Mobile() {
             />
 
             <div className="px-5 relative z-10">
-                {/* Header */}
                 <motion.div
                     variants={container}
                     initial="hidden"
@@ -80,7 +77,7 @@ export default function Mobile() {
                     className="flex flex-col items-center text-center mb-10"
                 >
                     <motion.div variants={item} className="mb-4">
-                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/30 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] shadow-[0_2px_10px_rgba(201,154,46,0.1)] backdrop-blur-sm">
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#C99A2E]/30 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] shadow-[0_2px_10px_rgba(201,154,46,0.1)] backdrop-blur-sm">
                             <Sparkles size={12} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
                             <span className="font-bold text-[10px] tracking-[0.2em] uppercase text-[#C99A2E]">
                                 {data.overline}
@@ -103,10 +100,7 @@ export default function Mobile() {
                     </motion.h2>
                 </motion.div>
 
-                {/* Cards Container */}
                 <div className="flex flex-col gap-5 mb-10">
-
-                    {/* Left Card: You Bring */}
                     <motion.div
                         initial={{ opacity: 0, y: 25 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -151,10 +145,8 @@ export default function Mobile() {
                         </motion.div>
                     </motion.div>
 
-                    {/* Central Synergistic Nexus (+) with vertical connecting indicator */}
                     <div className="flex items-center justify-center py-1 relative">
                         <div className="w-13 h-13 rounded-full bg-white border border-[#0B1D3A]/10 shadow-[0_4px_16px_-2px_rgba(11,29,58,0.12)] flex items-center justify-center text-[#0B1D3A] relative">
-                            {/* Rotating dashed ring */}
                             <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
@@ -165,7 +157,6 @@ export default function Mobile() {
                         </div>
                     </div>
 
-                    {/* Right Card: FARE Brings */}
                     <motion.div
                         initial={{ opacity: 0, y: 25 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -209,10 +200,8 @@ export default function Mobile() {
                             ))}
                         </motion.div>
                     </motion.div>
-
                 </div>
 
-                {/* Together Synergy Flow (Dark Theme) */}
                 <motion.div
                     initial={{ opacity: 0, y: 25 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -221,7 +210,6 @@ export default function Mobile() {
                     className="rounded-2xl p-6 flex flex-col items-center relative overflow-hidden shadow-[0_20px_45px_rgba(11,29,58,0.4)] border border-white/10 mb-8"
                     style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}
                 >
-                    {/* Top hairline */}
                     <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C99A2E]/80 to-transparent" />
 
                     <div className="absolute top-0 right-0 w-36 h-36 bg-[#C99A2E]/15 rounded-full blur-[35px] pointer-events-none" />
@@ -278,7 +266,6 @@ export default function Mobile() {
                     </motion.div>
                 </motion.div>
 
-                {/* Bottom Callout ("FARE brings the audience.") */}
                 <motion.div
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
