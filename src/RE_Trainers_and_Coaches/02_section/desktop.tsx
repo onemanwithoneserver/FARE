@@ -82,7 +82,7 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="grid grid-cols-2 lg:grid-cols-4 gap-6 relative mb-12"
+                    className="flex flex-wrap justify-center gap-4 relative mb-10"
                 >
                     {data.challenges.map((challenge, index) => {
                         const { Icon, color } = iconData[index];
@@ -90,31 +90,22 @@ export default function Desktop() {
                             <motion.div
                                 key={index}
                                 variants={item}
-                                className="group relative"
+                                className="w-[calc(20%-13px)] min-w-[200px] group bg-gradient-to-br from-[#1A0B16]/90 to-[#0A1630]/60 backdrop-blur-xl border border-red-900/30 rounded p-4 shadow-[0_1px_3px_rgba(220,38,38,0.05),0_8px_24px_-8px_rgba(220,38,38,0.08)] hover:shadow-[0_20px_50px_-15px_rgba(220,38,38,0.15)] hover:bg-gradient-to-br hover:from-[#2A0E1A]/90 hover:to-[#0E1F42]/80 hover:border-red-500/30 transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[170px] justify-center cursor-default group-hover:-translate-y-2"
                             >
                                 
                                 <div className="absolute inset-0 bg-gradient-to-b from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded blur-xl" style={{ mixBlendMode: 'overlay' }}></div>
                                 
-                                <div className="bg-gradient-to-br from-[#1A0B16]/90 to-[#0A1630]/60 backdrop-blur-xl border border-red-900/30 rounded p-8 hover:bg-gradient-to-br hover:from-[#2A0E1A]/90 hover:to-[#0E1F42]/80 hover:border-red-500/30 transition-all duration-400 relative overflow-hidden flex flex-col h-full shadow-[0_10px_30px_-10px_rgba(220,38,38,0.1)] group-hover:shadow-[0_20px_40px_-15px_rgba(220,38,38,0.25)] group-hover:-translate-y-2">
-                                    
-                                    <motion.div animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-[30px] rounded-bl-full pointer-events-none bg-red-500"></motion.div>
+                                <motion.div animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-[30px] rounded-bl-full pointer-events-none bg-red-500"></motion.div>
 
-                                    <div className="flex items-center justify-between mb-8 relative z-10">
-                                        <div 
-                                            className="w-14 h-14 rounded-xl flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(220,38,38,0.2)] group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 relative overflow-hidden border border-red-500/20"
-                                            style={{ backgroundColor: color }}
-                                        >
-                                            <Icon size={24} className="text-white relative z-10" />
-                                        </div>
-                                        <span className="text-[14px] font-bold tracking-[0.1em] text-red-500/20 group-hover:text-red-400/50 transition-colors font-serif">
-                                            {String(index + 1).padStart(2, '0')}
-                                        </span>
-                                    </div>
-                                    
-                                    <h3 className="text-[17px] font-bold leading-[1.4] text-red-50/80 group-hover:text-white transition-colors relative z-10">
-                                        {challenge}
-                                    </h3>
+                                <div 
+                                    className="mb-3 w-10 h-10 rounded-xl flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(220,38,38,0.2)] group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 relative overflow-hidden border border-red-500/20 shrink-0"
+                                    style={{ backgroundColor: color }}
+                                >
+                                    <Icon size={20} className="text-white relative z-10" />
                                 </div>
+                                <h3 className="text-[14px] font-bold leading-tight relative z-10 px-1 text-red-50/80 group-hover:text-white transition-colors">
+                                    {challenge}
+                                </h3>
                             </motion.div>
                         );
                     })}
