@@ -277,7 +277,13 @@ export default function ContactUsMobile() {
                           {isSelected && <Check size={11} strokeWidth={3} className="text-white" />}
                         </div>
 
-                        <div className="flex items-center gap-2 mb-2 pr-6">
+                        <p className={`text-[11px] leading-snug transition-colors mb-2.5 ${
+                          isSelected ? 'text-white/80 font-normal' : 'text-[#64748B]'
+                        }`}>
+                          {reason.desc}
+                        </p>
+
+                        <div className="flex items-center gap-2 pr-6 mt-auto">
                           <div 
                             className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shadow-xs shrink-0"
                             style={{ backgroundColor: reason.color }}
@@ -290,12 +296,6 @@ export default function ContactUsMobile() {
                             {reason.title}
                           </h3>
                         </div>
-
-                        <p className={`text-[11px] leading-snug transition-colors ${
-                          isSelected ? 'text-white/80 font-normal' : 'text-[#64748B]'
-                        }`}>
-                          {reason.desc}
-                        </p>
                       </motion.button>
                     );
                   })}

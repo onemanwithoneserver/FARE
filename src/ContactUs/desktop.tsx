@@ -315,7 +315,13 @@ export default function ContactUsDesktop() {
                           {isSelected && <Check size={13} strokeWidth={3} className="text-white" />}
                         </div>
 
-                        <div className="flex items-center gap-3.5 mb-2.5 pr-8">
+                        <p className={`text-[13px] leading-relaxed transition-colors mb-3 ${
+                          isSelected ? 'text-white/80 font-normal' : 'text-[#64748B]'
+                        }`}>
+                          {reason.desc}
+                        </p>
+
+                        <div className="flex items-center gap-3.5 pr-8 mt-auto">
                           <div 
                             className="w-11 h-11 rounded-xl flex items-center justify-center shadow-xs shrink-0 transition-transform duration-300"
                             style={{ backgroundColor: reason.color }}
@@ -328,12 +334,6 @@ export default function ContactUsDesktop() {
                             {reason.title}
                           </h3>
                         </div>
-
-                        <p className={`text-[13px] leading-relaxed transition-colors ${
-                          isSelected ? 'text-white/80 font-normal' : 'text-[#64748B]'
-                        }`}>
-                          {reason.desc}
-                        </p>
                       </motion.button>
                     );
                   })}

@@ -179,8 +179,8 @@ export default function Desktop() {
                     className="mt-10 text-center flex flex-col items-center gap-6"
                 >
                     <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/50 to-transparent"></div>
-                    <p className="text-[20px] font-medium text-[#475569] italic tracking-wide">
-                        "{data.footerText}"
+                    <p className="text-[24px] font-bold text-[#0B1D3A] tracking-wide">
+                        {data.footerText}
                     </p>
                     <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/50 to-transparent"></div>
                 </motion.div>

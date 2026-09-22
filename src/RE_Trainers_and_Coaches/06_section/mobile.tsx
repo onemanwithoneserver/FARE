@@ -151,13 +151,13 @@ export default function Mobile() {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: false, margin: "-50px" }}
-                        className="grid grid-cols-2 gap-3"
+                        className="flex flex-wrap justify-center gap-3"
                     >
                         {data.types.map((type, index) => (
                             <motion.div
                                 key={index}
                                 variants={item}
-                                className={`bg-gradient-to-br from-[#0B1D3A]/[0.03] to-[#0B1D3A]/[0.01] backdrop-blur-md border border-[#0B1D3A]/[0.08] rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden ${index === data.types.length - 1 && data.types.length % 2 !== 0 ? 'col-span-2' : ''}`}
+                                className="w-[calc(50%-6px)] aspect-square bg-gradient-to-br from-[#0B1D3A]/[0.03] to-[#0B1D3A]/[0.01] backdrop-blur-md border border-[#0B1D3A]/[0.08] rounded-xl p-5 shadow-sm flex flex-col justify-center relative overflow-hidden"
                             >
                                 <div className="absolute top-0 right-0 w-20 h-20 opacity-[0.15] blur-[20px] rounded-full pointer-events-none" style={{ background: type.color }}></div>
                                 <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mb-4 relative z-10 border border-[#0B1D3A]/10 shadow-inner" style={{ backgroundColor: type.color }}>
@@ -169,7 +169,7 @@ export default function Mobile() {
                                     <h4 className="text-[15px] font-bold leading-tight text-[#0B1D3A] mb-2">
                                         {type.title}
                                     </h4>
-                                    <p className="text-[13px] font-medium text-[#475569] leading-relaxed mt-auto">
+                                    <p className="text-[13px] font-medium text-[#475569] leading-relaxed">
                                         {type.desc}
                                     </p>
                                 </div>

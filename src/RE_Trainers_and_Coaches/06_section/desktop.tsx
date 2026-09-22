@@ -148,15 +148,15 @@ export default function Desktop() {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: false, margin: "-100px" }}
-                        className="grid grid-cols-2 lg:grid-cols-4 gap-6"
+                        className="flex flex-wrap justify-center gap-6"
                     >
                         {data.types.map((type, index) => (
                             <motion.div
                                 key={index}
                                 variants={item}
-                                className="bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 rounded p-8 hover:bg-white hover:border-[#0B1D3A]/20 hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.12)] transition-all duration-400 flex flex-col h-full group"
+                                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-square bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 rounded p-8 hover:bg-white hover:border-[#0B1D3A]/20 hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.12)] transition-all duration-400 flex flex-col justify-center group"
                             >
-                                <div className="flex items-center gap-5 mb-5 relative z-10">
+                                <div className="flex flex-col gap-4 mb-4 relative z-10">
                                     <div className="w-14 h-14 rounded flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-md" style={{ backgroundColor: type.color }}>
                                         <div className="absolute inset-0 bg-white/10 rounded"></div>
                                         {typeIcons[type.icon as keyof typeof typeIcons]}

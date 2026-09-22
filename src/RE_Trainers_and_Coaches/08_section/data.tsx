@@ -3,8 +3,8 @@ import type { Language } from '../../context/LanguageContext';
 export const dataEn = {
     overline: "The Platform",
     title: "You Bring the Expertise. FARE Brings the Platform.",
-    headline: "You bring the expertise. FARE brings the platform.",
-    headlineAccent: "FARE brings the audience.",
+    headline: "You bring the expertise.",
+    headlineAccent: "FARE brings the platform.",
     youBring: {
         title: "You Bring",
         items: ["Industry Experience", "Expertise", "Methodology", "Content", "Training Approach"]
@@ -17,7 +17,7 @@ export const dataEn = {
         title: "Together",
         flow: ["Expertise", "Platform", "Learners", "Organisations"]
     },
-    footerText: "Focus on what you know best. Let FARE handle the learning ecosystem."
+    footerText: "FARE brings the audience."
 };
 
 export const dataTe = {

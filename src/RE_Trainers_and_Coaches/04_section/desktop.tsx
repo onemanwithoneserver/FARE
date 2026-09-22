@@ -132,12 +132,12 @@ export default function Desktop() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-16 lg:p-20 relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(11,29,58,0.15)]"
+                        className="bg-[#071A49]/60 backdrop-blur-sm border border-white/10 rounded p-12 lg:p-14 relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(2,6,23,0.5)]"
                     >
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C99A2E]/10 rounded-full blur-[100px] pointer-events-none"></motion.div>
-                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#DDEAFF]/60 rounded-full blur-[80px] pointer-events-none"></motion.div>
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#071A49]/40 rounded-full blur-[80px] pointer-events-none"></motion.div>
                         
-                        <h3 className="text-[32px] font-bold mb-8 text-center text-[#0B1D3A] relative z-10 tracking-tight">
+                        <h3 className="text-[32px] font-bold mb-6 text-center text-white relative z-10 tracking-tight">
                             {data.learnersHeading}
                         </h3>
 
@@ -146,7 +146,7 @@ export default function Desktop() {
                             initial="hidden"
                             whileInView="show"
                             viewport={{ once: false, margin: "-100px" }}
-                            className="flex flex-wrap justify-center gap-6 lg:gap-8 relative z-10"
+                            className="flex flex-wrap justify-center gap-5 lg:gap-6 relative z-10"
                         >
                             {data.learners.map((learner, index) => (
                                 <motion.div

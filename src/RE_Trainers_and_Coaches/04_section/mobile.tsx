@@ -125,12 +125,12 @@ export default function Mobile() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.6 }}
-                        className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-7 relative overflow-hidden shadow-[0_20px_40px_-10px_rgba(11,29,58,0.15)]"
+                        className="bg-[#071A49]/60 backdrop-blur-sm border border-white/10 rounded p-6 relative overflow-hidden shadow-[0_20px_40px_-10px_rgba(2,6,23,0.45)]"
                     >
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-48 h-48 bg-[#C99A2E]/10 rounded-full blur-[40px]"></motion.div>
                         
                         <motion.h3 
-                            className="text-[22px] font-bold mb-8 text-center text-[#0B1D3A] relative z-10"
+                            className="text-[22px] font-bold mb-6 text-center text-white relative z-10"
                         >
                             {data.learnersHeading}
                         </motion.h3>
