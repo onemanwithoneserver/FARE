@@ -106,9 +106,9 @@ export default function Mobile() {
                                 </div>
                                 <p className="text-[14.5px] text-white/70 leading-relaxed mb-6 font-medium">{activeContent.desc}</p>
 
-                                <div className="flex flex-col gap-6">
+                                <div className="flex flex-wrap justify-center gap-5">
                                     {activeContent.sections.map((section: { heading: string; items: string[] }, idx: number) => (
-                                        <div key={idx} className="bg-white/[0.02] rounded p-5 border border-white/[0.05]">
+                                        <div key={idx} className="flex-1 min-w-[250px] max-w-full bg-white/[0.02] rounded p-5 border border-white/[0.05]">
                                             <h4 className="text-[12px] font-bold uppercase tracking-[0.15em] mb-4 flex items-center gap-2" style={{ color: activeColor }}>
                                                 <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: activeColor }}></div>
                                                 {section.heading}

@@ -110,9 +110,9 @@ export default function Desktop() {
                                 </div>
                                 <p className="text-[17px] text-white/70 leading-relaxed mb-10 max-w-[800px] font-medium">{activeContent.desc}</p>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                                <div className="flex flex-wrap justify-center gap-8">
                                     {activeContent.sections.map((section: { heading: string; items: string[] }, idx: number) => (
-                                        <div key={idx} className="bg-white/[0.02] rounded p-6 border border-white/[0.05]">
+                                        <div key={idx} className="flex-1 min-w-[280px] max-w-full bg-white/[0.02] rounded p-6 border border-white/[0.05]">
                                             <h4 className="text-[14px] font-bold uppercase tracking-[0.15em] mb-5 flex items-center gap-3" style={{ color: activeColor }}>
                                                 <div className="w-1.5 h-1.5 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)]" style={{ backgroundColor: activeColor }}></div>
                                                 {section.heading}
