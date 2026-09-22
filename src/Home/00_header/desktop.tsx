@@ -66,8 +66,8 @@ export default function Desktop() {
             <img
                 src={logo}
                 alt="FARE"
-                className={`w-auto max-w-none transition-all duration-300 group-hover:scale-[1.02] ${isScrolled ? 'brightness-0 invert' : ''} ${
-                    isScrolled ? 'h-[50px] my-[-4px]' : 'h-[74px] my-[-8px]'
+                className={`w-auto max-w-none transition-all duration-300 group-hover:scale-[1.04] ${isScrolled ? 'brightness-0 invert' : ''} ${
+                    isScrolled ? 'h-[70px] my-[-8px] scale-[1.25] origin-center' : 'h-[74px] my-[-8px]'
                 }`}
             />
         </div>
