@@ -25,17 +25,20 @@ export default function Mobile() {
     const currentRoute = pathSegments[1] || 'home';
 
     const getRouteForHref = (href: string, title?: string): string => {
-        if (href === 'home' || href === '#platform' || href === '#about') return 'home';
+        if (href === '#') return '#';
+        if (href === 'home' || href === '#platform') return 'home';
         if (href === 'open-plots' || href === '#open-plots') return 'open-plots';
         if (href === 're-companies' || href === '#for-companies' || href === '#residential-commercial') return 're-companies';
-        if (href === 're-trainers-coaches' || href === '#for-trainers' || href === '#trainer-directory') return 're-trainers-coaches';
+        if (href === 're-trainers-coaches' || href === '#for-trainers') return 're-trainers-coaches';
         if (href === 'contact-us' || href === '#contact') return 'contact-us';
         
+        if (title === 'Trainer Directory' || title === 'ట్రైనర్ డైరెక్టరీ') return '#';
+        if (title === 'About' || title === 'మా గురించి') return '#';
         if (title === 'Contact Us' || title === 'సంప్రదించండి') return 'contact-us';
-        if (title === 'For Trainers' || title === 'ట్రైనర్ల కోసం' || title === 'Trainer Directory' || title === 'ట్రైనర్ డైరెక్టరీ') return 're-trainers-coaches';
+        if (title === 'For Trainers' || title === 'ట్రైనర్ల కోసం') return 're-trainers-coaches';
         if (title === 'For Companies' || title === 'కంపెనీల కోసం' || title === 'Residential & Commercial' || title === 'రెసిడెన్షియల్ & కమర్షియల్') return 're-companies';
         if (title === 'Open Plots' || title === 'ఓపెన్ ప్లాట్స్') return 'open-plots';
-        if (title === 'Platform' || title === 'ప్లాట్‌ఫారమ్' || title === 'About' || title === 'మా గురించి') return 'home';
+        if (title === 'Platform' || title === 'ప్లాట్‌ఫారమ్') return 'home';
 
         return href.replace('#', '') || 'home';
     };
