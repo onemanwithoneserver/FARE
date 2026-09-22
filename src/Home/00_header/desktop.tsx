@@ -89,7 +89,14 @@ export default function Desktop() {
                         onClick={() => setActiveDropdown(isDropdownOpen ? null : link.title)}
                         className={`flex items-center gap-1 text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium transition-colors duration-300 cursor-pointer py-1.5 group whitespace-nowrap ${isScrolled ? 'text-white/90 hover:text-[#C99A2E]' : 'text-[#0B1D3A]/90 hover:text-[#C99A2E]'}`}
                     >
-                        <span>{link.title}</span>
+                        <span className="relative inline-block py-0.5">
+                            <span className={`transition-colors duration-300 ${isDropdownOpen ? 'text-[#C99A2E]' : ''}`}>
+                                {link.title}
+                            </span>
+                            <span className={`absolute -bottom-[2px] left-0 h-[2px] bg-[#C99A2E] rounded-full transition-all duration-300 ease-out ${
+                                isDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'
+                            }`} />
+                        </span>
                         <ChevronDown
                             size={13}
                             strokeWidth={2.5}
@@ -159,9 +166,14 @@ export default function Desktop() {
                         navigate(`/${currentMode}/contact-us`);
                     }
                 }}
-                className={`relative text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium transition-colors duration-300 whitespace-nowrap pb-[2px] border-b border-dotted ${isScrolled ? 'border-white/30 text-white/90 hover:text-[#C99A2E]' : 'border-[#0B1D3A]/30 text-[#0B1D3A]/90 hover:text-[#C99A2E]'} after:content-[''] after:absolute after:bottom-[-1px] after:left-0 after:w-0 after:h-[1.5px] after:bg-[#C99A2E] after:transition-all after:duration-300 hover:after:w-full`}
+                className={`relative inline-flex items-center text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium transition-colors duration-300 whitespace-nowrap py-1.5 group cursor-pointer ${
+                    isScrolled ? 'text-white/90 hover:text-[#C99A2E]' : 'text-[#0B1D3A]/90 hover:text-[#C99A2E]'
+                }`}
             >
-                {link.title}
+                <span className="relative inline-block py-0.5">
+                    {link.title}
+                    <span className="absolute -bottom-[2px] left-0 w-0 h-[2px] bg-[#C99A2E] rounded-full transition-all duration-300 ease-out group-hover:w-full" />
+                </span>
             </a>
         );
     };

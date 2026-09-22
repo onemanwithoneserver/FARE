@@ -112,16 +112,18 @@ export default function Desktop() {
                                         : 'text-white/60 hover:text-[#E2C068] hover:bg-white/[0.06] hover:shadow-[0_2px_10px_rgba(0,0,0,0.2)]'
                                 }`}
                             >
-                                {isSelected ? (
+                                {isSelected && (
                                     <motion.span
                                         layoutId="activeFooterLinkDesktop"
                                         className="w-1.5 h-1.5 rounded-full bg-[#E2C068] shadow-[0_0_8px_#E2C068]"
                                         transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                                     />
-                                ) : (
-                                    <span className="absolute bottom-1 left-3 right-3 h-[1.5px] bg-[#E2C068] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center opacity-80" />
                                 )}
-                                <span className="relative z-10 underline decoration-dotted transition-colors duration-200">
+                                <span className={`relative z-10 transition-all duration-300 ${
+                                    isSelected 
+                                        ? 'no-underline' 
+                                        : 'underline underline-offset-4 decoration-dotted decoration-white/40 group-hover:decoration-solid group-hover:decoration-[#E2C068]'
+                                }`}>
                                     {link.label}
                                 </span>
                             </motion.button>
