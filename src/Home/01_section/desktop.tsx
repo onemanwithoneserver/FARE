@@ -1,8 +1,9 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import {
-    BookOpen, Target, BarChart2, CheckCircle, ArrowRight, Play,
-    Search, Bell, Lock, ChevronLeft, ChevronRight, Share2, Plus, Layers, Home
+    BookOpen, Target, CheckCircle, ArrowRight, Play,
+    Search, Bell, Lock, ChevronLeft, ChevronRight, Share2, Plus, Layers, Home,
+    GraduationCap, TrendingUp, HelpCircle
 } from 'lucide-react';
 import logo from '../../Components/FARE_Logo/SVG/Primary Logo.svg';
 import { getData } from './data';
@@ -67,7 +68,7 @@ export default function Desktop() {
                         </span>
                     </motion.div>
 
-                    <h1 className={`font-black mb-7 ${
+                    <h1 className={`font-black mb-5 ${
                         language === 'te'
                             ? 'text-[3.6rem] leading-[1.1] tracking-wider my-2'
                             : 'text-[5rem] leading-[0.92] tracking-[-0.03em]'
@@ -75,7 +76,6 @@ export default function Desktop() {
                         <motion.span variants={item} className={`block ${language === 'te' ? 'py-1' : ''}`} style={{ color: NAVY }}>{data.headline.line1}</motion.span>
                         <motion.span variants={item} className={`block gold-gradient-text ${language === 'te' ? 'py-1' : ''}`}>{data.headline.line2}</motion.span>
                         <motion.span variants={item} className={`block ${language === 'te' ? 'py-1' : ''}`} style={{ color: NAVY }}>{data.headline.line3}</motion.span>
-                        <motion.span variants={item} className={`block ${language === 'te' ? 'py-1' : ''}`} style={{ color: MUTED_BLUE }}>{data.headline.line4}</motion.span>
                     </h1>
 
                     <motion.div variants={item} className="mb-5">
@@ -84,7 +84,7 @@ export default function Desktop() {
                         </p>
                     </motion.div>
 
-                    <motion.div variants={item} className="flex items-center gap-4 mb-10">
+                    <motion.div variants={item} className="flex items-center gap-4 mb-6">
                         <button
                             className="text-white text-[13.5px] font-semibold px-7 py-3.5 rounded hover:shadow-[0_12px_24px_rgba(11,29,58,0.2),0_0_0_1px_rgba(201,154,46,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
                             style={{
@@ -105,6 +105,18 @@ export default function Desktop() {
                         >
                             <Play size={14} strokeWidth={2.5} fill={NAVY} /> {data.buttons.secondary}
                         </button>
+                    </motion.div>
+
+                    <motion.div variants={item} className="flex flex-wrap gap-2 mb-2 max-w-[440px]">
+                        {data.capabilities.map((cap, i) => (
+                            <div
+                                key={i}
+                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_6px_rgba(11,29,58,0.03)] text-[#0B1D3A]/80 text-[11.5px] font-semibold"
+                            >
+                                <span className="w-1.5 h-1.5 rounded-full" style={{ background: GOLD }}></span>
+                                <span>{cap}</span>
+                            </div>
+                        ))}
                     </motion.div>
                 </motion.div>
 
@@ -145,22 +157,24 @@ export default function Desktop() {
                             </div>
                         </div>
 
-                        <div className="flex" style={{ height: '440px' }}>
+                        <div className="flex" style={{ height: '460px' }}>
                             <div
-                                className="w-[170px] flex flex-col pt-5 pb-4 flex-shrink-0"
+                                className="w-[185px] flex flex-col pt-4 pb-4 flex-shrink-0"
                                 style={{ background: NAVY_DEEP, borderRight: `1px solid rgba(255,255,255,0.06)` }}
                             >
-                                <div className="px-5 mb-6 flex items-center">
-                                    <img src={logo} alt="FARE" className="h-24 w-auto brightness-0 invert opacity-100" />
+                                <div className="px-5 mb-4 flex items-center">
+                                    <img src={logo} alt="FARE" className="h-14 w-auto brightness-0 invert opacity-100" />
                                 </div>
-                                <div className="flex flex-col gap-0.5 px-3 flex-1">
+                                <div className="flex flex-col gap-0.5 px-3 flex-1 overflow-y-auto">
                                     <SidebarItem icon={<Home size={13} />} label="Dashboard" active />
-                                    <SidebarItem icon={<BookOpen size={13} />} label="Knowledge" />
-                                    <SidebarItem icon={<Target size={13} />} label="Practice" />
-                                    <SidebarItem icon={<BarChart2 size={13} />} label="Functional Skills" />
-                                    <SidebarItem icon={<CheckCircle size={13} />} label="Habits" />
+                                    <SidebarItem icon={<GraduationCap size={13} />} label="Programs" />
+                                    <SidebarItem icon={<BookOpen size={13} />} label="Courses" />
+                                    <SidebarItem icon={<HelpCircle size={13} />} label="Knowledge Bank" />
+                                    <SidebarItem icon={<Target size={13} />} label="Skill Practice" />
+                                    <SidebarItem icon={<CheckCircle size={13} />} label="Habit Tracker" />
+                                    <SidebarItem icon={<TrendingUp size={13} />} label="Sales Forecast" />
                                 </div>
-                                <div className="px-4 flex items-center gap-2.5 pt-4 border-t border-white/[0.06]">
+                                <div className="px-4 flex items-center gap-2.5 pt-3 border-t border-white/[0.06]">
                                     <div className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-[9px]" style={{ background: GOLD, color: NAVY_DEEP }}>{data.dashboard.userInitials}</div>
                                     <div className="flex flex-col">
                                         <span className="text-white text-[11px] font-semibold">{data.dashboard.userName}</span>
@@ -169,43 +183,45 @@ export default function Desktop() {
                                 </div>
                             </div>
 
-                            <div className="flex-1 p-6 flex flex-col overflow-hidden" style={{ background: NAVY_SURFACE }}>
-                                <div className="flex justify-between items-start mb-5">
-                                    <div>
-                                        <h2 className="text-white text-[18px] font-bold leading-snug">{data.dashboard.greeting}</h2>
-                                        <p className="text-white/40 text-[10.5px] font-medium mt-0.5">{data.dashboard.date}</p>
+                            <div className="flex-1 p-5 flex flex-col justify-between overflow-hidden" style={{ background: NAVY_SURFACE }}>
+                                <div>
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div>
+                                            <h2 className="text-white text-[17px] font-bold leading-snug">{data.dashboard.greeting}</h2>
+                                            <p className="text-white/40 text-[10px] font-medium mt-0.5">{data.dashboard.date}</p>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <Search size={14} className="text-white/40" strokeWidth={2} />
+                                            <Bell size={14} className="text-white/40" strokeWidth={2} />
+                                            <div className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-[9px]" style={{ background: NAVY, color: 'white', border: `1.5px solid ${GOLD}40` }}>{data.dashboard.userInitials}</div>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center gap-3">
-                                        <Search size={14} className="text-white/40" strokeWidth={2} />
-                                        <Bell size={14} className="text-white/40" strokeWidth={2} />
-                                        <div className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-[9px]" style={{ background: NAVY, color: 'white', border: `1.5px solid ${GOLD}40` }}>{data.dashboard.userInitials}</div>
-                                    </div>
-                                </div>
 
-                                <div className="grid grid-cols-2 gap-3 mb-5">
-                                    {data.dashboard.stats.map(s => (
-                                        <DashCard
-                                            key={s.id}
-                                            icon={s.icon}
-                                            iconColor={s.color}
-                                            title={s.label}
-                                            subtitle={s.subtitle}
-                                            value={s.val}
-                                            valueColor={s.color}
-                                            progress={s.progress}
-                                            progressColor={s.color}
-                                        />
-                                    ))}
+                                    <div className="grid grid-cols-2 gap-2.5 mb-3">
+                                        {data.dashboard.stats.slice(0, 4).map(s => (
+                                            <DashCard
+                                                key={s.id}
+                                                icon={s.icon}
+                                                iconColor={s.color}
+                                                title={s.label}
+                                                subtitle={s.subtitle}
+                                                value={s.val}
+                                                valueColor={s.color}
+                                                progress={s.progress}
+                                                progressColor={s.color}
+                                            />
+                                        ))}
+                                    </div>
                                 </div>
 
                                 <div>
-                                    <div className="flex justify-between items-center mb-3">
-                                        <h3 className="text-[9px] font-bold text-white/30 tracking-[0.15em] uppercase">Upcoming</h3>
+                                    <div className="flex justify-between items-center mb-2.5">
+                                        <h3 className="text-[9px] font-bold text-white/30 tracking-[0.15em] uppercase">Upcoming Schedule</h3>
                                         <button className="text-[9px] font-semibold text-white/40 hover:text-white/60 transition-colors flex items-center gap-1 border border-white/[0.08] px-2.5 py-1 rounded-sm">
                                             View All <ArrowRight size={8} />
                                         </button>
                                     </div>
-                                    <div className="flex flex-col gap-2.5">
+                                    <div className="flex flex-col gap-2">
                                         {data.dashboard.upcoming.map((u, i) => (
                                             <div key={i} className="flex items-center gap-3">
                                                 <div className="w-[6px] h-[6px] rounded-full" style={{ background: u.color }}></div>
@@ -237,8 +253,8 @@ export default function Desktop() {
                                 <BookOpen size={17} strokeWidth={2.5} />
                             </div>
                             <div>
-                                <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[0].label}</div>
-                                <div className="text-[9px] font-medium" style={{ color: MUTED_BLUE }}>{data.dashboard.stats[0].subtitle}</div>
+                                <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>Knowledge Bank</div>
+                                <div className="text-[9px] font-medium" style={{ color: MUTED_BLUE }}>Quizzes & Assessments</div>
                             </div>
                         </motion.div>
                     </motion.div>
@@ -259,9 +275,9 @@ export default function Desktop() {
                                 <Target size={17} strokeWidth={2.5} />
                             </div>
                             <div>
-                                <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[1].label}</div>
+                                <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>Skill Practice</div>
                                 <div className="text-[9px] font-medium flex items-center gap-1" style={{ color: MUTED_BLUE }}>
-                                    Mocks w/ Trainers <ArrowRight size={8} />
+                                    Mock Tests <ArrowRight size={8} />
                                 </div>
                             </div>
                         </motion.div>
@@ -283,9 +299,9 @@ export default function Desktop() {
                                 <CheckCircle size={17} strokeWidth={2.5} />
                             </div>
                             <div>
-                                <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>{data.dashboard.stats[3].label}</div>
+                                <div className="font-semibold text-[11.5px]" style={{ color: NAVY }}>Habit Tracker</div>
                                 <div className="text-[9px] font-medium flex items-center gap-1" style={{ color: MUTED_BLUE }}>
-                                    Habit Tracker <ArrowRight size={8} />
+                                    Daily Tracking <ArrowRight size={8} />
                                 </div>
                             </div>
                         </motion.div>
@@ -314,7 +330,7 @@ export default function Desktop() {
 function SidebarItem({ icon, label, active = false }: { icon: React.ReactNode; label: string; active?: boolean }) {
     return (
         <div
-            className={`px-3 py-2 rounded-sm flex items-center gap-2.5 text-[11px] font-medium cursor-pointer transition-colors duration-200 ${
+            className={`px-3 py-1.5 rounded-sm flex items-center gap-2.5 text-[10.5px] font-medium cursor-pointer transition-colors duration-200 ${
                 active
                     ? 'font-semibold'
                     : 'text-white/50 hover:text-white/70'
@@ -325,7 +341,7 @@ function SidebarItem({ icon, label, active = false }: { icon: React.ReactNode; l
                 border: `1px solid ${GOLD}25`,
             } : undefined}
         >
-            {icon} {label}
+            {icon} <span className="truncate">{label}</span>
         </div>
     );
 }
@@ -344,21 +360,21 @@ function DashCard({
 }) {
     return (
         <div
-            className="rounded-sm p-4"
+            className="rounded-sm p-3.5"
             style={{
                 background: `rgba(255,255,255,0.04)`,
                 border: '1px solid rgba(255,255,255,0.06)',
             }}
         >
-            <div className="flex items-center gap-2.5 mb-3">
+            <div className="flex items-center gap-2 mb-2.5">
                 <div style={{ color: iconColor }}>{icon}</div>
                 <div>
-                    <div className="text-white text-[11.5px] font-semibold leading-tight">{title}</div>
-                    <div className="text-white/30 text-[8.5px] font-medium">{subtitle}</div>
+                    <div className="text-white text-[11px] font-semibold leading-tight">{title}</div>
+                    <div className="text-white/30 text-[8px] font-medium">{subtitle}</div>
                 </div>
             </div>
-            <div className="flex items-end justify-between mb-2">
-                <span className="text-[16px] font-bold" style={{ color: valueColor }}>{value}</span>
+            <div className="flex items-end justify-between mb-1.5">
+                <span className="text-[15px] font-bold" style={{ color: valueColor }}>{value}</span>
                 <span className="text-[8px] text-white/25 font-medium">progress</span>
             </div>
             <div className="w-full h-[3px] rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
