@@ -115,6 +115,17 @@ export default function Mobile() {
                                 <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-2">{step.title}</h3>
                                 <p className="text-[14.5px] text-[#475569] font-medium leading-[1.65]">{step.desc}</p>
                             </div>
+                            {index < data.steps.length - 1 && (
+                                <div className="absolute -bottom-6 left-[25px] -translate-x-1/2 z-10 pointer-events-none flex items-center justify-center">
+                                    <motion.div
+                                        animate={{ y: [0, 3, 0] }}
+                                        transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut', delay: index * 0.2 }}
+                                        className="w-5 h-5 rounded-full bg-white/95 border border-[#C99A2E]/40 flex items-center justify-center shadow-sm"
+                                    >
+                                        <ChevronDown size={12} strokeWidth={3} className="text-[#C99A2E]" />
+                                    </motion.div>
+                                </div>
+                            )}
                         </motion.div>
                     ))}
                 </motion.div>
