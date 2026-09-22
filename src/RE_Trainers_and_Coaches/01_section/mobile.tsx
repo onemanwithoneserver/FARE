@@ -64,15 +64,30 @@ export default function Mobile() {
                         className={`font-black mb-5 text-[#0B1D3A] ${
                             language === 'te'
                                 ? 'text-[2rem] leading-[1.15] tracking-wider'
-                                : 'text-[2.25rem] sm:text-[2.75rem] leading-[1.08] tracking-[-0.03em]'
+                                : 'text-[2.25rem] sm:text-[2.75rem] leading-[1.1] tracking-[-0.03em]'
                         }`}
                     >
-                        {data.headline.split(' ').map((word, i) => (
-                            <span key={i} className={i >= 3 ? "text-[#C99A2E] relative inline-block" : ""}>
-                                {word}{' '}
-                                {i >= 3 && <svg className="absolute w-full h-[4px] -bottom-0.5 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/></svg>}
+                        {language === 'te' ? (
+                            <span>
+                                చివరికి,{' '}
+                                <span className="text-[#C99A2E] relative inline-block">
+                                    ట్రైనర్స్ కోసం ఒక Custom RE LMS.
+                                    <svg className="absolute w-full h-[4px] -bottom-0.5 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                        <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/>
+                                    </svg>
+                                </span>
                             </span>
-                        ))}
+                        ) : (
+                            <span>
+                                Finally, a Custom <br />
+                                <span className="text-[#C99A2E] relative inline-block mt-1">
+                                    RE LMS for Trainers
+                                    <svg className="absolute w-full h-[6px] -bottom-0.5 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                        <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/>
+                                    </svg>
+                                </span>
+                            </span>
+                        )}
                     </motion.h1>
 
                     <motion.div variants={item} className="mb-6">

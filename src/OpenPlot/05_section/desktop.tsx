@@ -164,12 +164,18 @@ export default function Desktop() {
                             {[40, 70, 45, 90, 65, 80, 55, 100].map((h, i) => (
                                 <motion.div 
                                     key={i} 
-                                    initial={{ height: 0 }}
-                                    whileInView={{ height: `${h}%` }}
-                                    viewport={{ once: false }}
-                                    transition={{ duration: 1, delay: 0.5 + (i * 0.1), type: "spring", stiffness: 50 }}
-                                    className="w-[10%] bg-gradient-to-t from-[#0B1D3A]/10 to-[#0B1D3A]/5 rounded-t hover:from-[#C99A2E]/40 hover:to-[#C99A2E]/20 transition-colors duration-300" 
-                                ></motion.div>
+                                    animate={{ 
+                                        height: [`${Math.max(20, h * 0.3)}%`, `${h}%`, `${Math.max(25, h * 0.45)}%`, `${h}%`],
+                                        opacity: [0.55, 1, 0.6, 1]
+                                    }}
+                                    transition={{ 
+                                        duration: 2.4, 
+                                        repeat: Infinity, 
+                                        ease: "easeInOut", 
+                                        delay: i * 0.18 
+                                    }}
+                                    className="w-[10%] bg-gradient-to-t from-[#C99A2E]/45 via-[#E2C068]/30 to-[#C99A2E]/15 rounded-t shadow-[0_0_10px_rgba(201,154,46,0.12)]" 
+                                />
                             ))}
                         </div>
                     </div>
