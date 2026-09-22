@@ -105,7 +105,7 @@ export default function Desktop() {
                                 <div className="absolute top-0 left-0 w-full h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: segment.color }}></div>
 
                                 <div className="w-14 h-14 rounded flex items-center justify-center shadow-lg mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden" style={{ backgroundColor: segment.color }}>
-                                    <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
+                                    <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                                     {segmentIcons[segment.icon as keyof typeof segmentIcons]}
                                 </div>
                                 
@@ -156,7 +156,7 @@ export default function Desktop() {
                                 >
                                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6">
                                         <div className="w-14 h-14 rounded flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]" style={{ backgroundColor: learner.color }}>
-                                            <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded"></div>
+                                            <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded"></div>
                                             {learnerIcons[learner.icon as keyof typeof learnerIcons]}
                                         </div>
                                         <h4 className="text-[20px] font-bold text-white leading-tight">
@@ -176,3 +176,4 @@ export default function Desktop() {
         </section>
     );
 }
+

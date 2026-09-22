@@ -121,7 +121,7 @@ export default function Desktop() {
                         <div className="flex items-center justify-between mb-10 relative z-10">
                             <div className="flex items-center gap-4">
                                 <div className="w-14 h-14 rounded bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(245,158,11,0.25)] relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-white/20 translate-y-[100%] transition-transform duration-500 hover:translate-y-0"></div>
+                                    <div className="absolute inset-0 bg-white/0 translate-y-[100%] transition-transform duration-500 hover:translate-y-0"></div>
                                     <ClipboardList size={26} className="text-white relative z-10" />
                                 </div>
                                 <div>
@@ -147,7 +147,7 @@ export default function Desktop() {
                                 return (
                                     <div key={i} className="flex items-center gap-4 group cursor-default">
                                         <div className={`w-12 h-12 rounded ${color.bg} flex items-center justify-center text-white font-black text-[16px] shadow-sm shrink-0 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden`}>
-                                            <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-300"></div>
+                                            <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-300"></div>
                                             <span className="relative z-10">{i + 1}</span>
                                         </div>
                                         <div className={`flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-sm rounded p-4 group-hover:shadow-[0_8px_20px_-8px_rgba(11,29,58,0.1)] group-hover:border-[#C99A2E]/30 transition-all duration-300 relative overflow-hidden`}>
@@ -184,3 +184,4 @@ export default function Desktop() {
         </section>
     );
 }
+

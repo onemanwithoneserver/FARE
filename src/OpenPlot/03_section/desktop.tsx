@@ -88,7 +88,7 @@ export default function Desktop() {
 
                             <div className="flex items-start justify-between mb-8 relative z-10">
                                 <div className="w-16 h-16 rounded flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden" style={{ backgroundColor: card.color }}>
-                                    <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
+                                    <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                                     {icons[card.icon as keyof typeof icons]}
                                 </div>
                                 <div className="px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.1em] uppercase border flex items-center gap-2" style={{ color: card.color, backgroundColor: `${card.color}10`, borderColor: `${card.color}25` }}>
@@ -131,3 +131,4 @@ export default function Desktop() {
         </section>
     );
 }
+

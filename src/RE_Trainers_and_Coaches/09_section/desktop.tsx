@@ -125,7 +125,7 @@ export default function Desktop() {
                         <button className="bg-gradient-to-r from-[#C99A2E] to-[#B88A22] hover:from-[#D5AA45] hover:to-[#C99A2E] text-white px-10 py-5 rounded font-bold text-[18px] shadow-[0_15px_30px_-5px_rgba(201,154,46,0.5)] hover:shadow-[0_20px_40px_-5px_rgba(201,154,46,0.7)] group-hover:-translate-y-2 transition-all duration-400 flex items-center gap-4 relative z-10 w-full justify-center max-w-[360px] overflow-hidden">
                             <span className="relative z-10">{data.ctaButton}</span>
                             <ArrowRight size={22} strokeWidth={3} className="relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
-                            <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded pointer-events-none"></div>
+                            <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded pointer-events-none"></div>
                         </button>
                     </motion.div>
 
@@ -134,3 +134,4 @@ export default function Desktop() {
         </section>
     );
 }
+

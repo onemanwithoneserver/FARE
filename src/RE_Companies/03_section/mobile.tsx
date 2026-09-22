@@ -82,7 +82,7 @@ export default function Mobile() {
 
                             <div className="flex items-center justify-between mb-5 relative z-10">
                                 <div className="w-12 h-12 rounded flex items-center justify-center shadow-md relative overflow-hidden" style={{ backgroundColor: card.color }}>
-                                    <div className="absolute inset-0 bg-white/20 translate-y-[100%] transition-transform duration-500"></div>
+                                    <div className="absolute inset-0 bg-white/0 translate-y-[100%] transition-transform duration-500"></div>
                                     {icons[card.icon as keyof typeof icons]}
                                 </div>
                                 <div className="px-3 py-1 rounded-full text-[9px] font-bold tracking-wider uppercase border flex items-center gap-1.5" style={{ color: card.color, backgroundColor: `${card.color}10`, borderColor: `${card.color}25` }}>
@@ -121,3 +121,4 @@ export default function Mobile() {
         </section>
     );
 }
+

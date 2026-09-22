@@ -78,7 +78,7 @@ export default function Desktop() {
                         
                         <div className="flex items-center gap-5 mb-10 relative z-10">
                             <div className="w-16 h-16 rounded bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(201,154,46,0.4)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden">
-                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
+                                <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                                 <User size={28} strokeWidth={2.5} className="relative z-10" />
                             </div>
                             <h3 className="text-[28px] font-bold text-white group-hover:text-[#C99A2E] transition-colors duration-300">
@@ -118,7 +118,7 @@ export default function Desktop() {
                         
                         <div className="flex items-center gap-5 mb-10 relative z-10 flex-row-reverse lg:flex-row">
                             <div className="w-16 h-16 rounded bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(59,130,246,0.4)] group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 relative overflow-hidden">
-                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
+                                <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                                 <Server size={28} strokeWidth={2.5} className="relative z-10" />
                             </div>
                             <h3 className="text-[28px] font-bold text-white group-hover:text-[#60A5FA] transition-colors duration-300 flex-grow text-right lg:text-left">
@@ -188,3 +188,4 @@ export default function Desktop() {
         </section>
     );
 }
+

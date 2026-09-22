@@ -88,7 +88,7 @@ export default function Desktop() {
 
                             <div className="flex items-center gap-5 mb-8 relative z-10">
                                 <div className="w-16 h-16 rounded flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 relative overflow-hidden" style={{ backgroundColor: category.color }}>
-                                    <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
+                                    <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                                     {categoryIcons[category.icon as keyof typeof categoryIcons]}
                                 </div>
                                 <h3 className="text-[22px] font-bold" style={{ color: NAVY }}>
@@ -151,3 +151,4 @@ export default function Desktop() {
         </section>
     );
 }
+

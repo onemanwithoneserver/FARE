@@ -112,7 +112,7 @@ export default function Desktop() {
                                 <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-[40px] rounded-bl-full pointer-events-none" style={{ background: mode.color }}></motion.div>
 
                                 <div className="w-20 h-20 rounded mx-auto flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.3)] mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden" style={{ backgroundColor: mode.color }}>
-                                    <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded"></div>
+                                    <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded"></div>
                                     {modeIcons[mode.icon as keyof typeof modeIcons]}
                                 </div>
                                 
@@ -213,3 +213,4 @@ export default function Desktop() {
         </section>
     );
 }
+
