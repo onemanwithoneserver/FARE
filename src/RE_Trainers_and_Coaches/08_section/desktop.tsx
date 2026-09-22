@@ -28,14 +28,14 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full py-16 bg-[#040C1E] relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-16 relative font-['Outfit'] overflow-hidden" style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)' }}>
             
             <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-gradient-radial from-[#C99A2E]/[0.08] via-transparent to-transparent rounded-full blur-[120px] pointer-events-none z-0"></motion.div>
-            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[10%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[10%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
 
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
                 style={{
-                    backgroundImage: `radial-gradient(white 1px, transparent 1px)`,
+                    backgroundImage: `radial-gradient(#0B1D3A 1px, transparent 1px)`,
                     backgroundSize: '32px 32px'
                 }}
             />
@@ -54,7 +54,7 @@ export default function Desktop() {
                         </span>
                     </motion.div>
                     
-                    <motion.h2 variants={item} className="text-[3rem] lg:text-[4rem] leading-[1.05] font-black tracking-[-0.02em] mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
+                    <motion.h2 variants={item} className="text-[3rem] lg:text-[4rem] leading-[1.05] font-black tracking-[-0.02em] mb-4 bg-clip-text text-transparent bg-gradient-to-b from-[#0B1D3A] to-[#0B1D3A]/70">
                         {data.headline}
                     </motion.h2>
                     <motion.h2 variants={item} className="text-[3rem] lg:text-[4rem] leading-[1.05] font-black tracking-[-0.02em] drop-shadow-[0_0_30px_rgba(201,154,46,0.3)]" style={{ color: GOLD }}>
@@ -70,9 +70,9 @@ export default function Desktop() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false, margin: "-100px" }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="bg-[#0A1630]/60 backdrop-blur-xl border border-white/10 rounded p-12 hover:bg-[#0E1F42]/80 hover:border-white/20 transition-all duration-500 relative overflow-hidden group shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] h-full flex flex-col cursor-default"
+                        className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-12 hover:bg-white hover:border-[#0B1D3A]/20 transition-all duration-500 relative overflow-hidden group shadow-[0_20px_40px_-15px_rgba(11,29,58,0.12)] h-full flex flex-col cursor-default"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded pointer-events-none mix-blend-overlay"></div>
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1D3A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded pointer-events-none"></div>
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-48 h-48 bg-[#C99A2E]/10 rounded-bl-full blur-[40px] transition-all duration-700 group-hover:bg-[#C99A2E]/20 group-hover:scale-150 pointer-events-none"></motion.div>
                         <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#C99A2E] to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
                         
@@ -81,14 +81,14 @@ export default function Desktop() {
                                 <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                                 <User size={28} strokeWidth={2.5} className="relative z-10" />
                             </div>
-                            <h3 className="text-[28px] font-bold text-white group-hover:text-[#C99A2E] transition-colors duration-300">
+                            <h3 className="text-[28px] font-bold text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300">
                                 {data.youBring.title}
                             </h3>
                         </div>
 
                         <div className="flex flex-col gap-5 relative z-10">
                             {data.youBring.items.map((item, idx) => (
-                                <div key={idx} className="flex items-start gap-4 text-[16px] font-medium text-white/70 group-hover:text-white/90 transition-colors duration-300">
+                                <div key={idx} className="flex items-start gap-4 text-[16px] font-medium text-[#475569] group-hover:text-[#0B1D3A] transition-colors duration-300">
                                     <div className="mt-1.5 shrink-0 w-2 h-2 rounded-full bg-[#C99A2E] shadow-[0_0_8px_rgba(201,154,46,0.8)]"></div>
                                     <span className="leading-relaxed">{item}</span>
                                 </div>
@@ -98,8 +98,8 @@ export default function Desktop() {
 
                     
                     <div className="flex items-center justify-center py-4 lg:py-0">
-                        <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 shadow-inner backdrop-blur-md relative overflow-hidden group hover:border-white/20 transition-colors">
-                            <div className="absolute inset-0 bg-white/5 rotate-45 group-hover:rotate-90 transition-transform duration-700"></div>
+                        <div className="w-16 h-16 rounded-full bg-[#0B1D3A]/[0.04] border border-[#0B1D3A]/10 flex items-center justify-center text-[#7B8DAA] shadow-inner backdrop-blur-md relative overflow-hidden group hover:border-[#0B1D3A]/20 transition-colors">
+                            <div className="absolute inset-0 bg-[#0B1D3A]/[0.03] rotate-45 group-hover:rotate-90 transition-transform duration-700"></div>
                             <Plus size={32} strokeWidth={2} className="relative z-10" />
                         </div>
                     </div>
@@ -110,9 +110,9 @@ export default function Desktop() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false, margin: "-100px" }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="bg-[#0A1630]/60 backdrop-blur-xl border border-white/10 rounded p-12 hover:bg-[#0E1F42]/80 hover:border-white/20 transition-all duration-500 relative overflow-hidden group shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] h-full flex flex-col cursor-default"
+                        className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-12 hover:bg-white hover:border-[#0B1D3A]/20 transition-all duration-500 relative overflow-hidden group shadow-[0_20px_40px_-15px_rgba(11,29,58,0.12)] h-full flex flex-col cursor-default"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded pointer-events-none mix-blend-overlay"></div>
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1D3A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded pointer-events-none"></div>
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-48 h-48 bg-[#60A5FA]/10 rounded-bl-full blur-[40px] transition-all duration-700 group-hover:bg-[#60A5FA]/20 group-hover:scale-150 pointer-events-none"></motion.div>
                         <div className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#60A5FA] to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
                         
@@ -121,14 +121,14 @@ export default function Desktop() {
                                 <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                                 <Server size={28} strokeWidth={2.5} className="relative z-10" />
                             </div>
-                            <h3 className="text-[28px] font-bold text-white group-hover:text-[#60A5FA] transition-colors duration-300 flex-grow text-right lg:text-left">
+                            <h3 className="text-[28px] font-bold text-[#0B1D3A] group-hover:text-[#60A5FA] transition-colors duration-300 flex-grow text-right lg:text-left">
                                 {data.fareBrings.title}
                             </h3>
                         </div>
 
                         <div className="flex flex-col gap-5 relative z-10">
                             {data.fareBrings.items.map((item, idx) => (
-                                <div key={idx} className="flex items-start gap-4 text-[16px] font-medium text-white/70 group-hover:text-white/90 transition-colors duration-300 flex-row-reverse lg:flex-row text-right lg:text-left">
+                                <div key={idx} className="flex items-start gap-4 text-[16px] font-medium text-[#475569] group-hover:text-[#0B1D3A] transition-colors duration-300 flex-row-reverse lg:flex-row text-right lg:text-left">
                                     <div className="mt-1.5 shrink-0 w-2 h-2 rounded-full bg-[#60A5FA] shadow-[0_0_8px_rgba(96,165,250,0.8)]"></div>
                                     <span className="leading-relaxed">{item}</span>
                                 </div>
@@ -143,14 +143,14 @@ export default function Desktop() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-[1100px] mx-auto bg-gradient-to-r from-[#0F2751]/80 via-[#132D5F]/60 to-[#0F2751]/80 backdrop-blur-2xl border border-white/10 rounded p-16 flex flex-col items-center relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] group"
+                    className="max-w-[1100px] mx-auto bg-gradient-to-r from-white/90 via-[#F8FAFD]/80 to-white/90 backdrop-blur-2xl border border-[#0B1D3A]/10 rounded p-16 flex flex-col items-center relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(11,29,58,0.15)] group"
                 >
                     <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[-50%] left-[20%] w-[500px] h-[500px] bg-[#C99A2E]/5 rounded-full blur-[80px] pointer-events-none"></motion.div>
-                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[-50%] right-[20%] w-[500px] h-[500px] bg-[#3B82F6]/5 rounded-full blur-[80px] pointer-events-none"></motion.div>
+                    <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[-50%] right-[20%] w-[500px] h-[500px] bg-[#DDEAFF]/50 rounded-full blur-[80px] pointer-events-none"></motion.div>
 
-                    <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-12">
+                    <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-[#0B1D3A]/10 bg-[#0B1D3A]/5 backdrop-blur-md mb-12">
                         <Zap size={16} className="text-[#C99A2E]" />
-                        <h3 className="text-[14px] font-bold text-white uppercase tracking-[0.2em] text-center">
+                        <h3 className="text-[14px] font-bold text-[#0B1D3A] uppercase tracking-[0.2em] text-center">
                             {data.together.title}
                         </h3>
                     </div>
@@ -158,11 +158,11 @@ export default function Desktop() {
                     <div className="flex items-center justify-center gap-4 lg:gap-8 flex-wrap relative z-10 w-full">
                         {data.together.flow.map((step, idx) => (
                             <div key={idx} className="flex items-center gap-4 lg:gap-8">
-                                <span className="text-[20px] font-bold text-white bg-[#0A1630]/50 px-8 py-5 rounded border border-white/10 shadow-[0_10px_20px_-5px_rgba(0,0,0,0.3)] hover:bg-[#0A1630]/80 hover:border-[#C99A2E]/40 hover:text-[#C99A2E] transition-all duration-300 cursor-default">
+                                <span className="text-[20px] font-bold text-[#0B1D3A] bg-[#0B1D3A]/[0.04] px-8 py-5 rounded border border-[#0B1D3A]/10 shadow-[0_10px_20px_-5px_rgba(11,29,58,0.08)] hover:bg-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/40 hover:text-[#C99A2E] transition-all duration-300 cursor-default">
                                     {step}
                                 </span>
                                 {idx < data.together.flow.length - 1 && (
-                                    <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                                    <div className="w-10 h-10 rounded-full bg-[#0B1D3A]/5 border border-[#0B1D3A]/10 flex items-center justify-center shrink-0">
                                         <ArrowRight size={20} className="text-[#C99A2E]" strokeWidth={2.5} />
                                     </div>
                                 )}
@@ -179,7 +179,7 @@ export default function Desktop() {
                     className="mt-10 text-center flex flex-col items-center gap-6"
                 >
                     <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/50 to-transparent"></div>
-                    <p className="text-[20px] font-medium text-white/50 italic tracking-wide">
+                    <p className="text-[20px] font-medium text-[#475569] italic tracking-wide">
                         "{data.footerText}"
                     </p>
                     <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/50 to-transparent"></div>

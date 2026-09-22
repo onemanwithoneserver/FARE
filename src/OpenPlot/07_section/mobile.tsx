@@ -24,10 +24,11 @@ export default function Mobile() {
 
     return (
         <section
-            className="w-full py-12 px-5 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#040C1E]"
+            className="w-full py-12 px-5 flex items-center justify-center font-['Outfit'] relative overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)' }}
         >
             <div
-                className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity"
+                className="absolute inset-0 z-0 opacity-20"
                 style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'cover',
@@ -37,7 +38,7 @@ export default function Mobile() {
                 }}
             ></div>
 
-            <div className="absolute inset-0 bg-gradient-to-b from-[#040C1E] via-[#040C1E]/80 to-[#040C1E] z-0 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-white via-white/60 to-white z-0 pointer-events-none"></div>
 
             <motion.div
                 variants={containerVariant}
@@ -47,12 +48,12 @@ export default function Mobile() {
                 className="w-full relative z-20"
             >
                 <div
-                    className="w-full rounded pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] border border-white/10"
+                    className="w-full rounded pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(11,29,58,0.15)] border border-[#0B1D3A]/10"
                     style={{
-                        background: 'linear-gradient(145deg, rgba(11,29,58,0.7) 0%, rgba(7,26,73,0.9) 100%)',
+                        background: 'linear-gradient(145deg, rgba(255,255,255,0.85) 0%, rgba(248,249,252,0.95) 100%)',
                     }}
                 >
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-[#0B1D3A]/15 to-transparent"></div>
                     
                     <motion.div
                         animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -63,17 +64,17 @@ export default function Mobile() {
                     <motion.div variants={itemVariant} className="flex items-center gap-3 mb-6 relative z-10">
                         <div className="h-[1px] w-6 bg-gradient-to-l from-[#C99A2E] to-transparent opacity-60"></div>
                         <div className="px-3 py-1 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/10 flex items-center gap-1.5">
-                            <Sparkles size={12} className="text-[#E2C068]" />
-                            <span className="text-[10px] font-bold tracking-[0.25em] text-[#E2C068] uppercase">{data.overline}</span>
+                            <Sparkles size={12} className="text-[#C99A2E]" />
+                            <span className="text-[10px] font-bold tracking-[0.25em] text-[#C99A2E] uppercase">{data.overline}</span>
                         </div>
                         <div className="h-[1px] w-6 bg-gradient-to-r from-[#C99A2E] to-transparent opacity-60"></div>
                     </motion.div>
 
-                    <motion.h2 variants={itemVariant} className="text-[2.25rem] leading-[1.1] font-black tracking-tight text-white mb-5 w-full relative z-10 px-5">
+                    <motion.h2 variants={itemVariant} className="text-[2.25rem] leading-[1.1] font-black tracking-tight text-[#0B1D3A] mb-5 w-full relative z-10 px-5">
                         {data.headline}
                     </motion.h2>
 
-                    <motion.p variants={itemVariant} className="text-[15px] font-medium leading-[1.65] mb-10 text-white/70 px-6 relative z-10">
+                    <motion.p variants={itemVariant} className="text-[15px] font-medium leading-[1.65] mb-10 text-[#475569] px-6 relative z-10">
                         {data.subtitle}
                     </motion.p>
 
@@ -90,7 +91,7 @@ export default function Mobile() {
                         
                         <motion.button
                             whileTap={{ scale: 0.98 }}
-                            className="w-full bg-white/5 text-white font-bold text-[14px] py-4 rounded border border-white/10 transition-all duration-300 cursor-pointer backdrop-blur-sm"
+                            className="w-full bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[14px] py-4 rounded border border-[#0B1D3A]/15 transition-all duration-300 cursor-pointer backdrop-blur-sm"
                         >
                             {data.buttons.secondary}
                         </motion.button>

@@ -24,11 +24,12 @@ export default function Desktop() {
 
     return (
         <section
-            className="w-full py-40 px-12 flex items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#040C1E]"
+            className="w-full py-40 px-12 flex items-center justify-center font-['Outfit'] relative overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)' }}
         >
             
             <div
-                className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity"
+                className="absolute inset-0 z-0 opacity-20"
                 style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'cover',
@@ -39,7 +40,7 @@ export default function Desktop() {
             ></div>
 
             
-            <div className="absolute inset-0 bg-gradient-to-b from-[#040C1E] via-[#040C1E]/80 to-[#040C1E] z-0 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-white via-white/60 to-white z-0 pointer-events-none"></div>
             
             
             <motion.div
@@ -62,13 +63,13 @@ export default function Desktop() {
                 className="max-w-[1040px] w-full relative z-20"
             >
                 <div
-                    className="w-full rounded pt-24 pb-20 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] border border-white/10"
+                    className="w-full rounded pt-24 pb-20 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl shadow-[0_30px_60px_-15px_rgba(11,29,58,0.15)] border border-[#0B1D3A]/10"
                     style={{
-                        background: 'linear-gradient(145deg, rgba(11,29,58,0.7) 0%, rgba(7,26,73,0.9) 100%)',
+                        background: 'linear-gradient(145deg, rgba(255,255,255,0.85) 0%, rgba(248,249,252,0.95) 100%)',
                     }}
                 >
                     
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-[#0B1D3A]/15 to-transparent"></div>
                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/30 to-transparent"></div>
                     
                     <motion.div
@@ -80,17 +81,17 @@ export default function Desktop() {
                     <motion.div variants={itemVariant} className="flex items-center gap-4 mb-8 relative z-10">
                         <div className="h-[1px] w-12 bg-gradient-to-l from-[#C99A2E] to-transparent opacity-60"></div>
                         <div className="px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/10 flex items-center gap-2">
-                            <Sparkles size={14} className="text-[#E2C068]" />
-                            <span className="text-[12px] font-bold tracking-[0.25em] text-[#E2C068] uppercase">{data.overline}</span>
+                            <Sparkles size={14} className="text-[#C99A2E]" />
+                            <span className="text-[12px] font-bold tracking-[0.25em] text-[#C99A2E] uppercase">{data.overline}</span>
                         </div>
                         <div className="h-[1px] w-12 bg-gradient-to-r from-[#C99A2E] to-transparent opacity-60"></div>
                     </motion.div>
 
-                    <motion.h2 variants={itemVariant} className="text-[3.5rem] lg:text-[4rem] leading-[1.05] font-black tracking-[-0.02em] text-white mb-8 w-full relative z-10 max-w-[850px]">
+                    <motion.h2 variants={itemVariant} className="text-[3.5rem] lg:text-[4rem] leading-[1.05] font-black tracking-[-0.02em] text-[#0B1D3A] mb-8 w-full relative z-10 max-w-[850px]">
                         {data.headline}
                     </motion.h2>
 
-                    <motion.p variants={itemVariant} className="text-[18px] font-medium max-w-[700px] leading-[1.65] mb-14 text-white/70 px-10 relative z-10">
+                    <motion.p variants={itemVariant} className="text-[18px] font-medium max-w-[700px] leading-[1.65] mb-14 text-[#475569] px-10 relative z-10">
                         {data.subtitle}
                     </motion.p>
 
@@ -107,9 +108,9 @@ export default function Desktop() {
                         </motion.button>
                         
                         <motion.button
-                            whileHover={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
+                            whileHover={{ backgroundColor: 'rgba(11,29,58,0.05)' }}
                             whileTap={{ scale: 0.98 }}
-                            className="bg-white/5 text-white font-bold text-[15px] px-10 py-4 rounded border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
+                            className="bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[15px] px-10 py-4 rounded border border-[#0B1D3A]/15 hover:border-[#0B1D3A]/25 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
                         >
                             {data.buttons.secondary}
                         </motion.button>

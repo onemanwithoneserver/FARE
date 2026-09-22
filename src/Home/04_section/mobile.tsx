@@ -51,10 +51,11 @@ export default function Mobile() {
 
     return (
         <section
-            className="w-full py-12 px-4 flex flex-col items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]"
+            className="w-full py-12 px-4 flex flex-col items-center justify-center font-['Outfit'] relative overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)' }}
         >
             <div
-                className="absolute inset-0 z-0 opacity-40"
+                className="absolute inset-0 z-0 opacity-20"
                 style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'cover',
@@ -62,12 +63,12 @@ export default function Mobile() {
                 }}
             ></div>
 
-            <div className="absolute inset-0 bg-[#041029]/80 z-0"></div>
+            <div className="absolute inset-0 bg-white/80 z-0"></div>
 
             <motion.div
                 animate={{ opacity: [0.3, 0.5, 0.3] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 left-0 w-[300px] h-[300px] bg-gradient-to-br from-[#0B2A6B]/40 to-transparent -rotate-45 transform -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"
+                className="absolute top-0 left-0 w-[300px] h-[300px] bg-gradient-to-br from-[#DDEAFF]/70 to-transparent -rotate-45 transform -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"
             ></motion.div>
 
             <motion.div
@@ -78,30 +79,30 @@ export default function Mobile() {
                 className="w-full max-w-[460px] relative z-20"
             >
                 <div
-                    className="w-full rounded-xl pt-10 pb-8 flex flex-col items-center text-center relative overflow-hidden shadow-[0_0_30px_rgba(4,16,41,0.5)]"
+                    className="w-full rounded-xl pt-10 pb-8 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-lg"
                     style={{
-                        background: 'linear-gradient(135deg, rgba(8, 22, 51, 0.95) 0%, rgba(5, 15, 38, 0.98) 100%)',
-                        border: '1px solid rgba(255,255,255,0.08)',
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,252,0.98) 100%)',
+                        border: '1px solid rgba(11,29,58,0.08)',
                     }}
                 >
                     <motion.div
                         animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
                         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-0 right-1/4 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[80px] pointer-events-none"
+                        className="absolute top-0 right-1/4 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[80px] pointer-events-none"
                     ></motion.div>
 
                     <motion.div variants={itemVariant} className="flex items-center gap-3 mb-5 relative z-10">
                         <div className="h-[1px] w-8 bg-gradient-to-l from-[#C99A2E] to-transparent opacity-60"></div>
-                        <span className="text-[11px] font-bold tracking-[0.25em] text-[#E2C068] uppercase">{data.academyText}</span>
+                        <span className="text-[11px] font-bold tracking-[0.25em] text-[#C99A2E] uppercase">{data.academyText}</span>
                         <div className="h-[1px] w-8 bg-gradient-to-r from-[#C99A2E] to-transparent opacity-60"></div>
                     </motion.div>
 
-                    <motion.h2 variants={itemVariant} className="text-[1.8rem] leading-[1.1] font-black tracking-tight text-white uppercase mb-4 px-2 w-full relative z-10">
+                    <motion.h2 variants={itemVariant} className="text-[1.8rem] leading-[1.1] font-black tracking-tight text-[#0B1D3A] uppercase mb-4 px-2 w-full relative z-10">
                         <span className="block">{data.headline.line1}</span>
                         <span className="block text-[#C99A2E]">{data.headline.line2}</span>
                     </motion.h2>
 
-                    <motion.p variants={itemVariant} className="text-[13px] font-medium max-w-[340px] leading-[1.5] mb-8 text-white/70 px-4 relative z-10">
+                    <motion.p variants={itemVariant} className="text-[13px] font-medium max-w-[340px] leading-[1.5] mb-8 text-[#475569] px-4 relative z-10">
                         {data.headline.subtitle}
                     </motion.p>
 
@@ -117,7 +118,7 @@ export default function Mobile() {
                                     className={`w-full py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
                                         isSelected 
                                             ? 'font-bold text-[12.5px] text-[#071A49] uppercase tracking-[0.05em] shadow-[0_8px_20px_-4px_rgba(213,170,69,0.3)]'
-                                            : 'bg-[#071A49]/60 text-white font-semibold text-[13px] border border-white/15 active:bg-white/10'
+                                            : 'bg-[#0B1D3A]/[0.05] text-[#0B1D3A] font-semibold text-[13px] border border-[#0B1D3A]/15 active:bg-[#0B1D3A]/10'
                                     }`}
                                     style={isSelected ? { 
                                         background: 'linear-gradient(90deg, #D5AA45 0%, #E2C068 50%, #D5AA45 100%)' 
@@ -134,7 +135,7 @@ export default function Mobile() {
                         {data.trustBadges.map((badge, i) => (
                             <motion.div
                                 key={i}
-                                className="w-full flex items-center gap-3.5 p-3 rounded-lg bg-white/[0.04] border border-white/[0.08]"
+                                className="w-full flex items-center gap-3.5 p-3 rounded-lg bg-[#0B1D3A]/[0.04] border border-[#0B1D3A]/[0.08]"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                             >
@@ -148,9 +149,9 @@ export default function Mobile() {
                                     {i === 2 && <BarChart2 size={22} strokeWidth={2} className="text-[#D5AA45]" />}
                                 </motion.div>
                                 <div className="text-left flex-1">
-                                    <div className="text-[13px] font-bold text-white leading-tight">{badge.title}</div>
+                                    <div className="text-[13px] font-bold text-[#0B1D3A] leading-tight">{badge.title}</div>
                                     {badge.subtitle && (
-                                        <div className="text-[11px] text-white/50 font-medium leading-tight mt-0.5">{badge.subtitle}</div>
+                                        <div className="text-[11px] text-[#7B8DAA] font-medium leading-tight mt-0.5">{badge.subtitle}</div>
                                     )}
                                 </div>
                             </motion.div>

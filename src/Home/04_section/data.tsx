@@ -5,7 +5,7 @@ export const dataEn = {
     academyText: "FARE",
     headline: {
         line1: "FINISHING ACADEMY FOR",
-        line2: "REAL ESTATE.",
+        line2: "REAL ESTATE",
         subtitle: "A custom LMS designed exclusively for the needs of real estate professionals."
     },
     buttons: [

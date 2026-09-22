@@ -43,14 +43,14 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full py-16 bg-[#040C1E] relative font-['Outfit'] overflow-hidden">
+        <section className="w-full py-16 relative font-['Outfit'] overflow-hidden" style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)' }}>
             
             <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[10%] right-[-10%] w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></motion.div>
-            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
 
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
                 style={{
-                    backgroundImage: `radial-gradient(white 1px, transparent 1px)`,
+                    backgroundImage: `radial-gradient(#0B1D3A 1px, transparent 1px)`,
                     backgroundSize: '32px 32px'
                 }}
             />
@@ -69,7 +69,7 @@ export default function Desktop() {
                         </span>
                     </motion.div>
                     
-                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.75rem] leading-[1.05] font-black tracking-[-0.02em] max-w-[950px] bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
+                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.75rem] leading-[1.05] font-black tracking-[-0.02em] max-w-[950px] bg-clip-text text-transparent bg-gradient-to-b from-[#0B1D3A] to-[#0B1D3A]/70">
                         {data.headline}
                     </motion.h2>
                 </motion.div>
@@ -80,7 +80,7 @@ export default function Desktop() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.6 }}
-                        className="text-[28px] font-bold mb-12 text-center text-white flex items-center justify-center gap-4"
+                        className="text-[28px] font-bold mb-12 text-center text-[#0B1D3A] flex items-center justify-center gap-4"
                     >
                         <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-[#C99A2E]/50"></div>
                         {data.segmentsHeading}
@@ -99,7 +99,7 @@ export default function Desktop() {
                                 key={index}
                                 variants={item}
                                 whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                                className="bg-[#0A1630]/60 backdrop-blur-xl border border-white/10 rounded p-8 hover:bg-[#0E1F42]/80 hover:border-white/20 transition-all duration-400 group relative overflow-hidden shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] flex flex-col"
+                                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-8 hover:bg-white hover:border-[#0B1D3A]/20 transition-all duration-400 group relative overflow-hidden shadow-[0_10px_30px_-10px_rgba(11,29,58,0.12)] flex flex-col"
                             >
                                 <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-[20px] rounded-bl-full pointer-events-none" style={{ background: segment.color }}></motion.div>
                                 <div className="absolute top-0 left-0 w-full h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: segment.color }}></div>
@@ -109,14 +109,14 @@ export default function Desktop() {
                                     {segmentIcons[segment.icon as keyof typeof segmentIcons]}
                                 </div>
                                 
-                                <h4 className="text-[22px] font-bold mb-6 text-white leading-tight">
+                                <h4 className="text-[22px] font-bold mb-6 text-[#0B1D3A] leading-tight">
                                     {segment.title}
                                 </h4>
                                 
                                 <div className="flex flex-col gap-3.5 mt-auto relative z-10">
                                     {segment.items.map((it, idx) => (
-                                        <div key={idx} className="flex items-start gap-3 text-[15px] font-medium text-white/70 group-hover:text-white/90 transition-colors duration-300">
-                                            <div className="w-2 h-2 rounded-full mt-1.5 shrink-0 shadow-[0_0_8px_rgba(255,255,255,0.3)]" style={{ backgroundColor: segment.color }}></div>
+                                        <div key={idx} className="flex items-start gap-3 text-[15px] font-medium text-[#475569] group-hover:text-[#0B1D3A] transition-colors duration-300">
+                                            <div className="w-2 h-2 rounded-full mt-1.5 shrink-0 shadow-[0_0_8px_rgba(11,29,58,0.15)]" style={{ backgroundColor: segment.color }}></div>
                                             <span className="leading-snug">{it}</span>
                                         </div>
                                     ))}
@@ -132,12 +132,12 @@ export default function Desktop() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="bg-gradient-to-br from-[#0F2751]/80 to-[#132D5F]/40 backdrop-blur-2xl border border-white/10 rounded p-16 lg:p-20 relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]"
+                        className="bg-gradient-to-br from-white/90 to-[#F8FAFD]/70 backdrop-blur-2xl border border-[#0B1D3A]/10 rounded p-16 lg:p-20 relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(11,29,58,0.15)]"
                     >
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C99A2E]/10 rounded-full blur-[100px] pointer-events-none"></motion.div>
-                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#3B82F6]/5 rounded-full blur-[80px] pointer-events-none"></motion.div>
+                        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#DDEAFF]/60 rounded-full blur-[80px] pointer-events-none"></motion.div>
                         
-                        <h3 className="text-[32px] font-bold mb-8 text-center text-white relative z-10 tracking-tight">
+                        <h3 className="text-[32px] font-bold mb-8 text-center text-[#0B1D3A] relative z-10 tracking-tight">
                             {data.learnersHeading}
                         </h3>
 
@@ -152,18 +152,18 @@ export default function Desktop() {
                                 <motion.div
                                     key={index}
                                     variants={item}
-                                    className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] bg-white/5 border border-white/10 rounded p-8 hover:bg-white/10 hover:border-white/20 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.3)] transition-all duration-400 group cursor-default flex flex-col justify-between"
+                                    className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] bg-[#0B1D3A]/[0.03] border border-[#0B1D3A]/10 rounded p-8 hover:bg-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/20 hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.15)] transition-all duration-400 group cursor-default flex flex-col justify-between"
                                 >
                                     <div className="flex items-center gap-5 mb-5">
                                         <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]" style={{ backgroundColor: learner.color }}>
                                             <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded-xl"></div>
                                             {learnerIcons[learner.icon as keyof typeof learnerIcons]}
                                         </div>
-                                        <h4 className="text-[20px] font-bold text-white leading-tight">
+                                        <h4 className="text-[20px] font-bold text-[#0B1D3A] leading-tight">
                                             {learner.title}
                                         </h4>
                                     </div>
-                                    <p className="text-[15.5px] font-medium text-white/70 leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                                    <p className="text-[15.5px] font-medium text-[#475569] leading-relaxed group-hover:text-[#0B1D3A] transition-colors duration-300">
                                         {learner.desc}
                                     </p>
                                 </motion.div>
