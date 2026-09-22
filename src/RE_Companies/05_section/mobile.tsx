@@ -1,6 +1,7 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { ArrowDown, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
@@ -10,6 +11,14 @@ const GOLD = '#C99A2E';
 export default function Mobile() {
     const { language } = useLanguage();
     const data = getData(language);
+    const [activeStep, setActiveStep] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveStep((prev) => (prev + 1) % 5);
+        }, 1800);
+        return () => clearInterval(interval);
+    }, []);
 
     const container: Variants = {
         hidden: { opacity: 0 },
@@ -22,6 +31,27 @@ export default function Mobile() {
     const item: Variants = {
         hidden: { opacity: 0, x: -20 },
         show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+    };
+
+    const journeyContainer: Variants = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const journeyItem: Variants = {
+        hidden: { opacity: 0, y: 12, scale: 0.9 },
+        show: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
+        }
     };
 
     return (
@@ -85,25 +115,59 @@ export default function Mobile() {
                     ))}
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, margin: "-50px" }}
-                    transition={{ delay: 0.4, duration: 0.6 }}
-                    className="mt-10 flex justify-center w-full"
-                >
-                    <div className="w-full bg-white/80 backdrop-blur-xl px-5 py-6 rounded border border-[#0B1D3A]/[0.06] shadow-[0_10px_30px_-5px_rgba(11,29,58,0.08)] flex flex-col items-center justify-center gap-3 text-center">
-                        {data.journeyLabel.split(' → ').map((label, idx, arr) => (
-                            <div key={idx} className="flex flex-col items-center gap-3">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: idx === arr.length - 1 ? GOLD : '#94A3B8' }}></div>
-                                    <span className={`font-bold text-[12px] uppercase tracking-[0.15em] ${idx === arr.length - 1 ? 'text-[#0B1D3A]' : 'text-[#64748B]'}`}>{label}</span>
+                <div className="mt-10 flex justify-center w-full">
+                    <motion.div
+                        variants={journeyContainer}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: false, margin: "-50px" }}
+                        className="w-full bg-white/90 backdrop-blur-xl px-3 py-5 rounded border border-[#0B1D3A]/[0.08] shadow-[0_10px_30px_-5px_rgba(11,29,58,0.08)] flex flex-wrap items-center justify-center gap-2 relative z-10"
+                    >
+                        {data.journeyLabel.split(' → ').map((label, idx, arr) => {
+                            const isActive = activeStep === idx;
+                            return (
+                                <div key={idx} className="flex items-center gap-1.5 sm:gap-2">
+                                    <motion.div
+                                        variants={journeyItem}
+                                        animate={isActive ? { scale: 1.05, y: -1 } : { scale: 1, y: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-300 cursor-default select-none ${
+                                            isActive
+                                                ? 'bg-[#0B1D3A] text-white border-[#C99A2E]/60 shadow-[0_4px_14px_rgba(11,29,58,0.22)]'
+                                                : 'bg-[#F8FAFD] text-[#475569] border-[#0B1D3A]/[0.06]'
+                                        }`}
+                                    >
+                                        <span className="relative flex h-1.5 w-1.5">
+                                            {isActive && (
+                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C99A2E] opacity-75"></span>
+                                            )}
+                                            <span
+                                                className="relative inline-flex rounded-full h-1.5 w-1.5"
+                                                style={{ backgroundColor: isActive ? GOLD : (idx === arr.length - 1 ? GOLD : '#94A3B8') }}
+                                            ></span>
+                                        </span>
+                                        <span className={`font-bold text-[11px] sm:text-[12px] uppercase tracking-[0.14em] ${isActive ? 'text-white' : ''}`}>
+                                            {label}
+                                        </span>
+                                    </motion.div>
+                                    {idx < arr.length - 1 && (
+                                        <motion.div
+                                            variants={journeyItem}
+                                            animate={isActive ? { x: [0, 3, 0] } : { x: 0 }}
+                                            transition={{ duration: 0.6, repeat: isActive ? Infinity : 0 }}
+                                        >
+                                            <ArrowRight
+                                                size={13}
+                                                className={`transition-colors duration-300 ${isActive ? 'text-[#C99A2E]' : 'text-[#CBD5E1]'}`}
+                                                strokeWidth={2.5}
+                                            />
+                                        </motion.div>
+                                    )}
                                 </div>
-                                {idx < arr.length - 1 && <ArrowDown size={14} className="text-[#CBD5E1]" strokeWidth={2.5} />}
-                            </div>
-                        ))}
-                    </div>
-                </motion.div>
+                            );
+                        })}
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
@@ -10,6 +11,14 @@ const GOLD = '#C99A2E';
 export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);
+    const [activeStep, setActiveStep] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveStep((prev) => (prev + 1) % 5);
+        }, 1800);
+        return () => clearInterval(interval);
+    }, []);
 
     const container: Variants = {
         hidden: { opacity: 0 },
@@ -22,6 +31,27 @@ export default function Desktop() {
     const item: Variants = {
         hidden: { opacity: 0, y: 30 },
         show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+    };
+
+    const journeyContainer: Variants = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.18,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const journeyItem: Variants = {
+        hidden: { opacity: 0, y: 15, scale: 0.9 },
+        show: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+        }
     };
 
     return (
@@ -86,28 +116,63 @@ export default function Desktop() {
                     ))}
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, margin: "-100px" }}
-                    transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="mt-32 flex justify-center"
-                >
+                <div className="mt-32 flex justify-center">
                     <div className="group relative">
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C99A2E]/20 to-transparent blur-[20px] group-hover:blur-[30px] transition-all duration-500 opacity-0 group-hover:opacity-100"></motion.div>
-                        <div className="bg-white/80 backdrop-blur-xl px-10 py-5 rounded border border-[#0B1D3A]/[0.06] shadow-[0_15px_40px_-10px_rgba(11,29,58,0.1)] flex flex-wrap items-center justify-center gap-4 relative z-10">
-                            {data.journeyLabel.split(' → ').map((label, idx, arr) => (
-                                <div key={idx} className="flex items-center gap-4">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: idx === arr.length - 1 ? GOLD : '#94A3B8' }}></div>
-                                        <span className={`font-bold text-[14px] uppercase tracking-[0.15em] ${idx === arr.length - 1 ? 'text-[#0B1D3A]' : 'text-[#64748B]'}`}>{label}</span>
+                        <motion.div
+                            variants={journeyContainer}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: false, margin: "-100px" }}
+                            className="bg-white/90 backdrop-blur-xl px-8 py-5 rounded border border-[#0B1D3A]/[0.08] shadow-[0_15px_40px_-10px_rgba(11,29,58,0.1)] flex flex-wrap items-center justify-center gap-3 md:gap-4 relative z-10"
+                        >
+                            {data.journeyLabel.split(' → ').map((label, idx, arr) => {
+                                const isActive = activeStep === idx;
+                                return (
+                                    <div key={idx} className="flex items-center gap-3 md:gap-4">
+                                        <motion.div
+                                            variants={journeyItem}
+                                            whileHover={{ scale: 1.05, y: -2 }}
+                                            animate={isActive ? { scale: 1.06, y: -2 } : { scale: 1, y: 0 }}
+                                            transition={{ duration: 0.35, ease: "easeOut" }}
+                                            className={`flex items-center gap-2.5 px-4 py-2 rounded-full border transition-all duration-300 cursor-default select-none ${
+                                                isActive
+                                                    ? 'bg-[#0B1D3A] text-white border-[#C99A2E]/60 shadow-[0_6px_20px_rgba(11,29,58,0.22)]'
+                                                    : 'bg-[#F8FAFD] text-[#475569] border-[#0B1D3A]/[0.06] hover:border-[#C99A2E]/40 hover:text-[#0B1D3A]'
+                                            }`}
+                                        >
+                                            <span className="relative flex h-2 w-2">
+                                                {isActive && (
+                                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C99A2E] opacity-75"></span>
+                                                )}
+                                                <span
+                                                    className="relative inline-flex rounded-full h-2 w-2"
+                                                    style={{ backgroundColor: isActive ? GOLD : (idx === arr.length - 1 ? GOLD : '#94A3B8') }}
+                                                ></span>
+                                            </span>
+                                            <span className={`font-bold text-[13px] uppercase tracking-[0.16em] ${isActive ? 'text-white' : ''}`}>
+                                                {label}
+                                            </span>
+                                        </motion.div>
+                                        {idx < arr.length - 1 && (
+                                            <motion.div
+                                                variants={journeyItem}
+                                                animate={isActive ? { x: [0, 4, 0], scale: 1.2 } : { x: 0, scale: 1 }}
+                                                transition={{ duration: 0.6, repeat: isActive ? Infinity : 0 }}
+                                            >
+                                                <ArrowRight
+                                                    size={16}
+                                                    className={`transition-colors duration-300 ${isActive ? 'text-[#C99A2E]' : 'text-[#CBD5E1]'}`}
+                                                    strokeWidth={2.5}
+                                                />
+                                            </motion.div>
+                                        )}
                                     </div>
-                                    {idx < arr.length - 1 && <ArrowRight size={16} className="text-[#CBD5E1]" strokeWidth={2.5} />}
-                                </div>
-                            ))}
-                        </div>
+                                );
+                            })}
+                        </motion.div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );
