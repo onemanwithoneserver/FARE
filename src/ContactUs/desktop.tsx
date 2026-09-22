@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { 
-  ArrowRight, 
   Clock, 
   MapPin, 
   Building2, 
