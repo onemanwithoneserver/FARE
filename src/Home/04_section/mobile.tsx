@@ -61,7 +61,8 @@ export default function Mobile() {
                     </motion.div>
 
                     <motion.h2 variants={itemVariant} className="text-[1.8rem] leading-[1.1] font-black tracking-tight text-white uppercase mb-4 px-2 w-full relative z-10">
-                        {data.headline.line1} <span className="text-[#C99A2E]">{data.headline.line2}</span>
+                        <span className="block">{data.headline.line1}</span>
+                        <span className="block text-[#C99A2E]">{data.headline.line2}</span>
                     </motion.h2>
 
                     <motion.p variants={itemVariant} className="text-[13px] font-medium leading-[1.6] mb-8 text-white/70 px-5 relative z-10">

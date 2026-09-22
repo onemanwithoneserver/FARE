@@ -81,7 +81,8 @@ export default function Desktop() {
                     </motion.div>
 
                     <motion.h2 variants={itemVariant} className="text-[3.2rem] lg:text-[3.8rem] leading-[1.05] font-black tracking-tight text-white uppercase mb-6 w-full relative z-10">
-                        {data.headline.line1} <span className="text-[#C99A2E]">{data.headline.line2}</span>
+                        <span className="block">{data.headline.line1}</span>
+                        <span className="block text-[#C99A2E]">{data.headline.line2}</span>
                     </motion.h2>
 
                     <motion.p variants={itemVariant} className="text-[15px] font-medium max-w-[700px] leading-[1.6] mb-12 text-white/70 px-10 relative z-10">
