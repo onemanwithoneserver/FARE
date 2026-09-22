@@ -4,6 +4,8 @@ import { Unlink, UserX, ListChecks, Clock, MonitorX, Globe, Building2, FileEdit,
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
+const NAVY = '#0B1D3A';
+
 export default function Mobile() {
     const { language } = useLanguage();
     const data = getData(language);
@@ -21,7 +23,7 @@ export default function Mobile() {
         show: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
         }
     };
 
@@ -49,14 +51,14 @@ export default function Mobile() {
 
     return (
         <section className="w-full py-12 relative font-['Outfit'] overflow-hidden"
-            style={{ background: 'linear-gradient(180deg, #13070E 0%, #1A0914 40%, #150811 75%, #0B1124 100%)' }}
+            style={{ background: 'linear-gradient(180deg, #FFF1F2 0%, #FFE4E6 30%, #FDF2F4 70%, #FFF5F7 100%)' }}
         >
             {/* Ambient Negative Glow Orbs */}
-            <motion.div animate={{ opacity: [0.22, 0.42, 0.22], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-10 right-0 w-[350px] h-[350px] bg-gradient-radial from-red-600/25 via-rose-600/10 to-transparent rounded-full blur-[80px] pointer-events-none z-0"></motion.div>
-            <motion.div animate={{ opacity: [0.18, 0.35, 0.18], scale: [1.05, 1, 1.05] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-10 left-0 w-[300px] h-[300px] bg-gradient-radial from-rose-700/20 via-red-600/10 to-transparent rounded-full blur-[70px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.2, 0.4, 0.2], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-10 right-0 w-[350px] h-[350px] bg-gradient-radial from-rose-500/25 via-red-500/10 to-transparent rounded-full blur-[80px] pointer-events-none z-0"></motion.div>
+            <motion.div animate={{ opacity: [0.15, 0.35, 0.15], scale: [1.05, 1, 1.05] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-10 left-0 w-[300px] h-[300px] bg-gradient-radial from-red-600/20 via-rose-500/10 to-transparent rounded-full blur-[70px] pointer-events-none z-0"></motion.div>
 
             {/* Subtle Negative-State Dot Matrix */}
-            <div className="absolute inset-0 opacity-[0.04] pointer-events-none z-0"
+            <div className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
                 style={{
                     backgroundImage: `radial-gradient(#EF4444 1.5px, transparent 1.5px)`,
                     backgroundSize: '24px 24px'
@@ -70,14 +72,14 @@ export default function Mobile() {
                     animate={{
                         y: [0, -12, 0],
                         rotate: [-5, 5, -5],
-                        opacity: [0.18, 0.35, 0.18]
+                        opacity: [0.15, 0.3, 0.15]
                     }}
                     transition={{
                         duration: item.duration,
                         repeat: Infinity,
                         ease: "easeInOut"
                     }}
-                    className={`absolute pointer-events-none select-none z-0 ${item.size} filter drop-shadow-[0_0_8px_rgba(239,68,68,0.35)]`}
+                    className={`absolute pointer-events-none select-none z-0 ${item.size} filter drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]`}
                     style={{ top: item.top, left: item.left, right: item.right }}
                 >
                     {item.emoji}
@@ -93,17 +95,17 @@ export default function Mobile() {
                     className="flex flex-col items-center text-center mb-8"
                 >
                     <motion.div variants={item} className="mb-4">
-                        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-red-500/40 bg-red-950/60 text-red-300 shadow-[0_0_15px_rgba(239,68,68,0.25)] backdrop-blur-sm">
+                        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-red-300/80 bg-red-100/70 text-red-700 shadow-xs">
                             <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
                             {data.overline}
                         </span>
                     </motion.div>
 
-                    <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.15] font-black tracking-[-0.02em] mb-5 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
+                    <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.15] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }}>
                         {sectionTitle}
                     </motion.h2>
 
-                    <motion.p variants={item} className="text-[14.5px] font-medium leading-[1.65] text-white/60">
+                    <motion.p variants={item} className="text-[14.5px] font-medium leading-[1.65] text-[#475569]">
                         {data.subtitle}
                     </motion.p>
                 </motion.div>
@@ -122,7 +124,7 @@ export default function Mobile() {
                             <motion.div
                                 key={index}
                                 variants={item}
-                                className="bg-gradient-to-r from-[#1E0B16]/95 via-[#180A18]/85 to-[#0F142A]/80 backdrop-blur-xl border border-red-900/40 rounded p-4 flex items-center gap-4 shadow-[0_4px_16px_-4px_rgba(220,38,38,0.2)] relative overflow-hidden"
+                                className="bg-gradient-to-r from-white/95 via-red-50/70 to-red-100/40 backdrop-blur-sm border border-red-200/90 rounded p-4 flex items-center gap-4 shadow-[0_2px_10px_-2px_rgba(220,38,38,0.08)] relative overflow-hidden"
                             >
                                 {/* Watermark Emoji */}
                                 <span className="absolute -bottom-1 -right-1 text-[32px] opacity-[0.08] select-none pointer-events-none filter blur-[0.2px]">
@@ -131,16 +133,16 @@ export default function Mobile() {
 
                                 {/* Unchanged Material UI Icon */}
                                 <div 
-                                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-md relative z-10 border border-red-500/30 ring-1 ring-red-500/20"
+                                    className="w-10 h-10 rounded-xl shadow-md flex items-center justify-center shrink-0 relative overflow-hidden ring-2 ring-red-100/60"
                                     style={{ backgroundColor: color }}
                                 >
                                     <Icon size={20} className="text-white relative z-10" />
                                 </div>
                                 <div className="flex flex-col gap-0.5 relative z-10 flex-1">
-                                    <span className="text-[10px] font-bold tracking-[0.1em] text-red-400/50">
+                                    <span className="text-[10px] font-bold tracking-[0.1em] text-red-500/60">
                                         {String(index + 1).padStart(2, '0')}
                                     </span>
-                                    <h3 className="text-[14px] font-bold leading-snug text-red-50/90">
+                                    <h3 className="text-[14px] font-bold leading-snug" style={{ color: NAVY }}>
                                         {challenge}
                                     </h3>
                                 </div>
