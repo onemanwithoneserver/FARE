@@ -62,7 +62,7 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="flex flex-col items-center text-center mb-28"
+                    className="flex flex-col items-center text-center mb-12"
                 >
                     <motion.div variants={item} className="mb-6">
                         <span className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10 shadow-[0_0_15px_rgba(201,154,46,0.15)] backdrop-blur-sm" style={{ color: GOLD }}>
@@ -79,7 +79,7 @@ export default function Desktop() {
                     </motion.p>
                 </motion.div>
 
-                <div className="mb-32">
+                <div className="mb-16">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export default function Desktop() {
                     </motion.div>
                 </div>
 
-                <div className="relative mb-32">
+                <div className="relative mb-16">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -213,4 +213,5 @@ export default function Desktop() {
         </section>
     );
 }
+
 

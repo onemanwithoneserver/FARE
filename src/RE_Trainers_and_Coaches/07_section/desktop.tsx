@@ -68,7 +68,7 @@ export default function Desktop() {
                     </motion.h2>
                 </motion.div>
 
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start max-w-[1100px] mx-auto">
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-stretch max-w-[1100px] mx-auto">
                     
                     
                     <div className="w-full lg:w-[400px] shrink-0 flex flex-col gap-4">
@@ -116,7 +116,7 @@ export default function Desktop() {
                     </div>
 
                     
-                    <div className="flex-1 w-full bg-white border border-[#0B1D3A]/[0.06] rounded p-10 lg:p-14 min-h-[550px] flex flex-col relative overflow-hidden shadow-[0_10px_40px_-10px_rgba(11,29,58,0.05)]">
+                    <div className="flex-1 w-full bg-white border border-[#0B1D3A]/[0.06] rounded p-10 lg:p-14 flex flex-col relative overflow-hidden shadow-[0_10px_40px_-10px_rgba(11,29,58,0.05)]">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeTab}

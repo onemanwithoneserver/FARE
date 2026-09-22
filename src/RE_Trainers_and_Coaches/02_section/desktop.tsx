@@ -82,7 +82,7 @@ export default function Desktop() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-100px" }}
-                    className="grid grid-cols-2 lg:grid-cols-4 gap-6 relative mb-28"
+                    className="grid grid-cols-2 lg:grid-cols-4 gap-6 relative mb-12"
                 >
                     {data.challenges.map((challenge, index) => {
                         const { Icon, color } = iconData[index];
@@ -149,3 +149,4 @@ export default function Desktop() {
         </section>
     );
 }
+
