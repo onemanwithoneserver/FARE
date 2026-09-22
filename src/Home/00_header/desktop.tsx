@@ -73,9 +73,32 @@ export default function Desktop() {
         </div>
     );
 
+    const pathSegments = location.pathname.split('/').filter(Boolean);
+    const currentRoute = pathSegments[1] || 'home';
+
+    const getRouteForHref = (href: string, title?: string): string => {
+        if (href === 'home' || href === '#platform' || href === '#about') return 'home';
+        if (href === 'open-plots' || href === '#open-plots') return 'open-plots';
+        if (href === 're-companies' || href === '#for-companies' || href === '#residential-commercial') return 're-companies';
+        if (href === 're-trainers-coaches' || href === '#for-trainers' || href === '#trainer-directory') return 're-trainers-coaches';
+        if (href === 'contact-us' || href === '#contact') return 'contact-us';
+        
+        if (title === 'Contact Us' || title === 'సంప్రదించండి') return 'contact-us';
+        if (title === 'For Trainers' || title === 'ట్రైనర్ల కోసం' || title === 'Trainer Directory' || title === 'ట్రైనర్ డైరెక్టరీ') return 're-trainers-coaches';
+        if (title === 'For Companies' || title === 'కంపెనీల కోసం' || title === 'Residential & Commercial' || title === 'రెసిడెన్షియల్ & కమర్షియల్') return 're-companies';
+        if (title === 'Open Plots' || title === 'ఓపెన్ ప్లాట్స్') return 'open-plots';
+        if (title === 'Platform' || title === 'ప్లాట్‌ఫారమ్' || title === 'About' || title === 'మా గురించి') return 'home';
+
+        return href.replace('#', '') || 'home';
+    };
+
     const renderNavLink = (link: typeof data.navLinks[0], idx: number) => {
         const hasSubItems = link.subItems && link.subItems.length > 0;
         const isDropdownOpen = activeDropdown === link.title;
+        const targetRoute = getRouteForHref(link.href, link.title);
+        const isActive = !hasSubItems 
+            ? currentRoute === targetRoute
+            : (currentRoute === 're-companies' || currentRoute === 'open-plots');
 
         if (hasSubItems) {
             return (
@@ -86,15 +109,23 @@ export default function Desktop() {
                     onMouseLeave={() => setActiveDropdown(null)}
                 >
                     <button
-                        onClick={() => setActiveDropdown(isDropdownOpen ? null : link.title)}
-                        className={`flex items-center gap-1 text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium transition-colors duration-300 cursor-pointer py-1.5 group whitespace-nowrap ${isScrolled ? 'text-white/90 hover:text-[#C99A2E]' : 'text-[#0B1D3A]/90 hover:text-[#C99A2E]'}`}
+                        onClick={() => {
+                            navigate(`/${currentMode}/${targetRoute}`);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                            setActiveDropdown(null);
+                        }}
+                        className={`flex items-center gap-1 text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium transition-colors duration-300 cursor-pointer py-1.5 group whitespace-nowrap ${
+                            isActive
+                                ? 'text-[#C99A2E] font-bold'
+                                : (isScrolled ? 'text-white/90 hover:text-[#C99A2E]' : 'text-[#0B1D3A]/90 hover:text-[#C99A2E]')
+                        }`}
                     >
                         <span className="relative inline-block py-0.5">
-                            <span className={`transition-colors duration-300 ${isDropdownOpen ? 'text-[#C99A2E]' : ''}`}>
+                            <span className={`transition-colors duration-300 ${isDropdownOpen || isActive ? 'text-[#C99A2E]' : ''}`}>
                                 {link.title}
                             </span>
                             <span className={`absolute -bottom-[2px] left-0 h-[2px] bg-[#C99A2E] rounded-full transition-all duration-300 ease-out ${
-                                isDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'
+                                isDropdownOpen || isActive ? 'w-full' : 'w-0 group-hover:w-full'
                             }`} />
                         </span>
                         <ChevronDown
@@ -116,38 +147,43 @@ export default function Desktop() {
                                 className="absolute top-full left-0 mt-1.5 w-[290px] bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 shadow-[0_16px_40px_-8px_rgba(11,29,58,0.2)] rounded p-2 z-50 pointer-events-auto"
                             >
                                 <div className="flex flex-col gap-1">
-                                    {link.subItems?.map((sub, sIdx) => (
-                                        <a
-                                            key={sIdx}
-                                            href={sub.href}
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                setActiveDropdown(null);
-                                                if (sub.title === 'Open Plots' || sub.href === '#open-plots') {
-                                                    navigate(`/${currentMode}/open-plots`);
-                                                } else {
-                                                    navigate(`/${currentMode}/home`);
-                                                }
-                                            }}
-                                            className="flex items-start gap-3 p-2.5 rounded hover:bg-white/10 transition-all group/sub cursor-pointer"
-                                        >
-                                            <div className={`p-2.5 rounded shrink-0 mt-0.5 transition-all duration-300 shadow-sm group-hover/sub:scale-105 group-hover/sub:shadow-md ${
-                                                sIdx === 0
-                                                    ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068] group-hover/sub:from-[#C99A2E] group-hover/sub:to-[#E2C068] group-hover/sub:text-white'
-                                                    : 'bg-gradient-to-br from-[#071A49] to-[#0F2D6B] text-[#34D399] group-hover/sub:from-[#34D399] group-hover/sub:to-[#059669] group-hover/sub:text-white'
-                                            }`}>
-                                                {sIdx === 0 ? <Building2 size={18} strokeWidth={2} /> : <MapPin size={18} strokeWidth={2} />}
-                                            </div>
-                                            <div className="flex flex-col">
-                                                <span className="text-[13.5px] font-bold text-white group-hover/sub:text-[#C99A2E] transition-colors">
-                                                    {sub.title}
-                                                </span>
-                                                <span className="text-[11.5px] font-medium text-white/60 leading-snug mt-0.5">
-                                                    {sub.desc}
-                                                </span>
-                                            </div>
-                                        </a>
-                                    ))}
+                                    {link.subItems?.map((sub, sIdx) => {
+                                        const subRoute = getRouteForHref(sub.href, sub.title);
+                                        const isSubActive = currentRoute === subRoute;
+                                        return (
+                                            <a
+                                                key={sIdx}
+                                                href={`#${subRoute}`}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    setActiveDropdown(null);
+                                                    navigate(`/${currentMode}/${subRoute}`);
+                                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                }}
+                                                className={`flex items-start gap-3 p-2.5 rounded transition-all group/sub cursor-pointer ${
+                                                    isSubActive ? 'bg-white/15' : 'hover:bg-white/10'
+                                                }`}
+                                            >
+                                                <div className={`p-2.5 rounded shrink-0 mt-0.5 transition-all duration-300 shadow-sm group-hover/sub:scale-105 group-hover/sub:shadow-md ${
+                                                    sIdx === 0
+                                                        ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068] group-hover/sub:from-[#C99A2E] group-hover/sub:to-[#E2C068] group-hover/sub:text-white'
+                                                        : 'bg-gradient-to-br from-[#071A49] to-[#0F2D6B] text-[#34D399] group-hover/sub:from-[#34D399] group-hover/sub:to-[#059669] group-hover/sub:text-white'
+                                                }`}>
+                                                    {sIdx === 0 ? <Building2 size={18} strokeWidth={2} /> : <MapPin size={18} strokeWidth={2} />}
+                                                </div>
+                                                <div className="flex flex-col">
+                                                    <span className={`text-[13.5px] font-bold transition-colors ${
+                                                        isSubActive ? 'text-[#E2C068]' : 'text-white group-hover/sub:text-[#C99A2E]'
+                                                    }`}>
+                                                        {sub.title}
+                                                    </span>
+                                                    <span className="text-[11.5px] font-medium text-white/60 leading-snug mt-0.5">
+                                                        {sub.desc}
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        );
+                                    })}
                                 </div>
                             </motion.div>
                         )}
@@ -159,20 +195,23 @@ export default function Desktop() {
         return (
             <a
                 key={idx}
-                href={link.href}
+                href={`#${targetRoute}`}
                 onClick={(e) => {
-                    if (link.title === 'Contact Us' || link.title === 'సంప్రదించండి' || link.href === '#contact') {
-                        e.preventDefault();
-                        navigate(`/${currentMode}/contact-us`);
-                    }
+                    e.preventDefault();
+                    navigate(`/${currentMode}/${targetRoute}`);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className={`relative inline-flex items-center text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium transition-colors duration-300 whitespace-nowrap py-1.5 group cursor-pointer ${
-                    isScrolled ? 'text-white/90 hover:text-[#C99A2E]' : 'text-[#0B1D3A]/90 hover:text-[#C99A2E]'
+                    isActive
+                        ? 'text-[#C99A2E] font-bold'
+                        : (isScrolled ? 'text-white/90 hover:text-[#C99A2E]' : 'text-[#0B1D3A]/90 hover:text-[#C99A2E]')
                 }`}
             >
                 <span className="relative inline-block py-0.5">
                     {link.title}
-                    <span className="absolute -bottom-[2px] left-0 w-0 h-[2px] bg-[#C99A2E] rounded-full transition-all duration-300 ease-out group-hover:w-full" />
+                    <span className={`absolute -bottom-[2px] left-0 h-[2px] bg-[#C99A2E] rounded-full transition-all duration-300 ease-out ${
+                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`} />
                 </span>
             </a>
         );
@@ -279,8 +318,14 @@ export default function Desktop() {
                 Login
             </a>
 
-            <button className={`text-[13px] lg:text-[13.5px] font-semibold px-4 lg:px-5 py-2 hover:shadow-[0_8px_24px_rgba(11,29,58,0.25),0_0_0_1px_rgba(201,154,46,0.2)] active:scale-[0.98] transition-all duration-300 shadow-[0_2px_8px_rgba(11,29,58,0.15)] flex items-center gap-1.5 shrink-0 cursor-pointer ${isScrolled ? 'bg-white text-[#0B1D3A] hover:bg-[#E2C068] rounded-full' : 'bg-[#0B1D3A] text-white hover:bg-[#102B63] rounded'}`}>
-                <span>Get Started</span>
+            <button 
+                onClick={() => {
+                    navigate(`/${currentMode}/contact-us`);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className={`text-[13px] lg:text-[13.5px] font-semibold px-4 lg:px-5 py-2 hover:shadow-[0_8px_24px_rgba(11,29,58,0.25),0_0_0_1px_rgba(201,154,46,0.2)] active:scale-[0.98] transition-all duration-300 shadow-[0_2px_8px_rgba(11,29,58,0.15)] flex items-center gap-1.5 shrink-0 cursor-pointer ${isScrolled ? 'bg-white text-[#0B1D3A] hover:bg-[#E2C068] rounded-full' : 'bg-[#0B1D3A] text-white hover:bg-[#102B63] rounded'}`}
+            >
+                <span>{language === 'te' ? 'ప్రారంభించండి' : 'Get Started'}</span>
                 <ArrowRight size={14} strokeWidth={2.5} />
             </button>
         </div>

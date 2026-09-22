@@ -68,7 +68,7 @@ export const dataEn = {
       messageLabel: "Executive Briefing / Message",
       messagePlaceholder: "Tell us what you are building, your team size, or which training module interests you...",
       privacyNote: "Direct executive routing under strict confidentiality. Zero spam policy.",
-      submitBtn: "Dispatch Message",
+      submitBtn: "Send",
       submittingBtn: "Routing Briefing..."
     },
     confirmation: {
@@ -166,7 +166,7 @@ export const dataTe = {
       messageLabel: "ఎగ్జిక్యూటివ్ బ్రీఫింగ్ / సందేశం",
       messagePlaceholder: "మీరు ఏమి నిర్మిస్తున్నారు, మీ టీమ్ సైజ్ ఎంత లేదా ఏ ట్రైనింగ్ మాడ్యూల్ మీకు ఆసక్తి కలిగిస్తుందో మాకు తెలియజేయండి...",
       privacyNote: "పూర్తి గోప్యతతో ప్రత్యక్ష ఎగ్జిక్యూటివ్ రూటింగ్. సున్నా స్పామ్ విధానం.",
-      submitBtn: "సందేశాన్ని పంపండి",
+      submitBtn: "పంపండి",
       submittingBtn: "సందేశం పంపబడుతోంది..."
     },
     confirmation: {

@@ -21,6 +21,25 @@ export default function Mobile() {
     const [searchQuery, setSearchQuery] = useState('');
     const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
 
+    const pathSegments = location.pathname.split('/').filter(Boolean);
+    const currentRoute = pathSegments[1] || 'home';
+
+    const getRouteForHref = (href: string, title?: string): string => {
+        if (href === 'home' || href === '#platform' || href === '#about') return 'home';
+        if (href === 'open-plots' || href === '#open-plots') return 'open-plots';
+        if (href === 're-companies' || href === '#for-companies' || href === '#residential-commercial') return 're-companies';
+        if (href === 're-trainers-coaches' || href === '#for-trainers' || href === '#trainer-directory') return 're-trainers-coaches';
+        if (href === 'contact-us' || href === '#contact') return 'contact-us';
+        
+        if (title === 'Contact Us' || title === 'సంప్రదించండి') return 'contact-us';
+        if (title === 'For Trainers' || title === 'ట్రైనర్ల కోసం' || title === 'Trainer Directory' || title === 'ట్రైనర్ డైరెక్టరీ') return 're-trainers-coaches';
+        if (title === 'For Companies' || title === 'కంపెనీల కోసం' || title === 'Residential & Commercial' || title === 'రెసిడెన్షియల్ & కమర్షియల్') return 're-companies';
+        if (title === 'Open Plots' || title === 'ఓపెన్ ప్లాట్స్') return 'open-plots';
+        if (title === 'Platform' || title === 'ప్లాట్‌ఫారమ్' || title === 'About' || title === 'మా గురించి') return 'home';
+
+        return href.replace('#', '') || 'home';
+    };
+
     useEffect(() => {
         const handleScroll = (e?: Event) => {
             let scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
@@ -219,13 +238,21 @@ export default function Mobile() {
                                     {data.navLinks.map((link, idx) => {
                                         const hasSubItems = link.subItems && link.subItems.length > 0;
                                         const isSubOpen = openSubMenu === link.title;
+                                        const targetRoute = getRouteForHref(link.href, link.title);
+                                        const isActive = !hasSubItems 
+                                            ? currentRoute === targetRoute
+                                            : (currentRoute === 're-companies' || currentRoute === 'open-plots');
 
                                         if (hasSubItems) {
                                             return (
                                                 <div key={idx} className="flex flex-col border-b border-[#0B1D3A]/[0.06] pb-2">
                                                     <button
                                                         onClick={() => setOpenSubMenu(isSubOpen ? null : link.title)}
-                                                        className={`flex items-center justify-between text-[15px] font-bold py-2 w-full text-left cursor-pointer transition-colors ${isScrolled ? 'text-white hover:text-[#C99A2E]' : 'text-[#0B1D3A] hover:text-[#C99A2E]'}`}
+                                                        className={`flex items-center justify-between text-[15px] font-bold py-2 w-full text-left cursor-pointer transition-colors ${
+                                                            isActive
+                                                                ? 'text-[#C99A2E]'
+                                                                : (isScrolled ? 'text-white hover:text-[#C99A2E]' : 'text-[#0B1D3A] hover:text-[#C99A2E]')
+                                                        }`}
                                                     >
                                                         <span>{link.title}</span>
                                                         <div className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
@@ -248,38 +275,45 @@ export default function Mobile() {
                                                                 transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                                                                 className="overflow-hidden flex flex-col gap-2 pt-2 pb-1"
                                                             >
-                                                                {link.subItems?.map((sub, sIdx) => (
-                                                                    <a
-                                                                        key={sIdx}
-                                                                        href={sub.href}
-                                                                        onClick={(e) => {
-                                                                            e.preventDefault();
-                                                                            setIsOpen(false);
-                                                                            if (sub.title === 'Open Plots' || sub.href === '#open-plots') {
-                                                                                navigate(`/${currentMode}/open-plots`);
-                                                                            } else {
-                                                                                navigate(`/${currentMode}/home`);
-                                                                            }
-                                                                        }}
-                                                                        className={`flex items-start gap-3 p-3 rounded ${isScrolled ? 'bg-[#040C1E] border-[#0B1D3A]/[0.08] hover:bg-white/10' : 'bg-[#F8FAFD] border-[#0B1D3A]/[0.08] hover:bg-[#F0F4FA]'} border hover:border-[#C99A2E]/50 transition-all cursor-pointer group`}
-                                                                    >
-                                                                        <div className={`p-2.5 rounded shrink-0 mt-0.5 shadow-sm ${
-                                                                            sIdx === 0
-                                                                                ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068]'
-                                                                                : 'bg-gradient-to-br from-[#071A49] to-[#0F2D6B] text-[#34D399]'
-                                                                        }`}>
-                                                                            {sIdx === 0 ? <Building2 size={18} strokeWidth={2} /> : <MapPin size={18} strokeWidth={2} />}
-                                                                        </div>
-                                                                        <div className="flex flex-col">
-                                                                            <span className={`text-[14px] font-bold group-hover:text-[#C99A2E] transition-colors ${isScrolled ? 'text-white' : 'text-[#0B1D3A]'}`}>
-                                                                                {sub.title}
-                                                                            </span>
-                                                                            <span className={`text-[12px] font-medium leading-relaxed mt-0.5 ${isScrolled ? 'text-white/60' : 'text-[#0B1D3A]/60'}`}>
-                                                                                {sub.desc}
-                                                                            </span>
-                                                                        </div>
-                                                                    </a>
-                                                                ))}
+                                                                {link.subItems?.map((sub, sIdx) => {
+                                                                    const subRoute = getRouteForHref(sub.href, sub.title);
+                                                                    const isSubActive = currentRoute === subRoute;
+                                                                    return (
+                                                                        <a
+                                                                            key={sIdx}
+                                                                            href={`#${subRoute}`}
+                                                                            onClick={(e) => {
+                                                                                e.preventDefault();
+                                                                                setIsOpen(false);
+                                                                                navigate(`/${currentMode}/${subRoute}`);
+                                                                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                                            }}
+                                                                            className={`flex items-start gap-3 p-3 rounded ${
+                                                                                isSubActive
+                                                                                    ? (isScrolled ? 'bg-white/15 border-[#C99A2E]' : 'bg-[#C99A2E]/10 border-[#C99A2E]')
+                                                                                    : (isScrolled ? 'bg-[#040C1E] border-[#0B1D3A]/[0.08] hover:bg-white/10' : 'bg-[#F8FAFD] border-[#0B1D3A]/[0.08] hover:bg-[#F0F4FA]')
+                                                                            } border transition-all cursor-pointer group`}
+                                                                        >
+                                                                            <div className={`p-2.5 rounded shrink-0 mt-0.5 shadow-sm ${
+                                                                                sIdx === 0
+                                                                                    ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068]'
+                                                                                    : 'bg-gradient-to-br from-[#071A49] to-[#0F2D6B] text-[#34D399]'
+                                                                            }`}>
+                                                                                {sIdx === 0 ? <Building2 size={18} strokeWidth={2} /> : <MapPin size={18} strokeWidth={2} />}
+                                                                            </div>
+                                                                            <div className="flex flex-col">
+                                                                                <span className={`text-[14px] font-bold transition-colors ${
+                                                                                    isSubActive ? 'text-[#C99A2E]' : (isScrolled ? 'text-white' : 'text-[#0B1D3A]')
+                                                                                }`}>
+                                                                                    {sub.title}
+                                                                                </span>
+                                                                                <span className={`text-[12px] font-medium leading-relaxed mt-0.5 ${isScrolled ? 'text-white/60' : 'text-[#0B1D3A]/60'}`}>
+                                                                                    {sub.desc}
+                                                                                </span>
+                                                                            </div>
+                                                                        </a>
+                                                                    );
+                                                                })}
                                                             </motion.div>
                                                         )}
                                                     </AnimatePresence>
@@ -290,17 +324,18 @@ export default function Mobile() {
                                         return (
                                             <a
                                                 key={idx}
-                                                href={link.href}
+                                                href={`#${targetRoute}`}
                                                 onClick={(e) => {
-                                                    if (link.title === 'Contact Us' || link.title === 'సంప్రదించండి' || link.href === '#contact') {
-                                                        e.preventDefault();
-                                                        setIsOpen(false);
-                                                        navigate(`/${currentMode}/contact-us`);
-                                                    } else {
-                                                        setIsOpen(false);
-                                                    }
+                                                    e.preventDefault();
+                                                    setIsOpen(false);
+                                                    navigate(`/${currentMode}/${targetRoute}`);
+                                                    window.scrollTo({ top: 0, behavior: 'smooth' });
                                                 }}
-                                                className={`text-[15px] font-semibold transition-colors py-2 border-b border-[#0B1D3A]/[0.06] ${isScrolled ? 'text-white hover:text-[#C99A2E]' : 'text-[#0B1D3A] hover:text-[#C99A2E]'}`}
+                                                className={`text-[15px] font-semibold transition-colors py-2 border-b border-[#0B1D3A]/[0.06] ${
+                                                    isActive 
+                                                        ? 'text-[#C99A2E] font-bold' 
+                                                        : (isScrolled ? 'text-white hover:text-[#C99A2E]' : 'text-[#0B1D3A] hover:text-[#C99A2E]')
+                                                }`}
                                             >
                                                 {link.title}
                                             </a>
@@ -331,10 +366,15 @@ export default function Mobile() {
                                             Login
                                         </a>
                                         <button
-                                            onClick={() => setIsOpen(false)}
-                                            className={`${isScrolled ? 'bg-white text-[#0B1D3A]' : 'bg-[#0B1D3A] text-white'} text-[13px] font-semibold px-5 py-2 rounded shadow-sm flex items-center gap-1.5`}
+                                            onClick={() => {
+                                                setIsOpen(false);
+                                                navigate(`/${currentMode}/contact-us`);
+                                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                                            }}
+                                            className={`${isScrolled ? 'bg-white text-[#0B1D3A]' : 'bg-[#0B1D3A] text-white'} text-[13px] font-semibold px-5 py-2 rounded shadow-sm flex items-center gap-1.5 cursor-pointer`}
                                         >
-                                            Get Started <ArrowRight size={13} />
+                                            <span>{language === 'te' ? 'ప్రారంభించండి' : 'Get Started'}</span>
+                                            <ArrowRight size={13} />
                                         </button>
                                     </div>
                                 </div>

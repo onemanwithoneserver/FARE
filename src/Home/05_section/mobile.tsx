@@ -17,12 +17,11 @@ export default function Mobile() {
         const pathSegments = pathname.split('/').filter(Boolean);
         const currentRoute = pathSegments[1] || 'home';
 
-        if (currentRoute === 'home' || currentRoute === '') {
-            return null;
-        }
+        if (currentRoute === 'home' || currentRoute === '') return 'home';
         if (currentRoute === 're-trainers-coaches') return 're-trainers-coaches';
         if (currentRoute === 're-companies') return 're-companies';
         if (currentRoute === 'open-plots') return 'open-plots';
+        if (currentRoute === 'contact-us') return 'contact-us';
         return currentRoute;
     };
 

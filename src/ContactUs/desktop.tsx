@@ -18,7 +18,8 @@ import {
   Check,
   User,
   MessageSquare,
-  CheckCircle
+  CheckCircle,
+  Send
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { getData } from './data';
@@ -479,20 +480,31 @@ export default function ContactUsDesktop() {
                       </div>
 
                       <div className="pt-2">
-                        <button 
+                        <motion.button 
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                           type="submit"
                           disabled={isSubmitting}
-                          className="group relative overflow-hidden text-white text-[15px] font-bold px-8 py-4 rounded-xl shadow-[0_10px_25px_rgba(11,29,58,0.25)] hover:shadow-[0_15px_35px_rgba(201,154,46,0.35)] active:scale-[0.98] transition-all duration-300 flex items-center gap-3 cursor-pointer disabled:opacity-70"
+                          className="group relative overflow-hidden text-white text-[15px] font-bold px-8 py-4 rounded-xl shadow-[0_10px_25px_rgba(11,29,58,0.25)] hover:shadow-[0_15px_35px_rgba(201,154,46,0.35)] transition-all duration-300 flex items-center gap-3 cursor-pointer disabled:opacity-70"
                           style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #132D5F 100%)' }}
                         >
                           <span className="relative z-10">
                             {isSubmitting ? formData.section02.submittingBtn : formData.section02.submitBtn}
                           </span>
-                          <div className="relative z-10 w-7 h-7 rounded-full bg-[#C99A2E] flex items-center justify-center text-white shadow-xs group-hover:translate-x-1 transition-transform">
-                            <ArrowRight size={14} strokeWidth={2.5} className="text-white" />
-                          </div>
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                        </button>
+                          <motion.div 
+                            animate={isSubmitting ? { x: [0, 30, 30, 0], y: [0, -30, 30, 0], opacity: [1, 0, 0, 1] } : {}}
+                            transition={isSubmitting ? { duration: 1.5, repeat: Infinity } : {}}
+                            className="relative z-10 w-7 h-7 rounded-full bg-[#C99A2E] flex items-center justify-center text-white shadow-xs group-hover:bg-[#E2C068] transition-colors"
+                          >
+                            <Send size={14} strokeWidth={2.5} className="text-white transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                          </motion.div>
+                          <motion.div 
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent z-0"
+                            initial={{ x: '-100%' }}
+                            animate={{ x: '100%' }}
+                            transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
+                          />
+                        </motion.button>
                       </div>
                     </motion.form>
                   )}
