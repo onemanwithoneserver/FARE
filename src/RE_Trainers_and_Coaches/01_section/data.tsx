@@ -2,7 +2,7 @@ import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
     tagline: "FARE for RE Trainers & Coaches",
-    headline: "Finally, a Custom RE LMS for Trainers",
+    headline: "Finally, a Custom LMS for RE trainers",
     subheadline: "Turn your expertise into a more powerful learning experience.",
     subheadlineAccent: "",
     description: "Use FARE to connect with your learners, deliver structured programs, practise through mocks, build long-term mentoring journeys and reach organisations looking for real estate training.",

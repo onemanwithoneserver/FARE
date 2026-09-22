@@ -81,7 +81,7 @@ export default function Mobile() {
                             <span>
                                 Finally, a Custom <br />
                                 <span className="text-[#C99A2E] relative inline-block mt-1">
-                                    RE LMS for Trainers
+                                    LMS for RE Trainers
                                     <svg className="absolute w-full h-[6px] -bottom-0.5 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
                                         <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/>
                                     </svg>
