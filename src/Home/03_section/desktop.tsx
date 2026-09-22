@@ -1,236 +1,254 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import type { Variants } from 'motion/react';
 import {
-    ArrowRight, Building2, GraduationCap, UserCheck, CheckCircle,
-    ShieldCheck
+    Building2, GraduationCap, UserCheck, ChevronRight
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
 
+const NAVY = '#0B1D3A';
 const GOLD = '#C99A2E';
+const GOLD_MID = '#D5AA45';
 
 export default function Desktop() {
     const { language } = useLanguage();
     const data = getData(language);
     const [activePersonaId, setActivePersonaId] = useState('companies');
-    const [waitlistEmail, setWaitlistEmail] = useState('');
-    const [waitlistJoined, setWaitlistJoined] = useState(false);
 
     const activePersona = data.personas.find(p => p.id === activePersonaId) || data.personas[0];
 
-    const getIcon = (id: string, size: number = 24) => {
-        if (id === 'companies') return <Building2 size={size} strokeWidth={2.2} />;
-        if (id === 'trainers') return <GraduationCap size={size} strokeWidth={2.2} />;
-        return <UserCheck size={size} strokeWidth={2.2} />;
+    const getIcon = (id: string, size: number = 22) => {
+        if (id === 'companies') return <Building2 size={size} strokeWidth={2} />;
+        if (id === 'trainers') return <GraduationCap size={size} strokeWidth={2} />;
+        return <UserCheck size={size} strokeWidth={2} />;
     };
 
     const getPersonaColor = (id: string) => {
+        if (id === 'companies') return '#0B1D3A';
+        if (id === 'trainers') return '#1E40AF';
+        return '#92400E';
+    };
+
+    const getPersonaAccent = (id: string) => {
         if (id === 'companies') return '#34D399';
         if (id === 'trainers') return '#60A5FA';
         return '#C99A2E';
     };
 
-    const handleJoinWaitlist = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!waitlistEmail.trim()) return;
-        setWaitlistJoined(true);
+    const container: Variants = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: { staggerChildren: 0.06, delayChildren: 0.1 }
+        }
     };
 
-    const activeColor = getPersonaColor(activePersonaId);
+    const item: Variants = {
+        hidden: { opacity: 0, y: 12 },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+        }
+    };
+
+    const activeAccent = getPersonaAccent(activePersonaId);
 
     return (
         <section
-            className="w-full py-16 relative font-['Outfit'] overflow-hidden"
-            style={{ background: 'linear-gradient(180deg, #040C1E 0%, #071A49 50%, #040C1E 100%)' }}
+            className="w-full py-20 relative font-['Outfit'] overflow-hidden"
+            style={{ background: 'linear-gradient(180deg, #F8FAFD 0%, #FFFFFF 40%, #F0F4FA 100%)' }}
         >
-            <motion.div
-                animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.08, 1] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 right-[20%] w-[700px] h-[700px] bg-gradient-radial from-[#6B8AFF]/[0.08] to-transparent rounded-full blur-[120px] pointer-events-none"
-            />
-            <motion.div
-                animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.05, 1] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                className="absolute bottom-[-10%] left-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none"
-            />
+            {/* Subtle background decorations */}
+            <div className="absolute top-0 right-[15%] w-[600px] h-[600px] bg-gradient-radial from-[#DDEAFF]/40 to-transparent rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-0 left-[10%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
                 style={{
-                    backgroundImage: `radial-gradient(white 1px, transparent 1px)`,
-                    backgroundSize: '32px 32px'
+                    backgroundImage: `radial-gradient(${NAVY} 0.5px, transparent 0.5px)`,
+                    backgroundSize: '28px 28px'
                 }}
             />
 
             <div className="max-w-[1320px] mx-auto px-12 relative z-10">
-                <div className="flex flex-col items-center text-center mb-12">
-                    <div className="mb-5">
+                {/* Header */}
+                <motion.div
+                    variants={container}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: false }}
+                    className="flex flex-col items-center text-center mb-14"
+                >
+                    <motion.div variants={item} className="mb-5">
                         <span
                             className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border"
-                            style={{ color: GOLD, borderColor: `${GOLD}30`, background: `${GOLD}0A` }}
+                            style={{ color: GOLD, borderColor: `${GOLD}25`, background: `${GOLD}08` }}
                         >
                             {data.eyebrow}
                         </span>
-                    </div>
+                    </motion.div>
 
-                    <h2
-                        className={`font-black mb-4 text-white ${
+                    <motion.h2
+                        variants={item}
+                        className={`font-black mb-4 ${
                             language === 'te'
                                 ? 'text-[2.25rem] xl:text-[2.65rem] leading-[1.25] tracking-wider py-1'
                                 : 'text-[3.25rem] leading-[1.05] tracking-[-0.02em] uppercase'
                         }`}
+                        style={{ color: NAVY }}
                     >
                         {data.headline.line1} <span className="gold-gradient-text">{data.headline.line2}</span>
-                    </h2>
+                    </motion.h2>
 
-                    <p className="text-[16px] font-medium leading-[1.65] max-w-[700px] text-white/60">
+                    <motion.p variants={item} className="text-[16px] font-medium leading-[1.65] max-w-[700px]" style={{ color: '#5A6B82' }}>
                         {data.headline.subtitle}
-                    </p>
+                    </motion.p>
+                </motion.div>
+
+                {/* Tab Controls */}
+                <div className="flex justify-center gap-3 mb-10">
+                    {data.personas.map((persona) => {
+                        const isActive = activePersonaId === persona.id;
+                        const accent = getPersonaAccent(persona.id);
+
+                        return (
+                            <motion.button
+                                key={persona.id}
+                                onClick={() => setActivePersonaId(persona.id)}
+                                whileHover={{ y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                className={`relative flex items-center gap-3 px-6 py-3.5 rounded-lg text-left transition-all duration-300 cursor-pointer border ${
+                                    isActive
+                                        ? 'bg-white shadow-[0_4px_20px_rgba(11,29,58,0.08),0_1px_3px_rgba(11,29,58,0.06)] border-transparent'
+                                        : 'bg-white/60 border-[#E2E8F0] hover:bg-white hover:shadow-[0_2px_8px_rgba(11,29,58,0.04)]'
+                                }`}
+                            >
+                                {isActive && (
+                                    <motion.div
+                                        layoutId="activeTab03"
+                                        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2.5px] w-[60%] rounded-full"
+                                        style={{ background: `linear-gradient(90deg, ${accent}, ${accent}80)` }}
+                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                    />
+                                )}
+                                <div
+                                    className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${
+                                        isActive ? 'text-white shadow-md' : 'text-white/80'
+                                    }`}
+                                    style={{ background: isActive ? accent : `${accent}90` }}
+                                >
+                                    {getIcon(persona.id, 20)}
+                                </div>
+                                <span
+                                    className={`font-bold text-[14px] tracking-wide uppercase transition-colors duration-300 ${
+                                        isActive ? '' : 'opacity-60'
+                                    }`}
+                                    style={{ color: isActive ? NAVY : '#64748B' }}
+                                >
+                                    {persona.tag}
+                                </span>
+                            </motion.button>
+                        );
+                    })}
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-10">
-                    {/* Left Side: Tab Controls */}
-                    <div className="w-full lg:w-[400px] shrink-0 flex flex-col gap-3">
-                        {data.personas.map((persona) => {
-                            const isActive = activePersonaId === persona.id;
-                            const color = getPersonaColor(persona.id);
-
-                            return (
-                                <button
-                                    key={persona.id}
-                                    onClick={() => setActivePersonaId(persona.id)}
-                                    className={`group flex items-start gap-4 p-5 rounded-lg text-left transition-all duration-400 border relative overflow-hidden ${
-                                        isActive
-                                            ? 'bg-white/10 border-white/20 text-white shadow-[0_0_30px_rgba(255,255,255,0.05)] scale-[1.02]'
-                                            : 'bg-white/[0.02] border-white/[0.05] hover:bg-white/[0.06] hover:border-white/10'
-                                    }`}
-                                >
-                                    {isActive && (
-                                        <motion.div 
-                                            layoutId="activeTabIndicator"
-                                            className="absolute inset-0 opacity-20 pointer-events-none"
-                                            style={{ background: `linear-gradient(90deg, transparent, ${color}, transparent)` }}
-                                        />
-                                    )}
-                                    <div
-                                        className={`w-12 h-12 rounded-lg flex items-center justify-center text-white shrink-0 shadow-md transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}
-                                        style={{ backgroundColor: color }}
-                                    >
-                                        {getIcon(persona.id, 24)}
-                                    </div>
-                                    <div className="flex flex-col relative z-10 pt-1">
-                                        <span className={`font-bold text-[18px] leading-tight mb-1 ${isActive ? 'text-white' : 'text-white/70 group-hover:text-white'}`}>
-                                            {persona.tag}
-                                        </span>
-                                        <span className={`text-[13px] font-medium leading-snug ${isActive ? 'text-white/80' : 'text-white/50 group-hover:text-white/70'}`}>
-                                            {persona.subTag}
-                                        </span>
-                                    </div>
-                                </button>
-                            );
-                        })}
-                    </div>
-
-                    {/* Right Side: Content Area */}
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activePersona.id}
-                            initial={{ opacity: 0, x: 20, scale: 0.98 }}
-                            animate={{ opacity: 1, x: 0, scale: 1 }}
-                            exit={{ opacity: 0, x: -20, scale: 0.98 }}
-                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="flex-1 bg-[#0A1630]/60 border border-white/10 rounded-xl overflow-hidden backdrop-blur-xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] relative flex flex-col"
+                {/* Content Area: subTag as list */}
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={activePersona.id}
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -16 }}
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                        className="max-w-[900px] mx-auto"
+                    >
+                        <div
+                            className="w-full rounded-xl p-10 relative overflow-hidden"
+                            style={{
+                                background: 'white',
+                                border: '1px solid rgba(11, 29, 58, 0.06)',
+                                boxShadow: '0 8px 32px -4px rgba(11, 29, 58, 0.06), 0 2px 8px -2px rgba(11, 29, 58, 0.03)'
+                            }}
                         >
-                            <div 
-                                className="absolute top-0 left-1/4 w-1/2 h-[2px] opacity-70 transition-colors duration-500" 
-                                style={{ background: `linear-gradient(90deg, transparent, ${activeColor}, transparent)` }} 
-                            />
-                            <div 
-                                className="absolute top-0 right-0 w-[400px] h-[400px] opacity-10 blur-[80px] pointer-events-none transition-colors duration-500 rounded-bl-full" 
-                                style={{ background: activeColor }} 
+                            {/* Decorative accent line at top */}
+                            <div
+                                className="absolute top-0 left-0 right-0 h-[3px]"
+                                style={{ background: `linear-gradient(90deg, transparent 10%, ${activeAccent}, transparent 90%)` }}
                             />
 
-                            <div className="p-10 lg:p-12 flex flex-col flex-1 relative z-10">
-                                <div className="mb-8">
+                            {/* Subtle radial glow */}
+                            <div
+                                className="absolute -top-20 right-0 w-[300px] h-[300px] rounded-full blur-[100px] pointer-events-none opacity-[0.06]"
+                                style={{ background: activeAccent }}
+                            />
+
+                            <div className="relative z-10">
+                                {/* Section title */}
+                                <div className="flex items-center gap-3 mb-8">
                                     <div
-                                        className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1.5 rounded-full mb-6 border"
-                                        style={{
-                                            color: activeColor,
-                                            background: `${activeColor}15`,
-                                            borderColor: `${activeColor}30`
-                                        }}
+                                        className="w-11 h-11 rounded-lg flex items-center justify-center text-white shadow-md"
+                                        style={{ background: activeAccent }}
                                     >
-                                        <span>{activePersona.badge}</span>
+                                        {getIcon(activePersona.id, 22)}
                                     </div>
-
-                                    <h3 className="text-[36px] font-black text-white leading-[1.1] mb-4 tracking-tight">
-                                        {activePersona.titleLine1} <span style={{ color: activeColor }}>{activePersona.titleLine2}</span>
-                                    </h3>
-
-                                    <p className="text-[16px] font-medium leading-relaxed text-white/70 max-w-[600px]">
-                                        {activePersona.desc}
-                                    </p>
+                                    <div>
+                                        <h3 className="text-[22px] font-black tracking-tight" style={{ color: NAVY }}>
+                                            {activePersona.tag}
+                                        </h3>
+                                        <p className="text-[13px] font-medium" style={{ color: '#7B8DAA' }}>
+                                            {activePersona.badge}
+                                        </p>
+                                    </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 gap-4 mb-10">
-                                    {activePersona.features.map((feat, i) => (
+                                {/* subTag items as a list */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    {activePersona.subTag.split(' · ').map((subItem, i) => (
                                         <motion.div
                                             key={i}
-                                            initial={{ opacity: 0, x: -10 }}
+                                            initial={{ opacity: 0, x: -12 }}
                                             animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.1 * i }}
-                                            className="flex items-start gap-4 text-[15px] text-white/80 font-medium bg-white/[0.02] p-4 rounded-lg border border-white/[0.05]"
+                                            transition={{ delay: 0.05 * i, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                                            className="group flex items-center gap-3.5 px-5 py-4 rounded-lg transition-all duration-300 cursor-default hover:shadow-[0_4px_16px_rgba(11,29,58,0.05)]"
+                                            style={{
+                                                background: `linear-gradient(135deg, ${activeAccent}06, ${activeAccent}03)`,
+                                                border: `1px solid ${activeAccent}15`
+                                            }}
                                         >
                                             <div
-                                                className="w-6 h-6 rounded-full text-white shadow-sm flex items-center justify-center shrink-0 mt-0.5"
-                                                style={{ background: activeColor }}
+                                                className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
+                                                style={{ background: `${activeAccent}15` }}
                                             >
-                                                <CheckCircle size={14} strokeWidth={2.5} />
+                                                <ChevronRight size={16} strokeWidth={2.5} style={{ color: activeAccent }} />
                                             </div>
-                                            <span className="leading-snug">{feat}</span>
+                                            <span
+                                                className="text-[15px] font-semibold leading-snug"
+                                                style={{ color: NAVY }}
+                                            >
+                                                {subItem.trim()}
+                                            </span>
                                         </motion.div>
                                     ))}
                                 </div>
 
-                                <div className="mt-auto pt-8 border-t border-white/[0.06] flex items-center justify-between gap-4">
-                                    {activePersona.id === 'professionals' ? (
-                                        waitlistJoined ? (
-                                            <div className="p-4 rounded-lg bg-[#10B981]/15 border border-[#10B981]/30 flex items-center gap-3 text-[#34D399] text-[15px] font-bold">
-                                                <ShieldCheck size={20} />
-                                                <span>Registered for Priority Access!</span>
-                                            </div>
-                                        ) : (
-                                            <form onSubmit={handleJoinWaitlist} className="flex gap-3 w-full max-w-[400px]">
-                                                <input
-                                                    type="email"
-                                                    required
-                                                    value={waitlistEmail}
-                                                    onChange={(e) => setWaitlistEmail(e.target.value)}
-                                                    placeholder="Enter work email"
-                                                    className="flex-1 bg-[#040C1E] border border-white/[0.12] rounded-lg px-4 py-3 text-[14px] text-white outline-none focus:border-[#C99A2E] placeholder-white/30 transition-colors"
-                                                />
-                                                <button
-                                                    type="submit"
-                                                    className="px-6 py-3 rounded-lg font-bold text-[14px] text-[#040C1E] transition-all cursor-pointer whitespace-nowrap hover:opacity-90 shadow-lg"
-                                                    style={{ background: `linear-gradient(90deg, ${GOLD}, #E2C068)` }}
-                                                >
-                                                    Join Now
-                                                </button>
-                                            </form>
-                                        )
-                                    ) : (
-                                        <button
-                                            className="text-white text-[15px] font-bold px-8 py-4 rounded-lg shadow-lg flex items-center gap-2 transition-all cursor-pointer hover:-translate-y-1 hover:shadow-xl"
-                                            style={{ background: activeColor }}
-                                        >
-                                            <span>{activePersona.cta}</span>
-                                            <ArrowRight size={18} />
-                                        </button>
-                                    )}
+                                {/* CTA */}
+                                <div className="mt-8 pt-6 border-t border-[#E8ECF2] flex items-center justify-between">
+                                    <p className="text-[14px] font-medium" style={{ color: '#7B8DAA' }}>
+                                        {activePersona.desc}
+                                    </p>
+                                    <motion.button
+                                        whileHover={{ x: 4 }}
+                                        className="shrink-0 ml-6 text-[13px] font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+                                        style={{ color: activeAccent }}
+                                    >
+                                        {activePersona.cta} <ChevronRight size={16} strokeWidth={2.5} />
+                                    </motion.button>
                                 </div>
                             </div>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
             </div>
         </section>
     );
