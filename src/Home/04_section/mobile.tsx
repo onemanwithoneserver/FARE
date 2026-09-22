@@ -130,34 +130,29 @@ export default function Mobile() {
                         })}
                     </motion.div>
 
-                    <motion.div variants={itemVariant} className="flex flex-col items-center w-full px-2 relative z-10">
+                    <motion.div variants={itemVariant} className="flex flex-col items-center w-full max-w-[340px] mx-auto gap-2.5 px-2 relative z-10">
                         {data.trustBadges.map((badge, i) => (
                             <motion.div
                                 key={i}
-                                className="flex flex-col items-center w-full"
+                                className="w-full flex items-center gap-3.5 p-3 rounded-lg bg-white/[0.04] border border-white/[0.08]"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                             >
-                                <div className="flex items-center gap-4 p-4">
-                                    <motion.div
-                                        className="shrink-0"
-                                        whileHover={{ rotate: 10, scale: 1.1 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                                    >
-                                        {i === 0 && <ShieldCheck size={24} strokeWidth={2} className="text-[#34D399]" />}
-                                        {i === 1 && <Users size={24} strokeWidth={2} className="text-[#6B8AFF]" />}
-                                        {i === 2 && <BarChart2 size={24} strokeWidth={2} className="text-[#D5AA45]" />}
-                                    </motion.div>
-                                    <div className="text-left flex-1">
-                                        <div className="text-[13px] font-bold text-white mb-1 leading-[1.2]">{badge.title}</div>
-                                        {badge.subtitle && (
-                                            <div className="text-[11px] text-white/50 font-medium">{badge.subtitle}</div>
-                                        )}
-                                    </div>
+                                <motion.div
+                                    className="shrink-0 flex items-center justify-center"
+                                    whileHover={{ rotate: 8, scale: 1.1 }}
+                                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                >
+                                    {i === 0 && <ShieldCheck size={22} strokeWidth={2} className="text-[#34D399]" />}
+                                    {i === 1 && <Users size={22} strokeWidth={2} className="text-[#6B8AFF]" />}
+                                    {i === 2 && <BarChart2 size={22} strokeWidth={2} className="text-[#D5AA45]" />}
+                                </motion.div>
+                                <div className="text-left flex-1">
+                                    <div className="text-[13px] font-bold text-white leading-tight">{badge.title}</div>
+                                    {badge.subtitle && (
+                                        <div className="text-[11px] text-white/50 font-medium leading-tight mt-0.5">{badge.subtitle}</div>
+                                    )}
                                 </div>
-                                {i !== 2 && (
-                                    <div className="w-[80%] h-[1px] bg-white/10 my-1"></div>
-                                )}
                             </motion.div>
                         ))}
                     </motion.div>

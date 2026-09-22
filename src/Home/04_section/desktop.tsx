@@ -160,34 +160,31 @@ export default function Desktop() {
                         })}
                     </motion.div>
 
-                    <motion.div variants={itemVariant} className="flex items-center justify-center w-full px-8 relative z-10">
+                    <motion.div variants={itemVariant} className="grid grid-cols-3 divide-x divide-white/10 w-full max-w-[960px] mx-auto px-4 relative z-10">
                         {data.trustBadges.map((badge, i) => (
                             <motion.div
                                 key={i}
-                                className="flex items-center"
+                                className="flex items-center justify-center px-4 py-1"
                                 whileHover={{ y: -2 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                             >
-                                <div className="flex items-start gap-4 px-8">
+                                <div className="flex items-center gap-3.5 text-left">
                                     <motion.div
-                                        className="mt-0.5"
-                                        whileHover={{ rotate: 10, scale: 1.1 }}
+                                        className="shrink-0 flex items-center justify-center"
+                                        whileHover={{ rotate: 8, scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
-                                        {i === 0 && <ShieldCheck size={26} strokeWidth={2} className="text-[#34D399]" />}
-                                        {i === 1 && <Users size={26} strokeWidth={2} className="text-[#6B8AFF]" />}
-                                        {i === 2 && <BarChart2 size={26} strokeWidth={2} className="text-[#D5AA45]" />}
+                                        {i === 0 && <ShieldCheck size={24} strokeWidth={2} className="text-[#34D399]" />}
+                                        {i === 1 && <Users size={24} strokeWidth={2} className="text-[#6B8AFF]" />}
+                                        {i === 2 && <BarChart2 size={24} strokeWidth={2} className="text-[#D5AA45]" />}
                                     </motion.div>
-                                    <div className="text-left">
-                                        <div className="text-[13px] font-bold text-white mb-1.5 leading-[1.3]">{badge.title}</div>
+                                    <div className="flex flex-col justify-center">
+                                        <div className="text-[13.5px] xl:text-[14px] font-bold text-white leading-tight whitespace-nowrap">{badge.title}</div>
                                         {badge.subtitle && (
-                                            <div className="text-[12px] text-white/50 font-medium">{badge.subtitle}</div>
+                                            <div className="text-[12px] text-white/50 font-medium leading-tight mt-0.5">{badge.subtitle}</div>
                                         )}
                                     </div>
                                 </div>
-                                {i !== 2 && (
-                                    <div className="h-12 w-[1px] bg-white/10 mx-2"></div>
-                                )}
                             </motion.div>
                         ))}
                     </motion.div>
