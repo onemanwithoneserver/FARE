@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import {
-    Building2, GraduationCap, UserCheck, ArrowRight, Sparkles, ChevronRight
+    Building2, GraduationCap, UserCheck, ArrowRight, Sparkles, Check
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
@@ -18,6 +18,7 @@ export default function Desktop() {
 
     const { language } = useLanguage();
     const data = getData(language);
+    const exploreLabel = language === 'te' ? 'అన్వేషించండి' : 'Explore';
 
     const handleRedirect = (path: string) => {
         navigate(`/${currentMode}/${path}`);
@@ -174,7 +175,7 @@ export default function Desktop() {
                                                     className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover/item:scale-110 shadow-xs"
                                                     style={{ background: `${accent}18` }}
                                                 >
-                                                    <ChevronRight size={14} strokeWidth={2.5} style={{ color: accent }} />
+                                                    <Check size={14} strokeWidth={2.5} style={{ color: accent }} />
                                                 </div>
                                                 <span className="text-[14px] font-semibold text-[#0B1D3A] leading-snug">
                                                     {it}
@@ -184,22 +185,25 @@ export default function Desktop() {
                                     </div>
                                 </div>
 
-                                <div>
+                                <div className="flex justify-end pt-2 mt-auto">
                                     <button
                                         onClick={() => handleRedirect(persona.path)}
-                                        className="w-full py-3.5 px-6 rounded-lg font-bold text-[14px] text-white flex items-center justify-center gap-2.5 transition-all duration-300 relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.2)] hover:shadow-[0_8px_24px_-4px_rgba(11,29,58,0.3)] active:scale-[0.98] group/btn cursor-pointer"
+                                        aria-label={persona.cta}
+                                        className="h-12 w-12 group-hover:w-[136px] rounded-full flex items-center justify-center transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_8px_24px_-4px_rgba(11,29,58,0.35)] group-hover/btn:scale-105 active:scale-95 group/btn cursor-pointer px-3.5 group-hover:px-4"
                                         style={{
                                             background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`
                                         }}
                                     >
-                                        <span className="relative z-10">{persona.cta}</span>
+                                        <span className="max-w-0 opacity-0 overflow-hidden whitespace-nowrap text-[13.5px] font-bold text-white transition-all duration-300 ease-out group-hover:max-w-[80px] group-hover:opacity-100 group-hover:mr-2">
+                                            {exploreLabel}
+                                        </span>
                                         <ArrowRight
-                                            size={16}
+                                            size={18}
                                             strokeWidth={2.5}
-                                            className="relative z-10 transition-transform duration-300 group-hover/btn:translate-x-1"
+                                            className="shrink-0 relative z-10 transition-transform duration-300 group-hover/btn:translate-x-0.5"
                                             style={{ color: accent }}
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.12] to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                                     </button>
                                 </div>
                             </motion.div>

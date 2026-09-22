@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import type { Variants } from 'motion/react';
 import {
-    Building2, GraduationCap, UserCheck, ArrowRight, Sparkles, ChevronRight
+    Building2, GraduationCap, UserCheck, ArrowRight, Sparkles, Check, ChevronDown
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
@@ -18,6 +19,13 @@ export default function Mobile() {
 
     const { language } = useLanguage();
     const data = getData(language);
+    const exploreLabel = language === 'te' ? 'అన్వేషించండి' : 'Explore';
+
+    const [openCardId, setOpenCardId] = useState<string | null>(data.personas[0]?.id || null);
+
+    const toggleCard = (id: string) => {
+        setOpenCardId(prev => (prev === id ? null : id));
+    };
 
     const handleRedirect = (path: string) => {
         navigate(`/${currentMode}/${path}`);
@@ -113,16 +121,17 @@ export default function Mobile() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-40px" }}
-                    className="flex flex-col gap-6"
+                    className="flex flex-col gap-4"
                 >
                     {data.personas.map((persona) => {
                         const accent = persona.accent || GOLD;
+                        const isOpen = openCardId === persona.id;
 
                         return (
                             <motion.div
                                 key={persona.id}
                                 variants={itemVariants}
-                                className="bg-white/95 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-xl p-6 relative overflow-hidden shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)] flex flex-col justify-between"
+                                className="bg-white/95 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-xl relative overflow-hidden shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)] transition-all duration-300"
                             >
                                 <div
                                     className="absolute top-0 left-0 right-0 h-[3px]"
@@ -136,8 +145,12 @@ export default function Mobile() {
                                     style={{ background: accent }}
                                 />
 
-                                <div>
-                                    <div className="flex items-center gap-3.5 mb-5">
+                                <button
+                                    onClick={() => toggleCard(persona.id)}
+                                    className="w-full p-4.5 sm:p-5 flex items-center justify-between gap-3 text-left cursor-pointer"
+                                    aria-expanded={isOpen}
+                                >
+                                    <div className="flex items-center gap-3.5">
                                         <div
                                             className="w-11 h-11 rounded-lg flex items-center justify-center text-white shadow-sm shrink-0"
                                             style={{
@@ -147,51 +160,87 @@ export default function Mobile() {
                                             {getIcon(persona.id, 20)}
                                         </div>
 
-                                        <h3 className="text-[17px] sm:text-[18px] font-black tracking-tight text-[#0B1D3A] leading-tight">
+                                        <h3 className="text-[16px] sm:text-[17px] font-black tracking-tight text-[#0B1D3A] leading-tight">
                                             {persona.tag}
                                         </h3>
                                     </div>
 
-                                    <div className="flex flex-col gap-2 pt-3.5 border-t border-[#0B1D3A]/[0.06] mb-5">
-                                        {persona.items.map((it, idx) => (
-                                            <div
-                                                key={idx}
-                                                className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg"
-                                                style={{
-                                                    background: `linear-gradient(135deg, ${accent}0A, ${accent}03)`,
-                                                    border: `1px solid ${accent}18`
-                                                }}
-                                            >
-                                                <div
-                                                    className="w-6 h-6 rounded-full flex items-center justify-center shrink-0"
-                                                    style={{ background: `${accent}18` }}
-                                                >
-                                                    <ChevronRight size={13} strokeWidth={2.5} style={{ color: accent }} />
-                                                </div>
-                                                <span className="text-[13px] font-semibold text-[#0B1D3A] leading-snug">
-                                                    {it}
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <button
-                                        onClick={() => handleRedirect(persona.path)}
-                                        className="w-full py-3 px-5 rounded-lg font-bold text-[13.5px] text-white flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.2)] active:scale-[0.98] cursor-pointer"
-                                        style={{
-                                            background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`
-                                        }}
+                                    <div
+                                        className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-[#0B1D3A]/10 bg-[#0B1D3A]/[0.03] transition-all duration-300"
+                                        style={isOpen ? { background: `${accent}15`, borderColor: `${accent}40` } : {}}
                                     >
-                                        <span>{persona.cta}</span>
-                                        <ArrowRight
-                                            size={15}
+                                        <ChevronDown
+                                            size={16}
                                             strokeWidth={2.5}
-                                            style={{ color: accent }}
+                                            className="transition-transform duration-300"
+                                            style={{
+                                                transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                                                color: isOpen ? accent : NAVY
+                                            }}
                                         />
-                                    </button>
-                                </div>
+                                    </div>
+                                </button>
+
+                                <AnimatePresence initial={false}>
+                                    {isOpen && (
+                                        <motion.div
+                                            key="content"
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="px-5 pb-5 pt-0">
+                                                <div className="flex flex-col gap-2 pt-3.5 border-t border-[#0B1D3A]/[0.06] mb-4">
+                                                    {persona.items.map((it, idx) => (
+                                                        <div
+                                                            key={idx}
+                                                            className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg"
+                                                            style={{
+                                                                background: `linear-gradient(135deg, ${accent}0A, ${accent}03)`,
+                                                                border: `1px solid ${accent}18`
+                                                            }}
+                                                        >
+                                                            <div
+                                                                className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 shadow-xs"
+                                                                style={{ background: `${accent}18` }}
+                                                            >
+                                                                <Check size={13} strokeWidth={2.5} style={{ color: accent }} />
+                                                            </div>
+                                                            <span className="text-[13px] font-semibold text-[#0B1D3A] leading-snug">
+                                                                {it}
+                                                            </span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+
+                                                <div className="flex justify-end pt-1">
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            handleRedirect(persona.path);
+                                                        }}
+                                                        aria-label={persona.cta}
+                                                        className="h-10 px-4 rounded-full flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
+                                                        style={{
+                                                            background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`
+                                                        }}
+                                                    >
+                                                        <span className="text-[12.5px] font-bold text-white">
+                                                            {exploreLabel}
+                                                        </span>
+                                                        <ArrowRight
+                                                            size={15}
+                                                            strokeWidth={2.5}
+                                                            style={{ color: accent }}
+                                                        />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </motion.div>
                         );
                     })}

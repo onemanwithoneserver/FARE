@@ -148,7 +148,7 @@ export default function Mobile() {
                                     {i === 2 && <BarChart2 size={22} strokeWidth={2} className="text-[#D5AA45]" />}
                                 </motion.div>
                                 <div className="text-left flex-1">
-                                    <div className="text-[13px] font-bold text-[#0B1D3A] leading-tight">{badge.title}</div>
+                                    <div className="text-[13px] font-bold text-[#fff] leading-tight">{badge.title}</div>
                                     {badge.subtitle && (
                                         <div className="text-[11px] text-[#7B8DAA] font-medium leading-tight mt-0.5">{badge.subtitle}</div>
                                     )}
