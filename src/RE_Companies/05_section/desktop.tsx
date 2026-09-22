@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
@@ -89,13 +89,35 @@ export default function Desktop() {
                     className="relative flex items-start justify-between gap-6"
                 >
                     
-                    <div className="absolute top-[45px] left-12 right-12 h-[2px] bg-gradient-to-r from-transparent via-[#0B1D3A]/10 to-transparent">
-                        <motion.div 
-                            className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"
-                            animate={{ x: ['-100%', '100%'] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        />
+                    <div className="absolute top-[45px] -translate-y-1/2 left-8 right-2 h-[44px] z-0 pointer-events-none flex items-center">
+                        <div className="flex-1 h-[40px] bg-gradient-to-r from-white/90 via-[#F1F5F9]/80 to-white/90 border-y border-[#C99A2E]/30 backdrop-blur-md relative overflow-hidden rounded-l-full shadow-[0_4px_16px_rgba(201,154,46,0.08)]">
+                            <motion.div
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C99A2E]/35 to-transparent w-1/3"
+                                animate={{ x: ['-100%', '350%'] }}
+                                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                            />
+                            <div className="absolute top-1/2 left-0 right-0 h-[1.5px] -translate-y-1/2 bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
+                        </div>
+                        <div className="shrink-0 w-0 h-0 border-y-[22px] border-y-transparent border-l-[26px] border-l-[#C99A2E]/50 drop-shadow-sm -ml-[1px]" />
                     </div>
+
+                    {[20, 40, 60, 80].map((leftPos, i) => (
+                        <div
+                            key={i}
+                            className="absolute top-[45px] -translate-y-1/2 -translate-x-1/2 z-[5] pointer-events-none flex items-center justify-center bg-white/95 border border-[#C99A2E]/40 rounded-full py-1.5 px-3 shadow-[0_4px_12px_rgba(201,154,46,0.18)]"
+                            style={{ left: `${leftPos}%` }}
+                        >
+                            <motion.div
+                                className="flex items-center text-[#C99A2E]"
+                                animate={{ x: [0, 4, 0] }}
+                                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.2 }}
+                            >
+                                <ChevronRight size={16} strokeWidth={3} className="text-[#C99A2E]/50 -mr-2" />
+                                <ChevronRight size={16} strokeWidth={3} className="text-[#C99A2E]/80 -mr-2" />
+                                <ChevronRight size={16} strokeWidth={3} className="text-[#0B1D3A]" />
+                            </motion.div>
+                        </div>
+                    ))}
 
                     {data.steps.map((step, index) => (
                         <motion.div

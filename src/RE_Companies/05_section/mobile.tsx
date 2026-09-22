@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
@@ -87,12 +87,16 @@ export default function Mobile() {
                     className="flex flex-col gap-10 relative px-2"
                 >
                     
-                    <div className="absolute top-[25px] bottom-[25px] left-[32px] w-[2px] bg-gradient-to-b from-transparent via-[#0B1D3A]/10 to-transparent">
-                        <motion.div 
-                            className="absolute inset-0 bg-gradient-to-b from-transparent via-[#C99A2E]/40 to-transparent"
-                            animate={{ y: ['-100%', '100%'] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        />
+                    <div className="absolute top-[25px] bottom-[15px] left-[33px] -translate-x-1/2 w-[28px] z-0 pointer-events-none flex flex-col items-center">
+                        <div className="flex-1 w-[22px] bg-gradient-to-b from-white/90 via-[#F1F5F9]/80 to-white/90 border-x border-[#C99A2E]/30 backdrop-blur-md relative overflow-hidden rounded-t-full shadow-[0_2px_8px_rgba(201,154,46,0.08)]">
+                            <motion.div
+                                className="absolute inset-0 bg-gradient-to-b from-transparent via-[#C99A2E]/35 to-transparent h-1/3"
+                                animate={{ y: ['-100%', '350%'] }}
+                                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                            />
+                            <div className="absolute left-1/2 top-0 bottom-0 w-[1.5px] -translate-x-1/2 bg-gradient-to-b from-transparent via-[#C99A2E]/40 to-transparent" />
+                        </div>
+                        <div className="shrink-0 w-0 h-0 border-x-[14px] border-x-transparent border-t-[16px] border-t-[#C99A2E]/50 drop-shadow-sm -mt-[1px]" />
                     </div>
 
                     {data.steps.map((step, index) => (
