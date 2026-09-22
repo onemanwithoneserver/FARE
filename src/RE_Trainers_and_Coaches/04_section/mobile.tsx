@@ -124,8 +124,8 @@ export default function Mobile() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
-                        transition={{ duration: 0.6 }}
-                        className="bg-[#071A49]/60 backdrop-blur-sm border border-white/10 rounded p-6 relative overflow-hidden shadow-[0_20px_40px_-10px_rgba(2,6,23,0.45)]"
+                        className="rounded p-6 relative overflow-hidden shadow-[0_20px_40px_-10px_rgba(11,29,58,0.35)] border border-[#C99A2E]/30"
+                        style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}
                     >
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-48 h-48 bg-[#C99A2E]/10 rounded-full blur-[40px]"></motion.div>
                         
@@ -146,7 +146,7 @@ export default function Mobile() {
                                 <motion.div
                                     key={index}
                                     variants={item}
-                                    className="bg-[#071A49]/40 border border-white/10 rounded p-5 flex flex-col gap-4 shadow-sm"
+                                    className="bg-white/[0.06] backdrop-blur-md border border-white/10 rounded p-5 flex flex-col gap-4 shadow-sm hover:border-[#C99A2E]/40 transition-colors"
                                 >
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-12 rounded flex items-center justify-center shrink-0 shadow-md" style={{ backgroundColor: learner.color }}>

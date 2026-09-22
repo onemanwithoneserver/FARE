@@ -131,8 +131,8 @@ export default function Desktop() {
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="bg-[#071A49]/60 backdrop-blur-sm border border-white/10 rounded p-12 lg:p-14 relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(2,6,23,0.5)]"
+                        className="rounded p-12 lg:p-14 relative overflow-hidden shadow-[0_25px_60px_-15px_rgba(11,29,58,0.35)] border border-[#C99A2E]/30"
+                        style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}
                     >
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C99A2E]/10 rounded-full blur-[100px] pointer-events-none"></motion.div>
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#071A49]/40 rounded-full blur-[80px] pointer-events-none"></motion.div>
@@ -152,7 +152,7 @@ export default function Desktop() {
                                 <motion.div
                                     key={index}
                                     variants={item}
-                                    className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] bg-[#071A49]/40 border border-white/10 rounded p-8 hover:bg-[#071A49]/60 hover:border-white/20 hover:shadow-[0_15px_30px_-10px_rgba(2,6,23,0.3)] transition-all duration-400 group cursor-default flex flex-col justify-between"
+                                    className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] bg-white/[0.06] backdrop-blur-md border border-white/10 rounded p-8 hover:border-[#C99A2E]/40 hover:bg-white/[0.08] hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.3)] transition-all duration-400 group cursor-default flex flex-col justify-between"
                                 >
                                     <div className="flex items-center gap-5 mb-5">
                                         <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]" style={{ backgroundColor: learner.color }}>
