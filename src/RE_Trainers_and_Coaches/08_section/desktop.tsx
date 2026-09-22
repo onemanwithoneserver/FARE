@@ -274,55 +274,106 @@ export default function Desktop() {
 
                 </div>
 
-                {/* Together Synergy / Ecosystem Workflow Banner */}
+                {/* Together Synergy / Ecosystem Workflow Banner (Dark Theme) */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "-60px" }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-[1140px] mx-auto bg-gradient-to-r from-white/95 via-[#F8FAFD]/90 to-white/95 backdrop-blur-2xl border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/30 rounded p-10 xl:p-14 flex flex-col items-center relative overflow-hidden shadow-[0_20px_50px_-15px_rgba(11,29,58,0.1)] transition-all duration-500 group"
+                    className="max-w-[1140px] mx-auto rounded-2xl p-10 xl:p-14 flex flex-col items-center relative overflow-hidden transition-all duration-500 group border border-white/10 shadow-[0_25px_60px_-15px_rgba(11,29,58,0.5)] hover:border-[#C99A2E]/40 hover:shadow-[0_30px_70px_-15px_rgba(201,154,46,0.15)]"
+                    style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}
                 >
-                    <motion.div
-                        animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.08, 1] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute -top-1/2 left-[20%] w-[500px] h-[500px] bg-[#C99A2E]/[0.07] rounded-full blur-[90px] pointer-events-none"
-                    />
-                    <motion.div
-                        animate={{ opacity: [0.2, 0.5, 0.2], scale: [1.08, 1, 1.08] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute -bottom-1/2 right-[20%] w-[500px] h-[500px] bg-[#3B82F6]/[0.07] rounded-full blur-[90px] pointer-events-none"
+                    {/* Top glowing gold hairline */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C99A2E]/80 to-transparent" />
+
+                    {/* Ambient High-Tech Grid Texture */}
+                    <div
+                        className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
+                        style={{
+                            backgroundImage: `linear-gradient(#FFFFFF 1px, transparent 1px), linear-gradient(90deg, #FFFFFF 1px, transparent 1px)`,
+                            backgroundSize: '40px 40px'
+                        }}
                     />
 
-                    {/* Top pill */}
-                    <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#0B1D3A]/10 bg-white/80 shadow-sm backdrop-blur-md mb-9">
-                        <Zap size={15} className="text-[#C99A2E]" />
-                        <h3 className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-[0.22em] text-center">
+                    {/* Deep Ambient Neon Glow Orbs */}
+                    <motion.div
+                        animate={{ opacity: [0.15, 0.35, 0.15], scale: [1, 1.1, 1] }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-1/2 left-[15%] w-[500px] h-[500px] bg-[#C99A2E]/20 rounded-full blur-[90px] pointer-events-none"
+                    />
+                    <motion.div
+                        animate={{ opacity: [0.15, 0.35, 0.15], scale: [1.1, 1, 1.1] }}
+                        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -bottom-1/2 right-[15%] w-[500px] h-[500px] bg-[#3B82F6]/20 rounded-full blur-[90px] pointer-events-none"
+                    />
+
+                    {/* Top pill badge */}
+                    <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-white/15 bg-white/[0.08] shadow-inner backdrop-blur-md mb-11 relative z-10">
+                        <Zap size={15} className="text-[#E2BA55] animate-pulse" />
+                        <h3 className="text-[12px] font-bold text-white uppercase tracking-[0.25em] text-center">
                             {data.together.title}
                         </h3>
                     </div>
 
-                    {/* Flow steps with animated pinging arrows */}
-                    <div className="flex items-center justify-center gap-3 lg:gap-6 flex-wrap relative z-10 w-full">
-                        {data.together.flow.map((step, idx) => (
-                            <div key={idx} className="flex items-center gap-3 lg:gap-6">
-                                <motion.span
-                                    whileHover={{ y: -4, scale: 1.04 }}
-                                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                                    className="text-[17px] xl:text-[19px] font-bold text-[#0B1D3A] bg-white px-7 py-4 rounded border border-[#0B1D3A]/[0.08] shadow-[0_8px_20px_-6px_rgba(11,29,58,0.06)] hover:border-[#C99A2E]/40 hover:text-[#C99A2E] hover:shadow-[0_12px_28px_-6px_rgba(201,154,46,0.2)] transition-all duration-300 cursor-default"
-                                >
-                                    {step}
-                                </motion.span>
-                                {idx < data.together.flow.length - 1 && (
+                    {/* Flow steps container with staggered entrance and animated pinging arrows */}
+                    <div className="relative z-10 w-full">
+                        {/* Connecting glowing flow line behind nodes */}
+                        <div className="hidden lg:block absolute top-1/2 left-16 right-16 h-[1.5px] bg-gradient-to-r from-transparent via-[#C99A2E]/30 to-transparent -translate-y-1/2 pointer-events-none z-0" />
+
+                        <motion.div
+                            variants={{
+                                hidden: { opacity: 0 },
+                                show: {
+                                    opacity: 1,
+                                    transition: { staggerChildren: 0.12, delayChildren: 0.15 }
+                                }
+                            }}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: false }}
+                            className="flex items-center justify-center gap-3 lg:gap-6 flex-wrap relative z-10 w-full"
+                        >
+                            {data.together.flow.map((step, idx) => (
+                                <div key={idx} className="flex items-center gap-3 lg:gap-6">
                                     <motion.div
-                                        animate={{ x: [0, 5, 0] }}
-                                        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut", delay: idx * 0.2 }}
-                                        className="w-9 h-9 rounded-full bg-[#0B1D3A]/[0.04] border border-[#0B1D3A]/[0.08] flex items-center justify-center shrink-0 shadow-sm"
+                                        variants={{
+                                            hidden: { opacity: 0, y: 20, scale: 0.94 },
+                                            show: {
+                                                opacity: 1,
+                                                y: 0,
+                                                scale: 1,
+                                                transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+                                            }
+                                        }}
+                                        whileHover={{ y: -6, scale: 1.05, transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } }}
+                                        className="group/chip text-[17px] xl:text-[19px] font-bold text-white bg-white/[0.07] hover:bg-white/[0.14] px-7 py-4.5 rounded-xl border border-white/10 hover:border-[#C99A2E]/60 shadow-[0_8px_25px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_30px_rgba(201,154,46,0.25)] transition-all duration-300 cursor-default relative overflow-hidden backdrop-blur-md"
                                     >
-                                        <ArrowRight size={17} className="text-[#C99A2E]" strokeWidth={2.5} />
+                                        {/* Shimmer sweep on chip hover */}
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent translate-x-[-120%] group-hover/chip:translate-x-[120%] transition-transform duration-700 pointer-events-none" />
+                                        <span className="relative z-10 tracking-wide group-hover/chip:text-[#E2BA55] transition-colors">{step}</span>
                                     </motion.div>
-                                )}
-                            </div>
-                        ))}
+
+                                    {idx < data.together.flow.length - 1 && (
+                                        <motion.div
+                                            variants={{
+                                                hidden: { opacity: 0, scale: 0.5 },
+                                                show: {
+                                                    opacity: 1,
+                                                    scale: 1,
+                                                    transition: { duration: 0.4 }
+                                                }
+                                            }}
+                                            animate={{ x: [0, 6, 0] }}
+                                            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut", delay: idx * 0.2 }}
+                                            className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/15 flex items-center justify-center shrink-0 shadow-[0_4px_12px_rgba(0,0,0,0.3)] backdrop-blur-sm relative"
+                                        >
+                                            <div className="absolute inset-0 rounded-full bg-[#C99A2E]/10 animate-pulse pointer-events-none" />
+                                            <ArrowRight size={18} className="text-[#E2BA55] relative z-10" strokeWidth={2.5} />
+                                        </motion.div>
+                                    )}
+                                </div>
+                            ))}
+                        </motion.div>
                     </div>
                 </motion.div>
 

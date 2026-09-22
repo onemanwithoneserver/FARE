@@ -212,41 +212,70 @@ export default function Mobile() {
 
                 </div>
 
-                {/* Together Synergy Flow */}
+                {/* Together Synergy Flow (Dark Theme) */}
                 <motion.div
                     initial={{ opacity: 0, y: 25 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                    className="bg-white/95 backdrop-blur-2xl border border-[#0B1D3A]/[0.08] rounded p-6 flex flex-col items-center relative overflow-hidden shadow-[0_15px_35px_-10px_rgba(11,29,58,0.1)] mb-8"
+                    className="rounded-2xl p-6 flex flex-col items-center relative overflow-hidden shadow-[0_20px_45px_rgba(11,29,58,0.4)] border border-white/10 mb-8"
+                    style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}
                 >
-                    <div className="absolute top-0 right-0 w-36 h-36 bg-[#C99A2E]/10 rounded-full blur-[30px] pointer-events-none" />
+                    {/* Top hairline */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C99A2E]/80 to-transparent" />
 
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0B1D3A]/10 bg-white/80 shadow-sm backdrop-blur-md mb-6">
-                        <Zap size={14} className="text-[#C99A2E]" />
-                        <h3 className="text-[11px] font-bold text-[#0B1D3A] uppercase tracking-[0.2em] text-center">
+                    <div className="absolute top-0 right-0 w-36 h-36 bg-[#C99A2E]/15 rounded-full blur-[35px] pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 w-36 h-36 bg-[#3B82F6]/15 rounded-full blur-[35px] pointer-events-none" />
+
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/15 bg-white/[0.08] shadow-inner backdrop-blur-md mb-6 relative z-10">
+                        <Zap size={14} className="text-[#E2BA55] animate-pulse" />
+                        <h3 className="text-[11px] font-bold text-white uppercase tracking-[0.2em] text-center">
                             {data.together.title}
                         </h3>
                     </div>
 
-                    <div className="flex flex-col items-center gap-3 w-full relative z-10">
+                    <motion.div
+                        variants={{
+                            hidden: { opacity: 0 },
+                            show: {
+                                opacity: 1,
+                                transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+                            }
+                        }}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: false }}
+                        className="flex flex-col items-center gap-3 w-full relative z-10"
+                    >
                         {data.together.flow.map((step, idx) => (
                             <div key={idx} className="flex flex-col items-center gap-3 w-full">
-                                <span className="text-[15px] font-bold text-[#0B1D3A] bg-white px-5 py-3.5 rounded border border-[#0B1D3A]/[0.08] shadow-[0_4px_12px_-2px_rgba(11,29,58,0.06)] w-full text-center">
-                                    {step}
-                                </span>
+                                <motion.div
+                                    variants={{
+                                        hidden: { opacity: 0, y: 15, scale: 0.95 },
+                                        show: {
+                                            opacity: 1,
+                                            y: 0,
+                                            scale: 1,
+                                            transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+                                        }
+                                    }}
+                                    className="text-[15px] font-bold text-white bg-white/[0.08] px-5 py-3.5 rounded-xl border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25)] w-full text-center tracking-wide backdrop-blur-md relative overflow-hidden"
+                                >
+                                    <span className="relative z-10">{step}</span>
+                                </motion.div>
+
                                 {idx < data.together.flow.length - 1 && (
                                     <motion.div
-                                        animate={{ y: [0, 4, 0] }}
+                                        animate={{ y: [0, 5, 0] }}
                                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: idx * 0.2 }}
-                                        className="w-7 h-7 rounded-full bg-[#0B1D3A]/[0.04] border border-[#0B1D3A]/[0.08] flex items-center justify-center shrink-0 shadow-sm"
+                                        className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/15 flex items-center justify-center shrink-0 shadow-sm relative"
                                     >
-                                        <ArrowRight size={14} className="text-[#C99A2E] rotate-90" strokeWidth={2.5} />
+                                        <ArrowRight size={15} className="text-[#E2BA55] rotate-90" strokeWidth={2.5} />
                                     </motion.div>
                                 )}
                             </div>
                         ))}
-                    </div>
+                    </motion.div>
                 </motion.div>
 
                 {/* Bottom Callout ("FARE brings the audience.") */}
