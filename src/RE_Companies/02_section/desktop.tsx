@@ -43,16 +43,13 @@ export default function Desktop() {
         <section className="w-full py-16 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #FFF1F2 0%, #FFE4E6 25%, #FDF2F4 60%, #FFF5F7 100%)' }}
         >
-            {/* Ambient Negative-State Glow Orbs */}
             <motion.div animate={{ opacity: [0.22, 0.45, 0.22], scale: [1, 1.08, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-[10%] right-[-5%] w-[700px] h-[700px] bg-gradient-radial from-rose-500/25 via-red-500/10 to-transparent rounded-full blur-[130px] pointer-events-none z-0"></motion.div>
             <motion.div animate={{ opacity: [0.18, 0.38, 0.18], scale: [1.05, 1, 1.05] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute -bottom-[10%] left-[-5%] w-[650px] h-[650px] bg-gradient-radial from-red-600/20 via-rose-500/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"></motion.div>
             <motion.div animate={{ opacity: [0.12, 0.28, 0.12], scale: [1, 1.1, 1] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[40%] left-[20%] w-[500px] h-[500px] bg-gradient-radial from-red-400/15 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></motion.div>
 
-            {/* Warning Radar / Pulse Rings */}
             <motion.div animate={{ scale: [1, 1.35, 1], opacity: [0.06, 0.18, 0.06] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full border border-red-500/30 pointer-events-none z-0" />
             <motion.div animate={{ scale: [1, 1.55, 1], opacity: [0.03, 0.12, 0.03] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] rounded-full border border-rose-500/20 pointer-events-none z-0" />
 
-            {/* Subtle Negative-State Dot Matrix */}
             <div className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
                 style={{
                     backgroundImage: `radial-gradient(#EF4444 1.5px, transparent 1.5px)`,
@@ -60,7 +57,6 @@ export default function Desktop() {
                 }}
             />
 
-            {/* Subtle Floating Negative/Challenge Atmospheric Emojis across Entire Background */}
             {bgFloatingElements.map((item, idx) => (
                 <motion.div
                     key={idx}

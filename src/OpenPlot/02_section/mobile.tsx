@@ -52,11 +52,9 @@ export default function Mobile() {
         <section className="w-full py-12 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(180deg, #FFF1F2 0%, #FFE4E6 30%, #FDF2F4 70%, #FFF5F7 100%)' }}
         >
-            {/* Ambient Negative Glow Orbs */}
             <motion.div animate={{ opacity: [0.2, 0.4, 0.2], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-10 right-0 w-[350px] h-[350px] bg-gradient-radial from-rose-500/25 via-red-500/10 to-transparent rounded-full blur-[80px] pointer-events-none z-0"></motion.div>
             <motion.div animate={{ opacity: [0.15, 0.35, 0.15], scale: [1.05, 1, 1.05] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-10 left-0 w-[300px] h-[300px] bg-gradient-radial from-red-600/20 via-rose-500/10 to-transparent rounded-full blur-[70px] pointer-events-none z-0"></motion.div>
 
-            {/* Subtle Negative-State Dot Matrix */}
             <div className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
                 style={{
                     backgroundImage: `radial-gradient(#EF4444 1.5px, transparent 1.5px)`,
@@ -64,7 +62,6 @@ export default function Mobile() {
                 }}
             />
 
-            {/* Subtle Background Floating Emojis */}
             {bgFloatingElements.map((item, idx) => (
                 <motion.div
                     key={idx}

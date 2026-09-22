@@ -14,10 +14,10 @@ const TAB_ICONS: Record<string, React.ReactNode> = {
 };
 
 const TAB_COLORS: Record<string, string> = {
-    tab1: '#10B981', // Emerald
-    tab2: '#3B82F6', // Blue
-    tab3: '#F59E0B', // Amber
-    tab4: '#EC4899'  // Pink
+    tab1: '#10B981', 
+    tab2: '#3B82F6', 
+    tab3: '#F59E0B', 
+    tab4: '#EC4899'  
 };
 
 export default function Desktop() {
