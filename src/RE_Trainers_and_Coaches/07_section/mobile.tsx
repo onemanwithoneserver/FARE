@@ -136,7 +136,7 @@ export default function Mobile() {
                                             transition={{ duration: 0.3, delay: idx * 0.1 }}
                                             className="bg-[#F8FAFD] p-4 rounded border border-[#0B1D3A]/[0.03] flex items-start gap-3.5"
                                         >
-                                            <div className="mt-0.5 shrink-0 p-1 rounded shadow-sm" style={{ backgroundColor: `${activeTabData.color}15`, color: activeTabData.color }}>
+                                            <div className="mt-0.5 shrink-0 p-1 rounded shadow-sm text-white" style={{ backgroundColor: activeTabData.color }}>
                                                 <CheckCircle2 size={16} strokeWidth={3} />
                                             </div>
                                             <span className="text-[14px] font-bold text-[#0B1D3A] leading-snug">

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { Globe, Users, Shuffle, Wrench, PlayCircle, Radio, Flame, Target, UserCheck, UsersRound } from 'lucide-react';
+import { Globe, Users, Shuffle, Wrench, PlayCircle, Radio, Flame, Target, UserCheck, UsersRound, Video, Layers, Zap, Award, Smartphone } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 
@@ -28,19 +28,26 @@ export default function Mobile() {
     };
 
     const modeIcons = {
-        Globe: <Globe size={20} className="text-white relative z-10" />,
-        Users: <Users size={20} className="text-white relative z-10" />,
-        Shuffle: <Shuffle size={20} className="text-white relative z-10" />
+        Globe: <Globe size={24} className="text-white relative z-10" />,
+        Users: <Users size={24} className="text-white relative z-10" />,
+        Shuffle: <Shuffle size={24} className="text-white relative z-10" />,
+        Video: <Video size={24} className="text-white relative z-10" />,
+        PlayCircle: <PlayCircle size={24} className="text-white relative z-10" />,
+        Layers: <Layers size={24} className="text-white relative z-10" />
     };
 
     const typeIcons = {
-        Wrench: <Wrench size={18} className="text-white relative z-10" />,
-        PlayCircle: <PlayCircle size={18} className="text-white relative z-10" />,
-        Radio: <Radio size={18} className="text-white relative z-10" />,
-        Flame: <Flame size={18} className="text-white relative z-10" />,
-        Target: <Target size={18} className="text-white relative z-10" />,
-        UserCheck: <UserCheck size={18} className="text-white relative z-10" />,
-        UsersRound: <UsersRound size={18} className="text-white relative z-10" />
+        Wrench: <Wrench size={20} className="relative z-10" />,
+        PlayCircle: <PlayCircle size={20} className="relative z-10" />,
+        Radio: <Radio size={20} className="relative z-10" />,
+        Flame: <Flame size={20} className="relative z-10" />,
+        Target: <Target size={20} className="relative z-10" />,
+        UserCheck: <UserCheck size={20} className="relative z-10" />,
+        UsersRound: <UsersRound size={20} className="relative z-10" />,
+        Zap: <Zap size={20} className="relative z-10" />,
+        Award: <Award size={20} className="relative z-10" />,
+        Users: <Users size={20} className="relative z-10" />,
+        Smartphone: <Smartphone size={20} className="relative z-10" />
     };
 
     return (
@@ -77,12 +84,12 @@ export default function Mobile() {
                     </motion.p>
                 </motion.div>
 
-                <div className="mb-10">
+                <div className="mb-12">
                     <motion.div 
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
-                        className="flex items-center justify-center gap-3 mb-10"
+                        className="flex items-center justify-center gap-3 mb-8"
                     >
                         <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-[#C99A2E]/50"></div>
                         <h3 className="text-[20px] font-bold text-white">
@@ -96,37 +103,41 @@ export default function Mobile() {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: false, margin: "-50px" }}
-                        className="flex flex-col gap-5"
+                        className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-5 px-5"
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
                         {data.modes.map((mode, index) => (
                             <motion.div
                                 key={index}
                                 variants={item}
-                                className="bg-[#0A1630]/60 backdrop-blur-xl border border-white/10 rounded p-6 relative overflow-hidden text-center shadow-[0_10px_20px_-5px_rgba(0,0,0,0.5)]"
+                                className="shrink-0 w-[85%] snap-center bg-gradient-to-b from-[#0A1630]/80 to-[#0A1630]/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 relative overflow-hidden shadow-[0_10px_20px_-5px_rgba(0,0,0,0.5)]"
                             >
-                                <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-24 h-24 opacity-10 blur-[20px] rounded-bl-full" style={{ background: mode.color }}></motion.div>
+                                <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 opacity-10 blur-[25px] rounded-bl-full pointer-events-none" style={{ background: mode.color }}></motion.div>
 
-                                <div className="w-14 h-14 rounded mx-auto flex items-center justify-center shadow-md mb-5 relative z-10" style={{ backgroundColor: mode.color }}>
-                                    <div className="absolute inset-0 bg-white/10 rounded"></div>
-                                    {modeIcons[mode.icon as keyof typeof modeIcons]}
+                                <div className="flex flex-col gap-4">
+                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg relative z-10 border border-white/20" style={{ backgroundColor: mode.color }}>
+                                        {modeIcons[mode.icon as keyof typeof modeIcons]}
+                                    </div>
+                                    <div>
+                                        <h4 className="text-[20px] font-bold mb-2 text-white relative z-10">
+                                            {mode.title}
+                                        </h4>
+                                        <p className="text-[14.5px] font-medium text-white/70 leading-relaxed relative z-10">
+                                            {mode.desc}
+                                        </p>
+                                    </div>
                                 </div>
-                                <h4 className="text-[18px] font-bold mb-3 text-white relative z-10">
-                                    {mode.title}
-                                </h4>
-                                <p className="text-[14px] font-medium text-white/70 leading-relaxed relative z-10">
-                                    {mode.desc}
-                                </p>
                             </motion.div>
                         ))}
                     </motion.div>
                 </div>
 
-                <div className="relative mb-10">
+                <div className="relative mb-12">
                     <motion.div 
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
-                        className="flex items-center justify-center gap-3 mb-10"
+                        className="flex items-center justify-center gap-3 mb-8"
                     >
                         <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-[#3B82F6]/50"></div>
                         <h3 className="text-[20px] font-bold text-white">
@@ -140,25 +151,28 @@ export default function Mobile() {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: false, margin: "-50px" }}
-                        className="flex flex-col gap-4"
+                        className="grid grid-cols-2 gap-3"
                     >
                         {data.types.map((type, index) => (
                             <motion.div
                                 key={index}
                                 variants={item}
-                                className="bg-[#0A1630]/40 backdrop-blur-md border border-white/5 rounded p-5 shadow-sm"
+                                className={`bg-gradient-to-br from-[#0A1630]/60 to-[#0A1630]/20 backdrop-blur-md border border-white/5 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden ${index === data.types.length - 1 && data.types.length % 2 !== 0 ? 'col-span-2' : ''}`}
                             >
-                                <div className="flex items-center gap-4 mb-3 relative z-10">
-                                    <div className="w-12 h-12 rounded flex items-center justify-center shrink-0 shadow-md" style={{ backgroundColor: type.color }}>
+                                <div className="absolute top-0 right-0 w-20 h-20 opacity-[0.15] blur-[20px] rounded-full pointer-events-none" style={{ background: type.color }}></div>
+                                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mb-4 relative z-10 border border-white/10 shadow-inner" style={{ backgroundColor: type.color }}>
+                                    <div className="text-white">
                                         {typeIcons[type.icon as keyof typeof typeIcons]}
                                     </div>
-                                    <h4 className="text-[15.5px] font-bold leading-tight text-white">
+                                </div>
+                                <div className="relative z-10 flex-1 flex flex-col">
+                                    <h4 className="text-[15px] font-bold leading-tight text-white mb-2">
                                         {type.title}
                                     </h4>
+                                    <p className="text-[13px] font-medium text-white/50 leading-relaxed mt-auto">
+                                        {type.desc}
+                                    </p>
                                 </div>
-                                <p className="text-[14px] font-medium text-white/60 leading-relaxed">
-                                    {type.desc}
-                                </p>
                             </motion.div>
                         ))}
                     </motion.div>

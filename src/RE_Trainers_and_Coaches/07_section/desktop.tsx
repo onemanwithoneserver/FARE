@@ -154,7 +154,7 @@ export default function Desktop() {
                                             transition={{ duration: 0.4, delay: idx * 0.1, ease: "easeOut" }}
                                             className="group flex items-start gap-4 p-4 rounded hover:bg-[#F8FAFD] transition-colors duration-300 border border-transparent hover:border-[#0B1D3A]/5 cursor-default"
                                         >
-                                            <div className="mt-1 shrink-0 p-1.5 rounded transition-colors duration-300 shadow-sm" style={{ backgroundColor: `${activeTabData.color}15`, color: activeTabData.color }}>
+                                            <div className="mt-1 shrink-0 p-1.5 rounded transition-colors duration-300 shadow-sm text-white" style={{ backgroundColor: activeTabData.color }}>
                                                 <CheckCircle2 size={18} strokeWidth={3} />
                                             </div>
                                             <span className="text-[16px] font-bold text-[#0B1D3A] leading-snug group-hover:text-[#C99A2E] transition-colors">
