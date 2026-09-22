@@ -144,18 +144,22 @@ export default function Desktop() {
                         className="lg:col-span-6 relative w-full flex justify-end"
                     >
                         
-                        <div className="relative w-full max-w-[650px] aspect-[4/3] lg:aspect-square rounded overflow-hidden shadow-[0_30px_80px_-20px_rgba(11,29,58,0.4)] group z-20">
+                        <div className="relative w-full max-w-[650px] aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_30px_80px_-20px_rgba(11,29,58,0.4)] group z-20">
                             
-                            <div className="absolute inset-0 border-[2px] border-white/20 rounded z-20 pointer-events-none mix-blend-overlay"></div>
+                            <div className="absolute inset-0 border-[2px] border-white/20 rounded-2xl z-20 pointer-events-none mix-blend-overlay"></div>
                             
                             
-                            <motion.img 
-                                whileHover={{ scale: 1.05 }} 
-                                transition={{ duration: 1.5, ease: "easeOut" }}
-                                src={reTrainersHero} 
-                                alt="Real Estate Trainers Hero" 
-                                className="w-full h-full object-cover relative z-10" 
-                            />
+                            <motion.div
+                                className="w-full h-full absolute inset-0 z-10"
+                                animate={{ scale: [1, 1.04, 1] }}
+                                transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+                            >
+                                <img 
+                                    src={reTrainersHero} 
+                                    alt="Real Estate Trainers Hero" 
+                                    className="w-full h-full object-cover object-[center_top]" 
+                                />
+                            </motion.div>
 
                             
                             <div className="absolute bottom-10 left-[-20px] lg:left-10 bg-white/80 backdrop-blur-xl border border-white/60 p-5 rounded shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] z-30 flex items-center gap-4 group-hover:translate-y-[-5px] transition-transform duration-500">
@@ -170,8 +174,16 @@ export default function Desktop() {
                         </div>
 
                         
-                        <div className="absolute top-[10%] right-[-10%] w-[80%] h-[80%] rounded border-2 border-[#C99A2E]/20 rotate-6 z-10 pointer-events-none"></div>
-                        <div className="absolute top-[5%] right-[-5%] w-[80%] h-[80%] rounded border border-[#3B82F6]/20 -rotate-3 z-10 pointer-events-none"></div>
+                        <motion.div 
+                            animate={{ y: [0, -6, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                            className="absolute top-[10%] right-[-10%] w-[80%] h-[80%] rounded-2xl border-2 border-[#C99A2E]/20 rotate-6 z-10 pointer-events-none"
+                        ></motion.div>
+                        <motion.div 
+                            animate={{ y: [0, 5, 0] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                            className="absolute top-[5%] right-[-5%] w-[80%] h-[80%] rounded-2xl border border-[#3B82F6]/20 -rotate-3 z-10 pointer-events-none"
+                        ></motion.div>
                     </motion.div>
 
                 </div>

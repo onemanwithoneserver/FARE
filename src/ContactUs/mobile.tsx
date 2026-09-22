@@ -195,13 +195,19 @@ export default function ContactUsMobile() {
 
             <motion.div
               variants={item}
-              className="w-full relative rounded-2xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(11,29,58,0.2)] border border-white/60 aspect-[16/10]"
+              className="w-full relative rounded-2xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(11,29,58,0.2)] border border-white/60 aspect-[4/3]"
             >
-              <img
-                src={contactHero}
-                alt="FARE Executive Advisory"
-                className="w-full h-full object-cover"
-              />
+              <motion.div
+                className="w-full h-full absolute inset-0 z-0"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <img
+                  src={contactHero}
+                  alt="FARE Executive Advisory"
+                  className="w-full h-full object-cover object-[center_30%]"
+                />
+              </motion.div>
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/90 via-[#0B1D3A]/25 to-transparent z-10" />
 

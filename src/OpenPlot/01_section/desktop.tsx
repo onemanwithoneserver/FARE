@@ -144,17 +144,27 @@ export default function Desktop() {
                         className="lg:col-span-5 relative w-full flex items-center justify-center"
                     >
                         
-                        <div className="absolute -top-4 -right-4 w-[calc(100%+8px)] h-[calc(100%+8px)] max-w-[520px] aspect-square rounded border-2 border-[#C99A2E]/15 pointer-events-none"></div>
-                        <div className="absolute -bottom-3 -left-3 w-20 h-20 rounded bg-gradient-to-br from-[#C99A2E]/20 to-[#C99A2E]/5 blur-sm pointer-events-none"></div>
+                        <motion.div
+                            animate={{ y: [0, -6, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                            className="absolute -top-4 -right-4 w-[calc(100%+8px)] h-[calc(100%+8px)] max-w-[520px] aspect-[4/3] rounded-2xl border-2 border-[#C99A2E]/15 pointer-events-none"
+                        ></motion.div>
+                        <div className="absolute -bottom-3 -left-3 w-20 h-20 rounded-xl bg-gradient-to-br from-[#C99A2E]/20 to-[#C99A2E]/5 blur-sm pointer-events-none"></div>
 
-                        <div className="relative w-full aspect-square max-w-[500px] rounded overflow-hidden shadow-[0_30px_60px_-15px_rgba(11,29,58,0.3),0_0_0_1px_rgba(255,255,255,0.5)_inset] group">
-                            <img
-                                src={openplotHero}
-                                alt="Open Plot Hero"
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                            />
+                        <div className="relative w-full aspect-[4/3] max-w-[500px] rounded-2xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(11,29,58,0.3),0_0_0_1px_rgba(255,255,255,0.5)_inset] group">
+                            <motion.div
+                                className="w-full h-full absolute inset-0 z-0"
+                                animate={{ scale: [1, 1.05, 1] }}
+                                transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+                            >
+                                <img
+                                    src={openplotHero}
+                                    alt="Open Plot Hero"
+                                    className="w-full h-full object-cover object-[center_35%]"
+                                />
+                            </motion.div>
                             
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/20 via-transparent to-transparent pointer-events-none"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/20 via-transparent to-transparent z-10 pointer-events-none"></div>
 
                             
                             <motion.div
@@ -162,7 +172,7 @@ export default function Desktop() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: false }}
                                 transition={{ delay: 0.8, duration: 0.6 }}
-                                className="absolute bottom-5 left-5 right-5 bg-white/90 backdrop-blur-xl rounded p-4 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.2)] border border-white/60"
+                                className="absolute bottom-5 left-5 right-5 z-20 bg-white/90 backdrop-blur-xl rounded-xl p-4 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.2)] border border-white/60"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-md">
@@ -182,7 +192,7 @@ export default function Desktop() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: false }}
                             transition={{ delay: 0.6, duration: 0.6 }}
-                            className="absolute -right-6 top-[20%] bg-white/90 backdrop-blur-xl rounded p-3.5 shadow-[0_12px_40px_-10px_rgba(11,29,58,0.18)] border border-white/60 hidden xl:block"
+                            className="absolute -right-6 top-[20%] z-20 bg-white/90 backdrop-blur-xl rounded-xl p-3.5 shadow-[0_12px_40px_-10px_rgba(11,29,58,0.18)] border border-white/60 hidden xl:block"
                         >
                             <div className="flex items-center gap-2.5">
                                 <div className="w-8 h-8 rounded flex items-center justify-center text-[14px] font-black text-white" style={{ background: `linear-gradient(135deg, ${GOLD}, ${GOLD_LIGHT})` }}>

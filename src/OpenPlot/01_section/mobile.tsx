@@ -125,8 +125,14 @@ export default function Mobile() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="w-full mt-10 relative z-20 flex items-center justify-center px-4"
                 >
-                    <div className="relative w-full aspect-square max-w-[400px] rounded overflow-hidden shadow-[0_25px_50px_-15px_rgba(11,29,58,0.3),0_0_0_1px_rgba(255,255,255,0.5)_inset] group">
-                        <img src={openplotHero} alt="Open Plot Hero" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                    <div className="relative w-full aspect-[4/3] max-w-[400px] rounded-2xl overflow-hidden shadow-[0_25px_50px_-15px_rgba(11,29,58,0.3),0_0_0_1px_rgba(255,255,255,0.5)_inset] group">
+                        <motion.div
+                            className="w-full h-full absolute inset-0 z-0"
+                            animate={{ scale: [1, 1.05, 1] }}
+                            transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+                        >
+                            <img src={openplotHero} alt="Open Plot Hero" className="w-full h-full object-cover object-[center_35%]" />
+                        </motion.div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/20 via-transparent to-transparent pointer-events-none"></div>
 
                         
