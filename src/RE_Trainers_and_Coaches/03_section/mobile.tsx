@@ -75,35 +75,36 @@ export default function Mobile() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: false, margin: "-50px" }}
-                    className="flex flex-col gap-5 relative"
+                    className="grid grid-cols-2 gap-3 relative"
                 >
                     {data.cards.map((card, index) => (
                         <motion.div
                             key={index}
                             variants={item}
-                            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-6 shadow-[0_2px_12px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden flex flex-col"
+                            className="bg-white border border-[#0B1D3A]/[0.06] rounded-lg p-3.5 shadow-[0_2px_10px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden flex flex-col justify-between"
                         >
-                            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 opacity-[0.05] blur-[30px] rounded-bl-full pointer-events-none" style={{ background: card.color }}></motion.div>
+                            <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-24 h-24 opacity-[0.06] blur-[24px] rounded-bl-full pointer-events-none" style={{ background: card.color }}></motion.div>
                             <div className="absolute left-0 top-0 bottom-0 w-1 opacity-100" style={{ background: card.color }}></div>
 
-                            <div className="flex items-center justify-between mb-5 relative z-10">
-                                <div className="w-12 h-12 rounded flex items-center justify-center shadow-md relative overflow-hidden" style={{ backgroundColor: card.color }}>
-                                    <div className="absolute inset-0 bg-white/20 translate-y-[100%] transition-transform duration-500"></div>
-                                    {icons[card.icon as keyof typeof icons]}
+                            <div>
+                                <div className="flex items-center justify-between mb-3 relative z-10">
+                                    <div className="w-8 h-8 rounded flex items-center justify-center shadow-xs relative overflow-hidden" style={{ backgroundColor: card.color }}>
+                                        {icons[card.icon as keyof typeof icons]}
+                                    </div>
+                                    <div className="px-2 py-0.5 rounded-full text-[8px] font-bold tracking-wider uppercase border flex items-center gap-1" style={{ color: card.color, backgroundColor: `${card.color}12`, borderColor: `${card.color}30` }}>
+                                        <span className="w-1 h-1 rounded-full" style={{ backgroundColor: card.color }}></span>
+                                        {card.tag}
+                                    </div>
                                 </div>
-                                <div className="px-3 py-1 rounded-full text-[9px] font-bold tracking-wider uppercase border flex items-center gap-1.5" style={{ color: card.color, backgroundColor: `${card.color}10`, borderColor: `${card.color}25` }}>
-                                    <span className="w-1 h-1 rounded-full" style={{ backgroundColor: card.color }}></span>
-                                    {card.tag}
-                                </div>
+
+                                <h3 className="text-[13.5px] font-bold mb-1.5 leading-snug relative z-10" style={{ color: NAVY }}>
+                                    {card.title}
+                                </h3>
+
+                                <p className="text-[11px] font-medium leading-[1.5] text-[#475569] relative z-10 line-clamp-4">
+                                    {card.desc}
+                                </p>
                             </div>
-
-                            <h3 className="text-[18px] font-bold mb-3 relative z-10" style={{ color: NAVY }}>
-                                {card.title}
-                            </h3>
-
-                            <p className="text-[14px] font-medium leading-[1.65] text-[#475569] relative z-10">
-                                {card.desc}
-                            </p>
                         </motion.div>
                     ))}
                 </motion.div>
