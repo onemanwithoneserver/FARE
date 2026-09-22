@@ -22,7 +22,8 @@ export const dataEn = {
         },
         { title: "For Trainers", href: "#for-trainers" },
         { title: "Trainer Directory", href: "#trainer-directory" },
-        { title: "About", href: "#about" }
+        { title: "About", href: "#about" },
+        { title: "Contact Us", href: "#contact" }
     ]
 };
 
@@ -48,7 +49,8 @@ export const dataTe = {
         },
         { title: "ట్రైనర్ల కోసం", href: "#for-trainers" },
         { title: "ట్రైనర్ డైరెక్టరీ", href: "#trainer-directory" },
-        { title: "మా గురించి", href: "#about" }
+        { title: "మా గురించి", href: "#about" },
+        { title: "సంప్రదించండి", href: "#contact" }
     ]
 };
 
