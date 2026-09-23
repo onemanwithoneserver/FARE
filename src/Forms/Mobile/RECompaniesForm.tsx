@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Building2, Users, Briefcase, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { Building2, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 export default function RECompaniesForm() {

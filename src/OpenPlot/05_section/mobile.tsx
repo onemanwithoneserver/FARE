@@ -3,7 +3,10 @@ import type { Variants } from 'motion/react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 import { ArrowRight, CheckCircle2, ClipboardList, Sparkles } from 'lucide-react';
-import React from 'react';
+import React, { useState } from 'react';
+
+import Modal from '../../Forms/Modal';
+import OpenPlotForm from '../../Forms/Mobile/OpenPlotForm';
 
 const NAVY = '#0B1D3A';
 const NAVY_DEEP = '#071A49';
@@ -12,6 +15,8 @@ const GOLD = '#C99A2E';
 export default function Mobile() {
     const { language } = useLanguage();
     const data = getData(language);
+    
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const container: Variants = {
         hidden: { opacity: 0 },
@@ -76,14 +81,19 @@ export default function Mobile() {
                     </motion.div>
 
                     <motion.div variants={item} className="flex flex-col gap-3 mb-6 w-full">
-                        <button className="group relative overflow-hidden w-full text-white px-6 py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_8px_20px_-8px_rgba(11,29,58,0.25)]"
+                        <button 
+                            onClick={() => setIsModalOpen(true)}
+                            className="group relative overflow-hidden w-full text-white px-6 py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_8px_20px_-8px_rgba(11,29,58,0.25)]"
                             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)` }}
                         >
                             <span className="relative z-10">{data.primaryButton}</span> 
                             <ArrowRight size={15} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.1] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                         </button>
-                        <button className="w-full bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-4 rounded text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform">
+                        <button 
+                            onClick={() => setIsModalOpen(true)}
+                            className="w-full bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-4 rounded text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform"
+                        >
                             {data.secondaryButton}
                         </button>
                     </motion.div>
@@ -140,6 +150,10 @@ export default function Mobile() {
                     </div>
                 </motion.div>
             </div>
+
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <OpenPlotForm />
+            </Modal>
         </section>
     );
 }

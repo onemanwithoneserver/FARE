@@ -1,16 +1,13 @@
-import { useState, useRef, useEffect } from 'react';
+
 import { useNavigate, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import {
     ShieldCheck,
     BarChart2,
     Target,
     Sparkles,
-    ArrowRight,
-    Building2,
-    MapPin,
-    ChevronDown
+    ArrowRight
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
@@ -23,19 +20,6 @@ export default function Desktop() {
     const currentMode = isMobileMode ? 'mobile' : 'desktop';
     const { language } = useLanguage();
     const data = getData(language);
-
-    const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setIsCompanyDropdownOpen(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
 
     const pathSegments = location.pathname.split('/').filter(Boolean);
     const currentRoute = pathSegments.find(segment =>
@@ -77,14 +61,9 @@ export default function Desktop() {
             navigate(`/${currentMode}/re-trainers-coaches`);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         } else if (idx === 2) {
-            setIsCompanyDropdownOpen(!isCompanyDropdownOpen);
+            navigate(`/${currentMode}/re-companies`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-    };
-
-    const handleCompanyOptionSelect = (path: string) => {
-        setIsCompanyDropdownOpen(false);
-        navigate(`/${currentMode}/${path}`);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const containerVariant: Variants = {
@@ -144,10 +123,9 @@ export default function Desktop() {
                             const isSelected = !isHomePage && activeBtnIndex === idx;
                             const isUnselectedOnOtherPage = !isHomePage && activeBtnIndex !== -1 && activeBtnIndex !== idx;
                             const persona = personaButtonStyles[idx];
-                            const isCompanyBtn = idx === 2;
 
                             return (
-                                <div key={idx} className="relative" ref={isCompanyBtn ? dropdownRef : undefined}>
+                                <div key={idx} className="relative">
                                     <motion.button
                                         disabled={isUnselectedOnOtherPage}
                                         onClick={() => !isUnselectedOnOtherPage && handleButtonClick(idx)}
@@ -171,71 +149,18 @@ export default function Desktop() {
                                         }}
                                     >
                                         <span>{btn}</span>
-                                        {isCompanyBtn ? (
-                                            <ChevronDown
-                                                size={16}
-                                                strokeWidth={2.5}
-                                                className={`transition-transform duration-300 ${
-                                                    isCompanyDropdownOpen
-                                                        ? 'rotate-180 text-[#34D399]'
-                                                        : isUnselectedOnOtherPage
-                                                        ? 'text-white/20'
-                                                        : 'text-white/70 group-hover:text-white'
-                                                }`}
-                                            />
-                                        ) : (
-                                            <ArrowRight
-                                                size={16}
-                                                strokeWidth={2.5}
-                                                className={
-                                                    isSelected
-                                                        ? 'w-4 opacity-100 translate-x-0 transition-all duration-300 text-white'
-                                                        : isUnselectedOnOtherPage
-                                                        ? 'w-0 opacity-0 -translate-x-1 transition-all duration-300 text-white/20'
-                                                        : 'w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]'
-                                                }
-                                            />
-                                        )}
+                                        <ArrowRight
+                                            size={16}
+                                            strokeWidth={2.5}
+                                            className={
+                                                isSelected
+                                                    ? 'w-4 opacity-100 translate-x-0 transition-all duration-300 text-white'
+                                                    : isUnselectedOnOtherPage
+                                                    ? 'w-0 opacity-0 -translate-x-1 transition-all duration-300 text-white/20'
+                                                    : 'w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]'
+                                            }
+                                        />
                                     </motion.button>
-
-                                    {isCompanyBtn && (
-                                        <AnimatePresence>
-                                            {isCompanyDropdownOpen && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
-                                                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                    exit={{ opacity: 0, y: 6, scale: 0.95 }}
-                                                    transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                                                    className="absolute top-[calc(100%+8px)] left-0 right-0 min-w-[260px] bg-[#071738]/98 backdrop-blur-xl border border-white/15 rounded-[4px] p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.6)] z-50 pointer-events-auto text-left"
-                                                >
-                                                    <div className="flex flex-col gap-1">
-                                                        {data.companyDropdown?.map((item, dIdx) => (
-                                                            <button
-                                                                key={dIdx}
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation();
-                                                                    handleCompanyOptionSelect(item.path);
-                                                                }}
-                                                                className="w-full p-2.5 rounded-[4px] border border-transparent hover:border-white/10 hover:bg-white/[0.08] transition-all duration-200 flex items-center justify-between gap-2.5 text-left text-white group/item cursor-pointer"
-                                                            >
-                                                                <div className="flex items-center gap-2.5 min-w-0">
-                                                                    <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/item:scale-105 ${
-                                                                        dIdx === 0 ? 'bg-[#10B981]/20 text-[#34D399] group-hover/item:bg-[#10B981] group-hover/item:text-white' : 'bg-[#C99A2E]/20 text-[#E2C068] group-hover/item:bg-[#C99A2E] group-hover/item:text-white'
-                                                                    }`}>
-                                                                        {dIdx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
-                                                                    </div>
-                                                                    <span className="text-[13px] font-bold text-white group-hover/item:text-[#E2C068] transition-colors leading-tight whitespace-nowrap">
-                                                                        {item.title}
-                                                                    </span>
-                                                                </div>
-                                                                <ArrowRight size={14} strokeWidth={2.5} className="text-[#10B981] group-hover/item:text-[#E2C068] group-hover/item:translate-x-0.5 transition-all shrink-0 ml-1" />
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
-                                    )}
                                 </div>
                             );
                         })}

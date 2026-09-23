@@ -24,6 +24,7 @@ import { getData } from './data';
 import contactHero from '../assets/contact_us_hero.jpg';
 
 const GOLD = '#C99A2E';
+const NAVY = '#0B1D3A';
 
 type ReasonId = 'platform' | 'growth' | 'business' | 'careers';
 

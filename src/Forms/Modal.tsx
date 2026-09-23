@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
 
@@ -9,6 +10,12 @@ interface ModalProps {
 }
 
 export default function Modal({ isOpen, onClose, children }: ModalProps) {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -20,10 +27,10 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
         };
     }, [isOpen]);
 
-    return (
+    const modalContent = (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-8 font-['Outfit']">
+                <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-8 font-['Outfit']">
                     {/* Backdrop */}
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -60,4 +67,8 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
             )}
         </AnimatePresence>
     );
+
+    if (!mounted) return null;
+
+    return createPortal(modalContent, document.body);
 }

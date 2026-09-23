@@ -1,6 +1,6 @@
-import { useState } from 'react';
+
 import { useNavigate, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import {
     ArrowRight,
@@ -10,9 +10,7 @@ import {
     GraduationCap,
     Building2,
     Target,
-    Sparkles,
-    MapPin,
-    ChevronDown
+    Sparkles
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
@@ -25,8 +23,6 @@ export default function Mobile() {
     const currentMode = isMobileMode ? 'mobile' : 'desktop';
     const { language } = useLanguage();
     const data = getData(language);
-
-    const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
 
     const pathSegments = location.pathname.split('/').filter(Boolean);
     const currentRoute = pathSegments.find(segment =>
@@ -50,14 +46,9 @@ export default function Mobile() {
             navigate(`/${currentMode}/re-trainers-coaches`);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         } else if (idx === 2) {
-            setIsCompanyDropdownOpen(prev => !prev);
+            navigate(`/${currentMode}/re-companies`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-    };
-
-    const handleCompanyOptionSelect = (path: string) => {
-        setIsCompanyDropdownOpen(false);
-        navigate(`/${currentMode}/${path}`);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const containerVariant: Variants = {
@@ -261,59 +252,13 @@ export default function Mobile() {
                                                     : '1px solid rgba(255, 255, 255, 0.1)'
                                             }}
                                         >
-                                            {idx === 2 ? (
-                                                <ChevronDown
-                                                    size={15}
-                                                    strokeWidth={2.8}
-                                                    className={`transition-transform duration-300 ${
-                                                        isCompanyDropdownOpen ? 'rotate-180 text-[#34D399]' : (isColored ? 'text-white' : 'text-white/40')
-                                                    }`}
-                                                />
-                                            ) : (
-                                                <ArrowRight
-                                                    size={15}
-                                                    strokeWidth={2.8}
-                                                    className={isColored ? 'text-white' : 'text-white/40'}
-                                                />
-                                            )}
+                                            <ArrowRight
+                                                size={15}
+                                                strokeWidth={2.8}
+                                                className={isColored ? 'text-white' : 'text-white/40'}
+                                            />
                                         </div>
                                     </motion.button>
-
-                                    {idx === 2 && (
-                                        <AnimatePresence>
-                                            {isCompanyDropdownOpen && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, height: 0 }}
-                                                    animate={{ opacity: 1, height: 'auto' }}
-                                                    exit={{ opacity: 0, height: 0 }}
-                                                    transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                                                    className="overflow-hidden w-full"
-                                                >
-                                                    <div className="pt-2 flex flex-col gap-1.5 w-full">
-                                                        {data.companyDropdown?.map((item, dIdx) => (
-                                                            <button
-                                                                key={dIdx}
-                                                                onClick={() => handleCompanyOptionSelect(item.path)}
-                                                                className="w-full p-3 rounded-[4px] border border-white/10 bg-[#071738]/95 backdrop-blur-md active:bg-white/[0.12] transition-all flex items-center justify-between gap-3 text-left cursor-pointer shadow-sm"
-                                                            >
-                                                                <div className="flex items-center gap-3 min-w-0">
-                                                                    <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 ${
-                                                                        dIdx === 0 ? 'bg-[#10B981]/20 text-[#34D399]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
-                                                                    }`}>
-                                                                        {dIdx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
-                                                                    </div>
-                                                                    <span className="text-[13px] font-bold text-white leading-tight">
-                                                                        {item.title}
-                                                                    </span>
-                                                                </div>
-                                                                <ArrowRight size={14} strokeWidth={2.5} className="text-[#10B981] shrink-0" />
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
-                                    )}
                                 </div>
                             );
                         })}
