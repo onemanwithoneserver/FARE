@@ -81,16 +81,15 @@ export default function Desktop() {
                             {language === 'te' ? (
                                 <span>
                                     రియల్ ఎస్టేట్ ట్రైనర్స్ & కోచెస్ కోసం{' '}
-                                    <span className="text-[#C99A2E] relative inline-block">
+                                    <span className="text-[#C99A2E] gold-underline">
                                         FARE
                                     </span>
                                 </span>
                             ) : (
                                 <span>
                                     FARE for <br />
-                                    <span className="text-[#C99A2E] relative inline-block mt-1">
+                                    <span className="text-[#C99A2E] gold-underline">
                                         Real Estate Trainers & Coaches
-                                        <div className="absolute w-full h-[2px] bg-[#C99A2E]/60 -bottom-1 left-0" />
                                     </span>
                                 </span>
                             )}

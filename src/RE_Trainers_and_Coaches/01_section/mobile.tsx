@@ -77,18 +77,15 @@ export default function Mobile() {
                         {language === 'te' ? (
                             <span>
                                 రియల్ ఎస్టేట్ ట్రైనర్స్ & కోచెస్ కోసం{' '}
-                                <span className="text-[#C99A2E] relative inline-block">
+                                <span className="text-[#C99A2E] gold-underline">
                                     FARE
                                 </span>
                             </span>
                         ) : (
                             <span>
                                 FARE for <br />
-                                <span className="text-[#C99A2E] relative inline-block mt-1">
+                                <span className="text-[#C99A2E] gold-underline">
                                     Real Estate Trainers & Coaches
-                                    <svg className="absolute w-full h-[5px] -bottom-1 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
-                                        <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/>
-                                    </svg>
                                 </span>
                             </span>
                         )}

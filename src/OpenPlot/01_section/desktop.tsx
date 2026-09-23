@@ -81,16 +81,15 @@ export default function Desktop() {
                             {language === 'te' ? (
                                 <span>
                                     ఓపెన్ ప్లాట్ కంపెనీల కోసం{' '}
-                                    <span className="text-[#C99A2E] relative inline-block">
+                                    <span className="text-[#C99A2E] gold-underline">
                                         FARE
                                     </span>
                                 </span>
                             ) : (
                                 <span>
                                     FARE for <br />
-                                    <span className="text-[#C99A2E] relative inline-block mt-1">
+                                    <span className="text-[#C99A2E] gold-underline">
                                         Open Plot Companies
-                                        <div className="absolute w-full h-[2px] bg-[#C99A2E]/60 -bottom-1 left-0" />
                                     </span>
                                 </span>
                             )}

@@ -167,18 +167,15 @@ export default function ContactUsMobile() {
               {language === 'te' ? (
                 <span>
                   సంప్రదింపులు & సలహాల కోసం{' '}
-                  <span className="text-[#C99A2E] relative inline-block">
+                  <span className="text-[#C99A2E] gold-underline">
                     FARE
                   </span>
                 </span>
               ) : (
                 <span>
                   FARE for <br />
-                  <span className="text-[#C99A2E] relative inline-block mt-1">
+                  <span className="text-[#C99A2E] gold-underline">
                     Contact & Advisory
-                    <svg className="absolute w-full h-[5px] -bottom-1 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
-                      <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/>
-                    </svg>
                   </span>
                 </span>
               )}
