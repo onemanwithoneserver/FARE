@@ -17,7 +17,6 @@ import {
   Check,
   User,
   MessageSquare,
-  CheckCircle,
   Send
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
