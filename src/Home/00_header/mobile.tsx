@@ -291,24 +291,27 @@ export default function Mobile() {
                                                                                 navigate(`/${currentMode}/${subRoute}`);
                                                                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                                                                             }}
-                                                                            className={`flex items-center gap-2.5 p-2.5 rounded-[4px] border transition-all cursor-pointer group ${
+                                                                            className={`flex items-center justify-between p-2.5 rounded-[4px] border transition-all cursor-pointer group ${
                                                                                 isSubActive
                                                                                     ? (isScrolled ? 'bg-white/15 border-[#C99A2E]' : 'bg-[#C99A2E]/15 border-[#C99A2E]')
                                                                                     : (isScrolled ? 'bg-[#040C1E] border-white/10 hover:bg-white/10' : 'bg-[#F8FAFD] border-[#0B1D3A]/10 hover:bg-[#F0F4FA]')
                                                                             }`}
                                                                         >
-                                                                            <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 shadow-sm ${
-                                                                                sIdx === 0
-                                                                                    ? 'bg-[#10B981]/20 text-[#10B981]'
-                                                                                    : 'bg-[#C99A2E]/20 text-[#E2C068]'
-                                                                            }`}>
-                                                                                {sIdx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
+                                                                            <div className="flex items-center gap-2.5 min-w-0">
+                                                                                <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 shadow-sm ${
+                                                                                    sIdx === 0
+                                                                                        ? 'bg-[#10B981]/20 text-[#34D399]'
+                                                                                        : 'bg-[#C99A2E]/20 text-[#E2C068]'
+                                                                                }`}>
+                                                                                    {sIdx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
+                                                                                </div>
+                                                                                <span className={`text-[13.5px] font-bold transition-colors truncate ${
+                                                                                    isSubActive ? 'text-[#C99A2E]' : (isScrolled ? 'text-white' : 'text-[#0B1D3A]')
+                                                                                }`}>
+                                                                                    {sub.title}
+                                                                                </span>
                                                                             </div>
-                                                                            <span className={`text-[13.5px] font-bold transition-colors truncate ${
-                                                                                isSubActive ? 'text-[#C99A2E]' : (isScrolled ? 'text-white' : 'text-[#0B1D3A]')
-                                                                            }`}>
-                                                                                {sub.title}
-                                                                            </span>
+                                                                            <ArrowRight size={14} strokeWidth={2.5} className="text-[#10B981] shrink-0 ml-1" />
                                                                         </a>
                                                                     );
                                                                 })}
