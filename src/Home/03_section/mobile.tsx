@@ -260,16 +260,19 @@ export default function Mobile() {
                                                                                         e.stopPropagation();
                                                                                         handleRedirect(item.path);
                                                                                     }}
-                                                                                    className="w-full p-2.5 rounded-[4px] border border-transparent active:border-white/10 active:bg-white/[0.12] transition-all flex items-center gap-2.5 text-left cursor-pointer"
+                                                                                    className="w-full p-2.5 rounded-[4px] border border-transparent active:border-white/10 active:bg-white/[0.12] transition-all flex items-center justify-between gap-2.5 text-left cursor-pointer"
                                                                                 >
-                                                                                    <div className={`w-7 h-7 rounded-[4px] flex items-center justify-center shrink-0 ${
-                                                                                        idx === 0 ? 'bg-[#10B981]/20 text-[#34D399]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
-                                                                                    }`}>
-                                                                                        {idx === 0 ? <Building2 size={15} strokeWidth={2.2} /> : <MapPin size={15} strokeWidth={2.2} />}
+                                                                                    <div className="flex items-center gap-2.5 min-w-0">
+                                                                                        <div className={`w-7 h-7 rounded-[4px] flex items-center justify-center shrink-0 ${
+                                                                                            idx === 0 ? 'bg-[#10B981]/20 text-[#34D399]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
+                                                                                        }`}>
+                                                                                            {idx === 0 ? <Building2 size={15} strokeWidth={2.2} /> : <MapPin size={15} strokeWidth={2.2} />}
+                                                                                        </div>
+                                                                                        <span className="text-[13px] font-bold text-white leading-tight">
+                                                                                            {item.title}
+                                                                                        </span>
                                                                                     </div>
-                                                                                    <span className="text-[13px] font-bold text-white leading-tight">
-                                                                                        {item.title}
-                                                                                    </span>
+                                                                                    <ArrowRight size={14} strokeWidth={2.5} className="text-[#10B981] shrink-0 ml-1" />
                                                                                 </button>
                                                                             ))}
                                                                         </div>

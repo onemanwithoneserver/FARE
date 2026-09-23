@@ -147,7 +147,7 @@ export default function Desktop() {
                                 variants={itemVariants}
                                 whileHover={{ y: -8, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
                                 className={`group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/20 rounded-xl p-8 xl:p-9 flex flex-col justify-between shadow-[0_12px_36px_-12px_rgba(11,29,58,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(11,29,58,0.16)] transition-all duration-400 relative h-full cursor-default ${
-                                    isCompany ? 'overflow-visible z-20' : 'overflow-hidden'
+                                    isCompany ? 'overflow-visible z-30' : 'overflow-hidden'
                                 }`}
                             >
                                 <div
@@ -244,20 +244,23 @@ export default function Desktop() {
                                                                         e.stopPropagation();
                                                                         handleRedirect(item.path);
                                                                     }}
-                                                                    className="w-full p-2.5 rounded-[4px] border border-transparent hover:border-white/10 hover:bg-white/[0.08] transition-all duration-200 flex items-center gap-2.5 text-left cursor-pointer group/item"
+                                                                    className="w-full p-2.5 rounded-[4px] border border-transparent hover:border-white/10 hover:bg-white/[0.08] transition-all duration-200 flex items-center justify-between gap-2.5 text-left cursor-pointer group/item"
                                                                 >
-                                                                    <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/item:scale-105 ${
-                                                                        idx === 0
-                                                                            ? 'bg-[#10B981]/20 text-[#34D399] group-hover/item:bg-[#10B981] group-hover/item:text-white'
-                                                                            : 'bg-[#C99A2E]/20 text-[#E2C068] group-hover/item:bg-[#C99A2E] group-hover/item:text-white'
-                                                                    }`}>
-                                                                        {idx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
+                                                                    <div className="flex items-center gap-2.5 min-w-0">
+                                                                        <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/item:scale-105 ${
+                                                                            idx === 0
+                                                                                ? 'bg-[#10B981]/20 text-[#34D399] group-hover/item:bg-[#10B981] group-hover/item:text-white'
+                                                                                : 'bg-[#C99A2E]/20 text-[#E2C068] group-hover/item:bg-[#C99A2E] group-hover/item:text-white'
+                                                                        }`}>
+                                                                            {idx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
+                                                                        </div>
+                                                                        <span className="text-[13px] font-bold text-white group-hover/item:text-[#E2C068] transition-colors leading-tight whitespace-nowrap">
+                                                                            {item.title}
+                                                                        </span>
                                                                     </div>
-                                                                    <span className="text-[13px] font-bold text-white group-hover/item:text-[#E2C068] transition-colors leading-tight whitespace-nowrap">
-                                                                        {item.title}
-                                                                    </span>
+                                                                    <ArrowRight size={14} strokeWidth={2.5} className="text-[#10B981] group-hover/item:text-[#E2C068] group-hover/item:translate-x-0.5 transition-all shrink-0 ml-1" />
                                                                 </button>
-                              ))}
+                                                            ))}
                                                         </div>
                                                     </motion.div>
                                                 )}
