@@ -47,7 +47,7 @@ export default function Desktop() {
                     </p>
                 </div>
 
-                <div className="flex flex-col gap-12 lg:gap-16">
+                <div className="flex flex-col gap-8 lg:gap-10">
                     {data.tabs.map((tab, index) => {
                         const activeContent = data.tabContent[tab.id as keyof typeof data.tabContent] as any;
                         const activeColor = TAB_COLORS[tab.id] || GOLD;
@@ -71,7 +71,7 @@ export default function Desktop() {
                                     style={{ background: activeColor }} 
                                 />
 
-                                <div className={`p-10 lg:p-14 flex flex-col lg:flex-row gap-12 relative z-10 ${isEven ? 'lg:flex-row-reverse' : ''}`}>
+                                <div className={`p-8 lg:p-10 flex flex-col lg:flex-row gap-8 relative z-10 ${isEven ? 'lg:flex-row-reverse' : ''}`}>
                                     
                                     <div className="flex-1 flex flex-col">
                                         <div className="flex items-center gap-4 mb-6">
@@ -83,7 +83,7 @@ export default function Desktop() {
                                                 <h3 className="text-[28px] lg:text-[32px] font-bold leading-tight text-[#0B1D3A]">{activeContent.title}</h3>
                                             </div>
                                         </div>
-                                        <p className="text-[16px] lg:text-[17px] text-[#475569] leading-relaxed mb-8 max-w-[800px] font-medium">{activeContent.desc}</p>
+                                        <p className="text-[16px] lg:text-[17px] text-[#475569] leading-relaxed mb-6 max-w-[800px] font-medium">{activeContent.desc}</p>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
                                             {activeContent.sections.map((section: { heading: string; items: string[] }, idx: number) => {
@@ -113,9 +113,9 @@ export default function Desktop() {
                                     </div>
 
                                     
-                                    <div className="w-full lg:w-[400px] shrink-0 flex flex-col gap-6">
+                                    <div className="w-full lg:w-[400px] shrink-0 flex flex-col gap-4">
                                         {(activeContent.journey || activeContent.evaluateBasedOn) && (
-                                            <div className="bg-[#0B1D3A]/[0.03] rounded-xl p-8 border border-[#0B1D3A]/[0.08] backdrop-blur-md flex-grow flex flex-col justify-center">
+                                            <div className="bg-[#0B1D3A]/[0.03] rounded-xl p-6 border border-[#0B1D3A]/[0.08] backdrop-blur-md flex-grow flex flex-col justify-center">
                                                 {activeContent.journey && (
                                                     <div>
                                                         <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.2em] mb-6">{data.journeyLabel}</h4>
@@ -150,7 +150,7 @@ export default function Desktop() {
                                             </div>
                                         )}
 
-                                        <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-xl p-8 shadow-[0_20px_40px_rgba(11,29,58,0.2)] mt-2 relative overflow-hidden flex flex-col justify-center min-h-[220px]">
+                                        <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-xl p-6 shadow-[0_20px_40px_rgba(11,29,58,0.2)] mt-2 relative overflow-hidden flex flex-col justify-center min-h-[200px]">
                                             <div className="absolute top-0 right-0 w-40 h-40 opacity-20 blur-[30px]" style={{ background: activeColor }}></div>
                                             <div className="absolute bottom-0 left-0 w-32 h-32 opacity-10 blur-[20px]" style={{ background: activeColor }}></div>
                                             

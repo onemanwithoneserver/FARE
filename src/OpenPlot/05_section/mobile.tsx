@@ -152,7 +152,7 @@ export default function Mobile() {
             </div>
 
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                <OpenPlotForm />
+                {isModalOpen && <OpenPlotForm />}
             </Modal>
         </section>
     );

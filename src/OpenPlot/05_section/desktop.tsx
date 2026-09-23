@@ -193,7 +193,7 @@ export default function Desktop() {
             </div>
 
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                <OpenPlotForm />
+                {isModalOpen && <OpenPlotForm />}
             </Modal>
         </section>
     );

@@ -1,15 +1,19 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 import reTrainersHero from '../../assets/re_trainers_hero.jpg';
+import Modal from '../../Forms/Modal';
+import RETrainersForm from '../../Forms/Desktop/RETrainersForm';
 
 const NAVY = '#0B1D3A';
 const GOLD = '#C99A2E';
 const GOLD_LIGHT = '#E2C068';
 
 export default function Desktop() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const { language } = useLanguage();
     const data = getData(language);
 
@@ -122,6 +126,7 @@ export default function Desktop() {
                         
                         <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-10">
                             <button
+                                onClick={() => setIsModalOpen(true)}
                                 className="group text-white text-[14px] font-semibold px-8 py-4 rounded hover:shadow-[0_20px_40px_-10px_rgba(11,29,58,0.35)] active:scale-[0.97] transition-all duration-300 flex items-center gap-3 shadow-[0_8px_24px_-6px_rgba(11,29,58,0.25)] relative overflow-hidden"
                                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)` }}
                             >
@@ -212,6 +217,10 @@ export default function Desktop() {
 
                 </div>
             </div>
+
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                {isModalOpen && <RETrainersForm />}
+            </Modal>
         </section>
     );
 }

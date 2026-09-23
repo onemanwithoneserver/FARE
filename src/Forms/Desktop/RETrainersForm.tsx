@@ -7,6 +7,7 @@ export default function RETrainersForm() {
     const { language } = useLanguage();
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [selectedExpertise, setSelectedExpertise] = useState<string[]>([]);
+    const [selectedExperience, setSelectedExperience] = useState<string | null>(null);
 
     const expertiseOptions = [
         'Sales Strategy', 'Lead Generation', 'Negotiation', 'Market Analysis', 
@@ -66,14 +67,23 @@ export default function RETrainersForm() {
                         <input required type="text" placeholder="Alex Johnson" className="w-full bg-white border border-[#3B82F6]/20 rounded-xl py-3 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10 transition-all shadow-sm" />
                     </div>
                     <div className="space-y-2">
-                        <label className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-wider">Years of Experience</label>
-                        <select required className="w-full bg-white border border-[#3B82F6]/20 rounded-xl py-3 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10 transition-all shadow-sm appearance-none">
-                            <option value="">Select Experience</option>
-                            <option value="1-3">1-3 Years</option>
-                            <option value="4-7">4-7 Years</option>
-                            <option value="8-12">8-12 Years</option>
-                            <option value="12+">12+ Years</option>
-                        </select>
+                        <label className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-wider flex items-center gap-1.5">Years of Experience</label>
+                        <div className="flex flex-wrap gap-2 pt-1">
+                            {['1-3 Years', '4-7 Years', '8-12 Years', '12+ Years'].map((exp) => (
+                                <button
+                                    key={exp}
+                                    type="button"
+                                    onClick={() => setSelectedExperience(exp)}
+                                    className={`px-4 py-2 rounded-full text-[13px] font-semibold transition-all border ${
+                                        selectedExperience === exp
+                                            ? 'bg-[#3B82F6] text-white border-[#3B82F6] shadow-[0_4px_10px_rgba(59,130,246,0.3)]'
+                                            : 'bg-white text-[#475569] border-[#3B82F6]/20 hover:border-[#3B82F6]/50 hover:bg-[#F8FAFD]'
+                                    }`}
+                                >
+                                    {exp}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
 

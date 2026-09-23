@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { TrendingUp, MessageCircle, Monitor, Shield, Heart, Megaphone, Database, Settings, Sparkles } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
+import Modal from '../../Forms/Modal';
+import RETrainersForm from '../../Forms/Desktop/RETrainersForm';
 
 const NAVY = '#0B1D3A';
 const GOLD = '#C99A2E';
 
 export default function Desktop() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const { language } = useLanguage();
     const data = getData(language);
 
@@ -142,16 +146,20 @@ export default function Desktop() {
                             <p className="text-[16px] lg:text-[17px] font-bold text-[#CBD5E1] mb-10 uppercase tracking-[0.2em]">
                                 {data.footerLine2}
                             </p>
-                            <div className="bg-white/[0.06] backdrop-blur-md border border-white/10 py-5 px-10 rounded shadow-[0_4px_20px_rgba(0,0,0,0.2)] group-hover:border-[#C99A2E]/40 transition-colors duration-500 max-w-[850px]">
-                                <p className="text-[20px] font-semibold text-white/95 leading-relaxed">
+                            <button onClick={() => setIsModalOpen(true)} className="bg-white/[0.06] backdrop-blur-md border border-white/10 py-5 px-10 rounded shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-white/[0.1] hover:border-[#C99A2E]/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 max-w-[850px] cursor-pointer group">
+                                <p className="text-[20px] font-semibold text-white/95 leading-relaxed group-hover:text-white transition-colors">
                                     {data.footerCta}
                                 </p>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </motion.div>
 
             </div>
+
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                {isModalOpen && <RETrainersForm />}
+            </Modal>
         </section>
     );
 }
