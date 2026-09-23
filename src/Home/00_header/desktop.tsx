@@ -163,24 +163,35 @@ export default function Desktop() {
                                                     navigate(`/${currentMode}/${subRoute}`);
                                                     window.scrollTo({ top: 0, behavior: 'smooth' });
                                                 }}
-                                                className={`w-full p-2.5 rounded-[4px] border transition-all duration-200 flex items-center gap-2.5 text-left cursor-pointer group/sub ${
+                                                className={`w-full p-2.5 rounded-[4px] border transition-all duration-200 flex items-center justify-between gap-2.5 text-left cursor-pointer group/sub ${
                                                     isSubActive
                                                         ? 'bg-white/15 border-white/20'
                                                         : 'border-transparent hover:border-white/10 hover:bg-white/[0.08]'
                                                 }`}
                                             >
-                                                <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/sub:scale-105 ${
-                                                    sIdx === 0
-                                                        ? 'bg-[#10B981]/20 text-[#34D399] group-hover/sub:bg-[#10B981] group-hover/sub:text-white'
-                                                        : 'bg-[#C99A2E]/20 text-[#E2C068] group-hover/sub:bg-[#C99A2E] group-hover/sub:text-white'
-                                                }`}>
-                                                    {sIdx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
+                                                <div className="flex items-center gap-2.5 min-w-0">
+                                                    <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/sub:scale-105 ${
+                                                        sIdx === 0
+                                                            ? 'bg-[#10B981]/20 text-[#34D399] group-hover/sub:bg-[#10B981] group-hover/sub:text-white'
+                                                            : 'bg-[#C99A2E]/20 text-[#E2C068] group-hover/sub:bg-[#C99A2E] group-hover/sub:text-white'
+                                                    }`}>
+                                                        {sIdx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
+                                                    </div>
+                                                    <span className={`text-[13px] font-bold transition-colors leading-tight whitespace-nowrap ${
+                                                        isSubActive ? 'text-[#E2C068]' : 'text-white group-hover/sub:text-[#E2C068]'
+                                                    }`}>
+                                                        {sub.title}
+                                                    </span>
                                                 </div>
-                                                <span className={`text-[13px] font-bold transition-colors truncate ${
-                                                    isSubActive ? 'text-[#E2C068]' : 'text-white group-hover/sub:text-[#E2C068]'
-                                                }`}>
-                                                    {sub.title}
-                                                </span>
+                                                <ArrowRight
+                                                    size={14}
+                                                    strokeWidth={2.5}
+                                                    className={`shrink-0 transition-all duration-200 ml-1 ${
+                                                        isSubActive
+                                                            ? 'text-[#E2C068] translate-x-0.5'
+                                                            : 'text-[#10B981] group-hover/sub:text-[#E2C068] group-hover/sub:translate-x-0.5'
+                                                    }`}
+                                                />
                                             </a>
                                         );
                                     })}
