@@ -201,14 +201,8 @@ export default function Desktop() {
                                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                                     exit={{ opacity: 0, y: 6, scale: 0.95 }}
                                                     transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                                                    className="absolute top-[calc(100%+8px)] left-0 right-0 min-w-[240px] bg-[#071738]/98 backdrop-blur-xl border border-white/15 rounded-[4px] p-2 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)] z-50 pointer-events-auto text-left"
+                                                    className="absolute top-[calc(100%+8px)] left-0 right-0 min-w-[260px] bg-[#071738]/98 backdrop-blur-xl border border-white/15 rounded-[4px] p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.6)] z-50 pointer-events-auto text-left"
                                                 >
-                                                    <div className="px-2.5 py-1 mb-1 border-b border-white/10 flex items-center gap-1.5">
-                                                        <div className="w-1.5 h-1.5 rounded-[4px] bg-[#10B981] animate-pulse" />
-                                                        <span className="text-[10px] font-bold uppercase tracking-wider text-white/60">
-                                                            {language === 'te' ? 'విభాగాన్ని ఎంచుకోండి' : 'Select Division'}
-                                                        </span>
-                                                    </div>
                                                     <div className="flex flex-col gap-1">
                                                         {data.companyDropdown?.map((item, dIdx) => (
                                                             <button
@@ -217,19 +211,19 @@ export default function Desktop() {
                                                                     e.stopPropagation();
                                                                     handleCompanyOptionSelect(item.path);
                                                                 }}
-                                                                className="w-full flex items-center justify-between px-3 py-2.5 rounded-[4px] text-left text-white hover:bg-white/10 hover:text-[#34D399] transition-all group/item cursor-pointer"
+                                                                className="w-full p-2.5 rounded-[4px] border border-transparent hover:border-white/10 hover:bg-white/[0.08] transition-all duration-200 flex items-center justify-between gap-2.5 text-left text-white group/item cursor-pointer"
                                                             >
                                                                 <div className="flex items-center gap-2.5 min-w-0">
-                                                                    <div className={`w-7 h-7 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/item:scale-105 ${
-                                                                        dIdx === 0 ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
+                                                                    <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/item:scale-105 ${
+                                                                        dIdx === 0 ? 'bg-[#10B981]/20 text-[#34D399] group-hover/item:bg-[#10B981] group-hover/item:text-white' : 'bg-[#C99A2E]/20 text-[#E2C068] group-hover/item:bg-[#C99A2E] group-hover/item:text-white'
                                                                     }`}>
-                                                                        {dIdx === 0 ? <Building2 size={15} strokeWidth={2.2} /> : <MapPin size={15} strokeWidth={2.2} />}
+                                                                        {dIdx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
                                                                     </div>
-                                                                    <span className="text-[13px] font-bold truncate leading-tight">
+                                                                    <span className="text-[13px] font-bold text-white group-hover/item:text-[#E2C068] transition-colors leading-tight whitespace-nowrap">
                                                                         {item.title}
                                                                     </span>
                                                                 </div>
-                                                                <ArrowRight size={14} strokeWidth={2.5} className="opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-0.5 transition-all shrink-0 ml-1 text-[#10B981]" />
+                                                                <ArrowRight size={14} strokeWidth={2.5} className="text-[#10B981] group-hover/item:text-[#E2C068] group-hover/item:translate-x-0.5 transition-all shrink-0 ml-1" />
                                                             </button>
                                                         ))}
                                                     </div>

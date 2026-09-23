@@ -287,11 +287,11 @@ export default function Mobile() {
                                                             >
                                                                 <div className="flex items-center gap-3 min-w-0">
                                                                     <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 ${
-                                                                        dIdx === 0 ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
+                                                                        dIdx === 0 ? 'bg-[#10B981]/20 text-[#34D399]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
                                                                     }`}>
                                                                         {dIdx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
                                                                     </div>
-                                                                    <span className="text-[13px] font-bold text-white leading-tight truncate">
+                                                                    <span className="text-[13px] font-bold text-white leading-tight">
                                                                         {item.title}
                                                                     </span>
                                                                 </div>

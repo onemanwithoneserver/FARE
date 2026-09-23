@@ -209,7 +209,7 @@ export default function Desktop() {
                                             <button
                                                 onClick={() => setIsCompanyDropdownOpen(!isCompanyDropdownOpen)}
                                                 aria-label={persona.cta}
-                                                className="h-11 px-5 rounded-full flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_8px_24px_-4px_rgba(11,29,58,0.35)] hover:scale-105 active:scale-95 group/btn cursor-pointer"
+                                                className="h-11 px-5 rounded-[4px] flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_8px_24px_-4px_rgba(11,29,58,0.35)] hover:scale-105 active:scale-95 group/btn cursor-pointer"
                                                 style={{
                                                     background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`
                                                 }}
@@ -230,18 +230,12 @@ export default function Desktop() {
                                             <AnimatePresence>
                                                 {isCompanyDropdownOpen && (
                                                     <motion.div
-                                                        initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                                                        initial={{ opacity: 0, y: -6, scale: 0.95 }}
                                                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                        exit={{ opacity: 0, y: 6, scale: 0.95 }}
+                                                        exit={{ opacity: 0, y: -4, scale: 0.95 }}
                                                         transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                                                        className="absolute bottom-[calc(100%+8px)] right-0 w-[240px] bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-xl p-2 shadow-[0_20px_50px_-10px_rgba(11,29,58,0.4),0_0_0_1px_rgba(255,255,255,0.06)] z-50 pointer-events-auto"
+                                                        className="absolute top-[calc(100%+8px)] right-0 w-[260px] bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-[4px] p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-50 pointer-events-auto"
                                                     >
-                                                        <div className="px-2.5 py-1 mb-1 border-b border-white/10 flex items-center gap-1.5">
-                                                            <div className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-                                                            <span className="text-[10px] font-bold uppercase tracking-wider text-white/60">
-                                                                {language === 'te' ? 'విభాగాన్ని ఎంచుకోండి' : 'Select Segment'}
-                                                            </span>
-                                                        </div>
                                                         <div className="flex flex-col gap-1">
                                                             {data.companyDropdown?.map((item, idx) => (
                                                                 <button
@@ -250,21 +244,20 @@ export default function Desktop() {
                                                                         e.stopPropagation();
                                                                         handleRedirect(item.path);
                                                                     }}
-                                                                    className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left text-white hover:bg-white/10 hover:text-[#34D399] transition-all group/item cursor-pointer"
+                                                                    className="w-full p-2.5 rounded-[4px] border border-transparent hover:border-white/10 hover:bg-white/[0.08] transition-all duration-200 flex items-center gap-2.5 text-left cursor-pointer group/item"
                                                                 >
-                                                                    <div className="flex items-center gap-2.5 min-w-0">
-                                                                        <div className={`w-7 h-7 rounded-md flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/item:scale-105 ${
-                                                                            idx === 0 ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
-                                                                        }`}>
-                                                                            {idx === 0 ? <Building2 size={15} strokeWidth={2.2} /> : <MapPin size={15} strokeWidth={2.2} />}
-                                                                        </div>
-                                                                        <span className="text-[13px] font-bold truncate leading-tight">
-                                                                            {item.title}
-                                                                        </span>
+                                                                    <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/item:scale-105 ${
+                                                                        idx === 0
+                                                                            ? 'bg-[#10B981]/20 text-[#34D399] group-hover/item:bg-[#10B981] group-hover/item:text-white'
+                                                                            : 'bg-[#C99A2E]/20 text-[#E2C068] group-hover/item:bg-[#C99A2E] group-hover/item:text-white'
+                                                                    }`}>
+                                                                        {idx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
                                                                     </div>
-                                                                    <ArrowRight size={14} strokeWidth={2.5} className="opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-0.5 transition-all shrink-0 ml-1 text-[#10B981]" />
+                                                                    <span className="text-[13px] font-bold text-white group-hover/item:text-[#E2C068] transition-colors leading-tight whitespace-nowrap">
+                                                                        {item.title}
+                                                                    </span>
                                                                 </button>
-                                                            ))}
+                              ))}
                                                         </div>
                                                     </motion.div>
                                                 )}
@@ -274,7 +267,7 @@ export default function Desktop() {
                                         <button
                                             onClick={() => handleRedirect(persona.path)}
                                             aria-label={persona.cta}
-                                            className="h-11 px-5 rounded-full flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_8px_24px_-4px_rgba(11,29,58,0.35)] hover:scale-105 active:scale-95 group/btn cursor-pointer"
+                                            className="h-11 px-5 rounded-[4px] flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_8px_24px_-4px_rgba(11,29,58,0.35)] hover:scale-105 active:scale-95 group/btn cursor-pointer"
                                             style={{
                                                 background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`
                                             }}

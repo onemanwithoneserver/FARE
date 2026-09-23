@@ -226,7 +226,7 @@ export default function Mobile() {
                                                                     setIsCompanyDropdownOpen(!isCompanyDropdownOpen);
                                                                 }}
                                                                 aria-label={persona.cta}
-                                                                className="h-10 px-4 rounded-full flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
+                                                                className="h-10 px-4 rounded-[4px] flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
                                                                 style={{
                                                                     background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`
                                                                 }}
@@ -250,14 +250,8 @@ export default function Mobile() {
                                                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                                                         exit={{ opacity: 0, y: 4, scale: 0.96 }}
                                                                         transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                                                                        className="w-full mt-2.5 bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-xl p-2 shadow-lg z-20"
+                                                                        className="w-full mt-2.5 bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-[4px] p-1.5 shadow-lg z-20"
                                                                     >
-                                                                        <div className="px-2.5 py-1 mb-1 border-b border-white/10 flex items-center gap-1.5">
-                                                                            <div className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-                                                                            <span className="text-[9.5px] font-bold uppercase tracking-wider text-white/60">
-                                                                                {language === 'te' ? 'విభాగాన్ని ఎంచుకోండి' : 'Select Segment'}
-                                                                            </span>
-                                                                        </div>
                                                                         <div className="flex flex-col gap-1">
                                                                             {data.companyDropdown?.map((item, idx) => (
                                                                                 <button
@@ -266,19 +260,16 @@ export default function Mobile() {
                                                                                         e.stopPropagation();
                                                                                         handleRedirect(item.path);
                                                                                     }}
-                                                                                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-white active:bg-white/15 active:text-[#34D399] transition-all cursor-pointer"
+                                                                                    className="w-full p-2.5 rounded-[4px] border border-transparent active:border-white/10 active:bg-white/[0.12] transition-all flex items-center gap-2.5 text-left cursor-pointer"
                                                                                 >
-                                                                                    <div className="flex items-center gap-2.5 min-w-0">
-                                                                                        <div className={`w-6 h-6 rounded flex items-center justify-center shrink-0 ${
-                                                                                            idx === 0 ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
-                                                                                        }`}>
-                                                                                            {idx === 0 ? <Building2 size={13} strokeWidth={2.2} /> : <MapPin size={13} strokeWidth={2.2} />}
-                                                                                        </div>
-                                                                                        <span className="text-[12.5px] font-bold truncate leading-tight">
-                                                                                            {item.title}
-                                                                                        </span>
+                                                                                    <div className={`w-7 h-7 rounded-[4px] flex items-center justify-center shrink-0 ${
+                                                                                        idx === 0 ? 'bg-[#10B981]/20 text-[#34D399]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
+                                                                                    }`}>
+                                                                                        {idx === 0 ? <Building2 size={15} strokeWidth={2.2} /> : <MapPin size={15} strokeWidth={2.2} />}
                                                                                     </div>
-                                                                                    <ArrowRight size={13} strokeWidth={2.5} className="text-[#10B981] shrink-0" />
+                                                                                    <span className="text-[13px] font-bold text-white leading-tight">
+                                                                                        {item.title}
+                                                                                    </span>
                                                                                 </button>
                                                                             ))}
                                                                         </div>
@@ -293,7 +284,7 @@ export default function Mobile() {
                                                                 handleRedirect(persona.path);
                                                             }}
                                                             aria-label={persona.cta}
-                                                            className="h-10 px-4 rounded-full flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
+                                                            className="h-10 px-4 rounded-[4px] flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
                                                             style={{
                                                                 background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`
                                                             }}
