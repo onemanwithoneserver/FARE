@@ -2,7 +2,7 @@ import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
     title: "03_section",
-    eyebrow: "FARE ACADEMY",
+    eyebrow: "Finishing Academy for Real Estate",
     headline: {
         line1: "WHAT DOES FARE HAVE",
         line2: "FOR YOU?",
@@ -52,6 +52,16 @@ export const dataEn = {
                 "Freshers",
                 "Career Switchers"
             ]
+        }
+    ],
+    companyDropdown: [
+        {
+            title: "Residential & Commercial",
+            path: "re-companies"
+        },
+        {
+            title: "Open Plots",
+            path: "open-plots"
         }
     ]
 };
@@ -108,6 +118,16 @@ export const dataTe = {
                 "ఫ్రెషర్లు",
                 "కెరీర్ మార్పు కోరుకునేవారు"
             ]
+        }
+    ],
+    companyDropdown: [
+        {
+            title: "రెసిడెన్షియల్ & కమర్షియల్",
+            path: "re-companies"
+        },
+        {
+            title: "ఓపెన్ ప్లాట్స్",
+            path: "open-plots"
         }
     ]
 };

@@ -10,12 +10,10 @@ export const dataEn = {
             subItems: [
                 {
                     title: "Residential & Commercial",
-                    desc: "Skill diagnostic labs for real estate developers & agency teams",
                     href: "re-companies"
                 },
                 {
                     title: "Open Plots",
-                    desc: "Specialized training for land & plot sales professionals",
                     href: "open-plots"
                 }
             ]
@@ -37,12 +35,10 @@ export const dataTe = {
             subItems: [
                 {
                     title: "రెసిడెన్షియల్ & కమర్షియల్",
-                    desc: "రియల్ ఎస్టేట్ డెవలపర్లు మరియు ఏజెన్సీ బృందాల కోసం స్కిల్ డయాగ్నోస్టిక్ ల్యాబ్‌లు",
                     href: "re-companies"
                 },
                 {
                     title: "ఓపెన్ ప్లాట్స్",
-                    desc: "భూమి & ప్లాట్ సేల్స్ నిపుణుల కోసం ప్రత్యేక శిక్షణ",
                     href: "open-plots"
                 }
             ]

@@ -23,7 +23,17 @@ export const dataEn = {
         bottomLeft: ["BETTER", "PEOPLE", "BRIGHTER", "TOMORROW"],
         topRight: ["REAL", "ESTATE", "PEOPLE", "PROGRESS"],
         bottomRight: ["KNOWLEDGE", "CREATES", "OPPORTUNITY"]
-    }
+    },
+    companyDropdown: [
+        {
+            title: "Residential & Commercial",
+            path: "re-companies"
+        },
+        {
+            title: "Open Plots",
+            path: "open-plots"
+        }
+    ]
 };
 
 export const dataTe = {
@@ -49,7 +59,17 @@ export const dataTe = {
         bottomLeft: ["మెరుగైన", "ప్రజలు", "ఉజ్వల", "భవిష్యత్తు"],
         topRight: ["రియల్", "ఎస్టేట్", "ప్రజలు", "ప్రగతి"],
         bottomRight: ["జ్ఞానం", "అవకాశాలను", "సృష్టిస్తుంది"]
-    }
+    },
+    companyDropdown: [
+        {
+            title: "రెసిడెన్షియల్ & కమర్షియల్",
+            path: "re-companies"
+        },
+        {
+            title: "ఓపెన్ ప్లాట్స్",
+            path: "open-plots"
+        }
+    ]
 };
 
 export const getData = (lang: Language = 'en') => lang === 'te' ? dataTe : dataEn;

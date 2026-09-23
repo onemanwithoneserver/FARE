@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import type { Variants } from 'motion/react';
 import {
-    Building2, GraduationCap, UserCheck, ArrowRight, Sparkles, Check, ChevronDown
+    Building2, GraduationCap, UserCheck, ArrowRight, Sparkles, Check, ChevronDown, MapPin
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
@@ -22,12 +22,14 @@ export default function Mobile() {
     const exploreLabel = language === 'te' ? 'అన్వేషించండి' : 'Explore';
 
     const [openCardId, setOpenCardId] = useState<string | null>(data.personas[0]?.id || null);
+    const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
 
     const toggleCard = (id: string) => {
         setOpenCardId(prev => (prev === id ? null : id));
     };
 
     const handleRedirect = (path: string) => {
+        setIsCompanyDropdownOpen(false);
         navigate(`/${currentMode}/${path}`);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -215,27 +217,97 @@ export default function Mobile() {
                                                     ))}
                                                 </div>
 
-                                                <div className="flex justify-end pt-1">
-                                                    <button
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            handleRedirect(persona.path);
-                                                        }}
-                                                        aria-label={persona.cta}
-                                                        className="h-10 px-4 rounded-full flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
-                                                        style={{
-                                                            background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`
-                                                        }}
-                                                    >
-                                                        <span className="text-[12.5px] font-bold text-white">
-                                                            {exploreLabel}
-                                                        </span>
-                                                        <ArrowRight
-                                                            size={15}
-                                                            strokeWidth={2.5}
-                                                            style={{ color: accent }}
-                                                        />
-                                                    </button>
+                                                <div className="flex flex-col items-end pt-1 relative">
+                                                    {persona.id === 'companies' ? (
+                                                        <>
+                                                            <button
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    setIsCompanyDropdownOpen(!isCompanyDropdownOpen);
+                                                                }}
+                                                                aria-label={persona.cta}
+                                                                className="h-10 px-4 rounded-full flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
+                                                                style={{
+                                                                    background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`
+                                                                }}
+                                                            >
+                                                                <span className="text-[12.5px] font-bold text-white">
+                                                                    {exploreLabel}
+                                                                </span>
+                                                                <ChevronDown
+                                                                    size={14}
+                                                                    strokeWidth={2.5}
+                                                                    className={`transition-transform duration-300 ${
+                                                                        isCompanyDropdownOpen ? 'rotate-180 text-[#34D399]' : 'text-[#10B981]'
+                                                                    }`}
+                                                                />
+                                                            </button>
+
+                                                            <AnimatePresence>
+                                                                {isCompanyDropdownOpen && (
+                                                                    <motion.div
+                                                                        initial={{ opacity: 0, y: 6, scale: 0.96 }}
+                                                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                                        exit={{ opacity: 0, y: 4, scale: 0.96 }}
+                                                                        transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                                                                        className="w-full mt-2.5 bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-xl p-2 shadow-lg z-20"
+                                                                    >
+                                                                        <div className="px-2.5 py-1 mb-1 border-b border-white/10 flex items-center gap-1.5">
+                                                                            <div className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+                                                                            <span className="text-[9.5px] font-bold uppercase tracking-wider text-white/60">
+                                                                                {language === 'te' ? 'విభాగాన్ని ఎంచుకోండి' : 'Select Segment'}
+                                                                            </span>
+                                                                        </div>
+                                                                        <div className="flex flex-col gap-1">
+                                                                            {data.companyDropdown?.map((item, idx) => (
+                                                                                <button
+                                                                                    key={idx}
+                                                                                    onClick={(e) => {
+                                                                                        e.stopPropagation();
+                                                                                        handleRedirect(item.path);
+                                                                                    }}
+                                                                                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-white active:bg-white/15 active:text-[#34D399] transition-all cursor-pointer"
+                                                                                >
+                                                                                    <div className="flex items-center gap-2.5 min-w-0">
+                                                                                        <div className={`w-6 h-6 rounded flex items-center justify-center shrink-0 ${
+                                                                                            idx === 0 ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
+                                                                                        }`}>
+                                                                                            {idx === 0 ? <Building2 size={13} strokeWidth={2.2} /> : <MapPin size={13} strokeWidth={2.2} />}
+                                                                                        </div>
+                                                                                        <span className="text-[12.5px] font-bold truncate leading-tight">
+                                                                                            {item.title}
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <ArrowRight size={13} strokeWidth={2.5} className="text-[#10B981] shrink-0" />
+                                                                                </button>
+                                                                            ))}
+                                                                        </div>
+                                                                    </motion.div>
+                                                                )}
+                                                            </AnimatePresence>
+                                                        </>
+                                                    ) : (
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                handleRedirect(persona.path);
+                                                            }}
+                                                            aria-label={persona.cta}
+                                                            className="h-10 px-4 rounded-full flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
+                                                            style={{
+                                                                background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`
+                                                            }}
+                                                        >
+                                                            <span className="text-[12.5px] font-bold text-white">
+                                                                {exploreLabel}
+                                                            </span>
+                                                            <ArrowRight
+                                                                size={15}
+                                                                strokeWidth={2.5}
+                                                                style={{ color: accent }}
+                                                            />
+                                                        </button>
+                                                    )}
                                                 </div>
                                             </div>
                                         </motion.div>

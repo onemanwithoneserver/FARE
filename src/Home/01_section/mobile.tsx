@@ -54,10 +54,10 @@ export default function Mobile() {
                     <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
                 </motion.div>
 
-                <h1 className={`font-black mb-3.5 ${
+                <h1 className={`font-black mb-3.5 flex flex-col gap-1 sm:gap-1.5 ${
                     language === 'te'
-                        ? 'text-[2.1rem] leading-[1.15] tracking-wide my-1.5'
-                        : 'text-[2.75rem] leading-[0.94] tracking-[-0.02em]'
+                        ? 'text-[2.1rem] leading-[1.25] tracking-wide my-1.5'
+                        : 'text-[2.65rem] leading-[1.08] tracking-[-0.02em]'
                 }`}>
                     <motion.span variants={item} className={`block ${language === 'te' ? 'py-0.5' : ''}`} style={{ color: NAVY }}>{data.headline.line1}</motion.span>
                     <motion.span variants={item} className={`block gold-gradient-text ${language === 'te' ? 'py-0.5' : ''}`}>{data.headline.line2}</motion.span>

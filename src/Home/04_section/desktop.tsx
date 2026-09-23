@@ -1,12 +1,16 @@
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import type { Variants } from 'motion/react';
 import {
     ShieldCheck,
     BarChart2,
     Target,
     Sparkles,
-    ArrowRight
+    ArrowRight,
+    Building2,
+    MapPin,
+    ChevronDown
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
@@ -19,6 +23,19 @@ export default function Desktop() {
     const currentMode = isMobileMode ? 'mobile' : 'desktop';
     const { language } = useLanguage();
     const data = getData(language);
+
+    const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsCompanyDropdownOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     const pathSegments = location.pathname.split('/').filter(Boolean);
     const currentRoute = pathSegments.find(segment =>
@@ -53,9 +70,20 @@ export default function Desktop() {
     ];
 
     const handleButtonClick = (idx: number) => {
-        if (idx === 0) navigate(`/${currentMode}/open-plots`);
-        else if (idx === 1) navigate(`/${currentMode}/re-trainers-coaches`);
-        else if (idx === 2) navigate(`/${currentMode}/re-companies`);
+        if (idx === 0) {
+            navigate(`/${currentMode}/open-plots`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (idx === 1) {
+            navigate(`/${currentMode}/re-trainers-coaches`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (idx === 2) {
+            setIsCompanyDropdownOpen(!isCompanyDropdownOpen);
+        }
+    };
+
+    const handleCompanyOptionSelect = (path: string) => {
+        setIsCompanyDropdownOpen(false);
+        navigate(`/${currentMode}/${path}`);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -87,12 +115,12 @@ export default function Desktop() {
             <motion.div animate={{ opacity: [0.7, 1, 0.7] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-[-100px] right-[-100px] w-[800px] h-[400px] bg-gradient-to-tl from-[#071A49] to-transparent -rotate-12 z-0 pointer-events-none" />
 
             <motion.div variants={containerVariant} initial="hidden" whileInView="show" viewport={{ once: false, margin: '-100px' }} className="max-w-[1060px] xl:max-w-[1120px] w-full relative z-20">
-                <div className="w-full rounded-2xl pt-16 pb-12 px-10 flex flex-col items-center text-center relative overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)]" style={{ background: 'linear-gradient(135deg, rgba(8,22,51,0.96) 0%, rgba(5,15,38,0.98) 100%)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                    <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#C99A2E] to-transparent opacity-80" />
+                <div className="w-full rounded-[4px] pt-16 pb-12 px-10 flex flex-col items-center text-center relative overflow-visible shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)]" style={{ background: 'linear-gradient(135deg, rgba(8,22,51,0.96) 0%, rgba(5,15,38,0.98) 100%)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#C99A2E] to-transparent opacity-80 rounded-t-[4px]" />
                     <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[100px] pointer-events-none" />
 
                     <motion.div variants={itemVariant} className="mb-6 relative z-10">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-sm">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[4px] border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-sm">
                             <Sparkles size={13} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
                             <span className="font-bold text-[11px] tracking-[0.28em] text-[#E2C068] uppercase">
                                 {data.academyText}
@@ -111,48 +139,105 @@ export default function Desktop() {
                         {data.headline.subtitle}
                     </motion.p>
 
-                    <motion.div variants={itemVariant} className="flex flex-wrap items-center justify-center gap-4 mb-16 px-6 relative z-10">
+                    <motion.div variants={itemVariant} className="flex flex-wrap items-center justify-center gap-4 mb-16 px-6 relative z-20">
                         {data.buttons.map((btn, idx) => {
                             const isSelected = !isHomePage && activeBtnIndex === idx;
                             const isUnselectedOnOtherPage = !isHomePage && activeBtnIndex !== -1 && activeBtnIndex !== idx;
                             const persona = personaButtonStyles[idx];
+                            const isCompanyBtn = idx === 2;
 
                             return (
-                                <motion.button
-                                    key={idx}
-                                    onClick={() => handleButtonClick(idx)}
-                                    whileHover={{ scale: 1.03, y: -2 }}
-                                    whileTap={{ scale: 0.97 }}
-                                    className={`group px-7 py-3.5 rounded-lg font-bold text-[15px] xl:text-[16px] transition-all duration-300 cursor-pointer shadow-md flex items-center justify-center gap-2 ${
-                                        isSelected
-                                            ? 'text-white'
-                                            : isUnselectedOnOtherPage
-                                            ? 'text-white/50 border border-white/10 hover:border-white/25 hover:text-white/80'
-                                            : 'text-white border border-[#1E3A6D] hover:border-[#C99A2E]/60 hover:shadow-[0_8px_24px_-4px_rgba(201,154,46,0.25)]'
-                                    }`}
-                                    style={{
-                                        background: isSelected
-                                            ? persona.gradient
-                                            : isUnselectedOnOtherPage
-                                            ? 'rgba(255, 255, 255, 0.03)'
-                                            : 'linear-gradient(135deg, #071738 0%, #0B1D3A 100%)',
-                                        borderColor: isSelected ? persona.border : undefined,
-                                        boxShadow: isSelected ? persona.shadow : undefined
-                                    }}
-                                >
-                                    <span>{btn}</span>
-                                    <ArrowRight
-                                        size={16}
-                                        strokeWidth={2.5}
-                                        className={
+                                <div key={idx} className="relative" ref={isCompanyBtn ? dropdownRef : undefined}>
+                                    <motion.button
+                                        onClick={() => handleButtonClick(idx)}
+                                        whileHover={{ scale: 1.03, y: -2 }}
+                                        whileTap={{ scale: 0.97 }}
+                                        className={`group px-7 py-3.5 rounded-[4px] font-bold text-[15px] xl:text-[16px] transition-all duration-300 cursor-pointer shadow-md flex items-center justify-center gap-2 ${
                                             isSelected
-                                                ? 'w-4 opacity-100 translate-x-0 transition-all duration-300 text-white'
+                                                ? 'text-white'
                                                 : isUnselectedOnOtherPage
-                                                ? 'w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-75 group-hover:translate-x-0 transition-all duration-300 text-white/70'
-                                                : 'w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]'
-                                        }
-                                    />
-                                </motion.button>
+                                                ? 'text-white/50 border border-white/10 hover:border-white/25 hover:text-white/80'
+                                                : 'text-white border border-[#1E3A6D] hover:border-[#C99A2E]/60 hover:shadow-[0_8px_24px_-4px_rgba(201,154,46,0.25)]'
+                                        }`}
+                                        style={{
+                                            background: isSelected
+                                                ? persona.gradient
+                                                : isUnselectedOnOtherPage
+                                                ? 'rgba(255, 255, 255, 0.03)'
+                                                : 'linear-gradient(135deg, #071738 0%, #0B1D3A 100%)',
+                                            borderColor: isSelected ? persona.border : undefined,
+                                            boxShadow: isSelected ? persona.shadow : undefined
+                                        }}
+                                    >
+                                        <span>{btn}</span>
+                                        {isCompanyBtn ? (
+                                            <ChevronDown
+                                                size={16}
+                                                strokeWidth={2.5}
+                                                className={`transition-transform duration-300 ${
+                                                    isCompanyDropdownOpen ? 'rotate-180 text-[#34D399]' : 'text-white/70 group-hover:text-white'
+                                                }`}
+                                            />
+                                        ) : (
+                                            <ArrowRight
+                                                size={16}
+                                                strokeWidth={2.5}
+                                                className={
+                                                    isSelected
+                                                        ? 'w-4 opacity-100 translate-x-0 transition-all duration-300 text-white'
+                                                        : isUnselectedOnOtherPage
+                                                        ? 'w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-75 group-hover:translate-x-0 transition-all duration-300 text-white/70'
+                                                        : 'w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]'
+                                                }
+                                            />
+                                        )}
+                                    </motion.button>
+
+                                    {isCompanyBtn && (
+                                        <AnimatePresence>
+                                            {isCompanyDropdownOpen && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                    exit={{ opacity: 0, y: 6, scale: 0.95 }}
+                                                    transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                                                    className="absolute top-[calc(100%+8px)] left-0 right-0 min-w-[240px] bg-[#071738]/98 backdrop-blur-xl border border-white/15 rounded-[4px] p-2 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)] z-50 pointer-events-auto text-left"
+                                                >
+                                                    <div className="px-2.5 py-1 mb-1 border-b border-white/10 flex items-center gap-1.5">
+                                                        <div className="w-1.5 h-1.5 rounded-[4px] bg-[#10B981] animate-pulse" />
+                                                        <span className="text-[10px] font-bold uppercase tracking-wider text-white/60">
+                                                            {language === 'te' ? 'విభాగాన్ని ఎంచుకోండి' : 'Select Division'}
+                                                        </span>
+                                                    </div>
+                                                    <div className="flex flex-col gap-1">
+                                                        {data.companyDropdown?.map((item, dIdx) => (
+                                                            <button
+                                                                key={dIdx}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleCompanyOptionSelect(item.path);
+                                                                }}
+                                                                className="w-full flex items-center justify-between px-3 py-2.5 rounded-[4px] text-left text-white hover:bg-white/10 hover:text-[#34D399] transition-all group/item cursor-pointer"
+                                                            >
+                                                                <div className="flex items-center gap-2.5 min-w-0">
+                                                                    <div className={`w-7 h-7 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/item:scale-105 ${
+                                                                        dIdx === 0 ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
+                                                                    }`}>
+                                                                        {dIdx === 0 ? <Building2 size={15} strokeWidth={2.2} /> : <MapPin size={15} strokeWidth={2.2} />}
+                                                                    </div>
+                                                                    <span className="text-[13px] font-bold truncate leading-tight">
+                                                                        {item.title}
+                                                                    </span>
+                                                                </div>
+                                                                <ArrowRight size={14} strokeWidth={2.5} className="opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-0.5 transition-all shrink-0 ml-1 text-[#10B981]" />
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    )}
+                                </div>
                             );
                         })}
                     </motion.div>
@@ -190,14 +275,14 @@ export default function Desktop() {
                                         key={i}
                                         whileHover={{ y: -3, scale: 1.02 }}
                                         transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                                        className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 shadow-sm"
+                                        className="flex items-center gap-4 p-4 rounded-[4px] transition-all duration-300 shadow-sm"
                                         style={{
                                             background: badgeColors.bg,
                                             border: `1px solid ${badgeColors.border}`
                                         }}
                                     >
                                         <div
-                                            className="w-11 h-11 rounded-lg flex items-center justify-center shrink-0 shadow-md"
+                                            className="w-11 h-11 rounded-[4px] flex items-center justify-center shrink-0 shadow-md"
                                             style={{
                                                 background: badgeColors.iconBg
                                             }}

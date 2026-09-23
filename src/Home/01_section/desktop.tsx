@@ -68,10 +68,10 @@ export default function Desktop() {
                         </span>
                     </motion.div>
 
-                    <h1 className={`font-black mb-5 ${
+                    <h1 className={`font-black mb-5 flex flex-col gap-1.5 md:gap-2 ${
                         language === 'te'
-                            ? 'text-[3.6rem] leading-[1.1] tracking-wider my-2'
-                            : 'text-[5rem] leading-[0.92] tracking-[-0.03em]'
+                            ? 'text-[3.6rem] leading-[1.2] tracking-wider my-2'
+                            : 'text-[4.85rem] leading-[1.05] tracking-[-0.03em]'
                     }`}>
                         <motion.span variants={item} className={`block ${language === 'te' ? 'py-1' : ''}`} style={{ color: NAVY }}>{data.headline.line1}</motion.span>
                         <motion.span variants={item} className={`block gold-gradient-text ${language === 'te' ? 'py-1' : ''}`}>{data.headline.line2}</motion.span>

@@ -147,7 +147,7 @@ export default function Desktop() {
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: 8, scale: 0.96 }}
                                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                className="absolute top-full left-0 mt-1.5 w-[290px] bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 shadow-[0_16px_40px_-8px_rgba(11,29,58,0.2)] rounded p-2 z-50 pointer-events-auto"
+                                className="absolute top-full left-0 mt-2 w-[250px] bg-[#071738]/95 backdrop-blur-xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-[4px] p-1.5 z-50 pointer-events-auto"
                             >
                                 <div className="flex flex-col gap-1">
                                     {link.subItems?.map((sub, sIdx) => {
@@ -163,27 +163,24 @@ export default function Desktop() {
                                                     navigate(`/${currentMode}/${subRoute}`);
                                                     window.scrollTo({ top: 0, behavior: 'smooth' });
                                                 }}
-                                                className={`flex items-start gap-3 p-2.5 rounded transition-all group/sub cursor-pointer ${
-                                                    isSubActive ? 'bg-white/15' : 'hover:bg-white/10'
+                                                className={`w-full p-2.5 rounded-[4px] border transition-all duration-200 flex items-center gap-2.5 text-left cursor-pointer group/sub ${
+                                                    isSubActive
+                                                        ? 'bg-white/15 border-white/20'
+                                                        : 'border-transparent hover:border-white/10 hover:bg-white/[0.08]'
                                                 }`}
                                             >
-                                                <div className={`p-2.5 rounded shrink-0 mt-0.5 transition-all duration-300 shadow-sm group-hover/sub:scale-105 group-hover/sub:shadow-md ${
+                                                <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/sub:scale-105 ${
                                                     sIdx === 0
-                                                        ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068] group-hover/sub:from-[#C99A2E] group-hover/sub:to-[#E2C068] group-hover/sub:text-white'
-                                                        : 'bg-gradient-to-br from-[#071A49] to-[#0F2D6B] text-[#34D399] group-hover/sub:from-[#34D399] group-hover/sub:to-[#059669] group-hover/sub:text-white'
+                                                        ? 'bg-[#10B981]/20 text-[#34D399] group-hover/sub:bg-[#10B981] group-hover/sub:text-white'
+                                                        : 'bg-[#C99A2E]/20 text-[#E2C068] group-hover/sub:bg-[#C99A2E] group-hover/sub:text-white'
                                                 }`}>
-                                                    {sIdx === 0 ? <Building2 size={18} strokeWidth={2} /> : <MapPin size={18} strokeWidth={2} />}
+                                                    {sIdx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
                                                 </div>
-                                                <div className="flex flex-col">
-                                                    <span className={`text-[13.5px] font-bold transition-colors ${
-                                                        isSubActive ? 'text-[#E2C068]' : 'text-white group-hover/sub:text-[#C99A2E]'
-                                                    }`}>
-                                                        {sub.title}
-                                                    </span>
-                                                    <span className="text-[11.5px] font-medium text-white/60 leading-snug mt-0.5">
-                                                        {sub.desc}
-                                                    </span>
-                                                </div>
+                                                <span className={`text-[13px] font-bold transition-colors truncate ${
+                                                    isSubActive ? 'text-[#E2C068]' : 'text-white group-hover/sub:text-[#E2C068]'
+                                                }`}>
+                                                    {sub.title}
+                                                </span>
                                             </a>
                                         );
                                     })}

@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import type { Variants } from 'motion/react';
 import {
     ArrowRight,
@@ -9,7 +10,9 @@ import {
     GraduationCap,
     Building2,
     Target,
-    Sparkles
+    Sparkles,
+    MapPin,
+    ChevronDown
 } from 'lucide-react';
 import { getData } from './data';
 import { useLanguage } from '../../context/LanguageContext';
@@ -22,6 +25,8 @@ export default function Mobile() {
     const currentMode = isMobileMode ? 'mobile' : 'desktop';
     const { language } = useLanguage();
     const data = getData(language);
+
+    const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
 
     const pathSegments = location.pathname.split('/').filter(Boolean);
     const currentRoute = pathSegments.find(segment =>
@@ -40,11 +45,18 @@ export default function Mobile() {
     const handleButtonClick = (idx: number) => {
         if (idx === 0) {
             navigate(`/${currentMode}/open-plots`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         } else if (idx === 1) {
             navigate(`/${currentMode}/re-trainers-coaches`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         } else if (idx === 2) {
-            navigate(`/${currentMode}/re-companies`);
+            setIsCompanyDropdownOpen(prev => !prev);
         }
+    };
+
+    const handleCompanyOptionSelect = (path: string) => {
+        setIsCompanyDropdownOpen(false);
+        navigate(`/${currentMode}/${path}`);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -125,7 +137,7 @@ export default function Mobile() {
                 className="w-full max-w-[480px] relative z-20"
             >
                 <div
-                    className="w-full rounded-2xl pt-9 pb-8 px-4.5 sm:px-6 flex flex-col items-center text-center relative overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)]"
+                    className="w-full rounded-[4px] pt-9 pb-8 px-4.5 sm:px-6 flex flex-col items-center text-center relative overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)]"
                     style={{
                         background: 'linear-gradient(135deg, rgba(8,22,48,0.96) 0%, rgba(4,12,30,0.98) 100%)',
                         border: '1px solid rgba(255,255,255,0.08)',
@@ -137,7 +149,7 @@ export default function Mobile() {
                     <div className="absolute -bottom-16 -left-16 w-36 h-36 bg-[#0B2A6B]/[0.25] rounded-full blur-[45px] pointer-events-none" />
 
                     <motion.div variants={itemVariant} className="mb-4 relative z-10">
-                        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_10px_rgba(201,154,46,0.1)] backdrop-blur-sm">
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-[4px] border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_10px_rgba(201,154,46,0.1)] backdrop-blur-sm">
                             <Sparkles size={11} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
                             <span className="font-bold text-[10px] tracking-[0.25em] text-[#E2C068] uppercase">
                                 {data.academyText}
@@ -171,80 +183,127 @@ export default function Mobile() {
                             const isColored = isHomePage || activeBtnIndex === idx;
 
                             return (
-                                <motion.button
-                                    key={idx}
-                                    onClick={() => handleButtonClick(idx)}
-                                    whileTap={{ scale: 0.98 }}
-                                    className={`w-full p-4 rounded-xl transition-all duration-300 flex items-center justify-between gap-3.5 text-left cursor-pointer relative overflow-hidden group ${
-                                        isColored
-                                            ? 'shadow-[0_8px_24px_-6px_rgba(0,0,0,0.4)]'
-                                            : 'shadow-none opacity-80 hover:opacity-100'
-                                    }`}
-                                    style={{
-                                        background: isColored
-                                            ? opt.cardBg
-                                            : 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(10, 18, 36, 0.85) 100%)',
-                                        border: isColored
-                                            ? `1px solid ${opt.cardBorder}`
-                                            : '1px solid rgba(255, 255, 255, 0.09)'
-                                    }}
-                                >
-                                    <div
-                                        className="w-1.5 h-10 rounded-full shrink-0 shadow-sm transition-colors duration-300"
-                                        style={{
-                                            background: isColored ? opt.iconBg : 'rgba(255, 255, 255, 0.15)'
-                                        }}
-                                    />
-
-                                    <div
-                                        className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 shadow-md transition-all duration-300 group-hover:scale-105 ${
-                                            isColored ? '' : 'text-white/60'
+                                <div key={idx} className="w-full flex flex-col">
+                                    <motion.button
+                                        onClick={() => handleButtonClick(idx)}
+                                        whileTap={{ scale: 0.98 }}
+                                        className={`w-full p-4 rounded-[4px] transition-all duration-300 flex items-center justify-between gap-3.5 text-left cursor-pointer relative overflow-hidden group ${
+                                            isColored
+                                                ? 'shadow-[0_8px_24px_-6px_rgba(0,0,0,0.4)]'
+                                                : 'shadow-none opacity-80 hover:opacity-100'
                                         }`}
                                         style={{
                                             background: isColored
-                                                ? opt.iconBg
-                                                : 'rgba(255, 255, 255, 0.07)',
+                                                ? opt.cardBg
+                                                : 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(10, 18, 36, 0.85) 100%)',
                                             border: isColored
-                                                ? undefined
-                                                : '1px solid rgba(255, 255, 255, 0.1)'
+                                                ? `1px solid ${opt.cardBorder}`
+                                                : '1px solid rgba(255, 255, 255, 0.09)'
                                         }}
                                     >
-                                        <div className={isColored ? 'opacity-100' : 'opacity-50'}>
-                                            {opt.icon}
-                                        </div>
-                                    </div>
-
-                                    <div className="flex-1 min-w-0 pr-1">
-                                        <div className={`text-[14.5px] font-black tracking-tight leading-snug transition-colors duration-300 ${
-                                            isColored ? 'text-white' : 'text-white/70'
-                                        }`}>
-                                            {opt.title}
-                                        </div>
-                                        <div className={`text-[12px] font-medium leading-tight truncate mt-0.5 transition-colors duration-300 ${
-                                            isColored ? 'text-white/80' : 'text-white/40'
-                                        }`}>
-                                            {opt.subtitle}
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:translate-x-0.5"
-                                        style={{
-                                            background: isColored
-                                                ? opt.iconBg
-                                                : 'rgba(255, 255, 255, 0.07)',
-                                            border: isColored
-                                                ? undefined
-                                                : '1px solid rgba(255, 255, 255, 0.1)'
-                                        }}
-                                    >
-                                        <ArrowRight
-                                            size={15}
-                                            strokeWidth={2.8}
-                                            className={isColored ? 'text-white' : 'text-white/40'}
+                                        <div
+                                            className="w-1.5 h-10 rounded-[4px] shrink-0 shadow-sm transition-colors duration-300"
+                                            style={{
+                                                background: isColored ? opt.iconBg : 'rgba(255, 255, 255, 0.15)'
+                                            }}
                                         />
-                                    </div>
-                                </motion.button>
+
+                                        <div
+                                            className={`w-11 h-11 rounded-[4px] flex items-center justify-center shrink-0 shadow-md transition-all duration-300 group-hover:scale-105 ${
+                                                isColored ? '' : 'text-white/60'
+                                            }`}
+                                            style={{
+                                                background: isColored
+                                                    ? opt.iconBg
+                                                    : 'rgba(255, 255, 255, 0.07)',
+                                                border: isColored
+                                                    ? undefined
+                                                    : '1px solid rgba(255, 255, 255, 0.1)'
+                                            }}
+                                        >
+                                            <div className={isColored ? 'opacity-100' : 'opacity-50'}>
+                                                {opt.icon}
+                                            </div>
+                                        </div>
+
+                                        <div className="flex-1 min-w-0 pr-1">
+                                            <div className={`text-[14.5px] font-black tracking-tight leading-snug transition-colors duration-300 ${
+                                                isColored ? 'text-white' : 'text-white/70'
+                                            }`}>
+                                                {opt.title}
+                                            </div>
+                                            <div className={`text-[12px] font-medium leading-tight truncate mt-0.5 transition-colors duration-300 ${
+                                                isColored ? 'text-white/80' : 'text-white/40'
+                                            }`}>
+                                                {opt.subtitle}
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            className="w-9 h-9 rounded-[4px] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:translate-x-0.5"
+                                            style={{
+                                                background: isColored
+                                                    ? opt.iconBg
+                                                    : 'rgba(255, 255, 255, 0.07)',
+                                                border: isColored
+                                                    ? undefined
+                                                    : '1px solid rgba(255, 255, 255, 0.1)'
+                                            }}
+                                        >
+                                            {idx === 2 ? (
+                                                <ChevronDown
+                                                    size={15}
+                                                    strokeWidth={2.8}
+                                                    className={`transition-transform duration-300 ${
+                                                        isCompanyDropdownOpen ? 'rotate-180 text-[#34D399]' : (isColored ? 'text-white' : 'text-white/40')
+                                                    }`}
+                                                />
+                                            ) : (
+                                                <ArrowRight
+                                                    size={15}
+                                                    strokeWidth={2.8}
+                                                    className={isColored ? 'text-white' : 'text-white/40'}
+                                                />
+                                            )}
+                                        </div>
+                                    </motion.button>
+
+                                    {idx === 2 && (
+                                        <AnimatePresence>
+                                            {isCompanyDropdownOpen && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                                                    className="overflow-hidden w-full"
+                                                >
+                                                    <div className="pt-2 flex flex-col gap-1.5 w-full">
+                                                        {data.companyDropdown?.map((item, dIdx) => (
+                                                            <button
+                                                                key={dIdx}
+                                                                onClick={() => handleCompanyOptionSelect(item.path)}
+                                                                className="w-full p-3 rounded-[4px] border border-white/10 bg-[#071738]/95 backdrop-blur-md active:bg-white/[0.12] transition-all flex items-center justify-between gap-3 text-left cursor-pointer shadow-sm"
+                                                            >
+                                                                <div className="flex items-center gap-3 min-w-0">
+                                                                    <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 ${
+                                                                        dIdx === 0 ? 'bg-[#10B981]/20 text-[#10B981]' : 'bg-[#C99A2E]/20 text-[#E2C068]'
+                                                                    }`}>
+                                                                        {dIdx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
+                                                                    </div>
+                                                                    <span className="text-[13px] font-bold text-white leading-tight truncate">
+                                                                        {item.title}
+                                                                    </span>
+                                                                </div>
+                                                                <ArrowRight size={14} strokeWidth={2.5} className="text-[#10B981] shrink-0" />
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    )}
+                                </div>
                             );
                         })}
                     </motion.div>
@@ -280,14 +339,14 @@ export default function Mobile() {
                                 return (
                                     <div
                                         key={i}
-                                        className="w-full flex items-center gap-3.5 p-3 rounded-xl transition-all duration-300"
+                                        className="w-full flex items-center gap-3.5 p-3 rounded-[4px] transition-all duration-300"
                                         style={{
                                             background: badgeColors.bg,
                                             border: `1px solid ${badgeColors.border}`
                                         }}
                                     >
                                         <div
-                                            className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 shadow-sm"
+                                            className="w-9 h-9 rounded-[4px] flex items-center justify-center shrink-0 shadow-sm"
                                             style={{
                                                 background: badgeColors.iconBg
                                             }}

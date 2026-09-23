@@ -275,8 +275,8 @@ export default function Mobile() {
                                                                 initial={{ opacity: 0, height: 0 }}
                                                                 animate={{ opacity: 1, height: 'auto' }}
                                                                 exit={{ opacity: 0, height: 0 }}
-                                                                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                                                                className="overflow-hidden flex flex-col gap-2 pt-2 pb-1"
+                                                                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                                                                className="overflow-hidden flex flex-col gap-1.5 pt-2 pb-1"
                                                             >
                                                                 {link.subItems?.map((sub, sIdx) => {
                                                                     const subRoute = getRouteForHref(sub.href, sub.title);
@@ -291,29 +291,24 @@ export default function Mobile() {
                                                                                 navigate(`/${currentMode}/${subRoute}`);
                                                                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                                                                             }}
-                                                                            className={`flex items-start gap-3 p-3 rounded ${
+                                                                            className={`flex items-center gap-2.5 p-2.5 rounded-[4px] border transition-all cursor-pointer group ${
                                                                                 isSubActive
-                                                                                    ? (isScrolled ? 'bg-white/15 border-[#C99A2E]' : 'bg-[#C99A2E]/10 border-[#C99A2E]')
-                                                                                    : (isScrolled ? 'bg-[#040C1E] border-[#0B1D3A]/[0.08] hover:bg-white/10' : 'bg-[#F8FAFD] border-[#0B1D3A]/[0.08] hover:bg-[#F0F4FA]')
-                                                                            } border transition-all cursor-pointer group`}
+                                                                                    ? (isScrolled ? 'bg-white/15 border-[#C99A2E]' : 'bg-[#C99A2E]/15 border-[#C99A2E]')
+                                                                                    : (isScrolled ? 'bg-[#040C1E] border-white/10 hover:bg-white/10' : 'bg-[#F8FAFD] border-[#0B1D3A]/10 hover:bg-[#F0F4FA]')
+                                                                            }`}
                                                                         >
-                                                                            <div className={`p-2.5 rounded shrink-0 mt-0.5 shadow-sm ${
+                                                                            <div className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 shadow-sm ${
                                                                                 sIdx === 0
-                                                                                    ? 'bg-gradient-to-br from-[#0B1D3A] to-[#102B63] text-[#E2C068]'
-                                                                                    : 'bg-gradient-to-br from-[#071A49] to-[#0F2D6B] text-[#34D399]'
+                                                                                    ? 'bg-[#10B981]/20 text-[#10B981]'
+                                                                                    : 'bg-[#C99A2E]/20 text-[#E2C068]'
                                                                             }`}>
-                                                                                {sIdx === 0 ? <Building2 size={18} strokeWidth={2} /> : <MapPin size={18} strokeWidth={2} />}
+                                                                                {sIdx === 0 ? <Building2 size={16} strokeWidth={2.2} /> : <MapPin size={16} strokeWidth={2.2} />}
                                                                             </div>
-                                                                            <div className="flex flex-col">
-                                                                                <span className={`text-[14px] font-bold transition-colors ${
-                                                                                    isSubActive ? 'text-[#C99A2E]' : (isScrolled ? 'text-white' : 'text-[#0B1D3A]')
-                                                                                }`}>
-                                                                                    {sub.title}
-                                                                                </span>
-                                                                                <span className={`text-[12px] font-medium leading-relaxed mt-0.5 ${isScrolled ? 'text-white/60' : 'text-[#0B1D3A]/60'}`}>
-                                                                                    {sub.desc}
-                                                                                </span>
-                                                                            </div>
+                                                                            <span className={`text-[13.5px] font-bold transition-colors truncate ${
+                                                                                isSubActive ? 'text-[#C99A2E]' : (isScrolled ? 'text-white' : 'text-[#0B1D3A]')
+                                                                            }`}>
+                                                                                {sub.title}
+                                                                            </span>
                                                                         </a>
                                                                     );
                                                                 })}
