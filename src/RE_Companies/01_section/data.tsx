@@ -1,10 +1,10 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    tagline: "FARE for Residential & Commercial RE Companies",
-    headline: "Hone your Sales Team & Channel Partner Skills",
-    subheadline: "With a Custom RE Learning System.",
-    subheadlineAccent: "",
+    tagline: "Skill Enhancement For Real Estate",
+    headline: "FARE for Residential & Commercial Real Estate",
+    subheadline: "Hone your Sales Team & Channel Partner Skills",
+    subheadlineAccent: "With a Custom RE Learning System.",
     description: "Give your sales and channel partner teams the project knowledge, practical skills and continuous learning they need to perform better.",
     buttons: {
         primary: "Book a Demo",
@@ -28,10 +28,10 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    tagline: "రెసిడెన్షియల్ & కమర్షియల్ RE కంపెనీల కోసం FARE",
-    headline: "మీ సేల్స్ టీమ్ & ఛానల్ పార్ట్నర్ స్కిల్స్ మెరుగుపరచండి",
-    subheadline: "కస్టమ్ RE లెర్నింగ్ సిస్టమ్‌తో.",
-    subheadlineAccent: "",
+    tagline: "రియల్ ఎస్టేట్ కోసం నైపుణ్యాల పెంపు",
+    headline: "రెసిడెన్షియల్ & కమర్షియల్ రియల్ ఎస్టేట్ కోసం FARE",
+    subheadline: "మీ సేల్స్ టీమ్ & ఛానల్ పార్ట్నర్ స్కిల్స్ మెరుగుపరచండి",
+    subheadlineAccent: "కస్టమ్ RE లెర్నింగ్ సిస్టమ్‌తో.",
     description: "మీ సేల్స్ మరియు ఛానల్ పార్టనర్ టీమ్‌లకు మెరుగ్గా పని చేయడానికి అవసరమైన ప్రాజెక్ట్ నాలెడ్జ్, ప్రాక్టికల్ స్కిల్స్ మరియు నిరంతర అభ్యాసాన్ని అందించండి.",
     buttons: {
         primary: "డెమో కోసం బుక్ చేయండి",

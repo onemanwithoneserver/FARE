@@ -67,31 +67,45 @@ export default function Desktop() {
 
                         <motion.h1
                             variants={item}
-                            className={`font-black mb-6 text-[#0B1D3A] ${
+                            className={`font-black mb-5 text-[#0B1D3A] ${
                                 language === 'te'
-                                    ? 'text-[2.5rem] xl:text-[3rem] leading-[1.15] tracking-wider'
-                                    : 'text-[3.25rem] xl:text-[4rem] leading-[1.05] tracking-[-0.03em]'
+                                    ? 'text-[2.4rem] xl:text-[3rem] leading-[1.15] tracking-wider'
+                                    : 'text-[2.85rem] xl:text-[3.6rem] leading-[1.08] tracking-[-0.03em]'
                             }`}
                         >
-                            {data.headline.split(' ').map((word, i) => (
-                                <span key={i} className={i >= 3 ? "text-[#C99A2E] relative inline-block" : ""}>
-                                    {word}{' '}
-                                    {i >= 3 && <svg className="absolute w-full h-[6px] -bottom-1 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/></svg>}
+                            {language === 'te' ? (
+                                <span>
+                                    రెసిడెన్షియల్ & కమర్షియల్ రియల్ ఎస్టేట్ కోసం{' '}
+                                    <span className="text-[#C99A2E] relative inline-block">
+                                        FARE
+                                    </span>
                                 </span>
-                            ))}
+                            ) : (
+                                <span>
+                                    FARE for <br />
+                                    <span className="text-[#C99A2E] relative inline-block mt-1">
+                                        Residential & Commercial Real Estate
+                                        <svg className="absolute w-full h-[6px] -bottom-1 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                            <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                            )}
                         </motion.h1>
 
                         <motion.div variants={item} className="mb-6">
                             <h2 className={`font-bold text-[#0B1D3A] ${
-                                language === 'te' ? 'text-[18px] xl:text-[20px] leading-normal tracking-wider' : 'text-[20px] xl:text-[24px] leading-tight'
+                                language === 'te' ? 'text-[17px] xl:text-[20px] leading-normal tracking-wider' : 'text-[19px] xl:text-[22px] leading-snug'
                             }`}>
                                 {data.subheadline}
                             </h2>
-                            <h2 className={`font-bold mt-1 ${
-                                language === 'te' ? 'text-[18px] xl:text-[20px] leading-normal tracking-wider' : 'text-[20px] xl:text-[24px] leading-tight'
-                            }`} style={{ color: GOLD }}>
-                                {data.subheadlineAccent}
-                            </h2>
+                            {data.subheadlineAccent && (
+                                <h2 className={`font-bold mt-1 ${
+                                    language === 'te' ? 'text-[17px] xl:text-[20px] leading-normal tracking-wider' : 'text-[19px] xl:text-[22px] leading-snug'
+                                }`} style={{ color: GOLD }}>
+                                    {data.subheadlineAccent}
+                                </h2>
+                            )}
                         </motion.div>
 
                         <motion.p

@@ -67,28 +67,25 @@ export default function Desktop() {
 
                         <motion.h1
                             variants={item}
-                            className={`font-black mb-6 text-[#0B1D3A] ${
+                            className={`font-black mb-5 text-[#0B1D3A] ${
                                 language === 'te'
-                                    ? 'text-[2.5rem] xl:text-[3rem] leading-[1.15] tracking-wider'
-                                    : 'text-[3.25rem] xl:text-[4rem] leading-[1.08] tracking-[-0.03em]'
+                                    ? 'text-[2.4rem] xl:text-[3rem] leading-[1.15] tracking-wider'
+                                    : 'text-[2.85rem] xl:text-[3.6rem] leading-[1.08] tracking-[-0.03em]'
                             }`}
                         >
                             {language === 'te' ? (
                                 <span>
-                                    చివరికి,{' '}
+                                    రియల్ ఎస్టేట్ ట్రైనర్స్ & కోచెస్ కోసం{' '}
                                     <span className="text-[#C99A2E] relative inline-block">
-                                        ట్రైనర్స్ కోసం ఒక Custom RE LMS.
-                                        <svg className="absolute w-full h-[6px] -bottom-1 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
-                                            <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/>
-                                        </svg>
+                                        FARE
                                     </span>
                                 </span>
                             ) : (
                                 <span>
-                                    Finally, a Custom <br />
+                                    FARE for <br />
                                     <span className="text-[#C99A2E] relative inline-block mt-1">
-                                        LMS for RE Trainers
-                                        <svg className="absolute w-full h-[8px] -bottom-1 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                        Real Estate Trainers & Coaches
+                                        <svg className="absolute w-full h-[6px] -bottom-1 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
                                             <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/>
                                         </svg>
                                     </span>
@@ -98,10 +95,17 @@ export default function Desktop() {
 
                         <motion.div variants={item} className="mb-6">
                             <h2 className={`font-bold text-[#0B1D3A] ${
-                                language === 'te' ? 'text-[18px] xl:text-[20px] leading-normal tracking-wider' : 'text-[20px] xl:text-[24px] leading-tight'
+                                language === 'te' ? 'text-[17px] xl:text-[20px] leading-normal tracking-wider' : 'text-[19px] xl:text-[22px] leading-snug'
                             }`}>
                                 {data.subheadline}
                             </h2>
+                            {data.subheadlineAccent && (
+                                <h2 className={`font-bold mt-1 ${
+                                    language === 'te' ? 'text-[17px] xl:text-[20px] leading-normal tracking-wider' : 'text-[19px] xl:text-[22px] leading-snug'
+                                }`} style={{ color: GOLD }}>
+                                    {data.subheadlineAccent}
+                                </h2>
+                            )}
                         </motion.div>
 
                         <motion.p

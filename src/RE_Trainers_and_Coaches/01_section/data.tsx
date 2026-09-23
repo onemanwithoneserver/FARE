@@ -1,10 +1,10 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    tagline: "FARE for RE Trainers & Coaches",
-    headline: "Finally, a Custom LMS for RE trainers",
-    subheadline: "Turn your expertise into a more powerful learning experience.",
-    subheadlineAccent: "",
+    tagline: "Skill Enhancement For Real Estate",
+    headline: "FARE for Real Estate Trainers & Coaches",
+    subheadline: "Finally, a Custom LMS for RE Trainers",
+    subheadlineAccent: "Turn your expertise into a more powerful learning experience.",
     description: "Use FARE to connect with your learners, deliver structured programs, practise through mocks, build long-term mentoring journeys and reach organisations looking for real estate training.",
     buttons: {
         primary: "Explore FARE for Trainers",
@@ -28,9 +28,10 @@ export const dataEn = {
 };
 
 export const dataTe = {
-    tagline: "RE Trainers & Coaches కోసం FARE",
-    headline: "చివరికి, ట్రైనర్స్ కోసం ఒక Custom RE LMS.",
-    subheadline: "మీ నైపుణ్యాన్ని మరింత శక్తివంతమైన అభ్యాస అనుభవంగా మార్చండి.",
+    tagline: "రియల్ ఎస్టేట్ కోసం నైపుణ్యాల పెంపు",
+    headline: "రియల్ ఎస్టేట్ ట్రైనర్స్ & కోచెస్ కోసం FARE",
+    subheadline: "చివరికి, ట్రైనర్స్ కోసం ఒక Custom RE LMS.",
+    subheadlineAccent: "మీ నైపుణ్యాన్ని మరింత శక్తివంతమైన అభ్యాస అనుభవంగా మార్చండి.",
     description: "మీ అభ్యాసకులతో కనెక్ట్ కావడానికి, స్ట్రక్చర్డ్ ప్రోగ్రామ్స్ అందించడానికి, మాక్స్ ద్వారా ప్రాక్టీస్ చేయడానికి మరియు రియల్ ఎస్టేట్ ట్రైనింగ్ కోసం చూస్తున్న సంస్థలను చేరుకోవడానికి FARE ని ఉపయోగించండి.",
     features: ["మీ నైపుణ్యం", "మీ కంటెంట్", "మీ అభ్యాసకులు", "Powered by FARE"],
     buttons: {

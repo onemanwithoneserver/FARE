@@ -78,7 +78,24 @@ export default function Desktop() {
                             }`}
                             style={{ color: NAVY }}
                         >
-                            {data.headline}
+                            {language === 'te' ? (
+                                <span>
+                                    ఓపెన్ ప్లాట్ కంపెనీల కోసం{' '}
+                                    <span className="text-[#C99A2E] relative inline-block">
+                                        FARE
+                                    </span>
+                                </span>
+                            ) : (
+                                <span>
+                                    FARE for <br />
+                                    <span className="text-[#C99A2E] relative inline-block mt-1">
+                                        Open Plot Companies
+                                        <svg className="absolute w-full h-[6px] -bottom-1 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                            <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                            )}
                         </motion.h1>
 
                         
