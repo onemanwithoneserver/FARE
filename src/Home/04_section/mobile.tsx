@@ -180,24 +180,35 @@ export default function Mobile() {
 
                     <motion.div variants={itemVariant} className="flex flex-col gap-3.5 w-full mb-8 relative z-10">
                         {registrationOptions.map((opt, idx) => {
-                            const isColored = isHomePage || activeBtnIndex === idx;
+                            const isSelected = !isHomePage && activeBtnIndex === idx;
+                            const isUnselectedOnOtherPage = !isHomePage && activeBtnIndex !== -1 && activeBtnIndex !== idx;
+                            const isColored = isHomePage || isSelected;
 
                             return (
                                 <div key={idx} className="w-full flex flex-col">
                                     <motion.button
-                                        onClick={() => handleButtonClick(idx)}
-                                        whileTap={{ scale: 0.98 }}
-                                        className={`w-full p-4 rounded-[4px] transition-all duration-300 flex items-center justify-between gap-3.5 text-left cursor-pointer relative overflow-hidden group ${
-                                            isColored
-                                                ? 'shadow-[0_8px_24px_-6px_rgba(0,0,0,0.4)]'
-                                                : 'shadow-none opacity-80 hover:opacity-100'
+                                        disabled={isUnselectedOnOtherPage}
+                                        onClick={() => !isUnselectedOnOtherPage && handleButtonClick(idx)}
+                                        whileTap={isUnselectedOnOtherPage ? undefined : { scale: 0.98 }}
+                                        className={`w-full p-4 rounded-[4px] transition-all duration-300 flex items-center justify-between gap-3.5 text-left relative overflow-hidden group ${
+                                            isSelected
+                                                ? 'shadow-[0_8px_24px_-6px_rgba(0,0,0,0.4)] cursor-pointer'
+                                                : isUnselectedOnOtherPage
+                                                ? 'opacity-30 cursor-not-allowed pointer-events-none select-none shadow-none'
+                                                : isHomePage
+                                                ? 'shadow-[0_8px_24px_-6px_rgba(0,0,0,0.4)] cursor-pointer'
+                                                : 'shadow-none opacity-80 hover:opacity-100 cursor-pointer'
                                         }`}
                                         style={{
                                             background: isColored
                                                 ? opt.cardBg
+                                                : isUnselectedOnOtherPage
+                                                ? 'rgba(255, 255, 255, 0.02)'
                                                 : 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(10, 18, 36, 0.85) 100%)',
                                             border: isColored
                                                 ? `1px solid ${opt.cardBorder}`
+                                                : isUnselectedOnOtherPage
+                                                ? '1px solid rgba(255, 255, 255, 0.04)'
                                                 : '1px solid rgba(255, 255, 255, 0.09)'
                                         }}
                                     >

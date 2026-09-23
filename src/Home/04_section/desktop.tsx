@@ -149,21 +149,22 @@ export default function Desktop() {
                             return (
                                 <div key={idx} className="relative" ref={isCompanyBtn ? dropdownRef : undefined}>
                                     <motion.button
-                                        onClick={() => handleButtonClick(idx)}
-                                        whileHover={{ scale: 1.03, y: -2 }}
-                                        whileTap={{ scale: 0.97 }}
-                                        className={`group px-7 py-3.5 rounded-[4px] font-bold text-[15px] xl:text-[16px] transition-all duration-300 cursor-pointer shadow-md flex items-center justify-center gap-2 ${
+                                        disabled={isUnselectedOnOtherPage}
+                                        onClick={() => !isUnselectedOnOtherPage && handleButtonClick(idx)}
+                                        whileHover={isUnselectedOnOtherPage ? undefined : { scale: 1.03, y: -2 }}
+                                        whileTap={isUnselectedOnOtherPage ? undefined : { scale: 0.97 }}
+                                        className={`group px-7 py-3.5 rounded-[4px] font-bold text-[15px] xl:text-[16px] transition-all duration-300 shadow-md flex items-center justify-center gap-2 ${
                                             isSelected
-                                                ? 'text-white'
+                                                ? 'text-white cursor-pointer'
                                                 : isUnselectedOnOtherPage
-                                                ? 'text-white/50 border border-white/10 hover:border-white/25 hover:text-white/80'
-                                                : 'text-white border border-[#1E3A6D] hover:border-[#C99A2E]/60 hover:shadow-[0_8px_24px_-4px_rgba(201,154,46,0.25)]'
+                                                ? 'text-white/30 border border-white/5 opacity-30 cursor-not-allowed pointer-events-none select-none'
+                                                : 'text-white border border-[#1E3A6D] hover:border-[#C99A2E]/60 hover:shadow-[0_8px_24px_-4px_rgba(201,154,46,0.25)] cursor-pointer'
                                         }`}
                                         style={{
                                             background: isSelected
                                                 ? persona.gradient
                                                 : isUnselectedOnOtherPage
-                                                ? 'rgba(255, 255, 255, 0.03)'
+                                                ? 'rgba(255, 255, 255, 0.02)'
                                                 : 'linear-gradient(135deg, #071738 0%, #0B1D3A 100%)',
                                             borderColor: isSelected ? persona.border : undefined,
                                             boxShadow: isSelected ? persona.shadow : undefined
@@ -175,7 +176,11 @@ export default function Desktop() {
                                                 size={16}
                                                 strokeWidth={2.5}
                                                 className={`transition-transform duration-300 ${
-                                                    isCompanyDropdownOpen ? 'rotate-180 text-[#34D399]' : 'text-white/70 group-hover:text-white'
+                                                    isCompanyDropdownOpen
+                                                        ? 'rotate-180 text-[#34D399]'
+                                                        : isUnselectedOnOtherPage
+                                                        ? 'text-white/20'
+                                                        : 'text-white/70 group-hover:text-white'
                                                 }`}
                                             />
                                         ) : (
@@ -186,7 +191,7 @@ export default function Desktop() {
                                                     isSelected
                                                         ? 'w-4 opacity-100 translate-x-0 transition-all duration-300 text-white'
                                                         : isUnselectedOnOtherPage
-                                                        ? 'w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-75 group-hover:translate-x-0 transition-all duration-300 text-white/70'
+                                                        ? 'w-0 opacity-0 -translate-x-1 transition-all duration-300 text-white/20'
                                                         : 'w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]'
                                                 }
                                             />
