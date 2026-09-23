@@ -90,9 +90,7 @@ export default function Desktop() {
                                     FARE for <br />
                                     <span className="text-[#C99A2E] relative inline-block mt-1">
                                         Open Plot Companies
-                                        <svg className="absolute w-full h-[6px] -bottom-1 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
-                                            <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/>
-                                        </svg>
+                                        <div className="absolute w-full h-[2px] bg-[#C99A2E]/60 -bottom-1 left-0" />
                                     </span>
                                 </span>
                             )}
@@ -160,67 +158,57 @@ export default function Desktop() {
                         transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                         className="lg:col-span-5 relative w-full flex items-center justify-center"
                     >
-                        
-                        <motion.div
-                            animate={{ y: [0, -6, 0] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                            className="absolute -top-4 -right-4 w-[calc(100%+8px)] h-[calc(100%+8px)] max-w-[520px] aspect-[4/3] rounded-2xl border-2 border-[#C99A2E]/15 pointer-events-none"
-                        ></motion.div>
-                        <div className="absolute -bottom-3 -left-3 w-20 h-20 rounded-xl bg-gradient-to-br from-[#C99A2E]/20 to-[#C99A2E]/5 blur-sm pointer-events-none"></div>
-
-                        <div className="relative w-full aspect-[4/3] max-w-[500px] rounded-2xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(11,29,58,0.3),0_0_0_1px_rgba(255,255,255,0.5)_inset] group">
+                        <div className="relative w-full aspect-[4/5] max-w-[500px] flex items-center justify-center group mt-10 lg:mt-0">
                             <motion.div
-                                className="w-full h-full absolute inset-0 z-0"
-                                animate={{ scale: [1, 1.05, 1] }}
-                                transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+                                className="w-full h-full absolute inset-0 z-0 rounded-[2rem] overflow-hidden border border-white/60 shadow-[0_20px_60px_-15px_rgba(11,29,58,0.15)]"
+                                style={{
+                                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)',
+                                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)'
+                                }}
                             >
-                                <img
+                                <motion.img
+                                    animate={{ scale: [1, 1.05, 1] }}
+                                    transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
                                     src={openplotHero}
                                     alt="Open Plot Hero"
                                     className="w-full h-full object-cover object-[center_35%]"
                                 />
                             </motion.div>
-                            
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/20 via-transparent to-transparent z-10 pointer-events-none"></div>
-
-                            
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: false }}
                                 transition={{ delay: 0.8, duration: 0.6 }}
-                                className="absolute bottom-5 left-5 right-5 z-20 bg-white/90 backdrop-blur-xl rounded-xl p-4 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.2)] border border-white/60"
+                                className="absolute -left-4 sm:-left-8 bottom-16 z-20 bg-white/95 backdrop-blur-xl p-4 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.2)] border border-white/80 rounded-[24px] rounded-tl-[8px]"
                             >
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-md">
+                                <div className="flex items-center gap-3.5">
+                                    <div className="w-11 h-11 rounded-[12px] rounded-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-lg shadow-[#34D399]/30">
                                         <Sparkles size={18} className="text-white" />
                                     </div>
-                                    <div>
-                                        <div className="text-[13px] font-bold text-[#0B1D3A]">{data.dashboard.floatingBadge.title}</div>
-                                        <div className="text-[11px] font-medium text-[#64748B]">{data.dashboard.floatingBadge.subtitle}</div>
+                                    <div className="pr-2">
+                                        <div className="text-[14px] font-black text-[#0B1D3A] tracking-tight">{data.dashboard.floatingBadge.title}</div>
+                                        <div className="text-[10px] font-bold text-[#64748B] uppercase tracking-wider mt-0.5">{data.dashboard.floatingBadge.subtitle}</div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, x: 30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: false }}
+                                transition={{ delay: 0.6, duration: 0.6 }}
+                                className="absolute -right-4 sm:-right-8 top-24 z-20 bg-white/95 backdrop-blur-xl p-3.5 shadow-[0_15px_50px_-12px_rgba(11,29,58,0.25)] border border-white/80 hidden lg:block rounded-[20px] rounded-tr-[6px]"
+                            >
+                                <div className="flex items-center gap-3.5">
+                                    <div className="w-10 h-10 rounded-[10px] rounded-bl-[4px] flex items-center justify-center text-[15px] font-black text-white shadow-lg shadow-[#C99A2E]/30" style={{ background: `linear-gradient(135deg, ${GOLD}, ${GOLD_LIGHT})` }}>
+                                        %
+                                    </div>
+                                    <div className="pr-3">
+                                        <div className="text-[16px] font-black text-[#0B1D3A] leading-none">{data.dashboard.stats[0].progress}</div>
+                                        <div className="text-[10px] font-bold text-[#94A3B8] uppercase tracking-wider mt-1">{data.dashboard.stats[0].title}</div>
                                     </div>
                                 </div>
                             </motion.div>
                         </div>
-
-                        
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: false }}
-                            transition={{ delay: 0.6, duration: 0.6 }}
-                            className="absolute -right-6 top-[20%] z-20 bg-white/90 backdrop-blur-xl rounded-xl p-3.5 shadow-[0_12px_40px_-10px_rgba(11,29,58,0.18)] border border-white/60 hidden xl:block"
-                        >
-                            <div className="flex items-center gap-2.5">
-                                <div className="w-8 h-8 rounded flex items-center justify-center text-[14px] font-black text-white" style={{ background: `linear-gradient(135deg, ${GOLD}, ${GOLD_LIGHT})` }}>
-                                    %
-                                </div>
-                                <div>
-                                    <div className="text-[12px] font-bold text-[#0B1D3A]">{data.dashboard.stats[0].progress}</div>
-                                    <div className="text-[10px] font-medium text-[#94A3B8]">{data.dashboard.stats[0].title}</div>
-                                </div>
-                            </div>
-                        </motion.div>
                     </motion.div>
 
                 </div>

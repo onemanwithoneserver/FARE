@@ -2,20 +2,26 @@ import type { Language } from '../context/LanguageContext';
 
 export const dataEn = {
   hero: {
-    badge: "Executive Inquiries & Advisory",
-    headlineLine1: "TELL US WHICH",
-    headlineLine2: "ONE YOU ARE.",
-    subtitle: "Four kinds of people write to us and they need four different answers. Pick the closest one and your message reaches the right team immediately.",
-    trustBadges: {
-      confidential: "100% Confidential",
-      priority: "Priority Response",
-      sla: "< 48h Response SLA"
+    tagline: "Executive Inquiries & Advisory",
+    headline: "FARE for Contact & Advisory",
+    subheadline: "Tell Us Which",
+    subheadlineAccent: "One You Are.",
+    description: "Four kinds of people write to us and they need four different answers. Pick the closest one and your message reaches the right team immediately.",
+    buttons: {
+      primary: "Contact Us",
+      secondary: ""
     },
-    imageCard: {
-      activeDesk: "Active Desk • Hyderabad HQ",
-      gateway: "Executive Gateway",
-      directAdvisory: "Direct Advisory & Partnerships",
-      directRouting: "Direct Routing"
+    features: ["100% Confidential", "Priority Response", "< 48h Response SLA"],
+    footerText: "Direct executive routing under strict confidentiality.",
+    dashboard: {
+      title: "Direct Routing",
+      stats: [
+        { title: "Response SLA", progress: "48h", progressNum: 48, color: "#34D399" }
+      ],
+      floatingBadge: {
+        title: "Executive Gateway",
+        subtitle: "Direct Advisory & Partnerships"
+      }
     }
   },
   form: {
@@ -100,20 +106,26 @@ export const dataEn = {
 
 export const dataTe = {
   hero: {
-    badge: "ఎగ్జిక్యూటివ్ విచారణలు & సలహాలు",
-    headlineLine1: "మీరు ఎవరో",
-    headlineLine2: "మాకు తెలియజేయండి.",
-    subtitle: "నలుగురు రకాల వ్యక్తులు మమ్మల్ని సంప్రదిస్తారు మరియు వారి ప్రతి ఒక్కరికీ విభిన్న సమాధానాలు అవసరం. మీకు సరిపోయేదాన్ని ఎంచుకోండి, మీ సందేశం వెంటనే సరైన బృందానికి చేరుతుంది.",
-    trustBadges: {
-      confidential: "100% గోప్యత",
-      priority: "ప్రాధాన్యతా ప్రతిస్పందన",
-      sla: "< 48 గంటల్లో స్పందన"
+    tagline: "ఎగ్జిక్యూటివ్ విచారణలు & సలహాలు",
+    headline: "సంప్రదింపులు & సలహాల కోసం FARE",
+    subheadline: "మీరు ఎవరో",
+    subheadlineAccent: "మాకు తెలియజేయండి.",
+    description: "నలుగురు రకాల వ్యక్తులు మమ్మల్ని సంప్రదిస్తారు మరియు వారి ప్రతి ఒక్కరికీ విభిన్న సమాధానాలు అవసరం. మీకు సరిపోయేదాన్ని ఎంచుకోండి, మీ సందేశం వెంటనే సరైన బృందానికి చేరుతుంది.",
+    buttons: {
+      primary: "మమ్మల్ని సంప్రదించండి",
+      secondary: ""
     },
-    imageCard: {
-      activeDesk: "యాక్టివ్ డెస్క్ • హైదరాబాద్ HQ",
-      gateway: "ఎగ్జిక్యూటివ్ గేట్‌వే",
-      directAdvisory: "ప్రత్యక్ష సలహా & భాగస్వామ్యాలు",
-      directRouting: "డైరెక్ట్ రూటింగ్"
+    features: ["100% గోప్యత", "ప్రాధాన్యతా ప్రతిస్పందన", "< 48 గంటల్లో స్పందన"],
+    footerText: "పూర్తి గోప్యతతో ప్రత్యక్ష ఎగ్జిక్యూటివ్ రూటింగ్.",
+    dashboard: {
+      title: "డైరెక్ట్ రూటింగ్",
+      stats: [
+        { title: "ప్రతిస్పందన SLA", progress: "48h", progressNum: 48, color: "#34D399" }
+      ],
+      floatingBadge: {
+        title: "ఎగ్జిక్యూటివ్ గేట్‌వే",
+        subtitle: "ప్రత్యక్ష సలహా & భాగస్వామ్యాలు"
+      }
     }
   },
   form: {

@@ -125,147 +125,173 @@ export default function ContactUsDesktop() {
   return (
     <div className="w-full flex flex-col font-['Outfit']">
       <section
-        className="w-full -mt-8 flex items-center justify-center overflow-hidden relative"
-        style={{ background: `linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)` }}
+        className="w-full -mt-8 lg:-mt-8 flex items-center justify-center overflow-x-clip relative"
+        style={{ background: `linear-gradient(165deg, #FFFFFF 0%, #F6F9FF 35%, #EDF2FF 60%, #F0F4FF 100%)` }}
       >
-        <motion.div
-          animate={{ opacity: [0.35, 0.65, 0.35], scale: [1, 1.06, 1] }}
-          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/4 right-[12%] w-[720px] h-[720px] bg-gradient-radial from-[#DBEAFE]/45 to-transparent rounded-full blur-[110px] pointer-events-none z-0"
-        />
-        <motion.div
-          animate={{ opacity: [0.25, 0.55, 0.25], scale: [1, 1.08, 1] }}
-          transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-1/4 left-[8%] w-[580px] h-[580px] bg-gradient-radial from-[#C99A2E]/[0.1] to-transparent rounded-full blur-[100px] pointer-events-none z-0"
+        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[10%] right-[15%] w-[700px] h-[700px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[140px] pointer-events-none z-0"></motion.div>
+        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[15%] left-[10%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[120px] pointer-events-none z-0"></motion.div>
+        <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[60%] right-[5%] w-[300px] h-[300px] bg-gradient-radial from-[#818CF8]/[0.06] to-transparent rounded-full blur-[80px] pointer-events-none z-0"></motion.div>
+
+        <div className="absolute inset-0 opacity-[0.015] pointer-events-none z-0"
+            style={{
+                backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
+                backgroundSize: '60px 60px'
+            }}
         />
 
-        <div
-          className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
-          style={{
-            backgroundImage: `radial-gradient(${NAVY} 1px, transparent 1px)`,
-            backgroundSize: '24px 24px'
-          }}
-        />
-
-        <div className="max-w-[1320px] w-full relative z-10 px-8 lg:px-12 py-16 lg:py-20">
-          <div className="grid grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="max-w-[1320px] w-full px-8 lg:px-14 py-10 lg:py-28 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 xl:gap-20 items-center">
             
             <motion.div
               variants={container}
               initial="hidden"
-              animate="show"
-              className="col-span-6 flex flex-col items-start text-left relative z-10"
+              whileInView="show"
+              viewport={{ once: false }}
+              className="lg:col-span-7 flex flex-col items-start text-left"
             >
-              <motion.div variants={item} className="flex items-center gap-3 mb-6">
-                <div className="px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] flex items-center gap-2.5 backdrop-blur-md shadow-sm">
-                  <div className="w-5 h-5 rounded-full bg-[#C99A2E] flex items-center justify-center text-white shadow-xs">
-                    <Sparkles size={11} className="text-white" />
-                  </div>
-                  <span className="font-bold text-[11px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                    {heroData.badge}
+              <motion.div variants={item} className="mb-6">
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm">
+                  <Sparkles size={13} className="text-[#C99A2E]" strokeWidth={2.5} />
+                  <span className="font-bold text-[11px] tracking-[0.18em] uppercase text-[#C99A2E]">
+                    {heroData.tagline}
                   </span>
                 </div>
               </motion.div>
 
               <motion.h1
                 variants={item}
-                className="font-black text-[#0B1D3A] text-[3.25rem] xl:text-[4.2rem] leading-[1.08] tracking-[-0.03em] mb-6"
+                className={`font-black mb-5 ${
+                  language === 'te'
+                    ? 'text-[2.4rem] xl:text-[3rem] leading-[1.15] tracking-wider py-1'
+                    : 'text-[2.85rem] xl:text-[3.6rem] leading-[1.08] tracking-[-0.03em]'
+                }`}
+                style={{ color: NAVY }}
               >
-                {heroData.headlineLine1} <br />
-                <span className="text-[#C99A2E] relative inline-block">
-                  {heroData.headlineLine2}
-                  <svg className="absolute w-full h-[8px] -bottom-1 left-0 text-[#C99A2E]/40" viewBox="0 0 100 10" preserveAspectRatio="none">
-                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent" />
-                  </svg>
-                </span>
+                {language === 'te' ? (
+                  <span>
+                    సంప్రదింపులు & సలహాల కోసం{' '}
+                    <span className="text-[#C99A2E] relative inline-block">
+                      FARE
+                    </span>
+                  </span>
+                ) : (
+                  <span>
+                    FARE for <br />
+                    <span className="text-[#C99A2E] relative inline-block mt-1">
+                      Contact & Advisory
+                      <div className="absolute w-full h-[2px] bg-[#C99A2E]/60 -bottom-1 left-0" />
+                    </span>
+                  </span>
+                )}
               </motion.h1>
+
+              <motion.div variants={item} className="mb-5">
+                <h2 className={`font-bold ${
+                  language === 'te' ? 'text-[17px] xl:text-[19px] leading-normal tracking-wider py-1' : 'text-[19px] xl:text-[22px] leading-snug'
+                }`} style={{ color: NAVY }}>
+                  {heroData.subheadline}
+                </h2>
+                {heroData.subheadlineAccent && (
+                  <h2 className={`font-bold mt-1 ${
+                    language === 'te' ? 'text-[17px] xl:text-[19px] leading-normal tracking-wider py-1' : 'text-[19px] xl:text-[22px] leading-snug'
+                  }`} style={{ color: GOLD }}>
+                    {heroData.subheadlineAccent}
+                  </h2>
+                )}
+              </motion.div>
 
               <motion.p
                 variants={item}
-                className="text-[17px] md:text-[18px] font-medium leading-[1.7] text-[#475569] mb-8 max-w-[540px]"
+                className="text-[16px] font-medium leading-[1.75] text-[#475569] mb-9 max-w-[560px]"
               >
-                {heroData.subtitle}
+                {heroData.description}
               </motion.p>
 
-              <motion.div variants={item} className="flex flex-wrap gap-3">
-                <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white/90 backdrop-blur-md border border-[#0B1D3A]/[0.08] shadow-xs text-[#0B1D3A] hover:border-[#C99A2E]/40 transition-all cursor-default">
-                  <div className="w-6 h-6 rounded bg-[#F59E0B] flex items-center justify-center shadow-xs shrink-0">
-                    <ShieldCheck size={14} className="text-white" />
-                  </div>
-                  <span className="text-[13px] font-bold">{heroData.trustBadges.confidential}</span>
-                </div>
-                <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white/90 backdrop-blur-md border border-[#0B1D3A]/[0.08] shadow-xs text-[#0B1D3A] hover:border-[#C99A2E]/40 transition-all cursor-default">
-                  <div className="w-6 h-6 rounded bg-[#3B82F6] flex items-center justify-center shadow-xs shrink-0">
-                    <MessageSquare size={14} className="text-white" />
-                  </div>
-                  <span className="text-[13px] font-bold">{heroData.trustBadges.priority}</span>
-                </div>
-                <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white/90 backdrop-blur-md border border-[#0B1D3A]/[0.08] shadow-xs text-[#0B1D3A] hover:border-[#C99A2E]/40 transition-all cursor-default">
-                  <div className="w-6 h-6 rounded bg-[#10B981] flex items-center justify-center shadow-xs shrink-0">
-                    <Clock size={14} className="text-white" />
-                  </div>
-                  <span className="text-[13px] font-bold">{heroData.trustBadges.sla}</span>
-                </div>
+              <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-10">
+                <button
+                  onClick={() => document.getElementById('contact-form-section')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="group text-white text-[14px] font-semibold px-8 py-4 rounded hover:shadow-[0_20px_40px_-10px_rgba(11,29,58,0.35)] active:scale-[0.97] transition-all duration-300 flex items-center gap-3 shadow-[0_8px_24px_-6px_rgba(11,29,58,0.25)] relative overflow-hidden"
+                  style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)` }}
+                >
+                  <span className="relative z-10">{heroData.buttons.primary}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                </button>
               </motion.div>
+
+              <motion.div variants={item} className="flex flex-wrap gap-2.5 mb-5">
+                {heroData.features.map((f, i) => (
+                  <span
+                    key={i}
+                    className="group/pill px-4 py-2 rounded text-[12px] font-semibold border border-[#0B1D3A]/[0.08] bg-white/80 backdrop-blur-sm text-[#475569] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.06)] hover:border-[#C99A2E]/40 hover:text-[#C99A2E] hover:shadow-[0_4px_16px_-4px_rgba(201,154,46,0.15)] transition-all duration-300 cursor-default"
+                  >
+                    {f}
+                  </span>
+                ))}
+              </motion.div>
+
+              <motion.p variants={item} className="text-[12px] italic text-[#0B1D3A]/45 font-medium">
+                {heroData.footerText}
+              </motion.p>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 40, scale: 0.96 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="col-span-6 relative w-full flex justify-end"
+              initial={{ opacity: 0, x: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5 relative w-full flex items-center justify-center"
             >
-              <div className="relative w-full max-w-[620px] aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_30px_80px_-20px_rgba(11,29,58,0.35)] group z-20 border border-white/60">
-                <div className="absolute inset-0 border-[2px] border-white/20 rounded-2xl z-20 pointer-events-none mix-blend-overlay" />
-                
+              <div className="relative w-full aspect-[4/5] max-w-[500px] flex items-center justify-center group mt-10 lg:mt-0">
                 <motion.div
-                  className="w-full h-full absolute inset-0 z-10"
-                  animate={{ scale: [1, 1.04, 1] }}
-                  transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+                  className="w-full h-full absolute inset-0 z-0 rounded-[2rem] overflow-hidden border border-white/60 shadow-[0_20px_60px_-15px_rgba(11,29,58,0.15)]"
+                  style={{
+                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)',
+                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)'
+                  }}
                 >
-                  <img
+                  <motion.img
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
                     src={contactHero}
-                    alt="FARE Executive Advisory"
+                    alt="Contact Us Hero"
                     className="w-full h-full object-cover object-[center_35%]"
                   />
                 </motion.div>
-
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/90 via-[#0B1D3A]/25 to-transparent z-20" />
-
-                <div className="absolute top-5 right-5 z-30 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0B1D3A]/85 backdrop-blur-md border border-white/20 text-white text-[12px] font-semibold shadow-md">
-                  <span className="w-2 h-2 rounded-full bg-[#34D399] relative flex items-center justify-center">
-                    <span className="absolute w-3.5 h-3.5 rounded-full bg-[#34D399]/40 animate-ping"></span>
-                  </span>
-                  <span>{heroData.imageCard.activeDesk}</span>
-                </div>
-
-                <div className="absolute bottom-6 left-6 right-6 bg-[#0B1D3A]/90 backdrop-blur-xl border border-white/20 p-5 rounded-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] z-30 flex items-center justify-between group-hover:translate-y-[-2px] transition-transform duration-300">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                  className="absolute -left-4 sm:-left-8 bottom-16 z-20 bg-white/95 backdrop-blur-xl p-4 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.2)] border border-white/80 rounded-[24px] rounded-tl-[8px]"
+                >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md font-bold shrink-0">
-                      <Sparkles size={20} className="text-white" />
+                    <div className="w-11 h-11 rounded-[12px] rounded-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-lg shadow-[#34D399]/30">
+                      <Sparkles size={18} className="text-white" />
                     </div>
-                    <div>
-                      <p className="text-[11px] font-bold text-[#E2C068] uppercase tracking-wider">{heroData.imageCard.gateway}</p>
-                      <p className="text-[17px] font-black text-white">{heroData.imageCard.directAdvisory}</p>
+                    <div className="pr-2">
+                      <div className="text-[14px] font-black text-[#0B1D3A] tracking-tight">{heroData.dashboard.floatingBadge.title}</div>
+                      <div className="text-[10px] font-bold text-[#64748B] uppercase tracking-wider mt-0.5">{heroData.dashboard.floatingBadge.subtitle}</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-white/90 text-xs font-semibold">
-                    <CheckCircle size={14} className="text-[#34D399]" />
-                    {heroData.imageCard.directRouting}
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                  className="absolute -right-4 sm:-right-8 top-24 z-20 bg-white/95 backdrop-blur-xl p-3.5 shadow-[0_15px_50px_-12px_rgba(11,29,58,0.25)] border border-white/80 hidden lg:block rounded-[20px] rounded-tr-[6px]"
+                >
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-[10px] rounded-bl-[4px] flex items-center justify-center text-[15px] font-black text-white shadow-lg shadow-[#C99A2E]/30" style={{ background: `linear-gradient(135deg, ${GOLD}, #E2C068)` }}>
+                      %
+                    </div>
+                    <div className="pr-3">
+                      <div className="text-[16px] font-black text-[#0B1D3A] leading-none">{heroData.dashboard.stats[0].progress}</div>
+                      <div className="text-[10px] font-bold text-[#94A3B8] uppercase tracking-wider mt-1">{heroData.dashboard.stats[0].title}</div>
+                    </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
-
-              <motion.div 
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute top-[8%] right-[-6%] w-[85%] h-[85%] rounded-2xl border-2 border-[#C99A2E]/25 rotate-3 z-10 pointer-events-none" 
-              />
-              <motion.div 
-                animate={{ y: [0, 5, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute top-[3%] right-[-2%] w-[85%] h-[85%] rounded-2xl border border-[#3B82F6]/25 -rotate-2 z-10 pointer-events-none" 
-              />
             </motion.div>
 
           </div>

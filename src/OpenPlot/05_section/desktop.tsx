@@ -64,7 +64,7 @@ export default function Desktop() {
                             <React.Fragment key={i}>
                                 {word === 'Open' || word === 'Plot' || word.includes('Open') || word.includes('Plot') ? <span className="text-[#C99A2E] relative inline-block">
                                     {word} 
-                                    <svg className="absolute w-full h-[6px] -bottom-1 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/></svg>
+                                    <div className="absolute w-full h-[2px] bg-[#C99A2E]/60 -bottom-1 left-0" />
                                 </span> : <span>{word} </span>}
                             </React.Fragment>
                         ))}

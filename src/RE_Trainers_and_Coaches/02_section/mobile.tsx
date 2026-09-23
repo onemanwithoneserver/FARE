@@ -123,12 +123,9 @@ export default function Mobile() {
                                 variants={item}
                                 className="bg-gradient-to-r from-white/95 via-red-50/70 to-red-100/40 backdrop-blur-sm border border-red-200/90 rounded p-4 flex items-center gap-4 shadow-[0_2px_10px_-2px_rgba(220,38,38,0.08)] relative overflow-hidden"
                             >
-                                {/* Watermark Emoji */}
                                 <span className="absolute -bottom-1 -right-1 text-[32px] opacity-[0.08] select-none pointer-events-none filter blur-[0.2px]">
                                     {emoji}
                                 </span>
-
-                                {/* Unchanged Material UI Icon */}
                                 <div 
                                     className="w-10 h-10 rounded-xl shadow-md flex items-center justify-center shrink-0 relative overflow-hidden ring-2 ring-red-100/60"
                                     style={{ backgroundColor: color }}

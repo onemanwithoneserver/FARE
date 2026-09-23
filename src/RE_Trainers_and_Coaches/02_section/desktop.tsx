@@ -134,25 +134,18 @@ export default function Desktop() {
                                 whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
                                 className="w-[calc(20%-13px)] min-w-[200px] group bg-gradient-to-b from-white/95 via-red-50/60 to-red-100/40 backdrop-blur-md border border-red-200/90 hover:border-red-400 rounded p-4 shadow-[0_4px_16px_-4px_rgba(220,38,38,0.08)] hover:shadow-[0_16px_36px_-8px_rgba(220,38,38,0.22)] transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[170px] justify-center cursor-default"
                             >
-                                {/* Top Accent Glow Line */}
                                 <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-red-500/0 to-transparent group-hover:via-red-500/90 transition-all duration-400" />
                                 
                                 <motion.div animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-red-500/20 to-transparent rounded-bl-full blur-[20px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></motion.div>
-
-                                {/* Card Background Watermark Emoji */}
                                 <span className="absolute -bottom-2 -right-1 text-[38px] opacity-[0.08] group-hover:opacity-[0.2] group-hover:scale-115 transition-all duration-500 select-none pointer-events-none filter blur-[0.2px]">
                                     {emoji}
                                 </span>
-
-                                {/* Unchanged Material UI Icon */}
                                 <div 
                                     className="mb-3 w-10 h-10 rounded-xl shadow-md flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 relative overflow-hidden ring-2 ring-red-100/60"
                                     style={{ backgroundColor: color }}
                                 >
                                     <Icon size={20} className="text-white relative z-10" />
                                 </div>
-                                
-                                {/* Challenge Title */}
                                 <h3 className="text-[14px] font-bold leading-tight relative z-10 px-1" style={{ color: NAVY }}>
                                     {challenge}
                                 </h3>

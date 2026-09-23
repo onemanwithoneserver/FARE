@@ -124,117 +124,158 @@ export default function ContactUsMobile() {
   return (
     <div className="w-full flex flex-col font-['Outfit'] overflow-hidden">
       <section
-        className="w-full -mt-8 flex items-center justify-center overflow-hidden relative"
-        style={{ background: `linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)` }}
+        className="w-full -mt-8 flex flex-col items-center justify-start overflow-hidden relative pb-16"
+        style={{ background: `linear-gradient(170deg, #FFFFFF 0%, #F6F9FF 30%, #EDF2FF 70%, #E6EDFF 100%)` }}
       >
-        <motion.div
-          animate={{ opacity: [0.35, 0.6, 0.35], scale: [1, 1.05, 1] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-10 right-[-100px] w-[350px] h-[350px] bg-gradient-radial from-[#DBEAFE]/40 to-transparent rounded-full blur-[80px] pointer-events-none z-0"
+        <motion.div animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-10 right-[-100px] w-[350px] h-[350px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[80px] pointer-events-none z-0"></motion.div>
+        <motion.div animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-20 left-[-50px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[70px] pointer-events-none z-0"></motion.div>
+
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
+            style={{
+                backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
+                backgroundSize: '40px 40px'
+            }}
         />
 
-        <div className="w-full relative z-10 px-4 py-8">
+        <div className="w-full px-5 pt-8 pb-12 relative z-10 flex flex-col items-center text-center">
           <motion.div
             variants={container}
             initial="hidden"
-            animate="show"
-            className="flex flex-col items-start text-left relative z-10"
+            whileInView="show"
+            viewport={{ once: false }}
+            className="flex flex-col items-center w-full"
           >
-            <motion.div variants={item} className="mb-4">
-              <div className="px-3.5 py-1.5 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] flex items-center gap-2 backdrop-blur-md shadow-xs">
-                <div className="w-4.5 h-4.5 rounded-full bg-[#C99A2E] flex items-center justify-center text-white shadow-xs">
-                  <Sparkles size={10} className="text-white" />
-                </div>
-                <span className="font-bold text-[10.5px] tracking-[0.16em] uppercase" style={{ color: GOLD }}>
-                  {heroData.badge}
+            
+            <motion.div variants={item} className="mb-5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-xs">
+                <Sparkles size={11} className="text-[#C99A2E]" strokeWidth={2.5} />
+                <span className="font-bold text-[10px] tracking-[0.15em] uppercase text-[#C99A2E]">
+                  {heroData.tagline}
                 </span>
               </div>
             </motion.div>
 
             <motion.h1
               variants={item}
-              className="font-black text-[#0B1D3A] text-[1.85rem] sm:text-[2.25rem] leading-[1.15] mb-4"
+              className={`font-black mb-4 ${
+                  language === 'te'
+                      ? 'text-[1.9rem] sm:text-[2.25rem] leading-[1.15] tracking-wide'
+                      : 'text-[2.25rem] sm:text-[2.5rem] leading-[1.08] tracking-tight'
+              }`}
+              style={{ color: NAVY }}
             >
-              {heroData.headlineLine1} <br />
-              <span className="text-[#C99A2E] relative inline-block">
-                {heroData.headlineLine2}
-                <svg className="absolute w-full h-[6px] -bottom-1 left-0 text-[#C99A2E]/40" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent" />
-                </svg>
-              </span>
+              {language === 'te' ? (
+                <span>
+                  సంప్రదింపులు & సలహాల కోసం{' '}
+                  <span className="text-[#C99A2E] relative inline-block">
+                    FARE
+                  </span>
+                </span>
+              ) : (
+                <span>
+                  FARE for <br />
+                  <span className="text-[#C99A2E] relative inline-block mt-1">
+                    Contact & Advisory
+                    <svg className="absolute w-full h-[5px] -bottom-1 left-0 text-[#C99A2E]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                      <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent"/>
+                    </svg>
+                  </span>
+                </span>
+              )}
             </motion.h1>
+
+            <motion.div variants={item} className="mb-5">
+              <h2 className={`font-bold ${
+                  language === 'te' ? 'text-[16px] leading-relaxed tracking-wide' : 'text-[17px] leading-snug'
+              }`} style={{ color: NAVY }}>
+                {heroData.subheadline}
+              </h2>
+              {heroData.subheadlineAccent && (
+                <h2 className={`font-bold mt-1 ${
+                    language === 'te' ? 'text-[16px] leading-relaxed tracking-wide' : 'text-[17px] leading-snug'
+                }`} style={{ color: GOLD }}>
+                  {heroData.subheadlineAccent}
+                </h2>
+              )}
+            </motion.div>
 
             <motion.p
               variants={item}
-              className="font-medium text-[#475569] text-[14.5px] leading-[1.6] mb-6"
+              className="text-[14.5px] font-medium leading-[1.65] text-[#475569] mb-7 max-w-[90%]"
             >
-              {heroData.subtitle}
+              {heroData.description}
             </motion.p>
 
-            <motion.div variants={item} className="flex flex-wrap gap-2 w-full mb-8">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-md border border-[#0B1D3A]/[0.08] shadow-xs text-[#0B1D3A]">
-                <div className="w-5 h-5 rounded bg-[#F59E0B] flex items-center justify-center shadow-xs shrink-0">
-                  <ShieldCheck size={12} className="text-white" />
-                </div>
-                <span className="text-[12px] font-bold">{heroData.trustBadges.confidential}</span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-md border border-[#0B1D3A]/[0.08] shadow-xs text-[#0B1D3A]">
-                <div className="w-5 h-5 rounded bg-[#3B82F6] flex items-center justify-center shadow-xs shrink-0">
-                  <MessageSquare size={12} className="text-white" />
-                </div>
-                <span className="text-[12px] font-bold">{heroData.trustBadges.priority}</span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-md border border-[#0B1D3A]/[0.08] shadow-xs text-[#0B1D3A]">
-                <div className="w-5 h-5 rounded bg-[#10B981] flex items-center justify-center shadow-xs shrink-0">
-                  <Clock size={12} className="text-white" />
-                </div>
-                <span className="text-[12px] font-bold">{heroData.trustBadges.sla}</span>
-              </div>
+            <motion.div variants={item} className="flex flex-col w-full max-w-[300px] gap-3 mb-8">
+              <button
+                onClick={() => document.getElementById('contact-form-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full group text-white text-[14px] font-semibold py-3.5 rounded-lg active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_8px_20px_-6px_rgba(11,29,58,0.25)] relative overflow-hidden"
+                style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)` }}
+              >
+                <span className="relative z-10">{heroData.buttons.primary}</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent translate-x-[-100%] group-active:translate-x-[100%] transition-transform duration-500"></div>
+              </button>
             </motion.div>
 
-            <motion.div
-              variants={item}
-              className="w-full relative rounded-2xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(11,29,58,0.2)] border border-white/60 aspect-[4/3]"
-            >
+            <motion.div variants={item} className="flex flex-wrap justify-center gap-2 mb-6 max-w-[340px]">
+              {heroData.features.map((f, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1.5 rounded-md text-[11px] font-bold border border-[#0B1D3A]/[0.08] bg-white/80 backdrop-blur-sm text-[#475569] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.06)]"
+                >
+                  {f}
+                </span>
+              ))}
+            </motion.div>
+
+            <motion.p variants={item} className="text-[11px] italic text-[#0B1D3A]/45 font-medium px-4">
+              {heroData.footerText}
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="w-full mt-10 relative z-20 flex items-center justify-center px-4"
+          >
+            <div className="relative w-full aspect-[4/5] max-w-[360px] flex items-center justify-center group">
               <motion.div
-                className="w-full h-full absolute inset-0 z-0"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+                className="w-full h-full absolute inset-0 z-0 rounded-[1.5rem] overflow-hidden border border-white/60 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.15)]"
+                style={{
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)'
+                }}
               >
-                <img
+                <motion.img
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
                   src={contactHero}
-                  alt="FARE Executive Advisory"
-                  className="w-full h-full object-cover object-[center_30%]"
+                  alt="Contact Us Hero"
+                  className="w-full h-full object-cover object-[center_35%]"
                 />
               </motion.div>
-
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/90 via-[#0B1D3A]/25 to-transparent z-10" />
-
-              <div className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0B1D3A]/85 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold shadow-md">
-                <span className="w-2 h-2 rounded-full bg-[#34D399] relative flex items-center justify-center">
-                  <span className="absolute w-3.5 h-3.5 rounded-full bg-[#34D399]/40 animate-ping"></span>
-                </span>
-                <span>{heroData.imageCard.activeDesk}</span>
-              </div>
-
-              <div className="absolute bottom-3.5 left-3.5 right-3.5 z-20 bg-[#0B1D3A]/90 backdrop-blur-xl border border-white/20 p-3.5 rounded-xl shadow-md flex items-center justify-between">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ delay: 0.7, duration: 0.5 }}
+                className="absolute -left-2 sm:-left-6 bottom-12 z-20 bg-white/95 backdrop-blur-xl p-3 shadow-[0_12px_32px_-8px_rgba(11,29,58,0.2)] border border-white/80 rounded-[20px] rounded-tl-[6px]"
+              >
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-xs font-bold shrink-0">
-                    <Sparkles size={16} />
+                  <div className="w-10 h-10 rounded-[10px] rounded-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-md shadow-[#34D399]/30">
+                    <Sparkles size={16} className="text-white" />
                   </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-[#E2C068] uppercase tracking-wider">{heroData.imageCard.gateway}</p>
-                    <p className="text-[14px] font-black text-white">{heroData.imageCard.directAdvisory}</p>
+                  <div className="pr-1.5">
+                    <div className="text-[13px] font-black text-[#0B1D3A] tracking-tight">{heroData.dashboard.floatingBadge.title}</div>
+                    <div className="text-[9.5px] font-bold text-[#64748B] uppercase tracking-wider mt-0.5">{heroData.dashboard.floatingBadge.subtitle}</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/10 border border-white/10 text-white/90 text-[11px] font-semibold">
-                  <CheckCircle size={13} className="text-[#34D399]" />
-                  {heroData.imageCard.directRouting}
-                </div>
-              </div>
-            </motion.div>
-
+              </motion.div>
+            </div>
           </motion.div>
+
         </div>
       </section>
 
