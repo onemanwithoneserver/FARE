@@ -145,21 +145,12 @@ export default function Mobile() {
                         </motion.div>
                     </motion.div>
 
-                    {/* Vertical connecting wire behind the stacked cards */}
-                    <div className="absolute left-1/2 -translate-x-1/2 top-[20%] bottom-[20%] w-[2px] bg-gradient-to-b from-[#C99A2E]/40 via-[#3B82F6]/40 to-transparent -z-10 pointer-events-none" />
-                    
-                    <div className="flex items-center justify-center py-2 relative z-10">
-                        <div className="w-11 h-11 rounded-full bg-white border border-[#0B1D3A]/10 shadow-sm flex items-center justify-center text-[#C99A2E]">
-                            <Plus size={22} strokeWidth={2.5} />
-                        </div>
-                    </div>
-
                     <motion.div
                         initial={{ opacity: 0, y: 25 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, margin: "-40px" }}
+                        viewport={{ once: false }}
                         transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                        className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 relative overflow-hidden shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)]"
+                        className="mt-6 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-3xl p-6 relative overflow-hidden shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)]"
                     >
                         <div className="absolute top-0 right-0 w-32 h-32 bg-[#3B82F6]/10 rounded-bl-full blur-[25px] pointer-events-none" />
                         <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#3B82F6] to-transparent opacity-80" />
@@ -199,12 +190,28 @@ export default function Mobile() {
                     </motion.div>
                 </div>
 
+                {/* FARE brings the audience pill - mobile */}
+                <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.6 }}
+                    className="mt-8 mb-6 text-center flex items-center justify-center relative z-10 w-full"
+                >
+                    <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/95 border border-[#C99A2E]/30 shadow-[0_4px_16px_rgba(201,154,46,0.18)] backdrop-blur-md">
+                        <Sparkles size={14} className="text-[#C99A2E]" strokeWidth={2.2} />
+                        <p className="text-[17px] sm:text-[19px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
+                            {data.footerText}
+                        </p>
+                    </div>
+                </motion.div>
+
                 <motion.div
                     initial={{ opacity: 0, y: 25 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                    className="rounded-3xl flex flex-col items-center relative shadow-[0_20px_45px_rgba(11,29,58,0.4)] mb-8 mt-10 z-20"
+                    className="rounded-3xl flex flex-col items-center relative shadow-[0_20px_45px_rgba(11,29,58,0.4)] mb-8 z-20"
                 >
                     {/* Inner wrapper for overflow-hidden backgrounds */}
                     <div className="absolute inset-0 rounded-3xl overflow-hidden border border-white/10 pointer-events-none" style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}>
@@ -213,8 +220,8 @@ export default function Mobile() {
                         <div className="absolute bottom-0 left-0 w-36 h-36 bg-[#3B82F6]/15 rounded-full blur-[35px] pointer-events-none" />
                     </div>
 
-                    {/* Node circle on top of the bottom card - outside overflow-hidden */}
-                    <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] border-[3px] border-white shadow-lg flex items-center justify-center z-30 font-black text-white text-2xl leading-none pb-1">
+                    {/* = node on top of the dark card */}
+                    <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] border-[3px] border-white shadow-lg flex items-center justify-center z-30 font-black text-white text-xl leading-none">
                         =
                     </div>
 
@@ -270,21 +277,6 @@ export default function Mobile() {
                         ))}
                     </motion.div>
                 </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.6 }}
-                    className="mt-6 text-center flex flex-col items-center gap-3 relative z-10"
-                >
-                    <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/95 border border-[#C99A2E]/30 shadow-[0_4px_16px_rgba(201,154,46,0.18)] backdrop-blur-md">
-                        <Sparkles size={14} className="text-[#C99A2E]" strokeWidth={2.2} />
-                        <p className="text-[17px] sm:text-[19px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
-                            {data.footerText}
-                        </p>
-                    </div>
                 </motion.div>
             </div>
         </section>

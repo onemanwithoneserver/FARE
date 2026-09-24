@@ -182,8 +182,8 @@ export default function Desktop() {
                         </motion.div>
 
                         {/* Plus between cards */}
-                        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-[55%] -translate-y-1/2 w-16 h-16 rounded-full bg-white border border-[#0B1D3A]/10 shadow-[0_8px_24px_-4px_rgba(11,29,58,0.12)] items-center justify-center z-20 text-[#C99A2E]">
-                            <Plus size={30} strokeWidth={2.5} />
+                        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-[50%] -translate-y-1/2 w-14 h-14 rounded-full bg-white border border-[#0B1D3A]/10 shadow-[0_8px_24px_-4px_rgba(11,29,58,0.12)] items-center justify-center z-20 text-[#C99A2E]">
+                            <Plus size={28} strokeWidth={2.5} />
                         </div>
 
                         {/* Card 2: FARE Brings */}
@@ -240,27 +240,40 @@ export default function Desktop() {
                         </motion.div>
                     </div>
 
-                    {/* Desktop Wiring - only visible on lg and up */}
-                    <div className="hidden lg:block absolute left-0 right-0 top-[100%] h-[140px] pointer-events-none z-0 overflow-visible">
-                        <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1140 140">
-                            {/* Outer faint gold path */}
-                            <path d="M 285 0 C 285 110, 550 120, 570 140" stroke="#C99A2E" strokeWidth="1.5" fill="none" className="opacity-30" />
-                            {/* Inner strong gold path */}
-                            <path d="M 285 12 C 285 95, 560 100, 570 140" stroke="#C99A2E" strokeWidth="2.5" fill="none" className="opacity-50" />
-                            
-                            {/* Outer faint blue path */}
-                            <path d="M 855 0 C 855 110, 590 120, 570 140" stroke="#3B82F6" strokeWidth="1.5" fill="none" className="opacity-30" />
-                            {/* Inner strong blue path */}
-                            <path d="M 855 12 C 855 95, 580 100, 570 140" stroke="#3B82F6" strokeWidth="2.5" fill="none" className="opacity-50" />
+                    {/* Wiring from cards to = node */}
+                    <div className="hidden lg:block relative w-full h-[120px] pointer-events-none z-0 overflow-visible">
+                        <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1140 120">
+                            {/* Gold paths from left card */}
+                            <path d="M 285 0 C 285 90, 555 100, 570 120" stroke="#C99A2E" strokeWidth="1.5" fill="none" className="opacity-25" />
+                            <path d="M 285 10 C 285 80, 558 88, 570 120" stroke="#C99A2E" strokeWidth="2.5" fill="none" className="opacity-50" />
+                            {/* Blue paths from right card */}
+                            <path d="M 855 0 C 855 90, 585 100, 570 120" stroke="#3B82F6" strokeWidth="1.5" fill="none" className="opacity-25" />
+                            <path d="M 855 10 C 855 80, 582 88, 570 120" stroke="#3B82F6" strokeWidth="2.5" fill="none" className="opacity-50" />
                         </svg>
                     </div>
+
+                    {/* FARE brings the audience pill */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex items-center justify-center relative z-10 w-full mb-8"
+                    >
+                        <div className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white/95 border border-[#C99A2E]/25 shadow-[0_8px_30px_-4px_rgba(201,154,46,0.18)] backdrop-blur-md">
+                            <Sparkles size={18} className="text-[#C99A2E]" strokeWidth={2.5} />
+                            <p className="text-[18px] lg:text-[22px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
+                                {data.footerText}
+                            </p>
+                        </div>
+                    </motion.div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "-60px" }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="lg:mt-[140px] max-w-[1000px] w-full mx-auto rounded-3xl flex flex-col items-center relative transition-all duration-500 group shadow-[0_25px_60px_-15px_rgba(11,29,58,0.5)] hover:shadow-[0_30px_70px_-15px_rgba(201,154,46,0.15)] mt-12 z-20"
+                    className="max-w-[1000px] w-full mx-auto rounded-3xl flex flex-col items-center relative transition-all duration-500 group shadow-[0_25px_60px_-15px_rgba(11,29,58,0.5)] hover:shadow-[0_30px_70px_-15px_rgba(201,154,46,0.15)] z-20"
                 >
                     {/* Inner wrapper for overflow-hidden backgrounds */}
                     <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none border border-white/10 group-hover:border-[#C99A2E]/40 transition-colors duration-500" style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}>
@@ -286,8 +299,8 @@ export default function Desktop() {
                         />
                     </div>
 
-                    {/* Node circle on top of the bottom card - outside overflow-hidden */}
-                    <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] border-[4px] border-white shadow-[0_8px_20px_rgba(201,154,46,0.35)] flex items-center justify-center z-30 font-black text-white text-3xl leading-none pb-1">
+                    {/* = node on top of the dark card */}
+                    <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] border-[4px] border-white shadow-[0_8px_20px_rgba(201,154,46,0.35)] flex items-center justify-center z-30 font-black text-white text-2xl leading-none">
                         =
                     </div>
 
@@ -371,23 +384,6 @@ export default function Desktop() {
                     </div>
                 </motion.div>
                 </div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 22 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="mt-14 lg:mt-[50px] text-center flex items-center justify-center gap-6 relative z-10"
-                >
-                    <div className="hidden lg:block w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
-                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/90 border border-[#C99A2E]/25 shadow-[0_8px_30px_-4px_rgba(201,154,46,0.18)] backdrop-blur-md relative">
-                        <Sparkles size={16} className="text-[#C99A2E]" strokeWidth={2.2} />
-                        <p className="text-[20px] lg:text-[23px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
-                            {data.footerText}
-                        </p>
-                    </div>
-                    <div className="hidden lg:block w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
-                </motion.div>
             </div>
         </section>
     );
