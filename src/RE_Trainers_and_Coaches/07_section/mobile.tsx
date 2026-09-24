@@ -114,10 +114,6 @@ export default function Mobile() {
                             >
                                 <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-10 -right-10 w-40 h-40 opacity-[0.08] blur-[40px] pointer-events-none rounded-full" style={{ background: activeTabData.color }}></motion.div>
 
-                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded mb-6 border backdrop-blur-md" style={{ backgroundColor: `${activeTabData.color}10`, borderColor: `${activeTabData.color}20`, color: activeTabData.color }}>
-                                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: activeTabData.color }}></span>
-                                    <span className="text-[11px] font-bold uppercase tracking-wider">{activeTabData.label}</span>
-                                </div>
 
                                 <h3 className="text-[24px] font-black mb-4 leading-tight" style={{ color: NAVY }}>
                                     {activeTabData.title}

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { User, Server, Plus, ArrowRight, Zap, Sparkles } from 'lucide-react';
+import { User, Server, ArrowRight, Zap, Sparkles } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getData } from './data';
 

@@ -132,10 +132,6 @@ export default function Desktop() {
                                     {tabIcons[activeTabData.icon as keyof typeof tabIcons]}
                                 </div>
 
-                                <div className="inline-flex items-center gap-3 px-4 py-2 rounded mb-8 border backdrop-blur-md" style={{ backgroundColor: `${activeTabData.color}10`, borderColor: `${activeTabData.color}20`, color: activeTabData.color }}>
-                                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: activeTabData.color }}></span>
-                                    <span className="text-[13px] font-bold uppercase tracking-wider">{activeTabData.label}</span>
-                                </div>
 
                                 <h3 className="text-[32px] lg:text-[40px] font-black mb-6 leading-tight" style={{ color: NAVY }}>
                                     {activeTabData.title}

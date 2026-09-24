@@ -240,15 +240,84 @@ export default function Desktop() {
                         </motion.div>
                     </div>
 
-                    {/* Wiring from cards to = node */}
+                    {/* Wiring from cards to = node with loading animations and effects */}
                     <div className="hidden lg:block relative w-full h-[120px] pointer-events-none z-0 overflow-visible">
                         <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1140 120">
                             {/* Gold paths from left card */}
-                            <path d="M 285 0 C 285 90, 555 100, 570 120" stroke="#C99A2E" strokeWidth="1.5" fill="none" className="opacity-25" />
-                            <path d="M 285 10 C 285 80, 558 88, 570 120" stroke="#C99A2E" strokeWidth="2.5" fill="none" className="opacity-50" />
+                            <motion.path 
+                                initial={{ pathLength: 0, opacity: 0 }}
+                                whileInView={{ pathLength: 1, opacity: 0.25 }}
+                                viewport={{ once: false, margin: "0px 0px -10% 0px" }}
+                                transition={{ duration: 1.5, ease: "easeInOut" }}
+                                d="M 285 0 C 285 90, 555 100, 570 120" 
+                                stroke="#C99A2E" 
+                                strokeWidth="1.5" 
+                                fill="none" 
+                            />
+                            <motion.path 
+                                initial={{ pathLength: 0, opacity: 0 }}
+                                whileInView={{ pathLength: 1, opacity: 0.5 }}
+                                viewport={{ once: false, margin: "0px 0px -10% 0px" }}
+                                transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }}
+                                d="M 285 10 C 285 80, 558 88, 570 120" 
+                                stroke="#C99A2E" 
+                                strokeWidth="2.5" 
+                                fill="none" 
+                            />
+                            {/* Gold continuous pulse effect */}
+                            <motion.path 
+                                initial={{ pathLength: 0, pathOffset: 0, opacity: 0 }}
+                                whileInView={{ 
+                                    pathLength: [0, 0.15, 0.15], 
+                                    pathOffset: [0, 1, 1], 
+                                    opacity: [0, 1, 0] 
+                                }}
+                                viewport={{ once: false }}
+                                transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut", delay: 1 }}
+                                d="M 285 10 C 285 80, 558 88, 570 120" 
+                                stroke="#FFFFFF" 
+                                strokeWidth="3" 
+                                fill="none" 
+                                style={{ filter: "blur(2px)" }}
+                            />
+
                             {/* Blue paths from right card */}
-                            <path d="M 855 0 C 855 90, 585 100, 570 120" stroke="#3B82F6" strokeWidth="1.5" fill="none" className="opacity-25" />
-                            <path d="M 855 10 C 855 80, 582 88, 570 120" stroke="#3B82F6" strokeWidth="2.5" fill="none" className="opacity-50" />
+                            <motion.path 
+                                initial={{ pathLength: 0, opacity: 0 }}
+                                whileInView={{ pathLength: 1, opacity: 0.25 }}
+                                viewport={{ once: false, margin: "0px 0px -10% 0px" }}
+                                transition={{ duration: 1.5, ease: "easeInOut" }}
+                                d="M 855 0 C 855 90, 585 100, 570 120" 
+                                stroke="#3B82F6" 
+                                strokeWidth="1.5" 
+                                fill="none" 
+                            />
+                            <motion.path 
+                                initial={{ pathLength: 0, opacity: 0 }}
+                                whileInView={{ pathLength: 1, opacity: 0.5 }}
+                                viewport={{ once: false, margin: "0px 0px -10% 0px" }}
+                                transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }}
+                                d="M 855 10 C 855 80, 582 88, 570 120" 
+                                stroke="#3B82F6" 
+                                strokeWidth="2.5" 
+                                fill="none" 
+                            />
+                            {/* Blue continuous pulse effect */}
+                            <motion.path 
+                                initial={{ pathLength: 0, pathOffset: 0, opacity: 0 }}
+                                whileInView={{ 
+                                    pathLength: [0, 0.15, 0.15], 
+                                    pathOffset: [0, 1, 1], 
+                                    opacity: [0, 1, 0] 
+                                }}
+                                viewport={{ once: false }}
+                                transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut", delay: 1.5 }}
+                                d="M 855 10 C 855 80, 582 88, 570 120" 
+                                stroke="#FFFFFF" 
+                                strokeWidth="3" 
+                                fill="none"
+                                style={{ filter: "blur(2px)" }}
+                            />
                         </svg>
                     </div>
 
