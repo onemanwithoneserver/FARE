@@ -56,50 +56,53 @@ export default function Desktop() {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: false }}
-                        className="lg:col-span-7 flex flex-col items-start text-left w-[42%] min-w-[420px] relative z-40"
+                        className="lg:col-span-8 flex flex-col items-start text-left w-full relative z-40"
                     >
-                        <motion.div variants={item} className="flex items-center gap-3 mb-5">
-                            <div className="w-10 h-[1.5px]" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_LIGHT})` }}></div>
-                            <span className="font-semibold text-[10.5px] tracking-[0.22em] uppercase" style={{ color: GOLD }}>
-                                {data.tagline}
-                            </span>
-                        </motion.div>
 
-                        <h1 className={`font-black mb-5 flex flex-col gap-1.5 md:gap-2 ${
+
+                        <h1 className={`font-black mb-3 flex flex-col gap-1 md:gap-1.5 ${
                             language === 'te'
-                                ? 'text-[3.6rem] leading-[1.2] tracking-wider my-2'
-                                : 'text-[4.85rem] leading-[1.05] tracking-[-0.03em]'
+                                ? 'text-[3.6rem] leading-[1.1] tracking-wider'
+                                : 'text-[4.85rem] leading-[1] tracking-[-0.03em]'
                         }`}>
                             {language === 'te' ? (
                                 <>
                                     <motion.span variants={item} className={`block ${language === 'te' ? 'py-1' : ''}`} style={{ color: NAVY }}>ఓపెన్ ప్లాట్ కంపెనీల కోసం</motion.span>
-                                    <motion.span variants={item} className={`inline-block gold-gradient-text gold-underline ${language === 'te' ? 'py-1' : ''}`}>FARE</motion.span>
+                                    <motion.span variants={item} className={`inline-block text-[#C99A2E] gold-underline ${language === 'te' ? 'py-1' : ''}`}>
+                                        FARE
+                                    </motion.span>
                                 </>
                             ) : (
                                 <>
+                                    <motion.span variants={item} className="inline-flex items-center self-start gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2">
+                                        <Sparkles size={12} className="text-[#C99A2E]" strokeWidth={2.5} />
+                                        <span className="font-bold text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">FARE FOR</span>
+                                    </motion.span>
                                     <motion.span variants={item} className="block uppercase" style={{ color: NAVY }}>OPEN PLOT</motion.span>
-                                    <motion.span variants={item} className="inline-block gold-gradient-text gold-underline uppercase">COMPANIES</motion.span>
+                                    <motion.span variants={item} className="inline-block text-[#C99A2E] gold-underline uppercase">
+                                        COMPANIES
+                                    </motion.span>
                                 </>
                             )}
                         </h1>
 
-                        <motion.div variants={item} className="mb-5 flex flex-col gap-1">
-                            <p className="text-[17px] font-medium leading-[1.6] max-w-[420px]" style={{ color: '#3A4A63' }}>
+                        <motion.div variants={item} className="mb-4 flex flex-col gap-1">
+                            <p className="text-[17px] font-medium leading-[1.5]" style={{ color: '#3A4A63' }}>
                                 {data.subheadline}
                             </p>
                             {data.subheadlineAccent && (
-                                <p className="text-[17px] font-medium leading-[1.6] max-w-[420px]" style={{ color: GOLD }}>
+                                <p className="text-[17px] font-medium leading-[1.5]" style={{ color: GOLD }}>
                                     {data.subheadlineAccent}
                                 </p>
                             )}
-                            <p className="text-[17px] font-medium leading-[1.6] max-w-[420px] mt-2" style={{ color: '#3A4A63' }}>
+                            <p className="text-[17px] font-medium leading-[1.5] mt-1.5" style={{ color: '#3A4A63' }}>
                                 {data.description}
                             </p>
                         </motion.div>
 
-                        <motion.div variants={item} className="flex items-center gap-4 mb-6">
+                        <motion.div variants={item} className="flex items-center gap-4 mb-5">
                             <button
-                                className="text-white text-[13.5px] font-semibold px-7 py-3.5 rounded hover:shadow-[0_12px_24px_rgba(11,29,58,0.2),0_0_0_1px_rgba(201,154,46,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
+                                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded hover:shadow-[0_12px_24px_rgba(11,29,58,0.2),0_0_0_1px_rgba(201,154,46,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
                                 style={{
                                     background: NAVY,
                                     boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`
@@ -109,7 +112,7 @@ export default function Desktop() {
                             </button>
                             {data.buttons.secondary && (
                                 <button
-                                    className="text-[13.5px] font-semibold px-7 py-3.5 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border"
+                                    className="text-[13.5px] font-semibold px-7 py-3 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border"
                                     style={{
                                         color: NAVY,
                                         borderColor: `${NAVY}15`,
@@ -122,11 +125,11 @@ export default function Desktop() {
                             )}
                         </motion.div>
 
-                        <motion.div variants={item} className="flex flex-wrap gap-2 mb-2 max-w-[440px]">
+                        <motion.div variants={item} className="flex flex-wrap gap-2 mb-2">
                             {data.features.map((cap, i) => (
                                 <div
                                     key={i}
-                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_6px_rgba(11,29,58,0.03)] text-[#0B1D3A]/80 text-[11.5px] font-semibold"
+                                    className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_6px_rgba(11,29,58,0.03)] text-[#0B1D3A]/80 text-[11.5px] font-semibold"
                                 >
                                     <span className="w-1.5 h-1.5 rounded-full" style={{ background: GOLD }}></span>
                                     <span>{cap}</span>
@@ -134,7 +137,7 @@ export default function Desktop() {
                             ))}
                         </motion.div>
 
-                        <motion.p variants={item} className="text-[12px] italic text-[#0B1D3A]/45 font-medium mt-3">
+                        <motion.p variants={item} className="text-[12px] italic text-[#0B1D3A]/45 font-medium mt-2">
                             {data.footerText}
                         </motion.p>
                     </motion.div>
@@ -145,7 +148,7 @@ export default function Desktop() {
                         whileInView={{ opacity: 1, x: 0, scale: 1 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                        className="lg:col-span-5 relative w-full flex items-center justify-center"
+                        className="lg:col-span-4 relative w-full flex items-center justify-center"
                     >
                         <div className="relative w-full aspect-[4/5] max-w-[500px] flex items-center justify-center group mt-10 lg:mt-0">
                             <motion.div

@@ -45,13 +45,7 @@ export default function Mobile() {
                     className="flex flex-col items-center text-center w-full relative z-40"
                 >
                     
-                    <motion.div variants={item} className="flex items-center gap-2.5 mb-3.5 justify-center">
-                        <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
-                        <span className="font-semibold text-[9px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                            {data.tagline}
-                        </span>
-                        <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
-                    </motion.div>
+
 
                     <h1 className={`font-black mb-3.5 flex flex-col gap-1 sm:gap-1.5 ${
                         language === 'te'
@@ -61,12 +55,20 @@ export default function Mobile() {
                         {language === 'te' ? (
                             <>
                                 <motion.span variants={item} className={`block ${language === 'te' ? 'py-0.5' : ''}`} style={{ color: NAVY }}>ఓపెన్ ప్లాట్ కంపెనీల కోసం</motion.span>
-                                <motion.span variants={item} className={`inline-block gold-gradient-text gold-underline ${language === 'te' ? 'py-0.5' : ''}`}>FARE</motion.span>
+                                <motion.span variants={item} className={`inline-block text-[#C99A2E] gold-underline ${language === 'te' ? 'py-0.5' : ''}`}>
+                                    FARE
+                                </motion.span>
                             </>
                         ) : (
                             <>
+                                <motion.span variants={item} className="inline-flex items-center self-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2">
+                                    <Sparkles size={11} className="text-[#C99A2E]" strokeWidth={2.5} />
+                                    <span className="font-bold text-[10px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">FARE FOR</span>
+                                </motion.span>
                                 <motion.span variants={item} className="block uppercase" style={{ color: NAVY }}>OPEN PLOT</motion.span>
-                                <motion.span variants={item} className="inline-block gold-gradient-text gold-underline uppercase">COMPANIES</motion.span>
+                                <motion.span variants={item} className="inline-block text-[#C99A2E] gold-underline uppercase">
+                                    COMPANIES
+                                </motion.span>
                             </>
                         )}
                     </h1>

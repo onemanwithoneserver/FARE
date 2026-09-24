@@ -146,86 +146,85 @@ export default function ContactUsMobile() {
             className="flex flex-col items-center w-full"
           >
             
-            <motion.div variants={item} className="mb-5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-xs">
-                <Sparkles size={11} className="text-[#C99A2E]" strokeWidth={2.5} />
-                <span className="font-bold text-[10px] tracking-[0.15em] uppercase text-[#C99A2E]">
-                  {heroData.tagline}
-                </span>
-              </div>
+            <motion.div variants={item} className="flex items-center gap-2.5 mb-3.5 justify-center">
+              <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
+              <span className="font-semibold text-[9px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
+                {heroData.tagline}
+              </span>
+              <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
             </motion.div>
 
-            <motion.h1
-              variants={item}
-              className={`font-black mb-4 ${
-                  language === 'te'
-                      ? 'text-[1.9rem] sm:text-[2.25rem] leading-[1.15] tracking-wide'
-                      : 'text-[2.25rem] sm:text-[2.5rem] leading-[1.08] tracking-tight'
-              }`}
-              style={{ color: NAVY }}
-            >
+            <h1 className={`font-black mb-3.5 flex flex-col gap-1 sm:gap-1.5 ${
+                language === 'te'
+                    ? 'text-[2.1rem] leading-[1.25] tracking-wide my-1.5'
+                    : 'text-[2.65rem] leading-[1.08] tracking-[-0.02em]'
+            }`}>
               {language === 'te' ? (
-                <span>
-                  సంప్రదింపులు & సలహాల కోసం{' '}
-                  <span className="text-[#C99A2E] gold-underline">
+                <>
+                  <motion.span variants={item} className={`block ${language === 'te' ? 'py-0.5' : ''}`} style={{ color: NAVY }}>సంప్రదింపులు & సలహాల కోసం</motion.span>
+                  <motion.span variants={item} className={`inline-block text-[#C99A2E] gold-underline ${language === 'te' ? 'py-0.5' : ''}`}>
                     FARE
-                  </span>
-                </span>
+                  </motion.span>
+                </>
               ) : (
-                <span>
-                  FARE for <br />
-                  <span className="text-[#C99A2E] gold-underline">
-                    Contact & Advisory
-                  </span>
-                </span>
+                <>
+                  <motion.span variants={item} className="inline-flex items-center self-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2">
+                      <Sparkles size={11} className="text-[#C99A2E]" strokeWidth={2.5} />
+                      <span className="font-bold text-[10px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">FARE FOR</span>
+                  </motion.span>
+                  <motion.span variants={item} className="block uppercase" style={{ color: NAVY }}>CONTACT &</motion.span>
+                  <motion.span variants={item} className="inline-block text-[#C99A2E] gold-underline uppercase">
+                    ADVISORY
+                  </motion.span>
+                </>
               )}
-            </motion.h1>
+            </h1>
 
-            <motion.div variants={item} className="mb-5">
+            <motion.div variants={item} className="mb-3 flex flex-col gap-1">
               <h2 className={`font-bold ${
-                  language === 'te' ? 'text-[16px] leading-relaxed tracking-wide' : 'text-[17px] leading-snug'
+                  language === 'te' ? 'text-[15px] leading-normal tracking-wider py-0.5' : 'text-[16px] leading-snug'
               }`} style={{ color: NAVY }}>
                 {heroData.subheadline}
               </h2>
               {heroData.subheadlineAccent && (
-                <h2 className={`font-bold mt-1 ${
-                    language === 'te' ? 'text-[16px] leading-relaxed tracking-wide' : 'text-[17px] leading-snug'
+                <h2 className={`font-bold ${
+                    language === 'te' ? 'text-[15px] leading-normal tracking-wider py-0.5' : 'text-[16px] leading-snug'
                 }`} style={{ color: GOLD }}>
                   {heroData.subheadlineAccent}
                 </h2>
               )}
             </motion.div>
-
-            <motion.p
-              variants={item}
-              className="text-[14.5px] font-medium leading-[1.65] text-[#475569] mb-7 max-w-[90%]"
-            >
+            
+            <motion.p variants={item} className="text-[14.5px] font-medium leading-[1.7] mb-8 max-w-[420px] text-[#475569]">
               {heroData.description}
             </motion.p>
 
-            <motion.div variants={item} className="flex flex-col w-full max-w-[300px] gap-3 mb-8">
+            <motion.div variants={item} className="flex flex-col w-full gap-3 max-w-[280px] mb-4">
               <button
                 onClick={() => document.getElementById('contact-form-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full group text-white text-[14px] font-semibold py-3.5 rounded-lg active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_8px_20px_-6px_rgba(11,29,58,0.25)] relative overflow-hidden"
-                style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)` }}
+                className="text-white font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98]"
+                style={{
+                    background: NAVY,
+                    boxShadow: '0 2px 8px rgba(11,29,58,0.15)'
+                }}
               >
-                <span className="relative z-10">{heroData.buttons.primary}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent translate-x-[-100%] group-active:translate-x-[100%] transition-transform duration-500"></div>
+                {heroData.buttons.primary}
               </button>
             </motion.div>
 
-            <motion.div variants={item} className="flex flex-wrap justify-center gap-2 mb-6 max-w-[340px]">
+            <motion.div variants={item} className="flex flex-wrap justify-center gap-1.5 mb-5 max-w-[340px]">
               {heroData.features.map((f, i) => (
-                <span
+                <div
                   key={i}
-                  className="px-3 py-1.5 rounded-md text-[11px] font-bold border border-[#0B1D3A]/[0.08] bg-white/80 backdrop-blur-sm text-[#475569] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.06)]"
+                  className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/80 border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/80 text-[10px] font-semibold"
                 >
-                  {f}
-                </span>
+                  <span className="w-1 h-1 rounded-full" style={{ background: GOLD }}></span>
+                  <span>{f}</span>
+                </div>
               ))}
             </motion.div>
 
-            <motion.p variants={item} className="text-[11px] italic text-[#0B1D3A]/45 font-medium px-4">
+            <motion.p variants={item} className="text-[10.5px] italic text-[#0B1D3A]/45 font-medium">
               {heroData.footerText}
             </motion.p>
           </motion.div>

@@ -87,7 +87,7 @@ export default function Mobile() {
                     >
                         <img
                             src={logo}
-                            alt="FARE — Skill Enhancement for Real Estate"
+                            alt="FARE"
                             className={`w-auto max-w-none transition-all duration-300 ${isScrolled ? 'brightness-0 invert' : ''} ${
                                 isScrolled ? 'h-[56px] my-[-4px]' : 'h-[72px] my-[-6px]'
                             }`}

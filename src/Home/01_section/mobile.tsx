@@ -46,13 +46,7 @@ export default function Mobile() {
             <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
             <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: false }} className="w-full flex flex-col items-center relative z-40">
-                <motion.div variants={item} className="flex items-center gap-2.5 mb-3.5 justify-center">
-                    <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
-                    <span className="font-semibold text-[9px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
-                        Skill Enhancement For Real Estate
-                    </span>
-                    <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
-                </motion.div>
+
 
                 <h1 className={`font-black mb-3.5 flex flex-col gap-1 sm:gap-1.5 ${
                     language === 'te'

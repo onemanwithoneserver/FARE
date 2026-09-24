@@ -61,12 +61,7 @@ export default function Desktop() {
                     viewport={{ once: false }}
                     className="flex flex-col items-start w-[42%] min-w-[420px] relative z-40"
                 >
-                    <motion.div variants={item} className="flex items-center gap-3 mb-5">
-                        <div className="w-10 h-[1.5px]" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }}></div>
-                        <span className="font-semibold text-[10.5px] tracking-[0.22em] uppercase" style={{ color: GOLD }}>
-                            Skill Enhancement For Real Estate
-                        </span>
-                    </motion.div>
+
 
                     <h1 className={`font-black mb-5 flex flex-col gap-1.5 md:gap-2 ${
                         language === 'te'
