@@ -107,7 +107,7 @@ export default function Mobile() {
                         }`}
                         style={{ color: NAVY }}
                     >
-                        {data.headline.line1} <span className="gold-gradient-text">{data.headline.line2}</span>
+                        {data.headline.line1} <span className="text-[#C99A2E]">{data.headline.highlight}</span> {data.headline.line2}
                     </motion.h2>
 
                     <motion.p

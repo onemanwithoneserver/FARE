@@ -183,30 +183,9 @@ export default function Desktop() {
                     <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/15 rounded-full blur-[60px] group-hover:bg-[#C99A2E]/25 transition-colors duration-700 pointer-events-none"></motion.div>
                     <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 w-64 h-64 bg-[#071A49]/60 rounded-full blur-[60px] group-hover:bg-[#071A49]/80 transition-colors duration-700 pointer-events-none"></motion.div>
 
-                    <h3 className="text-[28px] font-bold text-white mb-10 relative z-10 tracking-tight">
+                    <h3 className="text-[28px] font-bold text-white relative z-10 tracking-tight m-0">
                         {data.footerTagline}
                     </h3>
-
-                    <div className="flex flex-col gap-8 relative z-10 items-center">
-                        <div className="flex flex-wrap justify-center gap-4">
-                            {data.footerModes.map((mode, i) => (
-                                <span key={i} className="bg-white/5 border border-white/10 px-5 py-2.5 rounded text-white text-[15px] font-bold backdrop-blur-md hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-sm">
-                                    {mode}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent max-w-[600px] mx-auto"></div>
-
-                        <div className="flex flex-wrap justify-center gap-4 items-center">
-                            {data.footerTypes.map((type, i) => (
-                                <span key={i} className="text-[#C99A2E] text-[15px] font-bold flex items-center gap-4 tracking-wide">
-                                    {type}
-                                    {i < data.footerTypes.length - 1 && <span className="text-white/30 text-[10px]">♦</span>}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
                 </motion.div>
 
             </div>

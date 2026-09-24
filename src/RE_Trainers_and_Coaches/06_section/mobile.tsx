@@ -187,29 +187,9 @@ export default function Mobile() {
                     <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] border border-white/10 rounded p-8 text-center relative overflow-hidden shadow-[0_20px_40px_-10px_rgba(11,29,58,0.35)]">
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/15 rounded-full blur-[40px]"></motion.div>
 
-                        <h3 className="text-[20px] font-bold text-white mb-8 relative z-10 leading-snug">
+                        <h3 className="text-[20px] font-bold text-white relative z-10 leading-snug m-0">
                             {data.footerTagline}
                         </h3>
-                        
-                        <div className="flex flex-col gap-6 relative z-10">
-                            <div className="flex flex-wrap justify-center gap-2.5">
-                                {data.footerModes.map((mode, i) => (
-                                    <span key={i} className="bg-white/5 border border-white/15 px-3.5 py-1.5 rounded text-white text-[12px] font-bold backdrop-blur-sm shadow-sm">
-                                        {mode}
-                                    </span>
-                                ))}
-                            </div>
-                            
-                            <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent"></div>
-                            
-                            <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 items-center">
-                                {data.footerTypes.map((type, i) => (
-                                    <span key={i} className="text-[#C99A2E] text-[12px] font-bold flex items-center gap-2">
-                                        {type}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
                     </div>
                 </motion.div>
 

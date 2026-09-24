@@ -5,7 +5,8 @@ export const dataEn = {
     eyebrow: "Finishing Academy for Real Estate",
     headline: {
         line1: "WHAT DOES FARE HAVE",
-        line2: "FOR YOU?",
+        highlight: "FOR",
+        line2: "YOU?",
         subtitle: "Explore tailored platforms built for companies, trainers, and real estate professionals."
     },
     personas: [
@@ -71,7 +72,8 @@ export const dataTe = {
     eyebrow: "FARE అకాడమీ",
     headline: {
         line1: "మీ కోసం FARE లో",
-        line2: "ఏమి ఉంది?",
+        highlight: "ఏమి ",
+        line2: "ఉంది?",
         subtitle: "కంపెనీలు, ట్రైనర్లు మరియు రియల్ ఎస్టేట్ నిపుణుల కోసం ప్రత్యేకంగా రూపొందించిన ప్లాట్‌ఫారమ్‌లను అన్వేషించండి."
     },
     personas: [
