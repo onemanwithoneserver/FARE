@@ -1,7 +1,7 @@
 import type { Language } from '../../context/LanguageContext';
 
 export const dataEn = {
-    tagline: "Skill Enhancement For Real Estate",
+    tagline: "FARE for",
     headline: "FARE for Open Plot Companies",
     subheadline: "You understand the importance of training.",
     subheadlineAccent: "Get more value from it with FARE.",

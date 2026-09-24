@@ -45,87 +45,83 @@ export default function Mobile() {
                     className="flex flex-col items-center text-center w-full relative z-40"
                 >
                     
-                    <motion.div variants={item} className="mb-5">
-                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02]">
-                            <Sparkles size={11} className="text-[#C99A2E]" strokeWidth={2.5} />
-                            <span className="font-bold text-[9px] tracking-[0.18em] uppercase text-[#C99A2E]">
-                                {data.tagline}
-                            </span>
-                        </div>
+                    <motion.div variants={item} className="flex items-center gap-2.5 mb-3.5 justify-center">
+                        <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
+                        <span className="font-semibold text-[9px] tracking-[0.2em] uppercase" style={{ color: GOLD }}>
+                            {data.tagline}
+                        </span>
+                        <div className="w-5 h-[1.5px]" style={{ background: GOLD }}></div>
                     </motion.div>
 
-                    
-                    <motion.h1
-                        variants={item}
-                        className={`font-black mb-4 ${
-                            language === 'te'
-                                ? 'text-[1.85rem] sm:text-[2.1rem] leading-[1.15] tracking-wider py-1'
-                                : 'text-[2.25rem] sm:text-[2.5rem] leading-[1.08] tracking-[-0.03em]'
-                        }`}
-                        style={{ color: NAVY }}
-                    >
+                    <h1 className={`font-black mb-3.5 flex flex-col gap-1 sm:gap-1.5 ${
+                        language === 'te'
+                            ? 'text-[2.1rem] leading-[1.25] tracking-wide my-1.5'
+                            : 'text-[2.65rem] leading-[1.08] tracking-[-0.02em]'
+                    }`}>
                         {language === 'te' ? (
-                            <span>
-                                ఓపెన్ ప్లాట్ కంపెనీల కోసం{' '}
-                                <span className="text-[#C99A2E] gold-underline">
-                                    FARE
-                                </span>
-                            </span>
+                            <>
+                                <motion.span variants={item} className={`block ${language === 'te' ? 'py-0.5' : ''}`} style={{ color: NAVY }}>ఓపెన్ ప్లాట్ కంపెనీల కోసం</motion.span>
+                                <motion.span variants={item} className={`inline-block gold-gradient-text gold-underline ${language === 'te' ? 'py-0.5' : ''}`}>FARE</motion.span>
+                            </>
                         ) : (
-                            <span>
-                                FARE for <br />
-                                <span className="text-[#C99A2E] gold-underline">
-                                    Open Plot Companies
-                                </span>
-                            </span>
+                            <>
+                                <motion.span variants={item} className="block uppercase" style={{ color: NAVY }}>OPEN PLOT</motion.span>
+                                <motion.span variants={item} className="inline-block gold-gradient-text gold-underline uppercase">COMPANIES</motion.span>
+                            </>
                         )}
-                    </motion.h1>
+                    </h1>
 
-                    
-                    <motion.div variants={item} className="mb-1.5">
+                    <motion.div variants={item} className="mb-3 flex flex-col gap-1">
                         <h2 className={`font-bold ${
                             language === 'te' ? 'text-[15px] leading-normal tracking-wider py-0.5' : 'text-[16px] leading-snug'
                         }`} style={{ color: NAVY }}>
                             {data.subheadline}
                         </h2>
-                    </motion.div>
-                    {data.subheadlineAccent && (
-                        <motion.div variants={item} className="mb-5">
+                        {data.subheadlineAccent && (
                             <h2 className={`font-bold ${
                                 language === 'te' ? 'text-[15px] leading-normal tracking-wider py-0.5' : 'text-[16px] leading-snug'
                             }`} style={{ color: GOLD }}>
                                 {data.subheadlineAccent}
                             </h2>
-                        </motion.div>
-                    )}
-
+                        )}
+                    </motion.div>
                     
                     <motion.p variants={item} className="text-[14.5px] font-medium leading-[1.7] mb-8 max-w-[420px] text-[#475569]">
                         {data.description}
                     </motion.p>
 
-                    
-                    <motion.div variants={item} className="flex flex-col gap-3 mb-8 w-full max-w-[280px] mx-auto">
+                    <motion.div variants={item} className="flex flex-col w-full gap-3 max-w-[280px] mb-4">
                         <button
-                            className="group text-white text-[13px] font-semibold w-full py-3.5 rounded active:scale-[0.97] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_8px_24px_-6px_rgba(11,29,58,0.25)] relative overflow-hidden"
-                            style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)` }}
+                            className="text-white font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98]"
+                            style={{
+                                background: NAVY,
+                                boxShadow: '0 2px 8px rgba(11,29,58,0.15)'
+                            }}
                         >
-                            <span className="relative z-10">{data.buttons.primary}</span>
-                            <ArrowRight size={14} strokeWidth={2.5} className="relative z-10" />
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                            {data.buttons.primary} <ArrowRight size={14} strokeWidth={2.5} />
                         </button>
+                        {data.buttons.secondary && (
+                            <button
+                                className="font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border"
+                                style={{ color: NAVY, borderColor: `${NAVY}15`, background: 'white', boxShadow: '0 1px 3px rgba(11,29,58,0.03)' }}
+                            >
+                                {data.buttons.secondary}
+                            </button>
+                        )}
                     </motion.div>
 
-                    
-                    <motion.div variants={item} className="flex flex-wrap justify-center gap-2 mb-4">
+                    <motion.div variants={item} className="flex flex-wrap justify-center gap-1.5 mb-5 max-w-[340px]">
                         {data.features.map((f, i) => (
-                            <span key={i} className="px-3 py-1.5 rounded text-[11px] font-semibold border border-[#0B1D3A]/[0.08] bg-white/80 text-[#475569] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06)]">
-                                {f}
-                            </span>
+                            <div
+                                key={i}
+                                className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/80 border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/80 text-[10px] font-semibold"
+                            >
+                                <span className="w-1 h-1 rounded-full" style={{ background: GOLD }}></span>
+                                <span>{f}</span>
+                            </div>
                         ))}
                     </motion.div>
 
-                    
                     <motion.p variants={item} className="text-[10.5px] italic text-[#0B1D3A]/45 font-medium">
                         {data.footerText}
                     </motion.p>
