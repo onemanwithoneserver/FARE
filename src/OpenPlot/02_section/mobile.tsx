@@ -32,14 +32,11 @@ export default function Mobile() {
         { Icon: RefreshCcw, color: "#F59E0B" },
         { Icon: AlertCircle, color: "#3B82F6" },
         { Icon: BarChart2, color: "#8B5CF6" },
-        { Icon: Users, color: "#EC4899" },
         { Icon: Target, color: "#10B981" },
-        { Icon: HelpCircle, color: "#6366F1" },
-        { Icon: Clock, color: "#F97316" },
         { Icon: Award, color: "#06B6D4" }
     ];
 
-    const challengeEmojis = ['📉', '🔁', '🧩', '📋', '🚫', '🧗', '❓', '⏹️', '🔒'];
+    const challengeEmojis = ['📉', '🔁', '🧩', '📋', '🧗', '🔒'];
 
     const bgFloatingElements = [
         { emoji: '⚠️', top: '5%', left: '4%', size: 'text-xl', duration: 7 },

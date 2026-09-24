@@ -32,14 +32,11 @@ export default function Desktop() {
         { Icon: RefreshCcw, color: "#F59E0B" },
         { Icon: AlertCircle, color: "#3B82F6" },
         { Icon: BarChart2, color: "#8B5CF6" },
-        { Icon: Users, color: "#EC4899" },
         { Icon: Target, color: "#10B981" },
-        { Icon: HelpCircle, color: "#6366F1" },
-        { Icon: Clock, color: "#F97316" },
         { Icon: Award, color: "#06B6D4" }
     ];
 
-    const challengeEmojis = ['📉', '🔁', '🧩', '📋', '🚫', '🧗', '❓', '⏹️', '🔒'];
+    const challengeEmojis = ['📉', '🔁', '🧩', '📋', '🧗', '🔒'];
 
     const bgFloatingElements = [
         { emoji: '⚠️', top: '7%', left: '4%', size: 'text-2xl', duration: 7, delay: 0 },
@@ -92,7 +89,7 @@ export default function Desktop() {
                 </motion.div>
             ))}
 
-            <div className="max-w-[1280px] mx-auto px-12 relative z-10">
+            <div className="max-w-[1000px] mx-auto px-12 relative z-10">
                 
                 <motion.div
                     variants={container}
@@ -133,7 +130,7 @@ export default function Desktop() {
                             key={index}
                             variants={item}
                             whileHover={{ y: -6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                            className="w-[calc(20%-13px)] min-w-[200px] group bg-gradient-to-b from-white/95 via-red-50/60 to-red-100/40 backdrop-blur-md border border-red-200/90 hover:border-red-400 rounded p-4 shadow-[0_4px_16px_-4px_rgba(220,38,38,0.08)] hover:shadow-[0_16px_36px_-8px_rgba(220,38,38,0.22)] transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[170px] justify-center cursor-default"
+                            className="w-[calc(33.333%-11px)] min-w-[200px] group bg-gradient-to-b from-white/95 via-red-50/60 to-red-100/40 backdrop-blur-md border border-red-200/90 hover:border-red-400 rounded p-4 shadow-[0_4px_16px_-4px_rgba(220,38,38,0.08)] hover:shadow-[0_16px_36px_-8px_rgba(220,38,38,0.22)] transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[170px] justify-center cursor-default"
                         >
                             <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-red-500/0 to-transparent group-hover:via-red-500/90 transition-all duration-400" />
                             <motion.div animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-red-500/20 to-transparent rounded-bl-full blur-[20px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></motion.div>

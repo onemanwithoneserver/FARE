@@ -9,10 +9,7 @@ export const dataEn = {
         "Senior Teams Keep Repeating New-Joiner Training",
         "Learning Doesn't Translate Into Practical Situations",
         "Training Is Difficult to Manage & Track",
-        "Limited Access to Relevant Open Plot Trainers",
         "New Challenges Require New & Specialised Skills",
-        "Knowledge Gaps Are Difficult to Measure",
-        "Training Is Event-Driven, Not Continuous",
         "Limited Specialised Training for Senior Teams"
     ],
     transitionTitle: "What if training could become a continuous system — not just an occasional activity?",
@@ -28,10 +25,7 @@ export const dataTe = {
         "Senior Teams కొత్త Associatesకు Trainingను పదేపదే ఇవ్వాల్సి వస్తుంది",
         "Learning Practical Situationsలోకి మారడం లేదు",
         "Trainingను Manage & Track చేయడం కష్టం",
-        "Relevant Open Plot Trainersకు పరిమితమైన యాక్సెస్",
         "కొత్త Challengesకు కొత్త & Specialised Skills అవసరం",
-        "Knowledge Gapsను Measure చేయడం కష్టం",
-        "Training Continuousగా కాకుండా Event-Drivenగా ఉంటుంది",
         "Senior Teams కోసం Specialised Training పరిమితంగా ఉంటుంది"
     ],
     transitionTitle: "Training ఒకసారి జరిగే activity కాకుండా, Continuous Systemగా మారితే?",
