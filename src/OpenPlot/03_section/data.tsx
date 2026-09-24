@@ -13,28 +13,28 @@ export const dataEn = {
     cards: [
         {
             tag: "ONBOARD",
-            title: "Custom Onboarding",
+            title: "New Associate Induction",
             desc: "Get every new Associate started with a structured learning journey covering your company, projects, products and sales fundamentals.",
             icon: "BookOpen",
             color: "#34D399"
         },
         {
-            tag: "KNOW",
-            title: "Knowledge Bank",
+            tag: "KNOWLEDGE BANK",
+            title: "Ready Made Quizzes",
             desc: "Give your team access to ready-made real estate and Open Plot quizzes to build and measure knowledge.",
             icon: "BarChart2",
             color: "#60A5FA"
         },
         {
             tag: "PRACTISE",
-            title: "Custom Learning System",
+            title: "Habit Builders",
             desc: "Go beyond courses with Mocks, Daily Habits and Sales Forecast tools designed around your team's day-to-day development.",
             icon: "Target",
             color: "#C99A2E"
         },
         {
-            tag: "SOURCE",
-            title: "Trainer Directory",
+            tag: "TRAINING DIRECTORY",
+            title: "Expert Trainers",
             desc: "Discover and connect with trainers based on expertise, real estate segment, format, delivery, experience and availability.",
             icon: "Users",
             color: "#F472B6"
@@ -57,28 +57,28 @@ export const dataTe = {
     cards: [
         {
             tag: "ONBOARD",
-            title: "Custom Onboarding",
+            title: "New Associate Induction",
             desc: "మీ Company, Projects, Products మరియు Sales Fundamentalsను కవర్ చేసే Structured Learning Journey ద్వారా ప్రతి కొత్త Associateను సరైన విధంగా ప్రారంభించండి.",
             icon: "BookOpen",
             color: "#34D399"
         },
         {
-            tag: "KNOW",
-            title: "Knowledge Bank",
+            tag: "KNOWLEDGE BANK",
+            title: "Ready Made Quizzes",
             desc: "Knowledgeను Build మరియు Measure చేయడానికి మీ టీమ్కు Ready-made Real Estate మరియు Open Plot Quizzes అందించండి.",
             icon: "BarChart2",
             color: "#60A5FA"
         },
         {
             tag: "PRACTISE",
-            title: "Custom Learning System",
+            title: "Habit Builders",
             desc: "Coursesను దాటి Mocks, Daily Habits మరియు Sales Forecast Tools ద్వారా మీ టీమ్ రోజువారీ అభివృద్ధికి అనుగుణమైన Learning Systemను రూపొందించండి.",
             icon: "Target",
             color: "#C99A2E"
         },
         {
-            tag: "SOURCE",
-            title: "Trainer Directory",
+            tag: "TRAINING DIRECTORY",
+            title: "Expert Trainers",
             desc: "Expertise, Real Estate Segment, Format, Delivery, Experience మరియు Availability ఆధారంగా Trainersను కనుగొని వారితో కనెక్ట్ అవ్వండి.",
             icon: "Users",
             color: "#F472B6"
