@@ -9,8 +9,11 @@ import Section08 from "./08_section";
 import Section09 from "./09_section";
 import CtaSection from "../Home/04_section";
 import Footer from "../Home/05_section";
-
-export default function RE_Trainers_and_Coaches({ isMobile }: { isMobile: boolean }) {
+export default function RE_Trainers_and_Coaches({
+  isMobile,
+}: {
+  isMobile: boolean;
+}) {
   return (
     <div className="w-full min-h-screen flex flex-col bg-[#F8FAFD] font-['Outfit']">
       <Header isMobile={isMobile} />
@@ -27,4 +30,3 @@ export default function RE_Trainers_and_Coaches({ isMobile }: { isMobile: boolea
     </div>
   );
 }
-

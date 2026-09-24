@@ -3,7 +3,6 @@ import Section01 from "./01_section";
 import Section03 from "./03_section";
 import Section04 from "./04_section";
 import Footer from "./05_section";
-
 export default function Home({ isMobile }: { isMobile: boolean }) {
   return (
     <div className="w-full min-h-screen flex flex-col bg-[#F8FAFD] font-['Outfit']">
@@ -15,4 +14,3 @@ export default function Home({ isMobile }: { isMobile: boolean }) {
     </div>
   );
 }
-

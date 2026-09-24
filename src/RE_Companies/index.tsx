@@ -7,7 +7,6 @@ import Section05 from "./05_section";
 import Section06 from "./06_section";
 import CtaSection from "../Home/04_section";
 import Footer from "../Home/05_section";
-
 export default function RE_Companies({ isMobile }: { isMobile: boolean }) {
   return (
     <div className="w-full min-h-screen flex flex-col bg-[#F8FAFD] font-['Outfit']">
@@ -23,4 +22,3 @@ export default function RE_Companies({ isMobile }: { isMobile: boolean }) {
     </div>
   );
 }
-

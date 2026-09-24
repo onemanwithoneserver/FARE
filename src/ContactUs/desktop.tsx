@@ -1,85 +1,115 @@
-import { useState } from 'react';
-import { motion } from 'motion/react';
-import type { Variants } from 'motion/react';
-import { Clock, MapPin, Building2, Mail, Sparkles, Copy, Check, ArrowUpRight } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
-import { getData } from './data';
-
-const NAVY = '#0B1D3A';
-const GOLD = '#C99A2E';
-
+import { useState } from "react";
+import { motion } from "motion/react";
+import type { Variants } from "motion/react";
+import {
+  Clock,
+  MapPin,
+  Building2,
+  Mail,
+  Sparkles,
+  Copy,
+  Check,
+  ArrowUpRight,
+} from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import { getData } from "./data";
+const NAVY = "#0B1D3A";
+const GOLD = "#C99A2E";
 export default function ContactUsDesktop() {
   const { language } = useLanguage();
   const fullData = getData(language);
   const heroData = fullData.hero;
   const sidebarData = fullData.sidebar;
-
   const [copiedEmail, setCopiedEmail] = useState(false);
-
   const container: Variants = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.15 } }
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08, delayChildren: 0.15 },
+    },
   };
   const item: Variants = {
     hidden: { opacity: 0, y: 18 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } }
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+    },
   };
-
   const handleCopyEmail = (e: React.MouseEvent) => {
     e.preventDefault();
     navigator.clipboard.writeText(sidebarData.email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2500);
   };
-
   return (
     <div className="w-full font-['Outfit'] relative overflow-hidden">
-
-      {/* ── HERO SECTION ── */}
       <section
         className="relative w-full pt-12 pb-20 flex flex-col items-center"
-        style={{ background: `linear-gradient(180deg, #0B1D3A 0%, #102647 60%, #1A3460 100%)` }}
+        style={{
+          background: `linear-gradient(180deg, #0B1D3A 0%, #102647 60%, #1A3460 100%)`,
+        }}
       >
-        {/* Subtle background decorations */}
-        <motion.div animate={{ opacity: [0.08, 0.18, 0.08], scale: [1, 1.15, 1] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[120px] pointer-events-none" />
-        <motion.div animate={{ opacity: [0.06, 0.14, 0.06], scale: [1.1, 1, 1.1] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-[5%] w-[500px] h-[500px] bg-gradient-radial from-[#3B82F6]/15 to-transparent rounded-full blur-[100px] pointer-events-none" />
-        
-        {/* Dot pattern */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)`, backgroundSize: '28px 28px' }} />
-
+        <motion.div
+          animate={{ opacity: [0.08, 0.18, 0.08], scale: [1, 1.15, 1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-0 right-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[120px] pointer-events-none"
+        />
+        <motion.div
+          animate={{ opacity: [0.06, 0.14, 0.06], scale: [1.1, 1, 1.1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-0 left-[5%] w-[500px] h-[500px] bg-gradient-radial from-[#3B82F6]/15 to-transparent rounded-full blur-[100px] pointer-events-none"
+        />
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)`,
+            backgroundSize: "28px 28px",
+          }}
+        />
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
           className="relative z-10 flex flex-col items-center text-center px-6"
         >
-          <motion.span variants={item} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] backdrop-blur-sm mb-5">
+          <motion.span
+            variants={item}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] backdrop-blur-sm mb-5"
+          >
             <Sparkles size={12} className="text-[#C99A2E]" strokeWidth={2.5} />
-            <span className="font-bold text-[10px] tracking-[0.2em] uppercase text-[#C99A2E] leading-none pt-0.5">FARE FOR</span>
+            <span className="font-bold text-[10px] tracking-[0.2em] uppercase text-[#C99A2E] leading-none pt-0.5">
+              FARE FOR
+            </span>
           </motion.span>
-
-          <motion.h1 variants={item} className="font-black text-[3.2rem] lg:text-[4rem] leading-[1.05] tracking-[-0.02em] uppercase mb-4">
+          <motion.h1
+            variants={item}
+            className="font-black text-[3.2rem] lg:text-[4rem] leading-[1.05] tracking-[-0.02em] uppercase mb-4"
+          >
             <span className="text-white">CONTACT & </span>
             <span className="text-[#C99A2E]">ADVISORY</span>
           </motion.h1>
-
-          <motion.p variants={item} className="text-white/60 text-[17px] max-w-lg font-medium leading-relaxed">
+          <motion.p
+            variants={item}
+            className="text-white/60 text-[17px] max-w-lg font-medium leading-relaxed"
+          >
             {heroData.footerText}
           </motion.p>
-
-          <motion.div variants={item} className="mt-8 flex items-center justify-center">
+          <motion.div
+            variants={item}
+            className="mt-8 flex items-center justify-center"
+          >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.6)]" />
-              <span className="text-[12px] text-white/50 font-medium">{sidebarData.hours}</span>
+              <span className="text-[12px] text-white/50 font-medium">
+                {sidebarData.hours}
+              </span>
             </div>
           </motion.div>
         </motion.div>
       </section>
-
-      {/* ── CONTACT CARDS SECTION ── */}
       <section className="relative w-full bg-[#F8FAFD] py-14 px-6">
-        {/* Pull-up overlap effect */}
-        <div className="max-w-[1060px] mx-auto -mt-20 relative z-20">
+        <div className="max-w-[1060px] mx-auto -mt-16 relative z-20">
           <motion.div
             variants={container}
             initial="hidden"
@@ -87,55 +117,107 @@ export default function ContactUsDesktop() {
             viewport={{ once: false, margin: "-50px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
           >
-            {/* Email Card */}
-            <motion.div variants={item} className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col">
+            <motion.div
+              variants={item}
+              className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col"
+            >
               <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center mb-4 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                 <Mail size={20} className="text-white" />
               </div>
-              <h4 className="text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5" style={{ color: GOLD }}>{sidebarData.directTitle}</h4>
+              <h4
+                className="text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5"
+                style={{ color: GOLD }}
+              >
+                {sidebarData.directTitle}
+              </h4>
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-[14px] font-bold" style={{ color: NAVY }}>{sidebarData.email}</span>
-                <button onClick={handleCopyEmail} className="w-6 h-6 rounded-md bg-[#0B1D3A]/[0.04] hover:bg-[#0B1D3A]/10 flex items-center justify-center transition-colors" title={sidebarData.copyLabel}>
-                  {copiedEmail ? <Check size={11} className="text-[#10B981]" /> : <Copy size={11} className="text-[#0B1D3A]/40" />}
+                <span className="text-[14px] font-bold" style={{ color: NAVY }}>
+                  {sidebarData.email}
+                </span>
+                <button
+                  onClick={handleCopyEmail}
+                  className="w-6 h-6 rounded-md bg-[#0B1D3A]/[0.04] hover:bg-[#0B1D3A]/10 flex items-center justify-center transition-colors hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+                  title={sidebarData.copyLabel}
+                >
+                  {copiedEmail ? (
+                    <Check size={11} className="text-[#10B981]" />
+                  ) : (
+                    <Copy size={11} className="text-[#0B1D3A]/40" />
+                  )}
                 </button>
               </div>
-              <p className="text-[12px] text-[#475569]/70 font-medium mt-auto">{sidebarData.responseTime}</p>
+              <p className="text-[12px] text-[#475569]/70 font-medium mt-auto">
+                {sidebarData.responseTime}
+              </p>
             </motion.div>
-
-            {/* Location Card */}
-            <motion.div variants={item} className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col">
+            <motion.div
+              variants={item}
+              className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col"
+            >
               <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center mb-4 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                 <MapPin size={20} className="text-white" />
               </div>
-              <h4 className="text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5" style={{ color: GOLD }}>{sidebarData.locationTitle}</h4>
-              <p className="text-[15px] font-bold mb-0.5" style={{ color: NAVY }}>{sidebarData.city}</p>
-              <p className="text-[12px] text-[#475569]/70 font-medium mt-auto">{sidebarData.center}</p>
+              <h4
+                className="text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5"
+                style={{ color: GOLD }}
+              >
+                {sidebarData.locationTitle}
+              </h4>
+              <p
+                className="text-[15px] font-bold mb-0.5"
+                style={{ color: NAVY }}
+              >
+                {sidebarData.city}
+              </p>
+              <p className="text-[12px] text-[#475569]/70 font-medium mt-auto">
+                {sidebarData.center}
+              </p>
             </motion.div>
-
-            {/* Registered Office Card */}
-            <motion.div variants={item} className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col">
+            <motion.div
+              variants={item}
+              className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col"
+            >
               <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#7C3AED] flex items-center justify-center mb-4 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                 <Building2 size={20} className="text-white" />
               </div>
-              <h4 className="text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5" style={{ color: GOLD }}>{sidebarData.officeTitle}</h4>
-              <p className="text-[13px] font-semibold leading-relaxed" style={{ color: NAVY }}>{sidebarData.address}</p>
+              <h4
+                className="text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5"
+                style={{ color: GOLD }}
+              >
+                {sidebarData.officeTitle}
+              </h4>
+              <p
+                className="text-[13px] font-semibold leading-relaxed"
+                style={{ color: NAVY }}
+              >
+                {sidebarData.address}
+              </p>
             </motion.div>
-
-            {/* Hours Card */}
-            <motion.div variants={item} className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col">
+            <motion.div
+              variants={item}
+              className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col"
+            >
               <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-4 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                 <Clock size={20} className="text-white" />
               </div>
-              <h4 className="text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5" style={{ color: GOLD }}>{sidebarData.deskBadge}</h4>
-              <p className="text-[14px] font-bold mb-0.5" style={{ color: NAVY }}>{sidebarData.hours}</p>
+              <h4
+                className="text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5"
+                style={{ color: GOLD }}
+              >
+                {sidebarData.deskBadge}
+              </h4>
+              <p
+                className="text-[14px] font-bold mb-0.5"
+                style={{ color: NAVY }}
+              >
+                {sidebarData.hours}
+              </p>
               <div className="flex items-center gap-1.5 mt-auto">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
                 <span className="text-[11px] text-[#475569]/60">Online</span>
               </div>
             </motion.div>
           </motion.div>
-
-          {/* Partner note banner */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -147,9 +229,14 @@ export default function ContactUsDesktop() {
               <div className="w-8 h-8 rounded-lg bg-[#C99A2E]/15 flex items-center justify-center">
                 <Sparkles size={15} className="text-[#C99A2E]" />
               </div>
-              <p className="text-[13px] text-white/70 font-medium">{sidebarData.partnersNote}</p>
+              <p className="text-[13px] text-white/70 font-medium">
+                {sidebarData.partnersNote}
+              </p>
             </div>
-            <a href={`mailto:${sidebarData.email}`} className="flex items-center gap-1.5 text-[#C99A2E] text-[13px] font-bold hover:gap-2.5 transition-all duration-300 shrink-0 ml-6">
+            <a
+              href={`mailto:${sidebarData.email}`}
+              className="flex items-center gap-1.5 text-[#C99A2E] text-[13px] font-bold hover:gap-2.5 transition-all duration-300 shrink-0 ml-6"
+            >
               {sidebarData.email}
               <ArrowUpRight size={14} />
             </a>
