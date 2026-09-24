@@ -125,147 +125,173 @@ export default function Desktop() {
                     </motion.h2>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 xl:gap-12 items-center max-w-[1140px] mx-auto mb-14 relative">
-                    <motion.div
-                        initial={{ opacity: 0, x: -35, y: 15 }}
-                        whileInView={{ opacity: 1, x: 0, y: 0 }}
-                        viewport={{ once: false, margin: "-60px" }}
-                        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-                        whileHover={{ y: -6, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
-                        className="group bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/35 rounded p-9 xl:p-11 transition-all duration-400 relative overflow-hidden shadow-[0_12px_36px_-12px_rgba(11,29,58,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(201,154,46,0.18)] h-full flex flex-col cursor-default"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.2] to-transparent translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-1000 pointer-events-none" />
+                <div className="flex flex-col items-center max-w-[1140px] mx-auto mb-14 relative z-10">
+                    <div className="flex flex-col lg:flex-row w-full gap-8 lg:gap-16 justify-center relative">
+                        {/* Card 1: You Bring */}
 
                         <motion.div
-                            animate={{ opacity: [0.3, 0.65, 0.3], scale: [1, 1.08, 1] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute top-0 right-0 w-44 h-44 bg-[#C99A2E]/10 rounded-bl-full blur-[35px] transition-all duration-500 group-hover:scale-125 group-hover:bg-[#C99A2E]/15 pointer-events-none"
-                        />
+                            initial={{ opacity: 0, x: -35, y: 15 }}
+                            whileInView={{ opacity: 1, x: 0, y: 0 }}
+                            viewport={{ once: false, margin: "-60px" }}
+                            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                            whileHover={{ y: -6, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
+                            className="group flex-1 w-full bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/35 rounded-2xl p-9 xl:p-11 transition-all duration-400 relative overflow-hidden shadow-[0_12px_36px_-12px_rgba(11,29,58,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(201,154,46,0.18)] cursor-default"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.2] to-transparent translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-1000 pointer-events-none" />
 
-                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C99A2E] via-[#E2BA55] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-400" />
+                            <motion.div
+                                animate={{ opacity: [0.3, 0.65, 0.3], scale: [1, 1.08, 1] }}
+                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute top-0 right-0 w-44 h-44 bg-[#C99A2E]/10 rounded-bl-full blur-[35px] transition-all duration-500 group-hover:scale-125 group-hover:bg-[#C99A2E]/15 pointer-events-none"
+                            />
 
-                        <div className="flex items-center gap-4 xl:gap-5 mb-8 relative z-10">
-                            <div className="w-14 h-14 xl:w-16 xl:h-16 rounded bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(201,154,46,0.35)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-400 relative overflow-hidden">
-                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[-100%] transition-transform duration-700" />
-                                <User size={28} strokeWidth={2.3} className="relative z-10" />
+                            <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C99A2E] via-[#E2BA55] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-400" />
+
+                            <div className="flex items-center gap-4 xl:gap-5 mb-8 relative z-10">
+                                <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(201,154,46,0.35)] group-hover:scale-110 transition-transform duration-400 relative overflow-hidden">
+                                    <User size={26} strokeWidth={2} className="relative z-10" />
+                                </div>
+                                <div>
+                                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#C99A2E] block mb-1">
+                                        Your Contribution
+                                    </span>
+                                    <h3 className="text-[26px] xl:text-[28px] font-bold text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300">
+                                        {data.youBring.title}
+                                    </h3>
+                                </div>
                             </div>
-                            <div>
-                                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#C99A2E] block mb-1">
-                                    Your Contribution
-                                </span>
-                                <h3 className="text-[26px] xl:text-[28px] font-bold text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300">
-                                    {data.youBring.title}
-                                </h3>
-                            </div>
+
+                            <motion.div
+                                variants={listContainer}
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={{ once: false }}
+                                className="flex flex-col gap-4 relative z-10"
+                            >
+                                {data.youBring.items.map((it, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        variants={listItem}
+                                        className="group/item flex items-start gap-3.5 text-[15px] xl:text-[16px] font-medium text-[#475569] hover:text-[#0B1D3A] transition-all duration-200 hover:translate-x-1.5"
+                                    >
+                                        <div className="mt-2 shrink-0 w-2 h-2 rounded-full bg-[#C99A2E] shadow-[0_0_8px_rgba(201,154,46,0.7)] group-hover/item:scale-125 transition-all duration-300" />
+                                        <span className="leading-snug">{it}</span>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Plus between cards */}
+                        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-[55%] -translate-y-1/2 w-16 h-16 rounded-full bg-white border border-[#0B1D3A]/10 shadow-[0_8px_24px_-4px_rgba(11,29,58,0.12)] items-center justify-center z-20 text-[#C99A2E]">
+                            <Plus size={30} strokeWidth={2.5} />
                         </div>
 
+                        {/* Card 2: FARE Brings */}
                         <motion.div
-                            variants={listContainer}
-                            initial="hidden"
-                            whileInView="show"
-                            viewport={{ once: false }}
-                            className="flex flex-col gap-4 relative z-10 flex-grow"
+                            initial={{ opacity: 0, x: 35, y: 15 }}
+                            whileInView={{ opacity: 1, x: 0, y: 0 }}
+                            viewport={{ once: false, margin: "-60px" }}
+                            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                            whileHover={{ y: -6, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
+                            className="group flex-1 w-full bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#3B82F6]/35 rounded-2xl p-9 xl:p-11 transition-all duration-400 relative overflow-hidden shadow-[0_12px_36px_-12px_rgba(11,29,58,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(59,130,246,0.18)] cursor-default"
                         >
-                            {data.youBring.items.map((it, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    variants={listItem}
-                                    className="group/item flex items-start gap-3.5 text-[15px] xl:text-[16px] font-medium text-[#475569] hover:text-[#0B1D3A] transition-all duration-200 hover:translate-x-1.5"
-                                >
-                                    <div className="mt-2 shrink-0 w-2 h-2 rounded-full bg-[#C99A2E] shadow-[0_0_8px_rgba(201,154,46,0.7)] group-hover/item:scale-125 group-hover/item:shadow-[0_0_12px_rgba(201,154,46,1)] transition-all duration-300" />
-                                    <span className="leading-snug">{it}</span>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </motion.div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.2] to-transparent translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-1000 pointer-events-none" />
 
-                    <div className="flex items-center justify-center py-2 lg:py-0 relative z-20">
-                        <motion.div
-                            whileHover={{ scale: 1.15, rotate: 90 }}
-                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            className="w-16 h-16 rounded-full bg-white border border-[#0B1D3A]/10 shadow-[0_8px_24px_-4px_rgba(11,29,58,0.12)] flex items-center justify-center text-[#0B1D3A] hover:border-[#C99A2E]/40 hover:text-[#C99A2E] transition-colors duration-300 cursor-pointer relative"
-                        >
                             <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                                className="absolute -inset-1.5 rounded-full border border-dashed border-[#C99A2E]/30 pointer-events-none"
+                                animate={{ opacity: [0.3, 0.65, 0.3], scale: [1, 1.08, 1] }}
+                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute top-0 right-0 w-44 h-44 bg-[#3B82F6]/10 rounded-bl-full blur-[35px] transition-all duration-500 group-hover:scale-125 group-hover:bg-[#3B82F6]/15 pointer-events-none"
                             />
-                            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#C99A2E]/10 to-[#3B82F6]/10 animate-pulse pointer-events-none" />
-                            <Plus size={30} strokeWidth={2.4} className="relative z-10" />
+
+                            <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#3B82F6] via-[#60A5FA] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-400" />
+
+                            <div className="flex items-center gap-4 xl:gap-5 mb-8 relative z-10">
+                                <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-full bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(59,130,246,0.35)] group-hover:scale-110 transition-transform duration-400 relative overflow-hidden">
+                                    <Server size={26} strokeWidth={2} className="relative z-10" />
+                                </div>
+                                <div>
+                                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#3B82F6] block mb-1">
+                                        Our Infrastructure
+                                    </span>
+                                    <h3 className="text-[26px] xl:text-[28px] font-bold text-[#0B1D3A] group-hover:text-[#3B82F6] transition-colors duration-300">
+                                        {data.fareBrings.title}
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <motion.div
+                                variants={listContainer}
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={{ once: false }}
+                                className="flex flex-col gap-4 relative z-10"
+                            >
+                                {data.fareBrings.items.map((it, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        variants={listItemReverse}
+                                        className="group/item flex items-start gap-3.5 text-[15px] xl:text-[16px] font-medium text-[#475569] hover:text-[#0B1D3A] transition-all duration-200 hover:translate-x-1.5"
+                                    >
+                                        <div className="mt-2 shrink-0 w-2 h-2 rounded-full bg-[#3B82F6] shadow-[0_0_8px_rgba(59,130,246,0.7)] group-hover/item:scale-125 transition-all duration-300" />
+                                        <span className="leading-snug">{it}</span>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
                         </motion.div>
                     </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, x: 35, y: 15 }}
-                        whileInView={{ opacity: 1, x: 0, y: 0 }}
-                        viewport={{ once: false, margin: "-60px" }}
-                        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-                        whileHover={{ y: -6, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
-                        className="group bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#3B82F6]/35 rounded p-9 xl:p-11 transition-all duration-400 relative overflow-hidden shadow-[0_12px_36px_-12px_rgba(11,29,58,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(59,130,246,0.18)] h-full flex flex-col cursor-default"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.2] to-transparent translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-1000 pointer-events-none" />
-
-                        <motion.div
-                            animate={{ opacity: [0.3, 0.65, 0.3], scale: [1, 1.08, 1] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute top-0 right-0 w-44 h-44 bg-[#3B82F6]/10 rounded-bl-full blur-[35px] transition-all duration-500 group-hover:scale-125 group-hover:bg-[#3B82F6]/15 pointer-events-none"
-                        />
-
-                        <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#3B82F6] via-[#60A5FA] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-400" />
-
-                        <div className="flex items-center gap-4 xl:gap-5 mb-8 relative z-10">
-                            <div className="w-14 h-14 xl:w-16 xl:h-16 rounded bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(59,130,246,0.35)] group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-400 relative overflow-hidden">
-                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[-100%] transition-transform duration-700" />
-                                <Server size={28} strokeWidth={2.3} className="relative z-10" />
-                            </div>
-                            <div>
-                                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#3B82F6] block mb-1">
-                                    Our Infrastructure
-                                </span>
-                                <h3 className="text-[26px] xl:text-[28px] font-bold text-[#0B1D3A] group-hover:text-[#3B82F6] transition-colors duration-300">
-                                    {data.fareBrings.title}
-                                </h3>
-                            </div>
-                        </div>
-
-                        <motion.div
-                            variants={listContainer}
-                            initial="hidden"
-                            whileInView="show"
-                            viewport={{ once: false }}
-                            className="flex flex-col gap-4 relative z-10 flex-grow"
-                        >
-                            {data.fareBrings.items.map((it, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    variants={listItemReverse}
-                                    className="group/item flex items-start gap-3.5 text-[15px] xl:text-[16px] font-medium text-[#475569] hover:text-[#0B1D3A] transition-all duration-200 hover:translate-x-1.5"
-                                >
-                                    <div className="mt-2 shrink-0 w-2 h-2 rounded-full bg-[#3B82F6] shadow-[0_0_8px_rgba(59,130,246,0.7)] group-hover/item:scale-125 group-hover/item:shadow-[0_0_12px_rgba(59,130,246,1)] transition-all duration-300" />
-                                    <span className="leading-snug">{it}</span>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </motion.div>
-                </div>
+                    {/* Desktop Wiring - only visible on lg and up */}
+                    <div className="hidden lg:block absolute left-0 right-0 top-[100%] h-[140px] pointer-events-none z-0 overflow-visible">
+                        <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1140 140">
+                            {/* Outer faint gold path */}
+                            <path d="M 285 0 C 285 110, 550 120, 570 140" stroke="#C99A2E" strokeWidth="1.5" fill="none" className="opacity-30" />
+                            {/* Inner strong gold path */}
+                            <path d="M 285 12 C 285 95, 560 100, 570 140" stroke="#C99A2E" strokeWidth="2.5" fill="none" className="opacity-50" />
+                            
+                            {/* Outer faint blue path */}
+                            <path d="M 855 0 C 855 110, 590 120, 570 140" stroke="#3B82F6" strokeWidth="1.5" fill="none" className="opacity-30" />
+                            {/* Inner strong blue path */}
+                            <path d="M 855 12 C 855 95, 580 100, 570 140" stroke="#3B82F6" strokeWidth="2.5" fill="none" className="opacity-50" />
+                        </svg>
+                    </div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "-60px" }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-[1140px] mx-auto rounded-2xl p-10 xl:p-14 flex flex-col items-center relative overflow-hidden transition-all duration-500 group border border-white/10 shadow-[0_25px_60px_-15px_rgba(11,29,58,0.5)] hover:border-[#C99A2E]/40 hover:shadow-[0_30px_70px_-15px_rgba(201,154,46,0.15)]"
-                    style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}
+                    className="lg:mt-[140px] max-w-[1000px] w-full mx-auto rounded-3xl flex flex-col items-center relative transition-all duration-500 group shadow-[0_25px_60px_-15px_rgba(11,29,58,0.5)] hover:shadow-[0_30px_70px_-15px_rgba(201,154,46,0.15)] mt-12 z-20"
                 >
-                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C99A2E]/80 to-transparent" />
+                    {/* Inner wrapper for overflow-hidden backgrounds */}
+                    <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none border border-white/10 group-hover:border-[#C99A2E]/40 transition-colors duration-500" style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}>
+                        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C99A2E]/80 to-transparent" />
+                        
+                        <div
+                            className="absolute inset-0 opacity-[0.035] z-0"
+                            style={{
+                                backgroundImage: `linear-gradient(#FFFFFF 1px, transparent 1px), linear-gradient(90deg, #FFFFFF 1px, transparent 1px)`,
+                                backgroundSize: '40px 40px'
+                            }}
+                        />
 
-                    <div
-                        className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
-                        style={{
-                            backgroundImage: `linear-gradient(#FFFFFF 1px, transparent 1px), linear-gradient(90deg, #FFFFFF 1px, transparent 1px)`,
-                            backgroundSize: '40px 40px'
-                        }}
-                    />
+                        <motion.div
+                            animate={{ opacity: [0.15, 0.35, 0.15], scale: [1, 1.1, 1] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -top-1/2 left-[15%] w-[500px] h-[500px] bg-[#C99A2E]/20 rounded-full blur-[90px]"
+                        />
+                        <motion.div
+                            animate={{ opacity: [0.15, 0.35, 0.15], scale: [1.1, 1, 1.1] }}
+                            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -bottom-1/2 right-[15%] w-[500px] h-[500px] bg-[#3B82F6]/20 rounded-full blur-[90px]"
+                        />
+                    </div>
+
+                    {/* Node circle on top of the bottom card - outside overflow-hidden */}
+                    <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] border-[4px] border-white shadow-[0_8px_20px_rgba(201,154,46,0.35)] flex items-center justify-center z-30 font-black text-white text-3xl leading-none pb-1">
+                        =
+                    </div>
+
+                    <div className="p-10 xl:p-14 flex flex-col items-center relative w-full">
 
                     <motion.div
                         animate={{ opacity: [0.15, 0.35, 0.15], scale: [1, 1.1, 1] }}
@@ -342,23 +368,25 @@ export default function Desktop() {
                             ))}
                         </motion.div>
                     </div>
+                    </div>
                 </motion.div>
+                </div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 22 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="mt-14 text-center flex items-center justify-center gap-6"
+                    className="mt-14 lg:mt-[50px] text-center flex items-center justify-center gap-6 relative z-10"
                 >
-                    <div className="w-16 lg:w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
-                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/80 border border-[#C99A2E]/25 shadow-[0_4px_20px_-4px_rgba(201,154,46,0.15)] backdrop-blur-md">
+                    <div className="hidden lg:block w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
+                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/90 border border-[#C99A2E]/25 shadow-[0_8px_30px_-4px_rgba(201,154,46,0.18)] backdrop-blur-md relative">
                         <Sparkles size={16} className="text-[#C99A2E]" strokeWidth={2.2} />
                         <p className="text-[20px] lg:text-[23px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
                             {data.footerText}
                         </p>
                     </div>
-                    <div className="w-16 lg:w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
+                    <div className="hidden lg:block w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
                 </motion.div>
             </div>
         </section>

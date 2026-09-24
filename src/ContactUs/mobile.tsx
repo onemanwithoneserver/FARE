@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { Clock, MapPin, Building2, Mail, Sparkles, Copy, Check, ArrowUpRight } from 'lucide-react';
+import { Clock, MapPin, Building2, Mail, Sparkles, Copy, Check } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { getData } from './data';
 

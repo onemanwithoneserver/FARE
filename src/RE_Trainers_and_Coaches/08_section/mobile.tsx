@@ -145,15 +145,12 @@ export default function Mobile() {
                         </motion.div>
                     </motion.div>
 
-                    <div className="flex items-center justify-center py-1 relative">
-                        <div className="w-13 h-13 rounded-full bg-white border border-[#0B1D3A]/10 shadow-[0_4px_16px_-2px_rgba(11,29,58,0.12)] flex items-center justify-center text-[#0B1D3A] relative">
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-                                className="absolute -inset-1 rounded-full border border-dashed border-[#C99A2E]/35 pointer-events-none"
-                            />
-                            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#C99A2E]/10 to-[#3B82F6]/10 animate-pulse pointer-events-none" />
-                            <Plus size={22} strokeWidth={2.5} className="relative z-10 text-[#C99A2E]" />
+                    {/* Vertical connecting wire behind the stacked cards */}
+                    <div className="absolute left-1/2 -translate-x-1/2 top-[20%] bottom-[20%] w-[2px] bg-gradient-to-b from-[#C99A2E]/40 via-[#3B82F6]/40 to-transparent -z-10 pointer-events-none" />
+                    
+                    <div className="flex items-center justify-center py-2 relative z-10">
+                        <div className="w-11 h-11 rounded-full bg-white border border-[#0B1D3A]/10 shadow-sm flex items-center justify-center text-[#C99A2E]">
+                            <Plus size={22} strokeWidth={2.5} />
                         </div>
                     </div>
 
@@ -207,13 +204,21 @@ export default function Mobile() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                    className="rounded-2xl p-6 flex flex-col items-center relative overflow-hidden shadow-[0_20px_45px_rgba(11,29,58,0.4)] border border-white/10 mb-8"
-                    style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}
+                    className="rounded-3xl flex flex-col items-center relative shadow-[0_20px_45px_rgba(11,29,58,0.4)] mb-8 mt-10 z-20"
                 >
-                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C99A2E]/80 to-transparent" />
+                    {/* Inner wrapper for overflow-hidden backgrounds */}
+                    <div className="absolute inset-0 rounded-3xl overflow-hidden border border-white/10 pointer-events-none" style={{ background: 'linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)' }}>
+                        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C99A2E]/80 to-transparent" />
+                        <div className="absolute top-0 right-0 w-36 h-36 bg-[#C99A2E]/15 rounded-full blur-[35px] pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 w-36 h-36 bg-[#3B82F6]/15 rounded-full blur-[35px] pointer-events-none" />
+                    </div>
 
-                    <div className="absolute top-0 right-0 w-36 h-36 bg-[#C99A2E]/15 rounded-full blur-[35px] pointer-events-none" />
-                    <div className="absolute bottom-0 left-0 w-36 h-36 bg-[#3B82F6]/15 rounded-full blur-[35px] pointer-events-none" />
+                    {/* Node circle on top of the bottom card - outside overflow-hidden */}
+                    <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] border-[3px] border-white shadow-lg flex items-center justify-center z-30 font-black text-white text-2xl leading-none pb-1">
+                        =
+                    </div>
+
+                    <div className="p-6 flex flex-col items-center relative w-full">
 
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/15 bg-white/[0.08] shadow-inner backdrop-blur-md mb-6 relative z-10">
                         <Zap size={14} className="text-[#E2BA55] animate-pulse" />
@@ -264,6 +269,7 @@ export default function Mobile() {
                             </div>
                         ))}
                     </motion.div>
+                </div>
                 </motion.div>
 
                 <motion.div
@@ -271,11 +277,11 @@ export default function Mobile() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.6 }}
-                    className="text-center flex flex-col items-center gap-3"
+                    className="mt-6 text-center flex flex-col items-center gap-3 relative z-10"
                 >
-                    <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 border border-[#C99A2E]/30 shadow-[0_2px_12px_rgba(201,154,46,0.12)]">
+                    <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/95 border border-[#C99A2E]/30 shadow-[0_4px_16px_rgba(201,154,46,0.18)] backdrop-blur-md">
                         <Sparkles size={14} className="text-[#C99A2E]" strokeWidth={2.2} />
-                        <p className="text-[16px] sm:text-[18px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
+                        <p className="text-[17px] sm:text-[19px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
                             {data.footerText}
                         </p>
                     </div>

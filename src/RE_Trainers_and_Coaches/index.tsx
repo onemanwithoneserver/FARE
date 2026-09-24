@@ -16,11 +16,11 @@ export default function RE_Trainers_and_Coaches({ isMobile }: { isMobile: boolea
       <Header isMobile={isMobile} />
       <Section01 isMobile={isMobile} />
       <Section02 isMobile={isMobile} />
+      <Section08 isMobile={isMobile} />
       <Section04 isMobile={isMobile} />
       <Section05 isMobile={isMobile} />
       <Section06 isMobile={isMobile} />
       <Section07 isMobile={isMobile} />
-      <Section08 isMobile={isMobile} />
       <Section09 isMobile={isMobile} />
       <CtaSection isMobile={isMobile} />
       <Footer isMobile={isMobile} />

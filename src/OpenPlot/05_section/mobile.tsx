@@ -32,12 +32,12 @@ export default function Mobile() {
     };
 
     return (
-        <section className="w-full py-10 relative font-['Outfit'] overflow-hidden"
+        <section className="w-full py-6 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(135deg, #F8FAFD 0%, #EEF4FF 100%)' }}
         >
             <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-10 left-[-50px] w-[300px] h-[300px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[60px] pointer-events-none z-0"></motion.div>
 
-            <div className="w-full px-5 relative z-10 flex flex-col gap-12">
+            <div className="w-full px-5 relative z-10 flex flex-col gap-8">
                 <motion.div
                     variants={container}
                     initial="hidden"
@@ -53,7 +53,7 @@ export default function Mobile() {
                         </span>
                     </motion.div>
                     
-                    <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-5" style={{ color: NAVY }}>
+                    <motion.h2 variants={item} className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-3" style={{ color: NAVY }}>
                         {data.headline.split(' ').map((word, i) => (
                             <React.Fragment key={i}>
                                 {word === 'Open' || word === 'Plot' || word.includes('Open') || word.includes('Plot') ? <span className="text-[#C99A2E] relative inline-block">
@@ -64,12 +64,12 @@ export default function Mobile() {
                         ))}
                     </motion.h2>
 
-                    <motion.div variants={item} className="mb-6 flex flex-col gap-3">
+                    <motion.div variants={item} className="mb-4 flex flex-col gap-2">
                         <p className="text-[16px] font-bold" style={{ color: NAVY }}>{data.desc1}</p>
                         <p className="text-[15px] font-medium leading-[1.65]" style={{ color: '#475569' }}>{data.desc2}</p>
                     </motion.div>
 
-                    <motion.div variants={item} className="flex flex-col gap-3.5 mb-8">
+                    <motion.div variants={item} className="flex flex-col gap-2.5 mb-6">
                         {data.testAreas.map((area, idx) => (
                             <div key={idx} className="flex items-start gap-3">
                                 <div className="w-4 h-4 rounded-full bg-[#10B981]/10 border border-[#10B981]/30 flex items-center justify-center shrink-0 mt-[3px]">
@@ -110,10 +110,10 @@ export default function Mobile() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="w-full relative"
                 >
-                    <div className="bg-white/90 backdrop-blur-xl rounded p-7 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.12)] border border-white relative z-10 overflow-hidden">
+                    <div className="bg-white/90 backdrop-blur-xl rounded p-5 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.12)] border border-white relative z-10 overflow-hidden">
                         <motion.div animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[30px] pointer-events-none"></motion.div>
 
-                        <div className="flex items-center justify-between mb-8 relative z-10">
+                        <div className="flex items-center justify-between mb-5 relative z-10">
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md">
                                     <ClipboardList size={22} className="text-white" />

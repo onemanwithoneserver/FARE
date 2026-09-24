@@ -32,7 +32,7 @@ export default function Desktop() {
     };
 
     return (
-        <section className="w-full py-16 relative font-['Outfit'] overflow-hidden"
+        <section className="w-full py-10 relative font-['Outfit'] overflow-hidden"
             style={{ background: 'linear-gradient(135deg, #F8FAFD 0%, #EEF4FF 100%)' }}
         >
             
@@ -57,14 +57,14 @@ export default function Desktop() {
                     className="flex-1 max-w-[600px]"
                 >
 
-                    <motion.div variants={item} className="mb-6">
+                    <motion.div variants={item} className="mb-4">
                         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]" style={{ color: GOLD }}>
                             <Sparkles size={13} className="text-[#C99A2E]" strokeWidth={2.5} />
                             {data.overline}
                         </span>
                     </motion.div>
                     
-                    <motion.h2 variants={item} className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6" style={{ color: NAVY }}>
+                    <motion.h2 variants={item} className="text-[2.5rem] lg:text-[3rem] leading-[1.08] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }}>
                         {data.headline.split(' ').map((word, i) => (
                             <React.Fragment key={i}>
                                 {word === 'Open' || word === 'Plot' || word.includes('Open') || word.includes('Plot') ? <span className="text-[#C99A2E] relative inline-block">
@@ -75,12 +75,12 @@ export default function Desktop() {
                         ))}
                     </motion.h2>
 
-                    <motion.div variants={item} className="mb-10 flex flex-col gap-4">
+                    <motion.div variants={item} className="mb-6 flex flex-col gap-2">
                         <p className="text-[18px] font-bold" style={{ color: NAVY }}>{data.desc1}</p>
                         <p className="text-[17px] font-medium leading-[1.65]" style={{ color: '#475569' }}>{data.desc2}</p>
                     </motion.div>
 
-                    <motion.div variants={item} className="grid grid-cols-2 gap-y-5 gap-x-8 mb-12">
+                    <motion.div variants={item} className="grid grid-cols-2 gap-y-3 gap-x-6 mb-8">
                         {data.testAreas.map((area, idx) => (
                             <div key={idx} className="flex items-start gap-3 group">
                                 <div className="w-5 h-5 rounded-full bg-[#10B981]/10 border border-[#10B981]/30 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-[#10B981] group-hover:border-[#10B981] transition-colors duration-300">
@@ -94,7 +94,7 @@ export default function Desktop() {
                     <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-8">
                         <button 
                             onClick={() => setIsModalOpen(true)}
-                            className="group relative overflow-hidden text-white px-8 py-4 rounded text-[14px] font-bold hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.3)] active:scale-[0.98] transition-all duration-300 flex items-center gap-3"
+                            className="group relative overflow-hidden text-white px-6 py-3 rounded text-[14px] font-bold hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.3)] active:scale-[0.98] transition-all duration-300 flex items-center gap-3"
                             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)` }}
                         >
                             <span className="relative z-10">{data.primaryButton}</span> 
@@ -103,7 +103,7 @@ export default function Desktop() {
                         </button>
                         <button 
                             onClick={() => setIsModalOpen(true)}
-                            className="bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-8 py-4 rounded text-[14px] font-bold hover:bg-[#F8FAFD] hover:border-[#0B1D3A]/30 transition-all flex items-center gap-2 shadow-sm hover:shadow-[0_8px_20px_-8px_rgba(11,29,58,0.1)] active:scale-[0.98]"
+                            className="bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-3 rounded text-[14px] font-bold hover:bg-[#F8FAFD] hover:border-[#0B1D3A]/30 transition-all flex items-center gap-2 shadow-sm hover:shadow-[0_8px_20px_-8px_rgba(11,29,58,0.1)] active:scale-[0.98]"
                         >
                             {data.secondaryButton}
                         </button>
@@ -124,11 +124,11 @@ export default function Desktop() {
                     
                     <div className="absolute -inset-4 bg-gradient-to-tr from-[#60A5FA]/10 to-[#C99A2E]/10 rounded-[3rem] -z-10 blur-xl"></div>
 
-                    <div className="bg-white/80 backdrop-blur-xl rounded p-10 shadow-[0_30px_60px_-15px_rgba(11,29,58,0.15)] border border-white relative z-10 overflow-hidden transform-gpu">
+                    <div className="bg-white/80 backdrop-blur-xl rounded p-6 shadow-[0_30px_60px_-15px_rgba(11,29,58,0.15)] border border-white relative z-10 overflow-hidden transform-gpu">
                         
                         <div className="absolute top-[-50px] right-[-50px] w-48 h-48 bg-[#C99A2E]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                        <div className="flex items-center justify-between mb-10 relative z-10">
+                        <div className="flex items-center justify-between mb-6 relative z-10">
                             <div className="flex items-center gap-4">
                                 <div className="w-14 h-14 rounded bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(245,158,11,0.25)] relative overflow-hidden">
                                     <div className="absolute inset-0 bg-white/0 translate-y-[100%] transition-transform duration-500 hover:translate-y-0"></div>
@@ -170,7 +170,7 @@ export default function Desktop() {
                         </div>
 
                         
-                        <div className="mt-10 pt-8 border-t border-[#0B1D3A]/[0.06] flex items-end justify-between h-24 relative overflow-hidden">
+                        <div className="mt-6 pt-5 border-t border-[#0B1D3A]/[0.06] flex items-end justify-between h-14 relative overflow-hidden">
                             {[40, 70, 45, 90, 65, 80, 55, 100].map((h, i) => (
                                 <motion.div 
                                     key={i} 
