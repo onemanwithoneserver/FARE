@@ -118,7 +118,7 @@ export default function Desktop() {
                             ? 'text-[2.5rem] leading-[1.2] tracking-wider py-1'
                             : 'text-[3.5rem] tracking-[-0.02em] uppercase leading-[1.05]'
                     }`}>
-                        <span className="gold-gradient-text">{data.headline.line1} {data.headline.line2} {data.headline.line3} {data.headline.line4}</span>
+                        <span className="gold-gradient-text-light">{data.headline.line1} {data.headline.line2} {data.headline.line3} {data.headline.line4}</span>
                     </h2>
                     <p className="mt-6 font-medium text-[16px] max-w-[560px] leading-relaxed" style={{ color: MUTED_BLUE }}>
                         {data.subtitle}
