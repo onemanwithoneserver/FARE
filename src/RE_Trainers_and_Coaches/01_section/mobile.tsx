@@ -62,25 +62,16 @@ export default function Mobile() {
                             ? 'text-[2.1rem] leading-[1.25] tracking-wide my-1.5'
                             : 'text-[2.65rem] leading-[1.08] tracking-[-0.02em]'
                     }`}>
-                        {language === 'te' ? (
-                            <>
-                                <motion.span variants={item} className={`block ${language === 'te' ? 'py-0.5' : ''}`} style={{ color: NAVY }}>రియల్ ఎస్టేట్ ట్రైనర్స్ & కోచెస్ కోసం</motion.span>
-                                <motion.span variants={item} className={`inline-block text-[#C99A2E] gold-underline ${language === 'te' ? 'py-0.5' : ''}`}>
-                                    FARE
-                                </motion.span>
-                            </>
-                        ) : (
                             <>
                                 <motion.span variants={item} className="inline-flex items-center self-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2">
                                     <Sparkles size={11} className="text-[#C99A2E]" strokeWidth={2.5} />
-                                    <span className="font-bold text-[10px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">FARE FOR</span>
+                                    <span className="font-bold text-[10px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">{language === 'te' ? 'FARE కోసం' : 'FARE FOR'}</span>
                                 </motion.span>
-                                <motion.span variants={item} className="block uppercase" style={{ color: NAVY }}>REAL ESTATE</motion.span>
-                                <motion.span variants={item} className="inline-block text-[#C99A2E] gold-underline uppercase">
-                                    TRAINERS & COACHES
+                                <motion.span variants={item} className="block uppercase" style={{ color: NAVY }}>{language === 'te' ? 'రియల్ ఎస్టేట్' : 'REAL ESTATE'}</motion.span>
+                                <motion.span variants={item} className={`inline-block text-[#C99A2E] gold-underline uppercase ${language === 'te' ? 'pb-1' : ''}`}>
+                                    {language === 'te' ? 'ట్రైనర్స్ & కోచెస్' : 'TRAINERS & COACHES'}
                                 </motion.span>
                             </>
-                        )}
                     </h1>
 
                     <motion.div variants={item} className="mb-3 flex flex-col gap-1">

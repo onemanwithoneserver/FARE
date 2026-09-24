@@ -65,25 +65,16 @@ export default function Desktop() {
                                 ? 'text-[3.6rem] leading-[1.1] tracking-wider'
                                 : 'text-[4.85rem] leading-[1] tracking-[-0.03em]'
                         }`}>
-                            {language === 'te' ? (
-                                <>
-                                    <motion.span variants={item} className={`block ${language === 'te' ? 'py-1' : ''}`} style={{ color: NAVY }}>ఓపెన్ ప్లాట్ కంపెనీల కోసం</motion.span>
-                                    <motion.span variants={item} className={`inline-block text-[#C99A2E] gold-underline ${language === 'te' ? 'py-1' : ''}`}>
-                                        FARE
-                                    </motion.span>
-                                </>
-                            ) : (
                                 <>
                                     <motion.span variants={item} className="inline-flex items-center self-start gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2">
                                         <Sparkles size={12} className="text-[#C99A2E]" strokeWidth={2.5} />
-                                        <span className="font-bold text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">FARE FOR</span>
+                                        <span className="font-bold text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">{language === 'te' ? 'FARE కోసం' : 'FARE FOR'}</span>
                                     </motion.span>
-                                    <motion.span variants={item} className="block uppercase" style={{ color: NAVY }}>OPEN PLOT</motion.span>
-                                    <motion.span variants={item} className="inline-block text-[#C99A2E] gold-underline uppercase">
-                                        COMPANIES
+                                    <motion.span variants={item} className="block uppercase" style={{ color: NAVY }}>{language === 'te' ? 'ఓపెన్ ప్లాట్' : 'OPEN PLOT'}</motion.span>
+                                    <motion.span variants={item} className={`inline-block text-[#C99A2E] gold-underline uppercase ${language === 'te' ? 'pb-1' : ''}`}>
+                                        {language === 'te' ? 'కంపెనీల కోసం' : 'COMPANIES'}
                                     </motion.span>
                                 </>
-                            )}
                         </h1>
 
                         <motion.div variants={item} className="mb-4 flex flex-col gap-1">
