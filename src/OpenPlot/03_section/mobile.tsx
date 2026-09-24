@@ -175,14 +175,16 @@ export default function Mobile() {
           transition={{ delay: 0.3 }}
           className="mt-14 flex justify-center"
         >
-          <button className="flex flex-col items-center gap-2 text-[13px] font-semibold text-[#475569] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
-            <span>{data.cta.replace(" ↓", "")}</span>
-            <div className="w-8 h-8 rounded-full bg-[#F1F5FB] flex items-center justify-center shadow-sm">
+          <button className="group relative flex items-center gap-3 px-6 py-3 bg-white border border-[#0B1D3A]/10 rounded-full shadow-[0_4px_20px_-4px_rgba(11,29,58,0.06)] hover:shadow-[0_8px_30px_-4px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 hover:-translate-y-1 active:scale-[0.98] transition-all duration-400 ease-out overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/0 via-[#C99A2E]/[0.05] to-[#C99A2E]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
+            <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300 relative z-10">
+              {data.cta.replace(" ↓", "")}
+            </span>
+            <div className="w-7 h-7 rounded-full bg-[#F8F9FC] border border-[#0B1D3A]/5 flex items-center justify-center group-hover:bg-[#C99A2E]/10 group-hover:border-[#C99A2E]/20 transition-all duration-300 relative z-10">
               <ArrowDown
-                size={16}
+                size={14}
                 strokeWidth={2.5}
-                className="animate-bounce"
-                style={{ color: NAVY }}
+                className="text-[#0B1D3A] group-hover:text-[#C99A2E] group-hover:translate-y-0.5 transition-all duration-300"
               />
             </div>
           </button>

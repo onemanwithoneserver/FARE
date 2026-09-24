@@ -36,15 +36,6 @@ export const dataEn = {
           ],
         },
         {
-          heading: "Company Knowledge",
-          items: [
-            "Company introduction",
-            "Processes",
-            "Roles & responsibilities",
-            "Policies",
-          ],
-        },
-        {
           heading: "Project Knowledge",
           items: [
             "Project details",
@@ -52,6 +43,15 @@ export const dataEn = {
             "Product",
             "Infrastructure & amenities",
             "Pricing & payment plans",
+          ],
+        },
+        {
+          heading: "Company Knowledge",
+          items: [
+            "Company introduction",
+            "Processes",
+            "Roles & responsibilities",
+            "Policies",
           ],
         },
         {
@@ -177,15 +177,6 @@ export const dataTe = {
           ],
         },
         {
-          heading: "Company Knowledge",
-          items: [
-            "Company Introduction",
-            "Processes",
-            "Roles & Responsibilities",
-            "Policies",
-          ],
-        },
-        {
           heading: "Project Knowledge",
           items: [
             "Project Details",
@@ -193,6 +184,15 @@ export const dataTe = {
             "Product",
             "Infrastructure & Amenities",
             "Pricing & Payment Plans",
+          ],
+        },
+        {
+          heading: "Company Knowledge",
+          items: [
+            "Company Introduction",
+            "Processes",
+            "Roles & Responsibilities",
+            "Policies",
           ],
         },
         {

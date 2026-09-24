@@ -158,13 +158,13 @@ export default function Mobile() {
                   <div className="flex flex-col gap-4 border-t border-[#0B1D3A]/[0.08] pt-6">
                     {(activeContent.journey ||
                       activeContent.evaluateBasedOn) && (
-                      <div className="bg-[#0B1D3A]/[0.03] rounded-lg p-5 border border-[#0B1D3A]/[0.06]">
+                      <div className="bg-[#0B1D3A]/[0.03] rounded-lg p-4 border border-[#0B1D3A]/[0.06]">
                         {activeContent.journey && (
                           <div>
                             <h4 className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.2em] mb-4">
                               {data.journeyLabel}
                             </h4>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-2.5">
                               {activeContent.journey
                                 .split(" → ")
                                 .map(

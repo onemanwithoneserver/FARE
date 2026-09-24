@@ -177,20 +177,20 @@ export default function Desktop() {
                   <div className="w-full lg:w-[400px] shrink-0 flex flex-col gap-4">
                     {(activeContent.journey ||
                       activeContent.evaluateBasedOn) && (
-                      <div className="bg-[#0B1D3A]/[0.03] rounded-xl p-6 border border-[#0B1D3A]/[0.08] backdrop-blur-md flex-grow flex flex-col justify-center">
+                      <div className="bg-[#0B1D3A]/[0.03] rounded-xl p-5 border border-[#0B1D3A]/[0.08] backdrop-blur-md flex flex-col justify-center h-auto">
                         {activeContent.journey && (
                           <div>
                             <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.2em] mb-6">
                               {data.journeyLabel}
                             </h4>
-                            <div className="flex flex-col gap-4">
+                            <div className="flex flex-col gap-2.5">
                               {activeContent.journey
                                 .split(" → ")
                                 .map(
                                   (step: string, i: number, arr: string[]) => (
                                     <div
                                       key={i}
-                                      className="flex items-center gap-4 group"
+                                      className="flex items-center gap-3 group"
                                     >
                                       <div className="w-8 h-8 rounded-full border-2 border-[#0B1D3A]/15 flex items-center justify-center text-[12px] font-bold text-[#7B8DAA] group-hover:border-[#0B1D3A]/40 group-hover:text-[#0B1D3A] transition-colors bg-white/50">
                                         {i + 1}
