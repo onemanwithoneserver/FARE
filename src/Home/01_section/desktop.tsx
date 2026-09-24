@@ -74,7 +74,7 @@ export default function Desktop() {
                             : 'text-[4.85rem] leading-[1.05] tracking-[-0.03em]'
                     }`}>
                         <motion.span variants={item} className={`block ${language === 'te' ? 'py-1' : ''}`} style={{ color: NAVY }}>{data.headline.line1}</motion.span>
-                        <motion.span variants={item} className={`inline-block gold-gradient-text gold-underline ${language === 'te' ? 'py-1' : ''}`}>{data.headline.line2}</motion.span>
+                        <motion.span variants={item} className={`inline-block text-[#C99A2E] ${language === 'te' ? 'py-1' : ''}`}>{data.headline.line2}</motion.span>
                         <motion.span variants={item} className={`block ${language === 'te' ? 'py-1' : ''}`} style={{ color: NAVY }}>{data.headline.line3}</motion.span>
                     </h1>
 

@@ -60,7 +60,7 @@ export default function Mobile() {
                         : 'text-[2.65rem] leading-[1.08] tracking-[-0.02em]'
                 }`}>
                     <motion.span variants={item} className={`block ${language === 'te' ? 'py-0.5' : ''}`} style={{ color: NAVY }}>{data.headline.line1}</motion.span>
-                    <motion.span variants={item} className={`inline-block gold-gradient-text gold-underline ${language === 'te' ? 'py-0.5' : ''}`}>{data.headline.line2}</motion.span>
+                    <motion.span variants={item} className={`inline-block text-[#C99A2E] ${language === 'te' ? 'py-0.5' : ''}`}>{data.headline.line2}</motion.span>
                     <motion.span variants={item} className={`block ${language === 'te' ? 'py-0.5' : ''}`} style={{ color: NAVY }}>{data.headline.line3}</motion.span>
                 </h1>
 
