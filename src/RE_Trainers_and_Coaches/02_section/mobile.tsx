@@ -31,14 +31,11 @@ export default function Mobile() {
         { Icon: Unlink, color: "#EF4444" },
         { Icon: UserX, color: "#F59E0B" },
         { Icon: ListChecks, color: "#3B82F6" },
-        { Icon: Clock, color: "#8B5CF6" },
-        { Icon: MonitorX, color: "#EC4899" },
         { Icon: Globe, color: "#10B981" },
-        { Icon: Building2, color: "#6366F1" },
-        { Icon: FileEdit, color: "#F97316" }
+        { Icon: Building2, color: "#6366F1" }
     ];
 
-    const challengeEmojis = ['🔌', '👥', '📋', '🧗', '🚫', '📣', '🏢', '⏳'];
+    const challengeEmojis = ['🔌', '👥', '📋', '📣', '🏢'];
 
     const bgFloatingElements = [
         { emoji: '⚠️', top: '5%', left: '4%', size: 'text-xl', duration: 7 },

@@ -8,11 +8,8 @@ export const dataEn = {
         "Connection with learners often ends after the training session",
         "Difficult to support 1-to-1 implementation",
         "No simple way to track daily habits and activities",
-        "Long-term mentoring is difficult to manage",
-        "Limited platforms built specifically for RE trainers",
         "Difficult to reach a wider pool of RE learners",
-        "Limited access to corporate training opportunities",
-        "Creating and managing customised RE learning content takes time"
+        "Limited access to corporate training opportunities"
     ],
     transitionTitle: "What if your expertise could continue working with your learners — even after the training room?",
     transitionSubtitle: "That's what FARE enables."
@@ -26,11 +23,8 @@ export const dataTe = {
         "ట్రైనింగ్ సెషన్ తర్వాత అభ్యాసకులతో కనెక్షన్ ముగిసిపోతుంది",
         "1-టు-1 ఇంప్లిమెంటేషన్‌కు మద్దతు ఇవ్వడం కష్టం",
         "రోజువారీ అలవాట్లు మరియు కార్యకలాపాలను ట్రాక్ చేయడానికి సులభమైన మార్గం లేదు",
-        "దీర్ఘకాలిక మెంటరింగ్ నిర్వహించడం కష్టం",
-        "RE ట్రైనర్స్ కోసం ప్రత్యేకంగా నిర్మించబడిన ప్లాట్‌ఫారమ్‌లు చాలా తక్కువ",
         "విస్తృతమైన RE అభ్యాసకులను చేరుకోవడం కష్టం",
-        "కార్పొరేట్ ట్రైనింగ్ అవకాశాలకు పరిమిత ప్రాప్యత",
-        "కస్టమైజ్డ్ RE కంటెంట్‌ను సృష్టించడం మరియు నిర్వహించడం కష్టం"
+        "కార్పొరేట్ ట్రైనింగ్ అవకాశాలకు పరిమిత ప్రాప్యత"
     ],
     transitionTitle: "శిక్షణను కేవలం ఒక ఈవెంట్‌గా కాకుండా, నిరంతర వ్యవస్థగా ఎలా మార్చాలి?",
     transitionSubtitle: "అక్కడే FARE మీకు సహాయపడుతుంది."
