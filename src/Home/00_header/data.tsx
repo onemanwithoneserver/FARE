@@ -2,7 +2,6 @@ import type { Language } from "../../context/LanguageContext";
 export const dataEn = {
   title: "Header",
   navLinks: [
-    { title: "Platform", href: "home" },
     {
       title: "For Companies",
       href: "re-companies",
@@ -26,7 +25,6 @@ export const dataEn = {
 export const dataTe = {
   title: "Header",
   navLinks: [
-    { title: "ప్లాట్‌ఫారమ్", href: "home" },
     {
       title: "కంపెనీల కోసం",
       href: "re-companies",

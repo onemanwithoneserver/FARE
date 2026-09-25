@@ -459,7 +459,7 @@ export default function Desktop() {
             <>
               <div className="hidden md:flex flex-1 items-center justify-start gap-3 lg:gap-4 xl:gap-6">
                 {data.navLinks
-                  .slice(0, 4)
+                  .slice(0, 3)
                   .map((link, idx) => renderNavLink(link, idx))}
               </div>
               <div className="flex items-center justify-center shrink-0 px-2 lg:px-5">
@@ -468,8 +468,8 @@ export default function Desktop() {
               <div className="flex-1 flex items-center justify-end gap-2.5 lg:gap-3.5 xl:gap-5">
                 <div className="hidden lg:flex items-center gap-3 lg:gap-4 xl:gap-6 mr-1">
                   {data.navLinks
-                    .slice(4)
-                    .map((link, idx) => renderNavLink(link, idx + 4))}
+                    .slice(3)
+                    .map((link, idx) => renderNavLink(link, idx + 3))}
                 </div>
                 {RightControls}
               </div>

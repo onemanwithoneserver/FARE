@@ -6,6 +6,7 @@ import {
   MapPin,
   Building2,
   Mail,
+  Phone,
   Sparkles,
   Copy,
   Check,
@@ -20,6 +21,7 @@ export default function ContactUsMobile() {
   const heroData = fullData.hero;
   const sidebarData = fullData.sidebar;
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -40,6 +42,12 @@ export default function ContactUsMobile() {
     navigator.clipboard.writeText(sidebarData.email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2500);
+  };
+  const handleCopyPhone = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(sidebarData.phone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2500);
   };
   return (
     <div className="w-full font-['Outfit'] relative overflow-hidden">
@@ -80,15 +88,17 @@ export default function ContactUsMobile() {
             variants={item}
             className="font-black text-[2.5rem] leading-[1.08] tracking-[-0.01em] uppercase mb-3"
           >
-            <span className="text-white">CONTACT & </span>
-            <span className="text-[#C99A2E]">ADVISORY</span>
+            <span className="text-white">CONTACT  </span>
+           {/*  <span className="text-[#C99A2E]">ADVISORY</span> */}
           </motion.h1>
-          <motion.p
-            variants={item}
-            className="text-white/55 text-[14px] max-w-xs font-medium leading-relaxed"
-          >
-            {heroData.footerText}
-          </motion.p>
+          {heroData.footerText && (
+            <motion.p
+              variants={item}
+              className="text-white/55 text-[14px] max-w-xs font-medium leading-relaxed"
+            >
+              {heroData.footerText}
+            </motion.p>
+          )}
           <motion.div
             variants={item}
             className="mt-5 flex items-center justify-center"
@@ -113,40 +123,71 @@ export default function ContactUsMobile() {
           >
             <motion.div
               variants={item}
-              className="col-span-2 bg-white rounded-2xl p-5 border border-[#0B1D3A]/[0.06] shadow-[0_4px_16px_-4px_rgba(11,29,58,0.08)]"
+              className="col-span-2 bg-white rounded-2xl p-4 border border-[#0B1D3A]/[0.06] shadow-[0_4px_16px_-4px_rgba(11,29,58,0.08)]"
             >
-              <div className="flex items-start gap-3.5">
+              <div className="flex items-start gap-3">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center shrink-0 shadow-md">
                   <Mail size={18} className="text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h4
-                    className="text-[9px] font-bold tracking-[0.18em] uppercase mb-1"
+                    className="text-[9px] font-bold tracking-[0.18em] uppercase mb-2"
                     style={{ color: GOLD }}
                   >
                     {sidebarData.directTitle}
                   </h4>
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="text-[14px] font-bold truncate"
-                      style={{ color: NAVY }}
-                    >
-                      {sidebarData.email}
-                    </span>
-                    <button
-                      onClick={handleCopyEmail}
-                      className="w-6 h-6 rounded-md bg-[#0B1D3A]/[0.04] flex items-center justify-center shrink-0 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
-                    >
-                      {copiedEmail ? (
-                        <Check size={11} className="text-[#10B981]" />
-                      ) : (
-                        <Copy size={11} className="text-[#0B1D3A]/40" />
-                      )}
-                    </button>
+                  
+                  <div className="space-y-1.5">
+                    {/* Email item */}
+                    <div className="flex items-center justify-between p-2 rounded-xl bg-[#0B1D3A]/[0.03] border border-[#0B1D3A]/[0.05]">
+                      <a
+                        href={`mailto:${sidebarData.email}`}
+                        className="flex items-center gap-2 text-[12px] font-bold text-[#0B1D3A] hover:text-[#2563EB] truncate"
+                      >
+                        <Mail size={12} className="text-[#3B82F6] shrink-0" />
+                        <span className="truncate">{sidebarData.email}</span>
+                      </a>
+                      <button
+                        onClick={handleCopyEmail}
+                        className="w-5 h-5 rounded-md bg-white shadow-xs flex items-center justify-center shrink-0 ml-1"
+                      >
+                        {copiedEmail ? (
+                          <Check size={10} className="text-[#10B981]" />
+                        ) : (
+                          <Copy size={10} className="text-[#0B1D3A]/40" />
+                        )}
+                      </button>
+                    </div>
+
+                    {/* Phone item */}
+                    {sidebarData.phone && (
+                      <div className="flex items-center justify-between p-2 rounded-xl bg-[#0B1D3A]/[0.03] border border-[#0B1D3A]/[0.05]">
+                        <a
+                          href={`tel:${sidebarData.phone.replace(/\s+/g, '')}`}
+                          className="flex items-center gap-2 text-[12px] font-bold text-[#0B1D3A] hover:text-[#059669] truncate"
+                        >
+                          <Phone size={12} className="text-[#10B981] shrink-0" />
+                          <span className="truncate">{sidebarData.phone}</span>
+                        </a>
+                        <button
+                          onClick={handleCopyPhone}
+                          className="w-5 h-5 rounded-md bg-white shadow-xs flex items-center justify-center shrink-0 ml-1"
+                        >
+                          {copiedPhone ? (
+                            <Check size={10} className="text-[#10B981]" />
+                          ) : (
+                            <Copy size={10} className="text-[#0B1D3A]/40" />
+                          )}
+                        </button>
+                      </div>
+                    )}
                   </div>
-                  <p className="text-[11px] text-[#475569]/60 font-medium mt-1">
-                    {sidebarData.responseTime}
-                  </p>
+
+                  {sidebarData.responseTime && (
+                    <p className="text-[10px] text-[#475569]/60 font-medium mt-2">
+                      {sidebarData.responseTime}
+                    </p>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -166,9 +207,11 @@ export default function ContactUsMobile() {
               <p className="text-[13px] font-bold" style={{ color: NAVY }}>
                 {sidebarData.city}
               </p>
-              <p className="text-[11px] text-[#475569]/60 font-medium mt-0.5">
-                {sidebarData.center}
-              </p>
+              {sidebarData.center && (
+                <p className="text-[11px] text-[#475569]/60 font-medium mt-0.5">
+                  {sidebarData.center}
+                </p>
+              )}
             </motion.div>
             <motion.div
               variants={item}
@@ -186,10 +229,7 @@ export default function ContactUsMobile() {
               <p className="text-[13px] font-bold" style={{ color: NAVY }}>
                 {sidebarData.hours}
               </p>
-              <div className="flex items-center gap-1.5 mt-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-                <span className="text-[10px] text-[#475569]/50">Online</span>
-              </div>
+
             </motion.div>
             <motion.div
               variants={item}

@@ -3,13 +3,9 @@ import type { Variants } from "motion/react";
 import {
   PhoneOff,
   UserMinus,
-  ShieldAlert,
   Users,
   TrendingDown,
   Repeat,
-  HelpCircle,
-  Clock,
-  UserCog,
   ArrowRight,
 } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
@@ -36,35 +32,23 @@ export default function Desktop() {
   const colors = [
     "#EF4444",
     "#F59E0B",
-    "#3B82F6",
     "#8B5CF6",
     "#EC4899",
     "#10B981",
-    "#6366F1",
-    "#F97316",
-    "#06B6D4",
   ];
   const icons = [
     PhoneOff,
     UserMinus,
-    ShieldAlert,
     Users,
     TrendingDown,
     Repeat,
-    HelpCircle,
-    Clock,
-    UserCog,
   ];
   const challengeEmojis = [
     "📉",
     "🔍",
-    "🚧",
     "❓",
     "🧩",
     "⏳",
-    "🕳️",
-    "⏹️",
-    "⚠️",
   ];
   const bgFloatingElements = [
     {

@@ -6,6 +6,7 @@ import {
   MapPin,
   Building2,
   Mail,
+  Phone,
   Sparkles,
   Copy,
   Check,
@@ -21,6 +22,7 @@ export default function ContactUsDesktop() {
   const heroData = fullData.hero;
   const sidebarData = fullData.sidebar;
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -41,6 +43,12 @@ export default function ContactUsDesktop() {
     navigator.clipboard.writeText(sidebarData.email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2500);
+  };
+  const handleCopyPhone = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(sidebarData.phone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2500);
   };
   return (
     <div className="w-full font-['Outfit'] relative overflow-hidden">
@@ -86,15 +94,17 @@ export default function ContactUsDesktop() {
             variants={item}
             className="font-black text-[3.2rem] lg:text-[4rem] leading-[1.05] tracking-[-0.02em] uppercase mb-4"
           >
-            <span className="text-white">CONTACT & </span>
-            <span className="text-[#C99A2E]">ADVISORY</span>
+            <span className="text-white">CONTACT </span>
+        {/*     <span className="text-[#C99A2E]">ADVISORY</span> */}
           </motion.h1>
-          <motion.p
-            variants={item}
-            className="text-white/60 text-[17px] max-w-lg font-medium leading-relaxed"
-          >
-            {heroData.footerText}
-          </motion.p>
+          {heroData.footerText && (
+            <motion.p
+              variants={item}
+              className="text-white/60 text-[17px] max-w-lg font-medium leading-relaxed"
+            >
+              {heroData.footerText}
+            </motion.p>
+          )}
           <motion.div
             variants={item}
             className="mt-8 flex items-center justify-center"
@@ -119,36 +129,73 @@ export default function ContactUsDesktop() {
           >
             <motion.div
               variants={item}
-              className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col"
+              className="bg-white rounded-2xl p-5 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col justify-between"
             >
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center mb-4 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
-                <Mail size={20} className="text-white" />
-              </div>
-              <h4
-                className="text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5"
-                style={{ color: GOLD }}
-              >
-                {sidebarData.directTitle}
-              </h4>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[14px] font-bold" style={{ color: NAVY }}>
-                  {sidebarData.email}
-                </span>
-                <button
-                  onClick={handleCopyEmail}
-                  className="w-6 h-6 rounded-md bg-[#0B1D3A]/[0.04] hover:bg-[#0B1D3A]/10 flex items-center justify-center transition-colors hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
-                  title={sidebarData.copyLabel}
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center mb-3 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+                  <Mail size={19} className="text-white" />
+                </div>
+                <h4
+                  className="text-[10px] font-bold tracking-[0.18em] uppercase mb-2.5"
+                  style={{ color: GOLD }}
                 >
-                  {copiedEmail ? (
-                    <Check size={11} className="text-[#10B981]" />
-                  ) : (
-                    <Copy size={11} className="text-[#0B1D3A]/40" />
+                  {sidebarData.directTitle}
+                </h4>
+                
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between p-2 rounded-xl bg-[#0B1D3A]/[0.03] border border-[#0B1D3A]/[0.05] hover:bg-[#3B82F6]/[0.06] hover:border-[#3B82F6]/20 transition-all duration-200">
+                    <a
+                      href={`mailto:${sidebarData.email}`}
+                      className="flex items-center gap-2 text-[12px] font-bold text-[#0B1D3A] hover:text-[#2563EB] transition-colors truncate"
+                      title="Send Email"
+                    >
+                      <Mail size={13} className="text-[#3B82F6] shrink-0" />
+                      <span className="truncate">{sidebarData.email}</span>
+                    </a>
+                    <button
+                      onClick={handleCopyEmail}
+                      className="w-5 h-5 rounded-md bg-white shadow-xs hover:bg-[#2563EB] hover:text-white flex items-center justify-center transition-all duration-200 shrink-0 ml-1"
+                      title={sidebarData.copyLabel}
+                    >
+                      {copiedEmail ? (
+                        <Check size={10} className="text-[#10B981]" />
+                      ) : (
+                        <Copy size={10} className="text-[#0B1D3A]/50" />
+                      )}
+                    </button>
+                  </div>
+
+                  {sidebarData.phone && (
+                    <div className="flex items-center justify-between p-2 rounded-xl bg-[#0B1D3A]/[0.03] border border-[#0B1D3A]/[0.05] hover:bg-[#10B981]/[0.06] hover:border-[#10B981]/20 transition-all duration-200">
+                      <a
+                        href={`tel:${sidebarData.phone.replace(/\s+/g, '')}`}
+                        className="flex items-center gap-2 text-[12px] font-bold text-[#0B1D3A] hover:text-[#059669] transition-colors truncate"
+                        title="Call Phone"
+                      >
+                        <Phone size={13} className="text-[#10B981] shrink-0" />
+                        <span className="truncate">{sidebarData.phone}</span>
+                      </a>
+                      <button
+                        onClick={handleCopyPhone}
+                        className="w-5 h-5 rounded-md bg-white shadow-xs hover:bg-[#10B981] hover:text-white flex items-center justify-center transition-all duration-200 shrink-0 ml-1"
+                        title={sidebarData.copyLabel}
+                      >
+                        {copiedPhone ? (
+                          <Check size={10} className="text-[#10B981]" />
+                        ) : (
+                          <Copy size={10} className="text-[#0B1D3A]/50" />
+                        )}
+                      </button>
+                    </div>
                   )}
-                </button>
+                </div>
               </div>
-              <p className="text-[12px] text-[#475569]/70 font-medium mt-auto">
-                {sidebarData.responseTime}
-              </p>
+
+              {sidebarData.responseTime && (
+                <p className="text-[11px] text-[#475569]/70 font-medium mt-3">
+                  {sidebarData.responseTime}
+                </p>
+              )}
             </motion.div>
             <motion.div
               variants={item}
@@ -169,9 +216,11 @@ export default function ContactUsDesktop() {
               >
                 {sidebarData.city}
               </p>
-              <p className="text-[12px] text-[#475569]/70 font-medium mt-auto">
-                {sidebarData.center}
-              </p>
+              {sidebarData.center && (
+                <p className="text-[12px] text-[#475569]/70 font-medium mt-auto">
+                  {sidebarData.center}
+                </p>
+              )}
             </motion.div>
             <motion.div
               variants={item}
@@ -212,10 +261,7 @@ export default function ContactUsDesktop() {
               >
                 {sidebarData.hours}
               </p>
-              <div className="flex items-center gap-1.5 mt-auto">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-                <span className="text-[11px] text-[#475569]/60">Online</span>
-              </div>
+
             </motion.div>
           </motion.div>
           <motion.div

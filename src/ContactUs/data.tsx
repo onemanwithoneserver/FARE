@@ -12,7 +12,7 @@ export const dataEn = {
       secondary: "",
     },
     features: ["100% Confidential", "Priority Response", "< 48h Response SLA"],
-    footerText: "Direct executive routing under strict confidentiality.",
+    footerText: "",
     dashboard: {
       title: "Direct Routing",
       stats: [
@@ -100,8 +100,7 @@ export const dataEn = {
       messageLabel: "Executive Briefing / Message",
       messagePlaceholder:
         "Tell us what you are building, your team size, or which training module interests you...",
-      privacyNote:
-        "Direct executive routing under strict confidentiality. Zero spam policy.",
+      privacyNote: "Zero spam policy.",
       submitBtn: "Send",
       submittingBtn: "Routing Briefing...",
     },
@@ -118,15 +117,16 @@ export const dataEn = {
   sidebar: {
     deskBadge: "Direct Executive Desk",
     directTitle: "Direct Inquiries",
-    email: "hello@yardstack.com",
+    email: "hello@yardstack.in",
+    phone: "+91 950 243 7979",
     copyLabel: "Copy",
     copiedLabel: "Copied",
     responseTitle: "Response Protocol",
-    responseTime: "Within two working days",
+    responseTime: "",
     hours: "Mon – Fri, 9:30 AM to 6:30 PM IST",
     locationTitle: "Location & Operations",
     city: "Hyderabad, India",
-    center: "Technology & Advisory Center",
+    center: "",
     officeTitle: "Registered Office",
     address: "Block No 2, Mercari Building, Kompally, Telangana - Hyderabad",
     partnersNote:
@@ -146,7 +146,7 @@ export const dataTe = {
       secondary: "",
     },
     features: ["100% గోప్యత", "ప్రాధాన్యతా ప్రతిస్పందన", "< 48 గంటల్లో స్పందన"],
-    footerText: "పూర్తి గోప్యతతో ప్రత్యక్ష ఎగ్జిక్యూటివ్ రూటింగ్.",
+    footerText: "",
     dashboard: {
       title: "డైరెక్ట్ రూటింగ్",
       stats: [
@@ -234,8 +234,7 @@ export const dataTe = {
       messageLabel: "ఎగ్జిక్యూటివ్ బ్రీఫింగ్ / సందేశం",
       messagePlaceholder:
         "మీరు ఏమి నిర్మిస్తున్నారు, మీ టీమ్ సైజ్ ఎంత లేదా ఏ ట్రైనింగ్ మాడ్యూల్ మీకు ఆసక్తి కలిగిస్తుందో మాకు తెలియజేయండి...",
-      privacyNote:
-        "పూర్తి గోప్యతతో ప్రత్యక్ష ఎగ్జిక్యూటివ్ రూటింగ్. సున్నా స్పామ్ విధానం.",
+      privacyNote: "సున్నా స్పామ్ విధానం.",
       submitBtn: "పంపండి",
       submittingBtn: "సందేశం పంపబడుతోంది...",
     },
@@ -252,15 +251,16 @@ export const dataTe = {
   sidebar: {
     deskBadge: "డైరెక్ట్ ఎగ్జిక్యూటివ్ డెస్క్",
     directTitle: "ప్రత్యక్ష విచారణలు",
-    email: "hello@yardstack.com",
+    email: "hello@yardstack.in",
+    phone: "+91 950 243 7979",
     copyLabel: "కాపీ",
     copiedLabel: "కాపీ చేయబడింది",
     responseTitle: "ప్రతిస్పందన విధానం",
-    responseTime: "రెండు పని దినాలలో",
+    responseTime: "",
     hours: "సోమ – శుక్ర, ఉదయం 9:30 నుండి సాయంత్రం 6:30 IST",
     locationTitle: "స్థానం & కార్యకలాపాలు",
     city: "హైదరాబాద్, భారతదేశం",
-    center: "టెక్నాలజీ & అడ్వైజరీ సెంటర్",
+    center: "",
     officeTitle: "నమోదిత కార్యాలయం",
     address: "బ్లాక్ నం 2, మెర్కారి బిల్డింగ్, కొంపల్లి, తెలంగాణ - హైదరాబాద్",
     partnersNote:
