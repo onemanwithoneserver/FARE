@@ -3,11 +3,15 @@ import type { Variants } from "motion/react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import { ArrowRight, Check, Settings2, Sparkles } from "lucide-react";
+import { useState } from "react";
+import Modal from "../../Forms/Modal";
+import RECompaniesForm from "../../Forms/Mobile/RECompaniesForm";
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -24,6 +28,7 @@ export default function Mobile() {
     },
   };
   return (
+    <>
     <section className="w-full py-8 bg-white relative font-['Outfit'] overflow-hidden">
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -157,7 +162,7 @@ export default function Mobile() {
               {data.ctaDesc}
             </p>
             <div className="flex flex-col w-full gap-3 relative z-10">
-              <button className="group w-full bg-white text-[#0B1D3A] py-4 rounded text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
+              <button className="group w-full bg-white text-[#0B1D3A] py-4 rounded text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out" onClick={() => setIsModalOpen(true)}>
                 {data.ctaButton}{" "}
                 <ArrowRight
                   size={15}
@@ -166,7 +171,7 @@ export default function Mobile() {
                 />
               </button>
               {data.secondaryCtaButton && (
-                <button className="w-full bg-white/10 border border-white/20 text-white py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
+                <button className="w-full bg-white/10 border border-white/20 text-white py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out" onClick={() => setIsModalOpen(true)}>
                   {data.secondaryCtaButton}
                 </button>
               )}
@@ -175,5 +180,9 @@ export default function Mobile() {
         </motion.div>
       </div>
     </section>
+    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <RECompaniesForm />
+    </Modal>
+    </>
   );
 }

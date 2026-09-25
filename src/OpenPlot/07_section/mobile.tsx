@@ -3,10 +3,14 @@ import type { Variants } from "motion/react";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useState } from "react";
 import bgImage from "../../assets/bg-04.jpg";
+import Modal from "../../Forms/Modal";
+import OpenPlotForm from "../../Forms/Mobile/OpenPlotForm";
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const containerVariant: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -23,6 +27,7 @@ export default function Mobile() {
     },
   };
   return (
+    <>
     <section
       className="w-full py-12 px-5 flex items-center justify-center font-['Outfit'] relative overflow-hidden"
       style={{
@@ -94,6 +99,7 @@ export default function Mobile() {
           >
             <motion.button
               whileTap={{ scale: 0.98 }}
+              onClick={() => setIsModalOpen(true)}
               className="group relative overflow-hidden w-full font-bold text-[14px] py-4 rounded transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] shadow-[0_8px_20px_-5px_rgba(213,170,69,0.3)]"
               style={{
                 background:
@@ -110,6 +116,7 @@ export default function Mobile() {
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.98 }}
+              onClick={() => setIsModalOpen(true)}
               className="w-full bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[14px] py-4 rounded border border-[#0B1D3A]/15 transition-all duration-300 cursor-pointer backdrop-blur-sm"
             >
               {data.buttons.secondary}
@@ -118,5 +125,9 @@ export default function Mobile() {
         </div>
       </motion.div>
     </section>
+    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <OpenPlotForm />
+    </Modal>
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import {
@@ -11,16 +11,21 @@ import {
   Target,
   Sparkles,
 } from "lucide-react";
+import { useState } from "react";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import bgImage from "../../assets/bg-04.jpg";
+import Modal from "../../Forms/Modal";
+import OpenPlotForm from "../../Forms/Mobile/OpenPlotForm";
+import RETrainersForm from "../../Forms/Mobile/RETrainersForm";
+import RECompaniesForm from "../../Forms/Mobile/RECompaniesForm";
 export default function Mobile() {
-  const navigate = useNavigate();
   const location = useLocation();
-  const isMobileMode = location.pathname.startsWith("/mobile");
-  const currentMode = isMobileMode ? "mobile" : "desktop";
   const { language } = useLanguage();
   const data = getData(language);
+  const [activeForm, setActiveForm] = useState<
+    "open-plots" | "re-trainers-coaches" | "re-companies" | null
+  >(null);
   const pathSegments = location.pathname.split("/").filter(Boolean);
   const currentRoute =
     pathSegments.find(
@@ -44,14 +49,11 @@ export default function Mobile() {
           : -1;
   const handleButtonClick = (idx: number) => {
     if (idx === 0) {
-      navigate(`/${currentMode}/open-plots`);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveForm("open-plots");
     } else if (idx === 1) {
-      navigate(`/${currentMode}/re-trainers-coaches`);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveForm("re-trainers-coaches");
     } else if (idx === 2) {
-      navigate(`/${currentMode}/re-companies`);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveForm("re-companies");
     }
   };
   const containerVariant: Variants = {
@@ -113,6 +115,7 @@ export default function Mobile() {
     },
   ];
   return (
+    <>
     <section className="w-full py-12 px-4 flex flex-col items-center justify-center font-['Outfit'] relative overflow-hidden bg-[#020b1e]">
       <div
         className="absolute inset-0 z-0 opacity-40 pointer-events-none"
@@ -375,5 +378,11 @@ export default function Mobile() {
         </div>
       </motion.div>
     </section>
+    <Modal isOpen={activeForm !== null} onClose={() => setActiveForm(null)}>
+      {activeForm === "open-plots" && <OpenPlotForm />}
+      {activeForm === "re-trainers-coaches" && <RETrainersForm />}
+      {activeForm === "re-companies" && <RECompaniesForm />}
+    </Modal>
+    </>
   );
 }

@@ -3,10 +3,14 @@ import type { Variants } from "motion/react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useState } from "react";
 import bgImage from "../../assets/bg-04.jpg";
+import Modal from "../../Forms/Modal";
+import OpenPlotForm from "../../Forms/Desktop/OpenPlotForm";
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const containerVariant: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -23,6 +27,7 @@ export default function Desktop() {
     },
   };
   return (
+    <>
     <section
       className="w-full py-40 px-12 flex items-center justify-center font-['Outfit'] relative overflow-hidden"
       style={{
@@ -111,6 +116,7 @@ export default function Desktop() {
             <motion.button
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => setIsModalOpen(true)}
               className="group relative overflow-hidden font-bold text-[15px] px-10 py-4 rounded transition-all duration-300 flex items-center gap-3 cursor-pointer text-[#071A49] tracking-wide shadow-[0_10px_25px_-5px_rgba(213,170,69,0.3)] hover:shadow-[0_15px_35px_-5px_rgba(213,170,69,0.4)]"
               style={{
                 background:
@@ -128,6 +134,7 @@ export default function Desktop() {
             <motion.button
               whileHover={{ backgroundColor: "rgba(11,29,58,0.05)" }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => setIsModalOpen(true)}
               className="bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[15px] px-10 py-4 rounded border border-[#0B1D3A]/15 hover:border-[#0B1D3A]/25 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
             >
               {data.buttons.secondary}
@@ -136,5 +143,9 @@ export default function Desktop() {
         </div>
       </motion.div>
     </section>
+    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <OpenPlotForm />
+    </Modal>
+    </>
   );
 }

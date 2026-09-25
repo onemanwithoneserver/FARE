@@ -1,14 +1,18 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import openplotHero from "../../assets/openplot_hero.jpg";
+import Modal from "../../Forms/Modal";
+import OpenPlotForm from "../../Forms/Mobile/OpenPlotForm";
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -25,6 +29,7 @@ export default function Mobile() {
     },
   };
   return (
+    <>
     <section
       className="w-full pt-[50px] -mt-6 pb-14 flex flex-col items-center justify-start overflow-hidden relative font-['Outfit']"
       style={{
@@ -120,6 +125,7 @@ export default function Mobile() {
             className="flex flex-col w-full gap-3 max-w-[280px] mb-4"
           >
             <button
+              onClick={() => setIsModalOpen(true)}
               className="text-white font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
               style={{
                 background: NAVY,
@@ -130,6 +136,7 @@ export default function Mobile() {
             </button>
             {data.buttons.secondary && (
               <button
+                onClick={() => setIsModalOpen(true)}
                 className="font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
                 style={{
                   color: NAVY,
@@ -220,5 +227,9 @@ export default function Mobile() {
         </motion.div>
       </div>
     </section>
+    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <OpenPlotForm />
+    </Modal>
+    </>
   );
 }

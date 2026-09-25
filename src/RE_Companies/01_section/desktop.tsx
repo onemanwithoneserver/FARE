@@ -1,15 +1,19 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import reCompaniesHero from "../../assets/re_companies_hero.jpg";
+import Modal from "../../Forms/Modal";
+import RECompaniesForm from "../../Forms/Desktop/RECompaniesForm";
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_LIGHT = "#E2C068";
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -26,6 +30,7 @@ export default function Desktop() {
     },
   };
   return (
+    <>
     <section
       className="w-full -mt-8 lg:-mt-8 flex items-center justify-center overflow-x-clip relative font-['Outfit']"
       style={{
@@ -128,6 +133,7 @@ export default function Desktop() {
               className="flex items-center gap-4 mb-5"
             >
               <button
+                onClick={() => setIsModalOpen(true)}
                 className="text-white text-[13.5px] font-semibold px-7 py-3 rounded hover:shadow-[0_12px_24px_rgba(11,29,58,0.2),0_0_0_1px_rgba(201,154,46,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
                 style={{
                   background: NAVY,
@@ -139,6 +145,7 @@ export default function Desktop() {
               </button>
               {data.buttons.secondary && (
                 <button
+                  onClick={() => setIsModalOpen(true)}
                   className="text-[13.5px] font-semibold px-7 py-3 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
                   style={{
                     color: NAVY,
@@ -253,5 +260,9 @@ export default function Desktop() {
         </div>
       </div>
     </section>
+    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <RECompaniesForm />
+    </Modal>
+    </>
   );
 }
