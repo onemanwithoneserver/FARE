@@ -1,11 +1,13 @@
 import type { Language } from "../../context/LanguageContext";
 
 export const dataEn = {
-  title: "MediaShowcase Section"
+  title: "Media Showcase",
+  content: "Details for Media Showcase will go here."
 };
 
 export const dataTe = {
-  title: "MediaShowcase విభాగం"
+  title: "మీడియా ప్రదర్శన",
+  content: "మీడియా ప్రదర్శన వివరాలు ఇక్కడ ఉంటాయి."
 };
 
 export const getData = (lang: Language = "en") => lang === "te" ? dataTe : dataEn;

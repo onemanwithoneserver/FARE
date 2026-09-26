@@ -1,11 +1,13 @@
 import type { Language } from "../../context/LanguageContext";
 
 export const dataEn = {
-  title: "TrainingMethodology Section"
+  title: "Training Methodology",
+  content: "Details for Training Methodology will go here."
 };
 
 export const dataTe = {
-  title: "TrainingMethodology విభాగం"
+  title: "శిక్షణ విధానం",
+  content: "శిక్షణ విధానం వివరాలు ఇక్కడ ఉంటాయి."
 };
 
 export const getData = (lang: Language = "en") => lang === "te" ? dataTe : dataEn;
