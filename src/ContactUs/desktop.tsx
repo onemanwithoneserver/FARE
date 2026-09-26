@@ -95,7 +95,6 @@ export default function ContactUsDesktop() {
             className="font-black text-[3.2rem] lg:text-[4rem] leading-[1.05] tracking-[-0.02em] uppercase mb-4"
           >
             <span className="text-white">CONTACT </span>
-        {/*     <span className="text-[#C99A2E]">ADVISORY</span> */}
           </motion.h1>
           {heroData.footerText && (
             <motion.p

@@ -89,7 +89,6 @@ export default function ContactUsMobile() {
             className="font-black text-[2.5rem] leading-[1.08] tracking-[-0.01em] uppercase mb-3"
           >
             <span className="text-white">CONTACT  </span>
-           {/*  <span className="text-[#C99A2E]">ADVISORY</span> */}
           </motion.h1>
           {heroData.footerText && (
             <motion.p
@@ -138,7 +137,6 @@ export default function ContactUsMobile() {
                   </h4>
                   
                   <div className="space-y-1.5">
-                    {/* Email item */}
                     <div className="flex items-center justify-between p-2 rounded-xl bg-[#0B1D3A]/[0.03] border border-[#0B1D3A]/[0.05]">
                       <a
                         href={`mailto:${sidebarData.email}`}
@@ -159,7 +157,6 @@ export default function ContactUsMobile() {
                       </button>
                     </div>
 
-                    {/* Phone item */}
                     {sidebarData.phone && (
                       <div className="flex items-center justify-between p-2 rounded-xl bg-[#0B1D3A]/[0.03] border border-[#0B1D3A]/[0.05]">
                         <a

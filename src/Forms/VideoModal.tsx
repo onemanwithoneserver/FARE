@@ -47,7 +47,6 @@ export default function VideoModal({
     setMounted(true);
   }, []);
 
-  // Listen to fullscreen changes
   useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullscreen(!!document.fullscreenElement);
@@ -106,7 +105,6 @@ export default function VideoModal({
     };
   }, [isOpen, resetControlsTimeout]);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isOpen) return;
@@ -159,7 +157,6 @@ export default function VideoModal({
     setCurrentTime(current);
     setProgress((current / total) * 100);
 
-    // Keep ambient background synced
     if (backgroundVideoRef.current && Math.abs(backgroundVideoRef.current.currentTime - current) > 0.3) {
       backgroundVideoRef.current.currentTime = current;
     }
@@ -216,7 +213,6 @@ export default function VideoModal({
             isFullscreen ? "p-0" : "p-3 sm:p-5 md:p-6"
           }`}
         >
-          {/* Backdrop blur (when not in fullscreen) */}
           {!isFullscreen && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -228,7 +224,6 @@ export default function VideoModal({
             />
           )}
 
-          {/* Ambient Video Background / Glow (YouTube Shorts Style) */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <video
               ref={backgroundVideoRef}
@@ -241,7 +236,6 @@ export default function VideoModal({
             <div className="absolute inset-0 bg-[#040C1E]/60 backdrop-blur-2xl" />
           </div>
 
-          {/* 9:16 Short Form Player Frame (Strictly 9:16 in both Normal & Fullscreen Mode) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -260,7 +254,6 @@ export default function VideoModal({
                 : "w-full max-w-[380px] sm:max-w-[400px] md:max-w-[420px] max-h-[88vh]"
             }`}
           >
-            {/* Native Video Element */}
             <video
               ref={videoRef}
               src={videoSrc}
@@ -272,7 +265,6 @@ export default function VideoModal({
               className="w-full h-full object-cover cursor-pointer rounded-[4px]"
             />
 
-            {/* Tap/Click Feedback Animation */}
             <AnimatePresence>
               {showCenterFeedback && (
                 <motion.div
@@ -291,7 +283,6 @@ export default function VideoModal({
               )}
             </AnimatePresence>
 
-            {/* Top Bar (Header & Close) */}
             <div
               className={`absolute top-0 inset-x-0 p-3 sm:p-4 pt-3 flex items-center justify-between z-40 bg-gradient-to-b from-black/80 via-black/40 to-transparent transition-opacity duration-300 ${
                 showControls ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -326,7 +317,6 @@ export default function VideoModal({
               </div>
             </div>
 
-            {/* Center Play Button Overlay (when paused) */}
             <AnimatePresence>
               {!isPlaying && !showCenterFeedback && (
                 <motion.button
@@ -342,20 +332,17 @@ export default function VideoModal({
               )}
             </AnimatePresence>
 
-            {/* Bottom Controls Overlay */}
             <div
               className={`absolute bottom-0 inset-x-0 p-3 sm:p-4 pt-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent flex flex-col gap-2.5 z-40 transition-opacity duration-300 ${
                 showControls ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
               }`}
             >
-              {/* Scrubbable Timeline */}
               <div
                 ref={progressBarRef}
                 onClick={handleSeek}
                 className="w-full py-1 cursor-pointer group/bar flex items-center"
               >
                 <div className="w-full h-1 group-hover/bar:h-2 bg-white/25 rounded-[2px] overflow-hidden relative transition-all duration-200">
-                  {/* Progress Fill */}
                   <div
                     className="h-full bg-gradient-to-r from-[#C99A2E] via-[#F3D37F] to-[#E2C068] rounded-[2px] relative"
                     style={{ width: `${progress}%` }}
@@ -365,9 +352,7 @@ export default function VideoModal({
                 </div>
               </div>
 
-              {/* Bottom Row Actions */}
               <div className="flex items-center justify-between text-white text-[13px]">
-                {/* Left Controls: Play + Time */}
                 <div className="flex items-center gap-2">
                   <button
                     onClick={togglePlay}
@@ -391,7 +376,6 @@ export default function VideoModal({
                   </span>
                 </div>
 
-                {/* Right Controls: Volume + Fullscreen */}
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={toggleMute}
