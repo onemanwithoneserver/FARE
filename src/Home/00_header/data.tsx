@@ -17,6 +17,37 @@ export const dataEn = {
       ],
     },
     { title: "For Trainers", href: "re-trainers-coaches" },
+    {
+      title: "For Learners",
+      href: "#",
+      subItems: [
+        {
+          title: "Students & Freshers",
+          href: "#",
+          formKey: "students",
+        },
+        {
+          title: "Employees",
+          href: "#",
+          formKey: "employees",
+        },
+        {
+          title: "Freelancers - Open Plot",
+          href: "#",
+          formKey: "freelancer-open-plot",
+        },
+        {
+          title: "Freelancers - Residential",
+          href: "#",
+          formKey: "freelancer-residential",
+        },
+        {
+          title: "Career Switchers",
+          href: "#",
+          formKey: "career-switchers",
+        },
+      ],
+    },
     { title: "Trainer Directory", href: "#" },
     { title: "About", href: "#" },
     { title: "Contact Us", href: "contact-us" },
@@ -40,6 +71,37 @@ export const dataTe = {
       ],
     },
     { title: "ట్రైనర్ల కోసం", href: "re-trainers-coaches" },
+    {
+      title: "అభ్యాసకుల కోసం",
+      href: "#",
+      subItems: [
+        {
+          title: "విద్యార్థులు & ఫ్రెషర్స్",
+          href: "#",
+          formKey: "students",
+        },
+        {
+          title: "ఉద్యోగులు",
+          href: "#",
+          formKey: "employees",
+        },
+        {
+          title: "ఫ్రీలాన్సర్లు - ఓపెన్ ప్లాట్",
+          href: "#",
+          formKey: "freelancer-open-plot",
+        },
+        {
+          title: "ఫ్రీలాన్సర్లు - రెసిడెన్షియల్",
+          href: "#",
+          formKey: "freelancer-residential",
+        },
+        {
+          title: "కెరీర్ స్విచ్చర్స్",
+          href: "#",
+          formKey: "career-switchers",
+        },
+      ],
+    },
     { title: "ట్రైనర్ డైరెక్టరీ", href: "#" },
     { title: "మా గురించి", href: "#" },
     { title: "సంప్రదించండి", href: "contact-us" },

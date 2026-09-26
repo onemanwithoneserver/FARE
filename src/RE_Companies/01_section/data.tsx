@@ -1,7 +1,7 @@
 import type { Language } from "../../context/LanguageContext";
 export const dataEn = {
   tagline: "Skill Enhancement For Real Estate",
-  headline: "FARE for Residential & Commercial Real Estate",
+  headline: "FARE for Residential & Commercial Companies",
   subheadline: "Hone your Sales Team & Channel Partner Skills",
   subheadlineAccent: "With a Custom RE Learning System.",
   description:
@@ -44,7 +44,7 @@ export const dataEn = {
 };
 export const dataTe = {
   tagline: "రియల్ ఎస్టేట్ కోసం నైపుణ్యాల పెంపు",
-  headline: "రెసిడెన్షియల్ & కమర్షియల్ రియల్ ఎస్టేట్ కోసం FARE",
+  headline: "రెసిడెన్షియల్ & కమర్షియల్ కంపెనీల కోసం FARE",
   subheadline: "మీ సేల్స్ టీమ్ & ఛానల్ పార్ట్నర్ స్కిల్స్ మెరుగుపరచండి",
   subheadlineAccent: "కస్టమ్ RE లెర్నింగ్ సిస్టమ్‌తో.",
   description:

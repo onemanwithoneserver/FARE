@@ -11,9 +11,48 @@ import {
   ChevronDown,
   Building2,
   MapPin,
+  GraduationCap,
+  Briefcase,
+  Home as HomeIcon,
+  RefreshCw,
   Globe,
   Check,
 } from "lucide-react";
+import Modal from "../../Forms/Modal";
+import LearnerForm from "../../Forms/Desktop/LearnerForm";
+import RECompaniesForm from "../../Forms/Desktop/RECompaniesForm";
+const subIconMap: Record<string, React.ElementType> = {
+  "Residential & Commercial": Building2,
+  "రెసిడెన్షియల్ & కమర్షియల్": Building2,
+  "Open Plots": MapPin,
+  "ఓపెన్ ప్లాట్స్": MapPin,
+  "Students & Freshers": GraduationCap,
+  "విద్యార్థులు & ఫ్రెషర్స్": GraduationCap,
+  Employees: Briefcase,
+  ఉద్యోగులు: Briefcase,
+  "Freelancers - Open Plot": MapPin,
+  "ఫ్రీలాన్సర్లు - ఓపెన్ ప్లాట్": MapPin,
+  "Freelancers - Residential": HomeIcon,
+  "ఫ్రీలాన్సర్లు - రెసిడెన్షియల్": HomeIcon,
+  "Career Switchers": RefreshCw,
+  "కెరీర్ స్విచ్చర్స్": RefreshCw,
+};
+const subColorMap: Record<string, string> = {
+  "Residential & Commercial": "#34D399",
+  "రెసిడెన్షియల్ & కమర్షియల్": "#34D399",
+  "Open Plots": "#E2C068",
+  "ఓపెన్ ప్లాట్స్": "#E2C068",
+  "Students & Freshers": "#E2C068",
+  "విద్యార్థులు & ఫ్రెషర్స్": "#E2C068",
+  Employees: "#60A5FA",
+  ఉద్యోగులు: "#60A5FA",
+  "Freelancers - Open Plot": "#34D399",
+  "ఫ్రీలాన్సర్లు - ఓపెన్ ప్లాట్": "#34D399",
+  "Freelancers - Residential": "#A78BFA",
+  "ఫ్రీలాన్సర్లు - రెసిడెన్షియల్": "#A78BFA",
+  "Career Switchers": "#F472B6",
+  "కెరీర్ స్విచ్చర్స్": "#F472B6",
+};
 export default function Desktop() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,6 +65,10 @@ export default function Desktop() {
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeForm, setActiveForm] = useState<string | null>(null);
+  const [activeLearnerItem, setActiveLearnerItem] = useState<string | null>(
+    null,
+  );
   const searchInputRef = useRef<HTMLInputElement>(null);
   const langDropdownRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -119,9 +162,16 @@ export default function Desktop() {
     const hasSubItems = link.subItems && link.subItems.length > 0;
     const isDropdownOpen = activeDropdown === link.title;
     const targetRoute = getRouteForHref(link.href, link.title);
+    const hasFormSubItems = (link.subItems ?? []).some(
+      (sub: { formKey?: string }) => !!sub.formKey
+    );
+    const subRoutes = (link.subItems ?? [])
+      .map((sub) => getRouteForHref(sub.href, sub.title))
+      .filter((r) => r !== "#");
     const isActive = !hasSubItems
       ? currentRoute === targetRoute
-      : currentRoute === "re-companies" || currentRoute === "open-plots";
+      : subRoutes.includes(currentRoute) ||
+        (hasFormSubItems && activeLearnerItem !== null);
     if (hasSubItems) {
       return (
         <div
@@ -132,8 +182,11 @@ export default function Desktop() {
         >
           <button
             onClick={() => {
-              navigate(`/${currentMode}/${targetRoute}`);
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              if (targetRoute !== "#") {
+                setActiveLearnerItem(null);
+                navigate(`/${currentMode}/${targetRoute}`);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
               setActiveDropdown(null);
             }}
             className={`flex items-center gap-1 text-[13px] lg:text-[13.5px] xl:text-[14px] font-medium transition-colors duration-300 cursor-pointer py-1.5 group whitespace-nowrap ${
@@ -173,12 +226,16 @@ export default function Desktop() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.96 }}
                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute top-full left-0 mt-2 w-[250px] bg-[#071738]/95 backdrop-blur-xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-[4px] p-1.5 z-50 pointer-events-auto hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="absolute top-full left-0 mt-2 w-[270px] bg-[#071738]/95 backdrop-blur-xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-[4px] p-1.5 z-50 pointer-events-auto hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div className="flex flex-col gap-1">
-                  {link.subItems?.map((sub, sIdx) => {
+                  {link.subItems?.map((sub: { title: string; href: string; formKey?: string }, sIdx: number) => {
                     const subRoute = getRouteForHref(sub.href, sub.title);
-                    const isSubActive = currentRoute === subRoute;
+                    const isSubActive = sub.formKey
+                      ? activeLearnerItem === sub.formKey
+                      : currentRoute === subRoute;
+                    const SubIcon = subIconMap[sub.title] ?? MapPin;
+                    const subColor = subColorMap[sub.title] ?? "#E2C068";
                     return (
                       <a
                         key={sIdx}
@@ -186,8 +243,14 @@ export default function Desktop() {
                         onClick={(e) => {
                           e.preventDefault();
                           setActiveDropdown(null);
-                          navigate(`/${currentMode}/${subRoute}`);
-                          window.scrollTo({ top: 0, behavior: "smooth" });
+                          if (sub.formKey) {
+                            setActiveLearnerItem(sub.formKey);
+                            setActiveForm(sub.formKey);
+                          } else {
+                            setActiveLearnerItem(null);
+                            navigate(`/${currentMode}/${subRoute}`);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }
                         }}
                         className={`w-full p-2.5 rounded-[4px] border transition-all duration-200 flex items-center justify-between gap-2.5 text-left cursor-pointer group/sub ${
                           isSubActive
@@ -197,17 +260,13 @@ export default function Desktop() {
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
                           <div
-                            className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/sub:scale-105 ${
-                              sIdx === 0
-                                ? "bg-[#10B981]/20 text-[#34D399] group-hover/sub:bg-[#10B981] group-hover/sub:text-white"
-                                : "bg-[#C99A2E]/20 text-[#E2C068] group-hover/sub:bg-[#C99A2E] group-hover/sub:text-white"
-                            }`}
+                            className="w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/sub:scale-105"
+                            style={{
+                              backgroundColor: `${subColor}33`,
+                              color: subColor,
+                            }}
                           >
-                            {sIdx === 0 ? (
-                              <Building2 size={16} strokeWidth={2.2} />
-                            ) : (
-                              <MapPin size={16} strokeWidth={2.2} />
-                            )}
+                            <SubIcon size={16} strokeWidth={2.2} />
                           </div>
                           <span
                             className={`text-[13px] font-bold transition-colors leading-tight whitespace-nowrap ${
@@ -244,6 +303,7 @@ export default function Desktop() {
         href={`#${targetRoute}`}
         onClick={(e) => {
           e.preventDefault();
+          setActiveLearnerItem(null);
           navigate(`/${currentMode}/${targetRoute}`);
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
@@ -440,6 +500,7 @@ export default function Desktop() {
     </div>
   );
   return (
+    <>
     <div className="w-full sticky top-0 z-50 pointer-events-auto">
       <div
         className={`w-full transition-all duration-300 ease-out ${
@@ -549,5 +610,17 @@ export default function Desktop() {
         </header>
       </div>
     </div>
+    <Modal isOpen={activeForm !== null} onClose={() => setActiveForm(null)}>
+      {activeForm === "students" && <LearnerForm category="students" />}
+      {activeForm === "employees" && <LearnerForm category="employees" />}
+      {activeForm === "freelancer-open-plot" && <RECompaniesForm />}
+      {activeForm === "freelancer-residential" && (
+        <LearnerForm category="freelancer-residential" />
+      )}
+      {activeForm === "career-switchers" && (
+        <LearnerForm category="career-switchers" />
+      )}
+    </Modal>
+    </>
   );
 }

@@ -94,15 +94,17 @@ export default function Desktop() {
                   className="block uppercase"
                   style={{ color: NAVY }}
                 >
-                  {language === "te" ? "రెసిడెన్షియల్ &" : "RESIDENTIAL &"}
+                  {language === "te"
+                    ? "రెసిడెన్షియల్ & కమర్షియల్"
+                    : "RESIDENTIAL & COMMERCIAL"}
                 </motion.span>
                 <motion.span
                   variants={item}
-                  className={`inline-block text-[#C99A2E] gold-underline uppercase ${language === "te" ? "pb-1" : ""}`}
+                  className={`inline-block text-[#C99A2E] gold-underline uppercase ${
+                    language === "te" ? "pb-1" : ""
+                  }`}
                 >
-                  {language === "te"
-                    ? "కమర్షియల్ రియల్ ఎస్టేట్"
-                    : "COMMERCIAL REAL ESTATE"}
+                  {language === "te" ? "కంపెనీలు" : "COMPANIES"}
                 </motion.span>
               </>
             </h1>
