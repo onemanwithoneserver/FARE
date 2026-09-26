@@ -69,7 +69,7 @@ export default function Desktop() {
             className="lg:col-span-8 flex flex-col items-start text-left w-full relative z-40"
           >
             <h1
-              className={`font-black mb-3 flex flex-col gap-1 md:gap-1.5 ${
+              className={`font-black mb-3 flex flex-col items-start gap-1 md:gap-1.5 ${
                 language === "te"
                   ? "text-[2.2rem] lg:text-[2.6rem] xl:text-[3.2rem] leading-[1.15] tracking-wider"
                   : "text-[2.2rem] lg:text-[2.6rem] xl:text-[3.2rem] leading-[1.05] tracking-[-0.03em]"
@@ -100,7 +100,7 @@ export default function Desktop() {
                 </motion.span>
                 <motion.span
                   variants={item}
-                  className={`inline-block text-[#C99A2E] gold-underline uppercase ${
+                  className={`self-start inline-block text-[#C99A2E] gold-underline uppercase ${
                     language === "te" ? "pb-1" : ""
                   }`}
                 >

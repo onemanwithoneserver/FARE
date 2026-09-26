@@ -6,7 +6,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import openplotHero from "../../assets/openplot_hero.jpg";
 import Modal from "../../Forms/Modal";
-import OpenPlotForm from "../../Forms/Desktop/OpenPlotForm";
+import RECompaniesForm from "../../Forms/Desktop/RECompaniesForm";
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_LIGHT = "#E2C068";
@@ -259,7 +259,7 @@ export default function Desktop() {
       </div>
     </section>
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-      <OpenPlotForm />
+      <RECompaniesForm />
     </Modal>
     </>
   );

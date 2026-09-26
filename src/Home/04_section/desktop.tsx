@@ -13,7 +13,6 @@ import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import bgImage from "../../assets/bg-04.jpg";
 import Modal from "../../Forms/Modal";
-import OpenPlotForm from "../../Forms/Desktop/OpenPlotForm";
 import RETrainersForm from "../../Forms/Desktop/RETrainersForm";
 import RECompaniesForm from "../../Forms/Desktop/RECompaniesForm";
 export default function Desktop() {
@@ -305,7 +304,7 @@ export default function Desktop() {
       </motion.div>
     </section>
     <Modal isOpen={activeForm !== null} onClose={() => setActiveForm(null)}>
-      {activeForm === "open-plots" && <OpenPlotForm />}
+      {activeForm === "open-plots" && <RECompaniesForm />}
       {activeForm === "re-trainers-coaches" && <RETrainersForm />}
       {activeForm === "re-companies" && <RECompaniesForm />}
     </Modal>

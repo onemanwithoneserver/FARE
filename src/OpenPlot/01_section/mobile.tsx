@@ -6,7 +6,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import openplotHero from "../../assets/openplot_hero.jpg";
 import Modal from "../../Forms/Modal";
-import OpenPlotForm from "../../Forms/Mobile/OpenPlotForm";
+import RECompaniesForm from "../../Forms/Mobile/RECompaniesForm";
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 export default function Mobile() {
@@ -228,7 +228,7 @@ export default function Mobile() {
       </div>
     </section>
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-      <OpenPlotForm />
+      <RECompaniesForm />
     </Modal>
     </>
   );

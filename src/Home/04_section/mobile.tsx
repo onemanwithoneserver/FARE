@@ -16,7 +16,6 @@ import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import bgImage from "../../assets/bg-04.jpg";
 import Modal from "../../Forms/Modal";
-import OpenPlotForm from "../../Forms/Mobile/OpenPlotForm";
 import RETrainersForm from "../../Forms/Mobile/RETrainersForm";
 import RECompaniesForm from "../../Forms/Mobile/RECompaniesForm";
 export default function Mobile() {
@@ -73,7 +72,7 @@ export default function Mobile() {
   };
   const registrationOptions = [
     {
-      title: data.buttons[0] || "Register as a Learner",
+      title: data.buttons[0] || "Register as a Company",
       subtitle:
         language === "te"
           ? "నిపుణులు & ఉద్యోగార్థుల కోసం"
@@ -379,7 +378,7 @@ export default function Mobile() {
       </motion.div>
     </section>
     <Modal isOpen={activeForm !== null} onClose={() => setActiveForm(null)}>
-      {activeForm === "open-plots" && <OpenPlotForm />}
+      {activeForm === "open-plots" && <RECompaniesForm />}
       {activeForm === "re-trainers-coaches" && <RETrainersForm />}
       {activeForm === "re-companies" && <RECompaniesForm />}
     </Modal>

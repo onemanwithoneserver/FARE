@@ -62,7 +62,7 @@ export default function Mobile() {
           className="flex flex-col items-center w-full"
         >
           <h1
-            className={`font-black mb-3.5 flex flex-col gap-1 sm:gap-1.5 ${
+            className={`font-black mb-3.5 flex flex-col items-center gap-1 sm:gap-1.5 ${
               language === "te"
                 ? "text-[1.35rem] xs:text-[1.65rem] sm:text-[2.1rem] leading-[1.25] tracking-wide my-1.5"
                 : "text-[1.35rem] xs:text-[1.65rem] sm:text-[2.1rem] leading-[1.08] tracking-[-0.02em]"
@@ -93,7 +93,7 @@ export default function Mobile() {
               </motion.span>
               <motion.span
                 variants={item}
-                className={`inline-block text-[#C99A2E] gold-underline uppercase ${
+                className={`self-center inline-block text-[#C99A2E] gold-underline uppercase ${
                   language === "te" ? "pb-1" : ""
                 }`}
               >

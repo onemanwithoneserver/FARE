@@ -9,7 +9,7 @@ export const dataEn = {
       "A custom LMS designed exclusively for the needs of real estate professionals.",
   },
   buttons: [
-    "Register as a Learner",
+    "Register as a Company",
     "Register as a Trainer",
     "Register as a Company",
   ],
@@ -45,7 +45,7 @@ export const dataTe = {
       "నిజ జీవిత అభ్యాసం, ప్రాక్టికల్ టూల్స్ మరియు బెంచ్‌మార్క్‌లతో నిపుణులను, సంస్థలను బలోపేతం చేయడం.",
   },
   buttons: [
-    "అభ్యాసకుడిగా నమోదు చేసుకోండి",
+    "కంపెనీగా నమోదు చేసుకోండి",
     "ట్రైనర్‌గా నమోదు చేసుకోండి",
     "కంపెనీగా నమోదు చేసుకోండి",
   ],
