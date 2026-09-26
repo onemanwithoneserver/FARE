@@ -111,7 +111,7 @@ export default function Desktop() {
   const LogoElement = (
     <div
       onClick={() => navigate(`/${currentMode}/home`)}
-      className="flex items-center justify-center cursor-pointer group py-0 shrink-0"
+      className={`flex items-center cursor-pointer group py-0 shrink-0 ${isScrolled ? "justify-center" : "justify-start"}`}
     >
       <img
         src={logo}
@@ -119,7 +119,7 @@ export default function Desktop() {
         className={`w-auto max-w-none transition-all duration-300 group-hover:scale-[1.04] ${isScrolled ? "brightness-0 invert" : ""} ${
           isScrolled
             ? "h-[70px] my-[-8px] scale-[1.25] origin-center"
-            : "h-[74px] my-[-8px]"
+            : "h-[90px] my-[-12px] origin-left"
         }`}
       />
     </div>
@@ -485,7 +485,7 @@ export default function Desktop() {
       ></div>
       <a
         href="#login"
-        className={`text-[13.5px] font-medium px-1.5 py-1 transition-colors duration-300 shrink-0 hidden xl:inline-block ${isScrolled ? "text-white hover:text-[#C99A2E]" : "text-[#0B1D3A] hover:text-[#C99A2E]"}`}
+        className={`text-[13.5px] font-medium px-1.5 py-1 transition-colors duration-300 shrink-0 hidden lg:inline-block ${isScrolled ? "text-white hover:text-[#C99A2E]" : "text-[#0B1D3A] hover:text-[#C99A2E]"}`}
       >
         Login
       </a>
@@ -515,7 +515,7 @@ export default function Desktop() {
           className={`transition-all duration-300 pointer-events-auto flex items-center justify-between relative ${
             isScrolled
               ? "w-full max-w-[1320px] h-[58px] px-5 lg:px-7 bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 shadow-[0_12px_32px_-10px_rgba(11,29,58,0.12),0_1px_3px_rgba(11,29,58,0.05)] rounded-full mx-auto"
-              : "w-full h-[68px] px-8 lg:px-14 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.07] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none"
+              : "w-full h-[68px] px-6 lg:px-10 xl:px-12 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.07] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none"
           }`}
         >
           {(() => {
@@ -536,12 +536,11 @@ export default function Desktop() {
               </>
             ) : (
               <>
-                <nav className="hidden md:flex items-center justify-start flex-1 gap-4 lg:gap-6 xl:gap-7">
-                  {leftNavLinks.map((link, idx) => renderNavLink(link, idx))}
+                <div className="flex items-center shrink-0">{LogoElement}</div>
+                <nav className="hidden md:flex items-center justify-center flex-1 gap-4 lg:gap-6 xl:gap-7.5 mx-4">
+                  {data.navLinks.map((link, idx) => renderNavLink(link, idx))}
                 </nav>
-                <div className="flex items-center shrink-0 mx-4">{LogoElement}</div>
-                <div className="flex items-center justify-end gap-4 lg:gap-6 xl:gap-7">
-                  {rightNavLinks.map((link, idx) => renderNavLink(link, idx + 4))}
+                <div className="flex items-center justify-end shrink-0">
                   {RightControls}
                 </div>
               </>
