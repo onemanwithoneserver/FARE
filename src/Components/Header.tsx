@@ -26,6 +26,7 @@ export default function Header({
     { value: "fare-for-freelancers-open-plot", label: "Freelancers - Open Plot" },
     { value: "fare-for-freelancers-residential", label: "Freelancers - Residential" },
     { value: "fare-for-career-switchers", label: "Career Switchers" },
+    { value: "trainer-directory", label: "Trainer Directory" },
     { value: "contact-us", label: "Contact Us" },
   ];
   return (
