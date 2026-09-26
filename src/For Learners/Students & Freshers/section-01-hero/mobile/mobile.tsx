@@ -1,5 +1,8 @@
-import { data } from "../data/data";
+import { getData } from "../data/data";
+import { useLanguage } from "../../../../context/LanguageContext";
 export default function Mobile() {
+  const { language } = useLanguage();
+  const data = getData(language);
   return (
     <section className="w-full bg-[#0B2545] text-white py-16 px-6 relative overflow-hidden text-center font-['Outfit']">
       <span className="text-[#D4A017] text-xs font-bold tracking-widest uppercase mb-3 block">{data.badge}</span>

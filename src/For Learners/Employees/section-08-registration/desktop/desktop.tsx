@@ -1,5 +1,8 @@
-import { data } from "../data/data";
+import { getData } from "../data/data";
+import { useLanguage } from "../../../../context/LanguageContext";
 export default function Desktop() {
+  const { language } = useLanguage();
+  const data = getData(language);
   return (
     <section className="w-full bg-[#F8FAFD] py-24 px-10 text-center">
       <div className="max-w-[800px] mx-auto">

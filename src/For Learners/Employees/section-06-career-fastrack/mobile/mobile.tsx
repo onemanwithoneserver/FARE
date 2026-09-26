@@ -1,5 +1,8 @@
-import { data } from "../data/data";
+import { getData } from "../data/data";
+import { useLanguage } from "../../../../context/LanguageContext";
 export default function Mobile() {
+  const { language } = useLanguage();
+  const data = getData(language);
   return (
     <section className="w-full bg-white py-16 px-6">
       <div className="text-center mb-10">
