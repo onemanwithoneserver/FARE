@@ -140,7 +140,7 @@ export default function Desktop() {
       return "re-trainers-coaches";
     if (href === "contact-us" || href === "#contact") return "contact-us";
     if (title === "Trainer Directory" || title === "ట్రైనర్ డైరెక్టరీ")
-      return "#";
+      return "trainer-directory";
     if (title === "About" || title === "మా గురించి") return "#";
     if (title === "Contact Us" || title === "సంప్రదించండి") return "contact-us";
     if (title === "For Trainers" || title === "ట్రైనర్ల కోసం")
