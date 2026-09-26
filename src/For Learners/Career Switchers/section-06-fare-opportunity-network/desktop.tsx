@@ -1,26 +1,101 @@
+import { motion } from "motion/react";
+import type { Variants } from "motion/react";
+import { Briefcase, Building2, UserCircle, ArrowRight } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
+
+
+const ICONS = [Briefcase, Building2, UserCircle];
+const GRADIENTS = [
+  "from-[#38BDF8] to-[#0284C7]", 
+  "from-[#A78BFA] to-[#7C3AED]", 
+  "from-[#F472B6] to-[#DB2777]"
+];
+
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
+
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+    },
+  };
+
+  const item: Variants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
   return (
-    <section className="w-full bg-[#F8FAFC] py-20 px-10 font-['Outfit']">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="text-center mb-16">
-          <span className="text-[#D4A017] text-sm font-bold tracking-widest uppercase mb-4 block">{data.badge}</span>
-          <h2 className="text-4xl font-black text-[#0B2545] mb-4 tracking-tight">{data.title}</h2>
-          <p className="text-lg text-[#64748B] font-medium max-w-2xl mx-auto">{data.subtitle}</p>
-        </div>
-        <div className="grid grid-cols-3 gap-8">
-          {data.opportunities.map((opp, i) => (
-            <div key={i} className="bg-white p-8 border border-[#E2E8F0] rounded-[8px] flex flex-col hover:shadow-md transition-shadow">
-              <div className="text-[#D4A017] text-3xl font-black mb-2 opacity-50">{opp.num}</div>
-              <h4 className="text-xs font-bold text-[#8B5CF6] uppercase tracking-wider mb-2">{opp.category}</h4>
-              <h3 className="text-[#0B2545] text-xl font-bold mb-4">{opp.title}</h3>
-              <p className="text-[#64748B] text-sm font-medium leading-relaxed">{opp.text}</p>
-            </div>
-          ))}
-        </div>
+    <section className="w-full bg-white py-24 px-10 font-['Outfit'] relative overflow-hidden">
+      <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[80px] pointer-events-none" />
+      
+      <div className="max-w-[1200px] mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
+        >
+          <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-4 block">
+            {data.badge}
+          </span>
+          <h2 className="text-4xl lg:text-[2.75rem] font-black text-[#0B1D3A] tracking-tight leading-tight mb-4">
+            {data.title}
+          </h2>
+          <p className="text-[17px] text-[#64748B] font-medium max-w-2xl mx-auto leading-relaxed">
+            {data.subtitle}
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
+          {data.opportunities.map((itemData, i) => {
+            const Icon = ICONS[i % ICONS.length];
+            const gradient = GRADIENTS[i % GRADIENTS.length];
+            
+            return (
+              <motion.div
+                key={i}
+                variants={item}
+                className="bg-[#F8FAFD] p-8 rounded-2xl border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.02)] hover:shadow-[0_16px_40px_rgba(11,29,58,0.08)] hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
+              >
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <Icon size={26} className="text-white" strokeWidth={2.5} />
+                </div>
+                
+                <span className="text-[10px] font-bold text-[#64748B] tracking-wider uppercase block mb-1">
+                  {itemData.category}
+                </span>
+                <h3 className="text-[18px] font-bold text-[#0B1D3A] mb-4 tracking-wide leading-tight">
+                  {itemData.title}
+                </h3>
+                
+                <p className="text-[15px] text-[#475569] font-medium leading-relaxed mb-8 flex-grow">
+                  {itemData.text}
+                </p>
+                
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm border border-[#E2E8F0] mt-auto self-end group-hover:bg-[#0B1D3A] group-hover:border-[#0B1D3A] transition-colors duration-300">
+                  <ArrowRight size={18} className="text-[#0B1D3A] group-hover:text-white transition-colors duration-300" strokeWidth={2} />
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
