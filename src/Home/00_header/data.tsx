@@ -37,8 +37,7 @@ export const dataEn = {
         },
         {
           title: "Freelancers - Residential",
-          href: "#",
-          formKey: "freelancer-residential",
+          href: "fare-for-freelancers-residential",
         },
         {
           title: "Career Switchers",
@@ -90,8 +89,7 @@ export const dataTe = {
         },
         {
           title: "ఫ్రీలాన్సర్లు - రెసిడెన్షియల్",
-          href: "#",
-          formKey: "freelancer-residential",
+          href: "fare-for-freelancers-residential",
         },
         {
           title: "కెరీర్ స్విచ్చర్స్",
