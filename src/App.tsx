@@ -15,6 +15,7 @@ import RE_Companies from "./RE_Companies";
 import RE_Trainers_and_Coaches from "./RE_Trainers_and_Coaches";
 import ContactUs from "./ContactUs";
 import FAREForEmployees from "./FARE for Employees";
+import FAREForFreelancersOpenPlot from "./FARE for Freelancers — Open Plot";
 export default function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const navigate = useNavigate();
@@ -94,6 +95,10 @@ export default function App() {
             <Route
               path="/:mode/fare-for-employees"
               element={<FAREForEmployees isMobile={isMobile} />}
+            />
+            <Route
+              path="/:mode/fare-for-freelancers-open-plot"
+              element={<FAREForFreelancersOpenPlot isMobile={isMobile} />}
             />
             <Route path="/:mode/forms" element={<Home isMobile={isMobile} />} />
             <Route

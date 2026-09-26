@@ -17,7 +17,7 @@ export const dataEn = {
       ],
     },
     { title: "For Trainers", href: "re-trainers-coaches" },
-    { title: "FARE for Employees", href: "fare-for-employees" },
+
     {
       title: "For Learners",
       href: "#",
@@ -29,13 +29,11 @@ export const dataEn = {
         },
         {
           title: "Employees",
-          href: "#",
-          formKey: "employees",
+          href: "fare-for-employees",
         },
         {
           title: "Freelancers - Open Plot",
-          href: "#",
-          formKey: "freelancer-open-plot",
+          href: "fare-for-freelancers-open-plot",
         },
         {
           title: "Freelancers - Residential",
@@ -72,7 +70,7 @@ export const dataTe = {
       ],
     },
     { title: "ట్రైనర్ల కోసం", href: "re-trainers-coaches" },
-    { title: "FARE for Employees", href: "fare-for-employees" },
+
     {
       title: "అభ్యాసకుల కోసం",
       href: "#",
@@ -84,13 +82,11 @@ export const dataTe = {
         },
         {
           title: "ఉద్యోగులు",
-          href: "#",
-          formKey: "employees",
+          href: "fare-for-employees",
         },
         {
           title: "ఫ్రీలాన్సర్లు - ఓపెన్ ప్లాట్",
-          href: "#",
-          formKey: "freelancer-open-plot",
+          href: "fare-for-freelancers-open-plot",
         },
         {
           title: "ఫ్రీలాన్సర్లు - రెసిడెన్షియల్",
