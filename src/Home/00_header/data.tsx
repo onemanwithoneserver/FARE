@@ -24,8 +24,7 @@ export const dataEn = {
       subItems: [
         {
           title: "Students & Freshers",
-          href: "#",
-          formKey: "students",
+          href: "fare-knowledge-bank",
         },
         {
           title: "Employees",
@@ -75,8 +74,7 @@ export const dataTe = {
       subItems: [
         {
           title: "విద్యార్థులు & ఫ్రెషర్స్",
-          href: "#",
-          formKey: "students",
+          href: "fare-knowledge-bank",
         },
         {
           title: "ఉద్యోగులు",

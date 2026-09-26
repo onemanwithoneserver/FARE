@@ -18,6 +18,7 @@ import FAREForEmployees from "./FARE for Employees";
 import FAREForFreelancersOpenPlot from "./Freelancers_Open Plot";
 import FAREForFreelancersResidential from "./Freelancers_Residential";
 import FAREForCareerSwitchers from "./Career_Switchers";
+import FAREKnowledgeBank from "./FARE_Knowledge_Bank";
 export default function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const navigate = useNavigate();
@@ -109,6 +110,10 @@ export default function App() {
             <Route
               path="/:mode/fare-for-career-switchers"
               element={<FAREForCareerSwitchers isMobile={isMobile} />}
+            />
+            <Route
+              path="/:mode/fare-knowledge-bank"
+              element={<FAREKnowledgeBank isMobile={isMobile} />}
             />
             <Route path="/:mode/forms" element={<Home isMobile={isMobile} />} />
             <Route
