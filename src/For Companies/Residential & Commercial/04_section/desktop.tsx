@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
@@ -24,6 +25,9 @@ const TAB_COLORS: Record<string, string> = {
   tab4: "#EC4899",
 };
 export default function Desktop() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentMode = location.pathname.startsWith("/mobile") ? "mobile" : "desktop";
   const { language } = useLanguage();
   const data = getData(language);
   return (
@@ -260,6 +264,15 @@ export default function Desktop() {
                           (btn: string, idx: number) => (
                             <button
                               key={idx}
+                              onClick={() => {
+                                if (
+                                  btn.toLowerCase().includes("trainer directory") ||
+                                  btn.includes("ట్రైనర్ డైరెక్టరీ")
+                                ) {
+                                  navigate(`/${currentMode}/trainer-directory`);
+                                  window.scrollTo({ top: 0, behavior: "smooth" });
+                                }
+                              }}
                               className={`group relative overflow-hidden w-full py-4 px-6 rounded-lg text-[14px] font-bold transition-all duration-300 flex items-center justify-center gap-3 ${
                                 idx === 0
                                   ? "text-[#0B1D3A] shadow-lg active:scale-[0.98] bg-white hover:bg-[#F8FAFD]"

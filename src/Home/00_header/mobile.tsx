@@ -31,6 +31,12 @@ export default function Mobile() {
   const pathSegments = location.pathname.split("/").filter(Boolean);
   const currentRoute = pathSegments[1] || "home";
   const getRouteForHref = (href: string, title?: string): string => {
+    if (
+      title === "Trainer Directory" ||
+      title === "ట్రైనర్ డైరెక్టరీ" ||
+      href === "trainer-directory"
+    )
+      return "trainer-directory";
     if (href === "#") return "#";
     if (href === "home" || href === "#platform") return "home";
     if (href === "open-plots" || href === "#open-plots") return "open-plots";
