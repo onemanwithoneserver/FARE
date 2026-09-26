@@ -25,8 +25,8 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-[#F8FAFD] py-24 px-10 font-['Outfit'] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[100px] pointer-events-none" />
+    <section className="w-full bg-[#FFF5F5] py-24 px-10 font-['Outfit'] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#EF4444]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
@@ -36,9 +36,12 @@ export default function Desktop() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-3 block">
-            The Transition
-          </span>
+          <div className="flex justify-center mb-4">
+            <span className="text-[#EF4444] bg-[#FEF2F2] border border-[#FECACA] px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase flex items-center gap-1.5">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              The Transition
+            </span>
+          </div>
           <h2 className="text-4xl lg:text-[2.75rem] font-black text-[#0B1D3A] tracking-tight leading-tight max-w-4xl mx-auto">
             {data.title}
           </h2>

@@ -7,7 +7,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-[#F8FAFD] py-16 px-6 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-[#FFF5F5] py-16 px-6 font-['Outfit'] relative overflow-hidden">
       <div className="max-w-full mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -16,9 +16,12 @@ export default function Mobile() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <span className="text-[#C99A2E] text-[10px] font-bold tracking-[0.2em] uppercase mb-2 block">
-            The Transition
-          </span>
+          <div className="flex justify-center mb-3">
+            <span className="text-[#EF4444] bg-[#FEF2F2] border border-[#FECACA] px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-1.5">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              The Transition
+            </span>
+          </div>
           <h2 className="text-[1.75rem] font-black text-[#0B1D3A] tracking-tight leading-tight">
             {data.title}
           </h2>

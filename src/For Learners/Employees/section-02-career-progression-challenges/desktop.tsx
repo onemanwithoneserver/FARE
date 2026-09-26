@@ -34,8 +34,8 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-[#F8FAFD] py-24 px-10 font-['Outfit'] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[100px] pointer-events-none" />
+    <section className="w-full bg-[#FFF5F5] py-24 px-10 font-['Outfit'] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#EF4444]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div

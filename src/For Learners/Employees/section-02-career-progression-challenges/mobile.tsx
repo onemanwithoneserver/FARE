@@ -16,7 +16,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-[#F8FAFD] py-16 px-6 font-['Outfit']">
+    <section className="w-full bg-[#FFF5F5] py-16 px-6 font-['Outfit']">
       <div className="max-w-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
