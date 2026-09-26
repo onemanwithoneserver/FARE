@@ -65,9 +65,9 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-7 rounded-2xl shadow-[0_4px_16px_rgba(11,29,58,0.03)] border border-[#E2E8F0]/80 hover:shadow-[0_12px_32px_rgba(11,29,58,0.06)] hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
+                className="bg-white p-7 rounded-[4px] shadow-[0_4px_16px_rgba(11,29,58,0.03)] border border-[#E2E8F0]/80 hover:shadow-[0_12px_32px_rgba(11,29,58,0.06)] hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5 group-hover:scale-110 transition-transform duration-300`}>
                   <Icon size={22} className="text-white" strokeWidth={2.5} />
                 </div>
                 <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-3 leading-tight">{c.title}</h3>
@@ -84,7 +84,7 @@ export default function Desktop() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <div className="inline-block bg-white px-8 py-5 rounded-2xl border border-[#E2E8F0]/80 shadow-sm relative overflow-hidden group hover:border-[#C99A2E]/30 transition-colors duration-300">
+          <div className="inline-block bg-white px-8 py-5 rounded-[4px] border border-[#E2E8F0]/80 shadow-sm relative overflow-hidden group hover:border-[#C99A2E]/30 transition-colors duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <p className="text-[18px] font-bold text-[#0B1D3A] whitespace-pre-wrap leading-relaxed relative z-10">
               {data.closing}

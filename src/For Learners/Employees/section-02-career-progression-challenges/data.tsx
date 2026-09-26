@@ -1,4 +1,18 @@
 import type { Language } from "../../../context/LanguageContext";
+import type { LucideIcon } from "lucide-react";
+import { AlertCircle, Target, TrendingDown, Users, Briefcase, Zap, Search } from "lucide-react";
+
+export const ICONS: LucideIcon[] = [AlertCircle, Target, TrendingDown, Users, Briefcase, Zap, Search];
+
+export const GRADIENTS = [
+  "from-[#F87171] to-[#DC2626]",
+  "from-[#FBBF24] to-[#D97706]",
+  "from-[#38BDF8] to-[#0284C7]",
+  "from-[#C084FC] to-[#9333EA]",
+  "from-[#34D399] to-[#059669]",
+  "from-[#F472B6] to-[#DB2777]",
+  "from-[#60A5FA] to-[#2563EB]"
+];
 
 export const dataEn = {
   "title": "Working Hard. But Is Your Career Moving Forward?",

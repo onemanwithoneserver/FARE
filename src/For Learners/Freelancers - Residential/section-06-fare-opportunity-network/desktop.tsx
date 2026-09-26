@@ -1,15 +1,8 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Briefcase, Building2, UserCircle, ArrowRight } from "lucide-react";
-import { getData } from "./data";
+import { ArrowRight } from "lucide-react";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-
-const ICONS = [Briefcase, Building2, UserCircle];
-const GRADIENTS = [
-  "from-[#38BDF8] to-[#0284C7]", 
-  "from-[#A78BFA] to-[#7C3AED]", 
-  "from-[#F472B6] to-[#DB2777]"
-];
 
 export default function Desktop() {
   const { language } = useLanguage();
@@ -19,12 +12,12 @@ export default function Desktop() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+      transition: { staggerChildren: 0.12, delayChildren: 0.1 },
     },
   };
 
   const item: Variants = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    hidden: { opacity: 0, y: 18, scale: 0.98 },
     show: {
       opacity: 1,
       y: 0,
@@ -35,17 +28,15 @@ export default function Desktop() {
 
   return (
     <section className="w-full bg-white py-24 px-10 font-['Outfit'] relative overflow-hidden">
-      <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[80px] pointer-events-none" />
-      
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-4 block">
+          <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-3 block">
             {data.badge}
           </span>
           <h2 className="text-4xl lg:text-[2.75rem] font-black text-[#0B1D3A] tracking-tight leading-tight mb-4">
@@ -71,16 +62,16 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-[#F8FAFD] p-8 rounded-2xl border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.02)] hover:shadow-[0_16px_40px_rgba(11,29,58,0.08)] hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
+                className="bg-[#F8FAFD] p-8 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_12px_rgba(11,29,58,0.02)] hover:shadow-[0_16px_36px_rgba(11,29,58,0.08)] hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
               >
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-105 transition-transform duration-300`}>
                   <Icon size={26} className="text-white" strokeWidth={2.5} />
                 </div>
                 
-                <span className="text-[10px] font-bold text-[#64748B] tracking-wider uppercase block mb-1">
+                <span className="text-[11px] font-bold text-[#64748B] tracking-wider uppercase block mb-1">
                   {itemData.category}
                 </span>
-                <h3 className="text-[18px] font-bold text-[#0B1D3A] mb-4 tracking-wide leading-tight">
+                <h3 className="text-[19px] font-bold text-[#0B1D3A] mb-3 tracking-wide leading-tight">
                   {itemData.title}
                 </h3>
                 
@@ -88,7 +79,7 @@ export default function Desktop() {
                   {itemData.text}
                 </p>
                 
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm border border-[#E2E8F0] mt-auto self-end group-hover:bg-[#0B1D3A] group-hover:border-[#0B1D3A] transition-colors duration-300">
+                <div className="w-10 h-10 rounded-[4px] bg-white flex items-center justify-center shadow-sm border border-[#E2E8F0] mt-auto self-end group-hover:bg-[#0B1D3A] group-hover:border-[#0B1D3A] transition-colors duration-300">
                   <ArrowRight size={18} className="text-[#0B1D3A] group-hover:text-white transition-colors duration-300" strokeWidth={2} />
                 </div>
               </motion.div>

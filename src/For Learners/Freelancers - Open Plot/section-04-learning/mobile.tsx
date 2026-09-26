@@ -1,30 +1,24 @@
 import { motion } from "motion/react";
-import { BookOpen, HelpCircle, MonitorPlay, Target, Users, Sparkles } from "lucide-react";
-import { getData } from "./data";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-
-const NAVY = "#0B1D3A";
-
-const ICONS = [HelpCircle, BookOpen, MonitorPlay, Target, Users, Sparkles];
-const GRADIENTS = [
-  "from-[#38BDF8] to-[#0284C7]", "from-[#FBBF24] to-[#D97706]", "from-[#34D399] to-[#059669]", 
-  "from-[#F472B6] to-[#DB2777]", "from-[#A78BFA] to-[#7C3AED]", "from-[#F87171] to-[#DC2626]"
-];
 
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
 
   return (
-    <section className="w-full bg-white py-16 px-6 font-['Outfit']">
-      <div className="max-w-full mx-auto">
+    <section className="w-full bg-white py-16 px-6 font-['Outfit'] relative overflow-hidden">
+      <div className="max-w-full mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
-          className="mb-10 text-center"
+          className="text-center mb-10"
         >
+          <span className="text-[#C99A2E] text-[10px] font-bold tracking-[0.2em] uppercase mb-2 block">
+            Learning Experience
+          </span>
           <h2 className="text-[1.75rem] font-black text-[#0B1D3A] tracking-tight leading-tight">
             {data.title}
           </h2>
@@ -34,6 +28,7 @@ export default function Mobile() {
           {data.experiences.map((exp, i) => {
             const Icon = ICONS[i % ICONS.length];
             const gradient = GRADIENTS[i % GRADIENTS.length];
+            
             return (
               <motion.div
                 key={i}
@@ -41,23 +36,22 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-[#F8FAFD] p-6 rounded-xl shadow-[0_2px_8px_rgba(11,29,58,0.02)] border border-[#E2E8F0]/80 flex flex-col"
+                className="bg-[#F8FAFD] p-6 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_8px_rgba(11,29,58,0.02)] flex flex-col"
               >
-                <div className="flex items-center gap-3.5 mb-4">
-                  <div className={`w-11 h-11 rounded-lg flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`w-11 h-11 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm`}>
                     <Icon size={20} className="text-white" strokeWidth={2.5} />
                   </div>
-                  <div>
-                    <span className="text-[9px] font-bold tracking-[0.2em] uppercase block mb-0.5" style={{ color: "#C99A2E" }}>
-                      {exp.label}
-                    </span>
-                    <h3 className="text-[16px] font-bold leading-tight" style={{ color: NAVY }}>
-                      {exp.title}
-                    </h3>
-                  </div>
+                  <span className="text-[10px] font-bold text-[#C99A2E] tracking-wider uppercase px-2.5 py-1 bg-[#C99A2E]/10 rounded-[4px] border border-[#C99A2E]/20">
+                    {exp.label}
+                  </span>
                 </div>
                 
-                <p className="text-[14px] text-[#475569] font-medium leading-relaxed">
+                <h3 className="text-[16px] font-bold text-[#0B1D3A] mb-2 tracking-wide leading-snug">
+                  {exp.title}
+                </h3>
+                
+                <p className="text-[13px] text-[#64748B] font-medium leading-relaxed">
                   {exp.text}
                 </p>
               </motion.div>

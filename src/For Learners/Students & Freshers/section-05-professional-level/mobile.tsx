@@ -1,16 +1,8 @@
 import { motion } from "motion/react";
-import { GraduationCap, Briefcase, Award, TrendingUp, Crown, Users, Rocket } from "lucide-react";
-import { getData } from "./data";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
 const NAVY = "#0B1D3A";
-
-const ICONS = [GraduationCap, Briefcase, Award, TrendingUp, Crown, Users, Rocket];
-const GRADIENTS = [
-  "from-[#38BDF8] to-[#0284C7]", "from-[#34D399] to-[#059669]", "from-[#F472B6] to-[#DB2777]", 
-  "from-[#A78BFA] to-[#7C3AED]", "from-[#FBBF24] to-[#D97706]", "from-[#F87171] to-[#DC2626]",
-  "from-[#60A5FA] to-[#2563EB]"
-];
 
 export default function Mobile() {
   const { language } = useLanguage();
@@ -45,9 +37,9 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-[#F8FAFD] p-6 rounded-xl border border-[#E2E8F0] shadow-[0_2px_8px_rgba(11,29,58,0.02)]"
+                className="bg-[#F8FAFD] p-6 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_8px_rgba(11,29,58,0.02)]"
               >
-                <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-4`}>
+                <div className={`w-10 h-10 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-4`}>
                   <Icon size={18} className="text-white" strokeWidth={2.5} />
                 </div>
                 <h3 className="text-[17px] font-bold mb-2.5 leading-snug" style={{ color: NAVY }}>

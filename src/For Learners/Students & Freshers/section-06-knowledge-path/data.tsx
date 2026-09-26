@@ -1,4 +1,12 @@
 import type { Language } from "../../../context/LanguageContext";
+import { Map, Home } from "lucide-react";
+
+export const ICONS = [Map, Home];
+
+export const GRADIENTS = [
+  "from-[#38BDF8] to-[#0284C7]", 
+  "from-[#FBBF24] to-[#D97706]"
+];
 
 export const dataEn = {
   "badge": "Choose Your Knowledge Path",

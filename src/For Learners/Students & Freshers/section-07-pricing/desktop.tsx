@@ -59,14 +59,14 @@ export default function Desktop() {
             <motion.div
               key={i}
               variants={item}
-              className={`flex-1 relative bg-white rounded-2xl p-8 flex flex-col ${
+              className={`flex-1 relative bg-white rounded-[4px] p-8 flex flex-col ${
                 plan.bestValue 
                   ? "border-2 border-[#C99A2E] shadow-[0_20px_40px_rgba(11,29,58,0.12)] md:-translate-y-4" 
                   : "border border-[#E2E8F0] shadow-[0_8px_24px_rgba(11,29,58,0.06)]"
               }`}
             >
               {plan.bestValue && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-[#C99A2E] to-[#B8892A] text-white text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-full whitespace-nowrap shadow-md">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-[#C99A2E] to-[#B8892A] text-white text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-[4px] whitespace-nowrap shadow-md">
                   {plan.highlight}
                 </div>
               )}
@@ -81,7 +81,7 @@ export default function Desktop() {
               
               <ul className="space-y-4 mb-8 flex-grow">
                 <li className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#10B981]/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-5 h-5 rounded-[4px] bg-[#10B981]/10 flex items-center justify-center shrink-0 mt-0.5">
                     <Check size={12} className="text-[#10B981]" strokeWidth={3} />
                   </div>
                   <span className="text-[#475569] font-medium">{plan.text}</span>
@@ -89,7 +89,7 @@ export default function Desktop() {
               </ul>
               
               <button
-                className={`w-full py-4 rounded-lg font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
+                className={`w-full py-4 rounded-[4px] font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
                   plan.bestValue 
                     ? "bg-[#0B1D3A] text-white hover:shadow-[0_8px_20px_rgba(11,29,58,0.2)]" 
                     : "bg-[#F8FAFD] text-[#0B1D3A] border border-[#E2E8F0] hover:border-[#0B1D3A]/20 hover:bg-white"

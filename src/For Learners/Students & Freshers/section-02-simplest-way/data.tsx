@@ -1,4 +1,15 @@
 import type { Language } from "../../../context/LanguageContext";
+import { CheckCircle, Search, Lightbulb, RotateCw, Clock } from "lucide-react";
+
+export const ICONS = [CheckCircle, Search, Lightbulb, RotateCw, Clock];
+
+export const GRADIENTS = [
+  "from-[#38BDF8] to-[#0284C7]", // Blue
+  "from-[#34D399] to-[#059669]", // Emerald
+  "from-[#F472B6] to-[#DB2777]", // Pink
+  "from-[#A78BFA] to-[#7C3AED]", // Violet
+  "from-[#FBBF24] to-[#D97706]", // Amber
+];
 
 export const dataEn = {
   "title": "Learn Real Estate. One Quiz at a Time.",

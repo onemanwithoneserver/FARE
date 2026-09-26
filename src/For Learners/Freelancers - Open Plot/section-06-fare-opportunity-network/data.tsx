@@ -1,4 +1,14 @@
 import type { Language } from "../../../context/LanguageContext";
+import type { LucideIcon } from "lucide-react";
+import { Briefcase, Building2, UserCircle } from "lucide-react";
+
+export const ICONS: LucideIcon[] = [Briefcase, Building2, UserCircle];
+
+export const GRADIENTS = [
+  "from-[#38BDF8] to-[#0284C7]", 
+  "from-[#A78BFA] to-[#7C3AED]", 
+  "from-[#F472B6] to-[#DB2777]"
+];
 
 export const dataEn = {
   "title": "More Skills. More Connections. More Opportunities.",

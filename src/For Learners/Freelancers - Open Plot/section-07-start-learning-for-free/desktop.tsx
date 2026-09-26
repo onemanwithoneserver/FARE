@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { MessageCircle, GraduationCap, ArrowRight } from "lucide-react";
-import { getData } from "./data";
+import { ArrowRight } from "lucide-react";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
 export default function Desktop() {
@@ -17,7 +17,7 @@ export default function Desktop() {
   };
 
   const item: Variants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    hidden: { opacity: 0, y: 25, scale: 0.98 },
     show: {
       opacity: 1,
       y: 0,
@@ -33,12 +33,15 @@ export default function Desktop() {
 
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-3 block">
+            Start Free
+          </span>
           <h2 className="text-4xl lg:text-[2.75rem] font-black text-white tracking-tight leading-tight mb-4">
             {data.title}
           </h2>
@@ -55,54 +58,55 @@ export default function Desktop() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto"
         >
           {data.items.map((itemData, i) => {
-            const isFirst = i === 0;
-            const Icon = isFirst ? MessageCircle : GraduationCap;
-            const gradient = isFirst 
-              ? "from-[#10B981] to-[#047857]" 
-              : "from-[#FBBF24] to-[#D97706]";
-            
+            const Icon = ICONS[i % ICONS.length];
+            const gradient = GRADIENTS[i % GRADIENTS.length];
+
             return (
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white/5 backdrop-blur-sm p-10 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors duration-300 flex flex-col items-center text-center group"
+                className="bg-white/[0.04] backdrop-blur-md p-8 lg:p-10 rounded-[4px] border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:border-[#C99A2E]/50 hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between group"
               >
-                <div className={`w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-br ${gradient} shadow-lg mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300`}>
-                  <Icon size={32} className="text-white" strokeWidth={2.5} />
+                <div>
+                  <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-lg mb-6 group-hover:scale-105 transition-transform duration-300`}>
+                    <Icon size={28} className="text-white" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">
+                    {itemData.title}
+                  </h3>
+                  <p className="text-[16px] text-white/70 leading-relaxed mb-8 font-normal">
+                    {itemData.text}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4 tracking-wider uppercase">
-                  {itemData.title}
-                </h3>
-                <p className="text-[15px] text-white/70 font-medium leading-relaxed mb-8 flex-grow">
-                  {itemData.text}
-                </p>
-                
+
                 <button 
-                  className={`px-8 py-3.5 rounded-lg font-bold text-[14px] transition-all duration-300 flex items-center gap-2 active:scale-95 ${
-                    isFirst
-                      ? "bg-[#10B981] text-white hover:bg-[#059669] hover:shadow-[0_8px_20px_rgba(16,185,129,0.3)]"
+                  className={`w-full py-4 px-6 rounded-[4px] font-bold text-[15px] flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
+                    i === 0 
+                      ? "bg-[#22C55E] text-white hover:bg-[#16A34A] hover:shadow-[0_8px_20px_rgba(34,197,94,0.3)]" 
                       : "bg-[#C99A2E] text-[#0B1D3A] hover:bg-[#B8892A] hover:shadow-[0_8px_20px_rgba(201,154,46,0.3)]"
                   }`}
                 >
-                  {itemData.cta}
-                  <ArrowRight size={16} strokeWidth={2.5} />
+                  <span>{itemData.cta}</span>
+                  <ArrowRight size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </motion.div>
             );
           })}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center"
-        >
-          <p className="text-2xl font-bold italic text-[#C99A2E]">
-            "{data.quote}"
-          </p>
-        </motion.div>
+        {data.quote && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <div className="inline-block px-8 py-3 rounded-[4px] bg-white/[0.05] border border-white/10 text-white/90 text-[15px] font-medium tracking-wide">
+              {data.quote}
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );

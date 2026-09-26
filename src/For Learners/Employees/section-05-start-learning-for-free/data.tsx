@@ -1,4 +1,12 @@
 import type { Language } from "../../../context/LanguageContext";
+import { MessageCircle, GraduationCap } from "lucide-react";
+
+export const ICONS = [MessageCircle, GraduationCap];
+
+export const GRADIENTS = [
+  "from-[#10B981] to-[#047857]",
+  "from-[#FBBF24] to-[#D97706]"
+];
 
 export const dataEn = {
   "title": "Start Your Learning Journey Today",

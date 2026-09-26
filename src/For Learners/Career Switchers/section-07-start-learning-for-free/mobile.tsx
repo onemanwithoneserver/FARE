@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import { MessageCircle, GraduationCap, ArrowRight } from "lucide-react";
-import { getData } from "./data";
+import { ArrowRight } from "lucide-react";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
 export default function Mobile() {
@@ -9,32 +9,30 @@ export default function Mobile() {
 
   return (
     <section className="w-full bg-[#0B1D3A] py-16 px-6 font-['Outfit'] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none" />
-
       <div className="max-w-full mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <h2 className="text-[1.75rem] font-black text-white tracking-tight leading-tight mb-3">
+          <span className="text-[#C99A2E] text-[10px] font-bold tracking-[0.2em] uppercase mb-2 block">
+            Start Free
+          </span>
+          <h2 className="text-[1.75rem] font-black text-white tracking-tight leading-tight mb-2">
             {data.title}
           </h2>
-          <p className="text-[15px] text-white/70 font-medium leading-relaxed">
+          <p className="text-[14px] text-white/70 font-medium leading-relaxed">
             {data.subtitle}
           </p>
         </motion.div>
 
-        <div className="flex flex-col gap-5 mb-10">
+        <div className="flex flex-col gap-6 mb-8">
           {data.items.map((itemData, i) => {
-            const isFirst = i === 0;
-            const Icon = isFirst ? MessageCircle : GraduationCap;
-            const gradient = isFirst 
-              ? "from-[#10B981] to-[#047857]" 
-              : "from-[#FBBF24] to-[#D97706]";
-            
+            const Icon = ICONS[i % ICONS.length];
+            const gradient = GRADIENTS[i % GRADIENTS.length];
+
             return (
               <motion.div
                 key={i}
@@ -42,44 +40,42 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 flex flex-col items-center text-center"
+                className="bg-white/[0.04] backdrop-blur-md p-6 rounded-[4px] border border-white/10 flex flex-col justify-between"
               >
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-5`}>
-                  <Icon size={26} className="text-white" strokeWidth={2.5} />
+                <div>
+                  <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-4`}>
+                    <Icon size={24} className="text-white" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2 tracking-wide">
+                    {itemData.title}
+                  </h3>
+                  <p className="text-[14px] text-white/70 leading-relaxed mb-6 font-normal">
+                    {itemData.text}
+                  </p>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-3 tracking-wider uppercase">
-                  {itemData.title}
-                </h3>
-                <p className="text-[14px] text-white/70 font-medium leading-relaxed mb-6">
-                  {itemData.text}
-                </p>
-                
+
                 <button 
-                  className={`w-full py-3.5 rounded-lg font-bold text-[13px] transition-all duration-300 flex items-center justify-center gap-2 ${
-                    isFirst
-                      ? "bg-[#10B981] text-white"
-                      : "bg-[#C99A2E] text-[#0B1D3A]"
+                  className={`w-full py-3.5 px-5 rounded-[4px] font-bold text-[14px] flex items-center justify-center gap-2 shadow-md ${
+                    i === 0 
+                      ? "bg-[#22C55E] text-white active:bg-[#16A34A]" 
+                      : "bg-[#C99A2E] text-[#0B1D3A] active:bg-[#B8892A]"
                   }`}
                 >
-                  {itemData.cta}
-                  <ArrowRight size={15} strokeWidth={2.5} />
+                  <span>{itemData.cta}</span>
+                  <ArrowRight size={16} strokeWidth={2.5} />
                 </button>
               </motion.div>
             );
           })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <p className="text-xl font-bold italic text-[#C99A2E]">
-            "{data.quote}"
-          </p>
-        </motion.div>
+        {data.quote && (
+          <div className="text-center">
+            <div className="inline-block px-5 py-2.5 rounded-[4px] bg-white/[0.05] border border-white/10 text-white/80 text-[13px] font-medium tracking-wide">
+              {data.quote}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

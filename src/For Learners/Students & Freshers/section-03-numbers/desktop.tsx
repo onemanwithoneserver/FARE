@@ -58,7 +58,7 @@ export default function Desktop() {
             <motion.div
               key={i}
               variants={item}
-              className="flex flex-col items-center justify-center p-10 border border-[#E2E8F0]/80 rounded-2xl hover:shadow-[0_20px_40px_-15px_rgba(11,29,58,0.08)] transition-all duration-300 group bg-white relative overflow-hidden"
+              className="flex flex-col items-center justify-center p-10 border border-[#E2E8F0]/80 rounded-[4px] hover:shadow-[0_20px_40px_-15px_rgba(11,29,58,0.08)] transition-all duration-300 group bg-white relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[#0B1D3A]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span 

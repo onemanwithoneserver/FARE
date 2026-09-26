@@ -1,17 +1,9 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { GraduationCap, Briefcase, Award, TrendingUp, Crown, Users, Rocket } from "lucide-react";
-import { getData } from "./data";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
 const NAVY = "#0B1D3A";
-
-const ICONS = [GraduationCap, Briefcase, Award, TrendingUp, Crown, Users, Rocket];
-const GRADIENTS = [
-  "from-[#38BDF8] to-[#0284C7]", "from-[#34D399] to-[#059669]", "from-[#F472B6] to-[#DB2777]", 
-  "from-[#A78BFA] to-[#7C3AED]", "from-[#FBBF24] to-[#D97706]", "from-[#F87171] to-[#DC2626]",
-  "from-[#60A5FA] to-[#2563EB]"
-];
 
 export default function Desktop() {
   const { language } = useLanguage();
@@ -66,9 +58,9 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-[#F8FAFD] p-7 rounded-2xl border border-[#E2E8F0] hover:shadow-[0_12px_32px_rgba(11,29,58,0.06)] hover:-translate-y-1 transition-all duration-300 group"
+                className="bg-[#F8FAFD] p-7 rounded-[4px] border border-[#E2E8F0] hover:shadow-[0_12px_32px_rgba(11,29,58,0.06)] hover:-translate-y-1 transition-all duration-300 group"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5 group-hover:scale-110 transition-transform duration-300`}>
                   <Icon size={22} className="text-white" strokeWidth={2.5} />
                 </div>
                 <h3 className="text-xl font-bold mb-3 leading-snug" style={{ color: NAVY }}>

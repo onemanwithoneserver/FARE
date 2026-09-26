@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import { ArrowRight, Map, Home } from "lucide-react";
-import { getData } from "./data";
+import { ArrowRight } from "lucide-react";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
 const NAVY = "#0B1D3A";
@@ -29,11 +29,8 @@ export default function Mobile() {
 
         <div className="flex flex-col gap-5 mb-10">
           {data.paths.map((path, i) => {
-            const isFirst = i === 0;
-            const Icon = isFirst ? Map : Home;
-            const gradient = isFirst 
-              ? "from-[#38BDF8] to-[#0284C7]" 
-              : "from-[#FBBF24] to-[#D97706]";
+            const Icon = ICONS[i % ICONS.length];
+            const gradient = GRADIENTS[i % GRADIENTS.length];
             
             return (
               <motion.div
@@ -42,9 +39,9 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white p-7 rounded-xl border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.03)] flex flex-col"
+                className="bg-white p-7 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.03)] flex flex-col"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-6`}>
+                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-6`}>
                   <Icon size={24} className="text-white" strokeWidth={2.5} />
                 </div>
                 
@@ -58,7 +55,7 @@ export default function Mobile() {
                 
                 <button 
                   className="mt-auto text-[13px] font-bold uppercase tracking-wider flex items-center gap-2"
-                  style={{ color: isFirst ? "#0284C7" : "#D97706" }}
+                  style={{ color: i === 0 ? "#0284C7" : "#D97706" }}
                 >
                   {path.cta} 
                   <ArrowRight size={14} strokeWidth={2.5} />
@@ -75,7 +72,7 @@ export default function Mobile() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <div className="bg-white px-5 py-4 rounded-xl border border-[#E2E8F0]/80 shadow-sm">
+          <div className="bg-white px-5 py-4 rounded-[4px] border border-[#E2E8F0]/80 shadow-sm">
             <h4 className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#64748B] mb-2.5">
               {data.more.title}
             </h4>

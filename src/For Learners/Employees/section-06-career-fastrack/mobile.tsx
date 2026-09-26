@@ -1,16 +1,9 @@
 import { motion } from "motion/react";
-import { Briefcase, Users, UserPlus, ArrowRight } from "lucide-react";
-import { getData } from "./data";
+import { ArrowRight } from "lucide-react";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
 const NAVY = "#0B1D3A";
-
-const ICONS = [Briefcase, Users, UserPlus];
-const GRADIENTS = [
-  "from-[#38BDF8] to-[#0284C7]", 
-  "from-[#A78BFA] to-[#7C3AED]", 
-  "from-[#F472B6] to-[#DB2777]"
-];
 
 export default function Mobile() {
   const { language } = useLanguage();
@@ -49,9 +42,9 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white p-6 rounded-xl border border-[#E2E8F0]/80 shadow-[0_2px_12px_rgba(11,29,58,0.03)] flex flex-col"
+                className="bg-white p-6 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_2px_12px_rgba(11,29,58,0.03)] flex flex-col"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5`}>
+                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5`}>
                   <Icon size={22} className="text-white" strokeWidth={2.5} />
                 </div>
                 

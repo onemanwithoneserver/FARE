@@ -1,4 +1,18 @@
 import type { Language } from "../../../context/LanguageContext";
+import { BookOpen, Map, Landmark, Ruler, Navigation, BarChart3, Building2, Home, Wallet, Hammer, CheckCircle2, FileText, Users, TrendingUp, Key } from "lucide-react";
+
+export const ICONS = [
+  BookOpen, Landmark, CheckCircle2, Map, Ruler, Navigation, BarChart3, Building2, 
+  Home, Wallet, Hammer, Key, FileText, Users, TrendingUp
+];
+
+export const GRADIENTS = [
+  "from-[#38BDF8] to-[#0284C7]", "from-[#34D399] to-[#059669]", "from-[#F472B6] to-[#DB2777]", 
+  "from-[#A78BFA] to-[#7C3AED]", "from-[#FBBF24] to-[#D97706]", "from-[#F87171] to-[#DC2626]",
+  "from-[#60A5FA] to-[#2563EB]", "from-[#4ADE80] to-[#16A34A]", "from-[#FB923C] to-[#EA580C]",
+  "from-[#C084FC] to-[#9333EA]", "from-[#2DD4BF] to-[#0D9488]", "from-[#818CF8] to-[#4F46E5]",
+  "from-[#F43F5E] to-[#E11D48]", "from-[#34D399] to-[#047857]", "from-[#FBBF24] to-[#D97706]"
+];
 
 export const dataEn = {
   "title": "One Knowledge Bank. 15 Ways to Build Your Knowledge.",

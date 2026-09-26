@@ -1,15 +1,8 @@
 import { motion } from "motion/react";
-import { BookOpen, HelpCircle, MonitorPlay, Target, Users, Sparkles } from "lucide-react";
-import { getData } from "./data";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
 const NAVY = "#0B1D3A";
-
-const ICONS = [HelpCircle, BookOpen, MonitorPlay, Target, Users, Sparkles];
-const GRADIENTS = [
-  "from-[#38BDF8] to-[#0284C7]", "from-[#FBBF24] to-[#D97706]", "from-[#34D399] to-[#059669]", 
-  "from-[#F472B6] to-[#DB2777]", "from-[#A78BFA] to-[#7C3AED]", "from-[#F87171] to-[#DC2626]"
-];
 
 export default function Mobile() {
   const { language } = useLanguage();
@@ -41,10 +34,10 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-[#F8FAFD] p-6 rounded-xl shadow-[0_2px_8px_rgba(11,29,58,0.02)] border border-[#E2E8F0]/80 flex flex-col"
+                className="bg-[#F8FAFD] p-6 rounded-[4px] shadow-[0_2px_8px_rgba(11,29,58,0.02)] border border-[#E2E8F0]/80 flex flex-col"
               >
                 <div className="flex items-center gap-3.5 mb-4">
-                  <div className={`w-11 h-11 rounded-lg flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
+                  <div className={`w-11 h-11 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
                     <Icon size={20} className="text-white" strokeWidth={2.5} />
                   </div>
                   <div>

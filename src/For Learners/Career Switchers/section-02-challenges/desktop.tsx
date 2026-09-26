@@ -1,16 +1,7 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { AlertCircle, MapPin, Search, Workflow, Compass, Network, Activity, HelpCircle } from "lucide-react";
-import { getData } from "./data";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-
-
-const ICONS = [MapPin, AlertCircle, Search, Workflow, Compass, Network, Activity, HelpCircle];
-const GRADIENTS = [
-  "from-[#F87171] to-[#DC2626]", "from-[#FBBF24] to-[#D97706]", "from-[#38BDF8] to-[#0284C7]", 
-  "from-[#C084FC] to-[#9333EA]", "from-[#34D399] to-[#059669]", "from-[#F472B6] to-[#DB2777]",
-  "from-[#60A5FA] to-[#2563EB]", "from-[#F87171] to-[#DC2626]"
-];
 
 export default function Desktop() {
   const { language } = useLanguage();
@@ -20,12 +11,12 @@ export default function Desktop() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
     },
   };
 
   const item: Variants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 18 },
     show: {
       opacity: 1,
       y: 0,
@@ -39,13 +30,16 @@ export default function Desktop() {
       
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
-          transition={{ duration: 0.7 }}
-          className="mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-[2.75rem] font-black text-[#0B1D3A] text-center tracking-tight leading-tight max-w-4xl mx-auto">
+          <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-3 block">
+            The Transition
+          </span>
+          <h2 className="text-4xl lg:text-[2.75rem] font-black text-[#0B1D3A] tracking-tight leading-tight max-w-4xl mx-auto">
             {data.title}
           </h2>
         </motion.div>
@@ -55,7 +49,7 @@ export default function Desktop() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: false, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
         >
           {data.challenges.map((c, i) => {
             const Icon = ICONS[i % ICONS.length];
@@ -65,31 +59,41 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-7 rounded-2xl shadow-[0_4px_16px_rgba(11,29,58,0.03)] border border-[#E2E8F0]/80 hover:shadow-[0_12px_32px_rgba(11,29,58,0.06)] hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
+                className="bg-white p-7 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.03)] hover:shadow-[0_12px_28px_rgba(11,29,58,0.08)] hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-105 transition-transform duration-300`}>
                   <Icon size={22} className="text-white" strokeWidth={2.5} />
                 </div>
-                <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-3 leading-tight">{c.title}</h3>
-                <p className="text-[14.5px] text-[#475569] font-medium leading-relaxed flex-grow">{c.text}</p>
+                
+                <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-3 tracking-wide leading-snug">
+                  {c.title}
+                </h3>
+                
+                <p className="text-[14px] text-[#64748B] font-medium leading-relaxed flex-grow">
+                  {c.text}
+                </p>
               </motion.div>
             );
           })}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center space-y-4"
-        >
-          {data.quotes.map((quote, i) => (
-            <p key={i} className={`text-[19px] font-bold ${i === 0 ? "text-[#C99A2E]" : "text-[#0B1D3A]"} leading-relaxed max-w-3xl mx-auto`}>
-              {i === 0 ? `"${quote}"` : quote}
-            </p>
-          ))}
-        </motion.div>
+        {data.quotes && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {data.quotes.map((q, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="p-6 rounded-[4px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-white font-medium text-[15px] leading-relaxed relative overflow-hidden"
+              >
+                <span className="text-[#C99A2E] text-2xl font-serif mr-2">“</span>
+                {q}
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

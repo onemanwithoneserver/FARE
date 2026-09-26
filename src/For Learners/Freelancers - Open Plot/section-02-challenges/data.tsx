@@ -1,4 +1,19 @@
 import type { Language } from "../../../context/LanguageContext";
+import type { LucideIcon } from "lucide-react";
+import { AlertCircle, MapPin, Search, Workflow, Compass, Network, Activity, HelpCircle } from "lucide-react";
+
+export const ICONS: LucideIcon[] = [MapPin, AlertCircle, Search, Workflow, Compass, Network, Activity, HelpCircle];
+
+export const GRADIENTS = [
+  "from-[#F87171] to-[#DC2626]",
+  "from-[#FBBF24] to-[#D97706]",
+  "from-[#38BDF8] to-[#0284C7]",
+  "from-[#C084FC] to-[#9333EA]",
+  "from-[#34D399] to-[#059669]",
+  "from-[#F472B6] to-[#DB2777]",
+  "from-[#60A5FA] to-[#2563EB]",
+  "from-[#F87171] to-[#DC2626]"
+];
 
 export const dataEn = {
   "title": "Working Independently Isn't Easy",

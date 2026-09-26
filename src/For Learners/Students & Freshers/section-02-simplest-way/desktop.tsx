@@ -1,20 +1,10 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { CheckCircle, Search, Lightbulb, RotateCw, Clock } from "lucide-react";
-import { getData } from "./data";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
-
-const FEATURE_ICONS = [CheckCircle, Search, Lightbulb, RotateCw, Clock];
-const ICON_COLORS = [
-  "from-[#38BDF8] to-[#0284C7]", // Blue
-  "from-[#34D399] to-[#059669]", // Emerald
-  "from-[#F472B6] to-[#DB2777]", // Pink
-  "from-[#A78BFA] to-[#7C3AED]", // Violet
-  "from-[#FBBF24] to-[#D97706]", // Amber
-];
 
 export default function Desktop() {
   const { language } = useLanguage();
@@ -73,17 +63,17 @@ export default function Desktop() {
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           {data.features.map((f, i) => {
-            const Icon = FEATURE_ICONS[i % FEATURE_ICONS.length];
-            const colorGradient = ICON_COLORS[i % ICON_COLORS.length];
+            const Icon = ICONS[i % ICONS.length];
+            const colorGradient = GRADIENTS[i % GRADIENTS.length];
             
             return (
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-8 rounded-xl border border-[#E2E8F0]/80 hover:shadow-[0_8px_30px_rgba(11,29,58,0.06)] hover:-translate-y-1 transition-all duration-300 group"
+                className="bg-white p-8 rounded-[4px] border border-[#E2E8F0]/80 hover:shadow-[0_8px_30px_rgba(11,29,58,0.06)] hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div
-                  className={`w-11 h-11 rounded-lg flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-br ${colorGradient} shadow-sm`}
+                  className={`w-11 h-11 rounded-[4px] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-br ${colorGradient} shadow-sm`}
                 >
                   <Icon size={20} className="text-white" strokeWidth={2.5} />
                 </div>

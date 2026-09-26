@@ -15,7 +15,7 @@ export default function Mobile() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
-          className="bg-[#0B1D3A] rounded-[24px] p-8 text-center relative overflow-hidden shadow-lg"
+          className="bg-[#0B1D3A] rounded-[4px] p-8 text-center relative overflow-hidden shadow-lg"
         >
           {/* Subtle decorative element */}
           <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[40px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
@@ -32,11 +32,11 @@ export default function Mobile() {
             </p>
             
             <div className="flex flex-col gap-3.5 mb-8">
-              <button className="w-full py-3.5 bg-[#C99A2E] text-[#0B1D3A] rounded-xl font-bold text-[14px] shadow-md flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+              <button className="w-full py-3.5 bg-[#C99A2E] text-[#0B1D3A] rounded-[4px] font-bold text-[14px] shadow-md flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
                 <FileText size={16} strokeWidth={2.5} />
                 {data.buttons.primary}
               </button>
-              <button className="w-full py-3.5 bg-white/10 text-white border border-white/20 rounded-xl font-bold text-[14px] flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+              <button className="w-full py-3.5 bg-white/10 text-white border border-white/20 rounded-[4px] font-bold text-[14px] flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
                 {data.buttons.secondary}
                 <ArrowRight size={16} strokeWidth={2.5} />
               </button>

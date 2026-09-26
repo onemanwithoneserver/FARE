@@ -36,7 +36,7 @@ export default function Mobile() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: false }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="flex flex-col items-center justify-center p-6 border border-[#E2E8F0]/80 rounded-xl shadow-[0_2px_8px_rgba(11,29,58,0.02)] bg-white relative overflow-hidden"
+              className="flex flex-col items-center justify-center p-6 border border-[#E2E8F0]/80 rounded-[4px] shadow-[0_2px_8px_rgba(11,29,58,0.02)] bg-white relative overflow-hidden"
             >
               <span 
                 className="text-[2.5rem] font-black mb-2 relative z-10 leading-none"

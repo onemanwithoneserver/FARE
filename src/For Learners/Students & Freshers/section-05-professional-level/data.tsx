@@ -1,4 +1,13 @@
 import type { Language } from "../../../context/LanguageContext";
+import { GraduationCap, Briefcase, Award, TrendingUp, Crown, Users, Rocket } from "lucide-react";
+
+export const ICONS = [GraduationCap, Briefcase, Award, TrendingUp, Crown, Users, Rocket];
+
+export const GRADIENTS = [
+  "from-[#38BDF8] to-[#0284C7]", "from-[#34D399] to-[#059669]", "from-[#F472B6] to-[#DB2777]", 
+  "from-[#A78BFA] to-[#7C3AED]", "from-[#FBBF24] to-[#D97706]", "from-[#F87171] to-[#DC2626]",
+  "from-[#60A5FA] to-[#2563EB]"
+];
 
 export const dataEn = {
   "badge": "For Every Professional Level",

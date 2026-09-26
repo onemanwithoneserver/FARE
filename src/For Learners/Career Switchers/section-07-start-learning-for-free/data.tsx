@@ -1,4 +1,13 @@
 import type { Language } from "../../../context/LanguageContext";
+import type { LucideIcon } from "lucide-react";
+import { MessageCircle, GraduationCap } from "lucide-react";
+
+export const ICONS: LucideIcon[] = [MessageCircle, GraduationCap];
+
+export const GRADIENTS = [
+  "from-[#22C55E] to-[#15803D]",
+  "from-[#C99A2E] to-[#9A741E]"
+];
 
 export const dataEn = {
   "title": "Start Your Real Estate Journey Today",

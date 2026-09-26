@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import { MessageCircle, GraduationCap, ArrowRight } from "lucide-react";
-import { getData } from "./data";
+import { ArrowRight } from "lucide-react";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
 export default function Mobile() {
@@ -30,10 +30,8 @@ export default function Mobile() {
         <div className="flex flex-col gap-5 mb-10">
           {data.items.map((itemData, i) => {
             const isFirst = i === 0;
-            const Icon = isFirst ? MessageCircle : GraduationCap;
-            const gradient = isFirst 
-              ? "from-[#10B981] to-[#047857]" 
-              : "from-[#FBBF24] to-[#D97706]";
+            const Icon = ICONS[i % ICONS.length];
+            const gradient = GRADIENTS[i % GRADIENTS.length];
             
             return (
               <motion.div
@@ -42,9 +40,9 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 flex flex-col items-center text-center"
+                className="bg-white/5 backdrop-blur-sm p-6 rounded-[4px] border border-white/10 flex flex-col items-center text-center"
               >
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-5`}>
+                <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-5`}>
                   <Icon size={26} className="text-white" strokeWidth={2.5} />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-3 tracking-wider uppercase">
@@ -55,7 +53,7 @@ export default function Mobile() {
                 </p>
                 
                 <button 
-                  className={`w-full py-3.5 rounded-lg font-bold text-[13px] transition-all duration-300 flex items-center justify-center gap-2 ${
+                  className={`w-full py-3.5 rounded-[4px] font-bold text-[13px] transition-all duration-300 flex items-center justify-center gap-2 ${
                     isFirst
                       ? "bg-[#10B981] text-white"
                       : "bg-[#C99A2E] text-[#0B1D3A]"

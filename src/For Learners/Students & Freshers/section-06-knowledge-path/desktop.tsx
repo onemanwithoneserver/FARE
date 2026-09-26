@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import { ArrowRight, Map, Home } from "lucide-react";
-import { getData } from "./data";
+import { ArrowRight } from "lucide-react";
+import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
 const NAVY = "#0B1D3A";
@@ -32,11 +32,8 @@ export default function Desktop() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
           {data.paths.map((path, i) => {
-            const isFirst = i === 0;
-            const Icon = isFirst ? Map : Home;
-            const gradient = isFirst 
-              ? "from-[#38BDF8] to-[#0284C7]" 
-              : "from-[#FBBF24] to-[#D97706]";
+            const Icon = ICONS[i % ICONS.length];
+            const gradient = GRADIENTS[i % GRADIENTS.length];
             
             return (
               <motion.div
@@ -45,9 +42,9 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="bg-white p-10 rounded-2xl border border-[#E2E8F0]/80 shadow-[0_4px_20px_rgba(11,29,58,0.04)] hover:shadow-[0_16px_40px_rgba(11,29,58,0.08)] hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
+                className="bg-white p-10 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_4px_20px_rgba(11,29,58,0.04)] hover:shadow-[0_16px_40px_rgba(11,29,58,0.08)] hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
               >
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-8 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-8 group-hover:scale-110 transition-transform duration-300`}>
                   <Icon size={28} className="text-white" strokeWidth={2.5} />
                 </div>
                 
@@ -61,7 +58,7 @@ export default function Desktop() {
                 
                 <button 
                   className="mt-auto self-start text-[14px] font-bold uppercase tracking-wider flex items-center gap-2 group-hover:gap-3 transition-all duration-300"
-                  style={{ color: isFirst ? "#0284C7" : "#D97706" }}
+                  style={{ color: i === 0 ? "#0284C7" : "#D97706" }}
                 >
                   {path.cta} 
                   <ArrowRight size={16} strokeWidth={2.5} />
@@ -78,7 +75,7 @@ export default function Desktop() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <div className="inline-block bg-white px-8 py-5 rounded-2xl border border-[#E2E8F0]/80 shadow-sm">
+          <div className="inline-block bg-white px-8 py-5 rounded-[4px] border border-[#E2E8F0]/80 shadow-sm">
             <h4 className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#64748B] mb-3">
               {data.more.title}
             </h4>

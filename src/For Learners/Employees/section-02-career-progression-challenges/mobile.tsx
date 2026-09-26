@@ -42,10 +42,10 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(11,29,58,0.03)] border border-[#E2E8F0]/80"
+                className="bg-white p-6 rounded-[4px] shadow-[0_2px_12px_rgba(11,29,58,0.03)] border border-[#E2E8F0]/80"
               >
                 <div className="flex items-center gap-3.5 mb-3.5">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
+                  <div className={`w-10 h-10 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
                     <Icon size={18} className="text-white" strokeWidth={2.5} />
                   </div>
                   <h3 className="text-[16px] font-bold text-[#0B1D3A] leading-tight">{c.title}</h3>
@@ -63,7 +63,7 @@ export default function Mobile() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <div className="bg-white p-5 rounded-xl shadow-sm border border-[#E2E8F0]/80">
+          <div className="bg-white p-5 rounded-[4px] shadow-sm border border-[#E2E8F0]/80">
             <p className="text-[15px] font-bold text-[#0B1D3A] whitespace-pre-wrap leading-relaxed">
               {data.closing}
             </p>

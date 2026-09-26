@@ -1,4 +1,13 @@
 import type { Language } from "../../../context/LanguageContext";
+import { Briefcase, Users, UserPlus } from "lucide-react";
+
+export const ICONS = [Briefcase, Users, UserPlus];
+
+export const GRADIENTS = [
+  "from-[#38BDF8] to-[#0284C7]", 
+  "from-[#A78BFA] to-[#7C3AED]", 
+  "from-[#F472B6] to-[#DB2777]"
+];
 
 export const dataEn = {
   "badge": "FARE Career Fastrack",
