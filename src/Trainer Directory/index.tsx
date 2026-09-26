@@ -32,6 +32,8 @@ import EngagementOptionsDesktop from "./section-16-engagement-options/desktop";
 import EngagementOptionsMobile from "./section-16-engagement-options/mobile";
 import CorporateRequestFormDesktop from "./section-17-corporate-request-form/desktop";
 import CorporateRequestFormMobile from "./section-17-corporate-request-form/mobile";
+import Header from "../Home/00_header";
+import Footer from "../Home/05_section";
 
 interface TrainerDirectoryProps {
   isMobile: boolean;
@@ -39,7 +41,8 @@ interface TrainerDirectoryProps {
 
 export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
   return (
-    <div className="w-full min-h-screen bg-[#f8fafc]">
+    <div className="w-full min-h-screen bg-[#f8fafc] flex flex-col font-['Outfit']">
+      <Header isMobile={isMobile} />
       {isMobile ? <HeroMobile /> : <HeroDesktop />}
       {isMobile ? <AboutMobile /> : <AboutDesktop />}
       {isMobile ? <IntroVideoMobile /> : <IntroVideoDesktop />}
@@ -57,6 +60,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
       {isMobile ? <CredentialsVerificationMobile /> : <CredentialsVerificationDesktop />}
       {isMobile ? <EngagementOptionsMobile /> : <EngagementOptionsDesktop />}
       {isMobile ? <CorporateRequestFormMobile /> : <CorporateRequestFormDesktop />}
+      <Footer isMobile={isMobile} />
     </div>
   );
 }
