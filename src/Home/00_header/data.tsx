@@ -41,8 +41,7 @@ export const dataEn = {
         },
         {
           title: "Career Switchers",
-          href: "#",
-          formKey: "career-switchers",
+          href: "fare-for-career-switchers",
         },
       ],
     },
@@ -93,8 +92,7 @@ export const dataTe = {
         },
         {
           title: "కెరీర్ స్విచ్చర్స్",
-          href: "#",
-          formKey: "career-switchers",
+          href: "fare-for-career-switchers",
         },
       ],
     },
