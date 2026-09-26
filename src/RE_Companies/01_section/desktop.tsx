@@ -71,8 +71,8 @@ export default function Desktop() {
             <h1
               className={`font-black mb-3 flex flex-col gap-1 md:gap-1.5 ${
                 language === "te"
-                  ? "text-[2.4rem] xl:text-[3rem] leading-[1.15] tracking-wider"
-                  : "text-[2.85rem] xl:text-[3.6rem] leading-[1.05] tracking-[-0.03em]"
+                  ? "text-[2.2rem] lg:text-[2.6rem] xl:text-[3.2rem] leading-[1.15] tracking-wider"
+                  : "text-[2.2rem] lg:text-[2.6rem] xl:text-[3.2rem] leading-[1.05] tracking-[-0.03em]"
               }`}
             >
               <>
@@ -91,7 +91,7 @@ export default function Desktop() {
                 </motion.span>
                 <motion.span
                   variants={item}
-                  className="block uppercase"
+                  className="block uppercase whitespace-nowrap"
                   style={{ color: NAVY }}
                 >
                   {language === "te"

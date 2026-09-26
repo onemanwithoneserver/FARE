@@ -19,7 +19,6 @@ import {
   Check,
 } from "lucide-react";
 import Modal from "../../Forms/Modal";
-import LearnerForm from "../../Forms/Desktop/LearnerForm";
 import RECompaniesForm from "../../Forms/Desktop/RECompaniesForm";
 const subIconMap: Record<string, React.ElementType> = {
   "Residential & Commercial": Building2,
@@ -162,10 +161,13 @@ export default function Desktop() {
     const hasSubItems = link.subItems && link.subItems.length > 0;
     const isDropdownOpen = activeDropdown === link.title;
     const targetRoute = getRouteForHref(link.href, link.title);
-    const hasFormSubItems = (link.subItems ?? []).some(
-      (sub: { formKey?: string }) => !!sub.formKey
-    );
-    const subRoutes = (link.subItems ?? [])
+    const subItemsList = (link.subItems ?? []) as Array<{
+      title: string;
+      href: string;
+      formKey?: string;
+    }>;
+    const hasFormSubItems = subItemsList.some((sub) => !!sub.formKey);
+    const subRoutes = subItemsList
       .map((sub) => getRouteForHref(sub.href, sub.title))
       .filter((r) => r !== "#");
     const isActive = !hasSubItems
@@ -229,7 +231,7 @@ export default function Desktop() {
                 className="absolute top-full left-0 mt-2 w-[270px] bg-[#071738]/95 backdrop-blur-xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-[4px] p-1.5 z-50 pointer-events-auto hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div className="flex flex-col gap-1">
-                  {link.subItems?.map((sub: { title: string; href: string; formKey?: string }, sIdx: number) => {
+                  {subItemsList.map((sub, sIdx) => {
                     const subRoute = getRouteForHref(sub.href, sub.title);
                     const isSubActive = sub.formKey
                       ? activeLearnerItem === sub.formKey
@@ -611,15 +613,7 @@ export default function Desktop() {
       </div>
     </div>
     <Modal isOpen={activeForm !== null} onClose={() => setActiveForm(null)}>
-      {activeForm === "students" && <LearnerForm category="students" />}
-      {activeForm === "employees" && <LearnerForm category="employees" />}
       {activeForm === "freelancer-open-plot" && <RECompaniesForm />}
-      {activeForm === "freelancer-residential" && (
-        <LearnerForm category="freelancer-residential" />
-      )}
-      {activeForm === "career-switchers" && (
-        <LearnerForm category="career-switchers" />
-      )}
     </Modal>
     </>
   );

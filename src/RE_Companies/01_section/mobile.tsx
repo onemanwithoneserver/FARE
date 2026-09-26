@@ -64,8 +64,8 @@ export default function Mobile() {
           <h1
             className={`font-black mb-3.5 flex flex-col gap-1 sm:gap-1.5 ${
               language === "te"
-                ? "text-[2.1rem] leading-[1.25] tracking-wide my-1.5"
-                : "text-[2.65rem] leading-[1.08] tracking-[-0.02em]"
+                ? "text-[1.35rem] xs:text-[1.65rem] sm:text-[2.1rem] leading-[1.25] tracking-wide my-1.5"
+                : "text-[1.35rem] xs:text-[1.65rem] sm:text-[2.1rem] leading-[1.08] tracking-[-0.02em]"
             }`}
           >
             <>
@@ -84,7 +84,7 @@ export default function Mobile() {
               </motion.span>
               <motion.span
                 variants={item}
-                className="block uppercase"
+                className="block uppercase whitespace-nowrap"
                 style={{ color: NAVY }}
               >
                 {language === "te"
