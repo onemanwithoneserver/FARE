@@ -18,34 +18,6 @@ export const dataEn = {
       desc: "Create a structured onboarding journey for every new joiner — without depending on a trainer for every new Associate.",
       sections: [
         {
-          heading: "Real Estate Fundamentals",
-          items: [
-            "Industry basics",
-            "Real estate terminology",
-            "Stakeholders",
-            "Transaction process",
-          ],
-        },
-        {
-          heading: "Open Plot Knowledge",
-          items: [
-            "Plot fundamentals",
-            "Layout concepts",
-            "Approvals",
-            "Product understanding",
-          ],
-        },
-        {
-          heading: "Project Knowledge",
-          items: [
-            "Project details",
-            "Location",
-            "Product",
-            "Infrastructure & amenities",
-            "Pricing & payment plans",
-          ],
-        },
-        {
           heading: "Company Knowledge",
           items: [
             "Company introduction",
@@ -61,6 +33,34 @@ export const dataEn = {
             "Customer profiling",
             "Pitching",
             "Follow-up",
+          ],
+        },
+        {
+          heading: "Project Knowledge",
+          items: [
+            "Project details",
+            "Location",
+            "Product",
+            "Infrastructure & amenities",
+            "Pricing & payment plans",
+          ],
+        },
+        {
+          heading: "Real Estate Fundamentals",
+          items: [
+            "Industry basics",
+            "Real estate terminology",
+            "Stakeholders",
+            "Transaction process",
+          ],
+        },
+        {
+          heading: "Open Plot Knowledge",
+          items: [
+            "Plot fundamentals",
+            "Layout concepts",
+            "Approvals",
+            "Product understanding",
           ],
         },
       ],
@@ -159,34 +159,6 @@ export const dataTe = {
       desc: "ప్రతి కొత్త Joiner కోసం Structured Onboarding Journeyను రూపొందించండి — ప్రతి కొత్త Associate కోసం ప్రతిసారి Trainerపై ఆధారపడాల్సిన అవసరం లేకుండా.",
       sections: [
         {
-          heading: "Real Estate Fundamentals",
-          items: [
-            "Industry Basics",
-            "Real Estate Terminology",
-            "Stakeholders",
-            "Transaction Process",
-          ],
-        },
-        {
-          heading: "Open Plot Knowledge",
-          items: [
-            "Plot Fundamentals",
-            "Layout Concepts",
-            "Approvals",
-            "Product Understanding",
-          ],
-        },
-        {
-          heading: "Project Knowledge",
-          items: [
-            "Project Details",
-            "Location",
-            "Product",
-            "Infrastructure & Amenities",
-            "Pricing & Payment Plans",
-          ],
-        },
-        {
           heading: "Company Knowledge",
           items: [
             "Company Introduction",
@@ -202,6 +174,34 @@ export const dataTe = {
             "Customer Profiling",
             "Pitching",
             "Follow-up",
+          ],
+        },
+        {
+          heading: "Project Knowledge",
+          items: [
+            "Project Details",
+            "Location",
+            "Product",
+            "Infrastructure & Amenities",
+            "Pricing & Payment Plans",
+          ],
+        },
+        {
+          heading: "Real Estate Fundamentals",
+          items: [
+            "Industry Basics",
+            "Real Estate Terminology",
+            "Stakeholders",
+            "Transaction Process",
+          ],
+        },
+        {
+          heading: "Open Plot Knowledge",
+          items: [
+            "Plot Fundamentals",
+            "Layout Concepts",
+            "Approvals",
+            "Product Understanding",
           ],
         },
       ],
