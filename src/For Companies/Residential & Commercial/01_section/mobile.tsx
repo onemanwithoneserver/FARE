@@ -4,7 +4,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
-import reCompaniesHero from "../../../assets/re_companies_hero.jpg";
+import reCompaniesHero from "../../../assets/re_companies_hero.png";
 import Modal from "../../../Components/Forms/Modal";
 import RECompaniesForm from "../../../Components/Forms/Mobile/RECompaniesForm";
 import VideoModal from "../../../Components/Forms/VideoModal";
@@ -191,51 +191,14 @@ export default function Mobile() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: false }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full mt-10 relative z-20 flex items-center justify-center px-4"
+          className="w-full mt-8 relative z-20 flex items-center justify-center px-2"
         >
-          <div className="relative w-full aspect-[4/5] max-w-[360px] flex items-center justify-center group">
-            <motion.div
-              className="w-full h-full absolute inset-0 z-0 rounded-[1.5rem] overflow-hidden border border-white/60 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.15)]"
-              style={{
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)",
-                maskImage:
-                  "linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)",
-              }}
-            >
-              <motion.img
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{
-                  duration: 15,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                src={reCompaniesHero}
-                alt="RE Companies Hero"
-                className="w-full h-full object-cover object-[center_35%]"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ delay: 0.7, duration: 0.5 }}
-              className="absolute -left-2 sm:-left-6 bottom-12 z-20 bg-white/95 backdrop-blur-xl p-3 shadow-[0_12px_32px_-8px_rgba(11,29,58,0.2)] border border-white/80 rounded-[20px] rounded-tl-[6px] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-[10px] rounded-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-md shadow-[#34D399]/30">
-                  <Sparkles size={16} className="text-white" />
-                </div>
-                <div className="pr-1.5">
-                  <div className="text-[13px] font-black text-[#0B1D3A] tracking-tight">
-                    {data.dashboard.floatingBadge.title}
-                  </div>
-                  <div className="text-[9.5px] font-bold text-[#64748B] uppercase tracking-wider mt-0.5">
-                    {data.dashboard.floatingBadge.subtitle}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+          <div className="relative w-full aspect-[16/11] max-w-[420px] rounded-[4px] overflow-hidden border border-white/80 shadow-[0_20px_50px_-12px_rgba(11,29,58,0.2)] bg-slate-100 group">
+            <img
+              src={reCompaniesHero}
+              alt="RE Companies Hero"
+              className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out rounded-[4px]"
+            />
           </div>
         </motion.div>
       </div>

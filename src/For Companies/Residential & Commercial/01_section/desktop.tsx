@@ -4,13 +4,12 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
-import reCompaniesHero from "../../../assets/re_companies_hero.jpg";
+import reCompaniesHero from "../../../assets/re_companies_hero.png";
 import Modal from "../../../Components/Forms/Modal";
 import RECompaniesForm from "../../../Components/Forms/Desktop/RECompaniesForm";
 import VideoModal from "../../../Components/Forms/VideoModal";
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
-const GOLD_LIGHT = "#E2C068";
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
@@ -61,14 +60,14 @@ export default function Desktop() {
           backgroundSize: "60px 60px",
         }}
       />
-      <div className="max-w-[1320px] w-full px-8 lg:px-14 py-10 lg:py-28 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 xl:gap-16 items-center">
+      <div className="max-w-[1480px] w-full px-6 sm:px-10 lg:px-12 xl:px-14 py-10 lg:py-20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-center">
           <motion.div
             variants={container}
             initial="hidden"
             whileInView="show"
             viewport={{ once: false }}
-            className="lg:col-span-8 flex flex-col items-start text-left w-full relative z-40"
+            className="lg:col-span-6 flex flex-col items-start text-left w-full relative z-20"
           >
             <h1
               className={`font-black mb-3 flex flex-col items-start gap-1 md:gap-1.5 ${
@@ -184,81 +183,18 @@ export default function Desktop() {
             </motion.p>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, x: 40, scale: 0.95 }}
+            initial={{ opacity: 0, x: 30, scale: 0.96 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: false }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-4 relative w-full flex items-center justify-center"
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 relative w-full flex items-center justify-center lg:justify-end"
           >
-            <div className="relative w-full aspect-[4/5] max-w-[500px] flex items-center justify-center group mt-10 lg:mt-0">
-              <motion.div
-                className="w-full h-full absolute inset-0 z-0 rounded-[2rem] overflow-hidden border border-white/60 shadow-[0_20px_60px_-15px_rgba(11,29,58,0.15)]"
-                style={{
-                  WebkitMaskImage:
-                    "linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)",
-                  maskImage:
-                    "linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)",
-                }}
-              >
-                <motion.img
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{
-                    duration: 15,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  src={reCompaniesHero}
-                  alt="RE Companies Hero"
-                  className="w-full h-full object-cover object-[center_35%]"
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute -left-4 sm:-left-8 bottom-16 z-20 bg-white/95 backdrop-blur-xl p-4 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.2)] border border-white/80 rounded-[24px] rounded-tl-[8px] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
-              >
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-[12px] rounded-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-lg shadow-[#34D399]/30">
-                    <Sparkles size={18} className="text-white" />
-                  </div>
-                  <div className="pr-2">
-                    <div className="text-[14px] font-black text-[#0B1D3A] tracking-tight">
-                      {data.dashboard.floatingBadge.title}
-                    </div>
-                    <div className="text-[10px] font-bold text-[#64748B] uppercase tracking-wider mt-0.5">
-                      {data.dashboard.floatingBadge.subtitle}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="absolute -right-4 sm:-right-8 top-24 z-20 bg-white/95 backdrop-blur-xl p-3.5 shadow-[0_15px_50px_-12px_rgba(11,29,58,0.25)] border border-white/80 hidden lg:block rounded-[20px] rounded-tr-[6px] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
-              >
-                <div className="flex items-center gap-3.5">
-                  <div
-                    className="w-10 h-10 rounded-[10px] rounded-bl-[4px] flex items-center justify-center text-[15px] font-black text-white shadow-lg shadow-[#C99A2E]/30"
-                    style={{
-                      background: `linear-gradient(135deg, ${GOLD}, ${GOLD_LIGHT})`,
-                    }}
-                  >
-                    %
-                  </div>
-                  <div className="pr-3">
-                    <div className="text-[16px] font-black text-[#0B1D3A] leading-none">
-                      {data.dashboard.stats[0].progress}
-                    </div>
-                    <div className="text-[10px] font-bold text-[#94A3B8] uppercase tracking-wider mt-1">
-                      {data.dashboard.stats[0].title}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+            <div className="relative w-full max-w-[680px] aspect-[16/10.2] rounded-[4px] overflow-hidden border border-white/80 shadow-[0_25px_60px_-15px_rgba(11,29,58,0.22),0_10px_25px_-5px_rgba(0,0,0,0.06)] bg-slate-100 group lg:translate-x-2 xl:translate-x-4">
+              <img
+                src={reCompaniesHero}
+                alt="Residential & Commercial Real Estate Buildings"
+                className="w-full h-full object-cover object-center group-hover:scale-[1.025] transition-transform duration-700 ease-out rounded-[4px]"
+              />
             </div>
           </motion.div>
         </div>
