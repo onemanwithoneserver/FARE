@@ -7,7 +7,7 @@ export const dataEn = {
     "Build a structured learning and development system for your Open Plot business with FARE.",
   buttons: {
     primary: "Register for a Demo",
-    secondary: "Take the Free Evaluation Test",
+    secondary: "How it works",
   },
 };
 export const dataTe = {
@@ -18,7 +18,7 @@ export const dataTe = {
     "FAREతో మీ Open Plot Business కోసం Structured Learning and Development Systemను నిర్మించండి.",
   buttons: {
     primary: "డెమో కోసం రిజిస్టర్ చేయండి",
-    secondary: "Free Evaluation Test తీసుకోండి",
+    secondary: "How it works",
   },
 };
 export const getData = (lang: Language = "en") =>

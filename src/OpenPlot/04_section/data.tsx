@@ -95,7 +95,7 @@ export const dataEn = {
         },
       ],
       footerText: "Don't assume your team knows. Measure it.",
-      buttons: ["Explore Knowledge Bank", "Take Free Evaluation Test"],
+      buttons: ["Explore Knowledge Bank", "How it works"],
     },
     tab3: {
       title: "Turn training into everyday practice.",
@@ -239,7 +239,7 @@ export const dataTe = {
       footerText: "మీ టీమ్కు తెలుసని ఊహించకండి. కొలవండి.",
       buttons: [
         "Knowledge Bankను Explore చేయండి",
-        "Free Evaluation Test తీసుకోండి",
+        "How it works",
       ],
     },
     tab3: {

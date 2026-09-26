@@ -8,7 +8,7 @@ export const dataEn = {
     "Build a better-trained Open Plot sales team — from onboarding and knowledge building to skill practice, daily habits and continuous improvement.",
   buttons: {
     primary: "Register for a Demo",
-    secondary: "Take Free Evaluation Test",
+    secondary: "How it works",
   },
   features: [
     "Custom Onboarding",
@@ -61,7 +61,7 @@ export const dataTe = {
     "మీ Open Plot సేల్స్ టీమ్‌ను మరింత మెరుగ్గా తీర్చిదిద్దండి — Onboarding మరియు Knowledge Building నుంచి Skill Practice, Daily Habits మరియు Continuous Improvement వరకు.",
   buttons: {
     primary: "డెమో కోసం రిజిస్టర్ చేయండి",
-    secondary: "ఉచిత Evaluation Test తీసుకోండి",
+    secondary: "How it works",
   },
   features: [
     "Custom Onboarding",

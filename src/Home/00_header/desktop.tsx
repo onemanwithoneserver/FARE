@@ -518,27 +518,35 @@ export default function Desktop() {
               : "w-full h-[68px] px-8 lg:px-14 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.07] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none"
           }`}
         >
-          {isScrolled ? (
-            <>
-              <div className="hidden md:flex flex-1 items-center justify-start gap-2.5 lg:gap-3.5 xl:gap-5">
-                {data.navLinks.map((link, idx) => renderNavLink(link, idx))}
-              </div>
-              <div className="flex items-center justify-center shrink-0 px-2 lg:px-5">
-                {LogoElement}
-              </div>
-              <div className="flex-1 flex items-center justify-end gap-2.5 lg:gap-3.5 xl:gap-5">
-                {RightControls}
-              </div>
-            </>
-          ) : (
-            <>
-              <nav className="hidden md:flex items-center justify-start flex-1 gap-4 lg:gap-6 xl:gap-7">
-                {data.navLinks.map((link, idx) => renderNavLink(link, idx))}
-              </nav>
-              <div className="flex items-center shrink-0 mx-4">{LogoElement}</div>
-              {RightControls}
-            </>
-          )}
+          {(() => {
+            const leftNavLinks = data.navLinks.slice(0, 4);
+            const rightNavLinks = data.navLinks.slice(4);
+            return isScrolled ? (
+              <>
+                <div className="hidden md:flex flex-1 items-center justify-start gap-2.5 lg:gap-3.5 xl:gap-5">
+                  {leftNavLinks.map((link, idx) => renderNavLink(link, idx))}
+                </div>
+                <div className="flex items-center justify-center shrink-0 px-2 lg:px-5">
+                  {LogoElement}
+                </div>
+                <div className="flex-1 flex items-center justify-end gap-2.5 lg:gap-3.5 xl:gap-5">
+                  {rightNavLinks.map((link, idx) => renderNavLink(link, idx + 4))}
+                  {RightControls}
+                </div>
+              </>
+            ) : (
+              <>
+                <nav className="hidden md:flex items-center justify-start flex-1 gap-4 lg:gap-6 xl:gap-7">
+                  {leftNavLinks.map((link, idx) => renderNavLink(link, idx))}
+                </nav>
+                <div className="flex items-center shrink-0 mx-4">{LogoElement}</div>
+                <div className="flex items-center justify-end gap-4 lg:gap-6 xl:gap-7">
+                  {rightNavLinks.map((link, idx) => renderNavLink(link, idx + 4))}
+                  {RightControls}
+                </div>
+              </>
+            );
+          })()}
           <AnimatePresence>
             {isSearchExpanded && (
               <motion.div

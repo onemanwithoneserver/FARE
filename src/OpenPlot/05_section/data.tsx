@@ -14,7 +14,7 @@ export const dataEn = {
     "Sales Knowledge",
   ],
   evaluationFlow: "21 Questions → Score → Knowledge Snapshot",
-  primaryButton: "Take the Free Evaluation Test",
+  primaryButton: "How it works",
   secondaryButton: "Evaluate My Team",
   footerText:
     "Use the evaluation as a starting point for identifying learning and training requirements.",
@@ -39,7 +39,7 @@ export const dataTe = {
     "Sales Knowledge",
   ],
   evaluationFlow: "21 Questions → Score → Knowledge Snapshot",
-  primaryButton: "Free Evaluation Test తీసుకోండి",
+  primaryButton: "How it works",
   secondaryButton: "నా టీమ్ను Evaluate చేయండి",
   footerText:
     "Learning మరియు Training Requirementsను గుర్తించడానికి ఈ Evaluationను ఒక Starting Pointగా ఉపయోగించండి.",

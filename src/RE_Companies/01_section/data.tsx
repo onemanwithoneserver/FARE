@@ -8,7 +8,7 @@ export const dataEn = {
     "Give your sales and channel partner teams the project knowledge, practical skills and continuous learning they need to perform better.",
   buttons: {
     primary: "Book a Demo",
-    secondary: "Take the Free Evaluation Test",
+    secondary: "How it works",
   },
   features: ["Project Knowledge", "Knowledge Bank", "Mocks", "Trainer Network"],
   footerText:
@@ -51,7 +51,7 @@ export const dataTe = {
     "మీ సేల్స్ మరియు ఛానల్ పార్టనర్ టీమ్‌లకు మెరుగ్గా పని చేయడానికి అవసరమైన ప్రాజెక్ట్ నాలెడ్జ్, ప్రాక్టికల్ స్కిల్స్ మరియు నిరంతర అభ్యాసాన్ని అందించండి.",
   buttons: {
     primary: "డెమో కోసం బుక్ చేయండి",
-    secondary: "ఉచిత ఎవల్యూషన్ టెస్ట్ తీసుకోండి",
+    secondary: "How it works",
   },
   features: [
     "ప్రాజెక్ట్ నాలెడ్జ్",
