@@ -5,11 +5,11 @@ import type { Variants } from "motion/react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import logo from "../../Components/FARE_Logo/SVG/Primary Logo.svg";
-import Modal from "../../Forms/Modal";
+import Modal from "../../Components/Forms/Modal";
 
-import RECompaniesForm from "../../Forms/Mobile/RECompaniesForm";
-import RETrainersForm from "../../Forms/Mobile/RETrainersForm";
-import ContactForm from "../../Forms/Mobile/ContactForm";
+import RECompaniesForm from "../../Components/Forms/Mobile/RECompaniesForm";
+import RETrainersForm from "../../Components/Forms/Mobile/RETrainersForm";
+import ContactForm from "../../Components/Forms/Mobile/ContactForm";
 export default function Mobile() {
   const navigate = useNavigate();
   const location = useLocation();

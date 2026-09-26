@@ -10,15 +10,15 @@ import {
 } from "react-router-dom";
 import { useLanguage } from "./context/LanguageContext";
 import Home from "./Home";
-import OpenPlot from "./OpenPlot";
-import RE_Companies from "./RE_Companies";
+import OpenPlot from "./For Companies/Open Plots";
+import RE_Companies from "./For Companies/Residential & Commercial";
 import RE_Trainers_and_Coaches from "./RE_Trainers_and_Coaches";
 import ContactUs from "./ContactUs";
-import FAREForEmployees from "./FARE for Employees";
-import FAREForFreelancersOpenPlot from "./Freelancers_Open Plot";
-import FAREForFreelancersResidential from "./Freelancers_Residential";
-import FAREForCareerSwitchers from "./Career_Switchers";
-import FAREKnowledgeBank from "./FARE_Knowledge_Bank";
+import FAREForEmployees from "./For Learners/Employees";
+import FAREForFreelancersOpenPlot from "./For Learners/Freelancers - Open Plot";
+import FAREForFreelancersResidential from "./For Learners/Freelancers - Residential";
+import FAREForCareerSwitchers from "./For Learners/Career Switchers";
+import FAREKnowledgeBank from "./For Learners/Students & Freshers";
 export default function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const navigate = useNavigate();
@@ -115,7 +115,6 @@ export default function App() {
               path="/:mode/fare-knowledge-bank"
               element={<FAREKnowledgeBank isMobile={isMobile} />}
             />
-            <Route path="/:mode/forms" element={<Home isMobile={isMobile} />} />
             <Route
               path="*"
               element={<Navigate to={`/${defaultInitialMode}/home`} replace />}

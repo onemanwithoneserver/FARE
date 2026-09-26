@@ -1,19 +1,21 @@
-import { useState } from "react";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { useLanguage } from "../../context/LanguageContext";
+import { useState } from "react";
+import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
-import reTrainersHero from "../../assets/re_trainers_hero.jpg";
-import Modal from "../../Components/Forms/Modal";
-import RETrainersForm from "../../Components/Forms/Desktop/RETrainersForm";
+import reCompaniesHero from "../../../assets/re_companies_hero.jpg";
+import Modal from "../../../Components/Forms/Modal";
+import RECompaniesForm from "../../../Components/Forms/Desktop/RECompaniesForm";
+import VideoModal from "../../../Components/Forms/VideoModal";
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_LIGHT = "#E2C068";
 export default function Desktop() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { language } = useLanguage();
   const data = getData(language);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -30,6 +32,7 @@ export default function Desktop() {
     },
   };
   return (
+    <>
     <section
       className="w-full -mt-8 lg:-mt-8 flex items-center justify-center overflow-x-clip relative font-['Outfit']"
       style={{
@@ -68,10 +71,10 @@ export default function Desktop() {
             className="lg:col-span-8 flex flex-col items-start text-left w-full relative z-40"
           >
             <h1
-              className={`font-black mb-3 flex flex-col gap-1 md:gap-1.5 ${
+              className={`font-black mb-3 flex flex-col items-start gap-1 md:gap-1.5 ${
                 language === "te"
-                  ? "text-[2.4rem] xl:text-[3rem] leading-[1.15] tracking-wider"
-                  : "text-[2.85rem] xl:text-[3.6rem] leading-[1.05] tracking-[-0.03em]"
+                  ? "text-[2.2rem] lg:text-[2.6rem] xl:text-[3.2rem] leading-[1.15] tracking-wider"
+                  : "text-[2.2rem] lg:text-[2.6rem] xl:text-[3.2rem] leading-[1.05] tracking-[-0.03em]"
               }`}
             >
               <>
@@ -90,18 +93,20 @@ export default function Desktop() {
                 </motion.span>
                 <motion.span
                   variants={item}
-                  className="block uppercase"
+                  className="block uppercase whitespace-nowrap"
                   style={{ color: NAVY }}
                 >
-                  {language === "te" ? "రియల్ ఎస్టేట్" : "REAL ESTATE"}
+                  {language === "te"
+                    ? "రెసిడెన్షియల్ & కమర్షియల్"
+                    : "RESIDENTIAL & COMMERCIAL"}
                 </motion.span>
                 <motion.span
                   variants={item}
-                  className={`inline-block text-[#C99A2E] gold-underline uppercase ${language === "te" ? "pb-1" : ""}`}
+                  className={`self-start inline-block text-[#C99A2E] gold-underline uppercase ${
+                    language === "te" ? "pb-1" : ""
+                  }`}
                 >
-                  {language === "te"
-                    ? "ట్రైనర్స్ & కోచెస్"
-                    : "TRAINERS & COACHES"}
+                  {language === "te" ? "కంపెనీలు" : "COMPANIES"}
                 </motion.span>
               </>
             </h1>
@@ -133,7 +138,7 @@ export default function Desktop() {
             >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded hover:shadow-[0_12px_24px_rgba(11,29,58,0.2),0_0_0_1px_rgba(201,154,46,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
+                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded hover:shadow-[0_12px_24px_rgba(11,29,58,0.2),0_0_0_1px_rgba(201,154,46,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
                 style={{
                   background: NAVY,
                   boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`,
@@ -144,8 +149,8 @@ export default function Desktop() {
               </button>
               {data.buttons.secondary && (
                 <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="text-[13.5px] font-semibold px-7 py-3 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border"
+                  onClick={() => setIsVideoModalOpen(true)}
+                  className="text-[13.5px] font-semibold px-7 py-3 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
                   style={{
                     color: NAVY,
                     borderColor: `${NAVY}15`,
@@ -202,8 +207,8 @@ export default function Desktop() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  src={reTrainersHero}
-                  alt="RE Trainers Hero"
+                  src={reCompaniesHero}
+                  alt="RE Companies Hero"
                   className="w-full h-full object-cover object-[center_35%]"
                 />
               </motion.div>
@@ -258,9 +263,14 @@ export default function Desktop() {
           </motion.div>
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        {isModalOpen && <RETrainersForm />}
-      </Modal>
     </section>
+    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <RECompaniesForm />
+    </Modal>
+    <VideoModal
+      isOpen={isVideoModalOpen}
+      onClose={() => setIsVideoModalOpen(false)}
+    />
+    </>
   );
 }

@@ -18,8 +18,8 @@ import {
   Globe,
   Check,
 } from "lucide-react";
-import Modal from "../../Forms/Modal";
-import RECompaniesForm from "../../Forms/Desktop/RECompaniesForm";
+import Modal from "../../Components/Forms/Modal";
+import RECompaniesForm from "../../Components/Forms/Desktop/RECompaniesForm";
 const subIconMap: Record<string, React.ElementType> = {
   "Residential & Commercial": Building2,
   "రెసిడెన్షియల్ & కమర్షియల్": Building2,

@@ -23,7 +23,7 @@ import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import logo from "../../Components/FARE_Logo/SVG/Primary Logo.svg";
 import React, { useState } from "react";
-import VideoModal from "../../Forms/VideoModal";
+import VideoModal from "../../Components/Forms/VideoModal";
 const NAVY = "#0B1D3A";
 const NAVY_DEEP = "#071A49";
 const NAVY_SURFACE = "#0D2654";

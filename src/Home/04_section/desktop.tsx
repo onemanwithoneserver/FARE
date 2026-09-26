@@ -12,9 +12,9 @@ import { useState } from "react";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import bgImage from "../../assets/bg-04.jpg";
-import Modal from "../../Forms/Modal";
-import RETrainersForm from "../../Forms/Desktop/RETrainersForm";
-import RECompaniesForm from "../../Forms/Desktop/RECompaniesForm";
+import Modal from "../../Components/Forms/Modal";
+import RETrainersForm from "../../Components/Forms/Desktop/RETrainersForm";
+import RECompaniesForm from "../../Components/Forms/Desktop/RECompaniesForm";
 export default function Desktop() {
   const location = useLocation();
   const { language } = useLanguage();

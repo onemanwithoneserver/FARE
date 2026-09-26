@@ -15,9 +15,9 @@ import { useState } from "react";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import bgImage from "../../assets/bg-04.jpg";
-import Modal from "../../Forms/Modal";
-import RETrainersForm from "../../Forms/Mobile/RETrainersForm";
-import RECompaniesForm from "../../Forms/Mobile/RECompaniesForm";
+import Modal from "../../Components/Forms/Modal";
+import RETrainersForm from "../../Components/Forms/Mobile/RETrainersForm";
+import RECompaniesForm from "../../Components/Forms/Mobile/RECompaniesForm";
 export default function Mobile() {
   const location = useLocation();
   const { language } = useLanguage();

@@ -14,8 +14,8 @@ import {
 } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
-import Modal from "../../Forms/Modal";
-import RETrainersForm from "../../Forms/Desktop/RETrainersForm";
+import Modal from "../../Components/Forms/Modal";
+import RETrainersForm from "../../Components/Forms/Desktop/RETrainersForm";
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 export default function Desktop() {
