@@ -520,10 +520,8 @@ export default function Desktop() {
         >
           {isScrolled ? (
             <>
-              <div className="hidden md:flex flex-1 items-center justify-start gap-3 lg:gap-4 xl:gap-6">
-                {data.navLinks
-                  .slice(0, 4)
-                  .map((link, idx) => renderNavLink(link, idx))}
+              <div className="hidden md:flex flex-1 items-center justify-start gap-2.5 lg:gap-3.5 xl:gap-5">
+                {data.navLinks.map((link, idx) => renderNavLink(link, idx))}
               </div>
               <div className="flex items-center justify-center shrink-0 px-2 lg:px-5">
                 {LogoElement}
@@ -534,10 +532,10 @@ export default function Desktop() {
             </>
           ) : (
             <>
-              <div className="flex items-center shrink-0">{LogoElement}</div>
-              <nav className="hidden md:flex items-center justify-center flex-1 mx-3 lg:mx-6 gap-5 lg:gap-7 xl:gap-8">
+              <nav className="hidden md:flex items-center justify-start flex-1 gap-4 lg:gap-6 xl:gap-7">
                 {data.navLinks.map((link, idx) => renderNavLink(link, idx))}
               </nav>
+              <div className="flex items-center shrink-0 mx-4">{LogoElement}</div>
               {RightControls}
             </>
           )}

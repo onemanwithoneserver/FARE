@@ -72,7 +72,7 @@ export default function Mobile() {
   };
   const registrationOptions = [
     {
-      title: data.buttons[0] || "Register as a Company",
+      title: data.buttons[0] || "Register as a Learner",
       subtitle:
         language === "te"
           ? "నిపుణులు & ఉద్యోగార్థుల కోసం"
