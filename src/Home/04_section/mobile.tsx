@@ -40,7 +40,7 @@ export default function Mobile() {
   const isHomePage = currentRoute === "home";
   const activeBtnIndex =
     currentRoute === "open-plots"
-      ? 0
+      ? 2
       : currentRoute === "re-trainers-coaches"
         ? 1
         : currentRoute === "re-companies"

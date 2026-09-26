@@ -6,7 +6,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import logo from "../../Components/FARE_Logo/SVG/Primary Logo.svg";
 import Modal from "../../Forms/Modal";
-import OpenPlotForm from "../../Forms/Mobile/OpenPlotForm";
+
 import RECompaniesForm from "../../Forms/Mobile/RECompaniesForm";
 import RETrainersForm from "../../Forms/Mobile/RETrainersForm";
 import ContactForm from "../../Forms/Mobile/ContactForm";
@@ -148,7 +148,7 @@ export default function Mobile() {
         </motion.div>
       </footer>
       <Modal isOpen={activeForm !== null} onClose={() => setActiveForm(null)}>
-        {activeForm === "open-plots" && <OpenPlotForm />}
+        {activeForm === "open-plots" && <RECompaniesForm />}
         {activeForm === "re-companies" && <RECompaniesForm />}
         {activeForm === "re-trainers-coaches" && <RETrainersForm />}
         {activeForm === "contact-us" && <ContactForm />}
