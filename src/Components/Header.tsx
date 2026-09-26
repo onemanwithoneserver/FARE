@@ -23,6 +23,7 @@ export default function Header({
     { value: "re-trainers-coaches", label: "RE Trainers" },
     { value: "contact-us", label: "Contact Us" },
     { value: "forms", label: "Forms" },
+    { value: "fare-for-employees", label: "FARE for Employees" },
   ];
   return (
     <header className="h-[60px] bg-white border-b border-[#e2e8f0] px-3 sm:px-4 md:px-6 flex items-center justify-between shrink-0 shadow-sm relative z-[100] gap-2 sm:gap-4 pointer-events-auto">

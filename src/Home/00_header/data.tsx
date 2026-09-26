@@ -17,6 +17,7 @@ export const dataEn = {
       ],
     },
     { title: "For Trainers", href: "re-trainers-coaches" },
+    { title: "FARE for Employees", href: "fare-for-employees" },
     {
       title: "For Learners",
       href: "#",
@@ -71,6 +72,7 @@ export const dataTe = {
       ],
     },
     { title: "ట్రైనర్ల కోసం", href: "re-trainers-coaches" },
+    { title: "FARE for Employees", href: "fare-for-employees" },
     {
       title: "అభ్యాసకుల కోసం",
       href: "#",
