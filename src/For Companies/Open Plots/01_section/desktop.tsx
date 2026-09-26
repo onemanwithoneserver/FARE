@@ -79,7 +79,7 @@ export default function Desktop() {
         }}
       />
 
-      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 py-6 lg:py-10 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0">
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-4 lg:pt-8 pb-8 lg:pb-12 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0">
         <motion.div
           variants={container}
           initial="hidden"
@@ -179,7 +179,7 @@ export default function Desktop() {
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end pl-0"
         >
-          <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[460px] xl:h-[480px] rounded-tl-[140px] sm:rounded-tl-[180px] lg:rounded-tl-[240px] xl:rounded-tl-[300px] rounded-bl-[20px] sm:rounded-bl-[28px] lg:rounded-bl-[36px] xl:rounded-bl-[48px] overflow-hidden shadow-[0_25px_70px_-15px_rgba(11,29,58,0.22)] border-l border-t border-b border-white/80 group">
+          <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] sm:rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden shadow-[0_25px_70px_-15px_rgba(11,29,58,0.22),0_10px_30px_-5px_rgba(0,0,0,0.06)] border-l border-t border-b border-white/80 group">
             <motion.img
               animate={{ scale: [1, 1.04, 1] }}
               transition={{
