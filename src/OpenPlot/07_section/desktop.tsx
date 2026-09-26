@@ -7,10 +7,12 @@ import { useState } from "react";
 import bgImage from "../../assets/bg-04.jpg";
 import Modal from "../../Forms/Modal";
 import OpenPlotForm from "../../Forms/Desktop/OpenPlotForm";
+import VideoModal from "../../Forms/VideoModal";
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const containerVariant: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -134,7 +136,7 @@ export default function Desktop() {
             <motion.button
               whileHover={{ backgroundColor: "rgba(11,29,58,0.05)" }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsVideoModalOpen(true)}
               className="bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[15px] px-10 py-4 rounded border border-[#0B1D3A]/15 hover:border-[#0B1D3A]/25 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
             >
               {data.buttons.secondary}
@@ -146,6 +148,10 @@ export default function Desktop() {
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <OpenPlotForm />
     </Modal>
+    <VideoModal
+      isOpen={isVideoModalOpen}
+      onClose={() => setIsVideoModalOpen(false)}
+    />
     </>
   );
 }

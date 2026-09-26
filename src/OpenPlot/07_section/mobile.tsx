@@ -7,10 +7,12 @@ import { useState } from "react";
 import bgImage from "../../assets/bg-04.jpg";
 import Modal from "../../Forms/Modal";
 import OpenPlotForm from "../../Forms/Mobile/OpenPlotForm";
+import VideoModal from "../../Forms/VideoModal";
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const containerVariant: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -116,7 +118,7 @@ export default function Mobile() {
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.98 }}
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsVideoModalOpen(true)}
               className="w-full bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[14px] py-4 rounded border border-[#0B1D3A]/15 transition-all duration-300 cursor-pointer backdrop-blur-sm"
             >
               {data.buttons.secondary}
@@ -128,6 +130,10 @@ export default function Mobile() {
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <OpenPlotForm />
     </Modal>
+    <VideoModal
+      isOpen={isVideoModalOpen}
+      onClose={() => setIsVideoModalOpen(false)}
+    />
     </>
   );
 }

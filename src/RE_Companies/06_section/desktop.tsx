@@ -6,12 +6,14 @@ import { ArrowRight, Check, Settings2, Sparkles } from "lucide-react";
 import { useState } from "react";
 import Modal from "../../Forms/Modal";
 import RECompaniesForm from "../../Forms/Desktop/RECompaniesForm";
+import VideoModal from "../../Forms/VideoModal";
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -125,7 +127,7 @@ export default function Desktop() {
                   />
                 </button>
                 {data.secondaryCtaButton && (
-                  <button className="bg-white/10 border border-white/20 text-white w-full py-4 rounded text-[14px] font-bold hover:bg-white/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out" onClick={() => setIsModalOpen(true)}>
+                  <button className="bg-white/10 border border-white/20 text-white w-full py-4 rounded text-[14px] font-bold hover:bg-white/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer" onClick={() => setIsVideoModalOpen(true)}>
                     {data.secondaryCtaButton}
                   </button>
                 )}
@@ -196,6 +198,10 @@ export default function Desktop() {
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <RECompaniesForm />
     </Modal>
+    <VideoModal
+      isOpen={isVideoModalOpen}
+      onClose={() => setIsVideoModalOpen(false)}
+    />
     </>
   );
 }

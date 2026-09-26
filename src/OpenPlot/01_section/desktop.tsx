@@ -7,6 +7,7 @@ import { getData } from "./data";
 import openplotHero from "../../assets/openplot_hero.jpg";
 import Modal from "../../Forms/Modal";
 import RECompaniesForm from "../../Forms/Desktop/RECompaniesForm";
+import VideoModal from "../../Forms/VideoModal";
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_LIGHT = "#E2C068";
@@ -14,6 +15,7 @@ export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -143,8 +145,8 @@ export default function Desktop() {
               </button>
               {data.buttons.secondary && (
                 <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="text-[13.5px] font-semibold px-7 py-3 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+                  onClick={() => setIsVideoModalOpen(true)}
+                  className="text-[13.5px] font-semibold px-7 py-3 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
                   style={{
                     color: NAVY,
                     borderColor: `${NAVY}15`,
@@ -261,6 +263,10 @@ export default function Desktop() {
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <RECompaniesForm />
     </Modal>
+    <VideoModal
+      isOpen={isVideoModalOpen}
+      onClose={() => setIsVideoModalOpen(false)}
+    />
     </>
   );
 }

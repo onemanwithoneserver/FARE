@@ -44,14 +44,14 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
               stiffness: 300,
               duration: 0.4,
             }}
-            className="relative w-full max-w-[800px] max-h-[90vh] overflow-y-auto bg-white rounded-[1.5rem] md:rounded-[2rem] shadow-2xl z-10 custom-scrollbar"
+            className="relative w-full max-w-[800px] max-h-[90vh] overflow-y-auto bg-white rounded-[4px] shadow-2xl z-10 custom-scrollbar"
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 flex items-center justify-center rounded-full bg-[#F8FAFD] hover:bg-[#EEF4FF] text-[#0B1D3A] transition-colors z-20 group border border-[#0B1D3A]/5 shadow-sm hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="absolute top-4 right-4 md:top-6 md:right-6 w-9 h-9 flex items-center justify-center rounded-[4px] bg-[#F8FAFD] hover:bg-[#EEF4FF] text-[#0B1D3A] transition-colors z-20 group border border-[#0B1D3A]/5 shadow-sm hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
             >
               <X
-                size={20}
+                size={18}
                 className="group-hover:rotate-90 transition-transform duration-300"
               />
             </button>

@@ -11,6 +11,7 @@ import {
 import React, { useState } from "react";
 import Modal from "../../Forms/Modal";
 import OpenPlotForm from "../../Forms/Desktop/OpenPlotForm";
+import VideoModal from "../../Forms/VideoModal";
 const NAVY = "#0B1D3A";
 const NAVY_DEEP = "#071A49";
 const GOLD = "#C99A2E";
@@ -18,6 +19,7 @@ export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -134,8 +136,8 @@ export default function Desktop() {
             className="flex flex-wrap items-center gap-4 mb-8"
           >
             <button
-              onClick={() => setIsModalOpen(true)}
-              className="group relative overflow-hidden text-white px-6 py-3 rounded text-[14px] font-bold hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.3)] active:scale-[0.98] transition-all duration-300 flex items-center gap-3"
+              onClick={() => setIsVideoModalOpen(true)}
+              className="group relative overflow-hidden text-white px-6 py-3 rounded text-[14px] font-bold hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.3)] active:scale-[0.98] transition-all duration-300 flex items-center gap-3 cursor-pointer"
               style={{
                 background: `linear-gradient(135deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)`,
               }}
@@ -273,6 +275,10 @@ export default function Desktop() {
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {isModalOpen && <OpenPlotForm />}
       </Modal>
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+      />
     </section>
   );
 }

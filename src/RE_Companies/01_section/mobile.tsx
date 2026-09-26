@@ -7,12 +7,14 @@ import { getData } from "./data";
 import reCompaniesHero from "../../assets/re_companies_hero.jpg";
 import Modal from "../../Forms/Modal";
 import RECompaniesForm from "../../Forms/Mobile/RECompaniesForm";
+import VideoModal from "../../Forms/VideoModal";
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -147,8 +149,8 @@ export default function Mobile() {
             </button>
             {data.buttons.secondary && (
               <button
-                onClick={() => setIsModalOpen(true)}
-                className="font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+                onClick={() => setIsVideoModalOpen(true)}
+                className="font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
                 style={{
                   color: NAVY,
                   borderColor: `${NAVY}15`,
@@ -241,6 +243,10 @@ export default function Mobile() {
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <RECompaniesForm />
     </Modal>
+    <VideoModal
+      isOpen={isVideoModalOpen}
+      onClose={() => setIsVideoModalOpen(false)}
+    />
     </>
   );
 }

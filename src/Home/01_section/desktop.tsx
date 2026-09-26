@@ -22,7 +22,8 @@ import {
 import logo from "../../Components/FARE_Logo/SVG/Primary Logo.svg";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
-import React from "react";
+import React, { useState } from "react";
+import VideoModal from "../../Forms/VideoModal";
 const NAVY = "#0B1D3A";
 const NAVY_DEEP = "#071A49";
 const NAVY_SURFACE = "#0D2654";
@@ -30,6 +31,7 @@ const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 const MUTED_BLUE = "#7B8DAA";
 export default function Desktop() {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const { language } = useLanguage();
   const data = getData(language);
   const container: Variants = {
@@ -137,7 +139,8 @@ export default function Desktop() {
               {data.buttons.primary} <ArrowRight size={15} strokeWidth={2.5} />
             </button>
             <button
-              className="text-[13.5px] font-semibold px-7 py-3.5 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              onClick={() => setIsVideoModalOpen(true)}
+              className="text-[13.5px] font-semibold px-7 py-3.5 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
               style={{
                 color: NAVY,
                 borderColor: `${NAVY}15`,
@@ -479,6 +482,10 @@ export default function Desktop() {
           </motion.div>
         </div>
       </div>
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+      />
     </section>
   );
 }

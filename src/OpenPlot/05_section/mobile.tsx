@@ -11,6 +11,7 @@ import {
 import React, { useState } from "react";
 import Modal from "../../Forms/Modal";
 import OpenPlotForm from "../../Forms/Mobile/OpenPlotForm";
+import VideoModal from "../../Forms/VideoModal";
 const NAVY = "#0B1D3A";
 const NAVY_DEEP = "#071A49";
 const GOLD = "#C99A2E";
@@ -18,6 +19,7 @@ export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -130,8 +132,8 @@ export default function Mobile() {
             className="flex flex-col gap-3 mb-6 w-full"
           >
             <button
-              onClick={() => setIsModalOpen(true)}
-              className="group relative overflow-hidden w-full text-white px-6 py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_8px_20px_-8px_rgba(11,29,58,0.25)]"
+              onClick={() => setIsVideoModalOpen(true)}
+              className="group relative overflow-hidden w-full text-white px-6 py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_8px_20px_-8px_rgba(11,29,58,0.25)] cursor-pointer"
               style={{
                 background: `linear-gradient(135deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)`,
               }}
@@ -217,6 +219,10 @@ export default function Mobile() {
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {isModalOpen && <OpenPlotForm />}
       </Modal>
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+      />
     </section>
   );
 }

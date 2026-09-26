@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
+import VideoModal from "../../Forms/VideoModal";
 import {
   CheckCircle2,
   ArrowRight,
@@ -26,6 +27,7 @@ const TAB_COLORS: Record<string, string> = {
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   return (
     <section
       className="w-full py-16 text-[#0B1D3A] relative font-['Outfit'] overflow-hidden"
@@ -260,7 +262,15 @@ export default function Desktop() {
                           (btn: string, idx: number) => (
                             <button
                               key={idx}
-                              className={`group relative overflow-hidden w-full py-4 px-6 rounded-lg text-[14px] font-bold transition-all duration-300 flex items-center justify-center gap-3 ${
+                              onClick={() => {
+                                if (
+                                  idx === 1 ||
+                                  btn.toLowerCase().includes("how it works")
+                                ) {
+                                  setIsVideoModalOpen(true);
+                                }
+                              }}
+                              className={`group relative overflow-hidden w-full py-4 px-6 rounded-lg text-[14px] font-bold transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer ${
                                 idx === 0
                                   ? "text-[#0B1D3A] shadow-lg active:scale-[0.98] bg-white hover:bg-[#F8FAFD]"
                                   : "text-white border border-white/20 hover:bg-white/10 active:scale-[0.98]"
@@ -284,6 +294,10 @@ export default function Desktop() {
           })}
         </div>
       </div>
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+      />
     </section>
   );
 }
