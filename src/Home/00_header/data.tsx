@@ -24,7 +24,7 @@ export const dataEn = {
       subItems: [
         {
           title: "Students & Freshers",
-          href: "#",
+          href: "fare-for-students-freshers",
         },
         {
           title: "Employees",
@@ -74,7 +74,7 @@ export const dataTe = {
       subItems: [
         {
           title: "విద్యార్థులు & ఫ్రెషర్స్",
-          href: "#",
+          href: "fare-for-students-freshers",
         },
         {
           title: "ఉద్యోగులు",

@@ -22,6 +22,7 @@ export default function Header({
     { value: "open-plots", label: "Open Plots" },
     { value: "re-trainers-coaches", label: "For Trainers" },
     { value: "fare-knowledge-bank", label: "Knowledge Bank" },
+    { value: "fare-for-students-freshers", label: "Students & Freshers" },
     { value: "fare-for-employees", label: "Employees" },
     { value: "fare-for-freelancers-open-plot", label: "Freelancers - Open Plot" },
     { value: "fare-for-freelancers-residential", label: "Freelancers - Residential" },

@@ -18,6 +18,7 @@ import FAREForEmployees from "./For Learners/Employees";
 import FAREForFreelancersOpenPlot from "./For Learners/Freelancers - Open Plot";
 import FAREForFreelancersResidential from "./For Learners/Freelancers - Residential";
 import FAREForCareerSwitchers from "./For Learners/Career Switchers";
+import FAREForStudentsFreshers from "./For Learners/Students & Freshers";
 import FAREKnowledgeBank from "./For Learners/Knowledge Bank";
 import TrainerDirectory from "./Trainer Directory";
 export default function App() {
@@ -111,6 +112,10 @@ export default function App() {
             <Route
               path="/:mode/fare-for-career-switchers"
               element={<FAREForCareerSwitchers isMobile={isMobile} />}
+            />
+            <Route
+              path="/:mode/fare-for-students-freshers"
+              element={<FAREForStudentsFreshers isMobile={isMobile} />}
             />
             <Route
               path="/:mode/fare-knowledge-bank"
