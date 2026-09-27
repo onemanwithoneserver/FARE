@@ -8,6 +8,8 @@ export default function Mobile() {
 
   return (
     <section className="w-full bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC] py-16 px-6 font-['Outfit'] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[60px] pointer-events-none" />
+      
       <div className="max-w-full mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -17,8 +19,8 @@ export default function Mobile() {
           className="text-center mb-10"
         >
           <div className="flex justify-center mb-3">
-            <span className="text-[#10B981] bg-[#ECFDF5] border border-[#A7F3D0] px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-1.5">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <span className="text-[#10B981] bg-[#ECFDF5] border border-[#A7F3D0] px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase flex items-center gap-1.5">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               The Transition
             </span>
           </div>
@@ -62,7 +64,7 @@ export default function Mobile() {
             {data.quotes.map((q, i) => (
               <div
                 key={i}
-                className="p-5 rounded-[4px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-white font-medium text-[13px] leading-relaxed"
+                className="p-5 rounded-[16px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-white font-medium text-[14px] leading-relaxed shadow-[0_8px_20px_rgba(11,29,58,0.1)] relative overflow-hidden"
               >
                 <span className="text-[#C99A2E] font-serif mr-1">“</span>
                 {q}

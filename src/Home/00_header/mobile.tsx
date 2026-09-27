@@ -10,11 +10,48 @@ import {
   Plus,
   Building2,
   MapPin,
+  GraduationCap,
+  Briefcase,
+  Home as HomeIcon,
+  RefreshCw,
   Globe,
   Check,
 } from "lucide-react";
 import logo from "../../Components/FARE_Logo/SVG/Primary Logo.svg";
 import { getData } from "./data";
+
+const subIconMap: Record<string, React.ElementType> = {
+  "Residential & Commercial": Building2,
+  "రెసిడెన్షియల్ & కమర్షియల్": Building2,
+  "Open Plots": MapPin,
+  "ఓపెన్ ప్లాట్స్": MapPin,
+  "Students & Freshers": GraduationCap,
+  "విద్యార్థులు & ఫ్రెషర్స్": GraduationCap,
+  Employees: Briefcase,
+  ఉద్యోగులు: Briefcase,
+  "Freelancers - Open Plot": MapPin,
+  "ఫ్రీలాన్సర్లు - ఓపెన్ ప్లాట్": MapPin,
+  "Freelancers - Residential": HomeIcon,
+  "ఫ్రీలాన్సర్లు - రెసిడెన్షియల్": HomeIcon,
+  "Career Switchers": RefreshCw,
+  "కెరీర్ స్విచ్చర్స్": RefreshCw,
+};
+const subColorMap: Record<string, string> = {
+  "Residential & Commercial": "#34D399",
+  "రెసిడెన్షియల్ & కమర్షియల్": "#34D399",
+  "Open Plots": "#E2C068",
+  "ఓపెన్ ప్లాట్స్": "#E2C068",
+  "Students & Freshers": "#E2C068",
+  "విద్యార్థులు & ఫ్రెషర్స్": "#E2C068",
+  Employees: "#60A5FA",
+  ఉద్యోగులు: "#60A5FA",
+  "Freelancers - Open Plot": "#34D399",
+  "ఫ్రీలాన్సర్లు - ఓపెన్ ప్లాట్": "#34D399",
+  "Freelancers - Residential": "#A78BFA",
+  "ఫ్రీలాన్సర్లు - రెసిడెన్షియల్": "#A78BFA",
+  "Career Switchers": "#F472B6",
+  "కెరీర్ స్విచ్చర్స్": "#F472B6",
+};
 export default function Mobile() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -383,6 +420,9 @@ export default function Mobile() {
                                     sub.title,
                                   );
                                   const isSubActive = currentRoute === subRoute;
+                                  const SubIcon = subIconMap[sub.title] ?? MapPin;
+                                  const subColor = subColorMap[sub.title] ?? "#E2C068";
+                                  
                                   return (
                                     <a
                                       key={sIdx}
@@ -408,23 +448,13 @@ export default function Mobile() {
                                     >
                                       <div className="flex items-center gap-2.5 min-w-0">
                                         <div
-                                          className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 shadow-sm ${
-                                            sIdx === 0
-                                              ? "bg-[#10B981]/20 text-[#34D399]"
-                                              : "bg-[#C99A2E]/20 text-[#E2C068]"
-                                          }`}
+                                          className="w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 shadow-sm"
+                                          style={{
+                                            backgroundColor: `${subColor}33`,
+                                            color: subColor,
+                                          }}
                                         >
-                                          {sIdx === 0 ? (
-                                            <Building2
-                                              size={16}
-                                              strokeWidth={2.2}
-                                            />
-                                          ) : (
-                                            <MapPin
-                                              size={16}
-                                              strokeWidth={2.2}
-                                            />
-                                          )}
+                                          <SubIcon size={16} strokeWidth={2.2} />
                                         </div>
                                         <span
                                           className={`text-[13.5px] font-bold transition-colors truncate ${

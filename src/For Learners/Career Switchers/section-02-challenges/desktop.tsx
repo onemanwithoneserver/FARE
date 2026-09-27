@@ -89,7 +89,7 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="p-6 rounded-[4px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-white font-medium text-[15px] leading-relaxed relative overflow-hidden"
+                className="p-6 rounded-[16px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-white font-medium text-[15px] leading-relaxed relative overflow-hidden shadow-[0_8px_24px_rgba(11,29,58,0.12)]"
               >
                 <span className="text-[#C99A2E] text-2xl font-serif mr-2">“</span>
                 {q}
