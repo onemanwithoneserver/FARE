@@ -2,7 +2,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Mail, Phone } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import logo from "../../Components/FARE_Logo/SVG/Primary Logo.svg";
@@ -60,7 +59,7 @@ export default function Mobile() {
   return (
     <>
       <footer
-        className="w-full text-white pt-8 pb-6 px-6 font-['Outfit'] relative overflow-hidden"
+        className="w-full text-white pt-6 pb-6 px-6 font-['Outfit'] relative overflow-hidden"
         style={{
           background: "linear-gradient(180deg, #040C1E 0%, #030816 100%)",
           borderTop: "1px solid rgba(255, 255, 255, 0.07)",
@@ -76,10 +75,10 @@ export default function Mobile() {
           viewport={{ once: false, amount: 0.1 }}
           className="w-full mx-auto relative z-10 flex flex-col gap-8"
         >
-          <motion.div variants={itemVariants} className="flex flex-col items-center sm:items-start gap-5">
+          <motion.div variants={itemVariants} className="flex flex-col items-center sm:items-start w-full">
             <div
               onClick={() => handleNavigation("home")}
-              className="cursor-pointer group inline-block"
+              className="cursor-pointer group inline-block -mt-10 -mb-8"
             >
               <motion.img
                 src={logo}
@@ -87,31 +86,32 @@ export default function Mobile() {
                 whileHover={{
                   scale: 1.05,
                   opacity: 1,
-                  filter: "drop-shadow(0 0 20px rgba(201,154,46,0.4))",
+                  filter: "drop-shadow(0 0 12px rgba(201,154,46,0.3))",
                 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.25 }}
-                className="h-[200px] w-auto brightness-0 invert opacity-90 transition-all duration-300"
+                className="w-[150px] h-auto brightness-0 invert opacity-90 transition-all duration-300"
               />
             </div>
-            <p className="text-[13.5px] text-white/60 leading-relaxed text-center sm:text-left max-w-[280px]">
-              Empowering real estate professionals with industry-standard benchmarks and tools.
-            </p>
-            <div className="flex flex-col items-center sm:items-start gap-2.5 mt-2">
-              <a href="mailto:contact@fare.com" className="flex items-center gap-3 text-white/60 hover:text-[#E2C068] transition-colors text-[13px] font-medium group">
-                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#E2C068]/10 transition-colors">
-                  <Mail size={14} strokeWidth={2} />
-                </div>
-                contact@fare.com
+
+
+            
+            
+            <div className="w-full h-px bg-white/10 mb-5" />
+            
+            <h4 className="text-[16px] font-serif text-[#E2C068] mb-3">Contact FARE</h4>
+            
+            <div className="flex flex-col items-center sm:items-start gap-2.5 mb-5 w-full">
+              <a href="#contact" className="text-[13.5px] font-bold text-white hover:text-[#E2C068] transition-colors flex items-center gap-1.5 w-fit">
+                Contact us <span className="text-[11px] font-normal leading-none">↗</span>
               </a>
-              <a href="tel:+1234567890" className="flex items-center gap-3 text-white/60 hover:text-[#E2C068] transition-colors text-[13px] font-medium group">
-                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#E2C068]/10 transition-colors">
-                  <Phone size={14} strokeWidth={2} />
-                </div>
-                +1 (234) 567-890
+              
+              <a href="mailto:hello@yardstack.in" className="text-[13px] text-white/60 hover:text-[#E2C068] transition-colors w-fit">
+                hello@yardstack.in
               </a>
             </div>
-            <div className="flex items-center gap-3 mt-3">
+
+            <div className="flex items-center gap-3">
               {data.socialLinks?.map((social, idx) => {
                 const Icon = 
                   social.name === "Facebook" ? FacebookIcon :
@@ -128,7 +128,7 @@ export default function Mobile() {
                     rel="noopener noreferrer"
                     whileHover={{ y: -2, scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-9 h-9 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-[#C99A2E]/20 hover:border-[#C99A2E]/40 hover:shadow-[0_0_12px_rgba(201,154,46,0.25)] transition-all duration-300"
+                    className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-[#C99A2E]/20 transition-all duration-300"
                   >
                     <Icon />
                   </motion.a>
@@ -140,7 +140,7 @@ export default function Mobile() {
           <div className="flex flex-col sm:flex-row flex-wrap gap-x-6 gap-y-8">
             {data.footerGroups.map((group, gIdx) => (
               <motion.div key={gIdx} variants={itemVariants} className="flex flex-col min-w-[140px] flex-1">
-                <h4 className="text-[14px] font-bold text-[#E2C068] mb-3 tracking-wide">
+                <h4 className="text-[16px] font-serif text-[#E2C068] mb-4 tracking-wide">
                   {group.title}
                 </h4>
                 <div className="flex flex-col gap-3">

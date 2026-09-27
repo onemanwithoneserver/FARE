@@ -2,7 +2,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Mail, Phone } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import logo from "../../Components/FARE_Logo/SVG/Primary Logo.svg";
@@ -60,7 +59,7 @@ export default function Desktop() {
   return (
     <>
       <footer
-        className="w-full text-white pt-10 pb-6 px-8 lg:px-12 font-['Outfit'] relative overflow-hidden"
+        className="w-full text-white pt-6 pb-6 px-8 lg:px-12 font-['Outfit'] relative overflow-hidden"
         style={{
           background: "linear-gradient(180deg, #040C1E 0%, #030816 100%)",
           borderTop: "1px solid rgba(255, 255, 255, 0.07)",
@@ -75,12 +74,12 @@ export default function Desktop() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: false, amount: 0.1 }}
-          className="max-w-[1320px] w-full mx-auto relative z-10 flex flex-col lg:flex-row justify-between gap-8"
+          className="max-w-[1200px] w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16"
         >
-          <motion.div variants={itemVariants} className="flex flex-col items-start gap-5 max-w-sm">
+          <motion.div variants={itemVariants} className="flex flex-col items-start lg:col-span-4 xl:col-span-3">
             <div
               onClick={() => handleNavigation("home")}
-              className="cursor-pointer group inline-block"
+              className="cursor-pointer group inline-block -mt-12 -mb-10"
             >
               <motion.img
                 src={logo}
@@ -88,31 +87,29 @@ export default function Desktop() {
                 whileHover={{
                   scale: 1.05,
                   opacity: 1,
-                  filter: "drop-shadow(0 0 20px rgba(201,154,46,0.4))",
+                  filter: "drop-shadow(0 0 12px rgba(201,154,46,0.3))",
                 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.25 }}
-                className="h-[240px] w-auto brightness-0 invert opacity-90 transition-all duration-300"
+                className="w-[180px] h-auto brightness-0 invert opacity-90 transition-all duration-300"
               />
             </div>
-            <p className="text-[14px] text-white/60 leading-relaxed">
-              Empowering real estate professionals with industry-standard benchmarks, tools, and direct networking opportunities.
-            </p>
-            <div className="flex flex-col gap-2.5 mt-2">
-              <a href="mailto:contact@fare.com" className="flex items-center gap-3 text-white/60 hover:text-[#E2C068] transition-colors text-[13.5px] font-medium group">
-                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#E2C068]/10 transition-colors">
-                  <Mail size={15} strokeWidth={2} />
-                </div>
-                contact@fare.com
+
+            <div className="w-full h-px bg-white/10 mb-5" />
+            
+            <h4 className="text-[17px] font-serif text-[#E2C068] mb-3">Contact FARE</h4>
+            
+            <div className="flex flex-col gap-2.5 mb-5">
+              <a href="#contact" className="text-[14px] font-bold text-white hover:text-[#E2C068] transition-colors flex items-center gap-1.5 w-fit">
+                Contact us <span className="text-[12px] font-normal leading-none">↗</span>
               </a>
-              <a href="tel:+1234567890" className="flex items-center gap-3 text-white/60 hover:text-[#E2C068] transition-colors text-[13.5px] font-medium group">
-                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#E2C068]/10 transition-colors">
-                  <Phone size={15} strokeWidth={2} />
-                </div>
-                +1 (234) 567-890
+              
+              <a href="mailto:hello@yardstack.in" className="text-[13.5px] text-white/60 hover:text-[#E2C068] transition-colors w-fit">
+                hello@yardstack.in
               </a>
             </div>
-            <div className="flex items-center gap-3 mt-3">
+
+            <div className="flex items-center gap-3">
               {data.socialLinks?.map((social, idx) => {
                 const Icon = 
                   social.name === "Facebook" ? FacebookIcon :
@@ -127,9 +124,9 @@ export default function Desktop() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ y: -3, scale: 1.1 }}
+                    whileHover={{ y: -2, scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-[#C99A2E]/20 hover:border-[#C99A2E]/40 hover:shadow-[0_0_15px_rgba(201,154,46,0.3)] transition-all duration-300"
+                    className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-[#C99A2E]/20 transition-all duration-300"
                   >
                     <Icon />
                   </motion.a>
@@ -138,10 +135,10 @@ export default function Desktop() {
             </div>
           </motion.div>
 
-          <div className="flex-1 flex flex-wrap justify-between lg:justify-end gap-8 lg:gap-12 xl:gap-16">
+          <div className="lg:col-span-8 xl:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-8">
             {data.footerGroups.map((group, gIdx) => (
-              <motion.div key={gIdx} variants={itemVariants} className="flex flex-col min-w-[140px]">
-                <h4 className="text-[15px] font-bold text-[#E2C068] mb-4 tracking-wide">
+              <motion.div key={gIdx} variants={itemVariants} className="flex flex-col">
+                <h4 className="text-[17px] font-serif text-[#E2C068] mb-6 tracking-wide">
                   {group.title}
                 </h4>
                 <div className="flex flex-col gap-3.5">
@@ -179,7 +176,7 @@ export default function Desktop() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="max-w-[1320px] w-full mx-auto relative z-10 mt-10 pt-5 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4"
+          className="max-w-[1200px] w-full mx-auto relative z-10 mt-12 pt-5 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <span className="text-[13px] font-medium text-white/40">
             {data.copyright.replace("{year}", new Date().getFullYear().toString())}
