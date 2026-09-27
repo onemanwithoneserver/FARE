@@ -25,8 +25,8 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-[#FFF5F5] py-24 px-10 font-['Outfit'] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#EF4444]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />
+    <section className="w-full bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC] py-24 px-10 font-['Outfit'] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[100px] pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
@@ -37,8 +37,8 @@ export default function Desktop() {
           className="text-center mb-16"
         >
           <div className="flex justify-center mb-4">
-            <span className="text-[#EF4444] bg-[#FEF2F2] border border-[#FECACA] px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase flex items-center gap-1.5">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span className="text-[#10B981] bg-[#ECFDF5] border border-[#A7F3D0] px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase flex items-center gap-1.5">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               The Transition
             </span>
           </div>
@@ -62,9 +62,9 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-7 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.03)] hover:shadow-[0_12px_28px_rgba(11,29,58,0.08)] hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
+                className="bg-white p-7 rounded-[12px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.03)] hover:shadow-[0_12px_28px_rgba(11,29,58,0.08)] hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
               >
-                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-105 transition-transform duration-300`}>
+                <div className={`w-12 h-12 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-105 transition-transform duration-300`}>
                   <Icon size={22} className="text-white" strokeWidth={2.5} />
                 </div>
                 

@@ -9,7 +9,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-[#F8FAFD] py-16 px-6 font-['Outfit']">
+    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-16 px-6 font-['Outfit']">
       <div className="max-w-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -37,10 +37,10 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5 }}
-                className="bg-white p-5 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_2px_12px_rgba(11,29,58,0.03)]"
+                className="bg-white p-5 rounded-[12px] border border-[#E2E8F0]/80 shadow-[0_2px_12px_rgba(11,29,58,0.03)]"
               >
                 <div className="flex items-center gap-3.5 mb-4 border-b border-[#F1F5F9] pb-3.5">
-                  <div className={`w-10 h-10 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
+                  <div className={`w-10 h-10 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
                     <Icon size={18} className="text-white" strokeWidth={2.5} />
                   </div>
                   <div>

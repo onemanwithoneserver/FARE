@@ -25,7 +25,7 @@ export default function Mobile() {
   };
 
   return (
-    <section className="w-full bg-white py-16 px-5 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-5 font-['Outfit'] relative overflow-hidden">
       <div className="absolute inset-0 bg-[#F8FAFD]/50 pointer-events-none" />
       <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[60px] pointer-events-none" />
       

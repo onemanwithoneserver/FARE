@@ -10,7 +10,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-[#F8FAFD] py-16 px-6 font-['Outfit']">
+    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-16 px-6 font-['Outfit']">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ export default function Mobile() {
             return (
               <div
                 key={i}
-                className="bg-white p-6 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_2px_8px_rgba(11,29,58,0.03)]"
+                className="bg-white p-6 rounded-[12px] border border-[#E2E8F0]/80 shadow-[0_2px_8px_rgba(11,29,58,0.03)]"
               >
                 <div
                   className={`w-10 h-10 rounded-[4px] flex items-center justify-center mb-4 bg-gradient-to-br ${colorGradient} shadow-sm`}

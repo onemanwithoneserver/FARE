@@ -25,7 +25,7 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-white py-24 px-10 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden">
       <div className="absolute inset-0 bg-[#F8FAFD]/50 pointer-events-none" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[80px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#0B1D3A]/[0.02] to-transparent rounded-full blur-[60px] pointer-events-none" />

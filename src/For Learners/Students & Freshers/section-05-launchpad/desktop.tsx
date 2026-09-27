@@ -28,7 +28,7 @@ export default function Desktop() {
 
   return (
     <section className="w-full bg-[#0B1D3A] py-24 px-10 font-['Outfit'] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: "32px 32px" }} />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.1] to-transparent rounded-full blur-[80px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#38BDF8]/[0.05] to-transparent rounded-full blur-[60px] pointer-events-none" />
       

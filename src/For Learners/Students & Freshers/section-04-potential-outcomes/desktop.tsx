@@ -27,8 +27,8 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-white py-24 px-10 font-['Outfit'] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.015] pointer-events-none mix-blend-multiply" />
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.025] pointer-events-none" style={{ backgroundImage: `linear-gradient(#0B1D3A 1px, transparent 1px), linear-gradient(90deg, #0B1D3A 1px, transparent 1px)`, backgroundSize: "40px 40px" }} />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div

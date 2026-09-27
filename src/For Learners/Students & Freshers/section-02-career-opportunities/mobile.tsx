@@ -26,7 +26,7 @@ export default function Mobile() {
   };
 
   return (
-    <section className="w-full bg-white py-16 px-5 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-5 font-['Outfit'] relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none" />
       
       <div className="max-w-[480px] mx-auto relative z-10">
@@ -56,7 +56,7 @@ export default function Mobile() {
             <motion.div
               key={i}
               variants={item}
-              className="bg-white p-6 rounded-xl shadow-[0_4px_20px_rgba(11,29,58,0.04)] border border-[#E2E8F0]/80 flex flex-col"
+              className="bg-gradient-to-br from-white to-[#FAFBFF] p-6 rounded-[16px] shadow-[0_4px_20px_rgba(11,29,58,0.05)] border border-[#E2E8F0]/50 flex flex-col"
             >
               <div className="flex items-center gap-3 mb-5">
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-gradient-to-br ${i === 0 ? "from-[#38BDF8] to-[#0284C7]" : "from-[#F472B6] to-[#DB2777]"} shadow-sm`}>
@@ -101,7 +101,7 @@ export default function Mobile() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center"
         >
-          <div className="bg-white px-6 py-5 rounded-xl border border-[#E2E8F0]/80 shadow-[0_4px_20px_rgba(11,29,58,0.04)]">
+          <div className="bg-gradient-to-br from-white to-[#FAFBFF] px-6 py-5 rounded-[16px] border border-[#E2E8F0]/50 shadow-[0_4px_20px_rgba(11,29,58,0.05)]">
             <p className="text-[17px] font-black text-[#0B1D3A] whitespace-pre-wrap leading-relaxed tracking-tight">
               {data.closing}
             </p>

@@ -10,7 +10,7 @@ export default function Desktop() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-[#F8FAFD] py-32 px-10 font-['Outfit'] relative overflow-hidden flex items-center justify-center">
+    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-32 px-10 font-['Outfit'] relative overflow-hidden flex items-center justify-center">
 
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#0B1D3A]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />

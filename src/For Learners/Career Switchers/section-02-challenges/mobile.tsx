@@ -7,7 +7,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-[#FFF5F5] py-16 px-6 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC] py-16 px-6 font-['Outfit'] relative overflow-hidden">
       <div className="max-w-full mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -17,8 +17,8 @@ export default function Mobile() {
           className="text-center mb-10"
         >
           <div className="flex justify-center mb-3">
-            <span className="text-[#EF4444] bg-[#FEF2F2] border border-[#FECACA] px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-1.5">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span className="text-[#10B981] bg-[#ECFDF5] border border-[#A7F3D0] px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-1.5">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               The Transition
             </span>
           </div>
@@ -39,9 +39,9 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-white p-5 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_8px_rgba(11,29,58,0.03)] flex flex-col"
+                className="bg-white p-5 rounded-[12px] border border-[#E2E8F0] shadow-[0_2px_8px_rgba(11,29,58,0.03)] flex flex-col"
               >
-                <div className={`w-11 h-11 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-4`}>
+                <div className={`w-11 h-11 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-4`}>
                   <Icon size={20} className="text-white" strokeWidth={2.5} />
                 </div>
                 

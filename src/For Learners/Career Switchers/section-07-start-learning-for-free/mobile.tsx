@@ -40,10 +40,10 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white/[0.04] backdrop-blur-md p-6 rounded-[4px] border border-white/10 flex flex-col justify-between"
+                className="bg-white/[0.04] backdrop-blur-md p-6 rounded-[12px] border border-white/10 flex flex-col justify-between"
               >
                 <div>
-                  <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-4`}>
+                  <div className={`w-12 h-12 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-4`}>
                     <Icon size={24} className="text-white" strokeWidth={2.5} />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2 tracking-wide">
@@ -55,7 +55,7 @@ export default function Mobile() {
                 </div>
 
                 <button 
-                  className={`w-full py-3.5 px-5 rounded-[4px] font-bold text-[14px] flex items-center justify-center gap-2 shadow-md ${
+                  className={`w-full py-3.5 px-5 rounded-[8px] font-bold text-[14px] flex items-center justify-center gap-2 shadow-md ${
                     i === 0 
                       ? "bg-[#22C55E] text-white active:bg-[#16A34A]" 
                       : "bg-[#C99A2E] text-[#0B1D3A] active:bg-[#B8892A]"

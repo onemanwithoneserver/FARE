@@ -29,7 +29,7 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-white py-24 px-10 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-[60%] bg-[#0B1D3A] rounded-b-[40px] pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
@@ -89,7 +89,7 @@ export default function Desktop() {
               </ul>
               
               <button
-                className={`w-full py-4 rounded-[4px] font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
+                className={`w-full py-4 rounded-[8px] font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
                   plan.bestValue 
                     ? "bg-[#0B1D3A] text-white hover:shadow-[0_8px_20px_rgba(11,29,58,0.2)]" 
                     : "bg-[#F8FAFD] text-[#0B1D3A] border border-[#E2E8F0] hover:border-[#0B1D3A]/20 hover:bg-white"

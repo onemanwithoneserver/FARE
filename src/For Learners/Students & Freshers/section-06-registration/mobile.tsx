@@ -10,7 +10,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-[#F8FAFD] py-20 px-5 font-['Outfit'] relative overflow-hidden flex items-center justify-center">
+    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-20 px-5 font-['Outfit'] relative overflow-hidden flex items-center justify-center">
       <div className="w-full max-w-[480px] mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

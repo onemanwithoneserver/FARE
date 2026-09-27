@@ -8,7 +8,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-[#F8FAFD] py-16 px-6 font-['Outfit']">
+    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-16 px-6 font-['Outfit']">
       <div className="max-w-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -29,11 +29,11 @@ export default function Mobile() {
             </p>
             
             <div className="flex flex-col gap-3.5 mb-8">
-              <button className="w-full py-4 px-6 bg-[#C99A2E] text-[#0B1D3A] rounded-[4px] font-bold text-[14px] flex items-center justify-center gap-2 active:bg-[#B8892A] shadow-md">
+              <button className="w-full py-4 px-6 bg-[#C99A2E] text-[#0B1D3A] rounded-[8px] font-bold text-[14px] flex items-center justify-center gap-2 active:bg-[#B8892A] shadow-md">
                 <FileText size={18} strokeWidth={2.5} />
                 {data.buttons.primary}
               </button>
-              <button className="w-full py-4 px-6 bg-white/10 text-white rounded-[4px] font-bold text-[14px] border border-white/20 flex items-center justify-center gap-2 active:bg-white/20">
+              <button className="w-full py-4 px-6 bg-white/10 text-white rounded-[8px] font-bold text-[14px] border border-white/20 flex items-center justify-center gap-2 active:bg-white/20">
                 {data.buttons.secondary}
                 <ArrowRight size={18} strokeWidth={2.5} />
               </button>

@@ -9,7 +9,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-white py-16 px-6 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-6 font-['Outfit'] relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-[#F8FAFD] to-transparent pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto text-center relative z-10">

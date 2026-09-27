@@ -27,8 +27,8 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-white py-24 px-10 font-['Outfit'] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.015] pointer-events-none mix-blend-multiply" />
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.025] pointer-events-none" style={{ backgroundImage: `linear-gradient(#0B1D3A 1px, transparent 1px), linear-gradient(90deg, #0B1D3A 1px, transparent 1px)`, backgroundSize: "40px 40px" }} />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
@@ -57,12 +57,12 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-[#F8FAFD] p-8 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.02)] hover:shadow-[0_12px_32px_rgba(11,29,58,0.06)] hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full relative overflow-hidden"
+                className="bg-[#F8FAFD] p-8 rounded-[12px] border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.02)] hover:shadow-[0_12px_32px_rgba(11,29,58,0.06)] hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-current to-transparent opacity-[0.03] translate-x-1/3 -translate-y-1/3 rounded-full pointer-events-none" style={{ color: NAVY }} />
                 
                 <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-14 h-14 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md shrink-0 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon size={26} className="text-white" strokeWidth={2.5} />
                   </div>
                   <div>

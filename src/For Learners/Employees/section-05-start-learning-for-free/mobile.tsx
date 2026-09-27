@@ -40,9 +40,9 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white/5 backdrop-blur-sm p-6 rounded-[4px] border border-white/10 flex flex-col items-center text-center"
+                className="bg-white/5 backdrop-blur-sm p-6 rounded-[12px] border border-white/10 flex flex-col items-center text-center"
               >
-                <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-5`}>
+                <div className={`w-14 h-14 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-5`}>
                   <Icon size={26} className="text-white" strokeWidth={2.5} />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-3 tracking-wider uppercase">

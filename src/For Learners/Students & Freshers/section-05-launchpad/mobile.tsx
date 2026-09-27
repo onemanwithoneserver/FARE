@@ -28,7 +28,7 @@ export default function Mobile() {
 
   return (
     <section className="w-full bg-[#0B1D3A] py-16 px-5 font-['Outfit'] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: "32px 32px" }} />
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.1] to-transparent rounded-full blur-[60px] pointer-events-none" />
       
       <div className="max-w-[480px] mx-auto relative z-10">

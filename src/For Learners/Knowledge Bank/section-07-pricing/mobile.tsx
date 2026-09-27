@@ -10,7 +10,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-white py-16 px-6 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-6 font-['Outfit'] relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-[55%] bg-[#0B1D3A] rounded-b-[30px] pointer-events-none" />
       
       <div className="max-w-full mx-auto relative z-10">
@@ -40,7 +40,7 @@ export default function Mobile() {
               className={`relative bg-white rounded-[4px] p-6 flex flex-col hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${
                 plan.bestValue 
                   ? "border-2 border-[#C99A2E] shadow-[0_12px_24px_rgba(11,29,58,0.1)]" 
-                  : "border border-[#E2E8F0] shadow-[0_4px_12px_rgba(11,29,58,0.04)]"
+                  : "border border-[#E2E8F0] shadow-[0_6px_20px_rgba(11,29,58,0.05)]"
               }`}
             >
               {plan.bestValue && (
@@ -67,7 +67,7 @@ export default function Mobile() {
               </ul>
               
               <button
-                className={`w-full py-3.5 rounded-[4px] font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
+                className={`w-full py-3.5 rounded-[8px] font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
                   plan.bestValue 
                     ? "bg-[#0B1D3A] text-white shadow-md" 
                     : "bg-[#F8FAFD] text-[#0B1D3A] border border-[#E2E8F0]"

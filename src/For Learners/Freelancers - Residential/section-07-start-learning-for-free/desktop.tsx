@@ -65,10 +65,10 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white/[0.04] backdrop-blur-md p-8 lg:p-10 rounded-[4px] border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:border-[#C99A2E]/50 hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white/[0.04] backdrop-blur-md p-8 lg:p-10 rounded-[12px] border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:border-[#C99A2E]/50 hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-lg mb-6 group-hover:scale-105 transition-transform duration-300`}>
+                  <div className={`w-14 h-14 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-lg mb-6 group-hover:scale-105 transition-transform duration-300`}>
                     <Icon size={28} className="text-white" strokeWidth={2.5} />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">
@@ -80,7 +80,7 @@ export default function Desktop() {
                 </div>
 
                 <button 
-                  className={`w-full py-4 px-6 rounded-[4px] font-bold text-[15px] flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
+                  className={`w-full py-4 px-6 rounded-[8px] font-bold text-[15px] flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
                     i === 0 
                       ? "bg-[#22C55E] text-white hover:bg-[#16A34A] hover:shadow-[0_8px_20px_rgba(34,197,94,0.3)]" 
                       : "bg-[#C99A2E] text-[#0B1D3A] hover:bg-[#B8892A] hover:shadow-[0_8px_20px_rgba(201,154,46,0.3)]"

@@ -16,7 +16,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-[#FFF5F5] py-16 px-6 font-['Outfit']">
+    <section className="w-full bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC] py-16 px-6 font-['Outfit']">
       <div className="max-w-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -45,7 +45,7 @@ export default function Mobile() {
                 className="bg-white p-6 rounded-[4px] shadow-[0_2px_12px_rgba(11,29,58,0.03)] border border-[#E2E8F0]/80"
               >
                 <div className="flex items-center gap-3.5 mb-3.5">
-                  <div className={`w-10 h-10 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
+                  <div className={`w-10 h-10 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
                     <Icon size={18} className="text-white" strokeWidth={2.5} />
                   </div>
                   <h3 className="text-[16px] font-bold text-[#0B1D3A] leading-tight">{c.title}</h3>
@@ -63,7 +63,7 @@ export default function Mobile() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <div className="bg-white p-5 rounded-[4px] shadow-sm border border-[#E2E8F0]/80">
+          <div className="bg-white p-5 rounded-[10px] shadow-sm border border-[#E2E8F0]/80">
             <p className="text-[15px] font-bold text-[#0B1D3A] whitespace-pre-wrap leading-relaxed">
               {data.closing}
             </p>

@@ -32,7 +32,7 @@ export default function Desktop() {
     <section
       className="w-full flex items-center justify-between overflow-x-clip relative font-['Outfit']"
       style={{
-        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 40%, #EDF4FF 75%, #F0F4FF 100%)`,
+        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
       }}
     >
       <motion.div
@@ -46,7 +46,7 @@ export default function Desktop() {
         className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
       />
       <div
-        className="absolute inset-0 opacity-[0.012] pointer-events-none z-0"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
         style={{
           backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
@@ -67,7 +67,7 @@ export default function Desktop() {
           >
             <Sparkles size={12} className="text-[#C99A2E]" strokeWidth={2.5} />
             <span className="font-bold text-[11px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">
-              {data.badge}
+              ✨ {data.badge}
             </span>
           </motion.div>
 
@@ -88,17 +88,17 @@ export default function Desktop() {
 
           <motion.div variants={item} className="flex items-center gap-4 mb-5">
             <button
-              className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[4px] flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[8px] flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
               style={{
                 background: NAVY,
                 boxShadow: `0 4px 16px rgba(11,29,58,0.2), 0 2px 4px rgba(0,0,0,0.1)`,
               }}
             >
-              {data.buttons.primary}
+              🚀 {data.buttons.primary}
               <ArrowRight size={15} strokeWidth={2.5} />
             </button>
             <button
-              className="text-[14px] font-semibold px-7 py-3.5 rounded-[4px] border border-[#0B1D3A]/15 bg-white hover:bg-[#F8FAFD] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="text-[14px] font-semibold px-7 py-3.5 rounded-[8px] border border-[#0B1D3A]/15 bg-white hover:bg-[#F8FAFD] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
               style={{ color: NAVY }}
             >
               {data.buttons.secondary}

@@ -26,7 +26,7 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-white py-24 px-10 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
@@ -56,7 +56,7 @@ export default function Desktop() {
             <motion.div
               key={i}
               variants={item}
-              className="bg-white p-8 rounded-xl shadow-[0_8px_30px_rgba(11,29,58,0.04)] border border-[#E2E8F0]/80 hover:shadow-[0_20px_40px_rgba(11,29,58,0.08)] transition-all duration-300 flex flex-col h-full"
+              className="bg-gradient-to-br from-white to-[#FAFBFF] p-8 rounded-[16px] shadow-[0_8px_30px_rgba(11,29,58,0.05)] border border-[#E2E8F0]/50 hover:shadow-[0_24px_48px_rgba(11,29,58,0.1)] hover:border-[#C99A2E]/20 transition-all duration-300 flex flex-col h-full"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-gradient-to-br ${i === 0 ? "from-[#38BDF8] to-[#0284C7]" : "from-[#F472B6] to-[#DB2777]"} shadow-sm`}>
@@ -101,7 +101,7 @@ export default function Desktop() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <div className="inline-block bg-white px-10 py-6 rounded-xl border border-[#E2E8F0]/80 shadow-[0_8px_30px_rgba(11,29,58,0.04)] relative overflow-hidden group hover:border-[#C99A2E]/40 transition-colors duration-300">
+          <div className="inline-block bg-gradient-to-br from-white to-[#FAFBFF] px-10 py-6 rounded-[16px] border border-[#E2E8F0]/50 shadow-[0_8px_30px_rgba(11,29,58,0.04)] relative overflow-hidden group hover:border-[#C99A2E]/40 transition-colors duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <p className="text-[20px] font-black text-[#0B1D3A] whitespace-pre-wrap leading-relaxed relative z-10 tracking-tight">
               {data.closing}

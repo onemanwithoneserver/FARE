@@ -27,7 +27,7 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-white py-24 px-10 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden">
       <div className="max-w-[1200px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,9 +58,9 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-[#F8FAFD] p-7 rounded-[4px] border border-[#E2E8F0] hover:shadow-[0_12px_32px_rgba(11,29,58,0.06)] hover:-translate-y-1 transition-all duration-300 group"
+                className="bg-[#F8FAFD] p-7 rounded-[12px] border border-[#E2E8F0] hover:shadow-[0_12px_32px_rgba(11,29,58,0.06)] hover:-translate-y-1 transition-all duration-300 group"
               >
-                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-12 h-12 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5 group-hover:scale-110 transition-transform duration-300`}>
                   <Icon size={22} className="text-white" strokeWidth={2.5} />
                 </div>
                 <h3 className="text-xl font-bold mb-3 leading-snug" style={{ color: NAVY }}>
