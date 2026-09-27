@@ -24,7 +24,7 @@ export const dataEn = {
       subItems: [
         {
           title: "Students & Freshers",
-          href: "fare-knowledge-bank",
+          href: "#",
         },
         {
           title: "Employees",
@@ -45,7 +45,7 @@ export const dataEn = {
       ],
     },
     { title: "Trainer Directory", href: "trainer-directory" },
-    { title: "About", href: "#" },
+    { title: "Knowledge Bank", href: "fare-knowledge-bank" },
     { title: "Contact Us", href: "contact-us" },
   ],
 };
@@ -74,7 +74,7 @@ export const dataTe = {
       subItems: [
         {
           title: "విద్యార్థులు & ఫ్రెషర్స్",
-          href: "fare-knowledge-bank",
+          href: "#",
         },
         {
           title: "ఉద్యోగులు",
@@ -95,7 +95,7 @@ export const dataTe = {
       ],
     },
     { title: "ట్రైనర్ డైరెక్టరీ", href: "trainer-directory" },
-    { title: "మా గురించి", href: "#" },
+    { title: "నాలెడ్జ్ బ్యాంక్", href: "fare-knowledge-bank" },
     { title: "సంప్రదించండి", href: "contact-us" },
   ],
 };

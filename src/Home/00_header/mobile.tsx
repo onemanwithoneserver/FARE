@@ -51,7 +51,7 @@ export default function Mobile() {
     if (href === "contact-us" || href === "#contact") return "contact-us";
     if (title === "Trainer Directory" || title === "ట్రైనర్ డైరెక్టరీ")
       return "trainer-directory";
-    if (title === "About" || title === "మా గురించి") return "#";
+    if (title === "Knowledge Bank" || title === "నాలెడ్జ్ బ్యాంక్") return "fare-knowledge-bank";
     if (title === "Contact Us" || title === "సంప్రదించండి") return "contact-us";
     if (title === "For Trainers" || title === "ట్రైనర్ల కోసం")
       return "re-trainers-coaches";
