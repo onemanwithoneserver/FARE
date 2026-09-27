@@ -18,7 +18,7 @@ import FAREForEmployees from "./For Learners/Employees";
 import FAREForFreelancersOpenPlot from "./For Learners/Freelancers - Open Plot";
 import FAREForFreelancersResidential from "./For Learners/Freelancers - Residential";
 import FAREForCareerSwitchers from "./For Learners/Career Switchers";
-import FAREKnowledgeBank from "./For Learners/Students & Freshers";
+import FAREKnowledgeBank from "./For Learners/Knowledge Bank";
 import TrainerDirectory from "./Trainer Directory";
 export default function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
