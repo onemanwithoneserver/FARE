@@ -66,34 +66,36 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full py-16 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-16 relative font-['Outfit'] z-20"
       style={{
         background:
           "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)",
       }}
     >
-      <motion.div
-        animate={{ opacity: [0.3, 0.65, 0.3], scale: [1, 1.08, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[5%] right-[10%] w-[650px] h-[650px] bg-gradient-radial from-[#DDEAFF]/50 to-transparent rounded-full blur-[130px] pointer-events-none z-0"
-      />
-      <motion.div
-        animate={{ opacity: [0.25, 0.55, 0.25], scale: [1.06, 1, 1.06] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[5%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
-      />
-      <motion.div
-        animate={{ scale: [1, 1.25, 1], opacity: [0.03, 0.08, 0.03] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-[#0B1D3A]/20 pointer-events-none z-0"
-      />
-      <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
-        style={{
-          backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
-          backgroundSize: "48px 48px",
-        }}
-      />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{ opacity: [0.3, 0.65, 0.3], scale: [1, 1.08, 1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[5%] right-[10%] w-[650px] h-[650px] bg-gradient-radial from-[#DDEAFF]/50 to-transparent rounded-full blur-[130px] pointer-events-none z-0"
+        />
+        <motion.div
+          animate={{ opacity: [0.25, 0.55, 0.25], scale: [1.06, 1, 1.06] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[5%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.25, 1], opacity: [0.03, 0.08, 0.03] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-[#0B1D3A]/20 pointer-events-none z-0"
+        />
+        <div
+          className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
+          style={{
+            backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
+            backgroundSize: "48px 48px",
+          }}
+        />
+      </div>
       <div className="max-w-[1360px] mx-auto px-8 lg:px-12 relative z-10">
         <motion.div
           variants={containerVariants}
