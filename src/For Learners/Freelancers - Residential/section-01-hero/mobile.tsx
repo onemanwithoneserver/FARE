@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import freelancersHero from "../../../assets/freelancers_hero.jpg";
+import freelancersResidentialHero from "../../../assets/freelancers_residential_hero.jpg";
 
 const NAVY = "#0B1D3A";
 
@@ -42,8 +42,8 @@ export default function Mobile() {
 
           <div className="w-full rounded-xl overflow-hidden shadow-[0_12px_40px_-10px_rgba(11,29,58,0.18)] mb-6">
             <img
-              src={freelancersHero}
-              alt="Freelancer at real estate site"
+              src={freelancersResidentialHero}
+              alt="Residential Freelancer"
               className="w-full h-[220px] object-cover object-center rounded-[4px]"
             />
           </div>

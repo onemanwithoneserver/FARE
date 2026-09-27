@@ -37,7 +37,7 @@ export default function Mobile() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`relative bg-white rounded-[4px] p-6 flex flex-col ${
+              className={`relative bg-white rounded-[4px] p-6 flex flex-col hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${
                 plan.bestValue 
                   ? "border-2 border-[#C99A2E] shadow-[0_12px_24px_rgba(11,29,58,0.1)]" 
                   : "border border-[#E2E8F0] shadow-[0_4px_12px_rgba(11,29,58,0.04)]"

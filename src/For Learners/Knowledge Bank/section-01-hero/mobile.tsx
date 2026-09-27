@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import studentsHero from "../../../assets/students_hero.jpg";
+import knowledgeBankHero from "../../../assets/knowledge_bank_hero.jpg";
 
 const GOLD = "#C99A2E";
 
@@ -42,8 +42,8 @@ export default function Mobile() {
 
           <div className="w-full rounded-xl overflow-hidden shadow-[0_12px_40px_-10px_rgba(11,29,58,0.18)] mb-6">
             <img
-              src={studentsHero}
-              alt="Students learning real estate"
+              src={knowledgeBankHero}
+              alt="Knowledge Bank"
               className="w-full h-[220px] object-cover object-center rounded-[4px]"
             />
           </div>

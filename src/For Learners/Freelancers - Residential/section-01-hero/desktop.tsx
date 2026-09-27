@@ -3,7 +3,7 @@ import type { Variants } from "motion/react";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import freelancersHero from "../../../assets/freelancers_hero.jpg";
+import freelancersResidentialHero from "../../../assets/freelancers_residential_hero.jpg";
 
 const NAVY = "#0B1D3A";
 
@@ -117,8 +117,8 @@ export default function Desktop() {
             <motion.img
               animate={{ scale: [1, 1.04, 1] }}
               transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-              src={freelancersHero}
-              alt="Freelancer at real estate site"
+              src={freelancersResidentialHero}
+              alt="Residential Freelancer"
               className="w-full h-full object-cover object-[center_38%]"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/15 via-transparent to-transparent pointer-events-none" />

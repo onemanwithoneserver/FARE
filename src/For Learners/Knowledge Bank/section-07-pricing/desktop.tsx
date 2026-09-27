@@ -59,9 +59,9 @@ export default function Desktop() {
             <motion.div
               key={i}
               variants={item}
-              className={`flex-1 relative bg-white rounded-[4px] p-8 flex flex-col ${
+              className={`flex-1 relative bg-white rounded-[4px] p-8 flex flex-col hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${
                 plan.bestValue 
-                  ? "border-2 border-[#C99A2E] shadow-[0_20px_40px_rgba(11,29,58,0.12)] md:-translate-y-4" 
+                  ? "border-2 border-[#C99A2E] shadow-[0_20px_40px_rgba(11,29,58,0.12)]" 
                   : "border border-[#E2E8F0] shadow-[0_8px_24px_rgba(11,29,58,0.06)]"
               }`}
             >
