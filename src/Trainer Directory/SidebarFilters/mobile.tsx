@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronDown, SlidersHorizontal, RotateCcw } from "lucide-react";
+import { ChevronDown, RotateCcw, X, Filter } from "lucide-react";
 import { filterOptions } from "../listing_data";
 
 const NAVY = "#0B1D3A";
@@ -18,18 +18,18 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
   const activeCount = selectedOptions.length;
 
   return (
-    <div className="py-3.5 border-b border-[#0B1D3A]/[0.06] last:border-b-0">
+    <div className="py-4 border-b border-[#0B1D3A]/[0.06] last:border-b-0">
       <button
         className="w-full flex items-center justify-between group cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex items-center gap-2">
-          <span className="text-[11px] font-bold tracking-[0.12em] text-[#0B1D3A] uppercase">
+          <span className="text-[13px] font-bold tracking-[0.05em] text-[#0B1D3A] uppercase">
             {title}
           </span>
           {activeCount > 0 && (
             <span
-              className="inline-flex items-center justify-center w-4 h-4 rounded-full text-[8px] font-black text-white"
+              className="inline-flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-black text-white"
               style={{ background: GOLD }}
             >
               {activeCount}
@@ -37,7 +37,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
           )}
         </div>
         <ChevronDown
-          size={14}
+          size={16}
           strokeWidth={2.5}
           className={`text-[#7B8DAA] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
         />
@@ -52,31 +52,31 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className="flex flex-col gap-1.5 pt-2.5">
+            <div className="flex flex-col gap-2 pt-3">
               {options.map((option) => {
                 const isSelected = selectedOptions.includes(option);
                 return (
                   <label
                     key={option}
-                    className="flex items-center gap-2.5 cursor-pointer group/item px-2 py-1.5 rounded transition-all duration-200 hover:bg-[#F8FAFD]"
+                    className="flex items-center gap-3 cursor-pointer group/item py-1.5 transition-all duration-200"
                     onClick={() => onChange(option)}
                   >
                     <div
-                      className={`w-4 h-4 rounded-[3px] border flex items-center justify-center transition-all duration-300 shrink-0 ${
+                      className={`w-5 h-5 rounded border flex items-center justify-center transition-all duration-300 shrink-0 ${
                         isSelected
-                          ? "border-[#0B1D3A] shadow-[0_0_0_1px_rgba(11,29,58,0.08)]"
-                          : "border-[#0B1D3A]/15 group-hover/item:border-[#0B1D3A]/30 bg-white"
+                          ? "border-[#0B1D3A]"
+                          : "border-[#0B1D3A]/20 bg-white"
                       }`}
                       style={isSelected ? { background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` } : undefined}
                     >
                       {isSelected && (
-                        <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3.5}>
+                        <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       )}
                     </div>
-                    <span className={`text-[13px] leading-snug transition-colors duration-200 ${
-                      isSelected ? "text-[#0B1D3A] font-semibold" : "text-[#5A6B82] group-hover/item:text-[#0B1D3A] font-medium"
+                    <span className={`text-[14px] leading-snug transition-colors duration-200 ${
+                      isSelected ? "text-[#0B1D3A] font-bold" : "text-[#5A6B82] font-medium"
                     }`}>
                       {option}
                     </span>
@@ -91,7 +91,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
   );
 };
 
-export default function Mobile() {
+export default function Mobile({ isOpen, onClose }: { isOpen?: boolean; onClose?: () => void }) {
   const [selected, setSelected] = useState<Record<string, string[]>>({
     expertise: [],
     segments: [],
@@ -118,47 +118,82 @@ export default function Mobile() {
   const totalActive = Object.values(selected).reduce((sum, arr) => sum + arr.length, 0);
 
   return (
-    <div
-      className="w-[260px] shrink-0 bg-white/90 backdrop-blur-xl rounded border border-[#0B1D3A]/[0.08] p-5 sticky top-[80px] h-fit font-['Outfit']"
-      style={{
-        boxShadow: "0 2px 8px -2px rgba(11, 29, 58, 0.05), 0 4px 12px -4px rgba(11, 29, 58, 0.03)",
-      }}
-    >
-            <div className="flex items-center justify-between mb-1 pb-3 border-b border-[#0B1D3A]/[0.06]">
-        <div className="flex items-center gap-2">
-          <div
-            className="w-7 h-7 rounded flex items-center justify-center text-white shadow-sm"
-            style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-50 flex flex-col justify-end bg-[#0B1D3A]/60 backdrop-blur-sm"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="w-full bg-white rounded-t-[20px] flex flex-col max-h-[85vh] font-['Outfit']"
+            onClick={e => e.stopPropagation()}
+            style={{ boxShadow: "0 -4px 24px rgba(0,0,0,0.15)" }}
           >
-            <SlidersHorizontal size={13} strokeWidth={2.5} />
-          </div>
-          <span className="text-[13px] font-bold" style={{ color: NAVY }}>Filters</span>
-          {totalActive > 0 && (
-            <span
-              className="inline-flex items-center justify-center min-w-[18px] h-[18px] rounded-full text-[9px] font-black text-white px-1"
-              style={{ background: GOLD }}
-            >
-              {totalActive}
-            </span>
-          )}
-        </div>
-        {totalActive > 0 && (
-          <button
-            onClick={clearAll}
-            className="flex items-center gap-1 text-[11px] font-semibold text-[#7B8DAA] hover:text-[#0B1D3A] transition-colors duration-200 cursor-pointer"
-          >
-            <RotateCcw size={10} strokeWidth={2.5} />
-            Clear
-          </button>
-        )}
-      </div>
+            {/* Handle Bar */}
+            <div className="w-full flex justify-center pt-3 pb-1">
+              <div className="w-12 h-1.5 bg-[#0B1D3A]/10 rounded-full" />
+            </div>
 
-            <FilterSection title="Expertise" options={filterOptions.expertise} selectedOptions={selected.expertise} onChange={(o) => toggleOption('expertise', o)} />
-      <FilterSection title="RE Segment" options={filterOptions.segments} selectedOptions={selected.segments} onChange={(o) => toggleOption('segments', o)} />
-      <FilterSection title="Training Format" options={filterOptions.formats} selectedOptions={selected.formats} onChange={(o) => toggleOption('formats', o)} />
-      <FilterSection title="Delivery Mode" options={filterOptions.delivery} selectedOptions={selected.delivery} onChange={(o) => toggleOption('delivery', o)} />
-      <FilterSection title="Availability" options={filterOptions.availability} selectedOptions={selected.availability} onChange={(o) => toggleOption('availability', o)} />
-      <FilterSection title="Language" options={filterOptions.languages} selectedOptions={selected.languages} onChange={(o) => toggleOption('languages', o)} />
-    </div>
+            {/* Header */}
+            <div className="flex items-center justify-between px-5 pb-3 pt-2 border-b border-[#0B1D3A]/[0.08] shrink-0">
+              <div className="flex items-center gap-2">
+                <Filter size={18} strokeWidth={2.5} style={{ color: NAVY }} />
+                <span className="text-[16px] font-black" style={{ color: NAVY }}>Filters</span>
+                {totalActive > 0 && (
+                  <span
+                    className="inline-flex items-center justify-center min-w-[20px] h-[20px] rounded-full text-[11px] font-black text-white px-1 ml-1"
+                    style={{ background: GOLD }}
+                  >
+                    {totalActive}
+                  </span>
+                )}
+              </div>
+              <button
+                onClick={onClose}
+                className="w-8 h-8 rounded-full bg-[#F8FAFD] flex items-center justify-center text-[#7B8DAA] hover:bg-[#EEF4FF] hover:text-[#0B1D3A] transition-colors"
+              >
+                <X size={18} strokeWidth={2.5} />
+              </button>
+            </div>
+
+            {/* Scrollable Body */}
+            <div className="flex-1 overflow-y-auto px-5 pb-[90px]">
+              <FilterSection title="Expertise" options={filterOptions.expertise} selectedOptions={selected.expertise} onChange={(o) => toggleOption('expertise', o)} />
+              <FilterSection title="RE Segment" options={filterOptions.segments} selectedOptions={selected.segments} onChange={(o) => toggleOption('segments', o)} />
+              <FilterSection title="Training Format" options={filterOptions.formats} selectedOptions={selected.formats} onChange={(o) => toggleOption('formats', o)} />
+              <FilterSection title="Delivery Mode" options={filterOptions.delivery} selectedOptions={selected.delivery} onChange={(o) => toggleOption('delivery', o)} />
+              <FilterSection title="Availability" options={filterOptions.availability} selectedOptions={selected.availability} onChange={(o) => toggleOption('availability', o)} />
+              <FilterSection title="Language" options={filterOptions.languages} selectedOptions={selected.languages} onChange={(o) => toggleOption('languages', o)} />
+            </div>
+
+            {/* Sticky Footer */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-[#0B1D3A]/[0.08] flex items-center gap-3">
+              <button
+                onClick={clearAll}
+                className="flex-1 py-3.5 rounded-lg text-[#0B1D3A] font-bold text-[14px] flex items-center justify-center gap-2 bg-[#F8FAFD] border border-[#0B1D3A]/[0.08] hover:bg-[#EEF4FF] transition-colors"
+              >
+                <RotateCcw size={14} strokeWidth={2.5} />
+                Clear All
+              </button>
+              <button
+                onClick={onClose}
+                className="flex-[1.5] py-3.5 rounded-lg text-white font-bold text-[14px] flex items-center justify-center shadow-md active:scale-[0.98] transition-transform"
+                style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
+              >
+                Apply Filters
+              </button>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

@@ -16,7 +16,6 @@ import {
   Layers,
   MonitorPlay,
   SlidersHorizontal,
-  ChevronDown,
   X,
 } from "lucide-react";
 import trainersHero from "../assets/re_trainers_hero.jpg";
@@ -124,18 +123,26 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
           <circle cx="150" cy="150" r="140" stroke={GOLD} strokeWidth="0.8" fill="none" />
         </svg>
 
-        <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-12 lg:pt-16 pb-12 lg:pb-16 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0 max-w-[1400px] mx-auto">
+        <div
+          className={`w-full flex relative z-10 max-w-[1400px] mx-auto ${
+            isMobile
+              ? "flex-col justify-start pt-8 pb-8 px-5"
+              : "flex-row justify-between overflow-hidden lg:overflow-visible pt-10 pb-8 lg:pt-16 lg:pb-16 px-6 sm:px-10 lg:pl-14 xl:pl-20 min-h-[480px] lg:min-h-0"
+          }`}
+        >
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
             viewport={{ once: false }}
-            className="w-full lg:w-[48%] xl:w-[46%] flex flex-col items-start text-left shrink-0 pr-6 lg:pr-10"
+            className={`flex flex-col items-start text-left z-10 relative ${
+              isMobile ? "w-full" : "w-full lg:w-[48%] xl:w-[46%]"
+            }`}
           >
-            <motion.div variants={itemVariants} className="mb-4">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
+            <motion.div variants={itemVariants} className={isMobile ? "mb-3" : "mb-3 lg:mb-4"}>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
                 <Sparkles size={13} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
-                <span className="font-bold text-[11px] tracking-[0.2em] uppercase text-[#C99A2E]">
+                <span className="font-bold text-[10px] lg:text-[11px] tracking-[0.15em] uppercase text-[#C99A2E]">
                   Trainer Directory
                 </span>
               </div>
@@ -143,7 +150,11 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
 
             <motion.h1
               variants={itemVariants}
-              className="text-[2.6rem] lg:text-[3rem] xl:text-[3.4rem] font-black leading-[1.08] tracking-tight mb-4"
+              className={`font-black leading-[1.05] tracking-tight ${
+                isMobile
+                  ? "text-[1.85rem] mb-2 leading-[1.12] w-full max-w-[320px]"
+                  : "text-[2.2rem] sm:text-[2.8rem] lg:text-[3rem] xl:text-[3.4rem] mb-2 lg:mb-4 w-[280px] sm:w-[80%] lg:w-full max-w-full"
+              }`}
               style={{ color: NAVY }}
             >
               Find the Right{" "}
@@ -152,12 +163,29 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
 
             <motion.p
               variants={itemVariants}
-              className="text-[16px] xl:text-[17px] font-medium leading-[1.65] max-w-[520px] text-[#5A6B82] mb-7"
+              className={`font-medium leading-[1.5] text-[#5A6B82] relative z-10 ${
+                isMobile
+                  ? "text-[14px] w-full max-w-[320px] mb-5"
+                  : "text-[14px] sm:text-[16px] xl:text-[17px] w-[300px] sm:w-[85%] lg:max-w-[520px] mb-5 lg:mb-7"
+              }`}
             >
               Discover trainers by expertise, real estate segment, training format, delivery mode and experience.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="relative w-full max-w-[520px] mb-6">
+            {isMobile && (
+              <motion.div
+                variants={itemVariants}
+                className="w-full rounded-[16px] overflow-hidden shadow-[0_12px_40px_-10px_rgba(11,29,58,0.18)] mb-6"
+              >
+                <img
+                  src={trainersHero}
+                  alt="Trainer Directory"
+                  className="w-full h-[200px] object-cover object-[center_38%]"
+                />
+              </motion.div>
+            )}
+
+            <motion.div variants={itemVariants} className="relative w-full max-w-[520px] mb-5 lg:mb-6">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
                 <Search size={18} className="text-[#7B8DAA]" strokeWidth={2.2} />
               </div>
@@ -166,22 +194,22 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search trainers, expertise or training areas..."
-                className="w-full pl-11 pr-4 py-3.5 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[8px] text-[15px] text-[#0B1D3A] font-medium focus:outline-none focus:ring-2 focus:ring-[#C99A2E]/40 focus:border-[#C99A2E] transition-all duration-300 placeholder:text-[#7B8DAA]"
+                className="w-full pl-11 pr-4 py-3.5 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[8px] text-[14px] lg:text-[15px] text-[#0B1D3A] font-medium focus:outline-none focus:ring-2 focus:ring-[#C99A2E]/40 focus:border-[#C99A2E] transition-all duration-300 placeholder:text-[#7B8DAA]"
                 style={{
                   boxShadow: "0 2px 8px -2px rgba(11, 29, 58, 0.05), 0 4px 12px -4px rgba(11, 29, 58, 0.03)",
                 }}
               />
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-2 max-w-[520px]">
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-2 max-w-[520px] relative z-20">
               {quickTags.map(tag => (
                 <button
                   key={tag}
                   onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                  className={`px-3.5 py-1.5 rounded-full text-[12px] font-semibold transition-all duration-300 border ${
+                  className={`px-3 py-1 lg:px-3.5 lg:py-1.5 rounded-full text-[11px] lg:text-[12px] font-semibold transition-all duration-300 border ${
                     activeTag === tag
                       ? "bg-[#0B1D3A] text-white border-[#0B1D3A] shadow-[0_4px_12px_-2px_rgba(11,29,58,0.25)]"
-                      : "bg-white/70 backdrop-blur-sm border-[#0B1D3A]/[0.08] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/25 hover:text-[#0B1D3A] hover:shadow-sm"
+                      : "bg-white/90 backdrop-blur-sm border-[#0B1D3A]/[0.08] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/25 hover:text-[#0B1D3A] hover:shadow-sm"
                   }`}
                 >
                   {activeTag === tag && (
@@ -201,24 +229,27 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 40, scale: 0.96 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end pl-0 mt-12 lg:mt-0"
-          >
-            <div className="relative w-[92%] sm:w-[85%] lg:w-full h-[280px] sm:h-[340px] lg:h-[480px] xl:h-[510px] rounded-tl-[80px] sm:rounded-tl-[120px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[40px] sm:rounded-bl-[60px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden shadow-[0_25px_70px_-15px_rgba(11,29,58,0.22),0_10px_30px_-5px_rgba(0,0,0,0.06)] border-l border-t border-b border-white/80 group ml-auto">
-              <motion.img
-                animate={{ scale: [1, 1.04, 1] }}
-                transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-                src={trainersHero}
-                alt="Trainer Directory"
-                className="w-full h-full object-cover object-[center_38%]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/15 via-transparent to-transparent pointer-events-none" />
-            </div>
-          </motion.div>
+          {!isMobile && (
+            <motion.div
+              initial={{ opacity: 0, x: 40, scale: 0.96 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:relative w-[65%] sm:w-[50%] lg:w-[52%] xl:w-[54%] h-[260px] sm:h-[360px] lg:h-auto flex items-end lg:items-center justify-end z-0"
+            >
+              <div className="relative w-full h-full lg:h-[480px] xl:h-[510px] rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden shadow-[0_20px_50px_-15px_rgba(11,29,58,0.15)] lg:shadow-[0_25px_70px_-15px_rgba(11,29,58,0.22)] border-l border-t lg:border-b border-white/80">
+                <motion.img
+                  animate={{ scale: [1, 1.04, 1] }}
+                  transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+                  src={trainersHero}
+                  alt="Trainer Directory"
+                  className="w-full h-full object-cover object-[center_38%]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/10 to-transparent lg:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#F8FAFD]/60 lg:hidden" />
+              </div>
+            </motion.div>
+          )}
         </div>
       </section>
 
@@ -228,7 +259,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
           background: "linear-gradient(135deg, rgba(248,250,253,0.95) 0%, rgba(255,255,255,0.98) 100%)",
         }}
       >
-        <div className="max-w-[1400px] mx-auto w-full px-6 lg:px-12 xl:px-16 py-4">
+        <div className={`max-w-[1400px] mx-auto w-full py-4 ${isMobile ? "px-5" : "px-6 lg:px-12 xl:px-16"}`}>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -257,28 +288,35 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
         </div>
       </section>
 
-      <div className="flex-1 w-full max-w-[1400px] mx-auto px-6 lg:px-12 xl:px-16 py-8 flex flex-col md:flex-row gap-7">
+      <div className={`flex-1 w-full max-w-[1400px] mx-auto px-5 py-6 flex flex-col gap-6 ${isMobile ? "" : "sm:px-6 lg:px-12 xl:px-16 sm:py-8 md:flex-row sm:gap-7"}`}>
 
-        {isMobile && (
-          <button
-            onClick={() => setShowMobileFilters(!showMobileFilters)}
-            className="flex items-center justify-center gap-2 w-full py-3 bg-white border border-[#0B1D3A]/[0.08] rounded text-[13px] font-bold shadow-sm mb-2 transition-all duration-300 hover:shadow-md"
-            style={{ color: NAVY }}
-          >
-            <SlidersHorizontal size={15} strokeWidth={2.5} />
-            Filters
-            <ChevronDown size={14} className={`transition-transform duration-300 ${showMobileFilters ? 'rotate-180' : ''}`} />
-          </button>
-        )}
-
-        {(!isMobile || showMobileFilters) && (
-          <SidebarFilters isMobile={isMobile} />
-        )}
+        <SidebarFilters isMobile={isMobile} isOpen={showMobileFilters} onClose={() => setShowMobileFilters(false)} />
 
         <div className="flex-1 flex flex-col">
+          {isMobile && (
+            <div className="flex items-center gap-3 mb-5 w-full">
+              <div className="flex-1 z-30">
+                <CustomSelect
+                  options={["Relevance", "Experience (High to Low)", "A-Z"]}
+                  value={sortBy}
+                  onChange={setSortBy}
+                  placeholder="Sort by"
+                />
+              </div>
+              <button
+                onClick={() => setShowMobileFilters(true)}
+                className="flex-1 flex items-center justify-center gap-2 h-full min-h-[46px] bg-white border border-[#0B1D3A]/[0.08] rounded text-[13px] font-bold shadow-sm transition-all duration-300 hover:shadow-md"
+                style={{ color: NAVY }}
+              >
+                <SlidersHorizontal size={15} strokeWidth={2.5} />
+                Filters
+              </button>
+            </div>
+          )}
+
           <div className="flex items-center justify-between mb-5">
             {isSearching ? (
-              <h2 className="text-[15px] font-bold flex items-center gap-2" style={{ color: NAVY }}>
+              <h2 className="text-[14px] sm:text-[15px] font-bold flex items-center gap-2" style={{ color: NAVY }}>
                 <span className="inline-flex items-center justify-center w-6 h-6 rounded bg-[#C99A2E]/10 text-[#C99A2E] text-[11px] font-black">
                   {filteredTrainers.length}
                 </span>
@@ -287,17 +325,20 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             ) : (
               <div />
             )}
-            <div className="flex items-center gap-2 sm:gap-3 text-[12px] sm:text-[13px] text-[#5A6B82] font-medium z-30 whitespace-nowrap">
-              Sort by:
-              <div className="w-[140px] sm:w-[220px] relative">
-                <CustomSelect
-                  options={["Relevance", "Experience (High to Low)", "A-Z"]}
-                  value={sortBy}
-                  onChange={setSortBy}
-                  placeholder="Sort by"
-                />
+            
+            {!isMobile && (
+              <div className="flex items-center gap-2 sm:gap-3 text-[12px] sm:text-[13px] text-[#5A6B82] font-medium z-30 whitespace-nowrap">
+                Sort by:
+                <div className="w-[140px] sm:w-[220px] relative">
+                  <CustomSelect
+                    options={["Relevance", "Experience (High to Low)", "A-Z"]}
+                    value={sortBy}
+                    onChange={setSortBy}
+                    placeholder="Sort by"
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <motion.div
@@ -305,18 +346,21 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, margin: "-40px" }}
-            className="grid grid-cols-1 md:grid-cols-6 xl:grid-cols-6 gap-5"
+            className={`grid grid-cols-1 ${isMobile ? "gap-4" : "md:grid-cols-6 xl:grid-cols-6 gap-5"}`}
           >
             {displayedTrainers.map((trainer, index) => {
-              let spanClass = "col-span-1 md:col-span-2 xl:col-span-2";
+              let spanClass = "col-span-1";
               let layoutVariant: "full" | "half" | "third" = "third";
-              
-              if (index === 0) {
-                spanClass = "col-span-1 md:col-span-6 xl:col-span-6";
-                layoutVariant = "full";
-              } else if (index === 1 || index === 2) {
-                spanClass = "col-span-1 md:col-span-3 xl:col-span-3";
-                layoutVariant = "half";
+
+              if (!isMobile) {
+                spanClass = "col-span-1 md:col-span-2 xl:col-span-2";
+                if (index === 0) {
+                  spanClass = "col-span-1 md:col-span-6 xl:col-span-6";
+                  layoutVariant = "full";
+                } else if (index === 1 || index === 2) {
+                  spanClass = "col-span-1 md:col-span-3 xl:col-span-3";
+                  layoutVariant = "half";
+                }
               }
 
               return (
