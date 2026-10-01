@@ -32,7 +32,6 @@ import EngagementOptionsDesktop from "./section-16-engagement-options/desktop";
 import EngagementOptionsMobile from "./section-16-engagement-options/mobile";
 import CorporateRequestFormDesktop from "./section-17-corporate-request-form/desktop";
 import CorporateRequestFormMobile from "./section-17-corporate-request-form/mobile";
-import { ArrowLeft } from "lucide-react";
 
 interface TrainerProfileProps {
   isMobile: boolean;
@@ -42,11 +41,15 @@ interface TrainerProfileProps {
 
 export default function TrainerProfile({ isMobile, onBack }: TrainerProfileProps) {
   return (
-    <div className="w-full min-h-screen bg-[#f8fafc] flex flex-col font-['Outfit'] relative">
-      <div className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-[#e2e8f0] px-6 py-4 shadow-sm flex items-center justify-between">
-        <button onClick={onBack} className="flex items-center gap-2 text-[#0B1D3A] font-semibold hover:text-[#C99A2E] transition-colors bg-[#f1f5f9] hover:bg-[#e2e8f0] px-4 py-2 rounded-full text-sm">
-          <ArrowLeft size={16} /> Back to Directory
-        </button>
+    <div className="w-full min-h-screen bg-white flex flex-col font-['Outfit'] relative">
+      <div className="sticky top-0 z-40 bg-white border-b border-[#e2e8f0] px-6 py-4 shadow-sm flex items-center justify-between">
+        <div className="flex items-center gap-2 text-sm text-gray-500">
+          <span onClick={onBack} className="hover:text-[#0B1D3A] cursor-pointer font-medium">Home</span>
+          <span>/</span>
+          <span onClick={onBack} className="hover:text-[#0B1D3A] cursor-pointer font-medium">Trainer Directory</span>
+          <span>/</span>
+          <span className="text-[#0B1D3A] font-semibold">Rajesh Kumar</span>
+        </div>
       </div>
 
       {isMobile ? <HeroMobile /> : <HeroDesktop />}

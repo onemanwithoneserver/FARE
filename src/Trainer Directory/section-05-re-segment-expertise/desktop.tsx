@@ -1,44 +1,42 @@
-import { getData } from "./data";
-import { useLanguage } from "../../context/LanguageContext";
-import { Building2, MapPin, Briefcase } from "lucide-react";
+import { profileData } from "../profileData";
 
 export default function Desktop() {
-  const { language } = useLanguage();
-  const data = getData(language);
+  const data = profileData;
   
-  const getIcon = (iconName: string) => {
-    switch(iconName) {
-      case 'building': return <Building2 size={24} strokeWidth={2} />;
-      case 'map': return <MapPin size={24} strokeWidth={2} />;
-      case 'briefcase': return <Briefcase size={24} strokeWidth={2} />;
-      default: return <Building2 size={24} strokeWidth={2} />;
-    }
+  const getBorderColor = (idx: number) => {
+    const colors = ["border-blue-200", "border-emerald-200", "border-purple-200", "border-amber-200"];
+    return colors[idx % colors.length];
+  };
+
+  const getTextColor = (idx: number) => {
+    const colors = ["text-blue-600", "text-emerald-600", "text-purple-600", "text-amber-600"];
+    return colors[idx % colors.length];
+  };
+
+  const getBgColor = (idx: number) => {
+    const colors = ["bg-blue-500", "bg-emerald-500", "bg-purple-500", "bg-amber-500"];
+    return colors[idx % colors.length];
   };
   
   return (
     <section className="w-full bg-white text-[#0F172A] py-16 px-10 border-b border-[#e2e8f0] font-['Outfit'] flex justify-center">
       <div className="max-w-[1200px] w-full">
-        <div className="flex items-center gap-3 mb-10">
-          <div className="w-8 h-1 bg-[#C99A2E] rounded-full"></div>
-          <h2 className="text-3xl font-black text-[#0B1D3A] tracking-tight">{data.title}</h2>
-        </div>
         
-        <div className="grid grid-cols-3 gap-6">
+        <h2 className="text-xl font-bold text-[#0B1D3A] mb-6">Real Estate Segment Expertise</h2>
+        
+        <div className="grid grid-cols-4 gap-6">
           {data.segments.map((item, idx) => (
-            <div key={idx} className="bg-[#f8fafc] rounded-2xl p-8 border border-[#e2e8f0] flex flex-col items-center text-center group hover:bg-[#0B1D3A] transition-colors duration-300">
-              <div className="w-14 h-14 rounded-full bg-white text-[#C99A2E] flex items-center justify-center mb-5 shadow-sm group-hover:bg-[#C99A2E] group-hover:text-[#0B1D3A] transition-colors">
-                {getIcon(item.icon)}
-              </div>
+            <div key={idx} className={`bg-white rounded-lg p-6 border ${getBorderColor(idx)}`}>
+              <h3 className={`text-xs font-bold uppercase tracking-wide mb-4 ${getTextColor(idx)}`}>{item.name}</h3>
               
-              <h3 className="text-xl font-bold text-[#0B1D3A] mb-4 group-hover:text-white transition-colors">{item.segment}</h3>
-              
-              <div className="flex flex-wrap justify-center gap-2 mt-auto">
-                {item.subSegments.map((sub, sIdx) => (
-                  <span key={sIdx} className="bg-white border border-[#cbd5e1] text-[#475569] text-sm font-medium px-3 py-1 rounded-full group-hover:border-white/20 group-hover:bg-white/10 group-hover:text-white/90 transition-colors">
+              <ul className="flex flex-col gap-2">
+                {item.items.map((sub, sIdx) => (
+                  <li key={sIdx} className="flex items-center gap-2 text-sm text-gray-600 font-medium">
+                    <span className={`w-1.5 h-1.5 rounded-sm ${getBgColor(idx)}`}></span>
                     {sub}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>
