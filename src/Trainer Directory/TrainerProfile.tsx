@@ -8,8 +8,6 @@ import TrainingExpertiseDesktop from "./section-04-training-expertise/desktop";
 import TrainingExpertiseMobile from "./section-04-training-expertise/mobile";
 import RESegmentExpertiseDesktop from "./section-05-re-segment-expertise/desktop";
 import RESegmentExpertiseMobile from "./section-05-re-segment-expertise/mobile";
-import LearnerAudienceDesktop from "./section-06-learner-audience/desktop";
-import LearnerAudienceMobile from "./section-06-learner-audience/mobile";
 import TrainingModesFormatsDesktop from "./section-07-training-modes-formats/desktop";
 import TrainingModesFormatsMobile from "./section-07-training-modes-formats/mobile";
 import OrganisationsTrainedDesktop from "./section-08-organisations-trained/desktop";
@@ -57,7 +55,6 @@ export default function TrainerProfile({ isMobile, onBack }: TrainerProfileProps
       {isMobile ? <IntroVideoMobile /> : <IntroVideoDesktop />}
       {isMobile ? <TrainingExpertiseMobile /> : <TrainingExpertiseDesktop />}
       {isMobile ? <RESegmentExpertiseMobile /> : <RESegmentExpertiseDesktop />}
-      {isMobile ? <LearnerAudienceMobile /> : <LearnerAudienceDesktop />}
       {isMobile ? <TrainingModesFormatsMobile /> : <TrainingModesFormatsDesktop />}
       {isMobile ? <OrganisationsTrainedMobile /> : <OrganisationsTrainedDesktop />}
       {isMobile ? <CaseStudiesMobile /> : <CaseStudiesDesktop />}

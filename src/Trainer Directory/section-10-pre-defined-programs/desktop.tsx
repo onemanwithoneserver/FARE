@@ -1,5 +1,5 @@
 import { profileData } from "../profileData";
-import { ArrowRight, Users, Clock, MonitorPlay, Target } from "lucide-react";
+import { ArrowRight, Users, Clock, MonitorPlay } from "lucide-react";
 
 export default function Desktop() {
   const data = profileData;

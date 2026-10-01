@@ -1,5 +1,5 @@
 import { profileData } from "../profileData";
-import { ShieldCheck, Share2, Heart, ChevronRight } from "lucide-react";
+import { ShieldCheck, Share2, Heart } from "lucide-react";
 
 export default function Desktop() {
   const data = profileData;

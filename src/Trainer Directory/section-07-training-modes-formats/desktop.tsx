@@ -32,8 +32,6 @@ export default function Desktop() {
           ))}
         </div>
 
-        </div>
-
         <div className="grid grid-cols-2 gap-4 mt-4">
           <div className="bg-[#f8fafc] border border-gray-200 rounded-lg p-5 flex flex-col gap-3">
             <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest">Training Formats</h4>

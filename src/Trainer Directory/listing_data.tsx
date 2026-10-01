@@ -1,6 +1,7 @@
 export interface Trainer {
   id: string;
   name: string;
+  image?: string;
   title: string;
   verified: boolean;
   industryExperience: number;
@@ -20,6 +21,7 @@ export const trainersData: Trainer[] = [
   {
     id: "1",
     name: "Rajesh Kumar",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
     title: "Real Estate Sales & Capability Trainer",
     verified: true,
     industryExperience: 15,
@@ -37,6 +39,7 @@ export const trainersData: Trainer[] = [
   {
     id: "2",
     name: "Priya Merida",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
     title: "Digital & Communication Trainer",
     verified: true,
     industryExperience: 10,
@@ -54,6 +57,7 @@ export const trainersData: Trainer[] = [
   {
     id: "3",
     name: "Suresh Iyer",
+    image: "https://randomuser.me/api/portraits/men/46.jpg",
     title: "Leadership & Team Performance Trainer",
     verified: false,
     industryExperience: 20,
@@ -71,6 +75,7 @@ export const trainersData: Trainer[] = [
   {
     id: "4",
     name: "Ananya Reddy",
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
     title: "Plotted Development & Sales Trainer",
     verified: true,
     industryExperience: 12,
@@ -88,6 +93,7 @@ export const trainersData: Trainer[] = [
   {
     id: "5",
     name: "Vikram Nair",
+    image: "https://randomuser.me/api/portraits/men/85.jpg",
     title: "Commercial Real Estate & Leasing Trainer",
     verified: false,
     industryExperience: 18,
@@ -105,6 +111,7 @@ export const trainersData: Trainer[] = [
   {
     id: "6",
     name: "Deepa Sharma",
+    image: "https://randomuser.me/api/portraits/women/33.jpg",
     title: "Customer Experience & Luxury Sales Trainer",
     verified: true,
     industryExperience: 14,

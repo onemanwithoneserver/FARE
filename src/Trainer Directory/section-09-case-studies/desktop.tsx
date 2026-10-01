@@ -1,5 +1,5 @@
 import { profileData } from "../profileData";
-import { Building, Users, Clock, Target, Lightbulb, Trophy } from "lucide-react";
+import { Target, Lightbulb, Trophy } from "lucide-react";
 
 export default function Desktop() {
   const data = profileData;
