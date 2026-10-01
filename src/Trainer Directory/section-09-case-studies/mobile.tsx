@@ -47,7 +47,7 @@ export default function Mobile() {
             <motion.div
               key={idx}
               variants={item}
-              className="bg-white/90 backdrop-blur-xl rounded-lg overflow-hidden border border-[#0B1D3A]/[0.08] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] flex flex-col"
+              className="bg-white/90 backdrop-blur-xl rounded-2xl overflow-hidden border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] flex flex-col"
             >
               <div
                 className="w-full p-5 flex flex-col justify-between relative overflow-hidden"
@@ -81,7 +81,7 @@ export default function Mobile() {
                   return (
                     <div key={sIdx} className="flex items-start gap-3">
                       <div
-                        className="w-7 h-7 rounded flex items-center justify-center text-white shadow-sm shrink-0"
+                        className="w-7 h-7 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm shrink-0"
                         style={{ background: cfg.bg }}
                       >
                         {cfg.icon}
@@ -94,7 +94,7 @@ export default function Mobile() {
                             {study.metrics.map((metric, mIdx) => (
                               <span
                                 key={mIdx}
-                                className="text-[10px] font-bold px-2 py-1 rounded"
+                                className="text-[10px] font-bold px-2 py-1 rounded-full"
                                 style={{
                                   background: "rgba(16,185,129,0.08)",
                                   color: "#059669",

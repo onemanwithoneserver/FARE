@@ -54,16 +54,12 @@ export default function Desktop() {
 
                         <motion.div
               variants={item}
-              className="relative rounded p-7 border-l-[3px]"
-              style={{
-                background: `linear-gradient(135deg, ${GOLD}08, ${GOLD}03)`,
-                borderLeftColor: GOLD,
-                border: `1px solid ${GOLD}18`,
-                borderLeft: `3px solid ${GOLD}`,
-              }}
+              className="relative rounded-2xl p-7 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] overflow-hidden"
+              style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #132A4D 100%)` }}
             >
-              <Quote size={32} className="absolute top-4 right-4 rotate-180 opacity-[0.08]" style={{ color: GOLD }} />
-              <p className="text-[16px] italic font-medium leading-[1.65] relative z-10" style={{ color: NAVY }}>
+              <div className="absolute -top-6 -right-4 w-36 h-36 rounded-full opacity-[0.06]" style={{ background: GOLD }} />
+              <Quote size={32} className="absolute top-5 right-5 rotate-180 opacity-[0.12]" style={{ color: GOLD }} />
+              <p className="text-[16px] italic font-medium leading-[1.65] relative z-10 text-white">
                 {data.about.quote}
               </p>
             </motion.div>

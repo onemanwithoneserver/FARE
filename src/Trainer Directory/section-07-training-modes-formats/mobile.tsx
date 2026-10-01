@@ -61,10 +61,10 @@ export default function Mobile() {
                 <motion.div
                   key={idx}
                   variants={item}
-                  className={`bg-white/90 backdrop-blur-xl rounded-lg p-4 border relative overflow-hidden flex flex-col ${
+                  className={`bg-white/90 backdrop-blur-xl rounded-2xl p-4 border relative overflow-hidden flex flex-col shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] ${
                     mode.disabled
                       ? "opacity-50 border-[#0B1D3A]/[0.04]"
-                      : "border-[#0B1D3A]/[0.08] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+                      : "border-[#0B1D3A]/[0.06]"
                   }`}
                 >
                   {!mode.disabled && (
@@ -74,7 +74,7 @@ export default function Mobile() {
                     />
                   )}
                   <div
-                    className="w-8 h-8 rounded flex items-center justify-center text-white shadow-sm mb-2"
+                    className="w-8 h-8 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mb-2"
                     style={{ background: mode.disabled ? "#CBD5E1" : colors.bg }}
                   >
                     {getIcon(mode.icon)}
@@ -92,14 +92,14 @@ export default function Mobile() {
           <div className="flex flex-col gap-3">
             <motion.div
               variants={item}
-              className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-4 flex flex-col gap-2.5 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+              className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-4 flex flex-col gap-2.5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
             >
               <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Formats</h4>
               <div className="flex flex-wrap gap-1.5">
                 {data.delivery.formats.map((fmt, idx) => (
                   <span
                     key={idx}
-                    className="text-[11px] font-semibold px-2.5 py-1 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/75"
+                    className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/75"
                   >
                     {fmt}
                   </span>
@@ -109,14 +109,14 @@ export default function Mobile() {
             
             <motion.div
               variants={item}
-              className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-4 flex flex-col gap-2.5 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+              className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-4 flex flex-col gap-2.5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
             >
               <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Durations</h4>
               <div className="flex flex-wrap gap-1.5">
                 {data.delivery.durations.map((dur, idx) => (
                   <span
                     key={idx}
-                    className="text-[11px] font-semibold px-2.5 py-1 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/75"
+                    className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/75"
                   >
                     {dur}
                   </span>

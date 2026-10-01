@@ -44,7 +44,7 @@ export default function Mobile() {
               className="flex flex-col gap-2.5 cursor-pointer"
             >
               <div
-                className={`relative aspect-video rounded-lg overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] shadow-[0_4px_12px_-2px_rgba(11,29,58,0.06)] ${
+                className={`relative aspect-video rounded-2xl overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] transition-all duration-300 ease-out hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] ${
                   video.thumbnail === 'navy' ? '' : ''
                 }`}
                 style={{
@@ -65,7 +65,7 @@ export default function Mobile() {
                 )}
 
                 <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform duration-300"
+                  className="w-10 h-10 rounded-full ring-1 ring-black/5 flex items-center justify-center shadow-lg active:scale-95 transition-transform duration-300"
                   style={{
                     background: video.thumbnail === 'navy'
                       ? `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})`
@@ -81,13 +81,13 @@ export default function Mobile() {
                   />
                 </div>
 
-                <div className="absolute bottom-2 right-2 bg-black/50 backdrop-blur-sm text-white text-[9px] font-bold px-2 py-0.5 rounded">
+                <div className="absolute bottom-2 right-2 bg-black/50 backdrop-blur-sm text-white text-[9px] font-bold px-2 py-0.5 rounded-full">
                   {video.duration}
                 </div>
 
                 {video.thumbnail === 'navy' && (
                   <div
-                    className="absolute top-2 left-2 text-[9px] font-bold px-2 py-0.5 rounded"
+                    className="absolute top-2 left-2 text-[9px] font-bold px-2 py-0.5 rounded-full"
                     style={{ background: GOLD, color: NAVY }}
                   >
                     NEW

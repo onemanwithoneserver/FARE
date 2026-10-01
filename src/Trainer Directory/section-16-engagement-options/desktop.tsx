@@ -39,7 +39,7 @@ export default function Desktop() {
         <div className="grid grid-cols-3 gap-5 mb-5">
                     <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)] hover:shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)] transition-all duration-400"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out"
           >
             <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-4">Pricing</h4>
             <h3 className="text-[18px] font-black mb-2" style={{ color: NAVY }}>{data.investment.pricing.title}</h3>
@@ -48,7 +48,7 @@ export default function Desktop() {
 
                     <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)] hover:shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)] transition-all duration-400"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out"
           >
             <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-4">Minimum Engagement</h4>
             <h3 className="text-[18px] font-black mb-4" style={{ color: NAVY }}>{data.investment.minimumEngagement.title}</h3>
@@ -56,7 +56,7 @@ export default function Desktop() {
               {data.investment.minimumEngagement.options.map((opt, idx) => (
                 <span
                   key={idx}
-                  className="text-[11px] font-semibold px-2.5 py-1.5 rounded transition-colors"
+                  className="text-[11px] font-semibold px-2.5 py-1.5 rounded-full transition-colors"
                   style={opt === data.investment.minimumEngagement.selected ? {
                     background: `${GOLD}15`,
                     color: GOLD_MID,
@@ -75,13 +75,13 @@ export default function Desktop() {
 
                     <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)] hover:shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)] transition-all duration-400"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out"
           >
             <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-4">Pricing Basis</h4>
             <ul className="flex flex-col gap-3">
               {data.investment.pricingBasis.map((basis, idx) => (
                 <li key={idx} className="flex items-center gap-2.5 text-[13px] font-semibold text-[#5A6B82]">
-                  <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0" style={{ background: `${NAVY}10`, color: NAVY }}>
+                  <div className="w-4 h-4 rounded-full ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: `${NAVY}10`, color: NAVY }}>
                     <Check size={10} strokeWidth={3} />
                   </div>
                   {basis}
@@ -93,11 +93,11 @@ export default function Desktop() {
 
                 <motion.div
           variants={item}
-          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 flex items-center justify-between shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-6 flex items-center justify-between shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
         >
           <p className="text-[13px] font-medium text-[#7B8DAA]">{data.investment.footerNote}</p>
           <button
-            className="text-white px-6 py-2.5 rounded font-bold text-[13px] transition-all duration-300 flex items-center gap-2 shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_8px_24px_-4px_rgba(11,29,58,0.35)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] relative overflow-hidden group"
+            className="text-white px-6 py-2.5 rounded-xl font-bold text-[13px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 flex items-center gap-2 shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] relative overflow-hidden group"
             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
           >
             Request Pricing

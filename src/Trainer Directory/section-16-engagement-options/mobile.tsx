@@ -40,7 +40,7 @@ export default function Mobile() {
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-lg p-5 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out"
           >
             <h4 className="text-[9px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-2.5">Pricing</h4>
             <h3 className="text-[16px] font-black mb-1.5" style={{ color: NAVY }}>{data.investment.pricing.title}</h3>
@@ -49,7 +49,7 @@ export default function Mobile() {
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-lg p-5 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out"
           >
             <h4 className="text-[9px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-2.5">Minimum Engagement</h4>
             <h3 className="text-[16px] font-black mb-3" style={{ color: NAVY }}>{data.investment.minimumEngagement.title}</h3>
@@ -57,7 +57,7 @@ export default function Mobile() {
               {data.investment.minimumEngagement.options.map((opt, idx) => (
                 <span
                   key={idx}
-                  className="text-[10px] font-semibold px-2.5 py-1 rounded"
+                  className="text-[10px] font-semibold px-2.5 py-1 rounded-full"
                   style={opt === data.investment.minimumEngagement.selected ? {
                     background: `${GOLD}15`,
                     color: GOLD_MID,
@@ -76,13 +76,13 @@ export default function Mobile() {
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-lg p-5 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out"
           >
             <h4 className="text-[9px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-3">Pricing Basis</h4>
             <ul className="flex flex-col gap-2.5">
               {data.investment.pricingBasis.map((basis, idx) => (
                 <li key={idx} className="flex items-center gap-2 text-[12px] font-semibold text-[#5A6B82]">
-                  <div className="w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0" style={{ background: `${NAVY}10`, color: NAVY }}>
+                  <div className="w-3.5 h-3.5 rounded-full ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: `${NAVY}10`, color: NAVY }}>
                     <Check size={8} strokeWidth={3} />
                   </div>
                   {basis}
@@ -94,11 +94,11 @@ export default function Mobile() {
 
         <motion.div
           variants={item}
-          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-lg p-5 flex flex-col gap-4 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 flex flex-col gap-4 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
         >
           <p className="text-[11px] font-medium text-[#7B8DAA] text-center">{data.investment.footerNote}</p>
           <button
-            className="w-full text-white px-5 py-3 rounded font-bold text-[13px] flex items-center justify-center gap-2 shadow-[0_4px_12px_-4px_rgba(11,29,58,0.25)] relative overflow-hidden"
+            className="w-full text-white px-5 py-3 rounded-xl font-bold text-[13px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 flex items-center justify-center gap-2 shadow-[0_4px_12px_-4px_rgba(11,29,58,0.25)] hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] relative overflow-hidden"
             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
           >
             Request Pricing

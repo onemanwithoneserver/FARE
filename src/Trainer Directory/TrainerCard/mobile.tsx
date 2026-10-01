@@ -35,7 +35,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
 
   return (
     <motion.div
-      className="bg-white/95 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-xl relative overflow-hidden shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)] transition-all duration-300 hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 ease-out font-['Outfit']"
+      className="bg-white/95 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/20 rounded-2xl relative overflow-hidden shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] transition-all duration-300 ease-out hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] hover:-translate-y-1 font-['Outfit']"
     >
       <div
         className="absolute top-0 left-0 right-0 h-[3px]"
@@ -47,11 +47,11 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
           <img
             src={trainer.image}
             alt={trainer.name}
-            className="w-11 h-11 rounded-lg object-cover shadow-sm shrink-0 border border-[#0B1D3A]/[0.06]"
+            className="w-11 h-11 rounded-xl object-cover shadow-sm shrink-0 border border-[#0B1D3A]/[0.06]"
           />
         ) : (
           <div
-            className="w-11 h-11 rounded-lg flex items-center justify-center text-white shadow-sm shrink-0 font-bold text-sm"
+            className="w-11 h-11 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm shrink-0 font-bold text-sm"
             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
           >
             {getInitials(trainer.name)}
@@ -91,7 +91,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
             <div className="flex items-center gap-2 flex-1 px-3 py-2.5 rounded-lg"
               style={{ background: "linear-gradient(135deg, rgba(59,130,246,0.06), rgba(59,130,246,0.02))", border: "1px solid rgba(59,130,246,0.12)" }}
             >
-              <div className="w-6 h-6 rounded flex items-center justify-center shrink-0" style={{ background: "rgba(59,130,246,0.15)" }}>
+              <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: "rgba(59,130,246,0.15)" }}>
                 <Briefcase size={12} strokeWidth={2.5} className="text-[#3B82F6]" />
               </div>
               <div>
@@ -102,7 +102,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
             <div className="flex items-center gap-2 flex-1 px-3 py-2.5 rounded-lg"
               style={{ background: `linear-gradient(135deg, ${GOLD}08, ${GOLD}03)`, border: `1px solid ${GOLD}15` }}
             >
-              <div className="w-6 h-6 rounded flex items-center justify-center shrink-0" style={{ background: `${GOLD}18` }}>
+              <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: `${GOLD}18` }}>
                 <GraduationCap size={12} strokeWidth={2.5} style={{ color: GOLD }} />
               </div>
               <div>
@@ -139,13 +139,13 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
           {/* Location & Languages */}
           <div className="grid grid-cols-2 gap-3 pt-3 border-t border-[#0B1D3A]/[0.06]">
             <div className="flex items-start gap-2">
-              <div className="w-6 h-6 rounded flex items-center justify-center shrink-0" style={{ background: `${GOLD}15` }}>
+              <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: `${GOLD}15` }}>
                 <MapPin size={12} strokeWidth={2.5} style={{ color: GOLD }} />
               </div>
               <span className="text-[12px] font-medium text-[#5A6B82] leading-tight break-words">{trainer.location.split(',')[0]}</span>
             </div>
             <div className="flex items-start gap-2">
-              <div className="w-6 h-6 rounded flex items-center justify-center shrink-0" style={{ background: "rgba(59,130,246,0.10)" }}>
+              <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: "rgba(59,130,246,0.10)" }}>
                 <Globe size={12} strokeWidth={2.5} className="text-[#3B82F6]" />
               </div>
               <span className="text-[12px] font-medium text-[#5A6B82] leading-tight break-words">{trainer.languages.slice(0, 2).join(", ")}</span>
@@ -157,13 +157,13 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
         <div className="flex items-center gap-2.5 pt-1 relative">
           <button
             onClick={onViewProfile}
-            className="flex-1 border border-[#0B1D3A]/[0.12] hover:border-[#0B1D3A]/30 font-bold text-[12px] py-2.5 rounded transition-all duration-300 flex items-center justify-center gap-1.5 hover:shadow-sm"
+            className="flex-1 border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/20 font-bold text-[12px] py-2.5 rounded-xl transition-all duration-300 ease-out flex items-center justify-center gap-1.5 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
             style={{ color: NAVY }}
           >
             View Profile <ArrowRight size={13} strokeWidth={2.5} style={{ color: GOLD_MID }} />
           </button>
           <button
-            className="flex-1 text-white font-bold text-[12px] py-2.5 rounded transition-all duration-300 shadow-sm hover:shadow-[0_8px_20px_-4px_rgba(11,29,58,0.3)] relative overflow-hidden group/btn"
+            className="flex-1 text-white font-bold text-[12px] py-2.5 rounded-xl transition-all duration-300 ease-out shadow-sm hover:shadow-[0_8px_20px_-4px_rgba(11,29,58,0.3)] relative overflow-hidden group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
           >
             <span className="relative z-10 flex items-center justify-center gap-1.5 transition-transform duration-300 group-hover/btn:-translate-x-1">

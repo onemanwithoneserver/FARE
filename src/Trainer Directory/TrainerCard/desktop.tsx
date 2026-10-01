@@ -35,7 +35,7 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "third
 
   const renderLocation = () => (
     <div className="flex items-center gap-2">
-      <div className="w-6 h-6 rounded flex items-center justify-center shrink-0" style={{ background: `${GOLD}15` }}>
+      <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: `${GOLD}15` }}>
         <MapPin size={12} strokeWidth={2.5} style={{ color: GOLD }} />
       </div>
       <span className="text-[12px] font-medium text-[#5A6B82] leading-tight break-words">{trainer.location.split(',')[0]}</span>
@@ -44,7 +44,7 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "third
 
   const renderLanguages = () => (
     <div className="flex items-center gap-2">
-      <div className="w-6 h-6 rounded flex items-center justify-center shrink-0" style={{ background: "rgba(59,130,246,0.10)" }}>
+      <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: "rgba(59,130,246,0.10)" }}>
         <Globe size={12} strokeWidth={2.5} className="text-[#3B82F6]" />
       </div>
       <span className="text-[12px] font-medium text-[#5A6B82] leading-tight break-words">{trainer.languages.slice(0, 2).join(", ")}</span>
@@ -55,13 +55,13 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "third
     <>
       <button
         onClick={onViewProfile}
-        className={`${layoutVariant === 'full' ? 'px-8' : 'flex-1'} border border-[#0B1D3A]/[0.12] hover:border-[#0B1D3A]/30 font-bold text-[12.5px] py-2.5 rounded transition-all duration-300 flex items-center justify-center gap-1.5 hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]`}
+        className={`${layoutVariant === 'full' ? 'px-8' : 'flex-1'} border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/20 font-bold text-[12.5px] py-2.5 rounded-xl transition-all duration-300 ease-out flex items-center justify-center gap-1.5 hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50`}
         style={{ color: NAVY }}
       >
         View Profile <ArrowRight size={13} strokeWidth={2.5} style={{ color: GOLD_MID }} />
       </button>
       <button
-        className={`${layoutVariant === 'full' ? 'px-8' : 'flex-1'} text-white font-bold text-[12.5px] py-2.5 rounded transition-all duration-300 shadow-sm hover:shadow-[0_8px_20px_-4px_rgba(11,29,58,0.3)] relative overflow-hidden group/btn hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]`}
+        className={`${layoutVariant === 'full' ? 'px-8' : 'flex-1'} text-white font-bold text-[12.5px] py-2.5 rounded-xl transition-all duration-300 ease-out shadow-sm hover:shadow-[0_8px_20px_-4px_rgba(11,29,58,0.3)] relative overflow-hidden group/btn hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50`}
         style={{
           background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`,
         }}
@@ -81,7 +81,7 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "third
         y: -6,
         transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
       }}
-      className="group bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/20 rounded-lg p-0 flex flex-col h-full cursor-default shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:shadow-[0_12px_36px_-12px_rgba(11,29,58,0.15)] transition-all duration-400 relative overflow-hidden font-['Outfit']"
+      className="group bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/20 rounded-2xl p-0 flex flex-col h-full cursor-default shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out relative overflow-hidden font-['Outfit']"
     >
       <div
         className="absolute top-0 left-0 right-0 h-[3px] transition-all duration-500 opacity-70 group-hover:opacity-100"
@@ -103,11 +103,11 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "third
                 <img
                   src={trainer.image}
                   alt={trainer.name}
-                  className="w-14 h-14 rounded object-cover shrink-0 shadow-sm border border-[#0B1D3A]/[0.06] group-hover:scale-105 transition-transform duration-400"
+                  className="w-14 h-14 rounded-xl object-cover shrink-0 shadow-sm border border-[#0B1D3A]/[0.06] group-hover:scale-105 transition-transform duration-300 ease-out"
                 />
               ) : (
                 <div
-                  className="w-14 h-14 rounded flex items-center justify-center font-bold text-lg shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-400"
+                  className="w-14 h-14 rounded-xl ring-1 ring-black/5 flex items-center justify-center font-bold text-lg shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-300 ease-out"
                   style={{
                     background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`,
                     color: "white",
@@ -161,7 +161,7 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "third
                   border: "1px solid rgba(59,130,246,0.12)",
                 }}
               >
-                <div className="w-6 h-6 rounded flex items-center justify-center shrink-0" style={{ background: "rgba(59,130,246,0.15)" }}>
+                    <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: "rgba(59,130,246,0.15)" }}>
                   <Briefcase size={12} strokeWidth={2.5} className="text-[#3B82F6]" />
                 </div>
                 <div>
@@ -175,7 +175,7 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "third
                   border: `1px solid ${GOLD}15`,
                 }}
               >
-                <div className="w-6 h-6 rounded flex items-center justify-center shrink-0" style={{ background: `${GOLD}18` }}>
+                <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: `${GOLD}18` }}>
                   <GraduationCap size={12} strokeWidth={2.5} style={{ color: GOLD }} />
                 </div>
                 <div>

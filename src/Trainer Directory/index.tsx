@@ -175,7 +175,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             {isMobile && (
               <motion.div
                 variants={itemVariants}
-                className="w-full rounded-[16px] overflow-hidden shadow-[0_12px_40px_-10px_rgba(11,29,58,0.18)] mb-6"
+                className="w-full rounded-2xl overflow-hidden shadow-[0_12px_40px_-10px_rgba(11,29,58,0.18)] mb-6"
               >
                 <img
                   src={trainersHero}
@@ -194,7 +194,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search trainers, expertise or training areas..."
-                className="w-full pl-11 pr-4 py-3.5 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[8px] text-[14px] lg:text-[15px] text-[#0B1D3A] font-medium focus:outline-none focus:ring-2 focus:ring-[#C99A2E]/40 focus:border-[#C99A2E] transition-all duration-300 placeholder:text-[#7B8DAA]"
+                className="w-full pl-11 pr-4 py-3.5 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-xl text-[14px] lg:text-[15px] text-[#0B1D3A] font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] transition-all duration-300 ease-out placeholder:text-[#7B8DAA]"
                 style={{
                   boxShadow: "0 2px 8px -2px rgba(11, 29, 58, 0.05), 0 4px 12px -4px rgba(11, 29, 58, 0.03)",
                 }}
@@ -206,10 +206,10 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 <button
                   key={tag}
                   onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                  className={`px-3 py-1 lg:px-3.5 lg:py-1.5 rounded-full text-[11px] lg:text-[12px] font-semibold transition-all duration-300 border ${
+                  className={`px-3 py-1 lg:px-3.5 lg:py-1.5 rounded-full text-[11px] lg:text-[12px] font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 border ${
                     activeTag === tag
                       ? "bg-[#0B1D3A] text-white border-[#0B1D3A] shadow-[0_4px_12px_-2px_rgba(11,29,58,0.25)]"
-                      : "bg-white/90 backdrop-blur-sm border-[#0B1D3A]/[0.08] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/25 hover:text-[#0B1D3A] hover:shadow-sm"
+                      : "bg-white/90 backdrop-blur-sm border-[#0B1D3A]/[0.06] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/20 hover:text-[#0B1D3A] hover:shadow-sm"
                   }`}
                 >
                   {activeTag === tag && (
@@ -264,13 +264,13 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center gap-5 flex-wrap"
           >
             {stats.map((stat, i) => (
               <div key={i} className="flex items-center gap-3">
                 <div
-                  className="w-8 h-8 rounded flex items-center justify-center text-white shadow-sm"
+                  className="w-8 h-8 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm"
                   style={{ background: stat.bg }}
                 >
                   {stat.icon}
@@ -295,7 +295,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
         <div className="flex-1 flex flex-col">
           {isMobile && (
             <div className="flex items-center gap-3 mb-5 w-full">
-              <div className="flex-1 z-30">
+              <div className="flex-1 z-30 rounded-xl transition-all duration-300 ease-out focus-within:ring-2 focus-within:ring-[#C99A2E]/50">
                 <CustomSelect
                   options={["Relevance", "Experience (High to Low)", "A-Z"]}
                   value={sortBy}
@@ -305,7 +305,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               </div>
               <button
                 onClick={() => setShowMobileFilters(true)}
-                className="flex-1 flex items-center justify-center gap-2 h-full min-h-[46px] bg-white border border-[#0B1D3A]/[0.08] rounded text-[13px] font-bold shadow-sm transition-all duration-300 hover:shadow-md"
+                className="flex-1 flex items-center justify-center gap-2 h-full min-h-[46px] bg-white border border-[#0B1D3A]/[0.06] rounded-xl text-[13px] font-bold shadow-sm transition-all duration-300 ease-out hover:border-[#0B1D3A]/20 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                 style={{ color: NAVY }}
               >
                 <SlidersHorizontal size={15} strokeWidth={2.5} />
@@ -317,7 +317,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
           <div className="flex items-center justify-between mb-5">
             {isSearching ? (
               <h2 className="text-[14px] sm:text-[15px] font-bold flex items-center gap-2" style={{ color: NAVY }}>
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded bg-[#C99A2E]/10 text-[#C99A2E] text-[11px] font-black">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-xl ring-1 ring-black/5 bg-[#C99A2E]/10 text-[#C99A2E] text-[11px] font-black">
                   {filteredTrainers.length}
                 </span>
                 Trainers found
@@ -329,7 +329,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             {!isMobile && (
               <div className="flex items-center gap-2 sm:gap-3 text-[12px] sm:text-[13px] text-[#5A6B82] font-medium z-30 whitespace-nowrap">
                 Sort by:
-                <div className="w-[140px] sm:w-[220px] relative">
+                <div className="w-[140px] sm:w-[220px] relative rounded-xl transition-all duration-300 ease-out focus-within:ring-2 focus-within:ring-[#C99A2E]/50">
                   <CustomSelect
                     options={["Relevance", "Experience (High to Low)", "A-Z"]}
                     value={sortBy}

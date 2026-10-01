@@ -38,17 +38,17 @@ export default function Desktop() {
 
         <motion.div
           variants={item}
-          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-8 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-8 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
         >
           <ul className="grid grid-cols-2 gap-4">
             {data.credentials.map((cred, idx) => (
               <motion.li
                 key={idx}
                 whileHover={{ x: 3, transition: { duration: 0.2 } }}
-                className="flex items-start gap-4 p-4 rounded border border-[#0B1D3A]/[0.04] bg-white hover:border-[#0B1D3A]/[0.08] transition-colors group"
+                className="flex items-start gap-4 p-4 rounded-2xl border border-[#0B1D3A]/[0.06] bg-white shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out group"
               >
                 <div
-                  className="w-8 h-8 shrink-0 rounded-full flex items-center justify-center text-white shadow-sm mt-0.5 group-hover:scale-110 transition-transform duration-300"
+                  className="w-8 h-8 shrink-0 rounded-full ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mt-0.5 group-hover:scale-110 transition-transform duration-300"
                   style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
                 >
                   <Award size={16} strokeWidth={2.5} />

@@ -61,10 +61,10 @@ export default function Desktop() {
                 key={idx}
                 variants={item}
                 whileHover={mode.disabled ? undefined : { y: -4, transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } }}
-                className={`group bg-white/90 backdrop-blur-xl rounded p-5 border transition-all duration-400 relative overflow-hidden flex flex-col ${
+                className={`group bg-white/90 backdrop-blur-xl rounded-2xl p-5 border transition-all duration-300 ease-out relative overflow-hidden flex flex-col ${
                   mode.disabled
                     ? "opacity-40 border-[#0B1D3A]/[0.04]"
-                    : "border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/18 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)] hover:shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)]"
+                    : "border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.20] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] hover:-translate-y-1"
                 }`}
               >
                 {!mode.disabled && (
@@ -74,7 +74,7 @@ export default function Desktop() {
                   />
                 )}
                 <div
-                  className="w-9 h-9 rounded flex items-center justify-center text-white shadow-sm mb-3 group-hover:scale-110 transition-transform duration-300"
+                  className="w-9 h-9 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mb-3 group-hover:scale-110 transition-all duration-300 ease-out"
                   style={{ background: mode.disabled ? "#CBD5E1" : colors.bg }}
                 >
                   {getIcon(mode.icon)}
@@ -92,14 +92,14 @@ export default function Desktop() {
                 <div className="grid grid-cols-2 gap-4">
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 flex flex-col gap-3"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 flex flex-col gap-3 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
           >
             <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Training Formats</h4>
             <div className="flex flex-wrap gap-2">
               {data.delivery.formats.map((fmt, idx) => (
                 <span
                   key={idx}
-                  className="text-[12px] font-semibold px-3 py-1.5 rounded bg-white border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/20 transition-colors"
+                  className="text-[12px] font-semibold px-3 py-1.5 rounded-full bg-white border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/[0.20] transition-all duration-300 ease-out"
                 >
                   {fmt}
                 </span>
@@ -109,14 +109,14 @@ export default function Desktop() {
           
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 flex flex-col gap-3"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 flex flex-col gap-3 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
           >
             <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Training Durations</h4>
             <div className="flex flex-wrap gap-2">
               {data.delivery.durations.map((dur, idx) => (
                 <span
                   key={idx}
-                  className="text-[12px] font-semibold px-3 py-1.5 rounded bg-white border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/20 transition-colors"
+                  className="text-[12px] font-semibold px-3 py-1.5 rounded-full bg-white border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/[0.20] transition-all duration-300 ease-out"
                 >
                   {dur}
                 </span>

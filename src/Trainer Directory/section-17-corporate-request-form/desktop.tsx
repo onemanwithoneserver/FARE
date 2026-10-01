@@ -18,7 +18,7 @@ export default function Desktop() {
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
   };
 
-  const inputClasses = "w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.12] rounded px-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] focus:outline-none focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 transition-all placeholder:text-[#7B8DAA]";
+  const inputClasses = "w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded-xl px-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] hover:border-[#0B1D3A]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 aria-[invalid=true]:border-red-500 aria-[invalid=true]:ring-red-500/30 aria-[invalid=false]:border-emerald-600/40 transition-all duration-300 ease-out placeholder:text-[#7B8DAA]";
   const labelClasses = "block text-[11px] font-bold text-[#0B1D3A] uppercase tracking-[0.05em] mb-1.5";
 
   const [audience, setAudience] = useState("");
@@ -57,7 +57,7 @@ export default function Desktop() {
 
             <motion.div
               variants={item}
-              className="relative aspect-[4/3] rounded overflow-hidden border border-[#0B1D3A]/[0.08] shadow-[0_8px_30px_-4px_rgba(11,29,58,0.1)] group"
+              className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] group"
               style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}
             >
               <div
@@ -80,7 +80,7 @@ export default function Desktop() {
           <div className="col-span-7">
             <motion.div
               variants={item}
-              className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-8 shadow-[0_8px_24px_-8px_rgba(11,29,58,0.06)]"
+              className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-8 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
             >
               <form className="flex flex-col gap-5">
                 <div className="grid grid-cols-2 gap-5">
@@ -150,7 +150,7 @@ export default function Desktop() {
 
                 <button
                   type="button"
-                  className="mt-2 text-white px-8 py-3.5 rounded font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_8px_24px_-4px_rgba(11,29,58,0.35)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] relative overflow-hidden group w-full md:w-max"
+                  className="mt-2 text-white px-8 py-3.5 rounded-xl font-bold text-[14px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 flex items-center justify-center gap-2 shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] relative overflow-hidden group w-full md:w-max"
                   style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
                 >
                   Submit Request

@@ -27,7 +27,7 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-10 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden"
+      className="w-full py-10 px-5 border-b border-[#0B1D3A]/6 font-['Outfit'] relative overflow-hidden"
       style={{ background: "linear-gradient(175deg, #FFFFFF 0%, #F8FAFD 100%)" }}
     >
       <motion.div
@@ -49,14 +49,14 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-lg p-4 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] flex flex-col relative overflow-hidden"
+                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/6 rounded-2xl p-4 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] flex flex-col relative overflow-hidden"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-1"
                   style={{ background: metricIcons[idx]?.bg || metricIcons[0].bg }}
                 />
                 <div
-                  className="w-8 h-8 rounded flex items-center justify-center text-white shadow-sm mb-3"
+                  className="w-8 h-8 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mb-3"
                   style={{ background: metricIcons[idx]?.bg || metricIcons[0].bg }}
                 >
                   {metricIcons[idx]?.icon || metricIcons[0].icon}
@@ -64,7 +64,7 @@ export default function Mobile() {
                 <div className="text-[24px] font-black mb-0.5" style={{ color: NAVY }}>{metric.value}</div>
                 <p className="text-[11px] font-bold text-[#5A6B82] mb-3">{metric.name}</p>
                 <div
-                  className="text-[9px] text-[#7B8DAA] uppercase tracking-[0.12em] font-bold mt-auto pt-2.5 border-t border-[#0B1D3A]/[0.06]"
+                  className="text-[9px] text-fare-text-muted uppercase tracking-[0.12em] font-bold mt-auto pt-2.5 border-t border-[#0B1D3A]/6"
                 >
                   Source: {metric.source}
                 </div>
@@ -77,9 +77,9 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-lg p-4 flex items-center justify-between shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/6 rounded-2xl p-4 flex items-center justify-between shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
               >
-                <div className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.12em]">{count.label}</div>
+                <div className="text-[11px] font-bold text-fare-text-muted uppercase tracking-[0.12em]">{count.label}</div>
                 <div className="text-[20px] font-black" style={{ color: GOLD }}>{count.value}</div>
               </motion.div>
             ))}

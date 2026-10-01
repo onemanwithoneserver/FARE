@@ -41,7 +41,7 @@ export default function Mobile() {
             <motion.div
               key={idx}
               variants={item}
-              className="bg-white/90 backdrop-blur-xl rounded-lg p-5 border border-[#0B1D3A]/[0.08] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] flex flex-col relative overflow-hidden"
+              className="bg-white/90 backdrop-blur-xl rounded-2xl p-5 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] flex flex-col relative overflow-hidden"
             >
               <div
                 className="absolute top-0 left-0 right-0 h-1"
@@ -51,7 +51,7 @@ export default function Mobile() {
               <div className="flex items-center justify-between mb-2.5">
                 <span className="text-[9px] font-bold uppercase tracking-[0.15em]" style={{ color: GOLD }}>{prog.format}</span>
                 <span
-                  className="text-[9px] font-bold px-2 py-0.5 rounded"
+                  className="text-[9px] font-bold px-2 py-0.5 rounded-full"
                   style={{
                     background: `${NAVY}08`,
                     color: `${NAVY}AA`,
@@ -72,7 +72,7 @@ export default function Mobile() {
                   { icon: <MonitorPlay size={12} strokeWidth={2.5} />, text: prog.mode, bg: "linear-gradient(135deg, #10B981, #059669)" },
                 ].map((meta, mIdx) => (
                   <div key={mIdx} className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded flex items-center justify-center text-white shadow-sm shrink-0" style={{ background: meta.bg }}>
+                    <div className="w-5 h-5 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm shrink-0" style={{ background: meta.bg }}>
                       {meta.icon}
                     </div>
                     <span className="text-[11px] font-medium text-[#5A6B82]">{meta.text}</span>
@@ -89,7 +89,7 @@ export default function Mobile() {
                   {prog.topics.map((topic, tIdx) => (
                     <span
                       key={tIdx}
-                      className="text-[10px] font-semibold px-2 py-1 rounded"
+                      className="text-[10px] font-semibold px-2 py-1 rounded-full"
                       style={{
                         background: `${GOLD}08`,
                         border: `1px solid ${GOLD}15`,
@@ -102,7 +102,7 @@ export default function Mobile() {
                 </div>
               </div>
 
-              <a href={prog.link} className="text-[12px] font-bold flex items-center gap-1.5 mt-auto" style={{ color: NAVY }}>
+              <a href={prog.link} className="text-[12px] font-bold flex items-center gap-1.5 mt-auto transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 rounded-xl" style={{ color: NAVY }}>
                 <span>View Full Program</span>
                 <ArrowRight size={12} strokeWidth={2.5} style={{ color: GOLD_MID }} />
               </a>

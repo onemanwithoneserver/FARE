@@ -35,15 +35,15 @@ export default function Desktop() {
 
         <motion.div
           variants={item}
-          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-16 flex flex-col items-center justify-center text-center shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-16 flex flex-col items-center justify-center text-center shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] transition-all duration-300 ease-out hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)]"
         >
           <div
-            className="w-12 h-12 rounded flex items-center justify-center text-white shadow-sm mb-4"
+            className="w-12 h-12 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mb-4"
             style={{ background: "linear-gradient(135deg, #8B5CF6, #6D28D9)" }}
           >
             <MessageSquare size={22} strokeWidth={2.2} />
           </div>
-          <p className="text-[14px] text-[#7B8DAA] font-medium max-w-[400px]">
+          <p className="text-[14px] text-[#5A6B82] font-medium max-w-[400px]">
             Verified company feedback will appear here as engagements are completed.
           </p>
         </motion.div>

@@ -42,7 +42,7 @@ export default function Desktop() {
               key={idx}
               variants={item}
               whileHover={{ y: -5, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-              className="group bg-white/90 backdrop-blur-xl rounded p-6 border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/18 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] hover:shadow-[0_12px_36px_-12px_rgba(11,29,58,0.1)] transition-all duration-400 flex flex-col relative overflow-hidden"
+              className="group bg-white/90 backdrop-blur-xl rounded-2xl p-6 border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.20] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out hover:-translate-y-1 flex flex-col relative overflow-hidden"
             >
                             <div
                 className="absolute top-0 left-0 right-0 h-[2.5px] opacity-60 group-hover:opacity-100 transition-opacity"
@@ -52,7 +52,7 @@ export default function Desktop() {
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-bold uppercase tracking-[0.15em]" style={{ color: GOLD }}>{prog.format}</span>
                 <span
-                  className="text-[10px] font-bold px-2 py-0.5 rounded"
+                  className="text-[10px] font-bold px-2 py-0.5 rounded-full"
                   style={{
                     background: `${NAVY}08`,
                     color: `${NAVY}AA`,
@@ -73,7 +73,7 @@ export default function Desktop() {
                   { icon: <MonitorPlay size={13} strokeWidth={2.5} />, text: prog.mode, bg: "linear-gradient(135deg, #10B981, #059669)" },
                 ].map((meta, mIdx) => (
                   <div key={mIdx} className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded flex items-center justify-center text-white shadow-sm" style={{ background: meta.bg }}>
+                    <div className="w-5 h-5 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm" style={{ background: meta.bg }}>
                       {meta.icon}
                     </div>
                     <span className="text-[11px] font-medium text-[#5A6B82]">{meta.text}</span>
@@ -90,7 +90,7 @@ export default function Desktop() {
                   {prog.topics.map((topic, tIdx) => (
                     <span
                       key={tIdx}
-                      className="text-[11px] font-semibold px-2 py-1 rounded"
+                      className="text-[11px] font-semibold px-2 py-1 rounded-full"
                       style={{
                         background: `${GOLD}08`,
                         border: `1px solid ${GOLD}15`,
@@ -103,7 +103,7 @@ export default function Desktop() {
                 </div>
               </div>
 
-              <a href={prog.link} className="text-[13px] font-bold flex items-center gap-1.5 mt-auto transition-colors duration-200 group/link" style={{ color: NAVY }}>
+              <a href={prog.link} className="text-[13px] font-bold flex items-center gap-1.5 mt-auto transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 rounded-xl" style={{ color: NAVY }}>
                 <span className="group-hover/link:text-[#C99A2E] transition-colors">View Full Program</span>
                 <ArrowRight size={13} strokeWidth={2.5} className="group-hover/link:translate-x-1 transition-transform duration-300" style={{ color: GOLD_MID }} />
               </a>

@@ -20,7 +20,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
   return (
     <div className="py-4 border-b border-[#0B1D3A]/[0.06] last:border-b-0">
       <button
-        className="w-full flex items-center justify-between group cursor-pointer"
+        className="w-full flex items-center justify-between group cursor-pointer transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex items-center gap-2">
@@ -58,14 +58,14 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
                 return (
                   <label
                     key={option}
-                    className="flex items-center gap-3 cursor-pointer group/item py-1.5 transition-all duration-200"
+                    className="flex items-center gap-3 cursor-pointer group/item py-1.5 transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                     onClick={() => onChange(option)}
                   >
                     <div
                       className={`w-5 h-5 rounded border flex items-center justify-center transition-all duration-300 shrink-0 ${
                         isSelected
                           ? "border-[#0B1D3A]"
-                          : "border-[#0B1D3A]/20 bg-white"
+                          : "border-[#0B1D3A]/[0.06] bg-white"
                       }`}
                       style={isSelected ? { background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` } : undefined}
                     >
@@ -124,7 +124,7 @@ export default function Mobile({ isOpen, onClose }: { isOpen?: boolean; onClose?
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="fixed inset-0 z-50 flex flex-col justify-end bg-[#0B1D3A]/60 backdrop-blur-sm"
           onClick={onClose}
         >
@@ -133,7 +133,7 @@ export default function Mobile({ isOpen, onClose }: { isOpen?: boolean; onClose?
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="w-full bg-white rounded-t-[20px] flex flex-col max-h-[85vh] font-['Outfit']"
+            className="w-full bg-white rounded-t-2xl flex flex-col max-h-[85vh] font-['Outfit']"
             onClick={e => e.stopPropagation()}
             style={{ boxShadow: "0 -4px 24px rgba(0,0,0,0.15)" }}
           >
@@ -158,7 +158,7 @@ export default function Mobile({ isOpen, onClose }: { isOpen?: boolean; onClose?
               </div>
               <button
                 onClick={onClose}
-                className="w-8 h-8 rounded-full bg-[#F8FAFD] flex items-center justify-center text-[#7B8DAA] hover:bg-[#EEF4FF] hover:text-[#0B1D3A] transition-colors"
+                className="w-8 h-8 rounded-xl bg-[#F8FAFD] flex items-center justify-center text-[#7B8DAA] hover:bg-[#EEF4FF] hover:text-[#0B1D3A] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
               >
                 <X size={18} strokeWidth={2.5} />
               </button>
@@ -178,14 +178,14 @@ export default function Mobile({ isOpen, onClose }: { isOpen?: boolean; onClose?
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-[#0B1D3A]/[0.08] flex items-center gap-3">
               <button
                 onClick={clearAll}
-                className="flex-1 py-3.5 rounded-lg text-[#0B1D3A] font-bold text-[14px] flex items-center justify-center gap-2 bg-[#F8FAFD] border border-[#0B1D3A]/[0.08] hover:bg-[#EEF4FF] transition-colors"
+                className="flex-1 py-3.5 rounded-xl text-[#0B1D3A] font-bold text-[14px] flex items-center justify-center gap-2 bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/20 hover:bg-[#EEF4FF] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
               >
                 <RotateCcw size={14} strokeWidth={2.5} />
                 Clear All
               </button>
               <button
                 onClick={onClose}
-                className="flex-[1.5] py-3.5 rounded-lg text-white font-bold text-[14px] flex items-center justify-center shadow-md active:scale-[0.98] transition-transform"
+                className="flex-[1.5] py-3.5 rounded-xl text-white font-bold text-[14px] flex items-center justify-center shadow-md active:scale-[0.98] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
               >
                 Apply Filters

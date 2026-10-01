@@ -45,7 +45,7 @@ export default function Desktop() {
               className="flex flex-col gap-3 group cursor-pointer"
             >
               <div
-                className={`relative aspect-video rounded overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.06)] group-hover:shadow-[0_8px_24px_-8px_rgba(11,29,58,0.12)] transition-all duration-400 ${
+                className={`relative aspect-video rounded-2xl overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] group-hover:border-[#0B1D3A]/20 group-hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out ${
                   video.thumbnail === 'navy' ? '' : ''
                 }`}
                 style={{
@@ -65,7 +65,7 @@ export default function Desktop() {
                 )}
 
                 <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+                  className="w-12 h-12 rounded-full ring-1 ring-black/5 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                   style={{
                     background: video.thumbnail === 'navy'
                       ? `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})`
@@ -81,13 +81,13 @@ export default function Desktop() {
                   />
                 </div>
 
-                <div className="absolute bottom-2 right-2 bg-black/50 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded">
+                <div className="absolute bottom-2 right-2 bg-black/50 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
                   {video.duration}
                 </div>
 
                 {video.thumbnail === 'navy' && (
                   <div
-                    className="absolute top-2 left-2 text-[9px] font-bold px-2 py-0.5 rounded"
+                    className="absolute top-2 left-2 text-[9px] font-bold px-2 py-0.5 rounded-full"
                     style={{ background: GOLD, color: NAVY }}
                   >
                     NEW

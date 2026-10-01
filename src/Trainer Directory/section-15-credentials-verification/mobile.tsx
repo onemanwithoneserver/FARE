@@ -38,16 +38,16 @@ export default function Mobile() {
 
         <motion.div
           variants={item}
-          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-lg p-5 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
         >
           <ul className="flex flex-col gap-3">
             {data.credentials.map((cred, idx) => (
               <motion.li
                 key={idx}
-                className="flex items-start gap-3 p-3 rounded bg-white border border-[#0B1D3A]/[0.04]"
+                className="flex items-start gap-3 p-3 rounded-2xl bg-white border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out"
               >
                 <div
-                  className="w-6 h-6 shrink-0 rounded-full flex items-center justify-center text-white shadow-sm mt-0.5"
+                  className="w-6 h-6 shrink-0 rounded-full ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mt-0.5"
                   style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
                 >
                   <Award size={12} strokeWidth={2.5} />

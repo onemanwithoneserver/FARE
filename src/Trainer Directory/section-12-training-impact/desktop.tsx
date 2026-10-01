@@ -51,14 +51,14 @@ export default function Desktop() {
                 key={idx}
                 variants={item}
                 whileHover={{ y: -5, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                className="group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/18 rounded p-6 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] hover:shadow-[0_12px_36px_-12px_rgba(11,29,58,0.1)] transition-all duration-400 flex flex-col relative overflow-hidden"
+                className="group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.20] rounded-2xl p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out hover:-translate-y-1 flex flex-col relative overflow-hidden"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[2.5px] opacity-60 group-hover:opacity-100 transition-opacity"
                   style={{ background: metricIcons[idx]?.bg || metricIcons[0].bg }}
                 />
                 <div
-                  className="w-10 h-10 rounded flex items-center justify-center text-white shadow-sm mb-4 group-hover:scale-110 transition-transform duration-300"
+                  className="w-10 h-10 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mb-4 group-hover:scale-110 transition-all duration-300 ease-out"
                   style={{ background: metricIcons[idx]?.bg || metricIcons[0].bg }}
                 >
                   {metricIcons[idx]?.icon || metricIcons[0].icon}
@@ -79,7 +79,7 @@ export default function Desktop() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 flex items-center justify-between shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 flex items-center justify-between shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
               >
                 <div className="text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.12em]">{count.label}</div>
                 <div className="text-[24px] font-black" style={{ color: GOLD }}>{count.value}</div>

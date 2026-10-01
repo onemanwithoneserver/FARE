@@ -47,7 +47,7 @@ export default function Desktop() {
             <motion.div
               key={idx}
               variants={item}
-              className="bg-white/90 backdrop-blur-xl rounded overflow-hidden border border-[#0B1D3A]/[0.08] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] hover:shadow-[0_12px_36px_-12px_rgba(11,29,58,0.1)] transition-all duration-400 flex flex-col md:flex-row"
+              className="bg-white/90 backdrop-blur-xl rounded-2xl overflow-hidden border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.20] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out hover:-translate-y-1 flex flex-col md:flex-row"
             >
                             <div
                 className="w-full md:w-[260px] shrink-0 p-6 flex flex-col justify-between relative overflow-hidden"
@@ -81,7 +81,7 @@ export default function Desktop() {
                   return (
                     <div key={sIdx} className="flex items-start gap-3.5">
                       <div
-                        className="w-8 h-8 rounded flex items-center justify-center text-white shadow-sm shrink-0"
+                        className="w-8 h-8 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm shrink-0"
                         style={{ background: cfg.bg }}
                       >
                         {cfg.icon}
@@ -94,7 +94,7 @@ export default function Desktop() {
                             {study.metrics.map((metric, mIdx) => (
                               <span
                                 key={mIdx}
-                                className="text-[11px] font-bold px-2.5 py-1 rounded"
+                                className="text-[11px] font-bold px-2.5 py-1 rounded-full"
                                 style={{
                                   background: "rgba(16,185,129,0.08)",
                                   color: "#059669",

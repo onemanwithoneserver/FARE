@@ -20,7 +20,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
   return (
     <div className="py-3.5 border-b border-[#0B1D3A]/[0.06] last:border-b-0">
       <button
-        className="w-full flex items-center justify-between group cursor-pointer"
+        className="w-full flex items-center justify-between group cursor-pointer transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex items-center gap-2">
@@ -58,14 +58,14 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
                 return (
                   <label
                     key={option}
-                    className="flex items-center gap-2.5 cursor-pointer group/item px-2 py-1.5 rounded transition-all duration-200 hover:bg-[#F8FAFD]"
+                    className="flex items-center gap-2.5 cursor-pointer group/item px-2 py-1.5 rounded-xl transition-all duration-300 ease-out hover:bg-[#F8FAFD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                     onClick={() => onChange(option)}
                   >
                     <div
                       className={`w-4 h-4 rounded-[3px] border flex items-center justify-center transition-all duration-300 shrink-0 ${
                         isSelected
                           ? "border-[#0B1D3A] shadow-[0_0_0_1px_rgba(11,29,58,0.08)]"
-                          : "border-[#0B1D3A]/15 group-hover/item:border-[#0B1D3A]/30 bg-white"
+                          : "border-[#0B1D3A]/[0.06] group-hover/item:border-[#0B1D3A]/20 bg-white"
                       }`}
                       style={isSelected ? { background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` } : undefined}
                     >
@@ -119,15 +119,12 @@ export default function Desktop() {
 
   return (
     <div
-      className="w-[260px] shrink-0 bg-white/90 backdrop-blur-xl rounded border border-[#0B1D3A]/[0.08] p-5 sticky top-[80px] h-fit font-['Outfit']"
-      style={{
-        boxShadow: "0 2px 8px -2px rgba(11, 29, 58, 0.05), 0 4px 12px -4px rgba(11, 29, 58, 0.03)",
-      }}
+      className="w-[260px] shrink-0 bg-white/90 backdrop-blur-xl rounded-2xl border border-[#0B1D3A]/[0.06] p-5 sticky top-[80px] h-fit font-['Outfit'] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
     >
             <div className="flex items-center justify-between mb-1 pb-3 border-b border-[#0B1D3A]/[0.06]">
         <div className="flex items-center gap-2">
           <div
-            className="w-7 h-7 rounded flex items-center justify-center text-white shadow-sm"
+            className="w-7 h-7 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm"
             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
           >
             <SlidersHorizontal size={13} strokeWidth={2.5} />
@@ -145,7 +142,7 @@ export default function Desktop() {
         {totalActive > 0 && (
           <button
             onClick={clearAll}
-            className="flex items-center gap-1 text-[11px] font-semibold text-[#7B8DAA] hover:text-[#0B1D3A] transition-colors duration-200 cursor-pointer"
+            className="flex items-center gap-1 text-[11px] font-semibold text-[#7B8DAA] hover:text-[#0B1D3A] transition-all duration-300 ease-out cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
           >
             <RotateCcw size={10} strokeWidth={2.5} />
             Clear
