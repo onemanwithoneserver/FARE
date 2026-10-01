@@ -1,36 +1,93 @@
 import { profileData } from "../profileData";
+import { motion } from "motion/react";
+import type { Variants } from "motion/react";
+import { TrendingUp, Star, Award } from "lucide-react";
+
+const NAVY = "#0B1D3A";
+const GOLD = "#C99A2E";
+const GOLD_MID = "#D5AA45";
 
 export default function Desktop() {
   const data = profileData;
-  
+
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+  };
+  const item: Variants = {
+    hidden: { opacity: 0, y: 18 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  };
+
+  const metricIcons = [
+    { icon: <TrendingUp size={20} strokeWidth={2.2} />, bg: "linear-gradient(135deg, #3B82F6, #1D4ED8)" },
+    { icon: <Star size={20} strokeWidth={2.2} />, bg: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` },
+    { icon: <Award size={20} strokeWidth={2.2} />, bg: "linear-gradient(135deg, #10B981, #059669)" },
+  ];
+
   return (
-    <section className="w-full bg-white text-[#0F172A] py-16 px-10 border-b border-[#e2e8f0] font-['Outfit'] flex justify-center">
-      <div className="max-w-[1200px] w-full">
-        <h2 className="text-xl font-bold text-[#0B1D3A] mb-6">Training Impact</h2>
-        
-        <div className="flex flex-col gap-6">
-          <div className="grid grid-cols-3 gap-6">
+    <section
+      className="w-full py-14 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative"
+      style={{ background: "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)" }}
+    >
+      <div className="absolute top-[30%] left-[8%] w-[400px] h-[400px] bg-gradient-radial from-[#DDEAFF]/30 to-transparent rounded-full blur-[100px] pointer-events-none z-0" />
+
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false }}
+        className="max-w-[1200px] w-full relative z-10"
+      >
+        <motion.div variants={item} className="flex items-center gap-3 mb-6">
+          <div className="w-8 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
+          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Impact</h2>
+        </motion.div>
+
+        <div className="flex flex-col gap-5">
+                    <div className="grid grid-cols-3 gap-5">
             {data.trainingImpact.metrics.map((metric, idx) => (
-              <div key={idx} className="bg-[#f8fafc] border border-gray-200 rounded-lg p-6 flex flex-col shadow-sm">
-                <div className="text-4xl font-black text-[#0B1D3A] mb-2">{metric.value}</div>
-                <p className="text-sm text-gray-700 font-bold mb-3">{metric.name}</p>
-                <div className="text-[10px] text-gray-400 uppercase tracking-wider font-bold mt-auto pt-4 border-t border-gray-200">
+              <motion.div
+                key={idx}
+                variants={item}
+                whileHover={{ y: -5, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
+                className="group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/18 rounded p-6 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] hover:shadow-[0_12px_36px_-12px_rgba(11,29,58,0.1)] transition-all duration-400 flex flex-col relative overflow-hidden"
+              >
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2.5px] opacity-60 group-hover:opacity-100 transition-opacity"
+                  style={{ background: metricIcons[idx]?.bg || metricIcons[0].bg }}
+                />
+                <div
+                  className="w-10 h-10 rounded flex items-center justify-center text-white shadow-sm mb-4 group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: metricIcons[idx]?.bg || metricIcons[0].bg }}
+                >
+                  {metricIcons[idx]?.icon || metricIcons[0].icon}
+                </div>
+                <div className="text-[32px] font-black mb-1" style={{ color: NAVY }}>{metric.value}</div>
+                <p className="text-[13px] font-bold text-[#5A6B82] mb-3">{metric.name}</p>
+                <div
+                  className="text-[10px] text-[#7B8DAA] uppercase tracking-[0.12em] font-bold mt-auto pt-3 border-t border-[#0B1D3A]/[0.06]"
+                >
                   Source: {metric.source}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-          
-          <div className="grid grid-cols-2 gap-6">
+
+                    <div className="grid grid-cols-2 gap-5">
             {data.trainingImpact.counts.map((count, idx) => (
-              <div key={idx} className="bg-white border border-gray-200 rounded-lg p-5 flex items-center justify-between shadow-sm">
-                <div className="text-sm font-bold text-gray-600 uppercase tracking-widest">{count.label}</div>
-                <div className="text-2xl font-black text-[#C99A2E]">{count.value}</div>
-              </div>
+              <motion.div
+                key={idx}
+                variants={item}
+                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 flex items-center justify-between shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+              >
+                <div className="text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.12em]">{count.label}</div>
+                <div className="text-[24px] font-black" style={{ color: GOLD }}>{count.value}</div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

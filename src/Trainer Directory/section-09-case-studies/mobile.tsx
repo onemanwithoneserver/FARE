@@ -1,82 +1,120 @@
-import { getData } from "./data";
-import { useLanguage } from "../../context/LanguageContext";
-import { Building, Users, Clock, Target, Lightbulb, Trophy } from "lucide-react";
+import { profileData } from "../profileData";
+import { motion } from "motion/react";
+import type { Variants } from "motion/react";
+import { Target, Lightbulb, Trophy } from "lucide-react";
+
+const NAVY = "#0B1D3A";
+const GOLD = "#C99A2E";
+const GOLD_MID = "#D5AA45";
 
 export default function Mobile() {
-  const { language } = useLanguage();
-  const data = getData(language);
-  
+  const data = profileData;
+
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+  };
+  const item: Variants = {
+    hidden: { opacity: 0, y: 15 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+  };
+
+  const stepConfig = [
+    { icon: <Target size={14} strokeWidth={2.5} />, label: "The Challenge", bg: "linear-gradient(135deg, #EF4444, #DC2626)", accent: "#EF4444" },
+    { icon: <Lightbulb size={14} strokeWidth={2.5} />, label: "The Approach", bg: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})`, accent: GOLD },
+    { icon: <Trophy size={14} strokeWidth={2.5} />, label: "The Outcome", bg: "linear-gradient(135deg, #10B981, #059669)", accent: "#10B981" },
+  ];
+
   return (
-    <section className="w-full bg-[#f8fafc] text-[#0F172A] py-12 px-5 border-b border-[#e2e8f0] font-['Outfit']">
-      <div className="flex items-center gap-2 mb-8">
-        <div className="w-6 h-1 bg-[#C99A2E] rounded-full"></div>
-        <h2 className="text-2xl font-black text-[#0B1D3A] tracking-tight">{data.title}</h2>
-      </div>
-      
-      <div className="flex flex-col gap-6">
-        {data.studies.map((study, idx) => (
-          <div key={idx} className="bg-white rounded-xl overflow-hidden shadow-sm border border-[#e2e8f0] flex flex-col">
-            
-            {/* Top - Metadata */}
-            <div className="bg-[#0B1D3A] text-white p-6">
-              <div className="text-[#C99A2E] font-bold text-[11px] uppercase tracking-wider mb-1.5">{study.client}</div>
-              <h3 className="text-xl font-bold mb-6 leading-tight">{study.title}</h3>
-              
-              <div className="flex flex-col gap-4">
-                <div className="flex items-start gap-2.5">
-                  <Building size={16} className="text-[#C99A2E] mt-0.5 shrink-0" />
-                  <div>
-                    <div className="text-[10px] text-white/60 uppercase tracking-wider font-semibold mb-0.5">Segment</div>
-                    <div className="text-[13px] font-medium">{study.segment}</div>
+    <section
+      className="w-full py-10 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden"
+      style={{ background: "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)" }}
+    >
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-40px" }}
+        className="relative z-10 w-full"
+      >
+        <motion.div variants={item} className="flex items-center gap-2.5 mb-5">
+          <div className="w-6 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
+          <h2 className="text-[20px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Case Studies</h2>
+        </motion.div>
+
+        <div className="flex flex-col gap-6">
+          {data.caseStudies.map((study, idx) => (
+            <motion.div
+              key={idx}
+              variants={item}
+              className="bg-white/90 backdrop-blur-xl rounded-lg overflow-hidden border border-[#0B1D3A]/[0.08] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] flex flex-col"
+            >
+              <div
+                className="w-full p-5 flex flex-col justify-between relative overflow-hidden"
+                style={{
+                  background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)`,
+                }}
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[30px] pointer-events-none" />
+                <div className="relative z-10">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.15em] mb-1.5" style={{ color: GOLD_MID }}>{study.client}</div>
+                  <h3 className="text-[15px] font-black text-white mb-4 leading-snug">{study.title}</h3>
+
+                  <div className="flex flex-wrap gap-x-4 gap-y-3">
+                    {[
+                      { label: "Segment", value: study.segment },
+                      { label: "Audience", value: study.audience },
+                      { label: "Duration", value: study.duration },
+                    ].map((meta, mIdx) => (
+                      <div key={mIdx}>
+                        <div className="text-[9px] text-white/40 uppercase tracking-[0.15em] font-bold mb-0.5">{meta.label}</div>
+                        <div className="text-[12px] font-semibold text-white/80">{meta.value}</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="flex items-start gap-2.5">
-                  <Users size={16} className="text-[#C99A2E] mt-0.5 shrink-0" />
-                  <div>
-                    <div className="text-[10px] text-white/60 uppercase tracking-wider font-semibold mb-0.5">Audience</div>
-                    <div className="text-[13px] font-medium">{study.audience}</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <Clock size={16} className="text-[#C99A2E] mt-0.5 shrink-0" />
-                  <div>
-                    <div className="text-[10px] text-white/60 uppercase tracking-wider font-semibold mb-0.5">Duration</div>
-                    <div className="text-[13px] font-medium">{study.duration}</div>
-                  </div>
-                </div>
               </div>
-            </div>
-            
-            {/* Bottom - Content */}
-            <div className="p-6 flex flex-col gap-6">
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2">
-                  <Target size={16} className="text-[#EF4444]" />
-                  <h4 className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-wider">The Challenge</h4>
-                </div>
-                <p className="text-[#475569] leading-relaxed text-[14px] pl-6 border-l-2 border-[#EF4444]/20 ml-1.5">{study.challenge}</p>
+
+              <div className="p-5 flex flex-col gap-5">
+                {[study.challenge, study.approach, study.outcome].map((text, sIdx) => {
+                  const cfg = stepConfig[sIdx];
+                  return (
+                    <div key={sIdx} className="flex items-start gap-3">
+                      <div
+                        className="w-7 h-7 rounded flex items-center justify-center text-white shadow-sm shrink-0"
+                        style={{ background: cfg.bg }}
+                      >
+                        {cfg.icon}
+                      </div>
+                      <div>
+                        <h4 className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1.5" style={{ color: NAVY }}>{cfg.label}</h4>
+                        <p className="text-[12px] text-[#5A6B82] leading-[1.6] font-medium">{text}</p>
+                        {sIdx === 2 && study.metrics && (
+                          <div className="flex flex-wrap gap-1.5 mt-2.5">
+                            {study.metrics.map((metric, mIdx) => (
+                              <span
+                                key={mIdx}
+                                className="text-[10px] font-bold px-2 py-1 rounded"
+                                style={{
+                                  background: "rgba(16,185,129,0.08)",
+                                  color: "#059669",
+                                  border: "1px solid rgba(16,185,129,0.2)",
+                                }}
+                              >
+                                {metric}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-              
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2">
-                  <Lightbulb size={16} className="text-[#EAB308]" />
-                  <h4 className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-wider">The Approach</h4>
-                </div>
-                <p className="text-[#475569] leading-relaxed text-[14px] pl-6 border-l-2 border-[#EAB308]/20 ml-1.5">{study.approach}</p>
-              </div>
-              
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2">
-                  <Trophy size={16} className="text-[#10B981]" />
-                  <h4 className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-wider">The Outcome</h4>
-                </div>
-                <p className="text-[#475569] leading-relaxed text-[14px] font-medium pl-6 border-l-2 border-[#10B981]/20 ml-1.5">{study.outcome}</p>
-              </div>
-            </div>
-            
-          </div>
-        ))}
-      </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 }

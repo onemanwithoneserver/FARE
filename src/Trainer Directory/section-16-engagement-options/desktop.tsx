@@ -1,55 +1,111 @@
 import { profileData } from "../profileData";
-import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
+import type { Variants } from "motion/react";
+import { ArrowRight, Check } from "lucide-react";
+
+const NAVY = "#0B1D3A";
+const GOLD = "#C99A2E";
+const GOLD_MID = "#D5AA45";
 
 export default function Desktop() {
   const data = profileData;
-  
-  return (
-    <section className="w-full bg-white text-[#0F172A] py-16 px-10 border-b border-[#e2e8f0] font-['Outfit'] flex justify-center">
-      <div className="max-w-[1200px] w-full">
-        
-        <h2 className="text-xl font-bold text-[#0B1D3A] mb-6">Training Investment</h2>
-        
-        <div className="grid grid-cols-3 gap-6 mb-6">
-          <div className="bg-[#f8fafc] border border-gray-200 rounded-lg p-6">
-            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Pricing</h4>
-            <h3 className="text-xl font-bold text-[#0B1D3A] mb-2">{data.investment.pricing.title}</h3>
-            <p className="text-xs text-gray-500 leading-relaxed">{data.investment.pricing.subtitle}</p>
-          </div>
 
-          <div className="bg-[#f8fafc] border border-gray-200 rounded-lg p-6">
-            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Minimum Engagement</h4>
-            <h3 className="text-xl font-bold text-[#0B1D3A] mb-4">{data.investment.minimumEngagement.title}</h3>
-            <div className="flex gap-2">
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+  };
+  const item: Variants = {
+    hidden: { opacity: 0, y: 18 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  };
+
+  return (
+    <section
+      className="w-full py-14 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative"
+      style={{ background: "linear-gradient(175deg, #FFFFFF 0%, #F8FAFD 100%)" }}
+    >
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false }}
+        className="max-w-[1200px] w-full relative z-10"
+      >
+        <motion.div variants={item} className="flex items-center gap-3 mb-6">
+          <div className="w-8 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
+          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Investment</h2>
+        </motion.div>
+
+        <div className="grid grid-cols-3 gap-5 mb-5">
+                    <motion.div
+            variants={item}
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)] hover:shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)] transition-all duration-400"
+          >
+            <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-4">Pricing</h4>
+            <h3 className="text-[18px] font-black mb-2" style={{ color: NAVY }}>{data.investment.pricing.title}</h3>
+            <p className="text-[12px] text-[#5A6B82] font-medium leading-relaxed">{data.investment.pricing.subtitle}</p>
+          </motion.div>
+
+                    <motion.div
+            variants={item}
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)] hover:shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)] transition-all duration-400"
+          >
+            <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-4">Minimum Engagement</h4>
+            <h3 className="text-[18px] font-black mb-4" style={{ color: NAVY }}>{data.investment.minimumEngagement.title}</h3>
+            <div className="flex flex-wrap gap-2">
               {data.investment.minimumEngagement.options.map((opt, idx) => (
-                <span key={idx} className={`text-[11px] font-medium px-3 py-1.5 rounded border ${opt === data.investment.minimumEngagement.selected ? 'bg-amber-50 border-amber-200 text-amber-700' : 'bg-white border-gray-300 text-gray-600'}`}>
+                <span
+                  key={idx}
+                  className="text-[11px] font-semibold px-2.5 py-1.5 rounded transition-colors"
+                  style={opt === data.investment.minimumEngagement.selected ? {
+                    background: `${GOLD}15`,
+                    color: GOLD_MID,
+                    border: `1px solid ${GOLD}30`
+                  } : {
+                    background: "white",
+                    color: "#7B8DAA",
+                    border: "1px solid rgba(11,29,58,0.08)"
+                  }}
+                >
                   {opt}
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-[#f8fafc] border border-gray-200 rounded-lg p-6">
-            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Pricing Basis</h4>
-            <ul className="flex flex-col gap-2">
+                    <motion.div
+            variants={item}
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)] hover:shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)] transition-all duration-400"
+          >
+            <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-4">Pricing Basis</h4>
+            <ul className="flex flex-col gap-3">
               {data.investment.pricingBasis.map((basis, idx) => (
-                <li key={idx} className="flex items-center gap-2 text-sm text-gray-600 font-medium">
-                  <span className="w-1 h-1 rounded-full bg-gray-400"></span>
+                <li key={idx} className="flex items-center gap-2.5 text-[13px] font-semibold text-[#5A6B82]">
+                  <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0" style={{ background: `${NAVY}10`, color: NAVY }}>
+                    <Check size={10} strokeWidth={3} />
+                  </div>
                   {basis}
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="bg-[#f8fafc] border border-gray-200 rounded-lg p-5 flex items-center justify-between">
-          <p className="text-sm text-gray-600">{data.investment.footerNote}</p>
-          <button className="bg-[#0B1D3A] text-white px-5 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-[#152c54] transition-colors">
-            Request Pricing <ArrowRight size={16} />
+                <motion.div
+          variants={item}
+          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 flex items-center justify-between shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+        >
+          <p className="text-[13px] font-medium text-[#7B8DAA]">{data.investment.footerNote}</p>
+          <button
+            className="text-white px-6 py-2.5 rounded font-bold text-[13px] transition-all duration-300 flex items-center gap-2 shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_8px_24px_-4px_rgba(11,29,58,0.35)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] relative overflow-hidden group"
+            style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
+          >
+            Request Pricing
+            <ArrowRight size={14} strokeWidth={2.5} style={{ color: GOLD_MID }} />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.1] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
           </button>
-        </div>
-
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

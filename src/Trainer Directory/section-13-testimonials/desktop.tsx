@@ -1,18 +1,53 @@
+import { motion } from "motion/react";
+import type { Variants } from "motion/react";
 import { MessageSquare } from "lucide-react";
 
-export default function Desktop() {
-  return (
-    <section className="w-full bg-white text-[#0F172A] py-16 px-10 border-b border-[#e2e8f0] font-['Outfit'] flex justify-center">
-      <div className="max-w-[1200px] w-full">
-        
-        <h2 className="text-xl font-bold text-[#0B1D3A] mb-6">Company Feedback</h2>
-        
-        <div className="bg-[#f8fafc] border border-gray-200 rounded-lg p-16 flex flex-col items-center justify-center text-center">
-          <MessageSquare size={24} className="text-purple-300 mb-3" />
-          <p className="text-sm text-gray-500 font-medium">Verified company feedback will appear here as engagements are completed.</p>
-        </div>
+const NAVY = "#0B1D3A";
+const GOLD = "#C99A2E";
+const GOLD_MID = "#D5AA45";
 
-      </div>
+export default function Desktop() {
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+  };
+  const item: Variants = {
+    hidden: { opacity: 0, y: 18 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  };
+
+  return (
+    <section
+      className="w-full py-14 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative"
+      style={{ background: "linear-gradient(175deg, #FFFFFF 0%, #F8FAFD 100%)" }}
+    >
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false }}
+        className="max-w-[1200px] w-full relative z-10"
+      >
+        <motion.div variants={item} className="flex items-center gap-3 mb-6">
+          <div className="w-8 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
+          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Company Feedback</h2>
+        </motion.div>
+
+        <motion.div
+          variants={item}
+          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-16 flex flex-col items-center justify-center text-center shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)]"
+        >
+          <div
+            className="w-12 h-12 rounded flex items-center justify-center text-white shadow-sm mb-4"
+            style={{ background: "linear-gradient(135deg, #8B5CF6, #6D28D9)" }}
+          >
+            <MessageSquare size={22} strokeWidth={2.2} />
+          </div>
+          <p className="text-[14px] text-[#7B8DAA] font-medium max-w-[400px]">
+            Verified company feedback will appear here as engagements are completed.
+          </p>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

@@ -3,7 +3,6 @@ import { AlertCircle, Target, TrendingDown, Users, Briefcase, Zap, Search } from
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
-
 const ICONS = [AlertCircle, Target, TrendingDown, Users, Briefcase, Zap, Search];
 const GRADIENTS = [
   "from-[#F87171] to-[#DC2626]", "from-[#FBBF24] to-[#D97706]", "from-[#38BDF8] to-[#0284C7]", 

@@ -21,7 +21,6 @@ export default function Mobile() {
         >
 
           <div className="absolute inset-0 bg-[#0B1D3A]" />
-          
 
           <motion.div 
             animate={{ 
@@ -39,7 +38,6 @@ export default function Mobile() {
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
             className="absolute -bottom-[80px] -left-[80px] w-[200px] h-[200px] bg-gradient-radial from-[#38BDF8]/25 to-transparent rounded-full blur-[60px]"
           />
-          
 
           <div 
             className="absolute inset-0 opacity-[0.04]"

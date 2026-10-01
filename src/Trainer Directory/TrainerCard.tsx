@@ -1,98 +1,215 @@
 import type { Trainer } from "./listing_data";
-import { ShieldCheck, MapPin, Globe, ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
+import {
+  ShieldCheck,
+  MapPin,
+  Globe,
+  ArrowRight,
+  Briefcase,
+  GraduationCap,
+  Send,
+} from "lucide-react";
+
+const NAVY = "#0B1D3A";
+const GOLD = "#C99A2E";
+const GOLD_MID = "#D5AA45";
 
 interface TrainerCardProps {
   trainer: Trainer;
   onViewProfile: () => void;
+  layoutVariant?: "full" | "half" | "third";
 }
 
-export default function TrainerCard({ trainer, onViewProfile }: TrainerCardProps) {
+export default function TrainerCard({ trainer, onViewProfile, layoutVariant = "third" }: TrainerCardProps) {
   const getInitials = (name: string) => {
     return name.split(" ").map(n => n[0]).join("").substring(0, 2);
   };
 
+  const availabilityConfig: Record<string, { bg: string; text: string; dot: string }> = {
+    "Available": { bg: "rgba(16,185,129,0.08)", text: "#059669", dot: "#10B981" },
+    "Limited Availability": { bg: "rgba(245,158,11,0.08)", text: "#B45309", dot: "#F59E0B" },
+    "On Request": { bg: "rgba(99,102,241,0.08)", text: "#4338CA", dot: "#6366F1" },
+  };
+
+  const avail = availabilityConfig[trainer.availability] || availabilityConfig["Available"];
+
   return (
-    <div className="bg-white rounded-xl border border-[#e2e8f0] p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full font-['Outfit']">
-      
-      {/* Header (Image, Name, Title) */}
-      <div className="flex gap-4 items-start mb-6 border-b border-gray-100 pb-5">
-        {trainer.image ? (
-          <img src={trainer.image} alt={trainer.name} className="w-16 h-16 rounded-xl object-cover shrink-0 bg-gray-100" />
-        ) : (
-          <div className="w-16 h-16 rounded-xl bg-[#0B1D3A] text-white flex items-center justify-center font-bold text-xl shrink-0">
-            {getInitials(trainer.name)}
-          </div>
-        )}
-        
-        <div className="flex-1">
-          <div className="flex items-center gap-2 mb-1.5">
-            <h3 className="text-lg font-bold text-[#0B1D3A] leading-tight">{trainer.name}</h3>
-            {trainer.verified && (
-              <div className="flex items-center gap-1 bg-[#FEF3C7] text-[#B45309] text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
-                <ShieldCheck size={10} strokeWidth={3} />
-                <span>Verified</span>
-              </div>
-            )}
-          </div>
-          <p className="text-sm text-[#475569] leading-tight font-medium mb-3">{trainer.title}</p>
-          <div className="inline-block bg-gray-100 text-gray-700 text-xs font-bold px-3 py-1 rounded-md">
-            {trainer.pricing}
+    <motion.div
+      whileHover={{
+        y: -6,
+        transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+      }}
+      className="group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/20 rounded p-0 flex flex-col h-full cursor-default shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05),0_4px_12px_-4px_rgba(11,29,58,0.03)] hover:shadow-[0_12px_36px_-12px_rgba(11,29,58,0.12)] transition-all duration-400 relative overflow-hidden font-['Outfit']"
+    >
+            <div
+        className="absolute top-0 left-0 right-0 h-[3px] transition-all duration-500 opacity-70 group-hover:opacity-100"
+        style={{
+          background: `linear-gradient(90deg, ${GOLD}, ${GOLD}90)`,
+        }}
+      />
+
+            <div
+        className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-[40px] opacity-[0.04] group-hover:opacity-[0.10] transition-all duration-500 pointer-events-none"
+        style={{ background: GOLD }}
+      />
+
+      <div className={`p-5 flex flex-col h-full ${layoutVariant === 'full' ? 'md:flex-row md:gap-8' : ''}`}>
+        <div className={`flex flex-col ${layoutVariant === 'full' ? 'md:w-1/2' : 'w-full'}`}>
+          <div className="flex gap-3.5 items-start mb-4 pb-4 border-b border-[#0B1D3A]/[0.06]">
+          {trainer.image ? (
+            <img
+              src={trainer.image}
+              alt={trainer.name}
+              className="w-14 h-14 rounded object-cover shrink-0 shadow-sm border border-[#0B1D3A]/[0.06] group-hover:scale-105 transition-transform duration-400"
+            />
+          ) : (
+            <div
+              className="w-14 h-14 rounded flex items-center justify-center font-bold text-lg shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-400"
+              style={{
+                background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`,
+                color: "white",
+              }}
+            >
+              {getInitials(trainer.name)}
+            </div>
+          )}
+
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-1">
+              <h3 className="text-[16px] font-bold leading-tight truncate" style={{ color: NAVY }}>
+                {trainer.name}
+              </h3>
+              {trainer.verified && (
+                <div className="flex items-center gap-1 px-1.5 py-0.5 rounded"
+                  style={{
+                    background: `${GOLD}15`,
+                    border: `1px solid ${GOLD}30`,
+                  }}
+                >
+                  <ShieldCheck size={10} strokeWidth={3} style={{ color: GOLD }} />
+                  <span className="text-[8px] font-bold tracking-wider uppercase" style={{ color: GOLD }}>
+                    Verified
+                  </span>
+                </div>
+              )}
+            </div>
+            <p className="text-[13px] text-[#5A6B82] leading-snug font-medium mb-2 line-clamp-2">
+              {trainer.title}
+            </p>
+
+                        <div
+              className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold"
+              style={{
+                background: avail.bg,
+                color: avail.text,
+                border: `1px solid ${avail.dot}20`,
+              }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: avail.dot }} />
+              {trainer.availability}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Details Grid */}
-      <div className="flex flex-col gap-4 flex-1">
-        
-        {/* RE Segment */}
-        <div>
-          <div className="text-[10px] font-bold text-[#94a3b8] uppercase tracking-widest mb-2">RE Segment</div>
-          <div className="flex flex-wrap gap-2">
+                <div className="flex gap-3 mb-4">
+          <div className="flex items-center gap-2 flex-1 px-3 py-2 rounded"
+            style={{
+              background: "linear-gradient(135deg, rgba(59,130,246,0.06), rgba(59,130,246,0.02))",
+              border: "1px solid rgba(59,130,246,0.12)",
+            }}
+          >
+            <div className="w-6 h-6 rounded flex items-center justify-center shrink-0" style={{ background: "rgba(59,130,246,0.15)" }}>
+              <Briefcase size={12} strokeWidth={2.5} className="text-[#3B82F6]" />
+            </div>
+            <div>
+              <div className="text-[12px] font-black text-[#3B82F6] leading-none">{trainer.industryExperience}y</div>
+              <div className="text-[9px] font-medium text-[#5A6B82]">Industry</div>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 flex-1 px-3 py-2 rounded"
+            style={{
+              background: `linear-gradient(135deg, ${GOLD}08, ${GOLD}03)`,
+              border: `1px solid ${GOLD}15`,
+            }}
+          >
+            <div className="w-6 h-6 rounded flex items-center justify-center shrink-0" style={{ background: `${GOLD}18` }}>
+              <GraduationCap size={12} strokeWidth={2.5} style={{ color: GOLD }} />
+            </div>
+            <div>
+              <div className="text-[12px] font-black leading-none" style={{ color: GOLD }}>{trainer.trainingExperience}y</div>
+              <div className="text-[9px] font-medium text-[#5A6B82]">Training</div>
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
+
+        <div className={`flex flex-col flex-1 ${layoutVariant === 'full' ? 'md:border-l md:border-[#0B1D3A]/[0.06] md:pl-8' : ''}`}>
+          <div className="mb-3">
+          <div className="text-[9px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-1.5">RE Segment</div>
+          <div className="flex flex-wrap gap-1.5">
             {trainer.segments.map(e => (
-              <div key={e} className="text-xs font-medium px-2.5 py-1 rounded bg-[#f8fafc] border border-gray-200 text-gray-700">
+              <div key={e} className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#0B1D3A]/[0.04] border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/70">
                 {e}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Delivery Modes */}
-        <div>
-          <div className="text-[10px] font-bold text-[#94a3b8] uppercase tracking-widest mb-2">Delivery Mode</div>
-          <div className="flex flex-wrap gap-2">
+                <div className="mb-4">
+          <div className="text-[9px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-1.5">Delivery Mode</div>
+          <div className="flex flex-wrap gap-1.5">
             {trainer.delivery.map(e => (
-              <div key={e} className="text-xs font-medium px-2.5 py-1 rounded bg-blue-50 border border-blue-100 text-blue-700">
+              <div key={e} className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#EEF4FF] border border-[#DDEAFF] text-[#1D4ED8]/70">
                 {e}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Location & Languages */}
-        <div className="grid grid-cols-2 gap-4 mt-auto pt-4 text-sm text-[#64748b]">
+                <div className="grid grid-cols-2 gap-3 mt-auto pt-3 border-t border-[#0B1D3A]/[0.05]">
           <div className="flex items-center gap-2">
-            <MapPin size={16} className="text-[#C99A2E]" />
-            <span className="font-medium truncate">{trainer.location.split(',')[0]}</span>
+            <div className="w-6 h-6 rounded flex items-center justify-center shrink-0"
+              style={{ background: `${GOLD}15` }}
+            >
+              <MapPin size={12} strokeWidth={2.5} style={{ color: GOLD }} />
+            </div>
+            <span className="text-[12px] font-medium text-[#5A6B82] truncate">{trainer.location.split(',')[0]}</span>
           </div>
           <div className="flex items-center gap-2">
-            <Globe size={16} className="text-[#C99A2E]" />
-            <span className="font-medium truncate">{trainer.languages.slice(0,2).join(", ")}</span>
+            <div className="w-6 h-6 rounded flex items-center justify-center shrink-0"
+              style={{ background: "rgba(59,130,246,0.10)" }}
+            >
+              <Globe size={12} strokeWidth={2.5} className="text-[#3B82F6]" />
+            </div>
+            <span className="text-[12px] font-medium text-[#5A6B82] truncate">{trainer.languages.slice(0, 2).join(", ")}</span>
+          </div>
+        </div>
+
+                <div className="pt-4 mt-4 border-t border-[#0B1D3A]/[0.06]">
+          <div className="flex gap-2.5">
+            <button
+              onClick={onViewProfile}
+              className="flex-1 border border-[#0B1D3A]/[0.12] hover:border-[#0B1D3A]/30 font-bold text-[12.5px] py-2.5 rounded transition-all duration-300 flex items-center justify-center gap-1.5 hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
+              style={{ color: NAVY }}
+            >
+              View Profile <ArrowRight size={13} strokeWidth={2.5} style={{ color: GOLD_MID }} />
+            </button>
+            <button
+              className="flex-1 text-white font-bold text-[12.5px] py-2.5 rounded transition-all duration-300 shadow-sm hover:shadow-[0_8px_20px_-4px_rgba(11,29,58,0.3)] relative overflow-hidden group/btn hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
+              style={{
+                background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`,
+              }}
+            >
+              <span className="relative z-10 flex items-center justify-center gap-1.5 transition-transform duration-300 group-hover/btn:-translate-x-1">
+                Request
+                <Send size={13} strokeWidth={2.5} className="opacity-0 w-0 -translate-x-2 group-hover/btn:w-auto group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all duration-300" style={{ color: GOLD_MID }} />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.1] to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
+            </button>
           </div>
         </div>
       </div>
-
-      {/* Footer / CTA */}
-      <div className="border-t border-[#e2e8f0] pt-5 mt-5">
-        <div className="flex gap-3">
-          <button onClick={onViewProfile} className="flex-1 border border-[#0B1D3A] text-[#0B1D3A] hover:bg-[#F8FAFD] font-semibold text-[13px] py-2.5 rounded transition-colors flex items-center justify-center gap-1.5">
-            View Profile <ArrowRight size={14} />
-          </button>
-          <button className="flex-1 bg-[#0B1D3A] text-white hover:bg-[#102B63] font-semibold text-[13px] py-2.5 rounded transition-colors shadow-sm">
-            Request
-          </button>
-        </div>
-      </div>
-
-    </div>
+    </motion.div>
   );
 }

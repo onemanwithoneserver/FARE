@@ -94,9 +94,6 @@ export default function Mobile() {
               />
             </div>
 
-
-            
-            
             <div className="w-full h-px bg-white/10 mb-5" />
             
             <h4 className="text-[16px] font-serif text-[#E2C068] mb-3">Contact FARE</h4>

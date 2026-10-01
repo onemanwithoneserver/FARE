@@ -1,11 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import { motion } from "motion/react";
+import type { Variants } from "motion/react";
 import Header from "../Home/00_header";
 import Footer from "../Home/05_section";
 import SidebarFilters from "./SidebarFilters";
 import TrainerCard from "./TrainerCard";
 import TrainerProfile from "./TrainerProfile";
 import { trainersData } from "./listing_data";
-import { Search } from "lucide-react";
+import {
+  Search,
+  Sparkles,
+  Users,
+  Award,
+  Layers,
+  MonitorPlay,
+  SlidersHorizontal,
+  ChevronDown,
+  X,
+} from "lucide-react";
+import trainersHero from "../assets/re_trainers_hero.jpg";
+import { CustomSelect } from "./section-17-corporate-request-form/FormControls";
+
+const NAVY = "#0B1D3A";
+const GOLD = "#C99A2E";
+const GOLD_MID = "#D5AA45";
 
 interface TrainerDirectoryProps {
   isMobile: boolean;
@@ -13,10 +32,71 @@ interface TrainerDirectoryProps {
 
 export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
   const [selectedTrainerId, setSelectedTrainerId] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const [sortBy, setSortBy] = useState("Relevance");
+
+  const [visibleCount, setVisibleCount] = useState(12);
+  const { ref, inView } = useInView({ threshold: 0 });
+
+  useEffect(() => {
+    if (inView) {
+      setVisibleCount((prev) => prev + 6);
+    }
+  }, [inView]);
+
+  const isSearching = searchQuery.trim() !== "" || activeTag !== null;
+
+  const filteredTrainers = trainersData.filter((trainer) => {
+    const matchesSearch = searchQuery === "" || 
+      trainer.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      trainer.expertise.some(e => e.toLowerCase().includes(searchQuery.toLowerCase()));
+    
+    const matchesTag = activeTag === null || 
+      trainer.expertise.includes(activeTag) || 
+      trainer.segments.includes(activeTag);
+
+    return matchesSearch && matchesTag;
+  });
+
+  const displayedTrainers = [];
+  if (filteredTrainers.length > 0) {
+    for (let i = 0; i < visibleCount; i++) {
+      const originalTrainer = filteredTrainers[i % filteredTrainers.length];
+      displayedTrainers.push({ ...originalTrainer, uniqueId: `${originalTrainer.id}-${i}` });
+    }
+  }
+
+  const quickTags = ["Sales", "Digital", "Communication", "Leadership", "Residential", "Plotted", "Commercial", "Workshops", "Mocks"];
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08, delayChildren: 0.15 },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
+  const stats = [
+    { icon: <Users size={18} strokeWidth={2.2} />, value: "40+", label: "Trainers", color: "#3B82F6", bg: "linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)" },
+    { icon: <Award size={18} strokeWidth={2.2} />, value: "12+", label: "Expertise Areas", color: GOLD, bg: `linear-gradient(135deg, ${GOLD_MID} 0%, ${GOLD} 100%)` },
+    { icon: <Layers size={18} strokeWidth={2.2} />, value: "4", label: "RE Segments", color: "#10B981", bg: "linear-gradient(135deg, #10B981 0%, #059669 100%)" },
+    { icon: <MonitorPlay size={18} strokeWidth={2.2} />, value: "9+", label: "Training Formats", color: "#8B5CF6", bg: "linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)" },
+  ];
 
   if (selectedTrainerId) {
     return (
-      <div className="w-full flex flex-col min-h-screen bg-[#f8fafc]">
+      <div className="w-full flex flex-col min-h-screen bg-[#F8FAFD] font-['Outfit']">
         <Header isMobile={isMobile} />
         <TrainerProfile isMobile={isMobile} onBack={() => setSelectedTrainerId(null)} trainerId={selectedTrainerId} />
         <Footer isMobile={isMobile} />
@@ -25,90 +105,232 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
   }
 
   return (
-    <div className="w-full min-h-screen bg-[#f8fafc] flex flex-col font-['Outfit']">
+    <div className="w-full min-h-screen bg-[#F8FAFD] flex flex-col font-['Outfit']">
       <Header isMobile={isMobile} />
-      
-      {/* Hero Header Area */}
-      <div className="w-full bg-white border-b border-[#e2e8f0] pt-12 pb-8 px-6 lg:px-12 xl:px-20">
-        <div className="max-w-[1400px] mx-auto w-full">
-          <h1 className="text-4xl md:text-5xl font-black text-[#0B1D3A] tracking-tight mb-4 leading-tight max-w-2xl">
-            Find the Right Trainer for Your Real Estate Team
-          </h1>
-          <p className="text-[#475569] text-base mb-8 max-w-3xl">
-            Discover trainers by expertise, real estate segment, training format, delivery mode and experience.
-          </p>
 
-          <div className="relative w-full max-w-2xl mb-8">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <Search size={18} className="text-[#94a3b8]" />
+      <section
+        className="w-full relative overflow-hidden flex items-center justify-between font-['Outfit']"
+        style={{
+          background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",
+        }}
+      >
+        <div className="absolute top-1/4 right-[15%] w-[500px] h-[500px] bg-gradient-radial from-[#DDEAFF]/50 to-transparent rounded-full blur-[100px] pointer-events-none z-0" />
+        <div className="absolute bottom-0 left-[10%] w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none z-0" />
+        <svg
+          className="absolute top-8 right-[8%] w-[280px] h-[280px] opacity-[0.04] pointer-events-none z-0"
+          viewBox="0 0 300 300"
+          fill="none"
+        >
+          <circle cx="150" cy="150" r="140" stroke={GOLD} strokeWidth="0.8" fill="none" />
+        </svg>
+
+        <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-12 lg:pt-16 pb-12 lg:pb-16 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0 max-w-[1400px] mx-auto">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: false }}
+            className="w-full lg:w-[48%] xl:w-[46%] flex flex-col items-start text-left shrink-0 pr-6 lg:pr-10"
+          >
+            <motion.div variants={itemVariants} className="mb-4">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
+                <Sparkles size={13} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
+                <span className="font-bold text-[11px] tracking-[0.2em] uppercase text-[#C99A2E]">
+                  Trainer Directory
+                </span>
+              </div>
+            </motion.div>
+
+            <motion.h1
+              variants={itemVariants}
+              className="text-[2.6rem] lg:text-[3rem] xl:text-[3.4rem] font-black leading-[1.08] tracking-tight mb-4"
+              style={{ color: NAVY }}
+            >
+              Find the Right{" "}
+              <span className="text-[#C99A2E]">Trainer</span> for Your Real Estate Team
+            </motion.h1>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-[16px] xl:text-[17px] font-medium leading-[1.65] max-w-[520px] text-[#5A6B82] mb-7"
+            >
+              Discover trainers by expertise, real estate segment, training format, delivery mode and experience.
+            </motion.p>
+
+            <motion.div variants={itemVariants} className="relative w-full max-w-[520px] mb-6">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
+                <Search size={18} className="text-[#7B8DAA]" strokeWidth={2.2} />
+              </div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search trainers, expertise or training areas..."
+                className="w-full pl-11 pr-4 py-3.5 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[8px] text-[15px] text-[#0B1D3A] font-medium focus:outline-none focus:ring-2 focus:ring-[#C99A2E]/40 focus:border-[#C99A2E] transition-all duration-300 placeholder:text-[#7B8DAA]"
+                style={{
+                  boxShadow: "0 2px 8px -2px rgba(11, 29, 58, 0.05), 0 4px 12px -4px rgba(11, 29, 58, 0.03)",
+                }}
+              />
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-2 max-w-[520px]">
+              {quickTags.map(tag => (
+                <button
+                  key={tag}
+                  onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+                  className={`px-3.5 py-1.5 rounded-full text-[12px] font-semibold transition-all duration-300 border ${
+                    activeTag === tag
+                      ? "bg-[#0B1D3A] text-white border-[#0B1D3A] shadow-[0_4px_12px_-2px_rgba(11,29,58,0.25)]"
+                      : "bg-white/70 backdrop-blur-sm border-[#0B1D3A]/[0.08] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/25 hover:text-[#0B1D3A] hover:shadow-sm"
+                  }`}
+                >
+                  {activeTag === tag && (
+                    <span className="inline-flex items-center gap-1">
+                      {tag}
+                      <X size={11} strokeWidth={3} />
+                    </span>
+                  )}
+                  {activeTag !== tag && (
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full" style={{ background: GOLD }} />
+                      {tag}
+                    </span>
+                  )}
+                </button>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 40, scale: 0.96 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full lg:w-[52%] xl:w-[54%] hidden lg:flex items-center justify-end pl-0"
+          >
+            <div className="relative w-full h-[380px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden shadow-[0_25px_70px_-15px_rgba(11,29,58,0.22),0_10px_30px_-5px_rgba(0,0,0,0.06)] border-l border-t border-b border-white/80 group">
+              <motion.img
+                animate={{ scale: [1, 1.04, 1] }}
+                transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+                src={trainersHero}
+                alt="Trainer Directory"
+                className="w-full h-full object-cover object-[center_38%]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/15 via-transparent to-transparent pointer-events-none" />
             </div>
-            <input 
-              type="text" 
-              placeholder="Search trainers, expertise or training areas..." 
-              className="w-full pl-11 pr-4 py-3.5 bg-[#f8fafc] border border-[#cbd5e1] rounded-lg text-[15px] text-[#0B1D3A] focus:outline-none focus:ring-2 focus:ring-[#C99A2E]/50 focus:border-[#C99A2E] shadow-sm transition-all"
-            />
-          </div>
+          </motion.div>
+        </div>
+      </section>
 
-          <div className="flex flex-wrap gap-2.5">
-            {["Sales", "Digital", "Communication", "Leadership", "Residential", "Plotted", "Commercial", "Workshops", "Mocks"].map(tag => (
-              <button key={tag} className="px-4 py-1.5 rounded-full border border-[#cbd5e1] text-[13px] font-medium text-[#475569] hover:bg-[#0B1D3A] hover:text-white hover:border-[#0B1D3A] transition-colors">
-                {tag}
-              </button>
+      <section
+        className="w-full border-y border-[#0B1D3A]/[0.06]"
+        style={{
+          background: "linear-gradient(135deg, rgba(248,250,253,0.95) 0%, rgba(255,255,255,0.98) 100%)",
+        }}
+      >
+        <div className="max-w-[1400px] mx-auto w-full px-6 lg:px-12 xl:px-16 py-4">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-5 flex-wrap"
+          >
+            {stats.map((stat, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div
+                  className="w-8 h-8 rounded flex items-center justify-center text-white shadow-sm"
+                  style={{ background: stat.bg }}
+                >
+                  {stat.icon}
+                </div>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-[18px] font-black" style={{ color: NAVY }}>{stat.value}</span>
+                  <span className="text-[13px] font-semibold text-[#5A6B82]">{stat.label}</span>
+                </div>
+                {i < stats.length - 1 && (
+                  <div className="w-[3px] h-[3px] rounded-full bg-[#0B1D3A]/15 ml-2 hidden sm:block" />
+                )}
+              </div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
 
-      {/* Stats Bar */}
-      <div className="w-full bg-white border-b border-[#e2e8f0] py-4 px-6 lg:px-12 xl:px-20">
-        <div className="max-w-[1400px] mx-auto w-full flex items-center gap-8 text-[13px] font-bold text-[#64748b]">
-          <div><span className="text-[#0B1D3A] text-[15px] font-black mr-1">40+</span> Trainers</div>
-          <div className="w-1 h-1 rounded-full bg-[#cbd5e1]"></div>
-          <div><span className="text-[#0B1D3A] text-[15px] font-black mr-1">12+</span> Expertise Areas</div>
-          <div className="w-1 h-1 rounded-full bg-[#cbd5e1]"></div>
-          <div><span className="text-[#0B1D3A] text-[15px] font-black mr-1">4</span> RE Segments</div>
-          <div className="w-1 h-1 rounded-full bg-[#cbd5e1]"></div>
-          <div><span className="text-[#0B1D3A] text-[15px] font-black mr-1">9+</span> Training Formats</div>
-        </div>
-      </div>
+      <div className="flex-1 w-full max-w-[1400px] mx-auto px-6 lg:px-12 xl:px-16 py-8 flex flex-col md:flex-row gap-7">
 
-      {/* Main Content */}
-      <div className="flex-1 w-full max-w-[1400px] mx-auto px-6 lg:px-12 xl:px-20 py-8 flex flex-col md:flex-row gap-8">
-        
-        {/* Sidebar */}
-        {!isMobile && (
+        {isMobile && (
+          <button
+            onClick={() => setShowMobileFilters(!showMobileFilters)}
+            className="flex items-center justify-center gap-2 w-full py-3 bg-white border border-[#0B1D3A]/[0.08] rounded text-[13px] font-bold shadow-sm mb-2 transition-all duration-300 hover:shadow-md"
+            style={{ color: NAVY }}
+          >
+            <SlidersHorizontal size={15} strokeWidth={2.5} />
+            Filters
+            <ChevronDown size={14} className={`transition-transform duration-300 ${showMobileFilters ? 'rotate-180' : ''}`} />
+          </button>
+        )}
+
+        {(!isMobile || showMobileFilters) && (
           <SidebarFilters />
         )}
 
-        {/* Directory Grid */}
         <div className="flex-1 flex flex-col">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-[#0B1D3A] font-bold text-[15px]">6 Trainers found</h2>
-            <div className="flex items-center gap-2 text-[13px] text-[#475569] font-medium">
+          <div className="flex items-center justify-between mb-5">
+            {isSearching ? (
+              <h2 className="text-[15px] font-bold flex items-center gap-2" style={{ color: NAVY }}>
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded bg-[#C99A2E]/10 text-[#C99A2E] text-[11px] font-black">
+                  {filteredTrainers.length}
+                </span>
+                Trainers found
+              </h2>
+            ) : (
+              <div />
+            )}
+            <div className="flex items-center gap-3 text-[13px] text-[#5A6B82] font-medium z-30">
               Sort by:
-              <select className="border border-[#cbd5e1] rounded bg-white px-2 py-1 outline-none focus:border-[#C99A2E] text-[#0B1D3A] font-semibold cursor-pointer">
-                <option>Relevance</option>
-                <option>Experience (High to Low)</option>
-                <option>A-Z</option>
-              </select>
+              <div className="w-48 relative">
+                <CustomSelect
+                  options={["Relevance", "Experience (High to Low)", "A-Z"]}
+                  value={sortBy}
+                  onChange={setSortBy}
+                  placeholder="Sort by"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {trainersData.map(trainer => (
-              <TrainerCard 
-                key={trainer.id} 
-                trainer={trainer} 
-                onViewProfile={() => setSelectedTrainerId(trainer.id)} 
-              />
-            ))}
-          </div>
-          
-          <div className="w-full flex justify-center mt-12 mb-8">
-            <button className="px-8 py-3 bg-white border border-[#cbd5e1] text-[#0B1D3A] font-bold text-[14px] rounded-lg shadow-sm hover:shadow-md transition-all hover:border-[#0B1D3A]">
-              Load More Trainers
-            </button>
-          </div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: false, margin: "-40px" }}
+            className="grid grid-cols-1 md:grid-cols-6 xl:grid-cols-6 gap-5"
+          >
+            {displayedTrainers.map((trainer, index) => {
+              let spanClass = "col-span-1 md:col-span-2 xl:col-span-2";
+              let layoutVariant: "full" | "half" | "third" = "third";
+              
+              if (index === 0) {
+                spanClass = "col-span-1 md:col-span-6 xl:col-span-6";
+                layoutVariant = "full";
+              } else if (index === 1 || index === 2) {
+                spanClass = "col-span-1 md:col-span-3 xl:col-span-3";
+                layoutVariant = "half";
+              }
+
+              return (
+                <motion.div key={trainer.uniqueId} variants={itemVariants} className={spanClass}>
+                  <TrainerCard
+                    trainer={trainer}
+                    onViewProfile={() => setSelectedTrainerId(trainer.id)}
+                    layoutVariant={layoutVariant}
+                  />
+                </motion.div>
+              );
+            })}
+          </motion.div>
+          <div ref={ref} className="h-20 w-full" />
         </div>
       </div>
 

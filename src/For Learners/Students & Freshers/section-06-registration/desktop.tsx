@@ -25,7 +25,6 @@ export default function Desktop() {
         >
 
           <div className="absolute inset-0 bg-[#0B1D3A]" />
-          
 
           <motion.div 
             animate={{ 
@@ -43,7 +42,6 @@ export default function Desktop() {
             transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
             className="absolute -bottom-[150px] -left-[150px] w-[400px] h-[400px] bg-gradient-radial from-[#38BDF8]/20 to-transparent rounded-full blur-[100px]"
           />
-          
 
           <div 
             className="absolute inset-0 opacity-[0.05]"
@@ -107,7 +105,6 @@ export default function Desktop() {
               </button>
             </motion.div>
           </div>
-          
 
           <div className="absolute inset-0 border border-white/10 rounded-[24px] pointer-events-none" />
         </motion.div>

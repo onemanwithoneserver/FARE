@@ -3,8 +3,6 @@ import type { Variants } from "motion/react";
 import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
-
-
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);

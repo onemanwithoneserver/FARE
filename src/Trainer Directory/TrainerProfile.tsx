@@ -39,14 +39,19 @@ interface TrainerProfileProps {
 
 export default function TrainerProfile({ isMobile, onBack }: TrainerProfileProps) {
   return (
-    <div className="w-full min-h-screen bg-white flex flex-col font-['Outfit'] relative">
-      <div className="sticky top-0 z-40 bg-white border-b border-[#e2e8f0] px-6 py-4 shadow-sm flex items-center justify-between">
-        <div className="flex items-center gap-2 text-sm text-gray-500">
-          <span onClick={onBack} className="hover:text-[#0B1D3A] cursor-pointer font-medium">Home</span>
-          <span>/</span>
-          <span onClick={onBack} className="hover:text-[#0B1D3A] cursor-pointer font-medium">Trainer Directory</span>
-          <span>/</span>
-          <span className="text-[#0B1D3A] font-semibold">Rajesh Kumar</span>
+    <div className="w-full min-h-screen bg-[#F8FAFD] flex flex-col font-['Outfit'] relative">
+      <div
+        className="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b border-[#0B1D3A]/[0.06] px-6 lg:px-12 py-3.5 flex items-center justify-between"
+        style={{
+          boxShadow: "0 2px 8px -2px rgba(11, 29, 58, 0.05), 0 4px 12px -4px rgba(11, 29, 58, 0.03)",
+        }}
+      >
+        <div className="flex items-center gap-2 text-[13px] text-[#7B8DAA] font-medium">
+          <span onClick={onBack} className="hover:text-[#0B1D3A] cursor-pointer transition-colors duration-200">Home</span>
+          <span className="text-[#0B1D3A]/20">/</span>
+          <span onClick={onBack} className="hover:text-[#0B1D3A] cursor-pointer transition-colors duration-200">Trainer Directory</span>
+          <span className="text-[#0B1D3A]/20">/</span>
+          <span className="text-[#0B1D3A] font-bold">Rajesh Kumar</span>
         </div>
       </div>
 
