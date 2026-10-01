@@ -206,9 +206,9 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: false }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full lg:w-[52%] xl:w-[54%] hidden lg:flex items-center justify-end pl-0"
+            className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end pl-0 mt-12 lg:mt-0"
           >
-            <div className="relative w-full h-[380px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden shadow-[0_25px_70px_-15px_rgba(11,29,58,0.22),0_10px_30px_-5px_rgba(0,0,0,0.06)] border-l border-t border-b border-white/80 group">
+            <div className="relative w-[92%] sm:w-[85%] lg:w-full h-[280px] sm:h-[340px] lg:h-[480px] xl:h-[510px] rounded-tl-[80px] sm:rounded-tl-[120px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[40px] sm:rounded-bl-[60px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden shadow-[0_25px_70px_-15px_rgba(11,29,58,0.22),0_10px_30px_-5px_rgba(0,0,0,0.06)] border-l border-t border-b border-white/80 group ml-auto">
               <motion.img
                 animate={{ scale: [1, 1.04, 1] }}
                 transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
@@ -272,7 +272,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
         )}
 
         {(!isMobile || showMobileFilters) && (
-          <SidebarFilters />
+          <SidebarFilters isMobile={isMobile} />
         )}
 
         <div className="flex-1 flex flex-col">
@@ -287,9 +287,9 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             ) : (
               <div />
             )}
-            <div className="flex items-center gap-3 text-[13px] text-[#5A6B82] font-medium z-30">
+            <div className="flex items-center gap-2 sm:gap-3 text-[12px] sm:text-[13px] text-[#5A6B82] font-medium z-30 whitespace-nowrap">
               Sort by:
-              <div className="w-48 relative">
+              <div className="w-[140px] sm:w-[220px] relative">
                 <CustomSelect
                   options={["Relevance", "Experience (High to Low)", "A-Z"]}
                   value={sortBy}
@@ -322,6 +322,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               return (
                 <motion.div key={trainer.uniqueId} variants={itemVariants} className={spanClass}>
                   <TrainerCard
+                    isMobile={isMobile}
                     trainer={trainer}
                     onViewProfile={() => setSelectedTrainerId(trainer.id)}
                     layoutVariant={layoutVariant}

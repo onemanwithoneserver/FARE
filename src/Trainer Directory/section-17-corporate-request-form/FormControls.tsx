@@ -23,12 +23,12 @@ export function CustomSelect({ options, placeholder, value, onChange }: any) {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.12] rounded px-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] focus:outline-none focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 transition-all flex items-center justify-between"
+        className="w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.12] rounded px-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] focus:outline-none focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 transition-all flex items-center justify-between gap-2"
       >
-        <span className={value ? "text-[#0B1D3A]" : "text-[#7B8DAA]"}>
+        <span className={`leading-snug ${value ? "text-[#0B1D3A]" : "text-[#7B8DAA]"}`}>
           {value || placeholder}
         </span>
-        <ChevronDown size={14} className={`text-[#7B8DAA] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+        <ChevronDown size={14} className={`shrink-0 text-[#7B8DAA] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
       <AnimatePresence>
@@ -48,12 +48,12 @@ export function CustomSelect({ options, placeholder, value, onChange }: any) {
                   onChange(opt);
                   setIsOpen(false);
                 }}
-                className={`w-full text-left px-4 py-2.5 text-[13px] font-medium transition-colors hover:bg-[#F8FAFD] flex items-center justify-between ${
+                className={`w-full text-left px-4 py-2.5 text-[13px] font-medium transition-colors hover:bg-[#F8FAFD] flex items-center justify-between gap-2 ${
                   value === opt ? "text-[#C99A2E] bg-[#C99A2E]/5" : "text-[#0B1D3A]"
                 }`}
               >
-                {opt}
-                {value === opt && <Check size={14} strokeWidth={2.5} />}
+                <span className="leading-snug">{opt}</span>
+                {value === opt && <Check size={14} strokeWidth={2.5} className="shrink-0" />}
               </button>
             ))}
           </motion.div>
@@ -65,9 +65,9 @@ export function CustomSelect({ options, placeholder, value, onChange }: any) {
 
 export function CustomCheckbox({ label, checked, onChange }: any) {
   return (
-    <label className="flex items-center gap-2.5 cursor-pointer group select-none" onClick={onChange}>
+    <label className="flex items-start gap-2.5 cursor-pointer group select-none" onClick={onChange}>
       <div
-        className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
+        className={`w-4 h-4 rounded border flex items-center justify-center transition-colors shrink-0 mt-[1.5px] ${
           checked
             ? "bg-[#C99A2E] border-[#C99A2E]"
             : "bg-white/50 border-[#0B1D3A]/[0.12] group-hover:border-[#C99A2E]/50"
@@ -85,17 +85,17 @@ export function CustomCheckbox({ label, checked, onChange }: any) {
           )}
         </AnimatePresence>
       </div>
-      <span className="text-[13px] font-medium text-[#0B1D3A]">{label}</span>
+      <span className="text-[13px] font-medium text-[#0B1D3A] leading-snug">{label}</span>
     </label>
   );
 }
 
 export function CustomRadio({ label, name, checked, onChange }: any) {
   return (
-    <label className="flex items-center gap-2.5 cursor-pointer group select-none" onClick={onChange}>
+    <label className="flex items-start gap-2.5 cursor-pointer group select-none" onClick={onChange}>
       <input type="radio" name={name} className="hidden" readOnly />
       <div
-        className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${
+        className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors shrink-0 mt-[1.5px] ${
           checked
             ? "border-[#C99A2E]"
             : "bg-white/50 border-[#0B1D3A]/[0.12] group-hover:border-[#C99A2E]/50"
@@ -112,7 +112,7 @@ export function CustomRadio({ label, name, checked, onChange }: any) {
           )}
         </AnimatePresence>
       </div>
-      <span className="text-[13px] font-medium text-[#0B1D3A]">{label}</span>
+      <span className="text-[13px] font-medium text-[#0B1D3A] leading-snug">{label}</span>
     </label>
   );
 }

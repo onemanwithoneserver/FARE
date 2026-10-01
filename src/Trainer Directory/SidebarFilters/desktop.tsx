@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, SlidersHorizontal, RotateCcw } from "lucide-react";
-import { filterOptions } from "./listing_data";
+import { filterOptions } from "../listing_data";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -91,7 +91,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
   );
 };
 
-export default function SidebarFilters() {
+export default function Desktop() {
   const [selected, setSelected] = useState<Record<string, string[]>>({
     expertise: [],
     segments: [],
