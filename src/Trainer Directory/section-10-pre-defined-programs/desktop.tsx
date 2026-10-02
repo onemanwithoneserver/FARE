@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ArrowRight, Users, Clock, MonitorPlay, BookOpen } from "lucide-react";
+import { Users, Clock, MonitorPlay, BookOpen, Presentation } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -12,7 +12,7 @@ export default function Desktop() {
 
   const container: Variants = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+    show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
   };
   const item: Variants = {
     hidden: { opacity: 0, y: 18 },
@@ -21,80 +21,98 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full py-14 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative"
-      style={{ background: "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)" }}
+      className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
     >
+      <motion.div
+        animate={{ x: [0, -20, 0], y: [0, 20, 0], scale: [1, 1.1, 1] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[10%] left-[-5%] w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none z-0 opacity-30"
+        style={{ background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)" }}
+      />
+      <motion.div
+        animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1.05, 1, 1.05] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[-10%] right-[0%] w-[450px] h-[450px] rounded-full blur-[120px] pointer-events-none z-0 opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(201,154,46,0.1) 0%, transparent 70%)" }}
+      />
+
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false }}
+        viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full relative z-10"
       >
-        <motion.div variants={item} className="flex items-center gap-3 mb-6">
-          <div className="w-8 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Programs</h2>
+        <motion.div variants={item} className="flex items-center gap-3 mb-12">
+          <div className="w-10 h-10 rounded bg-gradient-to-br from-[#8B5CF6] to-[#6D28D9] flex items-center justify-center shadow-lg text-white">
+            <Presentation size={20} strokeWidth={2.5} />
+          </div>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Programs</h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-2 gap-8">
           {data.programs.map((prog, idx) => (
             <motion.div
               key={idx}
               variants={item}
-              whileHover={{ y: -5, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-              className="group bg-white/90 backdrop-blur-xl rounded-2xl p-6 border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.20] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out hover:-translate-y-1 flex flex-col relative overflow-hidden"
+              whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+              className="group bg-white/90 backdrop-blur-xl rounded p-8 border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/[0.20] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.18)] transition-all duration-400 ease-out flex flex-col relative overflow-hidden"
             >
-                            <div
-                className="absolute top-0 left-0 right-0 h-[2.5px] opacity-60 group-hover:opacity-100 transition-opacity"
+              <div
+                className="absolute top-0 left-0 right-0 h-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }}
               />
 
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-bold uppercase tracking-[0.15em]" style={{ color: GOLD }}>{prog.format}</span>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[30px] pointer-events-none group-hover:scale-150 transition-transform duration-700" />
+
+              <div className="flex items-center justify-between mb-4 relative z-10">
+                <span className="text-[11px] font-bold uppercase tracking-[0.15em] bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] bg-clip-text text-transparent">
+                  {prog.format}
+                </span>
                 <span
-                  className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                  className="text-[11px] font-black px-3 py-1 rounded-full shadow-sm"
                   style={{
                     background: `${NAVY}08`,
-                    color: `${NAVY}AA`,
-                    border: `1px solid ${NAVY}10`,
+                    color: `${NAVY}CC`,
+                    border: `1px solid ${NAVY}15`,
                   }}
                 >
                   {prog.skillLevel}
                 </span>
               </div>
 
-              <h3 className="text-[17px] font-black mb-2" style={{ color: NAVY }}>{prog.title}</h3>
-              <p className="text-[13px] text-[#5A6B82] leading-[1.65] mb-5 font-medium">{prog.description}</p>
+              <h3 className="text-[20px] font-black mb-3 tracking-tight" style={{ color: NAVY }}>{prog.title}</h3>
+              <p className="text-[14px] text-[#5A6B82] leading-[1.7] mb-6 font-medium relative z-10 line-clamp-3">{prog.description}</p>
 
-              <div className="grid grid-cols-3 gap-3 mb-5 mt-auto">
+              <div className="grid grid-cols-3 gap-4 mb-6 mt-auto relative z-10">
                 {[
-                  { icon: <Users size={13} strokeWidth={2.5} />, text: prog.audience, bg: "linear-gradient(135deg, #3B82F6, #1D4ED8)" },
-                  { icon: <Clock size={13} strokeWidth={2.5} />, text: prog.duration, bg: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` },
-                  { icon: <MonitorPlay size={13} strokeWidth={2.5} />, text: prog.mode, bg: "linear-gradient(135deg, #10B981, #059669)" },
+                  { icon: <Users size={14} strokeWidth={2.5} />, text: prog.audience, bg: "linear-gradient(135deg, #3B82F6, #1D4ED8)" },
+                  { icon: <Clock size={14} strokeWidth={2.5} />, text: prog.duration, bg: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` },
+                  { icon: <MonitorPlay size={14} strokeWidth={2.5} />, text: prog.mode, bg: "linear-gradient(135deg, #10B981, #059669)" },
                 ].map((meta, mIdx) => (
-                  <div key={mIdx} className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm" style={{ background: meta.bg }}>
+                  <div key={mIdx} className="flex flex-col gap-2 p-3 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.04] hover:bg-white hover:shadow-sm transition-colors group/meta cursor-default">
+                    <div className="w-8 h-8 rounded flex items-center justify-center text-white shadow-md group-hover/meta:scale-110 transition-transform duration-300" style={{ background: meta.bg }}>
                       {meta.icon}
                     </div>
-                    <span className="text-[11px] font-medium text-[#5A6B82]">{meta.text}</span>
+                    <span className="text-[12px] font-bold text-[#3B4D66] truncate w-full" title={meta.text}>{meta.text}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mb-4 border-t border-[#0B1D3A]/[0.06] pt-4">
-                <div className="text-[9px] text-[#7B8DAA] uppercase tracking-[0.15em] font-bold mb-2 flex items-center gap-1.5">
-                  <BookOpen size={10} strokeWidth={2.5} />
+              <div className="border-t border-[#0B1D3A]/[0.06] pt-5 relative z-10">
+                <div className="text-[10px] text-[#7B8DAA] uppercase tracking-[0.15em] font-black mb-3 flex items-center gap-1.5">
+                  <BookOpen size={12} strokeWidth={2.5} />
                   Key Topics
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {prog.topics.map((topic, tIdx) => (
                     <span
                       key={tIdx}
-                      className="text-[11px] font-semibold px-2 py-1 rounded-full"
+                      className="text-[12px] font-bold px-3 py-1.5 rounded transition-colors hover:bg-white hover:shadow-sm cursor-default"
                       style={{
-                        background: `${GOLD}08`,
-                        border: `1px solid ${GOLD}15`,
-                        color: `${NAVY}BB`,
+                        background: `${GOLD}0A`,
+                        border: `1px solid ${GOLD}20`,
+                        color: `${NAVY}E6`,
                       }}
                     >
                       {topic}
@@ -102,7 +120,6 @@ export default function Desktop() {
                   ))}
                 </div>
               </div>
-
 
             </motion.div>
           ))}

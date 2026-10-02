@@ -22,9 +22,15 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-10 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden"
-      style={{ background: "linear-gradient(175deg, #FFFFFF 0%, #F8FAFD 100%)" }}
+      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
     >
+      <motion.div
+        animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[20%] left-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(201,154,46,0.12) 0%, transparent 70%)" }}
+      />
+      
       <motion.div
         variants={container}
         initial="hidden"
@@ -32,34 +38,47 @@ export default function Mobile() {
         viewport={{ once: true, margin: "-40px" }}
         className="relative z-10 w-full"
       >
-        <motion.div variants={item} className="flex items-center gap-2.5 mb-5">
-          <div className="w-6 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[20px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Introductory Video</h2>
+        <motion.div variants={item} className="flex items-center gap-3 mb-8">
+          <div className="w-9 h-9 rounded bg-gradient-to-br from-[#0B1D3A] to-[#162E56] flex items-center justify-center shadow-lg text-white shrink-0">
+            <Play size={16} strokeWidth={2.5} />
+          </div>
+          <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Introductory Video</h2>
         </motion.div>
 
         <motion.div
           variants={item}
-          className="relative w-full aspect-video rounded-lg overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] shadow-[0_8px_24px_-8px_rgba(11,29,58,0.12)] cursor-pointer group"
-          style={{
-            background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)`
-          }}
+          className="relative w-full aspect-video rounded overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.12)] cursor-pointer group"
         >
+          <div className="absolute inset-0 bg-[#0B1D3A]" />
           <div
-            className="absolute inset-0 opacity-[0.05] pointer-events-none"
+            className="absolute inset-0 opacity-30"
             style={{
-              backgroundImage: `linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)`,
+              background: "radial-gradient(circle at center, rgba(201,154,46,0.2) 0%, transparent 60%)",
+            }}
+          />
+          <div
+            className="absolute inset-0 opacity-[0.03] pointer-events-none"
+            style={{
+              backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
               backgroundSize: "20px 20px",
             }}
           />
 
-          <div
-            className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg group-active:scale-95 transition-transform duration-300 relative z-10"
-            style={{
-              background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})`,
-              boxShadow: `0 8px 24px rgba(201,154,46,0.4)`,
-            }}
-          >
-            <Play size={20} className="ml-1 text-white fill-white" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative">
+              <motion.div
+                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 rounded-full"
+                style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
+              />
+              <div
+                className="w-16 h-16 rounded-full flex items-center justify-center shadow-[0_8px_32px_rgba(201,154,46,0.5)] group-active:scale-95 transition-transform duration-300 relative z-10"
+                style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
+              >
+              <Play size={20} className="ml-1 text-white fill-white" />
+              </div>
+            </div>
           </div>
 
           <div className="absolute bottom-2.5 right-2.5 bg-black/50 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">

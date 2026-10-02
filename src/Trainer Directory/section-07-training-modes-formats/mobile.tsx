@@ -1,48 +1,13 @@
-import React, { useState } from "react";
 import { profileData } from "../profileData";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Video, Building2, Layers, PlayCircle, ChevronDown } from "lucide-react";
+import { Video, Building2, Layers, PlayCircle, Clock, Sparkles, Presentation, MessagesSquare, UserCheck } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
-const FormatAccordion = ({ format, defaultOpen }: { format: any; defaultOpen: boolean }) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
 
-  return (
-    <div className="flex flex-col bg-[#F8FAFD]/50 border border-[#0B1D3A]/[0.04] rounded-xl overflow-hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-3.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
-      >
-        <span className="font-bold text-[13px]" style={{ color: NAVY }}>{format.name}</span>
-        <ChevronDown
-          size={16}
-          strokeWidth={2.5}
-          className={`text-[#7B8DAA] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-        />
-      </button>
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="px-3.5 pb-3.5 pt-1">
-              <p className="text-[11.5px] text-[#5A6B82] leading-relaxed font-medium">
-                {format.description}
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
 
 export default function Mobile() {
   const data = profileData;
@@ -57,7 +22,7 @@ export default function Mobile() {
   };
 
   const getIcon = (iconName: string) => {
-    switch(iconName) {
+    switch (iconName) {
       case 'video': return <Video size={16} strokeWidth={2.2} />;
       case 'building': return <Building2 size={16} strokeWidth={2.2} />;
       case 'blend': return <Layers size={16} strokeWidth={2.2} />;
@@ -98,11 +63,10 @@ export default function Mobile() {
                 <motion.div
                   key={idx}
                   variants={item}
-                  className={`bg-white/90 backdrop-blur-xl rounded-2xl p-4 border relative overflow-hidden flex flex-col shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] ${
-                    mode.disabled
+                  className={`bg-white/90 backdrop-blur-xl rounded p-4 border relative overflow-hidden flex flex-col shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] ${mode.disabled
                       ? "opacity-50 border-[#0B1D3A]/[0.04]"
                       : "border-[#0B1D3A]/[0.06]"
-                  }`}
+                    }`}
                 >
                   {!mode.disabled && (
                     <div
@@ -111,7 +75,7 @@ export default function Mobile() {
                     />
                   )}
                   <div
-                    className="w-8 h-8 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mb-2"
+                    className="w-8 h-8 rounded ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mb-2"
                     style={{ background: mode.disabled ? "#CBD5E1" : colors.bg }}
                   >
                     {getIcon(mode.icon)}
@@ -129,29 +93,52 @@ export default function Mobile() {
           <div className="flex flex-col gap-5">
             <motion.div
               variants={item}
-              className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 flex flex-col gap-4 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
+              className="w-full mt-2"
             >
-              <h4 className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Training Formats</h4>
+              <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-3">Training Formats</h4>
               <div className="flex flex-col gap-3">
-                {data.methodology.formats.map((fmt, idx) => (
-                  <FormatAccordion key={idx} format={fmt} defaultOpen={idx === 0} />
-                ))}
+                {data.methodology.formats.map((fmt, idx) => {
+                  const styles = [
+                    { color: "#2563EB", icon: <Presentation size={16} strokeWidth={2} /> },
+                    { color: "#10B981", icon: <MessagesSquare size={16} strokeWidth={2} /> },
+                    { color: "#D97706", icon: <Clock size={16} strokeWidth={2} /> },
+                    { color: "#8B5CF6", icon: <UserCheck size={16} strokeWidth={2} /> },
+                    { color: "#F97316", icon: <Sparkles size={16} strokeWidth={2} /> }
+                  ];
+                  const s = styles[idx % styles.length];
+                  return (
+                    <div key={idx} className="bg-white rounded border border-[#0B1D3A]/[0.06] shadow-sm relative overflow-hidden flex flex-col p-4">
+                      <div
+                        className="absolute top-0 left-0 right-0 h-[2px]"
+                        style={{ background: s.color }}
+                      />
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="w-8 h-8 rounded flex items-center justify-center text-white shrink-0" style={{ background: s.color }}>
+                          {s.icon}
+                        </div>
+                        <h5 className="text-[14px] font-black tracking-tight" style={{ color: NAVY }}>{fmt.name}</h5>
+                      </div>
+                      <p className="text-[11.5px] text-[#5A6B82] leading-relaxed font-medium">{fmt.description}</p>
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
-            
+
             <motion.div
               variants={item}
-              className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 flex flex-col gap-4 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
+              className="w-full mt-2"
             >
-              <h4 className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Training Durations</h4>
-              <div className="flex flex-wrap gap-2">
+              <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-3">Training Durations</h4>
+              <div className="flex flex-wrap gap-2.5">
                 {data.delivery.durations.map((dur, idx) => (
-                  <span
+                  <div
                     key={idx}
-                    className="text-[12px] font-semibold px-3 py-1.5 rounded-full bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/75"
+                    className="flex items-center gap-2 px-3.5 py-2 rounded border border-[#0B1D3A]/[0.06] bg-white shadow-sm"
                   >
-                    {dur}
-                  </span>
+                    <Clock size={14} strokeWidth={2.5} className="text-[#3B82F6]" />
+                    <span className="text-[13px] font-bold text-[#0B1D3A]/90">{dur}</span>
+                  </div>
                 ))}
               </div>
             </motion.div>

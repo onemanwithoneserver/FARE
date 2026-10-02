@@ -36,12 +36,15 @@ export default function Mobile({ onBack }: TrainerProfileProps) {
   const [isRequestFormOpen, setIsRequestFormOpen] = useState(false);
 
   return (
-    <div className="w-full min-h-screen bg-[#F8FAFD] flex flex-col font-['Outfit'] relative">
+    <div className="w-full min-h-screen bg-[#0B1D3A]/[0.02] flex flex-col font-['Outfit'] relative overflow-x-hidden">
+      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-gradient-radial from-[#8B5CF6]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0 fixed" />
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0 fixed" />
+
       <motion.div
         initial="hidden"
         animate="visible"
         variants={breadcrumbVariants}
-        className="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b border-[#0B1D3A]/[0.06] px-6 lg:px-12 py-3.5 flex items-center justify-between shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
+        className="sticky top-0 z-50 bg-white/80 backdrop-blur-2xl border-b border-[#0B1D3A]/[0.06] px-5 py-3 flex items-center shadow-[0_8px_32px_-8px_rgba(11,29,58,0.1)]"
       >
         <div className="flex items-center gap-2 text-[13px] text-[#7B8DAA] font-medium">
           <span onClick={onBack} className="hover:text-[#0B1D3A] cursor-pointer transition-all duration-300 ease-out">Home</span>

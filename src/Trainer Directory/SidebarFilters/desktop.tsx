@@ -4,7 +4,6 @@ import { ChevronDown, SlidersHorizontal, RotateCcw } from "lucide-react";
 import { filterOptions } from "../listing_data";
 
 const NAVY = "#0B1D3A";
-const GOLD = "#C99A2E";
 
 interface FilterSectionProps {
   title: string;
@@ -18,28 +17,30 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
   const activeCount = selectedOptions.length;
 
   return (
-    <div className="py-3.5 border-b border-[#0B1D3A]/[0.06] last:border-b-0">
+    <div className="py-4 border-b border-[#0B1D3A]/[0.08] last:border-b-0 relative overflow-hidden">
       <button
-        className="w-full flex items-center justify-between group cursor-pointer transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+        className="w-full flex items-center justify-between group cursor-pointer transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50 rounded px-2 -mx-2 hover:bg-[#0B1D3A]/[0.02]"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <div className="flex items-center gap-2">
-          <span className="text-[11px] font-bold tracking-[0.12em] text-[#0B1D3A] uppercase">
+        <div className="flex items-center gap-2.5 py-1">
+          <span className="text-[11px] font-black tracking-[0.15em] text-[#0B1D3A]/80 uppercase">
             {title}
           </span>
           {activeCount > 0 && (
-            <span
-              className="inline-flex items-center justify-center w-4 h-4 rounded-full text-[8px] font-black text-white"
-              style={{ background: GOLD }}
+            <motion.span
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="inline-flex items-center justify-center min-w-[16px] h-[16px] rounded-full text-[9px] font-black text-white px-1 shadow-[0_2px_4px_rgba(139,92,246,0.3)]"
+              style={{ background: "linear-gradient(135deg, #8B5CF6, #6D28D9)" }}
             >
               {activeCount}
-            </span>
+            </motion.span>
           )}
         </div>
         <ChevronDown
           size={14}
-          strokeWidth={2.5}
-          className={`text-[#7B8DAA] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          strokeWidth={3}
+          className={`text-[#7B8DAA] transition-transform duration-300 ease-[0.16,1,0.3,1] ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 
@@ -49,34 +50,34 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className="flex flex-col gap-1.5 pt-2.5">
+            <div className="flex flex-col gap-2 pt-3 pb-1 px-1">
               {options.map((option) => {
                 const isSelected = selectedOptions.includes(option);
                 return (
                   <label
                     key={option}
-                    className="flex items-center gap-2.5 cursor-pointer group/item px-2 py-1.5 rounded-xl transition-all duration-300 ease-out hover:bg-[#F8FAFD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+                    className="flex items-center gap-3 cursor-pointer group/item p-2 -mx-2 rounded transition-all duration-300 ease-out hover:bg-[#F8FAFD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50"
                     onClick={() => onChange(option)}
                   >
                     <div
-                      className={`w-4 h-4 rounded-[3px] border flex items-center justify-center transition-all duration-300 shrink-0 ${
+                      className={`w-4 h-4 rounded border flex items-center justify-center transition-all duration-300 shrink-0 ${
                         isSelected
-                          ? "border-[#0B1D3A] shadow-[0_0_0_1px_rgba(11,29,58,0.08)]"
-                          : "border-[#0B1D3A]/[0.06] group-hover/item:border-[#0B1D3A]/20 bg-white"
+                          ? "border-transparent shadow-[0_2px_8px_rgba(139,92,246,0.3)]"
+                          : "border-[#0B1D3A]/[0.1] group-hover/item:border-[#8B5CF6]/40 bg-white"
                       }`}
-                      style={isSelected ? { background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` } : undefined}
+                      style={isSelected ? { background: "linear-gradient(135deg, #8B5CF6, #6D28D9)" } : undefined}
                     >
                       {isSelected && (
-                        <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3.5}>
+                        <motion.svg initial={{ scale: 0 }} animate={{ scale: 1 }} className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
+                        </motion.svg>
                       )}
                     </div>
                     <span className={`text-[13px] leading-snug transition-colors duration-200 ${
-                      isSelected ? "text-[#0B1D3A] font-semibold" : "text-[#5A6B82] group-hover/item:text-[#0B1D3A] font-medium"
+                      isSelected ? "text-[#0B1D3A] font-bold" : "text-[#5A6B82] group-hover/item:text-[#0B1D3A] font-medium"
                     }`}>
                       {option}
                     </span>
@@ -119,40 +120,47 @@ export default function Desktop() {
 
   return (
     <div
-      className="w-[260px] shrink-0 bg-white/90 backdrop-blur-xl rounded-2xl border border-[#0B1D3A]/[0.06] p-5 sticky top-[80px] h-fit font-['Outfit'] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
+      className="w-[280px] shrink-0 bg-white/95 backdrop-blur-2xl rounded border border-[#0B1D3A]/[0.06] p-6 sticky top-[80px] h-fit font-['Outfit'] shadow-[0_12px_40px_-12px_rgba(11,29,58,0.1)] relative overflow-hidden"
     >
-            <div className="flex items-center justify-between mb-1 pb-3 border-b border-[#0B1D3A]/[0.06]">
-        <div className="flex items-center gap-2">
+      <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[30px] pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-[-20%] w-[150px] h-[150px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[30px] pointer-events-none z-0" />
+
+      <div className="flex items-center justify-between mb-2 pb-4 border-b border-[#0B1D3A]/[0.08] relative z-10">
+        <div className="flex items-center gap-3">
           <div
-            className="w-7 h-7 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm"
+            className="w-8 h-8 rounded flex items-center justify-center text-white shadow-[0_4px_12px_-4px_rgba(11,29,58,0.3)]"
             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
           >
-            <SlidersHorizontal size={13} strokeWidth={2.5} />
+            <SlidersHorizontal size={14} strokeWidth={2.5} />
           </div>
-          <span className="text-[13px] font-bold" style={{ color: NAVY }}>Filters</span>
+          <span className="text-[14px] font-black" style={{ color: NAVY }}>Filters</span>
           {totalActive > 0 && (
-            <span
-              className="inline-flex items-center justify-center min-w-[18px] h-[18px] rounded-full text-[9px] font-black text-white px-1"
-              style={{ background: GOLD }}
+            <motion.span
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="inline-flex items-center justify-center min-w-[20px] h-[20px] rounded-full text-[10px] font-black text-white px-1 shadow-[0_2px_4px_rgba(139,92,246,0.3)]"
+              style={{ background: "linear-gradient(135deg, #8B5CF6, #6D28D9)" }}
             >
               {totalActive}
-            </span>
+            </motion.span>
           )}
         </div>
         {totalActive > 0 && (
           <button
             onClick={clearAll}
-            className="flex items-center gap-1 text-[11px] font-semibold text-[#7B8DAA] hover:text-[#0B1D3A] transition-all duration-300 ease-out cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+            className="flex items-center gap-1.5 text-[11px] font-bold text-[#7B8DAA] hover:text-[#0B1D3A] transition-all duration-300 ease-out cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50 bg-[#F8FAFD] hover:bg-[#0B1D3A]/5 px-2.5 py-1.5 rounded"
           >
-            <RotateCcw size={10} strokeWidth={2.5} />
+            <RotateCcw size={12} strokeWidth={2.5} />
             Clear
           </button>
         )}
       </div>
 
-      <FilterSection title="RE Segment" options={filterOptions.segments} selectedOptions={selected.segments} onChange={(o) => toggleOption('segments', o)} />
-      <FilterSection title="Expertise" options={filterOptions.expertise} selectedOptions={selected.expertise} onChange={(o) => toggleOption('expertise', o)} />
-      <FilterSection title="Language" options={filterOptions.languages} selectedOptions={selected.languages} onChange={(o) => toggleOption('languages', o)} />
+      <div className="relative z-10">
+        <FilterSection title="RE Segment" options={filterOptions.segments} selectedOptions={selected.segments} onChange={(o) => toggleOption('segments', o)} />
+        <FilterSection title="Expertise" options={filterOptions.expertise} selectedOptions={selected.expertise} onChange={(o) => toggleOption('expertise', o)} />
+        <FilterSection title="Language" options={filterOptions.languages} selectedOptions={selected.languages} onChange={(o) => toggleOption('languages', o)} />
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Briefcase } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -21,9 +21,21 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
   return (
     <section
-      className="w-full py-10 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden"
-      style={{ background: "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)" }}
+      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
     >
+      <motion.div
+        animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)" }}
+      />
+      <motion.div
+        animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1.05, 1, 1.05] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-30"
+        style={{ background: "radial-gradient(circle, rgba(11,29,58,0.06) 0%, transparent 70%)" }}
+      />
+
       <motion.div
         variants={container}
         initial="hidden"
@@ -31,41 +43,45 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
         viewport={{ once: true, margin: "-40px" }}
         className="relative z-10 w-full"
       >
-        <motion.div variants={item} className="flex items-center gap-2.5 mb-5">
-          <div className="w-6 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[20px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Investment</h2>
+        <motion.div variants={item} className="flex items-center gap-3 mb-8">
+          <div className="w-9 h-9 rounded bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center shadow-lg text-white shrink-0">
+            <Briefcase size={16} strokeWidth={2.5} />
+          </div>
+          <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Investment</h2>
         </motion.div>
 
-        <div className="flex flex-col gap-4 mb-4">
+        <div className="flex flex-col gap-5 mb-6">
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] relative overflow-hidden"
           >
-            <h4 className="text-[9px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-2.5">Pricing</h4>
-            <h3 className="text-[16px] font-black mb-1.5" style={{ color: NAVY }}>{data.investment.pricing.title}</h3>
-            <p className="text-[11px] text-[#5A6B82] font-medium leading-relaxed">{data.investment.pricing.subtitle}</p>
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#6366F1]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
+            <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">Pricing</h4>
+            <h3 className="text-[18px] font-black mb-2 tracking-tight relative z-10" style={{ color: NAVY }}>{data.investment.pricing.title}</h3>
+            <p className="text-[13px] text-[#5A6B82] font-medium leading-relaxed relative z-10">{data.investment.pricing.subtitle}</p>
           </motion.div>
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] relative overflow-hidden"
           >
-            <h4 className="text-[9px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-2.5">Minimum Engagement</h4>
-            <h3 className="text-[16px] font-black mb-3" style={{ color: NAVY }}>{data.investment.minimumEngagement.title}</h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/15 to-transparent rounded-full blur-[20px] pointer-events-none" />
+            <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">Minimum Engagement</h4>
+            <h3 className="text-[18px] font-black mb-4 tracking-tight relative z-10" style={{ color: NAVY }}>{data.investment.minimumEngagement.title}</h3>
+            <div className="flex flex-wrap gap-2.5 relative z-10">
               {data.investment.minimumEngagement.options.map((opt, idx) => (
                 <span
                   key={idx}
-                  className="text-[10px] font-semibold px-2.5 py-1 rounded-full"
+                  className="text-[12px] font-bold px-3 py-1.5 rounded"
                   style={opt === data.investment.minimumEngagement.selected ? {
                     background: `${GOLD}15`,
                     color: GOLD_MID,
-                    border: `1px solid ${GOLD}30`
+                    border: `1px solid ${GOLD}40`
                   } : {
-                    background: "white",
+                    background: "#F8FAFD",
                     color: "#7B8DAA",
-                    border: "1px solid rgba(11,29,58,0.08)"
+                    border: "1px solid rgba(11,29,58,0.06)"
                   }}
                 >
                   {opt}
@@ -76,14 +92,15 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:border-[#0B1D3A]/20 hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] relative overflow-hidden"
           >
-            <h4 className="text-[9px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-3">Pricing Basis</h4>
-            <ul className="flex flex-col gap-2.5">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#10B981]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
+            <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-4 relative z-10">Pricing Basis</h4>
+            <ul className="flex flex-col gap-3 relative z-10">
               {data.investment.pricingBasis.map((basis, idx) => (
-                <li key={idx} className="flex items-center gap-2 text-[12px] font-semibold text-[#5A6B82]">
-                  <div className="w-3.5 h-3.5 rounded-full ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: `${NAVY}10`, color: NAVY }}>
-                    <Check size={8} strokeWidth={3} />
+                <li key={idx} className="flex items-center gap-2.5 text-[13px] font-bold text-[#5A6B82]">
+                  <div className="w-4 h-4 rounded-full bg-[#10B981]/10 flex items-center justify-center shrink-0 border border-[#10B981]/20">
+                    <Check size={10} strokeWidth={3} className="text-[#10B981]" />
                   </div>
                   {basis}
                 </li>
@@ -94,16 +111,24 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
         <motion.div
           variants={item}
-          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 flex flex-col gap-4 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
+          className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded p-6 flex flex-col gap-5 shadow-[0_8px_30px_-12px_rgba(11,29,58,0.2)] relative overflow-hidden"
         >
-          <p className="text-[11px] font-medium text-[#7B8DAA] text-center">{data.investment.footerNote}</p>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[20px] pointer-events-none" />
+          <div
+            className="absolute inset-0 opacity-[0.05] pointer-events-none"
+            style={{
+              backgroundImage: `linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)`,
+              backgroundSize: "20px 20px",
+            }}
+          />
+          
+          <p className="text-[12px] font-medium text-white/80 text-center relative z-10 leading-relaxed">{data.investment.footerNote}</p>
           <button
             onClick={onRequestPricing}
-            className="w-full text-white px-5 py-3 rounded-xl font-bold text-[13px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 flex items-center justify-center gap-2 shadow-[0_4px_12px_-4px_rgba(11,29,58,0.25)] hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] relative overflow-hidden"
-            style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
+            className="w-full bg-white text-[#0B1D3A] px-6 py-3.5 rounded font-black text-[14px] transition-transform duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center justify-center gap-2.5 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] relative z-10 group"
           >
             Request Pricing
-            <ArrowRight size={13} strokeWidth={2.5} style={{ color: GOLD_MID }} />
+            <ArrowRight size={15} strokeWidth={2.5} className="text-[#C99A2E] group-active:translate-x-1 transition-transform" />
           </button>
         </motion.div>
       </motion.div>

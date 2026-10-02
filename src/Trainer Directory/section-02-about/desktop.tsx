@@ -28,59 +28,69 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full py-14 px-10 font-['Outfit'] flex justify-center relative"
-      style={{ background: "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)" }}
+      className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
     >
-            <div className="absolute top-[20%] right-[5%] w-[400px] h-[400px] bg-gradient-radial from-[#DDEAFF]/40 to-transparent rounded-full blur-[100px] pointer-events-none z-0" />
-      <div className="absolute bottom-[10%] left-[10%] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.04] to-transparent rounded-full blur-[80px] pointer-events-none z-0" />
-
+      <motion.div
+        animate={{ x: [0, -20, 0], y: [0, 25, 0], scale: [1.05, 1, 1.05] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[10%] left-[-5%] w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none z-0 opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)" }}
+      />
+      
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false }}
+        viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full relative z-10"
       >
-                <motion.div variants={item} className="flex items-center gap-3 mb-6">
-          <div className="w-8 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>About the Trainer</h2>
+        <motion.div variants={item} className="flex items-center gap-3 mb-10">
+          <div className="w-10 h-10 rounded bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-lg text-white">
+            <Users size={20} strokeWidth={2.5} />
+          </div>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>About the Trainer</h2>
         </motion.div>
 
-        <div className="grid grid-cols-12 gap-10">
-                    <div className="col-span-8">
-            <motion.p variants={item} className="text-[15px] text-[#5A6B82] mb-8 leading-[1.75]">
+        <div className="grid grid-cols-12 gap-12">
+          <div className="col-span-7 flex flex-col">
+            <motion.p variants={item} className="text-[17px] text-[#5A6B82] mb-10 leading-[1.8] font-light">
               {data.about.text}
             </motion.p>
 
-                        <motion.div
+            <motion.div
               variants={item}
-              className="relative rounded-2xl p-7 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] overflow-hidden"
-              style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #132A4D 100%)` }}
+              className="relative p-8 rounded overflow-hidden mt-auto group"
+              style={{
+                background: "rgba(255,255,255,0.6)",
+                backdropFilter: "blur(24px) saturate(1.6)",
+                border: "1px solid rgba(11,29,58,0.08)",
+                boxShadow: "0 8px 32px -8px rgba(11,29,58,0.06)",
+              }}
             >
-              <div className="absolute -top-6 -right-4 w-36 h-36 rounded-full opacity-[0.06]" style={{ background: GOLD }} />
-              <Quote size={32} className="absolute top-5 right-5 rotate-180 opacity-[0.12]" style={{ color: GOLD }} />
-              <p className="text-[16px] italic font-medium leading-[1.65] relative z-10 text-white">
+              <div className="absolute top-0 left-0 bottom-0 w-[4px] bg-gradient-to-b from-[#C99A2E] to-[#D5AA45] opacity-80" />
+              <Quote size={40} className="absolute top-6 right-6 rotate-180 opacity-[0.04]" style={{ color: NAVY }} />
+              <p className="text-[18px] font-medium leading-[1.65] relative z-10 text-[#0B1D3A]">
                 {data.about.quote}
               </p>
             </motion.div>
           </div>
 
-                    <div className="col-span-4 grid grid-cols-2 gap-3">
+          <div className="col-span-5 grid grid-cols-2 gap-4">
             {data.about.stats.map((stat, idx) => (
               <motion.div
                 key={idx}
                 variants={item}
-                whileHover={{ y: -3, transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } }}
-                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-4 flex flex-col justify-center shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] hover:shadow-[0_8px_24px_-8px_rgba(11,29,58,0.1)] transition-all duration-400 group"
+                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 flex flex-col justify-center shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_12px_30px_-10px_rgba(11,29,58,0.12)] transition-all duration-300 group/stat relative overflow-hidden"
               >
+                <div className="absolute top-0 left-0 right-0 h-[2px] opacity-60 group-hover/stat:opacity-100 transition-opacity" style={{ background: statIcons[idx]?.bg || statIcons[0].bg }} />
                 <div
-                  className="w-8 h-8 rounded flex items-center justify-center text-white shadow-sm mb-3 group-hover:scale-110 transition-transform duration-300"
+                  className="w-10 h-10 rounded flex items-center justify-center text-white shadow-md mb-4 group-hover/stat:scale-110 transition-transform duration-300"
                   style={{ background: statIcons[idx]?.bg || statIcons[0].bg }}
                 >
                   {statIcons[idx]?.icon || statIcons[0].icon}
                 </div>
-                <div className="text-[20px] font-black mb-0.5" style={{ color: NAVY }}>{stat.value}</div>
-                <div className="text-[11px] text-[#7B8DAA] font-semibold">{stat.label}</div>
+                <div className="text-[26px] font-black mb-1 tracking-tight" style={{ color: NAVY }}>{stat.value}</div>
+                <div className="text-[12px] text-[#7B8DAA] font-bold uppercase tracking-[0.1em]">{stat.label}</div>
               </motion.div>
             ))}
           </div>

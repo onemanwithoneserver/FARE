@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { profileData } from "../profileData";
 import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
@@ -12,7 +12,7 @@ const SegmentAccordion = ({ segment, defaultOpen }: { segment: any; defaultOpen:
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="flex flex-col bg-[#F8FAFD] border border-[#0B1D3A]/[0.04] rounded-2xl overflow-hidden">
+    <div className="flex flex-col bg-[#F8FAFD] border border-[#0B1D3A]/[0.04] rounded overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-3.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
@@ -35,7 +35,7 @@ const SegmentAccordion = ({ segment, defaultOpen }: { segment: any; defaultOpen:
             <div className="px-3.5 pb-3.5 pt-1">
               <div className="flex flex-wrap gap-1.5">
                 {segment.items.map((it: string, i: number) => (
-                  <span key={i} className="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-white border border-[#0B1D3A]/[0.06] text-[#5A6B82] shadow-sm">
+                  <span key={i} className="text-[11px] font-semibold px-2 py-0.5 rounded bg-white border border-[#0B1D3A]/[0.06] text-[#5A6B82] shadow-sm">
                     {it}
                   </span>
                 ))}
@@ -68,8 +68,21 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-12 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-[#F8FAFD]"
+      className="w-full py-12 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
     >
+      <motion.div
+        animate={{ x: [0, 15, 0], y: [0, 20, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-30"
+        style={{ background: "radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)" }}
+      />
+      <motion.div
+        animate={{ x: [0, -20, 0], y: [0, -15, 0], scale: [1.05, 1, 1.05] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[20%] right-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-25"
+        style={{ background: "radial-gradient(circle, rgba(201,154,46,0.15) 0%, transparent 70%)" }}
+      />
+
       <motion.div
         variants={container}
         initial="hidden"
@@ -78,10 +91,10 @@ export default function Mobile() {
         className="relative z-10 w-full flex flex-col gap-6"
       >
         {/* Card 1: RE Segment Expertise */}
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-3xl p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[0].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">
-            <div className="w-9 h-9 shrink-0 rounded-xl flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[0].bg }}>
+            <div className="w-9 h-9 shrink-0 rounded flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[0].bg }}>
               {sectionColors[0].icon}
             </div>
             <h2 className="text-[17px] font-black leading-tight" style={{ color: NAVY }}>
@@ -96,10 +109,10 @@ export default function Mobile() {
         </motion.div>
 
         {/* Card 2: Learner Audience */}
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-3xl p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[1].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">
-            <div className="w-9 h-9 shrink-0 rounded-xl flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[1].bg }}>
+            <div className="w-9 h-9 shrink-0 rounded flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[1].bg }}>
               {sectionColors[1].icon}
             </div>
             <h2 className="text-[17px] font-black leading-tight" style={{ color: NAVY }}>
@@ -108,7 +121,7 @@ export default function Mobile() {
           </div>
           <div className="flex flex-col gap-3">
             {data.learnerAudience.map((audience, idx) => (
-              <div key={idx} className="flex flex-col gap-1.5 p-3 rounded-2xl bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">
+              <div key={idx} className="flex flex-col gap-1.5 p-3 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">
                 <span className="font-bold text-[13px]" style={{ color: NAVY }}>{audience.title}</span>
                 {audience.description && (
                   <span className="text-[11.5px] font-medium text-[#5A6B82] leading-snug">{audience.description}</span>
@@ -119,10 +132,10 @@ export default function Mobile() {
         </motion.div>
 
         {/* Card 3: Language */}
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-3xl p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[2].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">
-            <div className="w-9 h-9 shrink-0 rounded-xl flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[2].bg }}>
+            <div className="w-9 h-9 shrink-0 rounded flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[2].bg }}>
               {sectionColors[2].icon}
             </div>
             <h2 className="text-[17px] font-black leading-tight" style={{ color: NAVY }}>
@@ -130,15 +143,15 @@ export default function Mobile() {
             </h2>
           </div>
           <div className="flex flex-col gap-3">
-            <div className="flex flex-col gap-1.5 p-3 rounded-2xl bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">
+            <div className="flex flex-col gap-1.5 p-3 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">
               <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-wider">Primary Language</span>
               <span className="text-[15px] font-black" style={{ color: NAVY }}>English</span>
             </div>
-            <div className="flex flex-col gap-1.5 p-3 rounded-2xl bg-white border border-[#0B1D3A]/[0.06] shadow-sm">
+            <div className="flex flex-col gap-1.5 p-3 rounded bg-white border border-[#0B1D3A]/[0.06] shadow-sm">
               <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-wider">Secondary Languages</span>
               <div className="flex flex-wrap gap-1.5 mt-0.5">
                 {["Telugu", "Hindi"].map(lang => (
-                  <span key={lang} className="text-[12px] font-bold px-2.5 py-1 rounded-lg bg-[#F8FAFD] border border-[#0B1D3A]/[0.04] text-[#5A6B82]">{lang}</span>
+                  <span key={lang} className="text-[12px] font-bold px-2.5 py-1 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.04] text-[#5A6B82]">{lang}</span>
                 ))}
               </div>
             </div>

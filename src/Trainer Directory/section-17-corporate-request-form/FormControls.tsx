@@ -23,7 +23,7 @@ export function CustomSelect({ options, placeholder, value, onChange }: any) {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded-xl px-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] hover:border-[#0B1D3A]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 aria-[invalid=true]:border-red-500 transition-all duration-300 ease-out flex items-center justify-between gap-2"
+        className="w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded px-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] hover:border-[#0B1D3A]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 aria-[invalid=true]:border-red-500 transition-all duration-300 ease-out flex items-center justify-between gap-2"
       >
         <span className={`leading-snug ${value ? "text-[#0B1D3A]" : "text-[#7B8DAA]"}`}>
           {value || placeholder}
@@ -38,7 +38,7 @@ export function CustomSelect({ options, placeholder, value, onChange }: any) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 w-full mt-1.5 bg-white rounded-2xl shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] border border-[#0B1D3A]/[0.06] overflow-hidden z-50 max-h-60 overflow-y-auto"
+            className="absolute top-full left-0 w-full mt-1.5 bg-white rounded shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] border border-[#0B1D3A]/[0.06] overflow-hidden z-50 max-h-60 overflow-y-auto"
           >
             {options.map((opt: string, idx: number) => (
               <button
@@ -67,7 +67,7 @@ export function CustomCheckbox({ label, checked, onChange }: any) {
   return (
     <label className="flex items-start gap-2.5 cursor-pointer group select-none" onClick={onChange}>
       <div
-        className={`w-4 h-4 rounded-xl border flex items-center justify-center transition-all duration-300 ease-out shrink-0 mt-[1.5px] ${
+        className={`w-4 h-4 rounded border flex items-center justify-center transition-all duration-300 ease-out shrink-0 mt-[1.5px] ${
           checked
             ? "bg-[#C99A2E] border-[#C99A2E]"
             : "bg-white/50 border-[#0B1D3A]/[0.12] group-hover:border-[#C99A2E]/50"
@@ -127,7 +127,7 @@ export function CustomDatePicker({ selected, onChange, placeholderText }: any) {
         selected={selected}
         onChange={onChange}
         placeholderText={placeholderText}
-        className="w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded-xl pl-9 pr-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] hover:border-[#0B1D3A]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 aria-[invalid=true]:border-red-500 aria-[invalid=false]:border-emerald-600/40 transition-all duration-300 ease-out placeholder:text-[#7B8DAA]"
+        className="w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded pl-9 pr-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] hover:border-[#0B1D3A]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 aria-[invalid=true]:border-red-500 aria-[invalid=false]:border-emerald-600/40 transition-all duration-300 ease-out placeholder:text-[#7B8DAA]"
         dateFormat="dd MMM yyyy"
       />
       <style>{`

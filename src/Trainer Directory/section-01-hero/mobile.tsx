@@ -4,7 +4,7 @@ import { MapPin, Globe2, Briefcase, GraduationCap, Users, ShieldCheck, ArrowRigh
 import trainerImg from "../../assets/re_trainers_hero.jpg";
 
 const NAVY = "#0B1D3A";
-const CARD_BG = "#132544";
+
 
 export default function Mobile() {
   const { language } = useLanguage();
@@ -12,62 +12,121 @@ export default function Mobile() {
   
   return (
     <section className="w-full relative overflow-hidden font-['Outfit'] pt-16 pb-12 px-6" style={{ background: NAVY }}>
-      <div className="absolute top-0 left-0 w-full h-full bg-[#112340]/50 pointer-events-none" />
+      
+      {/* Liquid glowing orbs background */}
+      <div className="absolute top-[-5%] right-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(99,102,241,0.3) 0%, transparent 70%)" }}
+      />
+      <div className="absolute bottom-[20%] left-[-10%] w-[350px] h-[350px] rounded-full blur-[100px] pointer-events-none z-0 opacity-30"
+        style={{ background: "radial-gradient(circle, rgba(201,154,46,0.25) 0%, transparent 70%)" }}
+      />
+      
+      {/* Subtle grid pattern overlay */}
+      <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
       
       <div className="relative z-10 flex flex-col items-center text-center">
         
         {/* Image */}
-        <div className="w-[240px] aspect-[3/4] relative mb-10">
-          <div className="absolute -inset-4 bg-[#C99A2E]/20 rounded-2xl blur-xl pointer-events-none" />
-          <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/5">
+        <div className="w-[260px] aspect-[3/4] relative mb-12 group">
+          {/* Animated liquid border glow */}
+          <div className="absolute -inset-1 bg-gradient-to-br from-[#6366F1]/40 via-[#C99A2E]/40 to-[#06B6D4]/40 rounded blur-lg transition-all duration-500 opacity-70" />
+          
+          <div className="relative w-full h-full rounded overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)] border border-white/5">
             <img src={trainerImg} alt={data.trainerName} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/80 via-transparent to-transparent opacity-80" />
           </div>
+          
           {data.isVerified && (
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white px-5 py-2 rounded-full flex items-center gap-1.5 shadow-[0_8px_16px_rgba(0,0,0,0.2)] whitespace-nowrap">
-              <ShieldCheck size={16} className="text-[#059669]" strokeWidth={2.5} />
-              <span className="text-[#0B1D3A] text-xs font-bold tracking-wide">FARE Verified</span>
+            <div 
+              className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-5 py-2.5 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.3)] whitespace-nowrap"
+              style={{
+                background: "rgba(255,255,255,0.1)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(255,255,255,0.15)",
+              }}
+            >
+              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center">
+                <ShieldCheck size={12} className="text-white" strokeWidth={3} />
+              </div>
+              <span className="text-white text-[13px] font-bold tracking-wide">FARE Verified</span>
             </div>
           )}
         </div>
 
         {/* Content */}
-        <h1 className="text-4xl font-black text-white mb-2 leading-tight">{data.trainerName}</h1>
-        <h2 className="text-xl font-semibold text-[#C99A2E] mb-6">{data.professionalTitle}</h2>
+        <h1 className="text-[40px] font-black text-white mb-2 leading-tight tracking-[-0.02em]">{data.trainerName}</h1>
+        <h2 className="text-[18px] font-semibold text-[#94A3B8] mb-6">{data.professionalTitle}</h2>
         
-        <p className="text-[16px] text-[#94A3B8] leading-relaxed mb-10 max-w-[340px]">
+        <p className="text-[15px] text-[#CBD5E1] leading-relaxed mb-10 max-w-[340px] font-light">
           {data.positioningStatement}
         </p>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 gap-4 w-full mb-10">
-          <div className="bg-[#132544] p-5 rounded-xl flex flex-col items-center">
-            <Briefcase size={20} className="text-[#C99A2E] mb-3" strokeWidth={2} />
-            <div className="text-[26px] font-bold text-white mb-1 leading-none">{data.experience.industry}</div>
-            <div className="text-[#94A3B8] text-[10px] font-bold uppercase tracking-widest mt-1">Industry Exp.</div>
+        {/* Glassmorphism Stats Cards */}
+        <div className="grid grid-cols-2 gap-3 w-full mb-10">
+          <div className="rounded p-4 relative overflow-hidden flex flex-col items-center"
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              backdropFilter: "blur(12px)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+            }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#6366F1] to-[#4F46E5] opacity-80" />
+            <div className="w-8 h-8 rounded bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center shadow-lg mb-3">
+              <Briefcase size={14} className="text-white" strokeWidth={2.5} />
+            </div>
+            <div className="text-[26px] font-black text-white mb-1 leading-none tracking-tight">{data.experience.industry}</div>
+            <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">Industry Exp.</div>
           </div>
-          <div className="bg-[#132544] p-5 rounded-xl flex flex-col items-center">
-            <GraduationCap size={22} className="text-[#C99A2E] mb-3" strokeWidth={2} />
-            <div className="text-[26px] font-bold text-white mb-1 leading-none">{data.experience.training}</div>
-            <div className="text-[#94A3B8] text-[10px] font-bold uppercase tracking-widest mt-1">Training Exp.</div>
+
+          <div className="rounded p-4 relative overflow-hidden flex flex-col items-center"
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              backdropFilter: "blur(12px)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+            }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C99A2E] to-[#B88A22] opacity-80" />
+            <div className="w-8 h-8 rounded bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center shadow-lg mb-3">
+              <GraduationCap size={16} className="text-white" strokeWidth={2.5} />
+            </div>
+            <div className="text-[26px] font-black text-white mb-1 leading-none tracking-tight">{data.experience.training}</div>
+            <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">Training Exp.</div>
           </div>
-          <div className="col-span-2 bg-[#132544] p-5 rounded-xl flex flex-col items-center">
-            <Users size={20} className="text-[#C99A2E] mb-3" strokeWidth={2} />
-            <div className="text-[26px] font-bold text-white mb-1 leading-none">{data.experience.professionalsTrained}</div>
-            <div className="text-[#94A3B8] text-[10px] font-bold uppercase tracking-widest mt-1">Trained</div>
+
+          <div className="col-span-2 rounded p-4 relative overflow-hidden flex flex-col items-center"
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              backdropFilter: "blur(12px)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+            }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#06B6D4] to-[#0891B2] opacity-80" />
+            <div className="w-8 h-8 rounded bg-gradient-to-br from-[#06B6D4] to-[#0891B2] flex items-center justify-center shadow-lg mb-3">
+              <Users size={16} className="text-white" strokeWidth={2.5} />
+            </div>
+            <div className="text-[28px] font-black text-white mb-1 leading-none tracking-tight">{data.experience.professionalsTrained}</div>
+            <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">Professionals Trained</div>
           </div>
         </div>
 
         {/* Location & Languages */}
         <div className="flex flex-col gap-5 mb-10 w-full">
-          <div className="flex items-center justify-center gap-2 text-white/90 font-medium">
-            <MapPin size={18} className="text-[#C99A2E]" strokeWidth={2.5} />
+          <div className="flex items-center justify-center gap-3 text-white/90 font-medium">
+            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/5">
+              <MapPin size={16} className="text-[#F59E0B]" strokeWidth={2.5} />
+            </div>
             <span className="text-[15px]">{data.location}</span>
           </div>
-          <div className="flex items-center justify-center gap-3">
-            <Globe2 size={18} className="text-[#C99A2E]" strokeWidth={2.5} />
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/5 shrink-0">
+              <Globe2 size={16} className="text-[#10B981]" strokeWidth={2.5} />
+            </div>
             <div className="flex flex-wrap justify-center gap-2">
               {data.languages.map((lang, idx) => (
-                <span key={idx} className="bg-white/10 text-white/90 text-[13px] px-4 py-1.5 rounded-full font-medium">
+                <span key={idx} className="bg-white/5 border border-white/10 text-white/90 text-[13px] px-4 py-1.5 rounded-full font-medium shadow-sm">
                   {lang}
                 </span>
               ))}
@@ -76,8 +135,10 @@ export default function Mobile() {
         </div>
 
         {/* CTA */}
-        <button className="w-full bg-[#C99A2E] text-[#0B1D3A] px-6 py-4 rounded-lg font-bold text-[16px] hover:bg-[#D5AA45] transition-all flex items-center justify-center gap-2 shadow-[0_8px_20px_-8px_rgba(201,154,46,0.6)]">
-          {data.cta} <ArrowRight size={18} strokeWidth={2.5} />
+        <button className="w-full bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#0B1D3A] px-6 py-4 rounded font-black text-[16px] shadow-[0_10px_25px_-5px_rgba(201,154,46,0.5)] transition-all flex items-center justify-center gap-2 relative overflow-hidden">
+          <div className="absolute inset-0 bg-white/20 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-500 ease-in-out" />
+          <span>{data.cta}</span>
+          <ArrowRight size={18} strokeWidth={2.5} />
         </button>
         
       </div>

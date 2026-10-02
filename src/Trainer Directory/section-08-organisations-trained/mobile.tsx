@@ -31,9 +31,21 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-10 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden"
-      style={{ background: "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)" }}
+      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
     >
+      <motion.div
+        animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[20%] right-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)" }}
+      />
+      <motion.div
+        animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1.05, 1, 1.05] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-30"
+        style={{ background: "radial-gradient(circle, rgba(201,154,46,0.1) 0%, transparent 70%)" }}
+      />
+
       <motion.div
         variants={container}
         initial="hidden"
@@ -41,57 +53,59 @@ export default function Mobile() {
         viewport={{ once: true, margin: "-40px" }}
         className="relative z-10 w-full"
       >
-        <motion.div variants={item} className="flex items-center gap-2.5 mb-5">
-          <div className="w-6 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[20px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Experience & Track Record</h2>
+        <motion.div variants={item} className="flex items-center gap-3 mb-8">
+          <div className="w-9 h-9 rounded bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center shadow-lg text-white shrink-0">
+            <Building2 size={16} strokeWidth={2.5} />
+          </div>
+          <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Experience & Track Record</h2>
         </motion.div>
 
-        <motion.div variants={item} className="mb-4">
-          <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Selected Engagements</span>
+        <motion.div variants={item} className="mb-5">
+          <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Selected Engagements</span>
         </motion.div>
 
-        <div className="relative ml-[34px] pl-[18px] flex flex-col gap-4" style={{ borderLeft: `2px solid ${GOLD}20` }}>
+        <div className="relative ml-[36px] pl-[20px] flex flex-col gap-5" style={{ borderLeft: `2px solid ${GOLD}20` }}>
           {data.experienceTimeline.map((timelineItem, idx) => {
             const colors = timelineColors[idx % timelineColors.length];
             return (
               <motion.div key={idx} variants={item} className="relative group">
                 <div
-                  className="absolute -left-[25px] top-4 w-2.5 h-2.5 rounded-full ring-4 ring-white shadow-sm"
+                  className="absolute -left-[27px] top-4 w-3 h-3 rounded-full ring-4 ring-white shadow-sm"
                   style={{ background: colors.bg }}
                 />
                 <div
-                  className="absolute -left-[76px] top-3.5 text-[11px] font-black w-9 text-right"
+                  className="absolute -left-[80px] top-3.5 text-[12px] font-black w-9 text-right"
                   style={{ color: colors.accent }}
                 >
                   {timelineItem.year}
                 </div>
 
-                <div className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-4 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] relative overflow-hidden">
+                <div className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] relative overflow-hidden">
                   <div
-                    className="absolute top-0 left-0 right-0 h-[2.5px] opacity-70"
+                    className="absolute top-0 left-0 right-0 h-[3px] opacity-70"
                     style={{ background: colors.bg }}
                   />
-                  <div className="flex items-center gap-2.5 mb-1.5">
+                  <div className="flex items-center gap-3 mb-3">
                     <div
-                      className="w-7 h-7 shrink-0 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm text-[10px] font-black"
+                      className="w-8 h-8 shrink-0 rounded flex items-center justify-center text-white shadow-md text-[11px] font-black"
                       style={{ background: colors.bg }}
                     >
                       {initialsOf(timelineItem.company)}
                     </div>
                     <div>
-                      <h4 className="text-[13px] font-bold leading-tight" style={{ color: NAVY }}>{timelineItem.company}</h4>
-                      <p className="text-[10.5px] text-[#7B8DAA] font-medium flex items-center gap-1">
-                        <Building2 size={10} strokeWidth={2.5} />
+                      <h4 className="text-[14px] font-black leading-tight tracking-tight" style={{ color: NAVY }}>{timelineItem.company}</h4>
+                      <p className="text-[12px] text-[#7B8DAA] font-medium flex items-center gap-1.5 mt-0.5">
+                        <Building2 size={12} strokeWidth={2.5} />
                         {timelineItem.team}
                       </p>
                     </div>
                   </div>
                   <span
-                    className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full"
+                    className="inline-block text-[11px] font-semibold px-2.5 py-1 rounded"
                     style={{
-                      background: `${colors.accent}10`,
-                      border: `1px solid ${colors.accent}25`,
-                      color: `${NAVY}BB`,
+                      background: `${colors.accent}0A`,
+                      border: `1px solid ${colors.accent}20`,
+                      color: `${NAVY}E6`,
                     }}
                   >
                     {timelineItem.program}

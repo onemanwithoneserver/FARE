@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Video, Building2, Layers, PlayCircle } from "lucide-react";
+import { Video, Building2, Layers, PlayCircle, Clock, Sparkles, Presentation, MessagesSquare, UserCheck } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -38,51 +38,58 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full py-14 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative"
-      style={{ background: "linear-gradient(175deg, #FFFFFF 0%, #F8FAFD 100%)" }}
+      className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
     >
+      <motion.div
+        animate={{ x: [0, 20, 0], y: [0, 30, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[20%] left-[-5%] w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none z-0 opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)" }}
+      />
+      
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false }}
+        viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full relative z-10"
       >
-        <motion.div variants={item} className="flex items-center gap-3 mb-6">
-          <div className="w-8 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Delivery</h2>
+        <motion.div variants={item} className="flex items-center gap-3 mb-12">
+          <div className="w-10 h-10 rounded bg-gradient-to-br from-[#06B6D4] to-[#0891B2] flex items-center justify-center shadow-lg text-white">
+            <Video size={20} strokeWidth={2.5} />
+          </div>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Delivery</h2>
         </motion.div>
 
-                <div className="grid grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-4 gap-6 mb-10">
           {data.delivery.modes.map((mode, idx) => {
             const colors = modeColors[idx % modeColors.length];
             return (
               <motion.div
                 key={idx}
                 variants={item}
-                whileHover={mode.disabled ? undefined : { y: -4, transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } }}
-                className={`group bg-white/90 backdrop-blur-xl rounded-2xl p-5 border transition-all duration-300 ease-out relative overflow-hidden flex flex-col ${
+                className={`group bg-white/90 backdrop-blur-xl rounded p-6 border transition-all duration-400 ease-out relative overflow-hidden flex flex-col ${
                   mode.disabled
-                    ? "opacity-40 border-[#0B1D3A]/[0.04]"
-                    : "border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.20] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] hover:-translate-y-1"
+                    ? "opacity-50 border-[#0B1D3A]/[0.04]"
+                    : "border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_12px_36px_-12px_rgba(11,29,58,0.12)] hover:-translate-y-1"
                 }`}
               >
                 {!mode.disabled && (
                   <div
-                    className="absolute top-0 left-0 right-0 h-[2px] opacity-60 group-hover:opacity-100 transition-opacity"
-                    style={{ background: `linear-gradient(90deg, ${colors.accent}, ${colors.accent}60)` }}
+                    className="absolute top-0 left-0 right-0 h-[3px] opacity-60 group-hover:opacity-100 transition-opacity"
+                    style={{ background: colors.bg }}
                   />
                 )}
                 <div
-                  className="w-9 h-9 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mb-3 group-hover:scale-110 transition-all duration-300 ease-out"
+                  className="w-11 h-11 rounded flex items-center justify-center text-white shadow-md mb-5 group-hover:scale-110 transition-all duration-400 ease-out"
                   style={{ background: mode.disabled ? "#CBD5E1" : colors.bg }}
                 >
                   {getIcon(mode.icon)}
                 </div>
-                <h4 className="text-[14px] font-bold mb-1.5" style={{ color: NAVY }}>{mode.name}</h4>
-                <p className="text-[12px] text-[#7B8DAA] leading-relaxed font-medium">{mode.description}</p>
+                <h4 className="text-[16px] font-black mb-2 tracking-tight" style={{ color: NAVY }}>{mode.name}</h4>
+                <p className="text-[13px] text-[#5A6B82] leading-relaxed font-medium">{mode.description}</p>
                 {mode.disabled && (
-                  <span className="mt-2 text-[10px] font-bold uppercase tracking-wider text-[#94A3B8]">Coming Soon</span>
+                  <span className="mt-3 text-[10px] font-bold uppercase tracking-wider text-[#94A3B8]">Coming Soon</span>
                 )}
               </motion.div>
             );
@@ -92,32 +99,50 @@ export default function Desktop() {
         <div className="flex flex-col gap-6">
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-6 flex flex-col gap-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
+            className="w-full mt-6"
           >
-            <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Training Formats</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {data.methodology.formats.map((fmt, idx) => (
-                <div key={idx} className="flex flex-col gap-1.5 p-4 rounded-xl border border-[#0B1D3A]/[0.04] bg-[#F8FAFD]/50">
-                  <h5 className="text-[14px] font-bold" style={{ color: NAVY }}>{fmt.name}</h5>
-                  <p className="text-[12px] text-[#5A6B82] leading-relaxed font-medium">{fmt.description}</p>
-                </div>
-              ))}
+            <h4 className="text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-4">Training Formats</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              {data.methodology.formats.map((fmt, idx) => {
+                const styles = [
+                  { color: "#2563EB", icon: <Presentation size={18} strokeWidth={2} /> },
+                  { color: "#10B981", icon: <MessagesSquare size={18} strokeWidth={2} /> },
+                  { color: "#D97706", icon: <Clock size={18} strokeWidth={2} /> },
+                  { color: "#8B5CF6", icon: <UserCheck size={18} strokeWidth={2} /> },
+                  { color: "#F97316", icon: <Sparkles size={18} strokeWidth={2} /> }
+                ];
+                const s = styles[idx % styles.length];
+                return (
+                  <div key={idx} className="bg-white rounded border border-[#0B1D3A]/[0.04] shadow-sm relative overflow-hidden flex flex-col p-5 group transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
+                    <div
+                      className="absolute top-0 left-0 right-0 h-[3px]"
+                      style={{ background: s.color }}
+                    />
+                    <div className="w-9 h-9 rounded mb-4 flex items-center justify-center text-white" style={{ background: s.color }}>
+                      {s.icon}
+                    </div>
+                    <h5 className="text-[14px] font-black tracking-tight leading-tight mb-2" style={{ color: NAVY }}>{fmt.name}</h5>
+                    <p className="text-[12px] text-[#5A6B82] leading-[1.6] font-medium">{fmt.description}</p>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
           
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-6 flex flex-col gap-4 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
+            className="w-full mt-8"
           >
-            <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Training Durations</h4>
-            <div className="flex flex-wrap gap-2">
+            <h4 className="text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-4">Training Durations</h4>
+            <div className="flex flex-wrap gap-3">
               {data.delivery.durations.map((dur, idx) => (
-                <span
+                <div
                   key={idx}
-                  className="text-[13px] font-semibold px-4 py-2 rounded-full bg-white border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/80 hover:border-[#0B1D3A]/[0.20] transition-all duration-300 ease-out"
+                  className="flex items-center gap-2 px-4 py-2 rounded border border-[#0B1D3A]/[0.06] bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-default"
                 >
-                  {dur}
-                </span>
+                  <Clock size={14} strokeWidth={2.5} className="text-[#3B82F6]" />
+                  <span className="text-[13px] font-bold text-[#0B1D3A]/90">{dur}</span>
+                </div>
               ))}
             </div>
           </motion.div>

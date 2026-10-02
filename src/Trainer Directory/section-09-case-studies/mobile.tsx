@@ -27,9 +27,21 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-10 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden"
-      style={{ background: "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)" }}
+      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
     >
+      <motion.div
+        animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[10%] right-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%)" }}
+      />
+      <motion.div
+        animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1.05, 1, 1.05] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-30"
+        style={{ background: "radial-gradient(circle, rgba(11,29,58,0.08) 0%, transparent 70%)" }}
+      />
+
       <motion.div
         variants={container}
         initial="hidden"
@@ -37,9 +49,11 @@ export default function Mobile() {
         viewport={{ once: true, margin: "-40px" }}
         className="relative z-10 w-full"
       >
-        <motion.div variants={item} className="flex items-center gap-2.5 mb-5">
-          <div className="w-6 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[20px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Case Studies</h2>
+        <motion.div variants={item} className="flex items-center gap-3 mb-8">
+          <div className="w-9 h-9 rounded bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-lg text-white shrink-0">
+            <Trophy size={16} strokeWidth={2.5} />
+          </div>
+          <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Case Studies</h2>
         </motion.div>
 
         <div className="flex flex-col gap-6">
@@ -47,66 +61,74 @@ export default function Mobile() {
             <motion.div
               key={idx}
               variants={item}
-              className="bg-white/90 backdrop-blur-xl rounded-2xl overflow-hidden border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] flex flex-col"
+              className="bg-white/90 backdrop-blur-xl rounded overflow-hidden border border-[#0B1D3A]/[0.08] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.1)] flex flex-col group"
             >
               <div
-                className="w-full p-5 flex flex-col justify-between relative overflow-hidden"
+                className="w-full p-6 flex flex-col justify-between relative overflow-hidden"
                 style={{
                   background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)`,
                 }}
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[30px] pointer-events-none" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[30px] pointer-events-none transition-transform duration-700 group-active:scale-125" />
+                <div
+                  className="absolute inset-0 opacity-[0.05] pointer-events-none"
+                  style={{
+                    backgroundImage: `linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)`,
+                    backgroundSize: "20px 20px",
+                  }}
+                />
                 <div className="relative z-10">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.15em] mb-1.5" style={{ color: GOLD_MID }}>{study.client}</div>
-                  <h3 className="text-[15px] font-black text-white mb-4 leading-snug">{study.title}</h3>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.15em] mb-2" style={{ color: GOLD_MID }}>{study.client}</div>
+                  <h3 className="text-[18px] font-black text-white mb-6 leading-snug tracking-tight">{study.title}</h3>
 
-                  <div className="flex flex-wrap gap-x-4 gap-y-3">
+                  <div className="flex flex-wrap gap-x-5 gap-y-4">
                     {[
                       { label: "Segment", value: study.segment },
                       { label: "Audience", value: study.audience },
                       { label: "Duration", value: study.duration },
                     ].map((meta, mIdx) => (
                       <div key={mIdx}>
-                        <div className="text-[9px] text-white/40 uppercase tracking-[0.15em] font-bold mb-0.5">{meta.label}</div>
-                        <div className="text-[12px] font-semibold text-white/80">{meta.value}</div>
+                        <div className="text-[10px] text-white/50 uppercase tracking-[0.15em] font-bold mb-1">{meta.label}</div>
+                        <div className="text-[13px] font-bold text-white/90">{meta.value}</div>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="p-5 flex flex-row gap-4">
+              <div className="p-6 flex flex-col gap-6 bg-[#FAFCFF]/50 relative">
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#10B981] to-transparent opacity-80" />
                 <div className="flex-1 flex flex-col gap-5">
                   {[study.challenge, study.approach].map((text, sIdx) => {
                     const cfg = stepConfig[sIdx];
                     return (
                       <div key={sIdx} className="flex items-start gap-3">
                         <div
-                          className="w-7 h-7 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm shrink-0"
+                          className="w-8 h-8 rounded flex items-center justify-center text-white shadow-md shrink-0"
                           style={{ background: cfg.bg }}
                         >
                           {cfg.icon}
                         </div>
                         <div>
-                          <h4 className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1.5" style={{ color: NAVY }}>{cfg.label}</h4>
-                          <p className="text-[12px] text-[#5A6B82] leading-[1.6] font-medium">{text}</p>
+                          <h4 className="text-[11px] font-black uppercase tracking-[0.12em] mb-1.5" style={{ color: NAVY }}>{cfg.label}</h4>
+                          <p className="text-[13px] text-[#5A6B82] leading-[1.65] font-medium">{text}</p>
                         </div>
                       </div>
                     );
                   })}
                 </div>
 
-                <div className="w-[110px] shrink-0 flex items-center justify-center">
-                  <div className="w-full aspect-[9/16] rounded-xl overflow-hidden relative group cursor-pointer shadow-sm border border-[#0B1D3A]/10 bg-[#0B1D3A]">
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeefa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A] via-[#0B1D3A]/20 to-transparent" />
+                <div className="w-full flex items-center justify-center mt-2">
+                  <div className="w-full max-w-[280px] h-[160px] rounded overflow-hidden relative group/video cursor-pointer shadow-md border border-[#0B1D3A]/10 bg-[#0B1D3A]">
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeefa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay transition-transform duration-700 group-active/video:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A] via-[#0B1D3A]/30 to-transparent" />
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40">
-                        <Play size={14} fill="white" className="ml-0.5 text-white" />
+                      <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 shadow-[0_4px_16px_rgba(0,0,0,0.2)]">
+                        <Play size={16} fill="white" className="ml-0.5 text-white" />
                       </div>
                     </div>
                     <div className="absolute bottom-3 left-0 right-0 text-center px-2">
-                      <span className="text-[8px] text-white/90 font-bold tracking-widest uppercase">Watch Video</span>
+                      <span className="text-[10px] text-white font-black tracking-widest uppercase shadow-sm">Watch Video</span>
                     </div>
                   </div>
                 </div>

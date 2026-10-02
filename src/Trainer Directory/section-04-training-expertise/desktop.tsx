@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Check } from "lucide-react";
+import { Target, Users, Heart, Star, Briefcase, MessageCircle, Zap } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -20,6 +20,17 @@ const levelColors: Record<string, { bg: string; text: string; border: string }> 
   "Beginner": { bg: "rgba(107,114,128,0.08)", text: "#6B7280", border: "rgba(107,114,128,0.2)" },
 };
 
+const getCategoryIcon = (category: string, size: number, strokeWidth: number) => {
+  const cat = category.toLowerCase();
+  if (cat.includes("sales")) return <Target size={size} strokeWidth={strokeWidth} />;
+  if (cat.includes("leadership") || cat.includes("management")) return <Users size={size} strokeWidth={strokeWidth} />;
+  if (cat.includes("customer")) return <Heart size={size} strokeWidth={strokeWidth} />;
+  if (cat.includes("communication")) return <MessageCircle size={size} strokeWidth={strokeWidth} />;
+  if (cat.includes("digital") || cat.includes("tech")) return <Zap size={size} strokeWidth={strokeWidth} />;
+  if (cat.includes("product")) return <Briefcase size={size} strokeWidth={strokeWidth} />;
+  return <Star size={size} strokeWidth={strokeWidth} />;
+};
+
 export default function Desktop() {
   const data = profileData;
 
@@ -34,66 +45,77 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full py-14 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative"
-      style={{ background: "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)" }}
+      className="w-full py-12 px-8 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
     >
-      <div className="absolute top-[30%] right-[8%] w-[400px] h-[400px] bg-gradient-radial from-[#DDEAFF]/30 to-transparent rounded-full blur-[100px] pointer-events-none z-0" />
+      <motion.div
+        animate={{ x: [0, 30, 0], y: [0, -30, 0], scale: [1, 1.1, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[30%] right-[8%] w-[400px] h-[400px] rounded-full blur-[120px] pointer-events-none z-0 opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)" }}
+      />
+      <motion.div
+        animate={{ x: [0, -20, 0], y: [0, 40, 0], scale: [1.05, 1, 1.05] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[-10%] left-[5%] w-[500px] h-[500px] rounded-full blur-[140px] pointer-events-none z-0 opacity-30"
+        style={{ background: "radial-gradient(circle, rgba(201,154,46,0.1) 0%, transparent 70%)" }}
+      />
 
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false }}
+        viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full relative z-10"
       >
-        <motion.div variants={item} className="flex items-center gap-3 mb-6">
-          <div className="w-8 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Areas of Expertise</h2>
+        <motion.div variants={item} className="flex items-center gap-3 mb-8">
+          <div className="w-10 h-10 rounded bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center shadow-lg text-white">
+            <Star size={20} strokeWidth={2.5} />
+          </div>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Areas of Expertise</h2>
         </motion.div>
 
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-3 gap-4">
           {data.expertise.map((expertiseItem, idx) => {
             const colors = categoryColors[idx % categoryColors.length];
             return (
               <motion.div
                 key={idx}
                 variants={item}
-                whileHover={{ y: -5, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                className="group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/18 rounded p-6 shadow-[0_2px_8px_-2px_rgba(11,29,58,0.05)] hover:shadow-[0_12px_36px_-12px_rgba(11,29,58,0.1)] transition-all duration-400 relative overflow-hidden"
+                className="group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_12px_36px_-12px_rgba(11,29,58,0.12)] transition-all duration-400 relative overflow-hidden flex flex-col h-full"
               >
-                                <div
-                  className="absolute top-0 left-0 right-0 h-[2.5px] opacity-70 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: `linear-gradient(90deg, ${colors.accent}, ${colors.accent}80)` }}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[3px] opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: colors.bg }}
                 />
 
                 <div className="flex items-center gap-3 mb-4">
                   <div
-                    className="w-8 h-8 rounded flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300"
+                    className="w-10 h-10 rounded flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-400"
                     style={{ background: colors.bg }}
                   >
-                    <Check size={16} strokeWidth={2.5} />
+                    {getCategoryIcon(expertiseItem.category, 18, 3)}
                   </div>
-                  <h3 className="text-[12px] font-bold uppercase tracking-[0.12em]" style={{ color: NAVY }}>
+                  <h3 className="text-[14px] font-bold uppercase tracking-[0.1em]" style={{ color: NAVY }}>
                     {expertiseItem.category}
                   </h3>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mt-2">
                   {expertiseItem.skills.map((skill, sIdx) => {
                     const lc = levelColors[skill.level] || levelColors["Intermediate"];
                     return (
                       <div
                         key={sIdx}
-                        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded text-[12px] font-semibold transition-all duration-200 hover:translate-x-0.5"
+                        className="flex items-center gap-2 px-3 py-2 rounded text-[13px] font-semibold transition-all duration-300 hover:scale-[1.02]"
                         style={{
-                          background: `linear-gradient(135deg, ${colors.accent}08, ${colors.accent}03)`,
-                          border: `1px solid ${colors.accent}18`,
-                          color: `${NAVY}CC`,
+                          background: `linear-gradient(135deg, ${colors.accent}0A, ${colors.accent}04)`,
+                          border: `1px solid ${colors.accent}20`,
+                          color: `${NAVY}E6`,
                         }}
                       >
                         {skill.name}
                         <span
-                          className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded"
+                          className="text-[10px] uppercase font-bold px-2 py-0.5 rounded ml-1"
                           style={{ background: lc.bg, color: lc.text, border: `1px solid ${lc.border}` }}
                         >
                           {skill.level}

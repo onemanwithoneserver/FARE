@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Play } from "lucide-react";
+import { Play, Mic, PlayCircle, Volume2 } from "lucide-react";
 import VideoModal from "../../Components/Forms/VideoModal";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
+const audioClips = [
+  { title: "Introduction & Background", duration: "01:30", desc: "Trainer's background in real estate sales" },
+  { title: "Training Approach", duration: "02:10", desc: "How sessions are structured and delivered" },
+  { title: "Sample Session Snippet", duration: "03:45", desc: "Live excerpt from a sales skills workshop" },
+];
+
 export default function Desktop() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [playingIdx, setPlayingIdx] = useState<number | null>(null);
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -22,54 +29,135 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full py-14 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative"
-      style={{ background: "linear-gradient(175deg, #FFFFFF 0%, #F8FAFD 100%)" }}
+      className="w-full py-16 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
     >
+      <motion.div
+        animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[30%] left-[10%] w-[350px] h-[350px] rounded-full blur-[100px] pointer-events-none z-0 opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(201,154,46,0.12) 0%, transparent 70%)" }}
+      />
+      <motion.div
+        animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1.05, 1, 1.05] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] rounded-full blur-[120px] pointer-events-none z-0 opacity-30"
+        style={{ background: "radial-gradient(circle, rgba(11,29,58,0.08) 0%, transparent 70%)" }}
+      />
+
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false }}
-        className="max-w-[1200px] w-full"
+        viewport={{ once: true, margin: "-40px" }}
+        className="max-w-[1200px] w-full relative z-10"
       >
-        <motion.div variants={item} className="flex items-center gap-3 mb-6">
-          <div className="w-8 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Introduction Video</h2>
+        <motion.div variants={item} className="flex items-center gap-3 mb-10">
+          <div className="w-10 h-10 rounded bg-gradient-to-br from-[#0B1D3A] to-[#162E56] flex items-center justify-center shadow-lg text-white">
+            <Play size={20} strokeWidth={2.5} />
+          </div>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Introduction Video</h2>
         </motion.div>
 
-        <motion.div
-          variants={item}
-          whileHover={{ scale: 1.005, y: -3 }}
-          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-[800px] aspect-video relative rounded overflow-hidden group cursor-pointer border border-[#0B1D3A]/[0.08] shadow-[0_8px_30px_-4px_rgba(11,29,58,0.08)]"
-          onClick={() => setIsVideoModalOpen(true)}
-          style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}
-        >
-                    <div
-            className="absolute inset-0 opacity-[0.04] pointer-events-none"
-            style={{
-              backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
-              backgroundSize: "32px 32px",
-            }}
-          />
-
-          <div className="absolute inset-0 flex items-center justify-center">
+        <div className="flex gap-8 items-start">
+          {/* Left: Video */}
+          <motion.div
+            variants={item}
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="flex-1 min-w-0 aspect-video relative rounded overflow-hidden group cursor-pointer border border-[#0B1D3A]/[0.08] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.12)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.2)]"
+            onClick={() => setIsVideoModalOpen(true)}
+          >
+            <div className="absolute inset-0 bg-[#0B1D3A]" />
             <div
-              className="w-16 h-16 rounded-full flex items-center justify-center shadow-[0_8px_24px_rgba(201,154,46,0.4)] group-hover:scale-110 group-hover:shadow-[0_12px_32px_rgba(201,154,46,0.5)] transition-all duration-400"
-              style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
-            >
-              <Play fill="white" className="text-white ml-1 w-6 h-6" />
+              className="absolute inset-0 opacity-30"
+              style={{
+                background: "radial-gradient(circle at center, rgba(201,154,46,0.2) 0%, transparent 60%)",
+              }}
+            />
+            <div
+              className="absolute inset-0 opacity-[0.03] pointer-events-none"
+              style={{
+                backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
+                backgroundSize: "32px 32px",
+              }}
+            />
+
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative">
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 rounded-full"
+                  style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
+                />
+                <div
+                  className="w-20 h-20 rounded-full flex items-center justify-center shadow-[0_8px_32px_rgba(201,154,46,0.5)] group-hover:scale-110 transition-all duration-400 relative z-10"
+                  style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
+                >
+                  <Play fill="white" className="text-white ml-1 w-6 h-6" />
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white text-[11px] font-bold px-2.5 py-1 rounded">
-            01:30
-          </div>
+            <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white text-[11px] font-bold px-2.5 py-1 rounded">
+              01:30
+            </div>
+            <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 rounded-tl opacity-20" style={{ borderColor: GOLD }} />
+            <div className="absolute bottom-3 right-12 w-6 h-6 border-b-2 border-r-2 rounded-br opacity-20" style={{ borderColor: GOLD }} />
+          </motion.div>
 
-                    <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 rounded-tl opacity-20" style={{ borderColor: GOLD }} />
-          <div className="absolute bottom-3 right-12 w-6 h-6 border-b-2 border-r-2 rounded-br opacity-20" style={{ borderColor: GOLD }} />
-        </motion.div>
+          {/* Right: Audio Snippets Panel */}
+          <motion.div variants={item} className="w-[340px] shrink-0 flex flex-col gap-4">
+            <div className="flex items-center gap-2 mb-1">
+              <div className="w-8 h-8 rounded flex items-center justify-center text-white shadow-sm" style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}>
+                <Mic size={15} strokeWidth={2.5} />
+              </div>
+              <span className="text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em]">Audio Snippets</span>
+            </div>
+
+            {audioClips.map((clip, idx) => (
+              <div
+                key={idx}
+                className="group bg-white border border-[#0B1D3A]/[0.06] rounded p-4 shadow-sm hover:shadow-md hover:border-[#0B1D3A]/[0.15] transition-all duration-300 cursor-pointer"
+                onClick={() => setPlayingIdx(playingIdx === idx ? null : idx)}
+              >
+                <div className="flex items-center gap-3">
+                  <motion.div
+                    animate={playingIdx === idx ? { scale: [1, 1.1, 1] } : {}}
+                    transition={{ duration: 1.2, repeat: Infinity }}
+                    className="w-9 h-9 rounded-full flex items-center justify-center text-white shrink-0 shadow-sm"
+                    style={{ background: playingIdx === idx ? `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` : "#F1F5F9" }}
+                  >
+                    {playingIdx === idx
+                      ? <Volume2 size={15} strokeWidth={2.5} className="text-white" />
+                      : <PlayCircle size={15} strokeWidth={2.5} className="text-[#7B8DAA]" />
+                    }
+                  </motion.div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[13px] font-black leading-tight truncate" style={{ color: NAVY }}>{clip.title}</p>
+                    <p className="text-[11px] text-[#7B8DAA] font-medium mt-0.5">{clip.desc}</p>
+                  </div>
+                  <span className="text-[11px] font-bold text-[#7B8DAA] shrink-0">{clip.duration}</span>
+                </div>
+                {playingIdx === idx && (
+                  <div className="mt-3 flex gap-0.5 items-end h-6 px-1">
+                    {[3, 5, 8, 4, 7, 5, 9, 6, 4, 7, 5, 8, 3, 6, 9, 5, 7, 4, 8, 6].map((h, i) => (
+                      <motion.div
+                        key={i}
+                        animate={{ scaleY: [1, 0.4, 1] }}
+                        transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.05, ease: "easeInOut" }}
+                        className="flex-1 rounded-full origin-bottom"
+                        style={{ height: `${h * 10}%`, background: `linear-gradient(to top, ${GOLD}, ${GOLD_MID})` }}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </motion.div>
+
       <VideoModal isOpen={isVideoModalOpen} onClose={() => setIsVideoModalOpen(false)} />
     </section>
   );
