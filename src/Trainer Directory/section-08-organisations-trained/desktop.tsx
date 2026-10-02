@@ -69,10 +69,8 @@ export default function Desktop() {
         viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full relative z-10"
       >
-        <motion.div variants={item} className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 rounded bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center shadow-lg text-white">
-            <Building2 size={20} strokeWidth={2.5} />
-          </div>
+        <motion.div variants={item} className="flex items-center gap-4 mb-10">
+          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Experience &amp; Track Record</h2>
         </motion.div>
 
@@ -183,22 +181,6 @@ export default function Desktop() {
                       />
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Locations */}
-            <div className="bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] rounded p-5">
-              <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em]">Training Locations</span>
-              <div className="flex flex-wrap gap-2 mt-3">
-                {data.delivery.locations.map((loc, i) => (
-                  <span
-                    key={i}
-                    className="text-[11px] font-bold px-3 py-1 rounded-full border"
-                    style={{ color: NAVY, borderColor: `${NAVY}20`, background: "white" }}
-                  >
-                    {loc}
-                  </span>
                 ))}
               </div>
             </div>

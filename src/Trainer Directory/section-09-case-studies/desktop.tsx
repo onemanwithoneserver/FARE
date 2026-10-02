@@ -1,45 +1,50 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Target, Lightbulb, Trophy, Play } from "lucide-react";
+import { Play, Target, Lightbulb, Users, Clock, BookOpen } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
+
+const cardAccents = [
+  { orb: "rgba(201,154,46,0.15)", bar: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})`, tag: `${GOLD}18`, tagText: GOLD, metricBg: `${GOLD}10`, metricBorder: `${GOLD}25` },
+  { orb: "rgba(59,130,246,0.12)", bar: "linear-gradient(90deg, #3B82F6, #6366F1)", tag: "rgba(59,130,246,0.1)", tagText: "#3B82F6", metricBg: "rgba(59,130,246,0.06)", metricBorder: "rgba(59,130,246,0.18)" },
+  { orb: "rgba(16,185,129,0.12)", bar: "linear-gradient(90deg, #10B981, #059669)", tag: "rgba(16,185,129,0.1)", tagText: "#059669", metricBg: "rgba(16,185,129,0.06)", metricBorder: "rgba(16,185,129,0.18)" },
+];
+
+const videoBgs = [
+  "linear-gradient(135deg, #0B1D3A 0%, #162E56 60%, #1E3A6B 100%)",
+  "linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%)",
+  "linear-gradient(135deg, #0B1D3A 0%, #1a3a2e 60%, #0d3520 100%)",
+];
 
 export default function Desktop() {
   const data = profileData;
 
   const container: Variants = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+    show: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
   };
   const item: Variants = {
-    hidden: { opacity: 0, y: 18 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+    hidden: { opacity: 0, y: 22 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } },
   };
 
-  const stepConfig = [
-    { icon: <Target size={18} strokeWidth={2.5} />, label: "The Challenge", bg: "linear-gradient(135deg, #EF4444, #DC2626)", accent: "#EF4444" },
-    { icon: <Lightbulb size={18} strokeWidth={2.5} />, label: "The Approach", bg: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})`, accent: GOLD },
-    { icon: <Trophy size={18} strokeWidth={2.5} />, label: "The Outcome", bg: "linear-gradient(135deg, #10B981, #059669)", accent: "#10B981" },
-  ];
-
   return (
-    <section
-      className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
-    >
+    <section className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white">
+      {/* Ambient orbs */}
       <motion.div
-        animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] right-[-5%] w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none z-0 opacity-40"
-        style={{ background: "radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%)" }}
+        animate={{ x: [0, 25, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[5%] right-[-5%] w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none z-0 opacity-30"
+        style={{ background: "radial-gradient(circle, rgba(201,154,46,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
-        animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1.05, 1, 1.05] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] left-[0%] w-[450px] h-[450px] rounded-full blur-[120px] pointer-events-none z-0 opacity-30"
-        style={{ background: "radial-gradient(circle, rgba(11,29,58,0.08) 0%, transparent 70%)" }}
+        animate={{ x: [0, -20, 0], y: [0, 20, 0], scale: [1.05, 1, 1.05] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[-10%] left-[0%] w-[450px] h-[450px] rounded-full blur-[120px] pointer-events-none z-0 opacity-25"
+        style={{ background: "radial-gradient(circle, rgba(11,29,58,0.07) 0%, transparent 70%)" }}
       />
 
       <motion.div
@@ -49,91 +54,164 @@ export default function Desktop() {
         viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full relative z-10"
       >
-        <motion.div variants={item} className="flex items-center gap-3 mb-12">
-          <div className="w-10 h-10 rounded bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-lg text-white">
-            <Trophy size={20} strokeWidth={2.5} />
-          </div>
+        {/* Section heading */}
+        <motion.div variants={item} className="flex items-center gap-4 mb-3">
+          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Case Studies</h2>
+        </motion.div>
+        <motion.div variants={item} className="mb-12">
+          <p className="text-[15px] text-[#7B8DAA] font-medium max-w-[500px]">Real outcomes from real training engagements — anonymised with client consent.</p>
         </motion.div>
 
         <div className="flex flex-col gap-8">
-          {data.caseStudies.map((study, idx) => (
-            <motion.div
-              key={idx}
-              variants={item}
-              className="bg-white/90 backdrop-blur-xl rounded overflow-hidden border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/[0.20] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.1)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.18)] transition-all duration-400 ease-out hover:-translate-y-1.5 flex flex-col md:flex-row group"
-            >
-              <div
-                className="w-full md:w-[280px] shrink-0 p-8 flex flex-col justify-between relative overflow-hidden"
-                style={{
-                  background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)`,
-                }}
+          {data.caseStudies.map((study, idx) => {
+            const accent = cardAccents[idx % cardAccents.length];
+            const vidBg = videoBgs[idx % videoBgs.length];
+            return (
+              <motion.div
+                key={idx}
+                variants={item}
+                whileHover={{ y: -4, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+                className="group flex rounded overflow-hidden border border-[#0B1D3A]/[0.07] bg-white/90 backdrop-blur-xl shadow-[0_4px_24px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.14)] transition-all duration-500 relative"
               >
-                <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[40px] pointer-events-none transition-transform duration-700 group-hover:scale-125 group-hover:translate-x-4" />
+                {/* Hover top accent bar */}
                 <div
-                  className="absolute inset-0 opacity-[0.05] pointer-events-none"
-                  style={{
-                    backgroundImage: `linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)`,
-                    backgroundSize: "24px 24px",
-                  }}
+                  className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                  style={{ background: accent.bar }}
                 />
-                <div className="relative z-10">
-                  <div className="text-[12px] font-bold uppercase tracking-[0.15em] mb-3" style={{ color: GOLD_MID }}>{study.client}</div>
-                  <h3 className="text-[20px] font-black text-white mb-8 leading-tight tracking-tight">{study.title}</h3>
 
-                  <div className="flex flex-col gap-4">
-                    {[
-                      { label: "Segment", value: study.segment },
-                      { label: "Audience", value: study.audience },
-                      { label: "Duration", value: study.duration },
-                    ].map((meta, mIdx) => (
-                      <div key={mIdx}>
-                        <div className="text-[10px] text-white/50 uppercase tracking-[0.15em] font-bold mb-1">{meta.label}</div>
-                        <div className="text-[14px] font-bold text-white/90">{meta.value}</div>
-                      </div>
-                    ))}
+                {/* Left — Video Panel */}
+                <div className="w-[220px] shrink-0 relative cursor-pointer overflow-hidden" style={{ background: vidBg }}>
+                  {/* Ambient glow */}
+                  <div
+                    className="absolute inset-0 opacity-40 pointer-events-none"
+                    style={{ background: `radial-gradient(circle at 50% 40%, ${accent.orb} 0%, transparent 70%)` }}
+                  />
+                  {/* Grid texture */}
+                  <div
+                    className="absolute inset-0 opacity-[0.04]"
+                    style={{
+                      backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+                      backgroundSize: "24px 24px",
+                    }}
+                  />
+                  {/* Index number watermark */}
+                  <div
+                    className="absolute top-4 left-4 text-[72px] font-black leading-none opacity-[0.07] select-none"
+                    style={{ color: "white" }}
+                  >
+                    {String(idx + 1).padStart(2, "0")}
+                  </div>
+                  {/* Play button */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                    <motion.div
+                      whileHover={{ scale: 1.12 }}
+                      className="w-14 h-14 rounded-full flex items-center justify-center border border-white/30 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-all duration-300 group-hover:border-white/50"
+                      style={{ background: "rgba(255,255,255,0.15)" }}
+                    >
+                      <Play size={22} fill="white" className="ml-1 text-white" />
+                    </motion.div>
+                    <span className="text-[10px] text-white/70 font-bold uppercase tracking-[0.15em]">Watch Case Study</span>
+                  </div>
+                  {/* Bottom domain tag */}
+                  <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/40 to-transparent">
+                    <span
+                      className="text-[9px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded"
+                      style={{ background: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.9)" }}
+                    >
+                      {study.domain}
+                    </span>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex-1 p-8 flex flex-col justify-center gap-7 border-b md:border-b-0 md:border-r border-[#0B1D3A]/[0.06] bg-[#FAFCFF]/50 relative">
-                <div className="absolute top-0 left-0 right-0 h-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-[#10B981] to-transparent" />
-                
-                {[study.challenge, study.approach].map((text, sIdx) => {
-                  const cfg = stepConfig[sIdx];
-                  return (
-                    <div key={sIdx} className="flex items-start gap-4">
-                      <div
-                        className="w-10 h-10 rounded flex items-center justify-center text-white shadow-md shrink-0 group-hover:scale-110 transition-transform duration-300"
-                        style={{ background: cfg.bg }}
-                      >
-                        {cfg.icon}
+                {/* Right — Content */}
+                <div className="flex-1 p-7 flex flex-col justify-between min-w-0">
+                  {/* Header */}
+                  <div>
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div className="flex-1 min-w-0">
+                        <div className="text-[11px] font-black uppercase tracking-[0.18em] mb-2" style={{ color: GOLD_MID }}>{study.client}</div>
+                        <h3 className="text-[19px] font-black leading-snug tracking-tight" style={{ color: NAVY }}>{study.title}</h3>
                       </div>
-                      <div>
-                        <h4 className="text-[12px] font-black uppercase tracking-[0.12em] mb-1.5" style={{ color: NAVY }}>{cfg.label}</h4>
-                        <p className="text-[14px] text-[#5A6B82] leading-[1.7] font-medium">{text}</p>
+                      <div className="flex flex-col items-end gap-2 shrink-0">
+                        <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#7B8DAA]">
+                          <Clock size={12} strokeWidth={2.5} />
+                          {study.duration}
+                        </div>
+                        <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#7B8DAA]">
+                          <Users size={12} strokeWidth={2.5} />
+                          {study.teamSize}
+                        </div>
+                        <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#7B8DAA]">
+                          <BookOpen size={12} strokeWidth={2.5} />
+                          {study.segment}
+                        </div>
                       </div>
                     </div>
-                  );
-                })}
-              </div>
 
-              <div className="w-full md:w-[220px] shrink-0 p-2 flex items-center justify-center bg-white">
-                <div className="w-full max-w-[200px] aspect-[9/16] rounded overflow-hidden relative group/video cursor-pointer shadow-lg border border-[#0B1D3A]/10 bg-[#0B1D3A]">
-                  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeefa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay transition-transform duration-700 group-hover/video:scale-110 group-hover/video:opacity-50" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A] via-[#0B1D3A]/30 to-transparent" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 group-hover/video:scale-110 group-hover/video:bg-white/30 transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.2)]">
-                      <Play size={18} fill="white" className="ml-1 text-white" />
+                    {/* Two-column content: Challenge + Approach */}
+                    <div className="grid grid-cols-2 gap-5 mb-6">
+                      {/* Challenge */}
+                      <div className="flex items-start gap-3">
+                        <div
+                          className="w-7 h-7 rounded flex items-center justify-center text-white shrink-0 mt-0.5"
+                          style={{ background: "#EF4444" }}
+                        >
+                          <Target size={14} strokeWidth={2.5} />
+                        </div>
+                        <div>
+                          <div className="text-[10px] font-black uppercase tracking-[0.14em] mb-1.5 text-[#EF4444]">The Challenge</div>
+                          <p className="text-[13px] text-[#5A6B82] leading-[1.65] font-medium">{study.challenge}</p>
+                        </div>
+                      </div>
+                      {/* Approach */}
+                      <div className="flex items-start gap-3">
+                        <div
+                          className="w-7 h-7 rounded flex items-center justify-center text-white shrink-0 mt-0.5"
+                          style={{ background: GOLD }}
+                        >
+                          <Lightbulb size={14} strokeWidth={2.5} />
+                        </div>
+                        <div>
+                          <div className="text-[10px] font-black uppercase tracking-[0.14em] mb-1.5" style={{ color: GOLD }}>The Approach</div>
+                          <p className="text-[13px] text-[#5A6B82] leading-[1.65] font-medium">{study.approach}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="absolute bottom-4 left-0 right-0 text-center px-2">
-                    <span className="text-[10px] text-white font-black tracking-widest uppercase shadow-sm">Watch Video</span>
+
+                  {/* Bottom: Metrics + Tags */}
+                  <div className="flex items-end justify-between gap-6 pt-5 border-t border-[#0B1D3A]/[0.06]">
+                    {/* Metric chips */}
+                    <div className="flex gap-3">
+                      {study.metrics.map((m, mIdx) => (
+                        <div
+                          key={mIdx}
+                          className="flex flex-col items-center px-4 py-2.5 rounded border text-center min-w-[90px]"
+                          style={{ background: accent.metricBg, borderColor: accent.metricBorder }}
+                        >
+                          <span className="text-[20px] font-black leading-none tracking-tight" style={{ color: NAVY }}>{m.value}</span>
+                          <span className="text-[10px] font-bold text-[#7B8DAA] mt-1 leading-tight">{m.sub}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 justify-end">
+                      {study.tags.map((tag, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="text-[11px] font-bold px-2.5 py-1 rounded"
+                          style={{ background: accent.tag, color: accent.tagText }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </motion.div>
     </section>

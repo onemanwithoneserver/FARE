@@ -67,10 +67,8 @@ export default function Desktop() {
         viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full relative z-10"
       >
-        <motion.div variants={item} className="flex items-center gap-3 mb-8">
-          <div className="w-10 h-10 rounded bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center shadow-lg text-white">
-            <Star size={20} strokeWidth={2.5} />
-          </div>
+        <motion.div variants={item} className="flex items-center gap-4 mb-8">
+          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Areas of Expertise</h2>
         </motion.div>
 

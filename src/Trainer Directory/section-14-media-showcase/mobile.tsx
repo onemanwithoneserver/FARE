@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Play, Film } from "lucide-react";
+import { Play } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -44,9 +44,7 @@ export default function Mobile() {
         className="relative z-10 w-full"
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-8">
-          <div className="w-9 h-9 rounded bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-lg text-white shrink-0">
-            <Film size={16} strokeWidth={2.5} />
-          </div>
+          <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>See the Trainer in Action</h2>
         </motion.div>
 

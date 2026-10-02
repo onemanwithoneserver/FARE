@@ -1,8 +1,10 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { MessageSquare } from "lucide-react";
+import { Quote, Star, ShieldCheck } from "lucide-react";
 
 const NAVY = "#0B1D3A";
+const GOLD = "#C99A2E";
+const GOLD_MID = "#D5AA45";
 
 export default function Desktop() {
   const container: Variants = {
@@ -38,32 +40,58 @@ export default function Desktop() {
         viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full relative z-10"
       >
-        <motion.div variants={item} className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 rounded bg-gradient-to-br from-[#8B5CF6] to-[#6D28D9] flex items-center justify-center shadow-lg text-white">
-            <MessageSquare size={20} strokeWidth={2.5} />
-          </div>
+        <motion.div variants={item} className="flex items-center gap-4 mb-12">
+          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Company Feedback</h2>
         </motion.div>
 
         <motion.div
           variants={item}
-          className="group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-20 flex flex-col items-center justify-center text-center shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] transition-all duration-400 ease-out hover:border-[#0B1D3A]/[0.20] hover:-translate-y-1 hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.18)] relative overflow-hidden"
+          className="w-full max-w-[800px] mx-auto relative group"
         >
-          <div
-            className="absolute top-0 left-0 right-0 h-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style={{ background: "linear-gradient(90deg, #8B5CF6, #6D28D9)" }}
-          />
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[30px] pointer-events-none group-hover:scale-150 transition-transform duration-700" />
+          {/* Main Empty State Card */}
+          <div className="bg-white/60 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-12 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.06)] transition-all duration-400 ease-out hover:border-[#0B1D3A]/[0.15] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.12)] hover:-translate-y-1 relative overflow-hidden flex flex-col items-center justify-center text-center">
+            
+            {/* Background Accents */}
+            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[30px] pointer-events-none transition-transform duration-700 group-hover:scale-125" />
+            <div
+              className="absolute top-0 left-0 right-0 h-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              style={{ background: "linear-gradient(90deg, #8B5CF6, #6D28D9)" }}
+            />
+            
+            <Quote size={80} className="absolute -top-4 -left-4 opacity-[0.03] group-hover:scale-110 transition-transform duration-500" style={{ color: NAVY }} />
 
-          <div
-            className="w-14 h-14 rounded flex items-center justify-center text-white shadow-md mb-6 group-hover:scale-110 transition-transform duration-400 ease-out"
-            style={{ background: "linear-gradient(135deg, #8B5CF6, #6D28D9)" }}
-          >
-            <MessageSquare size={24} strokeWidth={2.2} />
+            {/* Skeleton/Placeholder Elements */}
+            <div className="flex gap-1.5 mb-6 opacity-40">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star key={star} size={20} fill={GOLD_MID} color={GOLD_MID} />
+              ))}
+            </div>
+
+            <div className="w-16 h-16 rounded-full bg-[#F1F5F9] border border-[#E2E8F0] mb-6 flex items-center justify-center relative shadow-sm">
+               <ShieldCheck size={28} className="text-[#94A3B8]" strokeWidth={2} />
+               <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center shadow-sm">
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: GOLD }} />
+               </div>
+            </div>
+
+            <div className="space-y-3 mb-8 w-full max-w-[400px]">
+              <div className="h-2.5 bg-[#F1F5F9] rounded-full w-full" />
+              <div className="h-2.5 bg-[#F1F5F9] rounded-full w-[85%] mx-auto" />
+              <div className="h-2.5 bg-[#F1F5F9] rounded-full w-[60%] mx-auto" />
+            </div>
+
+            <h3 className="text-[18px] font-black tracking-tight mb-2" style={{ color: NAVY }}>
+              Feedback Pending
+            </h3>
+            <p className="text-[14px] text-[#5A6B82] font-medium max-w-[420px] leading-[1.7]">
+              Verified company feedback and testimonials will automatically appear here once training engagements are completed and reviewed.
+            </p>
           </div>
-          <p className="text-[16px] text-[#5A6B82] font-medium max-w-[420px] leading-[1.7]">
-            Verified company feedback will appear here as engagements are completed.
-          </p>
+
+          {/* Decorative side cards to hint at a carousel */}
+          <div className="absolute top-[10%] bottom-[10%] -left-8 w-16 bg-white/40 backdrop-blur-md border border-[#0B1D3A]/[0.04] rounded-l opacity-50 pointer-events-none -z-10 shadow-sm" />
+          <div className="absolute top-[10%] bottom-[10%] -right-8 w-16 bg-white/40 backdrop-blur-md border border-[#0B1D3A]/[0.04] rounded-r opacity-50 pointer-events-none -z-10 shadow-sm" />
         </motion.div>
       </motion.div>
     </section>

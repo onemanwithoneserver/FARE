@@ -39,9 +39,7 @@ export default function Mobile() {
         className="relative z-10 w-full"
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-8">
-          <div className="w-9 h-9 rounded bg-gradient-to-br from-[#0B1D3A] to-[#162E56] flex items-center justify-center shadow-lg text-white shrink-0">
-            <Play size={16} strokeWidth={2.5} />
-          </div>
+          <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Introductory Video</h2>
         </motion.div>
 

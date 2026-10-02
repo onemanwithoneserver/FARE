@@ -1,11 +1,10 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ArrowRight, Check, Briefcase } from "lucide-react";
+import { ArrowRight, Check, Clock, CreditCard, Sparkles } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
-const GOLD_MID = "#D5AA45";
 
 export default function Desktop({ onRequestPricing }: { onRequestPricing?: () => void }) {
   const data = profileData;
@@ -19,10 +18,41 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
   };
 
+  const cards = [
+    {
+      title: "Pricing",
+      subtitle: data.investment.pricing.title,
+      desc: data.investment.pricing.subtitle,
+      icon: <CreditCard size={20} strokeWidth={2} />,
+      accent: "#3B82F6",
+      featured: false,
+    },
+    {
+      title: "Minimum Engagement",
+      subtitle: data.investment.minimumEngagement.title,
+      desc: "Flexible engagement options to match your team size and goals.",
+      icon: <Clock size={20} strokeWidth={2} />,
+      accent: GOLD,
+      featured: true,
+      options: data.investment.minimumEngagement.options,
+      selected: data.investment.minimumEngagement.selected,
+    },
+    {
+      title: "Pricing Basis",
+      subtitle: "Flexible Models",
+      desc: "Choose the pricing structure that best fits your program needs.",
+      icon: <Sparkles size={20} strokeWidth={2} />,
+      accent: "#10B981",
+      featured: false,
+      list: data.investment.pricingBasis,
+    },
+  ];
+
   return (
     <section
-      className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
+      className="w-full py-16 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
     >
+      {/* Orbs */}
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
@@ -33,7 +63,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
         animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1.1, 1, 1.1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-[-10%] right-[0%] w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none z-0 opacity-30"
-        style={{ background: "radial-gradient(circle, rgba(11,29,58,0.06) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(201,154,46,0.08) 0%, transparent 70%)" }}
       />
 
       <motion.div
@@ -43,104 +73,135 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
         viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full relative z-10"
       >
-        <motion.div variants={item} className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 rounded bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center shadow-lg text-white">
-            <Briefcase size={20} strokeWidth={2.5} />
-          </div>
+        <motion.div variants={item} className="flex items-center gap-4 mb-4">
+          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, #D5AA45)` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Investment</h2>
         </motion.div>
+        <motion.div variants={item} className="mb-10">
+          <p className="text-[15px] text-[#7B8DAA] font-medium max-w-[500px]">Transparent engagement models tailored to your team's requirements.</p>
+        </motion.div>
 
+        {/* Pricing Cards */}
         <div className="grid grid-cols-3 gap-6 mb-8">
-          {/* Pricing Card */}
-          <motion.div
-            variants={item}
-            whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/[0.20] rounded p-8 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.18)] transition-all duration-400 ease-out flex flex-col relative overflow-hidden group"
-          >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#6366F1]/10 to-transparent rounded-full blur-[20px] pointer-events-none group-hover:scale-150 transition-transform duration-700" />
-            
-            <h4 className="text-[11px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-5">Pricing</h4>
-            <h3 className="text-[22px] font-black mb-3 tracking-tight" style={{ color: NAVY }}>{data.investment.pricing.title}</h3>
-            <p className="text-[14px] text-[#5A6B82] font-medium leading-relaxed">{data.investment.pricing.subtitle}</p>
-          </motion.div>
+          {cards.map((card, idx) => (
+            <motion.div
+              key={idx}
+              variants={item}
+              whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+              className={`rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out group ${
+                card.featured
+                  ? "border-2 shadow-[0_12px_40px_-8px_rgba(11,29,58,0.15)] hover:shadow-[0_20px_60px_-15px_rgba(11,29,58,0.25)]"
+                  : "border border-[#0B1D3A]/[0.06] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.18)] hover:border-[#0B1D3A]/[0.15]"
+              }`}
+              style={{
+                background: card.featured
+                  ? `linear-gradient(170deg, ${NAVY} 0%, #071A49 100%)`
+                  : "rgba(255,255,255,0.8)",
+                backdropFilter: card.featured ? undefined : "blur(20px)",
+                borderColor: card.featured ? `${GOLD}60` : undefined,
+              }}
+            >
+              {/* Hover glow */}
+              <div
+                className="absolute -top-12 -right-12 w-40 h-40 rounded-full blur-[40px] opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none"
+                style={{ background: card.accent }}
+              />
 
-          {/* Minimum Engagement Card */}
-          <motion.div
-            variants={item}
-            whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/[0.20] rounded p-8 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.18)] transition-all duration-400 ease-out flex flex-col relative overflow-hidden group"
-          >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/15 to-transparent rounded-full blur-[20px] pointer-events-none group-hover:scale-150 transition-transform duration-700" />
-            
-            <h4 className="text-[11px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-5">Minimum Engagement</h4>
-            <h3 className="text-[22px] font-black mb-5 tracking-tight" style={{ color: NAVY }}>{data.investment.minimumEngagement.title}</h3>
-            <div className="flex flex-wrap gap-2.5">
-              {data.investment.minimumEngagement.options.map((opt, idx) => (
-                <span
-                  key={idx}
-                  className="text-[12px] font-bold px-3.5 py-1.5 rounded transition-colors"
-                  style={opt === data.investment.minimumEngagement.selected ? {
-                    background: `${GOLD}15`,
-                    color: GOLD_MID,
-                    border: `1px solid ${GOLD}40`
-                  } : {
-                    background: "#F8FAFD",
-                    color: "#7B8DAA",
-                    border: "1px solid rgba(11,29,58,0.06)"
-                  }}
-                >
-                  {opt}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Pricing Basis Card */}
-          <motion.div
-            variants={item}
-            whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/[0.20] rounded p-8 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.18)] transition-all duration-400 ease-out flex flex-col relative overflow-hidden group"
-          >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#10B981]/10 to-transparent rounded-full blur-[20px] pointer-events-none group-hover:scale-150 transition-transform duration-700" />
-            
-            <h4 className="text-[11px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-5">Pricing Basis</h4>
-            <ul className="flex flex-col gap-4">
-              {data.investment.pricingBasis.map((basis, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-[14px] font-bold text-[#5A6B82]">
-                  <div className="w-5 h-5 rounded-full bg-[#10B981]/10 flex items-center justify-center shrink-0 border border-[#10B981]/20">
-                    <Check size={12} strokeWidth={3} className="text-[#10B981]" />
+              {card.featured && (
+                <>
+                  <motion.div
+                    animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.2, 0.1] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-0 right-0 w-48 h-48 rounded-full blur-[50px] pointer-events-none"
+                    style={{ background: GOLD }}
+                  />
+                  <div
+                    className="absolute inset-0 opacity-[0.04] pointer-events-none"
+                    style={{
+                      backgroundImage: `linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)`,
+                      backgroundSize: "24px 24px",
+                    }}
+                  />
+                  <div className="absolute top-4 right-4 text-[9px] font-black uppercase tracking-[0.15em] px-2.5 py-1 rounded-full z-10" style={{ background: GOLD, color: NAVY }}>
+                    Popular
                   </div>
-                  {basis}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+                </>
+              )}
+
+              <div className="relative z-10 flex flex-col h-full">
+                <div
+                  className="w-11 h-11 rounded flex items-center justify-center text-white shadow-lg mb-5"
+                  style={{ background: card.accent }}
+                >
+                  {card.icon}
+                </div>
+
+                <h4 className={`text-[11px] font-black uppercase tracking-[0.15em] mb-4 ${card.featured ? "text-white/50" : "text-[#7B8DAA]"}`}>
+                  {card.title}
+                </h4>
+                <h3 className={`text-[24px] font-black mb-3 tracking-tight ${card.featured ? "text-white" : ""}`} style={card.featured ? {} : { color: NAVY }}>
+                  {card.subtitle}
+                </h3>
+                <p className={`text-[14px] font-medium leading-relaxed mb-6 ${card.featured ? "text-white/60" : "text-[#5A6B82]"}`}>
+                  {card.desc}
+                </p>
+
+                {/* Options chips (card 2) */}
+                {card.options && (
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {card.options.map((opt, oIdx) => (
+                      <span
+                        key={oIdx}
+                        className="text-[12px] font-bold px-3 py-1.5 rounded transition-colors"
+                        style={opt === card.selected ? {
+                          background: `${GOLD}25`,
+                          color: GOLD,
+                          border: `1px solid ${GOLD}50`
+                        } : {
+                          background: "rgba(255,255,255,0.08)",
+                          color: "rgba(255,255,255,0.6)",
+                          border: "1px solid rgba(255,255,255,0.1)"
+                        }}
+                      >
+                        {opt}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Checklist (card 3) */}
+                {card.list && (
+                  <ul className="flex flex-col gap-3 mt-auto">
+                    {card.list.map((li, lIdx) => (
+                      <li key={lIdx} className="flex items-center gap-3 text-[14px] font-semibold text-[#5A6B82]">
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{ background: `${card.accent}15`, border: `1px solid ${card.accent}30` }}>
+                          <Check size={11} strokeWidth={3} style={{ color: card.accent }} />
+                        </div>
+                        {li}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Footer Note and CTA */}
+        {/* Footer CTA */}
         <motion.div
           variants={item}
-          className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded p-8 flex items-center justify-between shadow-[0_12px_40px_-12px_rgba(11,29,58,0.15)] relative overflow-hidden"
+          className="rounded p-6 flex items-center justify-between relative overflow-hidden border border-[#0B1D3A]/[0.06] bg-[#F8FAFD]"
         >
-          <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[30px] pointer-events-none" />
-          <div
-            className="absolute inset-0 opacity-[0.05] pointer-events-none"
-            style={{
-              backgroundImage: `linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)`,
-              backgroundSize: "24px 24px",
-            }}
-          />
-          
-          <p className="text-[14px] font-medium text-white/80 relative z-10 max-w-[600px] leading-relaxed">
+          <p className="text-[14px] font-medium text-[#5A6B82] relative z-10 max-w-[600px] leading-relaxed">
             {data.investment.footerNote}
           </p>
           <button
             onClick={onRequestPricing}
-            className="relative z-10 bg-white text-[#0B1D3A] px-8 py-3.5 rounded font-black text-[14px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center gap-2.5 shadow-[0_8px_24px_rgba(0,0,0,0.1)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.15)] hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] group"
+            className="relative z-10 px-8 py-3 rounded font-black text-[14px] text-white transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center gap-2.5 shadow-[0_8px_24px_rgba(11,29,58,0.15)] hover:shadow-[0_12px_32px_rgba(11,29,58,0.25)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] group/btn"
+            style={{ background: `linear-gradient(135deg, ${NAVY}, #132A4D)` }}
           >
             Request Pricing
-            <ArrowRight size={16} strokeWidth={2.5} className="text-[#C99A2E] group-hover:translate-x-1 transition-transform duration-300" />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C99A2E]/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 pointer-events-none rounded" />
+            <ArrowRight size={16} strokeWidth={2.5} className="group-hover/btn:translate-x-1 transition-transform duration-300" style={{ color: GOLD }} />
           </button>
         </motion.div>
       </motion.div>

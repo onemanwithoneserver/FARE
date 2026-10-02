@@ -51,8 +51,8 @@ export default function Mobile() {
         className="relative z-10 w-full flex flex-col gap-8"
       >
         <div>
-          <motion.div variants={item} className="flex items-center gap-2.5 mb-5">
-            <div className="w-6 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
+          <motion.div variants={item} className="flex items-center gap-3 mb-5">
+            <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
             <h2 className="text-[20px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Delivery</h2>
           </motion.div>
 

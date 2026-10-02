@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Award, ShieldCheck } from "lucide-react";
+import { ShieldCheck, Award } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -43,49 +43,61 @@ export default function Desktop() {
         viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full relative z-10"
       >
-        <motion.div variants={item} className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 rounded bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-lg text-white">
-            <ShieldCheck size={20} strokeWidth={2.5} />
-          </div>
+        <motion.div variants={item} className="flex items-center gap-4 mb-4">
+          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Credentials & Verification</h2>
         </motion.div>
-
-        <motion.div
-          variants={item}
-          className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-10 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] flex flex-col md:flex-row gap-12 items-center relative overflow-hidden"
-        >
-          <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-radial from-[#10B981]/10 to-transparent rounded-full blur-[40px] pointer-events-none" />
-
-          <div className="w-full md:w-[450px] shrink-0 rounded overflow-hidden shadow-[0_12px_40px_-12px_rgba(11,29,58,0.25)] ring-1 ring-[#0B1D3A]/10 relative group bg-[#0B1D3A]">
-             <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay" />
-             <img src="/credentials_badge.jpg" alt="Verified Credentials" className="w-full h-auto aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700 ease-out mix-blend-luminosity opacity-80 group-hover:mix-blend-normal group-hover:opacity-100" />
-          </div>
-          
-          <div className="flex-1 flex flex-col justify-center w-full relative z-10">
-            <h3 className="text-[22px] font-black text-[#0B1D3A] mb-3 tracking-tight">Verified Industry Credentials</h3>
-            <p className="text-[15px] text-[#5A6B82] font-medium leading-relaxed mb-8 max-w-[450px]">
-              Rajesh's training programs and expertise are fully validated and recognized by top real estate institutions and FARE standards.
-            </p>
-            <ul className="flex flex-col gap-4">
-              {data.credentials.map((cred, idx) => (
-                <motion.li
-                  key={idx}
-                  whileHover={{ x: 6, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                  className="flex items-center gap-4 p-5 rounded border border-[#0B1D3A]/[0.06] bg-[#F8FAFD]/50 backdrop-blur-sm hover:bg-white shadow-sm hover:shadow-[0_8px_24px_-8px_rgba(11,29,58,0.12)] hover:border-[#0B1D3A]/[0.15] transition-all duration-400 ease-out group cursor-default"
-                >
-                  <div
-                    className="w-12 h-12 shrink-0 rounded flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-400 ease-out relative overflow-hidden"
-                    style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <Award size={22} strokeWidth={2.5} className="relative z-10" />
-                  </div>
-                  <span className="text-[15px] font-bold text-[#0B1D3A]/90 leading-snug">{cred}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
+        
+        <motion.div variants={item} className="mb-12">
+          <p className="text-[15px] text-[#5A6B82] font-medium max-w-[500px]">
+            Rajesh's training programs and expertise are fully validated and recognized by top real estate institutions and FARE standards.
+          </p>
         </motion.div>
+
+        <div className="grid grid-cols-3 gap-6">
+          {data.credentials.map((cred, idx) => (
+            <motion.div
+              key={idx}
+              variants={item}
+              whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+              className="group rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/[0.40] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_16px_48px_-12px_rgba(201,154,46,0.15)] bg-white/90 backdrop-blur-xl"
+            >
+              {/* Paper Texture Overlay */}
+              <div 
+                className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply"
+                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
+              />
+              
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[20px] pointer-events-none group-hover:scale-150 transition-transform duration-700" />
+              
+              <div className="flex items-start justify-between mb-8 relative z-10">
+                <div
+                  className="w-12 h-12 rounded flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-400 ease-out"
+                  style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
+                >
+                  <Award size={22} strokeWidth={2.5} />
+                </div>
+
+                {/* FARE Verified Badge */}
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border bg-white shadow-sm" style={{ borderColor: `${GOLD}40` }}>
+                   <ShieldCheck size={14} style={{ color: GOLD }} strokeWidth={2.5} />
+                   <span className="text-[10px] font-black uppercase tracking-[0.15em] pt-[1px]" style={{ color: NAVY }}>Verified</span>
+                </div>
+              </div>
+
+              <h3 className="text-[18px] font-black text-[#0B1D3A] mb-4 tracking-tight leading-snug relative z-10">
+                {cred}
+              </h3>
+
+              <div className="mt-auto pt-5 border-t border-[#0B1D3A]/[0.06] relative z-10 flex items-center justify-between">
+                 <span className="text-[10px] text-[#7B8DAA] uppercase tracking-[0.15em] font-bold">Credential ID</span>
+                 <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/60">
+                   {`FR-${String(idx + 1).padStart(4, '0')}-${new Date().getFullYear()}`}
+                 </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </section>
   );

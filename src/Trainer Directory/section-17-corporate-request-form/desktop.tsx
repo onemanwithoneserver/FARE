@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
-import { Send, X, FileText } from "lucide-react";
+import { Send, X } from "lucide-react";
 import { CustomSelect, CustomCheckbox, CustomRadio, CustomDatePicker } from "./FormControls";
 
 const NAVY = "#0B1D3A";
+const GOLD = "#C99A2E";
+const GOLD_MID = "#D5AA45";
 
 interface CorporateRequestFormProps {
   isOpen?: boolean;
@@ -69,10 +71,8 @@ export default function Desktop({ isOpen = false, onClose }: CorporateRequestFor
               animate="show"
               className="relative z-10 w-full"
             >
-              <motion.div variants={item} className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded bg-gradient-to-br from-[#8B5CF6] to-[#6D28D9] flex items-center justify-center shadow-lg text-white">
-                  <FileText size={20} strokeWidth={2.5} />
-                </div>
+              <motion.div variants={item} className="flex items-center gap-4 mb-8">
+                <div className="w-[4px] h-9 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
                 <div>
                   <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Corporate Request Form</h2>
                   <p className="text-[13px] text-[#5A6B82] font-medium mt-0.5">Fill out the details below to initiate a training request.</p>
