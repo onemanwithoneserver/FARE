@@ -1,11 +1,48 @@
+import React, { useState } from "react";
 import { profileData } from "../profileData";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
-import { Video, Building2, Layers, PlayCircle } from "lucide-react";
+import { Video, Building2, Layers, PlayCircle, ChevronDown } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
+
+const FormatAccordion = ({ format, defaultOpen }: { format: any; defaultOpen: boolean }) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <div className="flex flex-col bg-[#F8FAFD]/50 border border-[#0B1D3A]/[0.04] rounded-xl overflow-hidden">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-3.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+      >
+        <span className="font-bold text-[13px]" style={{ color: NAVY }}>{format.name}</span>
+        <ChevronDown
+          size={16}
+          strokeWidth={2.5}
+          className={`text-[#7B8DAA] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+        />
+      </button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="px-3.5 pb-3.5 pt-1">
+              <p className="text-[11.5px] text-[#5A6B82] leading-relaxed font-medium">
+                {format.description}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export default function Mobile() {
   const data = profileData;
@@ -97,10 +134,7 @@ export default function Mobile() {
               <h4 className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Training Formats</h4>
               <div className="flex flex-col gap-3">
                 {data.methodology.formats.map((fmt, idx) => (
-                  <div key={idx} className="flex flex-col gap-1 p-3.5 rounded-xl border border-[#0B1D3A]/[0.04] bg-[#F8FAFD]/50">
-                    <h5 className="text-[13px] font-bold" style={{ color: NAVY }}>{fmt.name}</h5>
-                    <p className="text-[11.5px] text-[#5A6B82] leading-relaxed font-medium">{fmt.description}</p>
-                  </div>
+                  <FormatAccordion key={idx} format={fmt} defaultOpen={idx === 0} />
                 ))}
               </div>
             </motion.div>
