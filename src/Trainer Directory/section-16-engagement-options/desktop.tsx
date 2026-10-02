@@ -7,7 +7,7 @@ const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
-export default function Desktop() {
+export default function Desktop({ onRequestPricing }: { onRequestPricing?: () => void }) {
   const data = profileData;
 
   const container: Variants = {
@@ -97,6 +97,7 @@ export default function Desktop() {
         >
           <p className="text-[13px] font-medium text-[#7B8DAA]">{data.investment.footerNote}</p>
           <button
+            onClick={onRequestPricing}
             className="text-white px-6 py-2.5 rounded-xl font-bold text-[13px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 flex items-center gap-2 shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] relative overflow-hidden group"
             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
           >

@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Target, Lightbulb, Trophy } from "lucide-react";
+import { Target, Lightbulb, Trophy, Play } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -75,41 +75,41 @@ export default function Mobile() {
                 </div>
               </div>
 
-              <div className="p-5 flex flex-col gap-5">
-                {[study.challenge, study.approach, study.outcome].map((text, sIdx) => {
-                  const cfg = stepConfig[sIdx];
-                  return (
-                    <div key={sIdx} className="flex items-start gap-3">
-                      <div
-                        className="w-7 h-7 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm shrink-0"
-                        style={{ background: cfg.bg }}
-                      >
-                        {cfg.icon}
+              <div className="p-5 flex flex-row gap-4">
+                <div className="flex-1 flex flex-col gap-5">
+                  {[study.challenge, study.approach].map((text, sIdx) => {
+                    const cfg = stepConfig[sIdx];
+                    return (
+                      <div key={sIdx} className="flex items-start gap-3">
+                        <div
+                          className="w-7 h-7 rounded-xl ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm shrink-0"
+                          style={{ background: cfg.bg }}
+                        >
+                          {cfg.icon}
+                        </div>
+                        <div>
+                          <h4 className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1.5" style={{ color: NAVY }}>{cfg.label}</h4>
+                          <p className="text-[12px] text-[#5A6B82] leading-[1.6] font-medium">{text}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1.5" style={{ color: NAVY }}>{cfg.label}</h4>
-                        <p className="text-[12px] text-[#5A6B82] leading-[1.6] font-medium">{text}</p>
-                        {sIdx === 2 && study.metrics && (
-                          <div className="flex flex-wrap gap-1.5 mt-2.5">
-                            {study.metrics.map((metric, mIdx) => (
-                              <span
-                                key={mIdx}
-                                className="text-[10px] font-bold px-2 py-1 rounded-full"
-                                style={{
-                                  background: "rgba(16,185,129,0.08)",
-                                  color: "#059669",
-                                  border: "1px solid rgba(16,185,129,0.2)",
-                                }}
-                              >
-                                {metric}
-                              </span>
-                            ))}
-                          </div>
-                        )}
+                    );
+                  })}
+                </div>
+
+                <div className="w-[110px] shrink-0 flex items-center justify-center">
+                  <div className="w-full aspect-[9/16] rounded-xl overflow-hidden relative group cursor-pointer shadow-sm border border-[#0B1D3A]/10 bg-[#0B1D3A]">
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeefa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A] via-[#0B1D3A]/20 to-transparent" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40">
+                        <Play size={14} fill="white" className="ml-0.5 text-white" />
                       </div>
                     </div>
-                  );
-                })}
+                    <div className="absolute bottom-3 left-0 right-0 text-center px-2">
+                      <span className="text-[8px] text-white/90 font-bold tracking-widest uppercase">Watch Video</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}

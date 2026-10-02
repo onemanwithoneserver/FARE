@@ -1,4 +1,5 @@
 import { motion, type Variants } from "motion/react";
+import { useState } from "react";
 import HeroDesktop from "../section-01-hero/desktop";
 import AboutDesktop from "../section-02-about/desktop";
 import IntroVideoDesktop from "../section-03-intro-video/desktop";
@@ -32,6 +33,8 @@ interface TrainerProfileProps {
 }
 
 export default function Desktop({ onBack }: TrainerProfileProps) {
+  const [isRequestFormOpen, setIsRequestFormOpen] = useState(false);
+
   return (
     <div className="w-full min-h-screen bg-[#F8FAFD] flex flex-col font-['Outfit'] relative">
       <motion.div
@@ -63,8 +66,8 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
       <TestimonialsDesktop />
       <MediaShowcaseDesktop />
       <CredentialsVerificationDesktop />
-      <EngagementOptionsDesktop />
-      <CorporateRequestFormDesktop />
+      <EngagementOptionsDesktop onRequestPricing={() => setIsRequestFormOpen(true)} />
+      <CorporateRequestFormDesktop isOpen={isRequestFormOpen} onClose={() => setIsRequestFormOpen(false)} />
     </div>
   );
 }

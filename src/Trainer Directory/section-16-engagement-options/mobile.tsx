@@ -7,7 +7,7 @@ const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
-export default function Mobile() {
+export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => void }) {
   const data = profileData;
 
   const container: Variants = {
@@ -98,6 +98,7 @@ export default function Mobile() {
         >
           <p className="text-[11px] font-medium text-[#7B8DAA] text-center">{data.investment.footerNote}</p>
           <button
+            onClick={onRequestPricing}
             className="w-full text-white px-5 py-3 rounded-xl font-bold text-[13px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 flex items-center justify-center gap-2 shadow-[0_4px_12px_-4px_rgba(11,29,58,0.25)] hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] relative overflow-hidden"
             style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
           >

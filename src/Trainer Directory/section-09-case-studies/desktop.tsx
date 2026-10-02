@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Target, Lightbulb, Trophy } from "lucide-react";
+import { Target, Lightbulb, Trophy, Play } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -75,8 +75,8 @@ export default function Desktop() {
                 </div>
               </div>
 
-                            <div className="flex-1 p-6 flex flex-col gap-5">
-                {[study.challenge, study.approach, study.outcome].map((text, sIdx) => {
+              <div className="flex-1 p-6 flex flex-col gap-5 border-b md:border-b-0 md:border-r border-[#0B1D3A]/[0.06]">
+                {[study.challenge, study.approach].map((text, sIdx) => {
                   const cfg = stepConfig[sIdx];
                   return (
                     <div key={sIdx} className="flex items-start gap-3.5">
@@ -89,27 +89,25 @@ export default function Desktop() {
                       <div>
                         <h4 className="text-[11px] font-bold uppercase tracking-[0.12em] mb-1" style={{ color: NAVY }}>{cfg.label}</h4>
                         <p className="text-[13px] text-[#5A6B82] leading-[1.65] font-medium">{text}</p>
-                        {sIdx === 2 && study.metrics && (
-                          <div className="flex flex-wrap gap-2 mt-2.5">
-                            {study.metrics.map((metric, mIdx) => (
-                              <span
-                                key={mIdx}
-                                className="text-[11px] font-bold px-2.5 py-1 rounded-full"
-                                style={{
-                                  background: "rgba(16,185,129,0.08)",
-                                  color: "#059669",
-                                  border: "1px solid rgba(16,185,129,0.2)",
-                                }}
-                              >
-                                {metric}
-                              </span>
-                            ))}
-                          </div>
-                        )}
                       </div>
                     </div>
                   );
                 })}
+              </div>
+
+              <div className="w-full md:w-[180px] shrink-0 p-6 flex items-center justify-center bg-[#F8FAFD]/30">
+                <div className="w-full max-w-[200px] aspect-[9/16] rounded-xl overflow-hidden relative group cursor-pointer shadow-sm border border-[#0B1D3A]/10 bg-[#0B1D3A]">
+                  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeefa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A] via-[#0B1D3A]/20 to-transparent" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40 group-hover:scale-110 transition-transform">
+                      <Play size={16} fill="white" className="ml-0.5 text-white" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-3 left-0 right-0 text-center px-2">
+                    <span className="text-[9px] text-white/90 font-bold tracking-widest uppercase">Watch Video</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
