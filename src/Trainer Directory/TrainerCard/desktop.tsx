@@ -33,24 +33,6 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "third
 
   const avail = availabilityConfig[trainer.availability] || availabilityConfig["Available"];
 
-  const renderLocation = () => (
-    <div className="flex items-center gap-2">
-      <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: `${GOLD}15` }}>
-        <MapPin size={12} strokeWidth={2.5} style={{ color: GOLD }} />
-      </div>
-      <span className="text-[12px] font-medium text-[#5A6B82] leading-tight break-words">{trainer.location.split(',')[0]}</span>
-    </div>
-  );
-
-  const renderLanguages = () => (
-    <div className="flex items-center gap-2">
-      <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: "rgba(59,130,246,0.10)" }}>
-        <Globe size={12} strokeWidth={2.5} className="text-[#3B82F6]" />
-      </div>
-      <span className="text-[12px] font-medium text-[#5A6B82] leading-tight break-words">{trainer.languages.slice(0, 2).join(", ")}</span>
-    </div>
-  );
-
   const renderButtons = () => (
     <>
       <button
@@ -75,168 +57,125 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "third
     </>
   );
 
+  const isFull = layoutVariant === 'full';
+
   return (
     <motion.div
       whileHover={{
-        y: -6,
+        y: -4,
         transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
       }}
-      className="group bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/20 rounded-2xl p-0 flex flex-col h-full cursor-default shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out relative overflow-hidden font-['Outfit']"
+      className={`group bg-white backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/20 rounded-2xl p-0 flex ${isFull ? 'flex-row' : 'flex-col'} h-full cursor-default shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-300 ease-out relative overflow-hidden font-['Outfit']`}
     >
-      <div
-        className="absolute top-0 left-0 right-0 h-[3px] transition-all duration-500 opacity-70 group-hover:opacity-100"
-        style={{
-          background: `linear-gradient(90deg, ${GOLD}, ${GOLD}90)`,
-        }}
-      />
+      {/* Top/Left Image Section */}
+      <div className={`relative overflow-hidden bg-gray-100 shrink-0 ${isFull ? 'w-[320px]' : 'w-full aspect-[4/3]'}`}>
+        {trainer.image ? (
+          <img src={trainer.image} alt={trainer.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-white text-5xl font-black group-hover:scale-105 transition-transform duration-700 ease-out"
+               style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}>
+            {getInitials(trainer.name)}
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-80" />
+        
+        {/* Availability badge removed as requested */}
+      </div>
 
-      <div
-        className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-[40px] opacity-[0.04] group-hover:opacity-[0.10] transition-all duration-500 pointer-events-none"
-        style={{ background: GOLD }}
-      />
-
-      <div className="p-6 flex flex-col h-full">
-        <div className={`flex flex-col flex-1 ${layoutVariant === 'full' ? 'md:flex-row md:gap-8' : ''}`}>
-          <div className={`flex flex-col ${layoutVariant === 'full' ? 'md:w-1/2' : 'w-full'}`}>
-            <div className="flex gap-4 items-start mb-5">
-              {trainer.image ? (
-                <img
-                  src={trainer.image}
-                  alt={trainer.name}
-                  className="w-14 h-14 rounded-xl object-cover shrink-0 shadow-sm border border-[#0B1D3A]/[0.06] group-hover:scale-105 transition-transform duration-300 ease-out"
-                />
-              ) : (
-                <div
-                  className="w-14 h-14 rounded-xl ring-1 ring-black/5 flex items-center justify-center font-bold text-lg shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-300 ease-out"
-                  style={{
-                    background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`,
-                    color: "white",
-                  }}
-                >
-                  {getInitials(trainer.name)}
-                </div>
-              )}
-
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-[16px] font-bold leading-tight truncate" style={{ color: NAVY }}>
-                    {trainer.name}
-                  </h3>
-                  {trainer.verified && (
-                    <div className="flex items-center gap-1 px-1.5 py-0.5 rounded"
-                      style={{
-                        background: `${GOLD}15`,
-                        border: `1px solid ${GOLD}30`,
-                      }}
-                    >
-                      <ShieldCheck size={10} strokeWidth={3} style={{ color: GOLD }} />
-                      <span className="text-[8px] font-bold tracking-wider uppercase" style={{ color: GOLD }}>
-                        Verified
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <p className="text-[13px] text-[#5A6B82] leading-snug font-medium mb-2 line-clamp-2">
-                  {trainer.title}
-                </p>
-
-                <div
-                  className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold"
-                  style={{
-                    background: avail.bg,
-                    color: avail.text,
-                    border: `1px solid ${avail.dot}20`,
-                  }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: avail.dot }} />
-                  {trainer.availability}
-                </div>
+      {/* Content Section */}
+      <div className={`p-6 flex flex-col flex-1 ${isFull ? 'gap-6' : 'gap-5'}`}>
+        
+        {/* Header: Name, Verified, Title */}
+        <div>
+          <div className="flex items-center gap-2 mb-1.5">
+            <h3 className="text-[20px] font-black leading-tight" style={{ color: NAVY }}>
+              {trainer.name}
+            </h3>
+            {trainer.verified && (
+              <div className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-white shadow-sm"
+                style={{ border: `1px solid ${GOLD}40` }}
+              >
+                <ShieldCheck size={12} strokeWidth={2.5} style={{ color: GOLD }} />
+                <span className="text-[9px] font-bold tracking-wider uppercase" style={{ color: GOLD }}>
+                  Verified
+                </span>
               </div>
+            )}
+          </div>
+          <p className="text-[14px] text-[#5A6B82] leading-snug font-medium line-clamp-2">
+            {trainer.title}
+          </p>
+        </div>
+
+        {/* Experience section */}
+        <div className="flex gap-3">
+          <div className="flex items-center gap-2 flex-1 px-3 py-2.5 rounded-lg border border-[#0B1D3A]/[0.06] bg-[#F8FAFD]">
+            <div className="w-7 h-7 rounded-lg ring-1 ring-black/5 flex items-center justify-center shrink-0 bg-white shadow-sm">
+              <Briefcase size={14} strokeWidth={2.5} style={{ color: NAVY }} />
             </div>
-
-            <div className="flex gap-3 mb-4 md:mb-0">
-              <div className="flex items-center gap-2 flex-1 px-3 py-2.5 rounded-lg"
-                style={{
-                  background: "linear-gradient(135deg, rgba(59,130,246,0.06), rgba(59,130,246,0.02))",
-                  border: "1px solid rgba(59,130,246,0.12)",
-                }}
-              >
-                    <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: "rgba(59,130,246,0.15)" }}>
-                  <Briefcase size={12} strokeWidth={2.5} className="text-[#3B82F6]" />
-                </div>
-                <div>
-                  <div className="text-[12px] font-black text-[#3B82F6] leading-none">{trainer.industryExperience}y</div>
-                  <div className="text-[9px] font-medium text-[#5A6B82]">Industry</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 flex-1 px-3 py-2.5 rounded-lg"
-                style={{
-                  background: `linear-gradient(135deg, ${GOLD}08, ${GOLD}03)`,
-                  border: `1px solid ${GOLD}15`,
-                }}
-              >
-                <div className="w-6 h-6 rounded-xl ring-1 ring-black/5 flex items-center justify-center shrink-0" style={{ background: `${GOLD}18` }}>
-                  <GraduationCap size={12} strokeWidth={2.5} style={{ color: GOLD }} />
-                </div>
-                <div>
-                  <div className="text-[12px] font-black leading-none" style={{ color: GOLD }}>{trainer.trainingExperience}y</div>
-                  <div className="text-[9px] font-medium text-[#5A6B82]">Training</div>
-                </div>
-              </div>
+            <div>
+              <div className="text-[13px] font-black leading-none" style={{ color: NAVY }}>{trainer.industryExperience} Yrs</div>
+              <div className="text-[10px] font-medium text-[#7B8DAA] uppercase tracking-wider mt-0.5">Industry Exp</div>
             </div>
           </div>
-
-          <div className={`flex flex-col flex-1 ${layoutVariant === 'full' ? 'md:border-l md:border-[#0B1D3A]/[0.06] md:pl-8' : ''}`}>
-            <div className="mb-3">
-              <div className="text-[9px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-1.5">RE Segment</div>
-              <div className="flex flex-wrap gap-1.5">
-                {trainer.segments.map(e => (
-                  <div key={e} className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#0B1D3A]/[0.04] border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/70">
-                    {e}
-                  </div>
-                ))}
-              </div>
+          <div className="flex items-center gap-2 flex-1 px-3 py-2.5 rounded-lg"
+            style={{
+              background: `linear-gradient(135deg, ${GOLD}08, ${GOLD}03)`,
+              border: `1px solid ${GOLD}20`,
+            }}
+          >
+            <div className="w-7 h-7 rounded-lg ring-1 ring-black/5 flex items-center justify-center shrink-0 bg-white shadow-sm">
+              <GraduationCap size={14} strokeWidth={2.5} style={{ color: GOLD_MID }} />
             </div>
-
-            <div className="mb-4">
-              <div className="text-[9px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em] mb-1.5">Delivery Mode</div>
-              <div className="flex flex-wrap gap-1.5">
-                {trainer.delivery.map(e => (
-                  <div key={e} className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#EEF4FF] border border-[#DDEAFF] text-[#1D4ED8]/70">
-                    {e}
-                  </div>
-                ))}
-              </div>
+            <div>
+              <div className="text-[13px] font-black leading-none" style={{ color: GOLD_MID }}>{trainer.trainingExperience} Yrs</div>
+              <div className="text-[10px] font-medium text-[#7B8DAA] uppercase tracking-wider mt-0.5">Training Exp</div>
             </div>
-
-            {layoutVariant !== 'full' && (
-              <>
-                <div className="grid grid-cols-2 gap-3 mt-auto pt-3 border-t border-[#0B1D3A]/[0.05]">
-                  {renderLocation()}
-                  {renderLanguages()}
-                </div>
-                <div className="pt-4 mt-4 border-t border-[#0B1D3A]/[0.06]">
-                  <div className="flex gap-2.5">
-                    {renderButtons()}
-                  </div>
-                </div>
-              </>
-            )}
           </div>
         </div>
 
-        {layoutVariant === 'full' && (
-          <div className="mt-5 pt-4 border-t border-[#0B1D3A]/[0.06] flex items-center justify-between shrink-0">
-            <div className="flex items-center gap-6">
-              {renderLocation()}
-              <div className="h-6 w-px bg-[#0B1D3A]/[0.08]" />
-              {renderLanguages()}
+        {/* Filters Section (RE Segment, Expertise, Language) */}
+        <div className="flex flex-col gap-4 flex-1">
+          {/* RE Segment */}
+          <div>
+            <div className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-2 flex items-center gap-1.5">
+              RE Segment
             </div>
-            <div className="flex gap-2.5">
-              {renderButtons()}
+            <div className="flex flex-wrap gap-1.5">
+              {trainer.segments.map(e => (
+                <div key={e} className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-[#0B1D3A]/[0.04] border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/80">
+                  {e}
+                </div>
+              ))}
             </div>
           </div>
-        )}
+
+          {/* Specialization / Expertise */}
+          <div>
+            <div className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-2 flex items-center gap-1.5">
+              Specialization
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {trainer.expertise.slice(0, 3).map(e => (
+                <div key={e} className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-[#EEF4FF] border border-[#DDEAFF] text-[#1D4ED8]/80">
+                  {e}
+                </div>
+              ))}
+              {trainer.expertise.length > 3 && (
+                <div className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200 text-gray-500">
+                  +{trainer.expertise.length - 3}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Languages section removed as requested */}
+        </div>
+
+        {/* Action Buttons */}
+        <div className={`pt-4 border-t border-[#0B1D3A]/[0.06] flex gap-2.5 ${isFull ? 'mt-auto' : 'mt-2'}`}>
+          {renderButtons()}
+        </div>
       </div>
     </motion.div>
   );

@@ -288,7 +288,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
         </div>
       </section>
 
-      <div className={`flex-1 w-full max-w-[1400px] mx-auto px-5 py-6 flex flex-col gap-6 ${isMobile ? "" : "sm:px-6 lg:px-12 xl:px-16 sm:py-8 md:flex-row sm:gap-7"}`}>
+      <div className={`flex-1 w-full max-w-[1400px] mx-auto px-5 py-6 flex flex-col gap-6 ${isMobile ? "" : "sm:px-6 lg:px-12 xl:px-16 sm:py-8 md:flex-row sm:gap-7 md:items-start"}`}>
 
         <SidebarFilters isMobile={isMobile} isOpen={showMobileFilters} onClose={() => setShowMobileFilters(false)} />
 

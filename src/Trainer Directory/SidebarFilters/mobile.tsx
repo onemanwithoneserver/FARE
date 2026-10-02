@@ -166,11 +166,8 @@ export default function Mobile({ isOpen, onClose }: { isOpen?: boolean; onClose?
 
             {/* Scrollable Body */}
             <div className="flex-1 overflow-y-auto px-5 pb-[90px]">
-              <FilterSection title="Expertise" options={filterOptions.expertise} selectedOptions={selected.expertise} onChange={(o) => toggleOption('expertise', o)} />
               <FilterSection title="RE Segment" options={filterOptions.segments} selectedOptions={selected.segments} onChange={(o) => toggleOption('segments', o)} />
-              <FilterSection title="Training Format" options={filterOptions.formats} selectedOptions={selected.formats} onChange={(o) => toggleOption('formats', o)} />
-              <FilterSection title="Delivery Mode" options={filterOptions.delivery} selectedOptions={selected.delivery} onChange={(o) => toggleOption('delivery', o)} />
-              <FilterSection title="Availability" options={filterOptions.availability} selectedOptions={selected.availability} onChange={(o) => toggleOption('availability', o)} />
+              <FilterSection title="Expertise" options={filterOptions.expertise} selectedOptions={selected.expertise} onChange={(o) => toggleOption('expertise', o)} />
               <FilterSection title="Language" options={filterOptions.languages} selectedOptions={selected.languages} onChange={(o) => toggleOption('languages', o)} />
             </div>
 
