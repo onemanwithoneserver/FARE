@@ -8,7 +8,7 @@ import TrainingModesFormatsMobile from "../section-07-training-modes-formats/mob
 import OrganisationsTrainedMobile from "../section-08-organisations-trained/mobile";
 import CaseStudiesMobile from "../section-09-case-studies/mobile";
 import PreDefinedProgramsMobile from "../section-10-pre-defined-programs/mobile";
-import TrainingMethodologyMobile from "../section-11-training-methodology/mobile";
+
 import TrainingImpactMobile from "../section-12-training-impact/mobile";
 import TestimonialsMobile from "../section-13-testimonials/mobile";
 import MediaShowcaseMobile from "../section-14-media-showcase/mobile";
@@ -58,7 +58,7 @@ export default function Mobile({ onBack }: TrainerProfileProps) {
       <OrganisationsTrainedMobile />
       <CaseStudiesMobile />
       <PreDefinedProgramsMobile />
-      <TrainingMethodologyMobile />
+
       <TrainingImpactMobile />
       <TestimonialsMobile />
       <MediaShowcaseMobile />

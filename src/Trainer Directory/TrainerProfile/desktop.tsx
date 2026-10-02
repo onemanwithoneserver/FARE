@@ -8,7 +8,7 @@ import TrainingModesFormatsDesktop from "../section-07-training-modes-formats/de
 import OrganisationsTrainedDesktop from "../section-08-organisations-trained/desktop";
 import CaseStudiesDesktop from "../section-09-case-studies/desktop";
 import PreDefinedProgramsDesktop from "../section-10-pre-defined-programs/desktop";
-import TrainingMethodologyDesktop from "../section-11-training-methodology/desktop";
+
 import TrainingImpactDesktop from "../section-12-training-impact/desktop";
 import TestimonialsDesktop from "../section-13-testimonials/desktop";
 import MediaShowcaseDesktop from "../section-14-media-showcase/desktop";
@@ -58,7 +58,7 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
       <OrganisationsTrainedDesktop />
       <CaseStudiesDesktop />
       <PreDefinedProgramsDesktop />
-      <TrainingMethodologyDesktop />
+
       <TrainingImpactDesktop />
       <TestimonialsDesktop />
       <MediaShowcaseDesktop />

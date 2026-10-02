@@ -89,34 +89,32 @@ export default function Desktop() {
           })}
         </div>
 
-                <div className="grid grid-cols-2 gap-4">
+        <div className="flex flex-col gap-6">
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 flex flex-col gap-3 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-6 flex flex-col gap-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
           >
-            <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Training Formats</h4>
-            <div className="flex flex-wrap gap-2">
-              {data.delivery.formats.map((fmt, idx) => (
-                <span
-                  key={idx}
-                  className="text-[12px] font-semibold px-3 py-1.5 rounded-full bg-white border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/[0.20] transition-all duration-300 ease-out"
-                >
-                  {fmt}
-                </span>
+            <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Training Formats</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {data.methodology.formats.map((fmt, idx) => (
+                <div key={idx} className="flex flex-col gap-1.5 p-4 rounded-xl border border-[#0B1D3A]/[0.04] bg-[#F8FAFD]/50">
+                  <h5 className="text-[14px] font-bold" style={{ color: NAVY }}>{fmt.name}</h5>
+                  <p className="text-[12px] text-[#5A6B82] leading-relaxed font-medium">{fmt.description}</p>
+                </div>
               ))}
             </div>
           </motion.div>
           
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-5 flex flex-col gap-3 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-2xl p-6 flex flex-col gap-4 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)]"
           >
-            <h4 className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Training Durations</h4>
+            <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Training Durations</h4>
             <div className="flex flex-wrap gap-2">
               {data.delivery.durations.map((dur, idx) => (
                 <span
                   key={idx}
-                  className="text-[12px] font-semibold px-3 py-1.5 rounded-full bg-white border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/[0.20] transition-all duration-300 ease-out"
+                  className="text-[13px] font-semibold px-4 py-2 rounded-full bg-white border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/80 hover:border-[#0B1D3A]/[0.20] transition-all duration-300 ease-out"
                 >
                   {dur}
                 </span>
