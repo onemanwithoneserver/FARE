@@ -103,10 +103,7 @@ export default function Desktop() {
                 </div>
               </div>
 
-              <a href={prog.link} className="text-[13px] font-bold flex items-center gap-1.5 mt-auto transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 rounded-xl" style={{ color: NAVY }}>
-                <span className="group-hover/link:text-[#C99A2E] transition-colors">View Full Program</span>
-                <ArrowRight size={13} strokeWidth={2.5} className="group-hover/link:translate-x-1 transition-transform duration-300" style={{ color: GOLD_MID }} />
-              </a>
+
             </motion.div>
           ))}
         </div>
