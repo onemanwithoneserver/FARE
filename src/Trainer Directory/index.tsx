@@ -219,9 +219,9 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               style={{ color: NAVY }}
             >
               <span className="block whitespace-nowrap">
-                Find the Right <span className="text-[#C99A2E]">Trainer</span> for
+                Find the <span className="text-[#C99A2E] underline decoration-[#C99A2E] decoration-2 underline-offset-4">Right Trainer</span>
               </span>
-              <span className="block whitespace-nowrap">Your Real Estate Team</span>
+              <span className="block whitespace-nowrap">for Your Real Estate Team</span>
             </motion.h1>
 
             <motion.p
