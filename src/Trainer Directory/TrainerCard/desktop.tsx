@@ -1,19 +1,18 @@
 import type { Trainer } from "../listing_data";
 import { motion } from "motion/react";
 import {
-  ShieldCheck,
+  BadgeCheck,
   ArrowRight,
+  ChevronRight,
   Briefcase,
   GraduationCap,
-  Send,
   MapPin,
+  Languages,
+  Send,
 } from "lucide-react";
 
 const NAVY = "#0B1D3A";
-const NAVY_DEEP = "#071428";
-const NAVY_MID = "#0F2847";
 const GOLD = "#C99A2E";
-const GOLD_LIGHT = "#E8C469";
 const GOLD_MID = "#D5AA45";
 
 export interface TrainerCardProps {
@@ -27,338 +26,194 @@ export default function Desktop({
   onViewProfile,
   layoutVariant = "third",
 }: TrainerCardProps) {
-  const getInitials = (name: string) => {
-    return name
+  const getInitials = (name: string) =>
+    name
       .split(" ")
       .map((n) => n[0])
       .join("")
       .substring(0, 2);
-  };
 
   const isFull = layoutVariant === "full";
 
+  const stats = [
+    {
+      icon: <Briefcase size={14} strokeWidth={2.4} />,
+      value: `${trainer.industryExperience}+`,
+      label: "Yrs Industry",
+      color: "#4F46E5",
+      bg: "#EEF0FF",
+    },
+    {
+      icon: <GraduationCap size={15} strokeWidth={2.4} />,
+      value: `${trainer.trainingExperience}+`,
+      label: "Yrs Training",
+      color: GOLD,
+      bg: "#FBF4E4",
+    },
+    {
+      icon: <Languages size={14} strokeWidth={2.4} />,
+      value: `${trainer.languages.length}`,
+      label: "Languages",
+      color: "#059669",
+      bg: "#E7F7F0",
+    },
+  ];
+
   return (
     <motion.div
-      whileHover={{
-        y: -6,
-        transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
-      }}
-      className={`group relative flex ${
-        isFull ? "flex-row" : "flex-col"
-      } h-full cursor-default overflow-hidden rounded-2xl font-['Outfit']`}
-      style={{
-        background: `linear-gradient(145deg, ${NAVY} 0%, ${NAVY_DEEP} 60%, ${NAVY_MID} 100%)`,
-      }}
+      whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+      className={`group relative flex ${isFull ? "flex-row" : "flex-col"} h-full bg-white rounded-2xl p-2.5 font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] hover:shadow-[0_4px_10px_-4px_rgba(11,29,58,0.08),0_24px_50px_-16px_rgba(11,29,58,0.22)] hover:border-[#C99A2E]/30 transition-[box-shadow,border-color] duration-500`}
     >
-      
       <div
-        className="absolute -inset-[1px] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 blur-[1px]"
-        style={{
-          background: `linear-gradient(135deg, ${GOLD}80, ${GOLD_LIGHT}60, ${GOLD}40, transparent 60%)`,
-        }}
-      />
-
-      
-      <div
-        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none rounded-2xl"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)",
-          backgroundSize: "24px 24px",
-        }}
-      />
-
-      
-      <div
-        className="absolute -top-20 -right-20 w-40 h-40 rounded-full blur-[80px] pointer-events-none opacity-20 group-hover:opacity-35 transition-opacity duration-700"
-        style={{
-          background: `radial-gradient(circle, ${GOLD}50, transparent 70%)`,
-        }}
-      />
-      <div
-        className="absolute -bottom-16 -left-16 w-32 h-32 rounded-full blur-[60px] pointer-events-none opacity-10 group-hover:opacity-25 transition-opacity duration-700"
-        style={{
-          background: `radial-gradient(circle, #6366F150, transparent 70%)`,
-        }}
-      />
-
-      
-      <div
-        className={`relative overflow-hidden shrink-0 ${
-          isFull ? "w-[300px]" : "w-full aspect-[4/3]"
+        className={`relative overflow-hidden rounded-xl shrink-0 bg-[#EEF2F8] ${
+          isFull ? "w-[300px] self-stretch" : "w-full aspect-[16/11]"
         }`}
       >
         {trainer.image ? (
           <img
             src={trainer.image}
             alt={trainer.name}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[900ms] ease-out"
+            className="w-full h-full object-cover object-top group-hover:scale-[1.06] transition-transform duration-[900ms] ease-out"
           />
         ) : (
           <div
-            className="w-full h-full flex items-center justify-center text-white/80 text-5xl font-black group-hover:scale-110 transition-transform duration-[900ms] ease-out"
-            style={{
-              background: `linear-gradient(135deg, ${NAVY_MID} 0%, ${NAVY} 100%)`,
-            }}
+            className="w-full h-full flex items-center justify-center text-white text-5xl font-black"
+            style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1E3A66 100%)` }}
           >
             {getInitials(trainer.name)}
           </div>
         )}
 
-        
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071428] via-[#071428]/30 to-transparent opacity-90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071428]/40 to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/45 via-transparent to-transparent" />
 
-        
-        <div
-          className="absolute bottom-0 right-0 w-[200%] h-[3px] origin-bottom-right rotate-[-25deg] opacity-30 group-hover:opacity-60 transition-opacity duration-500"
-          style={{
-            background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)`,
-          }}
-        />
-
-        
         {trainer.verified && (
-          <div
-            className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105"
-            style={{
-              background: "rgba(201, 154, 46, 0.15)",
-              border: `1px solid ${GOLD}40`,
-            }}
-          >
-            <ShieldCheck
-              size={12}
-              strokeWidth={2.5}
-              style={{ color: GOLD_LIGHT }}
-            />
-            <span
-              className="text-[9px] font-bold tracking-[0.12em] uppercase"
-              style={{ color: GOLD_LIGHT }}
-            >
-              Verified
+          <div className="absolute top-3 left-3 flex items-center gap-1 pl-1.5 pr-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md shadow-[0_4px_12px_-2px_rgba(11,29,58,0.2)]">
+            <BadgeCheck size={14} strokeWidth={2.5} style={{ color: GOLD }} />
+            <span className="text-[10px] font-bold tracking-[0.08em] uppercase" style={{ color: NAVY }}>
+              FARE Verified
             </span>
           </div>
         )}
 
-        
-        <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full backdrop-blur-md"
-          style={{
-            background: "rgba(255,255,255,0.08)",
-            border: "1px solid rgba(255,255,255,0.1)",
-          }}
-        >
-          <MapPin size={10} strokeWidth={2.5} className="text-[#F59E0B]" />
-          <span className="text-[9px] font-semibold text-white/70 tracking-wide">
+        <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30">
+          <MapPin size={11} strokeWidth={2.5} className="text-white" />
+          <span className="text-[10.5px] font-semibold text-white tracking-wide">
             {trainer.location}
           </span>
         </div>
       </div>
 
-      
-      <div
-        className={`relative z-10 p-5 flex flex-col flex-1 ${
-          isFull ? "gap-5 p-7" : "gap-4"
-        }`}
-      >
-        
+      <div className={`flex flex-col flex-1 ${isFull ? "px-6 py-4 gap-5" : "px-2.5 pt-4 pb-1.5 gap-4"}`}>
         <div>
           <h3
-            className={`font-black leading-tight tracking-tight text-white ${
-              isFull ? "text-[22px]" : "text-[18px]"
-            }`}
+            className={`font-black leading-tight tracking-tight ${isFull ? "text-[24px]" : "text-[19px]"}`}
+            style={{ color: NAVY }}
           >
             {trainer.name}
           </h3>
-          <p className="text-[13px] text-white/50 leading-snug font-medium line-clamp-2 mt-1">
+          <p className="text-[13.5px] text-[#5A6B82] font-medium leading-snug mt-1 line-clamp-1">
             {trainer.title}
           </p>
+          {isFull && (
+            <p className="text-[14px] text-[#5A6B82]/90 leading-relaxed mt-3 max-w-[620px] line-clamp-2">
+              {trainer.positioning}
+            </p>
+          )}
         </div>
 
-        
-        <div className="flex gap-2.5">
-          <div
-            className="flex items-center gap-2.5 flex-1 px-3 py-2.5 rounded-xl transition-all duration-300 group-hover:bg-white/[0.06]"
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-            }}
-          >
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-lg"
-              style={{
-                background: `linear-gradient(135deg, #6366F1, #4F46E5)`,
-              }}
-            >
-              <Briefcase size={14} strokeWidth={2.5} className="text-white" />
-            </div>
-            <div>
-              <div className="text-[15px] font-black leading-none text-white tracking-tight">
-                {trainer.industryExperience}{" "}
-                <span className="text-[11px] font-bold text-white/40">Yrs</span>
-              </div>
-              <div className="text-[9px] font-semibold text-white/35 uppercase tracking-[0.12em] mt-0.5">
-                Industry
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="flex items-center gap-2.5 flex-1 px-3 py-2.5 rounded-xl transition-all duration-300 group-hover:bg-white/[0.06]"
-            style={{
-              background: `rgba(201, 154, 46, 0.06)`,
-              border: `1px solid ${GOLD}15`,
-            }}
-          >
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-lg"
-              style={{
-                background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})`,
-              }}
-            >
-              <GraduationCap
-                size={14}
-                strokeWidth={2.5}
-                className="text-white"
-              />
-            </div>
-            <div>
+        <div className="grid grid-cols-3 rounded-xl bg-[#F7F9FC] border border-[#0B1D3A]/[0.05] divide-x divide-[#0B1D3A]/[0.06]">
+          {stats.map((s) => (
+            <div key={s.label} className="flex flex-col items-center justify-center py-3 px-1 gap-1.5">
               <div
-                className="text-[15px] font-black leading-none tracking-tight"
-                style={{ color: GOLD_LIGHT }}
+                className="w-7 h-7 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                style={{ background: s.bg, color: s.color }}
               >
-                {trainer.trainingExperience}{" "}
-                <span className="text-[11px] font-bold" style={{ color: `${GOLD_LIGHT}70` }}>
-                  Yrs
-                </span>
+                {s.icon}
               </div>
-              <div className="text-[9px] font-semibold text-white/35 uppercase tracking-[0.12em] mt-0.5">
-                Training
+              <div className="text-[16px] font-black leading-none" style={{ color: NAVY }}>
+                {s.value}
+              </div>
+              <div className="text-[9.5px] font-semibold uppercase tracking-[0.1em] text-[#7B8DAA] whitespace-nowrap">
+                {s.label}
               </div>
             </div>
-          </div>
+          ))}
         </div>
 
-        
         <div className="flex flex-col gap-3 flex-1">
-          
           <div>
-            <div className="text-[9px] font-bold text-white/30 uppercase tracking-[0.15em] mb-1.5 flex items-center gap-1.5">
-              <span
-                className="w-1 h-1 rounded-full"
-                style={{ background: GOLD }}
-              />
-              RE Segment
-            </div>
-            <div className="flex flex-wrap gap-1.5">
-              {trainer.segments.map((e) => (
-                <div
-                  key={e}
-                  className="text-[10px] font-bold px-2.5 py-[3px] rounded-md text-white/60 transition-colors duration-300 group-hover:text-white/80"
-                  style={{
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                  }}
-                >
-                  {e}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          
-          <div>
-            <div className="text-[9px] font-bold text-white/30 uppercase tracking-[0.15em] mb-1.5 flex items-center gap-1.5">
-              <span
-                className="w-1 h-1 rounded-full"
-                style={{ background: "#6366F1" }}
-              />
+            <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA] mb-2">
               Specialization
             </div>
             <div className="flex flex-wrap gap-1.5">
               {trainer.expertise.slice(0, 3).map((e) => (
-                <div
+                <span
                   key={e}
-                  className="text-[10px] font-bold px-2.5 py-[3px] rounded-md transition-colors duration-300 group-hover:text-white/80"
-                  style={{
-                    background: "rgba(99, 102, 241, 0.08)",
-                    border: "1px solid rgba(99, 102, 241, 0.15)",
-                    color: "rgba(165, 168, 255, 0.7)",
-                  }}
+                  className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#FBF4E4] text-[#8A6516] border border-[#C99A2E]/20"
                 >
                   {e}
-                </div>
+                </span>
               ))}
               {trainer.expertise.length > 3 && (
-                <div
-                  className="text-[10px] font-bold px-2.5 py-[3px] rounded-md text-white/30"
-                  style={{
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.06)",
-                  }}
-                >
+                <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#F1F4F9] text-[#5A6B82]">
                   +{trainer.expertise.length - 3}
-                </div>
+                </span>
               )}
+            </div>
+          </div>
+
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA] mb-2">
+              RE Segment
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {trainer.segments.map((s) => (
+                <span
+                  key={s}
+                  className="flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#F1F4F9] text-[#0B1D3A]/75"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#4F46E5]/60" />
+                  {s}
+                </span>
+              ))}
             </div>
           </div>
         </div>
 
-        
-        <div
-          className={`pt-4 flex gap-2.5 ${isFull ? "mt-auto" : "mt-1"}`}
-          style={{
-            borderTop: "1px solid rgba(255,255,255,0.06)",
-          }}
-        >
+        <div className={`flex items-center gap-2.5 pt-4 border-t border-dashed border-[#0B1D3A]/10 ${isFull ? "mt-auto justify-start" : ""}`}>
           <button
             onClick={onViewProfile}
-            className={`${
-              isFull ? "px-8" : "flex-1"
-            } font-bold text-[12px] py-2.5 rounded-lg transition-all duration-300 ease-out flex items-center justify-center gap-1.5 hover:bg-white/[0.08] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 relative overflow-hidden`}
-            style={{
-              color: "rgba(255,255,255,0.7)",
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.08)",
-            }}
+            className={`group/vp ${isFull ? "px-6" : "flex-1"} h-10 rounded-xl text-[13px] font-bold flex items-center justify-center gap-1.5 bg-white border border-[#0B1D3A]/10 hover:border-[#0B1D3A] hover:bg-[#0B1D3A] hover:text-white transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50`}
+            style={{ color: NAVY }}
           >
-            View Profile{" "}
-            <ArrowRight
-              size={13}
-              strokeWidth={2.5}
-              className="group-hover:translate-x-0.5 transition-transform duration-300"
-              style={{ color: GOLD_MID }}
-            />
-          </button>
-          <button
-            className={`${
-              isFull ? "px-8" : "flex-1"
-            } text-[${NAVY}] font-bold text-[12px] py-2.5 rounded-lg transition-all duration-300 ease-out shadow-[0_4px_16px_-4px_rgba(201,154,46,0.4)] hover:shadow-[0_8px_24px_-4px_rgba(201,154,46,0.5)] relative overflow-hidden group/btn active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50`}
-            style={{
-              background: `linear-gradient(135deg, ${GOLD_MID} 0%, ${GOLD} 50%, ${GOLD_LIGHT} 100%)`,
-              color: NAVY,
-            }}
-          >
-            <span className="relative z-10 flex items-center justify-center gap-1.5 transition-transform duration-300 group-hover/btn:-translate-x-0.5">
-              Request
-              <Send
-                size={12}
-                strokeWidth={2.5}
-                className="opacity-0 w-0 -translate-x-2 group-hover/btn:w-auto group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all duration-300"
+            View Profile
+            <span className="relative w-4 h-4 inline-flex items-center justify-center">
+              <ChevronRight
+                size={16}
+                strokeWidth={2.6}
+                className="absolute transition-all duration-300 opacity-100 translate-x-0 group-hover/vp:opacity-0 group-hover/vp:translate-x-1"
+              />
+              <ArrowRight
+                size={16}
+                strokeWidth={2.6}
+                className="absolute transition-all duration-300 opacity-0 -translate-x-1 group-hover/vp:opacity-100 group-hover/vp:translate-x-0.5"
+                style={{ color: GOLD_MID }}
               />
             </span>
-            
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
+          </button>
+
+          <button
+            className={`group/rq ${isFull ? "px-6" : "flex-1"} h-10 rounded-xl text-[13px] font-bold flex items-center justify-center gap-1.5 relative overflow-hidden transition-all duration-300 shadow-[0_6px_16px_-6px_rgba(201,154,46,0.6)] hover:shadow-[0_10px_24px_-6px_rgba(201,154,46,0.7)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50`}
+            style={{ background: `linear-gradient(135deg, ${GOLD_MID} 0%, ${GOLD} 100%)`, color: NAVY }}
+          >
+            <span className="relative z-10 flex items-center gap-1.5">
+              Request
+              <Send size={13} strokeWidth={2.5} className="transition-transform duration-300 group-hover/rq:translate-x-0.5 group-hover/rq:-translate-y-0.5" />
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover/rq:translate-x-full transition-transform duration-700 pointer-events-none" />
           </button>
         </div>
       </div>
-
-      
-      <div
-        className="absolute bottom-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)`,
-        }}
-      />
     </motion.div>
   );
 }
