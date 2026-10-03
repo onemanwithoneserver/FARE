@@ -18,7 +18,8 @@ import FAREForFreelancersOpenPlot from "./For Learners/Freelancers - Open Plot";
 import FAREForFreelancersResidential from "./For Learners/Freelancers - Residential";
 import FAREForCareerSwitchers from "./For Learners/Career Switchers";
 import FAREForStudentsFreshers from "./For Learners/Students & Freshers";
-import FAREKnowledgeBank from "./For Learners/Knowledge Bank";
+import FAREKnowledgeBank from "./Practice/Knowledge Bank";
+import FAREMocks from "./Practice/Mocks";
 import TrainerDirectory from "./Trainer Directory";
 export default function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
@@ -118,6 +119,10 @@ export default function App() {
             <Route
               path="/:mode/fare-knowledge-bank"
               element={<FAREKnowledgeBank isMobile={isMobile} />}
+            />
+            <Route
+              path="/:mode/fare-mocks"
+              element={<FAREMocks isMobile={isMobile} />}
             />
             <Route
               path="/:mode/trainer-directory"

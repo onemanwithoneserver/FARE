@@ -1,0 +1,58 @@
+import { motion } from "motion/react";
+import { data } from "../data";
+import { CheckCircle2 } from "lucide-react";
+
+export default function Desktop() {
+  const sectionData = data.outcomes;
+  return (
+    <section className="w-full bg-[#f8fafc] py-24 relative overflow-hidden">
+      <div className="w-full max-w-[1320px] mx-auto px-6 lg:px-10 xl:px-12 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="lg:w-5/12"
+          >
+            <h2 className="text-[32px] md:text-[38px] lg:text-[44px] font-bold text-[#0B1D3A] mb-6">
+              {sectionData.title}
+            </h2>
+            <div className="w-16 h-1 bg-[#C99A2E] mb-8 rounded-[2px]" />
+            <div className="bg-white p-8 rounded-[8px] border border-gray-100 luxury-shadow-float relative overflow-hidden">
+              <div className="text-[60px] text-[#C99A2E]/20 absolute top-2 left-4 font-serif leading-none">"</div>
+              <p className="text-[20px] md:text-[24px] text-[#0B1D3A] font-medium italic relative z-10 leading-snug">
+                {sectionData.quote.replace(/"/g, '')}
+              </p>
+            </div>
+          </motion.div>
+          
+          <div className="lg:w-7/12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            {sectionData.items.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex gap-4 group"
+              >
+                <div className="mt-1 text-[#34D399] group-hover:scale-110 transition-transform duration-300 shrink-0">
+                  <CheckCircle2 size={24} strokeWidth={2} />
+                </div>
+                <div>
+                  <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-1.5 group-hover:text-[#C99A2E] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-[14px] text-gray-600 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

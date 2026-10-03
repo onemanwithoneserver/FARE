@@ -17,11 +17,17 @@ import {
   Home as HomeIcon,
   RefreshCw,
   Globe,
+  BookOpen,
+  Target,
   Check,
 } from "lucide-react";
 import Modal from "../../Components/Forms/Modal";
 import RECompaniesForm from "../../Components/Forms/Desktop/RECompaniesForm";
 const subIconMap: Record<string, React.ElementType> = {
+  "Knowledge Bank": BookOpen,
+  "నాలెడ్జ్ బ్యాంక్": BookOpen,
+  "Mocks": Target,
+  "మాక్స్": Target,
   "Residential & Commercial": Building2,
   "రెసిడెన్షియల్ & కమర్షియల్": Building2,
   "Open Plots": MapPin,
@@ -38,6 +44,10 @@ const subIconMap: Record<string, React.ElementType> = {
   "కెరీర్ స్విచ్చర్స్": RefreshCw,
 };
 const subColorMap: Record<string, string> = {
+  "Knowledge Bank": "#60A5FA",
+  "నాలెడ్జ్ బ్యాంక్": "#60A5FA",
+  "Mocks": "#F472B6",
+  "మాక్స్": "#F472B6",
   "Residential & Commercial": "#34D399",
   "రెసిడెన్షియల్ & కమర్షియల్": "#34D399",
   "Open Plots": "#E2C068",
@@ -149,6 +159,7 @@ export default function Desktop() {
     if (title === "Trainer Directory" || title === "ట్రైనర్ డైరెక్టరీ")
       return "trainer-directory";
     if (title === "Knowledge Bank" || title === "నాలెడ్జ్ బ్యాంక్") return "fare-knowledge-bank";
+    if (title === "Mocks" || title === "మాక్స్") return "fare-mocks";
     if (title === "Contact Us" || title === "సంప్రదించండి") return "contact-us";
     if (title === "For Trainers" || title === "ట్రైనర్ల కోసం")
       return "re-trainers-coaches";

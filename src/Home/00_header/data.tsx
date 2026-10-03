@@ -45,7 +45,14 @@ export const dataEn = {
       ],
     },
     { title: "Trainer Directory", href: "trainer-directory" },
-    { title: "Knowledge Bank", href: "fare-knowledge-bank" },
+    {
+      title: "Practice",
+      href: "#",
+      subItems: [
+        { title: "Knowledge Bank", href: "fare-knowledge-bank" },
+        { title: "Mocks", href: "fare-mocks" },
+      ],
+    },
     { title: "Contact Us", href: "contact-us" },
   ],
 };
@@ -95,7 +102,14 @@ export const dataTe = {
       ],
     },
     { title: "ట్రైనర్ డైరెక్టరీ", href: "trainer-directory" },
-    { title: "నాలెడ్జ్ బ్యాంక్", href: "fare-knowledge-bank" },
+    {
+      title: "ప్రాక్టీస్",
+      href: "#",
+      subItems: [
+        { title: "నాలెడ్జ్ బ్యాంక్", href: "fare-knowledge-bank" },
+        { title: "మాక్స్", href: "fare-mocks" },
+      ],
+    },
     { title: "సంప్రదించండి", href: "contact-us" },
   ],
 };
