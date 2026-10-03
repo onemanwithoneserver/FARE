@@ -27,13 +27,13 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-[4px]-[4px]-[4px]-full blur-[80px] pointer-events-none z-0 opacity-40"
+        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1.05, 1, 1.05] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-[4px]-[4px]-[4px]-full blur-[90px] pointer-events-none z-0 opacity-30"
+        className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(11,29,58,0.06) 0%, transparent 70%)" }}
       />
 
@@ -45,7 +45,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
         className="relative z-10 w-full"
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-8">
-          <div className="w-[3px] h-6 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Investment")}</h2>
         </motion.div>
 
@@ -53,9 +53,9 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px]-[4px]-[4px] p-6 luxury-shadow-float relative overflow-hidden"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#6366F1]/10 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[20px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#6366F1]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
             <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">{t("Pricing")}</h4>
             <h3 className="text-[18px] font-black mb-2 tracking-tight relative z-10" style={{ color: NAVY }}>{data.investment.pricing.title}</h3>
             <p className="text-[13px] text-[#5A6B82] font-medium leading-relaxed relative z-10">{data.investment.pricing.subtitle}</p>
@@ -63,16 +63,16 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px]-[4px]-[4px] p-6 luxury-shadow-float relative overflow-hidden"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/15 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[20px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/15 to-transparent rounded-full blur-[20px] pointer-events-none" />
             <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">{t("Minimum Engagement")}</h4>
             <h3 className="text-[18px] font-black mb-4 tracking-tight relative z-10" style={{ color: NAVY }}>{data.investment.minimumEngagement.title}</h3>
             <div className="flex flex-wrap gap-2.5 relative z-10">
               {data.investment.minimumEngagement.options.map((opt, idx) => (
                 <span
                   key={idx}
-                  className="text-[12px] font-bold px-3 py-1.5 rounded-[4px]-[4px]-[4px]"
+                  className="text-[12px] font-bold px-3 py-1.5 rounded"
                   style={opt === data.investment.minimumEngagement.selected ? {
                     background: `${GOLD}15`,
                     color: GOLD_MID,
@@ -91,14 +91,14 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px]-[4px]-[4px] p-6 luxury-shadow-float relative overflow-hidden"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#10B981]/10 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[20px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#10B981]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
             <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-4 relative z-10">{t("Pricing Basis")}</h4>
             <ul className="flex flex-col gap-3 relative z-10">
               {data.investment.pricingBasis.map((basis, idx) => (
                 <li key={idx} className="flex items-center gap-2.5 text-[13px] font-bold text-[#5A6B82]">
-                  <div className="w-4 h-4 rounded-[4px]-[4px]-[4px]-full bg-[#10B981]/10 flex items-center justify-center shrink-0 border border-[#10B981]/20">
+                  <div className="w-4 h-4 rounded-full bg-[#10B981]/10 flex items-center justify-center shrink-0 border border-[#10B981]/20">
                     <Check size={10} strokeWidth={3} className="text-[#10B981]" />
                   </div>
                   {basis}
@@ -110,9 +110,9 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
         <motion.div
           variants={item}
-          className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded-[4px]-[4px]-[4px] p-6 flex flex-col gap-5 luxury-shadow-float relative overflow-hidden"
+          className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded p-6 flex flex-col gap-5 luxury-shadow-float relative overflow-hidden"
         >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[20px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[20px] pointer-events-none" />
           <div
             className="absolute inset-0 opacity-[0.05] pointer-events-none"
             style={{
@@ -124,7 +124,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
           <p className="text-[12px] font-medium text-white/80 text-center relative z-10 leading-relaxed">{data.investment.footerNote}</p>
           <button
             onClick={onRequestPricing}
-            className="w-full bg-white text-[#0B1D3A] px-6 py-3.5 rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px] font-black text-[14px] transition-transform duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center justify-center gap-2.5 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] relative z-10 group"
+            className="w-full bg-white text-[#0B1D3A] px-6 py-3.5 rounded font-black text-[14px] transition-transform duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center justify-center gap-2.5 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] relative z-10 group"
           >
             {t("Request Pricing")}
             <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#C99A2E]"}`} style={{ fontSize: `${15}px` }}>

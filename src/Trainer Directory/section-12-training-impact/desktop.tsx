@@ -35,19 +35,19 @@ export default function Desktop() {
       <motion.div
         animate={{ x: [0, 40, 0], y: [0, -30, 0], scale: [1, 1.2, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[-10%] left-[20%] w-[500px] h-[500px] rounded-[4px]-[4px]-[4px]-full blur-[150px] pointer-events-none z-0 opacity-40"
+        className="absolute top-[-10%] left-[20%] w-[500px] h-[500px] rounded-full blur-[150px] pointer-events-none z-0 opacity-40"
         style={{ background: `radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%)` }}
       />
       <motion.div
         animate={{ x: [0, -30, 0], y: [0, 30, 0], scale: [1.1, 1, 1.1] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-15%] right-[10%] w-[600px] h-[600px] rounded-[4px]-[4px]-[4px]-full blur-[160px] pointer-events-none z-0 opacity-30"
+        className="absolute bottom-[-15%] right-[10%] w-[600px] h-[600px] rounded-full blur-[160px] pointer-events-none z-0 opacity-30"
         style={{ background: `radial-gradient(circle, rgba(201,154,46,0.15) 0%, transparent 70%)` }}
       />
       <motion.div
         animate={{ x: [0, 20, 0], y: [0, -15, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[50%] right-[30%] w-[300px] h-[300px] rounded-[4px]-[4px]-[4px]-full blur-[120px] pointer-events-none z-0 opacity-25"
+        className="absolute top-[50%] right-[30%] w-[300px] h-[300px] rounded-full blur-[120px] pointer-events-none z-0 opacity-25"
         style={{ background: `radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%)` }}
       />
 
@@ -68,7 +68,7 @@ export default function Desktop() {
         className="max-w-[1200px] w-full relative z-10"
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-4">
-          <div className="w-[4px] h-7 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD_MID}, ${GOLD})` }} />
+          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD_MID}, ${GOLD})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em] text-white">{t("Training Impact")}</h2>
         </motion.div>
         <motion.div variants={item} className="mb-12">
@@ -84,12 +84,12 @@ export default function Desktop() {
                 key={idx}
                 variants={item}
                 whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-                className="group rounded-[4px]-[4px]-[4px] p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out border border-white/[0.08] hover:border-white/[0.2]"
+                className="group rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out border border-white/[0.08] hover:border-white/[0.2]"
                 style={{ background: "rgba(255,255,255,0.04)", backdropFilter: "blur(20px)" }}
               >
                 
                 <div
-                  className="absolute -top-16 -right-16 w-40 h-40 rounded-[4px]-[4px]-[4px]-full opacity-0 group-hover:opacity-30 blur-[40px] transition-opacity duration-700 pointer-events-none"
+                  className="absolute -top-16 -right-16 w-40 h-40 rounded-full opacity-0 group-hover:opacity-30 blur-[40px] transition-opacity duration-700 pointer-events-none"
                   style={{ background: m.accent }}
                 />
                 <div
@@ -98,7 +98,7 @@ export default function Desktop() {
                 />
 
                 <div
-                  className="w-12 h-12 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shadow-lg mb-6 group-hover:scale-110 transition-transform duration-400"
+                  className="w-12 h-12 rounded flex items-center justify-center text-white shadow-lg mb-6 group-hover:scale-110 transition-transform duration-400"
                   style={{ background: m.accent }}
                 >
                   {m.icon}
@@ -119,7 +119,7 @@ export default function Desktop() {
 
                 <div className="mt-auto pt-4 border-t border-white/[0.08] flex items-center justify-between">
                   <span className="text-[10px] text-white/40 uppercase tracking-[0.15em] font-bold">{t("Source")}</span>
-                  <span className="text-[11px] text-white/60 font-semibold bg-white/[0.06] px-2.5 py-1 rounded-[4px]-[4px]-[4px]">{metric.source}</span>
+                  <span className="text-[11px] text-white/60 font-semibold bg-white/[0.06] px-2.5 py-1 rounded">{metric.source}</span>
                 </div>
               </motion.div>
             );
@@ -132,11 +132,11 @@ export default function Desktop() {
             <motion.div
               key={idx}
               variants={item}
-              className="group rounded-[4px]-[4px]-[4px] p-6 flex items-center justify-between relative overflow-hidden border border-white/[0.1] hover:border-white/[0.2] transition-all duration-400"
+              className="group rounded p-6 flex items-center justify-between relative overflow-hidden border border-white/[0.1] hover:border-white/[0.2] transition-all duration-400"
               style={{ background: `linear-gradient(135deg, rgba(201,154,46,0.08) 0%, rgba(201,154,46,0.02) 100%)` }}
             >
               <div
-                className="absolute -left-10 -top-10 w-32 h-32 rounded-[4px]-[4px]-[4px]-full blur-[40px] opacity-20 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none"
+                className="absolute -left-10 -top-10 w-32 h-32 rounded-full blur-[40px] opacity-20 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none"
                 style={{ background: GOLD }}
               />
               <div className="text-[14px] font-black text-white/70 uppercase tracking-[0.15em] relative z-10">{count.label}</div>

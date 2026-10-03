@@ -60,12 +60,12 @@ export default function Desktop() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/[0.03] to-transparent rounded-[4px]-full blur-[100px] pointer-events-none z-0"
+        className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#3B82F6]/[0.03] to-transparent rounded-full blur-[100px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[40%] right-[-5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-[4px]-full blur-[80px] pointer-events-none z-0"
+        className="absolute top-[40%] right-[-5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none z-0"
       ></motion.div>
       <div className="max-w-[1320px] mx-auto px-12 relative z-10">
         <motion.div
@@ -77,7 +77,7 @@ export default function Desktop() {
         >
           <motion.div variants={item} className="mb-5">
             <span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[4px]-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
               style={{ color: GOLD }}
             >
               <Sparkles size={14} />
@@ -100,7 +100,7 @@ export default function Desktop() {
           className="relative flex items-start justify-between gap-6"
         >
           <div className="absolute top-[45px] -translate-y-1/2 left-8 right-2 h-[44px] z-0 pointer-events-none flex items-center">
-            <div className="flex-1 h-[40px] bg-gradient-to-r from-white/90 via-[#F1F5F9]/80 to-white/90 border-y border-[#C99A2E]/30 backdrop-blur-md relative overflow-hidden rounded-[4px]-l-full shadow-[0_4px_16px_rgba(201,154,46,0.08)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
+            <div className="flex-1 h-[40px] bg-gradient-to-r from-white/90 via-[#F1F5F9]/80 to-white/90 border-y border-[#C99A2E]/30 backdrop-blur-md relative overflow-hidden rounded-l-full shadow-[0_4px_16px_rgba(201,154,46,0.08)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C99A2E]/35 to-transparent w-1/3"
                 animate={{ x: ["-100%", "350%"] }}
@@ -117,7 +117,7 @@ export default function Desktop() {
           {[20, 40, 60, 80].map((leftPos, i) => (
             <div
               key={i}
-              className="absolute top-[45px] -translate-y-1/2 -translate-x-1/2 z-[5] pointer-events-none flex items-center justify-center bg-white/95 border border-[#C99A2E]/40 rounded-[4px]-full py-1.5 px-3 shadow-[0_4px_12px_rgba(201,154,46,0.18)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+              className="absolute top-[45px] -translate-y-1/2 -translate-x-1/2 z-[5] pointer-events-none flex items-center justify-center bg-white/95 border border-[#C99A2E]/40 rounded-full py-1.5 px-3 shadow-[0_4px_12px_rgba(201,154,46,0.18)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               style={{ left: `${leftPos}%` }}
             >
               <motion.div
@@ -154,9 +154,9 @@ export default function Desktop() {
               variants={item}
               className="flex-1 flex flex-col items-center text-center relative z-10 group"
             >
-              <div className="w-[90px] h-[90px] rounded-[4px]-full bg-white/60 backdrop-blur-sm border border-[#0B1D3A]/5 flex items-center justify-center mb-8 luxury-shadow-float group-hover:luxury-shadow-float group-hover:-translate-y-2 transition-all duration-400 relative">
-                <div className="absolute inset-0 rounded-[4px]-full border border-transparent group-hover:border-[#C99A2E]/30 transition-colors duration-400 scale-[1.1]"></div>
-                <div className="w-[70px] h-[70px] rounded-[4px]-full bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] flex items-center justify-center shadow-inner relative overflow-hidden">
+              <div className="w-[90px] h-[90px] rounded-full bg-white/60 backdrop-blur-sm border border-[#0B1D3A]/5 flex items-center justify-center mb-8 luxury-shadow-float group-hover:luxury-shadow-float group-hover:-translate-y-2 transition-all duration-400 relative">
+                <div className="absolute inset-0 rounded-full border border-transparent group-hover:border-[#C99A2E]/30 transition-colors duration-400 scale-[1.1]"></div>
+                <div className="w-[70px] h-[70px] rounded-full bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] flex items-center justify-center shadow-inner relative overflow-hidden">
                   <div className="absolute inset-0 bg-white/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500"></div>
                   <span className="text-white text-[28px] font-bold font-serif relative z-10">
                     {step.number}
@@ -184,7 +184,7 @@ export default function Desktop() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: false, margin: "-100px" }}
-              className="bg-white/90 backdrop-blur-xl px-8 py-5 rounded-[4px]-[4px] border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-wrap items-center justify-center gap-3 md:gap-4 relative z-10"
+              className="bg-white/90 backdrop-blur-xl px-8 py-5 rounded border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-wrap items-center justify-center gap-3 md:gap-4 relative z-10"
             >
               {data.journeyLabel.split(" → ").map((label, idx, arr) => {
                 const isActive = activeStep === idx;
@@ -197,7 +197,7 @@ export default function Desktop() {
                         isActive ? { scale: 1.06, y: -2 } : { scale: 1, y: 0 }
                       }
                       transition={{ duration: 0.35, ease: "easeOut" }}
-                      className={`flex items-center gap-2.5 px-4 py-2 rounded-[4px]-full border transition-all duration-300 cursor-default select-none ${
+                      className={`flex items-center gap-2.5 px-4 py-2 rounded-full border transition-all duration-300 cursor-default select-none ${
                         isActive
                           ? "bg-[#0B1D3A] text-white border-[#C99A2E]/60 luxury-shadow-float"
                           : "bg-[#F8FAFD] text-[#475569] border-[#0B1D3A]/[0.06] hover:border-[#C99A2E]/40 hover:text-[#0B1D3A]"
@@ -205,10 +205,10 @@ export default function Desktop() {
                     >
                       <span className="relative flex h-2 w-2">
                         {isActive && (
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-[4px]-full bg-[#C99A2E] opacity-75"></span>
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C99A2E] opacity-75"></span>
                         )}
                         <span
-                          className="relative inline-flex rounded-[4px]-full h-2 w-2"
+                          className="relative inline-flex rounded-full h-2 w-2"
                           style={{
                             backgroundColor: isActive
                               ? GOLD

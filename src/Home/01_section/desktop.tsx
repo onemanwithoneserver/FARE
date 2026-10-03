@@ -53,18 +53,18 @@ export default function Desktop() {
     <section
       className="w-full flex items-center justify-center overflow-x-clip relative font-['Outfit'] pb-16 fare-noise-overlay"
       style={{
-        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
+        background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)`,
       }}
     >
-      <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[100px] pointer-events-none z-0"></div>
-      <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-[4px]-[4px]-[4px]-full blur-[90px] pointer-events-none z-0"></div>
+      <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
+      <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[90px] pointer-events-none z-0"></div>
       
       <motion.div 
-        className="absolute top-[15%] left-[25%] w-2 h-2 rounded-[4px]-[4px]-[4px]-full bg-[#C99A2E] blur-[1px] animate-float-delayed z-0 pointer-events-none"
+        className="absolute top-[15%] left-[25%] w-2 h-2 rounded-full bg-[#C99A2E] blur-[1px] animate-float-delayed z-0 pointer-events-none"
         style={{ boxShadow: '0 0 10px rgba(201,154,46,0.6)' }}
       />
       <motion.div 
-        className="absolute bottom-[20%] right-[30%] w-1.5 h-1.5 rounded-[4px]-[4px]-[4px]-full bg-[#6366F1] blur-[1px] animate-float-delayed-2 z-0 pointer-events-none"
+        className="absolute bottom-[20%] right-[30%] w-1.5 h-1.5 rounded-full bg-[#6366F1] blur-[1px] animate-float-delayed-2 z-0 pointer-events-none"
         style={{ boxShadow: '0 0 8px rgba(99,102,241,0.6)' }}
       />
       <svg
@@ -139,10 +139,10 @@ export default function Desktop() {
           </motion.div>
           <motion.div variants={item} className="flex items-center gap-4 mb-6">
             <button
-              className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-[8px] hover:luxury-shadow-float transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out relative overflow-hidden group cursor-pointer"
+              className="text-white text-[13.5px] font-semibold px-7 py-3.5 rounded hover:luxury-shadow-float transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out relative overflow-hidden group cursor-pointer"
               style={{
                 background: NAVY,
-                boxShadow: `0 4px 16px rgba(11,29,58,0.2), 0 2px 4px rgba(0,0,0,0.1)`,
+                boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`,
               }}
             >
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
@@ -154,12 +154,15 @@ export default function Desktop() {
             </button>
             <button
               onClick={() => setIsVideoModalOpen(true)}
-              className="text-[14px] font-semibold px-7 py-3.5 rounded-[4px]-[4px]-[4px]-[8px] border border-[#0B1D3A]/15 bg-white hover:bg-[#F8FAFD] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out cursor-pointer group hover:shadow-[0_4px_12px_rgba(11,29,58,0.05)]"
+              className="text-[13.5px] font-semibold px-7 py-3.5 rounded hover:bg-[#F8FAFD] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out cursor-pointer group hover:shadow-[0_4px_12px_rgba(11,29,58,0.05)]"
               style={{
                 color: NAVY,
+                borderColor: `${NAVY}15`,
+                background: "white",
+                boxShadow: "0 1px 3px rgba(11,29,58,0.03)",
               }}
             >
-              <div className="w-5 h-5 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center transition-colors duration-300 group-hover:bg-[#C99A2E]/10 bg-[#0B1D3A]/5">
+              <div className="w-5 h-5 rounded-full flex items-center justify-center transition-colors duration-300 group-hover:bg-[#C99A2E]/10 bg-[#0B1D3A]/5">
                 <Play size={10} className="ml-[1px] transition-colors duration-300 group-hover:text-[#C99A2E] text-[#0B1D3A]" fill="currentColor" />
               </div>
               <span>{data.buttons.secondary}</span>
@@ -172,10 +175,10 @@ export default function Desktop() {
             {data.capabilities.map((cap, i) => (
               <div
                 key={i}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-[4px]-[4px]-[4px]-full bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_6px_rgba(11,29,58,0.03)] text-[#0B1D3A]/80 text-[11.5px] font-semibold"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_6px_rgba(11,29,58,0.03)] text-[#0B1D3A]/80 text-[11.5px] font-semibold"
               >
                 <span
-                  className="w-1.5 h-1.5 rounded-[4px]-[4px]-[4px]-full"
+                  className="w-1.5 h-1.5 rounded-full"
                   style={{ background: GOLD }}
                 ></span>
                 <span>{cap}</span>
@@ -193,7 +196,7 @@ export default function Desktop() {
             whileHover={{ scale: 1.01, rotateY: 2, rotateX: 1, y: -5 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative w-full max-w-[780px] safari-shadow rounded-[4px]-[4px]-[4px] overflow-hidden bg-white/80 backdrop-blur-md"
+            className="relative w-full max-w-[780px] safari-shadow rounded overflow-hidden bg-white/80 backdrop-blur-md"
             style={{
               transformPerspective: 2000,
               border: "1px solid rgba(11, 29, 58, 0.08)",
@@ -204,15 +207,15 @@ export default function Desktop() {
             <div className="glass-safari border-b border-black/[0.06]">
               <div className="h-[38px] w-full flex items-center px-4 gap-3">
                 <div className="flex items-center gap-[7px]">
-                  <div className="w-[11px] h-[11px] rounded-[4px]-[4px]-[4px]-full bg-[#FF5F56] border border-[#E0443E]"></div>
-                  <div className="w-[11px] h-[11px] rounded-[4px]-[4px]-[4px]-full bg-[#FEBC2E] border border-[#D89E24]"></div>
-                  <div className="w-[11px] h-[11px] rounded-[4px]-[4px]-[4px]-full bg-[#27C840] border border-[#1AAB29]"></div>
+                  <div className="w-[11px] h-[11px] rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
+                  <div className="w-[11px] h-[11px] rounded-full bg-[#FEBC2E] border border-[#D89E24]"></div>
+                  <div className="w-[11px] h-[11px] rounded-full bg-[#27C840] border border-[#1AAB29]"></div>
                 </div>
                 <div className="flex items-center gap-1 ml-2 text-[#999]">
                   <ChevronLeft size={13} strokeWidth={2} />
                   <ChevronRight size={13} strokeWidth={2} />
                 </div>
-                <div className="flex-1 mx-3 bg-white/80 border border-[#e5e5ea] rounded-[4px]-[4px]-[4px] px-3 py-[3px] flex items-center justify-center gap-1.5 text-[10px] font-medium text-[#666] shadow-[inset_0_0.5px_1px_rgba(0,0,0,0.04)]">
+                <div className="flex-1 mx-3 bg-white/80 border border-[#e5e5ea] rounded px-3 py-[3px] flex items-center justify-center gap-1.5 text-[10px] font-medium text-[#666] shadow-[inset_0_0.5px_1px_rgba(0,0,0,0.04)]">
                   <Lock size={9} strokeWidth={2.5} className="text-[#999]" />
                   <span>{data.dashboard.url}</span>
                 </div>
@@ -268,7 +271,7 @@ export default function Desktop() {
                 </div>
                 <div className="px-4 flex items-center gap-2.5 pt-3 border-t border-white/[0.06]">
                   <div
-                    className="w-7 h-7 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center font-bold text-[9px]"
+                    className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-[9px]"
                     style={{ background: GOLD, color: NAVY_DEEP }}
                   >
                     {data.dashboard.userInitials}
@@ -309,7 +312,7 @@ export default function Desktop() {
                         strokeWidth={2}
                       />
                       <div
-                        className="w-7 h-7 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center font-bold text-[9px]"
+                        className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-[9px]"
                         style={{
                           background: NAVY,
                           color: "white",
@@ -341,7 +344,7 @@ export default function Desktop() {
                     <h3 className="text-[9px] font-bold text-white/30 tracking-[0.15em] uppercase">
                       Upcoming Schedule
                     </h3>
-                    <button className="text-[9px] font-semibold text-white/40 hover:text-white/60 transition-colors flex items-center gap-1 border border-white/[0.08] px-2.5 py-1 rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
+                    <button className="text-[9px] font-semibold text-white/40 hover:text-white/60 transition-colors flex items-center gap-1 border border-white/[0.08] px-2.5 py-1 rounded-sm hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
                       View All <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${8}px` }}>
       <ChevronRight size={8} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
       <ArrowRight size={8} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
@@ -352,7 +355,7 @@ export default function Desktop() {
                     {data.dashboard.upcoming.map((u, i) => (
                       <div key={i} className="flex items-center gap-3">
                         <div
-                          className="w-[6px] h-[6px] rounded-[4px]-[4px]-[4px]-full"
+                          className="w-[6px] h-[6px] rounded-full"
                           style={{ background: u.color }}
                         ></div>
                         <div>
@@ -380,9 +383,9 @@ export default function Desktop() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="fare-glass-card floating-card-shadow rounded-[4px]-[4px]-[4px] p-3.5 flex items-center gap-3 shadow-lg"
+              className="fare-glass-card floating-card-shadow rounded p-3.5 flex items-center gap-3 shadow-lg"
             >
-              <div className="w-9 h-9 rounded-[4px]-[4px]-[4px] bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-sm">
+              <div className="w-9 h-9 rounded bg-gradient-to-br from-[#6B8AFF] to-[#3B63E1] flex items-center justify-center text-white shadow-sm">
                 <BookOpen size={17} strokeWidth={2.5} />
               </div>
               <div>
@@ -416,9 +419,9 @@ export default function Desktop() {
                 ease: "easeInOut",
                 delay: 1,
               }}
-              className="fare-glass-card floating-card-shadow rounded-[4px]-[4px]-[4px] p-3.5 flex items-center gap-3"
+              className="fare-glass-card floating-card-shadow rounded p-3.5 flex items-center gap-3"
             >
-              <div className="w-9 h-9 rounded-[4px]-[4px]-[4px] bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-sm">
+              <div className="w-9 h-9 rounded bg-gradient-to-br from-[#34D399] to-[#059669] flex items-center justify-center text-white shadow-sm">
                 <Target size={17} strokeWidth={2.5} />
               </div>
               <div>
@@ -455,10 +458,10 @@ export default function Desktop() {
                 ease: "easeInOut",
                 delay: 1.5,
               }}
-              className="fare-glass-card floating-card-shadow rounded-[4px]-[4px]-[4px] p-3.5 flex items-center gap-3"
+              className="fare-glass-card floating-card-shadow rounded p-3.5 flex items-center gap-3"
             >
               <div
-                className="w-9 h-9 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shadow-sm"
+                className="w-9 h-9 rounded flex items-center justify-center text-white shadow-sm"
                 style={{
                   background: `linear-gradient(135deg, ${GOLD} 0%, ${GOLD_MID} 100%)`,
                 }}
@@ -522,7 +525,7 @@ function SidebarItem({
 }) {
   return (
     <div
-      className={`px-3 py-1.5 rounded-[4px]-[4px]-[4px] flex items-center gap-2.5 text-[10.5px] font-medium cursor-pointer transition-colors duration-200 ${
+      className={`px-3 py-1.5 rounded-sm flex items-center gap-2.5 text-[10.5px] font-medium cursor-pointer transition-colors duration-200 ${
         active ? "font-semibold" : "text-white/50 hover:text-white/70"
       }`}
       style={
@@ -560,7 +563,7 @@ function DashCard({
 }) {
   return (
     <div
-      className="rounded-[4px]-[4px]-[4px] p-3.5"
+      className="rounded-sm p-3.5"
       style={{
         background: `rgba(255,255,255,0.04)`,
         border: "1px solid rgba(255,255,255,0.06)",
@@ -582,11 +585,11 @@ function DashCard({
         <span className="text-[8px] text-white/25 font-medium">progress</span>
       </div>
       <div
-        className="w-full h-[3px] rounded-[4px]-[4px]-[4px]-full overflow-hidden"
+        className="w-full h-[3px] rounded-full overflow-hidden"
         style={{ background: "rgba(255,255,255,0.06)" }}
       >
         <div
-          className="h-full rounded-[4px]-[4px]-[4px]-full transition-all duration-700"
+          className="h-full rounded-full transition-all duration-700"
           style={{ width: `${progress}%`, background: progressColor }}
         ></div>
       </div>

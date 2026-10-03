@@ -42,8 +42,8 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
 
   return (
     <div className="w-full min-h-screen bg-[#0B1D3A]/[0.02] flex flex-col font-['Outfit'] relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#8B5CF6]/5 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[100px] pointer-events-none z-0 fixed" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[100px] pointer-events-none z-0 fixed" />
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#8B5CF6]/5 to-transparent rounded-full blur-[100px] pointer-events-none z-0 fixed" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-full blur-[100px] pointer-events-none z-0 fixed" />
 
       
       <motion.div
@@ -61,7 +61,7 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
         <div className="flex items-center gap-4">
           <button
             onClick={onBack}
-            className="flex items-center justify-center w-8 h-8 rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px] transition-all duration-300 hover:bg-white/10 active:scale-95"
+            className="flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 hover:bg-white/10 active:scale-95"
             style={{
               background: "rgba(255,255,255,0.05)",
               border: "1px solid rgba(255,255,255,0.08)",
@@ -92,7 +92,7 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
               {t("Rajesh Kumar")}
               
               <span
-                className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-[4px]-[4px]-[4px]-full"
+                className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full"
                 style={{
                   background: `linear-gradient(90deg, ${GOLD_MID}, ${GOLD}80, transparent)`,
                 }}
@@ -103,14 +103,14 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
 
         
         <div
-          className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-[4px]-[4px]-[4px]-full text-[10px] font-bold uppercase tracking-[0.15em]"
+          className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.15em]"
           style={{
             background: `rgba(201,154,46,0.08)`,
             border: `1px solid ${GOLD}20`,
             color: `${GOLD_MID}`,
           }}
         >
-          <span className="w-1.5 h-1.5 rounded-[4px]-[4px]-[4px]-full animate-pulse" style={{ background: GOLD_MID }} />
+          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: GOLD_MID }} />
           {t("Trainer Profile")}
         </div>
       </motion.div>

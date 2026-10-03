@@ -45,14 +45,14 @@ function AvailabilityPill({ value }: { value: Trainer["availability"] }) {
   const s = AVAILABILITY_STYLES[value];
   return (
     <span
-      className="inline-flex items-center gap-1.5 h-6 px-2.5 rounded-[4px]-[4px]-[4px]-full text-[10.5px] font-bold tracking-wide whitespace-nowrap"
+      className="inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full text-[10.5px] font-bold tracking-wide whitespace-nowrap"
       style={{ background: s.bg, color: s.text }}
     >
       <span className="relative flex w-1.5 h-1.5">
         {value === "Available" && (
-          <span className="absolute inline-flex w-full h-full rounded-[4px]-[4px]-[4px]-full opacity-60 animate-ping" style={{ background: s.dot }} />
+          <span className="absolute inline-flex w-full h-full rounded-full opacity-60 animate-ping" style={{ background: s.dot }} />
         )}
-        <span className="relative inline-flex w-1.5 h-1.5 rounded-[4px]-[4px]-[4px]-full" style={{ background: s.dot }} />
+        <span className="relative inline-flex w-1.5 h-1.5 rounded-full" style={{ background: s.dot }} />
       </span>
       {translateDirectoryText(s.label, language)}
     </span>
@@ -108,7 +108,7 @@ function TrainerPhotoHero({
             aria-label={`${t("Play introduction video")}: ${trainer.name}`}
             className="absolute inset-0 z-10 flex items-center justify-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D5AA45]"
           >
-            <span className="flex h-12 w-12 items-center justify-center rounded-[4px]-[4px]-[4px]-full bg-white/90 text-[#0B1D3A] shadow-[0_8px_24px_-6px_rgba(0,0,0,0.5)] ring-4 ring-white/25 transition-transform group-hover:scale-110">
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[#0B1D3A] shadow-[0_8px_24px_-6px_rgba(0,0,0,0.5)] ring-4 ring-white/25 transition-transform group-hover:scale-110">
               <Play size={18} fill="currentColor" className="ml-0.5" />
             </span>
           </button>
@@ -122,7 +122,7 @@ function TrainerPhotoHero({
           type="button"
           onClick={onToggleIntroVideo}
           aria-label={t("Close video")}
-          className="absolute right-3 top-3 z-20 rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-full bg-black/65 p-2 text-white shadow"
+          className="absolute right-3 top-3 z-20 rounded-full bg-black/65 p-2 text-white shadow"
         >
           <X size={16} />
         </button>
@@ -133,8 +133,8 @@ function TrainerPhotoHero({
 
 function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) {
   return (
-    <div className="relative shrink-0     rounded-[4px]-[4px]-[4px]-[4px] bg-white p-0.5 shadow-[0_12px_28px_-10px_rgba(11,29,58,0.5)] ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
-          <div className="h-full w-full overflow-hidden rounded-[4px]-[4px]-[4px]-[2px] bg-[#0B1D3A]">
+    <div className="relative shrink-0     rounded-[4px] bg-white p-0.5 shadow-[0_12px_28px_-10px_rgba(11,29,58,0.5)] ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
+          <div className="h-full w-full overflow-hidden rounded-[2px] bg-[#0B1D3A]">
         {trainer.image ? (
           <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
         ) : (
@@ -144,7 +144,7 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
         )}
       </div>
       {trainer.verified && (
-        <span className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-[4px]-[4px]-[4px]-full bg-[#2563EB] shadow-sm ring-1 ring-white">
+        <span className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-[#2563EB] shadow-sm ring-1 ring-white">
           <BadgeCheck size={13} strokeWidth={2.8} style={{ color: "#FFFFFF" }} />
         </span>
       )}
@@ -159,7 +159,7 @@ function Actions({ onViewProfile, onRequest, requested }: { onViewProfile: () =>
     <div className="flex items-center gap-2 justify-between mt-2">
       <button
         onClick={onViewProfile}
-        className="group/vp px-4 h-9 rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-[8px] text-[12.5px] font-bold flex items-center justify-center gap-1 text-white transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] hover:shadow-[0_12px_24px_-8px_rgba(11,29,58,0.6)]"
+        className="group/vp px-4 h-9 rounded-lg text-[12.5px] font-bold flex items-center justify-center gap-1 text-white transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] hover:shadow-[0_12px_24px_-8px_rgba(11,29,58,0.6)]"
         style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
       >
         {t("View Profile")}
@@ -180,7 +180,7 @@ function Actions({ onViewProfile, onRequest, requested }: { onViewProfile: () =>
 
       <button
         onClick={() => !requested && onRequest?.()}
-        className={`group/rq px-4 h-9 rounded-[4px]-[4px]-[4px]-[8px] text-[12.5px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
+        className={`group/rq px-4 h-9 rounded-lg text-[12.5px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
           requested
             ? "bg-[#E7F7F0] border border-[#059669]/30 text-[#059669] cursor-default"
             : "relative overflow-hidden border border-[#C99A2E]/40 bg-[#FBF4E4] hover:bg-gradient-to-br hover:from-[#D5AA45] hover:to-[#C99A2E] hover:border-transparent hover:shadow-[0_8px_18px_-8px_rgba(201,154,46,0.7)] active:scale-[0.98] text-[#0B1D3A]"
@@ -211,13 +211,13 @@ function ExpertiseTags({ trainer, max = 2 }: { trainer: Trainer; max?: number })
       {trainer.expertise.slice(0, max).map((e) => (
         <span
           key={e}
-          className="text-[11px] font-semibold px-2.5 py-1 rounded-[4px]-[4px]-[4px]-full bg-[#FBF4E4] text-[#8A6516] border border-[#C99A2E]/20 whitespace-nowrap truncate max-w-[60%]"
+          className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#FBF4E4] text-[#8A6516] border border-[#C99A2E]/20 whitespace-nowrap truncate max-w-[60%]"
         >
           {translateDirectoryText(e, language)}
         </span>
       ))}
       {trainer.expertise.length > max && (
-        <span className="shrink-0 text-[11px] font-semibold px-2.5 py-1 rounded-[4px]-[4px]-[4px]-full bg-[#F1F4F9] text-[#5A6B82]">
+        <span className="shrink-0 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#F1F4F9] text-[#5A6B82]">
           +{trainer.expertise.length - max}
         </span>
       )}
@@ -234,10 +234,10 @@ function TrainerStats({ trainer }: { trainer: Trainer }) {
   ];
 
   return (
-    <div className="grid grid-cols-3 rounded-[4px]-[4px]-[4px]-[4px] border border-[#0B1D3A]/[0.06] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
+    <div className="grid grid-cols-3 rounded-lg border border-[#0B1D3A]/[0.06] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
       {stats.map((stat) => (
         <div key={stat.label} className="flex items-center justify-center gap-2 py-2.5">
-          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[4px]-[4px]-[4px]-[4px] shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
             {stat.icon}
           </span>
           <span className="min-w-0">
@@ -256,7 +256,7 @@ function SegmentLine({ trainer }: { trainer: Trainer }) {
     <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold text-[#475569]">
       {trainer.segments.map((segment, index) => (
         <span key={segment} className="inline-flex items-center gap-2">
-          {index > 0 && <span className="h-1 w-1 rounded-[4px]-[4px]-[4px]-full bg-[#C99A2E]" />}
+          {index > 0 && <span className="h-1 w-1 rounded-full bg-[#C99A2E]" />}
           {translateDirectoryText(segment, language)}
         </span>
       ))}
@@ -265,7 +265,7 @@ function SegmentLine({ trainer }: { trainer: Trainer }) {
 }
 
 const cardShell =
-  "group relative h-full bg-white rounded-[4px]-[4px]-[4px]-[4px] font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] hover:shadow-[0_4px_10px_-4px_rgba(11,29,58,0.08),0_28px_56px_-18px_rgba(11,29,58,0.25)] hover:border-[#C99A2E]/35 transition-[box-shadow,border-color] duration-500 overflow-hidden";
+  "group relative h-full bg-white rounded-2xl font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] hover:shadow-[0_4px_10px_-4px_rgba(11,29,58,0.08),0_28px_56px_-18px_rgba(11,29,58,0.25)] hover:border-[#C99A2E]/35 transition-[box-shadow,border-color] duration-500 overflow-hidden";
 
 export default function Desktop({ trainer, onViewProfile }: TrainerCardProps) {
   const { language } = useLanguage();
@@ -291,7 +291,7 @@ export default function Desktop({ trainer, onViewProfile }: TrainerCardProps) {
         <div className="-mt-[64px] mb-3 relative z-10 flex items-end gap-4">
           <TrainerPortrait trainer={trainer} size={128} />
           <div className="min-w-0 flex-1 pb-0.5">
-            <span className="inline-flex items-center gap-1 rounded-[4px]-[4px]-[4px]-full bg-[#F1F5F9] px-2 py-0.5 text-[10.5px] font-semibold text-[#5A6B82]">
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#F1F5F9] px-2 py-0.5 text-[10.5px] font-semibold text-[#5A6B82]">
               <MapPin size={11} strokeWidth={2.5} style={{ color: GOLD }} />
               {t(trainer.location.split(",")[0])}
             </span>

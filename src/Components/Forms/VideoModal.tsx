@@ -248,7 +248,7 @@ export default function VideoModal({
             }}
             onMouseMove={resetControlsTimeout}
             onTouchStart={resetControlsTimeout}
-            className={`relative z-10 aspect-[9/16] bg-black rounded-[4px]-[4px]-[4px]-[4px] luxury-shadow-float overflow-hidden flex flex-col items-center justify-center group border border-white/15 ${
+            className={`relative z-10 aspect-[9/16] bg-black rounded-[4px] luxury-shadow-float overflow-hidden flex flex-col items-center justify-center group border border-white/15 ${
               isFullscreen
                 ? "h-full max-h-screen w-auto max-w-[100vw] my-auto"
                 : "w-full max-w-[380px] sm:max-w-[400px] md:max-w-[420px] max-h-[88vh]"
@@ -262,7 +262,7 @@ export default function VideoModal({
               onTimeUpdate={handleTimeUpdate}
               onLoadedMetadata={handleLoadedMetadata}
               onClick={togglePlay}
-              className="w-full h-full object-cover cursor-pointer rounded-[4px]-[4px]-[4px]-[4px]"
+              className="w-full h-full object-cover cursor-pointer rounded-[4px]"
             />
 
             <AnimatePresence>
@@ -272,7 +272,7 @@ export default function VideoModal({
                   animate={{ opacity: 1, scale: 1.15 }}
                   exit={{ opacity: 0, scale: 1.4 }}
                   transition={{ duration: 0.4 }}
-                  className="absolute inset-0 m-auto w-16 h-16 rounded-[4px]-[4px]-[4px]-[4px] bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white pointer-events-none shadow-2xl z-30"
+                  className="absolute inset-0 m-auto w-16 h-16 rounded-[4px] bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white pointer-events-none shadow-2xl z-30"
                 >
                   {showCenterFeedback === "play" ? (
                     <Play size={28} className="text-[#E2C068] fill-[#E2C068] ml-0.5" />
@@ -288,7 +288,7 @@ export default function VideoModal({
                 showControls ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
               }`}
             >
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-[4px]-[4px]-[4px]-[4px] bg-white/10 backdrop-blur-md border border-white/15 shadow-sm">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] bg-white/10 backdrop-blur-md border border-white/15 shadow-sm">
                 <Sparkles size={13} className="text-[#E2C068]" />
                 <span className="text-[11.5px] font-bold text-white tracking-wide">
                   {title}
@@ -301,7 +301,7 @@ export default function VideoModal({
                     onClick={toggleFullscreen}
                     aria-label="Exit Fullscreen"
                     title="Exit Fullscreen (F)"
-                    className="w-8 h-8 flex items-center justify-center rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-[4px] bg-black/40 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/20 shadow-md cursor-pointer hover:scale-105 active:scale-95"
+                    className="w-8 h-8 flex items-center justify-center rounded-[4px] bg-black/40 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/20 shadow-md cursor-pointer hover:scale-105 active:scale-95"
                   >
                     <Minimize size={16} />
                   </button>
@@ -310,7 +310,7 @@ export default function VideoModal({
                   onClick={onClose}
                   aria-label="Close video"
                   title="Close (Esc)"
-                  className="w-8 h-8 flex items-center justify-center rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-[4px] bg-black/40 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/20 shadow-md cursor-pointer hover:scale-105 active:scale-95"
+                  className="w-8 h-8 flex items-center justify-center rounded-[4px] bg-black/40 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/20 shadow-md cursor-pointer hover:scale-105 active:scale-95"
                 >
                   <X size={16} />
                 </button>
@@ -325,7 +325,7 @@ export default function VideoModal({
                   exit={{ opacity: 0, scale: 0.8 }}
                   onClick={togglePlay}
                   aria-label="Play video"
-                  className="absolute inset-0 m-auto w-16 h-16 rounded-[4px]-[4px]-[4px]-[4px] bg-[#0B1D3A]/85 hover:bg-[#0B1D3A] text-white backdrop-blur-md border border-[#E2C068]/40 flex items-center justify-center luxury-shadow-float z-30 cursor-pointer hover:scale-110 active:scale-95 transition-transform"
+                  className="absolute inset-0 m-auto w-16 h-16 rounded-[4px] bg-[#0B1D3A]/85 hover:bg-[#0B1D3A] text-white backdrop-blur-md border border-[#E2C068]/40 flex items-center justify-center luxury-shadow-float z-30 cursor-pointer hover:scale-110 active:scale-95 transition-transform"
                 >
                   <Play size={26} className="text-[#E2C068] fill-[#E2C068] ml-0.5" />
                 </motion.button>
@@ -342,12 +342,12 @@ export default function VideoModal({
                 onClick={handleSeek}
                 className="w-full py-1 cursor-pointer group/bar flex items-center"
               >
-                <div className="w-full h-1 group-hover/bar:h-2 bg-white/25 rounded-[4px]-[4px]-[4px]-[2px] overflow-hidden relative transition-all duration-200">
+                <div className="w-full h-1 group-hover/bar:h-2 bg-white/25 rounded-[2px] overflow-hidden relative transition-all duration-200">
                   <div
-                    className="h-full bg-gradient-to-r from-[#C99A2E] via-[#F3D37F] to-[#E2C068] rounded-[4px]-[4px]-[4px]-[2px] relative"
+                    className="h-full bg-gradient-to-r from-[#C99A2E] via-[#F3D37F] to-[#E2C068] rounded-[2px] relative"
                     style={{ width: `${progress}%` }}
                   >
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-[4px]-[4px]-[4px]-[2px] bg-white shadow-md opacity-0 group-hover/bar:opacity-100 transition-opacity" />
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-[2px] bg-white shadow-md opacity-0 group-hover/bar:opacity-100 transition-opacity" />
                   </div>
                 </div>
               </div>
@@ -357,7 +357,7 @@ export default function VideoModal({
                   <button
                     onClick={togglePlay}
                     aria-label={isPlaying ? "Pause" : "Play"}
-                    className="w-7 h-7 flex items-center justify-center rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-[4px] hover:bg-white/15 text-white transition-colors cursor-pointer"
+                    className="w-7 h-7 flex items-center justify-center rounded-[4px] hover:bg-white/15 text-white transition-colors cursor-pointer"
                   >
                     {isPlaying ? <Pause size={16} /> : <Play size={16} className="fill-white" />}
                   </button>
@@ -366,7 +366,7 @@ export default function VideoModal({
                     onClick={handleRestart}
                     aria-label="Restart video"
                     title="Restart"
-                    className="w-7 h-7 flex items-center justify-center rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-[4px] hover:bg-white/15 text-white/80 hover:text-white transition-colors cursor-pointer"
+                    className="w-7 h-7 flex items-center justify-center rounded-[4px] hover:bg-white/15 text-white/80 hover:text-white transition-colors cursor-pointer"
                   >
                     <RotateCcw size={14} />
                   </button>
@@ -380,7 +380,7 @@ export default function VideoModal({
                   <button
                     onClick={toggleMute}
                     aria-label={isMuted ? "Unmute" : "Mute"}
-                    className="w-7 h-7 flex items-center justify-center rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-[4px] hover:bg-white/15 text-white transition-colors cursor-pointer"
+                    className="w-7 h-7 flex items-center justify-center rounded-[4px] hover:bg-white/15 text-white transition-colors cursor-pointer"
                   >
                     {isMuted ? <VolumeX size={16} className="text-red-400" /> : <Volume2 size={16} />}
                   </button>
@@ -389,7 +389,7 @@ export default function VideoModal({
                     onClick={toggleFullscreen}
                     aria-label={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
                     title={isFullscreen ? "Exit Fullscreen (F)" : "Fullscreen (F)"}
-                    className="w-7 h-7 flex items-center justify-center rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-[4px] hover:bg-white/15 text-white transition-colors cursor-pointer"
+                    className="w-7 h-7 flex items-center justify-center rounded-[4px] hover:bg-white/15 text-white transition-colors cursor-pointer"
                   >
                     {isFullscreen ? <Minimize size={15} /> : <Maximize size={15} />}
                   </button>

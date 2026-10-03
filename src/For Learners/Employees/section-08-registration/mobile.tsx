@@ -15,9 +15,9 @@ export default function Mobile() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
-          className="bg-[#0B1D3A] rounded-[4px]-[4px] p-8 text-center relative overflow-hidden shadow-lg"
+          className="bg-[#0B1D3A] rounded-[4px] p-8 text-center relative overflow-hidden shadow-lg"
         >
-          <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-[4px]-full blur-[40px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
+          <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[40px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
           
           <div className="relative z-10">
             <h2 className="text-[1.75rem] font-black text-white tracking-tight leading-tight mb-3">
@@ -31,11 +31,11 @@ export default function Mobile() {
             </p>
             
             <div className="flex flex-col gap-3.5 mb-8">
-              <button className="w-full py-3.5 bg-[#C99A2E] text-[#0B1D3A] rounded-[4px]-[8px]-[8px] font-bold text-[14px] shadow-md flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+              <button className="w-full py-3.5 bg-[#C99A2E] text-[#0B1D3A] rounded-[8px] font-bold text-[14px] shadow-md flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
                 <FileText size={16} strokeWidth={2.5} />
                 {data.buttons.primary}
               </button>
-              <button className="w-full py-3.5 bg-white/10 text-white border border-white/20 rounded-[4px]-[8px]-[8px] font-bold text-[14px] flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+              <button className="w-full py-3.5 bg-white/10 text-white border border-white/20 rounded-[8px] font-bold text-[14px] flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
                 {data.buttons.secondary}
                 <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${16}px` }}>
       <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />

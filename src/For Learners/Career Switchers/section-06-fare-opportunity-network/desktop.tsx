@@ -62,9 +62,9 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-[#F8FAFD] p-8 rounded-[4px]-[4px] border border-[#E2E8F0] shadow-[0_2px_12px_rgba(11,29,58,0.02)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
+                className="bg-[#F8FAFD] p-8 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_12px_rgba(11,29,58,0.02)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
               >
-                <div className={`w-14 h-14 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-105 transition-transform duration-300`}>
+                <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-105 transition-transform duration-300`}>
                   <Icon size={26} className="text-white" strokeWidth={2.5} />
                 </div>
                 
@@ -79,7 +79,7 @@ export default function Desktop() {
                   {itemData.text}
                 </p>
                 
-                <div className="w-10 h-10 rounded-[4px]-[4px] bg-white flex items-center justify-center shadow-sm border border-[#E2E8F0] mt-auto self-end group-hover:bg-[#0B1D3A] group-hover:border-[#0B1D3A] transition-colors duration-300">
+                <div className="w-10 h-10 rounded-[4px] bg-white flex items-center justify-center shadow-sm border border-[#E2E8F0] mt-auto self-end group-hover:bg-[#0B1D3A] group-hover:border-[#0B1D3A] transition-colors duration-300">
                   <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#0B1D3A] group-hover:text-white"}`} style={{ fontSize: `${18}px` }}>
       <ChevronRight size={18} strokeWidth={2} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
       <ArrowRight size={18} strokeWidth={2} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />

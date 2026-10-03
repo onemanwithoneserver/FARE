@@ -39,12 +39,12 @@ export default function Desktop() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] right-[-5%] w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-[4px]-full blur-[120px] pointer-events-none z-0"
+        className="absolute top-[10%] right-[-5%] w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[20%] left-[-5%] w-[600px] h-[600px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-[4px]-full blur-[100px] pointer-events-none z-0"
+        className="absolute bottom-[20%] left-[-5%] w-[600px] h-[600px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"
       ></motion.div>
       <div
         className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
@@ -76,7 +76,7 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-100px" }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-white/80 border border-[#0B1D3A]/10 rounded-[4px]-[4px] overflow-hidden backdrop-blur-xl luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-shadow duration-500 relative group/card"
+                className="bg-white/80 border border-[#0B1D3A]/10 rounded-2xl overflow-hidden backdrop-blur-xl luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-shadow duration-500 relative group/card"
               >
                 <div
                   className="absolute top-0 left-1/4 w-1/2 h-[2px] opacity-70 group-hover/card:w-2/3 group-hover/card:left-1/6 transition-all duration-700"
@@ -85,7 +85,7 @@ export default function Desktop() {
                   }}
                 />
                 <div
-                  className={`absolute top-0 ${isEven ? "left-0 rounded-[4px]-br-full" : "right-0 rounded-[4px]-bl-full"} w-[400px] h-[400px] opacity-[0.06] group-hover/card:opacity-[0.1] blur-[80px] pointer-events-none transition-opacity duration-700`}
+                  className={`absolute top-0 ${isEven ? "left-0 rounded-br-full" : "right-0 rounded-bl-full"} w-[400px] h-[400px] opacity-[0.06] group-hover/card:opacity-[0.1] blur-[80px] pointer-events-none transition-opacity duration-700`}
                   style={{ background: activeColor }}
                 />
                 <div
@@ -94,7 +94,7 @@ export default function Desktop() {
                   <div className="flex-1 flex flex-col">
                     <div className="flex items-center gap-4 mb-6">
                       <div
-                        className="w-14 h-14 shrink-0 rounded-[4px]-[4px] flex items-center justify-center shadow-lg group-hover/card:scale-105 transition-transform duration-500"
+                        className="w-14 h-14 shrink-0 rounded-xl flex items-center justify-center shadow-lg group-hover/card:scale-105 transition-transform duration-500"
                         style={{ backgroundColor: activeColor }}
                       >
                         {TAB_ICONS[tab.id]}
@@ -128,7 +128,7 @@ export default function Desktop() {
                           return (
                             <div
                               key={idx}
-                              className={`bg-gradient-to-b from-[#0B1D3A]/[0.02] to-transparent rounded-[4px]-[4px] p-5 lg:p-6 border border-[#0B1D3A]/[0.06] hover:bg-white hover:border-[#0B1D3A]/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-400 group/section relative overflow-hidden ${isWideSection ? "md:col-span-2" : "md:col-span-1"}`}
+                              className={`bg-gradient-to-b from-[#0B1D3A]/[0.02] to-transparent rounded-xl p-5 lg:p-6 border border-[#0B1D3A]/[0.06] hover:bg-white hover:border-[#0B1D3A]/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-400 group/section relative overflow-hidden ${isWideSection ? "md:col-span-2" : "md:col-span-1"}`}
                             >
                               <div
                                 className="absolute top-0 right-0 w-32 h-32 opacity-0 group-hover/section:opacity-10 blur-[30px] transition-opacity duration-500 pointer-events-none"
@@ -139,7 +139,7 @@ export default function Desktop() {
                                 style={{ color: activeColor }}
                               >
                                 <div
-                                  className="w-2 h-2 rounded-[4px]-full shadow-[0_0_8px_rgba(255,255,255,0.5)] group-hover/section:scale-150 transition-transform duration-300"
+                                  className="w-2 h-2 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)] group-hover/section:scale-150 transition-transform duration-300"
                                   style={{ backgroundColor: activeColor }}
                                 ></div>
                                 {section.heading}
@@ -151,10 +151,10 @@ export default function Desktop() {
                                   (item: string, i: number) => (
                                     <li
                                       key={i}
-                                      className="flex items-start gap-3 text-[14.5px] lg:text-[15px] text-[#334155] font-medium group/item hover:text-[#0B1D3A] transition-colors p-1.5 -ml-1.5 rounded-[4px] hover:bg-[#0B1D3A]/[0.02]"
+                                      className="flex items-start gap-3 text-[14.5px] lg:text-[15px] text-[#334155] font-medium group/item hover:text-[#0B1D3A] transition-colors p-1.5 -ml-1.5 rounded-lg hover:bg-[#0B1D3A]/[0.02]"
                                     >
                                       <div
-                                        className="w-5.5 h-5.5 rounded-[4px]-full flex items-center justify-center shrink-0 mt-0.5 shadow-sm bg-white border border-[#0B1D3A]/10 group-hover/item:scale-110 group-hover/item:border-transparent transition-all duration-300"
+                                        className="w-5.5 h-5.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-sm bg-white border border-[#0B1D3A]/10 group-hover/item:scale-110 group-hover/item:border-transparent transition-all duration-300"
                                         style={{ color: activeColor }}
                                       >
                                         <CheckCircle2
@@ -179,7 +179,7 @@ export default function Desktop() {
                   <div className="w-full lg:w-[400px] shrink-0 flex flex-col gap-4">
                     {(activeContent.journey ||
                       activeContent.evaluateBasedOn) && (
-                      <div className="bg-[#0B1D3A]/[0.03] rounded-[4px]-[4px] p-6 border border-[#0B1D3A]/[0.08] backdrop-blur-md flex-grow flex flex-col justify-center">
+                      <div className="bg-[#0B1D3A]/[0.03] rounded-xl p-6 border border-[#0B1D3A]/[0.08] backdrop-blur-md flex-grow flex flex-col justify-center">
                         {activeContent.journey && (
                           <div>
                             <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.2em] mb-6">
@@ -194,7 +194,7 @@ export default function Desktop() {
                                       key={i}
                                       className="flex items-center gap-4 group"
                                     >
-                                      <div className="w-8 h-8 rounded-[4px]-full border-2 border-[#0B1D3A]/15 flex items-center justify-center text-[12px] font-bold text-[#7B8DAA] group-hover:border-[#0B1D3A]/40 group-hover:text-[#0B1D3A] transition-colors bg-white/50">
+                                      <div className="w-8 h-8 rounded-full border-2 border-[#0B1D3A]/15 flex items-center justify-center text-[12px] font-bold text-[#7B8DAA] group-hover:border-[#0B1D3A]/40 group-hover:text-[#0B1D3A] transition-colors bg-white/50">
                                         {i + 1}
                                       </div>
                                       <span
@@ -235,7 +235,7 @@ export default function Desktop() {
                                 .map((tag: string, i: number) => (
                                   <span
                                     key={i}
-                                    className="px-3.5 py-2 rounded-[4px]-[4px] bg-white border border-[#0B1D3A]/10 text-[13px] font-semibold text-[#475569] shadow-sm hover:text-[#0B1D3A] hover:border-[#0B1D3A]/20 hover:shadow-md transition-all cursor-default"
+                                    className="px-3.5 py-2 rounded-lg bg-white border border-[#0B1D3A]/10 text-[13px] font-semibold text-[#475569] shadow-sm hover:text-[#0B1D3A] hover:border-[#0B1D3A]/20 hover:shadow-md transition-all cursor-default"
                                   >
                                     {tag}
                                   </span>
@@ -245,7 +245,7 @@ export default function Desktop() {
                         )}
                       </div>
                     )}
-                    <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-[4px]-[4px] p-6 luxury-shadow-float mt-2 relative overflow-hidden flex flex-col justify-center min-h-[200px]">
+                    <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-xl p-6 luxury-shadow-float mt-2 relative overflow-hidden flex flex-col justify-center min-h-[200px]">
                       <div
                         className="absolute top-0 right-0 w-40 h-40 opacity-20 blur-[30px]"
                         style={{ background: activeColor }}
@@ -271,7 +271,7 @@ export default function Desktop() {
                                   window.scrollTo({ top: 0, behavior: "smooth" });
                                 }
                               }}
-                              className={`group relative overflow-hidden w-full py-4 px-6 rounded-[4px]-[8px] text-[14px] font-bold transition-all duration-300 flex items-center justify-center gap-3 ${
+                              className={`group relative overflow-hidden w-full py-4 px-6 rounded-lg text-[14px] font-bold transition-all duration-300 flex items-center justify-center gap-3 ${
                                 idx === 0
                                   ? "text-[#0B1D3A] shadow-lg active:scale-[0.98] bg-white hover:bg-[#F8FAFD]"
                                   : "text-white border border-white/20 hover:bg-white/10 active:scale-[0.98]"

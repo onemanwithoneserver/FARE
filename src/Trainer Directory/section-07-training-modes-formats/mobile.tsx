@@ -53,7 +53,7 @@ export default function Mobile() {
       >
         <div>
           <motion.div variants={item} className="flex items-center gap-3 mb-5">
-            <div className="w-[3px] h-6 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+            <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
             <h2 className="text-[20px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Delivery")}</h2>
           </motion.div>
 
@@ -64,7 +64,7 @@ export default function Mobile() {
                 <motion.div
                   key={idx}
                   variants={item}
-                  className={`bg-white/90 backdrop-blur-xl rounded-[4px]-[4px]-[4px] p-4 border relative overflow-hidden flex flex-col luxury-shadow-float ${mode.disabled
+                  className={`bg-white/90 backdrop-blur-xl rounded p-4 border relative overflow-hidden flex flex-col luxury-shadow-float ${mode.disabled
                       ? "opacity-50 border-[#0B1D3A]/[0.04]"
                       : "border-[#0B1D3A]/[0.06]"
                     }`}
@@ -76,7 +76,7 @@ export default function Mobile() {
                     />
                   )}
                   <div
-                    className="w-8 h-8 rounded-[4px]-[4px]-[4px] ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mb-2"
+                    className="w-8 h-8 rounded ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mb-2"
                     style={{ background: mode.disabled ? "#CBD5E1" : colors.bg }}
                   >
                     {getIcon(mode.icon)}
@@ -108,13 +108,13 @@ export default function Mobile() {
                   ];
                   const s = styles[idx % styles.length];
                   return (
-                    <div key={idx} className="bg-white rounded-[4px]-[4px]-[4px] border border-[#0B1D3A]/[0.06] shadow-sm relative overflow-hidden flex flex-col p-4">
+                    <div key={idx} className="bg-white rounded border border-[#0B1D3A]/[0.06] shadow-sm relative overflow-hidden flex flex-col p-4">
                       <div
                         className="absolute top-0 left-0 right-0 h-[2px]"
                         style={{ background: s.color }}
                       />
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="w-8 h-8 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shrink-0" style={{ background: s.color }}>
+                        <div className="w-8 h-8 rounded flex items-center justify-center text-white shrink-0" style={{ background: s.color }}>
                           {s.icon}
                         </div>
                         <h5 className="text-[14px] font-black tracking-tight" style={{ color: NAVY }}>{fmt.name}</h5>
@@ -135,7 +135,7 @@ export default function Mobile() {
                 {data.delivery.durations.map((dur, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-2 px-3.5 py-2 rounded-[4px]-[4px]-[4px] border border-[#0B1D3A]/[0.06] bg-white shadow-sm"
+                    className="flex items-center gap-2 px-3.5 py-2 rounded border border-[#0B1D3A]/[0.06] bg-white shadow-sm"
                   >
                     <Clock size={14} strokeWidth={2.5} className="text-[#3B82F6]" />
                     <span className="text-[13px] font-bold text-[#0B1D3A]/90">{dur}</span>

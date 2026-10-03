@@ -72,13 +72,13 @@ export default function Desktop() {
         <motion.div
           animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-5%] left-[10%] w-[400px] h-[200px] rounded-[4px]-[4px]-[4px]-full blur-[100px] pointer-events-none opacity-[0.04]"
+          className="absolute top-[-5%] left-[10%] w-[400px] h-[200px] rounded-full blur-[100px] pointer-events-none opacity-[0.04]"
           style={{ background: "radial-gradient(circle, #C99A2E, transparent 70%)" }}
         />
         <motion.div
           animate={{ x: [0, -20, 0], y: [0, 25, 0], scale: [1.1, 1, 1.1] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[-5%] right-[15%] w-[350px] h-[180px] rounded-[4px]-[4px]-[4px]-full blur-[90px] pointer-events-none opacity-[0.04]"
+          className="absolute bottom-[-5%] right-[15%] w-[350px] h-[180px] rounded-full blur-[90px] pointer-events-none opacity-[0.04]"
           style={{ background: "radial-gradient(circle, #6366F1, transparent 70%)" }}
         />
 
@@ -155,7 +155,7 @@ export default function Desktop() {
                     rel="noopener noreferrer"
                     whileHover={{ y: -3, scale: 1.1 }}
                     whileTap={{ scale: 0.92 }}
-                    className="relative group w-9 h-9 rounded-[4px]-[4px]-[4px]-[8px] flex items-center justify-center text-white/60 transition-all duration-300 border border-white/10 hover:border-transparent hover:text-white overflow-hidden"
+                    className="relative group w-9 h-9 rounded-xl flex items-center justify-center text-white/60 transition-all duration-300 border border-white/10 hover:border-transparent hover:text-white overflow-hidden"
                     style={{ background: "rgba(255,255,255,0.04)", backdropFilter: "blur(8px)" }}
                   >
                     <div className={`absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-tr animate-gradient-x ${bgClass}`} />
@@ -221,7 +221,7 @@ export default function Desktop() {
               {data.copyright.replace("{year}", new Date().getFullYear().toString())}
             </span>
             <div className="text-[13px] font-medium text-white/35 flex items-center gap-2.5">
-              <span className="w-1 h-1 rounded-[4px]-[4px]-[4px]-full bg-[#C99A2E]/40" />
+              <span className="w-1 h-1 rounded-full bg-[#C99A2E]/40" />
               Designed for Real Estate Excellence
             </div>
           </div>

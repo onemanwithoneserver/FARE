@@ -39,9 +39,9 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white p-7 rounded-[4px]-[4px] border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.03)] flex flex-col"
+                className="bg-white p-7 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.03)] flex flex-col"
               >
-                <div className={`w-12 h-12 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-6`}>
+                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-6`}>
                   <Icon size={24} className="text-white" strokeWidth={2.5} />
                 </div>
                 
@@ -75,7 +75,7 @@ export default function Mobile() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <div className="bg-white px-5 py-4 rounded-[4px]-[4px] border border-[#E2E8F0]/50 shadow-sm">
+          <div className="bg-white px-5 py-4 rounded-[4px] border border-[#E2E8F0]/50 shadow-sm">
             <h4 className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#64748B] mb-2.5">
               {data.more.title}
             </h4>

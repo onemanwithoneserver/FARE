@@ -37,13 +37,13 @@ export default function Desktop() {
       <motion.div
         animate={{ x: [0, 25, 0], y: [0, -25, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] right-[-5%] w-[400px] h-[400px] rounded-[4px]-[4px]-[4px]-full blur-[100px] pointer-events-none z-0 opacity-40"
+        className="absolute top-[20%] right-[-5%] w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ x: [0, -20, 0], y: [0, 20, 0], scale: [1.05, 1, 1.05] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] left-[0%] w-[450px] h-[450px] rounded-[4px]-[4px]-[4px]-full blur-[120px] pointer-events-none z-0 opacity-30"
+        className="absolute bottom-[-10%] left-[0%] w-[450px] h-[450px] rounded-full blur-[120px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.1) 0%, transparent 70%)" }}
       />
 
@@ -55,7 +55,7 @@ export default function Desktop() {
         className="max-w-[1200px] w-full relative z-10"
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
-          <div className="w-[4px] h-7 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Experience \u0026amp; Track Record")}</h2>
         </motion.div>
 
@@ -88,17 +88,17 @@ export default function Desktop() {
                     {timelineItem.year}
                   </span>
                   <div
-                    className="absolute left-[93px] top-[28px] z-10 h-[14px] w-[14px] rounded-[4px]-[4px]-[4px]-full border-[3px] border-white shadow-sm"
+                    className="absolute left-[93px] top-[28px] z-10 h-[14px] w-[14px] rounded-full border-[3px] border-white shadow-sm"
                     style={{ background: colors.accent }}
                   />
                   <motion.div
                     whileHover={{ y: -2, transition: { duration: 0.25 } }}
-                    className="relative w-3/4 min-h-[142px] overflow-hidden rounded-[4px]-[4px]-[4px] border border-[#0B1D3A]/[0.08] bg-white p-5 shadow-[0_8px_24px_-16px_rgba(11,29,58,0.3)] transition-shadow hover:shadow-[0_20px_40px_-20px_rgba(11,29,58,0.3)]"
+                    className="relative w-3/4 min-h-[142px] overflow-hidden rounded border border-[#0B1D3A]/[0.08] bg-white p-5 shadow-[0_8px_24px_-16px_rgba(11,29,58,0.3)] transition-shadow hover:shadow-[0_20px_40px_-20px_rgba(11,29,58,0.3)]"
                   >
                     <div className="absolute inset-x-0 top-0 h-[3px]" style={{ background: colors.bg }} />
                     <div className="flex items-center gap-4">
                       <div
-                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[4px]-[4px]-[4px] text-[13px] font-black text-white shadow-sm"
+                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded text-[13px] font-black text-white shadow-sm"
                         style={{ background: colors.bg }}
                       >
                         {initialsOf(timelineItem.company)}
@@ -115,7 +115,7 @@ export default function Desktop() {
                     </div>
                     <div className="mt-4">
                       <span
-                        className="inline-block rounded-[4px]-[4px]-[4px] border px-3 py-2 text-[12px] font-semibold"
+                        className="inline-block rounded border px-3 py-2 text-[12px] font-semibold"
                         style={{
                           background: `${colors.accent}08`,
                           borderColor: `${colors.accent}20`,

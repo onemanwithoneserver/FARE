@@ -48,7 +48,7 @@ export function CustomSelect({ options, placeholder, value, onChange }: CustomSe
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded-[4px]-[4px]-[4px] px-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] hover:border-[#0B1D3A]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 aria-[invalid=true]:border-red-500 transition-all duration-300 ease-out flex items-center justify-between gap-2"
+        className="w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded px-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] hover:border-[#0B1D3A]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 aria-[invalid=true]:border-red-500 transition-all duration-300 ease-out flex items-center justify-between gap-2"
       >
         <span className={`leading-snug ${value ? "text-[#0B1D3A]" : "text-[#7B8DAA]"}`}>
           {value || placeholder}
@@ -63,7 +63,7 @@ export function CustomSelect({ options, placeholder, value, onChange }: CustomSe
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 w-full mt-1.5 bg-white rounded-[4px]-[4px]-[4px] luxury-shadow-float border border-[#0B1D3A]/[0.06] overflow-hidden z-50 max-h-60 overflow-y-auto"
+            className="absolute top-full left-0 w-full mt-1.5 bg-white rounded luxury-shadow-float border border-[#0B1D3A]/[0.06] overflow-hidden z-50 max-h-60 overflow-y-auto"
           >
             {options.map((opt: string, idx: number) => (
               <button
@@ -92,7 +92,7 @@ export function CustomCheckbox({ label, checked, onChange }: LabeledControlProps
   return (
     <label className="flex items-start gap-2.5 cursor-pointer group select-none" onClick={onChange}>
       <div
-        className={`w-4 h-4 rounded-[4px]-[4px]-[4px] border flex items-center justify-center transition-all duration-300 ease-out shrink-0 mt-[1.5px] ${
+        className={`w-4 h-4 rounded border flex items-center justify-center transition-all duration-300 ease-out shrink-0 mt-[1.5px] ${
           checked
             ? "bg-[#C99A2E] border-[#C99A2E]"
             : "bg-white/50 border-[#0B1D3A]/[0.12] group-hover:border-[#C99A2E]/50"
@@ -120,7 +120,7 @@ export function CustomRadio({ label, name, checked, onChange }: CustomRadioProps
     <label className="flex items-start gap-2.5 cursor-pointer group select-none" onClick={onChange}>
       <input type="radio" name={name} className="hidden" readOnly />
       <div
-        className={`w-4 h-4 rounded-[4px]-[4px]-[4px]-full border flex items-center justify-center transition-all duration-300 ease-out shrink-0 mt-[1.5px] ${
+        className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all duration-300 ease-out shrink-0 mt-[1.5px] ${
           checked
             ? "border-[#C99A2E]"
             : "bg-white/50 border-[#0B1D3A]/[0.12] group-hover:border-[#C99A2E]/50"
@@ -132,7 +132,7 @@ export function CustomRadio({ label, name, checked, onChange }: CustomRadioProps
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
-              className="w-2 h-2 rounded-[4px]-[4px]-[4px]-full bg-[#C99A2E]"
+              className="w-2 h-2 rounded-full bg-[#C99A2E]"
             />
           )}
         </AnimatePresence>
@@ -155,7 +155,7 @@ export function CustomDatePicker({ selected, onChange, placeholderText }: Custom
         onChange={onChange}
         placeholderText={placeholderText}
         locale={language === "te" ? te : undefined}
-        className="w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded-[4px]-[4px]-[4px] pl-9 pr-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] hover:border-[#0B1D3A]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 aria-[invalid=true]:border-red-500 aria-[invalid=false]:border-emerald-600/40 transition-all duration-300 ease-out placeholder:text-[#7B8DAA]"
+        className="w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded pl-9 pr-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] hover:border-[#0B1D3A]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 aria-[invalid=true]:border-red-500 aria-[invalid=false]:border-emerald-600/40 transition-all duration-300 ease-out placeholder:text-[#7B8DAA]"
         dateFormat="dd/MM/yyyy"
       />
       <style>{`

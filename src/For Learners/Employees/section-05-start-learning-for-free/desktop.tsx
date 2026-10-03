@@ -28,8 +28,8 @@ export default function Desktop() {
 
   return (
     <section className="w-full bg-[#0B1D3A] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-[4px]-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-radial from-[#38BDF8]/[0.05] to-transparent rounded-[4px]-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-radial from-[#38BDF8]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
@@ -63,9 +63,9 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white/5 backdrop-blur-sm p-10 rounded-[4px]-[4px] border border-white/10 hover:bg-white/10 transition-colors duration-300 flex flex-col items-center text-center group"
+                className="bg-white/5 backdrop-blur-sm p-10 rounded-[4px] border border-white/10 hover:bg-white/10 transition-colors duration-300 flex flex-col items-center text-center group"
               >
-                <div className={`w-16 h-16 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-lg mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300`}>
+                <div className={`w-16 h-16 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-lg mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300`}>
                   <Icon size={32} className="text-white" strokeWidth={2.5} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4 tracking-wider uppercase">
@@ -76,7 +76,7 @@ export default function Desktop() {
                 </p>
                 
                 <button 
-                  className={`px-8 py-3.5 rounded-[4px]-[8px]-[8px] font-bold text-[14px] transition-all duration-300 flex items-center gap-2 active:scale-95 ${
+                  className={`px-8 py-3.5 rounded-[8px] font-bold text-[14px] transition-all duration-300 flex items-center gap-2 active:scale-95 ${
                     isFirst
                       ? "bg-[#10B981] text-white hover:bg-[#059669] hover:luxury-shadow-float"
                       : "bg-[#C99A2E] text-[#0B1D3A] hover:bg-[#B8892A] hover:luxury-shadow-float"

@@ -136,7 +136,7 @@ export default function Mobile() {
           ease: "easeInOut",
           delay: 1,
         }}
-        className="absolute bottom-0 right-0 w-[280px] h-[280px] bg-gradient-to-tl from-[#C99A2E]/[0.08] to-transparent rounded-[4px]-[4px]-[4px]-full blur-[60px] pointer-events-none z-0"
+        className="absolute bottom-0 right-0 w-[280px] h-[280px] bg-gradient-to-tl from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[60px] pointer-events-none z-0"
       />
       <motion.div
         variants={containerVariant}
@@ -146,7 +146,7 @@ export default function Mobile() {
         className="w-full max-w-[480px] relative z-20"
       >
         <div
-          className="w-full rounded-[4px]-[4px]-[4px]-[4px] pt-9 pb-8 px-4.5 sm:px-6 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-float"
+          className="w-full rounded-[4px] pt-9 pb-8 px-4.5 sm:px-6 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-float"
           style={{
             background:
               "linear-gradient(135deg, rgba(8,22,48,0.96) 0%, rgba(4,12,30,0.98) 100%)",
@@ -154,10 +154,10 @@ export default function Mobile() {
           }}
         >
           <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#C99A2E] to-transparent opacity-80" />
-          <div className="absolute -top-16 -right-16 w-36 h-36 bg-[#C99A2E]/[0.08] rounded-[4px]-[4px]-[4px]-full blur-[45px] pointer-events-none" />
-          <div className="absolute -bottom-16 -left-16 w-36 h-36 bg-[#0B2A6B]/[0.25] rounded-[4px]-[4px]-[4px]-full blur-[45px] pointer-events-none" />
+          <div className="absolute -top-16 -right-16 w-36 h-36 bg-[#C99A2E]/[0.08] rounded-full blur-[45px] pointer-events-none" />
+          <div className="absolute -bottom-16 -left-16 w-36 h-36 bg-[#0B2A6B]/[0.25] rounded-full blur-[45px] pointer-events-none" />
           <motion.div variants={itemVariant} className="mb-4 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-[4px]-[4px]-[4px]-[4px] border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_10px_rgba(201,154,46,0.1)] backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-[4px] border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_10px_rgba(201,154,46,0.1)] backdrop-blur-sm">
               <Sparkles
                 size={11}
                 className="text-[#C99A2E] animate-pulse"
@@ -206,7 +206,7 @@ export default function Mobile() {
                     whileTap={
                       isUnselectedOnOtherPage ? undefined : { scale: 0.98 }
                     }
-                    className={`w-full p-4 rounded-[4px]-[4px]-[4px]-[8px] transition-all duration-300 flex items-center justify-between gap-3.5 text-left relative overflow-hidden group ${
+                    className={`w-full p-4 rounded-[4px] transition-all duration-300 flex items-center justify-between gap-3.5 text-left relative overflow-hidden group ${
                       isSelected
                         ? "luxury-shadow-float cursor-pointer"
                         : isUnselectedOnOtherPage
@@ -229,7 +229,7 @@ export default function Mobile() {
                     }}
                   >
                     <div
-                      className="w-1.5 h-10 rounded-[4px]-[4px]-[4px]-[4px] shrink-0 shadow-sm transition-colors duration-300"
+                      className="w-1.5 h-10 rounded-[4px] shrink-0 shadow-sm transition-colors duration-300"
                       style={{
                         background: isColored
                           ? opt.iconBg
@@ -237,7 +237,7 @@ export default function Mobile() {
                       }}
                     />
                     <div
-                      className={`w-11 h-11 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center shrink-0 shadow-md transition-all duration-300 group-hover:scale-105 ${
+                      className={`w-11 h-11 rounded-[4px] flex items-center justify-center shrink-0 shadow-md transition-all duration-300 group-hover:scale-105 ${
                         isColored ? "" : "text-white/60"
                       }`}
                       style={{
@@ -270,7 +270,7 @@ export default function Mobile() {
                       </div>
                     </div>
                     <div
-                      className="w-9 h-9 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:translate-x-0.5"
+                      className="w-9 h-9 rounded-[4px] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:translate-x-0.5"
                       style={{
                         background: isColored
                           ? opt.iconBg
@@ -342,14 +342,14 @@ export default function Mobile() {
                 return (
                   <div
                     key={i}
-                    className="w-full flex items-center gap-3.5 p-3 rounded-[4px]-[4px]-[4px]-[4px] transition-all duration-300"
+                    className="w-full flex items-center gap-3.5 p-3 rounded-[4px] transition-all duration-300"
                     style={{
                       background: badgeColors.bg,
                       border: `1px solid ${badgeColors.border}`,
                     }}
                   >
                     <div
-                      className="w-9 h-9 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center shrink-0 shadow-sm"
+                      className="w-9 h-9 rounded-[4px] flex items-center justify-center shrink-0 shadow-sm"
                       style={{
                         background: badgeColors.iconBg,
                       }}

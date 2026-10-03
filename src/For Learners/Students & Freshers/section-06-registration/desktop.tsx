@@ -12,8 +12,8 @@ export default function Desktop() {
   return (
     <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-32 px-10 font-['Outfit'] relative overflow-hidden flex items-center justify-center fare-noise-overlay">
 
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-[4px]-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#0B1D3A]/[0.05] to-transparent rounded-[4px]-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#0B1D3A]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />
       
       <div className="w-full max-w-[1100px] mx-auto relative z-10">
         <motion.div
@@ -21,7 +21,7 @@ export default function Desktop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-[4px]-[24px] overflow-hidden luxury-shadow-float group"
+          className="relative rounded-[24px] overflow-hidden luxury-shadow-float group"
         >
 
           <div className="absolute inset-0 bg-[#0B1D3A]" />
@@ -32,7 +32,7 @@ export default function Desktop() {
               y: ["-20%", "20%", "-20%"],
             }}
             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-[200px] -right-[200px] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/30 to-transparent rounded-[4px]-full blur-[100px]"
+            className="absolute -top-[200px] -right-[200px] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/30 to-transparent rounded-full blur-[100px]"
           />
           <motion.div 
             animate={{ 
@@ -40,7 +40,7 @@ export default function Desktop() {
               y: ["20%", "-20%", "20%"],
             }}
             transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            className="absolute -bottom-[150px] -left-[150px] w-[400px] h-[400px] bg-gradient-radial from-[#38BDF8]/20 to-transparent rounded-[4px]-full blur-[100px]"
+            className="absolute -bottom-[150px] -left-[150px] w-[400px] h-[400px] bg-gradient-radial from-[#38BDF8]/20 to-transparent rounded-full blur-[100px]"
           />
 
           <div 
@@ -56,7 +56,7 @@ export default function Desktop() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-[4px]-full bg-white/10 border border-white/20 backdrop-blur-md mb-8 shadow-[0_4px_16px_rgba(0,0,0,0.1)]"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8 shadow-[0_4px_16px_rgba(0,0,0,0.1)]"
             >
               <Sparkles size={14} className="text-[#C99A2E]" strokeWidth={2.5} />
               <span className="font-bold text-[12px] tracking-[0.2em] uppercase text-white/90">
@@ -89,7 +89,7 @@ export default function Desktop() {
               className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto"
             >
               <button 
-                className="w-full sm:w-auto h-[60px] px-10 rounded-[4px]-[8px]-[8px] font-bold text-[16px] text-[#0B1D3A] flex items-center justify-center gap-3 group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] luxury-shadow-float"
+                className="w-full sm:w-auto h-[60px] px-10 rounded-[8px] font-bold text-[16px] text-[#0B1D3A] flex items-center justify-center gap-3 group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] luxury-shadow-float"
                 style={{ background: `linear-gradient(135deg, ${GOLD}, #E5C370)` }}
               >
                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
@@ -99,7 +99,7 @@ export default function Desktop() {
                 </span>
               </button>
               
-              <button className="w-full sm:w-auto h-[60px] px-10 bg-white/5 border border-white/20 text-white rounded-[4px]-[8px]-[8px] font-bold text-[16px] hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 group backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98]">
+              <button className="w-full sm:w-auto h-[60px] px-10 bg-white/5 border border-white/20 text-white rounded-[8px] font-bold text-[16px] hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 group backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98]">
                 {data.buttons.secondary}
                 <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"group-hover:translate-x-1"}`} style={{ fontSize: `${18}px` }}>
       <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
@@ -109,7 +109,7 @@ export default function Desktop() {
             </motion.div>
           </div>
 
-          <div className="absolute inset-0 border border-white/10 rounded-[4px]-[24px] pointer-events-none" />
+          <div className="absolute inset-0 border border-white/10 rounded-[24px] pointer-events-none" />
         </motion.div>
       </div>
     </section>

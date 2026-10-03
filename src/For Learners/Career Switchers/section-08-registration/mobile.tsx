@@ -15,7 +15,7 @@ export default function Mobile() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
-          className="bg-[#0B1D3A] rounded-[4px]-[4px] p-8 text-center relative overflow-hidden shadow-lg border border-[#C99A2E]/20"
+          className="bg-[#0B1D3A] rounded-[4px] p-8 text-center relative overflow-hidden shadow-lg border border-[#C99A2E]/20"
         >
           <div className="relative z-10">
             <h2 className="text-2xl font-black text-white tracking-tight leading-tight mb-3">
@@ -29,11 +29,11 @@ export default function Mobile() {
             </p>
             
             <div className="flex flex-col gap-3.5 mb-8">
-              <button className="w-full py-4 px-6 bg-[#C99A2E] text-[#0B1D3A] rounded-[4px]-[8px]-[8px] font-bold text-[14px] flex items-center justify-center gap-2 active:bg-[#B8892A] shadow-md">
+              <button className="w-full py-4 px-6 bg-[#C99A2E] text-[#0B1D3A] rounded-[8px] font-bold text-[14px] flex items-center justify-center gap-2 active:bg-[#B8892A] shadow-md">
                 <FileText size={18} strokeWidth={2.5} />
                 {data.buttons.primary}
               </button>
-              <button className="w-full py-4 px-6 bg-white/10 text-white rounded-[4px]-[8px]-[8px] font-bold text-[14px] border border-white/20 flex items-center justify-center gap-2 active:bg-white/20">
+              <button className="w-full py-4 px-6 bg-white/10 text-white rounded-[8px] font-bold text-[14px] border border-white/20 flex items-center justify-center gap-2 active:bg-white/20">
                 {data.buttons.secondary}
                 <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${18}px` }}>
       <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />

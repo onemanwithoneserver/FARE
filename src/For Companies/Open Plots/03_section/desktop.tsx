@@ -57,12 +57,12 @@ export default function Desktop() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-radial from-[#F1F5FB]/80 to-transparent rounded-[4px]-full blur-[100px] pointer-events-none"
+        className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-radial from-[#F1F5FB]/80 to-transparent rounded-full blur-[100px] pointer-events-none"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-[4px]-full blur-[100px] pointer-events-none"
+        className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[100px] pointer-events-none"
       ></motion.div>
       <div className="max-w-[1320px] mx-auto px-12 relative z-10">
         <motion.div
@@ -74,7 +74,7 @@ export default function Desktop() {
         >
           <motion.div variants={item} className="mb-5">
             <span
-              className="inline-flex items-center px-4 py-1.5 rounded-[4px]-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
+              className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
               style={{ color: GOLD }}
             >
               {data.overline}
@@ -111,7 +111,7 @@ export default function Desktop() {
                 y: -6,
                 transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
               }}
-              className="group bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-10 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative overflow-hidden flex flex-col cursor-default"
+              className="group bg-white border border-[#0B1D3A]/[0.06] rounded p-10 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative overflow-hidden flex flex-col cursor-default"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -120,7 +120,7 @@ export default function Desktop() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute top-0 right-0 w-48 h-48 opacity-[0.04] blur-[40px] transition-opacity duration-500 group-hover:opacity-[0.08] rounded-[4px]-bl-full pointer-events-none"
+                className="absolute top-0 right-0 w-48 h-48 opacity-[0.04] blur-[40px] transition-opacity duration-500 group-hover:opacity-[0.08] rounded-bl-full pointer-events-none"
                 style={{ background: card.color }}
               ></motion.div>
               <div
@@ -129,14 +129,14 @@ export default function Desktop() {
               ></div>
               <div className="flex items-start justify-between mb-8 relative z-10">
                 <div
-                  className="w-16 h-16 rounded-[4px] flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
+                  className="w-16 h-16 rounded flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
                   style={{ backgroundColor: card.color }}
                 >
                   <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                   {icons[card.icon as keyof typeof icons]}
                 </div>
                 <div
-                  className="px-4 py-1.5 rounded-[4px]-full text-[11px] font-bold tracking-[0.1em] uppercase border flex items-center gap-2"
+                  className="px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.1em] uppercase border flex items-center gap-2"
                   style={{
                     color: card.color,
                     backgroundColor: `${card.color}10`,
@@ -144,7 +144,7 @@ export default function Desktop() {
                   }}
                 >
                   <span
-                    className="w-1.5 h-1.5 rounded-[4px]-full"
+                    className="w-1.5 h-1.5 rounded-full"
                     style={{ backgroundColor: card.color }}
                   ></span>
                   {card.tag}
@@ -173,12 +173,12 @@ export default function Desktop() {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="mt-12 flex justify-center"
         >
-          <button className="group relative flex items-center gap-4 px-8 py-4 bg-white border border-[#0B1D3A]/10 rounded-[4px]-[8px]-full luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 hover:-translate-y-1 active:scale-[0.98] transition-all duration-400 ease-out overflow-hidden">
+          <button className="group relative flex items-center gap-4 px-8 py-4 bg-white border border-[#0B1D3A]/10 rounded-full luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 hover:-translate-y-1 active:scale-[0.98] transition-all duration-400 ease-out overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/0 via-[#C99A2E]/[0.05] to-[#C99A2E]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
             <span className="text-[14px] font-bold tracking-[0.15em] uppercase text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300 relative z-10">
               {data.cta.replace(" ↓", "")}
             </span>
-            <div className="w-8 h-8 rounded-[4px]-full bg-[#F8F9FC] border border-[#0B1D3A]/5 flex items-center justify-center group-hover:bg-[#C99A2E]/10 group-hover:border-[#C99A2E]/20 transition-all duration-300 relative z-10">
+            <div className="w-8 h-8 rounded-full bg-[#F8F9FC] border border-[#0B1D3A]/5 flex items-center justify-center group-hover:bg-[#C99A2E]/10 group-hover:border-[#C99A2E]/20 transition-all duration-300 relative z-10">
               <ArrowDown
                 size={16}
                 strokeWidth={2.5}

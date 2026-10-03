@@ -45,12 +45,12 @@ export default function Desktop() {
       <motion.div
         animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[5%] right-[10%] w-[750px] h-[750px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-[4px]-full blur-[140px] pointer-events-none z-0"
+        className="absolute top-[5%] right-[10%] w-[750px] h-[750px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[140px] pointer-events-none z-0"
       />
       <motion.div
         animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-[4px]-full blur-[120px] pointer-events-none z-0"
+        className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
       />
 
       <svg
@@ -89,7 +89,7 @@ export default function Desktop() {
         >
           <motion.div
             variants={item}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[4px]-full border border-[#C99A2E]/35 bg-[#C99A2E]/[0.08] backdrop-blur-sm shadow-xs mb-4"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/35 bg-[#C99A2E]/[0.08] backdrop-blur-sm shadow-xs mb-4"
           >
             <Sparkles
               size={13}
@@ -113,7 +113,7 @@ export default function Desktop() {
               className="relative inline-block text-[3.4rem] md:text-[4.2rem] xl:text-[4.6rem] font-black uppercase text-[#C99A2E] pb-2.5"
             >
               {language === "te" ? "కంపెనీల కోసం" : "COMPANIES"}
-              <span className="absolute bottom-0 left-0 w-full h-[3.5px] bg-[#C99A2E] rounded-[4px]-full" />
+              <span className="absolute bottom-0 left-0 w-full h-[3.5px] bg-[#C99A2E] rounded-full" />
             </motion.span>
           </h1>
 
@@ -137,7 +137,7 @@ export default function Desktop() {
           >
             <button
               onClick={() => setIsModalOpen(true)}
-              className="bg-[#0B1D3A] hover:bg-[#102B63] text-white text-[14px] font-bold px-7 py-3.5 rounded-[4px]-[4px] shadow-[0_4px_14px_rgba(11,29,58,0.25)] hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="bg-[#0B1D3A] hover:bg-[#102B63] text-white text-[14px] font-bold px-7 py-3.5 rounded-[4px] shadow-[0_4px_14px_rgba(11,29,58,0.25)] hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
               <span>{data.buttons.primary}</span>
               <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${16}px` }}>
@@ -148,7 +148,7 @@ export default function Desktop() {
             {data.buttons.secondary && (
               <button
                 onClick={() => setIsVideoModalOpen(true)}
-                className="bg-white hover:bg-[#F8FAFD] text-[#0B1D3A] text-[14px] font-bold px-7 py-3.5 rounded-[4px]-[4px] border border-[#0B1D3A]/15 shadow-xs hover:shadow-sm active:scale-[0.98] transition-all duration-300 flex items-center gap-2 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                className="bg-white hover:bg-[#F8FAFD] text-[#0B1D3A] text-[14px] font-bold px-7 py-3.5 rounded-[4px] border border-[#0B1D3A]/15 shadow-xs hover:shadow-sm active:scale-[0.98] transition-all duration-300 flex items-center gap-2 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 {data.buttons.secondary}
               </button>
@@ -159,9 +159,9 @@ export default function Desktop() {
             {data.features.map((feature, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 px-3.5 py-1.5 rounded-[4px]-full bg-white border border-[#0B1D3A]/10 shadow-[0_2px_8px_rgba(11,29,58,0.04)] text-[#0B1D3A] text-[12px] font-bold"
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#0B1D3A]/10 shadow-[0_2px_8px_rgba(11,29,58,0.04)] text-[#0B1D3A] text-[12px] font-bold"
               >
-                <span className="w-1.5 h-1.5 rounded-[4px]-full bg-[#C99A2E] shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] shrink-0" />
                 <span>{feature}</span>
               </div>
             ))}
@@ -182,7 +182,7 @@ export default function Desktop() {
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end pl-0"
         >
-          <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-[4px]-tl-[120px] sm:rounded-[4px]-tl-[160px] lg:rounded-[4px]-tl-[220px] xl:rounded-[4px]-tl-[260px] rounded-[4px]-bl-[60px] sm:rounded-[4px]-bl-[70px] lg:rounded-[4px]-bl-[90px] xl:rounded-[4px]-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80 group">
+          <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] sm:rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80 group">
             <motion.img
               animate={{ scale: [1, 1.04, 1] }}
               transition={{

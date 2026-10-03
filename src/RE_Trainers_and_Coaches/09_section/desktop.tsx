@@ -28,12 +28,12 @@ export default function Desktop() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[30%] left-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-[4px]-full blur-[100px] pointer-events-none"
+        className="absolute top-[30%] left-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[20%] right-[10%] w-[800px] h-[800px] bg-gradient-radial from-[#3B82F6]/[0.04] to-transparent rounded-[4px]-full blur-[120px] pointer-events-none"
+        className="absolute bottom-[20%] right-[10%] w-[800px] h-[800px] bg-gradient-radial from-[#3B82F6]/[0.04] to-transparent rounded-full blur-[120px] pointer-events-none"
       ></motion.div>
       <div
         className="absolute inset-0 opacity-[0.2] pointer-events-none z-0"
@@ -51,7 +51,7 @@ export default function Desktop() {
           className="max-w-[1000px] mx-auto text-center"
         >
           <motion.div variants={item} className="mb-8 flex justify-center">
-            <div className="bg-white border border-[#0B1D3A]/[0.08] px-6 py-2.5 rounded-[4px]-full flex items-center gap-3 luxury-shadow-float backdrop-blur-md hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
+            <div className="bg-white border border-[#0B1D3A]/[0.08] px-6 py-2.5 rounded-full flex items-center gap-3 luxury-shadow-float backdrop-blur-md hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
               <Sparkles size={18} className="text-[#C99A2E]" />
               <span
                 className="text-[13px] font-bold tracking-[0.25em] uppercase"
@@ -85,12 +85,12 @@ export default function Desktop() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-12 luxury-shadow-float relative overflow-hidden group hover:border-[#0B1D3A]/10 hover:luxury-shadow-float transition-all duration-500 h-full flex flex-col"
+            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-12 luxury-shadow-float relative overflow-hidden group hover:border-[#0B1D3A]/10 hover:luxury-shadow-float transition-all duration-500 h-full flex flex-col"
           >
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-10 -right-10 w-48 h-48 bg-[#C99A2E]/[0.08] rounded-[4px]-full blur-[40px] group-hover:bg-[#C99A2E]/[0.12] transition-colors duration-500"
+              className="absolute -top-10 -right-10 w-48 h-48 bg-[#C99A2E]/[0.08] rounded-full blur-[40px] group-hover:bg-[#C99A2E]/[0.12] transition-colors duration-500"
             ></motion.div>
             <div className="absolute top-0 right-0 w-32 h-32 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
             <h3
@@ -102,7 +102,7 @@ export default function Desktop() {
             <div className="flex flex-col gap-6 relative z-10 mt-auto">
               {data.exploreItems.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-5 group/item">
-                  <div className="mt-1 w-7 h-7 rounded-[4px]-full bg-[#F8FAFD] flex items-center justify-center shrink-0 group-hover/item:bg-[#C99A2E]/15 group-hover/item:scale-110 transition-all duration-300 border border-[#0B1D3A]/[0.05] shadow-sm">
+                  <div className="mt-1 w-7 h-7 rounded-full bg-[#F8FAFD] flex items-center justify-center shrink-0 group-hover/item:bg-[#C99A2E]/15 group-hover/item:scale-110 transition-all duration-300 border border-[#0B1D3A]/[0.05] shadow-sm">
                     <CheckCircle2
                       size={16}
                       className="text-[#C99A2E]"
@@ -121,32 +121,32 @@ export default function Desktop() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-gradient-to-br from-[#0B1D3A] via-[#132D5F] to-[#0B1D3A] rounded-[4px] p-12 luxury-shadow-float relative overflow-hidden flex flex-col items-center text-center h-full justify-center group cursor-pointer"
+            className="bg-gradient-to-br from-[#0B1D3A] via-[#132D5F] to-[#0B1D3A] rounded p-12 luxury-shadow-float relative overflow-hidden flex flex-col items-center text-center h-full justify-center group cursor-pointer"
           >
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay"></div>
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 right-0 w-80 h-80 bg-[#C99A2E]/20 rounded-[4px]-full blur-[80px] group-hover:bg-[#C99A2E]/30 group-hover:scale-110 transition-all duration-700 pointer-events-none"
+              className="absolute top-0 right-0 w-80 h-80 bg-[#C99A2E]/20 rounded-full blur-[80px] group-hover:bg-[#C99A2E]/30 group-hover:scale-110 transition-all duration-700 pointer-events-none"
             ></motion.div>
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-0 left-0 w-80 h-80 bg-[#3B82F6]/15 rounded-[4px]-full blur-[80px] group-hover:bg-[#3B82F6]/25 group-hover:scale-110 transition-all duration-700 pointer-events-none"
+              className="absolute bottom-0 left-0 w-80 h-80 bg-[#3B82F6]/15 rounded-full blur-[80px] group-hover:bg-[#3B82F6]/25 group-hover:scale-110 transition-all duration-700 pointer-events-none"
             ></motion.div>
-            <div className="w-20 h-20 bg-white/5 backdrop-blur-md rounded-[4px]-full flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500 shadow-xl relative z-10">
+            <div className="w-20 h-20 bg-white/5 backdrop-blur-md rounded-full flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500 shadow-xl relative z-10">
               <Sparkles size={32} className="text-[#C99A2E]" />
             </div>
             <h3 className="text-[32px] lg:text-[40px] font-black text-white mb-12 relative z-10 leading-[1.1] tracking-tight">
               {data.footerText}
             </h3>
-            <button className="bg-gradient-to-r from-[#C99A2E] to-[#B88A22] hover:from-[#D5AA45] hover:to-[#C99A2E] text-white px-10 py-5 rounded-[4px]-[8px] font-bold text-[18px] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] group-hover:-translate-y-2 transition-all duration-400 flex items-center gap-4 relative z-10 w-full justify-center max-w-[360px] overflow-hidden hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
+            <button className="bg-gradient-to-r from-[#C99A2E] to-[#B88A22] hover:from-[#D5AA45] hover:to-[#C99A2E] text-white px-10 py-5 rounded font-bold text-[18px] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] group-hover:-translate-y-2 transition-all duration-400 flex items-center gap-4 relative z-10 w-full justify-center max-w-[360px] overflow-hidden hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
               <span className="relative z-10">{data.ctaButton}</span>
               <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"relative z-10 group-hover:translate-x-2"}`} style={{ fontSize: `${22}px` }}>
       <ChevronRight size={22} strokeWidth={3} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
       <ArrowRight size={22} strokeWidth={3} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
     </span>
-              <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded-[4px] pointer-events-none"></div>
+              <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded pointer-events-none"></div>
             </button>
           </motion.div>
         </div>

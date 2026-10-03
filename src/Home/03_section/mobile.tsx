@@ -57,12 +57,16 @@ export default function Mobile() {
   };
   return (
     <section
-      className="w-full py-14 px-4 relative font-['Outfit'] overflow-hidden bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF]"
+      className="w-full py-14 px-4 relative font-['Outfit'] overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)",
+      }}
     >
       <motion.div
         animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-0 w-[260px] h-[260px] bg-gradient-radial from-[#DDEAFF]/50 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[70px] pointer-events-none z-0"
+        className="absolute top-0 right-0 w-[260px] h-[260px] bg-gradient-radial from-[#DDEAFF]/50 to-transparent rounded-full blur-[70px] pointer-events-none z-0"
       />
       <motion.div
         animate={{ opacity: [0.25, 0.5, 0.25], scale: [1.06, 1, 1.06] }}
@@ -72,7 +76,7 @@ export default function Mobile() {
           ease: "easeInOut",
           delay: 1,
         }}
-        className="absolute bottom-0 left-0 w-[240px] h-[240px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-[4px]-[4px]-[4px]-full blur-[60px] pointer-events-none z-0"
+        className="absolute bottom-0 left-0 w-[240px] h-[240px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[60px] pointer-events-none z-0"
       />
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
@@ -90,7 +94,7 @@ export default function Mobile() {
           className="flex flex-col items-center text-center mb-10"
         >
           <motion.div variants={itemVariants} className="mb-3.5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-[4px]-[4px]-[4px]-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_10px_rgba(201,154,46,0.1)] backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_10px_rgba(201,154,46,0.1)] backdrop-blur-sm">
               <Sparkles
                 size={11}
                 className="text-[#C99A2E] animate-pulse"
@@ -135,7 +139,7 @@ export default function Mobile() {
               <motion.div
                 key={persona.id}
                 variants={itemVariants}
-                className="bg-white/95 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px]-[4px]-[4px]-[4px] relative overflow-hidden luxury-shadow-float transition-all duration-300 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="bg-white/95 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-xl relative overflow-hidden luxury-shadow-float transition-all duration-300 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px]"
@@ -144,7 +148,7 @@ export default function Mobile() {
                   }}
                 />
                 <div
-                  className="absolute -top-12 -right-12 w-32 h-32 rounded-[4px]-[4px]-[4px]-full blur-[35px] opacity-[0.08] pointer-events-none"
+                  className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-[35px] opacity-[0.08] pointer-events-none"
                   style={{ background: accent }}
                 />
                 <button
@@ -154,7 +158,7 @@ export default function Mobile() {
                 >
                   <div className="flex items-center gap-3.5">
                     <div
-                      className="w-11 h-11 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center text-white shadow-sm shrink-0"
+                      className="w-11 h-11 rounded-lg flex items-center justify-center text-white shadow-sm shrink-0"
                       style={{
                         background: `linear-gradient(135deg, ${accent} 0%, ${accent}DD 100%)`,
                       }}
@@ -166,7 +170,7 @@ export default function Mobile() {
                     </h3>
                   </div>
                   <div
-                    className="w-8 h-8 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center shrink-0 border border-[#0B1D3A]/10 bg-[#0B1D3A]/[0.03] transition-all duration-300"
+                    className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-[#0B1D3A]/10 bg-[#0B1D3A]/[0.03] transition-all duration-300"
                     style={
                       isOpen
                         ? {
@@ -202,14 +206,14 @@ export default function Mobile() {
                           {persona.items.map((it, idx) => (
                             <div
                               key={idx}
-                              className="flex items-center gap-3 px-3.5 py-2.5 rounded-[4px]-[4px]-[4px]-[4px]"
+                              className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg"
                               style={{
                                 background: `linear-gradient(135deg, ${accent}0A, ${accent}03)`,
                                 border: `1px solid ${accent}18`,
                               }}
                             >
                               <div
-                                className="w-6 h-6 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center shrink-0 shadow-xs"
+                                className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 shadow-xs"
                                 style={{ background: `${accent}18` }}
                               >
                                 <Check
@@ -235,7 +239,7 @@ export default function Mobile() {
                                   );
                                 }}
                                 aria-label={persona.cta}
-                                className="h-10 px-4 rounded-[4px]-[4px]-[4px]-[4px] flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
+                                className="h-10 px-4 rounded-[4px] flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
                                 style={{
                                   background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`,
                                 }}
@@ -263,7 +267,7 @@ export default function Mobile() {
                                       duration: 0.18,
                                       ease: [0.16, 1, 0.3, 1],
                                     }}
-                                    className="w-full mt-2.5 bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-[4px]-[4px]-[4px]-[4px] p-1.5 shadow-lg z-20 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+                                    className="w-full mt-2.5 bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-[4px] p-1.5 shadow-lg z-20 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
                                   >
                                     <div className="flex flex-col gap-1">
                                       {data.companyDropdown?.map(
@@ -274,11 +278,11 @@ export default function Mobile() {
                                               e.stopPropagation();
                                               handleRedirect(item.path);
                                             }}
-                                            className="w-full p-2.5 rounded-[4px]-[4px]-[4px]-[4px] border border-transparent active:border-white/10 active:bg-white/[0.12] transition-all flex items-center justify-between gap-2.5 text-left cursor-pointer"
+                                            className="w-full p-2.5 rounded-[4px] border border-transparent active:border-white/10 active:bg-white/[0.12] transition-all flex items-center justify-between gap-2.5 text-left cursor-pointer"
                                           >
                                             <div className="flex items-center gap-2.5 min-w-0">
                                               <div
-                                                className={`w-7 h-7 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center shrink-0 ${
+                                                className={`w-7 h-7 rounded-[4px] flex items-center justify-center shrink-0 ${
                                                   idx === 0
                                                     ? "bg-[#10B981]/20 text-[#34D399]"
                                                     : "bg-[#C99A2E]/20 text-[#E2C068]"
@@ -319,7 +323,7 @@ export default function Mobile() {
                                 handleRedirect(persona.path);
                               }}
                               aria-label={persona.cta}
-                              className="h-10 px-4 rounded-[4px]-[4px]-[4px]-[4px] flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
+                              className="h-10 px-4 rounded-[4px] flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_-2px_rgba(11,29,58,0.25)] active:scale-95 cursor-pointer"
                               style={{
                                 background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`,
                               }}

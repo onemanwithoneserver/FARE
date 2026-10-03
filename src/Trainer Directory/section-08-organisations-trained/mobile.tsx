@@ -37,13 +37,13 @@ export default function Mobile() {
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] right-[-10%] w-[250px] h-[250px] rounded-[4px]-[4px]-[4px]-full blur-[80px] pointer-events-none z-0 opacity-40"
+        className="absolute top-[20%] right-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1.05, 1, 1.05] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] rounded-[4px]-[4px]-[4px]-full blur-[90px] pointer-events-none z-0 opacity-30"
+        className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.1) 0%, transparent 70%)" }}
       />
 
@@ -55,7 +55,7 @@ export default function Mobile() {
         className="relative z-10 w-full"
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-8">
-          <div className="w-[3px] h-6 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Experience \u0026 Track Record")}</h2>
         </motion.div>
 
@@ -87,14 +87,14 @@ export default function Mobile() {
                   {timelineItem.year}
                 </span>
                 <div
-                  className="absolute left-[47px] top-[23px] z-10 h-3 w-3 rounded-[4px]-[4px]-[4px]-full border-[2px] border-white shadow-sm"
+                  className="absolute left-[47px] top-[23px] z-10 h-3 w-3 rounded-full border-[2px] border-white shadow-sm"
                   style={{ background: colors.accent }}
                 />
-                <div className="relative w-3/4 overflow-hidden rounded-[4px]-[4px]-[4px] border border-[#0B1D3A]/[0.08] bg-white p-4 shadow-[0_6px_18px_-14px_rgba(11,29,58,0.35)]">
+                <div className="relative w-3/4 overflow-hidden rounded border border-[#0B1D3A]/[0.08] bg-white p-4 shadow-[0_6px_18px_-14px_rgba(11,29,58,0.35)]">
                   <div className="absolute inset-x-0 top-0 h-[3px]" style={{ background: colors.bg }} />
                   <div className="flex min-w-0 items-center gap-3">
                     <div
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[4px]-[4px]-[4px] text-[11px] font-black text-white"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded text-[11px] font-black text-white"
                       style={{ background: colors.bg }}
                     >
                       {initialsOf(timelineItem.company)}
@@ -111,7 +111,7 @@ export default function Mobile() {
                   </div>
                   <div className="mt-3">
                     <span
-                      className="inline-block rounded-[4px]-[4px]-[4px] border px-2.5 py-1.5 text-[11px] font-semibold"
+                      className="inline-block rounded border px-2.5 py-1.5 text-[11px] font-semibold"
                       style={{
                         background: `${colors.accent}08`,
                         borderColor: `${colors.accent}20`,

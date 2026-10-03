@@ -81,15 +81,15 @@ function TrainerPhotoHero({
             aria-label={`${t("Play introduction video")}: ${trainer.name}`}
             className="absolute inset-0 z-10 flex items-center justify-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D5AA45]"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-[4px]-[4px]-[4px]-full bg-white/90 text-[#0B1D3A] shadow-[0_8px_24px_-6px_rgba(0,0,0,0.5)] ring-4 ring-white/25 transition-transform group-active:scale-95">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#0B1D3A] shadow-[0_8px_24px_-6px_rgba(0,0,0,0.5)] ring-4 ring-white/25 transition-transform group-active:scale-95">
               <Play size={16} fill="currentColor" className="ml-0.5" />
             </span>
           </button>
           <span
-            className="pointer-events-none absolute left-3 top-3 z-20 inline-flex h-[22px] items-center gap-1.5 rounded-[4px]-[4px]-[4px]-full px-2 text-[10px] font-bold"
+            className="pointer-events-none absolute left-3 top-3 z-20 inline-flex h-[22px] items-center gap-1.5 rounded-full px-2 text-[10px] font-bold"
             style={{ background: availability.bg, color: availability.text }}
           >
-            <span className="h-1.5 w-1.5 rounded-[4px]-[4px]-[4px]-full" style={{ background: availability.dot }} />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: availability.dot }} />
             {t(availability.label)}
           </span>
         </>
@@ -99,7 +99,7 @@ function TrainerPhotoHero({
           type="button"
           onClick={onToggleIntroVideo}
           aria-label={t("Close video")}
-          className="absolute right-2 top-2 z-20 rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-full bg-black/65 p-1.5 text-white shadow"
+          className="absolute right-2 top-2 z-20 rounded-full bg-black/65 p-1.5 text-white shadow"
         >
           <X size={14} />
         </button>
@@ -112,8 +112,8 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
   const initials = trainer.name.split(" ").map((part) => part[0]).join("").slice(0, 2);
 
   return (
-    <div className="relative shrink-0 rounded-[4px]-[4px]-[4px]-[4px] bg-white p-0.5 shadow-[0_12px_28px_-10px_rgba(11,29,58,0.5)] ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
-          <div className="h-full w-full overflow-hidden rounded-[4px]-[4px]-[4px]-[2px] bg-[#0B1D3A]">
+    <div className="relative shrink-0 rounded-[4px] bg-white p-0.5 shadow-[0_12px_28px_-10px_rgba(11,29,58,0.5)] ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
+          <div className="h-full w-full overflow-hidden rounded-[2px] bg-[#0B1D3A]">
         {trainer.image ? (
           <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
         ) : (
@@ -121,7 +121,7 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
         )}
       </div>
       {trainer.verified && (
-        <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-[4px]-[4px]-[4px]-full bg-[#2563EB] shadow-sm ring-1 ring-white">
+        <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#2563EB] shadow-sm ring-1 ring-white">
           <BadgeCheck size={11} strokeWidth={2.8} style={{ color: "#FFFFFF" }} />
         </span>
       )}
@@ -143,7 +143,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
   ];
 
   return (
-    <article className="group relative flex flex-col h-full bg-white rounded-[4px]-[4px]-[4px]-[4px] font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] active:scale-[0.99] transition-transform duration-200 overflow-hidden">
+    <article className="group relative flex flex-col h-full bg-white rounded-2xl font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] active:scale-[0.99] transition-transform duration-200 overflow-hidden">
       <TrainerPhotoHero
         trainer={trainer}
         isIntroVideoOpen={isIntroVideoOpen}
@@ -154,7 +154,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
         <div className="-mt-12 mb-3 relative z-10 flex items-end gap-3">
           <TrainerPortrait trainer={trainer} size={96} />
           <div className="min-w-0 flex-1 pb-0.5">
-            <span className="inline-flex items-center gap-1 rounded-[4px]-[4px]-[4px]-full bg-[#F1F5F9] px-2 py-0.5 text-[10px] font-semibold text-[#5A6B82]">
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#F1F5F9] px-2 py-0.5 text-[10px] font-semibold text-[#5A6B82]">
               <MapPin size={10} strokeWidth={2.5} style={{ color: GOLD }} />
               {t(trainer.location.split(",")[0])}
             </span>
@@ -167,10 +167,10 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
 
         <p className="mt-2 line-clamp-2 text-[12px] leading-relaxed text-[#5A6B82]/90">{t(trainer.positioning)}</p>
 
-        <div className="mt-3 grid grid-cols-3 rounded-[4px]-[4px]-[4px]-[4px] border border-[#0B1D3A]/[0.05] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
+        <div className="mt-3 grid grid-cols-3 rounded-lg border border-[#0B1D3A]/[0.05] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-1 py-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-[4px]-[4px]-[4px]-[4px] shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
+              <span className="flex h-6 w-6 items-center justify-center rounded-md shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
                 {stat.icon}
               </span>
               <span className="text-[13px] font-black leading-none" style={{ color: NAVY }}>{stat.value}</span>
@@ -185,13 +185,13 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
             {trainer.expertise.slice(0, 2).map((expertise) => (
               <span
                 key={expertise}
-                className="rounded-[4px]-[4px]-[4px]-full border border-[#C99A2E]/20 bg-[#FBF4E4] px-2 py-0.5 text-[10px] font-semibold text-[#8A6516]"
+                className="rounded-full border border-[#C99A2E]/20 bg-[#FBF4E4] px-2 py-0.5 text-[10px] font-semibold text-[#8A6516]"
               >
                 {t(expertise)}
               </span>
             ))}
             {trainer.expertise.length > 2 && (
-              <span className="rounded-[4px]-[4px]-[4px]-full bg-[#F1F4F9] px-2 py-0.5 text-[10px] font-semibold text-[#5A6B82]">
+              <span className="rounded-full bg-[#F1F4F9] px-2 py-0.5 text-[10px] font-semibold text-[#5A6B82]">
                 +{trainer.expertise.length - 2}
               </span>
             )}
@@ -203,7 +203,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-semibold text-[#475569]">
             {trainer.segments.map((segment, index) => (
               <span key={segment} className="inline-flex items-center gap-2">
-                {index > 0 && <span className="h-1 w-1 rounded-[4px]-[4px]-[4px]-full bg-[#C99A2E]" />}
+                {index > 0 && <span className="h-1 w-1 rounded-full bg-[#C99A2E]" />}
                 {t(segment)}
               </span>
             ))}
@@ -218,7 +218,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
           <div className="flex items-center justify-between gap-2 pt-2">
             <button
               onClick={onViewProfile}
-              className="group/vp px-4 h-9 rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-[8px] text-[12.5px] font-bold flex items-center justify-center gap-1 text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+              className="group/vp px-4 h-9 rounded-xl text-[12.5px] font-bold flex items-center justify-center gap-1 text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
               style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
             >
               {t("View Profile")}
@@ -238,7 +238,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
             </button>
             <button
               onClick={() => !requested && handleRequest()}
-              className={`group/rq px-4 h-9 rounded-[4px]-[4px]-[4px]-[8px] text-[12.5px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
+              className={`group/rq px-4 h-9 rounded-xl text-[12.5px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
                 requested
                   ? "bg-[#E7F7F0] border border-[#059669]/30 text-[#059669] cursor-default"
                   : "relative overflow-hidden border border-[#C99A2E]/40 bg-[#FBF4E4] hover:bg-gradient-to-br hover:from-[#D5AA45] hover:to-[#C99A2E] hover:border-transparent hover:shadow-[0_8px_18px_-8px_rgba(201,154,46,0.7)] active:scale-[0.98] text-[#0B1D3A]"

@@ -28,7 +28,7 @@ export default function Mobile() {
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] left-[-10%] w-[250px] h-[250px] rounded-[4px]-[4px]-[4px]-full blur-[80px] pointer-events-none z-0 opacity-40"
+        className="absolute top-[20%] left-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.12) 0%, transparent 70%)" }}
       />
       
@@ -40,13 +40,13 @@ export default function Mobile() {
         className="relative z-10 w-full"
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-8">
-          <div className="w-[3px] h-6 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Introductory Video")}</h2>
         </motion.div>
 
         <motion.div
           variants={item}
-          className="relative w-full max-w-[360px] mx-auto aspect-video rounded-[4px]-[4px]-[4px] overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] luxury-shadow-float cursor-pointer group"
+          className="relative w-full max-w-[360px] mx-auto aspect-video rounded overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] luxury-shadow-float cursor-pointer group"
         >
           <div className="absolute inset-0 bg-[#0B1D3A]" />
           <div
@@ -68,11 +68,11 @@ export default function Mobile() {
               <motion.div
                 animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 rounded-[4px]-[4px]-[4px]-full"
+                className="absolute inset-0 rounded-full"
                 style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
               />
               <div
-                className="w-16 h-16 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center luxury-shadow-float group-active:scale-95 transition-transform duration-300 relative z-10"
+                className="w-16 h-16 rounded-full flex items-center justify-center luxury-shadow-float group-active:scale-95 transition-transform duration-300 relative z-10"
                 style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
               >
               <Play size={20} className="ml-1 text-white fill-white" />
@@ -80,7 +80,7 @@ export default function Mobile() {
             </div>
           </div>
 
-          <div className="absolute bottom-2.5 right-2.5 bg-black/50 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-[4px]-[4px]-[4px] z-10">
+          <div className="absolute bottom-2.5 right-2.5 bg-black/50 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">
             {video.duration}
           </div>
           

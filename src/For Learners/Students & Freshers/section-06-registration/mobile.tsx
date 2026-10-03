@@ -17,7 +17,7 @@ export default function Mobile() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6 }}
-          className="relative rounded-[4px]-[20px] overflow-hidden luxury-shadow-float group"
+          className="relative rounded-[20px] overflow-hidden luxury-shadow-float group"
         >
 
           <div className="absolute inset-0 bg-[#0B1D3A]" />
@@ -28,7 +28,7 @@ export default function Mobile() {
               y: ["-10%", "10%", "-10%"],
             }}
             transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-[100px] -right-[100px] w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/35 to-transparent rounded-[4px]-full blur-[60px]"
+            className="absolute -top-[100px] -right-[100px] w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/35 to-transparent rounded-full blur-[60px]"
           />
           <motion.div 
             animate={{ 
@@ -36,7 +36,7 @@ export default function Mobile() {
               y: ["10%", "-10%", "10%"],
             }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute -bottom-[80px] -left-[80px] w-[200px] h-[200px] bg-gradient-radial from-[#38BDF8]/25 to-transparent rounded-[4px]-full blur-[60px]"
+            className="absolute -bottom-[80px] -left-[80px] w-[200px] h-[200px] bg-gradient-radial from-[#38BDF8]/25 to-transparent rounded-full blur-[60px]"
           />
 
           <div 
@@ -52,7 +52,7 @@ export default function Mobile() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[4px]-full bg-white/10 border border-white/20 backdrop-blur-md mb-6 shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-6 shadow-sm"
             >
               <Sparkles size={12} className="text-[#C99A2E]" strokeWidth={2.5} />
               <span className="font-bold text-[10px] tracking-[0.15em] uppercase text-white/90">
@@ -85,7 +85,7 @@ export default function Mobile() {
               className="flex flex-col gap-4 w-full"
             >
               <button 
-                className="w-full h-14 rounded-[4px]-[8px]-[6px] font-bold text-[15px] text-[#0B1D3A] flex items-center justify-center gap-2 relative overflow-hidden transition-all duration-300 active:scale-[0.98] luxury-shadow-float"
+                className="w-full h-14 rounded-[6px] font-bold text-[15px] text-[#0B1D3A] flex items-center justify-center gap-2 relative overflow-hidden transition-all duration-300 active:scale-[0.98] luxury-shadow-float"
                 style={{ background: `linear-gradient(135deg, ${GOLD}, #E5C370)` }}
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -94,7 +94,7 @@ export default function Mobile() {
                 </span>
               </button>
               
-              <button className="w-full h-14 bg-white/5 border border-white/20 text-white rounded-[4px]-[8px]-[6px] font-bold text-[15px] active:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm active:scale-[0.98]">
+              <button className="w-full h-14 bg-white/5 border border-white/20 text-white rounded-[6px] font-bold text-[15px] active:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm active:scale-[0.98]">
                 {data.buttons.secondary}
                 <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${16}px` }}>
       <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
@@ -104,7 +104,7 @@ export default function Mobile() {
             </motion.div>
           </div>
           
-          <div className="absolute inset-0 border border-white/10 rounded-[4px]-[20px] pointer-events-none" />
+          <div className="absolute inset-0 border border-white/10 rounded-[20px] pointer-events-none" />
         </motion.div>
       </div>
     </section>

@@ -27,13 +27,13 @@ export default function Desktop() {
       <motion.div
         animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-[5%] w-[450px] h-[450px] rounded-[4px]-[4px]-[4px]-full blur-[100px] pointer-events-none z-0 opacity-40"
+        className="absolute top-[10%] left-[5%] w-[450px] h-[450px] rounded-full blur-[100px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1.1, 1, 1.1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] right-[5%] w-[400px] h-[400px] rounded-[4px]-[4px]-[4px]-full blur-[120px] pointer-events-none z-0 opacity-30"
+        className="absolute bottom-[-10%] right-[5%] w-[400px] h-[400px] rounded-full blur-[120px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)" }}
       />
 
@@ -45,7 +45,7 @@ export default function Desktop() {
         className="max-w-[1200px] w-full relative z-10"
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-4">
-          <div className="w-[4px] h-7 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Credentials \u0026 Qualifications")}</h2>
         </motion.div>
         
@@ -61,12 +61,12 @@ export default function Desktop() {
               key={cred}
               variants={item}
               whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-              className="group rounded-[4px]-[4px]-[4px] p-7 flex flex-col relative overflow-hidden transition-all duration-300 border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/[0.4] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] bg-white"
+              className="group rounded-xl p-7 flex flex-col relative overflow-hidden transition-all duration-300 border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/[0.4] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] bg-white"
             >
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C99A2E] to-[#D5AA45]" />
               <div className="flex items-center justify-between mb-7 relative z-10">
                 <div
-                  className="w-12 h-12 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform duration-300"
+                  className="w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform duration-300"
                   style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
                 >
                   <Award size={22} strokeWidth={2.5} />

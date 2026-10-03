@@ -11,7 +11,7 @@ export default function Mobile() {
 
   return (
     <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-6 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="absolute top-0 left-0 w-full h-[55%] bg-[#0B1D3A] rounded-[4px]-b-[30px] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-[55%] bg-[#0B1D3A] rounded-b-[30px] pointer-events-none" />
       
       <div className="max-w-full mx-auto relative z-10">
         <motion.div
@@ -37,14 +37,14 @@ export default function Mobile() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`relative bg-white rounded-[4px]-[4px] p-6 flex flex-col hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${
+              className={`relative bg-white rounded-[4px] p-6 flex flex-col hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${
                 plan.bestValue 
                   ? "border-2 border-[#C99A2E] luxury-shadow-float" 
                   : "border border-[#E2E8F0] luxury-shadow-float"
               }`}
             >
               {plan.bestValue && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-[#C99A2E] to-[#B8892A] text-white text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1 rounded-[4px]-[4px] whitespace-nowrap shadow-sm">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-[#C99A2E] to-[#B8892A] text-white text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1 rounded-[4px] whitespace-nowrap shadow-sm">
                   {plan.highlight}
                 </div>
               )}
@@ -59,7 +59,7 @@ export default function Mobile() {
               
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2.5">
-                  <div className="w-4 h-4 rounded-[4px]-[4px] bg-[#10B981]/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-4 h-4 rounded-[4px] bg-[#10B981]/10 flex items-center justify-center shrink-0 mt-0.5">
                     <Check size={10} className="text-[#10B981]" strokeWidth={3} />
                   </div>
                   <span className="text-[14px] text-[#475569] font-medium leading-snug">{plan.text}</span>
@@ -67,7 +67,7 @@ export default function Mobile() {
               </ul>
               
               <button
-                className={`w-full py-3.5 rounded-[4px]-[8px]-[8px] font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
+                className={`w-full py-3.5 rounded-[8px] font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
                   plan.bestValue 
                     ? "bg-[#0B1D3A] text-white shadow-md" 
                     : "bg-[#F8FAFD] text-[#0B1D3A] border border-[#E2E8F0]"

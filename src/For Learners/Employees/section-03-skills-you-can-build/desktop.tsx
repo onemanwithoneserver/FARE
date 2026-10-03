@@ -58,10 +58,10 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px]-[4px] border border-[#E2E8F0]/60 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300"
+                className="bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px] border border-[#E2E8F0]/60 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-5 border-b border-[#E2E8F0] pb-4">
-                  <div className={`w-12 h-12 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
+                  <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
                     <Icon size={22} className="text-white" strokeWidth={2.5} />
                   </div>
                   <div>
@@ -73,7 +73,7 @@ export default function Desktop() {
                 <ul className="space-y-2.5">
                   {cat.skills.map((skill, j) => (
                     <li key={j} className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-[4px]-full bg-[#CBD5E1] mt-1.5 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#CBD5E1] mt-1.5 shrink-0" />
                       <span className="text-[14px] text-[#475569] font-medium leading-snug">
                         {skill}
                       </span>

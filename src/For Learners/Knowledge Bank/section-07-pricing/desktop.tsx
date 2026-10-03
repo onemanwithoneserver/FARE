@@ -30,7 +30,7 @@ export default function Desktop() {
 
   return (
     <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="absolute top-0 left-0 w-full h-[60%] bg-[#0B1D3A] rounded-[4px]-b-[40px] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-[60%] bg-[#0B1D3A] rounded-b-[40px] pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
@@ -59,14 +59,14 @@ export default function Desktop() {
             <motion.div
               key={i}
               variants={item}
-              className={`flex-1 relative bg-white rounded-[4px]-[4px] p-8 flex flex-col hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${
+              className={`flex-1 relative bg-white rounded-[4px] p-8 flex flex-col hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${
                 plan.bestValue 
                   ? "border-2 border-[#C99A2E] luxury-shadow-float" 
                   : "border border-[#E2E8F0] luxury-shadow-float"
               }`}
             >
               {plan.bestValue && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-[#C99A2E] to-[#B8892A] text-white text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-[4px]-[4px] whitespace-nowrap shadow-md">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-[#C99A2E] to-[#B8892A] text-white text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-[4px] whitespace-nowrap shadow-md">
                   {plan.highlight}
                 </div>
               )}
@@ -81,7 +81,7 @@ export default function Desktop() {
               
               <ul className="space-y-4 mb-8 flex-grow">
                 <li className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-[4px]-[4px] bg-[#10B981]/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-5 h-5 rounded-[4px] bg-[#10B981]/10 flex items-center justify-center shrink-0 mt-0.5">
                     <Check size={12} className="text-[#10B981]" strokeWidth={3} />
                   </div>
                   <span className="text-[#475569] font-medium">{plan.text}</span>
@@ -89,7 +89,7 @@ export default function Desktop() {
               </ul>
               
               <button
-                className={`w-full py-4 rounded-[4px]-[8px]-[8px] font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
+                className={`w-full py-4 rounded-[8px] font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
                   plan.bestValue 
                     ? "bg-[#0B1D3A] text-white hover:luxury-shadow-float" 
                     : "bg-[#F8FAFD] text-[#0B1D3A] border border-[#E2E8F0] hover:border-[#0B1D3A]/20 hover:bg-white"

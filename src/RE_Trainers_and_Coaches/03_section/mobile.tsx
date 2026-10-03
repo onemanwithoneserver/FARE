@@ -58,7 +58,7 @@ export default function Mobile() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#F1F5FB] to-transparent rounded-[4px]-full blur-[60px] pointer-events-none"
+        className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#F1F5FB] to-transparent rounded-full blur-[60px] pointer-events-none"
       ></motion.div>
       <div className="px-5 relative z-10">
         <motion.div
@@ -70,7 +70,7 @@ export default function Mobile() {
         >
           <motion.div variants={item} className="mb-4">
             <span
-              className="inline-flex items-center px-3 py-1 rounded-[4px]-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
+              className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
               style={{ color: GOLD }}
             >
               {data.overline}
@@ -108,7 +108,7 @@ export default function Mobile() {
             <motion.div
               key={index}
               variants={item}
-              className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px]-[4px] p-3.5 shadow-[0_2px_10px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden flex flex-col justify-between hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+              className="bg-white border border-[#0B1D3A]/[0.06] rounded-lg p-3.5 shadow-[0_2px_10px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden flex flex-col justify-between hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -117,7 +117,7 @@ export default function Mobile() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute top-0 right-0 w-24 h-24 opacity-[0.06] blur-[24px] rounded-[4px]-bl-full pointer-events-none"
+                className="absolute top-0 right-0 w-24 h-24 opacity-[0.06] blur-[24px] rounded-bl-full pointer-events-none"
                 style={{ background: card.color }}
               ></motion.div>
               <div
@@ -127,13 +127,13 @@ export default function Mobile() {
               <div>
                 <div className="flex items-center justify-between mb-3 relative z-10">
                   <div
-                    className="w-8 h-8 rounded-[4px]-[4px] flex items-center justify-center shadow-xs relative overflow-hidden"
+                    className="w-8 h-8 rounded flex items-center justify-center shadow-xs relative overflow-hidden"
                     style={{ backgroundColor: card.color }}
                   >
                     {icons[card.icon as keyof typeof icons]}
                   </div>
                   <div
-                    className="px-2 py-0.5 rounded-[4px]-full text-[8px] font-bold tracking-wider uppercase border flex items-center gap-1"
+                    className="px-2 py-0.5 rounded-full text-[8px] font-bold tracking-wider uppercase border flex items-center gap-1"
                     style={{
                       color: card.color,
                       backgroundColor: `${card.color}12`,
@@ -141,7 +141,7 @@ export default function Mobile() {
                     }}
                   >
                     <span
-                      className="w-1 h-1 rounded-[4px]-full"
+                      className="w-1 h-1 rounded-full"
                       style={{ backgroundColor: card.color }}
                     ></span>
                     {card.tag}

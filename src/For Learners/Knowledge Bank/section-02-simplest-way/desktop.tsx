@@ -29,7 +29,7 @@ export default function Desktop() {
 
   return (
     <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="absolute top-0 right-[20%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-[4px]-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-[20%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[100px] pointer-events-none" />
 
       <motion.div
         variants={container}
@@ -69,10 +69,10 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-8 rounded-[4px]-[4px] border border-[#E2E8F0]/80 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300 group"
+                className="bg-white p-8 rounded-[4px] border border-[#E2E8F0]/80 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div
-                  className={`w-11 h-11 rounded-[4px]-[4px] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-br ${colorGradient} shadow-sm`}
+                  className={`w-11 h-11 rounded-[4px] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-br ${colorGradient} shadow-sm`}
                 >
                   <Icon size={20} className="text-white" strokeWidth={2.5} />
                 </div>

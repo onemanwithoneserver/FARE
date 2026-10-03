@@ -27,13 +27,13 @@ export default function Mobile() {
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-[4px]-[4px]-[4px]-full blur-[80px] pointer-events-none z-0 opacity-30"
+        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1.05, 1, 1.05] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-[4px]-[4px]-[4px]-full blur-[90px] pointer-events-none z-0 opacity-40"
+        className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)" }}
       />
 
@@ -45,7 +45,7 @@ export default function Mobile() {
         className="relative z-10 w-full"
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-4">
-          <div className="w-[3px] h-6 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Credentials")}</h2>
         </motion.div>
         
@@ -60,12 +60,12 @@ export default function Mobile() {
             <motion.div
               key={cred}
               variants={item}
-              className="group rounded-[4px]-[4px]-[4px] p-5 flex flex-col relative overflow-hidden border border-[#0B1D3A]/[0.08] luxury-shadow-float bg-white"
+              className="group rounded-lg p-5 flex flex-col relative overflow-hidden border border-[#0B1D3A]/[0.08] luxury-shadow-float bg-white"
             >
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C99A2E] to-[#D5AA45]" />
               <div className="flex items-center justify-between mb-5 relative z-10">
                 <div
-                  className="w-10 h-10 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shadow-sm"
+                  className="w-10 h-10 rounded-md flex items-center justify-center text-white shadow-sm"
                   style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
                 >
                   <Award size={18} strokeWidth={2.5} />

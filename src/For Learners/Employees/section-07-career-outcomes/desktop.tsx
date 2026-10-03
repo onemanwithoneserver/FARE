@@ -55,10 +55,10 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-[#F8FAFD] p-8 rounded-[4px]-[4px] border border-[#E2E8F0]/80 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden"
+                className="bg-[#F8FAFD] p-8 rounded-[4px] border border-[#E2E8F0]/80 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden"
               >
                 <div className="flex items-center gap-4 mb-5">
-                  <div className={`w-12 h-12 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md shrink-0 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon size={22} className="text-white" strokeWidth={2.5} />
                   </div>
                 </div>
@@ -82,7 +82,7 @@ export default function Desktop() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <p className="text-[19px] font-bold text-[#C99A2E] bg-[#C99A2E]/5 inline-block px-8 py-4 rounded-[4px]-[4px]">
+          <p className="text-[19px] font-bold text-[#C99A2E] bg-[#C99A2E]/5 inline-block px-8 py-4 rounded-[4px]">
             "{data.closing}"
           </p>
         </motion.div>

@@ -32,7 +32,7 @@ export default function Mobile() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#F1F5FB] to-transparent rounded-[4px]-full blur-[60px] pointer-events-none"
+        className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#F1F5FB] to-transparent rounded-full blur-[60px] pointer-events-none"
       ></motion.div>
       <div className="w-full px-5 relative z-10">
         <motion.div
@@ -45,10 +45,10 @@ export default function Mobile() {
           <div className="flex flex-col">
             <motion.div variants={item} className="mb-4">
               <span
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[4px]-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
                 style={{ color: GOLD }}
               >
-                <div className="w-5 h-5 rounded-[4px] bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0">
+                <div className="w-5 h-5 rounded bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0">
                   <Settings2 size={11} className="text-white" />
                 </div>
                 {data.title === data.overline
@@ -84,14 +84,14 @@ export default function Mobile() {
                 {data.highlights.split(" · ").map((highlight, idx) => (
                   <div
                     key={idx}
-                    className="bg-[#F8FAFD] text-[#0B1D3A] border border-[#0B1D3A]/10 px-3 py-1.5 rounded-[4px] text-[12px] font-semibold"
+                    className="bg-[#F8FAFD] text-[#0B1D3A] border border-[#0B1D3A]/10 px-3 py-1.5 rounded text-[12px] font-semibold"
                   >
                     {highlight}
                   </div>
                 ))}
               </div>
-              <div className="bg-[#F8FAFD] rounded-[4px] p-4 border border-[#0B1D3A]/[0.06] flex items-start gap-3">
-                <div className="mt-0.5 w-6 h-6 rounded-[4px]-full bg-[#C99A2E]/10 flex items-center justify-center shrink-0">
+              <div className="bg-[#F8FAFD] rounded p-4 border border-[#0B1D3A]/[0.06] flex items-start gap-3">
+                <div className="mt-0.5 w-6 h-6 rounded-full bg-[#C99A2E]/10 flex items-center justify-center shrink-0">
                   <Sparkles size={12} className="text-[#C99A2E]" />
                 </div>
                 <p
@@ -105,15 +105,15 @@ export default function Mobile() {
           </div>
           <motion.div
             variants={item}
-            className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-7 luxury-shadow-float relative overflow-hidden"
+            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-7 luxury-shadow-float relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[#C99A2E]/10 to-transparent rounded-[4px]-bl-full pointer-events-none opacity-60"></div>
+            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[#C99A2E]/10 to-transparent rounded-bl-full pointer-events-none opacity-60"></div>
             <h3
               className="text-[18px] font-bold mb-6 relative z-10 flex items-center gap-3"
               style={{ color: NAVY }}
             >
               <div
-                className="w-1.5 h-6 rounded-[4px]-full"
+                className="w-1.5 h-6 rounded-full"
                 style={{ background: GOLD }}
               ></div>
               {data.featuresHeading}
@@ -139,7 +139,7 @@ export default function Mobile() {
                 return (
                   <div key={idx} className="flex items-center gap-3.5">
                     <div
-                      className={`w-8 h-8 rounded-[4px] ${bgColors[idx % bgColors.length]} flex items-center justify-center shrink-0 shadow-sm`}
+                      className={`w-8 h-8 rounded ${bgColors[idx % bgColors.length]} flex items-center justify-center shrink-0 shadow-sm`}
                     >
                       <Check
                         size={14}
@@ -157,12 +157,12 @@ export default function Mobile() {
           </motion.div>
           <motion.div
             variants={item}
-            className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-[4px] p-8 luxury-shadow-float flex flex-col items-center text-center relative overflow-hidden"
+            className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded p-8 luxury-shadow-float flex flex-col items-center text-center relative overflow-hidden"
           >
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 right-0 w-24 h-24 bg-[#C99A2E]/20 rounded-[4px]-full blur-[30px] pointer-events-none"
+              className="absolute top-0 right-0 w-24 h-24 bg-[#C99A2E]/20 rounded-full blur-[30px] pointer-events-none"
             ></motion.div>
             <h3 className="text-[18px] font-bold mb-2 text-white relative z-10">
               {data.ctaHeading}
@@ -170,7 +170,7 @@ export default function Mobile() {
             <p className="text-[13.5px] font-medium text-white/70 mb-6 relative z-10">
               {data.ctaDesc}
             </p>
-            <button className="group w-full bg-white text-[#0B1D3A] px-6 py-4 rounded-[4px]-[8px] text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all relative z-10 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
+            <button className="group w-full bg-white text-[#0B1D3A] px-6 py-4 rounded text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all relative z-10 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
               {data.ctaButton}{" "}
               <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"group-hover:translate-x-1"}`} style={{ fontSize: `${15}px` }}>
       <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />

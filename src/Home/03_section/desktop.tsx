@@ -64,23 +64,27 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full py-16 relative font-['Outfit'] z-20 bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF]"
+      className="w-full py-16 relative font-['Outfit'] z-20 fare-noise-overlay"
+      style={{
+        background:
+          "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)",
+      }}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{ opacity: [0.3, 0.65, 0.3], scale: [1, 1.08, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[5%] right-[10%] w-[650px] h-[650px] bg-gradient-radial from-[#DDEAFF]/50 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[130px] pointer-events-none z-0"
+          className="absolute top-[5%] right-[10%] w-[650px] h-[650px] bg-gradient-radial from-[#DDEAFF]/50 to-transparent rounded-full blur-[130px] pointer-events-none z-0"
         />
         <motion.div
           animate={{ opacity: [0.25, 0.55, 0.25], scale: [1.06, 1, 1.06] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[5%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-[4px]-[4px]-[4px]-full blur-[120px] pointer-events-none z-0"
+          className="absolute bottom-[5%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
         />
         <motion.div
           animate={{ scale: [1, 1.25, 1], opacity: [0.03, 0.08, 0.03] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-[4px]-[4px]-[4px]-full border border-[#0B1D3A]/20 pointer-events-none z-0"
+          className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-[#0B1D3A]/20 pointer-events-none z-0"
         />
         <div
           className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
@@ -99,7 +103,7 @@ export default function Desktop() {
           className="flex flex-col items-center text-center mb-16"
         >
           <motion.div variants={itemVariants} className="mb-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[4px]-[4px]-[4px]-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
               <Sparkles
                 size={13}
                 className="text-[#C99A2E] animate-pulse"
@@ -148,24 +152,24 @@ export default function Desktop() {
                   y: -8,
                   transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
                 }}
-                className={`group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/20 rounded-[4px]-[4px]-[4px]-[4px] p-8 xl:p-9 flex flex-col justify-between luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative h-full cursor-default ${
+                className={`group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/20 rounded-xl p-8 xl:p-9 flex flex-col justify-between luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative h-full cursor-default ${
                   isCompany ? "overflow-visible z-30" : "overflow-hidden"
                 }`}
               >
                 <div
-                  className="absolute top-0 left-0 right-0 h-[3.5px] transition-all duration-500 opacity-80 group-hover:opacity-100 rounded-[4px]-[4px]-[4px]-t-[4px]"
+                  className="absolute top-0 left-0 right-0 h-[3.5px] transition-all duration-500 opacity-80 group-hover:opacity-100 rounded-t-xl"
                   style={{
                     background: `linear-gradient(90deg, ${accent}, ${accent}90)`,
                   }}
                 />
                 <div
-                  className="absolute -top-16 -right-16 w-44 h-44 rounded-[4px]-[4px]-[4px]-full blur-[45px] opacity-[0.06] group-hover:opacity-[0.14] transition-all duration-500 pointer-events-none"
+                  className="absolute -top-16 -right-16 w-44 h-44 rounded-full blur-[45px] opacity-[0.06] group-hover:opacity-[0.14] transition-all duration-500 pointer-events-none"
                   style={{ background: accent }}
                 />
                 <div>
                   <div className="flex items-center gap-4 mb-6">
                     <div
-                      className="w-13 h-13 xl:w-14 xl:h-14 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center text-white shadow-md group-hover:scale-110 group-hover:rotate-3 transition-transform duration-400 relative overflow-hidden shrink-0"
+                      className="w-13 h-13 xl:w-14 xl:h-14 rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-110 group-hover:rotate-3 transition-transform duration-400 relative overflow-hidden shrink-0"
                       style={{
                         background: `linear-gradient(135deg, ${accent} 0%, ${accent}DD 100%)`,
                       }}
@@ -181,14 +185,14 @@ export default function Desktop() {
                     {persona.items.map((it, idx) => (
                       <div
                         key={idx}
-                        className="group/item flex items-center gap-3.5 px-4 py-3 rounded-[4px]-[4px]-[4px]-[4px] transition-all duration-300 hover:translate-x-1"
+                        className="group/item flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-300 hover:translate-x-1"
                         style={{
                           background: `linear-gradient(135deg, ${accent}0A, ${accent}03)`,
                           border: `1px solid ${accent}20`,
                         }}
                       >
                         <div
-                          className="w-7 h-7 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover/item:scale-110 shadow-xs"
+                          className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover/item:scale-110 shadow-xs"
                           style={{ background: `${accent}18` }}
                         >
                           <Check
@@ -215,7 +219,7 @@ export default function Desktop() {
                           setIsCompanyDropdownOpen(!isCompanyDropdownOpen)
                         }
                         aria-label={persona.cta}
-                        className="h-11 px-5 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:luxury-shadow-float hover:scale-105 active:scale-95 group/btn cursor-pointer"
+                        className="h-11 px-5 rounded-[4px] flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:luxury-shadow-float hover:scale-105 active:scale-95 group/btn cursor-pointer"
                         style={{
                           background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`,
                         }}
@@ -244,7 +248,7 @@ export default function Desktop() {
                               duration: 0.18,
                               ease: [0.16, 1, 0.3, 1],
                             }}
-                            className="absolute top-[calc(100%+8px)] right-0 w-[260px] bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-[4px]-[4px]-[4px]-[4px] p-1.5 luxury-shadow-float z-50 pointer-events-auto hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+                            className="absolute top-[calc(100%+8px)] right-0 w-[260px] bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-[4px] p-1.5 luxury-shadow-float z-50 pointer-events-auto hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
                           >
                             <div className="flex flex-col gap-1">
                               {data.companyDropdown?.map((item, idx) => (
@@ -254,11 +258,11 @@ export default function Desktop() {
                                     e.stopPropagation();
                                     handleRedirect(item.path);
                                   }}
-                                  className="w-full p-2.5 rounded-[4px]-[4px]-[4px]-[4px] border border-transparent hover:border-white/10 hover:bg-white/[0.08] transition-all duration-200 flex items-center justify-between gap-2.5 text-left cursor-pointer group/item"
+                                  className="w-full p-2.5 rounded-[4px] border border-transparent hover:border-white/10 hover:bg-white/[0.08] transition-all duration-200 flex items-center justify-between gap-2.5 text-left cursor-pointer group/item"
                                 >
                                   <div className="flex items-center gap-2.5 min-w-0">
                                     <div
-                                      className={`w-8 h-8 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/item:scale-105 ${
+                                      className={`w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/item:scale-105 ${
                                         idx === 0
                                           ? "bg-[#10B981]/20 text-[#34D399] group-hover/item:bg-[#10B981] group-hover/item:text-white"
                                           : "bg-[#C99A2E]/20 text-[#E2C068] group-hover/item:bg-[#C99A2E] group-hover/item:text-white"
@@ -292,7 +296,7 @@ export default function Desktop() {
                     <button
                       onClick={() => handleRedirect(persona.path)}
                       aria-label={persona.cta}
-                      className="h-11 px-5 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:luxury-shadow-float hover:scale-105 active:scale-95 group/btn cursor-pointer"
+                      className="h-11 px-5 rounded-[4px] flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:luxury-shadow-float hover:scale-105 active:scale-95 group/btn cursor-pointer"
                       style={{
                         background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`,
                       }}

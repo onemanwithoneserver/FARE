@@ -28,8 +28,8 @@ export default function Desktop() {
 
   return (
     <section className="w-full bg-[#0B1D3A] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-[4px]-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-radial from-[#38BDF8]/[0.05] to-transparent rounded-[4px]-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-radial from-[#38BDF8]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
@@ -65,10 +65,10 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white/[0.04] backdrop-blur-md p-8 lg:p-10 rounded-[4px]-[4px] border border-white/10 luxury-shadow-float hover:border-[#C99A2E]/50 hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white/[0.04] backdrop-blur-md p-8 lg:p-10 rounded-[4px] border border-white/10 luxury-shadow-float hover:border-[#C99A2E]/50 hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  <div className={`w-14 h-14 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-lg mb-6 group-hover:scale-105 transition-transform duration-300`}>
+                  <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-lg mb-6 group-hover:scale-105 transition-transform duration-300`}>
                     <Icon size={28} className="text-white" strokeWidth={2.5} />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">
@@ -80,7 +80,7 @@ export default function Desktop() {
                 </div>
 
                 <button 
-                  className={`w-full py-4 px-6 rounded-[4px]-[8px]-[8px] font-bold text-[15px] flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
+                  className={`w-full py-4 px-6 rounded-[8px] font-bold text-[15px] flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
                     i === 0 
                       ? "bg-[#22C55E] text-white hover:bg-[#16A34A] hover:luxury-shadow-float" 
                       : "bg-[#C99A2E] text-[#0B1D3A] hover:bg-[#B8892A] hover:luxury-shadow-float"
@@ -105,7 +105,7 @@ export default function Desktop() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <div className="inline-block px-8 py-3 rounded-[4px]-[4px] bg-white/[0.05] border border-white/10 text-white/90 text-[15px] font-medium tracking-wide">
+            <div className="inline-block px-8 py-3 rounded-[4px] bg-white/[0.05] border border-white/10 text-white/90 text-[15px] font-medium tracking-wide">
               {data.quote}
             </div>
           </motion.div>

@@ -27,13 +27,13 @@ export default function Mobile() {
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-[4px]-[4px]-[4px]-full blur-[80px] pointer-events-none z-0 opacity-30"
+        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1.05, 1, 1.05] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-[4px]-[4px]-[4px]-full blur-[90px] pointer-events-none z-0 opacity-40"
+        className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.1) 0%, transparent 70%)" }}
       />
 
@@ -46,7 +46,7 @@ export default function Mobile() {
       >
         <div className="flex items-end justify-between mb-8">
           <motion.div variants={item} className="flex items-center gap-3">
-            <div className="w-[3px] h-6 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+            <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
             <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Programs")}</h2>
           </motion.div>
         </div>
@@ -67,21 +67,21 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="shrink-0 w-[85%] snap-center group bg-white/90 backdrop-blur-xl rounded-[4px]-[4px]-[4px] p-6 border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-col relative overflow-hidden"
+                className="shrink-0 w-[85%] snap-center group bg-white/90 backdrop-blur-xl rounded p-6 border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-col relative overflow-hidden"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px] opacity-80"
                   style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }}
                 />
 
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[20px] pointer-events-none transition-transform duration-700 group-active:scale-150" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[20px] pointer-events-none transition-transform duration-700 group-active:scale-150" />
 
                 <div className="flex items-center justify-between mb-3 relative z-10">
                   <span className="text-[10px] font-bold uppercase tracking-[0.15em] bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] bg-clip-text text-transparent">
                     {prog.format}
                   </span>
                   <span
-                    className="text-[10px] font-black px-2.5 py-1 rounded-[4px]-[4px]-[4px]-full shadow-sm"
+                    className="text-[10px] font-black px-2.5 py-1 rounded-full shadow-sm"
                     style={{
                       background: `${NAVY}08`,
                       color: `${NAVY}CC`,
@@ -100,8 +100,8 @@ export default function Mobile() {
                     { icon: <Users size={12} strokeWidth={2.5} />, text: prog.audience, bg: "linear-gradient(135deg, #3B82F6, #1D4ED8)" },
                     { icon: <Clock size={12} strokeWidth={2.5} />, text: prog.duration, bg: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` },
                   ].map((meta, mIdx) => (
-                    <div key={mIdx} className="flex items-center gap-3 p-2.5 rounded-[4px]-[4px]-[4px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">
-                      <div className="w-7 h-7 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shadow-sm shrink-0" style={{ background: meta.bg }}>
+                    <div key={mIdx} className="flex items-center gap-3 p-2.5 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">
+                      <div className="w-7 h-7 rounded flex items-center justify-center text-white shadow-sm shrink-0" style={{ background: meta.bg }}>
                         {meta.icon}
                       </div>
                       <span className="text-[12px] font-bold text-[#3B4D66] truncate w-full" title={meta.text}>{meta.text}</span>
@@ -118,7 +118,7 @@ export default function Mobile() {
                     {prog.topics.map((topic, tIdx) => (
                       <span
                         key={tIdx}
-                        className="text-[11px] font-bold px-2.5 py-1 rounded-[4px]-[4px]-[4px]"
+                        className="text-[11px] font-bold px-2.5 py-1 rounded"
                         style={{
                           background: `${GOLD}0A`,
                           border: `1px solid ${GOLD}20`,

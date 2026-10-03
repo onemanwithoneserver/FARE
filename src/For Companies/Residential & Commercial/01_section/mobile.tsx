@@ -35,18 +35,18 @@ export default function Mobile() {
     <section
       className="w-full -mt-8 flex flex-col items-center justify-start overflow-hidden relative font-['Outfit'] pb-16"
       style={{
-        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
+        background: `linear-gradient(170deg, #FFFFFF 0%, #F6F9FF 30%, #EDF2FF 70%, #E6EDFF 100%)`,
       }}
     >
       <motion.div
         animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-10 right-[-100px] w-[350px] h-[350px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-[4px]-full blur-[80px] pointer-events-none z-0"
+        className="absolute top-10 right-[-100px] w-[350px] h-[350px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[80px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-20 left-[-50px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-[4px]-full blur-[70px] pointer-events-none z-0"
+        className="absolute bottom-20 left-[-50px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[70px] pointer-events-none z-0"
       ></motion.div>
       <div
         className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
@@ -73,7 +73,7 @@ export default function Mobile() {
             <>
               <motion.span
                 variants={item}
-                className="inline-flex items-center self-center gap-2 px-3.5 py-1.5 rounded-[4px]-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
+                className="inline-flex items-center self-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
               >
                 <Sparkles
                   size={11}
@@ -139,10 +139,10 @@ export default function Mobile() {
           >
             <button
               onClick={() => setIsModalOpen(true)}
-              className="text-white text-[14px] font-semibold w-full py-3.5 rounded-[4px]-[8px] transition-all duration-300 flex items-center justify-center gap-2 hover:luxury-shadow-float hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out group"
+              className="text-white font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
               style={{
                 background: NAVY,
-                boxShadow: "0 4px 16px rgba(11,29,58,0.2), 0 2px 4px rgba(0,0,0,0.1)",
+                boxShadow: "0 2px 8px rgba(11,29,58,0.15)",
               }}
             >
               {data.buttons.primary} <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${14}px` }}>
@@ -153,10 +153,12 @@ export default function Mobile() {
             {data.buttons.secondary && (
               <button
                 onClick={() => setIsVideoModalOpen(true)}
-                className="font-semibold text-[14px] w-full py-3.5 rounded-[4px]-[8px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border border-[#0B1D3A]/15 hover:bg-[#F8FAFD] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out cursor-pointer hover:shadow-[0_4px_12px_rgba(11,29,58,0.05)]"
+                className="font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
                 style={{
                   color: NAVY,
+                  borderColor: `${NAVY}15`,
                   background: "white",
+                  boxShadow: "0 1px 3px rgba(11,29,58,0.03)",
                 }}
               >
                 {data.buttons.secondary}
@@ -170,10 +172,10 @@ export default function Mobile() {
             {data.features.map((f, i) => (
               <div
                 key={i}
-                className="flex items-center gap-1 px-2.5 py-1 rounded-[4px]-full bg-white/80 border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/80 text-[10px] font-semibold"
+                className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/80 border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/80 text-[10px] font-semibold"
               >
                 <span
-                  className="w-1 h-1 rounded-[4px]-full"
+                  className="w-1 h-1 rounded-full"
                   style={{ background: GOLD }}
                 ></span>
                 <span>{f}</span>
@@ -194,11 +196,11 @@ export default function Mobile() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full mt-8 relative z-20 flex items-center justify-center px-2"
         >
-          <div className="relative w-full aspect-[16/11] max-w-[420px] rounded-[4px]-[4px] overflow-hidden border border-white/80 luxury-shadow-float bg-slate-100 group">
+          <div className="relative w-full aspect-[16/11] max-w-[420px] rounded-[4px] overflow-hidden border border-white/80 luxury-shadow-float bg-slate-100 group">
             <img
               src={reCompaniesHero}
               alt="RE Companies Hero"
-              className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out rounded-[4px]-[4px]"
+              className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out rounded-[4px]"
             />
           </div>
         </motion.div>

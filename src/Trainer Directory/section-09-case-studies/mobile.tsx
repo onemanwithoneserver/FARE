@@ -37,7 +37,7 @@ export default function Mobile() {
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[5%] right-[-15%] w-[280px] h-[280px] rounded-[4px]-[4px]-[4px]-full blur-[90px] pointer-events-none z-0 opacity-30"
+        className="absolute top-[5%] right-[-15%] w-[280px] h-[280px] rounded-full blur-[90px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.15) 0%, transparent 70%)" }}
       />
 
@@ -50,7 +50,7 @@ export default function Mobile() {
       >
         
         <motion.div variants={item} className="flex items-center gap-3 mb-2">
-          <div className="w-[3px] h-6 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Case Studies")}</h2>
         </motion.div>
         <motion.div variants={item} className="mb-8">
@@ -65,7 +65,7 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="group rounded-[4px]-[4px]-[4px] overflow-hidden border border-[#0B1D3A]/[0.07] bg-white luxury-shadow-float relative"
+                className="group rounded overflow-hidden border border-[#0B1D3A]/[0.07] bg-white luxury-shadow-float relative"
               >
                 
                 <div className="absolute top-0 left-0 right-0 h-[3px] z-10" style={{ background: accent.bar }} />
@@ -87,7 +87,7 @@ export default function Mobile() {
                   
                   <div className="absolute inset-0 flex items-center pl-5 gap-4">
                     <div
-                      className="w-11 h-11 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center border border-white/25 shrink-0"
+                      className="w-11 h-11 rounded-full flex items-center justify-center border border-white/25 shrink-0"
                       style={{ background: "rgba(255,255,255,0.12)" }}
                     >
                       <Play size={16} fill="white" className="ml-0.5 text-white" />
@@ -119,7 +119,7 @@ export default function Mobile() {
 
                   
                   <div className="flex items-start gap-3 mb-4">
-                    <div className="w-6 h-6 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shrink-0 mt-0.5" style={{ background: "#EF4444" }}>
+                    <div className="w-6 h-6 rounded flex items-center justify-center text-white shrink-0 mt-0.5" style={{ background: "#EF4444" }}>
                       <Target size={12} strokeWidth={2.5} />
                     </div>
                     <div>
@@ -130,7 +130,7 @@ export default function Mobile() {
 
                   
                   <div className="flex items-start gap-3 mb-5">
-                    <div className="w-6 h-6 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shrink-0 mt-0.5" style={{ background: GOLD }}>
+                    <div className="w-6 h-6 rounded flex items-center justify-center text-white shrink-0 mt-0.5" style={{ background: GOLD }}>
                       <Lightbulb size={12} strokeWidth={2.5} />
                     </div>
                     <div>
@@ -144,7 +144,7 @@ export default function Mobile() {
                     {study.metrics.map((m, mIdx) => (
                       <div
                         key={mIdx}
-                        className="flex flex-col items-center py-2.5 px-1 rounded-[4px]-[4px]-[4px] border text-center"
+                        className="flex flex-col items-center py-2.5 px-1 rounded border text-center"
                         style={{ background: accent.metricBg, borderColor: accent.metricBorder }}
                       >
                         <span className="text-[17px] font-black leading-none" style={{ color: NAVY }}>{m.value}</span>
@@ -158,7 +158,7 @@ export default function Mobile() {
                     {study.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
-                        className="text-[10px] font-bold px-2 py-0.5 rounded-[4px]-[4px]-[4px]"
+                        className="text-[10px] font-bold px-2 py-0.5 rounded"
                         style={{ background: accent.tag, color: accent.tagText }}
                       >
                         {tag}

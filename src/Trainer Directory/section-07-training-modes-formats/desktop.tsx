@@ -44,7 +44,7 @@ export default function Desktop() {
       <motion.div
         animate={{ x: [0, 20, 0], y: [0, 30, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] left-[-5%] w-[400px] h-[400px] rounded-[4px]-[4px]-[4px]-full blur-[100px] pointer-events-none z-0 opacity-40"
+        className="absolute top-[20%] left-[-5%] w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)" }}
       />
       
@@ -56,7 +56,7 @@ export default function Desktop() {
         className="max-w-[1200px] w-full relative z-10"
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-12">
-          <div className="w-[4px] h-7 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Delivery")}</h2>
         </motion.div>
 
@@ -67,7 +67,7 @@ export default function Desktop() {
               <motion.div
                 key={idx}
                 variants={item}
-                className={`group bg-white/90 backdrop-blur-xl rounded-[4px]-[4px]-[4px] p-6 border transition-all duration-400 ease-out relative overflow-hidden flex flex-col ${
+                className={`group bg-white/90 backdrop-blur-xl rounded p-6 border transition-all duration-400 ease-out relative overflow-hidden flex flex-col ${
                   mode.disabled
                     ? "opacity-50 border-[#0B1D3A]/[0.04]"
                     : "border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-1"
@@ -80,7 +80,7 @@ export default function Desktop() {
                   />
                 )}
                 <div
-                  className="w-11 h-11 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shadow-md mb-5 group-hover:scale-110 transition-all duration-400 ease-out"
+                  className="w-11 h-11 rounded flex items-center justify-center text-white shadow-md mb-5 group-hover:scale-110 transition-all duration-400 ease-out"
                   style={{ background: mode.disabled ? "#CBD5E1" : colors.bg }}
                 >
                   {getIcon(mode.icon)}
@@ -112,12 +112,12 @@ export default function Desktop() {
                 ];
                 const s = styles[idx % styles.length];
                 return (
-                  <div key={idx} className="bg-white rounded-[4px]-[4px]-[4px] border border-[#0B1D3A]/[0.04] shadow-sm relative overflow-hidden flex flex-col p-5 group transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
+                  <div key={idx} className="bg-white rounded border border-[#0B1D3A]/[0.04] shadow-sm relative overflow-hidden flex flex-col p-5 group transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
                     <div
                       className="absolute top-0 left-0 right-0 h-[3px]"
                       style={{ background: s.color }}
                     />
-                    <div className="w-9 h-9 rounded-[4px]-[4px]-[4px] mb-4 flex items-center justify-center text-white" style={{ background: s.color }}>
+                    <div className="w-9 h-9 rounded mb-4 flex items-center justify-center text-white" style={{ background: s.color }}>
                       {s.icon}
                     </div>
                     <h5 className="text-[14px] font-black tracking-tight leading-tight mb-2" style={{ color: NAVY }}>{fmt.name}</h5>
@@ -137,7 +137,7 @@ export default function Desktop() {
               {data.delivery.durations.map((dur, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-2 px-4 py-2 rounded-[4px]-[4px]-[4px] border border-[#0B1D3A]/[0.06] bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-default"
+                  className="flex items-center gap-2 px-4 py-2 rounded border border-[#0B1D3A]/[0.06] bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-default"
                 >
                   <Clock size={14} strokeWidth={2.5} className="text-[#3B82F6]" />
                   <span className="text-[13px] font-bold text-[#0B1D3A]/90">{dur}</span>

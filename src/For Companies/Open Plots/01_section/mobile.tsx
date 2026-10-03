@@ -41,12 +41,12 @@ export default function Mobile() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C5D9FF]/50 to-transparent rounded-[4px]-full blur-[60px] pointer-events-none z-0"
+        className="absolute top-20 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C5D9FF]/50 to-transparent rounded-full blur-[60px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-20 left-[-50px] w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-[4px]-full blur-[50px] pointer-events-none z-0"
+        className="absolute bottom-20 left-[-50px] w-[250px] h-[250px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[50px] pointer-events-none z-0"
       ></motion.div>
       <div className="w-full px-5 flex flex-col items-center relative z-10">
         <motion.div
@@ -66,7 +66,7 @@ export default function Mobile() {
             <>
               <motion.span
                 variants={item}
-                className="inline-flex items-center self-center gap-2 px-3.5 py-1.5 rounded-[4px]-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
+                className="inline-flex items-center self-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
               >
                 <Sparkles
                   size={11}
@@ -128,7 +128,7 @@ export default function Mobile() {
           >
             <button
               onClick={() => setIsModalOpen(true)}
-              className="text-white font-semibold w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="text-white font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
               style={{
                 background: NAVY,
                 boxShadow: "0 2px 8px rgba(11,29,58,0.15)",
@@ -142,7 +142,7 @@ export default function Mobile() {
             {data.buttons.secondary && (
               <button
                 onClick={() => setIsVideoModalOpen(true)}
-                className="font-semibold w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
+                className="font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
                 style={{
                   color: NAVY,
                   borderColor: `${NAVY}15`,
@@ -161,10 +161,10 @@ export default function Mobile() {
             {data.features.map((f, i) => (
               <div
                 key={i}
-                className="flex items-center gap-1 px-2.5 py-1 rounded-[4px]-full bg-white/80 border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/80 text-[10px] font-semibold"
+                className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/80 border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/80 text-[10px] font-semibold"
               >
                 <span
-                  className="w-1 h-1 rounded-[4px]-full"
+                  className="w-1 h-1 rounded-full"
                   style={{ background: GOLD }}
                 ></span>
                 <span>{f}</span>
@@ -185,11 +185,11 @@ export default function Mobile() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full mt-8 relative z-20 flex items-center justify-center px-2"
         >
-          <div className="relative w-full aspect-[16/11] max-w-[420px] rounded-[4px]-[4px] overflow-hidden border border-white/80 luxury-shadow-float bg-slate-100 group">
+          <div className="relative w-full aspect-[16/11] max-w-[420px] rounded-[4px] overflow-hidden border border-white/80 luxury-shadow-float bg-slate-100 group">
             <img
               src={openplotHero}
               alt="Open Plot Hero"
-              className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out rounded-[4px]-[4px]"
+              className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out rounded-[4px]"
             />
           </div>
         </motion.div>

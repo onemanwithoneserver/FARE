@@ -35,23 +35,23 @@ export default function Desktop() {
     <section
       className="w-full -mt-8 lg:-mt-8 flex items-center justify-center overflow-x-clip relative font-['Outfit']"
       style={{
-        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
+        background: `linear-gradient(165deg, #FFFFFF 0%, #F6F9FF 35%, #EDF2FF 60%, #F0F4FF 100%)`,
       }}
     >
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] right-[15%] w-[700px] h-[700px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-[4px]-full blur-[140px] pointer-events-none z-0"
+        className="absolute top-[10%] right-[15%] w-[700px] h-[700px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[140px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[15%] left-[10%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-[4px]-full blur-[120px] pointer-events-none z-0"
+        className="absolute bottom-[15%] left-[10%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[60%] right-[5%] w-[300px] h-[300px] bg-gradient-radial from-[#818CF8]/[0.06] to-transparent rounded-[4px]-full blur-[80px] pointer-events-none z-0"
+        className="absolute top-[60%] right-[5%] w-[300px] h-[300px] bg-gradient-radial from-[#818CF8]/[0.06] to-transparent rounded-full blur-[80px] pointer-events-none z-0"
       ></motion.div>
       <div
         className="absolute inset-0 opacity-[0.015] pointer-events-none z-0"
@@ -78,7 +78,7 @@ export default function Desktop() {
               <>
                 <motion.span
                   variants={item}
-                  className="inline-flex items-center self-start gap-2 px-4 py-1.5 rounded-[4px]-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
+                  className="inline-flex items-center self-start gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
                 >
                   <Sparkles
                     size={12}
@@ -136,10 +136,10 @@ export default function Desktop() {
             >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[4px]-[8px] hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out group cursor-pointer"
+                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
                 style={{
                   background: NAVY,
-                  boxShadow: `0 4px 16px rgba(11,29,58,0.2), 0 2px 4px rgba(0,0,0,0.1)`,
+                  boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`,
                 }}
               >
                 {data.buttons.primary}{" "}
@@ -151,10 +151,12 @@ export default function Desktop() {
               {data.buttons.secondary && (
                 <button
                   onClick={() => setIsVideoModalOpen(true)}
-                  className="text-[14px] font-semibold px-7 py-3.5 rounded-[4px]-[8px] hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border border-[#0B1D3A]/15 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out cursor-pointer group hover:shadow-[0_4px_12px_rgba(11,29,58,0.05)]"
+                  className="text-[13.5px] font-semibold px-7 py-3 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
                   style={{
                     color: NAVY,
+                    borderColor: `${NAVY}15`,
                     background: "white",
+                    boxShadow: "0 1px 3px rgba(11,29,58,0.03)",
                   }}
                 >
                   {data.buttons.secondary}
@@ -165,10 +167,10 @@ export default function Desktop() {
               {data.features.map((cap, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-1.5 px-3 py-1 rounded-[4px]-full bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_6px_rgba(11,29,58,0.03)] text-[#0B1D3A]/80 text-[11.5px] font-semibold"
+                  className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_6px_rgba(11,29,58,0.03)] text-[#0B1D3A]/80 text-[11.5px] font-semibold"
                 >
                   <span
-                    className="w-1.5 h-1.5 rounded-[4px]-full"
+                    className="w-1.5 h-1.5 rounded-full"
                     style={{ background: GOLD }}
                   ></span>
                   <span>{cap}</span>
@@ -189,7 +191,7 @@ export default function Desktop() {
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end pl-0"
           >
-            <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-[4px]-tl-[120px] sm:rounded-[4px]-tl-[160px] lg:rounded-[4px]-tl-[220px] xl:rounded-[4px]-tl-[260px] rounded-[4px]-bl-[60px] sm:rounded-[4px]-bl-[70px] lg:rounded-[4px]-bl-[90px] xl:rounded-[4px]-bl-[100px] overflow-hidden border-l border-t border-b border-white/80 luxury-shadow-float group">
+            <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] sm:rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden border-l border-t border-b border-white/80 luxury-shadow-float group">
               <motion.img
                 animate={{ scale: [1, 1.04, 1] }}
                 transition={{

@@ -27,13 +27,13 @@ export default function Desktop() {
       <motion.div
         animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] right-[5%] w-[450px] h-[450px] rounded-[4px]-[4px]-[4px]-full blur-[100px] pointer-events-none z-0 opacity-40"
+        className="absolute top-[10%] right-[5%] w-[450px] h-[450px] rounded-full blur-[100px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1.1, 1, 1.1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] left-[5%] w-[400px] h-[400px] rounded-[4px]-[4px]-[4px]-full blur-[120px] pointer-events-none z-0 opacity-30"
+        className="absolute bottom-[-10%] left-[5%] w-[400px] h-[400px] rounded-full blur-[120px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(11,29,58,0.06) 0%, transparent 70%)" }}
       />
 
@@ -45,7 +45,7 @@ export default function Desktop() {
         className="max-w-[1200px] w-full relative z-10"
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
-          <div className="w-[4px] h-7 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("See the Trainer in Action")}</h2>
         </motion.div>
 
@@ -58,7 +58,7 @@ export default function Desktop() {
               className="flex flex-col gap-4 group cursor-pointer"
             >
               <div
-                className={`relative aspect-video rounded-[4px]-[4px]-[4px] overflow-hidden flex items-center justify-center border ${video.thumbnail === 'navy' ? 'border-[#0B1D3A]/20' : 'border-[#0B1D3A]/[0.08]'} luxury-shadow-float group-hover:luxury-shadow-float transition-all duration-400 ease-out bg-white/90 backdrop-blur-xl`}
+                className={`relative aspect-video rounded overflow-hidden flex items-center justify-center border ${video.thumbnail === 'navy' ? 'border-[#0B1D3A]/20' : 'border-[#0B1D3A]/[0.08]'} luxury-shadow-float group-hover:luxury-shadow-float transition-all duration-400 ease-out bg-white/90 backdrop-blur-xl`}
                 style={{
                   background: video.thumbnail === 'navy'
                     ? `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)`
@@ -67,7 +67,7 @@ export default function Desktop() {
               >
                 {video.thumbnail === 'navy' && (
                   <>
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[20px] pointer-events-none group-hover:scale-150 transition-transform duration-700" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[20px] pointer-events-none group-hover:scale-150 transition-transform duration-700" />
                     <div
                       className="absolute inset-0 opacity-[0.05] pointer-events-none"
                       style={{
@@ -79,7 +79,7 @@ export default function Desktop() {
                 )}
 
                 <div
-                  className="w-14 h-14 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-400 ease-out z-10 relative"
+                  className="w-14 h-14 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-400 ease-out z-10 relative"
                   style={{
                     background: video.thumbnail === 'navy'
                       ? `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})`
@@ -95,13 +95,13 @@ export default function Desktop() {
                   />
                 </div>
 
-                <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-[4px]-[4px]-[4px] z-10 border border-white/10">
+                <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded z-10 border border-white/10">
                   {video.duration}
                 </div>
 
                 {video.thumbnail === 'navy' && (
                   <div
-                    className="absolute top-3 left-3 text-[10px] font-black px-2.5 py-1 rounded-[4px]-[4px]-[4px] z-10 shadow-lg tracking-wider"
+                    className="absolute top-3 left-3 text-[10px] font-black px-2.5 py-1 rounded z-10 shadow-lg tracking-wider"
                     style={{ background: GOLD, color: NAVY }}
                   >
                     {t("NEW")}

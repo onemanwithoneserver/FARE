@@ -141,7 +141,7 @@ export default function Mobile() {
                     rel="noopener noreferrer"
                     whileHover={{ y: -2, scale: 1.05 }}
                     whileTap={{ scale: 0.92 }}
-                    className="relative group w-9 h-9 rounded-[4px]-[4px]-[4px]-[8px] flex items-center justify-center text-white/60 transition-all duration-300 border border-white/10 hover:border-transparent hover:text-white overflow-hidden"
+                    className="relative group w-9 h-9 rounded-xl flex items-center justify-center text-white/60 transition-all duration-300 border border-white/10 hover:border-transparent hover:text-white overflow-hidden"
                     style={{ background: "rgba(255,255,255,0.04)", backdropFilter: "blur(8px)" }}
                   >
                     <div className={`absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-tr animate-gradient-x ${bgClass}`} />
