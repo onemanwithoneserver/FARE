@@ -2,6 +2,7 @@ export interface Trainer {
   id: string;
   name: string;
   image?: string;
+  introVideoUrl?: string;
   title: string;
   verified: boolean;
   industryExperience: number;

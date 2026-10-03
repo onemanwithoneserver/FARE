@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Trainer } from "../listing_data";
+import ambientTrainerVideo from "../../assets/FARE_Video.mp4";
 import {
   BadgeCheck,
   ArrowRight,
@@ -10,6 +11,8 @@ import {
   Languages,
   Check,
   Send,
+  Play,
+  X,
 } from "lucide-react";
 
 const NAVY = "#0B1D3A";
@@ -28,113 +31,184 @@ const AVAILABILITY: Record<Trainer["availability"], { dot: string; text: string;
   "On Request": { dot: "#94A3B8", text: "#475569", bg: "#F1F5F9", label: "On Request" },
 };
 
+function TrainerPhotoHero({
+  trainer,
+  isIntroVideoOpen,
+  onToggleIntroVideo,
+}: {
+  trainer: Trainer;
+  isIntroVideoOpen: boolean;
+  onToggleIntroVideo: () => void;
+}) {
+  const availability = AVAILABILITY[trainer.availability];
+
+  return (
+    <div className="relative h-[150px] shrink-0 overflow-hidden bg-[#0B1D3A]">
+      {isIntroVideoOpen ? (
+        <video
+          src={trainer.introVideoUrl ?? ambientTrainerVideo}
+          poster={trainer.image}
+          controls
+          autoPlay
+          playsInline
+          aria-label={`${trainer.name} introduction video`}
+          className="absolute inset-0 h-full w-full object-cover"
+          onEnded={onToggleIntroVideo}
+        />
+      ) : (
+        <>
+          {trainer.image ? (
+            <img
+              src={trainer.image}
+              alt=""
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0B1D3A] to-[#1E3F72]" />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#030816]/60 via-[#030816]/20 to-[#030816]/50" />
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)", backgroundSize: "12px 12px" }}
+          />
+          <button
+            type="button"
+            onClick={onToggleIntroVideo}
+            aria-label={`Play ${trainer.name}'s introduction video`}
+            className="absolute inset-0 z-10 flex items-center justify-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D5AA45]"
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/70 bg-[#0B1D3A]/45 shadow-lg backdrop-blur-sm transition-transform group-active:scale-95">
+              <Play size={17} fill="currentColor" className="ml-0.5" />
+            </span>
+          </button>
+          <span
+            className="pointer-events-none absolute left-3 top-3 z-20 inline-flex h-[22px] items-center gap-1.5 rounded-full px-2 text-[10px] font-bold"
+            style={{ background: availability.bg, color: availability.text }}
+          >
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: availability.dot }} />
+            {availability.label}
+          </span>
+          {trainer.verified && (
+            <span className="pointer-events-none absolute right-3 top-3 z-20 inline-flex items-center gap-1 rounded-full border border-white/25 bg-[#0B1D3A]/45 px-2 py-1 text-[9px] font-bold uppercase tracking-wide text-white backdrop-blur-sm">
+              <BadgeCheck size={12} style={{ color: GOLD_MID }} />
+              Verified
+            </span>
+          )}
+        </>
+      )}
+      {isIntroVideoOpen && (
+        <button
+          type="button"
+          onClick={onToggleIntroVideo}
+          aria-label="Close video"
+          className="absolute right-2 top-2 z-20 rounded-full bg-black/65 p-1.5 text-white shadow"
+        >
+          <X size={14} />
+        </button>
+      )}
+    </div>
+  );
+}
+
+function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) {
+  const initials = trainer.name.split(" ").map((part) => part[0]).join("").slice(0, 2);
+
+  return (
+    <div className="relative shrink-0 rounded-full bg-white p-[4px] shadow-[0_8px_24px_-8px_rgba(11,29,58,0.45)]" style={{ width: size, height: size }}>
+      <div className="h-full w-full overflow-hidden rounded-full bg-[#0B1D3A]">
+        {trainer.image ? (
+          <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-xl font-black text-white">{initials}</div>
+        )}
+      </div>
+      {trainer.verified && (
+        <span className="absolute bottom-0 right-0 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-white shadow-sm">
+          <BadgeCheck size={14} strokeWidth={2.4} style={{ color: GOLD }} />
+        </span>
+      )}
+    </div>
+  );
+}
+
 export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
   const [requested, setRequested] = useState(false);
+  const [isIntroVideoOpen, setIsIntroVideoOpen] = useState(false);
   const handleRequest = () => setRequested(true);
-  const initials = trainer.name
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .substring(0, 2);
-
-  const avail = AVAILABILITY[trainer.availability];
-
+  const toggleIntroVideo = () => setIsIntroVideoOpen((open) => !open);
   const stats = [
-    { icon: <Briefcase size={12} strokeWidth={2.4} />, value: `${trainer.industryExperience}+`, label: "Industry", color: "#4F46E5", bg: "#EEF0FF" },
-    { icon: <GraduationCap size={13} strokeWidth={2.4} />, value: `${trainer.trainingExperience}+`, label: "Training", color: GOLD, bg: "#FBF4E4" },
+    { icon: <Briefcase size={12} strokeWidth={2.4} />, value: `${trainer.industryExperience}+`, label: "Yrs Industry", color: "#4F46E5", bg: "#EEF0FF" },
+    { icon: <GraduationCap size={13} strokeWidth={2.4} />, value: `${trainer.trainingExperience}+`, label: "Yrs Training", color: GOLD, bg: "#FBF4E4" },
     { icon: <Languages size={12} strokeWidth={2.4} />, value: `${trainer.languages.length}`, label: "Languages", color: "#059669", bg: "#E7F7F0" },
   ];
 
   return (
     <article className="group relative flex flex-col h-full bg-white rounded-2xl font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] active:scale-[0.99] transition-transform duration-200 overflow-hidden">
-      {/* Cover band */}
-      <div
-        className="relative h-[76px] shrink-0 overflow-hidden"
-        style={{ background: `linear-gradient(120deg, ${NAVY} 0%, #15315C 55%, #1E3F72 100%)` }}
-      >
-        <div
-          className="absolute inset-0 opacity-[0.10]"
-          style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)", backgroundSize: "12px 12px" }}
-        />
-        <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-[#C99A2E]/30 blur-3xl" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D5AA45]/70 to-transparent" />
-        <span
-          className="absolute top-3 right-3 inline-flex items-center gap-1.5 h-[22px] px-2 rounded-full text-[10px] font-bold"
-          style={{ background: avail.bg, color: avail.text }}
-        >
-          <span className="w-1.5 h-1.5 rounded-full" style={{ background: avail.dot }} />
-          {avail.label}
-        </span>
-      </div>
+      <TrainerPhotoHero
+        trainer={trainer}
+        isIntroVideoOpen={isIntroVideoOpen}
+        onToggleIntroVideo={toggleIntroVideo}
+      />
 
-      <div className="flex flex-col flex-1 px-4 pb-4">
-        {/* avatar + identity row */}
-        <div className="flex items-end gap-3 -mt-9">
-          <div className="relative w-[76px] h-[76px] shrink-0">
-            <div
-              className="absolute -inset-[3px] rounded-full"
-              style={{ background: `conic-gradient(from 210deg, ${GOLD_MID}, #F3DFA6, ${GOLD}, ${GOLD_MID})` }}
-            />
-            <div className="absolute inset-0 rounded-full bg-white p-[3px]">
-              {trainer.image ? (
-                <img src={trainer.image} alt={trainer.name} loading="lazy" className="w-full h-full rounded-full object-cover" />
-              ) : (
-                <div
-                  className="w-full h-full rounded-full flex items-center justify-center text-white text-xl font-black"
-                  style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1E3A66 100%)` }}
-                >
-                  {initials}
-                </div>
-              )}
-            </div>
-            {trainer.verified && (
-              <div className="absolute bottom-0 right-0 w-[22px] h-[22px] rounded-full bg-white flex items-center justify-center shadow-[0_4px_10px_-2px_rgba(11,29,58,0.25)]">
-                <BadgeCheck size={15} strokeWidth={2.4} style={{ color: GOLD }} />
-              </div>
-            )}
-          </div>
-          <div className="min-w-0 pb-1">
-            <h3 className="text-[17px] font-black leading-tight tracking-tight truncate" style={{ color: NAVY }}>
+      <div className="flex flex-col flex-1 p-4">
+        <div className="-mt-14 mb-3 relative z-10 flex items-end gap-3">
+          <TrainerPortrait trainer={trainer} size={112} />
+          <div className="min-w-0 flex-1 pb-1">
+            <h3 className="truncate text-[18px] font-black leading-tight tracking-tight" style={{ color: NAVY }}>
               {trainer.name}
             </h3>
-            <div className="flex items-center gap-1 mt-0.5 text-[11px] text-[#7B8DAA] font-medium">
+            <p className="mt-1 line-clamp-1 text-[12px] font-medium leading-snug text-[#5A6B82]">{trainer.title}</p>
+            <span className="mt-1.5 flex items-center gap-1 text-[10px] text-[#7B8DAA]">
               <MapPin size={11} strokeWidth={2.5} />
-              <span className="truncate">{trainer.location}</span>
-            </div>
+              {trainer.location.split(",")[0]}
+            </span>
           </div>
         </div>
 
-        <p className="text-[12.5px] text-[#5A6B82] font-semibold leading-snug mt-3 line-clamp-1">{trainer.title}</p>
-        <p className="text-[12px] text-[#5A6B82]/90 leading-relaxed mt-1 line-clamp-2">{trainer.positioning}</p>
+        <p className="mt-2 line-clamp-2 text-[12px] leading-relaxed text-[#5A6B82]/90">{trainer.positioning}</p>
 
-        <div className="grid grid-cols-3 mt-3.5 rounded-xl bg-[#F7F9FC] border border-[#0B1D3A]/[0.05] divide-x divide-[#0B1D3A]/[0.06]">
-          {stats.map((s) => (
-            <div key={s.label} className="flex flex-col items-center py-2.5 gap-1">
-              <div className="w-6 h-6 rounded-md flex items-center justify-center" style={{ background: s.bg, color: s.color }}>
-                {s.icon}
-              </div>
-              <div className="text-[14px] font-black leading-none" style={{ color: NAVY }}>
-                {s.value}
-              </div>
-              <div className="text-[8.5px] font-semibold uppercase tracking-[0.1em] text-[#7B8DAA]">{s.label}</div>
+        <div className="mt-3 grid grid-cols-3 rounded-lg border border-[#0B1D3A]/[0.05] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
+          {stats.map((stat) => (
+            <div key={stat.label} className="flex flex-col items-center gap-1 py-2">
+              <span className="flex h-6 w-6 items-center justify-center rounded-md" style={{ background: stat.bg, color: stat.color }}>
+                {stat.icon}
+              </span>
+              <span className="text-[13px] font-black leading-none" style={{ color: NAVY }}>{stat.value}</span>
+              <span className="text-[7px] font-semibold uppercase tracking-[0.08em] text-[#7B8DAA]">{stat.label}</span>
             </div>
           ))}
         </div>
 
-        <div className="flex flex-wrap gap-1 mt-3.5">
-          {trainer.expertise.slice(0, 2).map((e) => (
-            <span
-              key={e}
-              className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#FBF4E4] text-[#8A6516] border border-[#C99A2E]/20"
-            >
-              {e}
-            </span>
-          ))}
-          {trainer.segments.slice(0, 2).map((s) => (
-            <span key={s} className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#F1F4F9] text-[#0B1D3A]/75">
-              {s}
-            </span>
-          ))}
+        <div className="mt-3.5">
+          <div className="mb-1.5 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Specialization</div>
+          <div className="flex flex-wrap gap-1">
+            {trainer.expertise.slice(0, 2).map((expertise) => (
+              <span
+                key={expertise}
+                className="rounded-full border border-[#C99A2E]/20 bg-[#FBF4E4] px-2 py-0.5 text-[10px] font-semibold text-[#8A6516]"
+              >
+                {expertise}
+              </span>
+            ))}
+            {trainer.expertise.length > 2 && (
+              <span className="rounded-full bg-[#F1F4F9] px-2 py-0.5 text-[10px] font-semibold text-[#5A6B82]">
+                +{trainer.expertise.length - 2}
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="mt-3">
+          <div className="mb-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">RE Segment</div>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-semibold text-[#475569]">
+            {trainer.segments.map((segment, index) => (
+              <span key={segment} className="inline-flex items-center gap-2">
+                {index > 0 && <span className="h-1 w-1 rounded-full bg-[#C99A2E]" />}
+                {segment}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="mt-auto pt-3.5">

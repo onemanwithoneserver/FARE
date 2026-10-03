@@ -1,17 +1,19 @@
 import { useState } from "react";
 import type { Trainer } from "../listing_data";
 import { motion } from "motion/react";
+import ambientTrainerVideo from "../../assets/FARE_Video.mp4";
 import {
   BadgeCheck,
   ArrowRight,
   ChevronRight,
   Briefcase,
   GraduationCap,
-  MapPin,
   Languages,
-  MonitorPlay,
+  MapPin,
   Check,
   Send,
+  Play,
+  X,
 } from "lucide-react";
 
 const NAVY = "#0B1D3A";
@@ -39,43 +41,6 @@ export const getInitials = (name: string) =>
     .join("")
     .substring(0, 2);
 
-function Avatar({ trainer, size }: { trainer: Trainer; size: number }) {
-  return (
-    <div className="relative shrink-0" style={{ width: size, height: size }}>
-      {/* gold ring */}
-      <div
-        className="absolute -inset-[3px] rounded-full opacity-90 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: `conic-gradient(from 210deg, ${GOLD_MID}, #F3DFA6, ${GOLD}, ${GOLD_MID})` }}
-      />
-      <div className="absolute inset-0 rounded-full bg-white p-[3px]">
-        {trainer.image ? (
-          <img
-            src={trainer.image}
-            alt={trainer.name}
-            loading="lazy"
-            className="w-full h-full rounded-full object-cover"
-          />
-        ) : (
-          <div
-            className="w-full h-full rounded-full flex items-center justify-center text-white font-black"
-            style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1E3A66 100%)`, fontSize: size / 3 }}
-          >
-            {getInitials(trainer.name)}
-          </div>
-        )}
-      </div>
-      {trainer.verified && (
-        <div
-          className="absolute bottom-0 right-0 w-[26px] h-[26px] rounded-full bg-white flex items-center justify-center shadow-[0_4px_10px_-2px_rgba(11,29,58,0.25)]"
-          title="FARE Verified"
-        >
-          <BadgeCheck size={18} strokeWidth={2.4} style={{ color: GOLD }} />
-        </div>
-      )}
-    </div>
-  );
-}
-
 function AvailabilityPill({ value }: { value: Trainer["availability"] }) {
   const s = AVAILABILITY_STYLES[value];
   return (
@@ -91,6 +56,103 @@ function AvailabilityPill({ value }: { value: Trainer["availability"] }) {
       </span>
       {s.label}
     </span>
+  );
+}
+
+function TrainerPhotoHero({
+  trainer,
+  className,
+  isIntroVideoOpen,
+  onToggleIntroVideo,
+}: {
+  trainer: Trainer;
+  className: string;
+  isIntroVideoOpen: boolean;
+  onToggleIntroVideo: () => void;
+}) {
+  return (
+    <div className={`relative shrink-0 overflow-hidden bg-[#0B1D3A] ${className}`}>
+      {isIntroVideoOpen ? (
+        <video
+          src={trainer.introVideoUrl ?? ambientTrainerVideo}
+          poster={trainer.image}
+          controls
+          autoPlay
+          playsInline
+          aria-label={`${trainer.name} introduction video`}
+          className="absolute inset-0 h-full w-full object-cover"
+          onEnded={onToggleIntroVideo}
+        />
+      ) : (
+        <>
+          {trainer.image ? (
+            <img
+              src={trainer.image}
+              alt=""
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0B1D3A] to-[#1E3F72]" />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#030816]/60 via-[#030816]/20 to-[#030816]/50" />
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)", backgroundSize: "14px 14px" }}
+          />
+          <button
+            type="button"
+            onClick={onToggleIntroVideo}
+            aria-label={`Play ${trainer.name}'s introduction video`}
+            className="absolute inset-0 z-10 flex items-center justify-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D5AA45]"
+          >
+            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/70 bg-[#0B1D3A]/45 shadow-lg backdrop-blur-sm transition-transform group-hover:scale-110">
+              <Play size={20} fill="currentColor" className="ml-0.5" />
+            </span>
+          </button>
+          <div className="pointer-events-none absolute left-4 top-4 z-20">
+            <AvailabilityPill value={trainer.availability} />
+          </div>
+          {trainer.verified && (
+            <div className="pointer-events-none absolute right-4 top-4 z-20 flex items-center gap-1 rounded-full border border-white/25 bg-[#0B1D3A]/45 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-white backdrop-blur-sm">
+              <BadgeCheck size={13} style={{ color: GOLD_MID }} />
+              FARE Verified
+            </div>
+          )}
+        </>
+      )}
+      {isIntroVideoOpen && (
+        <button
+          type="button"
+          onClick={onToggleIntroVideo}
+          aria-label="Close video"
+          className="absolute right-3 top-3 z-20 rounded-full bg-black/65 p-2 text-white shadow"
+        >
+          <X size={16} />
+        </button>
+      )}
+    </div>
+  );
+}
+
+function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) {
+  return (
+    <div className="relative shrink-0 rounded-full bg-white p-[4px] shadow-[0_8px_24px_-8px_rgba(11,29,58,0.45)]" style={{ width: size, height: size }}>
+      <div className="h-full w-full overflow-hidden rounded-full bg-[#0B1D3A]">
+        {trainer.image ? (
+          <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-2xl font-black text-white">
+            {getInitials(trainer.name)}
+          </div>
+        )}
+      </div>
+      {trainer.verified && (
+        <span className="absolute bottom-1 right-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-white shadow-sm">
+          <BadgeCheck size={17} strokeWidth={2.4} style={{ color: GOLD }} />
+        </span>
+      )}
+    </div>
   );
 }
 
@@ -144,34 +206,6 @@ function Actions({ onViewProfile, onRequest, requested }: { onViewProfile: () =>
   );
 }
 
-function Stats({ trainer }: { trainer: Trainer }) {
-  const stats = [
-    { icon: <Briefcase size={13} strokeWidth={2.4} />, value: `${trainer.industryExperience}+`, label: "Yrs Industry", color: "#4F46E5", bg: "#EEF0FF" },
-    { icon: <GraduationCap size={14} strokeWidth={2.4} />, value: `${trainer.trainingExperience}+`, label: "Yrs Training", color: GOLD, bg: "#FBF4E4" },
-    { icon: <Languages size={13} strokeWidth={2.4} />, value: `${trainer.languages.length}`, label: "Languages", color: "#059669", bg: "#E7F7F0" },
-  ];
-  return (
-    <div className="grid grid-cols-3 rounded-xl bg-[#F7F9FC] border border-[#0B1D3A]/[0.05] divide-x divide-[#0B1D3A]/[0.06]">
-      {stats.map((s) => (
-        <div key={s.label} className="flex flex-col items-center justify-center py-3 px-1 gap-1.5">
-          <div
-            className="w-7 h-7 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-            style={{ background: s.bg, color: s.color }}
-          >
-            {s.icon}
-          </div>
-          <div className="text-[16px] font-black leading-none" style={{ color: NAVY }}>
-            {s.value}
-          </div>
-          <div className="text-[9.5px] font-semibold uppercase tracking-[0.1em] text-[#7B8DAA] whitespace-nowrap">
-            {s.label}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function ExpertiseTags({ trainer, max = 2 }: { trainer: Trainer; max?: number }) {
   return (
     <div className="flex flex-nowrap gap-1.5 overflow-hidden">
@@ -192,13 +226,37 @@ function ExpertiseTags({ trainer, max = 2 }: { trainer: Trainer; max?: number })
   );
 }
 
+function TrainerStats({ trainer }: { trainer: Trainer }) {
+  const stats = [
+    { icon: <Briefcase size={13} strokeWidth={2.4} />, value: `${trainer.industryExperience}+`, label: "Yrs Industry", color: "#4F46E5", bg: "#EEF0FF" },
+    { icon: <GraduationCap size={14} strokeWidth={2.4} />, value: `${trainer.trainingExperience}+`, label: "Yrs Training", color: GOLD, bg: "#FBF4E4" },
+    { icon: <Languages size={13} strokeWidth={2.4} />, value: `${trainer.languages.length}`, label: "Languages", color: "#059669", bg: "#E7F7F0" },
+  ];
+
+  return (
+    <div className="grid grid-cols-3 rounded-lg border border-[#0B1D3A]/[0.06] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
+      {stats.map((stat) => (
+        <div key={stat.label} className="flex items-center justify-center gap-2 py-2.5">
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md" style={{ background: stat.bg, color: stat.color }}>
+            {stat.icon}
+          </span>
+          <span className="min-w-0">
+            <span className="block text-[14px] font-black leading-none" style={{ color: NAVY }}>{stat.value}</span>
+            <span className="mt-1 block text-[8px] font-bold uppercase tracking-[0.08em] text-[#7B8DAA]">{stat.label}</span>
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function SegmentLine({ trainer }: { trainer: Trainer }) {
   return (
-    <div className="flex items-center gap-2 text-[12px] font-semibold text-[#0B1D3A]/70 truncate">
-      {trainer.segments.map((s, i) => (
-        <span key={s} className="flex items-center gap-2 whitespace-nowrap">
-          {i > 0 && <span className="w-1 h-1 rounded-full bg-[#C99A2E]/60" />}
-          {s}
+    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold text-[#475569]">
+      {trainer.segments.map((segment, index) => (
+        <span key={segment} className="inline-flex items-center gap-2">
+          {index > 0 && <span className="h-1 w-1 rounded-full bg-[#C99A2E]" />}
+          {segment}
         </span>
       ))}
     </div>
@@ -210,7 +268,9 @@ const cardShell =
 
 export default function Desktop({ trainer, onViewProfile, layoutVariant = "grid" }: TrainerCardProps) {
   const [requested, setRequested] = useState(false);
+  const [isIntroVideoOpen, setIsIntroVideoOpen] = useState(false);
   const handleRequest = () => setRequested(true);
+  const toggleIntroVideo = () => setIsIntroVideoOpen((open) => !open);
 
   /* ───────────────────────── LIST VIEW ───────────────────────── */
   if (layoutVariant === "list") {
@@ -221,43 +281,44 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "grid"
       >
         <span aria-hidden className="absolute left-0 top-6 bottom-6 w-[3px] rounded-r-full bg-gradient-to-b from-[#D5AA45] to-[#C99A2E] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-        {/* identity */}
-        <div className="flex items-center gap-5 p-6 w-[38%] min-w-0">
-          <Avatar trainer={trainer} size={84} />
-          <div className="min-w-0">
-            <div className="flex items-center gap-2 mb-1">
-              <AvailabilityPill value={trainer.availability} />
-            </div>
-            <h3 className="text-[19px] font-black leading-tight tracking-tight truncate" style={{ color: NAVY }}>
-              {trainer.name}
-            </h3>
-            <p className="text-[13px] text-[#5A6B82] font-medium leading-snug mt-0.5 line-clamp-1">{trainer.title}</p>
-            <div className="flex items-center gap-1.5 mt-2 text-[12px] text-[#7B8DAA] font-medium">
-              <MapPin size={12} strokeWidth={2.5} />
-              <span className="truncate">{trainer.location}</span>
-            </div>
+        <div className="relative w-[32%] min-h-[220px] shrink-0">
+          <TrainerPhotoHero
+            trainer={trainer}
+            className="absolute inset-0"
+            isIntroVideoOpen={isIntroVideoOpen}
+            onToggleIntroVideo={toggleIntroVideo}
+          />
+          <div className="absolute inset-0 z-10 flex items-center justify-center">
+            <TrainerPortrait trainer={trainer} size={144} />
           </div>
         </div>
 
         {/* details */}
         <div className="flex-1 min-w-0 flex flex-col justify-center gap-3 py-6 pr-6 border-l border-dashed border-[#0B1D3A]/10 pl-6">
+          <div>
+            <h3 className="text-[19px] font-black leading-tight tracking-tight truncate" style={{ color: NAVY }}>
+              {trainer.name}
+            </h3>
+            <p className="text-[13px] text-[#5A6B82] font-medium leading-snug mt-1 line-clamp-1">{trainer.title}</p>
+            <div className="flex items-center gap-1.5 mt-1.5 text-[12px] text-[#7B8DAA] font-medium">
+              <MapPin size={12} strokeWidth={2.5} />
+              <span className="truncate">{trainer.location}</span>
+            </div>
+          </div>
           <p className="text-[13px] text-[#5A6B82] leading-relaxed line-clamp-2">{trainer.positioning}</p>
-          <ExpertiseTags trainer={trainer} max={3} />
-          <SegmentLine trainer={trainer} />
+          <TrainerStats trainer={trainer} />
+          <div>
+            <div className="mb-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Specialization</div>
+            <ExpertiseTags trainer={trainer} max={2} />
+          </div>
+          <div>
+            <div className="mb-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">RE Segment</div>
+            <SegmentLine trainer={trainer} />
+          </div>
         </div>
 
         {/* meta + actions */}
         <div className="w-[260px] shrink-0 flex flex-col justify-center gap-4 p-6 bg-[#F9FAFC] border-l border-[#0B1D3A]/[0.05]">
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <div className="text-[18px] font-black leading-none" style={{ color: NAVY }}>{trainer.industryExperience}+</div>
-              <div className="text-[9.5px] font-bold uppercase tracking-[0.12em] text-[#7B8DAA] mt-1">Yrs Industry</div>
-            </div>
-            <div>
-              <div className="text-[18px] font-black leading-none" style={{ color: NAVY }}>{trainer.trainingExperience}+</div>
-              <div className="text-[9.5px] font-bold uppercase tracking-[0.12em] text-[#7B8DAA] mt-1">Yrs Training</div>
-            </div>
-          </div>
           <div className="text-[12px] font-bold" style={{ color: GOLD }}>{trainer.pricing}</div>
           <div className="flex flex-col gap-2">
             <Actions onViewProfile={onViewProfile} onRequest={handleRequest} requested={requested} />
@@ -273,73 +334,46 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "grid"
       whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
       className={`${cardShell} flex flex-col`}
     >
-      {/* Cover band */}
-      <div
-        className="relative h-[92px] shrink-0 overflow-hidden"
-        style={{ background: `linear-gradient(120deg, ${NAVY} 0%, #15315C 55%, #1E3F72 100%)` }}
-      >
-        <div
-          className="absolute inset-0 opacity-[0.10]"
-          style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)", backgroundSize: "14px 14px" }}
-        />
-        <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-[#C99A2E]/30 blur-3xl group-hover:bg-[#C99A2E]/45 transition-colors duration-700" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D5AA45]/70 to-transparent" />
+      <TrainerPhotoHero
+        trainer={trainer}
+        className="w-full h-[180px]"
+        isIntroVideoOpen={isIntroVideoOpen}
+        onToggleIntroVideo={toggleIntroVideo}
+      />
 
-        <div className="absolute top-3.5 right-3.5">
-          <AvailabilityPill value={trainer.availability} />
-        </div>
-        {trainer.verified && (
-          <div className="absolute top-3.5 left-3.5 flex items-center gap-1 h-6 pl-1.5 pr-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
-            <BadgeCheck size={13} strokeWidth={2.5} style={{ color: GOLD_MID }} />
-            <span className="text-[9.5px] font-bold tracking-[0.1em] uppercase text-white/90">FARE Verified</span>
-          </div>
-        )}
-      </div>
-
-      <div className="relative flex flex-col flex-1 px-5 pb-5">
-        {/* avatar overlapping band */}
-        <div className="-mt-11 mb-3">
-          <Avatar trainer={trainer} size={88} />
-        </div>
-
-        {/* identity — fixed heights keep every card aligned */}
-        <div className="min-h-[64px]">
-          <h3 className="text-[19px] font-black leading-tight tracking-tight truncate" style={{ color: NAVY }}>
-            {trainer.name}
-          </h3>
-          <p className="text-[13px] text-[#5A6B82] font-medium leading-snug mt-0.5 line-clamp-1">{trainer.title}</p>
-          <div className="flex items-center gap-3 mt-1.5 text-[11.5px] text-[#7B8DAA] font-medium">
-            <span className="flex items-center gap-1 truncate">
+      <div className="relative flex flex-col flex-1 px-5 py-4">
+        <div className="-mt-[76px] mb-3 relative z-10 flex items-end gap-4">
+          <TrainerPortrait trainer={trainer} size={144} />
+          <div className="min-w-0 flex-1 pb-1">
+            <h3 className="text-[19px] font-black leading-tight tracking-tight truncate" style={{ color: NAVY }}>
+              {trainer.name}
+            </h3>
+            <p className="text-[13px] text-[#5A6B82] font-medium leading-snug mt-1 line-clamp-1">{trainer.title}</p>
+            <span className="mt-1.5 flex items-center gap-1 text-[11px] text-[#7B8DAA]">
               <MapPin size={12} strokeWidth={2.5} />
-              {trainer.location}
-            </span>
-            <span className="flex items-center gap-1 shrink-0">
-              <MonitorPlay size={12} strokeWidth={2.5} />
-              {trainer.delivery.length > 2 ? "Hybrid" : trainer.delivery.join(" · ")}
+              {trainer.location.split(",")[0]}
             </span>
           </div>
         </div>
 
-        <p className="text-[13px] text-[#5A6B82]/90 leading-relaxed mt-3 line-clamp-2 min-h-[40px]">{trainer.positioning}</p>
-
-        <div className="mt-4">
-          <Stats trainer={trainer} />
+        <p className="text-[13px] text-[#5A6B82]/90 leading-relaxed mt-2 line-clamp-2">{trainer.positioning}</p>
+        <div className="mt-3">
+          <TrainerStats trainer={trainer} />
         </div>
 
-        <div className="flex flex-col gap-3 mt-4">
+        <div className="mt-4 flex flex-col gap-3">
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA] mb-1.5">Specialization</div>
-            <ExpertiseTags trainer={trainer} />
+            <div className="mb-1.5 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Specialization</div>
+            <ExpertiseTags trainer={trainer} max={2} />
           </div>
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA] mb-1.5">RE Segment</div>
+            <div className="mb-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">RE Segment</div>
             <SegmentLine trainer={trainer} />
           </div>
         </div>
 
-        {/* footer pinned to bottom */}
         <div className="mt-auto pt-4">
-          <div className="flex items-center justify-between pt-4 mb-3 border-t border-dashed border-[#0B1D3A]/10">
+          <div className="flex items-center justify-between pt-3 mb-3 border-t border-dashed border-[#0B1D3A]/10">
             <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Engagement</span>
             <span className="text-[12px] font-bold" style={{ color: GOLD }}>{trainer.pricing}</span>
           </div>

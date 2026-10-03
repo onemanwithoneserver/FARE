@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
@@ -47,6 +47,7 @@ const matchesText = (trainer: Trainer, q: string) => {
 
 export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
   const [selectedTrainerId, setSelectedTrainerId] = useState<string | null>(null);
+  const profileContainerRef = useRef<HTMLDivElement>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
@@ -115,6 +116,12 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
     setVisibleCount(12);
   }, [searchQuery, activeTag, filters, sortBy]);
 
+  useEffect(() => {
+    if (selectedTrainerId) {
+      profileContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [selectedTrainerId]);
+
   const displayedTrainers: (Trainer & { uniqueId: string })[] = [];
   if (filteredTrainers.length > 0) {
     const count = Math.min(visibleCount, totalListing);
@@ -152,7 +159,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
 
   if (selectedTrainerId) {
     return (
-      <div className="w-full flex flex-col min-h-screen bg-[#F8FAFD] font-['Outfit']">
+      <div ref={profileContainerRef} className="w-full flex flex-col min-h-screen bg-[#F8FAFD] font-['Outfit']">
         <Header isMobile={isMobile} />
         <TrainerProfile isMobile={isMobile} onBack={() => setSelectedTrainerId(null)} trainerId={selectedTrainerId} />
         <Footer isMobile={isMobile} />
