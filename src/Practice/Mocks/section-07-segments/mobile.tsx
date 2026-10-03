@@ -4,7 +4,7 @@ import { data } from "../data";
 export default function Mobile() {
   const sectionData = data.segments;
   return (
-    <section className="w-full bg-[#0B1D3A] py-16 relative overflow-hidden text-white">
+    <section className="w-full bg-gradient-to-br from-[#0B1D3A] via-[#0B1D3A] to-[#102B63] py-16 relative overflow-hidden text-white font-['Outfit'] fare-noise-overlay">
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
       <div className="w-full px-5 relative z-10">
         <motion.div
@@ -31,7 +31,7 @@ export default function Mobile() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/5 border border-white/10 p-5 rounded-[4px] backdrop-blur-sm"
+              className="bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC]/5 border border-white/10 p-5 rounded-[4px] backdrop-blur-sm"
             >
               <h3 className="text-[17px] font-bold text-[#E2C068] mb-4 border-b border-white/10 pb-3">
                 {segment.title}

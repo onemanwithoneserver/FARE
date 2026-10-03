@@ -4,10 +4,15 @@ import { MousePointerClick, Calendar, User, MessageCircle, PlayCircle } from "lu
 
 const flowIcons = [MousePointerClick, Calendar, User, MessageCircle, PlayCircle];
 
+const GRADIENTS = [
+  "from-[#F87171] to-[#DC2626]", "from-[#FBBF24] to-[#D97706]", "from-[#38BDF8] to-[#0284C7]", 
+  "from-[#C084FC] to-[#9333EA]", "from-[#34D399] to-[#059669]", "from-[#F472B6] to-[#DB2777]",
+  "from-[#60A5FA] to-[#2563EB]"
+];
 export default function Mobile() {
   const sectionData = data.solution;
   return (
-    <section className="w-full bg-[#0B1D3A] py-16 relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#0B1D3A] via-[#0B1D3A] to-[#102B63] py-16 relative overflow-hidden font-['Outfit'] fare-noise-overlay">
       <div className="w-full px-5 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -19,15 +24,16 @@ export default function Mobile() {
           <h2 className="text-[28px] font-bold text-white mb-4 leading-tight">
             {sectionData.title}
           </h2>
-          <div className="w-12 h-1 bg-[#C99A2E] mx-auto mb-5 rounded-[2px]" />
+          
           <p className="text-[15px] text-white/70">
             {sectionData.description}
           </p>
         </motion.div>
         
-        <div className="flex flex-col gap-8 relative before:absolute before:left-[24px] before:top-[10px] before:bottom-[10px] before:w-[2px] before:bg-white/10">
+        <div className="flex flex-col gap-8 relative before:absolute before:left-[24px] before:top-[10px] before:bottom-[10px] before:w-[2px] before:bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC]/10">
           {sectionData.flow.map((item, index) => {
             const Icon = flowIcons[index];
+            const gradient = GRADIENTS[index % GRADIENTS.length];
             return (
               <motion.div
                 key={index}
@@ -37,9 +43,9 @@ export default function Mobile() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex gap-5 relative z-10 group"
               >
-                <div className="w-12 h-12 shrink-0 rounded-full bg-[#C99A2E] border border-[#C99A2E]/50 flex items-center justify-center text-white mt-1 shadow-md transition-all duration-300">
+                <div className={`w-12 h-12 shrink-0 rounded-full bg-gradient-to-br ${gradient} border border-[#C99A2E]/50 flex items-center justify-center text-white mt-1 shadow-md transition-all duration-300`}>
                   <Icon size={20} strokeWidth={2} />
-                  <div className="absolute -left-2 -top-1 w-5 h-5 rounded-full bg-[#102B63] border border-[#C99A2E]/30 flex items-center justify-center text-[10px] font-bold text-white shadow-sm">
+                  <div className={`absolute -left-2 -top-1 w-5 h-5 rounded-full bg-[#0B1D3A]/80 backdrop-blur-md border border-[#C99A2E]/30 flex items-center justify-center text-[10px] font-bold text-white shadow-sm`}>
                     {index + 1}
                   </div>
                 </div>

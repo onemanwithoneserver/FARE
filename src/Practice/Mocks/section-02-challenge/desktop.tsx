@@ -2,10 +2,15 @@ import { motion } from "motion/react";
 import { data } from "../data";
 import { AlertCircle } from "lucide-react";
 
+const GRADIENTS = [
+  "from-[#F87171] to-[#DC2626]", "from-[#FBBF24] to-[#D97706]", "from-[#38BDF8] to-[#0284C7]", 
+  "from-[#C084FC] to-[#9333EA]", "from-[#34D399] to-[#059669]", "from-[#F472B6] to-[#DB2777]",
+  "from-[#60A5FA] to-[#2563EB]"
+];
 export default function Desktop() {
   const sectionData = data.challenge;
   return (
-    <section className="w-full bg-[#f8fafc] py-24 relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 relative overflow-hidden font-['Outfit'] fare-noise-overlay">
       <div className="w-full max-w-[1320px] mx-auto px-6 lg:px-10 xl:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -24,16 +29,18 @@ export default function Desktop() {
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {sectionData.points.map((point, index) => (
+          {sectionData.points.map((point, index) => {
+            const gradient = GRADIENTS[index % GRADIENTS.length];
+            return (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white p-6 rounded-[4px] border border-gray-100 luxury-shadow-float flex flex-col hover:-translate-y-1 transition-transform duration-300 group"
+              className="bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC] p-6 rounded-[4px] border border-gray-100 luxury-shadow-float flex flex-col hover:-translate-y-1 transition-transform duration-300 group"
             >
-              <div className="w-10 h-10 rounded-[4px] bg-red-500 flex items-center justify-center text-white mb-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:rotate-6 group-hover:scale-110 shadow-md">
+              <div className={`w-10 h-10 rounded-[4px] bg-gradient-to-br ${gradient} flex items-center justify-center text-white mb-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:rotate-6 group-hover:scale-110 shadow-md`}>
                 <AlertCircle size={20} strokeWidth={2.5} />
               </div>
               <h3 className="text-[16px] font-bold text-[#0B1D3A] mb-3 leading-snug group-hover:text-[#C99A2E] transition-colors duration-300">
@@ -43,7 +50,8 @@ export default function Desktop() {
                 {point.desc}
               </p>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
