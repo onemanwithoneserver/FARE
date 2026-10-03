@@ -92,7 +92,7 @@ function TrainerPhotoHero({
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-[#0B1D3A] to-[#1E3F72]" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#030816]/60 via-[#030816]/20 to-[#030816]/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#030816]/50 via-[#030816]/15 to-[#030816]/60" />
           <div
             className="absolute inset-0 opacity-[0.08]"
             style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)", backgroundSize: "14px 14px" }}
@@ -103,19 +103,13 @@ function TrainerPhotoHero({
             aria-label={`Play ${trainer.name}'s introduction video`}
             className="absolute inset-0 z-10 flex items-center justify-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D5AA45]"
           >
-            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/70 bg-[#0B1D3A]/45 shadow-lg backdrop-blur-sm transition-transform group-hover:scale-110">
-              <Play size={20} fill="currentColor" className="ml-0.5" />
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[#0B1D3A] shadow-[0_8px_24px_-6px_rgba(0,0,0,0.5)] ring-4 ring-white/25 transition-transform group-hover:scale-110">
+              <Play size={18} fill="currentColor" className="ml-0.5" />
             </span>
           </button>
           <div className="pointer-events-none absolute left-4 top-4 z-20">
             <AvailabilityPill value={trainer.availability} />
           </div>
-          {trainer.verified && (
-            <div className="pointer-events-none absolute right-4 top-4 z-20 flex items-center gap-1 rounded-full border border-white/25 bg-[#0B1D3A]/45 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-white backdrop-blur-sm">
-              <BadgeCheck size={13} style={{ color: "#60A5FA" }} />
-              FARE Verified
-            </div>
-          )}
         </>
       )}
       {isIntroVideoOpen && (
@@ -134,8 +128,8 @@ function TrainerPhotoHero({
 
 function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) {
   return (
-    <div className="relative shrink-0 rounded-xl bg-gradient-to-br from-white via-[#F8FAFC] to-[#EEF2F7] p-[4px] shadow-[0_10px_24px_-10px_rgba(11,29,58,0.48),0_2px_6px_rgba(11,29,58,0.12)] ring-1 ring-[#0B1D3A]/10" style={{ width: size, height: size }}>
-      <div className="h-full w-full overflow-hidden rounded-lg bg-[#0B1D3A] ring-1 ring-inset ring-white/15">
+    <div className="relative shrink-0     rounded-[4px] bg-white p-0.5 shadow-[0_12px_28px_-10px_rgba(11,29,58,0.5)] ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
+          <div className="h-full w-full overflow-hidden rounded-[14px] bg-[#0B1D3A]">
         {trainer.image ? (
           <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
         ) : (
@@ -145,8 +139,8 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
         )}
       </div>
       {trainer.verified && (
-        <span className="absolute -bottom-1 -right-2 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-white shadow-sm">
-          <BadgeCheck size={17} strokeWidth={2.4} style={{ color: "#2563EB" }} />
+        <span className="absolute -bottom-1.5 -right-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-[#0B1D3A]/10">
+          <BadgeCheck size={18} strokeWidth={2.4} style={{ color: "#2563EB" }} />
         </span>
       )}
     </div>
@@ -282,17 +276,17 @@ export default function Desktop({ trainer, onViewProfile }: TrainerCardProps) {
       />
 
       <div className="relative flex flex-col flex-1 px-5 py-4">
-        <div className="-mt-[76px] mb-3 relative z-10 flex items-end gap-4">
-          <TrainerPortrait trainer={trainer} size={144} />
-          <div className="min-w-0 flex-1 pb-1">
-            <h3 className="text-[19px] font-black leading-tight tracking-tight truncate" style={{ color: NAVY }}>
-              {trainer.name}
-            </h3>
-            <p className="text-[13px] text-[#5A6B82] font-medium leading-snug mt-1 line-clamp-1">{trainer.title}</p>
-            <span className="mt-1.5 flex items-center gap-1 text-[11px] text-[#7B8DAA]">
-              <MapPin size={12} strokeWidth={2.5} />
+        <div className="-mt-[64px] mb-3 relative z-10 flex items-end gap-4">
+          <TrainerPortrait trainer={trainer} size={128} />
+          <div className="min-w-0 flex-1 pb-0.5">
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#F1F5F9] px-2 py-0.5 text-[10.5px] font-semibold text-[#5A6B82]">
+              <MapPin size={11} strokeWidth={2.5} style={{ color: GOLD }} />
               {trainer.location.split(",")[0]}
             </span>
+            <h3 className="mt-1.5 text-[20px] font-black leading-tight tracking-tight truncate" style={{ color: NAVY }}>
+              {trainer.name}
+            </h3>
+            <p className="text-[13px] text-[#5A6B82] font-medium leading-snug mt-0.5 line-clamp-1">{trainer.title}</p>
           </div>
         </div>
 
