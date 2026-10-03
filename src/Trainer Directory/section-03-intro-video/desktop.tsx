@@ -1,22 +1,17 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Play, Mic, PlayCircle, Volume2 } from "lucide-react";
+import { Play } from "lucide-react";
 import VideoModal from "../../Components/Forms/VideoModal";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
-const audioClips = [
-  { title: "Introduction & Background", duration: "01:30", desc: "Trainer's background in real estate sales" },
-  { title: "Training Approach", duration: "02:10", desc: "How sessions are structured and delivered" },
-  { title: "Sample Session Snippet", duration: "03:45", desc: "Live excerpt from a sales skills workshop" },
-];
 
 export default function Desktop() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const [playingIdx, setPlayingIdx] = useState<number | null>(null);
+
 
   const container: Variants = {
     hidden: { opacity: 0 },
