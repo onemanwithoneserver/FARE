@@ -19,8 +19,6 @@ import {
   MonitorPlay,
   SlidersHorizontal,
   X,
-  LayoutGrid,
-  List,
   SearchX,
   RotateCcw,
 } from "lucide-react";
@@ -53,7 +51,6 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [sortBy, setSortBy] = useState("Relevance");
   const [filters, setFilters] = useState<FilterState>(emptyFilters);
-  const [view, setView] = useState<"grid" | "list">("grid");
 
   const [visibleCount, setVisibleCount] = useState(12);
   const { ref, inView } = useInView({ threshold: 0 });
@@ -378,26 +375,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 <div className="w-[220px]">
                   <CustomSelect options={SORT_OPTIONS} value={sortBy} onChange={setSortBy} placeholder="Sort by" />
                 </div>
-                <div className="flex items-center p-1 rounded-xl bg-[#F3F6FA] border border-[#0B1D3A]/[0.05]" role="group" aria-label="Layout">
-                    {([
-                      { id: "grid", icon: <LayoutGrid size={15} strokeWidth={2.4} />, label: "Grid view" },
-                      { id: "list", icon: <List size={16} strokeWidth={2.4} />, label: "List view" },
-                    ] as const).map((v) => (
-                      <button
-                        key={v.id}
-                        id={`trainer-view-${v.id}`}
-                        onClick={() => setView(v.id)}
-                        aria-label={v.label}
-                        aria-pressed={view === v.id}
-                        className={`w-9 h-8 rounded-lg flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
-                          view === v.id ? "bg-white text-[#0B1D3A] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.2)]" : "text-[#7B8DAA] hover:text-[#0B1D3A]"
-                        }`}
-                      >
-                        {v.icon}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+              </div>
               )}
             {isMobile && (
               <div className="flex items-center gap-2.5">
@@ -497,18 +475,10 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               </button>
             </motion.div>
           ) : (
-            <div
-              className={
-                isMobile
-                  ? "grid grid-cols-1 gap-4"
-                  : view === "list"
-                  ? "grid grid-cols-1 gap-4"
-                  : "grid grid-cols-1 md:grid-cols-2 min-[1360px]:grid-cols-3 gap-5 auto-rows-fr"
-              }
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 min-[1360px]:grid-cols-3 gap-5 auto-rows-fr">
               {displayedTrainers.map((trainer, index) => (
                 <motion.div
-                  key={`${view}-${trainer.uniqueId}`}
+                  key={trainer.uniqueId}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
@@ -519,7 +489,6 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                     isMobile={isMobile}
                     trainer={trainer}
                     onViewProfile={() => setSelectedTrainerId(trainer.id)}
-                    layoutVariant={isMobile ? "grid" : view}
                   />
                 </motion.div>
               ))}

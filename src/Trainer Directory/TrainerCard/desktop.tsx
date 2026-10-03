@@ -20,12 +20,9 @@ const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
-export type TrainerCardLayout = "grid" | "list";
-
 export interface TrainerCardProps {
   trainer: Trainer;
   onViewProfile: () => void;
-  layoutVariant?: TrainerCardLayout;
 }
 
 const AVAILABILITY_STYLES: Record<Trainer["availability"], { dot: string; text: string; bg: string; label: string }> = {
@@ -115,7 +112,7 @@ function TrainerPhotoHero({
           </div>
           {trainer.verified && (
             <div className="pointer-events-none absolute right-4 top-4 z-20 flex items-center gap-1 rounded-full border border-white/25 bg-[#0B1D3A]/45 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-white backdrop-blur-sm">
-              <BadgeCheck size={13} style={{ color: GOLD_MID }} />
+              <BadgeCheck size={13} style={{ color: "#60A5FA" }} />
               FARE Verified
             </div>
           )}
@@ -137,8 +134,8 @@ function TrainerPhotoHero({
 
 function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) {
   return (
-    <div className="relative shrink-0 rounded-full bg-white p-[4px] shadow-[0_8px_24px_-8px_rgba(11,29,58,0.45)]" style={{ width: size, height: size }}>
-      <div className="h-full w-full overflow-hidden rounded-full bg-[#0B1D3A]">
+    <div className="relative shrink-0 rounded-lg bg-white p-[4px] shadow-[0_8px_24px_-8px_rgba(11,29,58,0.45)]" style={{ width: size, height: size }}>
+      <div className="h-full w-full overflow-hidden rounded-md bg-[#0B1D3A]">
         {trainer.image ? (
           <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
         ) : (
@@ -148,8 +145,8 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
         )}
       </div>
       {trainer.verified && (
-        <span className="absolute bottom-1 right-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-white shadow-sm">
-          <BadgeCheck size={17} strokeWidth={2.4} style={{ color: GOLD }} />
+        <span className="absolute -bottom-1 -right-2 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-white shadow-sm">
+          <BadgeCheck size={17} strokeWidth={2.4} style={{ color: "#2563EB" }} />
         </span>
       )}
     </div>
@@ -266,69 +263,12 @@ function SegmentLine({ trainer }: { trainer: Trainer }) {
 const cardShell =
   "group relative h-full bg-white rounded-2xl font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] hover:shadow-[0_4px_10px_-4px_rgba(11,29,58,0.08),0_28px_56px_-18px_rgba(11,29,58,0.25)] hover:border-[#C99A2E]/35 transition-[box-shadow,border-color] duration-500 overflow-hidden";
 
-export default function Desktop({ trainer, onViewProfile, layoutVariant = "grid" }: TrainerCardProps) {
+export default function Desktop({ trainer, onViewProfile }: TrainerCardProps) {
   const [requested, setRequested] = useState(false);
   const [isIntroVideoOpen, setIsIntroVideoOpen] = useState(false);
   const handleRequest = () => setRequested(true);
   const toggleIntroVideo = () => setIsIntroVideoOpen((open) => !open);
 
-  /* ───────────────────────── LIST VIEW ───────────────────────── */
-  if (layoutVariant === "list") {
-    return (
-      <motion.article
-        whileHover={{ y: -3, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-        className={`${cardShell} flex items-stretch`}
-      >
-        <span aria-hidden className="absolute left-0 top-6 bottom-6 w-[3px] rounded-r-full bg-gradient-to-b from-[#D5AA45] to-[#C99A2E] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        <div className="relative w-[32%] min-h-[220px] shrink-0">
-          <TrainerPhotoHero
-            trainer={trainer}
-            className="absolute inset-0"
-            isIntroVideoOpen={isIntroVideoOpen}
-            onToggleIntroVideo={toggleIntroVideo}
-          />
-          <div className="absolute inset-0 z-10 flex items-center justify-center">
-            <TrainerPortrait trainer={trainer} size={144} />
-          </div>
-        </div>
-
-        {/* details */}
-        <div className="flex-1 min-w-0 flex flex-col justify-center gap-3 py-6 pr-6 border-l border-dashed border-[#0B1D3A]/10 pl-6">
-          <div>
-            <h3 className="text-[19px] font-black leading-tight tracking-tight truncate" style={{ color: NAVY }}>
-              {trainer.name}
-            </h3>
-            <p className="text-[13px] text-[#5A6B82] font-medium leading-snug mt-1 line-clamp-1">{trainer.title}</p>
-            <div className="flex items-center gap-1.5 mt-1.5 text-[12px] text-[#7B8DAA] font-medium">
-              <MapPin size={12} strokeWidth={2.5} />
-              <span className="truncate">{trainer.location}</span>
-            </div>
-          </div>
-          <p className="text-[13px] text-[#5A6B82] leading-relaxed line-clamp-2">{trainer.positioning}</p>
-          <TrainerStats trainer={trainer} />
-          <div>
-            <div className="mb-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Specialization</div>
-            <ExpertiseTags trainer={trainer} max={2} />
-          </div>
-          <div>
-            <div className="mb-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">RE Segment</div>
-            <SegmentLine trainer={trainer} />
-          </div>
-        </div>
-
-        {/* meta + actions */}
-        <div className="w-[260px] shrink-0 flex flex-col justify-center gap-4 p-6 bg-[#F9FAFC] border-l border-[#0B1D3A]/[0.05]">
-          <div className="text-[12px] font-bold" style={{ color: GOLD }}>{trainer.pricing}</div>
-          <div className="flex flex-col gap-2">
-            <Actions onViewProfile={onViewProfile} onRequest={handleRequest} requested={requested} />
-          </div>
-        </div>
-      </motion.article>
-    );
-  }
-
-  /* ───────────────────────── GRID VIEW ───────────────────────── */
   return (
     <motion.article
       whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}

@@ -22,7 +22,6 @@ const GOLD_MID = "#D5AA45";
 export interface TrainerCardProps {
   trainer: Trainer;
   onViewProfile: () => void;
-  layoutVariant?: "grid" | "list";
 }
 
 const AVAILABILITY: Record<Trainer["availability"], { dot: string; text: string; bg: string; label: string }> = {
@@ -91,7 +90,7 @@ function TrainerPhotoHero({
           </span>
           {trainer.verified && (
             <span className="pointer-events-none absolute right-3 top-3 z-20 inline-flex items-center gap-1 rounded-full border border-white/25 bg-[#0B1D3A]/45 px-2 py-1 text-[9px] font-bold uppercase tracking-wide text-white backdrop-blur-sm">
-              <BadgeCheck size={12} style={{ color: GOLD_MID }} />
+              <BadgeCheck size={12} style={{ color: "#60A5FA" }} />
               Verified
             </span>
           )}
@@ -115,8 +114,8 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
   const initials = trainer.name.split(" ").map((part) => part[0]).join("").slice(0, 2);
 
   return (
-    <div className="relative shrink-0 rounded-full bg-white p-[4px] shadow-[0_8px_24px_-8px_rgba(11,29,58,0.45)]" style={{ width: size, height: size }}>
-      <div className="h-full w-full overflow-hidden rounded-full bg-[#0B1D3A]">
+    <div className="relative shrink-0 rounded-lg bg-white p-[4px] shadow-[0_8px_24px_-8px_rgba(11,29,58,0.45)]" style={{ width: size, height: size }}>
+      <div className="h-full w-full overflow-hidden rounded-md bg-[#0B1D3A]">
         {trainer.image ? (
           <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
         ) : (
@@ -124,8 +123,8 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
         )}
       </div>
       {trainer.verified && (
-        <span className="absolute bottom-0 right-0 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-white shadow-sm">
-          <BadgeCheck size={14} strokeWidth={2.4} style={{ color: GOLD }} />
+        <span className="absolute -bottom-1 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-white shadow-sm">
+          <BadgeCheck size={14} strokeWidth={2.4} style={{ color: "#2563EB" }} />
         </span>
       )}
     </div>
