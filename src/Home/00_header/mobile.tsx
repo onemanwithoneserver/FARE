@@ -129,7 +129,7 @@ export default function Mobile() {
     };
   }, []);
   return (
-    <div className="w-full sticky top-0 z-50 pointer-events-auto">
+    <div className="w-full sticky top-0 z-[60] pointer-events-auto">
       <div
         className={`w-full transition-all duration-300 ${
           isScrolled ? "pt-2 pb-1 flex justify-center px-3.5" : "py-0 w-full"

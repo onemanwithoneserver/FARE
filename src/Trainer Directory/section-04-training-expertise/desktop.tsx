@@ -18,6 +18,10 @@ const levelColors: Record<string, { bg: string; text: string; border: string }> 
   "Advanced": { bg: "rgba(59,130,246,0.08)", text: "#3B82F6", border: "rgba(59,130,246,0.2)" },
   "Intermediate": { bg: "rgba(16,185,129,0.08)", text: "#059669", border: "rgba(16,185,129,0.2)" },
   "Beginner": { bg: "rgba(107,114,128,0.08)", text: "#6B7280", border: "rgba(107,114,128,0.2)" },
+  "నిపుణ స్థాయి": { bg: `${GOLD}12`, text: GOLD, border: `${GOLD}25` },
+  "అధునాతన స్థాయి": { bg: "rgba(59,130,246,0.08)", text: "#3B82F6", border: "rgba(59,130,246,0.2)" },
+  "మధ్యంతర స్థాయి": { bg: "rgba(16,185,129,0.08)", text: "#059669", border: "rgba(16,185,129,0.2)" },
+  "ప్రారంభ స్థాయి": { bg: "rgba(107,114,128,0.08)", text: "#6B7280", border: "rgba(107,114,128,0.2)" },
 };
 
 const getCategoryIcon = (category: string, size: number, strokeWidth: number) => {

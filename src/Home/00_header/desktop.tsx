@@ -522,7 +522,7 @@ export default function Desktop() {
   );
   return (
     <>
-    <div className="w-full sticky top-0 z-50 pointer-events-auto">
+    <div className="w-full sticky top-0 z-[60] pointer-events-auto">
       <AnimatePresence>
         {isSearchExpanded && (
           <motion.div

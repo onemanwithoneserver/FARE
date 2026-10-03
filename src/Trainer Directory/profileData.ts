@@ -254,6 +254,7 @@ export const profileData = {
 };
 
 const profileTranslations: Record<string, string> = {
+  "Rajesh Kumar": "రాజేష్ కుమార్",
   "Real Estate Sales & Capability Trainer": "రియల్ ఎస్టేట్ సేల్స్ & సామర్థ్య శిక్షకుడు",
   "Helping real estate organizations build high-performing sales teams through practical, field-tested capability programs.": "ప్రాక్టికల్‌గా పరీక్షించిన సామర్థ్య కార్యక్రమాల ద్వారా అధిక పనితీరు కనబరిచే సేల్స్ టీమ్‌లను నిర్మించడంలో రియల్ ఎస్టేట్ సంస్థలకు సహాయం.",
   "15+ Years Industry Experience": "15+ సంవత్సరాల పరిశ్రమ అనుభవం",
