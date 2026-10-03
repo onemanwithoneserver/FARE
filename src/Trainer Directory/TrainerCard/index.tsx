@@ -6,7 +6,7 @@ export interface TrainerCardProps {
   isMobile?: boolean;
   trainer: Trainer;
   onViewProfile: () => void;
-  layoutVariant?: "full" | "half" | "third";
+  layoutVariant?: "grid" | "list";
 }
 
 export default function TrainerCard(props: TrainerCardProps) {

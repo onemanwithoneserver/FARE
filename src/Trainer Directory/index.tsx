@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useInView } from "react-intersection-observer";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
 import Header from "../Home/00_header";
 import Footer from "../Home/05_section";
-import SidebarFilters from "./SidebarFilters";
+import SidebarFilters, { emptyFilters } from "./SidebarFilters";
+import type { FilterKey, FilterState } from "./SidebarFilters";
 import TrainerCard from "./TrainerCard";
 import TrainerProfile from "./TrainerProfile";
 import { trainersData } from "./listing_data";
+import type { Trainer } from "./listing_data";
 import {
   Search,
   Sparkles,
@@ -17,6 +19,10 @@ import {
   MonitorPlay,
   SlidersHorizontal,
   X,
+  LayoutGrid,
+  List,
+  SearchX,
+  RotateCcw,
 } from "lucide-react";
 import trainersHero from "../assets/re_trainers_hero.jpg";
 import { CustomSelect } from "./section-17-corporate-request-form/FormControls";
@@ -25,9 +31,19 @@ const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
+const SORT_OPTIONS = ["Relevance", "Experience (High to Low)", "Training Years (High to Low)", "A-Z"];
+const DEMO_LISTING_CAP = 36;
+
 interface TrainerDirectoryProps {
   isMobile: boolean;
 }
+
+const matchesText = (trainer: Trainer, q: string) => {
+  const haystack = [trainer.name, trainer.title, trainer.location, ...trainer.expertise, ...trainer.segments, ...trainer.formats]
+    .join(" ")
+    .toLowerCase();
+  return haystack.includes(q);
+};
 
 export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
   const [selectedTrainerId, setSelectedTrainerId] = useState<string | null>(null);
@@ -35,33 +51,74 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [sortBy, setSortBy] = useState("Relevance");
+  const [filters, setFilters] = useState<FilterState>(emptyFilters);
+  const [view, setView] = useState<"grid" | "list">("grid");
 
   const [visibleCount, setVisibleCount] = useState(12);
   const { ref, inView } = useInView({ threshold: 0 });
 
+  const toggleFilter = (key: FilterKey, option: string) =>
+    setFilters((prev) => ({
+      ...prev,
+      [key]: prev[key].includes(option) ? prev[key].filter((o) => o !== option) : [...prev[key], option],
+    }));
+
+  const clearAll = () => {
+    setFilters(emptyFilters);
+    setActiveTag(null);
+    setSearchQuery("");
+  };
+
+  const activeChips = useMemo(
+    () =>
+      (Object.keys(filters) as FilterKey[]).flatMap((key) => filters[key].map((value) => ({ key, value }))),
+    [filters]
+  );
+
+  const isFiltering = searchQuery.trim() !== "" || activeTag !== null || activeChips.length > 0;
+
+  const filteredTrainers = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    const list = trainersData.filter((t) => {
+      if (q && !matchesText(t, q)) return false;
+      if (activeTag && !matchesText(t, activeTag.toLowerCase())) return false;
+      if (filters.segments.length && !filters.segments.some((s) => t.segments.includes(s))) return false;
+      if (filters.expertise.length && !filters.expertise.some((s) => t.expertise.includes(s))) return false;
+      if (filters.delivery.length && !filters.delivery.some((s) => t.delivery.includes(s))) return false;
+      if (filters.availability.length && !filters.availability.includes(t.availability)) return false;
+      if (filters.languages.length) {
+        const known = ["English", "Telugu", "Hindi"];
+        const ok = filters.languages.some((l) =>
+          l === "Other" ? t.languages.some((tl) => !known.includes(tl)) : t.languages.includes(l)
+        );
+        if (!ok) return false;
+      }
+      return true;
+    });
+
+    const sorted = [...list];
+    if (sortBy === "Experience (High to Low)") sorted.sort((a, b) => b.industryExperience - a.industryExperience);
+    else if (sortBy === "Training Years (High to Low)") sorted.sort((a, b) => b.trainingExperience - a.trainingExperience);
+    else if (sortBy === "A-Z") sorted.sort((a, b) => a.name.localeCompare(b.name));
+    return sorted;
+  }, [searchQuery, activeTag, filters, sortBy]);
+
+  // Demo listing: repeat sample trainers to simulate a full directory when no filters are applied.
+  const totalListing = isFiltering ? filteredTrainers.length : Math.min(DEMO_LISTING_CAP, Math.max(filteredTrainers.length, DEMO_LISTING_CAP));
+  const hasMore = visibleCount < totalListing;
+
   useEffect(() => {
-    if (inView) {
-      setVisibleCount((prev) => prev + 6);
-    }
-  }, [inView]);
+    if (inView && hasMore) setVisibleCount((prev) => prev + 6);
+  }, [inView, hasMore]);
 
-  const isSearching = searchQuery.trim() !== "" || activeTag !== null;
+  useEffect(() => {
+    setVisibleCount(12);
+  }, [searchQuery, activeTag, filters, sortBy]);
 
-  const filteredTrainers = trainersData.filter((trainer) => {
-    const matchesSearch = searchQuery === "" || 
-      trainer.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-      trainer.expertise.some(e => e.toLowerCase().includes(searchQuery.toLowerCase()));
-    
-    const matchesTag = activeTag === null || 
-      trainer.expertise.includes(activeTag) || 
-      trainer.segments.includes(activeTag);
-
-    return matchesSearch && matchesTag;
-  });
-
-  const displayedTrainers = [];
+  const displayedTrainers: (Trainer & { uniqueId: string })[] = [];
   if (filteredTrainers.length > 0) {
-    for (let i = 0; i < visibleCount; i++) {
+    const count = Math.min(visibleCount, totalListing);
+    for (let i = 0; i < count; i++) {
       const originalTrainer = filteredTrainers[i % filteredTrainers.length];
       displayedTrainers.push({ ...originalTrainer, uniqueId: `${originalTrainer.id}-${i}` });
     }
@@ -87,7 +144,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
   };
 
   const stats = [
-    { icon: <Users size={18} strokeWidth={2.2} />, value: "40+", label: "Trainers", color: "#3B82F6", bg: "linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)" },
+    { icon: <Users size={18} strokeWidth={2.2} />, value: "40+", label: "Verified Trainers", color: "#3B82F6", bg: "linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)" },
     { icon: <Award size={18} strokeWidth={2.2} />, value: "12+", label: "Expertise Areas", color: GOLD, bg: `linear-gradient(135deg, ${GOLD_MID} 0%, ${GOLD} 100%)` },
     { icon: <Layers size={18} strokeWidth={2.2} />, value: "4", label: "RE Segments", color: "#10B981", bg: "linear-gradient(135deg, #10B981 0%, #059669 100%)" },
     { icon: <MonitorPlay size={18} strokeWidth={2.2} />, value: "9+", label: "Training Formats", color: "#8B5CF6", bg: "linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)" },
@@ -236,6 +293,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               viewport={{ once: false }}
               transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="lg:relative w-[65%] sm:w-[50%] lg:w-[52%] xl:w-[54%] h-[260px] sm:h-[360px] lg:h-auto flex items-end lg:items-center justify-end z-0"
+              style={{ marginRight: "calc(50% - 50vw)" }}
             >
               <div className="relative w-full h-full lg:h-[480px] xl:h-[510px] rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden luxury-shadow-float lg:luxury-shadow-float border-l border-t lg:border-b border-white/80">
                 <motion.img
@@ -253,129 +311,228 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
         </div>
       </section>
 
-      <section
-        className="w-full border-y border-[#0B1D3A]/[0.06]"
-        style={{
-          background: "linear-gradient(135deg, rgba(248,250,253,0.95) 0%, rgba(255,255,255,0.98) 100%)",
-        }}
-      >
-        <div className={`max-w-[1400px] mx-auto w-full py-4 ${isMobile ? "px-5" : "px-6 lg:px-12 xl:px-16"}`}>
+      <section className="w-full relative z-10">
+        <div className={`max-w-[1400px] mx-auto w-full ${isMobile ? "px-5 -mt-2" : "px-6 lg:px-12 xl:px-16 -mt-6"}`}>
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-5 flex-wrap"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className={`grid ${isMobile ? "grid-cols-2 gap-2.5" : "grid-cols-4 gap-4"}`}
           >
-            {stats.map((stat, i) => (
-              <div key={i} className="flex items-center gap-3">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className={`group flex items-center bg-white/90 backdrop-blur-xl rounded-2xl border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_14px_34px_-16px_rgba(11,29,58,0.18)] hover:-translate-y-1 hover:border-[#C99A2E]/30 transition-all duration-500 ${
+                  isMobile ? "gap-2.5 p-3" : "gap-4 p-5"
+                }`}
+              >
                 <div
-                  className="w-8 h-8 rounded ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm"
+                  className={`${isMobile ? "w-9 h-9" : "w-12 h-12"} shrink-0 rounded-xl flex items-center justify-center text-white shadow-md transition-transform duration-500 group-hover:scale-110`}
                   style={{ background: stat.bg }}
                 >
                   {stat.icon}
                 </div>
-                <div className="flex items-baseline gap-1.5">
-                  <span className="text-[18px] font-black" style={{ color: NAVY }}>{stat.value}</span>
-                  <span className="text-[13px] font-semibold text-[#5A6B82]">{stat.label}</span>
+                <div className="min-w-0">
+                  <div className={`${isMobile ? "text-[18px]" : "text-[26px]"} font-black leading-none`} style={{ color: NAVY }}>
+                    {stat.value}
+                  </div>
+                  <div className={`${isMobile ? "text-[10.5px]" : "text-[12.5px]"} font-semibold text-[#5A6B82] mt-1 truncate`}>
+                    {stat.label}
+                  </div>
                 </div>
-                {i < stats.length - 1 && (
-                  <div className="w-[3px] h-[3px] rounded-full bg-[#0B1D3A]/15 ml-2 hidden sm:block" />
-                )}
               </div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      <div className={`flex-1 w-full max-w-[1400px] mx-auto px-5 py-6 flex flex-col gap-6 ${isMobile ? "" : "sm:px-6 lg:px-12 xl:px-16 sm:py-8 md:flex-row sm:gap-7 md:items-start"}`}>
+      <div
+        className={`flex-1 w-full max-w-[1400px] mx-auto flex ${
+          isMobile ? "flex-col px-5 pt-6 pb-4 gap-4" : "flex-row items-start gap-7 px-6 lg:px-12 xl:px-16 pt-10 pb-8"
+        }`}
+      >
+        <SidebarFilters
+          isMobile={isMobile}
+          isOpen={showMobileFilters}
+          onClose={() => setShowMobileFilters(false)}
+          selected={filters}
+          onToggle={toggleFilter}
+          onClear={() => setFilters(emptyFilters)}
+          resultCount={filteredTrainers.length}
+        />
 
-        <SidebarFilters isMobile={isMobile} isOpen={showMobileFilters} onClose={() => setShowMobileFilters(false)} />
-
-        <div className="flex-1 flex flex-col">
-          {isMobile && (
-            <div className="flex items-center gap-3 mb-5 w-full">
-              <div className="flex-1 z-30 rounded transition-all duration-300 ease-out focus-within:ring-2 focus-within:ring-[#C99A2E]/50">
-                <CustomSelect
-                  options={["Relevance", "Experience (High to Low)", "A-Z"]}
-                  value={sortBy}
-                  onChange={setSortBy}
-                  placeholder="Sort by"
-                />
-              </div>
-              <button
-                onClick={() => setShowMobileFilters(true)}
-                className="flex-1 flex items-center justify-center gap-2 h-full min-h-[46px] bg-white border border-[#0B1D3A]/[0.06] rounded text-[13px] font-bold shadow-sm transition-all duration-300 ease-out hover:border-[#0B1D3A]/20 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
-                style={{ color: NAVY }}
-              >
-                <SlidersHorizontal size={15} strokeWidth={2.5} />
-                Filters
-              </button>
-            </div>
-          )}
-
-          <div className="flex items-center justify-between mb-5">
-            {isSearching ? (
-              <h2 className="text-[14px] sm:text-[15px] font-bold flex items-center gap-2" style={{ color: NAVY }}>
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded ring-1 ring-black/5 bg-[#C99A2E]/10 text-[#C99A2E] text-[11px] font-black">
-                  {filteredTrainers.length}
-                </span>
-                Trainers found
-              </h2>
-            ) : (
-              <div />
-            )}
-            
+        <div className="flex-1 min-w-0 flex flex-col">
+          {/* ───── Results toolbar ───── */}
+          <div className="relative z-30 flex flex-col gap-3 mb-6">
             {!isMobile && (
-              <div className="flex items-center gap-2 sm:gap-3 text-[12px] sm:text-[13px] text-[#5A6B82] font-medium z-30 whitespace-nowrap">
-                Sort by:
-                <div className="w-[140px] sm:w-[220px] relative rounded transition-all duration-300 ease-out focus-within:ring-2 focus-within:ring-[#C99A2E]/50">
-                  <CustomSelect
-                    options={["Relevance", "Experience (High to Low)", "A-Z"]}
-                    value={sortBy}
-                    onChange={setSortBy}
-                    placeholder="Sort by"
-                  />
+              <div className="flex items-center justify-end gap-3 shrink-0">
+                <span className="text-[12.5px] text-[#5A6B82] font-medium whitespace-nowrap">Sort by</span>
+                <div className="w-[220px]">
+                  <CustomSelect options={SORT_OPTIONS} value={sortBy} onChange={setSortBy} placeholder="Sort by" />
                 </div>
+                <div className="flex items-center p-1 rounded-xl bg-[#F3F6FA] border border-[#0B1D3A]/[0.05]" role="group" aria-label="Layout">
+                    {([
+                      { id: "grid", icon: <LayoutGrid size={15} strokeWidth={2.4} />, label: "Grid view" },
+                      { id: "list", icon: <List size={16} strokeWidth={2.4} />, label: "List view" },
+                    ] as const).map((v) => (
+                      <button
+                        key={v.id}
+                        id={`trainer-view-${v.id}`}
+                        onClick={() => setView(v.id)}
+                        aria-label={v.label}
+                        aria-pressed={view === v.id}
+                        className={`w-9 h-8 rounded-lg flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
+                          view === v.id ? "bg-white text-[#0B1D3A] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.2)]" : "text-[#7B8DAA] hover:text-[#0B1D3A]"
+                        }`}
+                      >
+                        {v.icon}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            {isMobile && (
+              <div className="flex items-center gap-2.5">
+                <div className="flex-1 min-w-0">
+                  <CustomSelect options={SORT_OPTIONS} value={sortBy} onChange={setSortBy} placeholder="Sort by" />
+                </div>
+                <button
+                  onClick={() => setShowMobileFilters(true)}
+                  className="relative shrink-0 flex items-center justify-center gap-2 h-[42px] px-4 rounded-xl text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+                  style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
+                >
+                  <SlidersHorizontal size={15} strokeWidth={2.5} style={{ color: GOLD_MID }} />
+                  Filters
+                  {activeChips.length > 0 && (
+                    <span
+                      className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-black"
+                      style={{ background: GOLD_MID, color: NAVY }}
+                    >
+                      {activeChips.length}
+                    </span>
+                  )}
+                </button>
               </div>
             )}
+
+            <AnimatePresence initial={false}>
+              {(activeChips.length > 0 || activeTag || searchQuery.trim()) && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-dashed border-[#0B1D3A]/10">
+                    {searchQuery.trim() && (
+                      <button
+                        onClick={() => setSearchQuery("")}
+                        className="inline-flex items-center gap-1.5 h-7 pl-3 pr-2 rounded-full text-[12px] font-semibold bg-[#0B1D3A] text-white hover:bg-[#1A3463] transition-colors"
+                      >
+                        “{searchQuery.trim()}”
+                        <X size={12} strokeWidth={3} className="text-[#D5AA45]" />
+                      </button>
+                    )}
+                    {activeTag && (
+                      <button
+                        onClick={() => setActiveTag(null)}
+                        className="inline-flex items-center gap-1.5 h-7 pl-3 pr-2 rounded-full text-[12px] font-semibold bg-[#0B1D3A] text-white hover:bg-[#1A3463] transition-colors"
+                      >
+                        {activeTag}
+                        <X size={12} strokeWidth={3} className="text-[#D5AA45]" />
+                      </button>
+                    )}
+                    {activeChips.map((chip) => (
+                      <button
+                        key={`${chip.key}-${chip.value}`}
+                        onClick={() => toggleFilter(chip.key, chip.value)}
+                        className="inline-flex items-center gap-1.5 h-7 pl-3 pr-2 rounded-full text-[12px] font-semibold bg-[#FBF4E4] text-[#8A6516] border border-[#C99A2E]/25 hover:border-[#C99A2E]/60 transition-colors"
+                      >
+                        {chip.value}
+                        <X size={12} strokeWidth={3} />
+                      </button>
+                    ))}
+                    <button
+                      onClick={clearAll}
+                      className="inline-flex items-center gap-1 h-7 px-2 text-[12px] font-bold text-[#7B8DAA] hover:text-[#0B1D3A] transition-colors"
+                    >
+                      <RotateCcw size={12} strokeWidth={2.5} />
+                      Clear all
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: false, margin: "-40px" }}
-            className={`grid grid-cols-1 ${isMobile ? "gap-4" : "md:grid-cols-6 xl:grid-cols-6 gap-5"}`}
-          >
-            {displayedTrainers.map((trainer, index) => {
-              let spanClass = "col-span-1";
-              let layoutVariant: "full" | "half" | "third" = "third";
-
-              if (!isMobile) {
-                spanClass = "col-span-1 md:col-span-2 xl:col-span-2";
-                if (index === 0) {
-                  spanClass = "col-span-1 md:col-span-6 xl:col-span-6";
-                  layoutVariant = "full";
-                } else if (index === 1 || index === 2) {
-                  spanClass = "col-span-1 md:col-span-3 xl:col-span-3";
-                  layoutVariant = "half";
-                }
+          {/* ───── Results ───── */}
+          {displayedTrainers.length === 0 ? (
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col items-center text-center bg-white rounded-2xl border border-dashed border-[#0B1D3A]/15 py-16 px-6"
+            >
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4" style={{ background: "#FBF4E4", color: GOLD }}>
+                <SearchX size={26} strokeWidth={2.2} />
+              </div>
+              <h3 className="text-[18px] font-black" style={{ color: NAVY }}>No trainers match these filters</h3>
+              <p className="text-[13.5px] text-[#5A6B82] mt-1.5 max-w-[360px]">
+                Try removing a filter or broadening your search to discover more trainers.
+              </p>
+              <button
+                onClick={clearAll}
+                className="mt-5 h-10 px-5 rounded-xl text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)]"
+                style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
+              >
+                Reset all filters
+              </button>
+            </motion.div>
+          ) : (
+            <div
+              className={
+                isMobile
+                  ? "grid grid-cols-1 gap-4"
+                  : view === "list"
+                  ? "grid grid-cols-1 gap-4"
+                  : "grid grid-cols-1 md:grid-cols-2 min-[1360px]:grid-cols-3 gap-5 auto-rows-fr"
               }
-
-              return (
-                <motion.div key={trainer.uniqueId} variants={itemVariants} className={spanClass}>
+            >
+              {displayedTrainers.map((trainer, index) => (
+                <motion.div
+                  key={`${view}-${trainer.uniqueId}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.6, delay: (index % 6) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                  className="h-full"
+                >
                   <TrainerCard
                     isMobile={isMobile}
                     trainer={trainer}
                     onViewProfile={() => setSelectedTrainerId(trainer.id)}
-                    layoutVariant={layoutVariant}
+                    layoutVariant={isMobile ? "grid" : view}
                   />
                 </motion.div>
-              );
-            })}
-          </motion.div>
-          <div ref={ref} className="h-20 w-full" />
+              ))}
+            </div>
+          )}
+
+          {hasMore && displayedTrainers.length > 0 && (
+            <div ref={ref} className="flex items-center justify-center gap-2 py-10 text-[12px] font-semibold text-[#7B8DAA]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] animate-bounce [animation-delay:-0.2s]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] animate-bounce [animation-delay:-0.1s]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] animate-bounce" />
+            </div>
+          )}
+          {!hasMore && displayedTrainers.length > 0 && (
+            <div className="flex items-center gap-4 py-10">
+              <span className="flex-1 h-px bg-gradient-to-r from-transparent to-[#0B1D3A]/10" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#7B8DAA]">You've seen all trainers</span>
+              <span className="flex-1 h-px bg-gradient-to-l from-transparent to-[#0B1D3A]/10" />
+            </div>
+          )}
         </div>
       </div>
 
