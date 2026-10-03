@@ -60,12 +60,12 @@ export default function Mobile() {
             <motion.div
               key={cred}
               variants={item}
-              className="group rounded-lg p-5 flex flex-col relative overflow-hidden border border-[#0B1D3A]/[0.08] luxury-shadow-float bg-white"
+              className="group rounded-[8px] p-5 flex flex-col relative overflow-hidden border border-[#0B1D3A]/[0.08] luxury-shadow-float bg-white"
             >
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C99A2E] to-[#D5AA45]" />
               <div className="flex items-center justify-between mb-5 relative z-10">
                 <div
-                  className="w-10 h-10 rounded-md flex items-center justify-center text-white shadow-sm"
+                  className="w-10 h-10 rounded-[4px] flex items-center justify-center text-white shadow-sm"
                   style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
                 >
                   <Award size={18} strokeWidth={2.5} />

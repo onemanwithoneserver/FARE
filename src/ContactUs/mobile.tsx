@@ -122,10 +122,10 @@ export default function ContactUsMobile() {
           >
             <motion.div
               variants={item}
-              className="col-span-2 bg-white rounded-2xl p-4 border border-[#0B1D3A]/[0.06] shadow-[0_4px_16px_-4px_rgba(11,29,58,0.08)]"
+              className="col-span-2 bg-white rounded-[16px] p-4 border border-[#0B1D3A]/[0.06] shadow-[0_4px_16px_-4px_rgba(11,29,58,0.08)]"
             >
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center shrink-0 shadow-md">
+                <div className="w-10 h-10 rounded-[8px] bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center shrink-0 shadow-md">
                   <Mail size={18} className="text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -137,7 +137,7 @@ export default function ContactUsMobile() {
                   </h4>
                   
                   <div className="space-y-1.5">
-                    <div className="flex items-center justify-between p-2 rounded-xl bg-[#0B1D3A]/[0.03] border border-[#0B1D3A]/[0.05]">
+                    <div className="flex items-center justify-between p-2 rounded-[8px] bg-[#0B1D3A]/[0.03] border border-[#0B1D3A]/[0.05]">
                       <a
                         href={`mailto:${sidebarData.email}`}
                         className="flex items-center gap-2 text-[12px] font-bold text-[#0B1D3A] hover:text-[#2563EB] truncate"
@@ -147,7 +147,7 @@ export default function ContactUsMobile() {
                       </a>
                       <button
                         onClick={handleCopyEmail}
-                        className="w-5 h-5 rounded-md bg-white shadow-xs flex items-center justify-center shrink-0 ml-1"
+                        className="w-5 h-5 rounded-[8px] bg-white shadow-xs flex items-center justify-center shrink-0 ml-1"
                       >
                         {copiedEmail ? (
                           <Check size={10} className="text-[#10B981]" />
@@ -158,7 +158,7 @@ export default function ContactUsMobile() {
                     </div>
 
                     {sidebarData.phone && (
-                      <div className="flex items-center justify-between p-2 rounded-xl bg-[#0B1D3A]/[0.03] border border-[#0B1D3A]/[0.05]">
+                      <div className="flex items-center justify-between p-2 rounded-[8px] bg-[#0B1D3A]/[0.03] border border-[#0B1D3A]/[0.05]">
                         <a
                           href={`tel:${sidebarData.phone.replace(/\s+/g, '')}`}
                           className="flex items-center gap-2 text-[12px] font-bold text-[#0B1D3A] hover:text-[#059669] truncate"
@@ -168,7 +168,7 @@ export default function ContactUsMobile() {
                         </a>
                         <button
                           onClick={handleCopyPhone}
-                          className="w-5 h-5 rounded-md bg-white shadow-xs flex items-center justify-center shrink-0 ml-1"
+                          className="w-5 h-5 rounded-[8px] bg-white shadow-xs flex items-center justify-center shrink-0 ml-1"
                         >
                           {copiedPhone ? (
                             <Check size={10} className="text-[#10B981]" />
@@ -190,9 +190,9 @@ export default function ContactUsMobile() {
             </motion.div>
             <motion.div
               variants={item}
-              className="bg-white rounded-2xl p-5 border border-[#0B1D3A]/[0.06] shadow-[0_4px_16px_-4px_rgba(11,29,58,0.08)]"
+              className="bg-white rounded-[16px] p-5 border border-[#0B1D3A]/[0.06] shadow-[0_4px_16px_-4px_rgba(11,29,58,0.08)]"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center mb-3 shadow-md">
+              <div className="w-10 h-10 rounded-[8px] bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center mb-3 shadow-md">
                 <MapPin size={18} className="text-white" />
               </div>
               <h4
@@ -212,9 +212,9 @@ export default function ContactUsMobile() {
             </motion.div>
             <motion.div
               variants={item}
-              className="bg-white rounded-2xl p-5 border border-[#0B1D3A]/[0.06] shadow-[0_4px_16px_-4px_rgba(11,29,58,0.08)]"
+              className="bg-white rounded-[16px] p-5 border border-[#0B1D3A]/[0.06] shadow-[0_4px_16px_-4px_rgba(11,29,58,0.08)]"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-3 shadow-md">
+              <div className="w-10 h-10 rounded-[8px] bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-3 shadow-md">
                 <Clock size={18} className="text-white" />
               </div>
               <h4
@@ -230,10 +230,10 @@ export default function ContactUsMobile() {
             </motion.div>
             <motion.div
               variants={item}
-              className="col-span-2 bg-white rounded-2xl p-5 border border-[#0B1D3A]/[0.06] shadow-[0_4px_16px_-4px_rgba(11,29,58,0.08)]"
+              className="col-span-2 bg-white rounded-[16px] p-5 border border-[#0B1D3A]/[0.06] shadow-[0_4px_16px_-4px_rgba(11,29,58,0.08)]"
             >
               <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#7C3AED] flex items-center justify-center shrink-0 shadow-md">
+                <div className="w-10 h-10 rounded-[8px] bg-gradient-to-br from-[#8B5CF6] to-[#7C3AED] flex items-center justify-center shrink-0 shadow-md">
                   <Building2 size={18} className="text-white" />
                 </div>
                 <div className="flex-1">
@@ -258,10 +258,10 @@ export default function ContactUsMobile() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-4 bg-gradient-to-r from-[#0B1D3A] to-[#132D5F] rounded-2xl px-5 py-4 shadow-lg border border-white/5"
+            className="mt-4 bg-gradient-to-r from-[#0B1D3A] to-[#132D5F] rounded-[16px] px-5 py-4 shadow-lg border border-white/5"
           >
             <div className="flex items-start gap-2.5">
-              <div className="w-7 h-7 rounded-lg bg-[#C99A2E]/15 flex items-center justify-center shrink-0 mt-0.5">
+              <div className="w-7 h-7 rounded-[8px] bg-[#C99A2E]/15 flex items-center justify-center shrink-0 mt-0.5">
                 <Sparkles size={13} className="text-[#C99A2E]" />
               </div>
               <p className="text-[11px] text-white/60 font-medium leading-relaxed">

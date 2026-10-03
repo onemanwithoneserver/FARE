@@ -184,7 +184,7 @@ export default function Desktop() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: false, margin: "-100px" }}
-              className="bg-white/90 backdrop-blur-xl px-8 py-5 rounded border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-wrap items-center justify-center gap-3 md:gap-4 relative z-10"
+              className="bg-white/90 backdrop-blur-xl px-8 py-5 rounded-[4px] border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-wrap items-center justify-center gap-3 md:gap-4 relative z-10"
             >
               {data.journeyLabel.split(" → ").map((label, idx, arr) => {
                 const isActive = activeStep === idx;

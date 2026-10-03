@@ -152,7 +152,7 @@ export default function Desktop() {
                   y: -8,
                   transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
                 }}
-                className={`group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/20 rounded-xl p-8 xl:p-9 flex flex-col justify-between luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative h-full cursor-default ${
+                className={`group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/20 rounded-[8px] p-8 xl:p-9 flex flex-col justify-between luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative h-full cursor-default ${
                   isCompany ? "overflow-visible z-30" : "overflow-hidden"
                 }`}
               >
@@ -169,7 +169,7 @@ export default function Desktop() {
                 <div>
                   <div className="flex items-center gap-4 mb-6">
                     <div
-                      className="w-13 h-13 xl:w-14 xl:h-14 rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-110 group-hover:rotate-3 transition-transform duration-400 relative overflow-hidden shrink-0"
+                      className="w-13 h-13 xl:w-14 xl:h-14 rounded-[8px] flex items-center justify-center text-white shadow-md group-hover:scale-110 group-hover:rotate-3 transition-transform duration-400 relative overflow-hidden shrink-0"
                       style={{
                         background: `linear-gradient(135deg, ${accent} 0%, ${accent}DD 100%)`,
                       }}
@@ -185,7 +185,7 @@ export default function Desktop() {
                     {persona.items.map((it, idx) => (
                       <div
                         key={idx}
-                        className="group/item flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all duration-300 hover:translate-x-1"
+                        className="group/item flex items-center gap-3.5 px-4 py-3 rounded-[8px] transition-all duration-300 hover:translate-x-1"
                         style={{
                           background: `linear-gradient(135deg, ${accent}0A, ${accent}03)`,
                           border: `1px solid ${accent}20`,

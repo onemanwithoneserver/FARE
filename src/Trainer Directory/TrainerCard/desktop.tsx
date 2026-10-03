@@ -159,7 +159,7 @@ function Actions({ onViewProfile, onRequest, requested }: { onViewProfile: () =>
     <div className="flex items-center gap-2 justify-between mt-2">
       <button
         onClick={onViewProfile}
-        className="group/vp px-4 h-9 rounded-lg text-[12.5px] font-bold flex items-center justify-center gap-1 text-white transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] hover:shadow-[0_12px_24px_-8px_rgba(11,29,58,0.6)]"
+        className="group/vp px-4 h-9 rounded-[8px] text-[12.5px] font-bold flex items-center justify-center gap-1 text-white transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] hover:shadow-[0_12px_24px_-8px_rgba(11,29,58,0.6)]"
         style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
       >
         {t("View Profile")}
@@ -180,7 +180,7 @@ function Actions({ onViewProfile, onRequest, requested }: { onViewProfile: () =>
 
       <button
         onClick={() => !requested && onRequest?.()}
-        className={`group/rq px-4 h-9 rounded-lg text-[12.5px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
+        className={`group/rq px-4 h-9 rounded-[8px] text-[12.5px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
           requested
             ? "bg-[#E7F7F0] border border-[#059669]/30 text-[#059669] cursor-default"
             : "relative overflow-hidden border border-[#C99A2E]/40 bg-[#FBF4E4] hover:bg-gradient-to-br hover:from-[#D5AA45] hover:to-[#C99A2E] hover:border-transparent hover:shadow-[0_8px_18px_-8px_rgba(201,154,46,0.7)] active:scale-[0.98] text-[#0B1D3A]"
@@ -234,10 +234,10 @@ function TrainerStats({ trainer }: { trainer: Trainer }) {
   ];
 
   return (
-    <div className="grid grid-cols-3 rounded-lg border border-[#0B1D3A]/[0.06] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
+    <div className="grid grid-cols-3 rounded-[8px] border border-[#0B1D3A]/[0.06] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
       {stats.map((stat) => (
         <div key={stat.label} className="flex items-center justify-center gap-2 py-2.5">
-          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[4px] shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
             {stat.icon}
           </span>
           <span className="min-w-0">
@@ -265,7 +265,7 @@ function SegmentLine({ trainer }: { trainer: Trainer }) {
 }
 
 const cardShell =
-  "group relative h-full bg-white rounded-2xl font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] hover:shadow-[0_4px_10px_-4px_rgba(11,29,58,0.08),0_28px_56px_-18px_rgba(11,29,58,0.25)] hover:border-[#C99A2E]/35 transition-[box-shadow,border-color] duration-500 overflow-hidden";
+  "group relative h-full bg-white rounded-[16px] font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] hover:shadow-[0_4px_10px_-4px_rgba(11,29,58,0.08),0_28px_56px_-18px_rgba(11,29,58,0.25)] hover:border-[#C99A2E]/35 transition-[box-shadow,border-color] duration-500 overflow-hidden";
 
 export default function Desktop({ trainer, onViewProfile }: TrainerCardProps) {
   const { language } = useLanguage();

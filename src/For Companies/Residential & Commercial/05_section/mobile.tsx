@@ -123,7 +123,7 @@ export default function Mobile() {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col pt-1 bg-white/40 backdrop-blur-sm border border-[#0B1D3A]/[0.04] p-4 rounded shadow-[0_2px_10px_-2px_rgba(11,29,58,0.03)] w-full">
+              <div className="flex flex-col pt-1 bg-white/40 backdrop-blur-sm border border-[#0B1D3A]/[0.04] p-4 rounded-[4px] shadow-[0_2px_10px_-2px_rgba(11,29,58,0.03)] w-full">
                 <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-2">
                   {step.title}
                 </h3>
@@ -160,7 +160,7 @@ export default function Mobile() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, margin: "-50px" }}
-            className="w-full bg-white/90 backdrop-blur-xl px-3 py-5 rounded border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-wrap items-center justify-center gap-2 relative z-10"
+            className="w-full bg-white/90 backdrop-blur-xl px-3 py-5 rounded-[4px] border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-wrap items-center justify-center gap-2 relative z-10"
           >
             {data.journeyLabel.split(" → ").map((label, idx, arr) => {
               const isActive = activeStep === idx;

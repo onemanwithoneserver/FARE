@@ -48,7 +48,7 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 md:top-6 md:right-6 w-9 h-9 flex items-center justify-center rounded-[4px] bg-[#F8FAFD] hover:bg-[#EEF4FF] text-[#0B1D3A] transition-colors z-20 group border border-[#0B1D3A]/5 shadow-sm hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="absolute top-4 right-4 md:top-6 md:right-6 w-9 h-9 flex items-center justify-center rounded-[8px] bg-[#F8FAFD] hover:bg-[#EEF4FF] text-[#0B1D3A] transition-colors z-20 group border border-[#0B1D3A]/5 shadow-sm hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
             >
               <X
                 size={18}

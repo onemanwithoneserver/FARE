@@ -53,7 +53,7 @@ export default function Mobile() {
                 </p>
                 
                 <button 
-                  className={`w-full py-3.5 rounded-[4px] font-bold text-[13px] transition-all duration-300 flex items-center justify-center gap-2 ${
+                  className={`w-full py-3.5 rounded-[8px] font-bold text-[13px] transition-all duration-300 flex items-center justify-center gap-2 ${
                     isFirst
                       ? "bg-[#10B981] text-white"
                       : "bg-[#C99A2E] text-[#0B1D3A]"

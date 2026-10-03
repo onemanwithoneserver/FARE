@@ -54,7 +54,7 @@ export default function RETrainersForm() {
       <div className="absolute top-[-20%] left-[-10%] w-[400px] h-[400px] bg-gradient-radial from-[#3B82F6]/[0.05] to-transparent rounded-full blur-[60px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[50px] pointer-events-none" />
       <div className="flex items-center gap-4 mb-8 relative z-10">
-        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#3B82F6] to-[#2563EB] text-white flex items-center justify-center shadow-lg shadow-blue-500/20">
+        <div className="w-14 h-14 rounded-[16px] bg-gradient-to-br from-[#3B82F6] to-[#2563EB] text-white flex items-center justify-center shadow-lg shadow-blue-500/20">
           <GraduationCap size={28} />
         </div>
         <div>
@@ -79,7 +79,7 @@ export default function RETrainersForm() {
               required
               type="text"
               placeholder="Alex Johnson"
-              className="w-full bg-white border border-[#3B82F6]/20 rounded-xl py-3 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10 transition-all shadow-sm"
+              className="w-full bg-white border border-[#3B82F6]/20 rounded-[8px] py-3 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10 transition-all shadow-sm"
             />
           </div>
           <div className="space-y-2">
@@ -135,14 +135,14 @@ export default function RETrainersForm() {
             required
             type="url"
             placeholder="https://linkedin.com/in/username"
-            className="w-full bg-white border border-[#3B82F6]/20 rounded-xl py-3 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10 transition-all shadow-sm"
+            className="w-full bg-white border border-[#3B82F6]/20 rounded-[8px] py-3 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#3B82F6] focus:ring-2 focus:ring-[#3B82F6]/10 transition-all shadow-sm"
           />
         </div>
         <div className="space-y-2">
           <label className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-wider">
             Upload Resume / Profile
           </label>
-          <div className="w-full border-2 border-dashed border-[#3B82F6]/30 rounded-xl py-8 px-4 flex flex-col items-center justify-center bg-white/50 hover:bg-[#F8FAFD] transition-colors cursor-pointer group hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
+          <div className="w-full border-2 border-dashed border-[#3B82F6]/30 rounded-[8px] py-8 px-4 flex flex-col items-center justify-center bg-white/50 hover:bg-[#F8FAFD] transition-colors cursor-pointer group hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
             <div className="w-12 h-12 rounded-full bg-[#3B82F6]/10 flex items-center justify-center mb-3 group-hover:bg-[#3B82F6]/20 transition-colors">
               <Upload size={20} className="text-[#3B82F6]" />
             </div>
@@ -158,7 +158,7 @@ export default function RETrainersForm() {
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.98 }}
           type="submit"
-          className="w-full mt-6 bg-gradient-to-r from-[#2563EB] to-[#3B82F6] text-white py-4 rounded-xl font-bold text-[15px] flex items-center justify-center gap-3 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all"
+          className="w-full mt-6 bg-gradient-to-r from-[#2563EB] to-[#3B82F6] text-white py-4 rounded-[8px] font-bold text-[15px] flex items-center justify-center gap-3 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all"
         >
           Submit Application <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${18}px` }}>
       <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />

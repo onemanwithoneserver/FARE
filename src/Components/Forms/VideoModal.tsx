@@ -301,7 +301,7 @@ export default function VideoModal({
                     onClick={toggleFullscreen}
                     aria-label="Exit Fullscreen"
                     title="Exit Fullscreen (F)"
-                    className="w-8 h-8 flex items-center justify-center rounded-[4px] bg-black/40 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/20 shadow-md cursor-pointer hover:scale-105 active:scale-95"
+                    className="w-8 h-8 flex items-center justify-center rounded-[8px] bg-black/40 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/20 shadow-md cursor-pointer hover:scale-105 active:scale-95"
                   >
                     <Minimize size={16} />
                   </button>
@@ -310,7 +310,7 @@ export default function VideoModal({
                   onClick={onClose}
                   aria-label="Close video"
                   title="Close (Esc)"
-                  className="w-8 h-8 flex items-center justify-center rounded-[4px] bg-black/40 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/20 shadow-md cursor-pointer hover:scale-105 active:scale-95"
+                  className="w-8 h-8 flex items-center justify-center rounded-[8px] bg-black/40 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/20 shadow-md cursor-pointer hover:scale-105 active:scale-95"
                 >
                   <X size={16} />
                 </button>
@@ -357,7 +357,7 @@ export default function VideoModal({
                   <button
                     onClick={togglePlay}
                     aria-label={isPlaying ? "Pause" : "Play"}
-                    className="w-7 h-7 flex items-center justify-center rounded-[4px] hover:bg-white/15 text-white transition-colors cursor-pointer"
+                    className="w-7 h-7 flex items-center justify-center rounded-[8px] hover:bg-white/15 text-white transition-colors cursor-pointer"
                   >
                     {isPlaying ? <Pause size={16} /> : <Play size={16} className="fill-white" />}
                   </button>
@@ -366,7 +366,7 @@ export default function VideoModal({
                     onClick={handleRestart}
                     aria-label="Restart video"
                     title="Restart"
-                    className="w-7 h-7 flex items-center justify-center rounded-[4px] hover:bg-white/15 text-white/80 hover:text-white transition-colors cursor-pointer"
+                    className="w-7 h-7 flex items-center justify-center rounded-[8px] hover:bg-white/15 text-white/80 hover:text-white transition-colors cursor-pointer"
                   >
                     <RotateCcw size={14} />
                   </button>
@@ -380,7 +380,7 @@ export default function VideoModal({
                   <button
                     onClick={toggleMute}
                     aria-label={isMuted ? "Unmute" : "Mute"}
-                    className="w-7 h-7 flex items-center justify-center rounded-[4px] hover:bg-white/15 text-white transition-colors cursor-pointer"
+                    className="w-7 h-7 flex items-center justify-center rounded-[8px] hover:bg-white/15 text-white transition-colors cursor-pointer"
                   >
                     {isMuted ? <VolumeX size={16} className="text-red-400" /> : <Volume2 size={16} />}
                   </button>
@@ -389,7 +389,7 @@ export default function VideoModal({
                     onClick={toggleFullscreen}
                     aria-label={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
                     title={isFullscreen ? "Exit Fullscreen (F)" : "Fullscreen (F)"}
-                    className="w-7 h-7 flex items-center justify-center rounded-[4px] hover:bg-white/15 text-white transition-colors cursor-pointer"
+                    className="w-7 h-7 flex items-center justify-center rounded-[8px] hover:bg-white/15 text-white transition-colors cursor-pointer"
                   >
                     {isFullscreen ? <Minimize size={15} /> : <Maximize size={15} />}
                   </button>

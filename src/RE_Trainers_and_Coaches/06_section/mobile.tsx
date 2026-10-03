@@ -133,7 +133,7 @@ export default function Mobile() {
               <motion.div
                 key={index}
                 variants={item}
-                className="shrink-0 w-[85%] snap-center bg-gradient-to-b from-white/90 to-[#F8FAFD]/70 backdrop-blur-xl border border-[#0B1D3A]/10 rounded-2xl p-6 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="shrink-0 w-[85%] snap-center bg-gradient-to-b from-white/90 to-[#F8FAFD]/70 backdrop-blur-xl border border-[#0B1D3A]/10 rounded-[16px] p-6 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <motion.div
                   animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -147,7 +147,7 @@ export default function Mobile() {
                 ></motion.div>
                 <div className="flex flex-col gap-4">
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg relative z-10 border border-[#0B1D3A]/10"
+                    className="w-12 h-12 rounded-[8px] flex items-center justify-center shadow-lg relative z-10 border border-[#0B1D3A]/10"
                     style={{ backgroundColor: mode.color }}
                   >
                     {modeIcons[mode.icon as keyof typeof modeIcons]}
@@ -189,14 +189,14 @@ export default function Mobile() {
               <motion.div
                 key={index}
                 variants={item}
-                className="w-[calc(50%-6px)] aspect-square bg-gradient-to-br from-[#0B1D3A]/[0.03] to-[#0B1D3A]/[0.01] backdrop-blur-md border border-[#0B1D3A]/[0.08] rounded-xl p-5 shadow-sm flex flex-col justify-center relative overflow-hidden hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="w-[calc(50%-6px)] aspect-square bg-gradient-to-br from-[#0B1D3A]/[0.03] to-[#0B1D3A]/[0.01] backdrop-blur-md border border-[#0B1D3A]/[0.08] rounded-[8px] p-5 shadow-sm flex flex-col justify-center relative overflow-hidden hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div
                   className="absolute top-0 right-0 w-20 h-20 opacity-[0.15] blur-[20px] rounded-full pointer-events-none"
                   style={{ background: type.color }}
                 ></div>
                 <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mb-4 relative z-10 border border-[#0B1D3A]/10 shadow-inner"
+                  className="w-10 h-10 rounded-[8px] flex items-center justify-center shrink-0 mb-4 relative z-10 border border-[#0B1D3A]/10 shadow-inner"
                   style={{ backgroundColor: type.color }}
                 >
                   <div className="text-white">
@@ -221,7 +221,7 @@ export default function Mobile() {
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
-          <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] border border-white/10 rounded p-8 text-center relative overflow-hidden luxury-shadow-float">
+          <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] border border-white/10 rounded-[4px] p-8 text-center relative overflow-hidden luxury-shadow-float">
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}

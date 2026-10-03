@@ -58,7 +58,7 @@ export default function Mobile({ onBack }: TrainerProfileProps) {
       >
         <button
           onClick={onBack}
-          className="flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 active:scale-90"
+          className="flex items-center justify-center w-8 h-8 rounded-[8px] transition-all duration-300 active:scale-90"
           style={{
             background: "rgba(255,255,255,0.05)",
             border: "1px solid rgba(255,255,255,0.08)",

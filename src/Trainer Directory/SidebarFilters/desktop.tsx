@@ -79,7 +79,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
   return (
     <div className="py-3.5 border-b border-[#0B1D3A]/[0.07] last:border-b-0">
       <button
-        className="w-full flex items-center justify-between cursor-pointer rounded-lg px-2 -mx-2 py-1 hover:bg-[#0B1D3A]/[0.03] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+        className="w-full flex items-center justify-between cursor-pointer rounded-[8px] px-2 -mx-2 py-1 hover:bg-[#0B1D3A]/[0.03] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
@@ -110,7 +110,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
                   <button
                     type="button"
                     key={option}
-                    className="flex items-center gap-3 cursor-pointer group/item px-2 py-1.5 -mx-2 rounded-lg text-left hover:bg-[#F5F7FB] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+                    className="flex items-center gap-3 cursor-pointer group/item px-2 py-1.5 -mx-2 rounded-[8px] text-left hover:bg-[#F5F7FB] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                     onClick={() => onChange(option)}
                     aria-pressed={isSelected}
                   >
@@ -140,14 +140,14 @@ export default function Desktop({ selected, onToggle, onClear }: SidebarFiltersP
 
   return (
     <aside className="w-[272px] shrink-0 sticky top-[96px] self-start font-['Outfit']">
-      <div className="bg-white rounded-2xl border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] overflow-hidden">
+      <div className="bg-white rounded-[16px] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] overflow-hidden">
         <div
           className="relative flex items-center justify-between px-5 py-4 overflow-hidden"
           style={{ background: `linear-gradient(120deg, ${NAVY} 0%, #15315C 100%)` }}
         >
           <div className="absolute -top-8 -right-6 w-28 h-28 rounded-full bg-[#C99A2E]/30 blur-2xl pointer-events-none" />
           <div className="relative flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-white/10 border border-white/15">
+            <div className="w-8 h-8 rounded-[8px] flex items-center justify-center bg-white/10 border border-white/15">
               <SlidersHorizontal size={14} strokeWidth={2.5} style={{ color: GOLD_MID }} />
             </div>
             <span className="text-[15px] font-black text-white">{t("Filters")}</span>
@@ -156,7 +156,7 @@ export default function Desktop({ selected, onToggle, onClear }: SidebarFiltersP
           {totalActive > 0 && (
             <button
               onClick={onClear}
-              className="relative flex items-center gap-1.5 text-[11px] font-bold text-white/80 hover:text-white bg-white/10 hover:bg-white/20 px-2.5 py-1.5 rounded-lg transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+              className="relative flex items-center gap-1.5 text-[11px] font-bold text-white/80 hover:text-white bg-white/10 hover:bg-white/20 px-2.5 py-1.5 rounded-[8px] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
             >
               <RotateCcw size={12} strokeWidth={2.5} />
               {t("Clear")}

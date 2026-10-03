@@ -101,12 +101,12 @@ export default function Mobile() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-40px" }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 relative overflow-hidden luxury-shadow-float"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px] p-6 relative overflow-hidden luxury-shadow-float"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-bl-full blur-[25px] pointer-events-none" />
             <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C99A2E] to-transparent opacity-80" />
             <div className="flex items-center gap-3.5 mb-5 relative z-10">
-              <div className="w-13 h-13 rounded bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center text-white shadow-[0_6px_16px_rgba(201,154,46,0.35)] shrink-0">
+              <div className="w-13 h-13 rounded-[4px] bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center text-white shadow-[0_6px_16px_rgba(201,154,46,0.35)] shrink-0">
                 <User size={24} strokeWidth={2.4} />
               </div>
               <div>
@@ -142,12 +142,12 @@ export default function Mobile() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-3xl p-6 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-1 transition-all duration-400 ease-out"
+            className="mt-6 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[16px] p-6 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-1 transition-all duration-400 ease-out"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#3B82F6]/10 rounded-bl-full blur-[25px] pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#3B82F6] to-transparent opacity-80" />
             <div className="flex items-center gap-3.5 mb-5 relative z-10 flex-row-reverse text-right">
-              <div className="w-13 h-13 rounded bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] flex items-center justify-center text-white shadow-[0_6px_16px_rgba(59,130,246,0.35)] shrink-0">
+              <div className="w-13 h-13 rounded-[4px] bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] flex items-center justify-center text-white shadow-[0_6px_16px_rgba(59,130,246,0.35)] shrink-0">
                 <Server size={24} strokeWidth={2.4} />
               </div>
               <div>
@@ -198,10 +198,10 @@ export default function Mobile() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-3xl flex flex-col items-center relative luxury-shadow-float mb-8 z-20"
+          className="rounded-[16px] flex flex-col items-center relative luxury-shadow-float mb-8 z-20"
         >
           <div
-            className="absolute inset-0 rounded-3xl overflow-hidden border border-white/10 pointer-events-none"
+            className="absolute inset-0 rounded-[16px] overflow-hidden border border-white/10 pointer-events-none"
             style={{
               background:
                 "linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)",
@@ -249,7 +249,7 @@ export default function Mobile() {
                         transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
                       },
                     }}
-                    className="text-[15px] font-bold text-white bg-white/[0.08] px-5 py-3.5 rounded-xl border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25)] w-full text-center tracking-wide backdrop-blur-md relative overflow-hidden"
+                    className="text-[15px] font-bold text-white bg-white/[0.08] px-5 py-3.5 rounded-[8px] border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25)] w-full text-center tracking-wide backdrop-blur-md relative overflow-hidden"
                   >
                     <span className="relative z-10">{step}</span>
                   </motion.div>

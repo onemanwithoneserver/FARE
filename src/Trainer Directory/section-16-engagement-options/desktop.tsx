@@ -89,7 +89,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
               key={idx}
               variants={item}
               whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-              className={`rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out group ${
+              className={`rounded-[4px] p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out group ${
                 card.featured
                   ? "border-2 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)]"
                   : "border border-[#0B1D3A]/[0.06] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#0B1D3A]/[0.15]"
@@ -131,7 +131,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
 
               <div className="relative z-10 flex flex-col h-full">
                 <div
-                  className="w-11 h-11 rounded flex items-center justify-center text-white shadow-lg mb-5"
+                  className="w-11 h-11 rounded-[4px] flex items-center justify-center text-white shadow-lg mb-5"
                   style={{ background: card.accent }}
                 >
                   {card.icon}
@@ -153,7 +153,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
                     {card.options.map((opt, oIdx) => (
                       <span
                         key={oIdx}
-                        className="text-[12px] font-bold px-3 py-1.5 rounded transition-colors"
+                        className="text-[12px] font-bold px-3 py-1.5 rounded-[4px] transition-colors"
                         style={opt === card.selected ? {
                           background: `${GOLD}25`,
                           color: GOLD,
@@ -191,14 +191,14 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
         
         <motion.div
           variants={item}
-          className="rounded p-6 flex items-center justify-between relative overflow-hidden border border-[#0B1D3A]/[0.06] bg-[#F8FAFD]"
+          className="rounded-[4px] p-6 flex items-center justify-between relative overflow-hidden border border-[#0B1D3A]/[0.06] bg-[#F8FAFD]"
         >
           <p className="text-[14px] font-medium text-[#5A6B82] relative z-10 max-w-[600px] leading-relaxed">
             {data.investment.footerNote}
           </p>
           <button
             onClick={onRequestPricing}
-            className="relative z-10 px-8 py-3 rounded font-black text-[14px] text-white transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center gap-2.5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] group/btn"
+            className="relative z-10 px-8 py-3 rounded-[8px] font-black text-[14px] text-white transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center gap-2.5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] group/btn"
             style={{ background: `linear-gradient(135deg, ${NAVY}, #132A4D)` }}
           >
             {t("Request Pricing")}

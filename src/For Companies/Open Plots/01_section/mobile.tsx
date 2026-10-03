@@ -128,7 +128,7 @@ export default function Mobile() {
           >
             <button
               onClick={() => setIsModalOpen(true)}
-              className="text-white font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="text-white font-semibold w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
               style={{
                 background: NAVY,
                 boxShadow: "0 2px 8px rgba(11,29,58,0.15)",
@@ -142,7 +142,7 @@ export default function Mobile() {
             {data.buttons.secondary && (
               <button
                 onClick={() => setIsVideoModalOpen(true)}
-                className="font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
+                className="font-semibold w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
                 style={{
                   color: NAVY,
                   borderColor: `${NAVY}15`,
@@ -185,7 +185,7 @@ export default function Mobile() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full mt-8 relative z-20 flex items-center justify-center px-2"
         >
-          <div className="relative w-full aspect-[16/11] max-w-[420px] rounded-[4px] overflow-hidden border border-white/80 luxury-shadow-float bg-slate-100 group">
+          <div className="relative w-full aspect-[16/11] max-w-[420px] rounded-[16px] overflow-hidden border border-white/80 luxury-shadow-float bg-slate-100 group">
             <img
               src={openplotHero}
               alt="Open Plot Hero"

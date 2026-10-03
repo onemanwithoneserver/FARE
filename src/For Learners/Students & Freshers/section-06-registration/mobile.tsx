@@ -85,7 +85,7 @@ export default function Mobile() {
               className="flex flex-col gap-4 w-full"
             >
               <button 
-                className="w-full h-14 rounded-[6px] font-bold text-[15px] text-[#0B1D3A] flex items-center justify-center gap-2 relative overflow-hidden transition-all duration-300 active:scale-[0.98] luxury-shadow-float"
+                className="w-full h-14 rounded-[8px] font-bold text-[15px] text-[#0B1D3A] flex items-center justify-center gap-2 relative overflow-hidden transition-all duration-300 active:scale-[0.98] luxury-shadow-float"
                 style={{ background: `linear-gradient(135deg, ${GOLD}, #E5C370)` }}
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -94,7 +94,7 @@ export default function Mobile() {
                 </span>
               </button>
               
-              <button className="w-full h-14 bg-white/5 border border-white/20 text-white rounded-[6px] font-bold text-[15px] active:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm active:scale-[0.98]">
+              <button className="w-full h-14 bg-white/5 border border-white/20 text-white rounded-[8px] font-bold text-[15px] active:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm active:scale-[0.98]">
                 {data.buttons.secondary}
                 <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${16}px` }}>
       <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />

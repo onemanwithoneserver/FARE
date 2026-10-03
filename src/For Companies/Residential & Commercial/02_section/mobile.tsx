@@ -135,13 +135,13 @@ export default function Mobile() {
               <motion.div
                 key={index}
                 variants={item}
-                className="bg-gradient-to-r from-white/95 via-red-50/70 to-red-100/40 backdrop-blur-sm border border-red-200/90 rounded p-4 shadow-[0_2px_10px_-2px_rgba(220,38,38,0.08)] flex items-center gap-4 relative overflow-hidden"
+                className="bg-gradient-to-r from-white/95 via-red-50/70 to-red-100/40 backdrop-blur-sm border border-red-200/90 rounded-[4px] p-4 shadow-[0_2px_10px_-2px_rgba(220,38,38,0.08)] flex items-center gap-4 relative overflow-hidden"
               >
                 <span className="absolute -bottom-1 -right-1 text-[32px] opacity-[0.08] select-none pointer-events-none filter blur-[0.2px]">
                   {emoji}
                 </span>
                 <div
-                  className="w-10 h-10 rounded-xl shadow-md flex items-center justify-center shrink-0 relative overflow-hidden ring-2 ring-red-100/60"
+                  className="w-10 h-10 rounded-[8px] shadow-md flex items-center justify-center shrink-0 relative overflow-hidden ring-2 ring-red-100/60"
                   style={{ backgroundColor: color }}
                 >
                   <Icon
@@ -162,7 +162,7 @@ export default function Mobile() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.6 }}
-          className="w-full rounded p-8 luxury-shadow-float relative overflow-hidden text-center"
+          className="w-full rounded-[4px] p-8 luxury-shadow-float relative overflow-hidden text-center"
           style={{
             background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)`,
           }}

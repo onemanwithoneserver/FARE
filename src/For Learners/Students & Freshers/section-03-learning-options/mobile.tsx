@@ -62,10 +62,10 @@ export default function Mobile() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-5 rounded-xl shadow-[0_2px_12px_rgba(11,29,58,0.03)] border border-[#E2E8F0]/80 flex flex-col h-full"
+                className="bg-white p-5 rounded-[8px] shadow-[0_2px_12px_rgba(11,29,58,0.03)] border border-[#E2E8F0]/80 flex flex-col h-full"
               >
                 <div className="flex items-center gap-3.5 mb-4">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
+                  <div className={`w-10 h-10 rounded-[8px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
                     <Icon size={18} className="text-white" strokeWidth={2.5} />
                   </div>
                   <div>

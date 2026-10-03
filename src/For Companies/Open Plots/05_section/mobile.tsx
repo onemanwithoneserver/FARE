@@ -131,7 +131,7 @@ export default function Mobile() {
           >
             <button
               onClick={() => setIsVideoModalOpen(true)}
-              className="group relative overflow-hidden w-full text-white px-6 py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 luxury-shadow-float cursor-pointer"
+              className="group relative overflow-hidden w-full text-white px-6 py-4 rounded-[4px] text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 luxury-shadow-float cursor-pointer"
               style={{
                 background: `linear-gradient(135deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)`,
               }}
@@ -145,7 +145,7 @@ export default function Mobile() {
             </button>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="w-full bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-4 rounded text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform"
+              className="w-full bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-4 rounded-[4px] text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform"
             >
               {data.secondaryButton}
             </button>
@@ -164,7 +164,7 @@ export default function Mobile() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="w-full relative"
         >
-          <div className="bg-white/90 backdrop-blur-xl rounded p-5 luxury-shadow-float border border-white relative z-10 overflow-hidden">
+          <div className="bg-white/90 backdrop-blur-xl rounded-[4px] p-5 luxury-shadow-float border border-white relative z-10 overflow-hidden">
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -172,7 +172,7 @@ export default function Mobile() {
             ></motion.div>
             <div className="flex items-center justify-between mb-5 relative z-10">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md">
+                <div className="w-12 h-12 rounded-[4px] bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md">
                   <ClipboardList size={22} className="text-white" />
                 </div>
                 <div>
@@ -197,11 +197,11 @@ export default function Mobile() {
                 return (
                   <div key={i} className="flex items-center gap-3.5">
                     <div
-                      className={`w-10 h-10 rounded ${color.bg} flex items-center justify-center text-white font-black text-[14px] shadow-sm shrink-0`}
+                      className={`w-10 h-10 rounded-[4px] ${color.bg} flex items-center justify-center text-white font-black text-[14px] shadow-sm shrink-0`}
                     >
                       {i + 1}
                     </div>
-                    <div className="flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] rounded p-3.5">
+                    <div className="flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] rounded-[4px] p-3.5">
                       <span className="text-[14.5px] font-bold text-[#0B1D3A]">
                         {step}
                       </span>

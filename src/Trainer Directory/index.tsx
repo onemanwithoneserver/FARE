@@ -261,7 +261,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             {isMobile && (
               <motion.div
                 variants={itemVariants}
-                className="w-full rounded overflow-hidden luxury-shadow-float mb-6"
+                className="w-full rounded-[16px] overflow-hidden luxury-shadow-float mb-6"
               >
                 <img
                   src={trainersHero}
@@ -280,7 +280,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t("Search trainers, expertise or training areas...")}
-                className="w-full pl-11 pr-4 py-3.5 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded text-[14px] lg:text-[15px] text-[#0B1D3A] font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] transition-all duration-300 ease-out placeholder:text-[#7B8DAA]"
+                className="w-full pl-11 pr-4 py-3.5 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-[4px] text-[14px] lg:text-[15px] text-[#0B1D3A] font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] transition-all duration-300 ease-out placeholder:text-[#7B8DAA]"
                 style={{
                   boxShadow: "0 2px 8px -2px rgba(11, 29, 58, 0.05), 0 4px 12px -4px rgba(11, 29, 58, 0.03)",
                 }}
@@ -352,12 +352,12 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className={`group flex items-center bg-white/90 backdrop-blur-xl rounded-2xl border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_14px_34px_-16px_rgba(11,29,58,0.18)] hover:-translate-y-1 hover:border-[#C99A2E]/30 transition-all duration-500 ${
+                className={`group flex items-center bg-white/90 backdrop-blur-xl rounded-[16px] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_14px_34px_-16px_rgba(11,29,58,0.18)] hover:-translate-y-1 hover:border-[#C99A2E]/30 transition-all duration-500 ${
                   isMobile ? "gap-2.5 p-3" : "gap-4 p-5"
                 }`}
               >
                 <div
-                  className={`${isMobile ? "w-9 h-9" : "w-12 h-12"} shrink-0 rounded-xl flex items-center justify-center text-white shadow-md transition-transform duration-500 group-hover:scale-110`}
+                  className={`${isMobile ? "w-9 h-9" : "w-12 h-12"} shrink-0 rounded-[8px] flex items-center justify-center text-white shadow-md transition-transform duration-500 group-hover:scale-110`}
                   style={{ background: stat.bg }}
                 >
                   {stat.icon}
@@ -425,7 +425,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 </div>
                 <button
                   onClick={() => setShowMobileFilters(true)}
-                  className="relative shrink-0 flex items-center justify-center gap-2 h-[42px] px-4 rounded-xl text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+                  className="relative shrink-0 flex items-center justify-center gap-2 h-[42px] px-4 rounded-[8px] text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                   style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
                 >
                   <SlidersHorizontal size={15} strokeWidth={2.5} style={{ color: GOLD_MID }} />
@@ -498,9 +498,9 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col items-center text-center bg-white rounded-2xl border border-dashed border-[#0B1D3A]/15 py-16 px-6"
+              className="flex flex-col items-center text-center bg-white rounded-[16px] border border-dashed border-[#0B1D3A]/15 py-16 px-6"
             >
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4" style={{ background: "#FBF4E4", color: GOLD }}>
+              <div className="w-14 h-14 rounded-[16px] flex items-center justify-center mb-4" style={{ background: "#FBF4E4", color: GOLD }}>
                 <SearchX size={26} strokeWidth={2.2} />
               </div>
               <h3 className="text-[18px] font-black" style={{ color: NAVY }}>{t("No trainers match these filters")}</h3>
@@ -509,7 +509,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               </p>
               <button
                 onClick={clearAll}
-                className="mt-5 h-10 px-5 rounded-xl text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)]"
+                className="mt-5 h-10 px-5 rounded-[8px] text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)]"
                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
               >
                 {t("Reset all filters")}

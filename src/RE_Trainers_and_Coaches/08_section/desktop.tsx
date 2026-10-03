@@ -134,7 +134,7 @@ export default function Desktop() {
                 y: -6,
                 transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
               }}
-              className="group flex-1 w-full bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/35 rounded-2xl p-9 xl:p-11 transition-all duration-400 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float cursor-default"
+              className="group flex-1 w-full bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/35 rounded-[16px] p-9 xl:p-11 transition-all duration-400 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float cursor-default"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.2] to-transparent translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-1000 pointer-events-none" />
               <motion.div
@@ -191,7 +191,7 @@ export default function Desktop() {
                 y: -6,
                 transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
               }}
-              className="group flex-1 w-full bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#3B82F6]/35 rounded-2xl p-9 xl:p-11 transition-all duration-400 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float cursor-default"
+              className="group flex-1 w-full bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#3B82F6]/35 rounded-[16px] p-9 xl:p-11 transition-all duration-400 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float cursor-default"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.2] to-transparent translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-1000 pointer-events-none" />
               <motion.div
@@ -350,10 +350,10 @@ export default function Desktop() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-60px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-[1000px] w-full mx-auto rounded-3xl flex flex-col items-center relative transition-all duration-500 group luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] z-20"
+            className="max-w-[1000px] w-full mx-auto rounded-[16px] flex flex-col items-center relative transition-all duration-500 group luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] z-20"
           >
             <div
-              className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none border border-white/10 group-hover:border-[#C99A2E]/40 transition-colors duration-500"
+              className="absolute inset-0 rounded-[16px] overflow-hidden pointer-events-none border border-white/10 group-hover:border-[#C99A2E]/40 transition-colors duration-500"
               style={{
                 background:
                   "linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)",
@@ -455,7 +455,7 @@ export default function Desktop() {
                             ease: [0.16, 1, 0.3, 1],
                           },
                         }}
-                        className="group/chip text-[17px] xl:text-[19px] font-bold text-white bg-white/[0.07] hover:bg-white/[0.14] px-7 py-4.5 rounded-xl border border-white/10 hover:border-[#C99A2E]/60 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-300 cursor-default relative overflow-hidden backdrop-blur-md"
+                        className="group/chip text-[17px] xl:text-[19px] font-bold text-white bg-white/[0.07] hover:bg-white/[0.14] px-7 py-4.5 rounded-[8px] border border-white/10 hover:border-[#C99A2E]/60 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-300 cursor-default relative overflow-hidden backdrop-blur-md"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent translate-x-[-120%] group-hover/chip:translate-x-[120%] transition-transform duration-700 pointer-events-none" />
                         <span className="relative z-10 tracking-wide group-hover/chip:text-[#E2BA55] transition-colors">

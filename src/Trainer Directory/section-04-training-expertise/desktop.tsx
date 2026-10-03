@@ -84,7 +84,7 @@ export default function Desktop() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative overflow-hidden flex flex-col h-full"
+                className="group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded-[4px] p-5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative overflow-hidden flex flex-col h-full"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px] opacity-60 group-hover:opacity-100 transition-opacity duration-500"
@@ -93,7 +93,7 @@ export default function Desktop() {
 
                 <div className="flex items-center gap-3 mb-4">
                   <div
-                    className="w-10 h-10 rounded flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-400"
+                    className="w-10 h-10 rounded-[4px] flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-400"
                     style={{ background: colors.bg }}
                   >
                     {getCategoryIcon(expertiseItem.category, 18, 3)}
@@ -109,7 +109,7 @@ export default function Desktop() {
                     return (
                       <div
                         key={sIdx}
-                        className="flex items-center gap-2 px-3 py-2 rounded text-[13px] font-semibold transition-all duration-300 hover:scale-[1.02]"
+                        className="flex items-center gap-2 px-3 py-2 rounded-[4px] text-[13px] font-semibold transition-all duration-300 hover:scale-[1.02]"
                         style={{
                           background: `linear-gradient(135deg, ${colors.accent}0A, ${colors.accent}04)`,
                           border: `1px solid ${colors.accent}20`,
@@ -118,7 +118,7 @@ export default function Desktop() {
                       >
                         {skill.name}
                         <span
-                          className="text-[10px] uppercase font-bold px-2 py-0.5 rounded ml-1"
+                          className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-[4px] ml-1"
                           style={{ background: lc.bg, color: lc.text, border: `1px solid ${lc.border}` }}
                         >
                           {skill.level}

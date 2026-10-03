@@ -67,7 +67,7 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="shrink-0 w-[85%] snap-center group bg-white/90 backdrop-blur-xl rounded p-6 border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-col relative overflow-hidden"
+                className="shrink-0 w-[85%] snap-center group bg-white/90 backdrop-blur-xl rounded-[4px] p-6 border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-col relative overflow-hidden"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px] opacity-80"
@@ -100,8 +100,8 @@ export default function Mobile() {
                     { icon: <Users size={12} strokeWidth={2.5} />, text: prog.audience, bg: "linear-gradient(135deg, #3B82F6, #1D4ED8)" },
                     { icon: <Clock size={12} strokeWidth={2.5} />, text: prog.duration, bg: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` },
                   ].map((meta, mIdx) => (
-                    <div key={mIdx} className="flex items-center gap-3 p-2.5 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">
-                      <div className="w-7 h-7 rounded flex items-center justify-center text-white shadow-sm shrink-0" style={{ background: meta.bg }}>
+                    <div key={mIdx} className="flex items-center gap-3 p-2.5 rounded-[4px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">
+                      <div className="w-7 h-7 rounded-[4px] flex items-center justify-center text-white shadow-sm shrink-0" style={{ background: meta.bg }}>
                         {meta.icon}
                       </div>
                       <span className="text-[12px] font-bold text-[#3B4D66] truncate w-full" title={meta.text}>{meta.text}</span>
@@ -118,7 +118,7 @@ export default function Mobile() {
                     {prog.topics.map((topic, tIdx) => (
                       <span
                         key={tIdx}
-                        className="text-[11px] font-bold px-2.5 py-1 rounded"
+                        className="text-[11px] font-bold px-2.5 py-1 rounded-[4px]"
                         style={{
                           background: `${GOLD}0A`,
                           border: `1px solid ${GOLD}20`,

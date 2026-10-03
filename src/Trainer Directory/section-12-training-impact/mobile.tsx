@@ -62,7 +62,7 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 luxury-shadow-float flex flex-col relative overflow-hidden group"
+                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px] p-5 luxury-shadow-float flex flex-col relative overflow-hidden group"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px] opacity-80"
@@ -71,7 +71,7 @@ export default function Mobile() {
                 <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full opacity-[0.15] blur-xl pointer-events-none" style={{ background: metricIcons[idx]?.bg || metricIcons[0].bg }} />
                 
                 <div
-                  className="w-10 h-10 rounded flex items-center justify-center text-white shadow-md mb-4 relative z-10"
+                  className="w-10 h-10 rounded-[4px] flex items-center justify-center text-white shadow-md mb-4 relative z-10"
                   style={{ background: metricIcons[idx]?.bg || metricIcons[0].bg }}
                 >
                   {metricIcons[idx]?.icon || metricIcons[0].icon}
@@ -81,7 +81,7 @@ export default function Mobile() {
                 
                 <div className="mt-auto pt-3 border-t border-[#0B1D3A]/[0.06] flex items-center justify-between relative z-10">
                   <span className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em]">{t("Source")}</span>
-                  <span className="text-[10px] font-bold text-[#3B4D66] bg-[#F8FAFD] px-2 py-0.5 rounded border border-[#0B1D3A]/[0.04]">{metric.source}</span>
+                  <span className="text-[10px] font-bold text-[#3B4D66] bg-[#F8FAFD] px-2 py-0.5 rounded-[4px] border border-[#0B1D3A]/[0.04]">{metric.source}</span>
                 </div>
               </motion.div>
             ))}
@@ -92,7 +92,7 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded p-6 flex items-center justify-between luxury-shadow-float relative overflow-hidden"
+                className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded-[4px] p-6 flex items-center justify-between luxury-shadow-float relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[20px] pointer-events-none" />
                 <div

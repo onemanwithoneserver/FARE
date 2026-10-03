@@ -79,7 +79,7 @@ export default function Mobile() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative px-5 py-4 rounded flex flex-col items-center justify-center gap-3 text-center transition-all duration-300 min-w-[130px] shrink-0 snap-start overflow-hidden ${
+                  className={`relative px-5 py-4 rounded-[4px] flex flex-col items-center justify-center gap-3 text-center transition-all duration-300 min-w-[130px] shrink-0 snap-start overflow-hidden ${
                     isActive
                       ? "bg-gradient-to-br from-[#0B1D3A] to-[#132D5F] luxury-shadow-float border border-transparent scale-[1.02]"
                       : "bg-white border border-[#0B1D3A]/[0.06] hover:bg-[#F1F5FB] shadow-sm"
@@ -101,7 +101,7 @@ export default function Mobile() {
                     ></motion.div>
                   )}
                   <div
-                    className={`w-12 h-12 rounded flex items-center justify-center transition-all duration-300 relative z-10 ${
+                    className={`w-12 h-12 rounded-[4px] flex items-center justify-center transition-all duration-300 relative z-10 ${
                       isActive
                         ? "text-white shadow-md scale-110"
                         : "bg-[#F8FAFD] text-[#0B1D3A]/40"
@@ -109,7 +109,7 @@ export default function Mobile() {
                     style={isActive ? { backgroundColor: tab.color } : {}}
                   >
                     {isActive && (
-                      <div className="absolute inset-0 bg-white/20 rounded"></div>
+                      <div className="absolute inset-0 bg-white/20 rounded-[4px]"></div>
                     )}
                     {tabIcons[tab.icon as keyof typeof tabIcons]}
                   </div>
@@ -122,7 +122,7 @@ export default function Mobile() {
               );
             })}
           </div>
-          <div className="bg-white border border-[#0B1D3A]/[0.06] rounded p-6 sm:p-8 relative overflow-hidden luxury-shadow-float">
+          <div className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-6 sm:p-8 relative overflow-hidden luxury-shadow-float">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -158,10 +158,10 @@ export default function Mobile() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: idx * 0.1 }}
-                      className="bg-[#F8FAFD] p-4 rounded border border-[#0B1D3A]/[0.03] flex items-start gap-3.5"
+                      className="bg-[#F8FAFD] p-4 rounded-[4px] border border-[#0B1D3A]/[0.03] flex items-start gap-3.5"
                     >
                       <div
-                        className="mt-0.5 shrink-0 p-1 rounded shadow-sm text-white"
+                        className="mt-0.5 shrink-0 p-1 rounded-[4px] shadow-sm text-white"
                         style={{ backgroundColor: activeTabData.color }}
                       >
                         <CheckCircle2 size={16} strokeWidth={3} />

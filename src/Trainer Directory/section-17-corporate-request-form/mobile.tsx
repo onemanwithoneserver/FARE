@@ -25,7 +25,7 @@ export default function Mobile({ isOpen = false, onClose }: CorporateRequestForm
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
   };
 
-  const inputClasses = "w-full bg-[#F8FAFD]/50 backdrop-blur-sm border border-[#0B1D3A]/[0.08] rounded px-4 py-3 text-[14px] font-medium text-[#0B1D3A] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B5CF6]/10 focus:border-[#8B5CF6] focus:bg-white aria-[invalid=true]:border-red-500 aria-[invalid=true]:ring-red-500/20 aria-[invalid=false]:border-emerald-500/40 transition-all duration-300 ease-out placeholder:text-[#7B8DAA]/60 shadow-[0_2px_8px_-4px_rgba(11,29,58,0.02)]";
+  const inputClasses = "w-full bg-[#F8FAFD]/50 backdrop-blur-sm border border-[#0B1D3A]/[0.08] rounded-[4px] px-4 py-3 text-[14px] font-medium text-[#0B1D3A] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B5CF6]/10 focus:border-[#8B5CF6] focus:bg-white aria-[invalid=true]:border-red-500 aria-[invalid=true]:ring-red-500/20 aria-[invalid=false]:border-emerald-500/40 transition-all duration-300 ease-out placeholder:text-[#7B8DAA]/60 shadow-[0_2px_8px_-4px_rgba(11,29,58,0.02)]";
   const labelClasses = "block text-[11px] font-black text-[#0B1D3A]/80 uppercase tracking-[0.08em] mb-2";
 
   const [audience, setAudience] = useState("");
@@ -80,7 +80,7 @@ export default function Mobile({ isOpen = false, onClose }: CorporateRequestForm
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-[500px] max-h-[95vh] overflow-y-auto bg-white/95 backdrop-blur-2xl rounded luxury-shadow-float border border-white/40 flex flex-col p-6 font-['Outfit']"
+            className="relative w-full max-w-[500px] max-h-[95vh] overflow-y-auto bg-white/95 backdrop-blur-2xl rounded-[4px] luxury-shadow-float border border-white/40 flex flex-col p-6 font-['Outfit']"
           >
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[30px] pointer-events-none z-0" />
             <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[30px] pointer-events-none z-0" />
@@ -134,7 +134,7 @@ export default function Mobile({ isOpen = false, onClose }: CorporateRequestForm
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  <div className="bg-[#F8FAFD]/50 rounded p-5 border border-[#0B1D3A]/[0.06]">
+                  <div className="bg-[#F8FAFD]/50 rounded-[4px] p-5 border border-[#0B1D3A]/[0.06]">
                     <label className={labelClasses}>{t("Preferred Format")}</label>
                     <div className="flex flex-col gap-3 mt-3">
                       <CustomCheckbox label={t("Workshop")} checked={formats.includes("Workshop")} onChange={() => toggleFormat("Workshop")} />
@@ -142,7 +142,7 @@ export default function Mobile({ isOpen = false, onClose }: CorporateRequestForm
                       <CustomCheckbox label={t("Mock Sessions")} checked={formats.includes("Mock Sessions")} onChange={() => toggleFormat("Mock Sessions")} />
                     </div>
                   </div>
-                  <div className="bg-[#F8FAFD]/50 rounded p-5 border border-[#0B1D3A]/[0.06]">
+                  <div className="bg-[#F8FAFD]/50 rounded-[4px] p-5 border border-[#0B1D3A]/[0.06]">
                     <label className={labelClasses}>{t("Preferred Mode")}</label>
                     <div className="flex flex-col gap-3 mt-3">
                       <CustomRadio label={t("Offline / Classroom")} name="mode_mobile" checked={mode === "Offline / Classroom"} onChange={() => setMode("Offline / Classroom")} />
@@ -179,7 +179,7 @@ export default function Mobile({ isOpen = false, onClose }: CorporateRequestForm
                   )}
                   <button
                     type="submit"
-                    className="w-full text-white px-5 py-4 rounded font-bold text-[14px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50 flex items-center justify-center gap-2.5 luxury-shadow-float active:translate-y-0 active:scale-[0.98] relative overflow-hidden group"
+                    className="w-full text-white px-5 py-4 rounded-[8px] font-bold text-[14px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50 flex items-center justify-center gap-2.5 luxury-shadow-float active:translate-y-0 active:scale-[0.98] relative overflow-hidden group"
                     style={{ background: "linear-gradient(135deg, #8B5CF6, #6D28D9)" }}
                   >
                     {t("Submit Request")}

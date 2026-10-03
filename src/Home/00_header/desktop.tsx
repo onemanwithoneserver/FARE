@@ -357,7 +357,7 @@ export default function Desktop() {
             : (isScrolled
                 ? "text-white/75 hover:text-white hover:bg-white/10"
                 : "text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06]") +
-              ` ${isScrolled ? "rounded-full" : "rounded"}`
+              ` ${isScrolled ? "rounded-full" : "rounded-[4px]"}`
         }`}
         title="Search platform"
       >
@@ -378,7 +378,7 @@ export default function Desktop() {
               : isScrolled
                 ? "text-white/80 hover:text-white hover:bg-white/10"
                 : "text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06]"
-          } ${isScrolled ? "rounded-full" : "rounded"}`}
+          } ${isScrolled ? "rounded-full" : "rounded-[4px]"}`}
           title="Change language / భాషను మార్చండి"
           aria-label="Change language"
         >
@@ -407,7 +407,7 @@ export default function Desktop() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.96 }}
               transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className={`absolute top-[calc(100%+8px)] right-0 w-[170px] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded p-1.5 z-[90] pointer-events-auto`}
+              className={`absolute top-[calc(100%+8px)] right-0 w-[170px] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded-[4px] p-1.5 z-[90] pointer-events-auto`}
             >
               <div
                 className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 ${isScrolled ? "text-white/70" : "text-[#0B1D3A]/70"}`}
@@ -419,7 +419,7 @@ export default function Desktop() {
                   setLanguage("en");
                   setIsLangDropdownOpen(false);
                 }}
-                className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[13px] transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-2.5 py-2 rounded-[4px] text-[13px] transition-all cursor-pointer ${
                   language === "en"
                     ? isScrolled
                       ? "bg-white text-[#0B1D3A] font-bold shadow-xs"
@@ -431,7 +431,7 @@ export default function Desktop() {
               >
                 <span className="flex items-center gap-2">
                   <span
-                    className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded ${
+                    className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded-[4px] ${
                       language === "en"
                         ? isScrolled
                           ? "bg-[#0B1D3A] text-white"
@@ -458,7 +458,7 @@ export default function Desktop() {
                   setLanguage("te");
                   setIsLangDropdownOpen(false);
                 }}
-                className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[13px] transition-all cursor-pointer mt-1 ${
+                className={`w-full flex items-center justify-between px-2.5 py-2 rounded-[4px] text-[13px] transition-all cursor-pointer mt-1 ${
                   language === "te"
                     ? isScrolled
                       ? "bg-white text-[#0B1D3A] font-bold shadow-xs"
@@ -470,7 +470,7 @@ export default function Desktop() {
               >
                 <span className="flex items-center gap-2">
                   <span
-                    className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded ${
+                    className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded-[4px] ${
                       language === "te"
                         ? isScrolled
                           ? "bg-[#0B1D3A] text-white"
@@ -510,7 +510,7 @@ export default function Desktop() {
           navigate(`/${currentMode}/contact-us`);
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
-        className={`group text-[13px] lg:text-[13.5px] font-semibold px-4 lg:px-5 py-2 hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 shadow-[0_2px_8px_rgba(11,29,58,0.15)] flex items-center gap-1.5 shrink-0 cursor-pointer ${isScrolled ? "bg-white text-[#0B1D3A] hover:bg-[#E2C068] rounded-full" : "bg-[#0B1D3A] text-white hover:bg-[#102B63] rounded"}`}
+        className={`group text-[13px] lg:text-[13.5px] font-semibold px-4 lg:px-5 py-2 hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 shadow-[0_2px_8px_rgba(11,29,58,0.15)] flex items-center gap-1.5 shrink-0 cursor-pointer ${isScrolled ? "bg-white text-[#0B1D3A] hover:bg-[#E2C068] rounded-full" : "bg-[#0B1D3A] text-white hover:bg-[#102B63] rounded-[4px]"}`}
       >
         <span>{language === "te" ? "ప్రారంభించండి" : "Get Started"}</span>
         <span className="relative w-3.5 h-3.5 inline-flex items-center justify-center">
@@ -584,10 +584,10 @@ export default function Desktop() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.96 }}
                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className={`absolute top-[calc(100%+10px)] right-4 lg:right-10 w-[420px] max-w-[90vw] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-2xl border luxury-shadow-float p-4 z-50 pointer-events-auto rounded`}
+                className={`absolute top-[calc(100%+10px)] right-4 lg:right-10 w-[420px] max-w-[90vw] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-2xl border luxury-shadow-float p-4 z-50 pointer-events-auto rounded-[4px]`}
               >
                 <div
-                  className={`flex items-center gap-3 ${isScrolled ? "bg-[#040C1E] border-white/10" : "bg-[#F8FAFD] border-[#0B1D3A]/15"} border focus-within:border-[#C99A2E] focus-within:ring-2 focus-within:ring-[#C99A2E]/20 px-3.5 py-2.5 rounded transition-all shadow-inner`}
+                  className={`flex items-center gap-3 ${isScrolled ? "bg-[#040C1E] border-white/10" : "bg-[#F8FAFD] border-[#0B1D3A]/15"} border focus-within:border-[#C99A2E] focus-within:ring-2 focus-within:ring-[#C99A2E]/20 px-3.5 py-2.5 rounded-[4px] transition-all shadow-inner`}
                 >
                   <Search size={18} className="text-[#C99A2E] shrink-0" />
                   <input
@@ -630,7 +630,7 @@ export default function Desktop() {
                       <button
                         key={idx}
                         onClick={() => setSearchQuery(tag)}
-                        className={`text-[11.5px] font-medium bg-[#0B1D3A]/[0.04] px-2.5 py-1 rounded transition-colors cursor-pointer ${isScrolled ? "text-white/75 hover:bg-[#C99A2E]/15 hover:text-white" : "text-[#0B1D3A]/75 hover:bg-[#C99A2E]/15 hover:text-[#0B1D3A]"}`}
+                        className={`text-[11.5px] font-medium bg-[#0B1D3A]/[0.04] px-2.5 py-1 rounded-[4px] transition-colors cursor-pointer ${isScrolled ? "text-white/75 hover:bg-[#C99A2E]/15 hover:text-white" : "text-[#0B1D3A]/75 hover:bg-[#C99A2E]/15 hover:text-[#0B1D3A]"}`}
                       >
                         {tag}
                       </button>

@@ -46,7 +46,7 @@ export default function Mobile() {
 
         <motion.div
           variants={item}
-          className="relative w-full max-w-[360px] mx-auto aspect-video rounded overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] luxury-shadow-float cursor-pointer group"
+          className="relative w-full max-w-[360px] mx-auto aspect-video rounded-[4px] overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] luxury-shadow-float cursor-pointer group"
         >
           <div className="absolute inset-0 bg-[#0B1D3A]" />
           <div
@@ -80,7 +80,7 @@ export default function Mobile() {
             </div>
           </div>
 
-          <div className="absolute bottom-2.5 right-2.5 bg-black/50 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">
+          <div className="absolute bottom-2.5 right-2.5 bg-black/50 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-[4px] z-10">
             {video.duration}
           </div>
           

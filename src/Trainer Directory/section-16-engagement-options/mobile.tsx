@@ -53,7 +53,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px] p-6 luxury-shadow-float relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#6366F1]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
             <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">{t("Pricing")}</h4>
@@ -63,7 +63,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px] p-6 luxury-shadow-float relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/15 to-transparent rounded-full blur-[20px] pointer-events-none" />
             <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">{t("Minimum Engagement")}</h4>
@@ -72,7 +72,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
               {data.investment.minimumEngagement.options.map((opt, idx) => (
                 <span
                   key={idx}
-                  className="text-[12px] font-bold px-3 py-1.5 rounded"
+                  className="text-[12px] font-bold px-3 py-1.5 rounded-[4px]"
                   style={opt === data.investment.minimumEngagement.selected ? {
                     background: `${GOLD}15`,
                     color: GOLD_MID,
@@ -91,7 +91,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px] p-6 luxury-shadow-float relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#10B981]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
             <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-4 relative z-10">{t("Pricing Basis")}</h4>
@@ -110,7 +110,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
         <motion.div
           variants={item}
-          className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded p-6 flex flex-col gap-5 luxury-shadow-float relative overflow-hidden"
+          className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded-[4px] p-6 flex flex-col gap-5 luxury-shadow-float relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[20px] pointer-events-none" />
           <div
@@ -124,7 +124,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
           <p className="text-[12px] font-medium text-white/80 text-center relative z-10 leading-relaxed">{data.investment.footerNote}</p>
           <button
             onClick={onRequestPricing}
-            className="w-full bg-white text-[#0B1D3A] px-6 py-3.5 rounded font-black text-[14px] transition-transform duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center justify-center gap-2.5 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] relative z-10 group"
+            className="w-full bg-white text-[#0B1D3A] px-6 py-3.5 rounded-[8px] font-black text-[14px] transition-transform duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center justify-center gap-2.5 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] relative z-10 group"
           >
             {t("Request Pricing")}
             <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#C99A2E]"}`} style={{ fontSize: `${15}px` }}>

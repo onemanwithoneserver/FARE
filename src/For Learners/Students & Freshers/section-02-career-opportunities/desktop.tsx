@@ -59,7 +59,7 @@ export default function Desktop() {
               className="bg-white/90 backdrop-blur-xl p-8 lg:p-9 rounded-[20px] luxury-shadow-float border border-[#E2E8F0]/60 hover:luxury-shadow-float hover:border-[#C99A2E]/30 transition-all duration-400 flex flex-col h-full group"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${i === 0 ? "from-[#38BDF8] to-[#0284C7]" : "from-[#F472B6] to-[#DB2777]"} shadow-md shrink-0`}>
+                <div className={`w-14 h-14 rounded-[8px] flex items-center justify-center bg-gradient-to-br ${i === 0 ? "from-[#38BDF8] to-[#0284C7]" : "from-[#F472B6] to-[#DB2777]"} shadow-md shrink-0`}>
                   {i === 0 ? <Building2 size={26} className="text-white" strokeWidth={2} /> : <Briefcase size={26} className="text-white" strokeWidth={2} />}
                 </div>
                 <div>
@@ -74,7 +74,7 @@ export default function Desktop() {
               
               <div className="flex flex-col gap-4 flex-grow">
                 {opp.categories.map((cat, j) => (
-                  <div key={j} className="bg-[#F8FAFC]/80 rounded-xl p-4 border border-[#F1F5F9] transition-all duration-300 hover:bg-white hover:border-[#E2E8F0]">
+                  <div key={j} className="bg-[#F8FAFC]/80 rounded-[8px] p-4 border border-[#F1F5F9] transition-all duration-300 hover:bg-white hover:border-[#E2E8F0]">
                     <h4 className="text-[13px] font-bold text-[#0B1D3A] uppercase tracking-wider mb-1.5 flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E]"></span>
                       {cat.name}

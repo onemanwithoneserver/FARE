@@ -73,7 +73,7 @@ export default function Desktop() {
                 key={idx}
                 variants={item}
                 whileHover={{ y: -4, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-                className="group flex rounded overflow-hidden border border-[#0B1D3A]/[0.07] bg-white/90 backdrop-blur-xl luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-500 relative"
+                className="group flex rounded-[4px] overflow-hidden border border-[#0B1D3A]/[0.07] bg-white/90 backdrop-blur-xl luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-500 relative"
               >
                 
                 <div
@@ -117,7 +117,7 @@ export default function Desktop() {
                   
                   <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/40 to-transparent">
                     <span
-                      className="text-[9px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded"
+                      className="text-[9px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded-[4px]"
                       style={{ background: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.9)" }}
                     >
                       {study.domain}
@@ -155,7 +155,7 @@ export default function Desktop() {
                       
                       <div className="flex items-start gap-3">
                         <div
-                          className="w-7 h-7 rounded flex items-center justify-center text-white shrink-0 mt-0.5"
+                          className="w-7 h-7 rounded-[4px] flex items-center justify-center text-white shrink-0 mt-0.5"
                           style={{ background: "#EF4444" }}
                         >
                           <Target size={14} strokeWidth={2.5} />
@@ -168,7 +168,7 @@ export default function Desktop() {
                       
                       <div className="flex items-start gap-3">
                         <div
-                          className="w-7 h-7 rounded flex items-center justify-center text-white shrink-0 mt-0.5"
+                          className="w-7 h-7 rounded-[4px] flex items-center justify-center text-white shrink-0 mt-0.5"
                           style={{ background: GOLD }}
                         >
                           <Lightbulb size={14} strokeWidth={2.5} />
@@ -188,7 +188,7 @@ export default function Desktop() {
                       {study.metrics.map((m, mIdx) => (
                         <div
                           key={mIdx}
-                          className="flex flex-col items-center px-4 py-2.5 rounded border text-center min-w-[90px]"
+                          className="flex flex-col items-center px-4 py-2.5 rounded-[4px] border text-center min-w-[90px]"
                           style={{ background: accent.metricBg, borderColor: accent.metricBorder }}
                         >
                           <span className="text-[20px] font-black leading-none tracking-tight" style={{ color: NAVY }}>{m.value}</span>
@@ -201,7 +201,7 @@ export default function Desktop() {
                       {study.tags.map((tag, tIdx) => (
                         <span
                           key={tIdx}
-                          className="text-[11px] font-bold px-2.5 py-1 rounded"
+                          className="text-[11px] font-bold px-2.5 py-1 rounded-[4px]"
                           style={{ background: accent.tag, color: accent.tagText }}
                         >
                           {tag}

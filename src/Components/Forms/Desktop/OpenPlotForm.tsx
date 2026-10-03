@@ -88,7 +88,7 @@ export default function OpenPlotForm() {
                   required
                   type="text"
                   placeholder="John Doe"
-                  className="w-full bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-xl py-3.5 pl-11 pr-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#C99A2E]/50 focus:ring-2 focus:ring-[#C99A2E]/10 transition-all placeholder:text-[#0B1D3A]/30"
+                  className="w-full bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-[8px] py-3.5 pl-11 pr-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#C99A2E]/50 focus:ring-2 focus:ring-[#C99A2E]/10 transition-all placeholder:text-[#0B1D3A]/30"
                 />
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function OpenPlotForm() {
                   required
                   type="tel"
                   placeholder="+91 98765 43210"
-                  className="w-full bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-xl py-3.5 pl-11 pr-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#C99A2E]/50 focus:ring-2 focus:ring-[#C99A2E]/10 transition-all placeholder:text-[#0B1D3A]/30"
+                  className="w-full bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-[8px] py-3.5 pl-11 pr-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#C99A2E]/50 focus:ring-2 focus:ring-[#C99A2E]/10 transition-all placeholder:text-[#0B1D3A]/30"
                 />
               </div>
             </div>
@@ -123,7 +123,7 @@ export default function OpenPlotForm() {
                 required
                 type="text"
                 placeholder="e.g., Hyderabad, ORR..."
-                className="w-full bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-xl py-3.5 pl-11 pr-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#C99A2E]/50 focus:ring-2 focus:ring-[#C99A2E]/10 transition-all placeholder:text-[#0B1D3A]/30"
+                className="w-full bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-[8px] py-3.5 pl-11 pr-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#C99A2E]/50 focus:ring-2 focus:ring-[#C99A2E]/10 transition-all placeholder:text-[#0B1D3A]/30"
               />
             </div>
           </div>
@@ -140,7 +140,7 @@ export default function OpenPlotForm() {
               ].map((size) => (
                 <label
                   key={size}
-                  className="relative flex items-center justify-center p-3 border border-[#0B1D3A]/10 rounded-xl cursor-pointer hover:bg-[#F8FAFD] transition-colors group"
+                  className="relative flex items-center justify-center p-3 border border-[#0B1D3A]/10 rounded-[8px] cursor-pointer hover:bg-[#F8FAFD] transition-colors group"
                 >
                   <input
                     type="radio"
@@ -151,7 +151,7 @@ export default function OpenPlotForm() {
                   <span className="text-[13px] font-medium text-[#475569] peer-checked:text-[#C99A2E] peer-checked:font-bold">
                     {size}
                   </span>
-                  <div className="absolute inset-0 border-2 border-transparent peer-checked:border-[#C99A2E]/40 rounded-xl transition-all hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out" />
+                  <div className="absolute inset-0 border-2 border-transparent peer-checked:border-[#C99A2E]/40 rounded-[8px] transition-all hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out" />
                 </label>
               ))}
             </div>
@@ -160,7 +160,7 @@ export default function OpenPlotForm() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full mt-6 bg-gradient-to-r from-[#0B1D3A] to-[#071A49] text-white py-4 rounded-xl font-bold text-[15px] flex items-center justify-center gap-3 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all"
+            className="w-full mt-6 bg-gradient-to-r from-[#0B1D3A] to-[#071A49] text-white py-4 rounded-[8px] font-bold text-[15px] flex items-center justify-center gap-3 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all"
           >
             Submit Request <Send size={16} />
           </motion.button>

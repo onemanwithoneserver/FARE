@@ -48,14 +48,14 @@ export default function Mobile() {
             <motion.div
               key={idx}
               variants={item}
-              className="bg-white/90 backdrop-blur-xl rounded p-5 border border-[#0B1D3A]/[0.08] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)] relative overflow-hidden"
+              className="bg-white/90 backdrop-blur-xl rounded-[4px] p-5 border border-[#0B1D3A]/[0.08] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)] relative overflow-hidden"
             >
               <div
                 className="absolute top-0 left-0 right-0 h-1"
                 style={{ background: audienceColors[idx % audienceColors.length].bg }}
               />
               <div
-                className="w-9 h-9 rounded flex items-center justify-center text-white shadow-sm mb-3"
+                className="w-9 h-9 rounded-[4px] flex items-center justify-center text-white shadow-sm mb-3"
                 style={{ background: audienceColors[idx % audienceColors.length].bg }}
               >
                 <Users size={16} strokeWidth={2.2} />

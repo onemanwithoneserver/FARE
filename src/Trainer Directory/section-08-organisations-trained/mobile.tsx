@@ -90,11 +90,11 @@ export default function Mobile() {
                   className="absolute left-[47px] top-[23px] z-10 h-3 w-3 rounded-full border-[2px] border-white shadow-sm"
                   style={{ background: colors.accent }}
                 />
-                <div className="relative w-3/4 overflow-hidden rounded border border-[#0B1D3A]/[0.08] bg-white p-4 shadow-[0_6px_18px_-14px_rgba(11,29,58,0.35)]">
+                <div className="relative w-3/4 overflow-hidden rounded-[4px] border border-[#0B1D3A]/[0.08] bg-white p-4 shadow-[0_6px_18px_-14px_rgba(11,29,58,0.35)]">
                   <div className="absolute inset-x-0 top-0 h-[3px]" style={{ background: colors.bg }} />
                   <div className="flex min-w-0 items-center gap-3">
                     <div
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded text-[11px] font-black text-white"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[4px] text-[11px] font-black text-white"
                       style={{ background: colors.bg }}
                     >
                       {initialsOf(timelineItem.company)}
@@ -111,7 +111,7 @@ export default function Mobile() {
                   </div>
                   <div className="mt-3">
                     <span
-                      className="inline-block rounded border px-2.5 py-1.5 text-[11px] font-semibold"
+                      className="inline-block rounded-[4px] border px-2.5 py-1.5 text-[11px] font-semibold"
                       style={{
                         background: `${colors.accent}08`,
                         borderColor: `${colors.accent}20`,

@@ -108,7 +108,7 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: 0 }}
-                className="bg-white border border-[#0B1D3A]/[0.06] rounded shadow-[0_4px_15px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
+                className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] shadow-[0_4px_15px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
               >
                 <motion.div
                   animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -126,7 +126,7 @@ export default function Mobile() {
                 >
                   <div className="flex items-center gap-4">
                     <div
-                      className="w-14 h-14 rounded flex items-center justify-center shadow-md shrink-0 transition-transform duration-300"
+                      className="w-14 h-14 rounded-[4px] flex items-center justify-center shadow-md shrink-0 transition-transform duration-300"
                       style={{
                         backgroundColor: category.color,
                         transform: isOpen ? "scale(1.05)" : "scale(1)",
@@ -166,7 +166,7 @@ export default function Mobile() {
                         {category.subcategories.map((sub, idx) => (
                           <div
                             key={idx}
-                            className="bg-[#F8FAFD]/50 rounded p-4 border border-[#0B1D3A]/[0.03]"
+                            className="bg-[#F8FAFD]/50 rounded-[4px] p-4 border border-[#0B1D3A]/[0.03]"
                           >
                             {sub.label && (
                               <h4
@@ -184,7 +184,7 @@ export default function Mobile() {
                               {sub.skills.map((skill, sIdx) => (
                                 <span
                                   key={sIdx}
-                                  className="bg-white border border-[#0B1D3A]/[0.06] px-3 py-1.5 rounded text-[13px] font-medium text-[#3A4A63] shadow-sm hover:shadow transition-shadow duration-300"
+                                  className="bg-white border border-[#0B1D3A]/[0.06] px-3 py-1.5 rounded-[4px] text-[13px] font-medium text-[#3A4A63] shadow-sm hover:shadow transition-shadow duration-300"
                                 >
                                   {skill}
                                 </span>
@@ -207,7 +207,7 @@ export default function Mobile() {
           transition={{ duration: 0.6 }}
         >
           <div
-            className="rounded p-8 text-center relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/30"
+            className="rounded-[4px] p-8 text-center relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/30"
             style={{
               background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)`,
             }}
@@ -233,7 +233,7 @@ export default function Mobile() {
               </p>
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-white/[0.06] backdrop-blur-md border border-white/10 py-4 px-5 rounded w-full luxury-shadow-float hover:bg-white/[0.1] hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="bg-white/[0.06] backdrop-blur-md border border-white/10 py-4 px-5 rounded-[4px] w-full luxury-shadow-float hover:bg-white/[0.1] hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <p className="text-[15px] font-semibold text-white/95 leading-snug">
                   {data.footerCta}

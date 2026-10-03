@@ -136,7 +136,7 @@ export default function Desktop() {
             >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded-[4px] hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
                 style={{
                   background: NAVY,
                   boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`,
@@ -151,7 +151,7 @@ export default function Desktop() {
               {data.buttons.secondary && (
                 <button
                   onClick={() => setIsVideoModalOpen(true)}
-                  className="text-[13.5px] font-semibold px-7 py-3 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
+                  className="text-[13.5px] font-semibold px-7 py-3 rounded-[4px] hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
                   style={{
                     color: NAVY,
                     borderColor: `${NAVY}15`,

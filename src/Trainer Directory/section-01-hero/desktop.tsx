@@ -53,9 +53,9 @@ export default function Desktop() {
             className="w-[380px] shrink-0 relative group"
           >
             
-            <div className="absolute -inset-1 bg-gradient-to-br from-[#6366F1]/40 via-[#C99A2E]/40 to-[#06B6D4]/40 rounded blur-lg group-hover:blur-xl transition-all duration-500 opacity-60" />
+            <div className="absolute -inset-1 bg-gradient-to-br from-[#6366F1]/40 via-[#C99A2E]/40 to-[#06B6D4]/40 rounded-[4px] blur-lg group-hover:blur-xl transition-all duration-500 opacity-60" />
             
-            <div className="relative w-full aspect-square rounded overflow-hidden luxury-shadow-float">
+            <div className="relative w-full aspect-square rounded-[16px] overflow-hidden luxury-shadow-float">
               <img src={trainerImg} alt={data.trainerName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/80 via-transparent to-transparent opacity-80" />
             </div>
@@ -97,7 +97,7 @@ export default function Desktop() {
 
             
             <motion.div variants={item} className="flex gap-4 mb-10">
-              <div className="flex-1 rounded p-5 relative overflow-hidden group/stat transition-all duration-300 hover:bg-white/[0.08]"
+              <div className="flex-1 rounded-[4px] p-5 relative overflow-hidden group/stat transition-all duration-300 hover:bg-white/[0.08]"
                 style={{
                   background: "rgba(255,255,255,0.03)",
                   backdropFilter: "blur(12px)",
@@ -108,14 +108,14 @@ export default function Desktop() {
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#6366F1] to-[#4F46E5] opacity-50 group-hover/stat:opacity-100 transition-opacity" />
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">{t("Industry Exp.")}</div>
-                  <div className="w-8 h-8 rounded bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center shadow-lg group-hover/stat:scale-110 transition-transform duration-300">
+                  <div className="w-8 h-8 rounded-[4px] bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center shadow-lg group-hover/stat:scale-110 transition-transform duration-300">
                     <Briefcase size={14} className="text-white" strokeWidth={2.5} />
                   </div>
                 </div>
                 <div className="text-[32px] font-black text-white leading-none tracking-tight">{data.experience.industry}</div>
               </div>
 
-              <div className="flex-1 rounded p-5 relative overflow-hidden group/stat transition-all duration-300 hover:bg-white/[0.08]"
+              <div className="flex-1 rounded-[4px] p-5 relative overflow-hidden group/stat transition-all duration-300 hover:bg-white/[0.08]"
                 style={{
                   background: "rgba(255,255,255,0.03)",
                   backdropFilter: "blur(12px)",
@@ -126,14 +126,14 @@ export default function Desktop() {
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C99A2E] to-[#B88A22] opacity-50 group-hover/stat:opacity-100 transition-opacity" />
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">{t("Training Exp.")}</div>
-                  <div className="w-8 h-8 rounded bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center shadow-lg group-hover/stat:scale-110 transition-transform duration-300">
+                  <div className="w-8 h-8 rounded-[4px] bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center shadow-lg group-hover/stat:scale-110 transition-transform duration-300">
                     <GraduationCap size={16} className="text-white" strokeWidth={2.5} />
                   </div>
                 </div>
                 <div className="text-[32px] font-black text-white leading-none tracking-tight">{data.experience.training}</div>
               </div>
 
-              <div className="flex-1 rounded p-5 relative overflow-hidden group/stat transition-all duration-300 hover:bg-white/[0.08]"
+              <div className="flex-1 rounded-[4px] p-5 relative overflow-hidden group/stat transition-all duration-300 hover:bg-white/[0.08]"
                 style={{
                   background: "rgba(255,255,255,0.03)",
                   backdropFilter: "blur(12px)",
@@ -144,7 +144,7 @@ export default function Desktop() {
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#06B6D4] to-[#0891B2] opacity-50 group-hover/stat:opacity-100 transition-opacity" />
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">{t("Trained")}</div>
-                  <div className="w-8 h-8 rounded bg-gradient-to-br from-[#06B6D4] to-[#0891B2] flex items-center justify-center shadow-lg group-hover/stat:scale-110 transition-transform duration-300">
+                  <div className="w-8 h-8 rounded-[4px] bg-gradient-to-br from-[#06B6D4] to-[#0891B2] flex items-center justify-center shadow-lg group-hover/stat:scale-110 transition-transform duration-300">
                     <Users size={16} className="text-white" strokeWidth={2.5} />
                   </div>
                 </div>

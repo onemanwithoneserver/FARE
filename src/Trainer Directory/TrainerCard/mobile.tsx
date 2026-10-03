@@ -143,7 +143,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
   ];
 
   return (
-    <article className="group relative flex flex-col h-full bg-white rounded-2xl font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] active:scale-[0.99] transition-transform duration-200 overflow-hidden">
+    <article className="group relative flex flex-col h-full bg-white rounded-[16px] font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] active:scale-[0.99] transition-transform duration-200 overflow-hidden">
       <TrainerPhotoHero
         trainer={trainer}
         isIntroVideoOpen={isIntroVideoOpen}
@@ -167,10 +167,10 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
 
         <p className="mt-2 line-clamp-2 text-[12px] leading-relaxed text-[#5A6B82]/90">{t(trainer.positioning)}</p>
 
-        <div className="mt-3 grid grid-cols-3 rounded-lg border border-[#0B1D3A]/[0.05] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
+        <div className="mt-3 grid grid-cols-3 rounded-[8px] border border-[#0B1D3A]/[0.05] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-1 py-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-md shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
+              <span className="flex h-6 w-6 items-center justify-center rounded-[4px] shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
                 {stat.icon}
               </span>
               <span className="text-[13px] font-black leading-none" style={{ color: NAVY }}>{stat.value}</span>
@@ -218,7 +218,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
           <div className="flex items-center justify-between gap-2 pt-2">
             <button
               onClick={onViewProfile}
-              className="group/vp px-4 h-9 rounded-xl text-[12.5px] font-bold flex items-center justify-center gap-1 text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+              className="group/vp px-4 h-9 rounded-[8px] text-[12.5px] font-bold flex items-center justify-center gap-1 text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
               style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
             >
               {t("View Profile")}
@@ -238,7 +238,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
             </button>
             <button
               onClick={() => !requested && handleRequest()}
-              className={`group/rq px-4 h-9 rounded-xl text-[12.5px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
+              className={`group/rq px-4 h-9 rounded-[8px] text-[12.5px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
                 requested
                   ? "bg-[#E7F7F0] border border-[#059669]/30 text-[#059669] cursor-default"
                   : "relative overflow-hidden border border-[#C99A2E]/40 bg-[#FBF4E4] hover:bg-gradient-to-br hover:from-[#D5AA45] hover:to-[#C99A2E] hover:border-transparent hover:shadow-[0_8px_18px_-8px_rgba(201,154,46,0.7)] active:scale-[0.98] text-[#0B1D3A]"

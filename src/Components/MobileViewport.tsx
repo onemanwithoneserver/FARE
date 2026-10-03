@@ -51,7 +51,7 @@ const MobileViewport = forwardRef<HTMLDivElement, MobileViewportProps>(
           className={`
             relative shrink-0 overflow-hidden bg-white
             w-full h-full md:max-w-[430px] md:h-[min(100%,880px)]
-            md:rounded md:shadow-2xl
+            md:rounded-[4px] md:shadow-2xl
             flex flex-col transition-all duration-300 ease-out
             ${className}
           `}

@@ -65,7 +65,7 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="group rounded overflow-hidden border border-[#0B1D3A]/[0.07] bg-white luxury-shadow-float relative"
+                className="group rounded-[4px] overflow-hidden border border-[#0B1D3A]/[0.07] bg-white luxury-shadow-float relative"
               >
                 
                 <div className="absolute top-0 left-0 right-0 h-[3px] z-10" style={{ background: accent.bar }} />
@@ -119,7 +119,7 @@ export default function Mobile() {
 
                   
                   <div className="flex items-start gap-3 mb-4">
-                    <div className="w-6 h-6 rounded flex items-center justify-center text-white shrink-0 mt-0.5" style={{ background: "#EF4444" }}>
+                    <div className="w-6 h-6 rounded-[4px] flex items-center justify-center text-white shrink-0 mt-0.5" style={{ background: "#EF4444" }}>
                       <Target size={12} strokeWidth={2.5} />
                     </div>
                     <div>
@@ -130,7 +130,7 @@ export default function Mobile() {
 
                   
                   <div className="flex items-start gap-3 mb-5">
-                    <div className="w-6 h-6 rounded flex items-center justify-center text-white shrink-0 mt-0.5" style={{ background: GOLD }}>
+                    <div className="w-6 h-6 rounded-[4px] flex items-center justify-center text-white shrink-0 mt-0.5" style={{ background: GOLD }}>
                       <Lightbulb size={12} strokeWidth={2.5} />
                     </div>
                     <div>
@@ -144,7 +144,7 @@ export default function Mobile() {
                     {study.metrics.map((m, mIdx) => (
                       <div
                         key={mIdx}
-                        className="flex flex-col items-center py-2.5 px-1 rounded border text-center"
+                        className="flex flex-col items-center py-2.5 px-1 rounded-[4px] border text-center"
                         style={{ background: accent.metricBg, borderColor: accent.metricBorder }}
                       >
                         <span className="text-[17px] font-black leading-none" style={{ color: NAVY }}>{m.value}</span>
@@ -158,7 +158,7 @@ export default function Mobile() {
                     {study.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
-                        className="text-[10px] font-bold px-2 py-0.5 rounded"
+                        className="text-[10px] font-bold px-2 py-0.5 rounded-[4px]"
                         style={{ background: accent.tag, color: accent.tagText }}
                       >
                         {tag}

@@ -59,7 +59,7 @@ export default function Desktop() {
         <div className="flex gap-10">
           
           <div className="w-[450px] shrink-0 flex flex-col gap-6">
-            <motion.div variants={item} className="relative rounded p-10 luxury-shadow-float overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
+            <motion.div variants={item} className="relative rounded-[4px] p-10 luxury-shadow-float overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
               <motion.div 
                 animate={{ scale: [1, 1.2, 1], rotate: [0, 5, 0] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -90,7 +90,7 @@ export default function Desktop() {
               {data.methodology.tags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="group text-[12px] font-bold px-3.5 py-1.5 rounded bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/80 hover:border-[#0B1D3A]/[0.25] hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300 ease-out cursor-default shadow-[0_2px_8px_rgba(11,29,58,0.04)]"
+                  className="group text-[12px] font-bold px-3.5 py-1.5 rounded-[4px] bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/80 hover:border-[#0B1D3A]/[0.25] hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300 ease-out cursor-default shadow-[0_2px_8px_rgba(11,29,58,0.04)]"
                 >
                   <span className="w-1.5 h-1.5 rounded-full inline-block mr-2 group-hover:scale-125 transition-transform duration-300 shadow-sm" style={{ background: GOLD }} />
                   {tag}
@@ -110,15 +110,15 @@ export default function Desktop() {
                 className="group flex items-start gap-6 relative z-10 pb-8 last:pb-0"
               >
                 
-                <div className="w-12 h-12 rounded bg-white border border-[#0B1D3A]/[0.08] shadow-[0_4px_16px_rgba(11,29,58,0.06)] flex items-center justify-center shrink-0 group-hover:-translate-y-1 group-hover:border-[#0B1D3A]/[0.15] group-hover:luxury-shadow-float transition-all duration-400 ease-out relative overflow-hidden">
+                <div className="w-12 h-12 rounded-[4px] bg-white border border-[#0B1D3A]/[0.08] shadow-[0_4px_16px_rgba(11,29,58,0.06)] flex items-center justify-center shrink-0 group-hover:-translate-y-1 group-hover:border-[#0B1D3A]/[0.15] group-hover:luxury-shadow-float transition-all duration-400 ease-out relative overflow-hidden">
                   <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }} />
-                  <div className="text-white relative z-10 w-8 h-8 rounded flex items-center justify-center shadow-sm" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
+                  <div className="text-white relative z-10 w-8 h-8 rounded-[4px] flex items-center justify-center shadow-sm" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
                     {FORMAT_ICONS[idx % FORMAT_ICONS.length].icon}
                   </div>
                 </div>
 
                 
-                <div className="flex-1 pt-1 bg-white/50 backdrop-blur-sm p-4 rounded border border-transparent group-hover:border-[#0B1D3A]/[0.06] transition-colors duration-300 -mt-3">
+                <div className="flex-1 pt-1 bg-white/50 backdrop-blur-sm p-4 rounded-[4px] border border-transparent group-hover:border-[#0B1D3A]/[0.06] transition-colors duration-300 -mt-3">
                   <div className="flex items-baseline gap-3 mb-2">
                     <span className="text-[12px] font-black opacity-30" style={{ color: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
                       0{idx + 1}

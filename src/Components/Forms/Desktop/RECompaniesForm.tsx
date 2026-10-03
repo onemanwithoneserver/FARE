@@ -31,7 +31,7 @@ export default function RECompaniesForm() {
       <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-gradient-radial from-[#0B1D3A]/[0.03] to-transparent rounded-full blur-[60px] pointer-events-none" />
       <div className="max-w-2xl mx-auto w-full relative z-10">
         <div className="mb-10 text-center">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#0B1D3A]/5 text-[#0B1D3A] mb-5">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-[16px] bg-[#0B1D3A]/5 text-[#0B1D3A] mb-5">
             <Building2 size={24} />
           </div>
           <h2 className="text-3xl md:text-4xl font-black text-[#0B1D3A] leading-tight mb-3">
@@ -53,7 +53,7 @@ export default function RECompaniesForm() {
                 required
                 type="text"
                 placeholder="Acme Real Estate"
-                className="w-full bg-white border border-[#0B1D3A]/15 rounded-lg py-3.5 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#0B1D3A] focus:ring-1 focus:ring-[#0B1D3A] transition-all placeholder:text-[#0B1D3A]/30 shadow-sm"
+                className="w-full bg-white border border-[#0B1D3A]/15 rounded-[8px] py-3.5 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#0B1D3A] focus:ring-1 focus:ring-[#0B1D3A] transition-all placeholder:text-[#0B1D3A]/30 shadow-sm"
               />
             </div>
             <div className="space-y-2">
@@ -64,7 +64,7 @@ export default function RECompaniesForm() {
                 required
                 type="text"
                 placeholder="Jane Doe"
-                className="w-full bg-white border border-[#0B1D3A]/15 rounded-lg py-3.5 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#0B1D3A] focus:ring-1 focus:ring-[#0B1D3A] transition-all placeholder:text-[#0B1D3A]/30 shadow-sm"
+                className="w-full bg-white border border-[#0B1D3A]/15 rounded-[8px] py-3.5 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#0B1D3A] focus:ring-1 focus:ring-[#0B1D3A] transition-all placeholder:text-[#0B1D3A]/30 shadow-sm"
               />
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function RECompaniesForm() {
                 required
                 type="email"
                 placeholder="jane@company.com"
-                className="w-full bg-white border border-[#0B1D3A]/15 rounded-lg py-3.5 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#0B1D3A] focus:ring-1 focus:ring-[#0B1D3A] transition-all placeholder:text-[#0B1D3A]/30 shadow-sm"
+                className="w-full bg-white border border-[#0B1D3A]/15 rounded-[8px] py-3.5 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#0B1D3A] focus:ring-1 focus:ring-[#0B1D3A] transition-all placeholder:text-[#0B1D3A]/30 shadow-sm"
               />
             </div>
             <div className="space-y-2">
@@ -88,7 +88,7 @@ export default function RECompaniesForm() {
                 required
                 type="tel"
                 placeholder="+91 98765 43210"
-                className="w-full bg-white border border-[#0B1D3A]/15 rounded-lg py-3.5 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#0B1D3A] focus:ring-1 focus:ring-[#0B1D3A] transition-all placeholder:text-[#0B1D3A]/30 shadow-sm"
+                className="w-full bg-white border border-[#0B1D3A]/15 rounded-[8px] py-3.5 px-4 text-[15px] text-[#0B1D3A] focus:outline-none focus:border-[#0B1D3A] focus:ring-1 focus:ring-[#0B1D3A] transition-all placeholder:text-[#0B1D3A]/30 shadow-sm"
               />
             </div>
           </div>
@@ -100,7 +100,7 @@ export default function RECompaniesForm() {
               {["1-10", "11-50", "51-200", "200+"].map((size) => (
                 <label
                   key={size}
-                  className="relative flex items-center justify-center p-3 bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-lg cursor-pointer hover:border-[#0B1D3A]/30 transition-colors group"
+                  className="relative flex items-center justify-center p-3 bg-[#F8FAFD] border border-[#0B1D3A]/10 rounded-[8px] cursor-pointer hover:border-[#0B1D3A]/30 transition-colors group"
                 >
                   <input
                     type="radio"
@@ -111,7 +111,7 @@ export default function RECompaniesForm() {
                   <span className="text-[13px] font-medium text-[#475569] peer-checked:text-[#0B1D3A] peer-checked:font-bold">
                     {size}
                   </span>
-                  <div className="absolute inset-0 border-2 border-transparent peer-checked:border-[#0B1D3A] rounded-lg transition-all hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out" />
+                  <div className="absolute inset-0 border-2 border-transparent peer-checked:border-[#0B1D3A] rounded-[8px] transition-all hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out" />
                 </label>
               ))}
             </div>
@@ -120,7 +120,7 @@ export default function RECompaniesForm() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full mt-8 bg-[#0B1D3A] text-white py-4 rounded-lg font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_8px_16px_-8px_rgba(11,29,58,0.4)] hover:luxury-shadow-float transition-all"
+            className="w-full mt-8 bg-[#0B1D3A] text-white py-4 rounded-[8px] font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_8px_16px_-8px_rgba(11,29,58,0.4)] hover:luxury-shadow-float transition-all"
           >
             Request Consultation <ChevronRight size={18} />
           </motion.button>

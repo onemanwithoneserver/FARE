@@ -65,7 +65,7 @@ export default function Mobile() {
             <motion.div
               key={idx}
               variants={item}
-              className="bg-white/90 backdrop-blur-xl rounded p-4 border border-[#0B1D3A]/[0.06] luxury-shadow-float relative overflow-hidden group"
+              className="bg-white/90 backdrop-blur-xl rounded-[4px] p-4 border border-[#0B1D3A]/[0.06] luxury-shadow-float relative overflow-hidden group"
             >
               <div
                 className="absolute top-0 left-0 right-0 h-[3px] opacity-60"
@@ -73,7 +73,7 @@ export default function Mobile() {
               />
               <div className="flex items-center gap-2 mb-3">
                 <div
-                  className="w-9 h-9 rounded flex items-center justify-center text-white shadow-md"
+                  className="w-9 h-9 rounded-[4px] flex items-center justify-center text-white shadow-md"
                   style={{ background: domainColors[idx % domainColors.length].bg }}
                 >
                   {getCategoryIcon(categoryObj.category, 14, 2.5)}
@@ -82,7 +82,7 @@ export default function Mobile() {
               </div>
               <ul className="flex flex-col gap-1.5">
                 {categoryObj.skills.map((skill, tIdx) => (
-                  <li key={tIdx} className="flex items-start gap-2.5 text-[13px] text-[#5A6B82] font-medium leading-[1.4] p-2 rounded bg-[#0B1D3A]/[0.02]">
+                  <li key={tIdx} className="flex items-start gap-2.5 text-[13px] text-[#5A6B82] font-medium leading-[1.4] p-2 rounded-[4px] bg-[#0B1D3A]/[0.02]">
                     <span
                       className="w-1.5 h-1.5 rounded-full shrink-0 mt-1"
                       style={{ background: domainColors[idx % domainColors.length].accent }}

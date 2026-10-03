@@ -58,7 +58,7 @@ export default function Desktop() {
               className="flex flex-col gap-4 group cursor-pointer"
             >
               <div
-                className={`relative aspect-video rounded overflow-hidden flex items-center justify-center border ${video.thumbnail === 'navy' ? 'border-[#0B1D3A]/20' : 'border-[#0B1D3A]/[0.08]'} luxury-shadow-float group-hover:luxury-shadow-float transition-all duration-400 ease-out bg-white/90 backdrop-blur-xl`}
+                className={`relative aspect-video rounded-[4px] overflow-hidden flex items-center justify-center border ${video.thumbnail === 'navy' ? 'border-[#0B1D3A]/20' : 'border-[#0B1D3A]/[0.08]'} luxury-shadow-float group-hover:luxury-shadow-float transition-all duration-400 ease-out bg-white/90 backdrop-blur-xl`}
                 style={{
                   background: video.thumbnail === 'navy'
                     ? `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)`
@@ -95,13 +95,13 @@ export default function Desktop() {
                   />
                 </div>
 
-                <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded z-10 border border-white/10">
+                <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-[4px] z-10 border border-white/10">
                   {video.duration}
                 </div>
 
                 {video.thumbnail === 'navy' && (
                   <div
-                    className="absolute top-3 left-3 text-[10px] font-black px-2.5 py-1 rounded z-10 shadow-lg tracking-wider"
+                    className="absolute top-3 left-3 text-[10px] font-black px-2.5 py-1 rounded-[4px] z-10 shadow-lg tracking-wider"
                     style={{ background: GOLD, color: NAVY }}
                   >
                     {t("NEW")}

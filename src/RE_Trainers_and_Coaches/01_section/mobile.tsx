@@ -129,7 +129,7 @@ export default function Mobile() {
             className="flex flex-col w-full gap-3 max-w-[280px] mb-4"
           >
             <button
-              className="text-white font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="text-white font-semibold w-full py-3.5 rounded-[8px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
               style={{
                 background: NAVY,
                 boxShadow: "0 2px 8px rgba(11,29,58,0.15)",
@@ -142,7 +142,7 @@ export default function Mobile() {
             </button>
             {data.buttons.secondary && (
               <button
-                className="font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+                className="font-semibold w-full py-3.5 rounded-[8px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
                 style={{
                   color: NAVY,
                   borderColor: `${NAVY}15`,

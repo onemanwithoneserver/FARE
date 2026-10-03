@@ -66,13 +66,13 @@ export default function Desktop() {
           <motion.div variants={item} className="flex gap-2">
             <button
               onClick={scrollLeft}
-              className="w-10 h-10 rounded flex items-center justify-center bg-white border border-[#0B1D3A]/[0.08] text-[#0B1D3A] shadow-sm hover:border-[#0B1D3A]/20 hover:bg-[#F8FAFD] hover:shadow-md transition-all duration-300"
+              className="w-10 h-10 rounded-[8px] flex items-center justify-center bg-white border border-[#0B1D3A]/[0.08] text-[#0B1D3A] shadow-sm hover:border-[#0B1D3A]/20 hover:bg-[#F8FAFD] hover:shadow-md transition-all duration-300"
             >
               <ChevronLeft size={20} strokeWidth={2} />
             </button>
             <button
               onClick={scrollRight}
-              className="w-10 h-10 rounded flex items-center justify-center bg-white border border-[#0B1D3A]/[0.08] text-[#0B1D3A] shadow-sm hover:border-[#0B1D3A]/20 hover:bg-[#F8FAFD] hover:shadow-md transition-all duration-300"
+              className="w-10 h-10 rounded-[8px] flex items-center justify-center bg-white border border-[#0B1D3A]/[0.08] text-[#0B1D3A] shadow-sm hover:border-[#0B1D3A]/20 hover:bg-[#F8FAFD] hover:shadow-md transition-all duration-300"
             >
               <ChevronRight size={20} strokeWidth={2} />
             </button>
@@ -97,7 +97,7 @@ export default function Desktop() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="shrink-0 w-[400px] snap-start group bg-white/90 backdrop-blur-xl rounded p-8 border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/[0.20] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 ease-out flex flex-col relative overflow-hidden hover:-translate-y-1.5"
+                className="shrink-0 w-[400px] snap-start group bg-white/90 backdrop-blur-xl rounded-[4px] p-8 border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/[0.20] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 ease-out flex flex-col relative overflow-hidden hover:-translate-y-1.5"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -130,8 +130,8 @@ export default function Desktop() {
                     { icon: <Users size={14} strokeWidth={2.5} />, text: prog.audience, bg: "linear-gradient(135deg, #3B82F6, #1D4ED8)" },
                     { icon: <Clock size={14} strokeWidth={2.5} />, text: prog.duration, bg: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` },
                   ].map((meta, mIdx) => (
-                    <div key={mIdx} className="flex flex-col gap-2 p-3 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.04] hover:bg-white hover:shadow-sm transition-colors group/meta cursor-default">
-                      <div className="w-8 h-8 rounded flex items-center justify-center text-white shadow-md group-hover/meta:scale-110 transition-transform duration-300" style={{ background: meta.bg }}>
+                    <div key={mIdx} className="flex flex-col gap-2 p-3 rounded-[4px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.04] hover:bg-white hover:shadow-sm transition-colors group/meta cursor-default">
+                      <div className="w-8 h-8 rounded-[4px] flex items-center justify-center text-white shadow-md group-hover/meta:scale-110 transition-transform duration-300" style={{ background: meta.bg }}>
                         {meta.icon}
                       </div>
                       <span className="text-[12px] font-bold text-[#3B4D66] truncate w-full" title={meta.text}>{meta.text}</span>
@@ -148,7 +148,7 @@ export default function Desktop() {
                     {prog.topics.map((topic, tIdx) => (
                       <span
                         key={tIdx}
-                        className="text-[12px] font-bold px-3 py-1.5 rounded transition-colors hover:bg-white hover:shadow-sm cursor-default"
+                        className="text-[12px] font-bold px-3 py-1.5 rounded-[4px] transition-colors hover:bg-white hover:shadow-sm cursor-default"
                         style={{
                           background: `${GOLD}0A`,
                           border: `1px solid ${GOLD}20`,

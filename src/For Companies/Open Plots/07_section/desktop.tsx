@@ -73,7 +73,7 @@ export default function Desktop() {
         className="max-w-[1040px] w-full relative z-20"
       >
         <div
-          className="w-full rounded pt-24 pb-20 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl luxury-shadow-float border border-[#0B1D3A]/10"
+          className="w-full rounded-[4px] pt-24 pb-20 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl luxury-shadow-float border border-[#0B1D3A]/10"
           style={{
             background:
               "linear-gradient(145deg, rgba(255,255,255,0.85) 0%, rgba(248,249,252,0.95) 100%)",
@@ -119,7 +119,7 @@ export default function Desktop() {
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsModalOpen(true)}
-              className="group relative overflow-hidden font-bold text-[15px] px-10 py-4 rounded transition-all duration-300 flex items-center gap-3 cursor-pointer text-[#071A49] tracking-wide luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)]"
+              className="group relative overflow-hidden font-bold text-[15px] px-10 py-4 rounded-[4px] transition-all duration-300 flex items-center gap-3 cursor-pointer text-[#071A49] tracking-wide luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)]"
               style={{
                 background:
                   "linear-gradient(135deg, #D5AA45 0%, #F3D37F 50%, #D5AA45 100%)",
@@ -136,7 +136,7 @@ export default function Desktop() {
               whileHover={{ backgroundColor: "rgba(11,29,58,0.05)" }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsVideoModalOpen(true)}
-              className="bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[15px] px-10 py-4 rounded border border-[#0B1D3A]/15 hover:border-[#0B1D3A]/25 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
+              className="bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[15px] px-10 py-4 rounded-[4px] border border-[#0B1D3A]/15 hover:border-[#0B1D3A]/25 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
             >
               {data.buttons.secondary}
             </motion.button>

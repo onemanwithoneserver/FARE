@@ -58,7 +58,7 @@ export default function Mobile() {
         className="w-full relative z-20"
       >
         <div
-          className="w-full rounded pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl luxury-shadow-float border border-[#0B1D3A]/10"
+          className="w-full rounded-[4px] pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl luxury-shadow-float border border-[#0B1D3A]/10"
           style={{
             background:
               "linear-gradient(145deg, rgba(255,255,255,0.85) 0%, rgba(248,249,252,0.95) 100%)",
@@ -102,7 +102,7 @@ export default function Mobile() {
             <motion.button
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsModalOpen(true)}
-              className="group relative overflow-hidden w-full font-bold text-[14px] py-4 rounded transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] luxury-shadow-float"
+              className="group relative overflow-hidden w-full font-bold text-[14px] py-4 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] luxury-shadow-float"
               style={{
                 background:
                   "linear-gradient(135deg, #D5AA45 0%, #F3D37F 50%, #D5AA45 100%)",
@@ -118,7 +118,7 @@ export default function Mobile() {
             <motion.button
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsVideoModalOpen(true)}
-              className="w-full bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[14px] py-4 rounded border border-[#0B1D3A]/15 transition-all duration-300 cursor-pointer backdrop-blur-sm"
+              className="w-full bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[14px] py-4 rounded-[4px] border border-[#0B1D3A]/15 transition-all duration-300 cursor-pointer backdrop-blur-sm"
             >
               {data.buttons.secondary}
             </motion.button>

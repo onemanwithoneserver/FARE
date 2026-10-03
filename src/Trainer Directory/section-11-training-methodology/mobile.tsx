@@ -59,7 +59,7 @@ export default function Mobile() {
         <div className="flex flex-col gap-10">
           
           <div className="flex flex-col gap-5">
-            <motion.div variants={item} className="relative rounded p-8 luxury-shadow-float overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
+            <motion.div variants={item} className="relative rounded-[4px] p-8 luxury-shadow-float overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
               <motion.div 
                 animate={{ scale: [1, 1.2, 1], rotate: [0, 5, 0] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -90,7 +90,7 @@ export default function Mobile() {
               {data.methodology.tags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="text-[11px] font-bold px-3 py-1.5 rounded bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/80 shadow-[0_2px_8px_rgba(11,29,58,0.04)]"
+                  className="text-[11px] font-bold px-3 py-1.5 rounded-[4px] bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/80 shadow-[0_2px_8px_rgba(11,29,58,0.04)]"
                 >
                   <span className="w-1.5 h-1.5 rounded-full inline-block mr-1.5 shadow-sm" style={{ background: GOLD }} />
                   {tag}
@@ -110,9 +110,9 @@ export default function Mobile() {
                 className="flex items-start gap-4 relative z-10 pb-8 last:pb-0"
               >
                 
-                <div className="w-10 h-10 rounded bg-white border border-[#0B1D3A]/[0.08] shadow-sm flex items-center justify-center shrink-0 relative overflow-hidden">
+                <div className="w-10 h-10 rounded-[4px] bg-white border border-[#0B1D3A]/[0.08] shadow-sm flex items-center justify-center shrink-0 relative overflow-hidden">
                   <div className="absolute inset-0 opacity-10" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }} />
-                  <div className="text-white relative z-10 w-7 h-7 rounded flex items-center justify-center shadow-sm" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
+                  <div className="text-white relative z-10 w-7 h-7 rounded-[4px] flex items-center justify-center shadow-sm" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
                     {FORMAT_ICONS[idx % FORMAT_ICONS.length].icon}
                   </div>
                 </div>

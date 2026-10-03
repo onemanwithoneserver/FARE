@@ -215,7 +215,7 @@ export default function Desktop() {
                   y: -6,
                   transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
                 }}
-                className="group bg-gradient-to-b from-white/95 via-red-50/60 to-red-100/40 backdrop-blur-md border border-red-200/90 hover:border-red-400 rounded p-4 shadow-[0_4px_16px_-4px_rgba(220,38,38,0.08)] hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[170px] justify-center cursor-default"
+                className="group bg-gradient-to-b from-white/95 via-red-50/60 to-red-100/40 backdrop-blur-md border border-red-200/90 hover:border-red-400 rounded-[4px] p-4 shadow-[0_4px_16px_-4px_rgba(220,38,38,0.08)] hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[170px] justify-center cursor-default"
               >
                 <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-red-500/0 to-transparent group-hover:via-red-500/90 transition-all duration-400" />
                 <motion.div
@@ -231,7 +231,7 @@ export default function Desktop() {
                   {emoji}
                 </span>
                 <div
-                  className="mb-3 w-10 h-10 rounded-xl shadow-md flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 relative overflow-hidden ring-2 ring-red-100/60"
+                  className="mb-3 w-10 h-10 rounded-[8px] shadow-md flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 relative overflow-hidden ring-2 ring-red-100/60"
                   style={{ backgroundColor: color }}
                 >
                   <Icon size={20} className="text-white relative z-10" />
@@ -251,7 +251,7 @@ export default function Desktop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-[850px] mx-auto text-center rounded p-14 luxury-shadow-float relative overflow-hidden"
+          className="max-w-[850px] mx-auto text-center rounded-[4px] p-14 luxury-shadow-float relative overflow-hidden"
           style={{
             background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)`,
           }}

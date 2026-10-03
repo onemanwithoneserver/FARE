@@ -84,7 +84,7 @@ export default function Desktop() {
                 key={idx}
                 variants={item}
                 whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-                className="group rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out border border-white/[0.08] hover:border-white/[0.2]"
+                className="group rounded-[4px] p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out border border-white/[0.08] hover:border-white/[0.2]"
                 style={{ background: "rgba(255,255,255,0.04)", backdropFilter: "blur(20px)" }}
               >
                 
@@ -98,7 +98,7 @@ export default function Desktop() {
                 />
 
                 <div
-                  className="w-12 h-12 rounded flex items-center justify-center text-white shadow-lg mb-6 group-hover:scale-110 transition-transform duration-400"
+                  className="w-12 h-12 rounded-[4px] flex items-center justify-center text-white shadow-lg mb-6 group-hover:scale-110 transition-transform duration-400"
                   style={{ background: m.accent }}
                 >
                   {m.icon}
@@ -119,7 +119,7 @@ export default function Desktop() {
 
                 <div className="mt-auto pt-4 border-t border-white/[0.08] flex items-center justify-between">
                   <span className="text-[10px] text-white/40 uppercase tracking-[0.15em] font-bold">{t("Source")}</span>
-                  <span className="text-[11px] text-white/60 font-semibold bg-white/[0.06] px-2.5 py-1 rounded">{metric.source}</span>
+                  <span className="text-[11px] text-white/60 font-semibold bg-white/[0.06] px-2.5 py-1 rounded-[4px]">{metric.source}</span>
                 </div>
               </motion.div>
             );
@@ -132,7 +132,7 @@ export default function Desktop() {
             <motion.div
               key={idx}
               variants={item}
-              className="group rounded p-6 flex items-center justify-between relative overflow-hidden border border-white/[0.1] hover:border-white/[0.2] transition-all duration-400"
+              className="group rounded-[4px] p-6 flex items-center justify-between relative overflow-hidden border border-white/[0.1] hover:border-white/[0.2] transition-all duration-400"
               style={{ background: `linear-gradient(135deg, rgba(201,154,46,0.08) 0%, rgba(201,154,46,0.02) 100%)` }}
             >
               <div

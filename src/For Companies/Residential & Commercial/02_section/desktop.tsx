@@ -220,7 +220,7 @@ export default function Desktop() {
                   y: -6,
                   transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
                 }}
-                className="w-[calc(20%-13px)] min-w-[200px] group bg-gradient-to-b from-white/95 via-red-50/60 to-red-100/40 backdrop-blur-md border border-red-200/90 hover:border-red-400 rounded p-4 shadow-[0_4px_16px_-4px_rgba(220,38,38,0.08)] hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[170px] justify-center cursor-default"
+                className="w-[calc(20%-13px)] min-w-[200px] group bg-gradient-to-b from-white/95 via-red-50/60 to-red-100/40 backdrop-blur-md border border-red-200/90 hover:border-red-400 rounded-[4px] p-4 shadow-[0_4px_16px_-4px_rgba(220,38,38,0.08)] hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[170px] justify-center cursor-default"
               >
                 <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-red-500/0 to-transparent group-hover:via-red-500/90 transition-all duration-400" />
                 <motion.div
@@ -236,7 +236,7 @@ export default function Desktop() {
                   {emoji}
                 </span>
                 <div
-                  className="mb-3 w-10 h-10 rounded-xl shadow-md flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 relative overflow-hidden ring-2 ring-red-100/60"
+                  className="mb-3 w-10 h-10 rounded-[8px] shadow-md flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 relative overflow-hidden ring-2 ring-red-100/60"
                   style={{ backgroundColor: color }}
                 >
                   <Icon
@@ -260,7 +260,7 @@ export default function Desktop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-[1000px] mx-auto bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded p-16 text-center luxury-shadow-float relative overflow-hidden"
+          className="max-w-[1000px] mx-auto bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-[4px] p-16 text-center luxury-shadow-float relative overflow-hidden"
         >
           <motion.div
             animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}

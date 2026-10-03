@@ -119,7 +119,7 @@ export default function Desktop() {
                 key={index}
                 variants={item}
                 whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-8 hover:bg-white hover:border-[#0B1D3A]/20 transition-all duration-400 group relative overflow-hidden luxury-shadow-float flex flex-col"
+                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded-[4px] p-8 hover:bg-white hover:border-[#0B1D3A]/20 transition-all duration-400 group relative overflow-hidden luxury-shadow-float flex flex-col"
               >
                 <motion.div
                   animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -137,7 +137,7 @@ export default function Desktop() {
                 ></div>
                 <div className="flex items-center gap-4 mb-6 relative z-10">
                   <div
-                    className="w-14 h-14 rounded flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden shrink-0"
+                    className="w-14 h-14 rounded-[4px] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden shrink-0"
                     style={{ backgroundColor: segment.color }}
                   >
                     <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
@@ -170,7 +170,7 @@ export default function Desktop() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
-            className="rounded p-12 lg:p-14 relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/30"
+            className="rounded-[4px] p-12 lg:p-14 relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/30"
             style={{
               background:
                 "linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)",
@@ -200,14 +200,14 @@ export default function Desktop() {
                 <motion.div
                   key={index}
                   variants={item}
-                  className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] bg-white/[0.06] backdrop-blur-md border border-white/10 rounded p-8 hover:border-[#C99A2E]/40 hover:bg-white/[0.08] hover:luxury-shadow-float transition-all duration-400 group cursor-default flex flex-col justify-between"
+                  className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] bg-white/[0.06] backdrop-blur-md border border-white/10 rounded-[4px] p-8 hover:border-[#C99A2E]/40 hover:bg-white/[0.08] hover:luxury-shadow-float transition-all duration-400 group cursor-default flex flex-col justify-between"
                 >
                   <div className="flex items-center gap-5 mb-5">
                     <div
-                      className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]"
+                      className="w-14 h-14 rounded-[8px] flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]"
                       style={{ backgroundColor: learner.color }}
                     >
-                      <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded-xl"></div>
+                      <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded-[8px]"></div>
                       {learnerIcons[learner.icon as keyof typeof learnerIcons]}
                     </div>
                     <h4 className="text-[20px] font-bold text-white leading-tight">

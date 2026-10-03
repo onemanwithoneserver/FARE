@@ -39,7 +39,7 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
             <div className="flex items-center justify-between px-5 pb-4 pt-2 border-b border-[#0B1D3A]/[0.07] shrink-0">
               <div className="flex items-center gap-2.5">
                 <div
-                  className="w-9 h-9 rounded-xl flex items-center justify-center"
+                  className="w-9 h-9 rounded-[8px] flex items-center justify-center"
                   style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
                 >
                   <SlidersHorizontal size={15} strokeWidth={2.5} style={{ color: GOLD_MID }} />
@@ -92,14 +92,14 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-xl border-t border-[#0B1D3A]/[0.07] flex items-center gap-3">
               <button
                 onClick={onClear}
-                className="flex-1 h-12 rounded-xl text-[#0B1D3A] font-bold text-[14px] flex items-center justify-center gap-2 bg-[#F5F7FB] border border-[#0B1D3A]/[0.06] active:bg-[#EEF2F8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+                className="flex-1 h-12 rounded-[8px] text-[#0B1D3A] font-bold text-[14px] flex items-center justify-center gap-2 bg-[#F5F7FB] border border-[#0B1D3A]/[0.06] active:bg-[#EEF2F8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
               >
                 <RotateCcw size={15} strokeWidth={2.5} />
                 {t("Clear")}
               </button>
               <button
                 onClick={onClose}
-                className="flex-[1.6] h-12 rounded-xl text-white font-bold text-[14px] flex items-center justify-center gap-1.5 shadow-[0_10px_24px_-10px_rgba(11,29,58,0.6)] active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+                className="flex-[1.6] h-12 rounded-[8px] text-white font-bold text-[14px] flex items-center justify-center gap-1.5 shadow-[0_10px_24px_-10px_rgba(11,29,58,0.6)] active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
               >
                 {language === "te"

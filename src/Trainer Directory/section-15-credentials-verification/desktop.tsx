@@ -61,12 +61,12 @@ export default function Desktop() {
               key={cred}
               variants={item}
               whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-              className="group rounded-xl p-7 flex flex-col relative overflow-hidden transition-all duration-300 border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/[0.4] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] bg-white"
+              className="group rounded-[8px] p-7 flex flex-col relative overflow-hidden transition-all duration-300 border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/[0.4] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] bg-white"
             >
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C99A2E] to-[#D5AA45]" />
               <div className="flex items-center justify-between mb-7 relative z-10">
                 <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform duration-300"
+                  className="w-12 h-12 rounded-[8px] flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform duration-300"
                   style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
                 >
                   <Award size={22} strokeWidth={2.5} />

@@ -66,7 +66,7 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-50px" }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-white/80 border border-[#0B1D3A]/10 rounded-xl overflow-hidden backdrop-blur-xl luxury-shadow-float relative hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="bg-white/80 border border-[#0B1D3A]/10 rounded-[8px] overflow-hidden backdrop-blur-xl luxury-shadow-float relative hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div
                   className="absolute top-0 right-0 w-[200px] h-[200px] opacity-[0.06] blur-[50px] pointer-events-none rounded-bl-full"
@@ -82,7 +82,7 @@ export default function Mobile() {
                   <div className="flex flex-col">
                     <div className="flex items-center gap-4 mb-5">
                       <div
-                        className="w-12 h-12 shrink-0 rounded-lg flex items-center justify-center shadow-md"
+                        className="w-12 h-12 shrink-0 rounded-[8px] flex items-center justify-center shadow-md"
                         style={{ backgroundColor: activeColor }}
                       >
                         {TAB_ICONS[tab.id]}
@@ -110,7 +110,7 @@ export default function Mobile() {
                         ) => (
                           <div
                             key={idx}
-                            className="bg-gradient-to-b from-[#0B1D3A]/[0.02] to-transparent rounded-lg p-5 border border-[#0B1D3A]/[0.06] relative overflow-hidden"
+                            className="bg-gradient-to-b from-[#0B1D3A]/[0.02] to-transparent rounded-[8px] p-5 border border-[#0B1D3A]/[0.06] relative overflow-hidden"
                           >
                             <div
                               className="absolute top-0 right-0 w-20 h-20 opacity-10 blur-[20px] pointer-events-none"
@@ -156,7 +156,7 @@ export default function Mobile() {
                   <div className="flex flex-col gap-4 border-t border-[#0B1D3A]/[0.08] pt-6">
                     {(activeContent.journey ||
                       activeContent.evaluateBasedOn) && (
-                      <div className="bg-[#0B1D3A]/[0.03] rounded-lg p-5 border border-[#0B1D3A]/[0.06]">
+                      <div className="bg-[#0B1D3A]/[0.03] rounded-[8px] p-5 border border-[#0B1D3A]/[0.06]">
                         {activeContent.journey && (
                           <div>
                             <h4 className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.2em] mb-4">
@@ -206,7 +206,7 @@ export default function Mobile() {
                                 .map((tag: string, i: number) => (
                                   <span
                                     key={i}
-                                    className="px-3 py-1.5 rounded-md bg-white border border-[#0B1D3A]/10 text-[12px] font-semibold text-[#475569] shadow-sm"
+                                    className="px-3 py-1.5 rounded-[4px] bg-white border border-[#0B1D3A]/10 text-[12px] font-semibold text-[#475569] shadow-sm"
                                   >
                                     {tag}
                                   </span>
@@ -216,7 +216,7 @@ export default function Mobile() {
                         )}
                       </div>
                     )}
-                    <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-lg p-6 luxury-shadow-float mt-2 relative overflow-hidden">
+                    <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-[8px] p-6 luxury-shadow-float mt-2 relative overflow-hidden">
                       <div
                         className="absolute top-0 right-0 w-24 h-24 opacity-20 blur-[20px]"
                         style={{ background: activeColor }}
@@ -233,7 +233,7 @@ export default function Mobile() {
                           (btn: string, idx: number) => (
                             <button
                               key={idx}
-                              className={`w-full py-3.5 px-4 rounded-md text-[13.5px] font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
+                              className={`w-full py-3.5 px-4 rounded-[8px] text-[13.5px] font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
                                 idx === 0
                                   ? "text-[#0B1D3A] bg-white shadow-md active:scale-[0.98]"
                                   : "text-white border border-white/20 active:scale-[0.98]"

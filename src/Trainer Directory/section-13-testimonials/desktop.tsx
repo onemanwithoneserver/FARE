@@ -48,8 +48,8 @@ export default function Desktop() {
         </motion.div>
 
         <motion.div variants={item} className="w-full max-w-[900px] mx-auto">
-          <div className="grid gap-6 rounded-3xl border border-[#0B1D3A]/[0.08] bg-gradient-to-br from-white via-[#FBFCFE] to-[#F3F6FB] p-8 luxury-shadow-float md:grid-cols-[auto_1fr] md:items-center md:gap-8 md:p-10">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-[#C99A2E]/20 bg-[#FBF4E4] text-[#A87918] shadow-sm">
+          <div className="grid gap-6 rounded-[16px] border border-[#0B1D3A]/[0.08] bg-gradient-to-br from-white via-[#FBFCFE] to-[#F3F6FB] p-8 luxury-shadow-float md:grid-cols-[auto_1fr] md:items-center md:gap-8 md:p-10">
+            <div className="flex h-20 w-20 items-center justify-center rounded-[16px] border border-[#C99A2E]/20 bg-[#FBF4E4] text-[#A87918] shadow-sm">
               <Building2 size={32} strokeWidth={1.8} aria-hidden="true" />
             </div>
             <div>

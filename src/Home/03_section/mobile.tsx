@@ -139,7 +139,7 @@ export default function Mobile() {
               <motion.div
                 key={persona.id}
                 variants={itemVariants}
-                className="bg-white/95 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-xl relative overflow-hidden luxury-shadow-float transition-all duration-300 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="bg-white/95 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[8px] relative overflow-hidden luxury-shadow-float transition-all duration-300 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px]"
@@ -158,7 +158,7 @@ export default function Mobile() {
                 >
                   <div className="flex items-center gap-3.5">
                     <div
-                      className="w-11 h-11 rounded-lg flex items-center justify-center text-white shadow-sm shrink-0"
+                      className="w-11 h-11 rounded-[8px] flex items-center justify-center text-white shadow-sm shrink-0"
                       style={{
                         background: `linear-gradient(135deg, ${accent} 0%, ${accent}DD 100%)`,
                       }}
@@ -206,7 +206,7 @@ export default function Mobile() {
                           {persona.items.map((it, idx) => (
                             <div
                               key={idx}
-                              className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg"
+                              className="flex items-center gap-3 px-3.5 py-2.5 rounded-[8px]"
                               style={{
                                 background: `linear-gradient(135deg, ${accent}0A, ${accent}03)`,
                                 border: `1px solid ${accent}18`,

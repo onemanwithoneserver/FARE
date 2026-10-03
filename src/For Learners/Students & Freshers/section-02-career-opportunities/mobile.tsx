@@ -59,7 +59,7 @@ export default function Mobile() {
               className="bg-gradient-to-br from-white to-[#FAFBFF] p-6 rounded-[18px] luxury-shadow-float border border-[#E2E8F0]/60 flex flex-col"
             >
               <div className="flex items-center gap-3.5 mb-5">
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-gradient-to-br ${i === 0 ? "from-[#38BDF8] to-[#0284C7]" : "from-[#F472B6] to-[#DB2777]"} shadow-sm`}>
+                <div className={`w-12 h-12 rounded-[8px] flex items-center justify-center shrink-0 bg-gradient-to-br ${i === 0 ? "from-[#38BDF8] to-[#0284C7]" : "from-[#F472B6] to-[#DB2777]"} shadow-sm`}>
                   {i === 0 ? <Building2 size={22} className="text-white" strokeWidth={2} /> : <Briefcase size={22} className="text-white" strokeWidth={2} />}
                 </div>
                 <div>
@@ -74,7 +74,7 @@ export default function Mobile() {
               
               <div className="flex flex-col gap-3.5 flex-grow">
                 {opp.categories.map((cat, j) => (
-                  <div key={j} className="bg-[#F8FAFC]/90 rounded-xl p-3.5 border border-[#F1F5F9]">
+                  <div key={j} className="bg-[#F8FAFC]/90 rounded-[8px] p-3.5 border border-[#F1F5F9]">
                     <h4 className="text-[12.5px] font-bold text-[#0B1D3A] uppercase tracking-wide mb-1 flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E]"></span>
                       {cat.name}

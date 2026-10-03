@@ -84,7 +84,7 @@ export default function Desktop() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative p-6 rounded flex items-center gap-5 text-left transition-all duration-500 w-full overflow-hidden group ${
+                  className={`relative p-6 rounded-[4px] flex items-center gap-5 text-left transition-all duration-500 w-full overflow-hidden group ${
                     isActive
                       ? "bg-gradient-to-r from-[#0B1D3A] to-[#132D5F] luxury-shadow-float border border-transparent scale-[1.02]"
                       : "bg-white border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/10 hover:bg-white shadow-sm hover:shadow-md"
@@ -109,7 +109,7 @@ export default function Desktop() {
                     ></motion.div>
                   )}
                   <div
-                    className={`w-14 h-14 rounded flex items-center justify-center shrink-0 transition-all duration-500 relative overflow-hidden ${
+                    className={`w-14 h-14 rounded-[4px] flex items-center justify-center shrink-0 transition-all duration-500 relative overflow-hidden ${
                       isActive
                         ? "text-white shadow-[0_8px_16px_-4px_rgba(0,0,0,0.3)] scale-110"
                         : "bg-[#F8FAFD] text-[#0B1D3A]/40 group-hover:scale-105"
@@ -144,7 +144,7 @@ export default function Desktop() {
               );
             })}
           </div>
-          <div className="flex-1 w-full bg-white border border-[#0B1D3A]/[0.06] rounded p-10 lg:p-14 flex flex-col relative overflow-hidden luxury-shadow-float">
+          <div className="flex-1 w-full bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-10 lg:p-14 flex flex-col relative overflow-hidden luxury-shadow-float">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -187,10 +187,10 @@ export default function Desktop() {
                         delay: idx * 0.1,
                         ease: "easeOut",
                       }}
-                      className="group flex items-start gap-4 p-4 rounded hover:bg-[#F8FAFD] transition-colors duration-300 border border-transparent hover:border-[#0B1D3A]/5 cursor-default"
+                      className="group flex items-start gap-4 p-4 rounded-[4px] hover:bg-[#F8FAFD] transition-colors duration-300 border border-transparent hover:border-[#0B1D3A]/5 cursor-default"
                     >
                       <div
-                        className="mt-1 shrink-0 p-1.5 rounded transition-colors duration-300 shadow-sm text-white"
+                        className="mt-1 shrink-0 p-1.5 rounded-[4px] transition-colors duration-300 shadow-sm text-white"
                         style={{ backgroundColor: activeTabData.color }}
                       >
                         <CheckCircle2 size={18} strokeWidth={3} />

@@ -93,12 +93,12 @@ export default function Desktop() {
                   />
                   <motion.div
                     whileHover={{ y: -2, transition: { duration: 0.25 } }}
-                    className="relative w-3/4 min-h-[142px] overflow-hidden rounded border border-[#0B1D3A]/[0.08] bg-white p-5 shadow-[0_8px_24px_-16px_rgba(11,29,58,0.3)] transition-shadow hover:shadow-[0_20px_40px_-20px_rgba(11,29,58,0.3)]"
+                    className="relative w-3/4 min-h-[142px] overflow-hidden rounded-[4px] border border-[#0B1D3A]/[0.08] bg-white p-5 shadow-[0_8px_24px_-16px_rgba(11,29,58,0.3)] transition-shadow hover:shadow-[0_20px_40px_-20px_rgba(11,29,58,0.3)]"
                   >
                     <div className="absolute inset-x-0 top-0 h-[3px]" style={{ background: colors.bg }} />
                     <div className="flex items-center gap-4">
                       <div
-                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded text-[13px] font-black text-white shadow-sm"
+                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[4px] text-[13px] font-black text-white shadow-sm"
                         style={{ background: colors.bg }}
                       >
                         {initialsOf(timelineItem.company)}
@@ -115,7 +115,7 @@ export default function Desktop() {
                     </div>
                     <div className="mt-4">
                       <span
-                        className="inline-block rounded border px-3 py-2 text-[12px] font-semibold"
+                        className="inline-block rounded-[4px] border px-3 py-2 text-[12px] font-semibold"
                         style={{
                           background: `${colors.accent}08`,
                           borderColor: `${colors.accent}20`,
