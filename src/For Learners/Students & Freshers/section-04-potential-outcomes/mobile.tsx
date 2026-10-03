@@ -62,12 +62,12 @@ export default function Mobile() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-[#F8FAFD] p-5 rounded-xl border border-[#E2E8F0]/80 shadow-[0_2px_12px_rgba(11,29,58,0.02)] relative overflow-hidden flex flex-col h-full"
+                className="bg-[#F8FAFD] p-5 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_2px_12px_rgba(11,29,58,0.02)] relative overflow-hidden flex flex-col h-full"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-current to-transparent opacity-[0.03] translate-x-1/3 -translate-y-1/3 rounded-full pointer-events-none" style={{ color: NAVY }} />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-current to-transparent opacity-[0.03] translate-x-1/3 -translate-y-1/3 rounded-[4px]-full pointer-events-none" style={{ color: NAVY }} />
                 
                 <div className="flex items-center gap-3.5 mb-4 relative z-10">
-                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md shrink-0`}>
+                  <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md shrink-0`}>
                     <Icon size={22} className="text-white" strokeWidth={2.5} />
                   </div>
                   <div>
@@ -96,7 +96,7 @@ export default function Mobile() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-center"
           >
-            <div className="bg-[#F8FAFD] px-6 py-5 rounded-xl border border-[#E2E8F0]/80 luxury-shadow-float">
+            <div className="bg-[#F8FAFD] px-6 py-5 rounded-[4px] border border-[#E2E8F0]/80 luxury-shadow-float">
               <p className="text-[17px] font-black text-[#0B1D3A] whitespace-pre-wrap leading-relaxed tracking-tight">
                 {data.closing}
               </p>

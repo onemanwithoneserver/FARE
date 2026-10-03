@@ -44,7 +44,7 @@ export default function Mobile() {
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -20, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] right-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-40"
+        className="absolute top-[20%] right-[-10%] w-[250px] h-[250px] rounded-[4px]-[4px]-[4px]-full blur-[80px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%)" }}
       />
 
@@ -56,7 +56,7 @@ export default function Mobile() {
         className="relative z-10 w-full"
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-5">
-          <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[3px] h-6 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Expertise")}</h2>
         </motion.div>
 
@@ -65,7 +65,7 @@ export default function Mobile() {
             <motion.div
               key={idx}
               variants={item}
-              className="bg-white/90 backdrop-blur-xl rounded p-4 border border-[#0B1D3A]/[0.06] luxury-shadow-float relative overflow-hidden group"
+              className="bg-white/90 backdrop-blur-xl rounded-[4px]-[4px]-[4px] p-4 border border-[#0B1D3A]/[0.06] luxury-shadow-float relative overflow-hidden group"
             >
               <div
                 className="absolute top-0 left-0 right-0 h-[3px] opacity-60"
@@ -73,7 +73,7 @@ export default function Mobile() {
               />
               <div className="flex items-center gap-2 mb-3">
                 <div
-                  className="w-9 h-9 rounded flex items-center justify-center text-white shadow-md"
+                  className="w-9 h-9 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shadow-md"
                   style={{ background: domainColors[idx % domainColors.length].bg }}
                 >
                   {getCategoryIcon(categoryObj.category, 14, 2.5)}
@@ -82,9 +82,9 @@ export default function Mobile() {
               </div>
               <ul className="flex flex-col gap-1.5">
                 {categoryObj.skills.map((skill, tIdx) => (
-                  <li key={tIdx} className="flex items-start gap-2.5 text-[13px] text-[#5A6B82] font-medium leading-[1.4] p-2 rounded bg-[#0B1D3A]/[0.02]">
+                  <li key={tIdx} className="flex items-start gap-2.5 text-[13px] text-[#5A6B82] font-medium leading-[1.4] p-2 rounded-[4px]-[4px]-[4px] bg-[#0B1D3A]/[0.02]">
                     <span
-                      className="w-1.5 h-1.5 rounded-full shrink-0 mt-1"
+                      className="w-1.5 h-1.5 rounded-[4px]-[4px]-[4px]-full shrink-0 mt-1"
                       style={{ background: domainColors[idx % domainColors.length].accent }}
                     />
                     {skill.name}

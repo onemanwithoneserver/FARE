@@ -43,12 +43,12 @@ export default function Desktop() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#C5D9FF]/50 to-transparent rounded-full blur-[100px] pointer-events-none z-0"
+        className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#C5D9FF]/50 to-transparent rounded-[4px]-full blur-[100px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[20%] right-[-5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none z-0"
+        className="absolute bottom-[20%] right-[-5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-[4px]-full blur-[80px] pointer-events-none z-0"
       ></motion.div>
       <div
         className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
@@ -67,7 +67,7 @@ export default function Desktop() {
         >
           <motion.div variants={item} className="mb-4">
             <span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[4px]-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
               style={{ color: GOLD }}
             >
               <Sparkles
@@ -116,7 +116,7 @@ export default function Desktop() {
           >
             {data.testAreas.map((area, idx) => (
               <div key={idx} className="flex items-start gap-3 group">
-                <div className="w-5 h-5 rounded-full bg-[#10B981]/10 border border-[#10B981]/30 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-[#10B981] group-hover:border-[#10B981] transition-colors duration-300">
+                <div className="w-5 h-5 rounded-[4px]-full bg-[#10B981]/10 border border-[#10B981]/30 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-[#10B981] group-hover:border-[#10B981] transition-colors duration-300">
                   <CheckCircle2
                     size={13}
                     strokeWidth={3}
@@ -135,7 +135,7 @@ export default function Desktop() {
           >
             <button
               onClick={() => setIsVideoModalOpen(true)}
-              className="group relative overflow-hidden text-white px-6 py-3 rounded text-[14px] font-bold hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-3 cursor-pointer"
+              className="group relative overflow-hidden text-white px-6 py-3 rounded-[4px] text-[14px] font-bold hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-3 cursor-pointer"
               style={{
                 background: `linear-gradient(135deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)`,
               }}
@@ -149,7 +149,7 @@ export default function Desktop() {
             </button>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-3 rounded text-[14px] font-bold hover:bg-[#F8FAFD] hover:border-[#0B1D3A]/30 transition-all flex items-center gap-2 shadow-sm hover:luxury-shadow-float active:scale-[0.98]"
+              className="bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-3 rounded-[4px] text-[14px] font-bold hover:bg-[#F8FAFD] hover:border-[#0B1D3A]/30 transition-all flex items-center gap-2 shadow-sm hover:luxury-shadow-float active:scale-[0.98]"
             >
               {data.secondaryButton}
             </button>
@@ -168,12 +168,12 @@ export default function Desktop() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="flex-1 max-w-[500px] relative perspective-1000"
         >
-          <div className="absolute -inset-4 bg-gradient-to-tr from-[#60A5FA]/10 to-[#C99A2E]/10 rounded-[3rem] -z-10 blur-xl"></div>
-          <div className="bg-white/80 backdrop-blur-xl rounded p-6 luxury-shadow-float border border-white relative z-10 overflow-hidden transform-gpu">
-            <div className="absolute top-[-50px] right-[-50px] w-48 h-48 bg-[#C99A2E]/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute -inset-4 bg-gradient-to-tr from-[#60A5FA]/10 to-[#C99A2E]/10 rounded-[4px]-[3rem] -z-10 blur-xl"></div>
+          <div className="bg-white/80 backdrop-blur-xl rounded-[4px] p-6 luxury-shadow-float border border-white relative z-10 overflow-hidden transform-gpu">
+            <div className="absolute top-[-50px] right-[-50px] w-48 h-48 bg-[#C99A2E]/10 rounded-[4px]-full blur-3xl pointer-events-none"></div>
             <div className="flex items-center justify-between mb-6 relative z-10">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white luxury-shadow-float relative overflow-hidden">
+                <div className="w-14 h-14 rounded-[4px] bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white luxury-shadow-float relative overflow-hidden">
                   <div className="absolute inset-0 bg-white/0 translate-y-[100%] transition-transform duration-500 hover:translate-y-0"></div>
                   <ClipboardList
                     size={26}
@@ -189,7 +189,7 @@ export default function Desktop() {
                   </p>
                 </div>
               </div>
-              <div className="px-4 py-1.5 bg-[#C99A2E]/10 text-[#C99A2E] text-[12px] font-bold uppercase tracking-wider rounded-full border border-[#C99A2E]/20">
+              <div className="px-4 py-1.5 bg-[#C99A2E]/10 text-[#C99A2E] text-[12px] font-bold uppercase tracking-wider rounded-[4px]-full border border-[#C99A2E]/20">
                 Free
               </div>
             </div>
@@ -224,13 +224,13 @@ export default function Desktop() {
                     className="flex items-center gap-4 group cursor-default"
                   >
                     <div
-                      className={`w-12 h-12 rounded ${color.bg} flex items-center justify-center text-white font-black text-[16px] shadow-sm shrink-0 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden`}
+                      className={`w-12 h-12 rounded-[4px] ${color.bg} flex items-center justify-center text-white font-black text-[16px] shadow-sm shrink-0 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden`}
                     >
                       <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-300"></div>
                       <span className="relative z-10">{i + 1}</span>
                     </div>
                     <div
-                      className={`flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-sm rounded p-4 group-hover:luxury-shadow-float group-hover:border-[#C99A2E]/30 transition-all duration-300 relative overflow-hidden`}
+                      className={`flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-sm rounded-[4px] p-4 group-hover:luxury-shadow-float group-hover:border-[#C99A2E]/30 transition-all duration-300 relative overflow-hidden`}
                     >
                       <div
                         className={`absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${color.bg}`}
@@ -262,7 +262,7 @@ export default function Desktop() {
                     ease: "easeInOut",
                     delay: i * 0.18,
                   }}
-                  className="w-[10%] bg-gradient-to-t from-[#C99A2E]/45 via-[#E2C068]/30 to-[#C99A2E]/15 rounded-t shadow-[0_0_10px_rgba(201,154,46,0.12)]"
+                  className="w-[10%] bg-gradient-to-t from-[#C99A2E]/45 via-[#E2C068]/30 to-[#C99A2E]/15 rounded-[4px]-t shadow-[0_0_10px_rgba(201,154,46,0.12)]"
                 />
               ))}
             </div>

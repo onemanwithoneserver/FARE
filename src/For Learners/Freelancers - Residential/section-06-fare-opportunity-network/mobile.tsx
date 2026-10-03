@@ -40,9 +40,9 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px] border border-[#E2E8F0]/60 shadow-[0_2px_8px_rgba(11,29,58,0.02)] flex flex-col"
+                className="bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px]-[4px] border border-[#E2E8F0]/60 shadow-[0_2px_8px_rgba(11,29,58,0.02)] flex flex-col"
               >
-                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-4`}>
+                <div className={`w-12 h-12 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-4`}>
                   <Icon size={22} className="text-white" strokeWidth={2.5} />
                 </div>
                 
@@ -57,7 +57,7 @@ export default function Mobile() {
                   {itemData.text}
                 </p>
                 
-                <div className="w-9 h-9 rounded-[4px] bg-white flex items-center justify-center shadow-sm border border-[#E2E8F0] self-end">
+                <div className="w-9 h-9 rounded-[4px]-[4px] bg-white flex items-center justify-center shadow-sm border border-[#E2E8F0] self-end">
                   <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#0B1D3A]"}`} style={{ fontSize: `${16}px` }}>
       <ChevronRight size={16} strokeWidth={2} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
       <ArrowRight size={16} strokeWidth={2} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />

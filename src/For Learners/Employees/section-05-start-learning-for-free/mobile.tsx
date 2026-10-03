@@ -9,7 +9,7 @@ export default function Mobile() {
 
   return (
     <section className="w-full bg-[#0B1D3A] py-16 px-6 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-[4px]-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-full mx-auto relative z-10">
         <motion.div
@@ -40,9 +40,9 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white/5 backdrop-blur-sm p-6 rounded-[4px] border border-white/10 flex flex-col items-center text-center"
+                className="bg-white/5 backdrop-blur-sm p-6 rounded-[4px]-[4px] border border-white/10 flex flex-col items-center text-center"
               >
-                <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-5`}>
+                <div className={`w-14 h-14 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-5`}>
                   <Icon size={26} className="text-white" strokeWidth={2.5} />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-3 tracking-wider uppercase">
@@ -53,7 +53,7 @@ export default function Mobile() {
                 </p>
                 
                 <button 
-                  className={`w-full py-3.5 rounded-[4px] font-bold text-[13px] transition-all duration-300 flex items-center justify-center gap-2 ${
+                  className={`w-full py-3.5 rounded-[4px]-[8px]-[4px] font-bold text-[13px] transition-all duration-300 flex items-center justify-center gap-2 ${
                     isFirst
                       ? "bg-[#10B981] text-white"
                       : "bg-[#C99A2E] text-[#0B1D3A]"

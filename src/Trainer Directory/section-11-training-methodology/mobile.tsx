@@ -34,13 +34,13 @@ export default function Mobile() {
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-30"
+        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-[4px]-[4px]-[4px]-full blur-[80px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1.05, 1, 1.05] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-40"
+        className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-[4px]-[4px]-[4px]-full blur-[90px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(11,29,58,0.06) 0%, transparent 70%)" }}
       />
 
@@ -52,18 +52,18 @@ export default function Mobile() {
         className="relative z-10 w-full"
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-8">
-          <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, #D5AA45)` }} />
+          <div className="w-[3px] h-6 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, #D5AA45)` }} />
           <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Methodology")}</h2>
         </motion.div>
 
         <div className="flex flex-col gap-10">
           
           <div className="flex flex-col gap-5">
-            <motion.div variants={item} className="relative rounded p-8 luxury-shadow-float overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
+            <motion.div variants={item} className="relative rounded-[4px]-[4px]-[4px] p-8 luxury-shadow-float overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
               <motion.div 
                 animate={{ scale: [1, 1.2, 1], rotate: [0, 5, 0] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 right-0 w-48 h-48 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[30px] pointer-events-none" 
+                className="absolute top-0 right-0 w-48 h-48 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[30px] pointer-events-none" 
               />
               <div
                 className="absolute inset-0 opacity-[0.05] pointer-events-none"
@@ -80,7 +80,7 @@ export default function Mobile() {
                   "{data.methodology.quote}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-6 h-0.5 rounded-full" style={{ background: GOLD }} />
+                  <div className="w-6 h-0.5 rounded-[4px]-[4px]-[4px]-full" style={{ background: GOLD }} />
                   <span className="text-[11px] font-black uppercase tracking-[0.15em] text-[#D5AA45]">{data.methodology.quoteAuthor}</span>
                 </div>
               </div>
@@ -90,9 +90,9 @@ export default function Mobile() {
               {data.methodology.tags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="text-[11px] font-bold px-3 py-1.5 rounded bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/80 shadow-[0_2px_8px_rgba(11,29,58,0.04)]"
+                  className="text-[11px] font-bold px-3 py-1.5 rounded-[4px]-[4px]-[4px] bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/80 shadow-[0_2px_8px_rgba(11,29,58,0.04)]"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full inline-block mr-1.5 shadow-sm" style={{ background: GOLD }} />
+                  <span className="w-1.5 h-1.5 rounded-[4px]-[4px]-[4px]-full inline-block mr-1.5 shadow-sm" style={{ background: GOLD }} />
                   {tag}
                 </span>
               ))}
@@ -110,9 +110,9 @@ export default function Mobile() {
                 className="flex items-start gap-4 relative z-10 pb-8 last:pb-0"
               >
                 
-                <div className="w-10 h-10 rounded bg-white border border-[#0B1D3A]/[0.08] shadow-sm flex items-center justify-center shrink-0 relative overflow-hidden">
+                <div className="w-10 h-10 rounded-[4px]-[4px]-[4px] bg-white border border-[#0B1D3A]/[0.08] shadow-sm flex items-center justify-center shrink-0 relative overflow-hidden">
                   <div className="absolute inset-0 opacity-10" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }} />
-                  <div className="text-white relative z-10 w-7 h-7 rounded flex items-center justify-center shadow-sm" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
+                  <div className="text-white relative z-10 w-7 h-7 rounded-[4px]-[4px]-[4px] flex items-center justify-center shadow-sm" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
                     {FORMAT_ICONS[idx % FORMAT_ICONS.length].icon}
                   </div>
                 </div>

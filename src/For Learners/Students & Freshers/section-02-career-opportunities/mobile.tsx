@@ -27,7 +27,7 @@ export default function Mobile() {
 
   return (
     <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-5 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-[4px]-full blur-[80px] pointer-events-none" />
       
       <div className="max-w-[480px] mx-auto relative z-10">
         <motion.div
@@ -56,10 +56,10 @@ export default function Mobile() {
             <motion.div
               key={i}
               variants={item}
-              className="bg-gradient-to-br from-white to-[#FAFBFF] p-6 rounded-[18px] luxury-shadow-float border border-[#E2E8F0]/60 flex flex-col"
+              className="bg-gradient-to-br from-white to-[#FAFBFF] p-6 rounded-[4px]-[18px] luxury-shadow-float border border-[#E2E8F0]/60 flex flex-col"
             >
               <div className="flex items-center gap-3.5 mb-5">
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-gradient-to-br ${i === 0 ? "from-[#38BDF8] to-[#0284C7]" : "from-[#F472B6] to-[#DB2777]"} shadow-sm`}>
+                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center shrink-0 bg-gradient-to-br ${i === 0 ? "from-[#38BDF8] to-[#0284C7]" : "from-[#F472B6] to-[#DB2777]"} shadow-sm`}>
                   {i === 0 ? <Building2 size={22} className="text-white" strokeWidth={2} /> : <Briefcase size={22} className="text-white" strokeWidth={2} />}
                 </div>
                 <div>
@@ -74,9 +74,9 @@ export default function Mobile() {
               
               <div className="flex flex-col gap-3.5 flex-grow">
                 {opp.categories.map((cat, j) => (
-                  <div key={j} className="bg-[#F8FAFC]/90 rounded-xl p-3.5 border border-[#F1F5F9]">
+                  <div key={j} className="bg-[#F8FAFC]/90 rounded-[4px] p-3.5 border border-[#F1F5F9]">
                     <h4 className="text-[12.5px] font-bold text-[#0B1D3A] uppercase tracking-wide mb-1 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E]"></span>
+                      <span className="w-1.5 h-1.5 rounded-[4px]-full bg-[#C99A2E]"></span>
                       {cat.name}
                     </h4>
                     <p className="text-[13.5px] text-[#64748B] font-medium leading-relaxed pl-3.5">
@@ -96,7 +96,7 @@ export default function Mobile() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-br from-white to-[#FAFBFF] px-6 py-5 rounded-[4px] border border-[#E2E8F0]/50 luxury-shadow-float">
+          <div className="bg-gradient-to-br from-white to-[#FAFBFF] px-6 py-5 rounded-[4px]-[4px] border border-[#E2E8F0]/50 luxury-shadow-float">
             <p className="text-[17px] font-black text-[#0B1D3A] whitespace-pre-wrap leading-relaxed tracking-tight">
               {data.closing}
             </p>

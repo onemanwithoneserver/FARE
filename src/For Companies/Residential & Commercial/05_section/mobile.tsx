@@ -60,7 +60,7 @@ export default function Mobile() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-10 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#3B82F6]/[0.04] to-transparent rounded-full blur-[60px] pointer-events-none"
+        className="absolute top-10 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#3B82F6]/[0.04] to-transparent rounded-[4px]-full blur-[60px] pointer-events-none"
       ></motion.div>
       <div className="w-full px-5 relative z-10">
         <motion.div
@@ -72,7 +72,7 @@ export default function Mobile() {
         >
           <motion.div variants={item} className="mb-4">
             <span
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[4px]-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
               style={{ color: GOLD }}
             >
               <Sparkles size={12} />
@@ -95,7 +95,7 @@ export default function Mobile() {
           className="flex flex-col gap-10 relative px-2"
         >
           <div className="absolute top-[25px] bottom-[15px] left-[33px] -translate-x-1/2 w-[28px] z-0 pointer-events-none flex flex-col items-center">
-            <div className="flex-1 w-[22px] bg-gradient-to-b from-white/90 via-[#F1F5F9]/80 to-white/90 border-x border-[#C99A2E]/30 backdrop-blur-md relative overflow-hidden rounded-t-full shadow-[0_2px_8px_rgba(201,154,46,0.08)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
+            <div className="flex-1 w-[22px] bg-gradient-to-b from-white/90 via-[#F1F5F9]/80 to-white/90 border-x border-[#C99A2E]/30 backdrop-blur-md relative overflow-hidden rounded-[4px]-t-full shadow-[0_2px_8px_rgba(201,154,46,0.08)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
               <motion.div
                 className="absolute inset-0 bg-gradient-to-b from-transparent via-[#C99A2E]/35 to-transparent h-1/3"
                 animate={{ y: ["-100%", "350%"] }}
@@ -115,15 +115,15 @@ export default function Mobile() {
               variants={item}
               className="flex items-start gap-5 relative z-10"
             >
-              <div className="w-[50px] h-[50px] shrink-0 rounded-full bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 flex items-center justify-center shadow-[0_4px_12px_-4px_rgba(11,29,58,0.1)] relative">
-                <div className="absolute inset-0 rounded-full border border-[#C99A2E]/20 scale-[1.1]"></div>
-                <div className="w-[38px] h-[38px] rounded-full bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] flex items-center justify-center shadow-inner">
+              <div className="w-[50px] h-[50px] shrink-0 rounded-[4px]-full bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 flex items-center justify-center shadow-[0_4px_12px_-4px_rgba(11,29,58,0.1)] relative">
+                <div className="absolute inset-0 rounded-[4px]-full border border-[#C99A2E]/20 scale-[1.1]"></div>
+                <div className="w-[38px] h-[38px] rounded-[4px]-full bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] flex items-center justify-center shadow-inner">
                   <span className="text-white text-[16px] font-bold font-serif">
                     {step.number}
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col pt-1 bg-white/40 backdrop-blur-sm border border-[#0B1D3A]/[0.04] p-4 rounded shadow-[0_2px_10px_-2px_rgba(11,29,58,0.03)] w-full">
+              <div className="flex flex-col pt-1 bg-white/40 backdrop-blur-sm border border-[#0B1D3A]/[0.04] p-4 rounded-[4px]-[4px] shadow-[0_2px_10px_-2px_rgba(11,29,58,0.03)] w-full">
                 <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-2">
                   {step.title}
                 </h3>
@@ -141,7 +141,7 @@ export default function Mobile() {
                       ease: "easeInOut",
                       delay: index * 0.2,
                     }}
-                    className="w-5 h-5 rounded-full bg-white/95 border border-[#C99A2E]/40 flex items-center justify-center shadow-sm"
+                    className="w-5 h-5 rounded-[4px]-full bg-white/95 border border-[#C99A2E]/40 flex items-center justify-center shadow-sm"
                   >
                     <ChevronDown
                       size={12}
@@ -160,7 +160,7 @@ export default function Mobile() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, margin: "-50px" }}
-            className="w-full bg-white/90 backdrop-blur-xl px-3 py-5 rounded border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-wrap items-center justify-center gap-2 relative z-10"
+            className="w-full bg-white/90 backdrop-blur-xl px-3 py-5 rounded-[4px]-[4px] border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-wrap items-center justify-center gap-2 relative z-10"
           >
             {data.journeyLabel.split(" → ").map((label, idx, arr) => {
               const isActive = activeStep === idx;
@@ -172,7 +172,7 @@ export default function Mobile() {
                       isActive ? { scale: 1.05, y: -1 } : { scale: 1, y: 0 }
                     }
                     transition={{ duration: 0.3 }}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-300 cursor-default select-none ${
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded-[4px]-full border transition-all duration-300 cursor-default select-none ${
                       isActive
                         ? "bg-[#0B1D3A] text-white border-[#C99A2E]/60 shadow-[0_4px_14px_rgba(11,29,58,0.22)]"
                         : "bg-[#F8FAFD] text-[#475569] border-[#0B1D3A]/[0.06]"
@@ -180,10 +180,10 @@ export default function Mobile() {
                   >
                     <span className="relative flex h-1.5 w-1.5">
                       {isActive && (
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C99A2E] opacity-75"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-[4px]-full bg-[#C99A2E] opacity-75"></span>
                       )}
                       <span
-                        className="relative inline-flex rounded-full h-1.5 w-1.5"
+                        className="relative inline-flex rounded-[4px]-full h-1.5 w-1.5"
                         style={{
                           backgroundColor: isActive
                             ? GOLD

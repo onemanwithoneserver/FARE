@@ -188,8 +188,8 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
           background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",
         }}
       >
-        <div className="absolute top-1/4 right-[15%] w-[500px] h-[500px] bg-gradient-radial from-[#DDEAFF]/50 to-transparent rounded-full blur-[100px] pointer-events-none z-0" />
-        <div className="absolute bottom-0 left-[10%] w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none z-0" />
+        <div className="absolute top-1/4 right-[15%] w-[500px] h-[500px] bg-gradient-radial from-[#DDEAFF]/50 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[100px] pointer-events-none z-0" />
+        <div className="absolute bottom-0 left-[10%] w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-[4px]-[4px]-[4px]-full blur-[80px] pointer-events-none z-0" />
         <svg
           className="absolute top-8 right-[8%] w-[280px] h-[280px] opacity-[0.04] pointer-events-none z-0"
           viewBox="0 0 300 300"
@@ -215,7 +215,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             }`}
           >
             <motion.div variants={itemVariants} className={isMobile ? "mb-3" : "mb-3 lg:mb-4"}>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 rounded-[4px]-[4px]-[4px]-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
                 <Sparkles size={13} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
                 <span className="font-bold text-[10px] lg:text-[11px] tracking-[0.15em] uppercase text-[#C99A2E]">
                   {t("Trainer Directory")}
@@ -261,7 +261,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             {isMobile && (
               <motion.div
                 variants={itemVariants}
-                className="w-full rounded overflow-hidden luxury-shadow-float mb-6"
+                className="w-full rounded-[4px]-[4px]-[4px]-[4px] overflow-hidden luxury-shadow-float mb-6"
               >
                 <img
                   src={trainersHero}
@@ -280,7 +280,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t("Search trainers, expertise or training areas...")}
-                className="w-full pl-11 pr-4 py-3.5 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded text-[14px] lg:text-[15px] text-[#0B1D3A] font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] transition-all duration-300 ease-out placeholder:text-[#7B8DAA]"
+                className="w-full pl-11 pr-4 py-3.5 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded-[4px]-[4px]-[4px]-[4px] text-[14px] lg:text-[15px] text-[#0B1D3A] font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] transition-all duration-300 ease-out placeholder:text-[#7B8DAA]"
                 style={{
                   boxShadow: "0 2px 8px -2px rgba(11, 29, 58, 0.05), 0 4px 12px -4px rgba(11, 29, 58, 0.03)",
                 }}
@@ -292,7 +292,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 <button
                   key={tag}
                   onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                  className={`px-3 py-1 lg:px-3.5 lg:py-1.5 rounded-full text-[11px] lg:text-[12px] font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 border ${
+                  className={`px-3 py-1 lg:px-3.5 lg:py-1.5 rounded-[4px]-[4px]-[4px]-full text-[11px] lg:text-[12px] font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 border ${
                     activeTag === tag
                       ? "bg-[#0B1D3A] text-white border-[#0B1D3A] shadow-[0_4px_12px_-2px_rgba(11,29,58,0.25)]"
                       : "bg-white/90 backdrop-blur-sm border-[#0B1D3A]/[0.06] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/20 hover:text-[#0B1D3A] hover:shadow-sm"
@@ -306,7 +306,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                   )}
                   {activeTag !== tag && (
                     <span className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full" style={{ background: GOLD }} />
+                      <span className="w-1.5 h-1.5 rounded-[4px]-[4px]-[4px]-full" style={{ background: GOLD }} />
                       {t(tag)}
                     </span>
                   )}
@@ -324,7 +324,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               className="lg:relative w-[65%] sm:w-[50%] lg:w-[52%] xl:w-[54%] h-[260px] sm:h-[360px] lg:h-auto flex items-end lg:items-center justify-end z-0"
               style={{ marginRight: "calc(50% - 50vw)" }}
             >
-              <div className="relative w-full h-full lg:h-[480px] xl:h-[510px] rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden luxury-shadow-float lg:luxury-shadow-float border-l border-t lg:border-b border-white/80">
+              <div className="relative w-full h-full lg:h-[480px] xl:h-[510px] rounded-[4px]-[4px]-[4px]-tl-[160px] lg:rounded-[4px]-[4px]-[4px]-tl-[220px] xl:rounded-[4px]-[4px]-[4px]-tl-[260px] lg:rounded-[4px]-[4px]-[4px]-bl-[90px] xl:rounded-[4px]-[4px]-[4px]-bl-[100px] overflow-hidden luxury-shadow-float lg:luxury-shadow-float border-l border-t lg:border-b border-white/80">
                 <motion.img
                   animate={{ scale: [1, 1.04, 1] }}
                   transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
@@ -352,12 +352,12 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className={`group flex items-center bg-white/90 backdrop-blur-xl rounded-2xl border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_14px_34px_-16px_rgba(11,29,58,0.18)] hover:-translate-y-1 hover:border-[#C99A2E]/30 transition-all duration-500 ${
+                className={`group flex items-center bg-white/90 backdrop-blur-xl rounded-[4px]-[4px]-[4px]-[4px] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_14px_34px_-16px_rgba(11,29,58,0.18)] hover:-translate-y-1 hover:border-[#C99A2E]/30 transition-all duration-500 ${
                   isMobile ? "gap-2.5 p-3" : "gap-4 p-5"
                 }`}
               >
                 <div
-                  className={`${isMobile ? "w-9 h-9" : "w-12 h-12"} shrink-0 rounded-xl flex items-center justify-center text-white shadow-md transition-transform duration-500 group-hover:scale-110`}
+                  className={`${isMobile ? "w-9 h-9" : "w-12 h-12"} shrink-0 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center text-white shadow-md transition-transform duration-500 group-hover:scale-110`}
                   style={{ background: stat.bg }}
                 >
                   {stat.icon}
@@ -425,14 +425,14 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 </div>
                 <button
                   onClick={() => setShowMobileFilters(true)}
-                  className="relative shrink-0 flex items-center justify-center gap-2 h-[42px] px-4 rounded-xl text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+                  className="relative shrink-0 flex items-center justify-center gap-2 h-[42px] px-4 rounded-[4px]-[4px]-[4px]-[8px] text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                   style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
                 >
                   <SlidersHorizontal size={15} strokeWidth={2.5} style={{ color: GOLD_MID }} />
                   {t("Filters")}
                   {activeChips.length > 0 && (
                     <span
-                      className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-black"
+                      className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-[4px]-[4px]-[4px]-full text-[10px] font-black"
                       style={{ background: GOLD_MID, color: NAVY }}
                     >
                       {activeChips.length}
@@ -455,7 +455,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                     {searchQuery.trim() && (
                       <button
                         onClick={() => setSearchQuery("")}
-                        className="inline-flex items-center gap-1.5 h-7 pl-3 pr-2 rounded-full text-[12px] font-semibold bg-[#0B1D3A] text-white hover:bg-[#1A3463] transition-colors"
+                        className="inline-flex items-center gap-1.5 h-7 pl-3 pr-2 rounded-[4px]-[4px]-[4px]-full text-[12px] font-semibold bg-[#0B1D3A] text-white hover:bg-[#1A3463] transition-colors"
                       >
                         “{searchQuery.trim()}”
                         <X size={12} strokeWidth={3} className="text-[#D5AA45]" />
@@ -464,7 +464,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                     {activeTag && (
                       <button
                         onClick={() => setActiveTag(null)}
-                        className="inline-flex items-center gap-1.5 h-7 pl-3 pr-2 rounded-full text-[12px] font-semibold bg-[#0B1D3A] text-white hover:bg-[#1A3463] transition-colors"
+                        className="inline-flex items-center gap-1.5 h-7 pl-3 pr-2 rounded-[4px]-[4px]-[4px]-full text-[12px] font-semibold bg-[#0B1D3A] text-white hover:bg-[#1A3463] transition-colors"
                       >
                         {t(activeTag)}
                         <X size={12} strokeWidth={3} className="text-[#D5AA45]" />
@@ -474,7 +474,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                       <button
                         key={`${chip.key}-${chip.value}`}
                         onClick={() => toggleFilter(chip.key, chip.value)}
-                        className="inline-flex items-center gap-1.5 h-7 pl-3 pr-2 rounded-full text-[12px] font-semibold bg-[#FBF4E4] text-[#8A6516] border border-[#C99A2E]/25 hover:border-[#C99A2E]/60 transition-colors"
+                        className="inline-flex items-center gap-1.5 h-7 pl-3 pr-2 rounded-[4px]-[4px]-[4px]-full text-[12px] font-semibold bg-[#FBF4E4] text-[#8A6516] border border-[#C99A2E]/25 hover:border-[#C99A2E]/60 transition-colors"
                       >
                         {t(chip.value)}
                         <X size={12} strokeWidth={3} />
@@ -498,9 +498,9 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col items-center text-center bg-white rounded-2xl border border-dashed border-[#0B1D3A]/15 py-16 px-6"
+              className="flex flex-col items-center text-center bg-white rounded-[4px]-[4px]-[4px]-[4px] border border-dashed border-[#0B1D3A]/15 py-16 px-6"
             >
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4" style={{ background: "#FBF4E4", color: GOLD }}>
+              <div className="w-14 h-14 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center mb-4" style={{ background: "#FBF4E4", color: GOLD }}>
                 <SearchX size={26} strokeWidth={2.2} />
               </div>
               <h3 className="text-[18px] font-black" style={{ color: NAVY }}>{t("No trainers match these filters")}</h3>
@@ -509,7 +509,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               </p>
               <button
                 onClick={clearAll}
-                className="mt-5 h-10 px-5 rounded-xl text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)]"
+                className="mt-5 h-10 px-5 rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-[8px] text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)]"
                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
               >
                 {t("Reset all filters")}
@@ -538,9 +538,9 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
 
           {hasMore && displayedTrainers.length > 0 && (
             <div ref={ref} className="flex items-center justify-center gap-2 py-10 text-[12px] font-semibold text-[#7B8DAA]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] animate-bounce [animation-delay:-0.2s]" />
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] animate-bounce [animation-delay:-0.1s]" />
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] animate-bounce" />
+              <span className="w-1.5 h-1.5 rounded-[4px]-[4px]-[4px]-full bg-[#C99A2E] animate-bounce [animation-delay:-0.2s]" />
+              <span className="w-1.5 h-1.5 rounded-[4px]-[4px]-[4px]-full bg-[#C99A2E] animate-bounce [animation-delay:-0.1s]" />
+              <span className="w-1.5 h-1.5 rounded-[4px]-[4px]-[4px]-full bg-[#C99A2E] animate-bounce" />
             </div>
           )}
           {!hasMore && displayedTrainers.length > 0 && (

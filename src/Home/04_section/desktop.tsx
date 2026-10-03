@@ -102,7 +102,7 @@ export default function Desktop() {
       <motion.div
         animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[-50px] right-[10%] w-[600px] h-[350px] border-b-[1.5px] border-[#C99A2E]/60 rounded-[100%] rotate-12 z-0 pointer-events-none blur-[0.5px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+        className="absolute top-[-50px] right-[10%] w-[600px] h-[350px] border-b-[1.5px] border-[#C99A2E]/60 rounded-[4px]-[4px]-[4px]-[100%] rotate-12 z-0 pointer-events-none blur-[0.5px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
       />
       <motion.div
         animate={{ opacity: [0.7, 1, 0.7] }}
@@ -117,21 +117,21 @@ export default function Desktop() {
         className="max-w-[1060px] xl:max-w-[1120px] w-full relative z-20"
       >
         <div
-          className="w-full rounded-[4px] pt-16 pb-12 px-10 flex flex-col items-center text-center relative overflow-visible luxury-shadow-float"
+          className="w-full rounded-[4px]-[4px]-[4px]-[4px] pt-16 pb-12 px-10 flex flex-col items-center text-center relative overflow-visible luxury-shadow-float"
           style={{
             background:
               "linear-gradient(135deg, rgba(8,22,51,0.96) 0%, rgba(5,15,38,0.98) 100%)",
             border: "1px solid rgba(255,255,255,0.08)",
           }}
         >
-          <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#C99A2E] to-transparent opacity-80 rounded-t-[4px]" />
+          <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#C99A2E] to-transparent opacity-80 rounded-[4px]-[4px]-[4px]-t-[4px]" />
           <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[100px] pointer-events-none"
+            className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-[4px]-[4px]-[4px]-full blur-[100px] pointer-events-none"
           />
           <motion.div variants={itemVariant} className="mb-6 relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[4px] border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[4px]-[4px]-[4px]-[4px] border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-sm">
               <Sparkles
                 size={13}
                 className="text-[#C99A2E] animate-pulse"
@@ -181,7 +181,7 @@ export default function Desktop() {
                     whileTap={
                       isUnselectedOnOtherPage ? undefined : { scale: 0.97 }
                     }
-                    className={`group px-7 py-3.5 rounded-[4px] font-bold text-[15px] xl:text-[16px] transition-all duration-300 shadow-md flex items-center justify-center gap-2 relative overflow-hidden ${
+                    className={`group px-7 py-3.5 rounded-[4px]-[4px]-[4px]-[8px] font-bold text-[15px] xl:text-[16px] transition-all duration-300 shadow-md flex items-center justify-center gap-2 relative overflow-hidden ${
                       isSelected
                         ? "text-white cursor-pointer"
                         : isUnselectedOnOtherPage
@@ -272,14 +272,14 @@ export default function Desktop() {
                     key={i}
                     whileHover={{ y: -3, scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                    className="flex items-center gap-4 p-4 rounded-[4px] transition-all duration-300 shadow-sm"
+                    className="flex items-center gap-4 p-4 rounded-[4px]-[4px]-[4px]-[4px] transition-all duration-300 shadow-sm"
                     style={{
                       background: badgeColors.bg,
                       border: `1px solid ${badgeColors.border}`,
                     }}
                   >
                     <div
-                      className="w-11 h-11 rounded-[4px] flex items-center justify-center shrink-0 shadow-md"
+                      className="w-11 h-11 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center shrink-0 shadow-md"
                       style={{
                         background: badgeColors.iconBg,
                       }}

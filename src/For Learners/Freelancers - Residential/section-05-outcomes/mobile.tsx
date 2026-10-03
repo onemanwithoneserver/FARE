@@ -36,9 +36,9 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-white p-5 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_8px_rgba(11,29,58,0.02)] flex flex-col"
+                className="bg-white p-5 rounded-[4px]-[4px] border border-[#E2E8F0] shadow-[0_2px_8px_rgba(11,29,58,0.02)] flex flex-col"
               >
-                <div className={`w-11 h-11 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-4`}>
+                <div className={`w-11 h-11 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-4`}>
                   <Icon size={20} className="text-white" strokeWidth={2.5} />
                 </div>
                 
@@ -55,7 +55,7 @@ export default function Mobile() {
         </div>
 
         {data.quote && (
-          <div className="p-6 rounded-[4px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-center relative overflow-hidden">
+          <div className="p-6 rounded-[4px]-[4px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-center relative overflow-hidden">
             <p className="text-[14px] font-bold text-white leading-relaxed">
               "{data.quote}"
             </p>

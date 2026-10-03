@@ -58,12 +58,12 @@ export default function Desktop() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] right-[-10%] w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] pointer-events-none z-0"
+        className="absolute top-[20%] right-[-10%] w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-[4px]-full blur-[120px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"
+        className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-[4px]-full blur-[100px] pointer-events-none z-0"
       ></motion.div>
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
@@ -82,7 +82,7 @@ export default function Desktop() {
         >
           <motion.div variants={item} className="mb-6">
             <span
-              className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10 shadow-[0_0_15px_rgba(201,154,46,0.15)] backdrop-blur-sm"
+              className="inline-flex items-center px-4 py-1.5 rounded-[4px]-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10 shadow-[0_0_15px_rgba(201,154,46,0.15)] backdrop-blur-sm"
               style={{ color: GOLD }}
             >
               {data.overline}
@@ -127,9 +127,9 @@ export default function Desktop() {
                 key={index}
                 variants={item}
                 whileHover={{ y: -8, transition: { duration: 0.4 } }}
-                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-10 hover:bg-white hover:border-[#0B1D3A]/20 transition-all duration-400 relative overflow-hidden text-center group luxury-shadow-float cursor-default"
+                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded-[4px] p-10 hover:bg-white hover:border-[#0B1D3A]/20 transition-all duration-400 relative overflow-hidden text-center group luxury-shadow-float cursor-default"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0B1D3A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0B1D3A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[4px] pointer-events-none"></div>
                 <motion.div
                   animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
                   transition={{
@@ -137,14 +137,14 @@ export default function Desktop() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="absolute top-0 right-0 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-[40px] rounded-bl-full pointer-events-none"
+                  className="absolute top-0 right-0 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-[40px] rounded-[4px]-bl-full pointer-events-none"
                   style={{ background: mode.color }}
                 ></motion.div>
                 <div
-                  className="w-20 h-20 rounded mx-auto flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.08)] mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
+                  className="w-20 h-20 rounded-[4px] mx-auto flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.08)] mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
                   style={{ backgroundColor: mode.color }}
                 >
-                  <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded"></div>
+                  <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded-[4px]"></div>
                   {modeIcons[mode.icon as keyof typeof modeIcons]}
                 </div>
                 <h4 className="text-[24px] font-bold mb-4 text-[#0B1D3A]">
@@ -182,14 +182,14 @@ export default function Desktop() {
               <motion.div
                 key={index}
                 variants={item}
-                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-square bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 rounded p-8 hover:bg-white hover:border-[#0B1D3A]/20 hover:luxury-shadow-float transition-all duration-400 flex flex-col justify-center group"
+                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-square bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 rounded-[4px] p-8 hover:bg-white hover:border-[#0B1D3A]/20 hover:luxury-shadow-float transition-all duration-400 flex flex-col justify-center group"
               >
                 <div className="flex flex-col gap-4 mb-4 relative z-10">
                   <div
-                    className="w-14 h-14 rounded flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-md"
+                    className="w-14 h-14 rounded-[4px] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-md"
                     style={{ backgroundColor: type.color }}
                   >
-                    <div className="absolute inset-0 bg-white/10 rounded"></div>
+                    <div className="absolute inset-0 bg-white/10 rounded-[4px]"></div>
                     {typeIcons[type.icon as keyof typeof typeIcons]}
                   </div>
                   <h4 className="text-[18px] font-bold leading-tight text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300">
@@ -208,17 +208,17 @@ export default function Desktop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-[1000px] mx-auto bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] border border-white/10 rounded p-16 text-center relative overflow-hidden luxury-shadow-float group"
+          className="max-w-[1000px] mx-auto bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] border border-white/10 rounded-[4px] p-16 text-center relative overflow-hidden luxury-shadow-float group"
         >
           <motion.div
             animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/15 rounded-full blur-[60px] group-hover:bg-[#C99A2E]/25 transition-colors duration-700 pointer-events-none"
+            className="absolute top-0 right-0 w-64 h-64 bg-[#C99A2E]/15 rounded-[4px]-full blur-[60px] group-hover:bg-[#C99A2E]/25 transition-colors duration-700 pointer-events-none"
           ></motion.div>
           <motion.div
             animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-0 left-0 w-64 h-64 bg-[#071A49]/60 rounded-full blur-[60px] group-hover:bg-[#071A49]/80 transition-colors duration-700 pointer-events-none"
+            className="absolute bottom-0 left-0 w-64 h-64 bg-[#071A49]/60 rounded-[4px]-full blur-[60px] group-hover:bg-[#071A49]/80 transition-colors duration-700 pointer-events-none"
           ></motion.div>
           <h3 className="text-[28px] font-bold text-white relative z-10 tracking-tight m-0">
             {data.footerTagline}

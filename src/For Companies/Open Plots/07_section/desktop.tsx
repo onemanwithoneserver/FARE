@@ -53,7 +53,7 @@ export default function Desktop() {
       <motion.div
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-gradient-radial from-[#3B82F6]/10 to-transparent rounded-full blur-[100px] z-0 pointer-events-none"
+        className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-gradient-radial from-[#3B82F6]/10 to-transparent rounded-[4px]-full blur-[100px] z-0 pointer-events-none"
       ></motion.div>
       <motion.div
         animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
@@ -63,7 +63,7 @@ export default function Desktop() {
           ease: "easeInOut",
           delay: 1,
         }}
-        className="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[120px] z-0 pointer-events-none"
+        className="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-[4px]-full blur-[120px] z-0 pointer-events-none"
       ></motion.div>
       <motion.div
         variants={containerVariant}
@@ -73,7 +73,7 @@ export default function Desktop() {
         className="max-w-[1040px] w-full relative z-20"
       >
         <div
-          className="w-full rounded pt-24 pb-20 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl luxury-shadow-float border border-[#0B1D3A]/10"
+          className="w-full rounded-[4px] pt-24 pb-20 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl luxury-shadow-float border border-[#0B1D3A]/10"
           style={{
             background:
               "linear-gradient(145deg, rgba(255,255,255,0.85) 0%, rgba(248,249,252,0.95) 100%)",
@@ -84,14 +84,14 @@ export default function Desktop() {
           <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/15 to-transparent rounded-full blur-[80px] pointer-events-none"
+            className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/15 to-transparent rounded-[4px]-full blur-[80px] pointer-events-none"
           ></motion.div>
           <motion.div
             variants={itemVariant}
             className="flex items-center gap-4 mb-8 relative z-10"
           >
             <div className="h-[1px] w-12 bg-gradient-to-l from-[#C99A2E] to-transparent opacity-60"></div>
-            <div className="px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/10 flex items-center gap-2">
+            <div className="px-4 py-1.5 rounded-[4px]-full border border-[#C99A2E]/30 bg-[#C99A2E]/10 flex items-center gap-2">
               <Sparkles size={14} className="text-[#C99A2E]" />
               <span className="text-[12px] font-bold tracking-[0.25em] text-[#C99A2E] uppercase">
                 {data.overline}
@@ -119,7 +119,7 @@ export default function Desktop() {
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsModalOpen(true)}
-              className="group relative overflow-hidden font-bold text-[15px] px-10 py-4 rounded transition-all duration-300 flex items-center gap-3 cursor-pointer text-[#071A49] tracking-wide luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)]"
+              className="group relative overflow-hidden font-bold text-[15px] px-10 py-4 rounded-[4px] transition-all duration-300 flex items-center gap-3 cursor-pointer text-[#071A49] tracking-wide luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)]"
               style={{
                 background:
                   "linear-gradient(135deg, #D5AA45 0%, #F3D37F 50%, #D5AA45 100%)",
@@ -136,7 +136,7 @@ export default function Desktop() {
               whileHover={{ backgroundColor: "rgba(11,29,58,0.05)" }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsVideoModalOpen(true)}
-              className="bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[15px] px-10 py-4 rounded border border-[#0B1D3A]/15 hover:border-[#0B1D3A]/25 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
+              className="bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[15px] px-10 py-4 rounded-[4px] border border-[#0B1D3A]/15 hover:border-[#0B1D3A]/25 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-sm"
             >
               {data.buttons.secondary}
             </motion.button>

@@ -57,13 +57,13 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-[#F8FAFD] p-8 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.02)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
+                className="bg-[#F8FAFD] p-8 rounded-[4px]-[4px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.02)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
               >
                 <div className="flex items-center justify-between mb-6">
-                  <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md group-hover:scale-105 transition-transform duration-300`}>
+                  <div className={`w-12 h-12 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md group-hover:scale-105 transition-transform duration-300`}>
                     <Icon size={22} className="text-white" strokeWidth={2.5} />
                   </div>
-                  <span className="text-[11px] font-bold text-[#C99A2E] tracking-wider uppercase px-2.5 py-1 bg-[#C99A2E]/10 rounded-[4px] border border-[#C99A2E]/20">
+                  <span className="text-[11px] font-bold text-[#C99A2E] tracking-wider uppercase px-2.5 py-1 bg-[#C99A2E]/10 rounded-[4px]-[4px] border border-[#C99A2E]/20">
                     {exp.label}
                   </span>
                 </div>

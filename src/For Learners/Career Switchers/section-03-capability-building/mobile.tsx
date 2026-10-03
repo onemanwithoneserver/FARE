@@ -35,10 +35,10 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-[#F8FAFD] p-5 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_8px_rgba(11,29,58,0.02)]"
+                className="bg-[#F8FAFD] p-5 rounded-[4px]-[4px] border border-[#E2E8F0] shadow-[0_2px_8px_rgba(11,29,58,0.02)]"
               >
                 <div className="flex items-center gap-3.5 mb-4 border-b border-[#E2E8F0] pb-3">
-                  <div className={`w-11 h-11 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
+                  <div className={`w-11 h-11 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
                     <Icon size={20} className="text-white" strokeWidth={2.5} />
                   </div>
                   <div>
@@ -50,7 +50,7 @@ export default function Mobile() {
                 <ul className="space-y-2">
                   {cat.skills.map((skill, j) => (
                     <li key={j} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-[1px] bg-[#C99A2E] mt-1.5 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-[4px]-[1px] bg-[#C99A2E] mt-1.5 shrink-0" />
                       <span className="text-[13px] text-[#475569] font-medium leading-snug">
                         {skill}
                       </span>

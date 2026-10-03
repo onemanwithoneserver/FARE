@@ -43,7 +43,7 @@ export default function Mobile() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-10 left-[-50px] w-[300px] h-[300px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[60px] pointer-events-none z-0"
+        className="absolute top-10 left-[-50px] w-[300px] h-[300px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-[4px]-full blur-[60px] pointer-events-none z-0"
       ></motion.div>
       <div className="w-full px-5 relative z-10 flex flex-col gap-8">
         <motion.div
@@ -55,7 +55,7 @@ export default function Mobile() {
         >
           <motion.div variants={item} className="mb-4">
             <span
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[4px]-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
               style={{ color: GOLD }}
             >
               <Sparkles
@@ -112,7 +112,7 @@ export default function Mobile() {
           <motion.div variants={item} className="flex flex-col gap-2.5 mb-6">
             {data.testAreas.map((area, idx) => (
               <div key={idx} className="flex items-start gap-3">
-                <div className="w-4 h-4 rounded-full bg-[#10B981]/10 border border-[#10B981]/30 flex items-center justify-center shrink-0 mt-[3px]">
+                <div className="w-4 h-4 rounded-[4px]-full bg-[#10B981]/10 border border-[#10B981]/30 flex items-center justify-center shrink-0 mt-[3px]">
                   <CheckCircle2
                     size={11}
                     strokeWidth={3}
@@ -131,7 +131,7 @@ export default function Mobile() {
           >
             <button
               onClick={() => setIsVideoModalOpen(true)}
-              className="group relative overflow-hidden w-full text-white px-6 py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 luxury-shadow-float cursor-pointer"
+              className="group relative overflow-hidden w-full text-white px-6 py-4 rounded-[4px] text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 luxury-shadow-float cursor-pointer"
               style={{
                 background: `linear-gradient(135deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)`,
               }}
@@ -145,7 +145,7 @@ export default function Mobile() {
             </button>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="w-full bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-4 rounded text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform"
+              className="w-full bg-white border border-[#0B1D3A]/15 text-[#0B1D3A] px-6 py-4 rounded-[4px] text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform"
             >
               {data.secondaryButton}
             </button>
@@ -164,15 +164,15 @@ export default function Mobile() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="w-full relative"
         >
-          <div className="bg-white/90 backdrop-blur-xl rounded p-5 luxury-shadow-float border border-white relative z-10 overflow-hidden">
+          <div className="bg-white/90 backdrop-blur-xl rounded-[4px] p-5 luxury-shadow-float border border-white relative z-10 overflow-hidden">
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[30px] pointer-events-none"
+              className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-[4px]-full blur-[30px] pointer-events-none"
             ></motion.div>
             <div className="flex items-center justify-between mb-5 relative z-10">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md">
+                <div className="w-12 h-12 rounded-[4px] bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-md">
                   <ClipboardList size={22} className="text-white" />
                 </div>
                 <div>
@@ -197,11 +197,11 @@ export default function Mobile() {
                 return (
                   <div key={i} className="flex items-center gap-3.5">
                     <div
-                      className={`w-10 h-10 rounded ${color.bg} flex items-center justify-center text-white font-black text-[14px] shadow-sm shrink-0`}
+                      className={`w-10 h-10 rounded-[4px] ${color.bg} flex items-center justify-center text-white font-black text-[14px] shadow-sm shrink-0`}
                     >
                       {i + 1}
                     </div>
-                    <div className="flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] rounded p-3.5">
+                    <div className="flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] rounded-[4px] p-3.5">
                       <span className="text-[14.5px] font-bold text-[#0B1D3A]">
                         {step}
                       </span>

@@ -28,18 +28,18 @@ export default function Mobile() {
     <section
       className="w-full -mt-8 flex flex-col items-center justify-start overflow-hidden relative font-['Outfit'] pb-16"
       style={{
-        background: `linear-gradient(170deg, #FFFFFF 0%, #F6F9FF 30%, #EDF2FF 70%, #E6EDFF 100%)`,
+        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
       }}
     >
       <motion.div
         animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-10 right-[-100px] w-[350px] h-[350px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[80px] pointer-events-none z-0"
+        className="absolute top-10 right-[-100px] w-[350px] h-[350px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-[4px]-full blur-[80px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-20 left-[-50px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[70px] pointer-events-none z-0"
+        className="absolute bottom-20 left-[-50px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-[4px]-full blur-[70px] pointer-events-none z-0"
       ></motion.div>
       <div
         className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
@@ -66,7 +66,7 @@ export default function Mobile() {
             <>
               <motion.span
                 variants={item}
-                className="inline-flex items-center self-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
+                className="inline-flex items-center self-center gap-2 px-3.5 py-1.5 rounded-[4px]-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
               >
                 <Sparkles
                   size={11}
@@ -129,7 +129,7 @@ export default function Mobile() {
             className="flex flex-col w-full gap-3 max-w-[280px] mb-4"
           >
             <button
-              className="text-white font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="text-white font-semibold w-full py-3.5 rounded-[4px]-[8px]-[8px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
               style={{
                 background: NAVY,
                 boxShadow: "0 2px 8px rgba(11,29,58,0.15)",
@@ -142,7 +142,7 @@ export default function Mobile() {
             </button>
             {data.buttons.secondary && (
               <button
-                className="font-semibold w-full py-3.5 rounded transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+                className="font-semibold w-full py-3.5 rounded-[4px]-[8px]-[8px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
                 style={{
                   color: NAVY,
                   borderColor: `${NAVY}15`,
@@ -161,10 +161,10 @@ export default function Mobile() {
             {data.features.map((f, i) => (
               <div
                 key={i}
-                className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/80 border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/80 text-[10px] font-semibold"
+                className="flex items-center gap-1 px-2.5 py-1 rounded-[4px]-full bg-white/80 border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/80 text-[10px] font-semibold"
               >
                 <span
-                  className="w-1 h-1 rounded-full"
+                  className="w-1 h-1 rounded-[4px]-full"
                   style={{ background: GOLD }}
                 ></span>
                 <span>{f}</span>
@@ -187,7 +187,7 @@ export default function Mobile() {
         >
           <div className="relative w-full aspect-[4/5] max-w-[360px] flex items-center justify-center group">
             <motion.div
-              className="w-full h-full absolute inset-0 z-0 rounded-[1.5rem] overflow-hidden border border-white/60 luxury-shadow-float"
+              className="w-full h-full absolute inset-0 z-0 rounded-[4px]-[1.5rem] overflow-hidden border border-white/60 luxury-shadow-float"
               style={{
                 WebkitMaskImage:
                   "linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)",
@@ -212,10 +212,10 @@ export default function Mobile() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.7, duration: 0.5 }}
-              className="absolute -left-2 sm:-left-6 bottom-12 z-20 bg-white/95 backdrop-blur-xl p-3 luxury-shadow-float border border-white/80 rounded-[20px] rounded-tl-[6px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+              className="absolute -left-2 sm:-left-6 bottom-12 z-20 bg-white/95 backdrop-blur-xl p-3 luxury-shadow-float border border-white/80 rounded-[4px]-[20px] rounded-[4px]-tl-[6px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-[10px] rounded-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-md shadow-[#34D399]/30">
+                <div className="w-10 h-10 rounded-[4px]-[10px] rounded-[4px]-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-md shadow-[#34D399]/30">
                   <Sparkles size={16} className="text-white" />
                 </div>
                 <div className="pr-1.5">

@@ -25,13 +25,13 @@ export default function Mobile() {
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none z-0 opacity-30"
+        className="absolute top-[10%] left-[-10%] w-[250px] h-[250px] rounded-[4px]-[4px]-[4px]-full blur-[80px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1.05, 1, 1.05] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-40"
+        className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] rounded-[4px]-[4px]-[4px]-full blur-[90px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.08) 0%, transparent 70%)" }}
       />
 
@@ -43,18 +43,18 @@ export default function Mobile() {
         className="relative z-10 w-full"
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-8">
-          <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[3px] h-6 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Company Feedback")}</h2>
         </motion.div>
 
         <motion.div variants={item} className="w-full">
-          <div className="rounded-2xl border border-[#0B1D3A]/[0.08] bg-gradient-to-br from-white via-[#FBFCFE] to-[#F3F6FB] p-5 shadow-[0_12px_32px_-20px_rgba(11,29,58,0.35)]">
+          <div className="rounded-[4px]-[4px]-[4px] border border-[#0B1D3A]/[0.08] bg-gradient-to-br from-white via-[#FBFCFE] to-[#F3F6FB] p-5 shadow-[0_12px_32px_-20px_rgba(11,29,58,0.35)]">
             <div className="mb-4 flex items-center justify-between gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#C99A2E]/20 bg-[#FBF4E4] text-[#A87918]">
+              <div className="flex h-12 w-12 items-center justify-center rounded-[4px]-[4px]-[4px] border border-[#C99A2E]/20 bg-[#FBF4E4] text-[#A87918]">
                 <Building2 size={23} strokeWidth={1.8} aria-hidden="true" />
               </div>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#64748B]/15 bg-[#F1F5F9] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.08em] text-[#64748B]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#94A3B8]" />
+              <span className="inline-flex items-center gap-1.5 rounded-[4px]-[4px]-[4px]-full border border-[#64748B]/15 bg-[#F1F5F9] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.08em] text-[#64748B]">
+                <span className="h-1.5 w-1.5 rounded-[4px]-[4px]-[4px]-full bg-[#94A3B8]" />
                 {t("Live source not connected")}
               </span>
             </div>

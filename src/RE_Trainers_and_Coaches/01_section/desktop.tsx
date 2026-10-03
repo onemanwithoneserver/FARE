@@ -33,23 +33,23 @@ export default function Desktop() {
     <section
       className="w-full -mt-8 lg:-mt-8 flex items-center justify-center overflow-x-clip relative font-['Outfit']"
       style={{
-        background: `linear-gradient(165deg, #FFFFFF 0%, #F6F9FF 35%, #EDF2FF 60%, #F0F4FF 100%)`,
+        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
       }}
     >
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] right-[15%] w-[700px] h-[700px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[140px] pointer-events-none z-0"
+        className="absolute top-[10%] right-[15%] w-[700px] h-[700px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-[4px]-full blur-[140px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[15%] left-[10%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
+        className="absolute bottom-[15%] left-[10%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-[4px]-full blur-[120px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[60%] right-[5%] w-[300px] h-[300px] bg-gradient-radial from-[#818CF8]/[0.06] to-transparent rounded-full blur-[80px] pointer-events-none z-0"
+        className="absolute top-[60%] right-[5%] w-[300px] h-[300px] bg-gradient-radial from-[#818CF8]/[0.06] to-transparent rounded-[4px]-full blur-[80px] pointer-events-none z-0"
       ></motion.div>
       <div
         className="absolute inset-0 opacity-[0.015] pointer-events-none z-0"
@@ -77,7 +77,7 @@ export default function Desktop() {
               <>
                 <motion.span
                   variants={item}
-                  className="inline-flex items-center self-start gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
+                  className="inline-flex items-center self-start gap-2 px-4 py-1.5 rounded-[4px]-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
                 >
                   <Sparkles
                     size={12}
@@ -133,7 +133,7 @@ export default function Desktop() {
             >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
+                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded-[4px]-[8px] hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
                 style={{
                   background: NAVY,
                   boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`,
@@ -148,7 +148,7 @@ export default function Desktop() {
               {data.buttons.secondary && (
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="text-[13.5px] font-semibold px-7 py-3 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border"
+                  className="text-[13.5px] font-semibold px-7 py-3 rounded-[4px]-[8px] hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border"
                   style={{
                     color: NAVY,
                     borderColor: `${NAVY}15`,
@@ -164,10 +164,10 @@ export default function Desktop() {
               {data.features.map((cap, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_6px_rgba(11,29,58,0.03)] text-[#0B1D3A]/80 text-[11.5px] font-semibold"
+                  className="flex items-center gap-1.5 px-3 py-1 rounded-[4px]-full bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_6px_rgba(11,29,58,0.03)] text-[#0B1D3A]/80 text-[11.5px] font-semibold"
                 >
                   <span
-                    className="w-1.5 h-1.5 rounded-full"
+                    className="w-1.5 h-1.5 rounded-[4px]-full"
                     style={{ background: GOLD }}
                   ></span>
                   <span>{cap}</span>
@@ -190,7 +190,7 @@ export default function Desktop() {
           >
             <div className="relative w-full aspect-[4/5] max-w-[500px] flex items-center justify-center group mt-10 lg:mt-0">
               <motion.div
-                className="w-full h-full absolute inset-0 z-0 rounded-[2rem] overflow-hidden border border-white/60 luxury-shadow-float"
+                className="w-full h-full absolute inset-0 z-0 rounded-[4px]-[2rem] overflow-hidden border border-white/60 luxury-shadow-float"
                 style={{
                   WebkitMaskImage:
                     "linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)",
@@ -215,10 +215,10 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute -left-4 sm:-left-8 bottom-16 z-20 bg-white/95 backdrop-blur-xl p-4 luxury-shadow-float border border-white/80 rounded-[24px] rounded-tl-[8px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="absolute -left-4 sm:-left-8 bottom-16 z-20 bg-white/95 backdrop-blur-xl p-4 luxury-shadow-float border border-white/80 rounded-[4px]-[24px] rounded-[4px]-tl-[8px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-[4px] rounded-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-lg shadow-[#34D399]/30">
+                  <div className="w-11 h-11 rounded-[4px]-[4px] rounded-[4px]-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-lg shadow-[#34D399]/30">
                     <Sparkles size={18} className="text-white" />
                   </div>
                   <div className="pr-2">
@@ -236,11 +236,11 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
                 transition={{ delay: 0.6, duration: 0.6 }}
-                className="absolute -right-4 sm:-right-8 top-24 z-20 bg-white/95 backdrop-blur-xl p-3.5 luxury-shadow-float border border-white/80 hidden lg:block rounded-[20px] rounded-tr-[6px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="absolute -right-4 sm:-right-8 top-24 z-20 bg-white/95 backdrop-blur-xl p-3.5 luxury-shadow-float border border-white/80 hidden lg:block rounded-[4px]-[20px] rounded-[4px]-tr-[6px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div className="flex items-center gap-3.5">
                   <div
-                    className="w-10 h-10 rounded-[10px] rounded-bl-[4px] flex items-center justify-center text-[15px] font-black text-white shadow-lg shadow-[#C99A2E]/30"
+                    className="w-10 h-10 rounded-[4px]-[10px] rounded-[4px]-bl-[4px] flex items-center justify-center text-[15px] font-black text-white shadow-lg shadow-[#C99A2E]/30"
                     style={{
                       background: `linear-gradient(135deg, ${GOLD}, ${GOLD_LIGHT})`,
                     }}

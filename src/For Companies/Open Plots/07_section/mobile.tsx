@@ -58,7 +58,7 @@ export default function Mobile() {
         className="w-full relative z-20"
       >
         <div
-          className="w-full rounded pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl luxury-shadow-float border border-[#0B1D3A]/10"
+          className="w-full rounded-[4px] pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl luxury-shadow-float border border-[#0B1D3A]/10"
           style={{
             background:
               "linear-gradient(145deg, rgba(255,255,255,0.85) 0%, rgba(248,249,252,0.95) 100%)",
@@ -68,14 +68,14 @@ export default function Mobile() {
           <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[-50px] right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[60px] pointer-events-none"
+            className="absolute top-[-50px] right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-[4px]-full blur-[60px] pointer-events-none"
           ></motion.div>
           <motion.div
             variants={itemVariant}
             className="flex items-center gap-3 mb-6 relative z-10"
           >
             <div className="h-[1px] w-6 bg-gradient-to-l from-[#C99A2E] to-transparent opacity-60"></div>
-            <div className="px-3 py-1 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/10 flex items-center gap-1.5">
+            <div className="px-3 py-1 rounded-[4px]-full border border-[#C99A2E]/30 bg-[#C99A2E]/10 flex items-center gap-1.5">
               <Sparkles size={12} className="text-[#C99A2E]" />
               <span className="text-[10px] font-bold tracking-[0.25em] text-[#C99A2E] uppercase">
                 {data.overline}
@@ -102,7 +102,7 @@ export default function Mobile() {
             <motion.button
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsModalOpen(true)}
-              className="group relative overflow-hidden w-full font-bold text-[14px] py-4 rounded transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] luxury-shadow-float"
+              className="group relative overflow-hidden w-full font-bold text-[14px] py-4 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] luxury-shadow-float"
               style={{
                 background:
                   "linear-gradient(135deg, #D5AA45 0%, #F3D37F 50%, #D5AA45 100%)",
@@ -118,7 +118,7 @@ export default function Mobile() {
             <motion.button
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsVideoModalOpen(true)}
-              className="w-full bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[14px] py-4 rounded border border-[#0B1D3A]/15 transition-all duration-300 cursor-pointer backdrop-blur-sm"
+              className="w-full bg-[#0B1D3A]/5 text-[#0B1D3A] font-bold text-[14px] py-4 rounded-[4px] border border-[#0B1D3A]/15 transition-all duration-300 cursor-pointer backdrop-blur-sm"
             >
               {data.buttons.secondary}
             </motion.button>

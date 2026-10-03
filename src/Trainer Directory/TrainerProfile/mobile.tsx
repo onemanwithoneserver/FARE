@@ -41,8 +41,8 @@ export default function Mobile({ onBack }: TrainerProfileProps) {
 
   return (
     <div className="w-full min-h-screen bg-[#0B1D3A]/[0.02] flex flex-col font-['Outfit'] relative overflow-x-hidden">
-      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-gradient-radial from-[#8B5CF6]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0 fixed" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0 fixed" />
+      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-gradient-radial from-[#8B5CF6]/5 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[80px] pointer-events-none z-0 fixed" />
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-[4px]-[4px]-[4px]-full blur-[80px] pointer-events-none z-0 fixed" />
 
       
       <motion.div
@@ -58,7 +58,7 @@ export default function Mobile({ onBack }: TrainerProfileProps) {
       >
         <button
           onClick={onBack}
-          className="flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 active:scale-90"
+          className="flex items-center justify-center w-8 h-8 rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px] transition-all duration-300 active:scale-90"
           style={{
             background: "rgba(255,255,255,0.05)",
             border: "1px solid rgba(255,255,255,0.08)",

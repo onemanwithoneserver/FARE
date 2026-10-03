@@ -110,12 +110,12 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           className={`
             w-full flex items-center justify-between gap-2
             ${sizeClasses[size]}
-            bg-white/80 dark:bg-fare-surface/80 backdrop-blur-md
-            border border-fare-border rounded font-semibold text-fare-text-primary
-            shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer
-            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fare-primary/50 focus-visible:border-fare-primary
-            disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-sm
-            ${isOpen ? "border-fare-primary/50 shadow-md ring-1 ring-fare-primary/20" : "hover:border-fare-text-muted/30"}
+            bg-white/90 backdrop-blur-md
+            border border-[#0B1D3A]/[0.08] rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px]-[4px] font-semibold text-[#0B1D3A]
+            luxury-shadow-sm hover:luxury-shadow transition-all duration-300 cursor-pointer
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B1D3A]/50 focus-visible:border-[#0B1D3A]
+            disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:luxury-shadow-sm
+            ${isOpen ? "border-[#0B1D3A]/50 luxury-shadow ring-1 ring-[#0B1D3A]/20" : "hover:border-[#0B1D3A]/30"}
           `}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
@@ -125,7 +125,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           </span>
           <ChevronDown
             size={16}
-            className={`transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-fare-primary" : "text-fare-text-muted"}`}
+            className={`transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-[#0B1D3A]" : "text-[#64748B]"}`}
           />
         </button>
         <AnimatePresence>
@@ -136,7 +136,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute z-99999 w-full min-w-max mt-2 py-1.5 bg-white/95 dark:bg-fare-surface/95 backdrop-blur-xl backdrop-saturate-150 border border-white/20 dark:border-white/10 rounded luxury-shadow-float dark:luxury-shadow-float overflow-y-auto overflow-x-hidden max-h-[60vh] scrollbar-thin"
+              className="absolute z-[99999] w-full min-w-max mt-2 py-1.5 bg-white/95 backdrop-blur-xl backdrop-saturate-150 border border-white/40 rounded-[4px]-[4px]-[4px]-[4px] luxury-shadow-float overflow-y-auto overflow-x-hidden max-h-[60vh] scrollbar-thin"
               role="listbox"
             >
               {options.map((opt) => {
@@ -153,12 +153,12 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
                       }
                     }}
                     className={`
-                      flex items-center justify-between px-3 py-2.5 mx-1.5 rounded text-sm font-medium cursor-pointer transition-all duration-200
+                      flex items-center justify-between px-3 py-2.5 mx-1.5 rounded-[4px]-[4px]-[4px]-[4px] text-[14px] font-medium cursor-pointer transition-all duration-200
                       ${opt.disabled ? "opacity-50 cursor-not-allowed" : ""}
                       ${
                         isSelected
-                          ? "text-fare-primary bg-fare-primary/10 font-semibold"
-                          : "text-fare-text-secondary hover:text-fare-text-primary hover:bg-fare-surface-alt dark:hover:bg-fare-surface-alt/50"
+                          ? "text-[#0B1D3A] bg-[#0B1D3A]/10 font-bold"
+                          : "text-[#475569] hover:text-[#0B1D3A] hover:bg-[#F8FAFD]"
                       }
                     `}
                   >
@@ -175,7 +175,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
                       >
                         <Check
                           size={16}
-                          className="shrink-0 text-fare-primary"
+                          className="shrink-0 text-[#0B1D3A]"
                         />
                       </motion.div>
                     )}

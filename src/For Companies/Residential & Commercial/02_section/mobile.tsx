@@ -65,12 +65,12 @@ export default function Mobile() {
       <motion.div
         animate={{ opacity: [0.2, 0.4, 0.2], scale: [1, 1.05, 1] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-10 right-0 w-[350px] h-[350px] bg-gradient-radial from-rose-500/25 via-red-500/10 to-transparent rounded-full blur-[80px] pointer-events-none z-0"
+        className="absolute -top-10 right-0 w-[350px] h-[350px] bg-gradient-radial from-rose-500/25 via-red-500/10 to-transparent rounded-[4px]-full blur-[80px] pointer-events-none z-0"
       ></motion.div>
       <motion.div
         animate={{ opacity: [0.15, 0.35, 0.15], scale: [1.05, 1, 1.05] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-10 left-0 w-[300px] h-[300px] bg-gradient-radial from-red-600/20 via-rose-500/10 to-transparent rounded-full blur-[70px] pointer-events-none z-0"
+        className="absolute bottom-10 left-0 w-[300px] h-[300px] bg-gradient-radial from-red-600/20 via-rose-500/10 to-transparent rounded-[4px]-full blur-[70px] pointer-events-none z-0"
       ></motion.div>
       <div
         className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
@@ -107,8 +107,8 @@ export default function Mobile() {
           className="flex flex-col items-center text-center mb-10"
         >
           <motion.div variants={item} className="mb-4">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-red-300/80 bg-red-100/70 text-red-700 shadow-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-[4px]-full text-[10px] font-bold tracking-[0.2em] uppercase border border-red-300/80 bg-red-100/70 text-red-700 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-[4px]-full bg-red-500 animate-pulse" />
               {data.overline}
             </span>
           </motion.div>
@@ -135,13 +135,13 @@ export default function Mobile() {
               <motion.div
                 key={index}
                 variants={item}
-                className="bg-gradient-to-r from-white/95 via-red-50/70 to-red-100/40 backdrop-blur-sm border border-red-200/90 rounded p-4 shadow-[0_2px_10px_-2px_rgba(220,38,38,0.08)] flex items-center gap-4 relative overflow-hidden"
+                className="bg-gradient-to-r from-white/95 via-red-50/70 to-red-100/40 backdrop-blur-sm border border-red-200/90 rounded-[4px]-[4px] p-4 shadow-[0_2px_10px_-2px_rgba(220,38,38,0.08)] flex items-center gap-4 relative overflow-hidden"
               >
                 <span className="absolute -bottom-1 -right-1 text-[32px] opacity-[0.08] select-none pointer-events-none filter blur-[0.2px]">
                   {emoji}
                 </span>
                 <div
-                  className="w-10 h-10 rounded-xl shadow-md flex items-center justify-center shrink-0 relative overflow-hidden ring-2 ring-red-100/60"
+                  className="w-10 h-10 rounded-[4px]-[4px] shadow-md flex items-center justify-center shrink-0 relative overflow-hidden ring-2 ring-red-100/60"
                   style={{ backgroundColor: color }}
                 >
                   <Icon
@@ -162,7 +162,7 @@ export default function Mobile() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.6 }}
-          className="w-full rounded p-8 luxury-shadow-float relative overflow-hidden text-center"
+          className="w-full rounded-[4px]-[4px] p-8 luxury-shadow-float relative overflow-hidden text-center"
           style={{
             background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)`,
           }}
@@ -170,12 +170,12 @@ export default function Mobile() {
           <motion.div
             animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[40px]"
+            className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-[4px]-full blur-[40px]"
           ></motion.div>
           <motion.div
             animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-0 left-0 w-32 h-32 bg-[#60A5FA]/10 rounded-full blur-[40px]"
+            className="absolute bottom-0 left-0 w-32 h-32 bg-[#60A5FA]/10 rounded-[4px]-full blur-[40px]"
           ></motion.div>
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"></div>
           <h3 className="text-white text-[18px] font-medium leading-[1.4] mb-5 relative z-10">

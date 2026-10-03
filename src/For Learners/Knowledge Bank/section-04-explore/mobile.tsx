@@ -37,10 +37,10 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5 }}
-                className="bg-white p-5 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_2px_12px_rgba(11,29,58,0.03)]"
+                className="bg-white p-5 rounded-[4px]-[4px] border border-[#E2E8F0]/80 shadow-[0_2px_12px_rgba(11,29,58,0.03)]"
               >
                 <div className="flex items-center gap-3.5 mb-4 border-b border-[#F1F5F9] pb-3.5">
-                  <div className={`w-10 h-10 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
+                  <div className={`w-10 h-10 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
                     <Icon size={18} className="text-white" strokeWidth={2.5} />
                   </div>
                   <div>
@@ -55,7 +55,7 @@ export default function Mobile() {
                 <ul className="space-y-2">
                   {cat.items.map((itemStr, j) => (
                     <li key={j} className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-[4px] bg-[#CBD5E1] mt-1.5 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-[4px]-[4px] bg-[#CBD5E1] mt-1.5 shrink-0" />
                       <span className="text-[13px] text-[#475569] font-medium leading-snug">
                         {itemStr}
                       </span>

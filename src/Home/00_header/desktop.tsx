@@ -231,7 +231,7 @@ export default function Desktop() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.94 }}
                 transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute top-full left-0 mt-2 w-[270px] bg-[#071738]/95 backdrop-blur-xl border border-white/10 border-t-[#C99A2E]/50 border-t-[2px] luxury-shadow-float rounded-[4px] p-1.5 z-50 pointer-events-auto hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="absolute top-full left-0 mt-2 w-[270px] bg-[#071738]/95 backdrop-blur-xl border border-white/10 border-t-[#C99A2E]/50 border-t-[2px] luxury-shadow-float rounded-[4px]-[4px]-[4px]-[4px] p-1.5 z-50 pointer-events-auto hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div className="flex flex-col gap-1">
                   {subItemsList.map((sub, sIdx) => {
@@ -257,7 +257,7 @@ export default function Desktop() {
                             window.scrollTo({ top: 0, behavior: "smooth" });
                           }
                         }}
-                        className={`w-full p-2.5 rounded-[4px] border transition-all duration-200 flex items-center justify-between gap-2.5 text-left cursor-pointer group/sub ${
+                        className={`w-full p-2.5 rounded-[4px]-[4px]-[4px]-[4px] border transition-all duration-200 flex items-center justify-between gap-2.5 text-left cursor-pointer group/sub ${
                           isSubActive
                             ? "bg-white/15 border-white/20"
                             : "border-transparent hover:border-white/10 hover:bg-white/[0.08]"
@@ -265,7 +265,7 @@ export default function Desktop() {
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
                           <div
-                            className="w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/sub:scale-105"
+                            className="w-8 h-8 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover/sub:scale-105"
                             style={{
                               backgroundColor: `${subColor}33`,
                               color: subColor,
@@ -353,11 +353,11 @@ export default function Desktop() {
           isSearchExpanded
             ? (isScrolled
                 ? "bg-white text-[#0B1D3A]"
-                : "bg-[#0B1D3A] text-white") + " shadow-md rounded-full"
+                : "bg-[#0B1D3A] text-white") + " shadow-md rounded-[4px]-[4px]-[4px]-full"
             : (isScrolled
                 ? "text-white/75 hover:text-white hover:bg-white/10"
                 : "text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06]") +
-              ` ${isScrolled ? "rounded-full" : "rounded"}`
+              ` ${isScrolled ? "rounded-[4px]-[4px]-[4px]-full" : "rounded-[4px]-[4px]-[4px]"}`
         }`}
         title="Search platform"
       >
@@ -378,7 +378,7 @@ export default function Desktop() {
               : isScrolled
                 ? "text-white/80 hover:text-white hover:bg-white/10"
                 : "text-[#0B1D3A]/80 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.06]"
-          } ${isScrolled ? "rounded-full" : "rounded"}`}
+          } ${isScrolled ? "rounded-[4px]-[4px]-[4px]-full" : "rounded-[4px]-[4px]-[4px]"}`}
           title="Change language / భాషను మార్చండి"
           aria-label="Change language"
         >
@@ -407,7 +407,7 @@ export default function Desktop() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.96 }}
               transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className={`absolute top-[calc(100%+8px)] right-0 w-[170px] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded p-1.5 z-[90] pointer-events-auto`}
+              className={`absolute top-[calc(100%+8px)] right-0 w-[170px] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded-[4px]-[4px]-[4px] p-1.5 z-[90] pointer-events-auto`}
             >
               <div
                 className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 ${isScrolled ? "text-white/70" : "text-[#0B1D3A]/70"}`}
@@ -419,7 +419,7 @@ export default function Desktop() {
                   setLanguage("en");
                   setIsLangDropdownOpen(false);
                 }}
-                className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[13px] transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-2.5 py-2 rounded-[4px]-[4px]-[4px] text-[13px] transition-all cursor-pointer ${
                   language === "en"
                     ? isScrolled
                       ? "bg-white text-[#0B1D3A] font-bold shadow-xs"
@@ -431,7 +431,7 @@ export default function Desktop() {
               >
                 <span className="flex items-center gap-2">
                   <span
-                    className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded ${
+                    className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded-[4px]-[4px]-[4px] ${
                       language === "en"
                         ? isScrolled
                           ? "bg-[#0B1D3A] text-white"
@@ -458,7 +458,7 @@ export default function Desktop() {
                   setLanguage("te");
                   setIsLangDropdownOpen(false);
                 }}
-                className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[13px] transition-all cursor-pointer mt-1 ${
+                className={`w-full flex items-center justify-between px-2.5 py-2 rounded-[4px]-[4px]-[4px] text-[13px] transition-all cursor-pointer mt-1 ${
                   language === "te"
                     ? isScrolled
                       ? "bg-white text-[#0B1D3A] font-bold shadow-xs"
@@ -470,7 +470,7 @@ export default function Desktop() {
               >
                 <span className="flex items-center gap-2">
                   <span
-                    className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded ${
+                    className={`text-[10.5px] font-extrabold px-1.5 py-0.5 rounded-[4px]-[4px]-[4px] ${
                       language === "te"
                         ? isScrolled
                           ? "bg-[#0B1D3A] text-white"
@@ -510,7 +510,7 @@ export default function Desktop() {
           navigate(`/${currentMode}/contact-us`);
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
-        className={`group text-[13px] lg:text-[13.5px] font-semibold px-4 lg:px-5 py-2 hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 shadow-[0_2px_8px_rgba(11,29,58,0.15)] flex items-center gap-1.5 shrink-0 cursor-pointer ${isScrolled ? "bg-white text-[#0B1D3A] hover:bg-[#E2C068] rounded-full" : "bg-[#0B1D3A] text-white hover:bg-[#102B63] rounded"}`}
+        className={`group text-[13px] lg:text-[13.5px] font-semibold px-4 lg:px-5 py-2 hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 shadow-[0_2px_8px_rgba(11,29,58,0.15)] flex items-center gap-1.5 shrink-0 cursor-pointer ${isScrolled ? "bg-white text-[#0B1D3A] hover:bg-[#E2C068] rounded-[4px]-[4px]-[4px]-full" : "bg-[#0B1D3A] text-white hover:bg-[#102B63] rounded-[4px]-[4px]-[4px]"}`}
       >
         <span>{language === "te" ? "ప్రారంభించండి" : "Get Started"}</span>
         <span className="relative w-3.5 h-3.5 inline-flex items-center justify-center">
@@ -545,8 +545,8 @@ export default function Desktop() {
         <header
           className={`transition-all duration-300 pointer-events-auto flex items-center justify-between relative ${
             isScrolled
-              ? "w-full max-w-[1320px] h-[58px] px-5 lg:px-7 bg-[#0B1D3A]/95 backdrop-blur-xl border-t border-x border-white/10 border-b border-b-[#C99A2E]/40 luxury-shadow-float rounded-full mx-auto"
-              : "w-full h-[68px] px-6 lg:px-10 xl:px-12 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.07] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none"
+              ? "w-full max-w-[1320px] h-[58px] px-5 lg:px-7 bg-[#0B1D3A]/95 backdrop-blur-xl border-t border-x border-white/10 border-b border-b-[#C99A2E]/40 luxury-shadow-float rounded-[4px]-[4px]-[4px]-full mx-auto"
+              : "w-full h-[68px] px-6 lg:px-10 xl:px-12 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.07] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-[4px]-[4px]-[4px]-none"
           }`}
         >
           {(() => {
@@ -584,10 +584,10 @@ export default function Desktop() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.96 }}
                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className={`absolute top-[calc(100%+10px)] right-4 lg:right-10 w-[420px] max-w-[90vw] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-2xl border luxury-shadow-float p-4 z-50 pointer-events-auto rounded`}
+                className={`absolute top-[calc(100%+10px)] right-4 lg:right-10 w-[420px] max-w-[90vw] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-2xl border luxury-shadow-float p-4 z-50 pointer-events-auto rounded-[4px]-[4px]-[4px]`}
               >
                 <div
-                  className={`flex items-center gap-3 ${isScrolled ? "bg-[#040C1E] border-white/10" : "bg-[#F8FAFD] border-[#0B1D3A]/15"} border focus-within:border-[#C99A2E] focus-within:ring-2 focus-within:ring-[#C99A2E]/20 px-3.5 py-2.5 rounded transition-all shadow-inner`}
+                  className={`flex items-center gap-3 ${isScrolled ? "bg-[#040C1E] border-white/10" : "bg-[#F8FAFD] border-[#0B1D3A]/15"} border focus-within:border-[#C99A2E] focus-within:ring-2 focus-within:ring-[#C99A2E]/20 px-3.5 py-2.5 rounded-[4px]-[4px]-[4px] transition-all shadow-inner`}
                 >
                   <Search size={18} className="text-[#C99A2E] shrink-0" />
                   <input
@@ -607,7 +607,7 @@ export default function Desktop() {
                       else setIsSearchExpanded(false);
                     }}
                     aria-label="Close search"
-                    className={`${isScrolled ? "text-white/40 hover:text-white hover:bg-white/10" : "text-[#0B1D3A]/40 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/10"} p-1 rounded-full transition-colors cursor-pointer shrink-0`}
+                    className={`${isScrolled ? "text-white/40 hover:text-white hover:bg-white/10" : "text-[#0B1D3A]/40 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/10"} p-1 rounded-[4px]-[4px]-[4px]-full transition-colors cursor-pointer shrink-0`}
                   >
                     <X size={15} strokeWidth={2.5} />
                   </button>
@@ -630,7 +630,7 @@ export default function Desktop() {
                       <button
                         key={idx}
                         onClick={() => setSearchQuery(tag)}
-                        className={`text-[11.5px] font-medium bg-[#0B1D3A]/[0.04] px-2.5 py-1 rounded transition-colors cursor-pointer ${isScrolled ? "text-white/75 hover:bg-[#C99A2E]/15 hover:text-white" : "text-[#0B1D3A]/75 hover:bg-[#C99A2E]/15 hover:text-[#0B1D3A]"}`}
+                        className={`text-[11.5px] font-medium bg-[#0B1D3A]/[0.04] px-2.5 py-1 rounded-[4px]-[4px]-[4px] transition-colors cursor-pointer ${isScrolled ? "text-white/75 hover:bg-[#C99A2E]/15 hover:text-white" : "text-[#0B1D3A]/75 hover:bg-[#C99A2E]/15 hover:text-[#0B1D3A]"}`}
                       >
                         {tag}
                       </button>

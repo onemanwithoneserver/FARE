@@ -36,13 +36,13 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px] border border-[#E2E8F0]/60 shadow-[0_2px_8px_rgba(11,29,58,0.02)] flex flex-col"
+                className="bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px]-[4px] border border-[#E2E8F0]/60 shadow-[0_2px_8px_rgba(11,29,58,0.02)] flex flex-col"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <div className={`w-11 h-11 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm`}>
+                  <div className={`w-11 h-11 rounded-[4px]-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm`}>
                     <Icon size={20} className="text-white" strokeWidth={2.5} />
                   </div>
-                  <span className="text-[10px] font-bold text-[#C99A2E] tracking-wider uppercase px-2.5 py-1 bg-[#C99A2E]/10 rounded-[4px] border border-[#C99A2E]/20">
+                  <span className="text-[10px] font-bold text-[#C99A2E] tracking-wider uppercase px-2.5 py-1 bg-[#C99A2E]/10 rounded-[4px]-[4px] border border-[#C99A2E]/20">
                     {exp.label}
                   </span>
                 </div>

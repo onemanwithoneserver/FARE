@@ -38,13 +38,13 @@ export default function Desktop() {
       <motion.div
         animate={{ x: [0, 25, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[5%] right-[-5%] w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none z-0 opacity-30"
+        className="absolute top-[5%] right-[-5%] w-[500px] h-[500px] rounded-[4px]-[4px]-[4px]-full blur-[120px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ x: [0, -20, 0], y: [0, 20, 0], scale: [1.05, 1, 1.05] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] left-[0%] w-[450px] h-[450px] rounded-full blur-[120px] pointer-events-none z-0 opacity-25"
+        className="absolute bottom-[-10%] left-[0%] w-[450px] h-[450px] rounded-[4px]-[4px]-[4px]-full blur-[120px] pointer-events-none z-0 opacity-25"
         style={{ background: "radial-gradient(circle, rgba(11,29,58,0.07) 0%, transparent 70%)" }}
       />
 
@@ -57,7 +57,7 @@ export default function Desktop() {
       >
         
         <motion.div variants={item} className="flex items-center gap-4 mb-3">
-          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <div className="w-[4px] h-7 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Case Studies")}</h2>
         </motion.div>
         <motion.div variants={item} className="mb-12">
@@ -73,7 +73,7 @@ export default function Desktop() {
                 key={idx}
                 variants={item}
                 whileHover={{ y: -4, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-                className="group flex rounded overflow-hidden border border-[#0B1D3A]/[0.07] bg-white/90 backdrop-blur-xl luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-500 relative"
+                className="group flex rounded-[4px]-[4px]-[4px] overflow-hidden border border-[#0B1D3A]/[0.07] bg-white/90 backdrop-blur-xl luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-500 relative"
               >
                 
                 <div
@@ -107,7 +107,7 @@ export default function Desktop() {
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                     <motion.div
                       whileHover={{ scale: 1.12 }}
-                      className="w-14 h-14 rounded-full flex items-center justify-center border border-white/30 backdrop-blur-md luxury-shadow-float transition-all duration-300 group-hover:border-white/50"
+                      className="w-14 h-14 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center border border-white/30 backdrop-blur-md luxury-shadow-float transition-all duration-300 group-hover:border-white/50"
                       style={{ background: "rgba(255,255,255,0.15)" }}
                     >
                       <Play size={22} fill="white" className="ml-1 text-white" />
@@ -117,7 +117,7 @@ export default function Desktop() {
                   
                   <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/40 to-transparent">
                     <span
-                      className="text-[9px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded"
+                      className="text-[9px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded-[4px]-[4px]-[4px]"
                       style={{ background: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.9)" }}
                     >
                       {study.domain}
@@ -155,7 +155,7 @@ export default function Desktop() {
                       
                       <div className="flex items-start gap-3">
                         <div
-                          className="w-7 h-7 rounded flex items-center justify-center text-white shrink-0 mt-0.5"
+                          className="w-7 h-7 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shrink-0 mt-0.5"
                           style={{ background: "#EF4444" }}
                         >
                           <Target size={14} strokeWidth={2.5} />
@@ -168,7 +168,7 @@ export default function Desktop() {
                       
                       <div className="flex items-start gap-3">
                         <div
-                          className="w-7 h-7 rounded flex items-center justify-center text-white shrink-0 mt-0.5"
+                          className="w-7 h-7 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shrink-0 mt-0.5"
                           style={{ background: GOLD }}
                         >
                           <Lightbulb size={14} strokeWidth={2.5} />
@@ -188,7 +188,7 @@ export default function Desktop() {
                       {study.metrics.map((m, mIdx) => (
                         <div
                           key={mIdx}
-                          className="flex flex-col items-center px-4 py-2.5 rounded border text-center min-w-[90px]"
+                          className="flex flex-col items-center px-4 py-2.5 rounded-[4px]-[4px]-[4px] border text-center min-w-[90px]"
                           style={{ background: accent.metricBg, borderColor: accent.metricBorder }}
                         >
                           <span className="text-[20px] font-black leading-none tracking-tight" style={{ color: NAVY }}>{m.value}</span>
@@ -201,7 +201,7 @@ export default function Desktop() {
                       {study.tags.map((tag, tIdx) => (
                         <span
                           key={tIdx}
-                          className="text-[11px] font-bold px-2.5 py-1 rounded"
+                          className="text-[11px] font-bold px-2.5 py-1 rounded-[4px]-[4px]-[4px]"
                           style={{ background: accent.tag, color: accent.tagText }}
                         >
                           {tag}

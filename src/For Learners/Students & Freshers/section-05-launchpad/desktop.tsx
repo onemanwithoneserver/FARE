@@ -27,8 +27,8 @@ export default function Desktop() {
   return (
     <section className="w-full bg-[#0B1D3A] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: "32px 32px" }} />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.1] to-transparent rounded-full blur-[80px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#38BDF8]/[0.05] to-transparent rounded-full blur-[60px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.1] to-transparent rounded-[4px]-full blur-[80px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#38BDF8]/[0.05] to-transparent rounded-[4px]-full blur-[60px] pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
@@ -60,10 +60,10 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white/[0.03] p-8 rounded-xl border border-white/10 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 hover:bg-white/[0.05] transition-all duration-400 group flex flex-col h-full relative overflow-hidden backdrop-blur-sm"
+                className="bg-white/[0.03] p-8 rounded-[4px] border border-white/10 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 hover:bg-white/[0.05] transition-all duration-400 group flex flex-col h-full relative overflow-hidden backdrop-blur-sm"
               >
                 <div className="flex items-center gap-5 mb-6">
-                  <div className={`w-14 h-14 rounded-lg flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md shrink-0 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon size={26} className="text-white" strokeWidth={2.5} />
                   </div>
                   <div>

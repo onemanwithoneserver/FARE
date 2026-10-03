@@ -57,7 +57,7 @@ export default function Mobile() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#F1F5FB] to-transparent rounded-full blur-[60px] pointer-events-none"
+        className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#F1F5FB] to-transparent rounded-[4px]-full blur-[60px] pointer-events-none"
       ></motion.div>
       <div className="w-full px-5 relative z-10">
         <motion.div
@@ -69,7 +69,7 @@ export default function Mobile() {
         >
           <motion.div variants={item} className="mb-4">
             <span
-              className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
+              className="inline-flex items-center px-3 py-1 rounded-[4px]-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
               style={{ color: GOLD }}
             >
               {data.title} — {data.overline}
@@ -102,7 +102,7 @@ export default function Mobile() {
             <motion.div
               key={index}
               variants={item}
-              className="bg-white border border-[#0B1D3A]/[0.06] rounded p-6 shadow-[0_2px_12px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
+              className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px]-[4px] p-6 shadow-[0_2px_12px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -111,7 +111,7 @@ export default function Mobile() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute top-0 right-0 w-32 h-32 opacity-[0.05] blur-[30px] rounded-bl-full pointer-events-none"
+                className="absolute top-0 right-0 w-32 h-32 opacity-[0.05] blur-[30px] rounded-[4px]-bl-full pointer-events-none"
                 style={{ background: card.color }}
               ></motion.div>
               <div
@@ -120,14 +120,14 @@ export default function Mobile() {
               ></div>
               <div className="flex items-center justify-between mb-5 relative z-10">
                 <div
-                  className="w-12 h-12 rounded flex items-center justify-center shadow-md relative overflow-hidden"
+                  className="w-12 h-12 rounded-[4px]-[4px] flex items-center justify-center shadow-md relative overflow-hidden"
                   style={{ backgroundColor: card.color }}
                 >
                   <div className="absolute inset-0 bg-white/0 translate-y-[100%] transition-transform duration-500"></div>
                   {icons[card.icon as keyof typeof icons]}
                 </div>
                 <div
-                  className="px-3 py-1 rounded-full text-[9px] font-bold tracking-wider uppercase border flex items-center gap-1.5"
+                  className="px-3 py-1 rounded-[4px]-full text-[9px] font-bold tracking-wider uppercase border flex items-center gap-1.5"
                   style={{
                     color: card.color,
                     backgroundColor: `${card.color}10`,
@@ -135,7 +135,7 @@ export default function Mobile() {
                   }}
                 >
                   <span
-                    className="w-1 h-1 rounded-full"
+                    className="w-1 h-1 rounded-[4px]-full"
                     style={{ backgroundColor: card.color }}
                   ></span>
                   {card.tag}
@@ -162,7 +162,7 @@ export default function Mobile() {
         >
           <button className="flex flex-col items-center gap-2 text-[13px] font-semibold text-[#475569] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
             <span>{data.cta.replace(" ↓", "")}</span>
-            <div className="w-8 h-8 rounded-full bg-[#F1F5FB] flex items-center justify-center shadow-sm">
+            <div className="w-8 h-8 rounded-[4px]-full bg-[#F1F5FB] flex items-center justify-center shadow-sm">
               <ArrowDown
                 size={16}
                 strokeWidth={2.5}

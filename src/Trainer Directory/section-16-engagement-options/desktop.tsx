@@ -57,13 +57,13 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-[5%] w-[450px] h-[450px] rounded-full blur-[100px] pointer-events-none z-0 opacity-40"
+        className="absolute top-[10%] left-[5%] w-[450px] h-[450px] rounded-[4px]-[4px]-[4px]-full blur-[100px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)" }}
       />
       <motion.div
         animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1.1, 1, 1.1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-10%] right-[0%] w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none z-0 opacity-30"
+        className="absolute bottom-[-10%] right-[0%] w-[500px] h-[500px] rounded-[4px]-[4px]-[4px]-full blur-[120px] pointer-events-none z-0 opacity-30"
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.08) 0%, transparent 70%)" }}
       />
 
@@ -75,7 +75,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
         className="max-w-[1200px] w-full relative z-10"
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-4">
-          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, #D5AA45)` }} />
+          <div className="w-[4px] h-7 rounded-[4px]-[4px]-[4px]-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, #D5AA45)` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Investment")}</h2>
         </motion.div>
         <motion.div variants={item} className="mb-10">
@@ -89,7 +89,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
               key={idx}
               variants={item}
               whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-              className={`rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out group ${
+              className={`rounded-[4px]-[4px]-[4px] p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out group ${
                 card.featured
                   ? "border-2 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)]"
                   : "border border-[#0B1D3A]/[0.06] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#0B1D3A]/[0.15]"
@@ -104,7 +104,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
             >
               
               <div
-                className="absolute -top-12 -right-12 w-40 h-40 rounded-full blur-[40px] opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none"
+                className="absolute -top-12 -right-12 w-40 h-40 rounded-[4px]-[4px]-[4px]-full blur-[40px] opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none"
                 style={{ background: card.accent }}
               />
 
@@ -113,7 +113,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
                   <motion.div
                     animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.2, 0.1] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-0 right-0 w-48 h-48 rounded-full blur-[50px] pointer-events-none"
+                    className="absolute top-0 right-0 w-48 h-48 rounded-[4px]-[4px]-[4px]-full blur-[50px] pointer-events-none"
                     style={{ background: GOLD }}
                   />
                   <div
@@ -123,7 +123,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
                       backgroundSize: "24px 24px",
                     }}
                   />
-                  <div className="absolute top-4 right-4 text-[9px] font-black uppercase tracking-[0.15em] px-2.5 py-1 rounded-full z-10" style={{ background: GOLD, color: NAVY }}>
+                  <div className="absolute top-4 right-4 text-[9px] font-black uppercase tracking-[0.15em] px-2.5 py-1 rounded-[4px]-[4px]-[4px]-full z-10" style={{ background: GOLD, color: NAVY }}>
                     {t("Popular")}
                   </div>
                 </>
@@ -131,7 +131,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
 
               <div className="relative z-10 flex flex-col h-full">
                 <div
-                  className="w-11 h-11 rounded flex items-center justify-center text-white shadow-lg mb-5"
+                  className="w-11 h-11 rounded-[4px]-[4px]-[4px] flex items-center justify-center text-white shadow-lg mb-5"
                   style={{ background: card.accent }}
                 >
                   {card.icon}
@@ -153,7 +153,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
                     {card.options.map((opt, oIdx) => (
                       <span
                         key={oIdx}
-                        className="text-[12px] font-bold px-3 py-1.5 rounded transition-colors"
+                        className="text-[12px] font-bold px-3 py-1.5 rounded-[4px]-[4px]-[4px] transition-colors"
                         style={opt === card.selected ? {
                           background: `${GOLD}25`,
                           color: GOLD,
@@ -175,7 +175,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
                   <ul className="flex flex-col gap-3 mt-auto">
                     {card.list.map((li, lIdx) => (
                       <li key={lIdx} className="flex items-center gap-3 text-[14px] font-semibold text-[#5A6B82]">
-                        <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{ background: `${card.accent}15`, border: `1px solid ${card.accent}30` }}>
+                        <div className="w-5 h-5 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center shrink-0" style={{ background: `${card.accent}15`, border: `1px solid ${card.accent}30` }}>
                           <Check size={11} strokeWidth={3} style={{ color: card.accent }} />
                         </div>
                         {li}
@@ -191,14 +191,14 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
         
         <motion.div
           variants={item}
-          className="rounded p-6 flex items-center justify-between relative overflow-hidden border border-[#0B1D3A]/[0.06] bg-[#F8FAFD]"
+          className="rounded-[4px]-[4px]-[4px] p-6 flex items-center justify-between relative overflow-hidden border border-[#0B1D3A]/[0.06] bg-[#F8FAFD]"
         >
           <p className="text-[14px] font-medium text-[#5A6B82] relative z-10 max-w-[600px] leading-relaxed">
             {data.investment.footerNote}
           </p>
           <button
             onClick={onRequestPricing}
-            className="relative z-10 px-8 py-3 rounded font-black text-[14px] text-white transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center gap-2.5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] group/btn"
+            className="relative z-10 px-8 py-3 rounded-[4px]-[8px]-[4px]-[8px]-[4px]-[8px] font-black text-[14px] text-white transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center gap-2.5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] group/btn"
             style={{ background: `linear-gradient(135deg, ${NAVY}, #132A4D)` }}
           >
             {t("Request Pricing")}

@@ -37,7 +37,7 @@ export default function Mobile() {
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[60px] pointer-events-none z-0"
+        className="absolute top-0 right-[-100px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-[4px]-full blur-[60px] pointer-events-none z-0"
       ></motion.div>
       <div
         className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
@@ -68,10 +68,10 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-50px" }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-white/80 border border-[#0B1D3A]/10 rounded-xl overflow-hidden backdrop-blur-xl luxury-shadow-float relative hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="bg-white/80 border border-[#0B1D3A]/10 rounded-[4px] overflow-hidden backdrop-blur-xl luxury-shadow-float relative hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div
-                  className="absolute top-0 right-0 w-[200px] h-[200px] opacity-[0.06] blur-[50px] pointer-events-none rounded-bl-full"
+                  className="absolute top-0 right-0 w-[200px] h-[200px] opacity-[0.06] blur-[50px] pointer-events-none rounded-[4px]-bl-full"
                   style={{ background: activeColor }}
                 />
                 <div
@@ -84,7 +84,7 @@ export default function Mobile() {
                   <div className="flex flex-col">
                     <div className="flex items-center gap-4 mb-5">
                       <div
-                        className="w-12 h-12 shrink-0 rounded-lg flex items-center justify-center shadow-md"
+                        className="w-12 h-12 shrink-0 rounded-[4px] flex items-center justify-center shadow-md"
                         style={{ backgroundColor: activeColor }}
                       >
                         {TAB_ICONS[tab.id]}
@@ -112,7 +112,7 @@ export default function Mobile() {
                         ) => (
                           <div
                             key={idx}
-                            className="bg-gradient-to-b from-[#0B1D3A]/[0.02] to-transparent rounded-lg p-5 border border-[#0B1D3A]/[0.06] relative overflow-hidden"
+                            className="bg-gradient-to-b from-[#0B1D3A]/[0.02] to-transparent rounded-[4px] p-5 border border-[#0B1D3A]/[0.06] relative overflow-hidden"
                           >
                             <div
                               className="absolute top-0 right-0 w-20 h-20 opacity-10 blur-[20px] pointer-events-none"
@@ -123,7 +123,7 @@ export default function Mobile() {
                               style={{ color: activeColor }}
                             >
                               <div
-                                className="w-1.5 h-1.5 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)]"
+                                className="w-1.5 h-1.5 rounded-[4px]-full shadow-[0_0_8px_rgba(255,255,255,0.5)]"
                                 style={{ backgroundColor: activeColor }}
                               ></div>
                               {section.heading}
@@ -137,7 +137,7 @@ export default function Mobile() {
                                   className="flex items-start gap-2.5 text-[13.5px] text-[#334155] font-medium"
                                 >
                                   <div
-                                    className="w-4.5 h-4.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-sm bg-white border border-[#0B1D3A]/10"
+                                    className="w-4.5 h-4.5 rounded-[4px]-full flex items-center justify-center shrink-0 mt-0.5 shadow-sm bg-white border border-[#0B1D3A]/10"
                                     style={{ color: activeColor }}
                                   >
                                     <CheckCircle2
@@ -158,7 +158,7 @@ export default function Mobile() {
                   <div className="flex flex-col gap-4 border-t border-[#0B1D3A]/[0.08] pt-6">
                     {(activeContent.journey ||
                       activeContent.evaluateBasedOn) && (
-                      <div className="bg-[#0B1D3A]/[0.03] rounded-lg p-4 border border-[#0B1D3A]/[0.06]">
+                      <div className="bg-[#0B1D3A]/[0.03] rounded-[4px] p-4 border border-[#0B1D3A]/[0.06]">
                         {activeContent.journey && (
                           <div>
                             <h4 className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.2em] mb-4">
@@ -173,7 +173,7 @@ export default function Mobile() {
                                       key={i}
                                       className="flex items-center gap-3"
                                     >
-                                      <div className="w-7 h-7 rounded-full border-2 border-[#0B1D3A]/15 flex items-center justify-center text-[11px] font-bold text-[#7B8DAA] bg-white/50">
+                                      <div className="w-7 h-7 rounded-[4px]-full border-2 border-[#0B1D3A]/15 flex items-center justify-center text-[11px] font-bold text-[#7B8DAA] bg-white/50">
                                         {i + 1}
                                       </div>
                                       <span
@@ -208,7 +208,7 @@ export default function Mobile() {
                                 .map((tag: string, i: number) => (
                                   <span
                                     key={i}
-                                    className="px-3 py-1.5 rounded-md bg-white border border-[#0B1D3A]/10 text-[12px] font-semibold text-[#475569] shadow-sm"
+                                    className="px-3 py-1.5 rounded-[4px] bg-white border border-[#0B1D3A]/10 text-[12px] font-semibold text-[#475569] shadow-sm"
                                   >
                                     {tag}
                                   </span>
@@ -218,7 +218,7 @@ export default function Mobile() {
                         )}
                       </div>
                     )}
-                    <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-lg p-6 luxury-shadow-float mt-2 relative overflow-hidden">
+                    <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-[4px] p-6 luxury-shadow-float mt-2 relative overflow-hidden">
                       <div
                         className="absolute top-0 right-0 w-24 h-24 opacity-20 blur-[20px]"
                         style={{ background: activeColor }}
@@ -243,7 +243,7 @@ export default function Mobile() {
                                   setIsVideoModalOpen(true);
                                 }
                               }}
-                              className={`w-full py-3.5 px-4 rounded-md text-[13.5px] font-bold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+                              className={`w-full py-3.5 px-4 rounded-[4px] text-[13.5px] font-bold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
                                 idx === 0
                                   ? "text-[#0B1D3A] bg-white shadow-md active:scale-[0.98]"
                                   : "text-white border border-white/20 active:scale-[0.98]"

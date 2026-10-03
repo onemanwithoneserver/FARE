@@ -138,8 +138,8 @@ export default function Mobile() {
         <header
           className={`transition-all duration-300 pointer-events-auto flex items-center justify-between relative ${
             isScrolled
-              ? "w-full h-[48px] px-5 bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 luxury-shadow-float rounded-full"
-              : "w-full h-[60px] px-5 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.06] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none"
+              ? "w-full h-[48px] px-5 bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 luxury-shadow-float rounded-[4px]-[4px]-[4px]-full"
+              : "w-full h-[60px] px-5 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.06] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-[4px]-[4px]-[4px]-none"
           }`}
         >
           <div
@@ -167,10 +167,10 @@ export default function Mobile() {
                   isLangDropdownOpen
                     ? (isScrolled
                         ? "bg-white text-[#0B1D3A]"
-                        : "bg-[#0B1D3A] text-white") + " shadow-xs rounded"
+                        : "bg-[#0B1D3A] text-white") + " shadow-xs rounded-[4px]-[4px]-[4px]"
                     : isScrolled
-                      ? "rounded-full"
-                      : "rounded"
+                      ? "rounded-[4px]-[4px]-[4px]-full"
+                      : "rounded-[4px]-[4px]-[4px]"
                 }`}
               >
                 <Globe
@@ -194,7 +194,7 @@ export default function Mobile() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.95 }}
                     transition={{ duration: 0.15 }}
-                    className={`absolute top-[calc(100%+8px)] right-0 w-[155px] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded p-1.5 z-[90] pointer-events-auto`}
+                    className={`absolute top-[calc(100%+8px)] right-0 w-[155px] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded-[4px]-[4px]-[4px] p-1.5 z-[90] pointer-events-auto`}
                   >
                     <div
                       className={`text-[9.5px] font-bold uppercase tracking-wider px-2 py-1 ${isScrolled ? "text-white/70" : "text-[#0B1D3A]/70"}`}
@@ -208,7 +208,7 @@ export default function Mobile() {
                         setLanguage("en");
                         setIsLangDropdownOpen(false);
                       }}
-                      className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[12.5px] transition-all cursor-pointer ${
+                      className={`w-full flex items-center justify-between px-2.5 py-2 rounded-[4px]-[4px]-[4px] text-[12.5px] transition-all cursor-pointer ${
                         language === "en"
                           ? isScrolled
                             ? "bg-white text-[#0B1D3A] font-bold shadow-xs"
@@ -220,7 +220,7 @@ export default function Mobile() {
                     >
                       <span className="flex items-center gap-2">
                         <span
-                          className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${
+                          className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded-[4px]-[4px]-[4px] ${
                             language === "en"
                               ? isScrolled
                                 ? "bg-[#0B1D3A] text-white"
@@ -249,7 +249,7 @@ export default function Mobile() {
                         setLanguage("te");
                         setIsLangDropdownOpen(false);
                       }}
-                      className={`w-full flex items-center justify-between px-2.5 py-2 rounded text-[12.5px] transition-all cursor-pointer mt-1 ${
+                      className={`w-full flex items-center justify-between px-2.5 py-2 rounded-[4px]-[4px]-[4px] text-[12.5px] transition-all cursor-pointer mt-1 ${
                         language === "te"
                           ? isScrolled
                             ? "bg-white text-[#0B1D3A] font-bold shadow-xs"
@@ -261,7 +261,7 @@ export default function Mobile() {
                     >
                       <span className="flex items-center gap-2">
                         <span
-                          className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${
+                          className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded-[4px]-[4px]-[4px] ${
                             language === "te"
                               ? isScrolled
                                 ? "bg-[#0B1D3A] text-white"
@@ -295,7 +295,7 @@ export default function Mobile() {
                 if (isOpen) setIsOpen(false);
               }}
               aria-label="Search"
-              className={`p-1.5 transition-colors ${isScrolled ? "text-white/75 hover:text-white hover:bg-white/10 rounded-full" : "text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] rounded"}`}
+              className={`p-1.5 transition-colors ${isScrolled ? "text-white/75 hover:text-white hover:bg-white/10 rounded-[4px]-[4px]-[4px]-full" : "text-[#0B1D3A]/75 hover:text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] rounded-[4px]-[4px]-[4px]"}`}
             >
               <Search size={18} strokeWidth={2} />
             </button>
@@ -307,7 +307,7 @@ export default function Mobile() {
               aria-label={
                 isOpen ? "Close navigation menu" : "Open navigation menu"
               }
-              className={`p-2 transition-colors duration-200 cursor-pointer ${isScrolled ? "text-white hover:bg-white/10 rounded-full" : "text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] rounded"}`}
+              className={`p-2 transition-colors duration-200 cursor-pointer ${isScrolled ? "text-white hover:bg-white/10 rounded-[4px]-[4px]-[4px]-full" : "text-[#0B1D3A] hover:bg-[#0B1D3A]/[0.04] rounded-[4px]-[4px]-[4px]"}`}
             >
               {isOpen ? (
                 <X size={22} strokeWidth={2} />
@@ -323,7 +323,7 @@ export default function Mobile() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
-                className={`absolute top-[70px] left-3 right-3 ${isScrolled ? "bg-[#0B1D3A]/95 border-white/80" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded p-3 z-50 pointer-events-auto flex items-center gap-2`}
+                className={`absolute top-[70px] left-3 right-3 ${isScrolled ? "bg-[#0B1D3A]/95 border-white/80" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded-[4px]-[4px]-[4px] p-3 z-50 pointer-events-auto flex items-center gap-2`}
               >
                 <Search
                   size={16}
@@ -342,7 +342,7 @@ export default function Mobile() {
                     setIsSearchExpanded(false);
                     setSearchQuery("");
                   }}
-                  className={`p-1 rounded-sm ${isScrolled ? "text-white/50 hover:text-white" : "text-[#0B1D3A]/50 hover:text-[#0B1D3A]"}`}
+                  className={`p-1 rounded-[4px]-[4px]-[4px] ${isScrolled ? "text-white/50 hover:text-white" : "text-[#0B1D3A]/50 hover:text-[#0B1D3A]"}`}
                 >
                   <X size={16} />
                 </button>
@@ -356,7 +356,7 @@ export default function Mobile() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.98 }}
                 transition={{ duration: 0.2 }}
-                className="absolute top-[70px] left-3 right-3 bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 luxury-shadow-float rounded flex flex-col p-6 gap-5 z-50 pointer-events-auto"
+                className="absolute top-[70px] left-3 right-3 bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 luxury-shadow-float rounded-[4px]-[4px]-[4px] flex flex-col p-6 gap-5 z-50 pointer-events-auto"
               >
                 <nav className="flex flex-col gap-3">
                   {data.navLinks.map((link, idx) => {
@@ -386,7 +386,7 @@ export default function Mobile() {
                           >
                             <span>{link.title}</span>
                             <div
-                              className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
+                              className={`w-7 h-7 rounded-[4px]-[4px]-[4px]-full flex items-center justify-center transition-all duration-300 ${
                                 isSubOpen
                                   ? "bg-[#C99A2E] text-[#0B1D3A]"
                                   : "bg-white/10 text-white"
@@ -433,7 +433,7 @@ export default function Mobile() {
                                           behavior: "smooth",
                                         });
                                       }}
-                                      className={`flex items-center justify-between p-2.5 rounded-[4px] border transition-all cursor-pointer group ${
+                                      className={`flex items-center justify-between p-2.5 rounded-[4px]-[4px]-[4px]-[4px] border transition-all cursor-pointer group ${
                                         isSubActive
                                           ? "bg-white/10 border-[#C99A2E]"
                                           : "bg-[#040C1E] border-white/10 hover:bg-white/10"
@@ -441,7 +441,7 @@ export default function Mobile() {
                                     >
                                       <div className="flex items-center gap-2.5 min-w-0">
                                         <div
-                                          className="w-8 h-8 rounded-[4px] flex items-center justify-center shrink-0 shadow-sm"
+                                          className="w-8 h-8 rounded-[4px]-[4px]-[4px]-[4px] flex items-center justify-center shrink-0 shadow-sm"
                                           style={{
                                             backgroundColor: `${subColor}33`,
                                             color: subColor,
@@ -504,7 +504,7 @@ export default function Mobile() {
                 <div className="h-[1px] w-full bg-white/10"></div>
                 <div className="flex flex-col gap-3.5">
                   <div
-                    className="flex items-center gap-2 bg-[#040C1E] border border-white/10 rounded px-3 py-2"
+                    className="flex items-center gap-2 bg-[#040C1E] border border-white/10 rounded-[4px]-[4px]-[4px] px-3 py-2"
                   >
                     <Search
                       size={16}
@@ -532,7 +532,7 @@ export default function Mobile() {
                         navigate(`/${currentMode}/contact-us`);
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
-                      className="group bg-[#C99A2E] text-[#0B1D3A] text-[13px] font-semibold px-5 py-2 rounded shadow-sm flex items-center gap-1.5 cursor-pointer"
+                      className="group bg-[#C99A2E] text-[#0B1D3A] text-[13px] font-semibold px-5 py-2 rounded-[4px]-[4px]-[4px] shadow-sm flex items-center gap-1.5 cursor-pointer"
                     >
                       <span>
                         {language === "te" ? "ప్రారంభించండి" : "Get Started"}

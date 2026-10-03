@@ -27,7 +27,7 @@ export default function Mobile() {
   return (
     <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-5 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
       <div className="absolute inset-0 bg-[#F8FAFD]/50 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[60px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-[4px]-full blur-[60px] pointer-events-none" />
       
       <div className="max-w-[480px] mx-auto relative z-10">
         <motion.div
@@ -62,10 +62,10 @@ export default function Mobile() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-5 rounded-xl shadow-[0_2px_12px_rgba(11,29,58,0.03)] border border-[#E2E8F0]/80 flex flex-col h-full"
+                className="bg-white p-5 rounded-[4px] shadow-[0_2px_12px_rgba(11,29,58,0.03)] border border-[#E2E8F0]/80 flex flex-col h-full"
               >
                 <div className="flex items-center gap-3.5 mb-4">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
+                  <div className={`w-10 h-10 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
                     <Icon size={18} className="text-white" strokeWidth={2.5} />
                   </div>
                   <div>
