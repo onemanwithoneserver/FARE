@@ -213,13 +213,15 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               variants={itemVariants}
               className={`font-black leading-[1.05] tracking-tight ${
                 isMobile
-                  ? "text-[1.85rem] mb-2 leading-[1.12] w-full max-w-[320px]"
-                  : "text-[2.2rem] sm:text-[2.8rem] lg:text-[3rem] xl:text-[3.4rem] mb-2 lg:mb-4 w-[280px] sm:w-[80%] lg:w-full max-w-full"
+                  ? "text-[1.45rem] mb-2 leading-[1.12] w-full max-w-[320px]"
+                  : "text-[2.2rem] sm:text-[clamp(1.5rem,3.4vw,2.8rem)] mb-2 lg:mb-4 w-[280px] sm:w-[80%] lg:w-full max-w-full"
               }`}
               style={{ color: NAVY }}
             >
-              Find the Right{" "}
-              <span className="text-[#C99A2E]">Trainer</span> for Your Real Estate Team
+              <span className="block whitespace-nowrap">
+                Find the Right <span className="text-[#C99A2E]">Trainer</span> for
+              </span>
+              <span className="block whitespace-nowrap">Your Real Estate Team</span>
             </motion.h1>
 
             <motion.p

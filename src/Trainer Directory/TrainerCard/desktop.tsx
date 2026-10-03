@@ -129,7 +129,7 @@ function TrainerPhotoHero({
 function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) {
   return (
     <div className="relative shrink-0     rounded-[4px] bg-white p-0.5 shadow-[0_12px_28px_-10px_rgba(11,29,58,0.5)] ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
-          <div className="h-full w-full overflow-hidden rounded-[14px] bg-[#0B1D3A]">
+          <div className="h-full w-full overflow-hidden rounded-[2px] bg-[#0B1D3A]">
         {trainer.image ? (
           <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
         ) : (
@@ -139,8 +139,8 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
         )}
       </div>
       {trainer.verified && (
-        <span className="absolute -bottom-1.5 -right-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-[#0B1D3A]/10">
-          <BadgeCheck size={18} strokeWidth={2.4} style={{ color: "#2563EB" }} />
+        <span className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-[#2563EB] shadow-sm ring-1 ring-white">
+          <BadgeCheck size={13} strokeWidth={2.8} style={{ color: "#FFFFFF" }} />
         </span>
       )}
     </div>
@@ -228,7 +228,7 @@ function TrainerStats({ trainer }: { trainer: Trainer }) {
     <div className="grid grid-cols-3 rounded-lg border border-[#0B1D3A]/[0.06] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
       {stats.map((stat) => (
         <div key={stat.label} className="flex items-center justify-center gap-2 py-2.5">
-          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md" style={{ background: stat.bg, color: stat.color }}>
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
             {stat.icon}
           </span>
           <span className="min-w-0">
