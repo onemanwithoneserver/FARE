@@ -90,7 +90,7 @@ export default function Mobile() {
         viewport={{ once: true, margin: "-40px" }}
         className="relative z-10 w-full flex flex-col gap-6"
       >
-        {/* Card 1: RE Segment Expertise */}
+        
         <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[0].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">
@@ -108,7 +108,7 @@ export default function Mobile() {
           </div>
         </motion.div>
 
-        {/* Card 2: Learner Audience */}
+        
         <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[1].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">
@@ -131,7 +131,7 @@ export default function Mobile() {
           </div>
         </motion.div>
 
-        {/* Card 3: Language */}
+        
         <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[2].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">

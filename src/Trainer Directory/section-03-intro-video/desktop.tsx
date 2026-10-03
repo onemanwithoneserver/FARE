@@ -57,7 +57,7 @@ export default function Desktop() {
         </motion.div>
 
         <div className="flex gap-8 items-start">
-          {/* Left: Video */}
+          
           <motion.div
             variants={item}
             whileHover={{ y: -5 }}
@@ -104,7 +104,7 @@ export default function Desktop() {
             <div className="absolute bottom-3 right-12 w-6 h-6 border-b-2 border-r-2 rounded-br opacity-20" style={{ borderColor: GOLD }} />
           </motion.div>
 
-          {/* Right: Audio Snippets Panel */}
+          
           <motion.div variants={item} className="w-[340px] shrink-0 flex flex-col gap-4">
             <div className="flex items-center gap-2 mb-1">
               <div className="w-8 h-8 rounded flex items-center justify-center text-white shadow-sm" style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}>

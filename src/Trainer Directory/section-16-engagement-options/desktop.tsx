@@ -52,7 +52,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
     <section
       className="w-full py-16 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
     >
-      {/* Orbs */}
+      
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
@@ -81,7 +81,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
           <p className="text-[15px] text-[#7B8DAA] font-medium max-w-[500px]">Transparent engagement models tailored to your team's requirements.</p>
         </motion.div>
 
-        {/* Pricing Cards */}
+        
         <div className="grid grid-cols-3 gap-6 mb-8">
           {cards.map((card, idx) => (
             <motion.div
@@ -101,7 +101,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
                 borderColor: card.featured ? `${GOLD}60` : undefined,
               }}
             >
-              {/* Hover glow */}
+              
               <div
                 className="absolute -top-12 -right-12 w-40 h-40 rounded-full blur-[40px] opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none"
                 style={{ background: card.accent }}
@@ -146,7 +146,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
                   {card.desc}
                 </p>
 
-                {/* Options chips (card 2) */}
+                
                 {card.options && (
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {card.options.map((opt, oIdx) => (
@@ -169,7 +169,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
                   </div>
                 )}
 
-                {/* Checklist (card 3) */}
+                
                 {card.list && (
                   <ul className="flex flex-col gap-3 mt-auto">
                     {card.list.map((li, lIdx) => (
@@ -187,7 +187,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
           ))}
         </div>
 
-        {/* Footer CTA */}
+        
         <motion.div
           variants={item}
           className="rounded p-6 flex items-center justify-between relative overflow-hidden border border-[#0B1D3A]/[0.06] bg-[#F8FAFD]"

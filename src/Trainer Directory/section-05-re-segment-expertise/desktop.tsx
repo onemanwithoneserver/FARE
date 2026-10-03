@@ -90,7 +90,7 @@ export default function Desktop() {
         viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full grid grid-cols-3 gap-8 relative z-10"
       >
-        {/* Column 1: RE Segment Expertise */}
+        
         <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.12)] transition-all duration-300 ease-out relative overflow-hidden group">
           <div className="absolute top-0 left-0 right-0 h-[3px] opacity-70 group-hover:opacity-100 transition-opacity" style={{ background: sectionColors[0].bg }} />
           <div className="flex items-center gap-3 mb-6">
@@ -108,7 +108,7 @@ export default function Desktop() {
           </div>
         </motion.div>
 
-        {/* Column 2: Learner Audience */}
+        
         <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.12)] transition-all duration-300 ease-out relative overflow-hidden group">
           <div className="absolute top-0 left-0 right-0 h-[3px] opacity-70 group-hover:opacity-100 transition-opacity" style={{ background: sectionColors[1].bg }} />
           <div className="flex items-center gap-3 mb-6">
@@ -131,7 +131,7 @@ export default function Desktop() {
           </div>
         </motion.div>
 
-        {/* Column 3: Language */}
+        
         <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.12)] transition-all duration-300 ease-out relative overflow-hidden group">
           <div className="absolute top-0 left-0 right-0 h-[3px] opacity-70 group-hover:opacity-100 transition-opacity" style={{ background: sectionColors[2].bg }} />
           <div className="flex items-center gap-3 mb-6">

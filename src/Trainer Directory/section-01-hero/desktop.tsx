@@ -23,7 +23,7 @@ export default function Desktop() {
   return (
     <section className="w-full relative overflow-hidden font-['Outfit'] flex items-center min-h-[600px] py-20 px-10" style={{ background: NAVY }}>
       
-      {/* Liquid glowing orbs background */}
+      
       <motion.div
         animate={{ x: [0, 40, 0], y: [0, -30, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -37,20 +37,20 @@ export default function Desktop() {
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.2) 0%, transparent 70%)" }}
       />
       
-      {/* Subtle grid pattern overlay */}
+      
       <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
 
       <div className="max-w-[1200px] mx-auto w-full relative z-10">
         <div className="flex items-center gap-16">
           
-          {/* Left Column - Image */}
+          
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="w-[380px] shrink-0 relative group"
           >
-            {/* Animated liquid border glow */}
+            
             <div className="absolute -inset-1 bg-gradient-to-br from-[#6366F1]/40 via-[#C99A2E]/40 to-[#06B6D4]/40 rounded blur-lg group-hover:blur-xl transition-all duration-500 opacity-60" />
             
             <div className="relative w-full aspect-[3/4] rounded overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
@@ -75,7 +75,7 @@ export default function Desktop() {
             )}
           </motion.div>
 
-          {/* Right Column - Content */}
+          
           <motion.div 
             variants={container}
             initial="hidden"
@@ -93,7 +93,7 @@ export default function Desktop() {
               {data.positioningStatement}
             </motion.p>
 
-            {/* Glassmorphism Stats Cards */}
+            
             <motion.div variants={item} className="flex gap-4 mb-10">
               <div className="flex-1 rounded p-5 relative overflow-hidden group/stat transition-all duration-300 hover:bg-white/[0.08]"
                 style={{
@@ -150,7 +150,7 @@ export default function Desktop() {
               </div>
             </motion.div>
 
-            {/* Location & Languages */}
+            
             <motion.div variants={item} className="flex items-center gap-10 mb-10">
               <div className="flex items-center gap-3 text-white/90 font-medium text-[15px]">
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/5">
@@ -172,7 +172,7 @@ export default function Desktop() {
               </div>
             </motion.div>
 
-            {/* CTA */}
+            
             <motion.div variants={item} className="flex items-center gap-5">
               <button className="bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#0B1D3A] px-8 py-3.5 rounded font-black text-[15px] hover:shadow-[0_10px_25px_-5px_rgba(201,154,46,0.5)] transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group/btn">
                 <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-500 ease-in-out" />

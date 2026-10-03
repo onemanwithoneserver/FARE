@@ -75,7 +75,7 @@ export default function Desktop() {
         </motion.div>
 
         <div className="flex gap-8 items-start">
-          {/* Left: Timeline */}
+          
           <div className="flex-1 min-w-0">
             <motion.div variants={item} className="mb-6">
               <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Selected Engagements</span>
@@ -137,9 +137,9 @@ export default function Desktop() {
             </div>
           </div>
 
-          {/* Right: Stats & Segment breakdown */}
+          
           <motion.div variants={item} className="w-[300px] shrink-0 flex flex-col gap-4">
-            {/* Key Stats */}
+            
             <div className="bg-white border border-[#0B1D3A]/[0.06] rounded p-5 shadow-sm">
               <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em]">Key Metrics</span>
               <div className="flex flex-col gap-4 mt-4">
@@ -160,7 +160,7 @@ export default function Desktop() {
               </div>
             </div>
 
-            {/* Segment Breakdown */}
+            
             <div className="bg-white border border-[#0B1D3A]/[0.06] rounded p-5 shadow-sm">
               <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em]">Segment Focus</span>
               <div className="flex flex-col gap-3 mt-4">

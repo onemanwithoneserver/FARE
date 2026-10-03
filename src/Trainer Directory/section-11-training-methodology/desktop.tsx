@@ -56,7 +56,7 @@ export default function Desktop() {
         </motion.div>
 
         <div className="flex gap-10">
-          {/* Left Column - Quote & Tags */}
+          
           <div className="w-[450px] shrink-0 flex flex-col gap-6">
             <motion.div variants={item} className="relative rounded p-10 shadow-[0_12px_40px_-12px_rgba(11,29,58,0.15)] overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
               <motion.div 
@@ -98,7 +98,7 @@ export default function Desktop() {
             </motion.div>
           </div>
 
-          {/* Right Column - Methodology Steps */}
+          
           <div className="flex-1 flex flex-col gap-0 py-2 relative">
             <div className="absolute top-8 bottom-8 left-[23px] w-[2px] bg-gradient-to-b from-[#0B1D3A]/10 via-[#0B1D3A]/5 to-transparent z-0" />
             
@@ -108,7 +108,7 @@ export default function Desktop() {
                 variants={item}
                 className="group flex items-start gap-6 relative z-10 pb-8 last:pb-0"
               >
-                {/* Step Node */}
+                
                 <div className="w-12 h-12 rounded bg-white border border-[#0B1D3A]/[0.08] shadow-[0_4px_16px_rgba(11,29,58,0.06)] flex items-center justify-center shrink-0 group-hover:-translate-y-1 group-hover:border-[#0B1D3A]/[0.15] group-hover:shadow-[0_8px_24px_rgba(11,29,58,0.12)] transition-all duration-400 ease-out relative overflow-hidden">
                   <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }} />
                   <div className="text-white relative z-10 w-8 h-8 rounded flex items-center justify-center shadow-sm" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
@@ -116,7 +116,7 @@ export default function Desktop() {
                   </div>
                 </div>
 
-                {/* Content */}
+                
                 <div className="flex-1 pt-1 bg-white/50 backdrop-blur-sm p-4 rounded border border-transparent group-hover:border-[#0B1D3A]/[0.06] transition-colors duration-300 -mt-3">
                   <div className="flex items-baseline gap-3 mb-2">
                     <span className="text-[12px] font-black opacity-30" style={{ color: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>

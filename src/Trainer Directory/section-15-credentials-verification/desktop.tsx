@@ -62,7 +62,7 @@ export default function Desktop() {
               whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
               className="group rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/[0.40] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_16px_48px_-12px_rgba(201,154,46,0.15)] bg-white/90 backdrop-blur-xl"
             >
-              {/* Paper Texture Overlay */}
+              
               <div 
                 className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply"
                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
@@ -78,7 +78,7 @@ export default function Desktop() {
                   <Award size={22} strokeWidth={2.5} />
                 </div>
 
-                {/* FARE Verified Badge */}
+                
                 <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border bg-white shadow-sm" style={{ borderColor: `${GOLD}40` }}>
                    <ShieldCheck size={14} style={{ color: GOLD }} strokeWidth={2.5} />
                    <span className="text-[10px] font-black uppercase tracking-[0.15em] pt-[1px]" style={{ color: NAVY }}>Verified</span>

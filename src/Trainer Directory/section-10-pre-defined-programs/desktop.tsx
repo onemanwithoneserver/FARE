@@ -78,14 +78,14 @@ export default function Desktop() {
           </motion.div>
         </div>
 
-        {/* Scrollable Container */}
+        
         <div className="relative -mx-10 px-10">
           <div
             ref={scrollRef}
             className="flex gap-6 overflow-x-auto pb-8 pt-4 snap-x snap-mandatory scroll-smooth"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            {/* Inject global style to hide webkit scrollbar for this container */}
+            
             <style>{`
               ::-webkit-scrollbar {
                 display: none;
@@ -164,7 +164,7 @@ export default function Desktop() {
             ))}
           </div>
           
-          {/* Edge gradients for smooth fading */}
+          
           <div className="absolute top-0 bottom-0 left-0 w-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
           <div className="absolute top-0 bottom-0 right-0 w-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
         </div>

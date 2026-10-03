@@ -1,5 +1,6 @@
 import { motion, type Variants } from "motion/react";
 import { useState } from "react";
+import { ChevronRight, ArrowLeft } from "lucide-react";
 import HeroDesktop from "../section-01-hero/desktop";
 import AboutDesktop from "../section-02-about/desktop";
 import IntroVideoDesktop from "../section-03-intro-video/desktop";
@@ -17,12 +18,15 @@ import CredentialsVerificationDesktop from "../section-15-credentials-verificati
 import EngagementOptionsDesktop from "../section-16-engagement-options/desktop";
 import CorporateRequestFormDesktop from "../section-17-corporate-request-form/desktop";
 
+const GOLD = "#C99A2E";
+const GOLD_MID = "#D5AA45";
+
 const breadcrumbVariants: Variants = {
-  hidden: { opacity: 0, y: -6 },
+  hidden: { opacity: 0, y: -10 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -40,18 +44,73 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#8B5CF6]/5 to-transparent rounded-full blur-[100px] pointer-events-none z-0 fixed" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-full blur-[100px] pointer-events-none z-0 fixed" />
 
+      
       <motion.div
         initial="hidden"
         animate="visible"
         variants={breadcrumbVariants}
-        className="sticky top-0 z-50 bg-white/80 backdrop-blur-2xl border-b border-[#0B1D3A]/[0.06] px-6 lg:px-12 py-3.5 flex items-center justify-between shadow-[0_8px_32px_-8px_rgba(11,29,58,0.1)]"
+        className="sticky top-0 z-50 backdrop-blur-2xl border-b px-6 lg:px-12 py-3 flex items-center justify-between"
+        style={{
+          background: `linear-gradient(135deg, rgba(11,29,58,0.95) 0%, rgba(15,40,71,0.95) 100%)`,
+          borderColor: "rgba(255,255,255,0.06)",
+          boxShadow: "0 8px 32px -8px rgba(0,0,0,0.3), inset 0 -1px 0 rgba(255,255,255,0.05)",
+        }}
       >
-        <div className="flex items-center gap-2 text-[13px] text-[#7B8DAA] font-medium">
-          <span onClick={onBack} className="hover:text-[#0B1D3A] cursor-pointer transition-all duration-300 ease-out">Home</span>
-          <span className="text-[#0B1D3A]/20">/</span>
-          <span onClick={onBack} className="hover:text-[#0B1D3A] cursor-pointer transition-all duration-300 ease-out">Trainer Directory</span>
-          <span className="text-[#0B1D3A]/20">/</span>
-          <span className="text-[#0B1D3A] font-bold">Rajesh Kumar</span>
+        
+        <div className="flex items-center gap-4">
+          <button
+            onClick={onBack}
+            className="flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 hover:bg-white/10 active:scale-95"
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            <ArrowLeft size={16} className="text-white/60" strokeWidth={2.5} />
+          </button>
+
+          <div className="flex items-center gap-2 text-[13px] font-medium">
+            <span
+              onClick={onBack}
+              className="text-white/40 hover:text-white/70 cursor-pointer transition-all duration-300 ease-out"
+            >
+              Home
+            </span>
+            <ChevronRight size={12} className="text-white/20" strokeWidth={2} />
+            <span
+              onClick={onBack}
+              className="text-white/40 hover:text-white/70 cursor-pointer transition-all duration-300 ease-out"
+            >
+              Trainer Directory
+            </span>
+            <ChevronRight size={12} className="text-white/20" strokeWidth={2} />
+            <span
+              className="font-bold relative"
+              style={{ color: GOLD_MID }}
+            >
+              Rajesh Kumar
+              
+              <span
+                className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full"
+                style={{
+                  background: `linear-gradient(90deg, ${GOLD_MID}, ${GOLD}80, transparent)`,
+                }}
+              />
+            </span>
+          </div>
+        </div>
+
+        
+        <div
+          className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.15em]"
+          style={{
+            background: `rgba(201,154,46,0.08)`,
+            border: `1px solid ${GOLD}20`,
+            color: `${GOLD_MID}`,
+          }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: GOLD_MID }} />
+          Trainer Profile
         </div>
       </motion.div>
 

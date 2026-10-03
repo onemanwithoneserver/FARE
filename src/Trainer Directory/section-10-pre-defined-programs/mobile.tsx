@@ -50,7 +50,7 @@ export default function Mobile() {
           </motion.div>
         </div>
 
-        {/* Scrollable Container */}
+        
         <div className="relative -mx-6 px-6">
           <div
             className="flex gap-4 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory"

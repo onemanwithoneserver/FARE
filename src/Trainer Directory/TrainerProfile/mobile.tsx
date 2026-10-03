@@ -1,5 +1,6 @@
 import { motion, type Variants } from "motion/react";
 import { useState } from "react";
+import { ChevronRight, ArrowLeft } from "lucide-react";
 import HeroMobile from "../section-01-hero/mobile";
 import AboutMobile from "../section-02-about/mobile";
 import IntroVideoMobile from "../section-03-intro-video/mobile";
@@ -17,12 +18,14 @@ import CredentialsVerificationMobile from "../section-15-credentials-verificatio
 import EngagementOptionsMobile from "../section-16-engagement-options/mobile";
 import CorporateRequestFormMobile from "../section-17-corporate-request-form/mobile";
 
+const GOLD_MID = "#D5AA45";
+
 const breadcrumbVariants: Variants = {
-  hidden: { opacity: 0, y: -6 },
+  hidden: { opacity: 0, y: -10 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -40,18 +43,43 @@ export default function Mobile({ onBack }: TrainerProfileProps) {
       <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-gradient-radial from-[#8B5CF6]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0 fixed" />
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-full blur-[80px] pointer-events-none z-0 fixed" />
 
+      
       <motion.div
         initial="hidden"
         animate="visible"
         variants={breadcrumbVariants}
-        className="sticky top-0 z-50 bg-white/80 backdrop-blur-2xl border-b border-[#0B1D3A]/[0.06] px-5 py-3 flex items-center shadow-[0_8px_32px_-8px_rgba(11,29,58,0.1)]"
+        className="sticky top-0 z-50 backdrop-blur-2xl border-b px-4 py-2.5 flex items-center gap-3"
+        style={{
+          background: `linear-gradient(135deg, rgba(11,29,58,0.95) 0%, rgba(15,40,71,0.95) 100%)`,
+          borderColor: "rgba(255,255,255,0.06)",
+          boxShadow: "0 8px 32px -8px rgba(0,0,0,0.3), inset 0 -1px 0 rgba(255,255,255,0.05)",
+        }}
       >
-        <div className="flex items-center gap-2 text-[13px] text-[#7B8DAA] font-medium">
-          <span onClick={onBack} className="hover:text-[#0B1D3A] cursor-pointer transition-all duration-300 ease-out">Home</span>
-          <span className="text-[#0B1D3A]/20">/</span>
-          <span onClick={onBack} className="hover:text-[#0B1D3A] cursor-pointer transition-all duration-300 ease-out">Trainer Directory</span>
-          <span className="text-[#0B1D3A]/20">/</span>
-          <span className="text-[#0B1D3A] font-bold">Rajesh Kumar</span>
+        <button
+          onClick={onBack}
+          className="flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 active:scale-90"
+          style={{
+            background: "rgba(255,255,255,0.05)",
+            border: "1px solid rgba(255,255,255,0.08)",
+          }}
+        >
+          <ArrowLeft size={16} className="text-white/60" strokeWidth={2.5} />
+        </button>
+
+        <div className="flex items-center gap-1.5 text-[12px] font-medium overflow-hidden">
+          <span
+            onClick={onBack}
+            className="text-white/35 cursor-pointer transition-colors duration-300 whitespace-nowrap"
+          >
+            Directory
+          </span>
+          <ChevronRight size={11} className="text-white/20 shrink-0" strokeWidth={2} />
+          <span
+            className="font-bold truncate relative"
+            style={{ color: GOLD_MID }}
+          >
+            Rajesh Kumar
+          </span>
         </div>
       </motion.div>
 

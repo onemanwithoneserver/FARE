@@ -11,7 +11,7 @@ export const getData = (lang: "en" | "te" = "en") => {
       ],
       footerGroups: [
         {
-          title: "అభ్యాసకుల కోసం", // For Learners
+          title: "అభ్యాసకుల కోసం",
           links: [
             { label: "విద్యార్థులు & ఫ్రెషర్స్", path: "fare-for-students-freshers" },
             { label: "ఉద్యోగులు", path: "fare-for-employees" },
@@ -21,21 +21,21 @@ export const getData = (lang: "en" | "te" = "en") => {
           ],
         },
         {
-          title: "కంపెనీల కోసం", // For Companies
+          title: "కంపెనీల కోసం",
           links: [
             { label: "రెసిడెన్షియల్ & కమర్షియల్", path: "re-companies" },
             { label: "ఓపెన్ ప్లాట్స్", path: "open-plots" },
           ],
         },
         {
-          title: "ట్రైనర్ల కోసం", // For Trainers
+          title: "ట్రైనర్ల కోసం",
           links: [
             { label: "ట్రైనర్‌గా నమోదు చేసుకోండి", path: "re-trainers-coaches" },
             { label: "ట్రైనర్ డైరెక్టరీ", path: "trainer-directory" },
           ],
         },
         {
-          title: "వనరులు", // Resources
+          title: "వనరులు",
           links: [
             { label: "ప్లాట్‌ఫారమ్", path: "home" },
             { label: "నాలెడ్జ్ బ్యాంక్", path: "fare-knowledge-bank" },

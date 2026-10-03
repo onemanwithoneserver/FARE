@@ -47,7 +47,7 @@ export default function Mobile() {
         viewport={{ once: true, margin: "-40px" }}
         className="relative z-10 w-full"
       >
-        {/* Heading */}
+        
         <motion.div variants={item} className="flex items-center gap-3 mb-2">
           <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Case Studies</h2>
@@ -66,12 +66,12 @@ export default function Mobile() {
                 variants={item}
                 className="group rounded overflow-hidden border border-[#0B1D3A]/[0.07] bg-white shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] relative"
               >
-                {/* Top accent bar */}
+                
                 <div className="absolute top-0 left-0 right-0 h-[3px] z-10" style={{ background: accent.bar }} />
 
-                {/* Video banner — horizontal strip at top */}
+                
                 <div className="w-full h-[110px] relative cursor-pointer overflow-hidden" style={{ background: vidBg }}>
-                  {/* Grid texture */}
+                  
                   <div
                     className="absolute inset-0 opacity-[0.05]"
                     style={{
@@ -79,11 +79,11 @@ export default function Mobile() {
                       backgroundSize: "20px 20px",
                     }}
                   />
-                  {/* Watermark number */}
+                  
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[60px] font-black leading-none opacity-[0.06] text-white select-none">
                     {String(idx + 1).padStart(2, "0")}
                   </div>
-                  {/* Left: domain tag + title preview */}
+                  
                   <div className="absolute inset-0 flex items-center pl-5 gap-4">
                     <div
                       className="w-11 h-11 rounded-full flex items-center justify-center border border-white/25 shrink-0"
@@ -98,9 +98,9 @@ export default function Mobile() {
                   </div>
                 </div>
 
-                {/* Content */}
+                
                 <div className="p-5">
-                  {/* Title + meta */}
+                  
                   <div className="mb-4">
                     <h3 className="text-[16px] font-black leading-snug tracking-tight mb-3" style={{ color: NAVY }}>{study.title}</h3>
                     <div className="flex flex-wrap gap-2">
@@ -116,7 +116,7 @@ export default function Mobile() {
                     </div>
                   </div>
 
-                  {/* Challenge */}
+                  
                   <div className="flex items-start gap-3 mb-4">
                     <div className="w-6 h-6 rounded flex items-center justify-center text-white shrink-0 mt-0.5" style={{ background: "#EF4444" }}>
                       <Target size={12} strokeWidth={2.5} />
@@ -127,7 +127,7 @@ export default function Mobile() {
                     </div>
                   </div>
 
-                  {/* Approach */}
+                  
                   <div className="flex items-start gap-3 mb-5">
                     <div className="w-6 h-6 rounded flex items-center justify-center text-white shrink-0 mt-0.5" style={{ background: GOLD }}>
                       <Lightbulb size={12} strokeWidth={2.5} />
@@ -138,7 +138,7 @@ export default function Mobile() {
                     </div>
                   </div>
 
-                  {/* Metrics row */}
+                  
                   <div className="grid grid-cols-3 gap-2 pt-4 border-t border-[#0B1D3A]/[0.06]">
                     {study.metrics.map((m, mIdx) => (
                       <div
@@ -152,7 +152,7 @@ export default function Mobile() {
                     ))}
                   </div>
 
-                  {/* Tags */}
+                  
                   <div className="flex flex-wrap gap-1.5 mt-3">
                     {study.tags.map((tag, tIdx) => (
                       <span

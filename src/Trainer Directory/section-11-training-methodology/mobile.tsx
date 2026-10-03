@@ -56,7 +56,7 @@ export default function Mobile() {
         </motion.div>
 
         <div className="flex flex-col gap-10">
-          {/* Top Section - Quote & Tags */}
+          
           <div className="flex flex-col gap-5">
             <motion.div variants={item} className="relative rounded p-8 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.15)] overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
               <motion.div 
@@ -98,7 +98,7 @@ export default function Mobile() {
             </motion.div>
           </div>
 
-          {/* Bottom Section - Methodology Steps */}
+          
           <div className="flex flex-col gap-0 py-2 relative">
             <div className="absolute top-6 bottom-6 left-[20px] w-[2px] bg-gradient-to-b from-[#0B1D3A]/10 via-[#0B1D3A]/5 to-transparent z-0" />
             
@@ -108,7 +108,7 @@ export default function Mobile() {
                 variants={item}
                 className="flex items-start gap-4 relative z-10 pb-8 last:pb-0"
               >
-                {/* Step Node */}
+                
                 <div className="w-10 h-10 rounded bg-white border border-[#0B1D3A]/[0.08] shadow-sm flex items-center justify-center shrink-0 relative overflow-hidden">
                   <div className="absolute inset-0 opacity-10" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }} />
                   <div className="text-white relative z-10 w-7 h-7 rounded flex items-center justify-center shadow-sm" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
@@ -116,7 +116,7 @@ export default function Mobile() {
                   </div>
                 </div>
 
-                {/* Content */}
+                
                 <div className="flex-1 pt-0 -mt-1">
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="text-[10px] font-black opacity-40" style={{ color: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>

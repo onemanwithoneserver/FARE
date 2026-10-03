@@ -13,7 +13,7 @@ export default function Mobile() {
   return (
     <section className="w-full relative overflow-hidden font-['Outfit'] pt-16 pb-12 px-6" style={{ background: NAVY }}>
       
-      {/* Liquid glowing orbs background */}
+      
       <div className="absolute top-[-5%] right-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-40"
         style={{ background: "radial-gradient(circle, rgba(99,102,241,0.3) 0%, transparent 70%)" }}
       />
@@ -21,14 +21,14 @@ export default function Mobile() {
         style={{ background: "radial-gradient(circle, rgba(201,154,46,0.25) 0%, transparent 70%)" }}
       />
       
-      {/* Subtle grid pattern overlay */}
+      
       <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
       
       <div className="relative z-10 flex flex-col items-center text-center">
         
-        {/* Image */}
+        
         <div className="w-[260px] aspect-[3/4] relative mb-12 group">
-          {/* Animated liquid border glow */}
+          
           <div className="absolute -inset-1 bg-gradient-to-br from-[#6366F1]/40 via-[#C99A2E]/40 to-[#06B6D4]/40 rounded blur-lg transition-all duration-500 opacity-70" />
           
           <div className="relative w-full h-full rounded overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)] border border-white/5">
@@ -53,7 +53,7 @@ export default function Mobile() {
           )}
         </div>
 
-        {/* Content */}
+        
         <h1 className="text-[40px] font-black text-white mb-2 leading-tight tracking-[-0.02em]">{data.trainerName}</h1>
         <h2 className="text-[18px] font-semibold text-[#94A3B8] mb-6">{data.professionalTitle}</h2>
         
@@ -61,7 +61,7 @@ export default function Mobile() {
           {data.positioningStatement}
         </p>
 
-        {/* Glassmorphism Stats Cards */}
+        
         <div className="grid grid-cols-2 gap-3 w-full mb-10">
           <div className="rounded p-4 relative overflow-hidden flex flex-col items-center"
             style={{
@@ -112,7 +112,7 @@ export default function Mobile() {
           </div>
         </div>
 
-        {/* Location & Languages */}
+        
         <div className="flex flex-col gap-5 mb-10 w-full">
           <div className="flex items-center justify-center gap-3 text-white/90 font-medium">
             <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/5">
@@ -134,7 +134,7 @@ export default function Mobile() {
           </div>
         </div>
 
-        {/* CTA */}
+        
         <button className="w-full bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#0B1D3A] px-6 py-4 rounded font-black text-[16px] shadow-[0_10px_25px_-5px_rgba(201,154,46,0.5)] transition-all flex items-center justify-center gap-2 relative overflow-hidden">
           <div className="absolute inset-0 bg-white/20 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-500 ease-in-out" />
           <span>{data.cta}</span>

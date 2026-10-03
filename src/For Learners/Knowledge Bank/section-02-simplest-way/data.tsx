@@ -4,11 +4,11 @@ import { CheckCircle, Search, Lightbulb, RotateCw, Clock } from "lucide-react";
 export const ICONS = [CheckCircle, Search, Lightbulb, RotateCw, Clock];
 
 export const GRADIENTS = [
-  "from-[#38BDF8] to-[#0284C7]", // Blue
-  "from-[#34D399] to-[#059669]", // Emerald
-  "from-[#F472B6] to-[#DB2777]", // Pink
-  "from-[#A78BFA] to-[#7C3AED]", // Violet
-  "from-[#FBBF24] to-[#D97706]", // Amber
+  "from-[#38BDF8] to-[#0284C7]",
+  "from-[#34D399] to-[#059669]",
+  "from-[#F472B6] to-[#DB2777]",
+  "from-[#A78BFA] to-[#7C3AED]",
+  "from-[#FBBF24] to-[#D97706]",
 ];
 
 export const dataEn = {

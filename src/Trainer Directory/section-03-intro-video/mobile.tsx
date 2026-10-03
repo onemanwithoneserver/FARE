@@ -9,7 +9,7 @@ const GOLD_MID = "#D5AA45";
 
 export default function Mobile() {
   const data = profileData;
-  const video = data.videos[0]; // Featured intro video
+  const video = data.videos[0];
 
   const container: Variants = {
     hidden: { opacity: 0 },

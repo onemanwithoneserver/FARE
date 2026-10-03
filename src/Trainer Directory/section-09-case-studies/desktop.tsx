@@ -33,7 +33,7 @@ export default function Desktop() {
 
   return (
     <section className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white">
-      {/* Ambient orbs */}
+      
       <motion.div
         animate={{ x: [0, 25, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
@@ -54,7 +54,7 @@ export default function Desktop() {
         viewport={{ once: true, margin: "-40px" }}
         className="max-w-[1200px] w-full relative z-10"
       >
-        {/* Section heading */}
+        
         <motion.div variants={item} className="flex items-center gap-4 mb-3">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Case Studies</h2>
@@ -74,20 +74,20 @@ export default function Desktop() {
                 whileHover={{ y: -4, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
                 className="group flex rounded overflow-hidden border border-[#0B1D3A]/[0.07] bg-white/90 backdrop-blur-xl shadow-[0_4px_24px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.14)] transition-all duration-500 relative"
               >
-                {/* Hover top accent bar */}
+                
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
                   style={{ background: accent.bar }}
                 />
 
-                {/* Left — Video Panel */}
+                
                 <div className="w-[220px] shrink-0 relative cursor-pointer overflow-hidden" style={{ background: vidBg }}>
-                  {/* Ambient glow */}
+                  
                   <div
                     className="absolute inset-0 opacity-40 pointer-events-none"
                     style={{ background: `radial-gradient(circle at 50% 40%, ${accent.orb} 0%, transparent 70%)` }}
                   />
-                  {/* Grid texture */}
+                  
                   <div
                     className="absolute inset-0 opacity-[0.04]"
                     style={{
@@ -95,14 +95,14 @@ export default function Desktop() {
                       backgroundSize: "24px 24px",
                     }}
                   />
-                  {/* Index number watermark */}
+                  
                   <div
                     className="absolute top-4 left-4 text-[72px] font-black leading-none opacity-[0.07] select-none"
                     style={{ color: "white" }}
                   >
                     {String(idx + 1).padStart(2, "0")}
                   </div>
-                  {/* Play button */}
+                  
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                     <motion.div
                       whileHover={{ scale: 1.12 }}
@@ -113,7 +113,7 @@ export default function Desktop() {
                     </motion.div>
                     <span className="text-[10px] text-white/70 font-bold uppercase tracking-[0.15em]">Watch Case Study</span>
                   </div>
-                  {/* Bottom domain tag */}
+                  
                   <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/40 to-transparent">
                     <span
                       className="text-[9px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded"
@@ -124,9 +124,9 @@ export default function Desktop() {
                   </div>
                 </div>
 
-                {/* Right — Content */}
+                
                 <div className="flex-1 p-7 flex flex-col justify-between min-w-0">
-                  {/* Header */}
+                  
                   <div>
                     <div className="flex items-start justify-between gap-4 mb-4">
                       <div className="flex-1 min-w-0">
@@ -149,9 +149,9 @@ export default function Desktop() {
                       </div>
                     </div>
 
-                    {/* Two-column content: Challenge + Approach */}
+                    
                     <div className="grid grid-cols-2 gap-5 mb-6">
-                      {/* Challenge */}
+                      
                       <div className="flex items-start gap-3">
                         <div
                           className="w-7 h-7 rounded flex items-center justify-center text-white shrink-0 mt-0.5"
@@ -164,7 +164,7 @@ export default function Desktop() {
                           <p className="text-[13px] text-[#5A6B82] leading-[1.65] font-medium">{study.challenge}</p>
                         </div>
                       </div>
-                      {/* Approach */}
+                      
                       <div className="flex items-start gap-3">
                         <div
                           className="w-7 h-7 rounded flex items-center justify-center text-white shrink-0 mt-0.5"
@@ -180,9 +180,9 @@ export default function Desktop() {
                     </div>
                   </div>
 
-                  {/* Bottom: Metrics + Tags */}
+                  
                   <div className="flex items-end justify-between gap-6 pt-5 border-t border-[#0B1D3A]/[0.06]">
-                    {/* Metric chips */}
+                    
                     <div className="flex gap-3">
                       {study.metrics.map((m, mIdx) => (
                         <div
@@ -195,7 +195,7 @@ export default function Desktop() {
                         </div>
                       ))}
                     </div>
-                    {/* Tags */}
+                    
                     <div className="flex flex-wrap gap-2 justify-end">
                       {study.tags.map((tag, tIdx) => (
                         <span

@@ -30,7 +30,7 @@ export default function Desktop() {
       className="w-full py-20 px-10 font-['Outfit'] flex justify-center relative overflow-hidden"
       style={{ background: `linear-gradient(170deg, ${NAVY} 0%, #071A49 50%, #0D2240 100%)` }}
     >
-      {/* Animated orbs */}
+      
       <motion.div
         animate={{ x: [0, 40, 0], y: [0, -30, 0], scale: [1, 1.2, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
@@ -50,7 +50,7 @@ export default function Desktop() {
         style={{ background: `radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%)` }}
       />
 
-      {/* Grid overlay */}
+      
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -74,7 +74,7 @@ export default function Desktop() {
           <p className="text-[15px] text-white/50 font-medium max-w-[500px]">Measurable outcomes from completed training engagements.</p>
         </motion.div>
 
-        {/* Big metric cards */}
+        
         <div className="grid grid-cols-3 gap-6 mb-8">
           {data.trainingImpact.metrics.map((metric, idx) => {
             const m = metricIcons[idx] || metricIcons[0];
@@ -86,7 +86,7 @@ export default function Desktop() {
                 className="group rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out border border-white/[0.08] hover:border-white/[0.2]"
                 style={{ background: "rgba(255,255,255,0.04)", backdropFilter: "blur(20px)" }}
               >
-                {/* Glow accent on hover */}
+                
                 <div
                   className="absolute -top-16 -right-16 w-40 h-40 rounded-full opacity-0 group-hover:opacity-30 blur-[40px] transition-opacity duration-700 pointer-events-none"
                   style={{ background: m.accent }}
@@ -125,7 +125,7 @@ export default function Desktop() {
           })}
         </div>
 
-        {/* Count banners */}
+        
         <div className="grid grid-cols-2 gap-6">
           {data.trainingImpact.counts.map((count, idx) => (
             <motion.div

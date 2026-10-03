@@ -49,10 +49,10 @@ export default function Desktop() {
           variants={item}
           className="w-full max-w-[800px] mx-auto relative group"
         >
-          {/* Main Empty State Card */}
+          
           <div className="bg-white/60 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-12 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.06)] transition-all duration-400 ease-out hover:border-[#0B1D3A]/[0.15] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.12)] hover:-translate-y-1 relative overflow-hidden flex flex-col items-center justify-center text-center">
             
-            {/* Background Accents */}
+            
             <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[30px] pointer-events-none transition-transform duration-700 group-hover:scale-125" />
             <div
               className="absolute top-0 left-0 right-0 h-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -61,7 +61,7 @@ export default function Desktop() {
             
             <Quote size={80} className="absolute -top-4 -left-4 opacity-[0.03] group-hover:scale-110 transition-transform duration-500" style={{ color: NAVY }} />
 
-            {/* Skeleton/Placeholder Elements */}
+            
             <div className="flex gap-1.5 mb-6 opacity-40">
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star key={star} size={20} fill={GOLD_MID} color={GOLD_MID} />
@@ -89,7 +89,7 @@ export default function Desktop() {
             </p>
           </div>
 
-          {/* Decorative side cards to hint at a carousel */}
+          
           <div className="absolute top-[10%] bottom-[10%] -left-8 w-16 bg-white/40 backdrop-blur-md border border-[#0B1D3A]/[0.04] rounded-l opacity-50 pointer-events-none -z-10 shadow-sm" />
           <div className="absolute top-[10%] bottom-[10%] -right-8 w-16 bg-white/40 backdrop-blur-md border border-[#0B1D3A]/[0.04] rounded-r opacity-50 pointer-events-none -z-10 shadow-sm" />
         </motion.div>

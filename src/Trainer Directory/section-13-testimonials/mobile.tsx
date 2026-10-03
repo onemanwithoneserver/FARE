@@ -49,10 +49,10 @@ export default function Mobile() {
           variants={item}
           className="w-full relative group"
         >
-          {/* Main Empty State Card */}
+          
           <div className="bg-white/70 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-8 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] relative overflow-hidden flex flex-col items-center justify-center text-center">
             
-            {/* Background Accents */}
+            
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
             <div
               className="absolute top-0 left-0 right-0 h-[3px] opacity-100"
@@ -61,7 +61,7 @@ export default function Mobile() {
             
             <Quote size={60} className="absolute -top-3 -left-3 opacity-[0.03]" style={{ color: NAVY }} />
 
-            {/* Skeleton/Placeholder Elements */}
+            
             <div className="flex gap-1 mb-5 opacity-40">
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star key={star} size={16} fill={GOLD_MID} color={GOLD_MID} />

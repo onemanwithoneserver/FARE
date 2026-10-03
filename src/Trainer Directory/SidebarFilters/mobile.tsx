@@ -140,12 +140,12 @@ export default function Mobile({ isOpen, onClose }: { isOpen?: boolean; onClose?
             <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[30px] pointer-events-none z-0" />
             <div className="absolute bottom-[100px] left-[-20%] w-[200px] h-[200px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[30px] pointer-events-none z-0" />
 
-            {/* Handle Bar */}
+            
             <div className="w-full flex justify-center pt-4 pb-2 relative z-10">
               <div className="w-12 h-1.5 bg-[#0B1D3A]/10 rounded-full" />
             </div>
 
-            {/* Header */}
+            
             <div className="flex items-center justify-between px-6 pb-4 pt-2 border-b border-[#0B1D3A]/[0.08] shrink-0 relative z-10">
               <div className="flex items-center gap-3">
                 <div
@@ -174,14 +174,14 @@ export default function Mobile({ isOpen, onClose }: { isOpen?: boolean; onClose?
               </button>
             </div>
 
-            {/* Scrollable Body */}
+            
             <div className="flex-1 overflow-y-auto px-6 pb-[100px] relative z-10">
               <FilterSection title="RE Segment" options={filterOptions.segments} selectedOptions={selected.segments} onChange={(o) => toggleOption('segments', o)} />
               <FilterSection title="Expertise" options={filterOptions.expertise} selectedOptions={selected.expertise} onChange={(o) => toggleOption('expertise', o)} />
               <FilterSection title="Language" options={filterOptions.languages} selectedOptions={selected.languages} onChange={(o) => toggleOption('languages', o)} />
             </div>
 
-            {/* Sticky Footer */}
+            
             <div className="absolute bottom-0 left-0 right-0 p-5 bg-white/80 backdrop-blur-xl border-t border-[#0B1D3A]/[0.08] flex items-center gap-4 z-20">
               <button
                 onClick={clearAll}
