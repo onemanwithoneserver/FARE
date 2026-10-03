@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Play } from "lucide-react";
@@ -8,7 +8,8 @@ const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
 export default function Desktop() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -45,7 +46,7 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>See the Trainer in Action</h2>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("See the Trainer in Action")}</h2>
         </motion.div>
 
         <div className="grid grid-cols-4 gap-6">
@@ -103,7 +104,7 @@ export default function Desktop() {
                     className="absolute top-3 left-3 text-[10px] font-black px-2.5 py-1 rounded z-10 shadow-lg tracking-wider"
                     style={{ background: GOLD, color: NAVY }}
                   >
-                    NEW
+                    {t("NEW")}
                   </div>
                 )}
               </div>

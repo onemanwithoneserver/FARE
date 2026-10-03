@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { TrendingUp, Star, Award } from "lucide-react";
@@ -8,7 +8,8 @@ const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
 export default function Desktop() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -68,10 +69,10 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-4">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD_MID}, ${GOLD})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em] text-white">Training Impact</h2>
+          <h2 className="text-[28px] font-black tracking-[-0.02em] text-white">{t("Training Impact")}</h2>
         </motion.div>
         <motion.div variants={item} className="mb-12">
-          <p className="text-[15px] text-white/50 font-medium max-w-[500px]">Measurable outcomes from completed training engagements.</p>
+          <p className="text-[15px] text-white/50 font-medium max-w-[500px]">{t("Measurable outcomes from completed training engagements.")}</p>
         </motion.div>
 
         
@@ -117,7 +118,7 @@ export default function Desktop() {
                 <p className="text-[15px] font-bold text-white/70 mb-6 leading-snug">{metric.name}</p>
 
                 <div className="mt-auto pt-4 border-t border-white/[0.08] flex items-center justify-between">
-                  <span className="text-[10px] text-white/40 uppercase tracking-[0.15em] font-bold">Source</span>
+                  <span className="text-[10px] text-white/40 uppercase tracking-[0.15em] font-bold">{t("Source")}</span>
                   <span className="text-[11px] text-white/60 font-semibold bg-white/[0.06] px-2.5 py-1 rounded">{metric.source}</span>
                 </div>
               </motion.div>

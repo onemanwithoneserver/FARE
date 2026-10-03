@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { ChevronRight, ArrowRight, Check, Clock, CreditCard, Sparkles } from "lucide-react";
@@ -7,7 +7,8 @@ const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 
 export default function Desktop({ onRequestPricing }: { onRequestPricing?: () => void }) {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -75,10 +76,10 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-4">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, #D5AA45)` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Investment</h2>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Investment")}</h2>
         </motion.div>
         <motion.div variants={item} className="mb-10">
-          <p className="text-[15px] text-[#7B8DAA] font-medium max-w-[500px]">Transparent engagement models tailored to your team's requirements.</p>
+          <p className="text-[15px] text-[#7B8DAA] font-medium max-w-[500px]">{t("Transparent engagement models tailored to your team\u0027s requirements.")}</p>
         </motion.div>
 
         
@@ -123,7 +124,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
                     }}
                   />
                   <div className="absolute top-4 right-4 text-[9px] font-black uppercase tracking-[0.15em] px-2.5 py-1 rounded-full z-10" style={{ background: GOLD, color: NAVY }}>
-                    Popular
+                    {t("Popular")}
                   </div>
                 </>
               )}
@@ -200,7 +201,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
             className="relative z-10 px-8 py-3 rounded font-black text-[14px] text-white transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center gap-2.5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] group/btn"
             style={{ background: `linear-gradient(135deg, ${NAVY}, #132A4D)` }}
           >
-            Request Pricing
+            {t("Request Pricing")}
             <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${16}px`, color: GOLD }}>
       <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
       <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />

@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Award } from "lucide-react";
@@ -8,7 +8,8 @@ const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
 export default function Desktop() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -45,12 +46,12 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-4">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Credentials & Qualifications</h2>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Credentials \u0026 Qualifications")}</h2>
         </motion.div>
         
         <motion.div variants={item} className="mb-12">
           <p className="text-[15px] text-[#5A6B82] font-medium max-w-[500px]">
-            A selection of professional credentials and certifications listed on the trainer profile.
+            {t("A selection of professional credentials and certifications listed on the trainer profile.")}
           </p>
         </motion.div>
 
@@ -70,7 +71,7 @@ export default function Desktop() {
                 >
                   <Award size={22} strokeWidth={2.5} />
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Credential</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">{t("Credential")}</span>
               </div>
 
               <h3 className="text-[18px] font-black text-[#0B1D3A] tracking-tight leading-snug relative z-10">

@@ -3,8 +3,33 @@ import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, Check, Calendar as CalendarIcon } from "lucide-react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { te } from "date-fns/locale/te";
+import { useLanguage } from "../../context/LanguageContext";
 
-export function CustomSelect({ options, placeholder, value, onChange }: any) {
+interface CustomSelectProps {
+  options: string[];
+  placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
+}
+
+interface LabeledControlProps {
+  label: string;
+  checked: boolean;
+  onChange: () => void;
+}
+
+interface CustomRadioProps extends LabeledControlProps {
+  name: string;
+}
+
+interface CustomDatePickerProps {
+  selected: Date | null;
+  onChange: (date: Date | null) => void;
+  placeholderText: string;
+}
+
+export function CustomSelect({ options, placeholder, value, onChange }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -63,7 +88,7 @@ export function CustomSelect({ options, placeholder, value, onChange }: any) {
   );
 }
 
-export function CustomCheckbox({ label, checked, onChange }: any) {
+export function CustomCheckbox({ label, checked, onChange }: LabeledControlProps) {
   return (
     <label className="flex items-start gap-2.5 cursor-pointer group select-none" onClick={onChange}>
       <div
@@ -90,7 +115,7 @@ export function CustomCheckbox({ label, checked, onChange }: any) {
   );
 }
 
-export function CustomRadio({ label, name, checked, onChange }: any) {
+export function CustomRadio({ label, name, checked, onChange }: CustomRadioProps) {
   return (
     <label className="flex items-start gap-2.5 cursor-pointer group select-none" onClick={onChange}>
       <input type="radio" name={name} className="hidden" readOnly />
@@ -117,7 +142,9 @@ export function CustomRadio({ label, name, checked, onChange }: any) {
   );
 }
 
-export function CustomDatePicker({ selected, onChange, placeholderText }: any) {
+export function CustomDatePicker({ selected, onChange, placeholderText }: CustomDatePickerProps) {
+  const { language } = useLanguage();
+
   return (
     <div className="relative w-full custom-datepicker-wrapper">
       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
@@ -127,8 +154,9 @@ export function CustomDatePicker({ selected, onChange, placeholderText }: any) {
         selected={selected}
         onChange={onChange}
         placeholderText={placeholderText}
+        locale={language === "te" ? te : undefined}
         className="w-full bg-white/50 backdrop-blur-sm border border-[#0B1D3A]/[0.06] rounded pl-9 pr-4 py-2.5 text-[13px] font-medium text-[#0B1D3A] hover:border-[#0B1D3A]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E]/30 aria-[invalid=true]:border-red-500 aria-[invalid=false]:border-emerald-600/40 transition-all duration-300 ease-out placeholder:text-[#7B8DAA]"
-        dateFormat="dd MMM yyyy"
+        dateFormat="dd/MM/yyyy"
       />
       <style>{`
         .custom-datepicker-wrapper .react-datepicker-wrapper {

@@ -1,3 +1,4 @@
+import { useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Quote, Star, ShieldCheck } from "lucide-react";
@@ -7,6 +8,7 @@ const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
 export default function Desktop() {
+  const t = useProfileText();
   const container: Variants = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
@@ -42,7 +44,7 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-12">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Company Feedback</h2>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Company Feedback")}</h2>
         </motion.div>
 
         <motion.div
@@ -82,10 +84,10 @@ export default function Desktop() {
             </div>
 
             <h3 className="text-[18px] font-black tracking-tight mb-2" style={{ color: NAVY }}>
-              Feedback Pending
+              {t("Feedback Pending")}
             </h3>
             <p className="text-[14px] text-[#5A6B82] font-medium max-w-[420px] leading-[1.7]">
-              Verified company feedback and testimonials will automatically appear here once training engagements are completed and reviewed.
+              {t("Verified company feedback and testimonials will automatically appear here once training engagements are completed and reviewed.")}
             </p>
           </div>
 

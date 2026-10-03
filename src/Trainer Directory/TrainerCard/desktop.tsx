@@ -2,6 +2,8 @@ import { useState } from "react";
 import type { Trainer } from "../listing_data";
 import { motion } from "motion/react";
 import ambientTrainerVideo from "../../assets/FARE_Video.mp4";
+import { useLanguage } from "../../context/LanguageContext";
+import { translateDirectoryText } from "../translations";
 import {
   BadgeCheck,
   ArrowRight,
@@ -39,6 +41,7 @@ export const getInitials = (name: string) =>
     .substring(0, 2);
 
 function AvailabilityPill({ value }: { value: Trainer["availability"] }) {
+  const { language } = useLanguage();
   const s = AVAILABILITY_STYLES[value];
   return (
     <span
@@ -51,7 +54,7 @@ function AvailabilityPill({ value }: { value: Trainer["availability"] }) {
         )}
         <span className="relative inline-flex w-1.5 h-1.5 rounded-full" style={{ background: s.dot }} />
       </span>
-      {s.label}
+      {translateDirectoryText(s.label, language)}
     </span>
   );
 }
@@ -67,6 +70,8 @@ function TrainerPhotoHero({
   isIntroVideoOpen: boolean;
   onToggleIntroVideo: () => void;
 }) {
+  const { language } = useLanguage();
+  const t = (text: string) => translateDirectoryText(text, language);
   return (
     <div className={`relative shrink-0 overflow-hidden bg-[#0B1D3A] ${className}`}>
       {isIntroVideoOpen ? (
@@ -100,7 +105,7 @@ function TrainerPhotoHero({
           <button
             type="button"
             onClick={onToggleIntroVideo}
-            aria-label={`Play ${trainer.name}'s introduction video`}
+            aria-label={`${t("Play introduction video")}: ${trainer.name}`}
             className="absolute inset-0 z-10 flex items-center justify-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D5AA45]"
           >
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[#0B1D3A] shadow-[0_8px_24px_-6px_rgba(0,0,0,0.5)] ring-4 ring-white/25 transition-transform group-hover:scale-110">
@@ -116,7 +121,7 @@ function TrainerPhotoHero({
         <button
           type="button"
           onClick={onToggleIntroVideo}
-          aria-label="Close video"
+          aria-label={t("Close video")}
           className="absolute right-3 top-3 z-20 rounded-full bg-black/65 p-2 text-white shadow"
         >
           <X size={16} />
@@ -148,6 +153,8 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
 }
 
 function Actions({ onViewProfile, onRequest, requested }: { onViewProfile: () => void; onRequest?: () => void; requested?: boolean }) {
+  const { language } = useLanguage();
+  const t = (text: string) => translateDirectoryText(text, language);
   return (
     <div className="flex items-center gap-2 justify-between mt-2">
       <button
@@ -155,7 +162,7 @@ function Actions({ onViewProfile, onRequest, requested }: { onViewProfile: () =>
         className="group/vp px-4 h-9 rounded-lg text-[12.5px] font-bold flex items-center justify-center gap-1 text-white transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] hover:shadow-[0_12px_24px_-8px_rgba(11,29,58,0.6)]"
         style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
       >
-        View Profile
+        {t("View Profile")}
         <span className="relative w-3.5 h-3.5 inline-flex items-center justify-center">
           <ChevronRight
             size={14}
@@ -180,7 +187,7 @@ function Actions({ onViewProfile, onRequest, requested }: { onViewProfile: () =>
         }`}
       >
         <span className="relative z-10 flex items-center gap-1">
-          {requested ? "Request Sent" : "Request"}
+          {requested ? t("Request Sent") : t("Request")}
           {requested ? (
             <Check size={14} strokeWidth={2.5} />
           ) : (
@@ -198,6 +205,7 @@ function Actions({ onViewProfile, onRequest, requested }: { onViewProfile: () =>
 }
 
 function ExpertiseTags({ trainer, max = 2 }: { trainer: Trainer; max?: number }) {
+  const { language } = useLanguage();
   return (
     <div className="flex flex-nowrap gap-1.5 overflow-hidden">
       {trainer.expertise.slice(0, max).map((e) => (
@@ -205,7 +213,7 @@ function ExpertiseTags({ trainer, max = 2 }: { trainer: Trainer; max?: number })
           key={e}
           className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#FBF4E4] text-[#8A6516] border border-[#C99A2E]/20 whitespace-nowrap truncate max-w-[60%]"
         >
-          {e}
+          {translateDirectoryText(e, language)}
         </span>
       ))}
       {trainer.expertise.length > max && (
@@ -218,6 +226,7 @@ function ExpertiseTags({ trainer, max = 2 }: { trainer: Trainer; max?: number })
 }
 
 function TrainerStats({ trainer }: { trainer: Trainer }) {
+  const { language } = useLanguage();
   const stats = [
     { icon: <Briefcase size={13} strokeWidth={2.4} />, value: `${trainer.industryExperience}+`, label: "Yrs Industry", color: "#4F46E5", bg: "#EEF0FF" },
     { icon: <GraduationCap size={14} strokeWidth={2.4} />, value: `${trainer.trainingExperience}+`, label: "Yrs Training", color: GOLD, bg: "#FBF4E4" },
@@ -233,7 +242,7 @@ function TrainerStats({ trainer }: { trainer: Trainer }) {
           </span>
           <span className="min-w-0">
             <span className="block text-[14px] font-black leading-none" style={{ color: NAVY }}>{stat.value}</span>
-            <span className="mt-1 block text-[8px] font-bold uppercase tracking-[0.08em] text-[#7B8DAA]">{stat.label}</span>
+            <span className="mt-1 block text-[8px] font-bold uppercase tracking-[0.08em] text-[#7B8DAA]">{translateDirectoryText(stat.label, language)}</span>
           </span>
         </div>
       ))}
@@ -242,12 +251,13 @@ function TrainerStats({ trainer }: { trainer: Trainer }) {
 }
 
 function SegmentLine({ trainer }: { trainer: Trainer }) {
+  const { language } = useLanguage();
   return (
     <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold text-[#475569]">
       {trainer.segments.map((segment, index) => (
         <span key={segment} className="inline-flex items-center gap-2">
           {index > 0 && <span className="h-1 w-1 rounded-full bg-[#C99A2E]" />}
-          {segment}
+          {translateDirectoryText(segment, language)}
         </span>
       ))}
     </div>
@@ -258,6 +268,8 @@ const cardShell =
   "group relative h-full bg-white rounded-2xl font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] hover:shadow-[0_4px_10px_-4px_rgba(11,29,58,0.08),0_28px_56px_-18px_rgba(11,29,58,0.25)] hover:border-[#C99A2E]/35 transition-[box-shadow,border-color] duration-500 overflow-hidden";
 
 export default function Desktop({ trainer, onViewProfile }: TrainerCardProps) {
+  const { language } = useLanguage();
+  const t = (text: string) => translateDirectoryText(text, language);
   const [requested, setRequested] = useState(false);
   const [isIntroVideoOpen, setIsIntroVideoOpen] = useState(false);
   const handleRequest = () => setRequested(true);
@@ -281,35 +293,35 @@ export default function Desktop({ trainer, onViewProfile }: TrainerCardProps) {
           <div className="min-w-0 flex-1 pb-0.5">
             <span className="inline-flex items-center gap-1 rounded-full bg-[#F1F5F9] px-2 py-0.5 text-[10.5px] font-semibold text-[#5A6B82]">
               <MapPin size={11} strokeWidth={2.5} style={{ color: GOLD }} />
-              {trainer.location.split(",")[0]}
+              {t(trainer.location.split(",")[0])}
             </span>
             <h3 className="mt-1.5 text-[20px] font-black leading-tight tracking-tight truncate" style={{ color: NAVY }}>
               {trainer.name}
             </h3>
-            <p className="text-[13px] text-[#5A6B82] font-medium leading-snug mt-0.5 line-clamp-1">{trainer.title}</p>
+            <p className="text-[13px] text-[#5A6B82] font-medium leading-snug mt-0.5 line-clamp-1">{t(trainer.title)}</p>
           </div>
         </div>
 
-        <p className="text-[13px] text-[#5A6B82]/90 leading-relaxed mt-2 line-clamp-2">{trainer.positioning}</p>
+        <p className="text-[13px] text-[#5A6B82]/90 leading-relaxed mt-2 line-clamp-2">{t(trainer.positioning)}</p>
         <div className="mt-3">
           <TrainerStats trainer={trainer} />
         </div>
 
         <div className="mt-4 flex flex-col gap-3">
           <div>
-            <div className="mb-1.5 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Specialization</div>
+            <div className="mb-1.5 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">{t("Specialization")}</div>
             <ExpertiseTags trainer={trainer} max={2} />
           </div>
           <div>
-            <div className="mb-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">RE Segment</div>
+            <div className="mb-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">{t("RE Segment")}</div>
             <SegmentLine trainer={trainer} />
           </div>
         </div>
 
         <div className="mt-auto pt-4">
           <div className="flex items-center justify-between pt-3 mb-3 border-t border-dashed border-[#0B1D3A]/10">
-            <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Engagement</span>
-            <span className="text-[12px] font-bold" style={{ color: GOLD }}>{trainer.pricing}</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">{t("Engagement")}</span>
+            <span className="text-[12px] font-bold" style={{ color: GOLD }}>{t(trainer.pricing)}</span>
           </div>
           <Actions onViewProfile={onViewProfile} onRequest={handleRequest} requested={requested} />
         </div>

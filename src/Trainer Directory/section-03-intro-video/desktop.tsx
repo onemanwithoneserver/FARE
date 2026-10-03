@@ -1,3 +1,4 @@
+import { useProfileText } from "../profileData";
 import { useState } from "react";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
@@ -10,6 +11,7 @@ const GOLD_MID = "#D5AA45";
 
 
 export default function Desktop() {
+  const t = useProfileText();
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
 
@@ -48,7 +50,7 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Introduction Video</h2>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Introduction Video")}</h2>
         </motion.div>
 
         <div className="flex justify-center">
@@ -105,7 +107,7 @@ export default function Desktop() {
               <div className="w-8 h-8 rounded flex items-center justify-center text-white shadow-sm" style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}>
                 <Mic size={15} strokeWidth={2.5} />
               </div>
-              <span className="text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em]">Audio Snippets</span>
+              <span className="text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em]">{t("Audio Snippets")}</span>
             </div>
 
             {audioClips.map((clip, idx) => (

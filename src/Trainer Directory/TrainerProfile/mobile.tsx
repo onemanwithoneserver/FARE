@@ -1,3 +1,4 @@
+import { useProfileText } from "../profileData";
 import { motion, type Variants } from "motion/react";
 import { useState } from "react";
 import { ChevronRight, ArrowLeft } from "lucide-react";
@@ -35,6 +36,7 @@ interface TrainerProfileProps {
 }
 
 export default function Mobile({ onBack }: TrainerProfileProps) {
+  const t = useProfileText();
   const [isRequestFormOpen, setIsRequestFormOpen] = useState(false);
 
   return (
@@ -70,14 +72,14 @@ export default function Mobile({ onBack }: TrainerProfileProps) {
             onClick={onBack}
             className="text-white/35 cursor-pointer transition-colors duration-300 whitespace-nowrap"
           >
-            Directory
+            {t("Directory")}
           </span>
           <ChevronRight size={11} className="text-white/20 shrink-0" strokeWidth={2} />
           <span
             className="font-bold truncate relative"
             style={{ color: GOLD_MID }}
           >
-            Rajesh Kumar
+            {t("Rajesh Kumar")}
           </span>
         </div>
       </motion.div>

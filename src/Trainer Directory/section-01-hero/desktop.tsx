@@ -1,3 +1,4 @@
+import { useProfileText } from "../profileData";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import { motion } from "motion/react";
@@ -8,6 +9,7 @@ import trainerImg from "../../assets/re_trainers_hero.jpg";
 const NAVY = "#0B1D3A";
 
 export default function Desktop() {
+  const t = useProfileText();
   const { language } = useLanguage();
   const data = getData(language);
 
@@ -70,7 +72,7 @@ export default function Desktop() {
                 <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center">
                   <ShieldCheck size={14} className="text-white" strokeWidth={3} />
                 </div>
-                <span className="text-white text-sm font-bold tracking-wide">FARE Verified</span>
+                <span className="text-white text-sm font-bold tracking-wide">{t("FARE Verified")}</span>
               </div>
             )}
           </motion.div>
@@ -105,7 +107,7 @@ export default function Desktop() {
               >
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#6366F1] to-[#4F46E5] opacity-50 group-hover/stat:opacity-100 transition-opacity" />
                 <div className="flex items-center justify-between mb-4">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">Industry Exp.</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">{t("Industry Exp.")}</div>
                   <div className="w-8 h-8 rounded bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center shadow-lg group-hover/stat:scale-110 transition-transform duration-300">
                     <Briefcase size={14} className="text-white" strokeWidth={2.5} />
                   </div>
@@ -123,7 +125,7 @@ export default function Desktop() {
               >
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C99A2E] to-[#B88A22] opacity-50 group-hover/stat:opacity-100 transition-opacity" />
                 <div className="flex items-center justify-between mb-4">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">Training Exp.</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">{t("Training Exp.")}</div>
                   <div className="w-8 h-8 rounded bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center shadow-lg group-hover/stat:scale-110 transition-transform duration-300">
                     <GraduationCap size={16} className="text-white" strokeWidth={2.5} />
                   </div>
@@ -141,7 +143,7 @@ export default function Desktop() {
               >
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#06B6D4] to-[#0891B2] opacity-50 group-hover/stat:opacity-100 transition-opacity" />
                 <div className="flex items-center justify-between mb-4">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">Trained</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">{t("Trained")}</div>
                   <div className="w-8 h-8 rounded bg-gradient-to-br from-[#06B6D4] to-[#0891B2] flex items-center justify-center shadow-lg group-hover/stat:scale-110 transition-transform duration-300">
                     <Users size={16} className="text-white" strokeWidth={2.5} />
                   </div>

@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Target, Users, Heart, Star, Briefcase, MessageCircle, Zap } from "lucide-react";
@@ -32,7 +32,8 @@ const getCategoryIcon = (category: string, size: number, strokeWidth: number) =>
 };
 
 export default function Desktop() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -69,7 +70,7 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-8">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Areas of Expertise</h2>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Areas of Expertise")}</h2>
         </motion.div>
 
         <div className="grid grid-cols-3 gap-4">

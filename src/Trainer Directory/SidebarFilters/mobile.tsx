@@ -2,11 +2,15 @@ import { motion, AnimatePresence } from "motion/react";
 import { RotateCcw, X, SlidersHorizontal, Check } from "lucide-react";
 import { filterSections, CountBadge } from "./desktop";
 import type { SidebarFiltersProps } from "./desktop";
+import { useLanguage } from "../../context/LanguageContext";
+import { translateDirectoryText } from "../translations";
 
 const NAVY = "#0B1D3A";
 const GOLD_MID = "#D5AA45";
 
 export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, resultCount }: SidebarFiltersProps) {
+  const { language } = useLanguage();
+  const t = (text: string) => translateDirectoryText(text, language);
   const totalActive = Object.values(selected).reduce((sum, arr) => sum + arr.length, 0);
 
   return (
@@ -40,12 +44,12 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
                 >
                   <SlidersHorizontal size={15} strokeWidth={2.5} style={{ color: GOLD_MID }} />
                 </div>
-                <span className="text-[18px] font-black" style={{ color: NAVY }}>Filters</span>
+                <span className="text-[18px] font-black" style={{ color: NAVY }}>{t("Filters")}</span>
                 {totalActive > 0 && <CountBadge count={totalActive} size={22} />}
               </div>
               <button
                 onClick={onClose}
-                aria-label="Close filters"
+                aria-label={t("Close filters")}
                 className="w-9 h-9 rounded-full bg-[#F5F7FB] flex items-center justify-center text-[#5A6B82] active:bg-[#EEF2F8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
               >
                 <X size={18} strokeWidth={2.5} />
@@ -56,7 +60,7 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
               {filterSections.map((section) => (
                 <div key={section.key} className="py-4 border-b border-[#0B1D3A]/[0.06] last:border-b-0">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-[11px] font-black tracking-[0.14em] text-[#0B1D3A]/80 uppercase">{section.title}</span>
+                    <span className="text-[11px] font-black tracking-[0.14em] text-[#0B1D3A]/80 uppercase">{t(section.title)}</span>
                     {selected[section.key].length > 0 && <CountBadge count={selected[section.key].length} size={16} />}
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -76,7 +80,7 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
                           style={active ? { background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` } : undefined}
                         >
                           {active && <Check size={13} strokeWidth={3} style={{ color: GOLD_MID }} />}
-                          {option}
+                          {t(option)}
                         </button>
                       );
                     })}
@@ -91,14 +95,16 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
                 className="flex-1 h-12 rounded-xl text-[#0B1D3A] font-bold text-[14px] flex items-center justify-center gap-2 bg-[#F5F7FB] border border-[#0B1D3A]/[0.06] active:bg-[#EEF2F8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
               >
                 <RotateCcw size={15} strokeWidth={2.5} />
-                Clear
+                {t("Clear")}
               </button>
               <button
                 onClick={onClose}
                 className="flex-[1.6] h-12 rounded-xl text-white font-bold text-[14px] flex items-center justify-center gap-1.5 shadow-[0_10px_24px_-10px_rgba(11,29,58,0.6)] active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
               >
-                Show {typeof resultCount === "number" ? resultCount : ""} Trainers
+                {language === "te"
+                  ? `${typeof resultCount === "number" ? resultCount : ""} మంది ట్రైనర్‌లను చూపించండి`
+                  : `Show ${typeof resultCount === "number" ? resultCount : ""} Trainers`}
               </button>
             </div>
           </motion.div>

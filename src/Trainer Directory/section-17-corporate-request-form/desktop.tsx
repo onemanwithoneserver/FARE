@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useProfileText } from "../profileData";
+import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
 import { Send, X } from "lucide-react";
@@ -14,6 +15,7 @@ interface CorporateRequestFormProps {
 }
 
 export default function Desktop({ isOpen = false, onClose }: CorporateRequestFormProps) {
+  const t = useProfileText();
   const container: Variants = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
@@ -30,10 +32,35 @@ export default function Desktop({ isOpen = false, onClose }: CorporateRequestFor
   const [date, setDate] = useState<Date | null>(null);
   const [formats, setFormats] = useState<string[]>([]);
   const [mode, setMode] = useState("Offline / Classroom");
+  const [submitStatus, setSubmitStatus] = useState("");
 
   const toggleFormat = (fmt: string) => {
     if (formats.includes(fmt)) setFormats(formats.filter(f => f !== fmt));
     else setFormats([...formats, fmt]);
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const organisation = String(formData.get("organisation") ?? "").trim();
+    const requirement = String(formData.get("requirement") ?? "").trim();
+    const participants = Number(formData.get("participants"));
+    const location = String(formData.get("location") ?? "").trim();
+
+    if (!organisation) return setSubmitStatus(t("Please enter your organisation name."));
+    if (!requirement) return setSubmitStatus(t("Please describe the training requirement."));
+    if (!audience || !Number.isInteger(participants) || participants < 1) {
+      return setSubmitStatus(t("Please choose an audience and enter a valid participant count."));
+    }
+    if (formats.length === 0) return setSubmitStatus(t("Please select at least one preferred format."));
+    if (!location) return setSubmitStatus(t("Please provide a location or venue."));
+
+    setSubmitStatus(t("Thank you. Your request has been submitted."));
+    event.currentTarget.reset();
+    setAudience("");
+    setDate(null);
+    setFormats([]);
+    setMode("Offline / Classroom");
   };
 
   return (
@@ -74,84 +101,89 @@ export default function Desktop({ isOpen = false, onClose }: CorporateRequestFor
               <motion.div variants={item} className="flex items-center gap-4 mb-8">
                 <div className="w-[4px] h-9 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
                 <div>
-                  <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Corporate Request Form</h2>
-                  <p className="text-[13px] text-[#5A6B82] font-medium mt-0.5">Fill out the details below to initiate a training request.</p>
+                  <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Corporate Request Form")}</h2>
+                  <p className="text-[13px] text-[#5A6B82] font-medium mt-0.5">{t("Fill out the details below to initiate a training request.")}</p>
                 </div>
               </motion.div>
 
-              <motion.form variants={item} className="flex flex-col gap-5">
+              <motion.form variants={item} className="flex flex-col gap-5" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-2 gap-5">
                   <div>
-                    <label className={labelClasses}>Organisation Name</label>
-                    <input type="text" className={inputClasses} placeholder="Enter company name" />
+                    <label className={labelClasses}>{t("Organisation Name")}</label>
+                    <input type="text" name="organisation" className={inputClasses} placeholder={t("Enter company name")} />
                   </div>
                   <div>
-                    <label className={labelClasses}>Training Requirement</label>
-                    <input type="text" className={inputClasses} placeholder="e.g. Sales Capability Workshop" />
+                    <label className={labelClasses}>{t("Training Requirement")}</label>
+                    <input type="text" name="requirement" className={inputClasses} placeholder={t("e.g. Sales Capability Workshop")} />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-5">
                   <div>
-                    <label className={labelClasses}>Audience</label>
+                    <label className={labelClasses}>{t("Audience")}</label>
                     <CustomSelect
-                      options={["Freshers", "Sales Executives", "Managers", "Leadership"]}
-                      placeholder="Select Audience"
+                      options={["Freshers", "Sales Executives", "Managers", "Leadership"].map(t)}
+                      placeholder={t("Select Audience")}
                       value={audience}
                       onChange={setAudience}
                     />
                   </div>
                   <div>
-                    <label className={labelClasses}>Participants (Approx)</label>
-                    <input type="number" className={inputClasses} placeholder="e.g. 20" />
+                    <label className={labelClasses}>{t("Participants (Approx)")}</label>
+                    <input type="number" name="participants" min="1" className={inputClasses} placeholder={t("e.g. 20")} />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-5">
                   <div className="bg-[#F8FAFD]/50 rounded p-5 border border-[#0B1D3A]/[0.06]">
-                    <label className={labelClasses}>Preferred Format (Multiple)</label>
+                    <label className={labelClasses}>{t("Preferred Format (Multiple)")}</label>
                     <div className="flex flex-col gap-3 mt-3">
-                      <CustomCheckbox label="Workshop" checked={formats.includes("Workshop")} onChange={() => toggleFormat("Workshop")} />
-                      <CustomCheckbox label="Live Course" checked={formats.includes("Live Course")} onChange={() => toggleFormat("Live Course")} />
-                      <CustomCheckbox label="Mock Sessions" checked={formats.includes("Mock Sessions")} onChange={() => toggleFormat("Mock Sessions")} />
+                      <CustomCheckbox label={t("Workshop")} checked={formats.includes("Workshop")} onChange={() => toggleFormat("Workshop")} />
+                      <CustomCheckbox label={t("Live Course")} checked={formats.includes("Live Course")} onChange={() => toggleFormat("Live Course")} />
+                      <CustomCheckbox label={t("Mock Sessions")} checked={formats.includes("Mock Sessions")} onChange={() => toggleFormat("Mock Sessions")} />
                     </div>
                   </div>
                   <div className="bg-[#F8FAFD]/50 rounded p-5 border border-[#0B1D3A]/[0.06]">
-                    <label className={labelClasses}>Preferred Mode</label>
+                    <label className={labelClasses}>{t("Preferred Mode")}</label>
                     <div className="flex flex-col gap-3 mt-3">
-                      <CustomRadio label="Offline / Classroom" name="mode" checked={mode === "Offline / Classroom"} onChange={() => setMode("Offline / Classroom")} />
-                      <CustomRadio label="Online Live" name="mode" checked={mode === "Online Live"} onChange={() => setMode("Online Live")} />
-                      <CustomRadio label="Blended" name="mode" checked={mode === "Blended"} onChange={() => setMode("Blended")} />
+                      <CustomRadio label={t("Offline / Classroom")} name="mode" checked={mode === "Offline / Classroom"} onChange={() => setMode("Offline / Classroom")} />
+                      <CustomRadio label={t("Online Live")} name="mode" checked={mode === "Online Live"} onChange={() => setMode("Online Live")} />
+                      <CustomRadio label={t("Blended")} name="mode" checked={mode === "Blended"} onChange={() => setMode("Blended")} />
                     </div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-5">
                   <div className="flex flex-col z-10">
-                    <label className={labelClasses}>Preferred Date</label>
-                    <CustomDatePicker selected={date} onChange={(d: Date) => setDate(d)} placeholderText="Select Date" />
+                    <label className={labelClasses}>{t("Preferred Date")}</label>
+                    <CustomDatePicker selected={date} onChange={(d: Date | null) => setDate(d)} placeholderText={t("Select Date")} />
                   </div>
                   <div>
-                    <label className={labelClasses}>Location / Venue</label>
-                    <input type="text" className={inputClasses} placeholder="City or Office location" />
+                    <label className={labelClasses}>{t("Location / Venue")}</label>
+                    <input type="text" name="location" className={inputClasses} placeholder={t("City or Office location")} />
                   </div>
                 </div>
 
                 <div>
-                  <label className={labelClasses}>Additional Message (Optional)</label>
+                  <label className={labelClasses}>{t("Additional Message (Optional)")}</label>
                   <textarea
                     className={`${inputClasses} h-24 resize-none`}
-                    placeholder="Describe any specific requirements or focus areas for the training..."
+                    placeholder={t("Describe any specific requirements or focus areas for the training...")}
                   ></textarea>
                 </div>
 
                 <div className="pt-2 border-t border-[#0B1D3A]/[0.06] mt-2 flex justify-end">
+                  {submitStatus && (
+                    <p role="status" aria-live="polite" className={`mb-4 text-sm font-semibold ${submitStatus === t("Thank you. Your request has been submitted.") ? "text-emerald-700" : "text-red-600"}`}>
+                      {submitStatus}
+                    </p>
+                  )}
                   <button
-                    type="button"
+                    type="submit"
                     className="text-white px-8 py-3.5 rounded font-bold text-[14px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50 flex items-center justify-center gap-2.5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] relative overflow-hidden group w-full md:w-auto"
                     style={{ background: "linear-gradient(135deg, #8B5CF6, #6D28D9)" }}
                   >
-                    Submit Request
+                    {t("Submit Request")}
                     <Send size={16} strokeWidth={2.5} className="text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                   </button>

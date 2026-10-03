@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
 import { Layers, Users, Globe, ChevronDown } from "lucide-react";
@@ -49,7 +49,8 @@ const SegmentAccordion = ({ segment, defaultOpen }: { segment: any; defaultOpen:
 };
 
 export default function Desktop() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -98,7 +99,7 @@ export default function Desktop() {
               {sectionColors[0].icon}
             </div>
             <h2 className="text-[18px] font-black leading-tight" style={{ color: NAVY }}>
-              Real Estate<br/>Segment Expertise
+              {t("Real Estate")}<br/>{t("Segment Expertise")}
             </h2>
           </div>
           <div className="flex flex-col gap-4">
@@ -116,7 +117,7 @@ export default function Desktop() {
               {sectionColors[1].icon}
             </div>
             <h2 className="text-[18px] font-black leading-tight" style={{ color: NAVY }}>
-              Learner<br/>Audience
+              {t("Learner")}<br/>{t("Audience")}
             </h2>
           </div>
           <div className="flex flex-col gap-4">
@@ -139,16 +140,16 @@ export default function Desktop() {
               {sectionColors[2].icon}
             </div>
             <h2 className="text-[18px] font-black leading-tight" style={{ color: NAVY }}>
-              Training<br/>Language
+              {t("Training")}<br/>{t("Language")}
             </h2>
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5 p-3.5 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">
-              <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-wider">Primary Language</span>
-              <span className="text-[16px] font-black" style={{ color: NAVY }}>English</span>
+              <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-wider">{t("Primary Language")}</span>
+              <span className="text-[16px] font-black" style={{ color: NAVY }}>{t("English")}</span>
             </div>
             <div className="flex flex-col gap-1.5 p-3.5 rounded bg-white border border-[#0B1D3A]/[0.06] shadow-sm">
-              <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-wider">Secondary Languages</span>
+              <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-wider">{t("Secondary Languages")}</span>
               <div className="flex flex-wrap gap-1.5 mt-0.5">
                 {["Telugu", "Hindi"].map(lang => (
                   <span key={lang} className="text-[13px] font-bold px-3 py-1 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.04] text-[#5A6B82]">{lang}</span>

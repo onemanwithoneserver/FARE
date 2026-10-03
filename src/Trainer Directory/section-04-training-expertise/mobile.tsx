@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Target, Users, Heart, Sparkles, Briefcase, MessageCircle, Zap } from "lucide-react";
@@ -8,6 +8,7 @@ const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
 export default function Mobile() {
+  const t = useProfileText();
   const getCategoryIcon = (category: string, size: number, strokeWidth: number) => {
     const cat = category.toLowerCase();
     if (cat.includes("sales")) return <Target size={size} strokeWidth={strokeWidth} />;
@@ -18,7 +19,7 @@ export default function Mobile() {
     if (cat.includes("product")) return <Briefcase size={size} strokeWidth={strokeWidth} />;
     return <Sparkles size={size} strokeWidth={strokeWidth} />;
   };
-  const data = profileData;
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -56,7 +57,7 @@ export default function Mobile() {
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-5">
           <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Expertise</h2>
+          <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Expertise")}</h2>
         </motion.div>
 
         <div className="flex flex-col gap-3">

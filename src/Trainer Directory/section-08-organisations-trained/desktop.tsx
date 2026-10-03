@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Building2 } from "lucide-react";
@@ -18,7 +18,8 @@ const initialsOf = (name: string) =>
   name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
 
 export default function Desktop() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -55,12 +56,12 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Experience &amp; Track Record</h2>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Experience \u0026amp; Track Record")}</h2>
         </motion.div>
 
         <div className="mx-auto w-full max-w-[1040px]">
           <motion.h3 variants={item} className="mb-6 text-[18px] font-black tracking-tight" style={{ color: NAVY }}>
-            Selected Engagements
+            {t("Selected Engagements")}
           </motion.h3>
 
           <div className="relative flex flex-col gap-7">

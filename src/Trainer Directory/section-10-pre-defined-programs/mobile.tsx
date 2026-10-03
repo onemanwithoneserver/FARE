@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Users, Clock, BookOpen } from "lucide-react";
@@ -8,7 +8,8 @@ const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
 export default function Mobile() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -46,7 +47,7 @@ export default function Mobile() {
         <div className="flex items-end justify-between mb-8">
           <motion.div variants={item} className="flex items-center gap-3">
             <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-            <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Programs</h2>
+            <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Programs")}</h2>
           </motion.div>
         </div>
 
@@ -111,7 +112,7 @@ export default function Mobile() {
                 <div className="border-t border-[#0B1D3A]/[0.06] pt-4 relative z-10">
                   <div className="text-[10px] text-[#7B8DAA] uppercase tracking-[0.15em] font-black mb-2.5 flex items-center gap-1.5">
                     <BookOpen size={11} strokeWidth={2.5} />
-                    Key Topics
+                    {t("Key Topics")}
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {prog.topics.map((topic, tIdx) => (

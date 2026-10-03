@@ -1,5 +1,7 @@
 import { useState } from "react";
 import type { Trainer } from "../listing_data";
+import { useLanguage } from "../../context/LanguageContext";
+import { translateDirectoryText } from "../translations";
 import ambientTrainerVideo from "../../assets/FARE_Video.mp4";
 import {
   BadgeCheck,
@@ -39,6 +41,8 @@ function TrainerPhotoHero({
   isIntroVideoOpen: boolean;
   onToggleIntroVideo: () => void;
 }) {
+  const { language } = useLanguage();
+  const t = (text: string) => translateDirectoryText(text, language);
   const availability = AVAILABILITY[trainer.availability];
 
   return (
@@ -74,7 +78,7 @@ function TrainerPhotoHero({
           <button
             type="button"
             onClick={onToggleIntroVideo}
-            aria-label={`Play ${trainer.name}'s introduction video`}
+            aria-label={`${t("Play introduction video")}: ${trainer.name}`}
             className="absolute inset-0 z-10 flex items-center justify-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D5AA45]"
           >
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#0B1D3A] shadow-[0_8px_24px_-6px_rgba(0,0,0,0.5)] ring-4 ring-white/25 transition-transform group-active:scale-95">
@@ -86,7 +90,7 @@ function TrainerPhotoHero({
             style={{ background: availability.bg, color: availability.text }}
           >
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: availability.dot }} />
-            {availability.label}
+            {t(availability.label)}
           </span>
         </>
       )}
@@ -94,7 +98,7 @@ function TrainerPhotoHero({
         <button
           type="button"
           onClick={onToggleIntroVideo}
-          aria-label="Close video"
+          aria-label={t("Close video")}
           className="absolute right-2 top-2 z-20 rounded-full bg-black/65 p-1.5 text-white shadow"
         >
           <X size={14} />
@@ -126,6 +130,8 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
 }
 
 export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
+  const { language } = useLanguage();
+  const t = (text: string) => translateDirectoryText(text, language);
   const [requested, setRequested] = useState(false);
   const [isIntroVideoOpen, setIsIntroVideoOpen] = useState(false);
   const handleRequest = () => setRequested(true);
@@ -150,16 +156,16 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
           <div className="min-w-0 flex-1 pb-0.5">
             <span className="inline-flex items-center gap-1 rounded-full bg-[#F1F5F9] px-2 py-0.5 text-[10px] font-semibold text-[#5A6B82]">
               <MapPin size={10} strokeWidth={2.5} style={{ color: GOLD }} />
-              {trainer.location.split(",")[0]}
+              {t(trainer.location.split(",")[0])}
             </span>
             <h3 className="mt-1.5 truncate text-[18px] font-black leading-tight tracking-tight" style={{ color: NAVY }}>
               {trainer.name}
             </h3>
-            <p className="mt-0.5 line-clamp-1 text-[12px] font-medium leading-snug text-[#5A6B82]">{trainer.title}</p>
+            <p className="mt-0.5 line-clamp-1 text-[12px] font-medium leading-snug text-[#5A6B82]">{t(trainer.title)}</p>
           </div>
         </div>
 
-        <p className="mt-2 line-clamp-2 text-[12px] leading-relaxed text-[#5A6B82]/90">{trainer.positioning}</p>
+        <p className="mt-2 line-clamp-2 text-[12px] leading-relaxed text-[#5A6B82]/90">{t(trainer.positioning)}</p>
 
         <div className="mt-3 grid grid-cols-3 rounded-lg border border-[#0B1D3A]/[0.05] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
           {stats.map((stat) => (
@@ -168,20 +174,20 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
                 {stat.icon}
               </span>
               <span className="text-[13px] font-black leading-none" style={{ color: NAVY }}>{stat.value}</span>
-              <span className="text-[7px] font-semibold uppercase tracking-[0.08em] text-[#7B8DAA]">{stat.label}</span>
+              <span className="text-[7px] font-semibold uppercase tracking-[0.08em] text-[#7B8DAA]">{t(stat.label)}</span>
             </div>
           ))}
         </div>
 
         <div className="mt-3.5">
-          <div className="mb-1.5 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Specialization</div>
+          <div className="mb-1.5 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">{t("Specialization")}</div>
           <div className="flex flex-wrap gap-1">
             {trainer.expertise.slice(0, 2).map((expertise) => (
               <span
                 key={expertise}
                 className="rounded-full border border-[#C99A2E]/20 bg-[#FBF4E4] px-2 py-0.5 text-[10px] font-semibold text-[#8A6516]"
               >
-                {expertise}
+                {t(expertise)}
               </span>
             ))}
             {trainer.expertise.length > 2 && (
@@ -193,12 +199,12 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
         </div>
 
         <div className="mt-3">
-          <div className="mb-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">RE Segment</div>
+          <div className="mb-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">{t("RE Segment")}</div>
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-semibold text-[#475569]">
             {trainer.segments.map((segment, index) => (
               <span key={segment} className="inline-flex items-center gap-2">
                 {index > 0 && <span className="h-1 w-1 rounded-full bg-[#C99A2E]" />}
-                {segment}
+                {t(segment)}
               </span>
             ))}
           </div>
@@ -206,8 +212,8 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
 
         <div className="mt-auto pt-3.5">
           <div className="flex items-center justify-between pt-3 mb-3 border-t border-dashed border-[#0B1D3A]/10">
-            <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Engagement</span>
-            <span className="text-[11.5px] font-bold" style={{ color: GOLD }}>{trainer.pricing}</span>
+            <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">{t("Engagement")}</span>
+            <span className="text-[11.5px] font-bold" style={{ color: GOLD }}>{t(trainer.pricing)}</span>
           </div>
           <div className="flex items-center justify-between gap-2 pt-2">
             <button
@@ -215,7 +221,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
               className="group/vp px-4 h-9 rounded-xl text-[12.5px] font-bold flex items-center justify-center gap-1 text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
               style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
             >
-              View Profile
+              {t("View Profile")}
               <span className="relative w-4 h-4 inline-flex items-center justify-center">
                 <ChevronRight
                   size={15}
@@ -239,7 +245,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
               }`}
             >
               <span className="relative z-10 flex items-center gap-1">
-                {requested ? "Request Sent" : "Request"}
+                {requested ? t("Request Sent") : t("Request")}
                 {requested ? (
                   <Check size={14} strokeWidth={2.5} />
                 ) : (

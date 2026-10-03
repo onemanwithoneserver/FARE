@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { ChevronRight, ArrowRight, Check } from "lucide-react";
@@ -8,7 +8,8 @@ const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
 export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => void }) {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -45,7 +46,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-8">
           <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Investment</h2>
+          <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Investment")}</h2>
         </motion.div>
 
         <div className="flex flex-col gap-5 mb-6">
@@ -55,7 +56,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
             className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#6366F1]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
-            <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">Pricing</h4>
+            <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">{t("Pricing")}</h4>
             <h3 className="text-[18px] font-black mb-2 tracking-tight relative z-10" style={{ color: NAVY }}>{data.investment.pricing.title}</h3>
             <p className="text-[13px] text-[#5A6B82] font-medium leading-relaxed relative z-10">{data.investment.pricing.subtitle}</p>
           </motion.div>
@@ -65,7 +66,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
             className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/15 to-transparent rounded-full blur-[20px] pointer-events-none" />
-            <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">Minimum Engagement</h4>
+            <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">{t("Minimum Engagement")}</h4>
             <h3 className="text-[18px] font-black mb-4 tracking-tight relative z-10" style={{ color: NAVY }}>{data.investment.minimumEngagement.title}</h3>
             <div className="flex flex-wrap gap-2.5 relative z-10">
               {data.investment.minimumEngagement.options.map((opt, idx) => (
@@ -93,7 +94,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
             className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#10B981]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
-            <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-4 relative z-10">Pricing Basis</h4>
+            <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-4 relative z-10">{t("Pricing Basis")}</h4>
             <ul className="flex flex-col gap-3 relative z-10">
               {data.investment.pricingBasis.map((basis, idx) => (
                 <li key={idx} className="flex items-center gap-2.5 text-[13px] font-bold text-[#5A6B82]">
@@ -125,7 +126,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
             onClick={onRequestPricing}
             className="w-full bg-white text-[#0B1D3A] px-6 py-3.5 rounded font-black text-[14px] transition-transform duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center justify-center gap-2.5 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] relative z-10 group"
           >
-            Request Pricing
+            {t("Request Pricing")}
             <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#C99A2E]"}`} style={{ fontSize: `${15}px` }}>
       <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
       <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />

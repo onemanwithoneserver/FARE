@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Quote, Presentation, MessagesSquare, Clock3, UserCheck2, Sparkles } from "lucide-react";
@@ -15,7 +15,8 @@ const FORMAT_ICONS = [
 ];
 
 export default function Mobile() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -52,7 +53,7 @@ export default function Mobile() {
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-8">
           <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, #D5AA45)` }} />
-          <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Methodology</h2>
+          <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Methodology")}</h2>
         </motion.div>
 
         <div className="flex flex-col gap-10">

@@ -24,6 +24,8 @@ import {
 } from "lucide-react";
 import trainersHero from "../assets/re_trainers_hero.jpg";
 import { CustomSelect } from "./section-17-corporate-request-form/FormControls";
+import { useLanguage } from "../context/LanguageContext";
+import { translateDirectoryText } from "./translations";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -36,14 +38,26 @@ interface TrainerDirectoryProps {
   isMobile: boolean;
 }
 
-const matchesText = (trainer: Trainer, q: string) => {
-  const haystack = [trainer.name, trainer.title, trainer.location, ...trainer.expertise, ...trainer.segments, ...trainer.formats]
+const matchesText = (trainer: Trainer, q: string, language: "en" | "te") => {
+  const values = [
+    trainer.name,
+    trainer.title,
+    trainer.location,
+    ...trainer.location.split(",").map((part) => part.trim()),
+    trainer.positioning,
+    ...trainer.expertise,
+    ...trainer.segments,
+    ...trainer.formats,
+  ];
+  const haystack = [...values, ...values.map((value) => translateDirectoryText(value, language))]
     .join(" ")
     .toLowerCase();
   return haystack.includes(q);
 };
 
 export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
+  const { language } = useLanguage();
+  const t = (text: string) => translateDirectoryText(text, language);
   const [selectedTrainerId, setSelectedTrainerId] = useState<string | null>(null);
   const profileContainerRef = useRef<HTMLDivElement>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -78,8 +92,8 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
   const filteredTrainers = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     const list = trainersData.filter((t) => {
-      if (q && !matchesText(t, q)) return false;
-      if (activeTag && !matchesText(t, activeTag.toLowerCase())) return false;
+      if (q && !matchesText(t, q, language)) return false;
+      if (activeTag && !matchesText(t, activeTag.toLowerCase(), language)) return false;
       if (filters.segments.length && !filters.segments.some((s) => t.segments.includes(s))) return false;
       if (filters.expertise.length && !filters.expertise.some((s) => t.expertise.includes(s))) return false;
       if (filters.delivery.length && !filters.delivery.some((s) => t.delivery.includes(s))) return false;
@@ -99,7 +113,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
     else if (sortBy === "Training Years (High to Low)") sorted.sort((a, b) => b.trainingExperience - a.trainingExperience);
     else if (sortBy === "A-Z") sorted.sort((a, b) => a.name.localeCompare(b.name));
     return sorted;
-  }, [searchQuery, activeTag, filters, sortBy]);
+  }, [searchQuery, activeTag, filters, sortBy, language]);
 
   // Demo listing: repeat sample trainers to simulate a full directory when no filters are applied.
   const totalListing = isFiltering ? filteredTrainers.length : Math.min(DEMO_LISTING_CAP, Math.max(filteredTrainers.length, DEMO_LISTING_CAP));
@@ -204,7 +218,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
                 <Sparkles size={13} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
                 <span className="font-bold text-[10px] lg:text-[11px] tracking-[0.15em] uppercase text-[#C99A2E]">
-                  Trainer Directory
+                  {t("Trainer Directory")}
                 </span>
               </div>
             </motion.div>
@@ -218,10 +232,19 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               }`}
               style={{ color: NAVY }}
             >
-              <span className="block whitespace-nowrap">
-                Find the <span className="text-[#C99A2E] underline decoration-[#C99A2E] decoration-2 underline-offset-4">Right Trainer</span>
-              </span>
-              <span className="block whitespace-nowrap">for Your Real Estate Team</span>
+              {language === "te" ? (
+                <>
+                  <span className="block whitespace-nowrap">మీ రియల్ ఎస్టేట్ బృందం కోసం</span>
+                  <span className="block whitespace-nowrap text-[#C99A2E] underline decoration-[#C99A2E] decoration-2 underline-offset-4">సరైన ట్రైనర్‌ను కనుగొనండి</span>
+                </>
+              ) : (
+                <>
+                  <span className="block whitespace-nowrap">
+                    Find the <span className="text-[#C99A2E] underline decoration-[#C99A2E] decoration-2 underline-offset-4">Right Trainer</span>
+                  </span>
+                  <span className="block whitespace-nowrap">for Your Real Estate Team</span>
+                </>
+              )}
             </motion.h1>
 
             <motion.p
@@ -232,7 +255,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                   : "text-[14px] sm:text-[16px] xl:text-[17px] w-[300px] sm:w-[85%] lg:max-w-[520px] mb-5 lg:mb-7"
               }`}
             >
-              Discover trainers by expertise, real estate segment, training format, delivery mode and experience.
+              {t("Discover trainers by expertise, real estate segment, training format, delivery mode and experience.")}
             </motion.p>
 
             {isMobile && (
@@ -242,7 +265,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               >
                 <img
                   src={trainersHero}
-                  alt="Trainer Directory"
+                  alt={t("Trainer Directory")}
                   className="w-full h-[200px] object-cover object-[center_38%]"
                 />
               </motion.div>
@@ -256,7 +279,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search trainers, expertise or training areas..."
+                placeholder={t("Search trainers, expertise or training areas...")}
                 className="w-full pl-11 pr-4 py-3.5 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded text-[14px] lg:text-[15px] text-[#0B1D3A] font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 focus:border-[#C99A2E] transition-all duration-300 ease-out placeholder:text-[#7B8DAA]"
                 style={{
                   boxShadow: "0 2px 8px -2px rgba(11, 29, 58, 0.05), 0 4px 12px -4px rgba(11, 29, 58, 0.03)",
@@ -277,14 +300,14 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 >
                   {activeTag === tag && (
                     <span className="inline-flex items-center gap-1">
-                      {tag}
+                      {t(tag)}
                       <X size={11} strokeWidth={3} />
                     </span>
                   )}
                   {activeTag !== tag && (
                     <span className="flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full" style={{ background: GOLD }} />
-                      {tag}
+                      {t(tag)}
                     </span>
                   )}
                 </button>
@@ -306,7 +329,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                   animate={{ scale: [1, 1.04, 1] }}
                   transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
                   src={trainersHero}
-                  alt="Trainer Directory"
+                  alt={t("Trainer Directory")}
                   className="w-full h-full object-cover object-[center_38%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/10 to-transparent lg:hidden" />
@@ -344,7 +367,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                     {stat.value}
                   </div>
                   <div className={`${isMobile ? "text-[10.5px]" : "text-[12.5px]"} font-semibold text-[#5A6B82] mt-1 truncate`}>
-                    {stat.label}
+                    {t(stat.label)}
                   </div>
                 </div>
               </div>
@@ -373,16 +396,32 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
           <div className="relative z-30 flex flex-col gap-3 mb-6">
             {!isMobile && (
               <div className="flex items-center justify-end gap-3 shrink-0">
-                <span className="text-[12.5px] text-[#5A6B82] font-medium whitespace-nowrap">Sort by</span>
+                <span className="text-[12.5px] text-[#5A6B82] font-medium whitespace-nowrap">{t("Sort by")}</span>
                 <div className="w-[220px]">
-                  <CustomSelect options={SORT_OPTIONS} value={sortBy} onChange={setSortBy} placeholder="Sort by" />
+                  <CustomSelect
+                    options={SORT_OPTIONS.map(t)}
+                    value={t(sortBy)}
+                    onChange={(value: string) => {
+                      const selectedOption = SORT_OPTIONS.find((option) => t(option) === value);
+                      if (selectedOption) setSortBy(selectedOption);
+                    }}
+                    placeholder={t("Sort by")}
+                  />
                 </div>
               </div>
               )}
             {isMobile && (
               <div className="flex items-center gap-2.5">
                 <div className="flex-1 min-w-0">
-                  <CustomSelect options={SORT_OPTIONS} value={sortBy} onChange={setSortBy} placeholder="Sort by" />
+                  <CustomSelect
+                    options={SORT_OPTIONS.map(t)}
+                    value={t(sortBy)}
+                    onChange={(value: string) => {
+                      const selectedOption = SORT_OPTIONS.find((option) => t(option) === value);
+                      if (selectedOption) setSortBy(selectedOption);
+                    }}
+                    placeholder={t("Sort by")}
+                  />
                 </div>
                 <button
                   onClick={() => setShowMobileFilters(true)}
@@ -390,7 +429,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                   style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
                 >
                   <SlidersHorizontal size={15} strokeWidth={2.5} style={{ color: GOLD_MID }} />
-                  Filters
+                  {t("Filters")}
                   {activeChips.length > 0 && (
                     <span
                       className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-black"
@@ -427,7 +466,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                         onClick={() => setActiveTag(null)}
                         className="inline-flex items-center gap-1.5 h-7 pl-3 pr-2 rounded-full text-[12px] font-semibold bg-[#0B1D3A] text-white hover:bg-[#1A3463] transition-colors"
                       >
-                        {activeTag}
+                        {t(activeTag)}
                         <X size={12} strokeWidth={3} className="text-[#D5AA45]" />
                       </button>
                     )}
@@ -437,7 +476,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                         onClick={() => toggleFilter(chip.key, chip.value)}
                         className="inline-flex items-center gap-1.5 h-7 pl-3 pr-2 rounded-full text-[12px] font-semibold bg-[#FBF4E4] text-[#8A6516] border border-[#C99A2E]/25 hover:border-[#C99A2E]/60 transition-colors"
                       >
-                        {chip.value}
+                        {t(chip.value)}
                         <X size={12} strokeWidth={3} />
                       </button>
                     ))}
@@ -446,7 +485,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                       className="inline-flex items-center gap-1 h-7 px-2 text-[12px] font-bold text-[#7B8DAA] hover:text-[#0B1D3A] transition-colors"
                     >
                       <RotateCcw size={12} strokeWidth={2.5} />
-                      Clear all
+                      {t("Clear all")}
                     </button>
                   </div>
                 </motion.div>
@@ -464,16 +503,16 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4" style={{ background: "#FBF4E4", color: GOLD }}>
                 <SearchX size={26} strokeWidth={2.2} />
               </div>
-              <h3 className="text-[18px] font-black" style={{ color: NAVY }}>No trainers match these filters</h3>
+              <h3 className="text-[18px] font-black" style={{ color: NAVY }}>{t("No trainers match these filters")}</h3>
               <p className="text-[13.5px] text-[#5A6B82] mt-1.5 max-w-[360px]">
-                Try removing a filter or broadening your search to discover more trainers.
+                {t("Try removing a filter or broadening your search to discover more trainers.")}
               </p>
               <button
                 onClick={clearAll}
                 className="mt-5 h-10 px-5 rounded-xl text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)]"
                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
               >
-                Reset all filters
+                {t("Reset all filters")}
               </button>
             </motion.div>
           ) : (
@@ -507,7 +546,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
           {!hasMore && displayedTrainers.length > 0 && (
             <div className="flex items-center gap-4 py-10">
               <span className="flex-1 h-px bg-gradient-to-r from-transparent to-[#0B1D3A]/10" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#7B8DAA]">You've seen all trainers</span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#7B8DAA]">{t("You've seen all trainers")}</span>
               <span className="flex-1 h-px bg-gradient-to-l from-transparent to-[#0B1D3A]/10" />
             </div>
           )}

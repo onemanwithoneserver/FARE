@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Play, Target, Lightbulb, Users, Clock, BookOpen } from "lucide-react";
@@ -20,7 +20,8 @@ const videoBgs = [
 ];
 
 export default function Desktop() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -57,10 +58,10 @@ export default function Desktop() {
         
         <motion.div variants={item} className="flex items-center gap-4 mb-3">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Case Studies</h2>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Case Studies")}</h2>
         </motion.div>
         <motion.div variants={item} className="mb-12">
-          <p className="text-[15px] text-[#7B8DAA] font-medium max-w-[500px]">Real outcomes from real training engagements — anonymised with client consent.</p>
+          <p className="text-[15px] text-[#7B8DAA] font-medium max-w-[500px]">{t("Real outcomes from real training engagements — anonymised with client consent.")}</p>
         </motion.div>
 
         <div className="flex flex-col gap-8">
@@ -111,7 +112,7 @@ export default function Desktop() {
                     >
                       <Play size={22} fill="white" className="ml-1 text-white" />
                     </motion.div>
-                    <span className="text-[10px] text-white/70 font-bold uppercase tracking-[0.15em]">Watch Case Study</span>
+                    <span className="text-[10px] text-white/70 font-bold uppercase tracking-[0.15em]">{t("Watch Case Study")}</span>
                   </div>
                   
                   <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/40 to-transparent">
@@ -160,7 +161,7 @@ export default function Desktop() {
                           <Target size={14} strokeWidth={2.5} />
                         </div>
                         <div>
-                          <div className="text-[10px] font-black uppercase tracking-[0.14em] mb-1.5 text-[#EF4444]">The Challenge</div>
+                          <div className="text-[10px] font-black uppercase tracking-[0.14em] mb-1.5 text-[#EF4444]">{t("The Challenge")}</div>
                           <p className="text-[13px] text-[#5A6B82] leading-[1.65] font-medium">{study.challenge}</p>
                         </div>
                       </div>
@@ -173,7 +174,7 @@ export default function Desktop() {
                           <Lightbulb size={14} strokeWidth={2.5} />
                         </div>
                         <div>
-                          <div className="text-[10px] font-black uppercase tracking-[0.14em] mb-1.5" style={{ color: GOLD }}>The Approach</div>
+                          <div className="text-[10px] font-black uppercase tracking-[0.14em] mb-1.5" style={{ color: GOLD }}>{t("The Approach")}</div>
                           <p className="text-[13px] text-[#5A6B82] leading-[1.65] font-medium">{study.approach}</p>
                         </div>
                       </div>

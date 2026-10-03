@@ -1,3 +1,4 @@
+import { useProfileText } from "../profileData";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import { MapPin, Globe2, Briefcase, GraduationCap, Users, ShieldCheck } from "lucide-react";
@@ -7,6 +8,7 @@ const NAVY = "#0B1D3A";
 
 
 export default function Mobile() {
+  const t = useProfileText();
   const { language } = useLanguage();
   const data = getData(language);
   
@@ -48,7 +50,7 @@ export default function Mobile() {
               <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center">
                 <ShieldCheck size={12} className="text-white" strokeWidth={3} />
               </div>
-              <span className="text-white text-[13px] font-bold tracking-wide">FARE Verified</span>
+              <span className="text-white text-[13px] font-bold tracking-wide">{t("FARE Verified")}</span>
             </div>
           )}
         </div>
@@ -76,7 +78,7 @@ export default function Mobile() {
               <Briefcase size={14} className="text-white" strokeWidth={2.5} />
             </div>
             <div className="text-[26px] font-black text-white mb-1 leading-none tracking-tight">{data.experience.industry}</div>
-            <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">Industry Exp.</div>
+            <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">{t("Industry Exp.")}</div>
           </div>
 
           <div className="rounded p-4 relative overflow-hidden flex flex-col items-center"
@@ -92,7 +94,7 @@ export default function Mobile() {
               <GraduationCap size={16} className="text-white" strokeWidth={2.5} />
             </div>
             <div className="text-[26px] font-black text-white mb-1 leading-none tracking-tight">{data.experience.training}</div>
-            <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">Training Exp.</div>
+            <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">{t("Training Exp.")}</div>
           </div>
 
           <div className="col-span-2 rounded p-4 relative overflow-hidden flex flex-col items-center"
@@ -108,7 +110,7 @@ export default function Mobile() {
               <Users size={16} className="text-white" strokeWidth={2.5} />
             </div>
             <div className="text-[28px] font-black text-white mb-1 leading-none tracking-tight">{data.experience.professionalsTrained}</div>
-            <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">Professionals Trained</div>
+            <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#94A3B8]">{t("Professionals Trained")}</div>
           </div>
         </div>
 

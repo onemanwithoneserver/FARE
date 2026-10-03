@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, SlidersHorizontal, RotateCcw } from "lucide-react";
 import { filterOptions } from "../listing_data";
+import { useLanguage } from "../../context/LanguageContext";
+import { translateDirectoryText } from "../translations";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -70,6 +72,7 @@ export const CountBadge = ({ count, size = 18 }: { count: number; size?: number 
 );
 
 const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedOptions, onChange, defaultOpen = true }) => {
+  const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const activeCount = selectedOptions.length;
 
@@ -81,7 +84,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
         aria-expanded={isOpen}
       >
         <div className="flex items-center gap-2.5">
-          <span className="text-[11px] font-black tracking-[0.14em] text-[#0B1D3A]/80 uppercase">{title}</span>
+          <span className="text-[11px] font-black tracking-[0.14em] text-[#0B1D3A]/80 uppercase">{translateDirectoryText(title, language)}</span>
           {activeCount > 0 && <CountBadge count={activeCount} size={16} />}
         </div>
         <ChevronDown
@@ -117,7 +120,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
                         isSelected ? "text-[#0B1D3A] font-bold" : "text-[#5A6B82] group-hover/item:text-[#0B1D3A] font-medium"
                       }`}
                     >
-                      {option}
+                      {translateDirectoryText(option, language)}
                     </span>
                   </button>
                 );
@@ -131,6 +134,8 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
 };
 
 export default function Desktop({ selected, onToggle, onClear }: SidebarFiltersProps) {
+  const { language } = useLanguage();
+  const t = (text: string) => translateDirectoryText(text, language);
   const totalActive = Object.values(selected).reduce((sum, arr) => sum + arr.length, 0);
 
   return (
@@ -145,7 +150,7 @@ export default function Desktop({ selected, onToggle, onClear }: SidebarFiltersP
             <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-white/10 border border-white/15">
               <SlidersHorizontal size={14} strokeWidth={2.5} style={{ color: GOLD_MID }} />
             </div>
-            <span className="text-[15px] font-black text-white">Filters</span>
+            <span className="text-[15px] font-black text-white">{t("Filters")}</span>
             {totalActive > 0 && <CountBadge count={totalActive} size={20} />}
           </div>
           {totalActive > 0 && (
@@ -154,7 +159,7 @@ export default function Desktop({ selected, onToggle, onClear }: SidebarFiltersP
               className="relative flex items-center gap-1.5 text-[11px] font-bold text-white/80 hover:text-white bg-white/10 hover:bg-white/20 px-2.5 py-1.5 rounded-lg transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
             >
               <RotateCcw size={12} strokeWidth={2.5} />
-              Clear
+              {t("Clear")}
             </button>
           )}
         </div>

@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Video, Building2, Layers, PlayCircle, Clock, Sparkles, Presentation, MessagesSquare, UserCheck } from "lucide-react";
@@ -10,7 +10,8 @@ const GOLD_MID = "#D5AA45";
 
 
 export default function Mobile() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -53,7 +54,7 @@ export default function Mobile() {
         <div>
           <motion.div variants={item} className="flex items-center gap-3 mb-5">
             <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-            <h2 className="text-[20px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Delivery</h2>
+            <h2 className="text-[20px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Training Delivery")}</h2>
           </motion.div>
 
           <div className="grid grid-cols-2 gap-3 mb-6">
@@ -83,7 +84,7 @@ export default function Mobile() {
                   <h4 className="text-[12px] font-bold mb-1" style={{ color: NAVY }}>{mode.name}</h4>
                   <p className="text-[10px] text-[#7B8DAA] leading-relaxed font-medium">{mode.description}</p>
                   {mode.disabled && (
-                    <span className="mt-1.5 text-[9px] font-bold uppercase tracking-wider text-[#94A3B8]">Coming Soon</span>
+                    <span className="mt-1.5 text-[9px] font-bold uppercase tracking-wider text-[#94A3B8]">{t("Coming Soon")}</span>
                   )}
                 </motion.div>
               );
@@ -95,7 +96,7 @@ export default function Mobile() {
               variants={item}
               className="w-full mt-2"
             >
-              <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-3">Training Formats</h4>
+              <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-3">{t("Training Formats")}</h4>
               <div className="flex flex-col gap-3">
                 {data.methodology.formats.map((fmt, idx) => {
                   const styles = [
@@ -129,7 +130,7 @@ export default function Mobile() {
               variants={item}
               className="w-full mt-2"
             >
-              <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-3">Training Durations</h4>
+              <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-3">{t("Training Durations")}</h4>
               <div className="flex flex-wrap gap-2.5">
                 {data.delivery.durations.map((dur, idx) => (
                   <div

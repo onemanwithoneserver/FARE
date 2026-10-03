@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Play, Target, Lightbulb, Clock, Users } from "lucide-react";
@@ -20,7 +20,8 @@ const videoBgs = [
 ];
 
 export default function Mobile() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -50,10 +51,10 @@ export default function Mobile() {
         
         <motion.div variants={item} className="flex items-center gap-3 mb-2">
           <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Case Studies</h2>
+          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Case Studies")}</h2>
         </motion.div>
         <motion.div variants={item} className="mb-8">
-          <p className="text-[13px] text-[#7B8DAA] font-medium leading-relaxed">Real outcomes from real engagements.</p>
+          <p className="text-[13px] text-[#7B8DAA] font-medium leading-relaxed">{t("Real outcomes from real engagements.")}</p>
         </motion.div>
 
         <div className="flex flex-col gap-6">
@@ -122,7 +123,7 @@ export default function Mobile() {
                       <Target size={12} strokeWidth={2.5} />
                     </div>
                     <div>
-                      <div className="text-[9px] font-black uppercase tracking-[0.14em] mb-1 text-[#EF4444]">The Challenge</div>
+                      <div className="text-[9px] font-black uppercase tracking-[0.14em] mb-1 text-[#EF4444]">{t("The Challenge")}</div>
                       <p className="text-[12px] text-[#5A6B82] leading-[1.6] font-medium">{study.challenge}</p>
                     </div>
                   </div>
@@ -133,7 +134,7 @@ export default function Mobile() {
                       <Lightbulb size={12} strokeWidth={2.5} />
                     </div>
                     <div>
-                      <div className="text-[9px] font-black uppercase tracking-[0.14em] mb-1" style={{ color: GOLD }}>The Approach</div>
+                      <div className="text-[9px] font-black uppercase tracking-[0.14em] mb-1" style={{ color: GOLD }}>{t("The Approach")}</div>
                       <p className="text-[12px] text-[#5A6B82] leading-[1.6] font-medium">{study.approach}</p>
                     </div>
                   </div>

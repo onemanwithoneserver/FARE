@@ -1,3 +1,4 @@
+import { useProfileText } from "../profileData";
 import { motion, type Variants } from "motion/react";
 import { useState } from "react";
 import { ChevronRight, ArrowLeft } from "lucide-react";
@@ -36,6 +37,7 @@ interface TrainerProfileProps {
 }
 
 export default function Desktop({ onBack }: TrainerProfileProps) {
+  const t = useProfileText();
   const [isRequestFormOpen, setIsRequestFormOpen] = useState(false);
 
   return (
@@ -73,21 +75,21 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
               onClick={onBack}
               className="text-white/40 hover:text-white/70 cursor-pointer transition-all duration-300 ease-out"
             >
-              Home
+              {t("Home")}
             </span>
             <ChevronRight size={12} className="text-white/20" strokeWidth={2} />
             <span
               onClick={onBack}
               className="text-white/40 hover:text-white/70 cursor-pointer transition-all duration-300 ease-out"
             >
-              Trainer Directory
+              {t("Trainer Directory")}
             </span>
             <ChevronRight size={12} className="text-white/20" strokeWidth={2} />
             <span
               className="font-bold relative"
               style={{ color: GOLD_MID }}
             >
-              Rajesh Kumar
+              {t("Rajesh Kumar")}
               
               <span
                 className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full"
@@ -109,7 +111,7 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
           }}
         >
           <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: GOLD_MID }} />
-          Trainer Profile
+          {t("Trainer Profile")}
         </div>
       </motion.div>
 

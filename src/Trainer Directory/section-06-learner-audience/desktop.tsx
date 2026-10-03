@@ -1,4 +1,4 @@
-import { profileData } from "../profileData";
+import { useProfileData, useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Users } from "lucide-react";
@@ -14,7 +14,8 @@ const audienceColors = [
 ];
 
 export default function Desktop() {
-  const data = profileData;
+  const t = useProfileText();
+  const data = useProfileData();
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -39,7 +40,7 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-6">
           <div className="w-8 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Learner Audience</h2>
+          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Learner Audience")}</h2>
         </motion.div>
 
         <div className="grid grid-cols-3 gap-5">
