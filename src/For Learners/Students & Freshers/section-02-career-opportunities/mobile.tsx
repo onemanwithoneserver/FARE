@@ -96,7 +96,7 @@ export default function Mobile() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-br from-white to-[#FAFBFF] px-6 py-5 rounded-[16px] border border-[#E2E8F0]/50 luxury-shadow-float">
+          <div className="bg-gradient-to-br from-white to-[#FAFBFF] px-6 py-5 rounded-[4px] border border-[#E2E8F0]/50 luxury-shadow-float">
             <p className="text-[17px] font-black text-[#0B1D3A] whitespace-pre-wrap leading-relaxed tracking-tight">
               {data.closing}
             </p>

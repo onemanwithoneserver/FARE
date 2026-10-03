@@ -66,9 +66,9 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-8 rounded-[12px] border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.03)] hover:luxury-shadow-float hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
+                className="bg-white p-8 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.03)] hover:luxury-shadow-float hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
               >
-                <div className={`w-14 h-14 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   <Icon size={26} className="text-white" strokeWidth={2.5} />
                 </div>
                 

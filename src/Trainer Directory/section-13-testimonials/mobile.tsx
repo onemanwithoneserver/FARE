@@ -1,7 +1,7 @@
 import { useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Quote, Star, ShieldCheck } from "lucide-react";
+import { Building2, Link2 } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -47,48 +47,27 @@ export default function Mobile() {
           <h2 className="text-[24px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Company Feedback")}</h2>
         </motion.div>
 
-        <motion.div
-          variants={item}
-          className="w-full relative group"
-        >
-          
-          <div className="bg-white/70 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-8 luxury-shadow-float relative overflow-hidden flex flex-col items-center justify-center text-center">
-            
-            
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
-            <div
-              className="absolute top-0 left-0 right-0 h-[3px] opacity-100"
-              style={{ background: "linear-gradient(90deg, #8B5CF6, #6D28D9)" }}
-            />
-            
-            <Quote size={60} className="absolute -top-3 -left-3 opacity-[0.03]" style={{ color: NAVY }} />
-
-            
-            <div className="flex gap-1 mb-5 opacity-40">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <Star key={star} size={16} fill={GOLD_MID} color={GOLD_MID} />
-              ))}
+        <motion.div variants={item} className="w-full">
+          <div className="rounded-2xl border border-[#0B1D3A]/[0.08] bg-gradient-to-br from-white via-[#FBFCFE] to-[#F3F6FB] p-5 shadow-[0_12px_32px_-20px_rgba(11,29,58,0.35)]">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#C99A2E]/20 bg-[#FBF4E4] text-[#A87918]">
+                <Building2 size={23} strokeWidth={1.8} aria-hidden="true" />
+              </div>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#64748B]/15 bg-[#F1F5F9] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.08em] text-[#64748B]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#94A3B8]" />
+                {t("Live source not connected")}
+              </span>
             </div>
-
-            <div className="w-14 h-14 rounded-full bg-[#F1F5F9] border border-[#E2E8F0] mb-5 flex items-center justify-center relative shadow-sm">
-               <ShieldCheck size={24} className="text-[#94A3B8]" strokeWidth={2} />
-               <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center shadow-sm">
-                  <div className="w-2 h-2 rounded-full" style={{ background: GOLD }} />
-               </div>
-            </div>
-
-            <div className="space-y-2.5 mb-6 w-full max-w-[250px]">
-              <div className="h-2 bg-[#F1F5F9] rounded-full w-full" />
-              <div className="h-2 bg-[#F1F5F9] rounded-full w-[85%] mx-auto" />
-              <div className="h-2 bg-[#F1F5F9] rounded-full w-[60%] mx-auto" />
-            </div>
-
-            <h3 className="text-[16px] font-black tracking-tight mb-2" style={{ color: NAVY }}>
-              {t("Feedback Pending")}
+            <h3 className="text-[17px] font-black leading-snug tracking-tight text-[#0B1D3A]">
+              {t("No verified company feedback yet")}
             </h3>
-            <p className="text-[13px] text-[#5A6B82] font-medium leading-[1.65]">
-              {t("Verified company feedback and testimonials will automatically appear here once training engagements are completed and reviewed.")}
+            <p className="mt-2 text-[12.5px] font-medium leading-relaxed text-[#5A6B82]">
+              {t("Real company feedback will appear here when a verifiable source is connected. No sample or unverified reviews are shown.")}
             </p>
+            <div className="mt-4 flex items-start gap-2 border-t border-[#0B1D3A]/[0.07] pt-3 text-[11px] font-medium leading-relaxed text-[#64748B]">
+              <Link2 size={15} className="mt-0.5 shrink-0 text-[#C99A2E]" aria-hidden="true" />
+              <span>{t("Each review will include the company name, reviewer attribution, and a verifiable source link.")}</span>
+            </div>
           </div>
         </motion.div>
       </motion.div>

@@ -1,7 +1,7 @@
 import { useProfileText } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Quote, Star, ShieldCheck } from "lucide-react";
+import { Building2, Link2 } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -47,53 +47,28 @@ export default function Desktop() {
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Company Feedback")}</h2>
         </motion.div>
 
-        <motion.div
-          variants={item}
-          className="w-full max-w-[800px] mx-auto relative group"
-        >
-          
-          <div className="bg-white/60 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-12 luxury-shadow-float transition-all duration-400 ease-out hover:border-[#0B1D3A]/[0.15] hover:luxury-shadow-float hover:-translate-y-1 relative overflow-hidden flex flex-col items-center justify-center text-center">
-            
-            
-            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[30px] pointer-events-none transition-transform duration-700 group-hover:scale-125" />
-            <div
-              className="absolute top-0 left-0 right-0 h-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              style={{ background: "linear-gradient(90deg, #8B5CF6, #6D28D9)" }}
-            />
-            
-            <Quote size={80} className="absolute -top-4 -left-4 opacity-[0.03] group-hover:scale-110 transition-transform duration-500" style={{ color: NAVY }} />
-
-            
-            <div className="flex gap-1.5 mb-6 opacity-40">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <Star key={star} size={20} fill={GOLD_MID} color={GOLD_MID} />
-              ))}
+        <motion.div variants={item} className="w-full max-w-[900px] mx-auto">
+          <div className="grid gap-6 rounded-3xl border border-[#0B1D3A]/[0.08] bg-gradient-to-br from-white via-[#FBFCFE] to-[#F3F6FB] p-8 luxury-shadow-float md:grid-cols-[auto_1fr] md:items-center md:gap-8 md:p-10">
+            <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-[#C99A2E]/20 bg-[#FBF4E4] text-[#A87918] shadow-sm">
+              <Building2 size={32} strokeWidth={1.8} aria-hidden="true" />
             </div>
-
-            <div className="w-16 h-16 rounded-full bg-[#F1F5F9] border border-[#E2E8F0] mb-6 flex items-center justify-center relative shadow-sm">
-               <ShieldCheck size={28} className="text-[#94A3B8]" strokeWidth={2} />
-               <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center shadow-sm">
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: GOLD }} />
-               </div>
+            <div>
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#64748B]/15 bg-[#F1F5F9] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#64748B]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#94A3B8]" />
+                {t("Live source not connected")}
+              </div>
+              <h3 className="text-[20px] font-black tracking-tight text-[#0B1D3A]">
+                {t("No verified company feedback yet")}
+              </h3>
+              <p className="mt-2 max-w-[650px] text-[14px] font-medium leading-relaxed text-[#5A6B82]">
+                {t("Real company feedback will appear here when a verifiable source is connected. No sample or unverified reviews are shown.")}
+              </p>
+              <div className="mt-5 flex items-start gap-2.5 border-t border-[#0B1D3A]/[0.07] pt-4 text-[12px] font-medium leading-relaxed text-[#64748B]">
+                <Link2 size={16} className="mt-0.5 shrink-0 text-[#C99A2E]" aria-hidden="true" />
+                <span>{t("Each review will include the company name, reviewer attribution, and a verifiable source link.")}</span>
+              </div>
             </div>
-
-            <div className="space-y-3 mb-8 w-full max-w-[400px]">
-              <div className="h-2.5 bg-[#F1F5F9] rounded-full w-full" />
-              <div className="h-2.5 bg-[#F1F5F9] rounded-full w-[85%] mx-auto" />
-              <div className="h-2.5 bg-[#F1F5F9] rounded-full w-[60%] mx-auto" />
-            </div>
-
-            <h3 className="text-[18px] font-black tracking-tight mb-2" style={{ color: NAVY }}>
-              {t("Feedback Pending")}
-            </h3>
-            <p className="text-[14px] text-[#5A6B82] font-medium max-w-[420px] leading-[1.7]">
-              {t("Verified company feedback and testimonials will automatically appear here once training engagements are completed and reviewed.")}
-            </p>
           </div>
-
-          
-          <div className="absolute top-[10%] bottom-[10%] -left-8 w-16 bg-white/40 backdrop-blur-md border border-[#0B1D3A]/[0.04] rounded-l opacity-50 pointer-events-none -z-10 shadow-sm" />
-          <div className="absolute top-[10%] bottom-[10%] -right-8 w-16 bg-white/40 backdrop-blur-md border border-[#0B1D3A]/[0.04] rounded-r opacity-50 pointer-events-none -z-10 shadow-sm" />
         </motion.div>
       </motion.div>
     </section>

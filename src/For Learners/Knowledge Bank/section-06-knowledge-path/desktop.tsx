@@ -41,9 +41,9 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="bg-white p-10 rounded-[12px] border border-[#E2E8F0]/80 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
+                className="bg-white p-10 rounded-[4px] border border-[#E2E8F0]/80 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
               >
-                <div className={`w-14 h-14 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-8 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-8 group-hover:scale-110 transition-transform duration-300`}>
                   <Icon size={28} className="text-white" strokeWidth={2.5} />
                 </div>
                 
@@ -77,7 +77,7 @@ export default function Desktop() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <div className="inline-block bg-white px-8 py-5 rounded-[12px] border border-[#E2E8F0]/50 shadow-sm">
+          <div className="inline-block bg-white px-8 py-5 rounded-[4px] border border-[#E2E8F0]/50 shadow-sm">
             <h4 className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#64748B] mb-3">
               {data.more.title}
             </h4>

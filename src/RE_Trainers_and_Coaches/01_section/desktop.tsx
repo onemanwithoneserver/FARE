@@ -218,7 +218,7 @@ export default function Desktop() {
                 className="absolute -left-4 sm:-left-8 bottom-16 z-20 bg-white/95 backdrop-blur-xl p-4 luxury-shadow-float border border-white/80 rounded-[24px] rounded-tl-[8px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-[12px] rounded-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-lg shadow-[#34D399]/30">
+                  <div className="w-11 h-11 rounded-[4px] rounded-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-lg shadow-[#34D399]/30">
                     <Sparkles size={18} className="text-white" />
                   </div>
                   <div className="pr-2">

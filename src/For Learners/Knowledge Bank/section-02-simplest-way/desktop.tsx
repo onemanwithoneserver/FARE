@@ -69,7 +69,7 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-8 rounded-[12px] border border-[#E2E8F0]/80 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300 group"
+                className="bg-white p-8 rounded-[4px] border border-[#E2E8F0]/80 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div
                   className={`w-11 h-11 rounded-[4px] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-br ${colorGradient} shadow-sm`}

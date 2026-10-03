@@ -96,7 +96,7 @@ export default function Desktop() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <div className="inline-block bg-gradient-to-br from-white to-[#FAFBFF] px-10 py-6 rounded-[16px] border border-[#E2E8F0]/50 luxury-shadow-float relative overflow-hidden group hover:border-[#C99A2E]/40 transition-colors duration-300">
+          <div className="inline-block bg-gradient-to-br from-white to-[#FAFBFF] px-10 py-6 rounded-[4px] border border-[#E2E8F0]/50 luxury-shadow-float relative overflow-hidden group hover:border-[#C99A2E]/40 transition-colors duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <p className="text-[20px] font-black text-[#0B1D3A] whitespace-pre-wrap leading-relaxed relative z-10 tracking-tight">
               {data.closing}

@@ -50,7 +50,7 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
         initial="hidden"
         animate="visible"
         variants={breadcrumbVariants}
-        className="sticky top-0 z-50 backdrop-blur-2xl border-b px-6 lg:px-12 py-3 flex items-center justify-between"
+        className="sticky top-0 z-30 backdrop-blur-2xl border-b px-6 lg:px-12 py-3 flex items-center justify-between"
         style={{
           background: `linear-gradient(135deg, rgba(11,29,58,0.95) 0%, rgba(15,40,71,0.95) 100%)`,
           borderColor: "rgba(255,255,255,0.06)",

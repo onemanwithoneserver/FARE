@@ -1,7 +1,7 @@
 import { useProfileText } from "../profileData";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
-import { MapPin, Globe2, Briefcase, GraduationCap, Users, ShieldCheck } from "lucide-react";
+import { MapPin, Briefcase, GraduationCap, Users, ShieldCheck } from "lucide-react";
 import trainerImg from "../../assets/re_trainers_hero.jpg";
 
 const NAVY = "#0B1D3A";
@@ -121,18 +121,6 @@ export default function Mobile() {
               <MapPin size={16} className="text-[#F59E0B]" strokeWidth={2.5} />
             </div>
             <span className="text-[15px]">{data.location}</span>
-          </div>
-          <div className="flex items-center justify-center gap-4">
-            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/5 shrink-0">
-              <Globe2 size={16} className="text-[#10B981]" strokeWidth={2.5} />
-            </div>
-            <div className="flex flex-wrap justify-center gap-2">
-              {data.languages.map((lang, idx) => (
-                <span key={idx} className="bg-white/5 border border-white/10 text-white/90 text-[13px] px-4 py-1.5 rounded-full font-medium shadow-sm">
-                  {lang}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
 

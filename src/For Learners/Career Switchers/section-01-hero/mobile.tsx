@@ -40,7 +40,7 @@ export default function Mobile() {
             {data.description}
           </p>
 
-          <div className="w-full rounded-[16px] overflow-hidden luxury-shadow-float mb-6">
+          <div className="w-full rounded-[4px] overflow-hidden luxury-shadow-float mb-6">
             <img
               src={careerSwitchersHero}
               alt="Professional looking out window"

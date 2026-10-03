@@ -516,7 +516,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               </button>
             </motion.div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 min-[1360px]:grid-cols-3 gap-5 auto-rows-fr">
+            <div className={`grid gap-5 auto-rows-fr ${isMobile ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2 min-[1360px]:grid-cols-3"}`}>
               {displayedTrainers.map((trainer, index) => (
                 <motion.div
                   key={trainer.uniqueId}

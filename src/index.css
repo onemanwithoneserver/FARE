@@ -392,3 +392,34 @@
   box-decoration-break: clone;
 }
 
+[aria-label="Mobile Device Simulator"] button[class~="px-2"] {
+  padding-inline: 0.4rem;
+}
+
+[aria-label="Mobile Device Simulator"] button[class~="px-2.5"] {
+  padding-inline: 0.5rem;
+}
+
+[aria-label="Mobile Device Simulator"] button[class~="px-4"] {
+  padding-inline: 0.8rem;
+}
+
+[aria-label="Mobile Device Simulator"] button[class~="px-5"] {
+  padding-inline: 1rem;
+}
+
+[aria-label="Mobile Device Simulator"] button[class~="px-6"] {
+  padding-inline: 1.2rem;
+}
+
+[aria-label="Mobile Device Simulator"] button[class~="px-7"] {
+  padding-inline: 1.4rem;
+}
+
+[aria-label="Mobile Device Simulator"] button[class~="px-8"] {
+  padding-inline: 1.6rem;
+}
+
+[aria-label="Mobile Device Simulator"] button[class~="px-10"] {
+  padding-inline: 2rem;
+}

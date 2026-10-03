@@ -129,7 +129,7 @@ export default function Mobile() {
     };
   }, []);
   return (
-    <div className="w-full sticky top-0 z-[60] pointer-events-auto">
+    <div className="w-full sticky top-0 z-[80] pointer-events-auto">
       <div
         className={`w-full transition-all duration-300 ${
           isScrolled ? "pt-2 pb-1 flex justify-center px-3.5" : "py-0 w-full"
@@ -194,7 +194,7 @@ export default function Mobile() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.95 }}
                     transition={{ duration: 0.15 }}
-                    className={`absolute top-[calc(100%+8px)] right-0 w-[155px] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded p-1.5 z-50 pointer-events-auto`}
+                    className={`absolute top-[calc(100%+8px)] right-0 w-[155px] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded p-1.5 z-[90] pointer-events-auto`}
                   >
                     <div
                       className={`text-[9.5px] font-bold uppercase tracking-wider px-2 py-1 ${isScrolled ? "text-white/70" : "text-[#0B1D3A]/70"}`}

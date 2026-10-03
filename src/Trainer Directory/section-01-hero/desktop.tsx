@@ -3,7 +3,7 @@ import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ShieldCheck, MapPin, Globe, Briefcase, GraduationCap, Users } from "lucide-react";
+import { ShieldCheck, MapPin, Briefcase, GraduationCap, Users } from "lucide-react";
 import trainerImg from "../../assets/re_trainers_hero.jpg";
 
 const NAVY = "#0B1D3A";
@@ -159,18 +159,6 @@ export default function Desktop() {
                   <MapPin size={16} className="text-[#F59E0B]" strokeWidth={2.5} />
                 </div>
                 <span>{data.location}</span>
-              </div>
-              <div className="flex items-center gap-4 text-white/90 font-medium text-[15px]">
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/5">
-                  <Globe size={16} className="text-[#10B981]" strokeWidth={2.5} />
-                </div>
-                <div className="flex gap-2">
-                  {data.languages.map((lang, idx) => (
-                    <span key={idx} className="bg-white/5 border border-white/10 text-white/90 text-[13px] px-4 py-1.5 rounded-full font-medium shadow-sm">
-                      {lang}
-                    </span>
-                  ))}
-                </div>
               </div>
             </motion.div>
 
