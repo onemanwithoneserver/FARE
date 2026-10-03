@@ -11,8 +11,7 @@ export const dataEn = {
     professionalsTrained: "5,000+"
   },
   location: "Hyderabad, India",
-  languages: ["English", "Telugu", "Hindi"],
-  cta: "Request This Trainer"
+  languages: ["English", "Telugu", "Hindi"]
 };
 
 export const dataTe = {
@@ -26,8 +25,7 @@ export const dataTe = {
     professionalsTrained: "5,000+"
   },
   location: "హైదరాబాద్, ఇండియా",
-  languages: ["ఇంగ్లీష్", "తెలుగు", "హిందీ"],
-  cta: "ఈ ట్రైనర్‌ని అభ్యర్థించండి"
+  languages: ["ఇంగ్లీష్", "తెలుగు", "హిందీ"]
 };
 
 export const getData = (lang: Language = "en") => lang === "te" ? dataTe : dataEn;

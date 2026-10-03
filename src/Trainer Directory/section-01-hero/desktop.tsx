@@ -2,7 +2,7 @@ import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ChevronRight, ShieldCheck, MapPin, Globe, Briefcase, GraduationCap, Users, ArrowRight } from "lucide-react";
+import { ShieldCheck, MapPin, Globe, Briefcase, GraduationCap, Users } from "lucide-react";
 import trainerImg from "../../assets/re_trainers_hero.jpg";
 
 const NAVY = "#0B1D3A";
@@ -53,7 +53,7 @@ export default function Desktop() {
             
             <div className="absolute -inset-1 bg-gradient-to-br from-[#6366F1]/40 via-[#C99A2E]/40 to-[#06B6D4]/40 rounded blur-lg group-hover:blur-xl transition-all duration-500 opacity-60" />
             
-            <div className="relative w-full aspect-[3/4] rounded overflow-hidden luxury-shadow-float">
+            <div className="relative w-full aspect-square rounded overflow-hidden luxury-shadow-float">
               <img src={trainerImg} alt={data.trainerName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/80 via-transparent to-transparent opacity-80" />
             </div>
@@ -151,7 +151,7 @@ export default function Desktop() {
             </motion.div>
 
             
-            <motion.div variants={item} className="flex items-center gap-10 mb-10">
+            <motion.div variants={item} className="flex items-center gap-10">
               <div className="flex items-center gap-3 text-white/90 font-medium text-[15px]">
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/5">
                   <MapPin size={16} className="text-[#F59E0B]" strokeWidth={2.5} />
@@ -172,17 +172,6 @@ export default function Desktop() {
               </div>
             </motion.div>
 
-            
-            <motion.div variants={item} className="flex items-center gap-5">
-              <button className="bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#0B1D3A] px-8 py-3.5 rounded font-black text-[15px] hover:luxury-shadow-float transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group/btn">
-                <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-500 ease-in-out" />
-                <span>{data.cta}</span>
-                <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${18}px` }}>
-      <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-      <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-    </span>
-              </button>
-            </motion.div>
           </motion.div>
         </div>
       </div>

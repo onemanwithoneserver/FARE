@@ -1,6 +1,6 @@
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
-import { ChevronRight, MapPin, Globe2, Briefcase, GraduationCap, Users, ShieldCheck, ArrowRight } from "lucide-react";
+import { MapPin, Globe2, Briefcase, GraduationCap, Users, ShieldCheck } from "lucide-react";
 import trainerImg from "../../assets/re_trainers_hero.jpg";
 
 const NAVY = "#0B1D3A";
@@ -27,7 +27,7 @@ export default function Mobile() {
       <div className="relative z-10 flex flex-col items-center text-center">
         
         
-        <div className="w-[260px] aspect-[3/4] relative mb-12 group">
+        <div className="w-[260px] aspect-square relative mb-12 group">
           
           <div className="absolute -inset-1 bg-gradient-to-br from-[#6366F1]/40 via-[#C99A2E]/40 to-[#06B6D4]/40 rounded blur-lg transition-all duration-500 opacity-70" />
           
@@ -113,7 +113,7 @@ export default function Mobile() {
         </div>
 
         
-        <div className="flex flex-col gap-5 mb-10 w-full">
+        <div className="flex flex-col gap-5 w-full">
           <div className="flex items-center justify-center gap-3 text-white/90 font-medium">
             <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/5">
               <MapPin size={16} className="text-[#F59E0B]" strokeWidth={2.5} />
@@ -134,16 +134,6 @@ export default function Mobile() {
           </div>
         </div>
 
-        
-        <button className="w-full bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#0B1D3A] px-6 py-4 rounded font-black text-[16px] luxury-shadow-float transition-all flex items-center justify-center gap-2 relative overflow-hidden">
-          <div className="absolute inset-0 bg-white/20 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-500 ease-in-out" />
-          <span>{data.cta}</span>
-          <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${18}px` }}>
-      <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-      <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-    </span>
-        </button>
-        
       </div>
     </section>
   );

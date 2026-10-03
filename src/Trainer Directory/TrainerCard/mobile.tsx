@@ -114,8 +114,8 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
   const initials = trainer.name.split(" ").map((part) => part[0]).join("").slice(0, 2);
 
   return (
-    <div className="relative shrink-0 rounded-lg bg-white p-[4px] shadow-[0_8px_24px_-8px_rgba(11,29,58,0.45)]" style={{ width: size, height: size }}>
-      <div className="h-full w-full overflow-hidden rounded-md bg-[#0B1D3A]">
+    <div className="relative shrink-0 rounded-xl bg-gradient-to-br from-white via-[#F8FAFC] to-[#EEF2F7] p-[4px] shadow-[0_10px_24px_-10px_rgba(11,29,58,0.48),0_2px_6px_rgba(11,29,58,0.12)] ring-1 ring-[#0B1D3A]/10" style={{ width: size, height: size }}>
+      <div className="h-full w-full overflow-hidden rounded-lg bg-[#0B1D3A] ring-1 ring-inset ring-white/15">
         {trainer.image ? (
           <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
         ) : (
