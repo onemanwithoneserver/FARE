@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ShieldCheck, Award } from "lucide-react";
+import { Award } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -50,50 +50,31 @@ export default function Mobile() {
         
         <motion.div variants={item} className="mb-8">
           <p className="text-[13px] text-[#5A6B82] font-medium leading-relaxed">
-            Rajesh's training programs and expertise are fully validated and recognized by top real estate institutions.
+            A selection of professional credentials and certifications listed on the trainer profile.
           </p>
         </motion.div>
 
         <div className="flex flex-col gap-4">
-          {data.credentials.map((cred, idx) => (
+          {data.credentials.map((cred) => (
             <motion.div
-              key={idx}
+              key={cred}
               variants={item}
-              className="group rounded p-6 flex flex-col relative overflow-hidden border border-[#0B1D3A]/[0.08] luxury-shadow-float bg-white/90 backdrop-blur-xl"
+              className="group rounded-lg p-5 flex flex-col relative overflow-hidden border border-[#0B1D3A]/[0.08] luxury-shadow-float bg-white"
             >
-              
-              <div 
-                className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply"
-                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
-              />
-              
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
-              
-              <div className="flex items-start justify-between mb-5 relative z-10">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C99A2E] to-[#D5AA45]" />
+              <div className="flex items-center justify-between mb-5 relative z-10">
                 <div
-                  className="w-10 h-10 rounded flex items-center justify-center text-white shadow-md"
+                  className="w-10 h-10 rounded-md flex items-center justify-center text-white shadow-sm"
                   style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
                 >
                   <Award size={18} strokeWidth={2.5} />
                 </div>
-
-                
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border bg-white shadow-sm" style={{ borderColor: `${GOLD}40` }}>
-                   <ShieldCheck size={12} style={{ color: GOLD }} strokeWidth={2.5} />
-                   <span className="text-[9px] font-black uppercase tracking-[0.15em] pt-[1px]" style={{ color: NAVY }}>Verified</span>
-                </div>
+                <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Credential</span>
               </div>
 
-              <h3 className="text-[15px] font-black text-[#0B1D3A] mb-4 tracking-tight leading-snug relative z-10">
+              <h3 className="text-[15px] font-black text-[#0B1D3A] tracking-tight leading-snug relative z-10">
                 {cred}
               </h3>
-
-              <div className="mt-auto pt-4 border-t border-[#0B1D3A]/[0.06] relative z-10 flex items-center justify-between">
-                 <span className="text-[9px] text-[#7B8DAA] uppercase tracking-[0.15em] font-bold">Credential ID</span>
-                 <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/60">
-                   {`FR-${String(idx + 1).padStart(4, '0')}-${new Date().getFullYear()}`}
-                 </span>
-              </div>
             </motion.div>
           ))}
         </div>

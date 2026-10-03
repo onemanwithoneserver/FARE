@@ -45,7 +45,7 @@ export default function Mobile() {
 
         <motion.div
           variants={item}
-          className="relative w-full aspect-video rounded overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] luxury-shadow-float cursor-pointer group"
+          className="relative w-full max-w-[360px] mx-auto aspect-video rounded overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] luxury-shadow-float cursor-pointer group"
         >
           <div className="absolute inset-0 bg-[#0B1D3A]" />
           <div

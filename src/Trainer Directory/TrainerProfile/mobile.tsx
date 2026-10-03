@@ -2,7 +2,6 @@ import { motion, type Variants } from "motion/react";
 import { useState } from "react";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import HeroMobile from "../section-01-hero/mobile";
-import AboutMobile from "../section-02-about/mobile";
 import IntroVideoMobile from "../section-03-intro-video/mobile";
 import TrainingExpertiseMobile from "../section-04-training-expertise/mobile";
 import RESegmentExpertiseMobile from "../section-05-re-segment-expertise/mobile";
@@ -84,7 +83,6 @@ export default function Mobile({ onBack }: TrainerProfileProps) {
       </motion.div>
 
       <HeroMobile />
-      <AboutMobile />
       <IntroVideoMobile />
       <TrainingExpertiseMobile />
       <RESegmentExpertiseMobile />

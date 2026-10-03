@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ShieldCheck, Award } from "lucide-react";
+import { Award } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -45,56 +45,37 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-4">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Credentials & Verification</h2>
+          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Credentials & Qualifications</h2>
         </motion.div>
         
         <motion.div variants={item} className="mb-12">
           <p className="text-[15px] text-[#5A6B82] font-medium max-w-[500px]">
-            Rajesh's training programs and expertise are fully validated and recognized by top real estate institutions and FARE standards.
+            A selection of professional credentials and certifications listed on the trainer profile.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-3 gap-6">
-          {data.credentials.map((cred, idx) => (
+          {data.credentials.map((cred) => (
             <motion.div
-              key={idx}
+              key={cred}
               variants={item}
               whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-              className="group rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/[0.40] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] bg-white/90 backdrop-blur-xl"
+              className="group rounded-xl p-7 flex flex-col relative overflow-hidden transition-all duration-300 border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/[0.4] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] bg-white"
             >
-              
-              <div 
-                className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply"
-                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
-              />
-              
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[20px] pointer-events-none group-hover:scale-150 transition-transform duration-700" />
-              
-              <div className="flex items-start justify-between mb-8 relative z-10">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C99A2E] to-[#D5AA45]" />
+              <div className="flex items-center justify-between mb-7 relative z-10">
                 <div
-                  className="w-12 h-12 rounded flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-400 ease-out"
+                  className="w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform duration-300"
                   style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
                 >
                   <Award size={22} strokeWidth={2.5} />
                 </div>
-
-                
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border bg-white shadow-sm" style={{ borderColor: `${GOLD}40` }}>
-                   <ShieldCheck size={14} style={{ color: GOLD }} strokeWidth={2.5} />
-                   <span className="text-[10px] font-black uppercase tracking-[0.15em] pt-[1px]" style={{ color: NAVY }}>Verified</span>
-                </div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Credential</span>
               </div>
 
-              <h3 className="text-[18px] font-black text-[#0B1D3A] mb-4 tracking-tight leading-snug relative z-10">
+              <h3 className="text-[18px] font-black text-[#0B1D3A] tracking-tight leading-snug relative z-10">
                 {cred}
               </h3>
-
-              <div className="mt-auto pt-5 border-t border-[#0B1D3A]/[0.06] relative z-10 flex items-center justify-between">
-                 <span className="text-[10px] text-[#7B8DAA] uppercase tracking-[0.15em] font-bold">Credential ID</span>
-                 <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded bg-[#F8FAFD] border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/60">
-                   {`FR-${String(idx + 1).padStart(4, '0')}-${new Date().getFullYear()}`}
-                 </span>
-              </div>
             </motion.div>
           ))}
         </div>

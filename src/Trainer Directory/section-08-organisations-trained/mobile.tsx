@@ -59,55 +59,67 @@ export default function Mobile() {
         </motion.div>
 
         <motion.div variants={item} className="mb-5">
-          <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Selected Engagements</span>
+          <h3 className="text-[16px] font-black tracking-tight" style={{ color: NAVY }}>Selected Engagements</h3>
         </motion.div>
 
-        <div className="relative ml-[36px] pl-[20px] flex flex-col gap-5" style={{ borderLeft: `2px solid ${GOLD}20` }}>
+        <div className="relative flex flex-col gap-5">
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute bottom-6 left-[53px] top-6 w-[2px] origin-top"
+            style={{
+              background: "linear-gradient(to bottom, #3B82F6, #C99A2E, #10B981, #8B5CF6)",
+              opacity: 0.35,
+            }}
+          />
           {data.experienceTimeline.map((timelineItem, idx) => {
             const colors = timelineColors[idx % timelineColors.length];
             return (
-              <motion.div key={idx} variants={item} className="relative group">
-                <div
-                  className="absolute -left-[27px] top-4 w-3 h-3 rounded-full ring-4 ring-white shadow-sm"
-                  style={{ background: colors.bg }}
-                />
-                <div
-                  className="absolute -left-[80px] top-3.5 text-[12px] font-black w-9 text-right"
-                  style={{ color: colors.accent }}
-                >
+              <motion.div
+                key={`${timelineItem.company}-${timelineItem.year}`}
+                variants={item}
+                className="relative grid grid-cols-[42px_minmax(0,1fr)] items-start gap-[22px]"
+              >
+                <span className="pt-5 text-right text-[11px] font-black" style={{ color: colors.accent }}>
                   {timelineItem.year}
-                </div>
-
-                <div className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded p-5 luxury-shadow-float relative overflow-hidden">
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[3px] opacity-70"
-                    style={{ background: colors.bg }}
-                  />
-                  <div className="flex items-center gap-3 mb-3">
+                </span>
+                <div
+                  className="absolute left-[47px] top-[23px] z-10 h-3 w-3 rounded-full border-[2px] border-white shadow-sm"
+                  style={{ background: colors.accent }}
+                />
+                <div className="relative w-3/4 overflow-hidden rounded border border-[#0B1D3A]/[0.08] bg-white p-4 shadow-[0_6px_18px_-14px_rgba(11,29,58,0.35)]">
+                  <div className="absolute inset-x-0 top-0 h-[3px]" style={{ background: colors.bg }} />
+                  <div className="flex min-w-0 items-center gap-3">
                     <div
-                      className="w-8 h-8 shrink-0 rounded flex items-center justify-center text-white shadow-md text-[11px] font-black"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded text-[11px] font-black text-white"
                       style={{ background: colors.bg }}
                     >
                       {initialsOf(timelineItem.company)}
                     </div>
-                    <div>
-                      <h4 className="text-[14px] font-black leading-tight tracking-tight" style={{ color: NAVY }}>{timelineItem.company}</h4>
-                      <p className="text-[12px] text-[#7B8DAA] font-medium flex items-center gap-1.5 mt-0.5">
-                        <Building2 size={12} strokeWidth={2.5} />
+                    <div className="min-w-0">
+                      <h4 className="truncate text-[14px] font-black leading-tight tracking-tight" style={{ color: NAVY }}>
+                        {timelineItem.company}
+                      </h4>
+                      <p className="mt-1 flex items-center gap-1 text-[11px] font-medium text-[#7B8DAA]">
+                        <Building2 size={11} strokeWidth={2.5} />
                         {timelineItem.team}
                       </p>
                     </div>
                   </div>
-                  <span
-                    className="inline-block text-[11px] font-semibold px-2.5 py-1 rounded"
-                    style={{
-                      background: `${colors.accent}0A`,
-                      border: `1px solid ${colors.accent}20`,
-                      color: `${NAVY}E6`,
-                    }}
-                  >
-                    {timelineItem.program}
-                  </span>
+                  <div className="mt-3">
+                    <span
+                      className="inline-block rounded border px-2.5 py-1.5 text-[11px] font-semibold"
+                      style={{
+                        background: `${colors.accent}08`,
+                        borderColor: `${colors.accent}20`,
+                        color: NAVY,
+                      }}
+                    >
+                      {timelineItem.program}
+                    </span>
+                  </div>
                 </div>
               </motion.div>
             );

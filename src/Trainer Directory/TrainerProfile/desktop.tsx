@@ -2,7 +2,6 @@ import { motion, type Variants } from "motion/react";
 import { useState } from "react";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import HeroDesktop from "../section-01-hero/desktop";
-import AboutDesktop from "../section-02-about/desktop";
 import IntroVideoDesktop from "../section-03-intro-video/desktop";
 import TrainingExpertiseDesktop from "../section-04-training-expertise/desktop";
 import RESegmentExpertiseDesktop from "../section-05-re-segment-expertise/desktop";
@@ -115,7 +114,6 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
       </motion.div>
 
       <HeroDesktop />
-      <AboutDesktop />
       <IntroVideoDesktop />
       <TrainingExpertiseDesktop />
       <RESegmentExpertiseDesktop />

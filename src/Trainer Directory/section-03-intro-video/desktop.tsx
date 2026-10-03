@@ -51,13 +51,13 @@ export default function Desktop() {
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Introduction Video</h2>
         </motion.div>
 
-        <div className="flex gap-8 items-start">
+        <div className="flex justify-center">
           
           <motion.div
             variants={item}
             whileHover={{ y: -5 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-1 min-w-0 aspect-video relative rounded overflow-hidden group cursor-pointer border border-[#0B1D3A]/[0.08] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)]"
+            className="w-full max-w-[900px] aspect-video relative rounded overflow-hidden group cursor-pointer border border-[#0B1D3A]/[0.08] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)]"
             onClick={() => setIsVideoModalOpen(true)}
           >
             <div className="absolute inset-0 bg-[#0B1D3A]" />

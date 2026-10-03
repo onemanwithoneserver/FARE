@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Building2, TrendingUp, Award, Users, Clock } from "lucide-react";
+import { Building2 } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -28,22 +28,6 @@ export default function Desktop() {
     hidden: { opacity: 0, y: 18 },
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
   };
-
-  const sideStats = [
-    { icon: <TrendingUp size={18} strokeWidth={2.5} />, value: "30%", label: "Avg. Conversion Increase", color: "#10B981" },
-    { icon: <Users size={18} strokeWidth={2.5} />, value: "500+", label: "Professionals Trained", color: "#3B82F6" },
-    { icon: <Building2 size={18} strokeWidth={2.5} />, value: "25+", label: "Organisations Engaged", color: "#8B5CF6" },
-    { icon: <Award size={18} strokeWidth={2.5} />, value: "120+", label: "Programs Delivered", color: GOLD },
-    { icon: <Clock size={18} strokeWidth={2.5} />, value: "8+ Yrs", label: "Training Experience", color: "#F97316" },
-  ];
-
-  const segments = [
-    { name: "Residential", pct: 50 },
-    { name: "Plotted Development", pct: 30 },
-    { name: "Commercial", pct: 20 },
-  ];
-
-  const segColors = ["#3B82F6", GOLD, "#10B981"];
 
   return (
     <section
@@ -74,117 +58,77 @@ export default function Desktop() {
           <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Experience &amp; Track Record</h2>
         </motion.div>
 
-        <div className="flex gap-8 items-start">
-          
-          <div className="flex-1 min-w-0">
-            <motion.div variants={item} className="mb-6">
-              <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.15em]">Selected Engagements</span>
-            </motion.div>
+        <div className="mx-auto w-full max-w-[1040px]">
+          <motion.h3 variants={item} className="mb-6 text-[18px] font-black tracking-tight" style={{ color: NAVY }}>
+            Selected Engagements
+          </motion.h3>
 
-            <div className="relative ml-8 pl-8 flex flex-col gap-6" style={{ borderLeft: `2px solid ${GOLD}20` }}>
-              {data.experienceTimeline.map((timelineItem, idx) => {
-                const colors = timelineColors[idx % timelineColors.length];
-                return (
-                  <motion.div key={idx} variants={item} className="relative group">
-                    <div
-                      className="absolute -left-[43.5px] top-4 w-4 h-4 rounded-full ring-4 ring-white shadow-sm transition-transform duration-300 group-hover:scale-110"
-                      style={{ background: colors.bg }}
-                    />
-                    <div
-                      className="absolute -left-[110px] top-3.5 text-[14px] font-black w-14 text-right transition-colors duration-300"
-                      style={{ color: colors.accent }}
-                    >
-                      {timelineItem.year}
-                    </div>
-
-                    <motion.div
-                      whileHover={{ x: 5, y: -2, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                      className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 ease-out relative overflow-hidden"
-                    >
+          <div className="relative flex flex-col gap-7">
+            <motion.div
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute bottom-8 left-[100px] top-8 w-[2px] origin-top"
+              style={{
+                background: "linear-gradient(to bottom, #3B82F6, #C99A2E, #10B981, #8B5CF6)",
+                opacity: 0.35,
+              }}
+            />
+            {data.experienceTimeline.map((timelineItem, idx) => {
+              const colors = timelineColors[idx % timelineColors.length];
+              return (
+                <motion.div
+                  key={`${timelineItem.company}-${timelineItem.year}`}
+                  variants={item}
+                  className="relative grid grid-cols-[88px_minmax(0,1fr)] items-start gap-6"
+                >
+                  <span className="pt-6 pr-2 text-right text-[14px] font-black" style={{ color: colors.accent }}>
+                    {timelineItem.year}
+                  </span>
+                  <div
+                    className="absolute left-[93px] top-[28px] z-10 h-[14px] w-[14px] rounded-full border-[3px] border-white shadow-sm"
+                    style={{ background: colors.accent }}
+                  />
+                  <motion.div
+                    whileHover={{ y: -2, transition: { duration: 0.25 } }}
+                    className="relative w-3/4 min-h-[142px] overflow-hidden rounded border border-[#0B1D3A]/[0.08] bg-white p-5 shadow-[0_8px_24px_-16px_rgba(11,29,58,0.3)] transition-shadow hover:shadow-[0_20px_40px_-20px_rgba(11,29,58,0.3)]"
+                  >
+                    <div className="absolute inset-x-0 top-0 h-[3px]" style={{ background: colors.bg }} />
+                    <div className="flex items-center gap-4">
                       <div
-                        className="absolute top-0 left-0 right-0 h-[3px] opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded text-[13px] font-black text-white shadow-sm"
                         style={{ background: colors.bg }}
-                      />
-                      <div className="flex items-center gap-4 mb-3">
-                        <div
-                          className="w-10 h-10 shrink-0 rounded flex items-center justify-center text-white shadow-md text-[12px] font-black group-hover:scale-110 transition-transform duration-400 ease-out"
-                          style={{ background: colors.bg }}
-                        >
-                          {initialsOf(timelineItem.company)}
-                        </div>
-                        <div>
-                          <h4 className="text-[15px] font-black tracking-tight" style={{ color: NAVY }}>{timelineItem.company}</h4>
-                          <p className="text-[12px] text-[#7B8DAA] font-medium flex items-center gap-1.5 mt-0.5">
-                            <Building2 size={12} strokeWidth={2.5} />
-                            {timelineItem.team}
-                          </p>
-                        </div>
+                      >
+                        {initialsOf(timelineItem.company)}
                       </div>
+                      <div className="min-w-0">
+                        <h4 className="truncate text-[16px] font-black tracking-tight" style={{ color: NAVY }}>
+                          {timelineItem.company}
+                        </h4>
+                        <p className="mt-1 flex items-center gap-1.5 text-[13px] font-medium text-[#7B8DAA]">
+                          <Building2 size={13} strokeWidth={2.5} />
+                          {timelineItem.team}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mt-4">
                       <span
-                        className="inline-block text-[12px] font-semibold px-3 py-1.5 rounded transition-colors hover:bg-white"
+                        className="inline-block rounded border px-3 py-2 text-[12px] font-semibold"
                         style={{
-                          background: `${colors.accent}0A`,
-                          border: `1px solid ${colors.accent}20`,
-                          color: `${NAVY}E6`,
+                          background: `${colors.accent}08`,
+                          borderColor: `${colors.accent}20`,
+                          color: NAVY,
                         }}
                       >
                         {timelineItem.program}
                       </span>
-                    </motion.div>
+                    </div>
                   </motion.div>
-                );
-              })}
-            </div>
+                </motion.div>
+              );
+            })}
           </div>
-
-          
-          <motion.div variants={item} className="w-[300px] shrink-0 flex flex-col gap-4">
-            
-            <div className="bg-white border border-[#0B1D3A]/[0.06] rounded p-5 shadow-sm">
-              <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em]">Key Metrics</span>
-              <div className="flex flex-col gap-4 mt-4">
-                {sideStats.map((stat, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div
-                      className="w-8 h-8 rounded flex items-center justify-center text-white shrink-0"
-                      style={{ background: stat.color }}
-                    >
-                      {stat.icon}
-                    </div>
-                    <div>
-                      <p className="text-[17px] font-black leading-tight" style={{ color: NAVY }}>{stat.value}</p>
-                      <p className="text-[11px] text-[#7B8DAA] font-medium leading-tight">{stat.label}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            
-            <div className="bg-white border border-[#0B1D3A]/[0.06] rounded p-5 shadow-sm">
-              <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em]">Segment Focus</span>
-              <div className="flex flex-col gap-3 mt-4">
-                {segments.map((seg, i) => (
-                  <div key={i} className="flex flex-col gap-1.5">
-                    <div className="flex justify-between items-center">
-                      <span className="text-[12px] font-bold" style={{ color: NAVY }}>{seg.name}</span>
-                      <span className="text-[11px] font-bold" style={{ color: segColors[i] }}>{seg.pct}%</span>
-                    </div>
-                    <div className="w-full h-1.5 bg-[#F1F5F9] rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${seg.pct}%` }}
-                        transition={{ duration: 1, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                        viewport={{ once: true }}
-                        className="h-full rounded-full"
-                        style={{ background: segColors[i] }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
         </div>
       </motion.div>
     </section>
