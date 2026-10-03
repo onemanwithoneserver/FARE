@@ -356,7 +356,7 @@ export default function Mobile() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.98 }}
                 transition={{ duration: 0.2 }}
-                className={`absolute top-[70px] left-3 right-3 ${isScrolled ? "bg-[#0B1D3A]/95 border-white/80" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded flex flex-col p-6 gap-5 z-50 pointer-events-auto`}
+                className="absolute top-[70px] left-3 right-3 bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 luxury-shadow-float rounded flex flex-col p-6 gap-5 z-50 pointer-events-auto"
               >
                 <nav className="flex flex-col gap-3">
                   {data.navLinks.map((link, idx) => {
@@ -372,7 +372,7 @@ export default function Mobile() {
                       return (
                         <div
                           key={idx}
-                          className="flex flex-col border-b border-[#0B1D3A]/[0.06] pb-2"
+                          className="flex flex-col border-b border-white/10 pb-2"
                         >
                           <button
                             onClick={() =>
@@ -381,19 +381,15 @@ export default function Mobile() {
                             className={`flex items-center justify-between text-[15px] font-bold py-2 w-full text-left cursor-pointer transition-colors ${
                               isActive
                                 ? "text-[#C99A2E]"
-                                : isScrolled
-                                  ? "text-white hover:text-[#C99A2E]"
-                                  : "text-[#0B1D3A] hover:text-[#C99A2E]"
+                                : "text-white hover:text-[#C99A2E]"
                             }`}
                           >
                             <span>{link.title}</span>
                             <div
                               className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
                                 isSubOpen
-                                  ? "bg-[#0B1D3A] text-[#E2C068]"
-                                  : isScrolled
-                                    ? "bg-[#0B1D3A]/[0.06] text-white"
-                                    : "bg-[#0B1D3A]/[0.06] text-[#0B1D3A]"
+                                  ? "bg-[#C99A2E] text-[#0B1D3A]"
+                                  : "bg-white/10 text-white"
                               }`}
                             >
                               <Plus
@@ -439,12 +435,8 @@ export default function Mobile() {
                                       }}
                                       className={`flex items-center justify-between p-2.5 rounded-[4px] border transition-all cursor-pointer group ${
                                         isSubActive
-                                          ? isScrolled
-                                            ? "bg-white/15 border-[#C99A2E]"
-                                            : "bg-[#C99A2E]/15 border-[#C99A2E]"
-                                          : isScrolled
-                                            ? "bg-[#040C1E] border-white/10 hover:bg-white/10"
-                                            : "bg-[#F8FAFD] border-[#0B1D3A]/10 hover:bg-[#F0F4FA]"
+                                          ? "bg-white/10 border-[#C99A2E]"
+                                          : "bg-[#040C1E] border-white/10 hover:bg-white/10"
                                       }`}
                                     >
                                       <div className="flex items-center gap-2.5 min-w-0">
@@ -461,9 +453,7 @@ export default function Mobile() {
                                           className={`text-[13.5px] font-bold transition-colors truncate ${
                                             isSubActive
                                               ? "text-[#C99A2E]"
-                                              : isScrolled
-                                                ? "text-white"
-                                                : "text-[#0B1D3A]"
+                                              : "text-white"
                                           }`}
                                         >
                                           {sub.title}
@@ -500,12 +490,10 @@ export default function Mobile() {
                           navigate(`/${currentMode}/${targetRoute}`);
                           window.scrollTo({ top: 0, behavior: "smooth" });
                         }}
-                        className={`text-[15px] font-semibold transition-colors py-2 border-b border-[#0B1D3A]/[0.06] ${
+                        className={`text-[15px] font-semibold transition-colors py-2 border-b border-white/10 ${
                           isActive
                             ? "text-[#C99A2E] font-bold"
-                            : isScrolled
-                              ? "text-white hover:text-[#C99A2E]"
-                              : "text-[#0B1D3A] hover:text-[#C99A2E]"
+                            : "text-white hover:text-[#C99A2E]"
                         }`}
                       >
                         {link.title}
@@ -513,30 +501,28 @@ export default function Mobile() {
                     );
                   })}
                 </nav>
-                <div className="h-[1px] w-full bg-[#0B1D3A]/[0.06]"></div>
+                <div className="h-[1px] w-full bg-white/10"></div>
                 <div className="flex flex-col gap-3.5">
                   <div
-                    className={`flex items-center gap-2 ${isScrolled ? "bg-[#040C1E] border-[#0B1D3A]/[0.08]" : "bg-[#F8FAFD] border-[#0B1D3A]/[0.15]"} border rounded px-3 py-2`}
+                    className="flex items-center gap-2 bg-[#040C1E] border border-white/10 rounded px-3 py-2"
                   >
                     <Search
                       size={16}
-                      className={
-                        isScrolled ? "text-white/50" : "text-[#0B1D3A]/50"
-                      }
+                      className="text-white/50"
                     />
                     <input
                       type="text"
                       placeholder="Search platform..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className={`bg-transparent text-[13px] ${isScrolled ? "text-white placeholder-[#0B1D3A]/40" : "text-[#0B1D3A] placeholder-[#0B1D3A]/40"} outline-none w-full`}
+                      className="bg-transparent text-[13px] text-white placeholder-white/40 outline-none w-full"
                     />
                   </div>
                   <div className="flex items-center justify-between pt-1">
                     <a
                       href="#login"
                       onClick={() => setIsOpen(false)}
-                      className={`text-[14px] font-semibold hover:text-[#C99A2E] ${isScrolled ? "text-white" : "text-[#0B1D3A]"}`}
+                      className="text-[14px] font-semibold text-white hover:text-[#C99A2E]"
                     >
                       Login
                     </a>
@@ -546,7 +532,7 @@ export default function Mobile() {
                         navigate(`/${currentMode}/contact-us`);
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
-                      className={`group ${isScrolled ? "bg-white text-[#0B1D3A]" : "bg-[#0B1D3A] text-white"} text-[13px] font-semibold px-5 py-2 rounded shadow-sm flex items-center gap-1.5 cursor-pointer`}
+                      className="group bg-[#C99A2E] text-[#0B1D3A] text-[13px] font-semibold px-5 py-2 rounded shadow-sm flex items-center gap-1.5 cursor-pointer"
                     >
                       <span>
                         {language === "te" ? "ప్రారంభించండి" : "Get Started"}
