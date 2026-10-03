@@ -56,8 +56,7 @@ export default function Desktop() {
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center"
+          className="flex flex-wrap justify-center items-stretch gap-6"
         >
           {sectionData.roles.map((role, index) => {
             const Icon = icons[index % icons.length];
@@ -66,7 +65,7 @@ export default function Desktop() {
               <motion.div
                 key={index}
                 variants={item}
-                className="bg-white/80 backdrop-blur-md border border-[#E2E8F0]/80 p-6 rounded-[8px] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 transition-all duration-300 group flex flex-col h-full relative overflow-hidden"
+                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] bg-white/80 backdrop-blur-md border border-[#E2E8F0]/80 p-6 rounded-[8px] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 transition-all duration-300 group flex flex-col relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/5 to-transparent blur-[15px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 

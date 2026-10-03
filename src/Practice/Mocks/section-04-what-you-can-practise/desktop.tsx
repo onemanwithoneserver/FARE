@@ -2,9 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
 import { data } from "../data";
-import { BookOpen, Users, PhoneCall, PenTool, Layout, MessageCircle, BarChart, Briefcase, Zap, Search, Key, Shield } from "lucide-react";
-
-const NAVY = "#0B1D3A";
+import { BookOpen, Users, PhoneCall, PenTool, Layout, MessageCircle, BarChart, Briefcase, Zap, Search, Key, Shield, CheckCircle2 } from "lucide-react";
 
 const ICONS = [BookOpen, Users, PhoneCall, PenTool, Layout, MessageCircle, BarChart, Briefcase, Zap, Search, Key, Shield];
 
@@ -26,7 +24,7 @@ export default function Desktop() {
     },
   };
 
-  const item: Variants = {
+  const itemVariant: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: {
       opacity: 1,
@@ -37,34 +35,56 @@ export default function Desktop() {
 
   return (
     <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 relative overflow-hidden font-['Outfit'] fare-noise-overlay">
+      {/* Background elements */}
+      <div className="absolute top-0 right-0 w-full h-full pointer-events-none overflow-hidden opacity-50">
+         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-gradient-radial from-[#C99A2E]/10 to-transparent blur-[80px]" />
+         <div className="absolute top-[10%] left-[-10%] w-[30%] h-[30%] bg-gradient-radial from-[#0B1D3A]/5 to-transparent blur-[80px]" />
+      </div>
+
       <div className="w-full max-w-[1320px] mx-auto px-6 lg:px-10 xl:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-4xl mx-auto mb-16"
         >
           <h2 className="text-[32px] md:text-[38px] lg:text-[44px] font-black text-[#0B1D3A] mb-4 leading-tight tracking-tight">
             {sectionData.title}
           </h2>
-          <p className="text-[17px] text-[#64748B] font-medium max-w-3xl mx-auto leading-relaxed">
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 rounded-full" />
+          <p className="text-[17px] md:text-[18px] text-[#64748B] font-medium max-w-3xl mx-auto leading-relaxed">
             {sectionData.description}
           </p>
         </motion.div>
         
-        <div className="flex justify-center mb-16">
-          <div className="inline-flex p-1.5 bg-[#F8FAFD] rounded-[8px] border border-[#E2E8F0]/80 shadow-sm">
+        {/* Premium Tabs */}
+        <div className="flex justify-center mb-16 relative z-20">
+          <div className="inline-flex p-1.5 bg-white/60 backdrop-blur-md rounded-full border border-gray-200 shadow-sm relative">
             <button
               onClick={() => setActiveTab("mock")}
-              className={`px-10 py-3.5 rounded-[6px] text-[15px] font-bold transition-all duration-300 ${activeTab === "mock" ? "bg-white text-[#0B1D3A] shadow-md border border-[#E2E8F0]" : "text-[#64748B] hover:text-[#0B1D3A]"}`}
+              className={`relative px-10 py-3.5 rounded-full text-[15px] font-bold transition-all duration-300 z-10 ${activeTab === "mock" ? "text-white" : "text-[#64748B] hover:text-[#0B1D3A]"}`}
             >
+              {activeTab === "mock" && (
+                <motion.div
+                  layoutId="activeTab"
+                  className="absolute inset-0 bg-[#0B1D3A] rounded-full shadow-md border border-[#102B63] -z-10"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
               Mock Tests
             </button>
             <button
               onClick={() => setActiveTab("scenario")}
-              className={`px-10 py-3.5 rounded-[6px] text-[15px] font-bold transition-all duration-300 ${activeTab === "scenario" ? "bg-white text-[#0B1D3A] shadow-md border border-[#E2E8F0]" : "text-[#64748B] hover:text-[#0B1D3A]"}`}
+              className={`relative px-10 py-3.5 rounded-full text-[15px] font-bold transition-all duration-300 z-10 ${activeTab === "scenario" ? "text-white" : "text-[#64748B] hover:text-[#0B1D3A]"}`}
             >
+              {activeTab === "scenario" && (
+                <motion.div
+                  layoutId="activeTab"
+                  className="absolute inset-0 bg-[#0B1D3A] rounded-full shadow-md border border-[#102B63] -z-10"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
               Scenario Tests
             </button>
           </div>
@@ -78,8 +98,8 @@ export default function Desktop() {
                 variants={container}
                 initial="hidden"
                 animate="show"
-                exit="hidden"
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
+                className="flex flex-wrap justify-center items-stretch gap-6"
               >
                 {sectionData.mockTests.map((group, index) => {
                   const Icon = ICONS[index % ICONS.length];
@@ -87,23 +107,25 @@ export default function Desktop() {
                   return (
                     <motion.div
                       key={index}
-                      variants={item}
-                      className="bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px] border border-[#E2E8F0]/60 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300"
+                      variants={itemVariant}
+                      className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] bg-white/80 backdrop-blur-md border border-[#E2E8F0]/80 p-8 rounded-[8px] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-1 transition-all duration-300 group flex flex-col relative overflow-hidden"
                     >
-                      <div className="flex items-center gap-4 mb-5 border-b border-[#E2E8F0] pb-4">
-                        <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
-                          <Icon size={22} className="text-white" strokeWidth={2.5} />
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/5 to-transparent blur-[15px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                      
+                      <div className="flex items-center gap-4 border-b border-gray-100/80 pb-5 mb-5">
+                        <div className={`w-12 h-12 rounded-[4px] bg-gradient-to-br ${gradient} shadow-sm flex items-center justify-center text-white transition-all duration-300 group-hover:-translate-y-1 group-hover:rotate-6 group-hover:scale-110 shrink-0`}>
+                          <Icon size={22} strokeWidth={2.5} />
                         </div>
-                        <div>
-                          <h3 className="text-[15px] font-bold leading-tight" style={{ color: NAVY }}>
-                            {group.title.replace(/^\d{2}\s*—\s*/, '')}
-                          </h3>
-                        </div>
+                        <h3 className="text-[17px] font-bold text-[#0B1D3A] leading-tight group-hover:text-[#C99A2E] transition-colors duration-300">
+                          {group.title.replace(/^\d{2}\s*—\s*/, '')}
+                        </h3>
                       </div>
-                      <ul className="space-y-2.5">
+                      <ul className="space-y-3.5">
                         {group.items.map((item, j) => (
-                          <li key={j} className="flex items-start gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#CBD5E1] mt-1.5 shrink-0" />
+                          <li key={j} className="flex items-start gap-3">
+                            <div className="mt-[2px] shrink-0 text-[#C99A2E]/60 group-hover:text-[#C99A2E] transition-colors duration-300">
+                              <CheckCircle2 size={16} strokeWidth={2.5} />
+                            </div>
                             <span className="text-[14px] text-[#475569] font-medium leading-snug">
                               {item}
                             </span>
@@ -120,8 +142,8 @@ export default function Desktop() {
                 variants={container}
                 initial="hidden"
                 animate="show"
-                exit="hidden"
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
+                className="flex flex-wrap justify-center items-stretch gap-6"
               >
                 {sectionData.scenarioTests.map((group, index) => {
                   const Icon = ICONS[(index + 5) % ICONS.length];
@@ -129,23 +151,25 @@ export default function Desktop() {
                   return (
                     <motion.div
                       key={index}
-                      variants={item}
-                      className="bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px] border border-[#E2E8F0]/60 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300"
+                      variants={itemVariant}
+                      className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] bg-white/80 backdrop-blur-md border border-[#E2E8F0]/80 p-8 rounded-[8px] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-1 transition-all duration-300 group flex flex-col relative overflow-hidden"
                     >
-                      <div className="flex items-center gap-4 mb-5 border-b border-[#E2E8F0] pb-4">
-                        <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
-                          <Icon size={22} className="text-white" strokeWidth={2.5} />
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/5 to-transparent blur-[15px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                      
+                      <div className="flex items-center gap-4 border-b border-gray-100/80 pb-5 mb-5">
+                        <div className={`w-12 h-12 rounded-[4px] bg-gradient-to-br ${gradient} shadow-sm flex items-center justify-center text-white transition-all duration-300 group-hover:-translate-y-1 group-hover:rotate-6 group-hover:scale-110 shrink-0`}>
+                          <Icon size={22} strokeWidth={2.5} />
                         </div>
-                        <div>
-                          <h3 className="text-[15px] font-bold leading-tight" style={{ color: NAVY }}>
-                            {group.title.replace(/^\d{2}\s*—\s*/, '')}
-                          </h3>
-                        </div>
+                        <h3 className="text-[17px] font-bold text-[#0B1D3A] leading-tight group-hover:text-[#C99A2E] transition-colors duration-300">
+                          {group.title.replace(/^\d{2}\s*—\s*/, '')}
+                        </h3>
                       </div>
-                      <ul className="space-y-2.5">
+                      <ul className="space-y-3.5">
                         {group.items.map((item, j) => (
-                          <li key={j} className="flex items-start gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#CBD5E1] mt-1.5 shrink-0" />
+                          <li key={j} className="flex items-start gap-3">
+                            <div className="mt-[2px] shrink-0 text-[#C99A2E]/60 group-hover:text-[#C99A2E] transition-colors duration-300">
+                              <CheckCircle2 size={16} strokeWidth={2.5} />
+                            </div>
                             <span className="text-[14px] text-[#475569] font-medium leading-snug">
                               {item}
                             </span>
