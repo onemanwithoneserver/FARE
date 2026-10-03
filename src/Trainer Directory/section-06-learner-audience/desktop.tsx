@@ -39,7 +39,7 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-6">
           <div className="w-8 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight" style={{ color: NAVY }}>Learner Audience</h2>
+          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Learner Audience</h2>
         </motion.div>
 
         <div className="grid grid-cols-3 gap-5">

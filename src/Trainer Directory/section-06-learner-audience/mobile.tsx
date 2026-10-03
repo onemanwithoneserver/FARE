@@ -39,7 +39,7 @@ export default function Mobile() {
       >
         <motion.div variants={item} className="flex items-center gap-2.5 mb-5">
           <div className="w-6 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[1.75rem] font-black tracking-tight leading-tight" style={{ color: NAVY }}>Learner Audience</h2>
+          <h2 className="text-[20px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Learner Audience</h2>
         </motion.div>
 
         <div className="flex flex-col gap-4">

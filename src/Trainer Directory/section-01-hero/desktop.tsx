@@ -89,7 +89,7 @@ export default function Desktop() {
               {data.professionalTitle}
             </motion.h2>
             
-            <motion.p variants={item} className="text-[#CBD5E1] text-[16px] leading-relaxed mb-10 max-w-[650px] font-medium">
+            <motion.p variants={item} className="text-[#CBD5E1] text-[16px] leading-relaxed mb-10 max-w-[650px] font-light">
               {data.positioningStatement}
             </motion.p>
 

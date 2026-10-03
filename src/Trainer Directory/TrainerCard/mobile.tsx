@@ -104,7 +104,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
           </div>
         </div>
 
-        <p className="text-[13px] text-[#5A6B82] font-semibold leading-snug mt-3 line-clamp-1">{trainer.title}</p>
+        <p className="text-[12.5px] text-[#5A6B82] font-semibold leading-snug mt-3 line-clamp-1">{trainer.title}</p>
         <p className="text-[12px] text-[#5A6B82]/90 leading-relaxed mt-1 line-clamp-2">{trainer.positioning}</p>
 
         <div className="grid grid-cols-3 mt-3.5 rounded-xl bg-[#F7F9FC] border border-[#0B1D3A]/[0.05] divide-x divide-[#0B1D3A]/[0.06]">
@@ -116,7 +116,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
               <div className="text-[14px] font-black leading-none" style={{ color: NAVY }}>
                 {s.value}
               </div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[#7B8DAA]">{s.label}</div>
+              <div className="text-[8.5px] font-semibold uppercase tracking-[0.1em] text-[#7B8DAA]">{s.label}</div>
             </div>
           ))}
         </div>
@@ -140,12 +140,12 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
         <div className="mt-auto pt-3.5">
           <div className="flex items-center justify-between pt-3 mb-3 border-t border-dashed border-[#0B1D3A]/10">
             <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Engagement</span>
-            <span className="text-[12px] font-bold" style={{ color: GOLD }}>{trainer.pricing}</span>
+            <span className="text-[11.5px] font-bold" style={{ color: GOLD }}>{trainer.pricing}</span>
           </div>
           <div className="flex items-center justify-between gap-2 pt-2">
             <button
               onClick={onViewProfile}
-              className="group/vp px-4 h-9 rounded-xl text-[13px] font-bold flex items-center justify-center gap-1 text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+              className="group/vp px-4 h-9 rounded-xl text-[12.5px] font-bold flex items-center justify-center gap-1 text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
               style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
             >
               View Profile
@@ -165,7 +165,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
             </button>
             <button
               onClick={() => !requested && handleRequest()}
-              className={`group/rq px-4 h-9 rounded-xl text-[13px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
+              className={`group/rq px-4 h-9 rounded-xl text-[12.5px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
                 requested
                   ? "bg-[#E7F7F0] border border-[#059669]/30 text-[#059669] cursor-default"
                   : "relative overflow-hidden border border-[#C99A2E]/40 bg-[#FBF4E4] hover:bg-gradient-to-br hover:from-[#D5AA45] hover:to-[#C99A2E] hover:border-transparent hover:shadow-[0_8px_18px_-8px_rgba(201,154,46,0.7)] active:scale-[0.98] text-[#0B1D3A]"

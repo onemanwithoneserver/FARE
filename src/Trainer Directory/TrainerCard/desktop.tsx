@@ -80,7 +80,7 @@ function AvailabilityPill({ value }: { value: Trainer["availability"] }) {
   const s = AVAILABILITY_STYLES[value];
   return (
     <span
-      className="inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full text-[11px] font-bold tracking-wide whitespace-nowrap"
+      className="inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full text-[10.5px] font-bold tracking-wide whitespace-nowrap"
       style={{ background: s.bg, color: s.text }}
     >
       <span className="relative flex w-1.5 h-1.5">
@@ -99,7 +99,7 @@ function Actions({ onViewProfile, onRequest, requested }: { onViewProfile: () =>
     <div className="flex items-center gap-2 justify-between mt-2">
       <button
         onClick={onViewProfile}
-        className="group/vp px-4 h-9 rounded-lg text-[13px] font-bold flex items-center justify-center gap-1 text-white transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] hover:shadow-[0_12px_24px_-8px_rgba(11,29,58,0.6)]"
+        className="group/vp px-4 h-9 rounded-lg text-[12.5px] font-bold flex items-center justify-center gap-1 text-white transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] hover:shadow-[0_12px_24px_-8px_rgba(11,29,58,0.6)]"
         style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
       >
         View Profile
@@ -120,7 +120,7 @@ function Actions({ onViewProfile, onRequest, requested }: { onViewProfile: () =>
 
       <button
         onClick={() => !requested && onRequest?.()}
-        className={`group/rq px-4 h-9 rounded-lg text-[13px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
+        className={`group/rq px-4 h-9 rounded-lg text-[12.5px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
           requested
             ? "bg-[#E7F7F0] border border-[#059669]/30 text-[#059669] cursor-default"
             : "relative overflow-hidden border border-[#C99A2E]/40 bg-[#FBF4E4] hover:bg-gradient-to-br hover:from-[#D5AA45] hover:to-[#C99A2E] hover:border-transparent hover:shadow-[0_8px_18px_-8px_rgba(201,154,46,0.7)] active:scale-[0.98] text-[#0B1D3A]"
@@ -163,7 +163,7 @@ function Stats({ trainer }: { trainer: Trainer }) {
           <div className="text-[16px] font-black leading-none" style={{ color: NAVY }}>
             {s.value}
           </div>
-          <div className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[#7B8DAA] whitespace-nowrap">
+          <div className="text-[9.5px] font-semibold uppercase tracking-[0.1em] text-[#7B8DAA] whitespace-nowrap">
             {s.label}
           </div>
         </div>
@@ -251,11 +251,11 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "grid"
           <div className="grid grid-cols-2 gap-3">
             <div>
               <div className="text-[18px] font-black leading-none" style={{ color: NAVY }}>{trainer.industryExperience}+</div>
-              <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#7B8DAA] mt-1">Yrs Industry</div>
+              <div className="text-[9.5px] font-bold uppercase tracking-[0.12em] text-[#7B8DAA] mt-1">Yrs Industry</div>
             </div>
             <div>
               <div className="text-[18px] font-black leading-none" style={{ color: NAVY }}>{trainer.trainingExperience}+</div>
-              <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#7B8DAA] mt-1">Yrs Training</div>
+              <div className="text-[9.5px] font-bold uppercase tracking-[0.12em] text-[#7B8DAA] mt-1">Yrs Training</div>
             </div>
           </div>
           <div className="text-[12px] font-bold" style={{ color: GOLD }}>{trainer.pricing}</div>
@@ -291,7 +291,7 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "grid"
         {trainer.verified && (
           <div className="absolute top-3.5 left-3.5 flex items-center gap-1 h-6 pl-1.5 pr-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
             <BadgeCheck size={13} strokeWidth={2.5} style={{ color: GOLD_MID }} />
-            <span className="text-[10px] font-bold tracking-[0.1em] uppercase text-white/90">FARE Verified</span>
+            <span className="text-[9.5px] font-bold tracking-[0.1em] uppercase text-white/90">FARE Verified</span>
           </div>
         )}
       </div>
@@ -308,7 +308,7 @@ export default function Desktop({ trainer, onViewProfile, layoutVariant = "grid"
             {trainer.name}
           </h3>
           <p className="text-[13px] text-[#5A6B82] font-medium leading-snug mt-0.5 line-clamp-1">{trainer.title}</p>
-          <div className="flex items-center gap-3 mt-1.5 text-[12px] text-[#7B8DAA] font-medium">
+          <div className="flex items-center gap-3 mt-1.5 text-[11.5px] text-[#7B8DAA] font-medium">
             <span className="flex items-center gap-1 truncate">
               <MapPin size={12} strokeWidth={2.5} />
               {trainer.location}

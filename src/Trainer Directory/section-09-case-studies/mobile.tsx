@@ -50,7 +50,7 @@ export default function Mobile() {
         
         <motion.div variants={item} className="flex items-center gap-3 mb-2">
           <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[1.75rem] font-black tracking-tight leading-tight" style={{ color: NAVY }}>Case Studies</h2>
+          <h2 className="text-[22px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Case Studies</h2>
         </motion.div>
         <motion.div variants={item} className="mb-8">
           <p className="text-[13px] text-[#7B8DAA] font-medium leading-relaxed">Real outcomes from real engagements.</p>

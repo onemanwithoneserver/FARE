@@ -199,7 +199,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             <motion.div variants={itemVariants} className={isMobile ? "mb-3" : "mb-3 lg:mb-4"}>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
                 <Sparkles size={13} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
-                <span className="font-bold text-[10px] lg:text-[11px] tracking-[0.18em] uppercase text-[#C99A2E]">
+                <span className="font-bold text-[10px] lg:text-[11px] tracking-[0.15em] uppercase text-[#C99A2E]">
                   Trainer Directory
                 </span>
               </div>
@@ -210,7 +210,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               className={`font-black leading-[1.05] tracking-tight ${
                 isMobile
                   ? "text-[1.85rem] mb-2 leading-[1.12] w-full max-w-[320px]"
-                  : "text-[2.6rem] lg:text-[3rem] xl:text-[3.4rem] mb-2 lg:mb-4 w-[280px] sm:w-[80%] lg:w-full max-w-full"
+                  : "text-[2.2rem] sm:text-[2.8rem] lg:text-[3rem] xl:text-[3.4rem] mb-2 lg:mb-4 w-[280px] sm:w-[80%] lg:w-full max-w-full"
               }`}
               style={{ color: NAVY }}
             >
@@ -220,10 +220,10 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
 
             <motion.p
               variants={itemVariants}
-              className={`font-medium leading-[1.65] text-[#475569] relative z-10 ${
+              className={`font-medium leading-[1.5] text-[#5A6B82] relative z-10 ${
                 isMobile
                   ? "text-[14px] w-full max-w-[320px] mb-5"
-                  : "text-[15px] xl:text-[16px] w-[300px] sm:w-[85%] lg:max-w-[520px] mb-5 lg:mb-7"
+                  : "text-[14px] sm:text-[16px] xl:text-[17px] w-[300px] sm:w-[85%] lg:max-w-[520px] mb-5 lg:mb-7"
               }`}
             >
               Discover trainers by expertise, real estate segment, training format, delivery mode and experience.
@@ -337,7 +337,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                   <div className={`${isMobile ? "text-[18px]" : "text-[26px]"} font-black leading-none`} style={{ color: NAVY }}>
                     {stat.value}
                   </div>
-                  <div className={`${isMobile ? "text-[11px]" : "text-[13px]"} font-semibold text-[#5A6B82] mt-1 truncate`}>
+                  <div className={`${isMobile ? "text-[10.5px]" : "text-[12.5px]"} font-semibold text-[#5A6B82] mt-1 truncate`}>
                     {stat.label}
                   </div>
                 </div>
@@ -367,7 +367,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
           <div className="relative z-30 flex flex-col gap-3 mb-6">
             {!isMobile && (
               <div className="flex items-center justify-end gap-3 shrink-0">
-                <span className="text-[13px] text-[#5A6B82] font-medium whitespace-nowrap">Sort by</span>
+                <span className="text-[12.5px] text-[#5A6B82] font-medium whitespace-nowrap">Sort by</span>
                 <div className="w-[220px]">
                   <CustomSelect options={SORT_OPTIONS} value={sortBy} onChange={setSortBy} placeholder="Sort by" />
                 </div>
@@ -478,7 +478,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 <SearchX size={26} strokeWidth={2.2} />
               </div>
               <h3 className="text-[18px] font-black" style={{ color: NAVY }}>No trainers match these filters</h3>
-              <p className="text-[14px] text-[#5A6B82] mt-1.5 max-w-[360px]">
+              <p className="text-[13.5px] text-[#5A6B82] mt-1.5 max-w-[360px]">
                 Try removing a filter or broadening your search to discover more trainers.
               </p>
               <button

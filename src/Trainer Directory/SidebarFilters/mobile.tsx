@@ -68,7 +68,7 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
                           type="button"
                           onClick={() => onToggle(section.key, option)}
                           aria-pressed={active}
-                          className={`inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full text-[13px] font-semibold border transition-all duration-200 ${
+                          className={`inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full text-[12.5px] font-semibold border transition-all duration-200 ${
                             active
                               ? "text-white border-transparent shadow-[0_6px_14px_-6px_rgba(11,29,58,0.5)]"
                               : "bg-white text-[#0B1D3A]/75 border-[#0B1D3A]/10 active:bg-[#F5F7FB]"
