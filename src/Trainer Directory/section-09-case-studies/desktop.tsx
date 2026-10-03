@@ -56,8 +56,8 @@ export default function Desktop() {
       >
         
         <motion.div variants={item} className="flex items-center gap-4 mb-3">
-          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Case Studies</h2>
+          <div className="w-[4px] h-10 lg:h-12 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <h2 className="text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight" style={{ color: NAVY }}>Case Studies</h2>
         </motion.div>
         <motion.div variants={item} className="mb-12">
           <p className="text-[15px] text-[#7B8DAA] font-medium max-w-[500px]">Real outcomes from real training engagements — anonymised with client consent.</p>

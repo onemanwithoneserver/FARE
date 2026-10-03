@@ -45,13 +45,13 @@ export default function Desktop() {
         className="max-w-[1200px] w-full relative z-10"
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
-          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>About the Trainer</h2>
+          <div className="w-[4px] h-10 lg:h-12 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <h2 className="text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight" style={{ color: NAVY }}>About the Trainer</h2>
         </motion.div>
 
         <div className="grid grid-cols-12 gap-12">
           <div className="col-span-7 flex flex-col">
-            <motion.p variants={item} className="text-[17px] text-[#5A6B82] mb-10 leading-[1.8] font-light">
+            <motion.p variants={item} className="text-[17px] text-[#5A6B82] mb-10 leading-[1.8] font-medium">
               {data.about.text}
             </motion.p>
 

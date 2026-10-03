@@ -52,8 +52,8 @@ export default function Desktop() {
         className="max-w-[1200px] w-full relative z-10"
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
-          <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Introduction Video</h2>
+          <div className="w-[4px] h-10 lg:h-12 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+          <h2 className="text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight" style={{ color: NAVY }}>Introduction Video</h2>
         </motion.div>
 
         <div className="flex gap-8 items-start">
@@ -105,7 +105,7 @@ export default function Desktop() {
           </motion.div>
 
           
-          <motion.div variants={item} className="w-[340px] shrink-0 flex flex-col gap-4">
+         {/*  <motion.div variants={item} className="w-[340px] shrink-0 flex flex-col gap-4">
             <div className="flex items-center gap-2 mb-1">
               <div className="w-8 h-8 rounded flex items-center justify-center text-white shadow-sm" style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}>
                 <Mic size={15} strokeWidth={2.5} />
@@ -152,7 +152,7 @@ export default function Desktop() {
                 )}
               </div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </div>
       </motion.div>
 

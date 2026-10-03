@@ -59,8 +59,8 @@ export default function Desktop() {
       >
         <div className="flex items-end justify-between mb-12">
           <motion.div variants={item} className="flex items-center gap-4">
-            <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-            <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>Training Programs</h2>
+            <div className="w-[4px] h-10 lg:h-12 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
+            <h2 className="text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight" style={{ color: NAVY }}>Training Programs</h2>
           </motion.div>
           <motion.div variants={item} className="flex gap-2">
             <button

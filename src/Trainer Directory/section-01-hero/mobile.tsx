@@ -57,7 +57,7 @@ export default function Mobile() {
         <h1 className="text-[40px] font-black text-white mb-2 leading-tight tracking-[-0.02em]">{data.trainerName}</h1>
         <h2 className="text-[18px] font-semibold text-[#94A3B8] mb-6">{data.professionalTitle}</h2>
         
-        <p className="text-[15px] text-[#CBD5E1] leading-relaxed mb-10 max-w-[340px] font-light">
+        <p className="text-[15px] text-[#CBD5E1] leading-relaxed mb-10 max-w-[340px] font-medium">
           {data.positioningStatement}
         </p>
 
