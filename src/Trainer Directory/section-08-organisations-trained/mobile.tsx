@@ -78,7 +78,7 @@ export default function Mobile() {
                   {timelineItem.year}
                 </div>
 
-                <div className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] relative overflow-hidden">
+                <div className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] rounded p-5 luxury-shadow-float relative overflow-hidden">
                   <div
                     className="absolute top-0 left-0 right-0 h-[3px] opacity-70"
                     style={{ background: colors.bg }}

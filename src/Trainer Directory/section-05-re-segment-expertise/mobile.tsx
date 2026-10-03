@@ -91,7 +91,7 @@ export default function Mobile() {
         className="relative z-10 w-full flex flex-col gap-6"
       >
         
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 luxury-shadow-float relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[0].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">
             <div className="w-9 h-9 shrink-0 rounded flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[0].bg }}>
@@ -109,7 +109,7 @@ export default function Mobile() {
         </motion.div>
 
         
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 luxury-shadow-float relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[1].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">
             <div className="w-9 h-9 shrink-0 rounded flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[1].bg }}>
@@ -132,7 +132,7 @@ export default function Mobile() {
         </motion.div>
 
         
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 luxury-shadow-float relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[2].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">
             <div className="w-9 h-9 shrink-0 rounded flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[2].bg }}>

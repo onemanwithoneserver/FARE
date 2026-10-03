@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ChevronRight, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 const NAVY = "#0B1D3A";
@@ -51,7 +51,7 @@ export default function Desktop() {
           className="max-w-[1000px] mx-auto text-center"
         >
           <motion.div variants={item} className="mb-8 flex justify-center">
-            <div className="bg-white border border-[#0B1D3A]/[0.08] px-6 py-2.5 rounded-full flex items-center gap-3 shadow-[0_4px_20px_-5px_rgba(11,29,58,0.08)] backdrop-blur-md hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out">
+            <div className="bg-white border border-[#0B1D3A]/[0.08] px-6 py-2.5 rounded-full flex items-center gap-3 luxury-shadow-float backdrop-blur-md hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
               <Sparkles size={18} className="text-[#C99A2E]" />
               <span
                 className="text-[13px] font-bold tracking-[0.25em] uppercase"
@@ -85,7 +85,7 @@ export default function Desktop() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-12 shadow-[0_20px_50px_-20px_rgba(11,29,58,0.08)] relative overflow-hidden group hover:border-[#0B1D3A]/10 hover:shadow-[0_30px_60px_-20px_rgba(11,29,58,0.12)] transition-all duration-500 h-full flex flex-col"
+            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-12 luxury-shadow-float relative overflow-hidden group hover:border-[#0B1D3A]/10 hover:luxury-shadow-float transition-all duration-500 h-full flex flex-col"
           >
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -121,7 +121,7 @@ export default function Desktop() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-gradient-to-br from-[#0B1D3A] via-[#132D5F] to-[#0B1D3A] rounded p-12 shadow-[0_30px_60px_-15px_rgba(11,29,58,0.4)] relative overflow-hidden flex flex-col items-center text-center h-full justify-center group cursor-pointer"
+            className="bg-gradient-to-br from-[#0B1D3A] via-[#132D5F] to-[#0B1D3A] rounded p-12 luxury-shadow-float relative overflow-hidden flex flex-col items-center text-center h-full justify-center group cursor-pointer"
           >
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay"></div>
             <motion.div
@@ -140,13 +140,12 @@ export default function Desktop() {
             <h3 className="text-[32px] lg:text-[40px] font-black text-white mb-12 relative z-10 leading-[1.1] tracking-tight">
               {data.footerText}
             </h3>
-            <button className="bg-gradient-to-r from-[#C99A2E] to-[#B88A22] hover:from-[#D5AA45] hover:to-[#C99A2E] text-white px-10 py-5 rounded font-bold text-[18px] shadow-[0_15px_30px_-5px_rgba(201,154,46,0.5)] hover:shadow-[0_20px_40px_-5px_rgba(201,154,46,0.7)] group-hover:-translate-y-2 transition-all duration-400 flex items-center gap-4 relative z-10 w-full justify-center max-w-[360px] overflow-hidden hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
+            <button className="bg-gradient-to-r from-[#C99A2E] to-[#B88A22] hover:from-[#D5AA45] hover:to-[#C99A2E] text-white px-10 py-5 rounded font-bold text-[18px] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] group-hover:-translate-y-2 transition-all duration-400 flex items-center gap-4 relative z-10 w-full justify-center max-w-[360px] overflow-hidden hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
               <span className="relative z-10">{data.ctaButton}</span>
-              <ArrowRight
-                size={22}
-                strokeWidth={3}
-                className="relative z-10 group-hover:translate-x-2 transition-transform duration-300"
-              />
+              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"relative z-10 group-hover:translate-x-2"}`} style={{ fontSize: `${22}px` }}>
+      <ChevronRight size={22} strokeWidth={3} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={22} strokeWidth={3} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
               <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded pointer-events-none"></div>
             </button>
           </motion.div>

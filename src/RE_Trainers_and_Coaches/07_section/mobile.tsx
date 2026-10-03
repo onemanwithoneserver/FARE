@@ -81,7 +81,7 @@ export default function Mobile() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`relative px-5 py-4 rounded flex flex-col items-center justify-center gap-3 text-center transition-all duration-300 min-w-[130px] shrink-0 snap-start overflow-hidden ${
                     isActive
-                      ? "bg-gradient-to-br from-[#0B1D3A] to-[#132D5F] shadow-[0_8px_20px_-8px_rgba(11,29,58,0.4)] border border-transparent scale-[1.02]"
+                      ? "bg-gradient-to-br from-[#0B1D3A] to-[#132D5F] luxury-shadow-float border border-transparent scale-[1.02]"
                       : "bg-white border border-[#0B1D3A]/[0.06] hover:bg-[#F1F5FB] shadow-sm"
                   }`}
                 >
@@ -122,7 +122,7 @@ export default function Mobile() {
               );
             })}
           </div>
-          <div className="bg-white border border-[#0B1D3A]/[0.06] rounded p-6 sm:p-8 relative overflow-hidden shadow-[0_4px_20px_-10px_rgba(11,29,58,0.05)]">
+          <div className="bg-white border border-[#0B1D3A]/[0.06] rounded p-6 sm:p-8 relative overflow-hidden luxury-shadow-float">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}

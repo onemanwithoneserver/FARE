@@ -59,7 +59,7 @@ export default function Mobile() {
             <motion.div
               key={idx}
               variants={item}
-              className="group rounded p-6 flex flex-col relative overflow-hidden border border-[#0B1D3A]/[0.08] shadow-[0_8px_24px_-8px_rgba(11,29,58,0.06)] bg-white/90 backdrop-blur-xl"
+              className="group rounded p-6 flex flex-col relative overflow-hidden border border-[#0B1D3A]/[0.08] luxury-shadow-float bg-white/90 backdrop-blur-xl"
             >
               
               <div 

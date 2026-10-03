@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import reTrainersHero from "../../assets/re_trainers_hero.jpg";
@@ -133,14 +133,17 @@ export default function Desktop() {
             >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded hover:shadow-[0_12px_24px_rgba(11,29,58,0.2),0_0_0_1px_rgba(201,154,46,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
+                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
                 style={{
                   background: NAVY,
                   boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`,
                 }}
               >
                 {data.buttons.primary}{" "}
-                <ArrowRight size={15} strokeWidth={2.5} />
+                <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
               </button>
               {data.buttons.secondary && (
                 <button
@@ -187,7 +190,7 @@ export default function Desktop() {
           >
             <div className="relative w-full aspect-[4/5] max-w-[500px] flex items-center justify-center group mt-10 lg:mt-0">
               <motion.div
-                className="w-full h-full absolute inset-0 z-0 rounded-[2rem] overflow-hidden border border-white/60 shadow-[0_20px_60px_-15px_rgba(11,29,58,0.15)]"
+                className="w-full h-full absolute inset-0 z-0 rounded-[2rem] overflow-hidden border border-white/60 luxury-shadow-float"
                 style={{
                   WebkitMaskImage:
                     "linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)",
@@ -212,7 +215,7 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute -left-4 sm:-left-8 bottom-16 z-20 bg-white/95 backdrop-blur-xl p-4 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.2)] border border-white/80 rounded-[24px] rounded-tl-[8px] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="absolute -left-4 sm:-left-8 bottom-16 z-20 bg-white/95 backdrop-blur-xl p-4 luxury-shadow-float border border-white/80 rounded-[24px] rounded-tl-[8px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div className="flex items-center gap-3.5">
                   <div className="w-11 h-11 rounded-[12px] rounded-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-lg shadow-[#34D399]/30">
@@ -233,7 +236,7 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
                 transition={{ delay: 0.6, duration: 0.6 }}
-                className="absolute -right-4 sm:-right-8 top-24 z-20 bg-white/95 backdrop-blur-xl p-3.5 shadow-[0_15px_50px_-12px_rgba(11,29,58,0.25)] border border-white/80 hidden lg:block rounded-[20px] rounded-tr-[6px] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="absolute -right-4 sm:-right-8 top-24 z-20 bg-white/95 backdrop-blur-xl p-3.5 luxury-shadow-float border border-white/80 hidden lg:block rounded-[20px] rounded-tr-[6px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div className="flex items-center gap-3.5">
                   <div

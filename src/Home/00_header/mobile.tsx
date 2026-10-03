@@ -7,6 +7,7 @@ import {
   X,
   Search,
   ArrowRight,
+  ChevronRight,
   Plus,
   Building2,
   MapPin,
@@ -137,7 +138,7 @@ export default function Mobile() {
         <header
           className={`transition-all duration-300 pointer-events-auto flex items-center justify-between relative ${
             isScrolled
-              ? "w-full h-[48px] px-5 bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 shadow-[0_8px_24px_-8px_rgba(11,29,58,0.14)] rounded-full"
+              ? "w-full h-[48px] px-5 bg-[#0B1D3A]/95 backdrop-blur-xl border border-white/10 luxury-shadow-float rounded-full"
               : "w-full h-[60px] px-5 bg-white/90 backdrop-blur-md border-b border-[#0B1D3A]/[0.06] shadow-[0_2px_10px_-4px_rgba(11,29,58,0.04)] rounded-none"
           }`}
         >
@@ -193,7 +194,7 @@ export default function Mobile() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.95 }}
                     transition={{ duration: 0.15 }}
-                    className={`absolute top-[calc(100%+8px)] right-0 w-[155px] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border shadow-[0_14px_36px_-6px_rgba(11,29,58,0.2)] rounded p-1.5 z-50 pointer-events-auto`}
+                    className={`absolute top-[calc(100%+8px)] right-0 w-[155px] ${isScrolled ? "bg-[#0B1D3A]/95 border-white/10" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded p-1.5 z-50 pointer-events-auto`}
                   >
                     <div
                       className={`text-[9.5px] font-bold uppercase tracking-wider px-2 py-1 ${isScrolled ? "text-white/70" : "text-[#0B1D3A]/70"}`}
@@ -322,7 +323,7 @@ export default function Mobile() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
-                className={`absolute top-[70px] left-3 right-3 ${isScrolled ? "bg-[#0B1D3A]/95 border-white/80" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border shadow-[0_16px_36px_-10px_rgba(11,29,58,0.18)] rounded p-3 z-50 pointer-events-auto flex items-center gap-2`}
+                className={`absolute top-[70px] left-3 right-3 ${isScrolled ? "bg-[#0B1D3A]/95 border-white/80" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded p-3 z-50 pointer-events-auto flex items-center gap-2`}
               >
                 <Search
                   size={16}
@@ -355,7 +356,7 @@ export default function Mobile() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.98 }}
                 transition={{ duration: 0.2 }}
-                className={`absolute top-[70px] left-3 right-3 ${isScrolled ? "bg-[#0B1D3A]/95 border-white/80" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border shadow-[0_20px_40px_-10px_rgba(11,29,58,0.16)] rounded flex flex-col p-6 gap-5 z-50 pointer-events-auto`}
+                className={`absolute top-[70px] left-3 right-3 ${isScrolled ? "bg-[#0B1D3A]/95 border-white/80" : "bg-white/98 border-[#0B1D3A]/15"} backdrop-blur-xl border luxury-shadow-float rounded flex flex-col p-6 gap-5 z-50 pointer-events-auto`}
               >
                 <nav className="flex flex-col gap-3">
                   {data.navLinks.map((link, idx) => {
@@ -468,11 +469,18 @@ export default function Mobile() {
                                           {sub.title}
                                         </span>
                                       </div>
-                                      <ArrowRight
-                                        size={14}
-                                        strokeWidth={2.5}
-                                        className="text-[#10B981] shrink-0 ml-1"
-                                      />
+                                      <span className="relative w-3.5 h-3.5 inline-flex items-center justify-center shrink-0 ml-1">
+                                        <ChevronRight
+                                          size={11}
+                                          strokeWidth={2.5}
+                                          className={`absolute transition-all duration-300 text-[#C99A2E] ${isSubActive ? 'opacity-0 translate-x-1' : 'opacity-100 translate-x-0 group-hover:opacity-0 group-hover:translate-x-1 group-active:opacity-0 group-active:translate-x-1'}`}
+                                        />
+                                        <ArrowRight
+                                          size={11}
+                                          strokeWidth={2.5}
+                                          className={`absolute transition-all duration-300 text-[#E2C068] ${isSubActive ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-active:opacity-100 group-active:translate-x-0'}`}
+                                        />
+                                      </span>
                                     </a>
                                   );
                                 })}
@@ -538,12 +546,15 @@ export default function Mobile() {
                         navigate(`/${currentMode}/contact-us`);
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
-                      className={`${isScrolled ? "bg-white text-[#0B1D3A]" : "bg-[#0B1D3A] text-white"} text-[13px] font-semibold px-5 py-2 rounded shadow-sm flex items-center gap-1.5 cursor-pointer`}
+                      className={`group ${isScrolled ? "bg-white text-[#0B1D3A]" : "bg-[#0B1D3A] text-white"} text-[13px] font-semibold px-5 py-2 rounded shadow-sm flex items-center gap-1.5 cursor-pointer`}
                     >
                       <span>
                         {language === "te" ? "ప్రారంభించండి" : "Get Started"}
                       </span>
-                      <ArrowRight size={13} />
+                      <span className="relative w-3 h-3 inline-flex items-center justify-center shrink-0">
+                        <ChevronRight size={11} strokeWidth={2.5} className="absolute transition-all duration-300 opacity-100 text-current group-hover:opacity-0 group-hover:translate-x-1 group-active:opacity-0 group-active:translate-x-1" />
+                        <ArrowRight size={11} strokeWidth={2.5} className="absolute transition-all duration-300 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0.5 group-active:opacity-100 group-active:translate-x-0.5 text-current" />
+                      </span>
                     </button>
                   </div>
                 </div>

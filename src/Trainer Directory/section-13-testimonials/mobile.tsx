@@ -50,7 +50,7 @@ export default function Mobile() {
           className="w-full relative group"
         >
           
-          <div className="bg-white/70 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-8 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] relative overflow-hidden flex flex-col items-center justify-center text-center">
+          <div className="bg-white/70 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-8 luxury-shadow-float relative overflow-hidden flex flex-col items-center justify-center text-center">
             
             
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />

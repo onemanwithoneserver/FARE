@@ -69,7 +69,7 @@ export default function Desktop() {
                 className={`group bg-white/90 backdrop-blur-xl rounded p-6 border transition-all duration-400 ease-out relative overflow-hidden flex flex-col ${
                   mode.disabled
                     ? "opacity-50 border-[#0B1D3A]/[0.04]"
-                    : "border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_12px_36px_-12px_rgba(11,29,58,0.12)] hover:-translate-y-1"
+                    : "border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-1"
                 }`}
               >
                 {!mode.disabled && (

@@ -45,7 +45,7 @@ export default function Mobile() {
 
         <motion.div
           variants={item}
-          className="relative w-full aspect-video rounded overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.12)] cursor-pointer group"
+          className="relative w-full aspect-video rounded overflow-hidden flex items-center justify-center border border-[#0B1D3A]/[0.08] luxury-shadow-float cursor-pointer group"
         >
           <div className="absolute inset-0 bg-[#0B1D3A]" />
           <div
@@ -71,7 +71,7 @@ export default function Mobile() {
                 style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
               />
               <div
-                className="w-16 h-16 rounded-full flex items-center justify-center shadow-[0_8px_32px_rgba(201,154,46,0.5)] group-active:scale-95 transition-transform duration-300 relative z-10"
+                className="w-16 h-16 rounded-full flex items-center justify-center luxury-shadow-float group-active:scale-95 transition-transform duration-300 relative z-10"
                 style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
               >
               <Play size={20} className="ml-1 text-white fill-white" />

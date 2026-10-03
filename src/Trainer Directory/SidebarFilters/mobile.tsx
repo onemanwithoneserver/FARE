@@ -192,7 +192,7 @@ export default function Mobile({ isOpen, onClose }: { isOpen?: boolean; onClose?
               </button>
               <button
                 onClick={onClose}
-                className="flex-[1.5] py-4 rounded text-white font-bold text-[14px] flex items-center justify-center shadow-[0_8px_24px_-8px_rgba(11,29,58,0.5)] active:scale-[0.98] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50"
+                className="flex-[1.5] py-4 rounded text-white font-bold text-[14px] flex items-center justify-center luxury-shadow-float active:scale-[0.98] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50"
                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)` }}
               >
                 Apply Filters

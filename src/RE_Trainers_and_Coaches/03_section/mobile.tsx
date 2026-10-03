@@ -108,7 +108,7 @@ export default function Mobile() {
             <motion.div
               key={index}
               variants={item}
-              className="bg-white border border-[#0B1D3A]/[0.06] rounded-lg p-3.5 shadow-[0_2px_10px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden flex flex-col justify-between hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+              className="bg-white border border-[#0B1D3A]/[0.06] rounded-lg p-3.5 shadow-[0_2px_10px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden flex flex-col justify-between hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}

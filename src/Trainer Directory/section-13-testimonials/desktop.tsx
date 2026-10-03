@@ -50,7 +50,7 @@ export default function Desktop() {
           className="w-full max-w-[800px] mx-auto relative group"
         >
           
-          <div className="bg-white/60 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-12 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.06)] transition-all duration-400 ease-out hover:border-[#0B1D3A]/[0.15] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.12)] hover:-translate-y-1 relative overflow-hidden flex flex-col items-center justify-center text-center">
+          <div className="bg-white/60 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-12 luxury-shadow-float transition-all duration-400 ease-out hover:border-[#0B1D3A]/[0.15] hover:luxury-shadow-float hover:-translate-y-1 relative overflow-hidden flex flex-col items-center justify-center text-center">
             
             
             <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[30px] pointer-events-none transition-transform duration-700 group-hover:scale-125" />

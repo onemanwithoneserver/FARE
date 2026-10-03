@@ -64,7 +64,7 @@ export default function Mobile() {
             {data.quotes.map((q, i) => (
               <div
                 key={i}
-                className="p-5 rounded-[16px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-white font-medium text-[14px] leading-relaxed shadow-[0_8px_20px_rgba(11,29,58,0.1)] relative overflow-hidden"
+                className="p-5 rounded-[16px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-white font-medium text-[14px] leading-relaxed luxury-shadow-float relative overflow-hidden"
               >
                 <span className="text-[#C99A2E] font-serif mr-1">“</span>
                 {q}

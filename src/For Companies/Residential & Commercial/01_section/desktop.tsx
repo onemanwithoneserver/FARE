@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
@@ -60,15 +60,14 @@ export default function Desktop() {
           backgroundSize: "60px 60px",
         }}
       />
-      <div className="max-w-[1480px] w-full px-6 sm:px-10 lg:px-12 xl:px-14 py-10 lg:py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-center">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: false }}
-            className="lg:col-span-6 flex flex-col items-start text-left w-full relative z-20"
-          >
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-4 lg:pt-8 pb-8 lg:pb-12 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false }}
+          className="w-full lg:w-[48%] xl:w-[46%] flex flex-col items-start text-left shrink-0 py-4 lg:py-6 pr-6 lg:pr-10"
+        >
             <h1
               className={`font-black mb-3 flex flex-col items-start gap-1 md:gap-1.5 ${
                 language === "te"
@@ -137,14 +136,17 @@ export default function Desktop() {
             >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded hover:shadow-[0_12px_24px_rgba(11,29,58,0.2),0_0_0_1px_rgba(201,154,46,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
                 style={{
                   background: NAVY,
                   boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`,
                 }}
               >
                 {data.buttons.primary}{" "}
-                <ArrowRight size={15} strokeWidth={2.5} />
+                <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
               </button>
               {data.buttons.secondary && (
                 <button
@@ -183,21 +185,27 @@ export default function Desktop() {
             </motion.p>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, x: 30, scale: 0.96 }}
+            initial={{ opacity: 0, x: 40, scale: 0.96 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: false }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 relative w-full flex items-center justify-center lg:justify-end"
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end pl-0"
           >
-            <div className="relative w-full max-w-[680px] aspect-[16/10.2] rounded-[4px] overflow-hidden border border-white/80 shadow-[0_25px_60px_-15px_rgba(11,29,58,0.22),0_10px_25px_-5px_rgba(0,0,0,0.06)] bg-slate-100 group lg:translate-x-2 xl:translate-x-4">
-              <img
+            <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] sm:rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden border-l border-t border-b border-white/80 luxury-shadow-float group">
+              <motion.img
+                animate={{ scale: [1, 1.04, 1] }}
+                transition={{
+                  duration: 16,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 src={reCompaniesHero}
                 alt="Residential & Commercial Real Estate Buildings"
-                className="w-full h-full object-cover object-center group-hover:scale-[1.025] transition-transform duration-700 ease-out rounded-[4px]"
+                className="w-full h-full object-cover object-center"
               />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/15 via-transparent to-transparent pointer-events-none" />
             </div>
           </motion.div>
-        </div>
       </div>
     </section>
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

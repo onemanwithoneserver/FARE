@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
-import { ArrowRight, Check, Settings2, Sparkles } from "lucide-react";
+import { ChevronRight, ArrowRight, Check, Settings2, Sparkles } from "lucide-react";
 import { useState } from "react";
 import Modal from "../../../Components/Forms/Modal";
 import RECompaniesForm from "../../../Components/Forms/Desktop/RECompaniesForm";
@@ -98,7 +98,7 @@ export default function Desktop() {
             </motion.div>
             <motion.div
               variants={item}
-              className="mt-2 bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded p-8 shadow-[0_20px_40px_-10px_rgba(11,29,58,0.2)] relative overflow-hidden flex flex-col gap-5"
+              className="mt-2 bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded p-8 luxury-shadow-float relative overflow-hidden flex flex-col gap-5"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -118,13 +118,12 @@ export default function Desktop() {
                 </p>
               </div>
               <div className="flex flex-col gap-3 w-full">
-                <button className="group relative overflow-hidden bg-white text-[#0B1D3A] w-full py-4 rounded text-[14px] font-bold hover:shadow-[0_8px_20px_rgba(255,255,255,0.2)] active:scale-[0.98] transition-all flex items-center justify-center gap-3 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out" onClick={() => setIsModalOpen(true)}>
+                <button className="group relative overflow-hidden bg-white text-[#0B1D3A] w-full py-4 rounded text-[14px] font-bold hover:luxury-shadow-float active:scale-[0.98] transition-all flex items-center justify-center gap-3 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out" onClick={() => setIsModalOpen(true)}>
                   <span className="relative z-10">{data.ctaButton}</span>
-                  <ArrowRight
-                    size={16}
-                    strokeWidth={2.5}
-                    className="relative z-10 group-hover:translate-x-1 transition-transform"
-                  />
+                  <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"relative z-10 group-hover:translate-x-1"}`} style={{ fontSize: `${16}px` }}>
+      <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                 </button>
                 {data.secondaryCtaButton && (
                   <button className="bg-white/10 border border-white/20 text-white w-full py-4 rounded text-[14px] font-bold hover:bg-white/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer" onClick={() => setIsVideoModalOpen(true)}>
@@ -137,7 +136,7 @@ export default function Desktop() {
           <div className="w-full md:w-[52%] flex flex-col justify-center">
             <motion.div
               variants={item}
-              className="bg-white border border-[#0B1D3A]/[0.06] rounded p-10 shadow-[0_30px_60px_-15px_rgba(11,29,58,0.12)] relative overflow-hidden group"
+              className="bg-white border border-[#0B1D3A]/[0.06] rounded p-10 luxury-shadow-float relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#C99A2E]/10 to-transparent rounded-bl-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-60"></div>
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-[#60A5FA]/10 to-transparent rounded-tr-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-60"></div>

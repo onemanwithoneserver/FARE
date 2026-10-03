@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ArrowRight, Check } from "lucide-react";
+import { ChevronRight, ArrowRight, Check } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -52,7 +52,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] relative overflow-hidden"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#6366F1]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
             <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">Pricing</h4>
@@ -62,7 +62,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] relative overflow-hidden"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#C99A2E]/15 to-transparent rounded-full blur-[20px] pointer-events-none" />
             <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-3 relative z-10">Minimum Engagement</h4>
@@ -90,7 +90,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
           <motion.div
             variants={item}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] relative overflow-hidden"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 luxury-shadow-float relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-radial from-[#10B981]/10 to-transparent rounded-full blur-[20px] pointer-events-none" />
             <h4 className="text-[10px] font-black text-[#7B8DAA] uppercase tracking-[0.15em] mb-4 relative z-10">Pricing Basis</h4>
@@ -109,7 +109,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
         <motion.div
           variants={item}
-          className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded p-6 flex flex-col gap-5 shadow-[0_8px_30px_-12px_rgba(11,29,58,0.2)] relative overflow-hidden"
+          className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded p-6 flex flex-col gap-5 luxury-shadow-float relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[20px] pointer-events-none" />
           <div
@@ -126,7 +126,10 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
             className="w-full bg-white text-[#0B1D3A] px-6 py-3.5 rounded font-black text-[14px] transition-transform duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center justify-center gap-2.5 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] relative z-10 group"
           >
             Request Pricing
-            <ArrowRight size={15} strokeWidth={2.5} className="text-[#C99A2E] group-active:translate-x-1 transition-transform" />
+            <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#C99A2E]"}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
           </button>
         </motion.div>
       </motion.div>

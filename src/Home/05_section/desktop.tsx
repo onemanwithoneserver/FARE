@@ -59,15 +59,35 @@ export default function Desktop() {
   return (
     <>
       <footer
-        className="w-full text-white pt-6 pb-6 px-8 lg:px-12 font-['Outfit'] relative overflow-hidden"
+        className="w-full text-white pt-8 pb-6 px-8 lg:px-12 font-['Outfit'] relative overflow-hidden fare-noise-overlay"
         style={{
-          background: "linear-gradient(180deg, #040C1E 0%, #030816 100%)",
-          borderTop: "1px solid rgba(255, 255, 255, 0.07)",
+          background:
+            "radial-gradient(ellipse at 15% 30%, rgba(99, 102, 241, 0.07) 0%, transparent 50%)," +
+            "radial-gradient(ellipse at 85% 70%, rgba(201, 154, 46, 0.05) 0%, transparent 50%)," +
+            "radial-gradient(ellipse at 50% 90%, rgba(6, 182, 212, 0.03) 0%, transparent 50%)," +
+            "linear-gradient(180deg, #050E22 0%, #020610 100%)",
+          borderTop: "1px solid rgba(255, 255, 255, 0.05)",
         }}
       >
-        <div className="absolute top-0 left-1/4 w-[400px] h-[100px] bg-[#C99A2E]/[0.03] rounded-full blur-[60px] pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[100px] bg-[#3B82F6]/[0.03] rounded-full blur-[60px] pointer-events-none" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800c_1px,transparent_1px),linear-gradient(to_bottom,#8080800c_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-40" />
+        <motion.div
+          animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-5%] left-[10%] w-[400px] h-[200px] rounded-full blur-[100px] pointer-events-none opacity-[0.04]"
+          style={{ background: "radial-gradient(circle, #C99A2E, transparent 70%)" }}
+        />
+        <motion.div
+          animate={{ x: [0, -20, 0], y: [0, 25, 0], scale: [1.1, 1, 1.1] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[-5%] right-[15%] w-[350px] h-[180px] rounded-full blur-[90px] pointer-events-none opacity-[0.04]"
+          style={{ background: "radial-gradient(circle, #6366F1, transparent 70%)" }}
+        />
+
+        <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(circle at 1.5px 1.5px, rgba(255,255,255,0.15) 1px, transparent 0)",
+            backgroundSize: "28px 28px",
+          }}
+        />
         
         <motion.div
           variants={containerVariants}
@@ -87,7 +107,7 @@ export default function Desktop() {
                 whileHover={{
                   scale: 1.05,
                   opacity: 1,
-                  filter: "drop-shadow(0 0 12px rgba(201,154,46,0.3))",
+                  filter: "drop-shadow(0 0 16px rgba(201,154,46,0.4))",
                 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.25 }}
@@ -95,16 +115,16 @@ export default function Desktop() {
               />
             </div>
 
-            <div className="w-full h-px bg-white/10 mb-5" />
+            <div className="fare-gold-divider w-full mb-5" />
             
-            <h4 className="text-[17px] font-serif text-[#E2C068] mb-3">Contact FARE</h4>
+            <h4 className="text-[17px] font-serif mb-3" style={{ color: "#E2C068" }}>Contact FARE</h4>
             
             <div className="flex flex-col gap-2.5 mb-5">
-              <a href="#contact" className="text-[14px] font-bold text-white hover:text-[#E2C068] transition-colors flex items-center gap-1.5 w-fit">
-                Contact us <span className="text-[12px] font-normal leading-none">↗</span>
+              <a href="#contact" className="text-[14px] font-bold text-white hover:text-[#E2C068] transition-colors flex items-center gap-1.5 w-fit group/link">
+                Contact us <span className="text-[12px] font-normal leading-none transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">↗</span>
               </a>
               
-              <a href="mailto:hello@yardstack.in" className="text-[13.5px] text-white/60 hover:text-[#E2C068] transition-colors w-fit">
+              <a href="mailto:hello@yardstack.in" className="text-[13.5px] text-white/50 hover:text-[#E2C068] transition-colors w-fit">
                 hello@yardstack.in
               </a>
             </div>
@@ -118,14 +138,14 @@ export default function Desktop() {
                   social.name === "Linkedin" ? LinkedinIcon :
                   YoutubeIcon;
                 
-                const hoverClassMap: Record<string, string> = {
-                  Facebook: "hover:bg-[#1877F2] hover:text-white",
-                  Twitter: "hover:bg-black hover:text-white",
-                  Instagram: "hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:text-white",
-                  Linkedin: "hover:bg-gradient-to-tr hover:from-[#0077B5] hover:to-[#0A66C2] hover:text-white",
-                  Youtube: "hover:bg-[#FF0000] hover:text-white"
+                const brandClasses: Record<string, string> = {
+                  Facebook: "from-[#0668E1] to-[#1877F2] luxury-shadow-float",
+                  Twitter: "from-gray-700 to-black luxury-shadow-float",
+                  Instagram: "from-[#f09433] via-[#dc2743] to-[#bc1888] luxury-shadow-float",
+                  Linkedin: "from-[#0077B5] to-[#0A66C2] luxury-shadow-float",
+                  Youtube: "from-[#CC0000] to-[#FF0000] luxury-shadow-float"
                 };
-                const hoverClasses = hoverClassMap[social.name] || "hover:text-white hover:bg-[#C99A2E]/20";
+                const bgClass = brandClasses[social.name] || "from-[#C99A2E] to-[#D5AA45] luxury-shadow-float";
 
                 return (
                   <motion.a
@@ -133,11 +153,15 @@ export default function Desktop() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ y: -2, scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 transition-all duration-300 ${hoverClasses}`}
+                    whileHover={{ y: -3, scale: 1.1 }}
+                    whileTap={{ scale: 0.92 }}
+                    className="relative group w-9 h-9 rounded-xl flex items-center justify-center text-white/60 transition-all duration-300 border border-white/10 hover:border-transparent hover:text-white overflow-hidden"
+                    style={{ background: "rgba(255,255,255,0.04)", backdropFilter: "blur(8px)" }}
                   >
-                    <Icon />
+                    <div className={`absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-tr animate-gradient-x ${bgClass}`} />
+                    <div className="relative z-10 flex items-center justify-center">
+                      <Icon />
+                    </div>
                   </motion.a>
                 );
               })}
@@ -147,7 +171,7 @@ export default function Desktop() {
           <div className="lg:col-span-8 xl:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-8">
             {data.footerGroups.map((group, gIdx) => (
               <motion.div key={gIdx} variants={itemVariants} className="flex flex-col">
-                <h4 className="text-[17px] font-serif text-[#E2C068] mb-6 tracking-wide">
+                <h4 className="text-[17px] font-serif mb-6 tracking-wide" style={{ color: "#E2C068" }}>
                   {group.title}
                 </h4>
                 <div className="flex flex-col gap-3.5">
@@ -157,21 +181,25 @@ export default function Desktop() {
                       <motion.button
                         key={idx}
                         onClick={() => handleNavigation(link.path)}
-                        whileHover={{ x: 3 }}
+                        whileHover={{ x: 4 }}
                         className="relative group text-left text-[14px] font-medium cursor-pointer w-fit"
                       >
                         <span
                           className={`relative z-10 transition-all duration-300 ${
                             isSelected
                               ? "text-white font-semibold"
-                              : "text-white/60 group-hover:text-white underline underline-offset-[5px] decoration-dotted decoration-white/40 group-hover:decoration-transparent"
+                              : "text-white/50 group-hover:text-white"
                           }`}
                         >
                           {link.label}
                         </span>
-                        {!isSelected && (
-                          <span className="absolute left-0 -bottom-[1px] w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                        )}
+                        <span
+                          className={`absolute left-0 -bottom-[2px] h-[1.5px] transition-all duration-400 ease-out ${
+                            isSelected
+                              ? "w-full bg-gradient-to-r from-[#C99A2E] to-[#D5AA45]"
+                              : "w-0 bg-gradient-to-r from-[#C99A2E]/60 to-transparent group-hover:w-full"
+                          }`}
+                        />
                       </motion.button>
                     );
                   })}
@@ -185,13 +213,17 @@ export default function Desktop() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="max-w-[1200px] w-full mx-auto relative z-10 mt-12 pt-5 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4"
+          className="max-w-[1200px] w-full mx-auto relative z-10 mt-12"
         >
-          <span className="text-[13px] font-medium text-white/40">
-            {data.copyright.replace("{year}", new Date().getFullYear().toString())}
-          </span>
-          <div className="text-[13px] font-medium text-white/40 flex items-center gap-2">
-            Designed for Real Estate Excellence
+          <div className="fare-gold-divider w-full mb-5" />
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <span className="text-[13px] font-medium text-white/35">
+              {data.copyright.replace("{year}", new Date().getFullYear().toString())}
+            </span>
+            <div className="text-[13px] font-medium text-white/35 flex items-center gap-2.5">
+              <span className="w-1 h-1 rounded-full bg-[#C99A2E]/40" />
+              Designed for Real Estate Excellence
+            </div>
           </div>
         </motion.div>
       </footer>

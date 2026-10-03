@@ -175,7 +175,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             {isMobile && (
               <motion.div
                 variants={itemVariants}
-                className="w-full rounded overflow-hidden shadow-[0_12px_40px_-10px_rgba(11,29,58,0.18)] mb-6"
+                className="w-full rounded overflow-hidden luxury-shadow-float mb-6"
               >
                 <img
                   src={trainersHero}
@@ -237,7 +237,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="lg:relative w-[65%] sm:w-[50%] lg:w-[52%] xl:w-[54%] h-[260px] sm:h-[360px] lg:h-auto flex items-end lg:items-center justify-end z-0"
             >
-              <div className="relative w-full h-full lg:h-[480px] xl:h-[510px] rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden shadow-[0_20px_50px_-15px_rgba(11,29,58,0.15)] lg:shadow-[0_25px_70px_-15px_rgba(11,29,58,0.22)] border-l border-t lg:border-b border-white/80">
+              <div className="relative w-full h-full lg:h-[480px] xl:h-[510px] rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden luxury-shadow-float lg:luxury-shadow-float border-l border-t lg:border-b border-white/80">
                 <motion.img
                   animate={{ scale: [1, 1.04, 1] }}
                   transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}

@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
-import { ArrowRight, Check, Settings2, Sparkles } from "lucide-react";
+import { ChevronRight, ArrowRight, Check, Settings2, Sparkles } from "lucide-react";
 import { useState } from "react";
 import Modal from "../../../Components/Forms/Modal";
 import RECompaniesForm from "../../../Components/Forms/Mobile/RECompaniesForm";
@@ -98,7 +98,7 @@ export default function Mobile() {
           </div>
           <motion.div
             variants={item}
-            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-6 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.1)] relative overflow-hidden"
+            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-6 luxury-shadow-float relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[#C99A2E]/10 to-transparent rounded-bl-full pointer-events-none opacity-60"></div>
             <h3
@@ -150,7 +150,7 @@ export default function Mobile() {
           </motion.div>
           <motion.div
             variants={item}
-            className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded p-7 shadow-[0_15px_30px_-10px_rgba(11,29,58,0.2)] flex flex-col items-center text-center relative overflow-hidden"
+            className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded p-7 luxury-shadow-float flex flex-col items-center text-center relative overflow-hidden"
           >
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -166,11 +166,10 @@ export default function Mobile() {
             <div className="flex flex-col w-full gap-3 relative z-10">
               <button className="group w-full bg-white text-[#0B1D3A] py-4 rounded text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out" onClick={() => setIsModalOpen(true)}>
                 {data.ctaButton}{" "}
-                <ArrowRight
-                  size={15}
-                  strokeWidth={2.5}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
+                <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"group-hover:translate-x-1"}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
               </button>
               {data.secondaryCtaButton && (
                 <button className="w-full bg-white/10 border border-white/20 text-white py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer" onClick={() => setIsVideoModalOpen(true)}>

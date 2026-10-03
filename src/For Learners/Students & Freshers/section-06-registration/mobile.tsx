@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { UserPlus, ArrowRight, Sparkles } from "lucide-react";
+import { ChevronRight, UserPlus, ArrowRight, Sparkles } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
@@ -10,14 +10,14 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-20 px-5 font-['Outfit'] relative overflow-hidden flex items-center justify-center">
+    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-20 px-5 font-['Outfit'] relative overflow-hidden flex items-center justify-center fare-noise-overlay">
       <div className="w-full max-w-[480px] mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6 }}
-          className="relative rounded-[20px] overflow-hidden shadow-[0_20px_60px_-15px_rgba(11,29,58,0.3)] group"
+          className="relative rounded-[20px] overflow-hidden luxury-shadow-float group"
         >
 
           <div className="absolute inset-0 bg-[#0B1D3A]" />
@@ -85,7 +85,7 @@ export default function Mobile() {
               className="flex flex-col gap-4 w-full"
             >
               <button 
-                className="w-full h-14 rounded-[6px] font-bold text-[15px] text-[#0B1D3A] flex items-center justify-center gap-2 relative overflow-hidden transition-all duration-300 active:scale-[0.98] shadow-[0_8px_20px_rgba(201,154,46,0.25)]"
+                className="w-full h-14 rounded-[6px] font-bold text-[15px] text-[#0B1D3A] flex items-center justify-center gap-2 relative overflow-hidden transition-all duration-300 active:scale-[0.98] luxury-shadow-float"
                 style={{ background: `linear-gradient(135deg, ${GOLD}, #E5C370)` }}
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -96,7 +96,10 @@ export default function Mobile() {
               
               <button className="w-full h-14 bg-white/5 border border-white/20 text-white rounded-[6px] font-bold text-[15px] active:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm active:scale-[0.98]">
                 {data.buttons.secondary}
-                <ArrowRight size={16} strokeWidth={2.5} />
+                <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${16}px` }}>
+      <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
               </button>
             </motion.div>
           </div>

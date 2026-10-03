@@ -1,13 +1,11 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import {
-  PhoneOff,
+import { ChevronRight, PhoneOff,
   UserMinus,
   Users,
   TrendingDown,
   Repeat,
-  ArrowRight,
-} from "lucide-react";
+  ArrowRight, } from "lucide-react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
 const NAVY = "#0B1D3A";
@@ -164,7 +162,7 @@ export default function Mobile() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.6 }}
-          className="w-full rounded p-8 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.25)] relative overflow-hidden text-center"
+          className="w-full rounded p-8 luxury-shadow-float relative overflow-hidden text-center"
           style={{
             background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 100%)`,
           }}
@@ -193,7 +191,10 @@ export default function Mobile() {
                 ease: "easeInOut",
               }}
             >
-              <ArrowRight size={20} />
+              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${20}px` }}>
+      <ChevronRight size={20} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={20} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
             </motion.span>
           </h4>
         </motion.div>

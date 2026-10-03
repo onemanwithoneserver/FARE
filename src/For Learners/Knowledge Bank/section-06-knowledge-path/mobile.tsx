@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
@@ -10,7 +10,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-16 px-6 font-['Outfit']">
+    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-16 px-6 font-['Outfit'] fare-noise-overlay">
       <div className="max-w-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -58,7 +58,10 @@ export default function Mobile() {
                   style={{ color: i === 0 ? "#0284C7" : "#D97706" }}
                 >
                   {path.cta} 
-                  <ArrowRight size={14} strokeWidth={2.5} />
+                  <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${14}px` }}>
+      <ChevronRight size={14} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={14} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                 </button>
               </motion.div>
             );

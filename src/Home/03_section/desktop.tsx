@@ -2,16 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
-import {
-  Building2,
+import { ChevronRight, Building2,
   GraduationCap,
   UserCheck,
   ArrowRight,
   Sparkles,
   Check,
   MapPin,
-  ChevronDown,
-} from "lucide-react";
+  ChevronDown, } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 const NAVY = "#0B1D3A";
@@ -66,7 +64,7 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full py-16 relative font-['Outfit'] z-20"
+      className="w-full py-16 relative font-['Outfit'] z-20 fare-noise-overlay"
       style={{
         background:
           "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)",
@@ -154,7 +152,7 @@ export default function Desktop() {
                   y: -8,
                   transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
                 }}
-                className={`group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/20 rounded-xl p-8 xl:p-9 flex flex-col justify-between shadow-[0_12px_36px_-12px_rgba(11,29,58,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(11,29,58,0.16)] transition-all duration-400 relative h-full cursor-default ${
+                className={`group bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/20 rounded-xl p-8 xl:p-9 flex flex-col justify-between luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative h-full cursor-default ${
                   isCompany ? "overflow-visible z-30" : "overflow-hidden"
                 }`}
               >
@@ -221,7 +219,7 @@ export default function Desktop() {
                           setIsCompanyDropdownOpen(!isCompanyDropdownOpen)
                         }
                         aria-label={persona.cta}
-                        className="h-11 px-5 rounded-[4px] flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_8px_24px_-4px_rgba(11,29,58,0.35)] hover:scale-105 active:scale-95 group/btn cursor-pointer"
+                        className="h-11 px-5 rounded-[4px] flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:luxury-shadow-float hover:scale-105 active:scale-95 group/btn cursor-pointer"
                         style={{
                           background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`,
                         }}
@@ -250,7 +248,7 @@ export default function Desktop() {
                               duration: 0.18,
                               ease: [0.16, 1, 0.3, 1],
                             }}
-                            className="absolute top-[calc(100%+8px)] right-0 w-[260px] bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-[4px] p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-50 pointer-events-auto hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+                            className="absolute top-[calc(100%+8px)] right-0 w-[260px] bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-[4px] p-1.5 luxury-shadow-float z-50 pointer-events-auto hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
                           >
                             <div className="flex flex-col gap-1">
                               {data.companyDropdown?.map((item, idx) => (
@@ -283,11 +281,10 @@ export default function Desktop() {
                                       {item.title}
                                     </span>
                                   </div>
-                                  <ArrowRight
-                                    size={14}
-                                    strokeWidth={2.5}
-                                    className="text-[#10B981] group-hover/item:text-[#E2C068] group-hover/item:translate-x-0.5 transition-all shrink-0 ml-1"
-                                  />
+                                  <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#10B981] group-hover/item:text-[#E2C068] shrink-0 ml-1"}`} style={{ fontSize: `${14}px` }}>
+      <ChevronRight size={14} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={14} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                                 </button>
                               ))}
                             </div>
@@ -299,7 +296,7 @@ export default function Desktop() {
                     <button
                       onClick={() => handleRedirect(persona.path)}
                       aria-label={persona.cta}
-                      className="h-11 px-5 rounded-[4px] flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:shadow-[0_8px_24px_-4px_rgba(11,29,58,0.35)] hover:scale-105 active:scale-95 group/btn cursor-pointer"
+                      className="h-11 px-5 rounded-[4px] flex items-center justify-center gap-2 transition-all duration-300 ease-out relative overflow-hidden shadow-[0_4px_16px_-4px_rgba(11,29,58,0.25)] hover:luxury-shadow-float hover:scale-105 active:scale-95 group/btn cursor-pointer"
                       style={{
                         background: `linear-gradient(135deg, ${NAVY} 0%, #162E56 100%)`,
                       }}
@@ -307,12 +304,10 @@ export default function Desktop() {
                       <span className="text-[13.5px] font-bold text-white transition-all duration-300">
                         {exploreLabel}
                       </span>
-                      <ArrowRight
-                        size={16}
-                        strokeWidth={2.5}
-                        className="shrink-0 relative z-10 transition-transform duration-300 group-hover/btn:translate-x-1"
-                        style={{ color: accent }}
-                      />
+                      <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"shrink-0 relative z-10"}`} style={{ fontSize: `${16}px`, color: accent }}>
+      <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                     </button>
                   )}

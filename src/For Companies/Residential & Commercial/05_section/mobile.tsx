@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ArrowRight, Sparkles, ChevronDown } from "lucide-react";
+import { ChevronRight, ArrowRight, Sparkles, ChevronDown } from "lucide-react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
 const NAVY = "#0B1D3A";
@@ -95,7 +95,7 @@ export default function Mobile() {
           className="flex flex-col gap-10 relative px-2"
         >
           <div className="absolute top-[25px] bottom-[15px] left-[33px] -translate-x-1/2 w-[28px] z-0 pointer-events-none flex flex-col items-center">
-            <div className="flex-1 w-[22px] bg-gradient-to-b from-white/90 via-[#F1F5F9]/80 to-white/90 border-x border-[#C99A2E]/30 backdrop-blur-md relative overflow-hidden rounded-t-full shadow-[0_2px_8px_rgba(201,154,46,0.08)] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out">
+            <div className="flex-1 w-[22px] bg-gradient-to-b from-white/90 via-[#F1F5F9]/80 to-white/90 border-x border-[#C99A2E]/30 backdrop-blur-md relative overflow-hidden rounded-t-full shadow-[0_2px_8px_rgba(201,154,46,0.08)] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
               <motion.div
                 className="absolute inset-0 bg-gradient-to-b from-transparent via-[#C99A2E]/35 to-transparent h-1/3"
                 animate={{ y: ["-100%", "350%"] }}
@@ -160,7 +160,7 @@ export default function Mobile() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, margin: "-50px" }}
-            className="w-full bg-white/90 backdrop-blur-xl px-3 py-5 rounded border border-[#0B1D3A]/[0.08] shadow-[0_10px_30px_-5px_rgba(11,29,58,0.08)] flex flex-wrap items-center justify-center gap-2 relative z-10"
+            className="w-full bg-white/90 backdrop-blur-xl px-3 py-5 rounded border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-wrap items-center justify-center gap-2 relative z-10"
           >
             {data.journeyLabel.split(" → ").map((label, idx, arr) => {
               const isActive = activeStep === idx;
@@ -208,11 +208,10 @@ export default function Mobile() {
                         repeat: isActive ? Infinity : 0,
                       }}
                     >
-                      <ArrowRight
-                        size={13}
-                        className={`transition-colors duration-300 ${isActive ? "text-[#C99A2E]" : "text-[#CBD5E1]"}`}
-                        strokeWidth={2.5}
-                      />
+                      <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${13}px` }}>
+      <ChevronRight size={13} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={13} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                     </motion.div>
                   )}
                 </div>

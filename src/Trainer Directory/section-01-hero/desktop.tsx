@@ -2,7 +2,7 @@ import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ShieldCheck, MapPin, Globe, Briefcase, GraduationCap, Users, ArrowRight } from "lucide-react";
+import { ChevronRight, ShieldCheck, MapPin, Globe, Briefcase, GraduationCap, Users, ArrowRight } from "lucide-react";
 import trainerImg from "../../assets/re_trainers_hero.jpg";
 
 const NAVY = "#0B1D3A";
@@ -53,14 +53,14 @@ export default function Desktop() {
             
             <div className="absolute -inset-1 bg-gradient-to-br from-[#6366F1]/40 via-[#C99A2E]/40 to-[#06B6D4]/40 rounded blur-lg group-hover:blur-xl transition-all duration-500 opacity-60" />
             
-            <div className="relative w-full aspect-[3/4] rounded overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+            <div className="relative w-full aspect-[3/4] rounded overflow-hidden luxury-shadow-float">
               <img src={trainerImg} alt={data.trainerName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/80 via-transparent to-transparent opacity-80" />
             </div>
             
             {data.isVerified && (
               <div 
-                className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-5 py-2.5 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-105"
+                className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-5 py-2.5 rounded-full luxury-shadow-float transition-transform duration-300 hover:scale-105"
                 style={{
                   background: "rgba(255,255,255,0.1)",
                   backdropFilter: "blur(20px)",
@@ -174,10 +174,13 @@ export default function Desktop() {
 
             
             <motion.div variants={item} className="flex items-center gap-5">
-              <button className="bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#0B1D3A] px-8 py-3.5 rounded font-black text-[15px] hover:shadow-[0_10px_25px_-5px_rgba(201,154,46,0.5)] transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group/btn">
+              <button className="bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#0B1D3A] px-8 py-3.5 rounded font-black text-[15px] hover:luxury-shadow-float transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group/btn">
                 <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-500 ease-in-out" />
                 <span>{data.cta}</span>
-                <ArrowRight size={18} strokeWidth={2.5} />
+                <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${18}px` }}>
+      <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
               </button>
             </motion.div>
           </motion.div>

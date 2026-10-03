@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ChevronRight, Sparkles, ArrowRight } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 import studentsHero from "../../../assets/students_hero.jpg";
@@ -30,7 +30,7 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full flex items-center justify-between overflow-x-clip relative font-['Outfit']"
+      className="w-full flex items-center justify-between overflow-x-clip relative font-['Outfit'] fare-noise-overlay"
       style={{
         background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
       }}
@@ -95,17 +95,21 @@ export default function Desktop() {
 
           <motion.div variants={item} className="flex items-center gap-4 mb-5">
             <button
-              className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[8px] flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[8px] flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out relative overflow-hidden group cursor-pointer"
               style={{
                 background: NAVY,
                 boxShadow: `0 4px 16px rgba(11,29,58,0.2), 0 2px 4px rgba(0,0,0,0.1)`,
               }}
             >
-              🚀 {data.buttons.primary}
-              <ArrowRight size={15} strokeWidth={2.5} />
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
+              <span className="relative z-10 flex items-center gap-2">🚀 {data.buttons.primary}</span>
+              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"relative z-10 group-hover:translate-x-1"}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
             </button>
             <button
-              className="text-[14px] font-semibold px-7 py-3.5 rounded-[8px] border border-[#0B1D3A]/15 bg-white hover:bg-[#F8FAFD] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="text-[14px] font-semibold px-7 py-3.5 rounded-[8px] border border-[#0B1D3A]/15 bg-white hover:bg-[#F8FAFD] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer hover:shadow-[0_4px_12px_rgba(11,29,58,0.05)]"
               style={{ color: NAVY }}
             >
               {data.buttons.secondary}
@@ -120,7 +124,7 @@ export default function Desktop() {
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end pl-0"
         >
-          <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] sm:rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden shadow-[0_25px_70px_-15px_rgba(11,29,58,0.22),0_10px_30px_-5px_rgba(0,0,0,0.06)] border-l border-t border-b border-white/80 group">
+          <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] sm:rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80 group">
             <motion.img
               animate={{ scale: [1, 1.04, 1] }}
               transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}

@@ -64,6 +64,8 @@ export default function Desktop({
       whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
       className={`group relative flex ${isFull ? "flex-row" : "flex-col"} h-full bg-white rounded-2xl p-2.5 font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] hover:shadow-[0_4px_10px_-4px_rgba(11,29,58,0.08),0_24px_50px_-16px_rgba(11,29,58,0.22)] hover:border-[#C99A2E]/30 transition-[box-shadow,border-color] duration-500`}
     >
+      <span aria-hidden className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 bg-[radial-gradient(120%_60%_at_50%_0%,rgba(201,154,46,0.18),transparent_70%)] blur-xl" />
+      <span aria-hidden className="pointer-events-none absolute inset-x-8 top-0 h-px z-10 bg-gradient-to-r from-transparent via-[#C99A2E]/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div
         className={`relative overflow-hidden rounded-xl shrink-0 bg-[#EEF2F8] ${
           isFull ? "w-[300px] self-stretch" : "w-full aspect-[16/11]"
@@ -203,7 +205,7 @@ export default function Desktop({
           </button>
 
           <button
-            className={`group/rq ${isFull ? "px-6" : "flex-1"} h-10 rounded-xl text-[13px] font-bold flex items-center justify-center gap-1.5 relative overflow-hidden transition-all duration-300 shadow-[0_6px_16px_-6px_rgba(201,154,46,0.6)] hover:shadow-[0_10px_24px_-6px_rgba(201,154,46,0.7)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50`}
+            className={`group/rq ${isFull ? "px-6" : "flex-1"} h-10 rounded-xl text-[13px] font-bold flex items-center justify-center gap-1.5 relative overflow-hidden transition-all duration-300 shadow-[0_6px_16px_-6px_rgba(201,154,46,0.6)] hover:luxury-shadow-float active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50`}
             style={{ background: `linear-gradient(135deg, ${GOLD_MID} 0%, ${GOLD} 100%)`, color: NAVY }}
           >
             <span className="relative z-10 flex items-center gap-1.5">

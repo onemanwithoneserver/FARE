@@ -2,14 +2,12 @@ import React from "react";
 import { motion } from "motion/react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
-import {
-  CheckCircle2,
+import { ChevronRight, CheckCircle2,
   ArrowRight,
   BookOpen,
   BarChart2,
   Target,
-  Users,
-} from "lucide-react";
+  Users, } from "lucide-react";
 const GOLD = "#C99A2E";
 const TAB_ICONS: Record<string, React.ReactNode> = {
   tab1: <BookOpen size={16} className="text-white" />,
@@ -68,7 +66,7 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-50px" }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-white/80 border border-[#0B1D3A]/10 rounded-xl overflow-hidden backdrop-blur-xl shadow-[0_15px_40px_-10px_rgba(11,29,58,0.08)] relative hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="bg-white/80 border border-[#0B1D3A]/10 rounded-xl overflow-hidden backdrop-blur-xl luxury-shadow-float relative hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div
                   className="absolute top-0 right-0 w-[200px] h-[200px] opacity-[0.06] blur-[50px] pointer-events-none rounded-bl-full"
@@ -84,7 +82,7 @@ export default function Mobile() {
                   <div className="flex flex-col">
                     <div className="flex items-center gap-4 mb-5">
                       <div
-                        className="w-12 h-12 rounded-lg flex items-center justify-center shadow-md"
+                        className="w-12 h-12 shrink-0 rounded-lg flex items-center justify-center shadow-md"
                         style={{ backgroundColor: activeColor }}
                       >
                         {TAB_ICONS[tab.id]}
@@ -218,7 +216,7 @@ export default function Mobile() {
                         )}
                       </div>
                     )}
-                    <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-lg p-6 shadow-[0_10px_20px_rgba(11,29,58,0.15)] mt-2 relative overflow-hidden">
+                    <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-lg p-6 luxury-shadow-float mt-2 relative overflow-hidden">
                       <div
                         className="absolute top-0 right-0 w-24 h-24 opacity-20 blur-[20px]"
                         style={{ background: activeColor }}
@@ -241,7 +239,10 @@ export default function Mobile() {
                                   : "text-white border border-white/20 active:scale-[0.98]"
                               }`}
                             >
-                              {btn} <ArrowRight size={15} strokeWidth={2.5} />
+                              {btn} <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                             </button>
                           ),
                         )}

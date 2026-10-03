@@ -61,7 +61,7 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] flex flex-col relative overflow-hidden group"
+                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-5 luxury-shadow-float flex flex-col relative overflow-hidden group"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px] opacity-80"
@@ -91,7 +91,7 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded p-6 flex items-center justify-between shadow-[0_8px_32px_-8px_rgba(11,29,58,0.15)] relative overflow-hidden"
+                className="bg-gradient-to-r from-[#0B1D3A] to-[#132A4D] rounded p-6 flex items-center justify-between luxury-shadow-float relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[20px] pointer-events-none" />
                 <div

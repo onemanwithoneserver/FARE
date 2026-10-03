@@ -111,7 +111,10 @@ export default function Mobile() {
               boxShadow: "0 2px 8px rgba(11,29,58,0.15)",
             }}
           >
-            {data.buttons.primary} <ArrowRight size={14} strokeWidth={2.5} />
+            {data.buttons.primary} <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${14}px` }}>
+      <ChevronRight size={14} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={14} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
           </button>
           <button
             onClick={() => setIsVideoModalOpen(true)}
@@ -331,7 +334,10 @@ export default function Mobile() {
                           Upcoming Schedule
                         </h3>
                         <button className="text-[9px] font-semibold text-white/40 hover:text-white/60 transition-colors flex items-center gap-1 border border-white/[0.08] px-2.5 py-1 rounded-sm hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
-                          View All <ArrowRight size={8} />
+                          View All <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${8}px` }}>
+      <ChevronRight size={8} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={8} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                         </button>
                       </div>
                       <div className="flex flex-col gap-2">
@@ -422,7 +428,10 @@ export default function Mobile() {
                       className="text-[9px] font-medium flex items-center gap-1"
                       style={{ color: MUTED_BLUE }}
                     >
-                      Mock Tests <ArrowRight size={8} />
+                      Mock Tests <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${8}px` }}>
+      <ChevronRight size={8} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={8} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                     </div>
                   </div>
                 </motion.div>
@@ -463,7 +472,10 @@ export default function Mobile() {
                       className="text-[9px] font-medium flex items-center gap-1"
                       style={{ color: MUTED_BLUE }}
                     >
-                      Daily Tracking <ArrowRight size={8} />
+                      Daily Tracking <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${8}px` }}>
+      <ChevronRight size={8} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={8} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                     </div>
                   </div>
                 </motion.div>

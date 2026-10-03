@@ -63,7 +63,7 @@ export default function Mobile() {
                 <motion.div
                   key={idx}
                   variants={item}
-                  className={`bg-white/90 backdrop-blur-xl rounded p-4 border relative overflow-hidden flex flex-col shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] ${mode.disabled
+                  className={`bg-white/90 backdrop-blur-xl rounded p-4 border relative overflow-hidden flex flex-col luxury-shadow-float ${mode.disabled
                       ? "opacity-50 border-[#0B1D3A]/[0.04]"
                       : "border-[#0B1D3A]/[0.06]"
                     }`}

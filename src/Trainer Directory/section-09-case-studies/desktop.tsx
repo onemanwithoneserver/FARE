@@ -72,7 +72,7 @@ export default function Desktop() {
                 key={idx}
                 variants={item}
                 whileHover={{ y: -4, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-                className="group flex rounded overflow-hidden border border-[#0B1D3A]/[0.07] bg-white/90 backdrop-blur-xl shadow-[0_4px_24px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.14)] transition-all duration-500 relative"
+                className="group flex rounded overflow-hidden border border-[#0B1D3A]/[0.07] bg-white/90 backdrop-blur-xl luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-500 relative"
               >
                 
                 <div
@@ -106,7 +106,7 @@ export default function Desktop() {
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                     <motion.div
                       whileHover={{ scale: 1.12 }}
-                      className="w-14 h-14 rounded-full flex items-center justify-center border border-white/30 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-all duration-300 group-hover:border-white/50"
+                      className="w-14 h-14 rounded-full flex items-center justify-center border border-white/30 backdrop-blur-md luxury-shadow-float transition-all duration-300 group-hover:border-white/50"
                       style={{ background: "rgba(255,255,255,0.15)" }}
                     >
                       <Play size={22} fill="white" className="ml-1 text-white" />

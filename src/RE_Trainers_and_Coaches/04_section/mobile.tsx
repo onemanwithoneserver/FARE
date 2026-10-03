@@ -112,7 +112,7 @@ export default function Mobile() {
               <motion.div
                 key={index}
                 variants={item}
-                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-6 shadow-[0_10px_20px_-5px_rgba(11,29,58,0.12)] relative overflow-hidden"
+                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-6 luxury-shadow-float relative overflow-hidden"
               >
                 <motion.div
                   animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -154,7 +154,7 @@ export default function Mobile() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
-            className="rounded p-6 relative overflow-hidden shadow-[0_20px_40px_-10px_rgba(11,29,58,0.35)] border border-[#C99A2E]/30"
+            className="rounded p-6 relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/30"
             style={{
               background:
                 "linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)",

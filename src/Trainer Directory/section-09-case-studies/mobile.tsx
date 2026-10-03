@@ -64,7 +64,7 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="group rounded overflow-hidden border border-[#0B1D3A]/[0.07] bg-white shadow-[0_4px_20px_-8px_rgba(11,29,58,0.1)] relative"
+                className="group rounded overflow-hidden border border-[#0B1D3A]/[0.07] bg-white luxury-shadow-float relative"
               >
                 
                 <div className="absolute top-0 left-0 right-0 h-[3px] z-10" style={{ background: accent.bar }} />

@@ -3,14 +3,12 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
-import {
-  CheckCircle2,
+import { ChevronRight, CheckCircle2,
   ArrowRight,
   BookOpen,
   BarChart2,
   Target,
-  Users,
-} from "lucide-react";
+  Users, } from "lucide-react";
 const GOLD = "#C99A2E";
 const TAB_ICONS: Record<string, React.ReactNode> = {
   tab1: <BookOpen size={18} className="text-white" />,
@@ -78,7 +76,7 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-100px" }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-white/80 border border-[#0B1D3A]/10 rounded-2xl overflow-hidden backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(11,29,58,0.1)] hover:shadow-[0_30px_80px_-20px_rgba(11,29,58,0.15)] transition-shadow duration-500 relative group/card"
+                className="bg-white/80 border border-[#0B1D3A]/10 rounded-2xl overflow-hidden backdrop-blur-xl luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-shadow duration-500 relative group/card"
               >
                 <div
                   className="absolute top-0 left-1/4 w-1/2 h-[2px] opacity-70 group-hover/card:w-2/3 group-hover/card:left-1/6 transition-all duration-700"
@@ -96,7 +94,7 @@ export default function Desktop() {
                   <div className="flex-1 flex flex-col">
                     <div className="flex items-center gap-4 mb-6">
                       <div
-                        className="w-14 h-14 rounded-xl flex items-center justify-center shadow-lg group-hover/card:scale-105 transition-transform duration-500"
+                        className="w-14 h-14 shrink-0 rounded-xl flex items-center justify-center shadow-lg group-hover/card:scale-105 transition-transform duration-500"
                         style={{ backgroundColor: activeColor }}
                       >
                         {TAB_ICONS[tab.id]}
@@ -211,10 +209,10 @@ export default function Desktop() {
                                         {step}
                                       </span>
                                       {i < arr.length - 1 && (
-                                        <ArrowRight
-                                          size={14}
-                                          className="text-[#0B1D3A]/20 ml-auto group-hover:translate-y-1 transition-transform rotate-90 sm:rotate-0 sm:group-hover:translate-y-0 sm:group-hover:translate-x-1"
-                                        />
+                                        <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#0B1D3A]/20 ml-auto group-hover:translate-y-1 rotate-90 sm:rotate-0 sm:group-hover:translate-y-0 sm:group-hover:translate-x-1"}`} style={{ fontSize: `${14}px` }}>
+      <ChevronRight size={14} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={14} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                                       )}
                                     </div>
                                   ),
@@ -247,7 +245,7 @@ export default function Desktop() {
                         )}
                       </div>
                     )}
-                    <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-xl p-6 shadow-[0_20px_40px_rgba(11,29,58,0.2)] mt-2 relative overflow-hidden flex flex-col justify-center min-h-[200px]">
+                    <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] rounded-xl p-6 luxury-shadow-float mt-2 relative overflow-hidden flex flex-col justify-center min-h-[200px]">
                       <div
                         className="absolute top-0 right-0 w-40 h-40 opacity-20 blur-[30px]"
                         style={{ background: activeColor }}
@@ -280,11 +278,10 @@ export default function Desktop() {
                               }`}
                             >
                               <span className="relative z-10">{btn}</span>
-                              <ArrowRight
-                                size={16}
-                                strokeWidth={2.5}
-                                className="relative z-10 group-hover:translate-x-1 transition-transform"
-                              />
+                              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"relative z-10 group-hover:translate-x-1"}`} style={{ fontSize: `${16}px` }}>
+      <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                             </button>
                           ),
                         )}

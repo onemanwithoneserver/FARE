@@ -111,7 +111,7 @@ export default function Desktop() {
                 y: -6,
                 transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
               }}
-              className="group bg-white border border-[#0B1D3A]/[0.06] rounded p-10 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.04)] hover:shadow-[0_20px_50px_-15px_rgba(11,29,58,0.12)] transition-all duration-400 relative overflow-hidden flex flex-col cursor-default"
+              className="group bg-white border border-[#0B1D3A]/[0.06] rounded p-10 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative overflow-hidden flex flex-col cursor-default"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}

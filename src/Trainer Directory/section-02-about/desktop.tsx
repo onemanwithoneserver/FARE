@@ -78,7 +78,7 @@ export default function Desktop() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 flex flex-col justify-center shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_12px_30px_-10px_rgba(11,29,58,0.12)] transition-all duration-300 group/stat relative overflow-hidden"
+                className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 flex flex-col justify-center luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-300 group/stat relative overflow-hidden"
               >
                 <div className="absolute top-0 left-0 right-0 h-[2px] opacity-60 group-hover/stat:opacity-100 transition-opacity" style={{ background: statIcons[idx]?.bg || statIcons[0].bg }} />
                 <div

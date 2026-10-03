@@ -53,7 +53,7 @@ export default function ContactUsDesktop() {
   return (
     <div className="w-full font-['Outfit'] relative overflow-hidden">
       <section
-        className="relative w-full pt-12 pb-20 flex flex-col items-center"
+        className="relative w-full pt-12 pb-40 flex flex-col items-center"
         style={{
           background: `linear-gradient(180deg, #0B1D3A 0%, #102647 60%, #1A3460 100%)`,
         }}
@@ -118,7 +118,7 @@ export default function ContactUsDesktop() {
         </motion.div>
       </section>
       <section className="relative w-full bg-[#F8FAFD] py-14 px-6">
-        <div className="max-w-[1060px] mx-auto -mt-16 relative z-20">
+        <div className="max-w-[1060px] mx-auto -mt-[154px] relative z-20">
           <motion.div
             variants={container}
             initial="hidden"
@@ -128,7 +128,7 @@ export default function ContactUsDesktop() {
           >
             <motion.div
               variants={item}
-              className="bg-white rounded-2xl p-5 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col justify-between"
+              className="bg-white rounded-2xl p-5 border border-[#0B1D3A]/[0.06] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 group hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center mb-3 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
@@ -198,7 +198,7 @@ export default function ContactUsDesktop() {
             </motion.div>
             <motion.div
               variants={item}
-              className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col"
+              className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 group hover:-translate-y-1 flex flex-col"
             >
               <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center mb-4 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                 <MapPin size={20} className="text-white" />
@@ -223,7 +223,7 @@ export default function ContactUsDesktop() {
             </motion.div>
             <motion.div
               variants={item}
-              className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col"
+              className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 group hover:-translate-y-1 flex flex-col"
             >
               <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#7C3AED] flex items-center justify-center mb-4 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                 <Building2 size={20} className="text-white" />
@@ -243,7 +243,7 @@ export default function ContactUsDesktop() {
             </motion.div>
             <motion.div
               variants={item}
-              className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.08)] hover:shadow-[0_12px_36px_-8px_rgba(11,29,58,0.14)] transition-all duration-400 group hover:-translate-y-1 flex flex-col"
+              className="bg-white rounded-2xl p-6 border border-[#0B1D3A]/[0.06] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 group hover:-translate-y-1 flex flex-col"
             >
               <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-4 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                 <Clock size={20} className="text-white" />

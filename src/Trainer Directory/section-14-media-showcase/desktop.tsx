@@ -57,7 +57,7 @@ export default function Desktop() {
               className="flex flex-col gap-4 group cursor-pointer"
             >
               <div
-                className={`relative aspect-video rounded overflow-hidden flex items-center justify-center border ${video.thumbnail === 'navy' ? 'border-[#0B1D3A]/20' : 'border-[#0B1D3A]/[0.08]'} shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] group-hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.18)] transition-all duration-400 ease-out bg-white/90 backdrop-blur-xl`}
+                className={`relative aspect-video rounded overflow-hidden flex items-center justify-center border ${video.thumbnail === 'navy' ? 'border-[#0B1D3A]/20' : 'border-[#0B1D3A]/[0.08]'} luxury-shadow-float group-hover:luxury-shadow-float transition-all duration-400 ease-out bg-white/90 backdrop-blur-xl`}
                 style={{
                   background: video.thumbnail === 'navy'
                     ? `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)`

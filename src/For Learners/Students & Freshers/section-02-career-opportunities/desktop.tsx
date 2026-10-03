@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Briefcase, Building2, ArrowRight } from "lucide-react";
+import { Briefcase, Building2 } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
@@ -26,7 +26,7 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
@@ -56,11 +56,11 @@ export default function Desktop() {
             <motion.div
               key={i}
               variants={item}
-              className="bg-gradient-to-br from-white to-[#FAFBFF] p-8 rounded-[16px] shadow-[0_8px_30px_rgba(11,29,58,0.05)] border border-[#E2E8F0]/50 hover:shadow-[0_24px_48px_rgba(11,29,58,0.1)] hover:border-[#C99A2E]/20 transition-all duration-300 flex flex-col h-full"
+              className="bg-white/90 backdrop-blur-xl p-8 lg:p-9 rounded-[20px] luxury-shadow-float border border-[#E2E8F0]/60 hover:luxury-shadow-float hover:border-[#C99A2E]/30 transition-all duration-400 flex flex-col h-full group"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-gradient-to-br ${i === 0 ? "from-[#38BDF8] to-[#0284C7]" : "from-[#F472B6] to-[#DB2777]"} shadow-sm`}>
-                  {i === 0 ? <Building2 size={24} className="text-white" strokeWidth={2} /> : <Briefcase size={24} className="text-white" strokeWidth={2} />}
+              <div className="flex items-center gap-4 mb-6">
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${i === 0 ? "from-[#38BDF8] to-[#0284C7]" : "from-[#F472B6] to-[#DB2777]"} shadow-md shrink-0`}>
+                  {i === 0 ? <Building2 size={26} className="text-white" strokeWidth={2} /> : <Briefcase size={26} className="text-white" strokeWidth={2} />}
                 </div>
                 <div>
                   <div className="text-[12px] font-bold tracking-widest text-[#64748B] uppercase mb-1">{opp.type}</div>
@@ -68,28 +68,23 @@ export default function Desktop() {
                 </div>
               </div>
               
-              <p className="text-[16px] text-[#475569] font-medium leading-relaxed mb-8">
+              <p className="text-[16px] text-[#475569] font-medium leading-relaxed mb-6">
                 {opp.description}
               </p>
               
-              <div className="flex flex-col gap-6 flex-grow mb-8">
+              <div className="flex flex-col gap-4 flex-grow">
                 {opp.categories.map((cat, j) => (
-                  <div key={j}>
-                    <h4 className="text-[14px] font-bold text-[#0B1D3A] uppercase tracking-wide mb-2 flex items-center gap-2">
+                  <div key={j} className="bg-[#F8FAFC]/80 rounded-xl p-4 border border-[#F1F5F9] transition-all duration-300 hover:bg-white hover:border-[#E2E8F0]">
+                    <h4 className="text-[13px] font-bold text-[#0B1D3A] uppercase tracking-wider mb-1.5 flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E]"></span>
                       {cat.name}
                     </h4>
-                    <p className="text-[15px] text-[#64748B] font-medium leading-relaxed pl-3.5">
+                    <p className="text-[14.5px] text-[#64748B] font-medium leading-relaxed pl-3.5">
                       {cat.items}
                     </p>
                   </div>
                 ))}
               </div>
-              
-              <button className={`w-full py-4 px-6 rounded-lg font-bold text-[15px] flex items-center justify-center gap-2 transition-all duration-300 ${i === 0 ? "bg-[#F8FAFC] text-[#0284C7] hover:bg-[#F0F9FF] border border-[#E0F2FE]" : "bg-[#FDF2F8] text-[#DB2777] hover:bg-[#FCE7F3] border border-[#FCE7F3]"}`}>
-                {opp.button}
-                <ArrowRight size={16} strokeWidth={2.5} />
-              </button>
             </motion.div>
           ))}
         </motion.div>
@@ -101,7 +96,7 @@ export default function Desktop() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <div className="inline-block bg-gradient-to-br from-white to-[#FAFBFF] px-10 py-6 rounded-[16px] border border-[#E2E8F0]/50 shadow-[0_8px_30px_rgba(11,29,58,0.04)] relative overflow-hidden group hover:border-[#C99A2E]/40 transition-colors duration-300">
+          <div className="inline-block bg-gradient-to-br from-white to-[#FAFBFF] px-10 py-6 rounded-[16px] border border-[#E2E8F0]/50 luxury-shadow-float relative overflow-hidden group hover:border-[#C99A2E]/40 transition-colors duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <p className="text-[20px] font-black text-[#0B1D3A] whitespace-pre-wrap leading-relaxed relative z-10 tracking-tight">
               {data.closing}

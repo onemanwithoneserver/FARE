@@ -86,7 +86,7 @@ export default function Desktop() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`relative p-6 rounded flex items-center gap-5 text-left transition-all duration-500 w-full overflow-hidden group ${
                     isActive
-                      ? "bg-gradient-to-r from-[#0B1D3A] to-[#132D5F] shadow-[0_20px_40px_-10px_rgba(11,29,58,0.3)] border border-transparent scale-[1.02]"
+                      ? "bg-gradient-to-r from-[#0B1D3A] to-[#132D5F] luxury-shadow-float border border-transparent scale-[1.02]"
                       : "bg-white border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/10 hover:bg-white shadow-sm hover:shadow-md"
                   }`}
                 >
@@ -144,7 +144,7 @@ export default function Desktop() {
               );
             })}
           </div>
-          <div className="flex-1 w-full bg-white border border-[#0B1D3A]/[0.06] rounded p-10 lg:p-14 flex flex-col relative overflow-hidden shadow-[0_10px_40px_-10px_rgba(11,29,58,0.05)]">
+          <div className="flex-1 w-full bg-white border border-[#0B1D3A]/[0.06] rounded p-10 lg:p-14 flex flex-col relative overflow-hidden luxury-shadow-float">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}

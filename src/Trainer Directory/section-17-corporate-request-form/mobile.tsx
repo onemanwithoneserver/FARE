@@ -53,7 +53,7 @@ export default function Mobile({ isOpen = false, onClose }: CorporateRequestForm
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-[500px] max-h-[95vh] overflow-y-auto bg-white/95 backdrop-blur-2xl rounded shadow-[0_24px_80px_-12px_rgba(11,29,58,0.3)] border border-white/40 flex flex-col p-6 font-['Outfit']"
+            className="relative w-full max-w-[500px] max-h-[95vh] overflow-y-auto bg-white/95 backdrop-blur-2xl rounded luxury-shadow-float border border-white/40 flex flex-col p-6 font-['Outfit']"
           >
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[30px] pointer-events-none z-0" />
             <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[30px] pointer-events-none z-0" />
@@ -147,7 +147,7 @@ export default function Mobile({ isOpen = false, onClose }: CorporateRequestForm
                 <div className="pt-2 border-t border-[#0B1D3A]/[0.06] mt-2">
                   <button
                     type="button"
-                    className="w-full text-white px-5 py-4 rounded font-bold text-[14px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50 flex items-center justify-center gap-2.5 shadow-[0_8px_24px_-8px_rgba(139,92,246,0.5)] active:translate-y-0 active:scale-[0.98] relative overflow-hidden group"
+                    className="w-full text-white px-5 py-4 rounded font-bold text-[14px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50 flex items-center justify-center gap-2.5 luxury-shadow-float active:translate-y-0 active:scale-[0.98] relative overflow-hidden group"
                     style={{ background: "linear-gradient(135deg, #8B5CF6, #6D28D9)" }}
                   >
                     Submit Request

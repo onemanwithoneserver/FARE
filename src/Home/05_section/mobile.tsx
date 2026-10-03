@@ -59,14 +59,21 @@ export default function Mobile() {
   return (
     <>
       <footer
-        className="w-full text-white pt-6 pb-6 px-6 font-['Outfit'] relative overflow-hidden"
+        className="w-full text-white pt-6 pb-6 px-6 font-['Outfit'] relative overflow-hidden fare-noise-overlay"
         style={{
-          background: "linear-gradient(180deg, #040C1E 0%, #030816 100%)",
-          borderTop: "1px solid rgba(255, 255, 255, 0.07)",
+          background:
+            "radial-gradient(ellipse at 30% 20%, rgba(99, 102, 241, 0.06) 0%, transparent 50%)," +
+            "radial-gradient(ellipse at 70% 80%, rgba(201, 154, 46, 0.04) 0%, transparent 50%)," +
+            "linear-gradient(180deg, #050E22 0%, #020610 100%)",
+          borderTop: "1px solid rgba(255, 255, 255, 0.05)",
         }}
       >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[280px] h-[100px] bg-[#C99A2E]/[0.03] rounded-full blur-[50px] pointer-events-none" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800c_1px,transparent_1px),linear-gradient(to_bottom,#8080800c_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none opacity-30" />
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(circle at 1.5px 1.5px, rgba(255,255,255,0.15) 1px, transparent 0)",
+            backgroundSize: "24px 24px",
+          }}
+        />
         
         <motion.div
           variants={containerVariants}
@@ -86,7 +93,7 @@ export default function Mobile() {
                 whileHover={{
                   scale: 1.05,
                   opacity: 1,
-                  filter: "drop-shadow(0 0 12px rgba(201,154,46,0.3))",
+                  filter: "drop-shadow(0 0 16px rgba(201,154,46,0.4))",
                 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.25 }}
@@ -94,16 +101,16 @@ export default function Mobile() {
               />
             </div>
 
-            <div className="w-full h-px bg-white/10 mb-5" />
+            <div className="fare-gold-divider w-full mb-5" />
             
-            <h4 className="text-[16px] font-serif text-[#E2C068] mb-3">Contact FARE</h4>
+            <h4 className="text-[16px] font-serif mb-3" style={{ color: "#E2C068" }}>Contact FARE</h4>
             
             <div className="flex flex-col items-center sm:items-start gap-2.5 mb-5 w-full">
-              <a href="#contact" className="text-[13.5px] font-bold text-white hover:text-[#E2C068] transition-colors flex items-center gap-1.5 w-fit">
-                Contact us <span className="text-[11px] font-normal leading-none">↗</span>
+              <a href="#contact" className="text-[13.5px] font-bold text-white hover:text-[#E2C068] transition-colors flex items-center gap-1.5 w-fit group/link">
+                Contact us <span className="text-[11px] font-normal leading-none transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">↗</span>
               </a>
               
-              <a href="mailto:hello@yardstack.in" className="text-[13px] text-white/60 hover:text-[#E2C068] transition-colors w-fit">
+              <a href="mailto:hello@yardstack.in" className="text-[13px] text-white/50 hover:text-[#E2C068] transition-colors w-fit">
                 hello@yardstack.in
               </a>
             </div>
@@ -117,14 +124,14 @@ export default function Mobile() {
                   social.name === "Linkedin" ? LinkedinIcon :
                   YoutubeIcon;
                 
-                const hoverClassMap: Record<string, string> = {
-                  Facebook: "hover:bg-[#1877F2] hover:text-white",
-                  Twitter: "hover:bg-black hover:text-white",
-                  Instagram: "hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:text-white",
-                  Linkedin: "hover:bg-gradient-to-tr hover:from-[#0077B5] hover:to-[#0A66C2] hover:text-white",
-                  Youtube: "hover:bg-[#FF0000] hover:text-white"
+                const brandClasses: Record<string, string> = {
+                  Facebook: "from-[#0668E1] to-[#1877F2] luxury-shadow-float",
+                  Twitter: "from-gray-700 to-black luxury-shadow-float",
+                  Instagram: "from-[#f09433] via-[#dc2743] to-[#bc1888] luxury-shadow-float",
+                  Linkedin: "from-[#0077B5] to-[#0A66C2] luxury-shadow-float",
+                  Youtube: "from-[#CC0000] to-[#FF0000] luxury-shadow-float"
                 };
-                const hoverClasses = hoverClassMap[social.name] || "hover:text-white hover:bg-[#C99A2E]/20";
+                const bgClass = brandClasses[social.name] || "from-[#C99A2E] to-[#D5AA45] luxury-shadow-float";
 
                 return (
                   <motion.a
@@ -133,10 +140,14 @@ export default function Mobile() {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ y: -2, scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 transition-all duration-300 ${hoverClasses}`}
+                    whileTap={{ scale: 0.92 }}
+                    className="relative group w-9 h-9 rounded-xl flex items-center justify-center text-white/60 transition-all duration-300 border border-white/10 hover:border-transparent hover:text-white overflow-hidden"
+                    style={{ background: "rgba(255,255,255,0.04)", backdropFilter: "blur(8px)" }}
                   >
-                    <Icon />
+                    <div className={`absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-tr animate-gradient-x ${bgClass}`} />
+                    <div className="relative z-10 flex items-center justify-center">
+                      <Icon />
+                    </div>
                   </motion.a>
                 );
               })}
@@ -146,7 +157,7 @@ export default function Mobile() {
           <div className="flex flex-col sm:flex-row flex-wrap gap-x-6 gap-y-8">
             {data.footerGroups.map((group, gIdx) => (
               <motion.div key={gIdx} variants={itemVariants} className="flex flex-col min-w-[140px] flex-1">
-                <h4 className="text-[16px] font-serif text-[#E2C068] mb-4 tracking-wide">
+                <h4 className="text-[16px] font-serif mb-4 tracking-wide" style={{ color: "#E2C068" }}>
                   {group.title}
                 </h4>
                 <div className="flex flex-col gap-3">
@@ -163,14 +174,18 @@ export default function Mobile() {
                           className={`relative z-10 transition-all duration-300 ${
                             isSelected
                               ? "text-white font-semibold"
-                              : "text-white/60 hover:text-white underline underline-offset-[5px] decoration-dotted decoration-white/40 group-hover:decoration-transparent"
+                              : "text-white/50 group-hover:text-white"
                           }`}
                         >
                           {link.label}
                         </span>
-                        {!isSelected && (
-                          <span className="absolute left-0 -bottom-[1px] w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                        )}
+                        <span
+                          className={`absolute left-0 -bottom-[2px] h-[1.5px] transition-all duration-400 ease-out ${
+                            isSelected
+                              ? "w-full bg-gradient-to-r from-[#C99A2E] to-[#D5AA45]"
+                              : "w-0 bg-gradient-to-r from-[#C99A2E]/60 to-transparent group-hover:w-full"
+                          }`}
+                        />
                       </motion.button>
                     );
                   })}
@@ -184,11 +199,14 @@ export default function Mobile() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="w-full relative z-10 mt-8 pt-5 border-t border-white/[0.06] flex flex-col items-center gap-2"
+          className="w-full relative z-10 mt-8"
         >
-          <span className="text-[12px] font-medium text-white/40 text-center">
-            {data.copyright.replace("{year}", new Date().getFullYear().toString())}
-          </span>
+          <div className="fare-gold-divider w-full mb-5" />
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-[12px] font-medium text-white/35 text-center">
+              {data.copyright.replace("{year}", new Date().getFullYear().toString())}
+            </span>
+          </div>
         </motion.div>
       </footer>
       <Modal isOpen={activeForm !== null} onClose={() => setActiveForm(null)}>

@@ -1,13 +1,11 @@
 import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import {
-  ShieldCheck,
+import { ShieldCheck,
   BarChart2,
   Target,
   Sparkles,
-  ArrowRight,
-} from "lucide-react";
+  ArrowRight, } from "lucide-react";
 import { useState } from "react";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
@@ -104,7 +102,7 @@ export default function Desktop() {
       <motion.div
         animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[-50px] right-[10%] w-[600px] h-[350px] border-b-[1.5px] border-[#C99A2E]/60 rounded-[100%] rotate-12 z-0 pointer-events-none blur-[0.5px] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+        className="absolute top-[-50px] right-[10%] w-[600px] h-[350px] border-b-[1.5px] border-[#C99A2E]/60 rounded-[100%] rotate-12 z-0 pointer-events-none blur-[0.5px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
       />
       <motion.div
         animate={{ opacity: [0.7, 1, 0.7] }}
@@ -119,7 +117,7 @@ export default function Desktop() {
         className="max-w-[1060px] xl:max-w-[1120px] w-full relative z-20"
       >
         <div
-          className="w-full rounded-[4px] pt-16 pb-12 px-10 flex flex-col items-center text-center relative overflow-visible shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)]"
+          className="w-full rounded-[4px] pt-16 pb-12 px-10 flex flex-col items-center text-center relative overflow-visible luxury-shadow-float"
           style={{
             background:
               "linear-gradient(135deg, rgba(8,22,51,0.96) 0%, rgba(5,15,38,0.98) 100%)",
@@ -183,12 +181,12 @@ export default function Desktop() {
                     whileTap={
                       isUnselectedOnOtherPage ? undefined : { scale: 0.97 }
                     }
-                    className={`group px-7 py-3.5 rounded-[4px] font-bold text-[15px] xl:text-[16px] transition-all duration-300 shadow-md flex items-center justify-center gap-2 ${
+                    className={`group px-7 py-3.5 rounded-[4px] font-bold text-[15px] xl:text-[16px] transition-all duration-300 shadow-md flex items-center justify-center gap-2 relative overflow-hidden ${
                       isSelected
                         ? "text-white cursor-pointer"
                         : isUnselectedOnOtherPage
                           ? "text-white/30 border border-white/5 opacity-30 cursor-not-allowed pointer-events-none select-none"
-                          : "text-white border border-[#1E3A6D] hover:border-[#C99A2E]/60 hover:shadow-[0_8px_24px_-4px_rgba(201,154,46,0.25)] cursor-pointer"
+                          : "text-white border border-[#1E3A6D] hover:border-[#C99A2E]/60 hover:luxury-shadow-float cursor-pointer"
                     }`}
                     style={{
                       background: isSelected
@@ -200,16 +198,19 @@ export default function Desktop() {
                       boxShadow: isSelected ? persona.shadow : undefined,
                     }}
                   >
-                    <span>{btn}</span>
+                    {!isUnselectedOnOtherPage && !isSelected && (
+                      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
+                    )}
+                    <span className="relative z-10">{btn}</span>
                     <ArrowRight
                       size={16}
                       strokeWidth={2.5}
                       className={
                         isSelected
-                          ? "w-4 opacity-100 translate-x-0 transition-all duration-300 text-white"
+                          ? "w-4 opacity-100 translate-x-0 transition-all duration-300 text-white relative z-10"
                           : isUnselectedOnOtherPage
-                            ? "w-0 opacity-0 -translate-x-1 transition-all duration-300 text-white/20"
-                            : "w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068]"
+                            ? "w-0 opacity-0 -translate-x-1 transition-all duration-300 text-white/20 relative z-10"
+                            : "w-0 opacity-0 -translate-x-1 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[#E2C068] relative z-10"
                       }
                     />
                   </motion.button>

@@ -52,7 +52,7 @@ export default function ContactUsMobile() {
   return (
     <div className="w-full font-['Outfit'] relative overflow-hidden">
       <section
-        className="relative w-full pt-28 pb-20 flex flex-col items-center px-5"
+        className="relative w-full pt-28 pb-32 flex flex-col items-center px-5"
         style={{
           background: `linear-gradient(180deg, #0B1D3A 0%, #102647 60%, #1A3460 100%)`,
         }}
@@ -112,7 +112,7 @@ export default function ContactUsMobile() {
         </motion.div>
       </section>
       <section className="relative w-full bg-[#F8FAFD] pb-10 px-4">
-        <div className="-mt-10 relative z-20">
+        <div className="-mt-24 relative z-20">
           <motion.div
             variants={container}
             initial="hidden"

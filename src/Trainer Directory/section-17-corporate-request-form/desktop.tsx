@@ -53,7 +53,7 @@ export default function Desktop({ isOpen = false, onClose }: CorporateRequestFor
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-[800px] max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur-2xl rounded shadow-[0_24px_80px_-12px_rgba(11,29,58,0.3)] border border-white/40 flex flex-col p-8 md:p-10 font-['Outfit']"
+            className="relative w-full max-w-[800px] max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur-2xl rounded luxury-shadow-float border border-white/40 flex flex-col p-8 md:p-10 font-['Outfit']"
           >
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[40px] pointer-events-none z-0" />
             <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[40px] pointer-events-none z-0" />
@@ -148,7 +148,7 @@ export default function Desktop({ isOpen = false, onClose }: CorporateRequestFor
                 <div className="pt-2 border-t border-[#0B1D3A]/[0.06] mt-2 flex justify-end">
                   <button
                     type="button"
-                    className="text-white px-8 py-3.5 rounded font-bold text-[14px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50 flex items-center justify-center gap-2.5 shadow-[0_8px_24px_-8px_rgba(139,92,246,0.5)] hover:shadow-[0_12px_32px_-12px_rgba(139,92,246,0.6)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] relative overflow-hidden group w-full md:w-auto"
+                    className="text-white px-8 py-3.5 rounded font-bold text-[14px] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/50 flex items-center justify-center gap-2.5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] relative overflow-hidden group w-full md:w-auto"
                     style={{ background: "linear-gradient(135deg, #8B5CF6, #6D28D9)" }}
                   >
                     Submit Request

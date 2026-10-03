@@ -1,13 +1,11 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import {
-  BookOpen,
+import { ChevronRight, BookOpen,
   BarChart2,
   Target,
   Users,
   ArrowDown,
-  ArrowRight,
-} from "lucide-react";
+  ArrowRight, } from "lucide-react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
 const NAVY = "#0B1D3A";
@@ -162,7 +160,10 @@ export default function Mobile() {
                 style={{ color: card.color }}
               >
                 <span className="flex items-center gap-1.5">
-                  Explore <ArrowRight size={14} strokeWidth={2.5} />
+                  Explore <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${14}px` }}>
+      <ChevronRight size={14} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={14} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                 </span>
               </div>
             </motion.div>
@@ -175,7 +176,7 @@ export default function Mobile() {
           transition={{ delay: 0.3 }}
           className="mt-14 flex justify-center"
         >
-          <button className="group relative flex items-center gap-3 px-6 py-3 bg-white border border-[#0B1D3A]/10 rounded-full shadow-[0_4px_20px_-4px_rgba(11,29,58,0.06)] hover:shadow-[0_8px_30px_-4px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 hover:-translate-y-1 active:scale-[0.98] transition-all duration-400 ease-out overflow-hidden">
+          <button className="group relative flex items-center gap-3 px-6 py-3 bg-white border border-[#0B1D3A]/10 rounded-full luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 hover:-translate-y-1 active:scale-[0.98] transition-all duration-400 ease-out overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/0 via-[#C99A2E]/[0.05] to-[#C99A2E]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
             <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300 relative z-10">
               {data.cta.replace(" ↓", "")}

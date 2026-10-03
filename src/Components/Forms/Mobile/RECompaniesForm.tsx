@@ -111,7 +111,7 @@ export default function RECompaniesForm() {
                   <span className="text-[13px] font-medium text-[#475569] peer-checked:text-[#0B1D3A] peer-checked:font-bold">
                     {size}
                   </span>
-                  <div className="absolute inset-0 border-2 border-transparent peer-checked:border-[#0B1D3A] rounded-lg transition-all hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out" />
+                  <div className="absolute inset-0 border-2 border-transparent peer-checked:border-[#0B1D3A] rounded-lg transition-all hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out" />
                 </label>
               ))}
             </div>
@@ -120,7 +120,7 @@ export default function RECompaniesForm() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full mt-8 bg-[#0B1D3A] text-white py-4 rounded-lg font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_8px_16px_-8px_rgba(11,29,58,0.4)] hover:shadow-[0_12px_24px_-8px_rgba(11,29,58,0.5)] transition-all"
+            className="w-full mt-8 bg-[#0B1D3A] text-white py-4 rounded-lg font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_8px_16px_-8px_rgba(11,29,58,0.4)] hover:luxury-shadow-float transition-all"
           >
             Request Consultation <ChevronRight size={18} />
           </motion.button>

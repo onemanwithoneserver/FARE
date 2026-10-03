@@ -110,7 +110,7 @@ export default function Desktop() {
                 delay: index * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="bg-white border border-[#0B1D3A]/[0.06] rounded p-10 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.04)] hover:shadow-[0_20px_40px_-10px_rgba(11,29,58,0.12)] transition-all duration-400 break-inside-avoid relative overflow-hidden group cursor-default"
+              className="bg-white border border-[#0B1D3A]/[0.06] rounded p-10 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 break-inside-avoid relative overflow-hidden group cursor-default"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -185,7 +185,7 @@ export default function Desktop() {
             className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/25 via-transparent to-[#3B82F6]/25 blur-[35px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"
           ></motion.div>
           <div
-            className="rounded p-16 text-center relative overflow-hidden shadow-[0_25px_60px_-15px_rgba(11,29,58,0.35)] border border-[#C99A2E]/30"
+            className="rounded p-16 text-center relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/30"
             style={{
               background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)`,
             }}
@@ -211,7 +211,7 @@ export default function Desktop() {
               </p>
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-white/[0.06] backdrop-blur-md border border-white/10 py-5 px-10 rounded shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-white/[0.1] hover:border-[#C99A2E]/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 max-w-[850px] cursor-pointer group"
+                className="bg-white/[0.06] backdrop-blur-md border border-white/10 py-5 px-10 rounded luxury-shadow-float hover:bg-white/[0.1] hover:border-[#C99A2E]/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 max-w-[850px] cursor-pointer group"
               >
                 <p className="text-[20px] font-semibold text-white/95 leading-relaxed group-hover:text-white transition-colors">
                   {data.footerCta}

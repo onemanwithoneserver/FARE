@@ -133,7 +133,7 @@ export default function Mobile() {
               <motion.div
                 key={index}
                 variants={item}
-                className="shrink-0 w-[85%] snap-center bg-gradient-to-b from-white/90 to-[#F8FAFD]/70 backdrop-blur-xl border border-[#0B1D3A]/10 rounded-2xl p-6 relative overflow-hidden shadow-[0_10px_20px_-5px_rgba(11,29,58,0.12)] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="shrink-0 w-[85%] snap-center bg-gradient-to-b from-white/90 to-[#F8FAFD]/70 backdrop-blur-xl border border-[#0B1D3A]/10 rounded-2xl p-6 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <motion.div
                   animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -189,7 +189,7 @@ export default function Mobile() {
               <motion.div
                 key={index}
                 variants={item}
-                className="w-[calc(50%-6px)] aspect-square bg-gradient-to-br from-[#0B1D3A]/[0.03] to-[#0B1D3A]/[0.01] backdrop-blur-md border border-[#0B1D3A]/[0.08] rounded-xl p-5 shadow-sm flex flex-col justify-center relative overflow-hidden hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="w-[calc(50%-6px)] aspect-square bg-gradient-to-br from-[#0B1D3A]/[0.03] to-[#0B1D3A]/[0.01] backdrop-blur-md border border-[#0B1D3A]/[0.08] rounded-xl p-5 shadow-sm flex flex-col justify-center relative overflow-hidden hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div
                   className="absolute top-0 right-0 w-20 h-20 opacity-[0.15] blur-[20px] rounded-full pointer-events-none"
@@ -221,7 +221,7 @@ export default function Mobile() {
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
-          <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] border border-white/10 rounded p-8 text-center relative overflow-hidden shadow-[0_20px_40px_-10px_rgba(11,29,58,0.35)]">
+          <div className="bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] border border-white/10 rounded p-8 text-center relative overflow-hidden luxury-shadow-float">
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}

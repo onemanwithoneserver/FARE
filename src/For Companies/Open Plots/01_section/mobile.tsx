@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
@@ -134,7 +134,10 @@ export default function Mobile() {
                 boxShadow: "0 2px 8px rgba(11,29,58,0.15)",
               }}
             >
-              {data.buttons.primary} <ArrowRight size={14} strokeWidth={2.5} />
+              {data.buttons.primary} <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${14}px` }}>
+      <ChevronRight size={14} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={14} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
             </button>
             {data.buttons.secondary && (
               <button
@@ -182,7 +185,7 @@ export default function Mobile() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full mt-8 relative z-20 flex items-center justify-center px-2"
         >
-          <div className="relative w-full aspect-[16/11] max-w-[420px] rounded-[4px] overflow-hidden border border-white/80 shadow-[0_20px_50px_-12px_rgba(11,29,58,0.2)] bg-slate-100 group">
+          <div className="relative w-full aspect-[16/11] max-w-[420px] rounded-[4px] overflow-hidden border border-white/80 luxury-shadow-float bg-slate-100 group">
             <img
               src={openplotHero}
               alt="Open Plot Hero"

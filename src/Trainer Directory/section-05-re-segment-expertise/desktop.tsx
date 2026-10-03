@@ -91,7 +91,7 @@ export default function Desktop() {
         className="max-w-[1200px] w-full grid grid-cols-3 gap-8 relative z-10"
       >
         
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.12)] transition-all duration-300 ease-out relative overflow-hidden group">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-300 ease-out relative overflow-hidden group">
           <div className="absolute top-0 left-0 right-0 h-[3px] opacity-70 group-hover:opacity-100 transition-opacity" style={{ background: sectionColors[0].bg }} />
           <div className="flex items-center gap-3 mb-6">
             <div className="w-11 h-11 shrink-0 rounded flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[0].bg }}>
@@ -109,7 +109,7 @@ export default function Desktop() {
         </motion.div>
 
         
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.12)] transition-all duration-300 ease-out relative overflow-hidden group">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-300 ease-out relative overflow-hidden group">
           <div className="absolute top-0 left-0 right-0 h-[3px] opacity-70 group-hover:opacity-100 transition-opacity" style={{ background: sectionColors[1].bg }} />
           <div className="flex items-center gap-3 mb-6">
             <div className="w-11 h-11 shrink-0 rounded flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[1].bg }}>
@@ -132,7 +132,7 @@ export default function Desktop() {
         </motion.div>
 
         
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_40px_-12px_rgba(11,29,58,0.12)] transition-all duration-300 ease-out relative overflow-hidden group">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-6 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-300 ease-out relative overflow-hidden group">
           <div className="absolute top-0 left-0 right-0 h-[3px] opacity-70 group-hover:opacity-100 transition-opacity" style={{ background: sectionColors[2].bg }} />
           <div className="flex items-center gap-3 mb-6">
             <div className="w-11 h-11 shrink-0 rounded flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[2].bg }}>

@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Check, ArrowRight } from "lucide-react";
+import { ChevronRight, Check, ArrowRight } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
@@ -29,7 +29,7 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
       <div className="absolute top-0 left-0 w-full h-[60%] bg-[#0B1D3A] rounded-b-[40px] pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
@@ -61,8 +61,8 @@ export default function Desktop() {
               variants={item}
               className={`flex-1 relative bg-white rounded-[4px] p-8 flex flex-col hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${
                 plan.bestValue 
-                  ? "border-2 border-[#C99A2E] shadow-[0_20px_40px_rgba(11,29,58,0.12)]" 
-                  : "border border-[#E2E8F0] shadow-[0_8px_24px_rgba(11,29,58,0.06)]"
+                  ? "border-2 border-[#C99A2E] luxury-shadow-float" 
+                  : "border border-[#E2E8F0] luxury-shadow-float"
               }`}
             >
               {plan.bestValue && (
@@ -91,12 +91,15 @@ export default function Desktop() {
               <button
                 className={`w-full py-4 rounded-[8px] font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
                   plan.bestValue 
-                    ? "bg-[#0B1D3A] text-white hover:shadow-[0_8px_20px_rgba(11,29,58,0.2)]" 
+                    ? "bg-[#0B1D3A] text-white hover:luxury-shadow-float" 
                     : "bg-[#F8FAFD] text-[#0B1D3A] border border-[#E2E8F0] hover:border-[#0B1D3A]/20 hover:bg-white"
                 }`}
               >
                 {plan.cta}
-                <ArrowRight size={16} strokeWidth={2.5} />
+                <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${16}px` }}>
+      <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
               </button>
             </motion.div>
           ))}

@@ -111,7 +111,7 @@ export default function Desktop() {
                 y: -6,
                 transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
               }}
-              className="group bg-white border border-[#0B1D3A]/[0.06] rounded p-10 shadow-[0_4px_20px_-4px_rgba(11,29,58,0.04)] hover:shadow-[0_20px_50px_-15px_rgba(11,29,58,0.12)] transition-all duration-400 relative overflow-hidden flex flex-col cursor-default"
+              className="group bg-white border border-[#0B1D3A]/[0.06] rounded p-10 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative overflow-hidden flex flex-col cursor-default"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -173,7 +173,7 @@ export default function Desktop() {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="mt-12 flex justify-center"
         >
-          <button className="group relative flex items-center gap-4 px-8 py-4 bg-white border border-[#0B1D3A]/10 rounded-full shadow-[0_4px_20px_-4px_rgba(11,29,58,0.06)] hover:shadow-[0_8px_30px_-4px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 hover:-translate-y-1 active:scale-[0.98] transition-all duration-400 ease-out overflow-hidden">
+          <button className="group relative flex items-center gap-4 px-8 py-4 bg-white border border-[#0B1D3A]/10 rounded-full luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 hover:-translate-y-1 active:scale-[0.98] transition-all duration-400 ease-out overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/0 via-[#C99A2E]/[0.05] to-[#C99A2E]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
             <span className="text-[14px] font-bold tracking-[0.15em] uppercase text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300 relative z-10">
               {data.cta.replace(" ↓", "")}

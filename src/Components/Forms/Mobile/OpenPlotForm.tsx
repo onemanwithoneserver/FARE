@@ -151,7 +151,7 @@ export default function OpenPlotForm() {
                   <span className="text-[13px] font-medium text-[#475569] peer-checked:text-[#C99A2E] peer-checked:font-bold">
                     {size}
                   </span>
-                  <div className="absolute inset-0 border-2 border-transparent peer-checked:border-[#C99A2E]/40 rounded-xl transition-all hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out" />
+                  <div className="absolute inset-0 border-2 border-transparent peer-checked:border-[#C99A2E]/40 rounded-xl transition-all hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out" />
                 </label>
               ))}
             </div>
@@ -160,7 +160,7 @@ export default function OpenPlotForm() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full mt-6 bg-gradient-to-r from-[#0B1D3A] to-[#071A49] text-white py-4 rounded-xl font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_10px_20px_-10px_rgba(11,29,58,0.4)] hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.5)] transition-all"
+            className="w-full mt-6 bg-gradient-to-r from-[#0B1D3A] to-[#071A49] text-white py-4 rounded-xl font-bold text-[15px] flex items-center justify-center gap-3 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all"
           >
             Submit Request <Send size={16} />
           </motion.button>

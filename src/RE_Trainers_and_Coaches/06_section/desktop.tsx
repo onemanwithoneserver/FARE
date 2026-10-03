@@ -127,7 +127,7 @@ export default function Desktop() {
                 key={index}
                 variants={item}
                 whileHover={{ y: -8, transition: { duration: 0.4 } }}
-                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-10 hover:bg-white hover:border-[#0B1D3A]/20 transition-all duration-400 relative overflow-hidden text-center group shadow-[0_10px_30px_-10px_rgba(11,29,58,0.12)] cursor-default"
+                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-10 hover:bg-white hover:border-[#0B1D3A]/20 transition-all duration-400 relative overflow-hidden text-center group luxury-shadow-float cursor-default"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-[#0B1D3A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded pointer-events-none"></div>
                 <motion.div
@@ -182,7 +182,7 @@ export default function Desktop() {
               <motion.div
                 key={index}
                 variants={item}
-                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-square bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 rounded p-8 hover:bg-white hover:border-[#0B1D3A]/20 hover:shadow-[0_15px_30px_-10px_rgba(11,29,58,0.12)] transition-all duration-400 flex flex-col justify-center group"
+                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-square bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 rounded p-8 hover:bg-white hover:border-[#0B1D3A]/20 hover:luxury-shadow-float transition-all duration-400 flex flex-col justify-center group"
               >
                 <div className="flex flex-col gap-4 mb-4 relative z-10">
                   <div
@@ -208,7 +208,7 @@ export default function Desktop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-[1000px] mx-auto bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] border border-white/10 rounded p-16 text-center relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(11,29,58,0.35)] group"
+          className="max-w-[1000px] mx-auto bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] border border-white/10 rounded p-16 text-center relative overflow-hidden luxury-shadow-float group"
         >
           <motion.div
             animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}

@@ -58,7 +58,7 @@ export default function Desktop() {
         <div className="flex gap-10">
           
           <div className="w-[450px] shrink-0 flex flex-col gap-6">
-            <motion.div variants={item} className="relative rounded p-10 shadow-[0_12px_40px_-12px_rgba(11,29,58,0.15)] overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
+            <motion.div variants={item} className="relative rounded p-10 luxury-shadow-float overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
               <motion.div 
                 animate={{ scale: [1, 1.2, 1], rotate: [0, 5, 0] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -109,7 +109,7 @@ export default function Desktop() {
                 className="group flex items-start gap-6 relative z-10 pb-8 last:pb-0"
               >
                 
-                <div className="w-12 h-12 rounded bg-white border border-[#0B1D3A]/[0.08] shadow-[0_4px_16px_rgba(11,29,58,0.06)] flex items-center justify-center shrink-0 group-hover:-translate-y-1 group-hover:border-[#0B1D3A]/[0.15] group-hover:shadow-[0_8px_24px_rgba(11,29,58,0.12)] transition-all duration-400 ease-out relative overflow-hidden">
+                <div className="w-12 h-12 rounded bg-white border border-[#0B1D3A]/[0.08] shadow-[0_4px_16px_rgba(11,29,58,0.06)] flex items-center justify-center shrink-0 group-hover:-translate-y-1 group-hover:border-[#0B1D3A]/[0.15] group-hover:luxury-shadow-float transition-all duration-400 ease-out relative overflow-hidden">
                   <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }} />
                   <div className="text-white relative z-10 w-8 h-8 rounded flex items-center justify-center shadow-sm" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
                     {FORMAT_ICONS[idx % FORMAT_ICONS.length].icon}

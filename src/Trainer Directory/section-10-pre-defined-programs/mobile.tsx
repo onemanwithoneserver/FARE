@@ -66,7 +66,7 @@ export default function Mobile() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="shrink-0 w-[85%] snap-center group bg-white/90 backdrop-blur-xl rounded p-6 border border-[#0B1D3A]/[0.08] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] flex flex-col relative overflow-hidden"
+                className="shrink-0 w-[85%] snap-center group bg-white/90 backdrop-blur-xl rounded p-6 border border-[#0B1D3A]/[0.08] luxury-shadow-float flex flex-col relative overflow-hidden"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px] opacity-80"

@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
@@ -27,7 +27,7 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-[#0B1D3A] py-24 px-10 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-[#0B1D3A] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-radial from-[#38BDF8]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none" />
 
@@ -78,12 +78,15 @@ export default function Desktop() {
                 <button 
                   className={`px-8 py-3.5 rounded-[8px] font-bold text-[14px] transition-all duration-300 flex items-center gap-2 active:scale-95 ${
                     isFirst
-                      ? "bg-[#10B981] text-white hover:bg-[#059669] hover:shadow-[0_8px_20px_rgba(16,185,129,0.3)]"
-                      : "bg-[#C99A2E] text-[#0B1D3A] hover:bg-[#B8892A] hover:shadow-[0_8px_20px_rgba(201,154,46,0.3)]"
+                      ? "bg-[#10B981] text-white hover:bg-[#059669] hover:luxury-shadow-float"
+                      : "bg-[#C99A2E] text-[#0B1D3A] hover:bg-[#B8892A] hover:luxury-shadow-float"
                   }`}
                 >
                   {itemData.cta}
-                  <ArrowRight size={16} strokeWidth={2.5} />
+                  <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${16}px` }}>
+      <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                 </button>
               </motion.div>
             );

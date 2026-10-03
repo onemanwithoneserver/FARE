@@ -7,7 +7,7 @@ export default function Mobile() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-6 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-6 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
       <div className="max-w-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 15 }}

@@ -27,7 +27,7 @@ export default function Mobile() {
   };
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-5 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-5 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
       <div className="absolute inset-0 opacity-[0.025] pointer-events-none" style={{ backgroundImage: `linear-gradient(#0B1D3A 1px, transparent 1px), linear-gradient(90deg, #0B1D3A 1px, transparent 1px)`, backgroundSize: "40px 40px" }} />
       
       <div className="max-w-[480px] mx-auto relative z-10">
@@ -96,7 +96,7 @@ export default function Mobile() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-center"
           >
-            <div className="bg-[#F8FAFD] px-6 py-5 rounded-xl border border-[#E2E8F0]/80 shadow-[0_4px_20px_rgba(11,29,58,0.04)]">
+            <div className="bg-[#F8FAFD] px-6 py-5 rounded-xl border border-[#E2E8F0]/80 luxury-shadow-float">
               <p className="text-[17px] font-black text-[#0B1D3A] whitespace-pre-wrap leading-relaxed tracking-tight">
                 {data.closing}
               </p>

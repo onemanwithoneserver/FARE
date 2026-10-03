@@ -1,7 +1,7 @@
 import { profileData } from "../profileData";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ArrowRight, Check, Clock, CreditCard, Sparkles } from "lucide-react";
+import { ChevronRight, ArrowRight, Check, Clock, CreditCard, Sparkles } from "lucide-react";
 
 const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
@@ -90,8 +90,8 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
               whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
               className={`rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out group ${
                 card.featured
-                  ? "border-2 shadow-[0_12px_40px_-8px_rgba(11,29,58,0.15)] hover:shadow-[0_20px_60px_-15px_rgba(11,29,58,0.25)]"
-                  : "border border-[#0B1D3A]/[0.06] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.18)] hover:border-[#0B1D3A]/[0.15]"
+                  ? "border-2 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)]"
+                  : "border border-[#0B1D3A]/[0.06] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#0B1D3A]/[0.15]"
               }`}
               style={{
                 background: card.featured
@@ -197,11 +197,14 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
           </p>
           <button
             onClick={onRequestPricing}
-            className="relative z-10 px-8 py-3 rounded font-black text-[14px] text-white transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center gap-2.5 shadow-[0_8px_24px_rgba(11,29,58,0.15)] hover:shadow-[0_12px_32px_rgba(11,29,58,0.25)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] group/btn"
+            className="relative z-10 px-8 py-3 rounded font-black text-[14px] text-white transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center gap-2.5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] group/btn"
             style={{ background: `linear-gradient(135deg, ${NAVY}, #132A4D)` }}
           >
             Request Pricing
-            <ArrowRight size={16} strokeWidth={2.5} className="group-hover/btn:translate-x-1 transition-transform duration-300" style={{ color: GOLD }} />
+            <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${16}px`, color: GOLD }}>
+      <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
           </button>
         </motion.div>
       </motion.div>

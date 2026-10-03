@@ -1,16 +1,14 @@
 import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import {
-  ArrowRight,
+import { ChevronRight, ArrowRight,
   ShieldCheck,
   Users,
   BarChart2,
   GraduationCap,
   Building2,
   Target,
-  Sparkles,
-} from "lucide-react";
+  Sparkles, } from "lucide-react";
 import { useState } from "react";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
@@ -148,7 +146,7 @@ export default function Mobile() {
         className="w-full max-w-[480px] relative z-20"
       >
         <div
-          className="w-full rounded-[4px] pt-9 pb-8 px-4.5 sm:px-6 flex flex-col items-center text-center relative overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)]"
+          className="w-full rounded-[4px] pt-9 pb-8 px-4.5 sm:px-6 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-float"
           style={{
             background:
               "linear-gradient(135deg, rgba(8,22,48,0.96) 0%, rgba(4,12,30,0.98) 100%)",
@@ -210,11 +208,11 @@ export default function Mobile() {
                     }
                     className={`w-full p-4 rounded-[4px] transition-all duration-300 flex items-center justify-between gap-3.5 text-left relative overflow-hidden group ${
                       isSelected
-                        ? "shadow-[0_8px_24px_-6px_rgba(0,0,0,0.4)] cursor-pointer"
+                        ? "luxury-shadow-float cursor-pointer"
                         : isUnselectedOnOtherPage
                           ? "opacity-30 cursor-not-allowed pointer-events-none select-none shadow-none"
                           : isHomePage
-                            ? "shadow-[0_8px_24px_-6px_rgba(0,0,0,0.4)] cursor-pointer"
+                            ? "luxury-shadow-float cursor-pointer"
                             : "shadow-none opacity-80 hover:opacity-100 cursor-pointer"
                     }`}
                     style={{
@@ -282,11 +280,10 @@ export default function Mobile() {
                           : "1px solid rgba(255, 255, 255, 0.1)",
                       }}
                     >
-                      <ArrowRight
-                        size={15}
-                        strokeWidth={2.8}
-                        className={isColored ? "text-white" : "text-white/40"}
-                      />
+                      <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.8} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.8} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                     </div>
                   </motion.button>
                 </div>

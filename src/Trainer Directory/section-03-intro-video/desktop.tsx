@@ -62,7 +62,7 @@ export default function Desktop() {
             variants={item}
             whileHover={{ y: -5 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-1 min-w-0 aspect-video relative rounded overflow-hidden group cursor-pointer border border-[#0B1D3A]/[0.08] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.12)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.2)]"
+            className="flex-1 min-w-0 aspect-video relative rounded overflow-hidden group cursor-pointer border border-[#0B1D3A]/[0.08] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)]"
             onClick={() => setIsVideoModalOpen(true)}
           >
             <div className="absolute inset-0 bg-[#0B1D3A]" />
@@ -89,7 +89,7 @@ export default function Desktop() {
                   style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
                 />
                 <div
-                  className="w-20 h-20 rounded-full flex items-center justify-center shadow-[0_8px_32px_rgba(201,154,46,0.5)] group-hover:scale-110 transition-all duration-400 relative z-10"
+                  className="w-20 h-20 rounded-full flex items-center justify-center luxury-shadow-float group-hover:scale-110 transition-all duration-400 relative z-10"
                   style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}
                 >
                   <Play fill="white" className="text-white ml-1 w-6 h-6" />

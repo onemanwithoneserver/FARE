@@ -2,12 +2,10 @@ import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
-import {
-  ArrowRight,
+import { ChevronRight, ArrowRight,
   CheckCircle2,
   ClipboardList,
-  Sparkles,
-} from "lucide-react";
+  Sparkles, } from "lucide-react";
 import React, { useState } from "react";
 import Modal from "../../../Components/Forms/Modal";
 import OpenPlotForm from "../../../Components/Forms/Mobile/OpenPlotForm";
@@ -133,17 +131,16 @@ export default function Mobile() {
           >
             <button
               onClick={() => setIsVideoModalOpen(true)}
-              className="group relative overflow-hidden w-full text-white px-6 py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_8px_20px_-8px_rgba(11,29,58,0.25)] cursor-pointer"
+              className="group relative overflow-hidden w-full text-white px-6 py-4 rounded text-[14px] font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2 luxury-shadow-float cursor-pointer"
               style={{
                 background: `linear-gradient(135deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)`,
               }}
             >
               <span className="relative z-10">{data.primaryButton}</span>
-              <ArrowRight
-                size={15}
-                strokeWidth={2.5}
-                className="relative z-10 group-hover:translate-x-1 transition-transform"
-              />
+              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"relative z-10 group-hover:translate-x-1"}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.1] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
             </button>
             <button
@@ -167,7 +164,7 @@ export default function Mobile() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="w-full relative"
         >
-          <div className="bg-white/90 backdrop-blur-xl rounded p-5 shadow-[0_15px_40px_-10px_rgba(11,29,58,0.12)] border border-white relative z-10 overflow-hidden">
+          <div className="bg-white/90 backdrop-blur-xl rounded p-5 luxury-shadow-float border border-white relative z-10 overflow-hidden">
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}

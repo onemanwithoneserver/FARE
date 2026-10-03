@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 import bgImage from "../../../assets/bg-04.jpg";
 import Modal from "../../../Components/Forms/Modal";
@@ -58,7 +58,7 @@ export default function Mobile() {
         className="w-full relative z-20"
       >
         <div
-          className="w-full rounded pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(11,29,58,0.15)] border border-[#0B1D3A]/10"
+          className="w-full rounded pt-16 pb-12 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl luxury-shadow-float border border-[#0B1D3A]/10"
           style={{
             background:
               "linear-gradient(145deg, rgba(255,255,255,0.85) 0%, rgba(248,249,252,0.95) 100%)",
@@ -102,18 +102,17 @@ export default function Mobile() {
             <motion.button
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsModalOpen(true)}
-              className="group relative overflow-hidden w-full font-bold text-[14px] py-4 rounded transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] shadow-[0_8px_20px_-5px_rgba(213,170,69,0.3)]"
+              className="group relative overflow-hidden w-full font-bold text-[14px] py-4 rounded transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-[#071A49] luxury-shadow-float"
               style={{
                 background:
                   "linear-gradient(135deg, #D5AA45 0%, #F3D37F 50%, #D5AA45 100%)",
               }}
             >
               <span className="relative z-10">{data.buttons.primary}</span>
-              <ArrowRight
-                size={16}
-                strokeWidth={2.5}
-                className="relative z-10 group-hover:translate-x-1 transition-transform"
-              />
+              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"relative z-10 group-hover:translate-x-1"}`} style={{ fontSize: `${16}px` }}>
+      <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.4] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
             </motion.button>
             <motion.button

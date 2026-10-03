@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ChevronRight, Sparkles, ArrowRight } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 import freelancersHero from "../../../assets/freelancers_hero.jpg";
@@ -40,7 +40,7 @@ export default function Mobile() {
             {data.description}
           </p>
 
-          <div className="w-full rounded-[16px] overflow-hidden shadow-[0_12px_40px_-10px_rgba(11,29,58,0.18)] mb-6">
+          <div className="w-full rounded-[16px] overflow-hidden luxury-shadow-float mb-6">
             <img
               src={freelancersHero}
               alt="Freelancer at real estate site"
@@ -57,7 +57,10 @@ export default function Mobile() {
               }}
             >
               🚀 {data.buttons.primary}
-              <ArrowRight size={15} strokeWidth={2.5} />
+              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
             </button>
             <button
               className="text-[14px] font-semibold px-7 py-3.5 rounded-[8px] w-full border border-[#0B1D3A]/15 bg-white active:scale-[0.98] transition-all duration-300"

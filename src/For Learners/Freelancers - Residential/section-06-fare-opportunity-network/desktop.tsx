@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
@@ -27,7 +27,7 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
       <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -62,7 +62,7 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-[#F8FAFD] p-8 rounded-[12px] border border-[#E2E8F0] shadow-[0_2px_12px_rgba(11,29,58,0.02)] hover:shadow-[0_16px_36px_rgba(11,29,58,0.08)] hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
+                className="bg-[#F8FAFD] p-8 rounded-[12px] border border-[#E2E8F0] shadow-[0_2px_12px_rgba(11,29,58,0.02)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
               >
                 <div className={`w-14 h-14 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-105 transition-transform duration-300`}>
                   <Icon size={26} className="text-white" strokeWidth={2.5} />
@@ -80,7 +80,10 @@ export default function Desktop() {
                 </p>
                 
                 <div className="w-10 h-10 rounded-[4px] bg-white flex items-center justify-center shadow-sm border border-[#E2E8F0] mt-auto self-end group-hover:bg-[#0B1D3A] group-hover:border-[#0B1D3A] transition-colors duration-300">
-                  <ArrowRight size={18} className="text-[#0B1D3A] group-hover:text-white transition-colors duration-300" strokeWidth={2} />
+                  <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#0B1D3A] group-hover:text-white"}`} style={{ fontSize: `${18}px` }}>
+      <ChevronRight size={18} strokeWidth={2} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={18} strokeWidth={2} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                 </div>
               </motion.div>
             );

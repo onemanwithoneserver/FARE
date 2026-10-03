@@ -6,7 +6,6 @@ import {
   ListChecks,
   Globe,
   Building2,
-  ArrowRight,
 } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
@@ -203,7 +202,7 @@ export default function Desktop() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: false, margin: "-100px" }}
-          className="flex flex-wrap justify-center gap-4 relative mb-10"
+          className="grid grid-cols-5 gap-4 relative mb-10"
         >
           {data.challenges.map((challenge, index) => {
             const { Icon, color } = iconData[index];
@@ -216,7 +215,7 @@ export default function Desktop() {
                   y: -6,
                   transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
                 }}
-                className="w-[calc(33.333%-11px)] min-w-[200px] group bg-gradient-to-b from-white/95 via-red-50/60 to-red-100/40 backdrop-blur-md border border-red-200/90 hover:border-red-400 rounded p-4 shadow-[0_4px_16px_-4px_rgba(220,38,38,0.08)] hover:shadow-[0_16px_36px_-8px_rgba(220,38,38,0.22)] transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[170px] justify-center cursor-default"
+                className="group bg-gradient-to-b from-white/95 via-red-50/60 to-red-100/40 backdrop-blur-md border border-red-200/90 hover:border-red-400 rounded p-4 shadow-[0_4px_16px_-4px_rgba(220,38,38,0.08)] hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden flex flex-col items-center text-center h-[170px] justify-center cursor-default"
               >
                 <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-red-500/0 to-transparent group-hover:via-red-500/90 transition-all duration-400" />
                 <motion.div
@@ -252,7 +251,7 @@ export default function Desktop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-[850px] mx-auto text-center rounded p-14 shadow-[0_20px_60px_-15px_rgba(11,29,58,0.3)] relative overflow-hidden"
+          className="max-w-[850px] mx-auto text-center rounded p-14 luxury-shadow-float relative overflow-hidden"
           style={{
             background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)`,
           }}
@@ -286,7 +285,8 @@ export default function Desktop() {
                 ease: "easeInOut",
               }}
             >
-              <ArrowRight size={22} />
+              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${22}px` }}>
+    </span>
             </motion.span>
           </p>
         </motion.div>

@@ -62,7 +62,7 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-7 rounded-[12px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.03)] hover:shadow-[0_12px_28px_rgba(11,29,58,0.08)] hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
+                className="bg-white p-7 rounded-[12px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.03)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
               >
                 <div className={`w-12 h-12 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-105 transition-transform duration-300`}>
                   <Icon size={22} className="text-white" strokeWidth={2.5} />
@@ -89,7 +89,7 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="p-6 rounded-[16px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-white font-medium text-[15px] leading-relaxed relative overflow-hidden shadow-[0_8px_24px_rgba(11,29,58,0.12)]"
+                className="p-6 rounded-[16px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-white font-medium text-[15px] leading-relaxed relative overflow-hidden luxury-shadow-float"
               >
                 <span className="text-[#C99A2E] text-2xl font-serif mr-2">“</span>
                 {q}

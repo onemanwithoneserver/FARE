@@ -120,7 +120,7 @@ export default function Desktop() {
 
   return (
     <div
-      className="w-[280px] shrink-0 bg-white/95 backdrop-blur-2xl rounded border border-[#0B1D3A]/[0.06] p-6 sticky top-[80px] h-fit font-['Outfit'] shadow-[0_12px_40px_-12px_rgba(11,29,58,0.1)] relative overflow-hidden"
+      className="w-[280px] shrink-0 bg-white/95 backdrop-blur-2xl rounded border border-[#0B1D3A]/[0.06] p-6 sticky top-[80px] h-fit font-['Outfit'] luxury-shadow-float relative overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-gradient-radial from-[#8B5CF6]/10 to-transparent rounded-full blur-[30px] pointer-events-none z-0" />
       <div className="absolute bottom-0 left-[-20%] w-[150px] h-[150px] bg-gradient-radial from-[#C99A2E]/10 to-transparent rounded-full blur-[30px] pointer-events-none z-0" />

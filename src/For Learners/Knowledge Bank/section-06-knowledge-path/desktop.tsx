@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
@@ -10,7 +10,7 @@ export default function Desktop() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-24 px-10 font-['Outfit'] relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
       <div className="absolute top-[10%] left-[5%] w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[80px] pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto relative z-10">
@@ -41,7 +41,7 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="bg-white p-10 rounded-[12px] border border-[#E2E8F0]/80 shadow-[0_4px_20px_rgba(11,29,58,0.04)] hover:shadow-[0_16px_40px_rgba(11,29,58,0.08)] hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
+                className="bg-white p-10 rounded-[12px] border border-[#E2E8F0]/80 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
               >
                 <div className={`w-14 h-14 rounded-[12px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-8 group-hover:scale-110 transition-transform duration-300`}>
                   <Icon size={28} className="text-white" strokeWidth={2.5} />
@@ -60,7 +60,10 @@ export default function Desktop() {
                   style={{ color: i === 0 ? "#0284C7" : "#D97706" }}
                 >
                   {path.cta} 
-                  <ArrowRight size={16} strokeWidth={2.5} />
+                  <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${16}px` }}>
+      <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                 </button>
               </motion.div>
             );

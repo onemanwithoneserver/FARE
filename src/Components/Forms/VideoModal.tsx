@@ -248,7 +248,7 @@ export default function VideoModal({
             }}
             onMouseMove={resetControlsTimeout}
             onTouchStart={resetControlsTimeout}
-            className={`relative z-10 aspect-[9/16] bg-black rounded-[4px] shadow-[0_25px_90px_-15px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.12)] overflow-hidden flex flex-col items-center justify-center group border border-white/15 ${
+            className={`relative z-10 aspect-[9/16] bg-black rounded-[4px] luxury-shadow-float overflow-hidden flex flex-col items-center justify-center group border border-white/15 ${
               isFullscreen
                 ? "h-full max-h-screen w-auto max-w-[100vw] my-auto"
                 : "w-full max-w-[380px] sm:max-w-[400px] md:max-w-[420px] max-h-[88vh]"
@@ -325,7 +325,7 @@ export default function VideoModal({
                   exit={{ opacity: 0, scale: 0.8 }}
                   onClick={togglePlay}
                   aria-label="Play video"
-                  className="absolute inset-0 m-auto w-16 h-16 rounded-[4px] bg-[#0B1D3A]/85 hover:bg-[#0B1D3A] text-white backdrop-blur-md border border-[#E2C068]/40 flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.6)] z-30 cursor-pointer hover:scale-110 active:scale-95 transition-transform"
+                  className="absolute inset-0 m-auto w-16 h-16 rounded-[4px] bg-[#0B1D3A]/85 hover:bg-[#0B1D3A] text-white backdrop-blur-md border border-[#E2C068]/40 flex items-center justify-center luxury-shadow-float z-30 cursor-pointer hover:scale-110 active:scale-95 transition-transform"
                 >
                   <Play size={26} className="text-[#E2C068] fill-[#E2C068] ml-0.5" />
                 </motion.button>

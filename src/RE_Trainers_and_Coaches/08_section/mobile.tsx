@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { User, Server, ArrowRight, Zap, Sparkles } from "lucide-react";
+import { ChevronRight, User, Server, ArrowRight, Zap, Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 const NAVY = "#0B1D3A";
@@ -101,7 +101,7 @@ export default function Mobile() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-40px" }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 relative overflow-hidden shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)]"
+            className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded p-6 relative overflow-hidden luxury-shadow-float"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-bl-full blur-[25px] pointer-events-none" />
             <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C99A2E] to-transparent opacity-80" />
@@ -142,7 +142,7 @@ export default function Mobile() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-3xl p-6 relative overflow-hidden shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+            className="mt-6 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-3xl p-6 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-1 transition-all duration-400 ease-out"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#3B82F6]/10 rounded-bl-full blur-[25px] pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#3B82F6] to-transparent opacity-80" />
@@ -198,7 +198,7 @@ export default function Mobile() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-3xl flex flex-col items-center relative shadow-[0_20px_45px_rgba(11,29,58,0.4)] mb-8 z-20"
+          className="rounded-3xl flex flex-col items-center relative luxury-shadow-float mb-8 z-20"
         >
           <div
             className="absolute inset-0 rounded-3xl overflow-hidden border border-white/10 pointer-events-none"
@@ -264,11 +264,10 @@ export default function Mobile() {
                       }}
                       className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/15 flex items-center justify-center shrink-0 shadow-sm relative"
                     >
-                      <ArrowRight
-                        size={15}
-                        className="text-[#E2BA55] rotate-90"
-                        strokeWidth={2.5}
-                      />
+                      <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#E2BA55] rotate-90"}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                     </motion.div>
                   )}
                 </div>

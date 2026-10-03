@@ -51,13 +51,22 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full flex items-center justify-center overflow-x-clip relative font-['Outfit'] pb-16"
+      className="w-full flex items-center justify-center overflow-x-clip relative font-['Outfit'] pb-16 fare-noise-overlay"
       style={{
         background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)`,
       }}
     >
       <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
       <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[90px] pointer-events-none z-0"></div>
+      
+      <motion.div 
+        className="absolute top-[15%] left-[25%] w-2 h-2 rounded-full bg-[#C99A2E] blur-[1px] animate-float-delayed z-0 pointer-events-none"
+        style={{ boxShadow: '0 0 10px rgba(201,154,46,0.6)' }}
+      />
+      <motion.div 
+        className="absolute bottom-[20%] right-[30%] w-1.5 h-1.5 rounded-full bg-[#6366F1] blur-[1px] animate-float-delayed-2 z-0 pointer-events-none"
+        style={{ boxShadow: '0 0 8px rgba(99,102,241,0.6)' }}
+      />
       <svg
         className="absolute top-20 left-[10%] w-[400px] h-[400px] opacity-[0.05] pointer-events-none z-0"
         viewBox="0 0 400 400"
@@ -130,17 +139,22 @@ export default function Desktop() {
           </motion.div>
           <motion.div variants={item} className="flex items-center gap-4 mb-6">
             <button
-              className="text-white text-[13.5px] font-semibold px-7 py-3.5 rounded hover:shadow-[0_12px_24px_rgba(11,29,58,0.2),0_0_0_1px_rgba(201,154,46,0.15)] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="text-white text-[13.5px] font-semibold px-7 py-3.5 rounded hover:luxury-shadow-float transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out relative overflow-hidden group cursor-pointer"
               style={{
                 background: NAVY,
                 boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`,
               }}
             >
-              {data.buttons.primary} <ArrowRight size={15} strokeWidth={2.5} />
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
+              <span className="relative z-10">{data.buttons.primary}</span>
+              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"relative z-10 group-hover:translate-x-1"}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
             </button>
             <button
               onClick={() => setIsVideoModalOpen(true)}
-              className="text-[13.5px] font-semibold px-7 py-3.5 rounded hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
+              className="text-[13.5px] font-semibold px-7 py-3.5 rounded hover:bg-[#F8FAFD] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out cursor-pointer group hover:shadow-[0_4px_12px_rgba(11,29,58,0.05)]"
               style={{
                 color: NAVY,
                 borderColor: `${NAVY}15`,
@@ -148,8 +162,10 @@ export default function Desktop() {
                 boxShadow: "0 1px 3px rgba(11,29,58,0.03)",
               }}
             >
-              <Play size={14} strokeWidth={2.5} fill={NAVY} />{" "}
-              {data.buttons.secondary}
+              <div className="w-5 h-5 rounded-full flex items-center justify-center transition-colors duration-300 group-hover:bg-[#C99A2E]/10 bg-[#0B1D3A]/5">
+                <Play size={10} className="ml-[1px] transition-colors duration-300 group-hover:text-[#C99A2E] text-[#0B1D3A]" fill="currentColor" />
+              </div>
+              <span>{data.buttons.secondary}</span>
             </button>
           </motion.div>
           <motion.div
@@ -329,7 +345,10 @@ export default function Desktop() {
                       Upcoming Schedule
                     </h3>
                     <button className="text-[9px] font-semibold text-white/40 hover:text-white/60 transition-colors flex items-center gap-1 border border-white/[0.08] px-2.5 py-1 rounded-sm hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
-                      View All <ArrowRight size={8} />
+                      View All <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${8}px` }}>
+      <ChevronRight size={8} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={8} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                     </button>
                   </div>
                   <div className="flex flex-col gap-2">
@@ -416,7 +435,10 @@ export default function Desktop() {
                   className="text-[9px] font-medium flex items-center gap-1"
                   style={{ color: MUTED_BLUE }}
                 >
-                  Mock Tests <ArrowRight size={8} />
+                  Mock Tests <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${8}px` }}>
+      <ChevronRight size={8} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={8} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                 </div>
               </div>
             </motion.div>
@@ -457,7 +479,10 @@ export default function Desktop() {
                   className="text-[9px] font-medium flex items-center gap-1"
                   style={{ color: MUTED_BLUE }}
                 >
-                  Daily Tracking <ArrowRight size={8} />
+                  Daily Tracking <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${8}px` }}>
+      <ChevronRight size={8} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={8} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                 </div>
               </div>
             </motion.div>

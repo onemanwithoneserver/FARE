@@ -96,7 +96,7 @@ export default function Desktop() {
               <motion.div
                 key={idx}
                 variants={item}
-                className="shrink-0 w-[400px] snap-start group bg-white/90 backdrop-blur-xl rounded p-8 border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/[0.20] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(11,29,58,0.18)] transition-all duration-400 ease-out flex flex-col relative overflow-hidden hover:-translate-y-1.5"
+                className="shrink-0 w-[400px] snap-start group bg-white/90 backdrop-blur-xl rounded p-8 border border-[#0B1D3A]/[0.08] hover:border-[#0B1D3A]/[0.20] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 ease-out flex flex-col relative overflow-hidden hover:-translate-y-1.5"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"

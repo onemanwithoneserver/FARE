@@ -111,7 +111,7 @@ export default function ContactForm() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full sm:w-auto px-10 py-4 mt-6 bg-[#0B1D3A] text-white rounded-full font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_8px_16px_-8px_rgba(11,29,58,0.4)] hover:shadow-[0_12px_24px_-8px_rgba(11,29,58,0.5)] transition-all ml-auto"
+            className="w-full sm:w-auto px-10 py-4 mt-6 bg-[#0B1D3A] text-white rounded-full font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_8px_16px_-8px_rgba(11,29,58,0.4)] hover:luxury-shadow-float transition-all ml-auto"
           >
             Send Message <Send size={16} />
           </motion.button>

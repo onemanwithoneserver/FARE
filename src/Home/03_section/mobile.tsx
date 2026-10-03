@@ -2,16 +2,14 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
-import {
-  Building2,
+import { ChevronRight, Building2,
   GraduationCap,
   UserCheck,
   ArrowRight,
   Sparkles,
   Check,
   ChevronDown,
-  MapPin,
-} from "lucide-react";
+  MapPin, } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 const NAVY = "#0B1D3A";
@@ -141,7 +139,7 @@ export default function Mobile() {
               <motion.div
                 key={persona.id}
                 variants={itemVariants}
-                className="bg-white/95 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-xl relative overflow-hidden shadow-[0_8px_24px_-8px_rgba(11,29,58,0.08)] transition-all duration-300 hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="bg-white/95 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-xl relative overflow-hidden luxury-shadow-float transition-all duration-300 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px]"
@@ -269,7 +267,7 @@ export default function Mobile() {
                                       duration: 0.18,
                                       ease: [0.16, 1, 0.3, 1],
                                     }}
-                                    className="w-full mt-2.5 bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-[4px] p-1.5 shadow-lg z-20 hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out"
+                                    className="w-full mt-2.5 bg-[#071738]/95 backdrop-blur-xl border border-white/15 rounded-[4px] p-1.5 shadow-lg z-20 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
                                   >
                                     <div className="flex flex-col gap-1">
                                       {data.companyDropdown?.map(
@@ -306,11 +304,10 @@ export default function Mobile() {
                                                 {item.title}
                                               </span>
                                             </div>
-                                            <ArrowRight
-                                              size={14}
-                                              strokeWidth={2.5}
-                                              className="text-[#10B981] shrink-0 ml-1"
-                                            />
+                                            <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#10B981] shrink-0 ml-1"}`} style={{ fontSize: `${14}px` }}>
+      <ChevronRight size={14} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={14} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                                           </button>
                                         ),
                                       )}
@@ -334,11 +331,10 @@ export default function Mobile() {
                               <span className="text-[12.5px] font-bold text-white">
                                 {exploreLabel}
                               </span>
-                              <ArrowRight
-                                size={15}
-                                strokeWidth={2.5}
-                                style={{ color: accent }}
-                              />
+                              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px`, color: accent }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                             </button>
                           )}
                         </div>

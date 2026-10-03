@@ -207,7 +207,7 @@ export default function Mobile() {
           transition={{ duration: 0.6 }}
         >
           <div
-            className="rounded p-8 text-center relative overflow-hidden shadow-[0_20px_50px_-10px_rgba(11,29,58,0.35)] border border-[#C99A2E]/30"
+            className="rounded p-8 text-center relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/30"
             style={{
               background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)`,
             }}
@@ -233,7 +233,7 @@ export default function Mobile() {
               </p>
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-white/[0.06] backdrop-blur-md border border-white/10 py-4 px-5 rounded w-full shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:bg-white/[0.1] hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="bg-white/[0.06] backdrop-blur-md border border-white/10 py-4 px-5 rounded w-full luxury-shadow-float hover:bg-white/[0.1] hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <p className="text-[15px] font-semibold text-white/95 leading-snug">
                   {data.footerCta}

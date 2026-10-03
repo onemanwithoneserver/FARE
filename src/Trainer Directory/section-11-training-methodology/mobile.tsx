@@ -58,7 +58,7 @@ export default function Mobile() {
         <div className="flex flex-col gap-10">
           
           <div className="flex flex-col gap-5">
-            <motion.div variants={item} className="relative rounded p-8 shadow-[0_8px_32px_-8px_rgba(11,29,58,0.15)] overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
+            <motion.div variants={item} className="relative rounded p-8 luxury-shadow-float overflow-hidden group border border-[#0B1D3A]/[0.08]" style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)` }}>
               <motion.div 
                 animate={{ scale: [1, 1.2, 1], rotate: [0, 5, 0] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}

@@ -64,7 +64,7 @@ export default function Mobile() {
             <motion.div
               key={idx}
               variants={item}
-              className="bg-white/90 backdrop-blur-xl rounded p-4 border border-[#0B1D3A]/[0.06] shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] relative overflow-hidden group"
+              className="bg-white/90 backdrop-blur-xl rounded p-4 border border-[#0B1D3A]/[0.06] luxury-shadow-float relative overflow-hidden group"
             >
               <div
                 className="absolute top-0 left-0 right-0 h-[3px] opacity-60"

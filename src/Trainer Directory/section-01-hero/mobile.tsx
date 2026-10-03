@@ -1,6 +1,6 @@
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
-import { MapPin, Globe2, Briefcase, GraduationCap, Users, ShieldCheck, ArrowRight } from "lucide-react";
+import { ChevronRight, MapPin, Globe2, Briefcase, GraduationCap, Users, ShieldCheck, ArrowRight } from "lucide-react";
 import trainerImg from "../../assets/re_trainers_hero.jpg";
 
 const NAVY = "#0B1D3A";
@@ -31,14 +31,14 @@ export default function Mobile() {
           
           <div className="absolute -inset-1 bg-gradient-to-br from-[#6366F1]/40 via-[#C99A2E]/40 to-[#06B6D4]/40 rounded blur-lg transition-all duration-500 opacity-70" />
           
-          <div className="relative w-full h-full rounded overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)] border border-white/5">
+          <div className="relative w-full h-full rounded overflow-hidden luxury-shadow-float border border-white/5">
             <img src={trainerImg} alt={data.trainerName} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D3A]/80 via-transparent to-transparent opacity-80" />
           </div>
           
           {data.isVerified && (
             <div 
-              className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-5 py-2.5 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.3)] whitespace-nowrap"
+              className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 px-5 py-2.5 rounded-full luxury-shadow-float whitespace-nowrap"
               style={{
                 background: "rgba(255,255,255,0.1)",
                 backdropFilter: "blur(20px)",
@@ -135,10 +135,13 @@ export default function Mobile() {
         </div>
 
         
-        <button className="w-full bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#0B1D3A] px-6 py-4 rounded font-black text-[16px] shadow-[0_10px_25px_-5px_rgba(201,154,46,0.5)] transition-all flex items-center justify-center gap-2 relative overflow-hidden">
+        <button className="w-full bg-gradient-to-r from-[#C99A2E] to-[#D5AA45] text-[#0B1D3A] px-6 py-4 rounded font-black text-[16px] luxury-shadow-float transition-all flex items-center justify-center gap-2 relative overflow-hidden">
           <div className="absolute inset-0 bg-white/20 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-500 ease-in-out" />
           <span>{data.cta}</span>
-          <ArrowRight size={18} strokeWidth={2.5} />
+          <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${18}px` }}>
+      <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
         </button>
         
       </div>

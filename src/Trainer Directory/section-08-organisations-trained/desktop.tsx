@@ -99,7 +99,7 @@ export default function Desktop() {
 
                     <motion.div
                       whileHover={{ x: 5, y: -2, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
-                      className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-5 shadow-[0_4px_20px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_12px_36px_-12px_rgba(11,29,58,0.12)] transition-all duration-400 ease-out relative overflow-hidden"
+                      className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded p-5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 ease-out relative overflow-hidden"
                     >
                       <div
                         className="absolute top-0 left-0 right-0 h-[3px] opacity-60 group-hover:opacity-100 transition-opacity duration-500"

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { UserPlus, ArrowRight, Sparkles } from "lucide-react";
+import { ChevronRight, UserPlus, ArrowRight, Sparkles } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
@@ -10,7 +10,7 @@ export default function Desktop() {
   const data = getData(language);
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-32 px-10 font-['Outfit'] relative overflow-hidden flex items-center justify-center">
+    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-32 px-10 font-['Outfit'] relative overflow-hidden flex items-center justify-center fare-noise-overlay">
 
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#0B1D3A]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />
@@ -21,7 +21,7 @@ export default function Desktop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-[24px] overflow-hidden shadow-[0_30px_80px_-20px_rgba(11,29,58,0.3)] group"
+          className="relative rounded-[24px] overflow-hidden luxury-shadow-float group"
         >
 
           <div className="absolute inset-0 bg-[#0B1D3A]" />
@@ -89,19 +89,22 @@ export default function Desktop() {
               className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto"
             >
               <button 
-                className="w-full sm:w-auto h-[60px] px-10 rounded-[8px] font-bold text-[16px] text-[#0B1D3A] flex items-center justify-center gap-3 group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_8px_30px_rgba(201,154,46,0.3)]"
+                className="w-full sm:w-auto h-[60px] px-10 rounded-[8px] font-bold text-[16px] text-[#0B1D3A] flex items-center justify-center gap-3 group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] luxury-shadow-float"
                 style={{ background: `linear-gradient(135deg, ${GOLD}, #E5C370)` }}
               >
-                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
                 <span className="relative z-10 flex items-center gap-2">
                   {data.buttons.primary}
-                  <UserPlus size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
+                  <UserPlus size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
               </button>
               
               <button className="w-full sm:w-auto h-[60px] px-10 bg-white/5 border border-white/20 text-white rounded-[8px] font-bold text-[16px] hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 group backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98]">
                 {data.buttons.secondary}
-                <ArrowRight size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
+                <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"group-hover:translate-x-1"}`} style={{ fontSize: `${18}px` }}>
+      <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
               </button>
             </motion.div>
           </div>

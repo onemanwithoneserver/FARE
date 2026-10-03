@@ -56,7 +56,7 @@ export default function Mobile() {
               className="flex flex-col gap-3 group cursor-pointer"
             >
               <div
-                className={`relative aspect-video rounded overflow-hidden flex items-center justify-center border ${video.thumbnail === 'navy' ? 'border-[#0B1D3A]/20' : 'border-[#0B1D3A]/[0.08]'} shadow-[0_8px_32px_-8px_rgba(11,29,58,0.08)] bg-white/90 backdrop-blur-xl`}
+                className={`relative aspect-video rounded overflow-hidden flex items-center justify-center border ${video.thumbnail === 'navy' ? 'border-[#0B1D3A]/20' : 'border-[#0B1D3A]/[0.08]'} luxury-shadow-float bg-white/90 backdrop-blur-xl`}
                 style={{
                   background: video.thumbnail === 'navy'
                     ? `linear-gradient(135deg, ${NAVY} 0%, #071A49 100%)`

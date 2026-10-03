@@ -119,7 +119,7 @@ export default function Desktop() {
                 key={index}
                 variants={item}
                 whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-8 hover:bg-white hover:border-[#0B1D3A]/20 transition-all duration-400 group relative overflow-hidden shadow-[0_10px_30px_-10px_rgba(11,29,58,0.12)] flex flex-col"
+                className="bg-white/80 backdrop-blur-xl border border-[#0B1D3A]/10 rounded p-8 hover:bg-white hover:border-[#0B1D3A]/20 transition-all duration-400 group relative overflow-hidden luxury-shadow-float flex flex-col"
               >
                 <motion.div
                   animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -135,16 +135,18 @@ export default function Desktop() {
                   className="absolute top-0 left-0 w-full h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{ background: segment.color }}
                 ></div>
-                <div
-                  className="w-14 h-14 rounded flex items-center justify-center shadow-lg mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
-                  style={{ backgroundColor: segment.color }}
-                >
-                  <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
-                  {segmentIcons[segment.icon as keyof typeof segmentIcons]}
+                <div className="flex items-center gap-4 mb-6 relative z-10">
+                  <div
+                    className="w-14 h-14 rounded flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden shrink-0"
+                    style={{ backgroundColor: segment.color }}
+                  >
+                    <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
+                    {segmentIcons[segment.icon as keyof typeof segmentIcons]}
+                  </div>
+                  <h4 className="text-[22px] font-bold text-[#0B1D3A] leading-tight">
+                    {segment.title}
+                  </h4>
                 </div>
-                <h4 className="text-[22px] font-bold mb-6 text-[#0B1D3A] leading-tight">
-                  {segment.title}
-                </h4>
                 <div className="flex flex-col gap-3.5 mt-auto relative z-10">
                   {segment.items.map((it, idx) => (
                     <div
@@ -168,7 +170,7 @@ export default function Desktop() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
-            className="rounded p-12 lg:p-14 relative overflow-hidden shadow-[0_25px_60px_-15px_rgba(11,29,58,0.35)] border border-[#C99A2E]/30"
+            className="rounded p-12 lg:p-14 relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/30"
             style={{
               background:
                 "linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)",
@@ -198,7 +200,7 @@ export default function Desktop() {
                 <motion.div
                   key={index}
                   variants={item}
-                  className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] bg-white/[0.06] backdrop-blur-md border border-white/10 rounded p-8 hover:border-[#C99A2E]/40 hover:bg-white/[0.08] hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.3)] transition-all duration-400 group cursor-default flex flex-col justify-between"
+                  className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] bg-white/[0.06] backdrop-blur-md border border-white/10 rounded p-8 hover:border-[#C99A2E]/40 hover:bg-white/[0.08] hover:luxury-shadow-float transition-all duration-400 group cursor-default flex flex-col justify-between"
                 >
                   <div className="flex items-center gap-5 mb-5">
                     <div

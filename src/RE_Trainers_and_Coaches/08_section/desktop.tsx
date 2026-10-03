@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { User, Server, Plus, ArrowRight, Zap, Sparkles } from "lucide-react";
+import { ChevronRight, User, Server, Plus, ArrowRight, Zap, Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 const NAVY = "#0B1D3A";
@@ -118,7 +118,7 @@ export default function Desktop() {
           </motion.h2>
           <motion.h2
             variants={item}
-            className="text-[2.75rem] lg:text-[3.75rem] leading-[1.08] font-black tracking-[-0.03em] bg-clip-text text-transparent bg-gradient-to-r from-[#C99A2E] via-[#E2BA55] to-[#B88A22] drop-shadow-[0_4px_24px_rgba(201,154,46,0.25)]"
+            className="text-[2.75rem] lg:text-[3.75rem] leading-[1.08] font-black tracking-[-0.03em] bg-clip-text text-transparent bg-gradient-to-r from-[#C99A2E] via-[#E2BA55] to-[#B88A22] drop-luxury-shadow-float"
           >
             {data.headlineAccent}
           </motion.h2>
@@ -134,7 +134,7 @@ export default function Desktop() {
                 y: -6,
                 transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
               }}
-              className="group flex-1 w-full bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/35 rounded-2xl p-9 xl:p-11 transition-all duration-400 relative overflow-hidden shadow-[0_12px_36px_-12px_rgba(11,29,58,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(201,154,46,0.18)] cursor-default"
+              className="group flex-1 w-full bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/35 rounded-2xl p-9 xl:p-11 transition-all duration-400 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float cursor-default"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.2] to-transparent translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-1000 pointer-events-none" />
               <motion.div
@@ -148,7 +148,7 @@ export default function Desktop() {
               />
               <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C99A2E] via-[#E2BA55] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-400" />
               <div className="flex items-center gap-4 xl:gap-5 mb-8 relative z-10">
-                <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(201,154,46,0.35)] group-hover:scale-110 transition-transform duration-400 relative overflow-hidden">
+                <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center text-white luxury-shadow-float group-hover:scale-110 transition-transform duration-400 relative overflow-hidden">
                   <User size={26} strokeWidth={2} className="relative z-10" />
                 </div>
                 <div>
@@ -179,7 +179,7 @@ export default function Desktop() {
                 ))}
               </motion.div>
             </motion.div>
-            <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-[50%] -translate-y-1/2 w-14 h-14 rounded-full bg-white border border-[#0B1D3A]/10 shadow-[0_8px_24px_-4px_rgba(11,29,58,0.12)] items-center justify-center z-20 text-[#C99A2E]">
+            <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-[50%] -translate-y-1/2 w-14 h-14 rounded-full bg-white border border-[#0B1D3A]/10 luxury-shadow-float items-center justify-center z-20 text-[#C99A2E]">
               <Plus size={28} strokeWidth={2.5} />
             </div>
             <motion.div
@@ -191,7 +191,7 @@ export default function Desktop() {
                 y: -6,
                 transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
               }}
-              className="group flex-1 w-full bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#3B82F6]/35 rounded-2xl p-9 xl:p-11 transition-all duration-400 relative overflow-hidden shadow-[0_12px_36px_-12px_rgba(11,29,58,0.08)] hover:shadow-[0_24px_50px_-15px_rgba(59,130,246,0.18)] cursor-default"
+              className="group flex-1 w-full bg-white/85 backdrop-blur-xl border border-[#0B1D3A]/[0.08] hover:border-[#3B82F6]/35 rounded-2xl p-9 xl:p-11 transition-all duration-400 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:luxury-shadow-float cursor-default"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.2] to-transparent translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-1000 pointer-events-none" />
               <motion.div
@@ -205,7 +205,7 @@ export default function Desktop() {
               />
               <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#3B82F6] via-[#60A5FA] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-400" />
               <div className="flex items-center gap-4 xl:gap-5 mb-8 relative z-10">
-                <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-full bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] flex items-center justify-center text-white shadow-[0_8px_20px_rgba(59,130,246,0.35)] group-hover:scale-110 transition-transform duration-400 relative overflow-hidden">
+                <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-full bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] flex items-center justify-center text-white luxury-shadow-float group-hover:scale-110 transition-transform duration-400 relative overflow-hidden">
                   <Server size={26} strokeWidth={2} className="relative z-10" />
                 </div>
                 <div>
@@ -334,7 +334,7 @@ export default function Desktop() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center justify-center relative z-10 w-full mb-8"
           >
-            <div className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white/95 border border-[#C99A2E]/25 shadow-[0_8px_30px_-4px_rgba(201,154,46,0.18)] backdrop-blur-md">
+            <div className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white/95 border border-[#C99A2E]/25 luxury-shadow-float backdrop-blur-md">
               <Sparkles
                 size={18}
                 className="text-[#C99A2E]"
@@ -350,7 +350,7 @@ export default function Desktop() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-60px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-[1000px] w-full mx-auto rounded-3xl flex flex-col items-center relative transition-all duration-500 group shadow-[0_25px_60px_-15px_rgba(11,29,58,0.5)] hover:shadow-[0_30px_70px_-15px_rgba(201,154,46,0.15)] z-20"
+            className="max-w-[1000px] w-full mx-auto rounded-3xl flex flex-col items-center relative transition-all duration-500 group luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] z-20"
           >
             <div
               className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none border border-white/10 group-hover:border-[#C99A2E]/40 transition-colors duration-500"
@@ -386,7 +386,7 @@ export default function Desktop() {
                 className="absolute -bottom-1/2 right-[15%] w-[500px] h-[500px] bg-[#3B82F6]/20 rounded-full blur-[90px]"
               />
             </div>
-            <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] border-[4px] border-white shadow-[0_8px_20px_rgba(201,154,46,0.35)] flex items-center justify-center z-30 font-black text-white text-2xl leading-none">
+            <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] border-[4px] border-white luxury-shadow-float flex items-center justify-center z-30 font-black text-white text-2xl leading-none">
               =
             </div>
             <div className="p-10 xl:p-14 flex flex-col items-center relative w-full">
@@ -455,7 +455,7 @@ export default function Desktop() {
                             ease: [0.16, 1, 0.3, 1],
                           },
                         }}
-                        className="group/chip text-[17px] xl:text-[19px] font-bold text-white bg-white/[0.07] hover:bg-white/[0.14] px-7 py-4.5 rounded-xl border border-white/10 hover:border-[#C99A2E]/60 shadow-[0_8px_25px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_30px_rgba(201,154,46,0.25)] transition-all duration-300 cursor-default relative overflow-hidden backdrop-blur-md"
+                        className="group/chip text-[17px] xl:text-[19px] font-bold text-white bg-white/[0.07] hover:bg-white/[0.14] px-7 py-4.5 rounded-xl border border-white/10 hover:border-[#C99A2E]/60 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-300 cursor-default relative overflow-hidden backdrop-blur-md"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent translate-x-[-120%] group-hover/chip:translate-x-[120%] transition-transform duration-700 pointer-events-none" />
                         <span className="relative z-10 tracking-wide group-hover/chip:text-[#E2BA55] transition-colors">
@@ -482,11 +482,10 @@ export default function Desktop() {
                           className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/15 flex items-center justify-center shrink-0 shadow-[0_4px_12px_rgba(0,0,0,0.3)] backdrop-blur-sm relative"
                         >
                           <div className="absolute inset-0 rounded-full bg-[#C99A2E]/10 animate-pulse pointer-events-none" />
-                          <ArrowRight
-                            size={18}
-                            className="text-[#E2BA55] relative z-10"
-                            strokeWidth={2.5}
-                          />
+                          <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#E2BA55] relative z-10"}`} style={{ fontSize: `${18}px` }}>
+      <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
                         </motion.div>
                       )}
                     </div>

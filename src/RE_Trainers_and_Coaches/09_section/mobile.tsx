@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ChevronRight, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 const NAVY = "#0B1D3A";
@@ -39,7 +39,7 @@ export default function Mobile() {
           className="flex flex-col items-center text-center mb-12"
         >
           <motion.div variants={item} className="mb-6">
-            <div className="bg-white border border-[#0B1D3A]/[0.08] px-4 py-2 rounded-full flex items-center gap-2 shadow-sm backdrop-blur-md inline-flex hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out">
+            <div className="bg-white border border-[#0B1D3A]/[0.08] px-4 py-2 rounded-full flex items-center gap-2 shadow-sm backdrop-blur-md inline-flex hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
               <Sparkles size={14} className="text-[#C99A2E]" />
               <span
                 className="text-[10px] font-bold tracking-[0.2em] uppercase"
@@ -73,7 +73,7 @@ export default function Mobile() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-50px" }}
             transition={{ duration: 0.6 }}
-            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-8 shadow-[0_10px_30px_-10px_rgba(11,29,58,0.08)] relative overflow-hidden"
+            className="bg-white border border-[#0B1D3A]/[0.06] rounded p-8 luxury-shadow-float relative overflow-hidden"
           >
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#C99A2E]/[0.08] rounded-full blur-3xl"></div>
             <h3
@@ -104,7 +104,7 @@ export default function Mobile() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-gradient-to-br from-[#0B1D3A] via-[#132D5F] to-[#0B1D3A] rounded p-8 sm:p-10 shadow-[0_20px_40px_-10px_rgba(11,29,58,0.4)] relative overflow-hidden flex flex-col items-center text-center"
+            className="bg-gradient-to-br from-[#0B1D3A] via-[#132D5F] to-[#0B1D3A] rounded p-8 sm:p-10 luxury-shadow-float relative overflow-hidden flex flex-col items-center text-center"
           >
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 mix-blend-overlay"></div>
             <motion.div
@@ -123,8 +123,11 @@ export default function Mobile() {
             <h3 className="text-[26px] font-black text-white mb-8 relative z-10 leading-[1.15]">
               {data.footerText}
             </h3>
-            <button className="w-full bg-gradient-to-r from-[#C99A2E] to-[#B88A22] active:scale-95 text-white px-6 py-4 rounded font-bold text-[16px] shadow-[0_10px_20px_-5px_rgba(201,154,46,0.4)] flex items-center justify-center gap-3 relative z-10 transition-transform hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
-              {data.ctaButton} <ArrowRight size={20} strokeWidth={2.5} />
+            <button className="w-full bg-gradient-to-r from-[#C99A2E] to-[#B88A22] active:scale-95 text-white px-6 py-4 rounded font-bold text-[16px] luxury-shadow-float flex items-center justify-center gap-3 relative z-10 transition-transform hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
+              {data.ctaButton} <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${20}px` }}>
+      <ChevronRight size={20} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={20} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
             </button>
           </motion.div>
         </div>

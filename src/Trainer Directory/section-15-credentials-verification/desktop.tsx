@@ -60,7 +60,7 @@ export default function Desktop() {
               key={idx}
               variants={item}
               whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-              className="group rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/[0.40] shadow-[0_8px_32px_-8px_rgba(11,29,58,0.06)] hover:shadow-[0_16px_48px_-12px_rgba(201,154,46,0.15)] bg-white/90 backdrop-blur-xl"
+              className="group rounded p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out border border-[#0B1D3A]/[0.08] hover:border-[#C99A2E]/[0.40] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] bg-white/90 backdrop-blur-xl"
             >
               
               <div 

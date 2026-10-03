@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import {
-  GraduationCap,
+import { ChevronRight, GraduationCap,
   Upload,
   Tag,
   ArrowRight,
-  CheckCircle,
-} from "lucide-react";
+  CheckCircle, } from "lucide-react";
 import { useLanguage } from "../../../context/LanguageContext";
 export default function RETrainersForm() {
   const { language } = useLanguage();
@@ -144,7 +142,7 @@ export default function RETrainersForm() {
           <label className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-wider">
             Upload Resume / Profile
           </label>
-          <div className="w-full border-2 border-dashed border-[#3B82F6]/30 rounded-xl py-8 px-4 flex flex-col items-center justify-center bg-white/50 hover:bg-[#F8FAFD] transition-colors cursor-pointer group hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.08)] hover:-translate-y-1 transition-all duration-400 ease-out">
+          <div className="w-full border-2 border-dashed border-[#3B82F6]/30 rounded-xl py-8 px-4 flex flex-col items-center justify-center bg-white/50 hover:bg-[#F8FAFD] transition-colors cursor-pointer group hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
             <div className="w-12 h-12 rounded-full bg-[#3B82F6]/10 flex items-center justify-center mb-3 group-hover:bg-[#3B82F6]/20 transition-colors">
               <Upload size={20} className="text-[#3B82F6]" />
             </div>
@@ -160,9 +158,12 @@ export default function RETrainersForm() {
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.98 }}
           type="submit"
-          className="w-full mt-6 bg-gradient-to-r from-[#2563EB] to-[#3B82F6] text-white py-4 rounded-xl font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_8px_20px_-8px_rgba(59,130,246,0.6)] hover:shadow-[0_12px_24px_-8px_rgba(59,130,246,0.7)] transition-all"
+          className="w-full mt-6 bg-gradient-to-r from-[#2563EB] to-[#3B82F6] text-white py-4 rounded-xl font-bold text-[15px] flex items-center justify-center gap-3 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all"
         >
-          Submit Application <ArrowRight size={18} />
+          Submit Application <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${18}px` }}>
+      <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
         </motion.button>
       </form>
     </div>

@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ChevronRight, Sparkles, ArrowRight } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 import knowledgeBankHero from "../../../assets/knowledge_bank_hero.jpg";
@@ -89,14 +89,17 @@ export default function Desktop() {
 
           <motion.div variants={item} className="flex items-center gap-4 mb-6">
             <button
-              className="text-white text-[14px] font-semibold px-8 py-3.5 rounded-[8px] flex items-center gap-2.5 hover:shadow-[0_12px_32px_rgba(201,154,46,0.25)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
+              className="text-white text-[14px] font-semibold px-8 py-3.5 rounded-[8px] flex items-center gap-2.5 hover:luxury-shadow-float hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
               style={{
                 background: `linear-gradient(135deg, ${GOLD}, #B8892A)`,
                 boxShadow: `0 4px 16px rgba(201,154,46,0.2), 0 2px 4px rgba(0,0,0,0.1)`,
               }}
             >
               🚀 {data.buttons.primary}
-              <ArrowRight size={15} strokeWidth={2.5} />
+              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px` }}>
+      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+    </span>
             </button>
           </motion.div>
 
@@ -115,7 +118,7 @@ export default function Desktop() {
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end pl-0"
         >
-          <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] sm:rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden shadow-[0_25px_70px_-15px_rgba(11,29,58,0.22),0_10px_30px_-5px_rgba(0,0,0,0.06)] border-l border-t border-b border-white/80 group">
+          <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] sm:rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80 group">
             <motion.img
               animate={{ scale: [1, 1.04, 1] }}
               transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
