@@ -33,7 +33,7 @@ export default function Desktop() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white p-6 rounded-[4px] border border-gray-100 luxury-shadow-float flex flex-col hover:-translate-y-1 transition-transform duration-300 group"
             >
-              <div className="w-10 h-10 rounded-[4px] bg-red-50 flex items-center justify-center text-red-500 mb-5 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300">
+              <div className="w-10 h-10 rounded-[4px] bg-red-500 flex items-center justify-center text-white mb-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:rotate-6 group-hover:scale-110 shadow-md">
                 <AlertCircle size={20} strokeWidth={2.5} />
               </div>
               <h3 className="text-[16px] font-bold text-[#0B1D3A] mb-3 leading-snug group-hover:text-[#C99A2E] transition-colors duration-300">

@@ -37,8 +37,8 @@ export default function Desktop() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex gap-4 group"
               >
-                <div className="mt-1 text-[#34D399] group-hover:scale-110 transition-transform duration-300 shrink-0">
-                  <CheckCircle2 size={24} strokeWidth={2} />
+                <div className="mt-1 w-10 h-10 rounded-full bg-[#10B981] text-white flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 shrink-0">
+                  <CheckCircle2 size={20} strokeWidth={2.5} />
                 </div>
                 <div>
                   <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-1.5 group-hover:text-[#C99A2E] transition-colors">

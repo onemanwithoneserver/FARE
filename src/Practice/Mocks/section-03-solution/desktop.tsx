@@ -42,7 +42,7 @@ export default function Desktop() {
                 transition={{ duration: 0.5, delay: index * 0.15 }}
                 className="relative flex flex-col items-center flex-1 px-4 group"
               >
-                <div className="w-14 h-14 rounded-full bg-[#0B1D3A] border-2 border-[#C99A2E]/30 flex items-center justify-center text-[#C99A2E] mb-6 relative z-10 group-hover:border-[#C99A2E] group-hover:bg-[#C99A2E] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(201,154,46,0)] group-hover:shadow-[0_0_20px_rgba(201,154,46,0.3)]">
+                <div className="w-14 h-14 rounded-full bg-[#C99A2E] border-2 border-[#C99A2E]/30 flex items-center justify-center text-white mb-6 relative z-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-[0_0_15px_rgba(201,154,46,0.25)] group-hover:shadow-[0_0_24px_rgba(201,154,46,0.5)]">
                   <Icon size={24} strokeWidth={2} />
                   <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-[#102B63] border border-white/10 flex items-center justify-center text-[10px] font-bold text-white shadow-sm">
                     {index + 1}

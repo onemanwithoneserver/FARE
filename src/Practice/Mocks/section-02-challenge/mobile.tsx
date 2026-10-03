@@ -34,7 +34,7 @@ export default function Mobile() {
               className="bg-white p-5 rounded-[4px] border border-gray-100 shadow-sm flex flex-col gap-3"
             >
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 shrink-0 rounded-[4px] bg-red-50 flex items-center justify-center text-red-500 mt-0.5">
+                <div className="w-8 h-8 shrink-0 rounded-[4px] bg-red-500 flex items-center justify-center text-white mt-0.5 shadow-md">
                   <AlertCircle size={16} strokeWidth={2.5} />
                 </div>
                 <div>

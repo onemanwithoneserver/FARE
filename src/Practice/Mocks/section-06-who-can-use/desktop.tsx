@@ -34,7 +34,7 @@ export default function Desktop() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-gray-50 border border-gray-100 p-6 rounded-[8px] hover:shadow-lg transition-all duration-300 group"
               >
-                <div className="w-12 h-12 rounded-[4px] bg-white shadow-sm flex items-center justify-center text-[#C99A2E] mb-5 group-hover:bg-[#C99A2E] group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 rounded-[4px] bg-[#C99A2E] shadow-md flex items-center justify-center text-white mb-5 transition-all duration-300 group-hover:bg-[#0B1D3A] group-hover:-translate-y-1 group-hover:rotate-6 group-hover:scale-110">
                   <Icon size={24} strokeWidth={2} />
                 </div>
                 <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-3">

@@ -37,7 +37,7 @@ export default function Mobile() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex gap-5 relative z-10 group"
               >
-                <div className="w-12 h-12 shrink-0 rounded-full bg-[#0B1D3A] border border-[#C99A2E]/50 flex items-center justify-center text-[#C99A2E] mt-1 group-hover:bg-[#C99A2E] group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 shrink-0 rounded-full bg-[#C99A2E] border border-[#C99A2E]/50 flex items-center justify-center text-white mt-1 shadow-md transition-all duration-300">
                   <Icon size={20} strokeWidth={2} />
                   <div className="absolute -left-2 -top-1 w-5 h-5 rounded-full bg-[#102B63] border border-[#C99A2E]/30 flex items-center justify-center text-[10px] font-bold text-white shadow-sm">
                     {index + 1}

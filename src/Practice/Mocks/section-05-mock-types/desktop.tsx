@@ -37,7 +37,7 @@ export default function Desktop() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-[#C99A2E]/5 to-transparent blur-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               
               <div className="flex items-center gap-4 border-b border-gray-100 pb-5">
-                <div className="w-12 h-12 rounded-[4px] bg-[#0B1D3A]/5 flex items-center justify-center text-[#0B1D3A] group-hover:bg-[#0B1D3A] group-hover:text-white transition-colors duration-300 shrink-0">
+                <div className="w-12 h-12 rounded-[4px] bg-[#0B1D3A] flex items-center justify-center text-white transition-all duration-300 shrink-0 group-hover:bg-[#C99A2E] group-hover:rotate-6 group-hover:scale-110 shadow-md">
                   <MessageSquare size={20} strokeWidth={2.5} />
                 </div>
                 <h3 className="text-[18px] font-bold text-[#0B1D3A] leading-tight">

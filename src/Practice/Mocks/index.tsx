@@ -16,6 +16,8 @@ import Section08OutcomesDesktop from "./section-08-outcomes/desktop";
 import Section08OutcomesMobile from "./section-08-outcomes/mobile";
 import Section09CtaDesktop from "./section-09-cta/desktop";
 import Section09CtaMobile from "./section-09-cta/mobile";
+import Header from "../../Home/00_header";
+import Footer from "../../Home/05_section";
 
 interface Props {
   isMobile: boolean;
@@ -23,7 +25,8 @@ interface Props {
 
 export default function Mocks({ isMobile }: Props) {
   return (
-    <div className="w-full min-h-screen bg-[#F0F2F5]">
+    <div className="w-full min-h-screen flex flex-col font-['Outfit'] bg-[#F8FAFC]">
+      <Header isMobile={isMobile} />
       {isMobile ? <Section01HeroMobile /> : <Section01HeroDesktop />}
       {isMobile ? <Section02ChallengeMobile /> : <Section02ChallengeDesktop />}
       {isMobile ? <Section03SolutionMobile /> : <Section03SolutionDesktop />}
@@ -33,6 +36,7 @@ export default function Mocks({ isMobile }: Props) {
       {isMobile ? <Section07SegmentsMobile /> : <Section07SegmentsDesktop />}
       {isMobile ? <Section08OutcomesMobile /> : <Section08OutcomesDesktop />}
       {isMobile ? <Section09CtaMobile /> : <Section09CtaDesktop />}
+      <Footer isMobile={isMobile} />
     </div>
   );
 }

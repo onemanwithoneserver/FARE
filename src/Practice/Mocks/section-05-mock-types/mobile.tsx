@@ -35,7 +35,7 @@ export default function Mobile() {
               className="bg-white border border-gray-100 rounded-[4px] p-5 shadow-sm flex flex-col gap-4 relative overflow-hidden"
             >
               <div className="flex items-center gap-3 border-b border-gray-100 pb-4">
-                <div className="w-10 h-10 rounded-[4px] bg-[#0B1D3A]/5 flex items-center justify-center text-[#0B1D3A] shrink-0">
+                <div className="w-10 h-10 rounded-[4px] bg-[#0B1D3A] flex items-center justify-center text-white shrink-0 shadow-md">
                   <MessageSquare size={18} strokeWidth={2.5} />
                 </div>
                 <h3 className="text-[16px] font-bold text-[#0B1D3A] leading-tight">

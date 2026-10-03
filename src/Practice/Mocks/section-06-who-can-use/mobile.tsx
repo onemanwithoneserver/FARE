@@ -34,7 +34,7 @@ export default function Mobile() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-gray-50 border border-gray-100 p-5 rounded-[4px] flex items-start gap-4"
               >
-                <div className="w-10 h-10 shrink-0 rounded-[4px] bg-white shadow-sm flex items-center justify-center text-[#C99A2E] mt-1">
+                <div className="w-10 h-10 shrink-0 rounded-[4px] bg-[#C99A2E] shadow-md flex items-center justify-center text-white mt-1">
                   <Icon size={20} strokeWidth={2} />
                 </div>
                 <div>

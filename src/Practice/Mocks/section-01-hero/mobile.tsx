@@ -1,47 +1,67 @@
 import { motion } from "motion/react";
+import { ChevronRight, Sparkles, ArrowRight } from "lucide-react";
 import { data } from "../data";
-import { ChevronRight, ArrowRight } from "lucide-react";
+import mocksHero from "../../../assets/mocks_hero.jpg";
+
+const NAVY = "#0B1D3A";
 
 export default function Mobile() {
   const sectionData = data.hero;
+
   return (
-    <section className="w-full bg-[#0B1D3A] py-20 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-full h-full pointer-events-none overflow-hidden opacity-30">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[50%] -right-[20%] w-[150%] h-[200%] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNDAwIDQwMCI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSIyMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0M5OUEyRSIgc3Ryb2tlLW9wYWNpdHk9IjAuMSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtZGFzaGFycmF5PSI1IDUiLz48L3N2Zz4=')] bg-[length:100px_100px] z-0"
-        />
-      </div>
-      <div className="w-full px-5 relative z-10 flex flex-col text-center">
+    <section
+      className="w-full relative overflow-hidden font-['Outfit']"
+      style={{
+        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
+      }}
+    >
+      <div className="py-10 px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-start"
         >
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] bg-white/5 border border-white/10 mb-6 backdrop-blur-sm max-w-full">
-             <span className="w-1 h-1 rounded-[4px] bg-[#C99A2E] shrink-0" />
-             <span className="text-[10px] font-semibold text-white/80 uppercase tracking-wider truncate">{sectionData.supportingLine}</span>
-          </div>
-          <h1 className="text-[36px] font-bold text-white mb-4 leading-[1.1]">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] mb-5 max-w-full">
+            <Sparkles size={11} className="text-[#C99A2E] shrink-0" strokeWidth={2.5} />
+            <span className="font-bold text-[10px] tracking-[0.12em] uppercase text-[#C99A2E] leading-snug pt-0.5">
+              ✨ {sectionData.supportingLine}
+            </span>
+          </span>
+
+          <h1 className="text-[1.85rem] font-black text-[#0B1D3A] mb-4 tracking-tight leading-[1.12]">
             {sectionData.title}
           </h1>
-          <h2 className="text-[18px] text-[#C99A2E] font-medium mb-6 leading-snug">
+
+          <p className="text-[15px] font-semibold text-[#0B1D3A]/80 mb-3">
             {sectionData.subtitle}
-          </h2>
-          <div className="text-[15px] text-white/70 mb-8 space-y-4 font-light">
-            {sectionData.description.split('\n').map((para, i) => (
-               <p key={i}>{para}</p>
-            ))}
+          </p>
+
+          <p className="text-[14px] text-[#475569] font-medium whitespace-pre-wrap leading-relaxed mb-6">
+            {sectionData.description}
+          </p>
+
+          <div className="w-full rounded-[16px] overflow-hidden luxury-shadow-float mb-6">
+            <img
+              src={mocksHero}
+              alt="Trainer-led real estate mock practice session"
+              className="w-full h-[220px] object-cover object-center"
+            />
           </div>
-          
-          <button className="group w-full relative inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#C99A2E] text-white rounded-[8px] font-semibold text-[15px] overflow-hidden transition-all duration-300">
-            <span className="relative z-10">{sectionData.cta}</span>
-            <span className="relative z-10 w-4 h-4 inline-flex items-center justify-center">
-              <ChevronRight size={16} strokeWidth={2.5} className="absolute transition-all duration-300 opacity-100 group-hover:opacity-0 group-hover:translate-x-1" />
-              <ArrowRight size={16} strokeWidth={2.5} className="absolute transition-all duration-300 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0" />
+
+          <button
+            className="group text-white text-[14px] font-semibold px-7 py-3.5 rounded-[8px] w-full flex items-center justify-center gap-2.5 active:scale-[0.98] transition-all duration-300"
+            style={{
+              background: NAVY,
+              boxShadow: `0 4px 16px rgba(11,29,58,0.2)`,
+            }}
+          >
+            🎯 {sectionData.cta}
+            <span className="relative inline-flex items-center justify-center shrink-0 w-[15px] h-[15px]">
+              <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0" />
+              <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0" />
             </span>
-            <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
           </button>
         </motion.div>
       </div>

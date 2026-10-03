@@ -36,8 +36,8 @@ export default function Mobile() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="flex gap-3"
             >
-              <div className="mt-0.5 text-[#34D399] shrink-0">
-                <CheckCircle2 size={20} strokeWidth={2} />
+              <div className="mt-0.5 w-8 h-8 rounded-full bg-[#10B981] text-white flex items-center justify-center shadow-md shrink-0">
+                <CheckCircle2 size={16} strokeWidth={2.5} />
               </div>
               <div>
                 <h3 className="text-[16px] font-bold text-[#0B1D3A] mb-1">
