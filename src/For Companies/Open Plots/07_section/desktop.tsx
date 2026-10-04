@@ -99,7 +99,7 @@ export default function Desktop() {
             </div>
             <div className="h-[1px] w-12 bg-gradient-to-r from-[#C99A2E] to-transparent opacity-60"></div>
           </motion.div>
-          <motion.h2 variants={itemVariant} className="whitespace-nowrap text-[3.5rem] lg:text-[4rem] leading-[1.05] font-black tracking-[-0.02em] text-[#0B1D3A] mb-8 w-full relative z-10 max-w-[850px]" >
+          <motion.h2 variants={itemVariant} className=" text-[3.5rem] lg:text-[4rem] leading-[1.05] font-black tracking-[-0.02em] text-[#0B1D3A] mb-8 w-full relative z-10 max-w-[850px]">
             {data.headline}
           </motion.h2>
           <motion.p

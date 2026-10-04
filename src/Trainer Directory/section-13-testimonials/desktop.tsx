@@ -43,7 +43,7 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-12">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="whitespace-nowrap text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Company Feedback")}</h2>
+          <h2 className=" text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Company Feedback")}</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         </motion.div>
 
@@ -57,7 +57,7 @@ export default function Desktop() {
                 <span className="h-1.5 w-1.5 rounded-full bg-[#94A3B8]" />
                 {t("Live source not connected")}
               </div>
-              <h3 className="whitespace-nowrap text-[20px] font-black tracking-tight text-[#0B1D3A]">
+              <h3 className=" text-[20px] font-black tracking-tight text-[#0B1D3A]">
                 {t("No verified company feedback yet")}
               </h3>
               <p className="mt-2 max-w-[650px] text-[14px] font-medium leading-relaxed text-[#5A6B82]">

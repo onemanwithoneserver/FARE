@@ -14,7 +14,7 @@ export const GRADIENTS = [
 export const dataEn = {
   "title": "Learn Real Estate. One Quiz at a Time.",
   "badge": "The Simplest Way to Keep Learning",
-  "intro": "You don't always need another course to improve your knowledge.\nSometimes, you just need the right question.\n\nFARE Knowledge Bank gives you ready-made quizzes across 15 real estate knowledge specializations, helping you learn while testing yourself.",
+  "intro": "You don't always need another course to improve your knowledge—sometimes, you just need the right question. FARE Knowledge Bank gives you ready-made quizzes across 15 real estate specializations, helping you learn while testing yourself.",
   "features": [
     {
       "title": "Test What You Know",
@@ -43,7 +43,7 @@ export const dataEn = {
 export const dataTe = {
   "title": "Learn Real Estate. One Quiz at a Time.",
   "badge": "The Simplest Way to Keep Learning",
-  "intro": "You don't always need another course to improve your knowledge.\nSometimes, you just need the right question.\n\nFARE Knowledge Bank gives you ready-made quizzes across 15 real estate knowledge specializations, helping you learn while testing yourself.",
+  "intro": "You don't always need another course to improve your knowledge—sometimes, you just need the right question. FARE Knowledge Bank gives you ready-made quizzes across 15 real estate specializations, helping you learn while testing yourself.",
   "features": [
     {
       "title": "Test What You Know",

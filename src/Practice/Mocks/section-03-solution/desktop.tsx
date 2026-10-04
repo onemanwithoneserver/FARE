@@ -27,7 +27,7 @@ export default function Desktop() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto mb-20"
         >
-          <h2 className="whitespace-nowrap text-white text-[32px] md:text-[38px] lg:text-[44px] font-black mb-6 leading-[1.2] tracking-tight">
+          <h2 className=" text-white text-[32px] md:text-[38px] lg:text-[44px] font-black mb-6 leading-[1.2] tracking-tight">
             {sectionData.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -87,7 +87,7 @@ export default function Desktop() {
                 <div className="text-[11px] font-bold tracking-widest text-[#E2C068] uppercase mb-3">
                   {item.step}
                 </div>
-                <h3 className="whitespace-nowrap text-[17px] font-bold text-white mb-3 leading-snug group-hover:text-[#E2C068] transition-colors">
+                <h3 className=" text-[17px] font-bold text-white mb-3 leading-snug group-hover:text-[#E2C068] transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-[14px] text-white/60 leading-relaxed max-w-[220px] font-medium">

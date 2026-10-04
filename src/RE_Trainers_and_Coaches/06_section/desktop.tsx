@@ -88,7 +88,7 @@ export default function Desktop() {
               {data.overline}
             </span>
           </motion.div>
-          <motion.h2 variants={item} className="whitespace-nowrap text-[3rem] lg:text-[3.75rem] leading-[1.05] font-black tracking-[-0.02em] mb-8 max-w-[900px] text-[#0B1D3A]" >
+          <motion.h2 variants={item} className=" text-[3rem] lg:text-[3.75rem] leading-[1.05] font-black tracking-[-0.02em] mb-8 max-w-[900px] text-[#0B1D3A]">
             {data.headline}
           </motion.h2>
           <motion.p
@@ -107,7 +107,7 @@ export default function Desktop() {
             className="flex items-center justify-center gap-6 mb-12"
           >
             <div className="h-[2px] w-16 bg-gradient-to-r from-transparent to-[#C99A2E]/50"></div>
-            <h3 className="whitespace-nowrap text-[28px] font-bold text-[#0B1D3A] tracking-tight">
+            <h3 className=" text-[28px] font-bold text-[#0B1D3A] tracking-tight">
               {data.modesHeading}
             </h3>
             <div className="h-[2px] w-16 bg-gradient-to-l from-transparent to-[#C99A2E]/50"></div>
@@ -144,7 +144,7 @@ export default function Desktop() {
                   <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded-[4px]"></div>
                   {modeIcons[mode.icon as keyof typeof modeIcons]}
                 </div>
-                <h4 className="whitespace-nowrap text-[24px] font-bold mb-4 text-[#0B1D3A]">
+                <h4 className=" text-[24px] font-bold mb-4 text-[#0B1D3A]">
                   {mode.title}
                 </h4>
                 <p className="text-[16px] font-medium text-[#475569] leading-relaxed group-hover:text-[#0B1D3A] transition-colors duration-300">
@@ -163,7 +163,7 @@ export default function Desktop() {
             className="flex items-center justify-center gap-6 mb-12"
           >
             <div className="h-[2px] w-16 bg-gradient-to-r from-transparent to-[#0B1D3A]/20"></div>
-            <h3 className="whitespace-nowrap text-[28px] font-bold text-[#0B1D3A] tracking-tight">
+            <h3 className=" text-[28px] font-bold text-[#0B1D3A] tracking-tight">
               {data.typesHeading}
             </h3>
             <div className="h-[2px] w-16 bg-gradient-to-l from-transparent to-[#0B1D3A]/20"></div>
@@ -189,7 +189,7 @@ export default function Desktop() {
                     <div className="absolute inset-0 bg-white/10 rounded-[4px]"></div>
                     {typeIcons[type.icon as keyof typeof typeIcons]}
                   </div>
-                  <h4 className="whitespace-nowrap text-[18px] font-bold leading-tight text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300">
+                  <h4 className=" text-[18px] font-bold leading-tight text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300">
                     {type.title}
                   </h4>
                 </div>
@@ -217,7 +217,7 @@ export default function Desktop() {
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             className="absolute bottom-0 left-0 w-64 h-64 bg-[#071A49]/60 rounded-full blur-[60px] group-hover:bg-[#071A49]/80 transition-colors duration-700 pointer-events-none"
           ></motion.div>
-          <h3 className="whitespace-nowrap text-[28px] font-bold text-white relative z-10 tracking-tight m-0">
+          <h3 className=" text-[28px] font-bold text-white relative z-10 tracking-tight m-0">
             {data.footerTagline}
           </h3>
         </motion.div>

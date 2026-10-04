@@ -57,7 +57,7 @@ export default function Desktop() {
              <span className="text-[13px] font-bold tracking-wide text-slate-700 uppercase">Training Scenarios</span>
           </div>
           
-          <h2 className="whitespace-nowrap text-[#0B1D3A] mb-4 text-[36px] font-black leading-tight tracking-tight md:text-[44px] lg:text-[52px]">
+          <h2 className=" text-[#0B1D3A] mb-4 text-[36px] font-black leading-tight tracking-tight md:text-[44px] lg:text-[52px]">
             {sectionData.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -93,7 +93,7 @@ export default function Desktop() {
                       <Icon size={26} strokeWidth={2.2} />
                     </div>
                     <div className="pt-2">
-                      <h3 className="whitespace-nowrap text-[20px] font-bold text-[#0B1D3A] leading-tight">
+                      <h3 className=" text-[20px] font-bold text-[#0B1D3A] leading-tight">
                         {type.title}
                       </h3>
                     </div>

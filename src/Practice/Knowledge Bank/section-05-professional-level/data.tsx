@@ -15,31 +15,38 @@ export const dataEn = {
   "levels": [
     {
       "title": "Students & Freshers",
-      "text": "Build your real estate foundation."
+      "text": "Build your real estate foundation.",
+      "flow": ["Learn", "Practise", "Connect", "Launch Career"]
     },
     {
       "title": "Entry-Level Professionals",
-      "text": "Strengthen your industry and functional knowledge."
+      "text": "Strengthen your industry and functional knowledge.",
+      "flow": ["Upskill", "Practise", "Perform", "Accelerate Growth"]
     },
     {
       "title": "Experienced Professionals",
-      "text": "Test and refresh your existing knowledge."
+      "text": "Test and refresh your existing knowledge.",
+      "flow": ["Refresh", "Test", "Adapt", "Stay Relevant"]
     },
     {
       "title": "Managers",
-      "text": "Expand your functional, business and leadership knowledge."
+      "text": "Expand your functional, business and leadership knowledge.",
+      "flow": ["Learn", "Measure", "Guide", "Drive Results"]
     },
     {
       "title": "Leaders",
-      "text": "Stay updated across market, business and strategic areas."
+      "text": "Stay updated across market, business and strategic areas.",
+      "flow": ["Strategize", "Align", "Innovate", "Dominate Market"]
     },
     {
       "title": "Freelancers & Channel Partners",
-      "text": "Build stronger market, product, customer and sales knowledge."
+      "text": "Build stronger market, product, customer and sales knowledge.",
+      "flow": ["Discover", "Learn", "Pitch", "Close Deals"]
     },
     {
       "title": "Career Switchers",
-      "text": "Understand the industry and build the domain knowledge needed to enter real estate."
+      "text": "Understand the industry and build the domain knowledge needed to enter real estate.",
+      "flow": ["Learn", "Transition", "Practise", "Succeed"]
     }
   ]
 };
@@ -50,31 +57,38 @@ export const dataTe = {
   "levels": [
     {
       "title": "Students & Freshers",
-      "text": "Build your real estate foundation."
+      "text": "Build your real estate foundation.",
+      "flow": ["Learn", "Practise", "Connect", "Launch Career"]
     },
     {
       "title": "Entry-Level Professionals",
-      "text": "Strengthen your industry and functional knowledge."
+      "text": "Strengthen your industry and functional knowledge.",
+      "flow": ["Upskill", "Practise", "Perform", "Accelerate Growth"]
     },
     {
       "title": "Experienced Professionals",
-      "text": "Test and refresh your existing knowledge."
+      "text": "Test and refresh your existing knowledge.",
+      "flow": ["Refresh", "Test", "Adapt", "Stay Relevant"]
     },
     {
       "title": "Managers",
-      "text": "Expand your functional, business and leadership knowledge."
+      "text": "Expand your functional, business and leadership knowledge.",
+      "flow": ["Learn", "Measure", "Guide", "Drive Results"]
     },
     {
       "title": "Leaders",
-      "text": "Stay updated across market, business and strategic areas."
+      "text": "Stay updated across market, business and strategic areas.",
+      "flow": ["Strategize", "Align", "Innovate", "Dominate Market"]
     },
     {
       "title": "Freelancers & Channel Partners",
-      "text": "Build stronger market, product, customer and sales knowledge."
+      "text": "Build stronger market, product, customer and sales knowledge.",
+      "flow": ["Discover", "Learn", "Pitch", "Close Deals"]
     },
     {
       "title": "Career Switchers",
-      "text": "Understand the industry and build the domain knowledge needed to enter real estate."
+      "text": "Understand the industry and build the domain knowledge needed to enter real estate.",
+      "flow": ["Learn", "Transition", "Practise", "Succeed"]
     }
   ]
 };

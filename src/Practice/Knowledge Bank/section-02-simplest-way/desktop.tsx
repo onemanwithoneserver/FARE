@@ -45,7 +45,7 @@ export default function Desktop() {
           >
             {data.badge}
           </motion.span>
-          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight" >
+          <motion.h2 variants={item} className=" text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight">
             {data.title}
           </motion.h2>
           <motion.div variants={item} className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -72,7 +72,7 @@ export default function Desktop() {
                   <div className={`w-11 h-11 rounded-[4px] flex shrink-0 items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-gradient-to-br ${colorGradient} shadow-sm`}>
                     <Icon size={20} className="text-white" strokeWidth={2.5} />
                   </div>
-                  <h3 className="whitespace-nowrap text-lg font-bold" style={{ color: NAVY }}>
+                  <h3 className=" text-lg font-bold" style={{ color: NAVY }}>
                   {f.title}
                 </h3>
                 </div>

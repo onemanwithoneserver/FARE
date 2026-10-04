@@ -43,7 +43,7 @@ export default function Desktop() {
           <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-4 block">
             {data.badge}
           </span>
-          <h2 className="whitespace-nowrap text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
+          <h2 className=" text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
             {data.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -73,7 +73,7 @@ export default function Desktop() {
                   <div className={`w-14 h-14 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-md group-hover:scale-110 transition-transform duration-300`}>
                     <Icon size={26} className="text-white" strokeWidth={2.5} />
                   </div>
-                  <h3 className="whitespace-nowrap text-[17px] font-bold text-[#0B1D3A] tracking-wide">
+                  <h3 className=" text-[17px] font-bold text-[#0B1D3A] tracking-wide">
                   {itemData.title}
                 </h3>
                 </div>

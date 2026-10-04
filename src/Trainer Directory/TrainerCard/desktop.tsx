@@ -295,7 +295,7 @@ export default function Desktop({ trainer, onViewProfile }: TrainerCardProps) {
               <MapPin size={11} strokeWidth={2.5} style={{ color: GOLD }} />
               {t(trainer.location.split(",")[0])}
             </span>
-            <h3 className="whitespace-nowrap mt-1.5 text-[20px] font-black leading-tight tracking-tight truncate" style={{ color: NAVY }}>
+            <h3 className=" mt-1.5 text-[20px] font-black leading-tight tracking-tight truncate" style={{ color: NAVY }}>
               {trainer.name}
             </h3>
             <p className="text-[13px] text-[#5A6B82] font-medium leading-snug mt-0.5 line-clamp-1">{t(trainer.title)}</p>

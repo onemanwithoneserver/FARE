@@ -61,7 +61,7 @@ export default function Desktop() {
               </span>
             </div>
           </motion.div>
-          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[3.5rem] lg:text-[4.5rem] leading-[1.05] font-black tracking-[-0.03em] mb-8" style={{ color: NAVY }} >
+          <motion.h2 variants={item} className=" text-[#0B1D3A] text-[3.5rem] lg:text-[4.5rem] leading-[1.05] font-black tracking-[-0.03em] mb-8" style={{ color: NAVY }}>
             {data.headline.split(" ").map((word, i) => (
               <span key={i} className={i === 2 ? "text-[#C99A2E]" : ""}>
                 {word}{" "}
@@ -89,7 +89,7 @@ export default function Desktop() {
               className="absolute -top-10 -right-10 w-48 h-48 bg-[#C99A2E]/[0.08] rounded-full blur-[40px] group-hover:bg-[#C99A2E]/[0.12] transition-colors duration-500"
             ></motion.div>
             <div className="absolute top-0 right-0 w-32 h-32 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
-            <h3 className="whitespace-nowrap text-[26px] font-bold mb-10 relative z-10" style={{ color: NAVY }} >
+            <h3 className=" text-[26px] font-bold mb-10 relative z-10" style={{ color: NAVY }}>
               {data.exploreHeading}
             </h3>
             <div className="flex flex-col gap-6 relative z-10 mt-auto">
@@ -130,7 +130,7 @@ export default function Desktop() {
             <div className="w-20 h-20 bg-white/5 backdrop-blur-md rounded-full flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500 shadow-xl relative z-10">
               <Sparkles size={32} className="text-[#C99A2E]" />
             </div>
-            <h3 className="whitespace-nowrap text-[32px] lg:text-[40px] font-black text-white mb-12 relative z-10 leading-[1.1] tracking-tight">
+            <h3 className=" text-[32px] lg:text-[40px] font-black text-white mb-12 relative z-10 leading-[1.1] tracking-tight">
               {data.footerText}
             </h3>
             <button className="bg-gradient-to-r from-[#C99A2E] to-[#B88A22] hover:from-[#D5AA45] hover:to-[#C99A2E] text-white px-10 py-5 rounded-[8px] font-bold text-[18px] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] group-hover:-translate-y-2 transition-all duration-400 flex items-center gap-4 relative z-10 w-full justify-center max-w-[360px] overflow-hidden hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">

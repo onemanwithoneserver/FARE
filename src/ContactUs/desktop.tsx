@@ -134,7 +134,7 @@ export default function ContactUsDesktop() {
                 <div className="w-10 h-10 rounded-[8px] bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center mb-3 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                   <Mail size={19} className="text-white" />
                 </div>
-                <h4 className="whitespace-nowrap text-[10px] font-bold tracking-[0.18em] uppercase mb-2.5" style={{ color: GOLD }} >
+                <h4 className=" text-[10px] font-bold tracking-[0.18em] uppercase mb-2.5" style={{ color: GOLD }}>
                   {sidebarData.directTitle}
                 </h4>
                 
@@ -200,7 +200,7 @@ export default function ContactUsDesktop() {
               <div className="w-11 h-11 rounded-[8px] bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center mb-4 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                 <MapPin size={20} className="text-white" />
               </div>
-              <h4 className="whitespace-nowrap text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5" style={{ color: GOLD }} >
+              <h4 className=" text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5" style={{ color: GOLD }}>
                 {sidebarData.locationTitle}
               </h4>
               <p
@@ -222,7 +222,7 @@ export default function ContactUsDesktop() {
               <div className="w-11 h-11 rounded-[8px] bg-gradient-to-br from-[#8B5CF6] to-[#7C3AED] flex items-center justify-center mb-4 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                 <Building2 size={20} className="text-white" />
               </div>
-              <h4 className="whitespace-nowrap text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5" style={{ color: GOLD }} >
+              <h4 className=" text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5" style={{ color: GOLD }}>
                 {sidebarData.officeTitle}
               </h4>
               <p
@@ -239,7 +239,7 @@ export default function ContactUsDesktop() {
               <div className="w-11 h-11 rounded-[8px] bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-4 shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                 <Clock size={20} className="text-white" />
               </div>
-              <h4 className="whitespace-nowrap text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5" style={{ color: GOLD }} >
+              <h4 className=" text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5" style={{ color: GOLD }}>
                 {sidebarData.deskBadge}
               </h4>
               <p

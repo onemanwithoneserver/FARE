@@ -110,10 +110,10 @@ export default function Desktop() {
               </span>
             </div>
           </motion.div>
-          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[2.75rem] lg:text-[3.75rem] leading-[1.08] font-black tracking-[-0.03em] mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#162E56] to-[#0B1D3A]" >
+          <motion.h2 variants={item} className=" text-[#0B1D3A] text-[2.75rem] lg:text-[3.75rem] leading-[1.08] font-black tracking-[-0.03em] mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#162E56] to-[#0B1D3A]">
             {data.headline}
           </motion.h2>
-          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[2.75rem] lg:text-[3.75rem] leading-[1.08] font-black tracking-[-0.03em] bg-clip-text text-transparent bg-gradient-to-r from-[#C99A2E] via-[#E2BA55] to-[#B88A22] drop-luxury-shadow-float" >
+          <motion.h2 variants={item} className=" text-[#0B1D3A] text-[2.75rem] lg:text-[3.75rem] leading-[1.08] font-black tracking-[-0.03em] bg-clip-text text-transparent bg-gradient-to-r from-[#C99A2E] via-[#E2BA55] to-[#B88A22] drop-luxury-shadow-float">
             {data.headlineAccent}
           </motion.h2>
         </motion.div>
@@ -149,7 +149,7 @@ export default function Desktop() {
                   <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#C99A2E] block mb-1">
                     Your Contribution
                   </span>
-                  <h3 className="whitespace-nowrap text-[26px] xl:text-[28px] font-bold text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300">
+                  <h3 className=" text-[26px] xl:text-[28px] font-bold text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300">
                     {data.youBring.title}
                   </h3>
                 </div>
@@ -206,7 +206,7 @@ export default function Desktop() {
                   <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#3B82F6] block mb-1">
                     Our Infrastructure
                   </span>
-                  <h3 className="whitespace-nowrap text-[26px] xl:text-[28px] font-bold text-[#0B1D3A] group-hover:text-[#3B82F6] transition-colors duration-300">
+                  <h3 className=" text-[26px] xl:text-[28px] font-bold text-[#0B1D3A] group-hover:text-[#3B82F6] transition-colors duration-300">
                     {data.fareBrings.title}
                   </h3>
                 </div>
@@ -404,7 +404,7 @@ export default function Desktop() {
               />
               <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-white/15 bg-white/[0.08] shadow-inner backdrop-blur-md mb-11 relative z-10">
                 <Zap size={15} className="text-[#E2BA55] animate-pulse" />
-                <h3 className="whitespace-nowrap text-[12px] font-bold text-white uppercase tracking-[0.25em] text-center">
+                <h3 className=" text-[12px] font-bold text-white uppercase tracking-[0.25em] text-center">
                   {data.together.title}
                 </h3>
               </div>

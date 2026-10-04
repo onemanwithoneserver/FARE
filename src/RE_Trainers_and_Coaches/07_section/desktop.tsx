@@ -61,7 +61,7 @@ export default function Desktop() {
               {data.overline}
             </span>
           </motion.div>
-          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]" style={{ color: NAVY }} >
+          <motion.h2 variants={item} className=" text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]" style={{ color: NAVY }}>
             {data.headline.split(" ").map((word, i, arr) => (
               <span
                 key={i}
@@ -163,7 +163,7 @@ export default function Desktop() {
                 <div className="absolute top-0 right-0 text-[#0B1D3A]/[0.02] -mt-4 -mr-4 pointer-events-none">
                   {tabIcons[activeTabData.icon as keyof typeof tabIcons]}
                 </div>
-                <h3 className="whitespace-nowrap text-[32px] lg:text-[40px] font-black mb-6 leading-tight" style={{ color: NAVY }} >
+                <h3 className=" text-[32px] lg:text-[40px] font-black mb-6 leading-tight" style={{ color: NAVY }}>
                   {activeTabData.title}
                 </h3>
                 <p className="text-[18px] font-medium text-[#475569] leading-relaxed mb-12 max-w-[650px]">

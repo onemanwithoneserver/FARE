@@ -87,7 +87,7 @@ export default function Desktop() {
             <motion.h1 variants={item} className="text-[52px] leading-tight font-black text-white mb-2 tracking-[-0.02em]">
               {data.trainerName}
             </motion.h1>
-            <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[22px] font-semibold text-[#94A3B8] mb-6">
+            <motion.h2 variants={item} className=" text-[#0B1D3A] text-[22px] font-semibold text-[#94A3B8] mb-6">
               {data.professionalTitle}
             </motion.h2>
             

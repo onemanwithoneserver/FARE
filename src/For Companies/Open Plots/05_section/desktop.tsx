@@ -78,7 +78,7 @@ export default function Desktop() {
               {data.overline}
             </span>
           </motion.div>
-          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[2.5rem] lg:text-[3rem] leading-[1.08] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }} >
+          <motion.h2 variants={item} className=" text-[#0B1D3A] text-[2.5rem] lg:text-[3rem] leading-[1.08] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }}>
             {data.headline.split(" ").map((word, i) => (
               <React.Fragment key={i}>
                 {word === "Open" ||
@@ -177,7 +177,7 @@ export default function Desktop() {
                   />
                 </div>
                 <div>
-                  <h3 className="whitespace-nowrap text-[20px] font-bold text-[#0B1D3A] leading-tight mb-1">
+                  <h3 className=" text-[20px] font-bold text-[#0B1D3A] leading-tight mb-1">
                     {data.illustrationData.title}
                   </h3>
                   <p className="text-[13.5px] font-medium text-[#64748B]">

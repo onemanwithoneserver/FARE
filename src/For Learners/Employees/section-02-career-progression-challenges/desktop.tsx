@@ -44,7 +44,7 @@ export default function Desktop() {
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
-          <h2 className="whitespace-nowrap text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black text-center tracking-tight leading-tight max-w-4xl mx-auto">
+          <h2 className=" text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black text-center tracking-tight leading-tight max-w-4xl mx-auto">
             {data.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -71,7 +71,7 @@ export default function Desktop() {
                   <div className={`w-12 h-12 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-sm group-hover:scale-110 transition-transform duration-300`}>
                     <Icon size={22} className="text-white" strokeWidth={2.5} />
                   </div>
-                  <h3 className="whitespace-nowrap text-[17px] font-bold text-[#0B1D3A] leading-tight">{c.title}</h3>
+                  <h3 className=" text-[17px] font-bold text-[#0B1D3A] leading-tight">{c.title}</h3>
                 </div>
                 <p className="text-[14.5px] text-[#475569] font-medium leading-relaxed flex-grow">{c.text}</p>
               </motion.div>

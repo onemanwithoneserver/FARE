@@ -46,7 +46,7 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="whitespace-nowrap text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("See the Trainer in Action")}</h2>
+          <h2 className=" text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("See the Trainer in Action")}</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         </motion.div>
 
@@ -110,7 +110,7 @@ export default function Desktop() {
                 )}
               </div>
 
-              <h4 className="whitespace-nowrap text-[15px] font-bold transition-colors duration-200 tracking-tight leading-[1.4]" style={{ color: NAVY }}>
+              <h4 className=" text-[15px] font-bold transition-colors duration-200 tracking-tight leading-[1.4]" style={{ color: NAVY }}>
                 {video.title}
               </h4>
             </motion.div>

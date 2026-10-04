@@ -77,7 +77,7 @@ export default function Desktop() {
               {data.overline}
             </span>
           </motion.div>
-          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[950px]" style={{ color: NAVY }} >
+          <motion.h2 variants={item} className=" text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[950px]" style={{ color: NAVY }}>
             {data.headline.split(" ").map((word, i, arr) => (
               <span
                 key={i}
@@ -130,7 +130,7 @@ export default function Desktop() {
                   <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                   {categoryIcons[category.icon as keyof typeof categoryIcons]}
                 </div>
-                <h3 className="whitespace-nowrap text-[22px] font-bold" style={{ color: NAVY }}>
+                <h3 className=" text-[22px] font-bold" style={{ color: NAVY }}>
                   {category.title}
                 </h3>
               </div>
@@ -141,7 +141,7 @@ export default function Desktop() {
                     className="bg-[#F8FAFD]/50 rounded-[4px] p-5 border border-[#0B1D3A]/[0.03]"
                   >
                     {sub.label && (
-                      <h4 className="whitespace-nowrap text-[12px] font-bold uppercase tracking-[0.15em] mb-4 flex items-center gap-2" style={{ color: category.color }} >
+                      <h4 className=" text-[12px] font-bold uppercase tracking-[0.15em] mb-4 flex items-center gap-2" style={{ color: category.color }}>
                         <div
                           className="w-1.5 h-1.5 rounded-full"
                           style={{ backgroundColor: category.color }}
@@ -195,7 +195,7 @@ export default function Desktop() {
             ></motion.div>
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/50 to-transparent"></div>
             <div className="relative z-10 flex flex-col items-center">
-              <h3 className="whitespace-nowrap text-[28px] lg:text-[32px] font-bold text-white mb-4 flex items-center justify-center gap-3">
+              <h3 className=" text-[28px] lg:text-[32px] font-bold text-white mb-4 flex items-center justify-center gap-3">
                 {data.footerLine1}{" "}
                 <Sparkles size={26} className="text-[#C99A2E]" />
               </h3>

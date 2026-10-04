@@ -98,7 +98,7 @@ export default function Desktop() {
             <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[0].bg }}>
               {sectionColors[0].icon}
             </div>
-            <h2 className="whitespace-nowrap text-[#0B1D3A] text-[18px] font-black leading-tight">
+            <h2 className=" text-[#0B1D3A] text-[18px] font-black leading-tight">
               {t("Real Estate")}<br/>{t("Segment Expertise")}
             </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -117,7 +117,7 @@ export default function Desktop() {
             <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[1].bg }}>
               {sectionColors[1].icon}
             </div>
-            <h2 className="whitespace-nowrap text-[#0B1D3A] text-[18px] font-black leading-tight">
+            <h2 className=" text-[#0B1D3A] text-[18px] font-black leading-tight">
               {t("Learner")}<br/>{t("Audience")}
             </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -141,7 +141,7 @@ export default function Desktop() {
             <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[2].bg }}>
               {sectionColors[2].icon}
             </div>
-            <h2 className="whitespace-nowrap text-[#0B1D3A] text-[18px] font-black leading-tight">
+            <h2 className=" text-[#0B1D3A] text-[18px] font-black leading-tight">
               {t("Training")}<br/>{t("Language")}
             </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />

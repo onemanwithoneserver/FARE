@@ -42,7 +42,7 @@ export default function Desktop() {
           <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-3 block">
             Start Free
           </span>
-          <h2 className="whitespace-nowrap text-white text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
+          <h2 className=" text-white text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
             {data.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -73,7 +73,7 @@ export default function Desktop() {
                   <div className={`w-14 h-14 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-lg group-hover:scale-105 transition-transform duration-300`}>
                     <Icon size={28} className="text-white" strokeWidth={2.5} />
                   </div>
-                  <h3 className="whitespace-nowrap text-2xl font-bold text-white tracking-wide">
+                  <h3 className=" text-2xl font-bold text-white tracking-wide">
                     {itemData.title}
                   </h3>
                 </div>

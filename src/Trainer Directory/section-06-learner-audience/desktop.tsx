@@ -40,7 +40,7 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-6">
           <div className="w-8 h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="whitespace-nowrap text-[#0B1D3A] text-[22px] font-black tracking-[-0.02em]">{t("Learner Audience")}</h2>
+          <h2 className=" text-[#0B1D3A] text-[22px] font-black tracking-[-0.02em]">{t("Learner Audience")}</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         </motion.div>
 
@@ -62,7 +62,7 @@ export default function Desktop() {
               >
                 <Users size={18} strokeWidth={2.2} />
               </div>
-              <h3 className="whitespace-nowrap text-[15px] font-bold mb-2" style={{ color: NAVY }}>{audience.title}</h3>
+              <h3 className=" text-[15px] font-bold mb-2" style={{ color: NAVY }}>{audience.title}</h3>
               <p className="text-[13px] text-[#7B8DAA] leading-[1.65] font-medium">{audience.description}</p>
             </motion.div>
           ))}
