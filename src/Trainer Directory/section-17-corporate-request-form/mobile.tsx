@@ -100,7 +100,7 @@ export default function Mobile({ isOpen = false, onClose }: CorporateRequestForm
               <motion.div variants={item} className="flex items-center gap-3 mb-6">
                 <div className="w-[3px] h-8 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
                 <div>
-                  <h2 className="text-[#0B1D3A] text-[20px] font-black tracking-[-0.02em]">{t("Corporate Request")}</h2>
+                  <h2 className="text-white text-[20px] font-black tracking-[-0.02em]">{t("Corporate Request")}</h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
                   <p className="text-[12px] text-[#5A6B82] font-medium mt-0.5 leading-snug">{t("Fill out the details below.")}</p>
                 </div>

@@ -104,13 +104,13 @@ export default function Mobile() {
             </>
           </h1>
           <motion.div variants={item} className="mb-3 flex flex-col gap-1">
-            <h2 className={`text-[#0B1D3A] font-bold ${ language === "te" ? "text-[15px] leading-normal tracking-wider py-0.5" : "text-[16px] leading-snug" }`} >
+            <h2 className={`text-white font-bold ${ language === "te" ? "text-[15px] leading-normal tracking-wider py-0.5" : "text-[16px] leading-snug" }`} >
               {data.subheadline}
             </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
             {data.subheadlineAccent && (
               <>
-<h2 className={`text-[#0B1D3A] font-bold ${ language === "te" ? "text-[15px] leading-normal tracking-wider py-0.5" : "text-[16px] leading-snug" }`} style={{ color: GOLD }} >
+<h2 className={`text-white font-bold ${ language === "te" ? "text-[15px] leading-normal tracking-wider py-0.5" : "text-[16px] leading-snug" }`} style={{ color: GOLD }} >
                 {data.subheadlineAccent}
               </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />

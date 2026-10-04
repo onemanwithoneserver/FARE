@@ -34,7 +34,7 @@ export default function ContactForm() {
             <div className="w-10 h-10 rounded-full bg-[#F8FAFD] flex items-center justify-center border border-[#0B1D3A]/10">
               <MessageSquare size={18} className="text-[#0B1D3A]" />
             </div>
-            <h2 className="text-[#0B1D3A] text-2xl md:text-3xl font-black ">
+            <h2 className="text-white text-2xl md:text-3xl font-black ">
               Get in{" "}
               <span className="text-[#C99A2E] gold-underline">Touch</span>
             </h2>

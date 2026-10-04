@@ -34,7 +34,7 @@ export default function RECompaniesForm() {
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-[16px] bg-[#0B1D3A]/5 text-[#0B1D3A] mb-5">
             <Building2 size={24} />
           </div>
-          <h2 className="text-[#0B1D3A] text-3xl md:text-4xl font-black leading-tight mb-3">
+          <h2 className="text-white text-3xl md:text-4xl font-black leading-tight mb-3">
             Partner with{" "}
             <span className="text-[#C99A2E] gold-underline">FARE</span>
           </h2>

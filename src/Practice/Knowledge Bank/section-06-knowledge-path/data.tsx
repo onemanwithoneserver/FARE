@@ -15,12 +15,12 @@ export const dataEn = {
     {
       "title": "OPEN PLOTS",
       "text": "Test your knowledge across land, layouts, approvals, locations, development, investment, project knowledge and plot sales.",
-      "cta": "Explore Open Plot Quizzes →"
+      "cta": "Explore Open Plot Quizzes"
     },
     {
       "title": "RESIDENTIAL",
       "text": "Test your knowledge across projects, builders, locations, property types, pricing, amenities, RERA, finance, Vastu and residential sales.",
-      "cta": "Explore Residential Quizzes →"
+      "cta": "Explore Residential Quizzes"
     }
   ],
   "more": {
@@ -36,12 +36,12 @@ export const dataTe = {
     {
       "title": "OPEN PLOTS",
       "text": "Test your knowledge across land, layouts, approvals, locations, development, investment, project knowledge and plot sales.",
-      "cta": "Explore Open Plot Quizzes →"
+      "cta": "Explore Open Plot Quizzes"
     },
     {
       "title": "RESIDENTIAL",
       "text": "Test your knowledge across projects, builders, locations, property types, pricing, amenities, RERA, finance, Vastu and residential sales.",
-      "cta": "Explore Residential Quizzes →"
+      "cta": "Explore Residential Quizzes"
     }
   ],
   "more": {

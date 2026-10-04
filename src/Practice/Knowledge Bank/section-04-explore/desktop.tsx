@@ -66,9 +66,6 @@ export default function Desktop() {
                     <Icon size={22} className="text-white" strokeWidth={2.5} />
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold text-[#64748B] tracking-wider uppercase block mb-0.5">
-                      Category {cat.num}
-                    </span>
                     <h3 className="text-[17px] font-bold leading-tight" style={{ color: NAVY }}>
                       {cat.name}
                     </h3>

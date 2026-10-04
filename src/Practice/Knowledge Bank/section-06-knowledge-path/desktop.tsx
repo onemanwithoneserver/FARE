@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { ChevronRight, ArrowRight } from "lucide-react";
+
 import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
@@ -44,13 +45,15 @@ export default function Desktop() {
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 className="bg-white p-10 rounded-[4px] border border-[#E2E8F0]/80 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-2 transition-all duration-300 flex flex-col h-full group"
               >
-                <div className={`w-14 h-14 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-8 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon size={28} className="text-white" strokeWidth={2.5} />
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`w-14 h-14 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon size={28} className="text-white" strokeWidth={2.5} />
+                  </div>
+                  
+                  <h3 className="text-2xl font-black tracking-tight uppercase" style={{ color: NAVY }}>
+                    {path.title}
+                  </h3>
                 </div>
-                
-                <h3 className="text-2xl font-black mb-4 tracking-tight uppercase" style={{ color: NAVY }}>
-                  {path.title}
-                </h3>
                 
                 <p className="text-[16px] text-[#475569] font-medium leading-relaxed mb-10 flex-grow">
                   {path.text}

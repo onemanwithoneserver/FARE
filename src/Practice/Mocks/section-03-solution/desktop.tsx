@@ -27,7 +27,7 @@ export default function Desktop() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto mb-20"
         >
-          <h2 className="text-[#0B1D3A] text-[32px] md:text-[38px] lg:text-[44px] font-black mb-6 leading-[1.2] tracking-tight">
+          <h2 className="text-white text-[32px] md:text-[38px] lg:text-[44px] font-black mb-6 leading-[1.2] tracking-tight">
             {sectionData.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />

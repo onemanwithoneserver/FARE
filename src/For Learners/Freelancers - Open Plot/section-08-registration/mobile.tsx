@@ -18,7 +18,7 @@ export default function Mobile() {
           className="bg-[#0B1D3A] rounded-[4px] p-8 text-center relative overflow-hidden shadow-lg border border-[#C99A2E]/20"
         >
           <div className="relative z-10">
-            <h2 className="text-[#0B1D3A] text-2xl font-black tracking-tight leading-tight mb-3">
+            <h2 className="text-white text-2xl font-black tracking-tight leading-tight mb-3">
               {data.title}
             </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />

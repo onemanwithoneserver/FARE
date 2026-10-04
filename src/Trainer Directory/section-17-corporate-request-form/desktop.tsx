@@ -100,7 +100,7 @@ export default function Desktop({ isOpen = false, onClose }: CorporateRequestFor
               <motion.div variants={item} className="flex items-center gap-4 mb-8">
                 <div className="w-[4px] h-9 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
                 <div>
-                  <h2 className="text-[#0B1D3A] text-[24px] font-black tracking-[-0.02em]">{t("Corporate Request Form")}</h2>
+                  <h2 className="text-white text-[24px] font-black tracking-[-0.02em]">{t("Corporate Request Form")}</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
                   <p className="text-[13px] text-[#5A6B82] font-medium mt-0.5">{t("Fill out the details below to initiate a training request.")}</p>
                 </div>

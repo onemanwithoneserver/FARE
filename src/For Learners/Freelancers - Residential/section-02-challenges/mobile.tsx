@@ -22,7 +22,7 @@ export default function Mobile() {
               Real Challenges
             </span>
           </div>
-          <h2 className="text-[#0B1D3A] text-[1.75rem] font-black tracking-tight leading-tight">
+          <h2 className="text-white text-[1.75rem] font-black tracking-tight leading-tight">
             {data.title}
           </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />

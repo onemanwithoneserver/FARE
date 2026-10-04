@@ -21,7 +21,7 @@ export default function Desktop() {
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-radial from-[#38BDF8]/10 to-transparent rounded-full blur-[60px] pointer-events-none -translate-x-1/3 translate-y-1/3" />
           
           <div className="relative z-10">
-            <h2 className="text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
+            <h2 className="text-white text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
               {data.title}
             </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
