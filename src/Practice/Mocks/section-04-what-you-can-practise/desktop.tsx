@@ -15,6 +15,16 @@ const GRADIENTS = [
 export default function Desktop() {
   const sectionData = data.whatYouCanPractise;
   const [activeTab, setActiveTab] = useState("mock");
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
+
+  const toggleExpand = (id: string) => {
+    setExpandedCards(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
   
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -60,15 +70,15 @@ export default function Desktop() {
         
         {/* Premium Tabs */}
         <div className="flex justify-center mb-16 relative z-20">
-          <div className="inline-flex p-1.5 bg-white/60 backdrop-blur-md rounded-full border border-gray-200 shadow-sm relative">
+          <div className="inline-flex p-1.5 bg-[#0B1D3A] rounded-full shadow-lg relative">
             <button
               onClick={() => setActiveTab("mock")}
-              className={`relative px-10 py-3.5 rounded-full text-[15px] font-bold transition-all duration-300 z-10 ${activeTab === "mock" ? "text-white" : "text-[#64748B] hover:text-[#0B1D3A]"}`}
+              className={`relative px-10 py-3.5 rounded-full text-[15px] font-bold transition-all duration-300 z-10 ${activeTab === "mock" ? "text-[#0B1D3A]" : "text-slate-300 hover:text-white"}`}
             >
               {activeTab === "mock" && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute inset-0 bg-[#0B1D3A] rounded-full shadow-md border border-[#102B63] -z-10"
+                  className="absolute inset-0 bg-white rounded-full shadow-sm -z-10"
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
               )}
@@ -76,12 +86,12 @@ export default function Desktop() {
             </button>
             <button
               onClick={() => setActiveTab("scenario")}
-              className={`relative px-10 py-3.5 rounded-full text-[15px] font-bold transition-all duration-300 z-10 ${activeTab === "scenario" ? "text-white" : "text-[#64748B] hover:text-[#0B1D3A]"}`}
+              className={`relative px-10 py-3.5 rounded-full text-[15px] font-bold transition-all duration-300 z-10 ${activeTab === "scenario" ? "text-[#0B1D3A]" : "text-slate-300 hover:text-white"}`}
             >
               {activeTab === "scenario" && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute inset-0 bg-[#0B1D3A] rounded-full shadow-md border border-[#102B63] -z-10"
+                  className="absolute inset-0 bg-white rounded-full shadow-sm -z-10"
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
               )}
@@ -121,7 +131,7 @@ export default function Desktop() {
                         </h3>
                       </div>
                       <ul className="space-y-3.5">
-                        {group.items.map((item, j) => (
+                        {group.items.slice(0, expandedCards.has(`mock-${index}`) ? group.items.length : 6).map((item, j) => (
                           <li key={j} className="flex items-start gap-3">
                             <div className="mt-[2px] shrink-0 text-[#C99A2E]/60 group-hover:text-[#C99A2E] transition-colors duration-300">
                               <CheckCircle2 size={16} strokeWidth={2.5} />
@@ -131,6 +141,20 @@ export default function Desktop() {
                             </span>
                           </li>
                         ))}
+                        {group.items.length > 6 && !expandedCards.has(`mock-${index}`) && (
+                          <li className="pl-7 pt-1">
+                            <a href="#more" onClick={(e) => { e.preventDefault(); toggleExpand(`mock-${index}`); }} className="text-[13px] text-[#0B1D3A] font-bold underline underline-offset-4 decoration-[#0B1D3A]/30 hover:decoration-[#C99A2E] hover:text-[#C99A2E] transition-colors duration-300 inline-block">
+                              +{group.items.length - 6} more
+                            </a>
+                          </li>
+                        )}
+                        {group.items.length > 6 && expandedCards.has(`mock-${index}`) && (
+                          <li className="pl-7 pt-1">
+                            <a href="#less" onClick={(e) => { e.preventDefault(); toggleExpand(`mock-${index}`); }} className="text-[13px] text-[#0B1D3A] font-bold underline underline-offset-4 decoration-[#0B1D3A]/30 hover:decoration-[#C99A2E] hover:text-[#C99A2E] transition-colors duration-300 inline-block">
+                              Show less
+                            </a>
+                          </li>
+                        )}
                       </ul>
                     </motion.div>
                   );
@@ -165,7 +189,7 @@ export default function Desktop() {
                         </h3>
                       </div>
                       <ul className="space-y-3.5">
-                        {group.items.map((item, j) => (
+                        {group.items.slice(0, expandedCards.has(`scenario-${index}`) ? group.items.length : 6).map((item, j) => (
                           <li key={j} className="flex items-start gap-3">
                             <div className="mt-[2px] shrink-0 text-[#C99A2E]/60 group-hover:text-[#C99A2E] transition-colors duration-300">
                               <CheckCircle2 size={16} strokeWidth={2.5} />
@@ -175,6 +199,20 @@ export default function Desktop() {
                             </span>
                           </li>
                         ))}
+                        {group.items.length > 6 && !expandedCards.has(`scenario-${index}`) && (
+                          <li className="pl-7 pt-1">
+                            <a href="#more" onClick={(e) => { e.preventDefault(); toggleExpand(`scenario-${index}`); }} className="text-[13px] text-[#0B1D3A] font-bold underline underline-offset-4 decoration-[#0B1D3A]/30 hover:decoration-[#C99A2E] hover:text-[#C99A2E] transition-colors duration-300 inline-block">
+                              +{group.items.length - 6} more
+                            </a>
+                          </li>
+                        )}
+                        {group.items.length > 6 && expandedCards.has(`scenario-${index}`) && (
+                          <li className="pl-7 pt-1">
+                            <a href="#less" onClick={(e) => { e.preventDefault(); toggleExpand(`scenario-${index}`); }} className="text-[13px] text-[#0B1D3A] font-bold underline underline-offset-4 decoration-[#0B1D3A]/30 hover:decoration-[#C99A2E] hover:text-[#C99A2E] transition-colors duration-300 inline-block">
+                              Show less
+                            </a>
+                          </li>
+                        )}
                       </ul>
                     </motion.div>
                   );
