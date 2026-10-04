@@ -97,11 +97,30 @@ export default function Desktop() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-center"
           >
-            <div className="inline-block bg-white/90 backdrop-blur-md px-10 py-6 rounded-[8px] border border-[#E2E8F0]/80 luxury-shadow-float relative overflow-hidden group hover:border-[#C99A2E]/40 transition-colors duration-400">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <p className="text-[20px] font-black text-[#0B1D3A] whitespace-pre-wrap leading-relaxed relative z-10 tracking-tight">
-                {data.closing}
-              </p>
+            <div className="inline-block bg-[#0B1D3A] px-10 py-8 rounded-[12px] border border-[#1A3668] shadow-[0_8px_32px_rgba(11,29,58,0.2)] relative overflow-hidden group transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(11,29,58,0.3)]">
+              <div className="absolute inset-0 bg-gradient-to-r from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#C99A2E] via-[#F3E1A0] to-[#C99A2E] opacity-90" />
+              
+              <div className="relative z-10 flex flex-wrap items-center justify-center gap-3 lg:gap-4">
+                {data.closing.split('.').filter(Boolean).map((step, idx, arr) => {
+                  const isLast = idx === arr.length - 1;
+                  return (
+                    <div key={idx} className="flex items-center gap-3 lg:gap-4">
+                      <div className={`flex items-center gap-2.5 px-4 lg:px-5 py-2.5 rounded-full border ${isLast ? 'bg-gradient-to-r from-[#D5AA45] to-[#C99A2E] border-[#F3E1A0] text-[#0B1D3A] shadow-[0_0_15px_rgba(201,154,46,0.3)] scale-105' : 'bg-[#12274F] border-[#1E3F7D] text-[#E2E8F0]'}`}>
+                        <div className={`w-1.5 h-1.5 rounded-full ${isLast ? 'bg-[#0B1D3A]' : 'bg-[#94A3B8]'}`} />
+                        <span className="text-[11px] lg:text-[12px] font-bold tracking-[0.2em] uppercase whitespace-nowrap">
+                          {step.trim()}
+                        </span>
+                      </div>
+                      {!isLast && (
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#64748B]">
+                          <path d="M1.5 1L6.5 6L1.5 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
         )}

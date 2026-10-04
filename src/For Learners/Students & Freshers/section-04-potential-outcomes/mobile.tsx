@@ -97,10 +97,29 @@ export default function Mobile() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-center"
           >
-            <div className="bg-[#F8FAFD] px-6 py-5 rounded-[8px] border border-[#E2E8F0]/80 luxury-shadow-float">
-              <p className="text-[17px] font-black text-[#0B1D3A] whitespace-pre-wrap leading-relaxed tracking-tight">
-                {data.closing}
-              </p>
+            <div className="relative bg-[#0B1D3A] px-6 py-8 rounded-[12px] border border-[#1A3668] shadow-[0_8px_30px_rgba(11,29,58,0.2)] overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#C99A2E] via-[#F3E1A0] to-[#C99A2E] opacity-90" />
+              
+              <div className="relative z-10 flex flex-wrap items-center justify-center gap-x-2 gap-y-4">
+                {data.closing.split('.').filter(Boolean).map((step, idx, arr) => {
+                  const isLast = idx === arr.length - 1;
+                  return (
+                    <div key={idx} className="flex items-center gap-2">
+                      <div className={`flex items-center gap-2 px-3.5 py-2 rounded-full border ${isLast ? 'bg-gradient-to-r from-[#D5AA45] to-[#C99A2E] border-[#F3E1A0] text-[#0B1D3A] shadow-[0_0_15px_rgba(201,154,46,0.2)]' : 'bg-[#12274F] border-[#1E3F7D] text-[#E2E8F0]'}`}>
+                        <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${isLast ? 'bg-[#0B1D3A]' : 'bg-[#94A3B8]'}`} />
+                        <span className="text-[10px] font-bold tracking-[0.15em] uppercase whitespace-nowrap">
+                          {step.trim()}
+                        </span>
+                      </div>
+                      {!isLast && (
+                        <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#64748B]">
+                          <path d="M1 1L5 5L1 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
         )}
