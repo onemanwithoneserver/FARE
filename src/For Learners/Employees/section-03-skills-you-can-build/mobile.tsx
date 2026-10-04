@@ -5,6 +5,17 @@ import { useLanguage } from "../../../context/LanguageContext";
 const NAVY = "#0B1D3A";
 
 export default function Mobile() {
+  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
+
+  const toggleCard = (index: number) => {
+    setExpandedCards(prev => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
+
   const { language } = useLanguage();
   const data = getData(language);
 

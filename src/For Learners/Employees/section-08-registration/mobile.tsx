@@ -20,7 +20,7 @@ export default function Mobile() {
           <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[40px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
           
           <div className="relative z-10">
-            <h2 className="text-[#0B1D3A] text-[1.75rem] font-black tracking-tight leading-tight mb-3">
+            <h2 className="text-[#FFF] text-[1.75rem] font-black tracking-tight leading-tight mb-3">
               {data.title}
             </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />

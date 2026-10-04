@@ -48,7 +48,7 @@ export default function Desktop() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: false, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+          className="flex flex-wrap justify-center gap-6 mb-12"
         >
           {data.outcomes.map((itemData, i) => {
             const Icon = ICONS[i % ICONS.length];
@@ -58,7 +58,7 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-7 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.03)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
+                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white p-7 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.03)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className={`w-12 h-12 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-md group-hover:scale-105 transition-transform duration-300`}>
