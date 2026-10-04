@@ -186,7 +186,7 @@ export default function Mobile() {
               <motion.div
                 key={index}
                 variants={item}
-                className="w-[calc(50%-6px)] aspect-square bg-gradient-to-br from-[#0B1D3A]/[0.03] to-[#0B1D3A]/[0.01] backdrop-blur-md border border-[#0B1D3A]/[0.08] rounded-[8px] p-5 shadow-sm flex flex-col justify-center relative overflow-hidden hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+                className="w-[calc(50%-6px)] bg-gradient-to-br from-[#0B1D3A]/[0.03] to-[#0B1D3A]/[0.01] backdrop-blur-md border border-[#0B1D3A]/[0.08] rounded-[8px] p-5 shadow-sm flex flex-col justify-center relative overflow-hidden hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
               >
                 <div
                   className="absolute top-0 right-0 w-20 h-20 opacity-[0.15] blur-[20px] rounded-full pointer-events-none"

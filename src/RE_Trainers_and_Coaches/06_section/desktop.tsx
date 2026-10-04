@@ -179,7 +179,7 @@ export default function Desktop() {
               <motion.div
                 key={index}
                 variants={item}
-                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] aspect-square bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 rounded-[4px] p-8 hover:bg-white hover:border-[#0B1D3A]/20 hover:luxury-shadow-float transition-all duration-400 flex flex-col justify-center group"
+                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 rounded-[4px] p-8 hover:bg-white hover:border-[#0B1D3A]/20 hover:luxury-shadow-float transition-all duration-400 flex flex-col justify-center group"
               >
                 <div className="flex flex-col gap-4 mb-4 relative z-10">
                   <div
