@@ -171,8 +171,8 @@ export default function Desktop() {
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-                    style={{ originX: 0 }}
-                    className="absolute top-7 left-[12.5%] right-[12.5%] h-[2px] bg-gradient-to-r from-white/20 via-[#C99A2E]/70 to-[#C99A2E]"
+                    style={{ originX: 0, left: `${50 / data.levels[activeDialog].flow.length}%`, right: `${50 / data.levels[activeDialog].flow.length}%` }}
+                    className="absolute top-7 h-[2px] bg-gradient-to-r from-white/20 via-[#C99A2E]/70 to-[#C99A2E]"
                   />
                   {data.levels[activeDialog].flow.map((step: string, idx: number) => {
                     const isLast = idx === data.levels[activeDialog].flow.length - 1;
@@ -187,7 +187,7 @@ export default function Desktop() {
                         <div className={`w-14 h-14 rounded-full flex items-center justify-center text-[18px] font-black border-2 transition-all duration-300 group-hover:-translate-y-1 ${isLast ? 'bg-gradient-to-br from-[#F3E1A0] to-[#C99A2E] border-[#F3E1A0] text-[#0B1D3A] shadow-[0_0_28px_rgba(201,154,46,0.55)]' : 'bg-[#0B1D3A] border-white/30 text-white group-hover:border-[#C99A2E]'}`}>
                           {idx + 1}
                         </div>
-                        <span className={`text-[13px] font-bold tracking-[0.12em] uppercase whitespace-nowrap ${isLast ? 'text-[#F3E1A0]' : 'text-white'}`}>
+                        <span className={`text-[12px] font-bold tracking-[0.08em] uppercase leading-snug ${isLast ? 'text-[#F3E1A0]' : 'text-white'}`}>
                           {step}
                         </span>
                       </motion.div>
