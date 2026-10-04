@@ -59,7 +59,7 @@ export default function Desktop() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: false, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="flex flex-wrap justify-center gap-6"
         >
           {data.categories.map((cat, i) => {
             const Icon = ICONS[i % ICONS.length];
@@ -68,7 +68,7 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px] border border-[#E2E8F0]/60 shadow-[0_2px_10px_rgba(11,29,58,0.02)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300"
+                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px] border border-[#E2E8F0]/60 shadow-[0_2px_10px_rgba(11,29,58,0.02)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-5 border-b border-[#E2E8F0] pb-4">
                   <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>

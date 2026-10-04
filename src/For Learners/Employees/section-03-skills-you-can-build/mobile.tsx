@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useState } from "react";
 import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
@@ -61,16 +62,36 @@ export default function Mobile() {
                     </h3>
                   </div>
                 </div>
-                <ul className="space-y-2">
-                  {cat.skills.map((skill, j) => (
-                    <li key={j} className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#CBD5E1] mt-1.5 shrink-0" />
-                      <span className="text-[13px] text-[#475569] font-medium leading-snug">
-                        {skill}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                {(() => {
+                  const isExpanded = expandedCards.has(i);
+                  const visibleSkills = isExpanded ? cat.skills : cat.skills.slice(0, 5);
+                  const hiddenCount = cat.skills.length - 5;
+                  
+                  return (
+                    <>
+                      <ul className="space-y-2">
+                        {visibleSkills.map((skill: string, j: number) => (
+                          <li key={j} className="flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-[1px] bg-[#C99A2E] mt-1.5 shrink-0" />
+                            <span className="text-[13px] text-[#475569] font-medium leading-snug">
+                              {skill}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      {hiddenCount > 0 && (
+                        <div className="mt-3">
+                          <button
+                            onClick={() => toggleCard(i)}
+                            className="text-[12px] font-bold text-[#0B1D3A] underline underline-offset-4 decoration-[#0B1D3A]/30 hover:decoration-[#C99A2E] hover:text-[#C99A2E] transition-colors duration-300 inline-block cursor-pointer outline-none"
+                          >
+                            {isExpanded ? "- Show less" : `+${hiddenCount} more`}
+                          </button>
+                        </div>
+                      )}
+                    </>
+                  );
+                })()}
               </motion.div>
             );
           })}
