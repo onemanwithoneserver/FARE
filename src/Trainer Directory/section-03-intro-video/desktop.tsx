@@ -5,7 +5,6 @@ import type { Variants } from "motion/react";
 import { Play } from "lucide-react";
 import VideoModal from "../../Components/Forms/VideoModal";
 
-const NAVY = "#0B1D3A";
 const GOLD = "#C99A2E";
 const GOLD_MID = "#D5AA45";
 
@@ -50,7 +49,8 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("Introduction Video")}</h2>
+          <h2 className="text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Introduction Video")}</h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         </motion.div>
 
         <div className="flex justify-center">

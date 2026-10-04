@@ -195,11 +195,12 @@ export default function Desktop() {
           </motion.div>
           <motion.h2
             variants={item}
-            className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]"
+            className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-4 max-w-[850px]"
             style={{ color: NAVY }}
           >
             {data.headline}
           </motion.h2>
+          <motion.div variants={item} className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 rounded-full" />
         </motion.div>
         <motion.div
           variants={container}

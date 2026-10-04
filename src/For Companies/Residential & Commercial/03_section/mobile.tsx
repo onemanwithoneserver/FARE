@@ -80,10 +80,10 @@ export default function Mobile() {
             className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-4"
             style={{ color: NAVY }}
           >
-            {data.headline.line1}{" "}
-            <span className="text-[#C99A2E]">{data.headline.line2}</span>
+            {data.headline.line1} {data.headline.line2}
             <br /> {data.headline.line3} {data.headline.line4}
           </motion.h2>
+          <motion.div variants={item} className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 rounded-full" />
           <motion.p
             variants={item}
             className="text-[15px] font-medium leading-[1.6] text-[#475569]"

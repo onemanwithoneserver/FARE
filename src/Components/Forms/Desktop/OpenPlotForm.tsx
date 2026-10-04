@@ -32,10 +32,11 @@ export default function OpenPlotForm() {
     <div className="flex flex-col lg:flex-row w-full min-h-[500px]">
       <div className="hidden lg:flex flex-col w-[40%] p-12 bg-gradient-to-b from-[#F8FAFD] to-[#EEF4FF] border-r border-[#0B1D3A]/5 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-[#C99A2E]/10 to-transparent blur-[40px] pointer-events-none" />
-        <h2 className="text-3xl font-black text-[#0B1D3A] leading-tight mb-4 relative z-10">
+        <h2 className="text-[#0B1D3A] text-3xl font-black leading-tight mb-4 relative z-10">
           Find Your Perfect{" "}
           <span className="text-[#C99A2E] gold-underline">Open Plot</span>
         </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         <p className="text-[#475569] mb-10 leading-relaxed text-[15px] relative z-10">
           Discover premium open plots with FARE. Tell us your preferences and
           we'll match you with the best available properties.

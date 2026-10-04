@@ -34,10 +34,11 @@ export default function RECompaniesForm() {
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-[16px] bg-[#0B1D3A]/5 text-[#0B1D3A] mb-5">
             <Building2 size={24} />
           </div>
-          <h2 className="text-3xl md:text-4xl font-black text-[#0B1D3A] leading-tight mb-3">
+          <h2 className="text-[#0B1D3A] text-3xl md:text-4xl font-black leading-tight mb-3">
             Partner with{" "}
             <span className="text-[#C99A2E] gold-underline">FARE</span>
           </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           <p className="text-[#475569] text-[15px] max-w-lg mx-auto">
             Empower your sales team and channel partners with our
             industry-leading real estate training solutions.

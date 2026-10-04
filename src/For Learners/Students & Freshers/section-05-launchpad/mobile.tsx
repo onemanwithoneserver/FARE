@@ -37,9 +37,10 @@ export default function Mobile() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <h2 className="text-3xl font-black text-white tracking-tight leading-tight mb-3">
+          <h2 className="text-[#0B1D3A] text-3xl font-black tracking-tight leading-tight mb-3">
             {data.title}
           </h2>
+          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
           <p className="text-[15.5px] text-white/70 font-medium leading-relaxed">
             {data.subtitle}
           </p>

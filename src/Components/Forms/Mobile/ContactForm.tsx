@@ -34,10 +34,11 @@ export default function ContactForm() {
             <div className="w-10 h-10 rounded-full bg-[#F8FAFD] flex items-center justify-center border border-[#0B1D3A]/10">
               <MessageSquare size={18} className="text-[#0B1D3A]" />
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0B1D3A]">
+            <h2 className="text-[#0B1D3A] text-2xl md:text-3xl font-black ">
               Get in{" "}
               <span className="text-[#C99A2E] gold-underline">Touch</span>
             </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           </div>
           <p className="text-[#475569] text-[15px]">
             Have questions about our platform or services? Send us a message and

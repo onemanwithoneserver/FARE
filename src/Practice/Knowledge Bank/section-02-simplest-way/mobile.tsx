@@ -21,9 +21,10 @@ export default function Mobile() {
           <span className="text-[#C99A2E] text-[10px] font-bold tracking-[0.2em] uppercase mb-3 block">
             {data.badge}
           </span>
-          <h2 className="text-[1.75rem] font-black mb-4 tracking-tight leading-tight" style={{ color: NAVY }}>
+          <h2 className="text-[#0B1D3A] text-[1.75rem] font-black mb-4 tracking-tight leading-tight">
             {data.title}
           </h2>
+          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
           <p className="text-[15px] text-[#64748B] font-medium whitespace-pre-wrap leading-relaxed">
             {data.intro}
           </p>

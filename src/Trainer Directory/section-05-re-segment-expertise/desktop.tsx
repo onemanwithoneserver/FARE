@@ -98,9 +98,10 @@ export default function Desktop() {
             <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[0].bg }}>
               {sectionColors[0].icon}
             </div>
-            <h2 className="text-[18px] font-black leading-tight" style={{ color: NAVY }}>
+            <h2 className="text-[#0B1D3A] text-[18px] font-black leading-tight">
               {t("Real Estate")}<br/>{t("Segment Expertise")}
             </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           </div>
           <div className="flex flex-col gap-4">
             {data.segments.map((segment, idx) => (
@@ -116,9 +117,10 @@ export default function Desktop() {
             <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[1].bg }}>
               {sectionColors[1].icon}
             </div>
-            <h2 className="text-[18px] font-black leading-tight" style={{ color: NAVY }}>
+            <h2 className="text-[#0B1D3A] text-[18px] font-black leading-tight">
               {t("Learner")}<br/>{t("Audience")}
             </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           </div>
           <div className="flex flex-col gap-4">
             {data.learnerAudience.map((audience, idx) => (
@@ -139,9 +141,10 @@ export default function Desktop() {
             <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[2].bg }}>
               {sectionColors[2].icon}
             </div>
-            <h2 className="text-[18px] font-black leading-tight" style={{ color: NAVY }}>
+            <h2 className="text-[#0B1D3A] text-[18px] font-black leading-tight">
               {t("Training")}<br/>{t("Language")}
             </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5 p-3.5 rounded-[4px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">

@@ -46,7 +46,8 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[28px] font-black tracking-[-0.02em]" style={{ color: NAVY }}>{t("See the Trainer in Action")}</h2>
+          <h2 className="text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("See the Trainer in Action")}</h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         </motion.div>
 
         <div className="grid grid-cols-4 gap-6">

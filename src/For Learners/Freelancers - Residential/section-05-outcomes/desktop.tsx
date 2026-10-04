@@ -37,9 +37,10 @@ export default function Desktop() {
           <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-3 block">
             Impact
           </span>
-          <h2 className="text-4xl lg:text-[2.75rem] font-black text-[#0B1D3A] tracking-tight leading-tight">
+          <h2 className="text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight">
             {data.title}
           </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         </motion.div>
 
         <motion.div

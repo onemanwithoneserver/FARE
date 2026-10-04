@@ -20,9 +20,10 @@ export default function Desktop() {
             transition={{ duration: 0.8 }}
             className="lg:w-5/12"
           >
-            <h2 className="text-[32px] md:text-[38px] lg:text-[44px] font-bold text-[#0B1D3A] mb-6">
+            <h2 className="text-[#0B1D3A] text-[32px] md:text-[38px] lg:text-[44px] font-bold mb-6">
               {sectionData.title}
             </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
             <div className="w-16 h-1 bg-[#C99A2E] mb-8 rounded-[2px]" />
             <div className="bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC] p-8 rounded-[8px] border border-gray-100 luxury-shadow-float relative overflow-hidden">
               <div className="text-[60px] text-[#C99A2E]/20 absolute top-2 left-4 font-serif leading-none">"</div>

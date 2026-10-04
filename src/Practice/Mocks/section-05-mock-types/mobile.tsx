@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { data } from "../data";
@@ -58,11 +57,10 @@ export default function Mobile() {
              <span className="text-[11px] font-bold tracking-wide text-slate-700 uppercase">Training Scenarios</span>
           </div>
           
-          <h2 className="mb-4 text-[clamp(24px,6vw,32px)] font-black leading-tight tracking-tight text-[#0B1D3A]">
+          <h2 className="text-[#0B1D3A] mb-4 text-[clamp(24px,6vw,32px)] font-black leading-tight tracking-tight ">
             {sectionData.title}
           </h2>
-          
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 rounded-full" />
+          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
           
           <p className="text-[15px] text-[#64748B] font-medium leading-relaxed max-w-[280px] mx-auto">
             {sectionData.description}

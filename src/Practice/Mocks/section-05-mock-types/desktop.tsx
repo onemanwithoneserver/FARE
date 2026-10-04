@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
 import { data } from "../data";
@@ -58,11 +57,10 @@ export default function Desktop() {
              <span className="text-[13px] font-bold tracking-wide text-slate-700 uppercase">Training Scenarios</span>
           </div>
           
-          <h2 className="mb-4 text-[36px] font-black leading-tight tracking-tight text-[#0B1D3A] md:text-[44px] lg:text-[52px]">
+          <h2 className="text-[#0B1D3A] mb-4 text-[36px] font-black leading-tight tracking-tight md:text-[44px] lg:text-[52px]">
             {sectionData.title}
           </h2>
-          
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 rounded-full" />
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           
           <p className="text-[17px] md:text-[19px] text-[#64748B] font-medium leading-relaxed max-w-2xl mx-auto">
             {sectionData.description}

@@ -45,10 +45,10 @@ export default function Desktop() {
           transition={{ duration: 0.6 }}
           className="text-center w-full max-w-5xl mx-auto mb-16"
         >
-          <h2 className="text-[32px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-black text-[#0B1D3A] mb-4 leading-tight tracking-tight lg:whitespace-nowrap">
+          <h2 className="text-[#0B1D3A] text-[32px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-black mb-4 leading-tight tracking-tight lg:whitespace-nowrap">
             {sectionData.title}
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 rounded-full" />
+          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           <p className="text-[17px] text-[#64748B] font-medium leading-relaxed max-w-3xl mx-auto">
             {sectionData.description}
           </p>

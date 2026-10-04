@@ -82,13 +82,12 @@ export default function Desktop() {
           </motion.div>
           <motion.h2
             variants={item}
-            className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]"
+            className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-4 max-w-[850px]"
             style={{ color: NAVY }}
           >
-            {data.headline.line1}{" "}
-            <span className="text-[#C99A2E]">{data.headline.line2}</span>{" "}
-            {data.headline.line3} {data.headline.line4}
+            {data.headline.line1} {data.headline.line2} {data.headline.line3} {data.headline.line4}
           </motion.h2>
+          <motion.div variants={item} className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 rounded-full" />
           <motion.p
             variants={item}
             className="text-[18px] font-medium leading-[1.65] max-w-[700px] text-[#475569]"

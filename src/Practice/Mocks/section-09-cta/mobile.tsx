@@ -17,9 +17,10 @@ export default function Mobile() {
           <div className="inline-flex items-center justify-center px-3 py-1.5 rounded-[4px] bg-[#0B1D3A]/5 border border-[#0B1D3A]/10 mb-6">
             <span className="text-[10px] font-bold text-[#C99A2E] tracking-widest">{sectionData.coreMessage}</span>
           </div>
-          <h2 className="text-[28px] font-bold text-[#0B1D3A] mb-4 leading-tight">
+          <h2 className="text-[#0B1D3A] text-[28px] font-bold mb-4 leading-tight">
             {sectionData.title}
           </h2>
+          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
           <p className="text-[15px] text-gray-600">
             {sectionData.description}
           </p>

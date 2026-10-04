@@ -119,6 +119,7 @@ export default function Mobile() {
           >
             {data.headline}
           </motion.h2>
+          <motion.div variants={item} className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 rounded-full" />
         </motion.div>
         <motion.div
           variants={container}

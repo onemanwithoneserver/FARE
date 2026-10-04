@@ -23,9 +23,10 @@ export default function Mobile() {
           <span className="text-[#C99A2E] text-[10px] font-bold tracking-[0.2em] uppercase mb-3 block">
             {data.title}
           </span>
-          <h2 className="text-[1.75rem] font-black text-[#0B1D3A] tracking-tight leading-tight">
+          <h2 className="text-[#0B1D3A] text-[1.75rem] font-black tracking-tight leading-tight">
             {data.subtitle}
           </h2>
+          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
         </motion.div>
 
         <div className="grid grid-cols-2 gap-4">

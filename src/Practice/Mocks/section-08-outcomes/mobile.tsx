@@ -19,9 +19,10 @@ export default function Mobile() {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <h2 className="text-[28px] font-bold text-[#0B1D3A] mb-4">
+          <h2 className="text-[#0B1D3A] text-[28px] font-bold mb-4">
             {sectionData.title}
           </h2>
+          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
           <div className="w-12 h-1 bg-[#C99A2E] mb-6 rounded-[2px]" />
           <div className="bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC] p-6 rounded-[4px] border border-gray-100 shadow-sm relative overflow-hidden">
             <div className="text-[40px] text-[#C99A2E]/20 absolute -top-1 left-2 font-serif leading-none">"</div>
