@@ -25,7 +25,7 @@ export const dataEn = {
   ],
   "more": {
     "title": "MORE REAL ESTATE SEGMENTS",
-    "text": "Commercial · Land · Property Management · Industrial · Warehousing · Hospitality · Other RE Segments"
+    "text": "Commercial  ·  Land  ·  Property Management  ·  Industrial  ·  Warehousing  ·  Hospitality  ·  Other RE Segments"
   }
 };
 
@@ -46,7 +46,7 @@ export const dataTe = {
   ],
   "more": {
     "title": "MORE REAL ESTATE SEGMENTS",
-    "text": "Commercial · Land · Property Management · Industrial · Warehousing · Hospitality · Other RE Segments"
+    "text": "Commercial  ·  Land  ·  Property Management  ·  Industrial  ·  Warehousing  ·  Hospitality  ·  Other RE Segments"
   }
 };
 

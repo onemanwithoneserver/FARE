@@ -44,7 +44,7 @@ export default function Mobile() {
                   <div className={`w-10 h-10 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-sm`}>
                     <Icon size={18} className="text-white" strokeWidth={2.5} />
                   </div>
-                  <h3 className="text-[17px] font-bold .5 leading-snug" style={{ color: NAVY }}>
+                  <h3 className="text-[17px] font-bold leading-snug" style={{ color: NAVY }}>
                   {level.title}
                 </h3>
                 </div>

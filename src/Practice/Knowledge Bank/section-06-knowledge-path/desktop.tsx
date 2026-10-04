@@ -82,11 +82,14 @@ export default function Desktop() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <div className="inline-block bg-white px-8 py-5 rounded-[4px] border border-[#E2E8F0]/50 shadow-sm">
-            <h4 className="whitespace-nowrap text-[11px] font-bold tracking-[0.2em] uppercase text-[#64748B] mb-3">
+          <div className="relative inline-flex flex-col items-center justify-center bg-[#0B1D3A] px-12 py-8 rounded-[8px] border border-[#1A3668] shadow-[0_8px_30px_rgba(11,29,58,0.15)] overflow-hidden group hover:-translate-y-1 transition-all duration-300">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#C99A2E] via-[#F3E1A0] to-[#C99A2E] opacity-90" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            
+            <h4 className="text-[11px] font-bold tracking-[0.25em] uppercase text-[#94A3B8] mb-4 relative z-10 group-hover:text-white transition-colors duration-300">
               {data.more.title}
             </h4>
-            <p className="text-[15px] font-semibold text-[#0B1D3A]">
+            <p className="text-[16px] font-bold text-white relative z-10 text-center leading-relaxed" style={{ wordSpacing: "0.2em", letterSpacing: "0.025em" }}>
               {data.more.text}
             </p>
           </div>

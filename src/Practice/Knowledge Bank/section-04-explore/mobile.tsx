@@ -70,8 +70,8 @@ export default function Mobile() {
                   const hiddenCount = cat.items.length - 5;
                   
                   return (
-                    <div className="flex flex-col h-full">
-                      <ul className="space-y-2 mb-2">
+                    <>
+                      <ul className="space-y-2">
                         {visibleItems.map((itemStr, j) => (
                           <li key={j} className="flex items-start gap-2.5">
                             <span className="w-1.5 h-1.5 rounded-[4px] bg-[#CBD5E1] mt-1.5 shrink-0" />
@@ -82,7 +82,7 @@ export default function Mobile() {
                         ))}
                       </ul>
                       {hiddenCount > 0 && (
-                        <div className="mt-auto pt-2">
+                        <div className="mt-3">
                           <button
                             onClick={() => toggleCard(i)}
                             className="text-[13px] font-bold text-[#C99A2E] hover:text-[#0B1D3A] transition-colors inline-block cursor-pointer outline-none"
@@ -91,7 +91,7 @@ export default function Mobile() {
                           </button>
                         </div>
                       )}
-                    </div>
+                    </>
                   );
                 })()}
               </motion.div>

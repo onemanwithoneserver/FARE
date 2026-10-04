@@ -79,11 +79,13 @@ export default function Mobile() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <div className="bg-white px-5 py-4 rounded-[4px] border border-[#E2E8F0]/50 shadow-sm">
-            <h4 className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#64748B] mb-2.5">
+          <div className="relative flex flex-col items-center justify-center bg-[#0B1D3A] px-8 py-7 rounded-[6px] border border-[#1A3668] shadow-lg overflow-hidden active:scale-[0.98] transition-transform duration-300">
+            <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#C99A2E] via-[#F3E1A0] to-[#C99A2E] opacity-90" />
+            
+            <h4 className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#94A3B8] mb-3.5 relative z-10">
               {data.more.title}
             </h4>
-            <p className="text-[13px] font-semibold text-[#0B1D3A] leading-relaxed">
+            <p className="text-[14px] font-bold text-white leading-relaxed relative z-10 text-center" style={{ wordSpacing: "0.15em", letterSpacing: "0.02em" }}>
               {data.more.text}
             </p>
           </div>
