@@ -53,7 +53,7 @@ export default function Desktop() {
       />
       <div className="max-w-[1320px] mx-auto px-12 relative z-10">
         <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-white text-[3rem] lg:text-[3.5rem] leading-[1.05] font-black tracking-[-0.02em] mb-6 max-w-[850px] bg-clip-text text-transparent bg-gradient-to-b from-[#0B1D3A] to-[#0B1D3A]/70">
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.05] font-black tracking-[-0.02em] mb-6 max-w-[850px] bg-clip-text text-transparent bg-gradient-to-b from-[#0B1D3A] to-[#0B1D3A]/70">
             {data.headline}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -99,13 +99,10 @@ export default function Desktop() {
                         {TAB_ICONS[tab.id]}
                       </div>
                       <div>
-                        <h4
-                          className="text-[14px] font-bold uppercase tracking-[0.15em] mb-1 opacity-80"
-                          style={{ color: activeColor }}
-                        >
+                        <h4 className="whitespace-nowrap text-[14px] font-bold uppercase tracking-[0.15em] mb-1 opacity-80" style={{ color: activeColor }} >
                           {tab.title}
                         </h4>
-                        <h3 className="text-[28px] lg:text-[32px] font-bold leading-tight text-[#0B1D3A]">
+                        <h3 className="whitespace-nowrap text-[28px] lg:text-[32px] font-bold leading-tight text-[#0B1D3A]">
                           {activeContent.title}
                         </h3>
                       </div>
@@ -133,10 +130,7 @@ export default function Desktop() {
                                 className="absolute top-0 right-0 w-32 h-32 opacity-0 group-hover/section:opacity-10 blur-[30px] transition-opacity duration-500 pointer-events-none"
                                 style={{ background: activeColor }}
                               ></div>
-                              <h4
-                                className="text-[13px] font-bold uppercase tracking-[0.15em] mb-4 flex items-center gap-3 relative z-10"
-                                style={{ color: activeColor }}
-                              >
+                              <h4 className="whitespace-nowrap text-[13px] font-bold uppercase tracking-[0.15em] mb-4 flex items-center gap-3 relative z-10" style={{ color: activeColor }} >
                                 <div
                                   className="w-2 h-2 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)] group-hover/section:scale-150 transition-transform duration-300"
                                   style={{ backgroundColor: activeColor }}
@@ -181,7 +175,7 @@ export default function Desktop() {
                       <div className="bg-[#0B1D3A]/[0.03] rounded-[8px] p-5 border border-[#0B1D3A]/[0.08] backdrop-blur-md flex flex-col justify-center h-auto">
                         {activeContent.journey && (
                           <div>
-                            <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.2em] mb-6">
+                            <h4 className="whitespace-nowrap text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.2em] mb-6">
                               {data.journeyLabel}
                             </h4>
                             <div className="flex flex-col gap-2.5">
@@ -225,7 +219,7 @@ export default function Desktop() {
                           )}
                         {activeContent.evaluateBasedOn && (
                           <div>
-                            <h4 className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.2em] mb-4">
+                            <h4 className="whitespace-nowrap text-[12px] font-bold text-[#7B8DAA] uppercase tracking-[0.2em] mb-4">
                               {data.evaluateLabel}
                             </h4>
                             <div className="flex flex-wrap gap-2.5">

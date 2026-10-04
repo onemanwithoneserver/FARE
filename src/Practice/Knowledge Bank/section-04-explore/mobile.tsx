@@ -1,10 +1,21 @@
 import { motion } from "motion/react";
+import { useState } from "react";
 import { getData, ICONS, GRADIENTS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 
 const NAVY = "#0B1D3A";
 
 export default function Mobile() {
+  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
+
+  const toggleCard = (index: number) => {
+    setExpandedCards(prev => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
   const { language } = useLanguage();
   const data = getData(language);
 
@@ -53,16 +64,36 @@ export default function Mobile() {
                     </h3>
                   </div>
                 </div>
-                <ul className="space-y-2">
-                  {cat.items.map((itemStr, j) => (
-                    <li key={j} className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-[4px] bg-[#CBD5E1] mt-1.5 shrink-0" />
-                      <span className="text-[13px] text-[#475569] font-medium leading-snug">
-                        {itemStr}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                {(() => {
+                  const isExpanded = expandedCards.has(i);
+                  const visibleItems = isExpanded ? cat.items : cat.items.slice(0, 5);
+                  const hiddenCount = cat.items.length - 5;
+                  
+                  return (
+                    <div className="flex flex-col h-full">
+                      <ul className="space-y-2 mb-2">
+                        {visibleItems.map((itemStr, j) => (
+                          <li key={j} className="flex items-start gap-2.5">
+                            <span className="w-1.5 h-1.5 rounded-[4px] bg-[#CBD5E1] mt-1.5 shrink-0" />
+                            <span className="text-[13px] text-[#475569] font-medium leading-snug">
+                              {itemStr}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      {hiddenCount > 0 && (
+                        <div className="mt-auto pt-2">
+                          <button
+                            onClick={() => toggleCard(i)}
+                            className="text-[13px] font-bold text-[#C99A2E] hover:text-[#0B1D3A] transition-colors inline-block cursor-pointer outline-none"
+                          >
+                            {isExpanded ? "- Show less" : `+${hiddenCount} more`}
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
               </motion.div>
             );
           })}

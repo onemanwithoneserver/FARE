@@ -21,7 +21,7 @@ export default function Mobile() {
           <span className="text-[#C99A2E] text-[10px] font-bold tracking-[0.2em] uppercase mb-3 block">
             {data.badge}
           </span>
-          <h2 className="text-[#0B1D3A] text-[1.75rem] font-black mb-4 tracking-tight leading-tight">
+          <h2 className="text-[#0B1D3A] text-[1.75rem] font-black tracking-tight leading-tight">
             {data.title}
           </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
@@ -40,14 +40,14 @@ export default function Mobile() {
                 key={i}
                 className="bg-white p-6 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_2px_8px_rgba(11,29,58,0.03)]"
               >
-                <div
-                  className={`w-10 h-10 rounded-[4px] flex items-center justify-center mb-4 bg-gradient-to-br ${colorGradient} shadow-sm`}
-                >
-                  <Icon size={18} className="text-white" strokeWidth={2.5} />
-                </div>
-                <h3 className="text-[17px] font-bold mb-2" style={{ color: NAVY }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-10 h-10 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${colorGradient} shadow-sm`}>
+                    <Icon size={18} className="text-white" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="text-[17px] font-bold" style={{ color: NAVY }}>
                   {f.title}
                 </h3>
+                </div>
                 <p className="text-sm text-[#64748B] font-medium leading-relaxed">
                   {f.text}
                 </p>

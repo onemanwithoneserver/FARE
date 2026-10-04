@@ -56,12 +56,12 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Experience \u0026amp; Track Record")}</h2>
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Experience \u0026amp; Track Record")}</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         </motion.div>
 
         <div className="mx-auto w-full max-w-[1040px]">
-          <motion.h3 variants={item} className="mb-6 text-[18px] font-black tracking-tight" style={{ color: NAVY }}>
+          <motion.h3 variants={item} className="whitespace-nowrap mb-6 text-[18px] font-black tracking-tight" style={{ color: NAVY }}>
             {t("Selected Engagements")}
           </motion.h3>
 
@@ -105,7 +105,7 @@ export default function Desktop() {
                         {initialsOf(timelineItem.company)}
                       </div>
                       <div className="min-w-0">
-                        <h4 className="truncate text-[16px] font-black tracking-tight" style={{ color: NAVY }}>
+                        <h4 className="whitespace-nowrap truncate text-[16px] font-black tracking-tight" style={{ color: NAVY }}>
                           {timelineItem.company}
                         </h4>
                         <p className="mt-1 flex items-center gap-1.5 text-[13px] font-medium text-[#7B8DAA]">

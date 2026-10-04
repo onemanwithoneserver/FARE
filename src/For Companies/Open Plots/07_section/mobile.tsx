@@ -83,10 +83,7 @@ export default function Mobile() {
             </div>
             <div className="h-[1px] w-6 bg-gradient-to-r from-[#C99A2E] to-transparent opacity-60"></div>
           </motion.div>
-          <motion.h2
-            variants={itemVariant}
-            className="text-[2.25rem] leading-[1.1] font-black tracking-tight text-[#0B1D3A] mb-5 w-full relative z-10 px-5"
-          >
+          <motion.h2 variants={itemVariant} className="text-[2.25rem] leading-[1.1] font-black tracking-tight text-[#0B1D3A] mb-5 w-full relative z-10 px-5" >
             {data.headline}
           </motion.h2>
           <motion.p

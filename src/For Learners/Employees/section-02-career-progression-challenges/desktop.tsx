@@ -44,7 +44,7 @@ export default function Desktop() {
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
-          <h2 className="text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black text-center tracking-tight leading-tight max-w-4xl mx-auto">
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black text-center tracking-tight leading-tight max-w-4xl mx-auto">
             {data.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -67,10 +67,12 @@ export default function Desktop() {
                 variants={item}
                 className="bg-white p-7 rounded-[4px] luxury-shadow-float border border-[#E2E8F0]/60 hover:luxury-shadow-float hover:-translate-y-1.5 hover:border-[#C99A2E]/20 transition-all duration-300 group flex flex-col h-full"
               >
-                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon size={22} className="text-white" strokeWidth={2.5} />
+                <div className="flex items-center gap-3 mb-5">
+                  <div className={`w-12 h-12 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-sm group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon size={22} className="text-white" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="whitespace-nowrap text-[17px] font-bold text-[#0B1D3A] leading-tight">{c.title}</h3>
                 </div>
-                <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-3 leading-tight">{c.title}</h3>
                 <p className="text-[14.5px] text-[#475569] font-medium leading-relaxed flex-grow">{c.text}</p>
               </motion.div>
             );

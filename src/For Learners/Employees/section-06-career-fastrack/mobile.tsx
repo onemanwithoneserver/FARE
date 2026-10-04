@@ -45,13 +45,14 @@ export default function Mobile() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="bg-white p-6 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_2px_12px_rgba(11,29,58,0.03)] flex flex-col"
               >
-                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5`}>
-                  <Icon size={22} className="text-white" strokeWidth={2.5} />
-                </div>
-                
-                <h3 className="text-[16px] font-bold text-[#0B1D3A] mb-3 tracking-wide">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className={`w-12 h-12 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-sm`}>
+                    <Icon size={22} className="text-white" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="text-[16px] font-bold text-[#0B1D3A] tracking-wide">
                   {itemData.title}
                 </h3>
+                </div>
                 
                 <p className="text-[14px] text-[#475569] font-medium leading-relaxed mb-6">
                   {itemData.text}

@@ -37,7 +37,7 @@ export default function Desktop() {
           <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-3 block">
             Impact
           </span>
-          <h2 className="text-white text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight">
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight">
             {data.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -60,13 +60,14 @@ export default function Desktop() {
                 variants={item}
                 className="bg-white p-7 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.03)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
               >
-                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-6 group-hover:scale-105 transition-transform duration-300`}>
-                  <Icon size={22} className="text-white" strokeWidth={2.5} />
-                </div>
-                
-                <h3 className="text-[18px] font-bold text-[#0B1D3A] mb-3 tracking-wide leading-snug">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className={`w-12 h-12 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-md group-hover:scale-105 transition-transform duration-300`}>
+                    <Icon size={22} className="text-white" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="whitespace-nowrap text-[18px] font-bold text-[#0B1D3A] tracking-wide leading-snug">
                   {itemData.title}
                 </h3>
+                </div>
                 
                 <p className="text-[14px] text-[#64748B] font-medium leading-relaxed flex-grow">
                   {itemData.text}

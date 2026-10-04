@@ -168,14 +168,7 @@ export default function Mobile() {
               </span>
             </div>
           </motion.div>
-          <motion.h2
-            variants={itemVariant}
-            className={`font-black tracking-tight text-white uppercase mb-3 px-2 w-full relative z-10 ${
-              language === "te"
-                ? "text-[1.5rem] leading-[1.25]"
-                : "text-[1.85rem] leading-[1.12]"
-            }`}
-          >
+          <motion.h2 variants={itemVariant} className={`font-black tracking-tight uppercase mb-3 px-2 w-full relative z-10 ${ language === "te" ? "text-[1.5rem] leading-[1.25]" : "text-[1.85rem] leading-[1.12]" } text-[#0B1D3A]`}>
             <span className="block">{data.headline.line1}</span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#D5AA45] via-[#F3E1A0] to-[#C99A2E]">
               {data.headline.line2}

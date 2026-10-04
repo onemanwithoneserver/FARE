@@ -82,16 +82,10 @@ export default function Mobile() {
               </span>
             </div>
           </motion.div>
-          <motion.h2
-            variants={item}
-            className="text-[1.95rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.03em] mb-1.5 bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#162E56] to-[#0B1D3A]"
-          >
+          <motion.h2 variants={item} className="text-[#0B1D3A] text-[1.95rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.03em] mb-1.5 bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#162E56] to-[#0B1D3A]" >
             {data.headline}
           </motion.h2>
-          <motion.h2
-            variants={item}
-            className="text-[1.95rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.03em] bg-clip-text text-transparent bg-gradient-to-r from-[#C99A2E] via-[#E2BA55] to-[#B88A22] drop-shadow-[0_2px_16px_rgba(201,154,46,0.25)]"
-          >
+          <motion.h2 variants={item} className="text-[#0B1D3A] text-[1.95rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.03em] bg-clip-text text-transparent bg-gradient-to-r from-[#C99A2E] via-[#E2BA55] to-[#B88A22] drop-shadow-[0_2px_16px_rgba(201,154,46,0.25)]" >
             {data.headlineAccent}
           </motion.h2>
         </motion.div>

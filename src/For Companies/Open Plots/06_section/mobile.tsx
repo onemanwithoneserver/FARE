@@ -56,11 +56,7 @@ export default function Mobile() {
                   : `${data.title} — ${data.overline}`}
               </span>
             </motion.div>
-            <motion.h2
-              variants={item}
-              className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-6"
-              style={{ color: NAVY }}
-            >
+            <motion.h2 variants={item} className="text-[#0B1D3A] text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-6" style={{ color: NAVY }} >
               {headlineSentences.map((sentence, i) => (
                 <React.Fragment key={i}>
                   {i === 0 ? (

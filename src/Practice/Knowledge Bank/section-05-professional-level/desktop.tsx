@@ -39,7 +39,7 @@ export default function Desktop() {
           <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-4 block">
             {data.badge}
           </span>
-          <h2 className="text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight">
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight">
             {data.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -61,12 +61,14 @@ export default function Desktop() {
                 variants={item}
                 className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] bg-[#F8FAFD] p-7 rounded-[4px] border border-[#E2E8F0] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300 group flex flex-col"
               >
-                <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon size={22} className="text-white" strokeWidth={2.5} />
-                </div>
-                <h3 className="text-xl font-bold mb-3 leading-snug" style={{ color: NAVY }}>
+                <div className="flex items-center gap-3 mb-5">
+                  <div className={`w-12 h-12 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-sm group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon size={22} className="text-white" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="whitespace-nowrap text-xl font-bold leading-snug" style={{ color: NAVY }}>
                   {level.title}
                 </h3>
+                </div>
                 <p className="text-[15px] text-[#64748B] font-medium leading-relaxed">
                   {level.text}
                 </p>

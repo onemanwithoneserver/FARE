@@ -76,7 +76,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-4">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, #D5AA45)` }} />
-          <h2 className="text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Training Investment")}</h2>
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Training Investment")}</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         </motion.div>
         <motion.div variants={item} className="mb-10">
@@ -138,10 +138,10 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
                   {card.icon}
                 </div>
 
-                <h4 className={`text-[11px] font-black uppercase tracking-[0.15em] mb-4 ${card.featured ? "text-white/50" : "text-[#7B8DAA]"}`}>
+                <h4 className={`text-[11px] font-black uppercase tracking-[0.15em] mb-4 whitespace-nowrap ${card.featured ? "text-white/50" : "text-[#7B8DAA]"}`}>
                   {card.title}
                 </h4>
-                <h3 className={`text-[24px] font-black mb-3 tracking-tight ${card.featured ? "text-white" : ""}`} style={card.featured ? {} : { color: NAVY }}>
+                <h3 className={`text-[24px] font-black mb-3 tracking-tight whitespace-nowrap ${card.featured ? "text-white" : ""}`} style={card.featured ? {} : { color: NAVY }}>
                   {card.subtitle}
                 </h3>
                 <p className={`text-[14px] font-medium leading-relaxed mb-6 ${card.featured ? "text-white/60" : "text-[#5A6B82]"}`}>

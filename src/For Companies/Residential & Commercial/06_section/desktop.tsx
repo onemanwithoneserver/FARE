@@ -63,11 +63,7 @@ export default function Desktop() {
                 </span>
               </div>
             </motion.div>
-            <motion.h2
-              variants={item}
-              className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-4"
-              style={{ color: NAVY }}
-            >
+            <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }} >
               {data.headline}
             </motion.h2>
             <motion.div variants={item} className="mb-8">
@@ -110,7 +106,7 @@ export default function Desktop() {
                 className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/20 rounded-full blur-[40px] pointer-events-none"
               ></motion.div>
               <div>
-                <h3 className="text-[22px] font-bold mb-2 text-white relative z-10">
+                <h3 className="whitespace-nowrap text-[22px] font-bold mb-2 text-white relative z-10">
                   {data.ctaHeading}
                 </h3>
                 <p className="text-[15px] font-medium text-white/70 relative z-10">
@@ -140,10 +136,7 @@ export default function Desktop() {
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#C99A2E]/10 to-transparent rounded-bl-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-60"></div>
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-[#60A5FA]/10 to-transparent rounded-tr-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-60"></div>
-              <h3
-                className="text-[24px] font-bold mb-8 relative z-10 flex items-center gap-3.5"
-                style={{ color: NAVY }}
-              >
+              <h3 className="whitespace-nowrap text-[24px] font-bold mb-8 relative z-10 flex items-center gap-3.5" style={{ color: NAVY }} >
                 <div
                   className="w-2 h-8 rounded-full"
                   style={{ background: GOLD }}

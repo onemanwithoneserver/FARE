@@ -24,7 +24,7 @@ export default function Mobile() {
               The Transition
             </span>
           </div>
-          <h2 className="text-white text-[1.75rem] font-black tracking-tight leading-tight">
+          <h2 className="text-[#0B1D3A] text-[1.75rem] font-black tracking-tight leading-tight">
             {data.title}
           </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
@@ -44,13 +44,14 @@ export default function Mobile() {
                 transition={{ duration: 0.5, delay: i * 0.05 }}
                 className="bg-white p-5 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_8px_rgba(11,29,58,0.03)] flex flex-col"
               >
-                <div className={`w-11 h-11 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm mb-4`}>
-                  <Icon size={20} className="text-white" strokeWidth={2.5} />
-                </div>
-                
-                <h3 className="text-[16px] font-bold text-[#0B1D3A] mb-2 tracking-wide leading-snug">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-11 h-11 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-sm`}>
+                    <Icon size={20} className="text-white" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="text-[16px] font-bold text-[#0B1D3A] tracking-wide leading-snug">
                   {c.title}
                 </h3>
+                </div>
                 
                 <p className="text-[13px] text-[#64748B] font-medium leading-relaxed">
                   {c.text}

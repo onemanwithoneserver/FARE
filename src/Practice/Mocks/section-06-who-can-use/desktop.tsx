@@ -46,7 +46,7 @@ export default function Desktop() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-[#0B1D3A] text-[32px] md:text-[38px] lg:text-[44px] font-black mb-4 leading-tight tracking-tight">
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-[32px] md:text-[38px] lg:text-[44px] font-black mb-4 leading-tight tracking-tight">
             {sectionData.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -72,7 +72,7 @@ export default function Desktop() {
                 <div className={`w-12 h-12 rounded-[4px] bg-gradient-to-br ${gradient} shadow-sm flex items-center justify-center text-white mb-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:rotate-6 group-hover:scale-110 shrink-0`}>
                   <Icon size={22} strokeWidth={2.5} />
                 </div>
-                <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-3 leading-snug group-hover:text-[#C99A2E] transition-colors duration-300">
+                <h3 className="whitespace-nowrap text-[17px] font-bold text-[#0B1D3A] mb-3 leading-snug group-hover:text-[#C99A2E] transition-colors duration-300">
                   {role.title}
                 </h3>
                 <p className="text-[14.5px] text-[#64748B] leading-relaxed font-medium">

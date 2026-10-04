@@ -45,13 +45,10 @@ export default function Desktop() {
           >
             {data.badge}
           </motion.span>
-          <motion.h2
-            variants={item}
-            className="text-4xl lg:text-[2.75rem] font-black mb-6 tracking-tight leading-tight"
-            style={{ color: NAVY }}
-          >
+          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight" >
             {data.title}
           </motion.h2>
+          <motion.div variants={item} className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           <motion.p
             variants={item}
             className="text-lg text-[#64748B] font-medium max-w-3xl mx-auto whitespace-pre-wrap leading-relaxed"
@@ -60,7 +57,7 @@ export default function Desktop() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+        <div className="flex flex-wrap justify-center gap-5 mb-16">
           {data.features.map((f, i) => {
             const Icon = ICONS[i % ICONS.length];
             const colorGradient = GRADIENTS[i % GRADIENTS.length];
@@ -69,16 +66,16 @@ export default function Desktop() {
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white p-8 rounded-[4px] border border-[#E2E8F0]/80 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300 group"
+                className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] bg-white p-8 rounded-[4px] border border-[#E2E8F0]/80 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300 group"
               >
-                <div
-                  className={`w-11 h-11 rounded-[4px] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 bg-gradient-to-br ${colorGradient} shadow-sm`}
-                >
-                  <Icon size={20} className="text-white" strokeWidth={2.5} />
-                </div>
-                <h3 className="text-lg font-bold mb-3" style={{ color: NAVY }}>
+                <div className="flex items-center gap-3 mb-5">
+                  <div className={`w-11 h-11 rounded-[4px] flex shrink-0 items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-gradient-to-br ${colorGradient} shadow-sm`}>
+                    <Icon size={20} className="text-white" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="whitespace-nowrap text-lg font-bold" style={{ color: NAVY }}>
                   {f.title}
                 </h3>
+                </div>
                 <p className="text-sm text-[#64748B] font-medium leading-relaxed">
                   {f.text}
                 </p>

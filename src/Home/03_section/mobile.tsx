@@ -105,15 +105,7 @@ export default function Mobile() {
               </span>
             </div>
           </motion.div>
-          <motion.h2
-            variants={itemVariants}
-            className={`font-black mb-2.5 ${
-              language === "te"
-                ? "text-[1.55rem] leading-[1.25] tracking-wider py-0.5"
-                : "text-[1.85rem] leading-[1.1] tracking-[-0.03em] uppercase"
-            }`}
-            style={{ color: NAVY }}
-          >
+          <motion.h2 variants={itemVariants} className={`font-black mb-2.5 text-[#0B1D3A] ${ language === "te" ? "text-[1.55rem] leading-[1.25] tracking-wider py-0.5" : "text-[1.85rem] leading-[1.1] tracking-[-0.03em] uppercase" }`} style={{ color: NAVY }}>
             {data.headline.line1}{" "}
             <span className="text-[#C99A2E]">{data.headline.highlight}</span>{" "}
             {data.headline.line2}

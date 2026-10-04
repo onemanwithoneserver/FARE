@@ -183,11 +183,7 @@ export default function Desktop() {
               {data.overline}
             </span>
           </motion.div>
-          <motion.h2
-            variants={item}
-            className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]"
-            style={{ color: NAVY }}
-          >
+          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]" style={{ color: NAVY }} >
             {sectionTitle}
           </motion.h2>
           <motion.p
@@ -236,10 +232,7 @@ export default function Desktop() {
                 >
                   <Icon size={20} className="text-white relative z-10" />
                 </div>
-                <h3
-                  className="text-[14px] font-bold leading-tight relative z-10 px-1"
-                  style={{ color: NAVY }}
-                >
+                <h3 className="whitespace-nowrap text-[14px] font-bold leading-tight relative z-10 px-1" style={{ color: NAVY }} >
                   {challenge}
                 </h3>
               </motion.div>
@@ -272,7 +265,7 @@ export default function Desktop() {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#C99A2E]/5 rounded-full blur-[80px] pointer-events-none"
           ></motion.div>
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"></div>
-          <h3 className="text-[28px] lg:text-[32px] font-bold text-white mb-5 relative z-10 leading-snug">
+          <h3 className="whitespace-nowrap text-[28px] lg:text-[32px] font-bold text-white mb-5 relative z-10 leading-snug">
             {data.transitionTitle}
           </h3>
           <p className="text-[20px] font-semibold text-[#C99A2E] flex items-center justify-center gap-3 relative z-10">

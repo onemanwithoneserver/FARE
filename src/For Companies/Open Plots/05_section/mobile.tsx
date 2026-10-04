@@ -66,11 +66,7 @@ export default function Mobile() {
               {data.overline}
             </span>
           </motion.div>
-          <motion.h2
-            variants={item}
-            className="text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-3"
-            style={{ color: NAVY }}
-          >
+          <motion.h2 variants={item} className="text-[#0B1D3A] text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-3" style={{ color: NAVY }} >
             {data.headline.split(" ").map((word, i) => (
               <React.Fragment key={i}>
                 {word === "Open" ||

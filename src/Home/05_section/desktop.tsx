@@ -117,7 +117,7 @@ export default function Desktop() {
 
             <div className="fare-gold-divider w-full mb-5" />
             
-            <h4 className="text-[17px] font-serif mb-3" style={{ color: "#E2C068" }}>Contact FARE</h4>
+            <h4 className="whitespace-nowrap text-[17px] font-serif mb-3" style={{ color: "#E2C068" }}>Contact FARE</h4>
             
             <div className="flex flex-col gap-2.5 mb-5">
               <a href="#contact" className="text-[14px] font-bold text-white hover:text-[#E2C068] transition-colors flex items-center gap-1.5 w-fit group/link">
@@ -171,7 +171,7 @@ export default function Desktop() {
           <div className="lg:col-span-8 xl:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-8">
             {data.footerGroups.map((group, gIdx) => (
               <motion.div key={gIdx} variants={itemVariants} className="flex flex-col">
-                <h4 className="text-[17px] font-serif mb-6 tracking-wide" style={{ color: "#E2C068" }}>
+                <h4 className="whitespace-nowrap text-[17px] font-serif mb-6 tracking-wide" style={{ color: "#E2C068" }}>
                   {group.title}
                 </h4>
                 <div className="flex flex-col gap-3.5">

@@ -60,12 +60,7 @@ export default function Mobile() {
               </span>
             </motion.div>
             
-            <motion.h2 
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="text-3xl font-black text-white tracking-tight leading-[1.15] mb-4"
-            >
+            <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.5 }} className="text-[#0B1D3A] text-3xl font-black tracking-tight leading-[1.15] mb-4" >
               {data.title}
             </motion.h2>
             

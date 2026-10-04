@@ -17,7 +17,7 @@ export default function Desktop() {
           <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-[#0B1D3A]/5 border border-[#0B1D3A]/10 mb-8">
             <span className="text-[13px] font-bold text-[#C99A2E] tracking-widest">{sectionData.coreMessage}</span>
           </div>
-          <h2 className="text-white text-[32px] md:text-[38px] lg:text-[44px] font-bold mb-6">
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-[32px] md:text-[38px] lg:text-[44px] font-bold mb-6">
             {sectionData.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -41,7 +41,7 @@ export default function Desktop() {
                 <div className="text-[12px] font-bold tracking-widest text-[#E2C068] uppercase mb-4">
                   {sec.title}
                 </div>
-                <h3 className="text-[22px] font-bold mb-4 leading-snug">
+                <h3 className="whitespace-nowrap text-[22px] font-bold mb-4 leading-snug">
                   {sec.subtitle}
                 </h3>
                 <p className="text-[15px] text-white/70 mb-8 leading-relaxed">

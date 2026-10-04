@@ -61,7 +61,7 @@ export default function Desktop() {
         <div className="flex items-end justify-between mb-12">
           <motion.div variants={item} className="flex items-center gap-4">
             <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-            <h2 className="text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Training Programs")}</h2>
+            <h2 className="whitespace-nowrap text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Training Programs")}</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           </motion.div>
           <motion.div variants={item} className="flex gap-2">
@@ -123,7 +123,7 @@ export default function Desktop() {
                   </span>
                 </div>
 
-                <h3 className="text-[20px] font-black mb-3 tracking-tight" style={{ color: NAVY }}>{prog.title}</h3>
+                <h3 className="whitespace-nowrap text-[20px] font-black mb-3 tracking-tight" style={{ color: NAVY }}>{prog.title}</h3>
                 <p className="text-[14px] text-[#5A6B82] leading-[1.7] mb-6 font-medium relative z-10 line-clamp-3">{prog.description}</p>
 
                 <div className="grid grid-cols-2 gap-4 mb-6 mt-auto relative z-10">

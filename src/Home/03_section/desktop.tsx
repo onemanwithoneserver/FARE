@@ -114,15 +114,7 @@ export default function Desktop() {
               </span>
             </div>
           </motion.div>
-          <motion.h2
-            variants={itemVariants}
-            className={`font-black mb-4 ${
-              language === "te"
-                ? "text-[2.4rem] xl:text-[2.85rem] leading-[1.2] tracking-wider py-1"
-                : "text-[3rem] xl:text-[3.5rem] leading-[1.08] tracking-[-0.03em] uppercase"
-            }`}
-            style={{ color: NAVY }}
-          >
+          <motion.h2 variants={itemVariants} className={`font-black mb-4 text-[#0B1D3A] whitespace-nowrap ${ language === "te" ? "text-[2.4rem] xl:text-[2.85rem] leading-[1.2] tracking-wider py-1" : "text-[3rem] xl:text-[3.5rem] leading-[1.08] tracking-[-0.03em] uppercase" }`} style={{ color: NAVY }}>
             {data.headline.line1}{" "}
             <span className="text-[#C99A2E]">{data.headline.highlight}</span>{" "}
             {data.headline.line2}
@@ -177,7 +169,7 @@ export default function Desktop() {
                       <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[-100%] transition-transform duration-700" />
                       {getIcon(persona.id, 24)}
                     </div>
-                    <h3 className="text-[19px] xl:text-[21px] font-black tracking-tight text-[#0B1D3A] transition-colors leading-tight">
+                    <h3 className="whitespace-nowrap text-[19px] xl:text-[21px] font-black tracking-tight text-[#0B1D3A] transition-colors leading-tight">
                       {persona.tag}
                     </h3>
                   </div>

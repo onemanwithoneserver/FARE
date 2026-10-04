@@ -40,7 +40,7 @@ export default function Desktop() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <h2 className="text-white text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
             {data.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -72,7 +72,7 @@ export default function Desktop() {
                 </div>
               )}
               
-              <h3 className="text-xl font-bold text-[#64748B] mb-2">{plan.title}</h3>
+              <h3 className="whitespace-nowrap text-xl font-bold text-[#64748B] mb-2">{plan.title}</h3>
               <div className="flex items-baseline gap-1 mb-2">
                 <span className="text-4xl font-black text-[#0B1D3A]">{plan.price}</span>
               </div>

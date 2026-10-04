@@ -293,7 +293,7 @@ export default function Desktop() {
                 <div>
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <h2 className="text-white text-[17px] font-bold leading-snug">
+                      <h2 className="whitespace-nowrap text-[#0B1D3A] text-[17px] font-bold leading-snug">
                         {data.dashboard.greeting}
                       </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -342,7 +342,7 @@ export default function Desktop() {
                 </div>
                 <div>
                   <div className="flex justify-between items-center mb-2.5">
-                    <h3 className="text-[9px] font-bold text-white/30 tracking-[0.15em] uppercase">
+                    <h3 className="whitespace-nowrap text-[9px] font-bold text-white/30 tracking-[0.15em] uppercase">
                       Upcoming Schedule
                     </h3>
                     <button className="text-[9px] font-semibold text-white/40 hover:text-white/60 transition-colors flex items-center gap-1 border border-white/[0.08] px-2.5 py-1 rounded-[8px] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">

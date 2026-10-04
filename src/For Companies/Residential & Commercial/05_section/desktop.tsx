@@ -84,11 +84,7 @@ export default function Desktop() {
               {data.overline}
             </span>
           </motion.div>
-          <motion.h2
-            variants={item}
-            className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]"
-            style={{ color: NAVY }}
-          >
+          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]" style={{ color: NAVY }} >
             {data.headline}
           </motion.h2>
         </motion.div>
@@ -163,7 +159,7 @@ export default function Desktop() {
                   </span>
                 </div>
               </div>
-              <h3 className="text-[22px] font-bold text-[#0B1D3A] mb-4">
+              <h3 className="whitespace-nowrap text-[22px] font-bold text-[#0B1D3A] mb-4">
                 {step.title}
               </h3>
               <p className="text-[15px] text-[#475569] font-medium leading-[1.65] px-4">

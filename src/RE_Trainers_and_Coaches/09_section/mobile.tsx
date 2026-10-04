@@ -49,11 +49,7 @@ export default function Mobile() {
               </span>
             </div>
           </motion.div>
-          <motion.h2
-            variants={item}
-            className="text-[2.25rem] sm:text-[2.5rem] leading-[1.1] font-black tracking-[-0.02em] mb-4"
-            style={{ color: NAVY }}
-          >
+          <motion.h2 variants={item} className="text-[#0B1D3A] text-[2.25rem] sm:text-[2.5rem] leading-[1.1] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }} >
             {data.headline.split(" ").map((word, i) => (
               <span key={i} className={i === 2 ? "text-[#C99A2E]" : ""}>
                 {word}{" "}

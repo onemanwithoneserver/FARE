@@ -88,21 +88,12 @@ export default function Desktop() {
               {data.overline}
             </span>
           </motion.div>
-          <motion.h2
-            variants={item}
-            className="text-[3rem] lg:text-[3.75rem] leading-[1.05] font-black tracking-[-0.02em] max-w-[950px] text-[#0B1D3A]"
-          >
+          <motion.h2 variants={item} className="whitespace-nowrap text-[3rem] lg:text-[3.75rem] leading-[1.05] font-black tracking-[-0.02em] max-w-[950px] text-[#0B1D3A]" >
             {data.headline}
           </motion.h2>
         </motion.div>
         <div className="mb-16">
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.6 }}
-            className="text-[28px] font-bold mb-12 text-center text-[#0B1D3A] flex items-center justify-center gap-4"
-          >
+          <motion.h3 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }} transition={{ duration: 0.6 }} className="whitespace-nowrap text-[28px] font-bold mb-12 text-center text-[#0B1D3A] flex items-center justify-center gap-4" >
             <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-[#C99A2E]/50"></div>
             {data.segmentsHeading}
             <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-[#C99A2E]/50"></div>
@@ -143,7 +134,7 @@ export default function Desktop() {
                     <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
                     {segmentIcons[segment.icon as keyof typeof segmentIcons]}
                   </div>
-                  <h4 className="text-[22px] font-bold text-[#0B1D3A] leading-tight">
+                  <h4 className="whitespace-nowrap text-[22px] font-bold text-[#0B1D3A] leading-tight">
                     {segment.title}
                   </h4>
                 </div>
@@ -186,7 +177,7 @@ export default function Desktop() {
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
               className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#071A49]/40 rounded-full blur-[80px] pointer-events-none"
             ></motion.div>
-            <h3 className="text-[32px] font-bold mb-6 text-center text-white relative z-10 tracking-tight">
+            <h3 className="whitespace-nowrap text-[32px] font-bold mb-6 text-center text-white relative z-10 tracking-tight">
               {data.learnersHeading}
             </h3>
             <motion.div
@@ -210,7 +201,7 @@ export default function Desktop() {
                       <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded-[8px]"></div>
                       {learnerIcons[learner.icon as keyof typeof learnerIcons]}
                     </div>
-                    <h4 className="text-[20px] font-bold text-white leading-tight">
+                    <h4 className="whitespace-nowrap text-[20px] font-bold text-white leading-tight">
                       {learner.title}
                     </h4>
                   </div>

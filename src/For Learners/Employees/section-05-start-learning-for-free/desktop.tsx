@@ -39,7 +39,7 @@ export default function Desktop() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <h2 className="text-white text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
+          <h2 className="whitespace-nowrap text-white text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
             {data.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -66,12 +66,14 @@ export default function Desktop() {
                 variants={item}
                 className="bg-white/5 backdrop-blur-sm p-10 rounded-[4px] border border-white/10 hover:bg-white/10 transition-colors duration-300 flex flex-col items-center text-center group"
               >
-                <div className={`w-16 h-16 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-lg mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300`}>
-                  <Icon size={32} className="text-white" strokeWidth={2.5} />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-4 tracking-wider uppercase">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`w-16 h-16 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300`}>
+                    <Icon size={32} className="text-white" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="whitespace-nowrap text-xl font-bold text-white tracking-wider uppercase">
                   {itemData.title}
                 </h3>
+                </div>
                 <p className="text-[15px] text-white/70 font-medium leading-relaxed mb-8 flex-grow">
                   {itemData.text}
                 </p>

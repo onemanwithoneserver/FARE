@@ -64,12 +64,7 @@ export default function Desktop() {
               </span>
             </motion.div>
             
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-4xl md:text-[3.5rem] font-black text-white tracking-tight leading-[1.1] mb-6 max-w-3xl"
-            >
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }} className="whitespace-nowrap text-[#0B1D3A] text-4xl md:text-[3.5rem] font-black tracking-tight leading-[1.1] mb-6 max-w-3xl" >
               {data.title}
             </motion.h2>
             

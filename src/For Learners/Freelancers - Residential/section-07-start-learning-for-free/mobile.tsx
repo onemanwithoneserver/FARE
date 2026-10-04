@@ -44,12 +44,14 @@ export default function Mobile() {
                 className="bg-white/[0.04] backdrop-blur-md p-6 rounded-[4px] border border-white/10 flex flex-col justify-between"
               >
                 <div>
-                  <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-md mb-4`}>
+                  <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-12 h-12 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-md`}>
                     <Icon size={24} className="text-white" strokeWidth={2.5} />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2 tracking-wide">
+                  <h3 className="text-xl font-bold text-white tracking-wide">
                     {itemData.title}
                   </h3>
+                </div>
                   <p className="text-[14px] text-white/70 leading-relaxed mb-6 font-normal">
                     {itemData.text}
                   </p>

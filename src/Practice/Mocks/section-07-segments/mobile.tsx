@@ -45,7 +45,7 @@ export default function Mobile() {
           transition={{ duration: 0.6 }}
           className="mb-10 text-center w-full"
         >
-          <h2 className="text-[#0B1D3A] text-[26px] sm:text-[28px] font-black mb-4 leading-tight tracking-tight max-w-[90%] mx-auto">
+          <h2 className="text-white text-[#0B1D3A] text-[26px] sm:text-[28px] font-black mb-4 leading-tight tracking-tight max-w-[90%] mx-auto">
             {sectionData.title}
           </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />

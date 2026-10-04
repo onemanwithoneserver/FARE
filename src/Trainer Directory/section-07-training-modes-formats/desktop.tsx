@@ -57,7 +57,7 @@ export default function Desktop() {
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-12">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Training Delivery")}</h2>
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Training Delivery")}</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         </motion.div>
 
@@ -86,7 +86,7 @@ export default function Desktop() {
                 >
                   {getIcon(mode.icon)}
                 </div>
-                <h4 className="text-[16px] font-black mb-2 tracking-tight" style={{ color: NAVY }}>{mode.name}</h4>
+                <h4 className="whitespace-nowrap text-[16px] font-black mb-2 tracking-tight" style={{ color: NAVY }}>{mode.name}</h4>
                 <p className="text-[13px] text-[#5A6B82] leading-relaxed font-medium">{mode.description}</p>
                 {mode.disabled && (
                   <span className="mt-3 text-[10px] font-bold uppercase tracking-wider text-[#94A3B8]">{t("Coming Soon")}</span>
@@ -101,7 +101,7 @@ export default function Desktop() {
             variants={item}
             className="w-full mt-6"
           >
-            <h4 className="text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-4">{t("Training Formats")}</h4>
+            <h4 className="whitespace-nowrap text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-4">{t("Training Formats")}</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {data.methodology.formats.map((fmt, idx) => {
                 const styles = [
@@ -121,7 +121,7 @@ export default function Desktop() {
                     <div className="w-9 h-9 rounded-[4px] mb-4 flex items-center justify-center text-white" style={{ background: s.color }}>
                       {s.icon}
                     </div>
-                    <h5 className="text-[14px] font-black tracking-tight leading-tight mb-2" style={{ color: NAVY }}>{fmt.name}</h5>
+                    <h5 className="whitespace-nowrap text-[14px] font-black tracking-tight leading-tight mb-2" style={{ color: NAVY }}>{fmt.name}</h5>
                     <p className="text-[12px] text-[#5A6B82] leading-[1.6] font-medium">{fmt.description}</p>
                   </div>
                 );
@@ -133,7 +133,7 @@ export default function Desktop() {
             variants={item}
             className="w-full mt-8"
           >
-            <h4 className="text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-4">{t("Training Durations")}</h4>
+            <h4 className="whitespace-nowrap text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em] mb-4">{t("Training Durations")}</h4>
             <div className="flex flex-wrap gap-3">
               {data.delivery.durations.map((dur, idx) => (
                 <div

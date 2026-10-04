@@ -58,7 +58,7 @@ export default function Desktop() {
         
         <motion.div variants={item} className="flex items-center gap-4 mb-3">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className="text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Case Studies")}</h2>
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Case Studies")}</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         </motion.div>
         <motion.div variants={item} className="mb-12">
@@ -133,7 +133,7 @@ export default function Desktop() {
                     <div className="flex items-start justify-between gap-4 mb-4">
                       <div className="flex-1 min-w-0">
                         <div className="text-[11px] font-black uppercase tracking-[0.18em] mb-2" style={{ color: GOLD_MID }}>{study.client}</div>
-                        <h3 className="text-[19px] font-black leading-snug tracking-tight" style={{ color: NAVY }}>{study.title}</h3>
+                        <h3 className="whitespace-nowrap text-[19px] font-black leading-snug tracking-tight" style={{ color: NAVY }}>{study.title}</h3>
                       </div>
                       <div className="flex flex-col items-end gap-2 shrink-0">
                         <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#7B8DAA]">

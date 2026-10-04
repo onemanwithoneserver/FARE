@@ -80,11 +80,7 @@ export default function Desktop() {
               {data.overline}
             </span>
           </motion.div>
-          <motion.h2
-            variants={item}
-            className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]"
-            style={{ color: NAVY }}
-          >
+          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-6 max-w-[850px]" style={{ color: NAVY }} >
             {data.headline.line1}{" "}
             <span className="text-[#C99A2E]">{data.headline.line2}</span>{" "}
             {data.headline.line3} {data.headline.line4}
@@ -150,10 +146,7 @@ export default function Desktop() {
                   {card.tag}
                 </div>
               </div>
-              <h3
-                className="text-[24px] font-bold mb-4 relative z-10"
-                style={{ color: NAVY }}
-              >
+              <h3 className="whitespace-nowrap text-[24px] font-bold mb-4 relative z-10" style={{ color: NAVY }} >
                 {card.title}
               </h3>
               <p className="text-[16px] font-medium leading-[1.7] text-[#475569] mb-6 flex-grow relative z-10">

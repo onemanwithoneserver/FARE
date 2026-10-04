@@ -20,11 +20,10 @@ export default function Desktop() {
             transition={{ duration: 0.8 }}
             className="lg:w-5/12"
           >
-            <h2 className="text-[#0B1D3A] text-[32px] md:text-[38px] lg:text-[44px] font-bold mb-6">
+            <h2 className="whitespace-nowrap text-[#0B1D3A] text-[32px] md:text-[38px] lg:text-[44px] font-bold mb-6">
               {sectionData.title}
             </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
-            <div className="w-16 h-1 bg-[#C99A2E] mb-8 rounded-[2px]" />
             <div className="bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC] p-8 rounded-[8px] border border-gray-100 luxury-shadow-float relative overflow-hidden">
               <div className="text-[60px] text-[#C99A2E]/20 absolute top-2 left-4 font-serif leading-none">"</div>
               <p className="text-[20px] md:text-[24px] text-[#0B1D3A] font-medium italic relative z-10 leading-snug">
@@ -49,7 +48,7 @@ export default function Desktop() {
                   <CheckCircle2 size={20} strokeWidth={2.5} />
                 </div>
                 <div>
-                  <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-1.5 group-hover:text-[#C99A2E] transition-colors">
+                  <h3 className="whitespace-nowrap text-[17px] font-bold text-[#0B1D3A] mb-1.5 group-hover:text-[#C99A2E] transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-[14px] text-gray-600 leading-relaxed">

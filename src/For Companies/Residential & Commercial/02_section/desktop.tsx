@@ -193,11 +193,7 @@ export default function Desktop() {
               {data.overline}
             </span>
           </motion.div>
-          <motion.h2
-            variants={item}
-            className="text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-4 max-w-[850px]"
-            style={{ color: NAVY }}
-          >
+          <motion.h2 variants={item} className="whitespace-nowrap text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.08] font-black tracking-[-0.02em] mb-4 max-w-[850px]" style={{ color: NAVY }} >
             {data.headline}
           </motion.h2>
           <motion.div variants={item} className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 rounded-full" />
@@ -246,10 +242,7 @@ export default function Desktop() {
                     className="text-white relative z-10"
                   />
                 </div>
-                <h3
-                  className="text-[14px] font-bold leading-tight relative z-10 px-1"
-                  style={{ color: NAVY }}
-                >
+                <h3 className="whitespace-nowrap text-[14px] font-bold leading-tight relative z-10 px-1" style={{ color: NAVY }} >
                   {challenge}
                 </h3>
               </motion.div>
@@ -279,10 +272,10 @@ export default function Desktop() {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#C99A2E]/5 rounded-full blur-[80px] pointer-events-none"
           ></motion.div>
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent"></div>
-          <h3 className="text-white text-[26px] md:text-[30px] font-medium leading-[1.4] max-w-[850px] mx-auto mb-8 relative z-10">
+          <h3 className="whitespace-nowrap text-white text-[26px] md:text-[30px] font-medium leading-[1.4] max-w-[850px] mx-auto mb-8 relative z-10">
             {data.transitionTitle}
           </h3>
-          <h4 className="text-[#C99A2E] text-[36px] md:text-[44px] font-black tracking-[-0.02em] relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <h4 className="whitespace-nowrap text-[#C99A2E] text-[36px] md:text-[44px] font-black tracking-[-0.02em] relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             {data.transitionSubtitle}
             <motion.div
               animate={{ x: [0, 8, 0] }}

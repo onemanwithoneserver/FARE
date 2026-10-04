@@ -37,7 +37,7 @@ export default function Desktop() {
           transition={{ duration: 0.7 }}
           className="mb-16 text-center"
         >
-          <h2 className="text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight max-w-4xl mx-auto mb-4">
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight max-w-4xl mx-auto mb-4">
             {data.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -65,7 +65,7 @@ export default function Desktop() {
                 </div>
                 <div>
                   <div className="text-[12px] font-bold tracking-widest text-[#64748B] uppercase mb-1">{opp.type}</div>
-                  <h3 className="text-[22px] font-bold text-[#0B1D3A] leading-tight">{opp.title}</h3>
+                  <h3 className="whitespace-nowrap text-[22px] font-bold text-[#0B1D3A] leading-tight">{opp.title}</h3>
                 </div>
               </div>
               
@@ -76,7 +76,7 @@ export default function Desktop() {
               <div className="flex flex-col gap-4 flex-grow">
                 {opp.categories.map((cat, j) => (
                   <div key={j} className="bg-[#F8FAFC]/80 rounded-[8px] p-4 border border-[#F1F5F9] transition-all duration-300 hover:bg-white hover:border-[#E2E8F0]">
-                    <h4 className="text-[13px] font-bold text-[#0B1D3A] uppercase tracking-wider mb-1.5 flex items-center gap-2">
+                    <h4 className="whitespace-nowrap text-[13px] font-bold text-[#0B1D3A] uppercase tracking-wider mb-1.5 flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E]"></span>
                       {cat.name}
                     </h4>

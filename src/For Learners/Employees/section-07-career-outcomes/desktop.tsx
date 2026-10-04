@@ -36,7 +36,7 @@ export default function Desktop() {
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
-          <h2 className="text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black text-center tracking-tight leading-tight">
+          <h2 className="whitespace-nowrap text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black text-center tracking-tight leading-tight">
             {data.title}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -64,7 +64,7 @@ export default function Desktop() {
                   </div>
                 </div>
                 
-                <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-3 leading-tight uppercase tracking-wider">
+                <h3 className="whitespace-nowrap text-[17px] font-bold text-[#0B1D3A] mb-3 leading-tight uppercase tracking-wider">
                   {o.title}
                 </h3>
                 
