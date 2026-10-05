@@ -21,6 +21,7 @@ import FAREForStudentsFreshers from "./For Learners/Students & Freshers";
 import FAREKnowledgeBank from "./Practice/Knowledge Bank";
 import FAREMocks from "./Practice/Mocks";
 import TrainerDirectory from "./Trainer Directory";
+import Courses from "./Courses";
 export default function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const navigate = useNavigate();
@@ -127,6 +128,10 @@ export default function App() {
             <Route
               path="/:mode/trainer-directory"
               element={<TrainerDirectory isMobile={isMobile} />}
+            />
+            <Route
+              path="/:mode/courses"
+              element={<Courses isMobile={isMobile} />}
             />
             <Route
               path="*"

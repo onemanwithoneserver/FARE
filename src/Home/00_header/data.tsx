@@ -53,7 +53,7 @@ export const dataEn = {
         { title: "Mocks", href: "fare-mocks" },
       ],
     },
-    { title: "Contact Us", href: "contact-us" },
+    { title: "Courses", href: "courses" },
   ],
 };
 export const dataTe = {
@@ -110,7 +110,7 @@ export const dataTe = {
         { title: "మాక్స్", href: "fare-mocks" },
       ],
     },
-    { title: "సంప్రదించండి", href: "contact-us" },
+    { title: "కోర్సులు", href: "courses" },
   ],
 };
 export const getData = (lang: Language = "en") =>

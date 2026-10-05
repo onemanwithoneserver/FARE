@@ -28,7 +28,7 @@ export default function Header({
     { value: "fare-for-freelancers-residential", label: "Freelancers - Residential" },
     { value: "fare-for-career-switchers", label: "Career Switchers" },
     { value: "trainer-directory", label: "Trainer Directory" },
-    { value: "contact-us", label: "Contact Us" },
+    { value: "courses", label: "Courses" },
   ];
   return (
     <header className="h-[60px] bg-white border-b border-[#e2e8f0] px-3 sm:px-4 md:px-6 flex items-center justify-between shrink-0 shadow-sm relative z-[100] gap-2 sm:gap-4 pointer-events-auto">
