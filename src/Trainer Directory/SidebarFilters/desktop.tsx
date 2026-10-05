@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, SlidersHorizontal, RotateCcw } from "lucide-react";
 import { filterOptions } from "../listing_data";
@@ -47,7 +47,7 @@ interface FilterSectionProps {
 
 export const Checkbox = ({ checked, size = 16 }: { checked: boolean; size?: number }) => (
   <div
-    className={`rounded-[5px] border flex items-center justify-center transition-all duration-300 shrink-0 ${
+    className={`rounded-[4px] border flex items-center justify-center transition-all duration-300 shrink-0 ${
       checked ? "border-transparent shadow-[0_2px_8px_rgba(11,29,58,0.25)]" : "border-[#0B1D3A]/15 bg-white group-hover/item:border-[#C99A2E]/60"
     }`}
     style={{ width: size, height: size, ...(checked ? { background: `linear-gradient(135deg, ${NAVY}, #1A3463)` } : {}) }}
@@ -64,7 +64,7 @@ export const CountBadge = ({ count, size = 18 }: { count: number; size?: number 
   <motion.span
     initial={{ scale: 0 }}
     animate={{ scale: 1 }}
-    className="inline-flex items-center justify-center rounded-full text-[10px] font-black px-1.5 shadow-[0_2px_6px_rgba(201,154,46,0.35)]"
+    className="inline-flex items-center justify-center rounded-[4px] text-[10px] font-black px-1.5 shadow-[0_2px_6px_rgba(201,154,46,0.35)]"
     style={{ minWidth: size, height: size, background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})`, color: NAVY }}
   >
     {count}
@@ -140,7 +140,7 @@ export default function Desktop({ selected, onToggle, onClear }: SidebarFiltersP
 
   return (
     <aside className="w-[272px] shrink-0 sticky top-[96px] self-start font-['Outfit']">
-      <div className="bg-white rounded-[16px] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] overflow-hidden">
+      <div className="bg-white rounded-[8px] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] overflow-hidden">
         <div
           className="relative flex items-center justify-between px-5 py-4 overflow-hidden"
           style={{ background: `linear-gradient(120deg, ${NAVY} 0%, #15315C 100%)` }}

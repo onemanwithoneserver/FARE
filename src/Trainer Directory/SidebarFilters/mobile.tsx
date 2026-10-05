@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "motion/react";
+﻿import { motion, AnimatePresence } from "motion/react";
 import { RotateCcw, X, SlidersHorizontal, Check } from "lucide-react";
 import { filterSections, CountBadge } from "./desktop";
 import type { SidebarFiltersProps } from "./desktop";
@@ -29,11 +29,11 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 240 }}
-            className="w-full bg-white rounded-t-3xl flex flex-col max-h-[88vh] font-['Outfit'] shadow-[0_-24px_80px_-12px_rgba(11,29,58,0.35)] relative overflow-hidden"
+            className="w-full bg-white rounded-t-[8px] flex flex-col max-h-[88vh] font-['Outfit'] shadow-[0_-24px_80px_-12px_rgba(11,29,58,0.35)] relative overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="w-full flex justify-center pt-3 pb-1">
-              <div className="w-11 h-1.5 bg-[#0B1D3A]/10 rounded-full" />
+              <div className="w-11 h-1.5 bg-[#0B1D3A]/10 rounded-[2px]" />
             </div>
 
             <div className="flex items-center justify-between px-5 pb-4 pt-2 border-b border-[#0B1D3A]/[0.07] shrink-0">
@@ -72,7 +72,7 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
                           type="button"
                           onClick={() => onToggle(section.key, option)}
                           aria-pressed={active}
-                          className={`inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full text-[12.5px] font-semibold border transition-all duration-200 ${
+                          className={`inline-flex items-center gap-1.5 h-9 px-3.5 rounded-[8px] text-[12.5px] font-semibold border transition-all duration-200 ${
                             active
                               ? "text-white border-transparent shadow-[0_6px_14px_-6px_rgba(11,29,58,0.5)]"
                               : "bg-white text-[#0B1D3A]/75 border-[#0B1D3A]/10 active:bg-[#F5F7FB]"
@@ -103,7 +103,7 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
               >
                 {language === "te"
-                  ? `${typeof resultCount === "number" ? resultCount : ""} మంది ట్రైనర్‌లను చూపించండి`
+                  ? `${typeof resultCount === "number" ? resultCount : ""} à°®à°‚à°¦à°¿ à°Ÿà±à°°à±ˆà°¨à°°à±â€Œà°²à°¨à± à°šà±‚à°ªà°¿à°‚à°šà°‚à°¡à°¿`
                   : `Show ${typeof resultCount === "number" ? resultCount : ""} Trainers`}
               </button>
             </div>
