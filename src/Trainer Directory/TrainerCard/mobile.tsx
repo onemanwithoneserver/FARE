@@ -112,8 +112,8 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
   const initials = trainer.name.split(" ").map((part) => part[0]).join("").slice(0, 2);
 
   return (
-    <div className="relative shrink-0 rounded-[4px] bg-white p-0.5 shadow-[0_12px_28px_-10px_rgba(11,29,58,0.5)] ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
-          <div className="h-full w-full overflow-hidden rounded-[2px] bg-[#0B1D3A]">
+    <div className="relative shrink-0 rounded-[8px] bg-white p-0.5 shadow-[0_12px_28px_-10px_rgba(11,29,58,0.5)] ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
+      <div className="h-full w-full overflow-hidden rounded-[6px] bg-[#0B1D3A]">
         {trainer.image ? (
           <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
         ) : (
@@ -143,7 +143,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
   ];
 
   return (
-    <article className="group relative flex flex-col h-full bg-white rounded-[16px] font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] active:scale-[0.99] transition-transform duration-200 overflow-hidden">
+    <article className="group relative flex flex-col h-full bg-white rounded-[8px] font-['Outfit'] border border-[#E2E8F0] shadow-[0_4px_16px_rgba(11,29,58,0.04)] active:scale-[0.99] transition-transform duration-200 overflow-hidden">
       <TrainerPhotoHero
         trainer={trainer}
         isIntroVideoOpen={isIntroVideoOpen}
@@ -170,7 +170,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
         <div className="mt-3 grid grid-cols-3 rounded-[8px] border border-[#0B1D3A]/[0.05] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-1 py-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-[4px] shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
+              <span className="flex h-6 w-6 items-center justify-center rounded-[8px] shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
                 {stat.icon}
               </span>
               <span className="text-[13px] font-black leading-none" style={{ color: NAVY }}>{stat.value}</span>

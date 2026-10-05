@@ -133,8 +133,8 @@ function TrainerPhotoHero({
 
 function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) {
   return (
-    <div className="relative shrink-0     rounded-[4px] bg-white p-0.5 shadow-[0_12px_28px_-10px_rgba(11,29,58,0.5)] ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
-          <div className="h-full w-full overflow-hidden rounded-[2px] bg-[#0B1D3A]">
+    <div className="relative shrink-0 rounded-[8px] bg-white p-0.5 shadow-[0_12px_28px_-10px_rgba(11,29,58,0.5)] ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
+      <div className="h-full w-full overflow-hidden rounded-[6px] bg-[#0B1D3A]">
         {trainer.image ? (
           <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
         ) : (
@@ -237,7 +237,7 @@ function TrainerStats({ trainer }: { trainer: Trainer }) {
     <div className="grid grid-cols-3 rounded-[8px] border border-[#0B1D3A]/[0.06] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
       {stats.map((stat) => (
         <div key={stat.label} className="flex items-center justify-center gap-2 py-2.5">
-          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[4px] shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[8px] shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
             {stat.icon}
           </span>
           <span className="min-w-0">
@@ -265,7 +265,7 @@ function SegmentLine({ trainer }: { trainer: Trainer }) {
 }
 
 const cardShell =
-  "group relative h-full bg-white rounded-[16px] font-['Outfit'] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] hover:shadow-[0_4px_10px_-4px_rgba(11,29,58,0.08),0_28px_56px_-18px_rgba(11,29,58,0.25)] hover:border-[#C99A2E]/35 transition-[box-shadow,border-color] duration-500 overflow-hidden";
+  "group relative h-full bg-white rounded-[8px] font-['Outfit'] border border-[#E2E8F0] shadow-[0_4px_16px_rgba(11,29,58,0.04)] hover:shadow-[0_18px_40px_rgba(11,29,58,0.12)] hover:border-[#C99A2E]/50 transition-[box-shadow,border-color] duration-300 overflow-hidden";
 
 export default function Desktop({ trainer, onViewProfile }: TrainerCardProps) {
   const { language } = useLanguage();
