@@ -44,7 +44,6 @@ export const heroData = {
   stats: [
     { value: "40+", label: "Expert-led courses" },
     { value: "25K+", label: "Active learners" },
-    { value: "4.7", label: "Average rating" },
   ],
 };
 
@@ -61,7 +60,6 @@ export const categories: { name: string; icon: LucideIcon }[] = [
 
 export const levels: ("All" | Level)[] = ["All", "Beginner", "Intermediate", "Advanced"];
 export const priceFilters = ["All", "Free", "Paid"] as const;
-export const ratingFilters = [0, 4, 4.5] as const;
 
 export const sortOptions: { value: SortKey; label: string }[] = [
   { value: "popular", label: "Most Popular" },
@@ -93,40 +91,24 @@ export const courses: Course[] = [
   { id: 10, title: "Career Switch to Real Estate: 30-Day Roadmap", instructor: "Neha Kapoor", category: "Residential", level: "Beginner", rating: 4.7, reviews: 2380, students: 10300, hours: 6, lessons: 34, price: 1299, originalPrice: 3499, language: "English", badge: "Bestseller", icon: Home, gradient: G.teal, addedOrder: 8 },
 ];
 
-export const promos = {
-  banner: {
-    tag: "Limited offer",
-    title: "Get 40% off on your first FARE course",
-    text: "Use code LEARN40 at checkout. Valid for the next 7 days.",
-    cta: "Claim Offer",
-  },
-  cards: [
-    { title: "Free Self-Evaluation", text: "Find your skill gaps in 10 minutes.", cta: "Start now" },
-    { title: "Live Mock Sessions", text: "Practise real client situations weekly.", cta: "Join a mock" },
-  ],
-};
-
 export const formatPrice = (p: number) => (p === 0 ? "Free" : `₹${p.toLocaleString("en-IN")}`);
 export const discountPct = (c: Course) =>
   c.price === 0 || !c.originalPrice ? 0 : Math.round((1 - c.price / c.originalPrice) * 100);
-export const formatCount = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(1)}K` : `${n}`);
-
 export function useCourseFilters() {
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("All");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [level, setLevel] = useState<"All" | Level>("All");
   const [price, setPrice] = useState<(typeof priceFilters)[number]>("All");
-  const [minRating, setMinRating] = useState<number>(0);
   const [sort, setSort] = useState<SortKey>("popular");
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     const list = courses.filter(
       (c) =>
-        (category === "All" || c.category === category) &&
+        (selectedCategories.length === 0 ||
+          selectedCategories.includes(c.category)) &&
         (level === "All" || c.level === level) &&
         (price === "All" || (price === "Free" ? c.price === 0 : c.price > 0)) &&
-        c.rating >= minRating &&
         (!q ||
           c.title.toLowerCase().includes(q) ||
           c.instructor.toLowerCase().includes(q) ||
@@ -141,11 +123,23 @@ export function useCourseFilters() {
       default: sorted.sort((a, b) => b.students - a.students);
     }
     return sorted;
-  }, [query, category, level, price, minRating, sort]);
+  }, [query, selectedCategories, level, price, sort]);
 
-  const reset = () => {
-    setQuery(""); setCategory("All"); setLevel("All"); setPrice("All"); setMinRating(0); setSort("popular");
+  const toggleCategory = (category: string) => {
+    if (category === "All") {
+      setSelectedCategories([]);
+      return;
+    }
+    setSelectedCategories((selected) =>
+      selected.includes(category)
+        ? selected.filter((item) => item !== category)
+        : [...selected, category],
+    );
   };
 
-  return { query, setQuery, category, setCategory, level, setLevel, price, setPrice, minRating, setMinRating, sort, setSort, results, reset };
+  const reset = () => {
+    setQuery(""); setSelectedCategories([]); setLevel("All"); setPrice("All"); setSort("popular");
+  };
+
+  return { query, setQuery, selectedCategories, toggleCategory, level, setLevel, price, setPrice, sort, setSort, results, reset };
 }

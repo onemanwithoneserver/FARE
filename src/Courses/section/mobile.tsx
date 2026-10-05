@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Search, Star, Clock, Users, PlayCircle, SlidersHorizontal, Sparkles, ArrowRight, Tag, RotateCcw, SearchX, X } from "lucide-react";
+import { Search, Clock, PlayCircle, SlidersHorizontal, Sparkles, ArrowRight, SearchX, X } from "lucide-react";
 import heroImg from "../../assets/courses_hero.jpg";
+import Dropdown from "../../Components/Dropdown";
+import CategoryMultiSelect from "./CategoryMultiSelect";
 import {
-  heroData, categories, levels, priceFilters, ratingFilters, sortOptions, promos,
-  formatPrice, discountPct, formatCount, useCourseFilters, type Course, type SortKey,
+  heroData, categories, levels, priceFilters, sortOptions,
+  formatPrice, discountPct, useCourseFilters, type Course, type SortKey,
 } from "./data";
 
 const NAVY = "#0B1D3A";
@@ -35,17 +37,9 @@ function Card({ c }: { c: Course }) {
         <span className="text-[#C99A2E] text-[10px] font-bold tracking-[0.16em] uppercase">{c.category}</span>
         <h3 className="text-[15px] font-bold text-[#0B1D3A] leading-snug mt-1 mb-1">{c.title}</h3>
         <p className="text-[12px] text-[#64748B] font-medium mb-2">by {c.instructor}</p>
-        <div className="flex items-center gap-1.5 mb-2.5">
-          <span className="text-[13px] font-bold text-[#0B1D3A]">{c.rating.toFixed(1)}</span>
-          <span className="flex" aria-label={`${c.rating} out of 5 stars`}>
-            {[1, 2, 3, 4, 5].map((i) => <Star key={i} size={12} strokeWidth={0} className={i <= Math.round(c.rating) ? "fill-[#C99A2E]" : "fill-[#E2E8F0]"} />)}
-          </span>
-          <span className="text-[11px] text-[#64748B]">({c.reviews.toLocaleString("en-IN")})</span>
-        </div>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11.5px] text-[#475569] font-medium mb-3">
           <span className="flex items-center gap-1"><Clock size={12} />{c.hours}h</span>
           <span className="flex items-center gap-1"><PlayCircle size={12} />{c.lessons} lessons</span>
-          <span className="flex items-center gap-1"><Users size={12} />{formatCount(c.students)}</span>
         </div>
         <span className="inline-block text-[10.5px] font-semibold px-2.5 py-1 rounded-full bg-[#F0F4FF] text-[#0B1D3A] mb-3">{c.level} · {c.language}</span>
         <div className="pt-3 border-t border-[#E2E8F0] flex items-center justify-between gap-2">
@@ -65,8 +59,6 @@ function Card({ c }: { c: Course }) {
 export default function Mobile() {
   const f = useCourseFilters();
   const [showFilters, setShowFilters] = useState(false);
-  const selectCls = "w-full text-[14px] font-semibold text-[#0B1D3A] bg-[#F8FAFD] border border-[#E2E8F0] rounded-[8px] px-3 py-3 outline-none";
-  const labelCls = "flex flex-col gap-1.5 text-[11px] font-bold tracking-widest uppercase text-[#94A3B8]";
 
   return (
     <div className="w-full font-['Outfit'] overflow-x-hidden">
@@ -99,26 +91,6 @@ export default function Mobile() {
         </div>
       </section>
 
-      {/* Promo */}
-      <section className="px-5 pt-6 bg-[#F8FAFD] flex flex-col gap-4">
-        <div className="relative overflow-hidden rounded-[4px] p-6 text-white" style={{ background: "linear-gradient(120deg, #0B1D3A 0%, #1E3A6B 70%, #2B4F8F 100%)", boxShadow: "0 12px 30px rgba(11,29,58,0.25)" }}>
-          <div className="absolute -right-8 -top-8 w-40 h-40 rounded-full bg-[#C99A2E]/20 blur-2xl" />
-          <span className="relative inline-flex items-center gap-1.5 text-[#E2C068] text-[10px] font-bold tracking-[0.2em] uppercase mb-2"><Tag size={12} />{promos.banner.tag}</span>
-          <h2 className="relative text-[1.4rem] font-black leading-tight mb-2">{promos.banner.title}</h2>
-          <p className="relative text-[13px] text-white/75 font-medium mb-4">{promos.banner.text}</p>
-          <button className="relative text-[13px] font-semibold px-6 py-3 rounded-[8px] bg-gradient-to-r from-[#C99A2E] to-[#E2C068] text-[#0B1D3A] active:scale-[0.98] transition-all">{promos.banner.cta}</button>
-        </div>
-        <div className="grid grid-cols-2 gap-3">
-          {promos.cards.map((p) => (
-            <div key={p.title} className="bg-white rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.03)] p-4">
-              <h3 className="text-[14px] font-bold text-[#0B1D3A] mb-1">{p.title}</h3>
-              <p className="text-[12px] text-[#64748B] font-medium mb-2">{p.text}</p>
-              <button className="text-[12px] font-bold flex items-center gap-1" style={{ color: NAVY }}>{p.cta} <ArrowRight size={12} /></button>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Listing */}
       <section id="course-listing" className="bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-10">
         <div className="px-5 text-center mb-6">
@@ -127,43 +99,41 @@ export default function Mobile() {
           <div className="w-14 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mt-3 rounded-full" />
         </div>
 
-        <div className="flex gap-2 overflow-x-auto px-5 pb-3 mb-3 [scrollbar-width:none]" role="group" aria-label="Course categories">
-          {categories.map(({ name, icon: I }) => {
-            const active = f.category === name;
-            return (
-              <button key={name} onClick={() => f.setCategory(name)} aria-pressed={active}
-                className={`shrink-0 inline-flex items-center gap-1.5 text-[13px] font-semibold px-4 py-2.5 rounded-full border transition-all duration-300 ${active ? "text-white border-transparent shadow-md" : "bg-white text-[#475569] border-[#E2E8F0]"}`}
-                style={active ? { background: NAVY } : undefined}>
-                <I size={14} />{name}
-              </button>
-            );
-          })}
-        </div>
-
+        <div className="mb-6">
         <div className="px-5 flex items-center justify-between mb-4">
-          <p className="text-[13px] text-[#64748B] font-medium" aria-live="polite"><strong className="text-[#0B1D3A]">{f.results.length}</strong> courses</p>
           <button onClick={() => setShowFilters((v) => !v)} aria-expanded={showFilters} className="text-[13px] font-semibold px-4 py-2.5 rounded-[8px] border border-[#0B1D3A]/15 bg-white text-[#0B1D3A] flex items-center gap-2">
             {showFilters ? <X size={14} /> : <SlidersHorizontal size={14} />}Filters & Sort
           </button>
         </div>
 
         {showFilters && (
-          <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="mx-5 mb-5 bg-white rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_4px_16px_rgba(11,29,58,0.04)] p-4 grid grid-cols-2 gap-3">
-            <label className={labelCls}>Level
-              <select className={selectCls} value={f.level} onChange={(e) => f.setLevel(e.target.value as typeof f.level)}>{levels.map((l) => <option key={l}>{l}</option>)}</select>
-            </label>
-            <label className={labelCls}>Price
-              <select className={selectCls} value={f.price} onChange={(e) => f.setPrice(e.target.value as typeof f.price)}>{priceFilters.map((p) => <option key={p}>{p}</option>)}</select>
-            </label>
-            <label className={labelCls}>Rating
-              <select className={selectCls} value={f.minRating} onChange={(e) => f.setMinRating(Number(e.target.value))}>{ratingFilters.map((r) => <option key={r} value={r}>{r === 0 ? "All" : `${r}+ stars`}</option>)}</select>
-            </label>
-            <label className={labelCls}>Sort by
-              <select className={selectCls} value={f.sort} onChange={(e) => f.setSort(e.target.value as SortKey)}>{sortOptions.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}</select>
-            </label>
-            <button onClick={f.reset} className="col-span-2 text-[13px] font-semibold px-4 py-3 rounded-[8px] border border-[#0B1D3A]/15 text-[#0B1D3A] flex items-center justify-center gap-2"><RotateCcw size={14} />Reset all</button>
+          <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="mx-5 mb-5 border-t border-[#DCE5F2] pt-4">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-4">
+              <div className="col-span-2">
+                <span className="block text-[10px] font-bold tracking-[0.12em] uppercase text-[#64748B] mb-2">Category</span>
+                <CategoryMultiSelect
+                  size="sm"
+                  options={categories}
+                  selected={f.selectedCategories}
+                  onToggle={f.toggleCategory}
+                />
+              </div>
+              <div className="min-w-0">
+                <span className="block text-[10px] font-bold tracking-[0.12em] uppercase text-[#64748B] mb-2">Level</span>
+                <Dropdown className="w-full max-w-[155px]" size="sm" value={f.level} onChange={(value) => f.setLevel(value as typeof f.level)} options={levels.map((level) => ({ value: level, label: level }))} />
+              </div>
+              <div className="min-w-0">
+                <span className="block text-[10px] font-bold tracking-[0.12em] uppercase text-[#64748B] mb-2">Price</span>
+                <Dropdown className="w-full max-w-[155px]" size="sm" value={f.price} onChange={(value) => f.setPrice(value as typeof f.price)} options={priceFilters.map((price) => ({ value: price, label: price }))} />
+              </div>
+              <div className="col-span-2 justify-self-end w-[155px] max-w-full">
+                <span className="block text-[10px] font-bold tracking-[0.12em] uppercase text-[#64748B] mb-2">Sort by</span>
+                <Dropdown className="w-full max-w-[155px]" size="sm" value={f.sort} onChange={(value) => f.setSort(value as SortKey)} options={sortOptions.map(({ value, label }) => ({ value, label }))} />
+              </div>
+            </div>
           </motion.div>
         )}
+        </div>
 
         <div className="px-5">
           {f.results.length ? (

@@ -9,7 +9,6 @@ import Modal from "../../Components/Forms/Modal";
 
 import RECompaniesForm from "../../Components/Forms/Desktop/RECompaniesForm";
 import RETrainersForm from "../../Components/Forms/Desktop/RETrainersForm";
-import ContactForm from "../../Components/Forms/Desktop/ContactForm";
 export default function Desktop() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,7 +33,6 @@ export default function Desktop() {
         "open-plots",
         "re-companies",
         "re-trainers-coaches",
-        "contact-us",
       ].includes(path)
     ) {
       setActiveForm(path);
@@ -120,7 +118,7 @@ export default function Desktop() {
             <h4 className=" text-[17px] font-serif mb-3" style={{ color: "#E2C068" }}>Contact FARE</h4>
             
             <div className="flex flex-col gap-2.5 mb-5">
-              <a href="#contact" className="text-[14px] font-bold text-white hover:text-[#E2C068] transition-colors flex items-center gap-1.5 w-fit group/link">
+              <a href={`/${currentMode}/contact-us`} onClick={(event) => { event.preventDefault(); handleNavigation("contact-us"); }} className="text-[14px] font-bold text-white hover:text-[#E2C068] transition-colors flex items-center gap-1.5 w-fit group/link">
                 Contact us <span className="text-[12px] font-normal leading-none transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">↗</span>
               </a>
               
@@ -231,7 +229,6 @@ export default function Desktop() {
         {activeForm === "open-plots" && <RECompaniesForm />}
         {activeForm === "re-companies" && <RECompaniesForm />}
         {activeForm === "re-trainers-coaches" && <RETrainersForm />}
-        {activeForm === "contact-us" && <ContactForm />}
       </Modal>
     </>
   );
