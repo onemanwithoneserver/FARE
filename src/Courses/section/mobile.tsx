@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Search, Sparkles, SearchX, X, Rocket, Gift, BellRing, ArrowRight, SlidersHorizontal, RotateCcw } from "lucide-react";
 import heroImg from "../../assets/courses_hero.jpg";
@@ -22,7 +22,7 @@ export default function Mobile() {
           </div>
           <h1 className="mb-3 text-[2.1rem] font-black leading-[1.1] tracking-tight" style={{ color: NAVY }}>{heroData.headline}</h1>
           <p className="mb-5 text-[14.5px] font-medium leading-relaxed text-[#475569]">{heroData.description}</p>
-          <div className="relative mb-5 overflow-hidden rounded-[8px] p-[1.5px]">
+          <div className="relative overflow-hidden rounded-[8px] p-[1.5px]">
             <motion.div aria-hidden animate={{ rotate: 360 }} transition={{ duration: 6, repeat: Infinity, ease: "linear" }} className="absolute -inset-[200%]" style={{ background: "conic-gradient(from 0deg, transparent 0 60%, #C99A2E 80%, #E2C068 90%, transparent 100%)" }} />
             <div className="relative rounded-[8px] bg-white/95 p-4 backdrop-blur-xl">
               <div className="mb-3 flex items-center gap-3">
@@ -43,20 +43,11 @@ export default function Mobile() {
               </motion.button>
             </div>
           </div>
-          <form role="search" onSubmit={(e) => e.preventDefault()} className="mb-2 flex items-center rounded-[8px] border border-[#E2E8F0] bg-white p-1.5 shadow-[0_8px_24px_rgba(11,29,58,0.08)] transition-colors focus-within:border-[#C99A2E]">
-            <Search size={17} className="mx-2.5 shrink-0 text-[#94A3B8]" />
-            <input aria-label="Search courses" value={f.query} onChange={(e) => f.setQuery(e.target.value)} placeholder="Search courses..." className="min-w-0 flex-1 bg-transparent text-[14px] font-medium text-[#0B1D3A] outline-none placeholder:text-[#94A3B8]" />
-          </form>
         </motion.div>
         <div className="relative h-[240px] overflow-hidden rounded-bl-[8px] rounded-br-[80px] rounded-tl-[80px] rounded-tr-[8px] border border-white/80 luxury-shadow-float">
           <motion.img animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }} src={heroImg} alt="Two real estate professionals learning together on a laptop" className="h-full w-full object-cover object-[center_40%]" />
           <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/15 via-transparent to-transparent" />
-          <motion.div initial={{ x: 60, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.6 }} className="absolute right-0 top-1/2 -translate-y-1/2">
-            <motion.div animate={{ x: [0, -3, 0] }} transition={{ duration: 3, repeat: Infinity }} className="relative flex flex-col items-center gap-2 overflow-hidden rounded-l-[8px] px-2.5 py-4 text-white" style={{ background: "linear-gradient(180deg, #C99A2E, #A87A18)", boxShadow: "-8px 8px 24px rgba(11,29,58,0.3)" }}>
-              <motion.div animate={{ rotate: [0, -15, 15, 0] }} transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 1.5 }}><BellRing size={16} /></motion.div>
-              <span className="text-[10px] font-extrabold uppercase tracking-[0.28em]" style={{ writingMode: "vertical-rl" }}>Coming Soon</span>
-            </motion.div>
-          </motion.div>
+
         </div>
       </section>
       <section id="course-listing" className="bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-10">
@@ -65,6 +56,32 @@ export default function Mobile() {
           <h2 className="text-[1.9rem] font-black leading-tight tracking-tight text-[#0B1D3A]">Find Your Next Course</h2>
           <div className="mx-auto mt-3 h-1 w-14 rounded-[2px] bg-gradient-to-r from-[#C99A2E] to-[#E2C068]" />
         </div>
+
+        <div className="relative">
+          {/* Mobile Overlay */}
+          <div className="absolute -inset-x-2 -inset-y-4 z-50 flex items-start justify-center pt-10 rounded-[20px] bg-white/40 backdrop-blur-[8px]">
+            <motion.div initial={{ scale: 0.9, opacity: 0, y: 10 }} whileInView={{ scale: 1, opacity: 1, y: 0 }} transition={{ duration: 0.6, type: "spring", bounce: 0.4 }} className="relative mx-4 flex flex-col items-center overflow-hidden rounded-[16px] border border-white/80 bg-white/75 px-6 py-8 shadow-[0_12px_40px_rgba(11,29,58,0.12)] backdrop-blur-xl">
+              <motion.div animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0_60%,#C99A2E_80%,#E2C068_90%,transparent_100%)] opacity-20 pointer-events-none" />
+              <div className="relative z-10 flex flex-col items-center">
+                <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }} className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#0B1D3A] to-[#15315C] text-white shadow-[0_8px_20px_rgba(11,29,58,0.25)] border border-white/20">
+                  <motion.div animate={{ rotate: [0, -15, 15, -15, 15, 0] }} transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}><BellRing size={28} strokeWidth={2.5} /></motion.div>
+                </motion.div>
+                <h3 className="mb-2 text-[26px] font-black tracking-tight text-[#0B1D3A]">Coming Soon</h3>
+                <p className="mb-6 max-w-[260px] text-center text-[13.5px] font-medium leading-[1.6] text-[#475569]">Our curated selection of courses is being finalized. Register now for early launch offers!</p>
+                <motion.button whileTap={{ scale: 0.95 }} className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-[8px] px-5 py-3 text-[13px] font-bold text-white shadow-[0_6px_16px_rgba(201,154,46,0.3)]" style={{ background: "linear-gradient(135deg, #C99A2E 0%, #B8892A 100%)" }}>
+                  <motion.span aria-hidden animate={{ x: ["-150%", "250%"] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1, ease: "easeInOut" }} className="absolute inset-y-0 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                  <span className="relative">Register for Early Launch</span>
+                  <ArrowRight size={14} strokeWidth={2.5} className="relative transition-transform duration-300 group-hover:translate-x-1" />
+                </motion.button>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="pointer-events-none select-none opacity-40 blur-[2px]">
+        <form role="search" onSubmit={(e) => e.preventDefault()} className="mx-5 mb-5 flex items-center gap-2 rounded-[8px] border border-[#E2E8F0] bg-white p-1.5 shadow-[0_4px_16px_rgba(11,29,58,0.05)] transition-colors focus-within:border-[#C99A2E]">
+          <Search size={16} className="mx-2.5 shrink-0 text-[#94A3B8]" />
+          <input aria-label="Search courses" value={f.query} onChange={(e) => f.setQuery(e.target.value)} placeholder="Search courses..." className="min-w-0 flex-1 bg-transparent text-[14px] font-medium text-[#0B1D3A] outline-none placeholder:text-[#94A3B8]" />
+        </form>
         <div className="px-5"><CategoryChips idPrefix="mobile" selected={f.selectedCategories} onToggle={f.toggleCategory} /></div>
         <div className="mb-5 mt-4 px-5"><button onClick={() => setShowFilters(true)} className="flex w-full items-center justify-center gap-2 rounded-[8px] border border-[#0B1D3A]/15 bg-white px-4 py-2.5 text-[13px] font-semibold text-[#0B1D3A] transition-colors active:bg-[#F0F4FF]"><SlidersHorizontal size={14} className="text-[#C99A2E]" />Filters</button></div>
         <div className="px-5">
@@ -80,6 +97,8 @@ export default function Mobile() {
               <button onClick={f.reset} className="rounded-[8px] bg-[#C99A2E] px-6 py-3 text-[14px] font-bold text-[#0B1D3A]">Clear filters</button>
             </div>
           )}
+        </div>
+        </div>
         </div>
       </section>
       <AnimatePresence>

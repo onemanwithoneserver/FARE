@@ -13,6 +13,7 @@ export const getData = (lang: "en" | "te" = "en") => {
         {
           title: "అభ్యాసకుల కోసం",
           links: [
+            { label: "కోర్సులు", path: "courses" },
             { label: "విద్యార్థులు & ఫ్రెషర్స్", path: "fare-for-students-freshers" },
             { label: "ఉద్యోగులు", path: "fare-for-employees" },
             { label: "ఫ్రీలాన్సర్లు - ఓపెన్ ప్లాట్", path: "fare-for-freelancers-open-plot" },
@@ -60,6 +61,7 @@ export const getData = (lang: "en" | "te" = "en") => {
       {
         title: "For Learners",
         links: [
+          { label: "Courses", path: "courses" },
           { label: "Students & Freshers", path: "fare-for-students-freshers" },
           { label: "Employees", path: "fare-for-employees" },
           { label: "Freelancers - Open Plot", path: "fare-for-freelancers-open-plot" },
