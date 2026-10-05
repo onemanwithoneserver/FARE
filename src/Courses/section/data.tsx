@@ -41,10 +41,6 @@ export const heroData = {
     "Structured, practical courses for employees, freelancers, career switchers and freshers. Build skills, practise real situations and grow with confidence.",
   primary: "Browse All Courses",
   secondary: "Free Courses",
-  stats: [
-    { value: "40+", label: "Expert-led courses" },
-    { value: "25K+", label: "Active learners" },
-  ],
 };
 
 export const categories: { name: string; icon: LucideIcon }[] = [

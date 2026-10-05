@@ -26,14 +26,14 @@ export default function Desktop() {
         <motion.div animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[5%] right-[10%] w-[700px] h-[700px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute inset-0 opacity-[0.025] pointer-events-none" style={{ backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`, backgroundSize: "60px 60px" }} />
         <div className="w-full flex items-center justify-between relative z-10 pt-8 pb-12 pl-14 xl:pl-20">
-          <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }} className="w-[48%] pr-10 shrink-0">
+          <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }} className="w-[52%] pr-8 shrink-0">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[4px] border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] shadow-sm mb-5">
               <Sparkles size={12} className="text-[#C99A2E]" strokeWidth={2.5} />
               <span className="font-bold text-[11px] tracking-[0.18em] uppercase text-[#C99A2E] pt-0.5">{heroData.badge}</span>
             </div>
             <h1 className="text-[3rem] xl:text-[3.4rem] font-black mb-4 tracking-tight leading-[1.08]" style={{ color: NAVY }}>{heroData.headline}</h1>
-            <p className="text-[16px] font-medium text-[#475569] leading-[1.65] mb-6 max-w-[520px]">{heroData.description}</p>
-            <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="relative max-w-[520px] mb-7 rounded-[8px] p-[1.5px] overflow-hidden">
+            <p className="text-[16px] font-medium text-[#475569] leading-[1.65] mb-6 max-w-[600px]">{heroData.description}</p>
+            <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="relative max-w-[600px] mb-7 rounded-[8px] p-[1.5px] overflow-hidden">
               <motion.div aria-hidden animate={{ rotate: 360 }} transition={{ duration: 6, repeat: Infinity, ease: "linear" }} className="absolute -inset-[200%]" style={{ background: "conic-gradient(from 0deg, transparent 0 60%, #C99A2E 80%, #E2C068 90%, transparent 100%)" }} />
               <div className="relative rounded-[8px] bg-white/95 backdrop-blur-xl px-4 py-3.5 flex items-center gap-4">
                 <div className="relative shrink-0">
@@ -56,21 +56,13 @@ export default function Desktop() {
                 </motion.button>
               </div>
             </motion.div>
-            <form role="search" onSubmit={(e) => e.preventDefault()} className="flex items-center bg-white rounded-[8px] border border-[#E2E8F0] shadow-[0_8px_30px_rgba(11,29,58,0.08)] p-1.5 max-w-[520px] mb-7 focus-within:border-[#0B1D3A]/40 transition-colors">
+            <form role="search" onSubmit={(e) => e.preventDefault()} className="flex items-center bg-white rounded-[8px] border border-[#E2E8F0] shadow-[0_8px_30px_rgba(11,29,58,0.08)] p-1.5 max-w-[600px] focus-within:border-[#0B1D3A]/40 transition-colors">
               <Search size={18} className="text-[#94A3B8] mx-3 shrink-0" />
               <input aria-label="Search courses" value={f.query} onChange={(e) => f.setQuery(e.target.value)} placeholder="Search courses, instructors, topics..." className="flex-1 bg-transparent outline-none text-[15px] text-[#0B1D3A] font-medium placeholder:text-[#94A3B8] min-w-0" />
               <button type="submit" className="text-white text-[14px] font-semibold px-6 py-3 rounded-[8px] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300" style={{ background: NAVY }}>Search</button>
             </form>
-            <div className="flex items-center gap-8">
-              {heroData.stats.map((s) => (
-                <div key={s.label}>
-                  <div className="text-[1.6rem] font-black" style={{ color: NAVY }}>{s.value}</div>
-                  <div className="text-[12px] font-semibold text-[#64748B]">{s.label}</div>
-                </div>
-              ))}
-            </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, x: 40, scale: 0.96 }} animate={{ opacity: 1, x: 0, scale: 1 }} transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }} className="w-[52%] xl:w-[54%] flex justify-end">
+          <motion.div initial={{ opacity: 0, x: 40, scale: 0.96 }} animate={{ opacity: 1, x: 0, scale: 1 }} transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }} className="w-[48%] flex justify-end">
             <div className="relative w-full h-[480px] xl:h-[510px] rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80">
               <motion.img animate={{ scale: [1, 1.04, 1] }} transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }} src={heroImg} alt="Two real estate professionals learning together on a laptop" className="w-full h-full object-cover object-[center_40%]" />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/15 via-transparent to-transparent pointer-events-none" />

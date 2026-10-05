@@ -43,18 +43,10 @@ export default function Mobile() {
               </motion.button>
             </div>
           </div>
-          <form role="search" onSubmit={(e) => e.preventDefault()} className="mb-5 flex items-center rounded-[8px] border border-[#E2E8F0] bg-white p-1.5 shadow-[0_8px_24px_rgba(11,29,58,0.08)] transition-colors focus-within:border-[#C99A2E]">
+          <form role="search" onSubmit={(e) => e.preventDefault()} className="mb-2 flex items-center rounded-[8px] border border-[#E2E8F0] bg-white p-1.5 shadow-[0_8px_24px_rgba(11,29,58,0.08)] transition-colors focus-within:border-[#C99A2E]">
             <Search size={17} className="mx-2.5 shrink-0 text-[#94A3B8]" />
             <input aria-label="Search courses" value={f.query} onChange={(e) => f.setQuery(e.target.value)} placeholder="Search courses..." className="min-w-0 flex-1 bg-transparent text-[14px] font-medium text-[#0B1D3A] outline-none placeholder:text-[#94A3B8]" />
           </form>
-          <div className="mb-6 flex items-center justify-between">
-            {heroData.stats.map((s) => (
-              <div key={s.label}>
-                <div className="text-[1.3rem] font-black" style={{ color: NAVY }}>{s.value}</div>
-                <div className="text-[11px] font-semibold text-[#64748B]">{s.label}</div>
-              </div>
-            ))}
-          </div>
         </motion.div>
         <div className="relative h-[240px] overflow-hidden rounded-bl-[8px] rounded-br-[80px] rounded-tl-[80px] rounded-tr-[8px] border border-white/80 luxury-shadow-float">
           <motion.img animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }} src={heroImg} alt="Two real estate professionals learning together on a laptop" className="h-full w-full object-cover object-[center_40%]" />
