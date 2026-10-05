@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Search, Clock, PlayCircle, Sparkles, ArrowRight, SearchX } from "lucide-react";
+import { Search, Clock, PlayCircle, Sparkles, ArrowRight, SearchX, Rocket, Gift, BellRing } from "lucide-react";
 import heroImg from "../../assets/courses_hero.jpg";
 import Dropdown from "../../Components/Dropdown";
 import CategoryMultiSelect from "./CategoryMultiSelect";
@@ -77,7 +77,30 @@ export default function Desktop() {
               <span className="font-bold text-[11px] tracking-[0.18em] uppercase text-[#C99A2E] pt-0.5">{heroData.badge}</span>
             </div>
             <h1 className="text-[3rem] xl:text-[3.4rem] font-black mb-4 tracking-tight leading-[1.08]" style={{ color: NAVY }}>{heroData.headline}</h1>
-            <p className="text-[16px] font-medium text-[#475569] leading-[1.65] mb-7 max-w-[520px]">{heroData.description}</p>
+            <p className="text-[16px] font-medium text-[#475569] leading-[1.65] mb-6 max-w-[520px]">{heroData.description}</p>
+            <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} className="relative max-w-[520px] mb-7 rounded-[12px] p-[1.5px] overflow-hidden">
+              <motion.div aria-hidden animate={{ rotate: 360 }} transition={{ duration: 6, repeat: Infinity, ease: "linear" }} className="absolute -inset-[200%]" style={{ background: "conic-gradient(from 0deg, transparent 0 60%, #C99A2E 80%, #E2C068 90%, transparent 100%)" }} />
+              <div className="relative rounded-[11px] bg-white/95 backdrop-blur-xl px-4 py-3.5 flex items-center gap-4">
+                <div className="relative shrink-0">
+                  <motion.span aria-hidden animate={{ scale: [1, 1.7], opacity: [0.5, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }} className="absolute inset-0 rounded-full bg-[#C99A2E]" />
+                  <div className="relative w-11 h-11 rounded-full flex items-center justify-center text-white" style={{ background: `linear-gradient(135deg, ${NAVY}, #1E3A6E)` }}>
+                    <motion.div animate={{ y: [0, -3, 0], rotate: [0, -6, 0] }} transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}><Rocket size={20} /></motion.div>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="text-[10px] font-extrabold tracking-[0.18em] uppercase text-[#C99A2E]">Coming Soon</span>
+                    <motion.span animate={{ opacity: [1, 0.2, 1] }} transition={{ duration: 1.4, repeat: Infinity }} className="w-1.5 h-1.5 rounded-full bg-[#C99A2E]" />
+                  </div>
+                  <p className="text-[13px] font-semibold text-[#0B1D3A] leading-snug flex items-center gap-1.5"><Gift size={13} className="text-[#C99A2E] shrink-0" />Exclusive early launch offers for first learners</p>
+                </div>
+                <motion.button type="button" whileHover={{ y: -2, scale: 1.03 }} whileTap={{ scale: 0.96 }} className="relative overflow-hidden shrink-0 text-white text-[13px] font-bold px-4 py-3 rounded-[8px] flex items-center gap-1.5" style={{ background: `linear-gradient(135deg, ${NAVY}, #1E3A6E)`, boxShadow: "0 8px 22px rgba(11,29,58,0.3)" }}>
+                  <motion.span aria-hidden animate={{ x: ["-150%", "250%"] }} transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 1.2, ease: "easeInOut" }} className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg]" />
+                  <span className="relative">Register for Early Launch</span>
+                  <ArrowRight size={14} strokeWidth={2.5} className="relative" />
+                </motion.button>
+              </div>
+            </motion.div>
             <form role="search" onSubmit={(e) => e.preventDefault()} className="flex items-center bg-white rounded-[8px] border border-[#E2E8F0] shadow-[0_8px_30px_rgba(11,29,58,0.08)] p-1.5 max-w-[520px] mb-7 focus-within:border-[#0B1D3A]/40 transition-colors">
               <Search size={18} className="text-[#94A3B8] mx-3 shrink-0" />
               <input aria-label="Search courses" value={f.query} onChange={(e) => f.setQuery(e.target.value)} placeholder="Search courses, instructors, topics..." className="flex-1 bg-transparent outline-none text-[15px] text-[#0B1D3A] font-medium placeholder:text-[#94A3B8] min-w-0" />
@@ -96,6 +119,20 @@ export default function Desktop() {
             <div className="relative w-full h-[480px] xl:h-[510px] rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80">
               <motion.img animate={{ scale: [1, 1.04, 1] }} transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }} src={heroImg} alt="Two real estate professionals learning together on a laptop" className="w-full h-full object-cover object-[center_40%]" />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/15 via-transparent to-transparent pointer-events-none" />
+              <motion.div initial={{ x: 80, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.9, delay: 0.7, ease: [0.16, 1, 0.3, 1] }} className="absolute right-0 top-1/2 -translate-y-1/2 z-10">
+                <motion.div animate={{ x: [0, -4, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} className="relative overflow-hidden flex flex-col items-center gap-3 py-6 px-3 rounded-l-[14px] text-white border-l border-y border-white/30" style={{ background: "linear-gradient(180deg, #C99A2E, #A87A18)", boxShadow: "-10px 10px 30px rgba(11,29,58,0.3)" }}>
+                  <motion.span aria-hidden animate={{ y: ["-120%", "320%"] }} transition={{ duration: 3, repeat: Infinity, repeatDelay: 1, ease: "easeInOut" }} className="absolute inset-x-0 h-1/4 bg-gradient-to-b from-transparent via-white/40 to-transparent" />
+                  <motion.div animate={{ rotate: [0, -15, 15, 0] }} transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 1.5 }} className="relative"><BellRing size={18} /></motion.div>
+                  <span className="relative text-[12px] font-extrabold tracking-[0.3em] uppercase" style={{ writingMode: "vertical-rl" }}>Coming Soon</span>
+                </motion.div>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: [0, -6, 0] }} transition={{ opacity: { delay: 1, duration: 0.6 }, y: { delay: 1, duration: 4, repeat: Infinity, ease: "easeInOut" } }} className="absolute left-16 bottom-8 bg-white/80 backdrop-blur-xl rounded-[12px] px-4 py-3 border border-white shadow-[0_12px_30px_rgba(11,29,58,0.2)] flex items-center gap-3">
+                <Gift size={18} className="text-[#C99A2E]" />
+                <div>
+                  <div className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#64748B]">Early Launch</div>
+                  <div className="text-[13px] font-extrabold text-[#0B1D3A]">Special offers await</div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
