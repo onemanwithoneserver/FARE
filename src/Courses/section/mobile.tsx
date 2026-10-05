@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Search, Sparkles, SearchX, X, Rocket, Gift, BellRing, ArrowRight, SlidersHorizontal, RotateCcw } from "lucide-react";
+import { Search, Sparkles, SearchX, X, Rocket, Gift, ArrowRight, SlidersHorizontal, RotateCcw } from "lucide-react";
 import heroImg from "../../assets/courses_hero.jpg";
 import CourseCard from "./CourseCard";
 import { FiltersChips, activeFilterCount } from "./FiltersPanel";
 import { CountBadge } from "../../Trainer Directory/SidebarFilters/desktop";
 import CategoryChips from "./CategoryChips";
+import ComingSoonOverlay from "./ComingSoonOverlay";
 import { heroData, useCourseFilters } from "./data";
 const NAVY = "#0B1D3A";
 export default function Mobile() {
@@ -50,34 +51,14 @@ export default function Mobile() {
 
         </div>
       </section>
-      <section id="course-listing" className="bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-10">
+      <section id="course-listing" className="relative isolate grid overflow-hidden bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF]">
+        <div aria-hidden="true" inert className="col-start-1 row-start-1 pointer-events-none select-none py-10 opacity-40 blur-[2px]">
         <div className="mb-6 px-5 text-center">
           <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#C99A2E]">Explore</span>
           <h2 className="text-[1.9rem] font-black leading-tight tracking-tight text-[#0B1D3A]">Find Your Next Course</h2>
           <div className="mx-auto mt-3 h-1 w-14 rounded-[2px] bg-gradient-to-r from-[#C99A2E] to-[#E2C068]" />
         </div>
 
-        <div className="relative">
-          {/* Mobile Overlay */}
-          <div className="absolute -inset-x-2 -inset-y-4 z-50 flex items-start justify-center pt-10 rounded-[20px] bg-white/40 backdrop-blur-[8px]">
-            <motion.div initial={{ scale: 0.9, opacity: 0, y: 10 }} whileInView={{ scale: 1, opacity: 1, y: 0 }} transition={{ duration: 0.6, type: "spring", bounce: 0.4 }} className="relative mx-4 flex flex-col items-center overflow-hidden rounded-[16px] border border-white/80 bg-white/75 px-6 py-8 shadow-[0_12px_40px_rgba(11,29,58,0.12)] backdrop-blur-xl">
-              <motion.div animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0_60%,#C99A2E_80%,#E2C068_90%,transparent_100%)] opacity-20 pointer-events-none" />
-              <div className="relative z-10 flex flex-col items-center">
-                <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }} className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#0B1D3A] to-[#15315C] text-white shadow-[0_8px_20px_rgba(11,29,58,0.25)] border border-white/20">
-                  <motion.div animate={{ rotate: [0, -15, 15, -15, 15, 0] }} transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}><BellRing size={28} strokeWidth={2.5} /></motion.div>
-                </motion.div>
-                <h3 className="mb-2 text-[26px] font-black tracking-tight text-[#0B1D3A]">Coming Soon</h3>
-                <p className="mb-6 max-w-[260px] text-center text-[13.5px] font-medium leading-[1.6] text-[#475569]">Our curated selection of courses is being finalized. Register now for early launch offers!</p>
-                <motion.button whileTap={{ scale: 0.95 }} className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-[8px] px-5 py-3 text-[13px] font-bold text-white shadow-[0_6px_16px_rgba(201,154,46,0.3)]" style={{ background: "linear-gradient(135deg, #C99A2E 0%, #B8892A 100%)" }}>
-                  <motion.span aria-hidden animate={{ x: ["-150%", "250%"] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1, ease: "easeInOut" }} className="absolute inset-y-0 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-                  <span className="relative">Register for Early Launch</span>
-                  <ArrowRight size={14} strokeWidth={2.5} className="relative transition-transform duration-300 group-hover:translate-x-1" />
-                </motion.button>
-              </div>
-            </motion.div>
-          </div>
-
-          <div className="pointer-events-none select-none opacity-40 blur-[2px]">
         <form role="search" onSubmit={(e) => e.preventDefault()} className="mx-5 mb-5 flex items-center gap-2 rounded-[8px] border border-[#E2E8F0] bg-white p-1.5 shadow-[0_4px_16px_rgba(11,29,58,0.05)] transition-colors focus-within:border-[#C99A2E]">
           <Search size={16} className="mx-2.5 shrink-0 text-[#94A3B8]" />
           <input aria-label="Search courses" value={f.query} onChange={(e) => f.setQuery(e.target.value)} placeholder="Search courses..." className="min-w-0 flex-1 bg-transparent text-[14px] font-medium text-[#0B1D3A] outline-none placeholder:text-[#94A3B8]" />
@@ -99,7 +80,7 @@ export default function Mobile() {
           )}
         </div>
         </div>
-        </div>
+        <ComingSoonOverlay />
       </section>
       <AnimatePresence>
         {showFilters && (

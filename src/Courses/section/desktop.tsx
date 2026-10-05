@@ -1,10 +1,11 @@
 import { motion, AnimatePresence } from "motion/react";
-import { Search, Sparkles, ArrowRight, SearchX, Rocket, Gift, BellRing, SlidersHorizontal, RotateCcw } from "lucide-react";
+import { Sparkles, ArrowRight, SearchX, Rocket, Gift, BellRing, SlidersHorizontal, RotateCcw } from "lucide-react";
 import heroImg from "../../assets/courses_hero.jpg";
 import CourseCard from "./CourseCard";
 import FiltersPanel, { activeFilterCount } from "./FiltersPanel";
 import { CountBadge } from "../../Trainer Directory/SidebarFilters/desktop";
 import CategoryChips from "./CategoryChips";
+import ComingSoonOverlay from "./ComingSoonOverlay";
 import { heroData, useCourseFilters } from "./data";
 
 const NAVY = "#0B1D3A";
@@ -75,9 +76,10 @@ export default function Desktop() {
       </section>
 
 
-      <section id="course-listing" className="relative w-full overflow-hidden bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] px-10 py-20">
+      <section id="course-listing" className="relative isolate grid w-full overflow-hidden bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF]">
         <div className="pointer-events-none absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-[#C99A2E]/[0.07] blur-[100px]" />
-        <div className="relative mx-auto max-w-[1280px]">
+        <div aria-hidden="true" inert className="col-start-1 row-start-1 pointer-events-none select-none px-10 py-20 opacity-40 blur-[2px]">
+        <div className="relative z-0 mx-auto max-w-[1280px]">
           <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-8 text-center">
             <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.2em] text-[#C99A2E]">Explore</span>
             <h2 className="text-[2.5rem] font-black leading-tight tracking-tight text-[#0B1D3A]">Find Your Next Course</h2>
@@ -120,6 +122,8 @@ export default function Desktop() {
             </div>
           </div>
         </div>
+        </div>
+        <ComingSoonOverlay />
       </section>
     </div>
   );
