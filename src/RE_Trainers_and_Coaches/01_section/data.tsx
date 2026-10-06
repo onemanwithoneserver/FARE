@@ -9,8 +9,7 @@ export const dataEn = {
     "Use FARE to connect with your learners, deliver structured programs, practise through mocks, build long-term mentoring journeys and reach organisations looking for real estate training.",
   buttons: {
     primary: "Explore FARE for Trainers",
-    secondary: "Schedule a Demo",
-  },
+    secondary: "Schedule a Demo" },
   features: [
     "Your Expertise",
     "Your Content",
@@ -26,33 +25,26 @@ export const dataEn = {
         title: "Programs Launched",
         progress: "88%",
         progressNum: 88,
-        color: "#34D399",
-      },
+        color: "#34D399" },
       {
         title: "Active Learners",
         progress: "95%",
         progressNum: 95,
-        color: "#60A5FA",
-      },
+        color: "#60A5FA" },
       {
         title: "Mocks Delivered",
         progress: "72%",
         progressNum: 72,
-        color: "#C99A2E",
-      },
+        color: "#C99A2E" },
       {
         title: "Mentoring Hours",
         progress: "80%",
         progressNum: 80,
-        color: "#F472B6",
-      },
+        color: "#F472B6" },
     ],
     floatingBadge: {
       title: "Live",
-      subtitle: "4 active programs",
-    },
-  },
-};
+      subtitle: "4 active programs" } } };
 export const dataTe = {
   tagline: "రియల్ ఎస్టేట్ కోసం నైపుణ్యాల పెంపు",
   headline: "రియల్ ఎస్టేట్ ట్రైనర్స్ & కోచెస్ కోసం FARE",
@@ -64,24 +56,20 @@ export const dataTe = {
   features: ["మీ నైపుణ్యం", "మీ కంటెంట్", "మీ అభ్యాసకులు", "Powered by FARE"],
   buttons: {
     primary: "FARE for Trainers అన్వేషించండి",
-    secondary: "డెమో షెడ్యూల్ చేయండి",
-  },
+    secondary: "డెమో షెడ్యూల్ చేయండి" },
   dashboard: {
     title: "మొత్తం అభ్యాసకులు (Total Learners)",
     floatingBadge: {
       title: "Live Class: Sales Pitch",
-      subtitle: "Top Rated Trainer",
-    },
+      subtitle: "Top Rated Trainer" },
     stats: [
       { title: "Active Courses", progress: "12", color: "#60A5FA" },
       { title: "Completed Mocks", progress: "450+", color: "#34D399" },
       { title: "Mentoring Sessions", progress: "85", color: "#C99A2E" },
       { title: "Avg. Learner Score", progress: "92%", color: "#F472B6" },
-    ],
-  },
+    ] },
   footerText:
-    "*FARE ప్లాట్‌ఫారమ్ మరియు అభ్యాసకులను అందిస్తుంది. మీరు శిక్షణను అందిస్తారు.",
-};
+    "*FARE ప్లాట్‌ఫారమ్ మరియు అభ్యాసకులను అందిస్తుంది. మీరు శిక్షణను అందిస్తారు." };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

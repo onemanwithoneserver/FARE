@@ -1,8 +1,8 @@
-import { motion } from "motion/react";
 import { ChevronRight, ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
 import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import {  IconBadge, Section, VIEWPORT, accentAt, fadeUp, staggerContainer } from "../../../Practice/ui";
+import { accentAt, IconBadge, Section, VIEWPORT, fadeUp, staggerContainer } from "../../../Practice/ui";
 
 export default function Desktop() {
   const { language } = useLanguage();

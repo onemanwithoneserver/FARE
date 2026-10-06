@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import { PrimaryButton, SecondaryButton, EASE, fadeUp, staggerContainer } from "../../../Practice/ui";
+import { SecondaryButton, PrimaryButton, EASE, fadeUp, staggerContainer } from "../../../Practice/ui";
 import studentsHero from "../../../assets/students_hero.jpg";
 
 export default function Mobile() {

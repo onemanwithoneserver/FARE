@@ -13,8 +13,7 @@ export const dataEn = {
   ],
   transitionTitle:
     "What if your project knowledge and sales training could become a continuous learning system?",
-  transitionSubtitle: "Presenting FARE Learning management system (LMS).",
-};
+  transitionSubtitle: "Presenting FARE Learning management system (LMS)." };
 export const dataTe = {
   overline: "Challenges",
   title: "సాధారణ సేల్స్ & ట్రైనింగ్ సవాళ్లు",
@@ -29,8 +28,7 @@ export const dataTe = {
   ],
   transitionTitle:
     "మీ ప్రాజెక్ట్ నాలెడ్జ్ మరియు సేల్స్ ట్రైనింగ్ ఒక నిరంతర లెర్నింగ్ సిస్టమ్‌గా మారితే ఎలా ఉంటుంది?",
-  transitionSubtitle: "ప్రెజెంటింగ్ FARE లెర్నింగ్ మేనేజ్‌మెంట్ సిస్టమ్ (LMS).",
-};
+  transitionSubtitle: "ప్రెజెంటింగ్ FARE లెర్నింగ్ మేనేజ్‌మెంట్ సిస్టమ్ (LMS)." };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

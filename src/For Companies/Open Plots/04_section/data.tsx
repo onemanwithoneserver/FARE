@@ -24,8 +24,7 @@ export const dataEn = {
             "Processes",
             "Roles & responsibilities",
             "Policies",
-          ],
-        },
+          ] },
         {
           heading: "Sales Foundation",
           items: [
@@ -33,8 +32,7 @@ export const dataEn = {
             "Customer profiling",
             "Pitching",
             "Follow-up",
-          ],
-        },
+          ] },
         {
           heading: "Project Knowledge",
           items: [
@@ -43,8 +41,7 @@ export const dataEn = {
             "Product",
             "Infrastructure & amenities",
             "Pricing & payment plans",
-          ],
-        },
+          ] },
         {
           heading: "Real Estate Fundamentals",
           items: [
@@ -52,8 +49,7 @@ export const dataEn = {
             "Real estate terminology",
             "Stakeholders",
             "Transaction process",
-          ],
-        },
+          ] },
         {
           heading: "Open Plot Knowledge",
           items: [
@@ -61,13 +57,11 @@ export const dataEn = {
             "Layout concepts",
             "Approvals",
             "Product understanding",
-          ],
-        },
+          ] },
       ],
       journey: "Assign → Learn → Quiz → Complete",
       footerText: "Create once. Onboard every new Associate consistently.",
-      buttons: ["Build Your Onboarding Program"],
-    },
+      buttons: ["Build Your Onboarding Program"] },
     tab2: {
       title: "Ready-made knowledge. Ready to test.",
       desc: "Give your team structured quizzes covering the knowledge they need to work confidently in Open Plot sales.",
@@ -81,8 +75,7 @@ export const dataEn = {
             "Location & Market Knowledge",
             "Legal & Approvals",
             "Sales Knowledge",
-          ],
-        },
+          ] },
         {
           heading: "Use It For",
           items: [
@@ -91,12 +84,10 @@ export const dataEn = {
             "Pre-Training Assessment: Understand knowledge gaps before a training program.",
             "Project Launch Preparation: Test project and product knowledge before going to market.",
             "Continuous Learning: Keep knowledge active through regular quizzes.",
-          ],
-        },
+          ] },
       ],
       footerText: "Don't assume your team knows. Measure it.",
-      buttons: ["Explore Knowledge Bank", "How it works"],
-    },
+      buttons: ["Explore Knowledge Bank", "How it works"] },
     tab3: {
       title: "Turn training into everyday practice.",
       desc: "Create a customised learning environment for your organisation — connecting learning with the activities that actually happen on the ground.",
@@ -108,14 +99,12 @@ export const dataEn = {
             "Mocks with Trainers: Practise real customer conversations, sales situations and objections through guided mock sessions.",
             "Daily Habits: Create and track the daily activities that help Associates build consistent sales behaviour.",
             "Sales Forecast: Give Associates and managers a structured way to plan, track and forecast sales activity.",
-          ],
-        },
+          ] },
       ],
       journey: "Learn → Practise → Track → Improve",
       footerText:
         "Move beyond training. Build a system for continuous development.",
-      buttons: ["Explore Custom LMS"],
-    },
+      buttons: ["Explore Custom LMS"] },
     tab4: {
       title: "Need a trainer? Find the right one.",
       desc: "When your team needs specialised training, discover trainers who understand your requirement and your real estate segment.",
@@ -127,18 +116,14 @@ export const dataEn = {
             "Real Estate Segment: Residential, Plotted Development, Commercial, Generic Real Estate",
             "Training Format: Workshops, Half-Day Sessions, Full-Day Sessions, Mocks, Bootcamps, Coaching, Mentoring",
             "Delivery: Online, Offline, Blended, Recorded",
-          ],
-        },
+          ] },
       ],
       evaluateBasedOn:
         "Experience · Expertise · RE Segment · Methodology · Format · Delivery · Pricing · Availability",
       journey: "Discover → Shortlist → Compare → Request",
       footerText:
         "Bring the right trainer into your learning program when you need one.",
-      buttons: ["Explore Trainer Directory"],
-    },
-  },
-};
+      buttons: ["Explore Trainer Directory"] } } };
 export const dataTe = {
   overline: "Explore",
   title: "FAREని అన్వేషించండి",
@@ -165,8 +150,7 @@ export const dataTe = {
             "Processes",
             "Roles & Responsibilities",
             "Policies",
-          ],
-        },
+          ] },
         {
           heading: "Sales Foundation",
           items: [
@@ -174,8 +158,7 @@ export const dataTe = {
             "Customer Profiling",
             "Pitching",
             "Follow-up",
-          ],
-        },
+          ] },
         {
           heading: "Project Knowledge",
           items: [
@@ -184,8 +167,7 @@ export const dataTe = {
             "Product",
             "Infrastructure & Amenities",
             "Pricing & Payment Plans",
-          ],
-        },
+          ] },
         {
           heading: "Real Estate Fundamentals",
           items: [
@@ -193,8 +175,7 @@ export const dataTe = {
             "Real Estate Terminology",
             "Stakeholders",
             "Transaction Process",
-          ],
-        },
+          ] },
         {
           heading: "Open Plot Knowledge",
           items: [
@@ -202,14 +183,12 @@ export const dataTe = {
             "Layout Concepts",
             "Approvals",
             "Product Understanding",
-          ],
-        },
+          ] },
       ],
       journey: "Assign → Learn → Quiz → Complete",
       footerText:
         "ఒక్కసారి రూపొందించండి. ప్రతి కొత్త Associateకు ఒకే విధమైన Onboarding ఇవ్వండి.",
-      buttons: ["మీ Onboarding Programను రూపొందించండి"],
-    },
+      buttons: ["మీ Onboarding Programను రూపొందించండి"] },
     tab2: {
       title: "Ready-made Knowledge. Ready to Test.",
       desc: "Open Plot Salesలో నమ్మకంగా పనిచేయడానికి మీ టీమ్కు అవసరమైన Knowledgeను కవర్ చేసే Structured Quizzes అందించండి.",
@@ -223,8 +202,7 @@ export const dataTe = {
             "Location & Market Knowledge",
             "Legal & Approvals",
             "Sales Knowledge",
-          ],
-        },
+          ] },
         {
           heading: "దీనిని ఉపయోగించే విధానాలు",
           items: [
@@ -233,15 +211,13 @@ export const dataTe = {
             "Pre-Training Assessment: Training Program ప్రారంభించే ముందు Knowledge Gapsను అర్థం చేసుకోండి.",
             "Project Launch Preparation: Marketలోకి వెళ్లే ముందు Project మరియు Product Knowledgeను పరీక్షించండి.",
             "Continuous Learning: Regular Quizzes ద్వారా Knowledgeను Activeగా ఉంచండి.",
-          ],
-        },
+          ] },
       ],
       footerText: "మీ టీమ్కు తెలుసని ఊహించకండి. కొలవండి.",
       buttons: [
         "Knowledge Bankను Explore చేయండి",
         "How it works",
-      ],
-    },
+      ] },
     tab3: {
       title: "Trainingను రోజువారీ Practiceగా మార్చండి.",
       desc: "మీ Organisation కోసం Customised Learning Environmentను రూపొందించండి — Trainingను Ground Levelలో నిజంగా జరిగే Activitiesతో అనుసంధానించండి.",
@@ -253,14 +229,12 @@ export const dataTe = {
             "Mocks with Trainers: Guided Mock Sessions ద్వారా Real Customer Conversations, Sales Situations మరియు Objectionsను Practice చేయండి.",
             "Daily Habits: Associates Consistent Sales Behaviourను నిర్మించుకునేలా Daily Activitiesను రూపొందించి Track చేయండి.",
             "Sales Forecast: Associates మరియు Managers Sales Activityను Plan, Track మరియు Forecast చేయడానికి Structured విధానాన్ని అందించండి.",
-          ],
-        },
+          ] },
       ],
       journey: "Learn → Practise → Track → Improve",
       footerText:
         "Trainingను దాటి ముందుకు వెళ్లండి. Continuous Development కోసం ఒక Systemను నిర్మించండి.",
-      buttons: ["Custom LMSను Explore చేయండి"],
-    },
+      buttons: ["Custom LMSను Explore చేయండి"] },
     tab4: {
       title: "Trainer అవసరమా? సరైన Trainerను కనుగొనండి.",
       desc: "మీ టీమ్కు Specialised Training అవసరమైనప్పుడు, మీ Requirement మరియు Real Estate Segmentను అర్థం చేసుకునే Trainersను కనుగొనండి.",
@@ -272,18 +246,14 @@ export const dataTe = {
             "Real Estate Segment: Residential, Plotted Development, Commercial, Generic Real Estate",
             "Training Format: Workshops, Half-Day Sessions, Full-Day Sessions, Mocks, Bootcamps, Coaching, Mentoring",
             "Delivery: Online, Offline, Blended, Recorded",
-          ],
-        },
+          ] },
       ],
       evaluateBasedOn:
         "Experience · Expertise · RE Segment · Methodology · Format · Delivery · Pricing · Availability",
       journey: "Discover → Shortlist → Compare → Request",
       footerText:
         "అవసరమైనప్పుడు సరైన Trainerను మీ Learning Programలోకి తీసుకురండి.",
-      buttons: ["Trainer Directoryను Explore చేయండి"],
-    },
-  },
-};
+      buttons: ["Trainer Directoryను Explore చేయండి"] } } };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

@@ -6,7 +6,7 @@ import heroImg from "../../assets/re_trainers_hero.jpg";
 import Modal from "../../Components/Forms/Modal";
 import FormComponent from "../../Components/Forms/Desktop/RETrainersForm";
 import VideoModal from "../../Components/Forms/VideoModal";
-import { PrimaryButton, SecondaryButton, EASE, fadeUp, staggerContainer } from "../../Practice/ui";
+import { SecondaryButton, PrimaryButton, EASE, fadeUp, staggerContainer } from "../../Practice/ui";
 
 export default function Desktop() {
   const { language } = useLanguage();
@@ -38,8 +38,7 @@ export default function Desktop() {
             backgroundImage: "linear-gradient(#0B1D3A 1px, transparent 1px), linear-gradient(90deg, #0B1D3A 1px, transparent 1px)",
             backgroundSize: "60px 60px",
             maskImage: "linear-gradient(90deg, black 0%, transparent 60%)",
-            WebkitMaskImage: "linear-gradient(90deg, black 0%, transparent 60%)",
-          }}
+            WebkitMaskImage: "linear-gradient(90deg, black 0%, transparent 60%)" }}
         />
       </div>
 

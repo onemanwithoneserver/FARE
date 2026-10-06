@@ -16,8 +16,7 @@ export const dataEn = {
         "Structured curriculum design",
         "Enrollment & learner management",
         "Certificates & completion tracking",
-      ],
-    },
+      ] },
     {
       id: "learner-lms",
       label: "Learner LMS",
@@ -30,8 +29,7 @@ export const dataEn = {
         "Quizzes & assessments",
         "Activity tracking",
         "Learner progress dashboard",
-      ],
-    },
+      ] },
     {
       id: "mocks-mentoring",
       label: "Mocks & Mentoring",
@@ -44,8 +42,7 @@ export const dataEn = {
         "1-to-1 mentoring sessions",
         "Feedback & scoring",
         "Long-term mentoring journeys",
-      ],
-    },
+      ] },
     {
       id: "custom-content",
       label: "Custom Content",
@@ -58,10 +55,8 @@ export const dataEn = {
         "Quiz & assessment builder",
         "Mock scenario design",
         "Content library management",
-      ],
-    },
-  ],
-};
+      ] },
+  ] };
 export const dataTe = {
   overline: "Explore",
   title: "ట్రైనర్స్ కోసం FARE ని అన్వేషించండి",
@@ -80,8 +75,7 @@ export const dataTe = {
         "స్ట్రక్చర్డ్ కరికులం డిజైన్",
         "ఎన్‌రోల్‌మెంట్ & లెర్నర్ మేనేజ్‌మెంట్",
         "సర్టిఫికేట్‌లు & కంప్లీషన్ ట్రాకింగ్",
-      ],
-    },
+      ] },
     {
       id: "learner-lms",
       label: "లెర్నర్ LMS",
@@ -94,8 +88,7 @@ export const dataTe = {
         "క్విజ్‌లు & అసెస్‌మెంట్‌లు",
         "యాక్టివిటీ ట్రాకింగ్",
         "లెర్నర్ ప్రోగ్రెస్ డాష్‌బోర్డ్",
-      ],
-    },
+      ] },
     {
       id: "mocks-mentoring",
       label: "మాక్స్ & మెంటరింగ్",
@@ -108,8 +101,7 @@ export const dataTe = {
         "1-టు-1 మెంటరింగ్ సెషన్‌లు",
         "ఫీడ్‌బ్యాక్ & స్కోరింగ్",
         "దీర్ఘకాలిక మెంటరింగ్ ప్రయాణాలు",
-      ],
-    },
+      ] },
     {
       id: "custom-content",
       label: "కస్టమ్ కంటెంట్",
@@ -122,10 +114,8 @@ export const dataTe = {
         "క్విజ్ & అసెస్‌మెంట్ బిల్డర్",
         "మాక్ దృశ్య రూపకల్పన (Mock scenario design)",
         "కంటెంట్ లైబ్రరీ నిర్వహణ",
-      ],
-    },
-  ],
-};
+      ] },
+  ] };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

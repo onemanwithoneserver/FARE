@@ -8,8 +8,7 @@ export const dataEn = {
     "Build a better-trained Open Plot sales team — from onboarding and knowledge building to skill practice, daily habits and continuous improvement.",
   buttons: {
     primary: "Register for a Demo",
-    secondary: "How it works",
-  },
+    secondary: "How it works" },
   features: [
     "Custom Onboarding",
     "Knowledge Bank",
@@ -25,33 +24,26 @@ export const dataEn = {
         title: "Custom Onboarding",
         progress: "100%",
         progressNum: 100,
-        color: "#34D399",
-      },
+        color: "#34D399" },
       {
         title: "Knowledge Bank",
         progress: "85%",
         progressNum: 85,
-        color: "#60A5FA",
-      },
+        color: "#60A5FA" },
       {
         title: "Skill Practice",
         progress: "70%",
         progressNum: 70,
-        color: "#C99A2E",
-      },
+        color: "#C99A2E" },
       {
         title: "Daily Habits",
         progress: "92%",
         progressNum: 92,
-        color: "#F472B6",
-      },
+        color: "#F472B6" },
     ],
     floatingBadge: {
       title: "Team Ready",
-      subtitle: "For next project",
-    },
-  },
-};
+      subtitle: "For next project" } } };
 export const dataTe = {
   tagline: "రియల్ ఎస్టేట్ కోసం నైపుణ్యాల పెంపు",
   headline: "ఓపెన్ ప్లాట్ కంపెనీల కోసం FARE",
@@ -61,8 +53,7 @@ export const dataTe = {
     "మీ Open Plot సేల్స్ టీమ్‌ను మరింత మెరుగ్గా తీర్చిదిద్దండి — Onboarding మరియు Knowledge Building నుంచి Skill Practice, Daily Habits మరియు Continuous Improvement వరకు.",
   buttons: {
     primary: "డెమో కోసం రిజిస్టర్ చేయండి",
-    secondary: "How it works",
-  },
+    secondary: "How it works" },
   features: [
     "Custom Onboarding",
     "Knowledge Bank",
@@ -79,33 +70,26 @@ export const dataTe = {
         title: "కస్టమ్ ఆన్‌బోర్డింగ్",
         progress: "100%",
         progressNum: 100,
-        color: "#34D399",
-      },
+        color: "#34D399" },
       {
         title: "నాలెడ్జ్ బ్యాంక్",
         progress: "85%",
         progressNum: 85,
-        color: "#60A5FA",
-      },
+        color: "#60A5FA" },
       {
         title: "స్కిల్ ప్రాక్టీస్",
         progress: "70%",
         progressNum: 70,
-        color: "#C99A2E",
-      },
+        color: "#C99A2E" },
       {
         title: "డైలీ హ్యాబిట్స్",
         progress: "92%",
         progressNum: 92,
-        color: "#F472B6",
-      },
+        color: "#F472B6" },
     ],
     floatingBadge: {
       title: "టీమ్ రెడీ",
-      subtitle: "తదుపరి ప్రాజెక్ట్ కోసం",
-    },
-  },
-};
+      subtitle: "తదుపరి ప్రాజెక్ట్ కోసం" } } };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

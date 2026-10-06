@@ -10,8 +10,7 @@ import {
   Megaphone,
   Database,
   Settings,
-  Sparkles,
-} from "lucide-react";
+  Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import Modal from "../../Components/Forms/Modal";
@@ -26,17 +25,13 @@ export default function Desktop() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-    },
-  };
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 } } };
   const item: Variants = {
     hidden: { opacity: 0, y: 30 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+      transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } } };
   const categoryIcons = {
     TrendingUp: <TrendingUp size={24} className="text-white relative z-10" />,
     MessageCircle: (
@@ -47,8 +42,7 @@ export default function Desktop() {
     Heart: <Heart size={24} className="text-white relative z-10" />,
     Megaphone: <Megaphone size={24} className="text-white relative z-10" />,
     Database: <Database size={24} className="text-white relative z-10" />,
-    Settings: <Settings size={24} className="text-white relative z-10" />,
-  };
+    Settings: <Settings size={24} className="text-white relative z-10" /> };
   return (
     <section className="w-full py-16 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden fare-noise-overlay">
       <motion.div
@@ -104,8 +98,7 @@ export default function Desktop() {
               transition={{
                 duration: 0.6,
                 delay: index * 0.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
+                ease: [0.16, 1, 0.3, 1] }}
               className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-10 luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-400 break-inside-avoid relative overflow-hidden group cursor-default"
             >
               <motion.div
@@ -113,8 +106,7 @@ export default function Desktop() {
                 transition={{
                   duration: 7,
                   repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                  ease: "easeInOut" }}
                 className="absolute top-0 right-0 w-48 h-48 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 blur-[40px] rounded-bl-full pointer-events-none"
                 style={{ background: category.color }}
               ></motion.div>
@@ -180,8 +172,7 @@ export default function Desktop() {
           <div
             className="rounded-[4px] p-16 text-center relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/30"
             style={{
-              background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)`,
-            }}
+              background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)` }}
           >
             <motion.div
               animate={{ opacity: [0.25, 0.5, 0.25], scale: [1, 1.05, 1] }}

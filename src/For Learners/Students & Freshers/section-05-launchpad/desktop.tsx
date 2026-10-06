@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Rocket } from "lucide-react";
 import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Section, SectionHeader, VIEWPORT, accentAt, fadeUp, staggerContainer } from "../../../Practice/ui";
+import { accentAt, IconBadge, HoverGlow, ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../../../Practice/ui";
 
 export default function Desktop() {
   const { language } = useLanguage();

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ChevronRight, ArrowRight, FileText } from "lucide-react";
+import { ArrowRight, ChevronRight, FileText } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 import { PrimaryButton, Section, VIEWPORT } from "../../../Practice/ui";

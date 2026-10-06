@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Briefcase } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import { ACCENTS, AccentHairline, HoverGlow,  Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer, accentAt } from "../../../Practice/ui";
+import { accentAt, HoverGlow, ACCENTS, AccentHairline,  Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../../../Practice/ui";
 
 export default function Desktop() {
   const { language } = useLanguage();

@@ -23,8 +23,7 @@ export const dataEn = {
   ctaHeading: "Ready to sharpen your Sales & Channel Partner teams?",
   ctaDesc: "See how FARE Custom RE LMS can work for your organisation.",
   ctaButton: "Book a Demo",
-  secondaryCtaButton: "Want to Know How It Works?",
-};
+  secondaryCtaButton: "Want to Know How It Works?" };
 export const dataTe = {
   overline: "Customise",
   title: "మీ వ్యాపారానికి అనుగుణంగా FAREని కస్టమైజ్ చేయండి",
@@ -52,8 +51,7 @@ export const dataTe = {
     "మీ సేల్స్ & ఛానల్ పార్టనర్ టీమ్‌లను పదును పెట్టడానికి సిద్ధంగా ఉన్నారా?",
   ctaDesc: "FARE కస్టమ్ RE LMS మీ ఆర్గనైజేషన్ కోసం ఎలా పనిచేస్తుందో చూడండి.",
   ctaButton: "డెమో బుక్ చేయండి",
-  secondaryCtaButton: "ఇది ఎలా పనిచేస్తుందో తెలుసుకోవాలనుకుంటున్నారా?",
-};
+  secondaryCtaButton: "ఇది ఎలా పనిచేస్తుందో తెలుసుకోవాలనుకుంటున్నారా?" };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

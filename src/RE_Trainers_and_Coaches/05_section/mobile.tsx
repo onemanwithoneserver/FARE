@@ -11,8 +11,7 @@ import {
   Database,
   Settings,
   Sparkles,
-  ChevronDown,
-} from "lucide-react";
+  ChevronDown } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 import Modal from "../../Components/Forms/Modal";
@@ -31,17 +30,13 @@ export default function Mobile() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-    },
-  };
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 } } };
   const item: Variants = {
     hidden: { opacity: 0, y: 15 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } };
   const categoryIcons = {
     TrendingUp: <TrendingUp size={20} className="text-white relative z-10" />,
     MessageCircle: (
@@ -52,8 +47,7 @@ export default function Mobile() {
     Heart: <Heart size={20} className="text-white relative z-10" />,
     Megaphone: <Megaphone size={20} className="text-white relative z-10" />,
     Database: <Database size={20} className="text-white relative z-10" />,
-    Settings: <Settings size={20} className="text-white relative z-10" />,
-  };
+    Settings: <Settings size={20} className="text-white relative z-10" /> };
   return (
     <section className="w-full py-10 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden fare-noise-overlay">
       <motion.div
@@ -111,8 +105,7 @@ export default function Mobile() {
                   transition={{
                     duration: 7,
                     repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                    ease: "easeInOut" }}
                   className="absolute top-0 right-0 w-32 h-32 opacity-[0.05] blur-[30px] rounded-bl-full pointer-events-none"
                   style={{ background: category.color }}
                 ></motion.div>
@@ -125,8 +118,7 @@ export default function Mobile() {
                       className="w-14 h-14 rounded-[4px] flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 shrink-0 transition-transform duration-300"
                       style={{
                         backgroundColor: category.color,
-                        transform: isOpen ? "scale(1.05)" : "scale(1)",
-                      }}
+                        transform: isOpen ? "scale(1.05)" : "scale(1)" }}
                     >
                       {
                         categoryIcons[
@@ -205,8 +197,7 @@ export default function Mobile() {
           <div
             className="rounded-[4px] p-8 text-center relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/30"
             style={{
-              background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)`,
-            }}
+              background: `linear-gradient(135deg, ${NAVY} 0%, #0F2751 50%, #132D5F 100%)` }}
           >
             <motion.div
               animate={{ opacity: [0.25, 0.5, 0.25], scale: [1, 1.05, 1] }}

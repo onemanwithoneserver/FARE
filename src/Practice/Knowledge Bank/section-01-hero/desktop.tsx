@@ -31,8 +31,7 @@ export default function Desktop() {
             backgroundImage: "linear-gradient(#0B1D3A 1px, transparent 1px), linear-gradient(90deg, #0B1D3A 1px, transparent 1px)",
             backgroundSize: "60px 60px",
             maskImage: "linear-gradient(90deg, black 0%, transparent 60%)",
-            WebkitMaskImage: "linear-gradient(90deg, black 0%, transparent 60%)",
-          }}
+            WebkitMaskImage: "linear-gradient(90deg, black 0%, transparent 60%)" }}
         />
       </div>
 

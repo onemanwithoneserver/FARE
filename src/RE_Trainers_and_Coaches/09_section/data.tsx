@@ -16,8 +16,7 @@ export const dataEn = {
   ],
   footerText:
     "Bring your real estate experience. Let's explore your trainer journey.",
-  ctaButton: "Connect With FARE",
-};
+  ctaButton: "Connect With FARE" };
 export const dataTe = {
   overline: "Become a Trainer",
   title: "మీరు RE ట్రైనర్ లేదా కోచ్ కావాలనుకుంటున్నారా?",
@@ -35,8 +34,7 @@ export const dataTe = {
   ],
   footerText:
     "మీ రియల్ ఎస్టేట్ అనుభవాన్ని తీసుకురండి. మీ ట్రైనర్ ప్రయాణాన్ని అన్వేషిద్దాం.",
-  ctaButton: "FARE తో కనెక్ట్ అవ్వండి",
-};
+  ctaButton: "FARE తో కనెక్ట్ అవ్వండి" };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

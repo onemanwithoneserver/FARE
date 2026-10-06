@@ -6,7 +6,7 @@ import heroImg from "../../assets/re_trainers_hero.jpg";
 import Modal from "../../Components/Forms/Modal";
 import FormComponent from "../../Components/Forms/Mobile/RETrainersForm";
 import VideoModal from "../../Components/Forms/VideoModal";
-import { PrimaryButton, SecondaryButton, EASE, fadeUp, staggerContainer } from "../../Practice/ui";
+import { SecondaryButton, PrimaryButton, EASE, fadeUp, staggerContainer } from "../../Practice/ui";
 
 export default function Mobile() {
   const { language } = useLanguage();

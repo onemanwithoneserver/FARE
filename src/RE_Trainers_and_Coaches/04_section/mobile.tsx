@@ -9,8 +9,7 @@ import {
   Briefcase,
   RefreshCcw,
   Crown,
-  Handshake,
-} from "lucide-react";
+  Handshake } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 const GOLD = "#C99A2E";
@@ -21,23 +20,18 @@ export default function Mobile() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-    },
-  };
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 } } };
   const item: Variants = {
     hidden: { opacity: 0, y: 15 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } };
   const segmentIcons = {
     Home: <Home size={18} className="text-white relative z-10" />,
     Map: <Map size={18} className="text-white relative z-10" />,
     Building2: <Building2 size={18} className="text-white relative z-10" />,
-    Layers: <Layers size={18} className="text-white relative z-10" />,
-  };
+    Layers: <Layers size={18} className="text-white relative z-10" /> };
   const learnerIcons = {
     GraduationCap: (
       <GraduationCap size={20} className="text-white relative z-10" />
@@ -45,15 +39,13 @@ export default function Mobile() {
     Briefcase: <Briefcase size={20} className="text-white relative z-10" />,
     RefreshCcw: <RefreshCcw size={20} className="text-white relative z-10" />,
     Crown: <Crown size={20} className="text-white relative z-10" />,
-    Handshake: <Handshake size={20} className="text-white relative z-10" />,
-  };
+    Handshake: <Handshake size={20} className="text-white relative z-10" /> };
   return (
     <section
       className="w-full py-10 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
-          "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",
-      }}
+          "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)" }}
     >
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -64,8 +56,7 @@ export default function Mobile() {
         className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
         style={{
           backgroundImage: `radial-gradient(#0B1D3A 1px, transparent 1px)`,
-          backgroundSize: "24px 24px",
-        }}
+          backgroundSize: "24px 24px" }}
       />
       <div className="px-5 relative z-10">
         <motion.div
@@ -116,8 +107,7 @@ export default function Mobile() {
                   transition={{
                     duration: 6,
                     repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                    ease: "easeInOut" }}
                   className="absolute top-0 right-0 w-24 h-24 opacity-10 blur-[20px] rounded-bl-full pointer-events-none"
                   style={{ background: segment.color }}
                 ></motion.div>
@@ -154,8 +144,7 @@ export default function Mobile() {
             className="rounded-[4px] p-6 relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/30"
             style={{
               background:
-                "linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)",
-            }}
+                "linear-gradient(135deg, #0B1D3A 0%, #0F2751 50%, #132D5F 100%)" }}
           >
             <motion.div
               animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}

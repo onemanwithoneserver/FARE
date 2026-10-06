@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { BookOpen } from "lucide-react";
 import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, accentAt, fadeScale, staggerContainer } from "../../../Practice/ui";
+import { accentAt, IconBadge, ACCENTS, Section, SectionHeader, VIEWPORT, fadeScale, staggerContainer } from "../../../Practice/ui";
 
 export default function Mobile() {
   const { language } = useLanguage();

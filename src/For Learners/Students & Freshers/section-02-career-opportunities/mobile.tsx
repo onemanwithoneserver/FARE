@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
-import { Briefcase, ChevronRight } from "lucide-react";
+import { ChevronRight, Briefcase } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import { ACCENTS, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer, accentAt } from "../../../Practice/ui";
+import { accentAt, ACCENTS, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../../../Practice/ui";
 
 export default function Mobile() {
   const { language } = useLanguage();

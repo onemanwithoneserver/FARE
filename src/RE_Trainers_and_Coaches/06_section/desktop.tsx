@@ -10,8 +10,7 @@ import {
   Flame,
   Target,
   UserCheck,
-  UsersRound,
-} from "lucide-react";
+  UsersRound } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 const GOLD = "#C99A2E";
@@ -22,22 +21,17 @@ export default function Desktop() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-    },
-  };
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 } } };
   const item: Variants = {
     hidden: { opacity: 0, y: 30 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+      transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } } };
   const modeIcons = {
     Globe: <Globe size={28} className="text-white relative z-10" />,
     Users: <Users size={28} className="text-white relative z-10" />,
-    Shuffle: <Shuffle size={28} className="text-white relative z-10" />,
-  };
+    Shuffle: <Shuffle size={28} className="text-white relative z-10" /> };
   const typeIcons = {
     Wrench: <Wrench size={24} className="text-white relative z-10" />,
     PlayCircle: <PlayCircle size={24} className="text-white relative z-10" />,
@@ -45,15 +39,13 @@ export default function Desktop() {
     Flame: <Flame size={24} className="text-white relative z-10" />,
     Target: <Target size={24} className="text-white relative z-10" />,
     UserCheck: <UserCheck size={24} className="text-white relative z-10" />,
-    UsersRound: <UsersRound size={24} className="text-white relative z-10" />,
-  };
+    UsersRound: <UsersRound size={24} className="text-white relative z-10" /> };
   return (
     <section
       className="w-full py-16 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
-          "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",
-      }}
+          "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)" }}
     >
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -69,8 +61,7 @@ export default function Desktop() {
         className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
         style={{
           backgroundImage: `radial-gradient(#0B1D3A 1px, transparent 1px)`,
-          backgroundSize: "32px 32px",
-        }}
+          backgroundSize: "32px 32px" }}
       />
       <div className="max-w-[1320px] mx-auto px-12 relative z-10">
         <motion.div
@@ -132,8 +123,7 @@ export default function Desktop() {
                   transition={{
                     duration: 7,
                     repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                    ease: "easeInOut" }}
                   className="absolute top-0 right-0 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-[40px] rounded-bl-full pointer-events-none"
                   style={{ background: mode.color }}
                 ></motion.div>

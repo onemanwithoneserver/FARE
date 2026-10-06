@@ -14,23 +14,18 @@ export default function Desktop() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-    },
-  };
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 } } };
   const item: Variants = {
     hidden: { opacity: 0, y: 30 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+      transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } } };
   const tabIcons = {
     Rocket: <Rocket size={24} strokeWidth={2} />,
     BookOpen: <BookOpen size={24} strokeWidth={2} />,
     Target: <Target size={24} strokeWidth={2} />,
-    PenTool: <PenTool size={24} strokeWidth={2} />,
-  };
+    PenTool: <PenTool size={24} strokeWidth={2} /> };
   const activeTabData =
     data.tabs.find((t) => t.id === activeTab) || data.tabs[0];
   return (
@@ -93,13 +88,11 @@ export default function Desktop() {
                     <motion.div
                       animate={{
                         opacity: [0.3, 0.7, 0.3],
-                        scale: [1, 1.05, 1],
-                      }}
+                        scale: [1, 1.05, 1] }}
                       transition={{
                         duration: 6,
                         repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
+                        ease: "easeInOut" }}
                       className="absolute top-0 right-0 w-32 h-32 opacity-20 blur-[30px] rounded-bl-full"
                       style={{ background: tab.color }}
                     ></motion.div>
@@ -132,8 +125,7 @@ export default function Desktop() {
                       transition={{
                         type: "spring",
                         stiffness: 300,
-                        damping: 30,
-                      }}
+                        damping: 30 }}
                     />
                   )}
                 </button>
@@ -155,8 +147,7 @@ export default function Desktop() {
                   transition={{
                     duration: 4,
                     repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                    ease: "easeInOut" }}
                   className="absolute -top-10 -right-10 w-64 h-64 opacity-10 blur-[60px] pointer-events-none rounded-full"
                   style={{ background: activeTabData.color }}
                 ></motion.div>
@@ -178,8 +169,7 @@ export default function Desktop() {
                       transition={{
                         duration: 0.4,
                         delay: idx * 0.1,
-                        ease: "easeOut",
-                      }}
+                        ease: "easeOut" }}
                       className="group flex items-start gap-4 p-4 rounded-[4px] hover:bg-[#F8FAFD] transition-colors duration-300 border border-transparent hover:border-[#0B1D3A]/5 cursor-default"
                     >
                       <div

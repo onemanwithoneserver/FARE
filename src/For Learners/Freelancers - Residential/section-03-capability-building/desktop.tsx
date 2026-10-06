@@ -3,7 +3,7 @@ import { useState } from "react";
 import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 import { ChevronDown, GraduationCap } from "lucide-react";
-import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Section, SectionHeader, VIEWPORT, accentAt, fadeScale, staggerContainer } from "../../../Practice/ui";
+import { accentAt, IconBadge, HoverGlow, ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, Section, SectionHeader, VIEWPORT, fadeScale, staggerContainer } from "../../../Practice/ui";
 
 export default function Desktop() {
   const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());

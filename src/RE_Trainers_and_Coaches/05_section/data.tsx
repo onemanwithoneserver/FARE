@@ -26,8 +26,7 @@ export const dataEn = {
             "Follow-up",
             "Closing",
             "Referral Generation",
-          ],
-        },
+          ] },
         {
           label: "Advanced",
           skills: [
@@ -37,10 +36,8 @@ export const dataEn = {
             "Sales Planning",
             "Sales Forecasting",
             "Key Account Management",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "Communication",
       color: "#60A5FA",
@@ -58,10 +55,8 @@ export const dataEn = {
             "Negotiation Communication",
             "Email & Written Communication",
             "Public Speaking",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "Digital & Technology",
       color: "#8B5CF6",
@@ -84,10 +79,8 @@ export const dataEn = {
             "Data & Analytics",
             "Video Selling",
             "WhatsApp & Messaging",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "Leadership & Management",
       color: "#C99A2E",
@@ -108,10 +101,8 @@ export const dataEn = {
             "Team Building",
             "Manager Development",
             "Strategic Thinking",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "Customer Experience",
       color: "#F472B6",
@@ -128,10 +119,8 @@ export const dataEn = {
             "Relationship Management",
             "Retention",
             "Referral & Loyalty",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "Marketing",
       color: "#F59E0B",
@@ -151,10 +140,8 @@ export const dataEn = {
             "Performance Marketing",
             "Personal Branding",
             "Channel Marketing",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "Product & Project Knowledge",
       color: "#06B6D4",
@@ -176,10 +163,8 @@ export const dataEn = {
             "Legal Awareness",
             "Competitive Analysis",
             "Project Positioning",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "Functional Skills",
       color: "#EF4444",
@@ -200,17 +185,14 @@ export const dataEn = {
             "Documentation",
             "Real Estate Finance",
             "Other Functional Skills",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
   ],
   footerLine1: "Traditional RE + New-Age Digital",
   footerLine2:
     "Field Skills + Digital Skills + Business Skills + Leadership Skills",
   footerCta:
-    "If it is a skill required to perform better in real estate, it can become a learning program on FARE.",
-};
+    "If it is a skill required to perform better in real estate, it can become a learning program on FARE." };
 export const dataTe = {
   overline: "Skills Launch",
   title: "మీరు ఏ స్కిల్స్ ప్రారంభించవచ్చు?",
@@ -238,8 +220,7 @@ export const dataTe = {
             "ఫాలో-అప్",
             "క్లోజింగ్",
             "రిఫరల్స్ జనరేషన్",
-          ],
-        },
+          ] },
         {
           label: "అడ్వాన్స్‌డ్",
           skills: [
@@ -249,10 +230,8 @@ export const dataTe = {
             "సేల్స్ ప్లానింగ్",
             "సేల్స్ ఫోర్కాస్టింగ్",
             "కీ అకౌంట్ మేనేజ్‌మెంట్",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "కమ్యూనికేషన్",
       color: "#60A5FA",
@@ -270,10 +249,8 @@ export const dataTe = {
             "నెగోషియేషన్ కమ్యూనికేషన్",
             "ఈమెయిల్ & వ్రాతపూర్వక కమ్యూనికేషన్",
             "పబ్లిక్ స్పీకింగ్",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "డిజిటల్ & టెక్నాలజీ",
       color: "#8B5CF6",
@@ -296,10 +273,8 @@ export const dataTe = {
             "డేటా & అనలిటిక్స్",
             "వీడియో సెల్లింగ్",
             "వాట్సాప్ & మెసేజింగ్",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "లీడర్‌షిప్ & మేనేజ్‌మెంట్",
       color: "#C99A2E",
@@ -320,10 +295,8 @@ export const dataTe = {
             "టీమ్ బిల్డింగ్",
             "మేనేజర్ డెవలప్‌మెంట్",
             "వ్యూహాత్మక ఆలోచన",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "కస్టమర్ ఎక్స్‌పీరియన్స్",
       color: "#F472B6",
@@ -339,10 +312,8 @@ export const dataTe = {
             "క్లయింట్ రిటెన్షన్",
             "పోస్ట్-సేల్స్ సపోర్ట్",
             "కస్టమర్ జర్నీ మ్యాపింగ్",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
     {
       title: "ఫంక్షనల్ & అదర్స్",
       color: "#FBBF24",
@@ -363,17 +334,14 @@ export const dataTe = {
             "డాక్యుమెంటేషన్",
             "రియల్ ఎస్టేట్ ఫైనాన్స్",
             "ఇతర ఫంక్షనల్ స్కిల్స్",
-          ],
-        },
-      ],
-    },
+          ] },
+      ] },
   ],
   footerLine1: "సాంప్రదాయ RE + కొత్త-తరం డిజిటల్",
   footerLine2:
     "ఫీల్డ్ స్కిల్స్ + డిజిటల్ స్కిల్స్ + బిజినెస్ స్కిల్స్ + లీడర్‌షిప్ స్కిల్స్",
   footerCta:
-    "రియల్ ఎస్టేట్‌లో మెరుగ్గా పని చేయడానికి అవసరమైన నైపుణ్యం ఏదైనా, అది FARE లో లెర్నింగ్ ప్రోగ్రామ్‌గా మారవచ్చు.",
-};
+    "రియల్ ఎస్టేట్‌లో మెరుగ్గా పని చేయడానికి అవసరమైన నైపుణ్యం ఏదైనా, అది FARE లో లెర్నింగ్ ప్రోగ్రామ్‌గా మారవచ్చు." };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

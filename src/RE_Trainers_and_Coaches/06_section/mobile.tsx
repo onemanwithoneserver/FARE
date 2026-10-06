@@ -15,8 +15,7 @@ import {
   Layers,
   Zap,
   Award,
-  Smartphone,
-} from "lucide-react";
+  Smartphone } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
 const GOLD = "#C99A2E";
@@ -27,25 +26,20 @@ export default function Mobile() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-    },
-  };
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 } } };
   const item: Variants = {
     hidden: { opacity: 0, y: 15 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } };
   const modeIcons = {
     Globe: <Globe size={24} className="text-white relative z-10" />,
     Users: <Users size={24} className="text-white relative z-10" />,
     Shuffle: <Shuffle size={24} className="text-white relative z-10" />,
     Video: <Video size={24} className="text-white relative z-10" />,
     PlayCircle: <PlayCircle size={24} className="text-white relative z-10" />,
-    Layers: <Layers size={24} className="text-white relative z-10" />,
-  };
+    Layers: <Layers size={24} className="text-white relative z-10" /> };
   const typeIcons = {
     Wrench: <Wrench size={20} className="relative z-10" />,
     PlayCircle: <PlayCircle size={20} className="relative z-10" />,
@@ -57,15 +51,13 @@ export default function Mobile() {
     Zap: <Zap size={20} className="relative z-10" />,
     Award: <Award size={20} className="relative z-10" />,
     Users: <Users size={20} className="relative z-10" />,
-    Smartphone: <Smartphone size={20} className="relative z-10" />,
-  };
+    Smartphone: <Smartphone size={20} className="relative z-10" /> };
   return (
     <section
       className="w-full py-10 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
-          "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",
-      }}
+          "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)" }}
     >
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -76,8 +68,7 @@ export default function Mobile() {
         className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
         style={{
           backgroundImage: `radial-gradient(#0B1D3A 1px, transparent 1px)`,
-          backgroundSize: "24px 24px",
-        }}
+          backgroundSize: "24px 24px" }}
       />
       <div className="px-5 relative z-10">
         <motion.div
@@ -137,8 +128,7 @@ export default function Mobile() {
                   transition={{
                     duration: 7,
                     repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                    ease: "easeInOut" }}
                   className="absolute top-0 right-0 w-32 h-32 opacity-10 blur-[25px] rounded-bl-full pointer-events-none"
                   style={{ background: mode.color }}
                 ></motion.div>

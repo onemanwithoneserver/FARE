@@ -8,8 +8,7 @@ export const dataEn = {
     "Give your sales and channel partner teams the project knowledge, practical skills and continuous learning they need to perform better.",
   buttons: {
     primary: "Book a Demo",
-    secondary: "How it works",
-  },
+    secondary: "How it works" },
   features: ["Project Knowledge", "Knowledge Bank", "Mocks", "Trainer Network"],
   footerText:
     "Built specifically for the needs of Residential & Commercial Real Estate businesses.",
@@ -20,28 +19,22 @@ export const dataEn = {
         title: "Project Knowledge",
         progress: "100%",
         progressNum: 100,
-        color: "#34D399",
-      },
+        color: "#34D399" },
       {
         title: "Knowledge Bank",
         progress: "85%",
         progressNum: 85,
-        color: "#60A5FA",
-      },
+        color: "#60A5FA" },
       { title: "Mocks", progress: "70%", progressNum: 70, color: "#C99A2E" },
       {
         title: "Trainer Network",
         progress: "92%",
         progressNum: 92,
-        color: "#F472B6",
-      },
+        color: "#F472B6" },
     ],
     floatingBadge: {
       title: "Team Ready",
-      subtitle: "For next project",
-    },
-  },
-};
+      subtitle: "For next project" } } };
 export const dataTe = {
   tagline: "రియల్ ఎస్టేట్ కోసం నైపుణ్యాల పెంపు",
   headline: "రెసిడెన్షియల్ & కమర్షియల్ కంపెనీల కోసం FARE",
@@ -51,8 +44,7 @@ export const dataTe = {
     "మీ సేల్స్ మరియు ఛానల్ పార్టనర్ టీమ్‌లకు మెరుగ్గా పని చేయడానికి అవసరమైన ప్రాజెక్ట్ నాలెడ్జ్, ప్రాక్టికల్ స్కిల్స్ మరియు నిరంతర అభ్యాసాన్ని అందించండి.",
   buttons: {
     primary: "డెమో కోసం బుక్ చేయండి",
-    secondary: "How it works",
-  },
+    secondary: "How it works" },
   features: [
     "ప్రాజెక్ట్ నాలెడ్జ్",
     "నాలెడ్జ్ బ్యాంక్",
@@ -68,28 +60,22 @@ export const dataTe = {
         title: "ప్రాజెక్ట్ నాలెడ్జ్",
         progress: "100%",
         progressNum: 100,
-        color: "#34D399",
-      },
+        color: "#34D399" },
       {
         title: "నాలెడ్జ్ బ్యాంక్",
         progress: "85%",
         progressNum: 85,
-        color: "#60A5FA",
-      },
+        color: "#60A5FA" },
       { title: "మాక్స్", progress: "70%", progressNum: 70, color: "#C99A2E" },
       {
         title: "ట్రైనర్ నెట్‌వర్క్",
         progress: "92%",
         progressNum: 92,
-        color: "#F472B6",
-      },
+        color: "#F472B6" },
     ],
     floatingBadge: {
       title: "టీమ్ రెడీ",
-      subtitle: "తదుపరి ప్రాజెక్ట్ కోసం",
-    },
-  },
-};
+      subtitle: "తదుపరి ప్రాజెక్ట్ కోసం" } } };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

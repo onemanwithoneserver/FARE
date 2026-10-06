@@ -14,8 +14,7 @@ export const dataEn = {
   ],
   transitionTitle:
     "What if training could become a continuous system — not just an occasional activity?",
-  transitionSubtitle: "That's where FARE comes in.",
-};
+  transitionSubtitle: "That's where FARE comes in." };
 export const dataTe = {
   overline: "Challenges",
   title: "Open Plot కంపెనీలలో సాధారణ Training Challenges",
@@ -30,8 +29,7 @@ export const dataTe = {
   ],
   transitionTitle:
     "Training ఒకసారి జరిగే activity కాకుండా, Continuous Systemగా మారితే?",
-  transitionSubtitle: "అక్కడే FARE వస్తుంది.",
-};
+  transitionSubtitle: "అక్కడే FARE వస్తుంది." };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
-import { ChevronRight, ArrowRight, Network } from "lucide-react";
+import { Network } from "lucide-react";
 import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Section, SectionHeader, VIEWPORT, accentAt, fadeUp, staggerContainer } from "../../../Practice/ui";
+import { accentAt, IconBadge, HoverGlow, ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../../../Practice/ui";
 
 export default function Desktop() {
   const { language } = useLanguage();
@@ -40,17 +40,9 @@ export default function Desktop() {
                 </h3>
               </div>
               
-              <p className="text-[15px] text-[#475569] font-medium leading-relaxed mb-8 flex-grow">
+              <p className="text-[15px] text-[#475569] font-medium leading-relaxed ">
                 {itemData.text}
               </p>
-              
-              <div className="w-10 h-10 rounded-full relative overflow-hidden bg-white flex items-center justify-center shadow-sm border border-[#E6EBF3] mt-auto self-end transition-colors duration-300 group-hover:border-transparent cursor-pointer" style={{ backgroundColor: "white" }}>
-                <span className="relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] text-[#0B1D3A] group-hover:text-white z-10" style={{ fontSize: "18px" }}>
-                  <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-                  <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-                </span>
-                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: `linear-gradient(135deg, ${a.from}, ${a.to})` }} />
-              </div>
             </motion.div>
           );
         })}

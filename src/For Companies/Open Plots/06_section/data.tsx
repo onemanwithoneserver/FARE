@@ -21,8 +21,7 @@ export const dataEn = {
   ],
   ctaHeading: "Have a Specific Requirement?",
   ctaDesc: "Tell us what you want your team to learn, practise or improve.",
-  ctaButton: "Talk to FARE",
-};
+  ctaButton: "Talk to FARE" };
 export const dataTe = {
   overline: "Custom Solutions",
   title: "Custom Solutions",
@@ -47,8 +46,7 @@ export const dataTe = {
   ctaHeading: "ప్రత్యేకమైన Requirement ఉందా?",
   ctaDesc:
     "మీ టీమ్ ఏమి Learn చేయాలి, Practise చేయాలి లేదా Improve చేయాలి అనుకుంటున్నారో మాకు చెప్పండి.",
-  ctaButton: "FAREతో మాట్లాడండి",
-};
+  ctaButton: "FAREతో మాట్లాడండి" };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

@@ -10,8 +10,7 @@ import Section09 from "./09_section";
 import CtaSection from "../Home/04_section";
 import Footer from "../Home/05_section";
 export default function RE_Trainers_and_Coaches({
-  isMobile,
-}: {
+  isMobile }: {
   isMobile: boolean;
 }) {
   return (

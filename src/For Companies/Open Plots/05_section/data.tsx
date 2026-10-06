@@ -20,9 +20,7 @@ export const dataEn = {
     "Use the evaluation as a starting point for identifying learning and training requirements.",
   illustrationData: {
     title: "Evaluation Flow",
-    subtitle: "Standardized Assessment",
-  },
-};
+    subtitle: "Standardized Assessment" } };
 export const dataTe = {
   overline: "Evaluation",
   title: "Free Evaluation",
@@ -45,9 +43,7 @@ export const dataTe = {
     "Learning మరియు Training Requirementsను గుర్తించడానికి ఈ Evaluationను ఒక Starting Pointగా ఉపయోగించండి.",
   illustrationData: {
     title: "ఎవాల్యుయేషన్ ఫ్లో",
-    subtitle: "ప్రామాణిక మదింపు",
-  },
-};
+    subtitle: "ప్రామాణిక మదింపు" } };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

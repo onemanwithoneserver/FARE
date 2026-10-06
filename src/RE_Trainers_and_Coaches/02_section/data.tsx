@@ -12,8 +12,7 @@ export const dataEn = {
   ],
   transitionTitle:
     "What if your expertise could continue working with your learners — even after the training room?",
-  transitionSubtitle: "That's what FARE enables.",
-};
+  transitionSubtitle: "That's what FARE enables." };
 export const dataTe = {
   overline: "Challenges",
   title: "సాధారణ సవాళ్లు",
@@ -28,8 +27,7 @@ export const dataTe = {
   ],
   transitionTitle:
     "శిక్షణను కేవలం ఒక ఈవెంట్‌గా కాకుండా, నిరంతర వ్యవస్థగా ఎలా మార్చాలి?",
-  transitionSubtitle: "అక్కడే FARE మీకు సహాయపడుతుంది.",
-};
+  transitionSubtitle: "అక్కడే FARE మీకు సహాయపడుతుంది." };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

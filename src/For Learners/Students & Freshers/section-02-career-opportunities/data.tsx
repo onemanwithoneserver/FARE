@@ -21,8 +21,7 @@ export const dataEn = {
           "name": "BUSINESS & SUPPORT FUNCTIONS",
           "items": "Sales Operations · Customer Experience · CRM · Marketing Technology · Data & Analytics"
         }
-      ],
-    },
+      ] },
     {
       "type": "INDEPENDENT PRACTICE",
       "title": "Build Your Own Real Estate Practice",

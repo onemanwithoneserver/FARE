@@ -14,23 +14,18 @@ export default function Mobile() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-    },
-  };
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 } } };
   const item: Variants = {
     hidden: { opacity: 0, y: 15 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } };
   const tabIcons = {
     Rocket: <Rocket size={20} strokeWidth={2.2} />,
     BookOpen: <BookOpen size={20} strokeWidth={2.2} />,
     Target: <Target size={20} strokeWidth={2.2} />,
-    PenTool: <PenTool size={20} strokeWidth={2.2} />,
-  };
+    PenTool: <PenTool size={20} strokeWidth={2.2} /> };
   const activeTabData =
     data.tabs.find((t) => t.id === activeTab) || data.tabs[0];
   return (
@@ -85,13 +80,11 @@ export default function Mobile() {
                     <motion.div
                       animate={{
                         opacity: [0.3, 0.7, 0.3],
-                        scale: [1, 1.05, 1],
-                      }}
+                        scale: [1, 1.05, 1] }}
                       transition={{
                         duration: 7,
                         repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
+                        ease: "easeInOut" }}
                       className="absolute top-0 right-0 w-20 h-20 opacity-20 blur-[20px] rounded-bl-full"
                       style={{ background: tab.color }}
                     ></motion.div>
@@ -133,8 +126,7 @@ export default function Mobile() {
                   transition={{
                     duration: 5,
                     repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                    ease: "easeInOut" }}
                   className="absolute -top-10 -right-10 w-40 h-40 opacity-[0.08] blur-[40px] pointer-events-none rounded-full"
                   style={{ background: activeTabData.color }}
                 ></motion.div>

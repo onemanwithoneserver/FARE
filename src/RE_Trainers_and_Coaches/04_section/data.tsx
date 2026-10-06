@@ -16,8 +16,7 @@ export const dataEn = {
         "Resale",
       ],
       icon: "Home",
-      color: "#34D399",
-    },
+      color: "#34D399" },
     {
       title: "Plotted Development",
       items: [
@@ -28,8 +27,7 @@ export const dataEn = {
         "Land Investment",
       ],
       icon: "Map",
-      color: "#60A5FA",
-    },
+      color: "#60A5FA" },
     {
       title: "Commercial",
       items: [
@@ -41,8 +39,7 @@ export const dataEn = {
         "Investment",
       ],
       icon: "Building2",
-      color: "#C99A2E",
-    },
+      color: "#C99A2E" },
     {
       title: "Other RE Segments",
       items: [
@@ -54,8 +51,7 @@ export const dataEn = {
         "Other Real Estate Services",
       ],
       icon: "Layers",
-      color: "#8B5CF6",
-    },
+      color: "#8B5CF6" },
   ],
   learnersHeading: "All Types of RE Learners",
   learners: [
@@ -63,34 +59,28 @@ export const dataEn = {
       title: "Freshers",
       desc: "Build industry knowledge and foundational skills.",
       icon: "GraduationCap",
-      color: "#34D399",
-    },
+      color: "#34D399" },
     {
       title: "Real Estate Professionals",
       desc: "Upgrade skills, learn new practices and move into advanced roles.",
       icon: "Briefcase",
-      color: "#60A5FA",
-    },
+      color: "#60A5FA" },
     {
       title: "Career Switchers",
       desc: "Understand the real estate industry and build the skills needed to enter the sector.",
       icon: "RefreshCcw",
-      color: "#F59E0B",
-    },
+      color: "#F59E0B" },
     {
       title: "Managers & Leaders",
       desc: "Develop leadership, coaching, team management and advanced business skills.",
       icon: "Crown",
-      color: "#C99A2E",
-    },
+      color: "#C99A2E" },
     {
       title: "Channel Partners & Agents",
       desc: "Strengthen sales, product, customer and business development capabilities.",
       icon: "Handshake",
-      color: "#F472B6",
-    },
-  ],
-};
+      color: "#F472B6" },
+  ] };
 export const dataTe = {
   overline: "Segments",
   title: "FARE LMS ఎవరికోసం",
@@ -107,8 +97,7 @@ export const dataTe = {
         "అందుబాటులో ఉన్న గృహాలు (Affordable Housing)",
       ],
       icon: "Home",
-      color: "#60A5FA",
-    },
+      color: "#60A5FA" },
     {
       title: "కమర్షియల్",
       items: [
@@ -118,8 +107,7 @@ export const dataTe = {
         "కో-వర్కింగ్ స్పేసెస్",
       ],
       icon: "Building2",
-      color: "#C99A2E",
-    },
+      color: "#C99A2E" },
     {
       title: "ఇండస్ట్రియల్ & అగ్రికల్చర్",
       items: [
@@ -128,8 +116,7 @@ export const dataTe = {
         "లాజిస్టిక్స్ కేంద్రాలు",
       ],
       icon: "Factory",
-      color: "#34D399",
-    },
+      color: "#34D399" },
     {
       title: "ఇన్వెస్ట్‌మెంట్ & అడ్వైజరీ",
       items: [
@@ -139,8 +126,7 @@ export const dataTe = {
         "చట్టపరమైన సలహా",
       ],
       icon: "Briefcase",
-      color: "#F472B6",
-    },
+      color: "#F472B6" },
   ],
   learnersHeading: "అన్ని రకాల RE అభ్యాసకులు",
   learners: [
@@ -148,40 +134,33 @@ export const dataTe = {
       title: "కొత్తవారు (Freshers)",
       desc: "పరిశ్రమ పరిజ్ఞానం మరియు ప్రాథమిక నైపుణ్యాలను నిర్మించుకోండి.",
       icon: "GraduationCap",
-      color: "#34D399",
-    },
+      color: "#34D399" },
     {
       title: "రియల్ ఎస్టేట్ నిపుణులు (Real Estate Professionals)",
       desc: "నైపుణ్యాలను అప్‌గ్రేడ్ చేయండి, కొత్త పద్ధతులను నేర్చుకోండి మరియు అధునాతన పాత్రల్లోకి మారండి.",
       icon: "Briefcase",
-      color: "#60A5FA",
-    },
+      color: "#60A5FA" },
     {
       title: "కెరీర్ స్విచ్చర్స్ (Career Switchers)",
       desc: "రియల్ ఎస్టేట్ పరిశ్రమను అర్థం చేసుకోండి మరియు ఈ రంగంలోకి ప్రవేశించడానికి అవసరమైన నైపుణ్యాలను పెంపొందించుకోండి.",
       icon: "RefreshCcw",
-      color: "#F59E0B",
-    },
+      color: "#F59E0B" },
     {
       title: "మేనేజర్లు & లీడర్లు",
       desc: "నాయకత్వం, కోచింగ్, టీమ్ మేనేజ్‌మెంట్ మరియు అధునాతన వ్యాపార నైపుణ్యాలను అభివృద్ధి చేయండి.",
       icon: "Crown",
-      color: "#C99A2E",
-    },
+      color: "#C99A2E" },
     {
       title: "ఛానల్ పార్టనర్లు & ఏజెంట్లు",
       desc: "అమ్మకాల పద్ధతులను (sales methods) అభ్యసించండి మరియు బ్రోకరేజ్ వ్యాపారాలను స్కేల్ చేయడం నేర్చుకోండి.",
       icon: "Users",
-      color: "#F472B6",
-    },
+      color: "#F472B6" },
     {
       title: "కార్పొరేట్ బృందాలు (Corporate Teams)",
       desc: "కార్పొరేట్ లక్ష్యాలకు అనుగుణంగా ప్రామాణిక (standardized) శిక్షణా కార్యక్రమాలు.",
       icon: "Building",
-      color: "#8B5CF6",
-    },
-  ],
-};
+      color: "#8B5CF6" },
+  ] };
 export const getData = (lang: Language = "en") =>
   lang === "te" ? dataTe : dataEn;
 export const data = dataEn;

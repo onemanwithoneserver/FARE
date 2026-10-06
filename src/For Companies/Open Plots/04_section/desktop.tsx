@@ -3,25 +3,22 @@ import { motion } from "motion/react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
 import VideoModal from "../../../Components/Forms/VideoModal";
-import { ChevronRight, CheckCircle2,
-  ArrowRight,
+import { ArrowRight, ChevronRight, CheckCircle2,
   BookOpen,
   BarChart2,
   Target,
-  Users, } from "lucide-react";
+  Users } from "lucide-react";
 const GOLD = "#C99A2E";
 const TAB_ICONS: Record<string, React.ReactNode> = {
   tab1: <BookOpen size={18} className="text-white" />,
   tab2: <BarChart2 size={18} className="text-white" />,
   tab3: <Target size={18} className="text-white" />,
-  tab4: <Users size={18} className="text-white" />,
-};
+  tab4: <Users size={18} className="text-white" /> };
 const TAB_COLORS: Record<string, string> = {
   tab1: "#10B981",
   tab2: "#3B82F6",
   tab3: "#F59E0B",
-  tab4: "#EC4899",
-};
+  tab4: "#EC4899" };
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
@@ -31,8 +28,7 @@ export default function Desktop() {
       className="w-full py-16 text-[#0B1D3A] relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
-          "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",
-      }}
+          "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)" }}
     >
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -48,8 +44,7 @@ export default function Desktop() {
         className="absolute inset-0 opacity-[0.035] pointer-events-none z-0"
         style={{
           backgroundImage: `radial-gradient(#0B1D3A 1px, transparent 1px)`,
-          backgroundSize: "32px 32px",
-        }}
+          backgroundSize: "32px 32px" }}
       />
       <div className="max-w-[1320px] mx-auto px-12 relative z-10">
         <div className="flex flex-col items-center text-center mb-16">
@@ -80,8 +75,7 @@ export default function Desktop() {
                 <div
                   className="absolute top-0 left-1/4 w-1/2 h-[2px] opacity-70 group-hover/card:w-2/3 group-hover/card:left-1/6 transition-all duration-700"
                   style={{
-                    background: `linear-gradient(90deg, transparent, ${activeColor}, transparent)`,
-                  }}
+                    background: `linear-gradient(90deg, transparent, ${activeColor}, transparent)` }}
                 />
                 <div
                   className={`absolute top-0 ${isEven ? "left-0 rounded-br-full" : "right-0 rounded-bl-full"} w-[400px] h-[400px] opacity-[0.06] group-hover/card:opacity-[0.1] blur-[80px] pointer-events-none transition-opacity duration-700`}
@@ -196,8 +190,7 @@ export default function Desktop() {
                                           color:
                                             i === arr.length - 1
                                               ? activeColor
-                                              : "rgba(11,29,58,0.75)",
-                                        }}
+                                              : "rgba(11,29,58,0.75)" }}
                                       >
                                         {step}
                                       </span>
