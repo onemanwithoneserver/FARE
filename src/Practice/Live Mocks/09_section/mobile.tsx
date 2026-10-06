@@ -1,66 +1,49 @@
 import { motion } from "motion/react";
-import { data } from "../data";
 import { Video, Target, MessageSquare } from "lucide-react";
+import { data } from "../data";
+import { ACCENTS, FlowStrip, IconBadge, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
 
-const phaseIcons = [Target, Video, MessageSquare];
+const ICONS = [Target, Video, MessageSquare];
+const TONES = [ACCENTS[7], ACCENTS[3], ACCENTS[5]];
 
 export default function Mobile() {
   const s = data.duringSession;
+  const flowSteps = s.practiceFlow.split("→").map(x => x.trim()).filter(Boolean);
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-14 px-6 relative overflow-hidden font-['Outfit']">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-10"
-      >
-        <h2 className="text-[#0B1D3A] text-[24px] font-black mb-3 leading-tight tracking-tight">
-          {s.title}
-        </h2>
-        <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto rounded-full" />
-      </motion.div>
+    <Section tone="tint" mobile ariaLabel="During the session">
+      <SectionHeader mobile eyebrow="The Experience" icon={Video} accent={ACCENTS[3]} title={s.title} />
 
-      <div className="flex flex-col gap-4 mb-10">
-        {s.phases.map((phase, index) => {
-          const Icon = phaseIcons[index];
+      <motion.div variants={staggerContainer(0.08)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col gap-4 mb-12">
+        {s.phases.map((phase, i) => {
+          const a = TONES[i];
+          const isMiddle = i === 1;
           return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-[8px] p-5 border border-[#E2E8F0] luxury-shadow-float flex flex-col items-start gap-4"
+            <motion.article
+              key={phase.title}
+              variants={fadeUp}
+              className={`relative overflow-hidden rounded-[16px] p-5 flex flex-col luxury-shadow-sm ${
+                isMiddle ? "bg-white border border-[#E6EBF3] shadow-[0_8px_24px_-8px_rgba(11,29,58,0.1)]" : "bg-white/60 border border-[#E6EBF3]/70"
+              }`}
             >
-              <div className="w-12 h-12 rounded-[4px] bg-[#0B1D3A] flex items-center justify-center text-white shrink-0 shadow-md">
-                <Icon size={20} strokeWidth={2} />
+              {isMiddle && (
+                <div aria-hidden="true" className="absolute -top-16 -right-16 w-32 h-32 rounded-full blur-[40px] pointer-events-none" style={{ background: a.glow }} />
+              )}
+              <div className="flex items-center gap-4 mb-3.5 relative z-10">
+                <IconBadge icon={ICONS[i]} accent={a} size="sm" interactive={false} />
+                <h3 className="text-[16px] font-bold text-[#0B1D3A] leading-snug">{phase.title}</h3>
               </div>
-              <div>
-                <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-2 leading-snug">
-                  {phase.title}
-                </h3>
-                <p className="text-[13px] text-[#64748B] leading-relaxed font-medium">
-                  {phase.desc}
-                </p>
-              </div>
-            </motion.div>
+              <p className="text-[13.5px] text-[#475569] leading-relaxed font-medium relative z-10">
+                {phase.desc}
+              </p>
+            </motion.article>
           );
         })}
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-center"
-      >
-        <div className="inline-flex items-center px-4 py-2.5 rounded-full bg-gradient-to-r from-[#C99A2E]/10 to-[#E2C068]/10 border border-[#C99A2E]/20 text-center">
-          <span className="text-[10px] font-bold text-[#C99A2E] tracking-widest">{s.practiceFlow}</span>
-        </div>
       </motion.div>
-    </section>
+
+      <Reveal delay={0.2}>
+        <FlowStrip steps={flowSteps} mobile highlight="ROLE PLAY" />
+      </Reveal>
+    </Section>
   );
 }

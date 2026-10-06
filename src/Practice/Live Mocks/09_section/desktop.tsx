@@ -1,81 +1,51 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
-import { data } from "../data";
 import { Video, Target, MessageSquare } from "lucide-react";
+import { data } from "../data";
+import { ACCENTS, FlowStrip, IconBadge, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
 
-const phaseIcons = [Target, Video, MessageSquare];
+const ICONS = [Target, Video, MessageSquare];
+const TONES = [ACCENTS[7], ACCENTS[3], ACCENTS[5]];
 
 export default function Desktop() {
   const s = data.duringSession;
-
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
-  };
-  const itemV: Variants = {
-    hidden: { opacity: 0, x: -20 },
-    show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-  };
+  const flowSteps = s.practiceFlow.split("→").map(x => x.trim()).filter(Boolean);
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 relative overflow-hidden font-['Outfit'] fare-noise-overlay">
-      <div className="w-full max-w-[1100px] mx-auto px-6 lg:px-10 xl:px-12 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <h2 className="text-[#0B1D3A] text-[32px] md:text-[38px] lg:text-[44px] font-black mb-6 leading-tight tracking-tight">
-            {s.title}
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto rounded-full" />
-        </motion.div>
+    <Section tone="tint" ariaLabel="During the session">
+      <SectionHeader eyebrow="The Experience" icon={Video} accent={ACCENTS[3]} title={s.title} />
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col gap-6 lg:gap-8 mb-16"
-        >
-          {s.phases.map((phase, index) => {
-            const Icon = phaseIcons[index];
-            return (
-              <motion.div
-                key={index}
-                variants={itemV}
-                className="bg-white rounded-[8px] p-8 border border-[#E2E8F0] luxury-shadow-float flex items-start gap-6 group hover:border-[#C99A2E]/30 transition-all duration-300"
-              >
-                <div className="w-16 h-16 rounded-[4px] bg-[#0B1D3A] flex items-center justify-center text-white shrink-0 group-hover:bg-[#C99A2E] transition-colors duration-300 shadow-md">
-                  <Icon size={28} strokeWidth={2} />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-[22px] font-bold text-[#0B1D3A] mb-3 leading-snug">
-                    {phase.title}
-                  </h3>
-                  <p className="text-[16px] text-[#64748B] leading-relaxed font-medium">
-                    {phase.desc}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+      <motion.div
+        variants={staggerContainer(0.12)}
+        initial="hidden"
+        whileInView="show"
+        viewport={VIEWPORT}
+        className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-20"
+      >
+        {s.phases.map((phase, i) => {
+          const a = TONES[i];
+          const isMiddle = i === 1;
+          return (
+            <motion.article
+              key={phase.title}
+              variants={fadeUp}
+              className={`relative overflow-hidden rounded-[20px] p-8 flex flex-col items-center text-center luxury-shadow-sm ${
+                isMiddle ? "bg-white border-2 border-[#E6EBF3] shadow-[0_12px_40px_-12px_rgba(11,29,58,0.1)] -mt-4 mb-4" : "bg-white/60 border border-[#E6EBF3] backdrop-blur-sm"
+              }`}
+            >
+              {isMiddle && (
+                <div aria-hidden="true" className="absolute -top-20 -right-20 w-48 h-48 rounded-full blur-[50px] pointer-events-none" style={{ background: a.glow }} />
+              )}
+              <IconBadge icon={ICONS[i]} accent={a} size="lg" className="mb-6" />
+              <h3 className={`text-[20px] font-bold text-[#0B1D3A] mb-4 leading-snug`}>{phase.title}</h3>
+              <p className="text-[15px] text-[#475569] leading-relaxed font-medium">{phase.desc}</p>
+            </motion.article>
+          );
+        })}
+      </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center"
-        >
-          <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#C99A2E]/10 to-[#E2C068]/10 border border-[#C99A2E]/20">
-            <span className="text-[13px] font-bold text-[#C99A2E] tracking-widest">{s.practiceFlow}</span>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+      <Reveal delay={0.3}>
+        <FlowStrip steps={flowSteps} highlight="ROLE PLAY" />
+      </Reveal>
+    </Section>
   );
 }

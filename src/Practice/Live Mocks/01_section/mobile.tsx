@@ -1,77 +1,96 @@
 import { motion } from "motion/react";
-import { ChevronRight, Sparkles, ArrowRight, Video } from "lucide-react";
+import { Clock, Video, Target, MessageSquare, Radio } from "lucide-react";
 import { data } from "../data";
 import liveMocksHero from "../../../assets/live_mocks_hero.jpg";
+import { ACCENTS, IconBadge, PrimaryButton, SecondaryButton, accentAt, fadeUp, staggerContainer } from "../ui";
 
-const NAVY = "#0B1D3A";
+const CHIP_ICONS = [Clock, Video, Target, MessageSquare];
 
 export default function Mobile() {
   const s = data.hero;
+  const [lead, stepsLine = ""] = s.description.split("\n\n");
+  const steps = stepsLine.split(".").map((x) => x.trim()).filter(Boolean);
+  const chips = s.supportingLine.split("|").map((x) => x.trim());
 
   return (
     <section
+      aria-label="FARE Live Mock Sessions"
       className="w-full relative overflow-hidden font-['Outfit']"
-      style={{
-        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
-      }}
+      style={{ background: "linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 62%, #E6EEFF 100%)" }}
     >
-      <div className="py-10 px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-start"
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] mb-5 max-w-full">
-            <Sparkles size={11} className="text-[#C99A2E] shrink-0" strokeWidth={2.5} />
-            <span className="font-bold text-[10px] tracking-[0.12em] uppercase text-[#C99A2E] leading-snug pt-0.5">
-              {s.supportingLine}
-            </span>
+      <div aria-hidden="true" className="absolute -top-20 -right-20 w-72 h-72 rounded-full blur-[90px] animate-pulse-glow" style={{ background: "rgba(129,140,248,0.2)" }} />
+
+      <motion.div
+        variants={staggerContainer(0.07, 0.05)}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 pt-8 pb-12 px-5 flex flex-col items-start"
+      >
+        <motion.span variants={fadeUp} className="inline-flex items-center gap-2 pl-1 pr-3 py-1 rounded-full bg-white border border-[#E6EBF3] shadow-sm mb-5">
+          <span className="relative inline-flex items-center justify-center w-5 h-5 rounded-full text-white" style={{ background: "linear-gradient(135deg,#FB7185,#E11D48)" }}>
+            <span aria-hidden="true" className="absolute inset-0 rounded-full animate-ping bg-[#E11D48]/40" />
+            <Radio size={11} strokeWidth={2.6} className="relative" />
           </span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#0B1D3A]/75 leading-none">Live Practice Sessions</span>
+        </motion.span>
 
-          <h1 className="text-[1.85rem] font-black text-[#0B1D3A] mb-4 tracking-tight leading-[1.12]">
-            {s.title}
-          </h1>
+        <motion.h1 variants={fadeUp} className="text-[2rem] font-black text-[#0B1D3A] tracking-[-0.02em] leading-[1.1] mb-3">
+          {s.title}
+        </motion.h1>
 
-          <p className="text-[15px] font-semibold text-[#0B1D3A]/80 mb-3">
-            {s.subtitle}
-          </p>
+        <motion.p variants={fadeUp} className="text-[17px] font-bold leading-snug mb-4">
+          <span className="gold-gradient-text">{s.subtitle}</span>
+        </motion.p>
 
-          <p className="text-[14px] text-[#475569] font-medium whitespace-pre-wrap leading-relaxed mb-6">
-            {s.description}
-          </p>
+        <motion.p variants={fadeUp} className="text-[14.5px] text-[#475569] font-medium leading-[1.7] mb-5">
+          {lead}
+        </motion.p>
 
-          <div className="w-full rounded-[16px] overflow-hidden luxury-shadow-float mb-6">
-            <img
-              src={liveMocksHero}
-              alt="Live mock practice session with real estate expert"
-              className="w-full h-[220px] object-cover object-center"
-            />
+        <motion.div variants={fadeUp} className="relative w-full mb-6">
+          <div className="w-full rounded-[20px] overflow-hidden luxury-shadow-float border border-white">
+            <img src={liveMocksHero} alt="Learner practising a live mock session with a real estate expert" className="w-full h-[230px] object-cover object-center" />
+            <div aria-hidden="true" className="absolute inset-0 rounded-[20px] bg-gradient-to-t from-[#0B1D3A]/40 via-transparent to-transparent" />
           </div>
-
-          <button
-            className="group text-white text-[14px] font-semibold px-7 py-3.5 rounded-[8px] w-full flex items-center justify-center gap-2.5 active:scale-[0.98] transition-all duration-300 mb-3"
-            style={{
-              background: NAVY,
-              boxShadow: `0 4px 16px rgba(11,29,58,0.2)`,
-            }}
-          >
-            🎯 {s.cta}
-            <span className="relative inline-flex items-center justify-center shrink-0 w-[15px] h-[15px]">
-              <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0" />
-              <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0" />
-            </span>
-          </button>
-
-          <button
-            className="group text-[#0B1D3A] text-[14px] font-semibold px-7 py-3.5 rounded-[8px] w-full flex items-center justify-center gap-2.5 border-2 border-[#0B1D3A]/20 active:scale-[0.98] transition-all duration-300"
-          >
-            <Video size={16} strokeWidth={2.5} />
-            {s.secondaryCta}
-          </button>
+          <div className="absolute left-3 bottom-3 glass-light rounded-[12px] pl-2 pr-3.5 py-2 flex items-center gap-2.5 animate-float">
+            <IconBadge icon={Video} accent={ACCENTS[3]} size="xs" interactive={false} />
+            <span className="text-[12px] font-bold text-[#0B1D3A]">{chips[1]}</span>
+          </div>
         </motion.div>
-      </div>
+
+        {steps.length > 0 && (
+          <motion.ol variants={fadeUp} className="flex flex-wrap gap-1.5 mb-6" aria-label="How a live mock works">
+            {steps.map((st, i) => {
+              const a = accentAt(i);
+              return (
+                <li key={st} className="inline-flex items-center gap-1.5 pl-1 pr-2.5 py-1 rounded-full bg-white border border-[#E6EBF3] shadow-sm text-[12px] font-semibold text-[#0B1D3A]/85">
+                  <span className="w-[18px] h-[18px] rounded-full text-white text-[9px] font-black inline-flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${a.from}, ${a.to})` }}>
+                    {i + 1}
+                  </span>
+                  {st}
+                </li>
+              );
+            })}
+          </motion.ol>
+        )}
+
+        <motion.div variants={fadeUp} className="w-full flex flex-col gap-3 mb-7">
+          <PrimaryButton icon={Target} full mobile>
+            {s.cta}
+          </PrimaryButton>
+          <SecondaryButton icon={Video} full mobile>
+            {s.secondaryCta}
+          </SecondaryButton>
+        </motion.div>
+
+        <motion.ul variants={fadeUp} className="w-full grid grid-cols-2 gap-2.5">
+          {chips.map((c, i) => (
+            <li key={c} className="flex items-center gap-2.5 bg-white/80 border border-[#E6EBF3] rounded-[12px] p-2.5 text-[12px] font-semibold text-[#0B1D3A]/85 leading-snug">
+              <IconBadge icon={CHIP_ICONS[i % CHIP_ICONS.length]} accent={ACCENTS[[1, 3, 2, 5][i % 4]]} size="xs" interactive={false} />
+              {c}
+            </li>
+          ))}
+        </motion.ul>
+      </motion.div>
     </section>
   );
 }

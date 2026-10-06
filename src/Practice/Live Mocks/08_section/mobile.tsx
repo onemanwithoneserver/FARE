@@ -1,63 +1,48 @@
 import { motion } from "motion/react";
-import { data } from "../data";
 import { Clock, CheckCircle } from "lucide-react";
+import { data } from "../data";
+import { ACCENTS, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
 
 export default function Mobile() {
   const s = data.chooseSession;
 
   return (
-    <section className="w-full bg-[#FAFAFA] py-14 px-6 relative overflow-hidden font-['Outfit']">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-10"
-      >
-        <h2 className="text-[#0B1D3A] text-[24px] font-black mb-3 leading-tight tracking-tight">
-          {s.title}
-        </h2>
-        <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto rounded-full" />
+    <Section tone="soft" mobile ariaLabel="Session Durations">
+      <SectionHeader mobile eyebrow="Session Durations" icon={Clock} accent={ACCENTS[7]} title={s.title} />
+
+      <motion.div variants={staggerContainer(0.08)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col gap-4 mb-10">
+        {s.sessions.map((session, i) => {
+          const a = ACCENTS[(i * 3 + 1) % ACCENTS.length];
+          return (
+            <motion.article key={session.duration} variants={fadeUp} className="bg-white rounded-[16px] border border-[#E6EBF3] luxury-shadow-sm p-5 relative overflow-hidden flex items-center gap-5">
+              <span aria-hidden="true" className="absolute left-0 top-6 bottom-6 w-[3px] rounded-r-full" style={{ background: `linear-gradient(${a.from}, ${a.to})` }} />
+              
+              <div className="relative shrink-0 flex flex-col items-center justify-center w-16">
+                <span className="text-[32px] font-black leading-none" style={{ color: a.to }}>
+                  {session.duration.split(" ")[0]}
+                </span>
+                <span className="text-[9px] font-bold uppercase tracking-widest text-[#0B1D3A]/40 mt-1">
+                  {session.duration.split(" ")[1]}
+                </span>
+              </div>
+              
+              <div className="min-w-0 border-l border-[#E6EBF3] pl-5">
+                <h3 className="text-[15px] font-bold text-[#0B1D3A] mb-1.5">{session.label}</h3>
+                <p className="text-[13px] text-[#475569] leading-relaxed font-medium">{session.desc}</p>
+              </div>
+            </motion.article>
+          );
+        })}
       </motion.div>
 
-      <div className="flex flex-col gap-4 mb-8">
-        {s.sessions.map((session, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-white rounded-[8px] p-5 border border-slate-200/80 luxury-shadow-float flex flex-col"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-[4px] bg-[#0B1D3A]/5 text-[#0B1D3A] flex items-center justify-center">
-                <Clock size={18} strokeWidth={2.5} />
-              </div>
-              <div>
-                <h3 className="text-[17px] font-bold text-[#0B1D3A]">{session.duration}</h3>
-                <p className="text-[12px] text-[#C99A2E] font-bold uppercase tracking-wider">{session.label}</p>
-              </div>
-            </div>
-            <p className="text-[13px] text-slate-600 leading-relaxed font-medium">
-              {session.desc}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="bg-blue-50 border border-blue-100 rounded-[8px] p-4 flex items-start gap-3"
-      >
-        <CheckCircle size={16} className="text-blue-500 shrink-0 mt-0.5" />
-        <p className="text-[13px] text-blue-800 font-medium">
-          {s.note}
-        </p>
-      </motion.div>
-    </section>
+      <Reveal delay={0.1}>
+        <div className="flex items-start gap-3 p-4 rounded-[12px] bg-white border border-[#E6EBF3] luxury-shadow-sm">
+          <CheckCircle size={18} className="text-[#10B981] shrink-0 mt-0.5" strokeWidth={2.5} />
+          <p className="text-[13px] text-[#475569] leading-relaxed font-medium">
+            {s.note}
+          </p>
+        </div>
+      </Reveal>
+    </Section>
   );
 }

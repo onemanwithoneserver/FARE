@@ -1,74 +1,47 @@
 import { motion } from "motion/react";
+import { MessageSquareX, AlertTriangle, UserX, TrendingDown, Clock, HelpCircle, Quote } from "lucide-react";
 import { data } from "../data";
-import { TrendingDown, MessageSquareX, UserX, Clock, AlertTriangle } from "lucide-react";
+import { ACCENTS, IconBadge, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
 
-const icons = [TrendingDown, MessageSquareX, UserX, Clock, AlertTriangle];
-const GRADIENTS = [
-  "from-[#F87171] to-[#DC2626]", "from-[#FBBF24] to-[#D97706]", "from-[#38BDF8] to-[#0284C7]",
-  "from-[#C084FC] to-[#9333EA]", "from-[#34D399] to-[#059669]",
-];
+const ICONS = [MessageSquareX, AlertTriangle, UserX, TrendingDown, Clock];
+const TONES = [ACCENTS[4], ACCENTS[7], ACCENTS[6], ACCENTS[8], ACCENTS[3]];
 
 export default function Mobile() {
   const s = data.problem;
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-14 px-6 relative overflow-hidden font-['Outfit']">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-10"
-      >
-        <h2 className="text-[#0B1D3A] text-[24px] font-black mb-3 leading-tight tracking-tight">
-          {s.title}
-        </h2>
-        <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-4 rounded-full" />
-        <p className="text-[14px] text-[#64748B] font-medium leading-relaxed">
-          {s.description}
-        </p>
-      </motion.div>
+    <Section tone="soft" mobile ariaLabel="The problem">
+      <SectionHeader mobile eyebrow="The Problem" icon={HelpCircle} accent={ACCENTS[4]} title={s.title} description={s.description} />
 
-      <div className="flex flex-col gap-4">
-        {s.points.map((point, index) => {
-          const gradient = GRADIENTS[index % GRADIENTS.length];
-          const Icon = icons[index % icons.length];
+      <motion.div variants={staggerContainer(0.07)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col gap-3.5">
+        {s.points.map((p, i) => {
+          const a = TONES[i % TONES.length];
           return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="bg-white/80 backdrop-blur-md border border-[#E2E8F0]/80 p-5 rounded-[8px] luxury-shadow-float flex gap-4 items-start"
+            <motion.article
+              key={p.title}
+              variants={fadeUp}
+              className="relative bg-white rounded-[16px] border border-[#E6EBF3] luxury-shadow-sm p-5 flex gap-4 overflow-hidden active:scale-[0.99] transition-transform"
             >
-              <div className={`w-10 h-10 rounded-[4px] bg-gradient-to-br ${gradient} shadow-sm flex items-center justify-center text-white shrink-0`}>
-                <Icon size={18} strokeWidth={2.5} />
+              <span aria-hidden="true" className="absolute left-0 top-5 bottom-5 w-[3px] rounded-r-full" style={{ background: `linear-gradient(${a.from}, ${a.to})` }} />
+              <IconBadge icon={ICONS[i % ICONS.length]} accent={a} size="sm" interactive={false} />
+              <div className="min-w-0">
+                <h3 className="text-[15.5px] font-bold text-[#0B1D3A] leading-snug mb-1.5">{p.title}</h3>
+                <p className="text-[13.5px] text-[#475569] leading-[1.65] font-medium">{p.desc}</p>
               </div>
-              <div>
-                <h3 className="text-[15px] font-bold text-[#0B1D3A] mb-1.5 leading-snug">
-                  {point.title}
-                </h3>
-                <p className="text-[13px] text-[#64748B] leading-relaxed font-medium">
-                  {point.desc}
-                </p>
-              </div>
-            </motion.div>
+            </motion.article>
           );
         })}
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="mt-10 text-center"
-      >
-        <p className="text-[15px] font-semibold text-[#0B1D3A]/80 italic">
-          "{s.closingLine}"
-        </p>
       </motion.div>
-    </section>
+
+      <Reveal delay={0.1} className="mt-8">
+        <div className="relative overflow-hidden rounded-[18px] p-6 text-center luxury-shadow-lg" style={{ background: "linear-gradient(135deg, #16316A 0%, #0B1D3A 60%, #071A49 100%)" }}>
+          <div aria-hidden="true" className="absolute -bottom-16 -right-10 w-48 h-48 rounded-full blur-[60px] bg-[#C99A2E]/30" />
+          <div className="relative flex flex-col items-center gap-4">
+            <IconBadge icon={Quote} accent={ACCENTS[1]} size="sm" interactive={false} />
+            <p className="text-[17px] font-bold text-white leading-[1.5]">{s.closingLine}</p>
+          </div>
+        </div>
+      </Reveal>
+    </Section>
   );
 }

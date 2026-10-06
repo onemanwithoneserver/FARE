@@ -1,57 +1,43 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { ChevronDown, Compass } from "lucide-react";
 import { data } from "../data";
-import { ChevronDown } from "lucide-react";
-
-const TAG_COLORS = [
-  "bg-[#0B1D3A]/10 text-[#0B1D3A]",
-  "bg-rose-50 text-rose-700",
-  "bg-amber-50 text-amber-700",
-  "bg-sky-50 text-sky-700",
-  "bg-purple-50 text-purple-700",
-  "bg-emerald-50 text-emerald-700",
-];
+import { ACCENTS, Chip, Section, SectionHeader, VIEWPORT, accentAt, fadeUp, staggerContainer } from "../ui";
 
 export default function Mobile() {
   const s = data.browseScenarios;
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="w-full bg-[#FAFAFA] py-14 px-6 relative overflow-hidden font-['Outfit']">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-10"
-      >
-        <h2 className="text-[#0B1D3A] text-[24px] font-black mb-3 leading-tight tracking-tight">
-          {s.title}
-        </h2>
-        <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-4 rounded-full" />
-      </motion.div>
+    <Section tone="white" mobile ariaLabel="Browse Scenarios">
+      <SectionHeader mobile eyebrow="Mock Scenarios" icon={Compass} accent={ACCENTS[8]} title={s.title} />
 
-      <div className="flex flex-col gap-3">
-        {s.categories.map((cat, index) => {
-          const isOpen = openIndex === index;
-          const tagColor = TAG_COLORS[index % TAG_COLORS.length];
+      <motion.div variants={staggerContainer(0.06)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col gap-3">
+        {s.categories.map((cat, i) => {
+          const isOpen = openIndex === i;
+          const a = accentAt(i);
           return (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.06 }}
-              className="bg-white rounded-[8px] border border-slate-200 overflow-hidden shadow-sm"
+              key={cat.title}
+              variants={fadeUp}
+              className={`rounded-[12px] border transition-all duration-300 overflow-hidden ${
+                isOpen ? "bg-white border-[#E6EBF3] luxury-shadow-sm" : "bg-white/60 border-[#E6EBF3]/70"
+              }`}
             >
               <button
-                onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                className="w-full flex items-center justify-between px-5 py-4 cursor-pointer"
+                onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                className="w-full flex items-center justify-between px-5 py-4 cursor-pointer select-none active:bg-slate-50/50"
               >
-                <span className="text-[15px] font-bold text-[#0B1D3A]">{cat.title}</span>
+                <div className="flex items-center gap-3">
+                  <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full" style={{ background: a.to }} />
+                  <span className={`text-[15px] font-bold transition-colors ${isOpen ? "text-[#0B1D3A]" : "text-[#475569]"}`}>
+                    {cat.title}
+                  </span>
+                </div>
                 <ChevronDown
                   size={18}
-                  className={`text-[#64748B] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                  strokeWidth={2.5}
+                  className={`transition-transform duration-300 ${isOpen ? "rotate-180 text-[#C99A2E]" : "text-[#94A3B8]"}`}
                 />
               </button>
 
@@ -61,17 +47,12 @@ export default function Mobile() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="px-5 pb-5 flex flex-wrap gap-2">
+                    <div className="px-5 pb-5 pt-1 flex flex-wrap gap-2">
                       {cat.items.map((item) => (
-                        <span
-                          key={item}
-                          className={`px-3 py-1.5 rounded-[4px] ${tagColor} text-[12px] font-semibold`}
-                        >
-                          {item}
-                        </span>
+                        <Chip key={item} accent={a} mobile>{item}</Chip>
                       ))}
                     </div>
                   </motion.div>
@@ -80,7 +61,7 @@ export default function Mobile() {
             </motion.div>
           );
         })}
-      </div>
-    </section>
+      </motion.div>
+    </Section>
   );
 }

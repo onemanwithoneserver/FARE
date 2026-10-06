@@ -1,74 +1,45 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
+import { Search, Compass, Users, UserCheck, Calendar, Video, Target, MessageSquare, Repeat } from "lucide-react";
 import { data } from "../data";
-import { Search, UserCheck, Calendar, Video, Play, MessageSquare, Repeat } from "lucide-react";
+import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, accentAt, fadeScale, staggerContainer } from "../ui";
 
-const icons = [Search, UserCheck, Calendar, Video, Play, MessageSquare, Repeat];
+const ICONS = [Search, Compass, Users, UserCheck, Calendar, Video, Target, MessageSquare, Repeat];
 
 export default function Desktop() {
   const s = data.learnerJourney;
 
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
-  };
-  const itemV: Variants = {
-    hidden: { opacity: 0, scale: 0.9, y: 15 },
-    show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, type: "spring", stiffness: 200 } },
-  };
-
   return (
-    <section className="w-full bg-[#0B1D3A] py-24 relative overflow-hidden font-['Outfit'] fare-noise-overlay">
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-20">
-        <div className="absolute top-[30%] left-[20%] w-[60%] h-[40%] bg-gradient-to-r from-[#C99A2E]/0 via-[#C99A2E] to-[#C99A2E]/0 blur-[100px]" />
-      </div>
+    <Section tone="soft" ariaLabel="Learner Journey">
+      <SectionHeader eyebrow="The Journey" icon={Compass} accent={ACCENTS[2]} title={s.title} />
 
-      <div className="w-full max-w-[1320px] mx-auto px-6 lg:px-10 xl:px-12 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <h2 className="text-white text-[32px] md:text-[38px] lg:text-[44px] font-black mb-6 leading-tight tracking-tight">
-            {s.title}
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto rounded-full" />
-        </motion.div>
-
-        <motion.div
-          variants={container}
+      <div className="relative max-w-[1240px] mx-auto mt-20 mb-16">
+        <div aria-hidden="true" className="absolute top-[28px] left-[4%] right-[4%] h-[2px] bg-[#E2E8F0]" />
+        
+        <motion.ol
+          variants={staggerContainer(0.06, 0.1)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-wrap justify-center gap-4 lg:gap-6"
+          viewport={VIEWPORT}
+          className="relative z-10 flex justify-between"
         >
-          {s.steps.map((step, index) => {
-            const Icon = icons[index % icons.length];
+          {s.steps.map((step, i) => {
+            const a = accentAt(i);
+            const Icon = ICONS[i % ICONS.length];
             return (
-              <motion.div
-                key={index}
-                variants={itemV}
-                className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-[8px] p-6 w-[180px] flex flex-col items-center text-center group hover:bg-white/[0.1] hover:border-[#C99A2E]/30 transition-all duration-300 relative overflow-hidden"
-              >
-                <div className="text-[#C99A2E] text-[24px] font-black opacity-20 absolute -right-2 -bottom-2 group-hover:scale-110 group-hover:opacity-30 transition-all">
-                  {index + 1}
+              <motion.li key={step.step} variants={fadeScale} className="flex flex-col items-center flex-1 px-1 group">
+                <div className="relative mb-5 bg-white p-1 rounded-full">
+                  <IconBadge icon={Icon} accent={a} size="md" className="group-hover:-translate-y-1 transition-transform duration-300" />
+                  <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#0B1D3A] text-white text-[10px] font-black flex items-center justify-center border border-white">
+                    {i + 1}
+                  </span>
                 </div>
-                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white mb-4 group-hover:bg-[#C99A2E] transition-colors duration-300 shadow-md">
-                  <Icon size={20} strokeWidth={2.5} />
-                </div>
-                <h3 className="text-[14px] font-bold text-[#E2C068] mb-2 uppercase tracking-widest">
-                  {step.step}
-                </h3>
-                <p className="text-[15px] text-white font-medium">
-                  {step.label}
-                </p>
-              </motion.div>
+                <h3 className="text-[12px] font-bold text-[#0B1D3A]/50 tracking-widest uppercase mb-1.5">{step.step}</h3>
+                <p className="text-[14.5px] font-bold text-[#0B1D3A] leading-snug text-center transition-colors group-hover:text-[#C99A2E]">{step.label}</p>
+              </motion.li>
             );
           })}
-        </motion.div>
+        </motion.ol>
       </div>
-    </section>
+    </Section>
   );
 }

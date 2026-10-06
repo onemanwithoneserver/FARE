@@ -1,138 +1,152 @@
-import { motion } from "motion/react";
-import type { Variants } from "motion/react";
-import { ChevronRight, Sparkles, ArrowRight, Video } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
+import { Clock, Video, Target, MessageSquare, Radio } from "lucide-react";
 import { data } from "../data";
 import liveMocksHero from "../../../assets/live_mocks_hero.jpg";
+import { ACCENTS, EASE, IconBadge, PrimaryButton, SecondaryButton, accentAt, fadeUp, staggerContainer } from "../ui";
 
-const NAVY = "#0B1D3A";
+const CHIP_ICONS = [Clock, Video, Target, MessageSquare];
 
 export default function Desktop() {
   const s = data.hero;
-
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.07, delayChildren: 0.1 },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 22 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+  const reduce = useReducedMotion();
+  const [lead, stepsLine = ""] = s.description.split("\n\n");
+  const steps = stepsLine.split(".").map((x) => x.trim()).filter(Boolean);
+  const chips = s.supportingLine.split("|").map((x) => x.trim());
 
   return (
     <section
-      className="w-full flex items-center justify-between overflow-x-clip relative font-['Outfit'] fare-noise-overlay"
-      style={{
-        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
-      }}
+      aria-label="FARE Live Mock Sessions"
+      className="w-full relative overflow-x-clip font-['Outfit'] fare-noise-overlay"
+      style={{ background: "linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 62%, #E6EEFF 100%)" }}
     >
-      <motion.div
-        animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[5%] right-[10%] w-[700px] h-[700px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[140px] pointer-events-none z-0"
-      />
-      <motion.div
-        animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
-      />
-      <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
-        style={{
-          backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
-      />
+      {/* ambient light */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[4%] right-[8%] w-[680px] h-[680px] rounded-full blur-[140px] animate-pulse-glow" style={{ background: "rgba(129,140,248,0.18)" }} />
+        <div className="absolute bottom-[6%] left-[2%] w-[460px] h-[460px] rounded-full blur-[120px] animate-pulse-glow" style={{ background: "rgba(201,154,46,0.1)", animationDelay: "1.2s" }} />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "linear-gradient(#0B1D3A 1px, transparent 1px), linear-gradient(90deg, #0B1D3A 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+            maskImage: "linear-gradient(90deg, black 0%, transparent 60%)",
+            WebkitMaskImage: "linear-gradient(90deg, black 0%, transparent 60%)",
+          }}
+        />
+      </div>
 
-      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-4 lg:pt-8 pb-8 lg:pb-12 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0">
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-6 lg:pt-10 pb-12 lg:pb-16 pl-6 sm:pl-10 lg:pl-14 xl:pl-20">
+        {/* Copy */}
         <motion.div
-          variants={container}
+          variants={staggerContainer(0.08, 0.1)}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: false }}
+          animate="show"
           className="w-full lg:w-[48%] xl:w-[46%] flex flex-col items-start text-left shrink-0 py-4 lg:py-6 pr-6 lg:pr-10"
         >
-          <motion.div
-            variants={item}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-5"
+          <motion.span
+            variants={fadeUp}
+            className="inline-flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 rounded-full bg-white border border-[#E6EBF3] shadow-sm mb-6"
           >
-            <Sparkles size={12} className="text-[#C99A2E]" strokeWidth={2.5} />
-            <span className="font-bold text-[11px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">
-              {s.supportingLine}
+            <span className="relative inline-flex items-center justify-center w-6 h-6 rounded-full text-white" style={{ background: "linear-gradient(135deg,#FB7185,#E11D48)" }}>
+              <span aria-hidden="true" className="absolute inset-0 rounded-full animate-ping bg-[#E11D48]/40" />
+              <Radio size={12} strokeWidth={2.6} className="relative" />
             </span>
-          </motion.div>
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0B1D3A]/75 leading-none">Live Practice Sessions</span>
+          </motion.span>
 
           <motion.h1
-            variants={item}
-            className="text-[2.6rem] lg:text-[3rem] xl:text-[3.4rem] font-black mb-4 tracking-tight leading-[1.08]"
-            style={{ color: NAVY }}
+            variants={fadeUp}
+            className="text-[2.75rem] lg:text-[3.2rem] xl:text-[3.6rem] font-black tracking-[-0.025em] leading-[1.04] text-[#0B1D3A] mb-4"
           >
             {s.title}
           </motion.h1>
 
-          <motion.p
-            variants={item}
-            className="text-[17px] font-semibold text-[#0B1D3A]/85 mb-3"
-          >
-            {s.subtitle}
+          <motion.p variants={fadeUp} className="text-[20px] xl:text-[22px] font-bold leading-snug mb-5">
+            <span className="gold-gradient-text">{s.subtitle}</span>
           </motion.p>
 
-          <motion.p
-            variants={item}
-            className="text-[15px] xl:text-[16px] font-medium text-[#475569] leading-[1.65] whitespace-pre-wrap mb-8 max-w-[520px]"
-          >
-            {s.description}
+          <motion.p variants={fadeUp} className="text-[16px] xl:text-[17px] font-medium text-[#475569] leading-[1.7] max-w-[540px] mb-6">
+            {lead}
           </motion.p>
 
-          <motion.div variants={item} className="flex items-center gap-4 mb-5">
-            <button
-              className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[8px] flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out relative overflow-hidden group cursor-pointer"
-              style={{
-                background: NAVY,
-                boxShadow: `0 4px 16px rgba(11,29,58,0.2), 0 2px 4px rgba(0,0,0,0.1)`,
-              }}
-            >
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
-              <span className="relative z-10 flex items-center gap-2">🎯 {s.cta}</span>
-              <span className="relative z-10 inline-flex items-center justify-center shrink-0 w-[15px] h-[15px] group-hover:translate-x-1 transition-transform">
-                <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-                <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-              </span>
-            </button>
-            <button
-              className="text-[#0B1D3A] text-[14px] font-semibold px-7 py-3.5 rounded-[8px] flex items-center gap-2.5 border-2 border-[#0B1D3A]/20 hover:border-[#C99A2E] hover:text-[#C99A2E] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer group"
-            >
-              <Video size={16} strokeWidth={2.5} />
-              {s.secondaryCta}
-              <ArrowRight size={14} strokeWidth={2.5} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-            </button>
+          {steps.length > 0 && (
+            <motion.ol variants={fadeUp} className="flex flex-wrap items-center gap-2 mb-9 max-w-[560px]" aria-label="How a live mock works">
+              {steps.map((st, i) => {
+                const a = accentAt(i);
+                return (
+                  <li key={st} className="inline-flex items-center gap-2 pl-1 pr-3 py-1 rounded-full bg-white/80 border border-[#E6EBF3] shadow-sm text-[13px] font-semibold text-[#0B1D3A]/85 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-0.5">
+                    <span className="w-5 h-5 rounded-full text-white text-[10px] font-black inline-flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${a.from}, ${a.to})` }}>
+                      {i + 1}
+                    </span>
+                    {st}
+                  </li>
+                );
+              })}
+            </motion.ol>
+          )}
+
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mb-9">
+            <PrimaryButton icon={Target}>{s.cta}</PrimaryButton>
+            <SecondaryButton icon={Video}>{s.secondaryCta}</SecondaryButton>
           </motion.div>
+
+          <motion.ul variants={fadeUp} className="grid grid-cols-2 gap-x-6 gap-y-3 max-w-[520px]">
+            {chips.map((c, i) => (
+              <li key={c} className="group flex items-center gap-3 text-[14px] font-semibold text-[#0B1D3A]/80">
+                <IconBadge icon={CHIP_ICONS[i % CHIP_ICONS.length]} accent={ACCENTS[[1, 3, 2, 5][i % 4]]} size="xs" />
+                {c}
+              </li>
+            ))}
+          </motion.ul>
         </motion.div>
 
+        {/* Visual */}
         <motion.div
-          initial={{ opacity: 0, x: 40, scale: 0.96 }}
-          whileInView={{ opacity: 1, x: 0, scale: 1 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end pl-0"
+          initial={{ opacity: 0, x: reduce ? 0 : 48, scale: 0.97 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2, ease: EASE }}
+          className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end relative mt-10 lg:mt-0"
         >
-          <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] sm:rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80 group">
+          <div className="relative w-full h-[400px] lg:h-[500px] xl:h-[540px] rounded-tl-[160px] lg:rounded-tl-[240px] xl:rounded-tl-[280px] rounded-bl-[70px] lg:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80">
             <motion.img
-              animate={{ scale: [1, 1.04, 1] }}
-              transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+              animate={reduce ? undefined : { scale: [1, 1.05, 1] }}
+              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
               src={liveMocksHero}
-              alt="Live mock practice session with real estate expert"
+              alt="Learner practising a live mock session with a real estate expert"
               className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/15 via-transparent to-transparent pointer-events-none" />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/35 via-[#0B1D3A]/5 to-transparent" />
           </div>
+
+          {/* floating glass cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7, ease: EASE }}
+            className="absolute left-[6%] bottom-[10%] animate-float"
+          >
+            <div className="glass-light rounded-[16px] pl-3 pr-5 py-3 flex items-center gap-3 luxury-shadow-lg">
+              <IconBadge icon={Video} accent={ACCENTS[3]} size="sm" interactive={false} />
+              <div className="flex flex-col">
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0B1D3A]/50">Session</span>
+                <span className="text-[14px] font-bold text-[#0B1D3A]">{chips[1]}</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9, ease: EASE }}
+            className="absolute right-[6%] top-[12%] animate-float-delayed"
+          >
+            <div className="glass-light rounded-[16px] pl-3 pr-5 py-3 flex items-center gap-3 luxury-shadow-lg">
+              <IconBadge icon={MessageSquare} accent={ACCENTS[5]} size="sm" interactive={false} />
+              <div className="flex flex-col">
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0B1D3A]/50">After every mock</span>
+                <span className="text-[14px] font-bold text-[#0B1D3A]">{chips[3]}</span>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

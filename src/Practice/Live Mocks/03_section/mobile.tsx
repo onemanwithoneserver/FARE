@@ -1,63 +1,47 @@
 import { motion } from "motion/react";
+import { Users, UserCheck, Handshake, Store, Plus, Equal } from "lucide-react";
 import { data } from "../data";
-import { Users, UserCheck, Handshake } from "lucide-react";
+import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
 
-const icons = [Users, UserCheck, Handshake];
-const GRADIENTS = [
-  "from-[#38BDF8] to-[#0284C7]",
-  "from-[#C084FC] to-[#9333EA]",
-  "from-[#34D399] to-[#059669]",
-];
+const ICONS = [Users, UserCheck, Handshake];
+const TONES = [ACCENTS[2], ACCENTS[3], ACCENTS[1]];
+const CONNECTORS = [Plus, Equal];
 
 export default function Mobile() {
   const s = data.solution;
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#0B1D3A] via-[#0B1D3A] to-[#102B63] py-14 px-6 relative overflow-hidden font-['Outfit']">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-10"
-      >
-        <h2 className="text-white text-[24px] font-black mb-3 leading-tight tracking-tight">
-          {s.title}
-        </h2>
-        <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-4 rounded-full" />
-        <p className="text-[14px] text-white/70 font-medium leading-relaxed">
-          {s.description}
-        </p>
-      </motion.div>
+    <Section tone="white" mobile ariaLabel="The solution">
+      <SectionHeader mobile eyebrow="The Solution" icon={Store} accent={ACCENTS[3]} title={s.title} description={s.description} />
 
-      <div className="flex flex-col gap-5">
-        {s.parties.map((party, index) => {
-          const Icon = icons[index];
-          const gradient = GRADIENTS[index];
+      <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col items-stretch">
+        {s.parties.map((p, i) => {
+          const a = TONES[i];
+          const featured = i === s.parties.length - 1;
+          const Conn = CONNECTORS[i];
           return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-[8px] p-6 flex gap-4 items-start"
-            >
-              <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${gradient} flex items-center justify-center text-white shrink-0 shadow-lg`}>
-                <Icon size={22} strokeWidth={2} />
-              </div>
-              <div>
-                <h3 className="text-[17px] font-bold text-white mb-2">
-                  {party.title}
-                </h3>
-                <p className="text-[13px] text-white/60 leading-relaxed font-medium">
-                  {party.desc}
-                </p>
-              </div>
-            </motion.div>
+            <div key={p.title} className="flex flex-col items-center">
+              <motion.article
+                variants={fadeUp}
+                className={`relative w-full rounded-[16px] p-5 overflow-hidden border ${featured ? "border-transparent text-white luxury-shadow-lg" : "bg-white border-[#E6EBF3] luxury-shadow-sm"}`}
+                style={featured ? { background: "linear-gradient(150deg, #16316A 0%, #0B1D3A 70%)" } : undefined}
+              >
+                {featured && <div aria-hidden="true" className="absolute -bottom-14 -right-14 w-44 h-44 rounded-full blur-[60px] bg-[#C99A2E]/30" />}
+                <div className="relative flex items-center gap-3.5 mb-3">
+                  <IconBadge icon={ICONS[i]} accent={a} size="sm" interactive={false} />
+                  <h3 className={`text-[17px] font-bold ${featured ? "text-white" : "text-[#0B1D3A]"}`}>{p.title}</h3>
+                </div>
+                <p className={`relative text-[13.5px] leading-[1.7] font-medium ${featured ? "text-white/75" : "text-[#475569]"}`}>{p.desc}</p>
+              </motion.article>
+              {Conn && (
+                <motion.span variants={fadeUp} aria-hidden="true" className="my-2.5 w-9 h-9 rounded-full bg-white border border-[#E6EBF3] luxury-shadow flex items-center justify-center text-[#C99A2E]">
+                  <Conn size={15} strokeWidth={3} />
+                </motion.span>
+              )}
+            </div>
           );
         })}
-      </div>
-    </section>
+      </motion.div>
+    </Section>
   );
 }
