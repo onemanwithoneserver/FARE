@@ -1,84 +1,43 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
+import { UserCheck, Users, Briefcase, GraduationCap, Building } from "lucide-react";
 import { data } from "../data";
-import { Users, Building, Laptop, BarChart2, Briefcase, Network, UserCheck } from "lucide-react";
+import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, fadeScale, staggerContainer } from "../../ui";
 
-const icons = [UserCheck, BarChart2, Network, Laptop, Users, Briefcase, Building];
-
-const GRADIENTS = [
-  "from-[#F87171] to-[#DC2626]", "from-[#FBBF24] to-[#D97706]", "from-[#38BDF8] to-[#0284C7]", 
-  "from-[#C084FC] to-[#9333EA]", "from-[#34D399] to-[#059669]", "from-[#F472B6] to-[#DB2777]",
-  "from-[#60A5FA] to-[#2563EB]"
-];
+const icons = [Users, Briefcase, GraduationCap, Building];
 
 export default function Mobile() {
-  const sectionData = data.whoCanUse;
-
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, x: -20 },
-    show: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.4 },
-    },
-  };
+  const sectionData = data.whoIsThisFor || data.whoCanUse;
 
   return (
-    <section className="w-full bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC] py-16 relative overflow-hidden font-['Outfit'] fare-noise-overlay">
-      <div className="w-full px-5 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 text-center"
-        >
-          <h2 className="text-[#0B1D3A] text-[28px] font-black mb-4 leading-tight tracking-tight">
-            {sectionData.title}
-          </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
-        </motion.div>
-        
-        <motion.div 
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          className="flex flex-col gap-4"
-        >
-          {sectionData.roles.map((role, index) => {
-            const Icon = icons[index % icons.length];
-            const gradient = GRADIENTS[index % GRADIENTS.length];
-            return (
-              <motion.div
-                key={index}
-                variants={item}
-                className="bg-white/80 backdrop-blur-md border border-[#E2E8F0]/80 p-5 rounded-[4px] shadow-sm flex items-start gap-4 relative overflow-hidden"
-              >
-                <div className={`w-11 h-11 shrink-0 rounded-[4px] bg-gradient-to-br ${gradient} shadow-sm flex items-center justify-center text-white mt-0.5`}>
-                  <Icon size={20} strokeWidth={2.5} />
-                </div>
-                <div>
-                  <h3 className="text-[16px] font-bold text-[#0B1D3A] mb-1.5 leading-snug">
-                    {role.title}
-                  </h3>
-                  <p className="text-[14px] text-[#64748B] leading-relaxed font-medium">
-                    {role.desc}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </div>
-    </section>
+    <Section tone="white" mobile ariaLabel="Who Can Use">
+      <SectionHeader mobile eyebrow="Who It's For" icon={UserCheck} accent={ACCENTS[4]} title={sectionData.title} />
+
+      <motion.div variants={staggerContainer(0.08)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col gap-4">
+        {sectionData.roles.map((role: any, index: number) => {
+          const a = ACCENTS[index % ACCENTS.length];
+          const Icon = icons[index % icons.length];
+          
+          return (
+            <motion.div
+              key={index}
+              variants={fadeScale}
+              className="bg-white rounded-[16px] border border-[#E6EBF3] p-5 relative overflow-hidden flex flex-col"
+            >
+              <span aria-hidden="true" className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full" style={{ background: `linear-gradient(90deg, ${a.from}, ${a.to})` }} />
+              
+              <div className="flex items-center gap-3 mb-3 pt-1">
+                <IconBadge icon={Icon} accent={a} size="sm" interactive={false} />
+                <h3 className="text-[15px] font-bold text-[#0B1D3A] leading-snug">
+                  {role.title}
+                </h3>
+              </div>
+              <p className="text-[13.5px] text-[#475569] leading-relaxed font-medium">
+                {role.desc}
+              </p>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </Section>
   );
 }

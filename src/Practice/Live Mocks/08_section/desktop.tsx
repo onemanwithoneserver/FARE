@@ -31,7 +31,7 @@ export default function Desktop() {
                 <span className="text-[42px] font-black leading-none" style={{ color: a.to }}>
                   {session.duration.split(" ")[0]}
                 </span>
-                <span className="absolute -bottom-2 text-[12px] font-bold uppercase tracking-widest text-[#0B1D3A]/40">
+                <span className="absolute -bottom-4 text-[12px] font-bold uppercase tracking-widest text-[#0B1D3A]/40">
                   {session.duration.split(" ")[1]}
                 </span>
               </div>
