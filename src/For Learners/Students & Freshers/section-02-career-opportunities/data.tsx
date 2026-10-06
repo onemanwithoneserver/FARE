@@ -22,7 +22,6 @@ export const dataEn = {
           "items": "Sales Operations · Customer Experience · CRM · Marketing Technology · Data & Analytics"
         }
       ],
-      "button": "Explore Employment Opportunities"
     },
     {
       "type": "INDEPENDENT PRACTICE",

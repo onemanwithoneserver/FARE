@@ -1,269 +1,128 @@
+import { motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
-import { motion } from "motion/react";
-import type { Variants } from "motion/react";
-import { ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { getData } from "./data";
-import reTrainersHero from "../../assets/re_trainers_hero.jpg";
+import heroImg from "../../assets/re_trainers_hero.jpg";
 import Modal from "../../Components/Forms/Modal";
-import RETrainersForm from "../../Components/Forms/Desktop/RETrainersForm";
-const NAVY = "#0B1D3A";
-const GOLD = "#C99A2E";
-const GOLD_LIGHT = "#E2C068";
+import FormComponent from "../../Components/Forms/Desktop/RETrainersForm";
+import VideoModal from "../../Components/Forms/VideoModal";
+import { PrimaryButton, SecondaryButton, EASE, fadeUp, staggerContainer } from "../../Practice/ui";
+
 export default function Desktop() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { language } = useLanguage();
-  const data = getData(language);
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.07, delayChildren: 0.1 },
-    },
-  };
-  const item: Variants = {
-    hidden: { opacity: 0, y: 22 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+  const sectionData = getData(language) as any;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const reduce = useReducedMotion();
+
+  const badge = sectionData.tagline;
+  const headline = sectionData.headline;
+  const subheadline = sectionData.subheadline;
+  const subheadlineAccent = sectionData.subheadlineAccent;
+  const description = sectionData.description;
+  const primaryBtn = sectionData.buttons?.primary;
+  const secondaryBtn = sectionData.buttons?.secondary;
+
   return (
+    <>
     <section
-      className="w-full -mt-8 lg:-mt-8 flex items-center justify-center overflow-x-clip relative font-['Outfit']"
-      style={{
-        background: `linear-gradient(165deg, #FFFFFF 0%, #F6F9FF 35%, #EDF2FF 60%, #F0F4FF 100%)`,
-      }}
+      aria-label={headline}
+      className="w-full relative overflow-x-clip font-['Outfit'] fare-noise-overlay bg-[#FAFBFF]"
     >
-      <motion.div
-        animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] right-[15%] w-[700px] h-[700px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[140px] pointer-events-none z-0"
-      ></motion.div>
-      <motion.div
-        animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[15%] left-[10%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
-      ></motion.div>
-      <motion.div
-        animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[60%] right-[5%] w-[300px] h-[300px] bg-gradient-radial from-[#818CF8]/[0.06] to-transparent rounded-full blur-[80px] pointer-events-none z-0"
-      ></motion.div>
-      <div
-        className="absolute inset-0 opacity-[0.015] pointer-events-none z-0"
-        style={{
-          backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
-      />
-      <div className="max-w-[1320px] w-full px-8 lg:px-14 py-10 lg:py-28 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 xl:gap-16 items-center">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: false }}
-            className="lg:col-span-8 flex flex-col items-start text-left w-full relative z-40"
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[4%] right-[8%] w-[680px] h-[680px] rounded-full blur-[140px] animate-pulse-glow" style={{ background: "rgba(129,140,248,0.18)" }} />
+        <div className="absolute bottom-[6%] left-[2%] w-[460px] h-[460px] rounded-full blur-[120px] animate-pulse-glow" style={{ background: "rgba(201,154,46,0.1)", animationDelay: "1.2s" }} />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "linear-gradient(#0B1D3A 1px, transparent 1px), linear-gradient(90deg, #0B1D3A 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+            maskImage: "linear-gradient(90deg, black 0%, transparent 60%)",
+            WebkitMaskImage: "linear-gradient(90deg, black 0%, transparent 60%)",
+          }}
+        />
+      </div>
+
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-6 lg:pt-10 pb-12 lg:pb-16 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0 max-w-[1500px] mx-auto">
+        <motion.div
+          variants={staggerContainer(0.08, 0.1)}
+          initial="hidden"
+          animate="show"
+          className="w-full lg:w-[48%] xl:w-[46%] flex flex-col items-start text-left shrink-0 py-4 lg:py-6 pr-6 lg:pr-10"
+        >
+          {badge && (
+          <motion.span
+            variants={fadeUp}
+            className="inline-flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 rounded-full bg-white border border-[#E6EBF3] shadow-sm mb-6"
           >
-            <h1
-              className={`font-black mb-3 flex flex-col gap-1 md:gap-1.5 ${
-                language === "te"
-                  ? "text-[2.4rem] xl:text-[3rem] leading-[1.15] tracking-wider"
-                  : "text-[2.85rem] xl:text-[3.6rem] leading-[1.05] tracking-[-0.03em]"
-              }`}
-            >
-              <>
-                <motion.span
-                  variants={item}
-                  className="inline-flex items-center self-start gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
-                >
-                  <Sparkles
-                    size={12}
-                    className="text-[#C99A2E]"
-                    strokeWidth={2.5}
-                  />
-                  <span className="font-bold text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">
-                    {language === "te" ? "FARE కోసం" : "FARE FOR"}
-                  </span>
-                </motion.span>
-                <motion.span
-                  variants={item}
-                  className="block uppercase"
-                  style={{ color: NAVY }}
-                >
-                  {language === "te" ? "రియల్ ఎస్టేట్" : "REAL ESTATE"}
-                </motion.span>
-                <motion.span
-                  variants={item}
-                  className={`inline-block text-[#C99A2E] gold-underline uppercase ${language === "te" ? "pb-1" : ""}`}
-                >
-                  {language === "te"
-                    ? "ట్రైనర్స్ & కోచెస్"
-                    : "TRAINERS & COACHES"}
-                </motion.span>
-              </>
-            </h1>
-            <motion.div variants={item} className="mb-4 flex flex-col gap-1">
-              <p
-                className="text-[17px] font-medium leading-[1.5]"
-                style={{ color: "#3A4A63" }}
-              >
-                {data.subheadline}
-              </p>
-              {data.subheadlineAccent && (
-                <p
-                  className="text-[17px] font-medium leading-[1.5]"
-                  style={{ color: GOLD }}
-                >
-                  {data.subheadlineAccent}
-                </p>
-              )}
-              <p
-                className="text-[17px] font-medium leading-[1.5] mt-1.5"
-                style={{ color: "#3A4A63" }}
-              >
-                {data.description}
-              </p>
-            </motion.div>
-            <motion.div
-              variants={item}
-              className="flex items-center gap-4 mb-5"
-            >
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="text-white text-[13.5px] font-semibold px-7 py-3 rounded-[4px] hover:luxury-shadow-float active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5"
-                style={{
-                  background: NAVY,
-                  boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`,
-                }}
-              >
-                {data.buttons.primary}{" "}
-                <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px` }}>
-      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-    </span>
-              </button>
-              {data.buttons.secondary && (
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="text-[13.5px] font-semibold px-7 py-3 rounded-[4px] hover:bg-[#F8FAFD] active:scale-[0.98] transition-all duration-300 flex items-center gap-2.5 border"
-                  style={{
-                    color: NAVY,
-                    borderColor: `${NAVY}15`,
-                    background: "white",
-                    boxShadow: "0 1px 3px rgba(11,29,58,0.03)",
-                  }}
-                >
-                  {data.buttons.secondary}
-                </button>
-              )}
-            </motion.div>
-            <motion.div variants={item} className="flex flex-wrap gap-2 mb-2">
-              {data.features.map((cap, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_6px_rgba(11,29,58,0.03)] text-[#0B1D3A]/80 text-[11.5px] font-semibold"
-                >
-                  <span
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ background: GOLD }}
-                  ></span>
-                  <span>{cap}</span>
+            <span className="relative inline-flex items-center justify-center w-6 h-6 rounded-full text-white" style={{ background: "linear-gradient(135deg,#FB7185,#E11D48)" }}>
+              <span aria-hidden="true" className="absolute inset-0 rounded-full animate-ping bg-[#E11D48]/40" />
+            </span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0B1D3A]/75 leading-none mt-[1px]">{badge}</span>
+          </motion.span>
+          )}
+
+          <motion.h1
+            variants={fadeUp}
+            className="text-[2.75rem] lg:text-[3.2rem] xl:text-[3.6rem] font-black tracking-[-0.025em] leading-[1.04] text-[#0B1D3A] mb-5"
+          >
+            {headline}
+          </motion.h1>
+
+          <motion.p variants={fadeUp} className="text-[20px] xl:text-[22px] font-bold leading-snug mb-5">
+            {subheadline && <span className="text-[#0B1D3A]">{subheadline}</span>}
+            {subheadlineAccent && <span className="gold-gradient-text ml-1">{subheadlineAccent}</span>}
+          </motion.p>
+
+          <motion.p variants={fadeUp} className="text-[16px] xl:text-[17.5px] font-medium text-[#475569] leading-[1.7] max-w-[540px] mb-8 whitespace-pre-line">
+            {description}
+          </motion.p>
+
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mb-9">
+            {primaryBtn && <PrimaryButton onClick={() => setIsModalOpen(true)}>{primaryBtn}</PrimaryButton>}
+            {secondaryBtn && <SecondaryButton onClick={() => setIsVideoModalOpen(true)}>{secondaryBtn}</SecondaryButton>}
+          </motion.div>
+
+          {sectionData.features && (
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-2.5 mb-5">
+              {sectionData.features.map((feature: string, i: number) => (
+                <div key={i} className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#0B1D3A]/10 shadow-sm text-[#0B1D3A] text-[12px] font-bold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] shrink-0" />
+                  <span>{feature}</span>
                 </div>
               ))}
             </motion.div>
-            <motion.p
-              variants={item}
-              className="text-[12px] italic text-[#0B1D3A]/45 font-medium mt-2"
-            >
-              {data.footerText}
+          )}
+          {sectionData.footerText && (
+            <motion.p variants={fadeUp} className="text-[13px] italic font-medium text-[#64748B]">
+              {sectionData.footerText}
             </motion.p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 40, scale: 0.95 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-4 relative w-full flex items-center justify-center"
-          >
-            <div className="relative w-full aspect-[4/5] max-w-[500px] flex items-center justify-center group mt-10 lg:mt-0">
-              <motion.div
-                className="w-full h-full absolute inset-0 z-0 rounded-[2rem] overflow-hidden border border-white/60 luxury-shadow-float"
-                style={{
-                  WebkitMaskImage:
-                    "linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)",
-                  maskImage:
-                    "linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)",
-                }}
-              >
-                <motion.img
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{
-                    duration: 15,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  src={reTrainersHero}
-                  alt="RE Trainers Hero"
-                  className="w-full h-full object-cover object-[center_35%]"
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute -left-4 sm:-left-8 bottom-16 z-20 bg-white/95 backdrop-blur-xl p-4 luxury-shadow-float border border-white/80 rounded-[24px] rounded-tl-[8px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
-              >
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-[4px] rounded-br-[4px] bg-gradient-to-br from-[#34D399] to-[#10B981] flex items-center justify-center shadow-lg shadow-[#34D399]/30">
-                    <Sparkles size={18} className="text-white" />
-                  </div>
-                  <div className="pr-2">
-                    <div className="text-[14px] font-black text-[#0B1D3A] tracking-tight">
-                      {data.dashboard.floatingBadge.title}
-                    </div>
-                    <div className="text-[10px] font-bold text-[#64748B] uppercase tracking-wider mt-0.5">
-                      {data.dashboard.floatingBadge.subtitle}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="absolute -right-4 sm:-right-8 top-24 z-20 bg-white/95 backdrop-blur-xl p-3.5 luxury-shadow-float border border-white/80 hidden lg:block rounded-[20px] rounded-tr-[6px] hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
-              >
-                <div className="flex items-center gap-3.5">
-                  <div
-                    className="w-10 h-10 rounded-[10px] rounded-bl-[4px] flex items-center justify-center text-[15px] font-black text-white shadow-lg shadow-[#C99A2E]/30"
-                    style={{
-                      background: `linear-gradient(135deg, ${GOLD}, ${GOLD_LIGHT})`,
-                    }}
-                  >
-                    %
-                  </div>
-                  <div className="pr-3">
-                    <div className="text-[16px] font-black text-[#0B1D3A] leading-none">
-                      {data.dashboard.stats[0].progress}
-                    </div>
-                    <div className="text-[10px] font-bold text-[#94A3B8] uppercase tracking-wider mt-1">
-                      {data.dashboard.stats[0].title}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
+          )}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: reduce ? 0 : 48, scale: 0.97 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2, ease: EASE }}
+          className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end relative mt-10 lg:mt-0"
+        >
+          <div className="relative w-full h-[450px] lg:h-[550px] xl:h-[600px] rounded-tl-[160px] lg:rounded-tl-[240px] xl:rounded-tl-[280px] rounded-bl-[70px] lg:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80">
+            <motion.img
+              animate={reduce ? undefined : { scale: [1, 1.05, 1] }}
+              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+              src={heroImg}
+              alt="Hero image"
+              className="w-full h-full object-cover object-center"
+            />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/35 via-[#0B1D3A]/5 to-transparent" />
+          </div>
+        </motion.div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        {isModalOpen && <RETrainersForm />}
-      </Modal>
     </section>
+    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <FormComponent />
+    </Modal>
+    <VideoModal isOpen={isVideoModalOpen} onClose={() => setIsVideoModalOpen(false)} />
+    </>
   );
 }

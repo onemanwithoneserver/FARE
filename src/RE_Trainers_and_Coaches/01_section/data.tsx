@@ -1,7 +1,7 @@
 import type { Language } from "../../context/LanguageContext";
 export const dataEn = {
-  tagline: "Skill Enhancement For Real Estate",
-  headline: "FARE for Real Estate Trainers & Coaches",
+  tagline: "FARE for",
+  headline: "Real Estate Trainers & Coaches",
   subheadline: "Finally, a Custom LMS for RE Trainers",
   subheadlineAccent:
     "Turn your expertise into a more powerful learning experience.",

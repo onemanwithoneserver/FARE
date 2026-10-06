@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Briefcase, ArrowRight, ChevronRight } from "lucide-react";
+import { Briefcase } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
 import { ACCENTS, AccentHairline, HoverGlow,  Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer, accentAt } from "../../../Practice/ui";
@@ -67,15 +67,7 @@ export default function Desktop() {
                   </div>
                 ))}
               </div>
-              
-              <button className="w-full mt-auto text-[15px] font-bold py-4 rounded-[12px] flex items-center justify-center gap-2 transition-all duration-300 relative overflow-hidden group/btn" style={{ color: a.to, backgroundColor: `${a.from}10` }}>
-                <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-10 transition-opacity duration-300" style={{ backgroundColor: a.to }} />
-                <span>{opp.button}</span>
-                <span className="relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em]" style={{ fontSize: "18px" }}>
-                  <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover/btn:opacity-0 group-hover/btn:-translate-x-1" />
-                  <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover/btn:opacity-100 group-hover/btn:translate-x-0" />
-                </span>
-              </button>
+
             </motion.div>
           );
         })}

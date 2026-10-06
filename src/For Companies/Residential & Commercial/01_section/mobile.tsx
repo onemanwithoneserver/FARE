@@ -1,208 +1,105 @@
-import { motion } from "motion/react";
-import type { Variants } from "motion/react";
-import { ChevronRight, ArrowRight, Sparkles } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import { useLanguage } from "../../../context/LanguageContext";
 import { getData } from "./data";
-import reCompaniesHero from "../../../assets/re_companies_hero.png";
+import heroImg from "../../../assets/re_companies_hero.png";
 import Modal from "../../../Components/Forms/Modal";
-import RECompaniesForm from "../../../Components/Forms/Mobile/RECompaniesForm";
+import FormComponent from "../../../Components/Forms/Mobile/RECompaniesForm";
 import VideoModal from "../../../Components/Forms/VideoModal";
-const NAVY = "#0B1D3A";
-const GOLD = "#C99A2E";
+import { PrimaryButton, SecondaryButton, EASE, fadeUp, staggerContainer } from "../../../Practice/ui";
+
 export default function Mobile() {
   const { language } = useLanguage();
-  const data = getData(language);
+  const sectionData = getData(language) as any;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-    },
-  };
-  const item: Variants = {
-    hidden: { opacity: 0, y: 15 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+  const reduce = useReducedMotion();
+
+  const badge = sectionData.tagline;
+  const headline = sectionData.headline;
+  const subheadline = sectionData.subheadline;
+  const subheadlineAccent = sectionData.subheadlineAccent;
+  const description = sectionData.description;
+  const primaryBtn = sectionData.buttons?.primary;
+  const secondaryBtn = sectionData.buttons?.secondary;
+
   return (
     <>
-    <section
-      className="w-full -mt-8 flex flex-col items-center justify-start overflow-hidden relative font-['Outfit'] pb-16"
-      style={{
-        background: `linear-gradient(170deg, #FFFFFF 0%, #F6F9FF 30%, #EDF2FF 70%, #E6EDFF 100%)`,
-      }}
-    >
-      <motion.div
-        animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-10 right-[-100px] w-[350px] h-[350px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[80px] pointer-events-none z-0"
-      ></motion.div>
-      <motion.div
-        animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-20 left-[-50px] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[70px] pointer-events-none z-0"
-      ></motion.div>
-      <div
-        className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
-        style={{
-          backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
-        }}
-      />
-      <div className="w-full px-5 pt-8 pb-12 relative z-10 flex flex-col items-center text-center">
+    <section className="w-full relative overflow-hidden font-['Outfit'] fare-noise-overlay bg-[#FAFBFF] pt-28 pb-16 px-6">
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[5%] right-[-10%] w-[400px] h-[400px] rounded-full blur-[100px] animate-pulse-glow" style={{ background: "rgba(129,140,248,0.18)" }} />
+        <div className="absolute bottom-[20%] left-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] animate-pulse-glow" style={{ background: "rgba(201,154,46,0.12)", animationDelay: "1s" }} />
+      </div>
+
+      <div className="w-full relative z-10 flex flex-col items-center text-center">
         <motion.div
-          variants={container}
+          variants={staggerContainer(0.05, 0.1)}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: false }}
+          animate="show"
           className="flex flex-col items-center w-full"
         >
-          <h1
-            className={`font-black mb-3.5 flex flex-col items-center gap-1 sm:gap-1.5 ${
-              language === "te"
-                ? "text-[1.35rem] xs:text-[1.65rem] sm:text-[2.1rem] leading-[1.25] tracking-wide my-1.5"
-                : "text-[1.35rem] xs:text-[1.65rem] sm:text-[2.1rem] leading-[1.08] tracking-[-0.02em]"
-            }`}
+          {badge && (
+          <motion.span
+            variants={fadeUp}
+            className="inline-flex items-center gap-2 pl-1.5 pr-3.5 py-1.5 rounded-full bg-white border border-[#E6EBF3] shadow-sm mb-6"
           >
-            <>
-              <motion.span
-                variants={item}
-                className="inline-flex items-center self-center gap-2 px-3.5 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.06] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-2"
-              >
-                <Sparkles
-                  size={11}
-                  className="text-[#C99A2E]"
-                  strokeWidth={2.5}
-                />
-                <span className="font-bold text-[10px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">
-                  {language === "te" ? "FARE కోసం" : "FARE FOR"}
-                </span>
-              </motion.span>
-              <motion.span
-                variants={item}
-                className="block uppercase whitespace-nowrap"
-                style={{ color: NAVY }}
-              >
-                {language === "te"
-                  ? "రెసిడెన్షియల్ & కమర్షియల్"
-                  : "RESIDENTIAL & COMMERCIAL"}
-              </motion.span>
-              <motion.span
-                variants={item}
-                className={`self-center inline-block text-[#C99A2E] gold-underline uppercase ${
-                  language === "te" ? "pb-1" : ""
-                }`}
-              >
-                {language === "te" ? "కంపెనీలు" : "COMPANIES"}
-              </motion.span>
-            </>
-          </h1>
-          <motion.div variants={item} className="mb-3 flex flex-col gap-1">
-            <h2 className={` font-bold ${ language === "te" ? "text-[15px] leading-normal tracking-wider py-0.5" : "text-[16px] leading-snug" } text-[#0B1D3A]`}>
-              {data.subheadline}
-            </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
-            {data.subheadlineAccent && (
-              <>
-<h2 className={`font-bold ${ language === "te" ? "text-[15px] leading-normal tracking-wider py-0.5" : "text-[16px] leading-snug" }`} style={{ color: GOLD }}>
-                {data.subheadlineAccent}
-              </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
-            </>
-)}
-          </motion.div>
-          <motion.p
-            variants={item}
-            className="text-[14.5px] font-medium leading-[1.7] mb-8 max-w-[420px] text-[#475569]"
+            <span className="relative inline-flex items-center justify-center w-5 h-5 rounded-full text-white" style={{ background: "linear-gradient(135deg,#FB7185,#E11D48)" }}>
+              <span aria-hidden="true" className="absolute inset-0 rounded-full animate-ping bg-[#E11D48]/40" />
+            </span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#0B1D3A]/75 leading-none mt-[1px]">{badge}</span>
+          </motion.span>
+          )}
+
+          <motion.h1
+            variants={fadeUp}
+            className="text-[2.25rem] xs:text-[2.5rem] font-black tracking-tight leading-[1.05] text-[#0B1D3A] mb-4"
           >
-            {data.description}
+            {headline}
+          </motion.h1>
+
+          <motion.p variants={fadeUp} className="text-[17px] font-bold leading-snug mb-4">
+            {subheadline && <span className="text-[#0B1D3A]">{subheadline}</span>}
+            {subheadlineAccent && <span className="gold-gradient-text ml-1">{subheadlineAccent}</span>}
           </motion.p>
-          <motion.div
-            variants={item}
-            className="flex flex-col w-full gap-3 max-w-[280px] mb-4"
-          >
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="text-white font-semibold w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
-              style={{
-                background: NAVY,
-                boxShadow: "0 2px 8px rgba(11,29,58,0.15)",
-              }}
-            >
-              {data.buttons.primary} <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${14}px` }}>
-      <ChevronRight size={14} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-      <ArrowRight size={14} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-    </span>
-            </button>
-            {data.buttons.secondary && (
-              <button
-                onClick={() => setIsVideoModalOpen(true)}
-                className="font-semibold w-full py-3.5 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out cursor-pointer"
-                style={{
-                  color: NAVY,
-                  borderColor: `${NAVY}15`,
-                  background: "white",
-                  boxShadow: "0 1px 3px rgba(11,29,58,0.03)",
-                }}
-              >
-                {data.buttons.secondary}
-              </button>
-            )}
-          </motion.div>
-          <motion.div
-            variants={item}
-            className="flex flex-wrap justify-center gap-1.5 mb-5 max-w-[340px]"
-          >
-            {data.features.map((f, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/80 border border-[#0B1D3A]/[0.08] text-[#0B1D3A]/80 text-[10px] font-semibold"
-              >
-                <span
-                  className="w-1 h-1 rounded-full"
-                  style={{ background: GOLD }}
-                ></span>
-                <span>{f}</span>
-              </div>
-            ))}
-          </motion.div>
-          <motion.p
-            variants={item}
-            className="text-[10.5px] italic text-[#0B1D3A]/45 font-medium"
-          >
-            {data.footerText}
+
+          <motion.p variants={fadeUp} className="text-[15px] font-medium text-[#475569] leading-relaxed max-w-[400px] mb-8 whitespace-pre-line">
+            {description}
           </motion.p>
+
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-3 w-full max-w-[400px] mb-10">
+            {primaryBtn && <PrimaryButton onClick={() => setIsModalOpen(true)}>{primaryBtn}</PrimaryButton>}
+            {secondaryBtn && <SecondaryButton onClick={() => setIsVideoModalOpen(true)}>{secondaryBtn}</SecondaryButton>}
+          </motion.div>
+
+          {sectionData.features && (
+            <motion.div variants={fadeUp} className="flex flex-wrap justify-center items-center gap-2 mb-6">
+              {sectionData.features.map((feature: string, i: number) => (
+                <div key={i} className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#0B1D3A]/10 shadow-sm text-[#0B1D3A] text-[11px] font-bold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] shrink-0" />
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </motion.div>
+          )}
         </motion.div>
+
         <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full mt-8 relative z-20 flex items-center justify-center px-2"
+          initial={{ opacity: 0, y: reduce ? 0 : 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
+          className="w-full relative mt-4 px-2"
         >
-          <div className="relative w-full aspect-[16/11] max-w-[420px] rounded-[16px] overflow-hidden border border-white/80 luxury-shadow-float bg-slate-100 group">
-            <img
-              src={reCompaniesHero}
-              alt="RE Companies Hero"
-              className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out rounded-[4px]"
-            />
+          <div className="relative w-full aspect-[4/3] rounded-tl-[80px] rounded-br-[60px] rounded-tr-[24px] rounded-bl-[24px] overflow-hidden luxury-shadow-sm border border-[#E6EBF3]">
+            <img src={heroImg} alt="Hero" className="w-full h-full object-cover object-center" />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/30 via-transparent to-transparent" />
           </div>
         </motion.div>
       </div>
     </section>
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-      <RECompaniesForm />
+      <FormComponent />
     </Modal>
-    <VideoModal
-      isOpen={isVideoModalOpen}
-      onClose={() => setIsVideoModalOpen(false)}
-    />
+    <VideoModal isOpen={isVideoModalOpen} onClose={() => setIsVideoModalOpen(false)} />
     </>
   );
 }

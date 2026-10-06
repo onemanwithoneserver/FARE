@@ -1,7 +1,7 @@
 import type { Language } from "../../../context/LanguageContext";
 export const dataEn = {
-  tagline: "Skill Enhancement For Real Estate",
-  headline: "FARE for Residential & Commercial Companies",
+  tagline: "FARE for",
+  headline: "Residential & Commercial Companies",
   subheadline: "Hone your Sales Team & Channel Partner Skills",
   subheadlineAccent: "With a Custom RE Learning System.",
   description:

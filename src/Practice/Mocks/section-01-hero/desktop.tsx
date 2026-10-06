@@ -34,7 +34,7 @@ export default function Desktop() {
         />
       </div>
 
-      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-16 lg:pt-20 pb-16 lg:pb-24 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0 max-w-[1500px] mx-auto min-h-[85vh]">
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-6 lg:pt-10 pb-12 lg:pb-16 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0 max-w-[1500px] mx-auto">
         {/* Copy */}
         <motion.div
           variants={staggerContainer(0.08, 0.1)}
