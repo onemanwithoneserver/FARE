@@ -24,7 +24,7 @@ export default function Mobile({ isOpen = false, onClose }: CorporateRequestForm
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
   };
 
-  const inputClasses = "w-full bg-[#F8FAFD]/50 backdrop-blur-sm border border-[#0B1D3A]/[0.08] rounded-[4px] px-4 py-3 text-[14px] font-medium text-[#0B1D3A] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B5CF6]/10 focus:border-[#8B5CF6] focus:bg-white aria-[invalid=true]:border-red-500 aria-[invalid=true]:ring-red-500/20 aria-[invalid=false]:border-emerald-500/40 transition-all duration-300 ease-out placeholder:text-[#7B8DAA]/60 shadow-[0_2px_8px_-4px_rgba(11,29,58,0.02)]";
+  const inputClasses = "w-full bg-[#F8FAFD]/50 backdrop-blur-sm border border-[#0B1D3A]/[0.08] rounded-[4px] px-4 py-3 text-[14px] font-medium text-[#0B1D3A] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B5CF6]/10 focus:border-[#8B5CF6] focus:bg-white aria-[invalid=true]:border-red-500 aria-[invalid=true]:ring-red-500/20 aria-[invalid=false]:border-emerald-500/40 transition-all duration-300 ease-out placeholder:text-[#7B8DAA]/60 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400";
   const labelClasses = "block text-[11px] font-black text-[#0B1D3A]/80 uppercase tracking-[0.08em] mb-2";
 
   const [audience, setAudience] = useState("");
@@ -86,7 +86,7 @@ export default function Mobile({ isOpen = false, onClose }: CorporateRequestForm
 
             <button
               onClick={onClose}
-              className="absolute top-5 right-5 p-2 rounded-full bg-white border border-[#0B1D3A]/[0.06] hover:bg-[#F8FAFD] hover:border-[#0B1D3A]/10 text-[#7B8DAA] hover:text-[#0B1D3A] transition-all duration-300 shadow-sm z-20"
+              className="absolute top-5 right-5 p-2 rounded-full bg-white border border-[#0B1D3A]/[0.06] hover:bg-[#F8FAFD] hover:border-[#0B1D3A]/10 text-[#7B8DAA] hover:text-[#0B1D3A] transition-all duration-300 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 z-20"
             >
               <X size={16} strokeWidth={2.5} />
             </button>

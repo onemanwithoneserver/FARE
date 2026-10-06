@@ -24,7 +24,7 @@ export default function Desktop() {
     },
   };
   return (
-    <section className="w-full py-16 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+    <section className="w-full py-16 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden fare-noise-overlay">
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -95,7 +95,7 @@ export default function Desktop() {
             <div className="flex flex-col gap-6 relative z-10 mt-auto">
               {data.exploreItems.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-5 group/item">
-                  <div className="mt-1 w-7 h-7 rounded-full bg-[#F8FAFD] flex items-center justify-center shrink-0 group-hover/item:bg-[#C99A2E]/15 group-hover/item:scale-110 transition-all duration-300 border border-[#0B1D3A]/[0.05] shadow-sm">
+                  <div className="mt-1 w-7 h-7 rounded-full bg-[#F8FAFD] flex items-center justify-center shrink-0 group-hover/item:bg-[#C99A2E]/15 group-hover/item:scale-110 transition-all duration-300 border border-[#0B1D3A]/[0.05] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400">
                     <CheckCircle2
                       size={16}
                       className="text-[#C99A2E]"
@@ -133,7 +133,7 @@ export default function Desktop() {
             <h3 className=" text-[32px] lg:text-[40px] font-black text-white mb-12 relative z-10 leading-[1.1] tracking-tight">
               {data.footerText}
             </h3>
-            <button className="bg-gradient-to-r from-[#C99A2E] to-[#B88A22] hover:from-[#D5AA45] hover:to-[#C99A2E] text-white px-10 py-5 rounded-[8px] font-bold text-[18px] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] group-hover:-translate-y-2 transition-all duration-400 flex items-center gap-4 relative z-10 w-full justify-center max-w-[360px] overflow-hidden hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
+            <button className="bg-gradient-to-r from-[#C99A2E] to-[#B88A22] hover:from-[#D5AA45] hover:to-[#C99A2E] text-white px-10 py-5 rounded-[8px] font-bold text-[18px] luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 group-hover:-translate-y-2 transition-all duration-400 flex items-center gap-4 relative z-10  justify-center max-w-[360px] overflow-hidden hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
               <span className="relative z-10">{data.ctaButton}</span>
               <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"relative z-10 group-hover:translate-x-2"}`} style={{ fontSize: `${22}px` }}>
       <ChevronRight size={22} strokeWidth={3} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />

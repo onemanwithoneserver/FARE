@@ -49,7 +49,7 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full py-16 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-16 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
           "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",
@@ -82,7 +82,7 @@ export default function Desktop() {
         >
           <motion.div variants={item} className="mb-6">
             <span
-              className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10 shadow-[0_0_15px_rgba(201,154,46,0.15)] backdrop-blur-sm"
+              className="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 backdrop-blur-sm"
               style={{ color: GOLD }}
             >
               {data.overline}
@@ -138,7 +138,7 @@ export default function Desktop() {
                   style={{ background: mode.color }}
                 ></motion.div>
                 <div
-                  className="w-20 h-20 rounded-[4px] mx-auto flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.08)] mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
+                  className="w-20 h-20 rounded-[4px] mx-auto flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
                   style={{ backgroundColor: mode.color }}
                 >
                   <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 rounded-[4px]"></div>
@@ -183,7 +183,7 @@ export default function Desktop() {
               >
                 <div className="flex flex-col gap-4 mb-4 relative z-10">
                   <div
-                    className="w-14 h-14 rounded-[4px] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-md"
+                    className="w-14 h-14 rounded-[4px] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                     style={{ backgroundColor: type.color }}
                   >
                     <div className="absolute inset-0 bg-white/10 rounded-[4px]"></div>

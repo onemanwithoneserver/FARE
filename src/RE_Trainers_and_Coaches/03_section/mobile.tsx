@@ -52,7 +52,7 @@ export default function Mobile() {
   const sectionTitle = data.title;
   return (
     <section
-      className="w-full py-10 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-10 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{ background: "#FFFFFF" }}
     >
       <motion.div
@@ -104,7 +104,7 @@ export default function Mobile() {
             <motion.div
               key={index}
               variants={item}
-              className="bg-white border border-[#0B1D3A]/[0.06] rounded-[8px] p-3.5 shadow-[0_2px_10px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden flex flex-col justify-between hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
+              className="bg-white border border-[#0B1D3A]/[0.06] rounded-[8px] p-3.5 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden flex flex-col justify-between hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}

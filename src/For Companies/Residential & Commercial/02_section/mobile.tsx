@@ -56,7 +56,7 @@ export default function Mobile() {
   ];
   return (
     <section
-      className="w-full py-12 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-12 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
           "linear-gradient(180deg, #FFF1F2 0%, #FFE4E6 30%, #FDF2F4 70%, #FFF5F7 100%)",
@@ -92,7 +92,7 @@ export default function Mobile() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className={`absolute pointer-events-none select-none z-0 ${item.size} filter drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]`}
+          className={`absolute pointer-events-none select-none z-0 ${item.size} filter drop-luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400`}
           style={{ top: item.top, left: item.left, right: item.right }}
         >
           {item.emoji}
@@ -132,13 +132,13 @@ export default function Mobile() {
               <motion.div
                 key={index}
                 variants={item}
-                className="bg-gradient-to-r from-white/95 via-red-50/70 to-red-100/40 backdrop-blur-sm border border-red-200/90 rounded-[4px] p-4 shadow-[0_2px_10px_-2px_rgba(220,38,38,0.08)] flex items-center gap-4 relative overflow-hidden"
+                className="bg-gradient-to-r from-white/95 via-red-50/70 to-red-100/40 backdrop-blur-sm border border-red-200/90 rounded-[4px] p-4 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 flex items-center gap-4 relative overflow-hidden"
               >
                 <span className="absolute -bottom-1 -right-1 text-[32px] opacity-[0.08] select-none pointer-events-none filter blur-[0.2px]">
                   {emoji}
                 </span>
                 <div
-                  className="w-10 h-10 rounded-[8px] shadow-md flex items-center justify-center shrink-0 relative overflow-hidden ring-2 ring-red-100/60"
+                  className="w-10 h-10 rounded-[8px] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 flex items-center justify-center shrink-0 relative overflow-hidden ring-2 ring-red-100/60"
                   style={{ backgroundColor: color }}
                 >
                   <Icon

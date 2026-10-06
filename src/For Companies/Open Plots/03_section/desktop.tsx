@@ -51,7 +51,7 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full py-16 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-16 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{ background: "#FFFFFF" }}
     >
       <motion.div
@@ -107,7 +107,7 @@ export default function Desktop() {
                 y: -6,
                 transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
               }}
-              className="group bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-10 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative overflow-hidden flex flex-col cursor-default"
+              className="group bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-10 luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-400 relative overflow-hidden flex flex-col cursor-default"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -125,7 +125,7 @@ export default function Desktop() {
               ></div>
               <div className="flex items-start justify-between mb-8 relative z-10">
                 <div
-                  className="w-16 h-16 rounded-[4px] flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
+                  className="w-16 h-16 rounded-[4px] flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
                   style={{ backgroundColor: card.color }}
                 >
                   <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
@@ -166,7 +166,7 @@ export default function Desktop() {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="mt-12 flex justify-center"
         >
-          <button className="group relative flex items-center gap-4 px-8 py-4 bg-white border border-[#0B1D3A]/10 rounded-full luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#C99A2E]/30 hover:-translate-y-1 active:scale-[0.98] transition-all duration-400 ease-out overflow-hidden">
+          <button className="group relative flex items-center gap-4 px-8 py-4 bg-white border border-[#0B1D3A]/10 rounded-full luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 hover:border-[#C99A2E]/30 hover:-translate-y-1 active:scale-[0.98] transition-all duration-400 ease-out overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/0 via-[#C99A2E]/[0.05] to-[#C99A2E]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
             <span className="text-[14px] font-bold tracking-[0.15em] uppercase text-[#0B1D3A] group-hover:text-[#C99A2E] transition-colors duration-300 relative z-10">
               {data.cta.replace(" ↓", "")}

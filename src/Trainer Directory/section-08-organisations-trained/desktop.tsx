@@ -32,7 +32,7 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full py-16 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
+      className="w-full py-16 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, 25, 0], y: [0, -25, 0], scale: [1, 1.1, 1] }}
@@ -89,17 +89,17 @@ export default function Desktop() {
                     {timelineItem.year}
                   </span>
                   <div
-                    className="absolute left-[93px] top-[28px] z-10 h-[14px] w-[14px] rounded-full border-[3px] border-white shadow-sm"
+                    className="absolute left-[93px] top-[28px] z-10 h-[14px] w-[14px] rounded-full border-[3px] border-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                     style={{ background: colors.accent }}
                   />
                   <motion.div
                     whileHover={{ y: -2, transition: { duration: 0.25 } }}
-                    className="relative w-3/4 min-h-[142px] overflow-hidden rounded-[4px] border border-[#0B1D3A]/[0.08] bg-white p-5 shadow-[0_8px_24px_-16px_rgba(11,29,58,0.3)] transition-shadow hover:shadow-[0_20px_40px_-20px_rgba(11,29,58,0.3)]"
+                    className="relative w-3/4 min-h-[142px] overflow-hidden rounded-[4px] border border-[#0B1D3A]/[0.08] bg-white p-5 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-shadow hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                   >
                     <div className="absolute inset-x-0 top-0 h-[3px]" style={{ background: colors.bg }} />
                     <div className="flex items-center gap-4">
                       <div
-                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[4px] text-[13px] font-black text-white shadow-sm"
+                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[4px] text-[13px] font-black text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                         style={{ background: colors.bg }}
                       >
                         {initialsOf(timelineItem.company)}

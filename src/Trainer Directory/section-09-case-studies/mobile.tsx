@@ -33,7 +33,7 @@ export default function Mobile() {
   };
 
   return (
-    <section className="w-full py-12 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white">
+    <section className="w-full py-12 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white fare-noise-overlay">
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}

@@ -29,7 +29,7 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 240 }}
-            className="w-full bg-white rounded-t-[8px] flex flex-col max-h-[88vh] font-['Outfit'] shadow-[0_-24px_80px_-12px_rgba(11,29,58,0.35)] relative overflow-hidden"
+            className="w-full bg-white rounded-t-[8px] flex flex-col max-h-[88vh] font-['Outfit'] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="w-full flex justify-center pt-3 pb-1">
@@ -74,7 +74,7 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
                           aria-pressed={active}
                           className={`inline-flex items-center gap-1.5 h-9 px-3.5 rounded-[8px] text-[12.5px] font-semibold border transition-all duration-200 ${
                             active
-                              ? "text-white border-transparent shadow-[0_6px_14px_-6px_rgba(11,29,58,0.5)]"
+                              ? "text-white border-transparent luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                               : "bg-white text-[#0B1D3A]/75 border-[#0B1D3A]/10 active:bg-[#F5F7FB]"
                           }`}
                           style={active ? { background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` } : undefined}
@@ -99,7 +99,7 @@ export default function Mobile({ isOpen, onClose, selected, onToggle, onClear, r
               </button>
               <button
                 onClick={onClose}
-                className="flex-[1.6] h-12 rounded-[8px] text-white font-bold text-[14px] flex items-center justify-center gap-1.5 shadow-[0_10px_24px_-10px_rgba(11,29,58,0.6)] active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+                className="flex-[1.6] h-12 rounded-[8px] text-white font-bold text-[14px] flex items-center justify-center gap-1.5 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
               >
                 {language === "te"

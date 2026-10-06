@@ -81,7 +81,7 @@ function TrainerPhotoHero({
             aria-label={`${t("Play introduction video")}: ${trainer.name}`}
             className="absolute inset-0 z-10 flex items-center justify-center text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D5AA45]"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#0B1D3A] shadow-[0_8px_24px_-6px_rgba(0,0,0,0.5)] ring-4 ring-white/25 transition-transform group-active:scale-95">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#0B1D3A] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 ring-4 ring-white/25 transition-transform group-active:scale-95">
               <Play size={16} fill="currentColor" className="ml-0.5" />
             </span>
           </button>
@@ -112,7 +112,7 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
   const initials = trainer.name.split(" ").map((part) => part[0]).join("").slice(0, 2);
 
   return (
-    <div className="relative shrink-0 rounded-[8px] bg-white p-0.5 shadow-[0_12px_28px_-10px_rgba(11,29,58,0.5)] ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
+    <div className="relative shrink-0 rounded-[8px] bg-white p-0.5 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 ring-1 ring-[#C99A2E]/40" style={{ width: size, height: size }}>
       <div className="h-full w-full overflow-hidden rounded-[6px] bg-[#0B1D3A]">
         {trainer.image ? (
           <img src={trainer.image} alt={trainer.name} loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
@@ -121,7 +121,7 @@ function TrainerPortrait({ trainer, size }: { trainer: Trainer; size: number }) 
         )}
       </div>
       {trainer.verified && (
-        <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#2563EB] shadow-sm ring-1 ring-white">
+        <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#2563EB] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 ring-1 ring-white">
           <BadgeCheck size={11} strokeWidth={2.8} style={{ color: "#FFFFFF" }} />
         </span>
       )}
@@ -143,7 +143,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
   ];
 
   return (
-    <article className="group relative flex flex-col h-full bg-white rounded-[8px] font-['Outfit'] border border-[#E2E8F0] shadow-[0_4px_16px_rgba(11,29,58,0.04)] active:scale-[0.99] transition-transform duration-200 overflow-hidden">
+    <article className="group relative flex flex-col h-full bg-white rounded-[8px] font-['Outfit'] border border-[#E2E8F0] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 active:scale-[0.99] transition-transform duration-200 overflow-hidden">
       <TrainerPhotoHero
         trainer={trainer}
         isIntroVideoOpen={isIntroVideoOpen}
@@ -170,7 +170,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
         <div className="mt-3 grid grid-cols-3 rounded-[8px] border border-[#0B1D3A]/[0.05] bg-[#F7F9FC] divide-x divide-[#0B1D3A]/[0.06]">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-1 py-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-[8px] shadow-sm" style={{ background: stat.color, color: "#FFFFFF" }}>
+              <span className="flex h-6 w-6 items-center justify-center rounded-[8px] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" style={{ background: stat.color, color: "#FFFFFF" }}>
                 {stat.icon}
               </span>
               <span className="text-[13px] font-black leading-none" style={{ color: NAVY }}>{stat.value}</span>
@@ -218,7 +218,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
           <div className="flex items-center justify-between gap-2 pt-2">
             <button
               onClick={onViewProfile}
-              className="group/vp px-4 h-9 rounded-[8px] text-[12.5px] font-bold flex items-center justify-center gap-1 text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+              className="group/vp px-4 h-9 rounded-[8px] text-[12.5px] font-bold flex items-center justify-center gap-1 text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
               style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
             >
               {t("View Profile")}
@@ -241,7 +241,7 @@ export default function Mobile({ trainer, onViewProfile }: TrainerCardProps) {
               className={`group/rq px-4 h-9 rounded-[8px] text-[12.5px] font-bold flex items-center justify-center gap-1.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 ${
                 requested
                   ? "bg-[#E7F7F0] border border-[#059669]/30 text-[#059669] cursor-default"
-                  : "relative overflow-hidden border border-[#C99A2E]/40 bg-[#FBF4E4] hover:bg-gradient-to-br hover:from-[#D5AA45] hover:to-[#C99A2E] hover:border-transparent hover:shadow-[0_8px_18px_-8px_rgba(201,154,46,0.7)] active:scale-[0.98] text-[#0B1D3A]"
+                  : "relative overflow-hidden border border-[#C99A2E]/40 bg-[#FBF4E4] hover:bg-gradient-to-br hover:from-[#D5AA45] hover:to-[#C99A2E] hover:border-transparent hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 active:scale-[0.98] text-[#0B1D3A]"
               }`}
             >
               <span className="relative z-10 flex items-center gap-1">

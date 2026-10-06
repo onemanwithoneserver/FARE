@@ -39,7 +39,7 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-8 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
+      className="w-full py-8 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -20, 0], scale: [1, 1.05, 1] }}
@@ -74,7 +74,7 @@ export default function Mobile() {
               />
               <div className="flex items-center gap-2 mb-3">
                 <div
-                  className="w-9 h-9 rounded-[4px] flex items-center justify-center text-white shadow-md"
+                  className="w-9 h-9 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                   style={{ background: domainColors[idx % domainColors.length].bg }}
                 >
                   {getCategoryIcon(categoryObj.category, 14, 2.5)}

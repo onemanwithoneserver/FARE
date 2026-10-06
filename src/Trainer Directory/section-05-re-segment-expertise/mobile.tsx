@@ -35,7 +35,7 @@ const SegmentAccordion = ({ segment, defaultOpen }: { segment: any; defaultOpen:
             <div className="px-3.5 pb-3.5 pt-1">
               <div className="flex flex-wrap gap-1.5">
                 {segment.items.map((it: string, i: number) => (
-                  <span key={i} className="text-[11px] font-semibold px-2 py-0.5 rounded-[4px] bg-white border border-[#0B1D3A]/[0.06] text-[#5A6B82] shadow-sm">
+                  <span key={i} className="text-[11px] font-semibold px-2 py-0.5 rounded-[4px] bg-white border border-[#0B1D3A]/[0.06] text-[#5A6B82] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400">
                     {it}
                   </span>
                 ))}
@@ -69,7 +69,7 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-12 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
+      className="w-full py-12 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, 20, 0], scale: [1, 1.05, 1] }}
@@ -95,7 +95,7 @@ export default function Mobile() {
         <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px] p-5 luxury-shadow-float relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[0].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">
-            <div className="w-9 h-9 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[0].bg }}>
+            <div className="w-9 h-9 shrink-0 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" style={{ background: sectionColors[0].bg }}>
               {sectionColors[0].icon}
             </div>
             <h2 className="text-[#0B1D3A] text-[17px] font-black leading-tight">
@@ -114,7 +114,7 @@ export default function Mobile() {
         <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px] p-5 luxury-shadow-float relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[1].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">
-            <div className="w-9 h-9 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[1].bg }}>
+            <div className="w-9 h-9 shrink-0 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" style={{ background: sectionColors[1].bg }}>
               {sectionColors[1].icon}
             </div>
             <h2 className="text-[#0B1D3A] text-[17px] font-black leading-tight">
@@ -138,7 +138,7 @@ export default function Mobile() {
         <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[4px] p-5 luxury-shadow-float relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 opacity-80" style={{ background: sectionColors[2].bg }} />
           <div className="flex items-center gap-3 mb-5 mt-1">
-            <div className="w-9 h-9 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm" style={{ background: sectionColors[2].bg }}>
+            <div className="w-9 h-9 shrink-0 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" style={{ background: sectionColors[2].bg }}>
               {sectionColors[2].icon}
             </div>
             <h2 className="text-[#0B1D3A] text-[17px] font-black leading-tight">
@@ -151,7 +151,7 @@ export default function Mobile() {
               <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-wider">{t("Primary Language")}</span>
               <span className="text-[15px] font-black" style={{ color: NAVY }}>{t("English")}</span>
             </div>
-            <div className="flex flex-col gap-1.5 p-3 rounded-[4px] bg-white border border-[#0B1D3A]/[0.06] shadow-sm">
+            <div className="flex flex-col gap-1.5 p-3 rounded-[4px] bg-white border border-[#0B1D3A]/[0.06] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400">
               <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-wider">{t("Secondary Languages")}</span>
               <div className="flex flex-wrap gap-1.5 mt-0.5">
                 {["Telugu", "Hindi"].map(lang => (

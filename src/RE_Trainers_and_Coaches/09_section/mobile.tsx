@@ -24,7 +24,7 @@ export default function Mobile() {
     },
   };
   return (
-    <section className="w-full py-10 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+    <section className="w-full py-10 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden fare-noise-overlay">
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -39,7 +39,7 @@ export default function Mobile() {
           className="flex flex-col items-center text-center mb-12"
         >
           <motion.div variants={item} className="mb-6">
-            <div className="bg-white border border-[#0B1D3A]/[0.08] px-4 py-2 rounded-full flex items-center gap-2 shadow-sm backdrop-blur-md inline-flex hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
+            <div className="bg-white border border-[#0B1D3A]/[0.08] px-4 py-2 rounded-full flex items-center gap-2 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 backdrop-blur-md inline-flex hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-400 ease-out">
               <Sparkles size={14} className="text-[#C99A2E]" />
               <span
                 className="text-[10px] font-bold tracking-[0.2em] uppercase"
@@ -81,7 +81,7 @@ export default function Mobile() {
             <div className="flex flex-col gap-5 relative z-10">
               {data.exploreItems.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-4">
-                  <div className="mt-0.5 w-6 h-6 rounded-full bg-[#F8FAFD] flex items-center justify-center shrink-0 border border-[#0B1D3A]/[0.05] shadow-sm">
+                  <div className="mt-0.5 w-6 h-6 rounded-full bg-[#F8FAFD] flex items-center justify-center shrink-0 border border-[#0B1D3A]/[0.05] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400">
                     <CheckCircle2
                       size={14}
                       className="text-[#C99A2E]"
@@ -113,7 +113,7 @@ export default function Mobile() {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="absolute bottom-0 left-0 w-48 h-48 bg-[#3B82F6]/15 rounded-full blur-[50px] pointer-events-none"
             ></motion.div>
-            <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-6 border border-white/10 shadow-lg relative z-10">
+            <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-6 border border-white/10 luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 relative z-10">
               <Sparkles size={24} className="text-[#C99A2E]" />
             </div>
             <h3 className="text-[26px] font-black text-white mb-8 relative z-10 leading-[1.15]">

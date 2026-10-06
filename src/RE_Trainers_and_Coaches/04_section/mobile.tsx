@@ -49,7 +49,7 @@ export default function Mobile() {
   };
   return (
     <section
-      className="w-full py-10 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-10 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
           "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",
@@ -77,7 +77,7 @@ export default function Mobile() {
         >
           <motion.div variants={item} className="mb-4">
             <span
-              className="inline-flex items-center px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10 shadow-[0_0_15px_rgba(201,154,46,0.15)] backdrop-blur-sm"
+              className="inline-flex items-center px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/30 bg-[#C99A2E]/10 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 backdrop-blur-sm"
               style={{ color: GOLD }}
             >
               {data.overline}
@@ -123,7 +123,7 @@ export default function Mobile() {
                 ></motion.div>
                 <div className="flex items-center gap-4 mb-5 relative z-10">
                   <div
-                    className="w-12 h-12 rounded-[4px] flex items-center justify-center shadow-lg shrink-0"
+                    className="w-12 h-12 rounded-[4px] flex items-center justify-center luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 shrink-0"
                     style={{ backgroundColor: segment.color }}
                   >
                     {segmentIcons[segment.icon as keyof typeof segmentIcons]}
@@ -176,11 +176,11 @@ export default function Mobile() {
                 <motion.div
                   key={index}
                   variants={item}
-                  className="bg-white/[0.06] backdrop-blur-md border border-white/10 rounded-[4px] p-5 flex flex-col gap-4 shadow-sm hover:border-[#C99A2E]/40 transition-colors"
+                  className="bg-white/[0.06] backdrop-blur-md border border-white/10 rounded-[4px] p-5 flex flex-col gap-4 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 hover:border-[#C99A2E]/40 transition-colors"
                 >
                   <div className="flex items-center gap-4">
                     <div
-                      className="w-12 h-12 rounded-[4px] flex items-center justify-center shrink-0 shadow-md"
+                      className="w-12 h-12 rounded-[4px] flex items-center justify-center shrink-0 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                       style={{ backgroundColor: learner.color }}
                     >
                       {learnerIcons[learner.icon as keyof typeof learnerIcons]}

@@ -31,7 +31,7 @@ export default function Mobile() {
   return (
     <>
     <section
-      className="w-full py-12 px-5 flex items-center justify-center font-['Outfit'] relative overflow-hidden"
+      className="w-full py-12 px-5 flex items-center justify-center font-['Outfit'] relative overflow-hidden fare-noise-overlay"
       style={{
         background:
           "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",

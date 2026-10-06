@@ -183,7 +183,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
       <Header isMobile={isMobile} />
 
       <section
-        className="w-full relative overflow-hidden flex items-center justify-between font-['Outfit']"
+        className="w-full relative overflow-hidden flex items-center justify-between font-['Outfit'] fare-noise-overlay"
         style={{
           background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",
         }}
@@ -215,7 +215,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             }`}
           >
             <motion.div variants={itemVariants} className={isMobile ? "mb-3" : "mb-3 lg:mb-4"}>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 rounded-full border border-[#C99A2E]/30 bg-[#C99A2E]/[0.08] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 backdrop-blur-md">
                 <Sparkles size={13} className="text-[#C99A2E] animate-pulse" strokeWidth={2.5} />
                 <span className="font-bold text-[10px] lg:text-[11px] tracking-[0.15em] uppercase text-[#C99A2E]">
                   {t("Trainer Directory")}
@@ -294,8 +294,8 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                   onClick={() => setActiveTag(activeTag === tag ? null : tag)}
                   className={`px-3 py-1 lg:px-3.5 lg:py-1.5 rounded-full text-[11px] lg:text-[12px] font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50 border ${
                     activeTag === tag
-                      ? "bg-[#0B1D3A] text-white border-[#0B1D3A] shadow-[0_4px_12px_-2px_rgba(11,29,58,0.25)]"
-                      : "bg-white/90 backdrop-blur-sm border-[#0B1D3A]/[0.06] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/20 hover:text-[#0B1D3A] hover:shadow-sm"
+                      ? "bg-[#0B1D3A] text-white border-[#0B1D3A] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
+                      : "bg-white/90 backdrop-blur-sm border-[#0B1D3A]/[0.06] text-[#0B1D3A]/70 hover:border-[#0B1D3A]/20 hover:text-[#0B1D3A] hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                   }`}
                 >
                   {activeTag === tag && (
@@ -340,7 +340,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
         </div>
       </section>
 
-      <section className="w-full relative z-10">
+      <section className="w-full relative z-10 fare-noise-overlay">
         <div className={`max-w-[1400px] mx-auto w-full ${isMobile ? "px-5 -mt-2" : "px-6 lg:px-12 xl:px-16 -mt-6"}`}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -352,12 +352,12 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className={`group flex items-center bg-white rounded-[8px] border border-[#E2E8F0] shadow-[0_4px_16px_rgba(11,29,58,0.04)] hover:-translate-y-1 hover:border-[#C99A2E]/50 hover:shadow-[0_18px_40px_rgba(11,29,58,0.12)] transition-all duration-300 ${
+                className={`group flex items-center bg-white rounded-[8px] border border-[#E2E8F0] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 hover:-translate-y-1 hover:border-[#C99A2E]/50 hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-300 ${
                   isMobile ? "gap-2.5 p-3" : "gap-4 p-5"
                 }`}
               >
                 <div
-                  className={`${isMobile ? "w-9 h-9" : "w-12 h-12"} shrink-0 rounded-[8px] flex items-center justify-center text-white shadow-md transition-transform duration-500 group-hover:scale-110`}
+                  className={`${isMobile ? "w-9 h-9" : "w-12 h-12"} shrink-0 rounded-[8px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-transform duration-500 group-hover:scale-110`}
                   style={{ background: stat.bg }}
                 >
                   {stat.icon}
@@ -425,7 +425,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                 </div>
                 <button
                   onClick={() => setShowMobileFilters(true)}
-                  className="relative shrink-0 flex items-center justify-center gap-2 h-[42px] px-4 rounded-[8px] text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+                  className="relative shrink-0 flex items-center justify-center gap-2 h-[42px] px-4 rounded-[8px] text-[13px] font-bold text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                   style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
                 >
                   <SlidersHorizontal size={15} strokeWidth={2.5} style={{ color: GOLD_MID }} />
@@ -498,7 +498,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col items-center text-center bg-white rounded-[8px] border border-dashed border-[#E2E8F0] py-16 px-6 shadow-[0_4px_16px_rgba(11,29,58,0.04)]"
+              className="flex flex-col items-center text-center bg-white rounded-[8px] border border-dashed border-[#E2E8F0] py-16 px-6 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
             >
               <div className="w-14 h-14 rounded-[8px] flex items-center justify-center mb-4" style={{ background: "#FBF4E4", color: GOLD }}>
                 <SearchX size={26} strokeWidth={2.2} />
@@ -509,7 +509,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
               </p>
               <button
                 onClick={clearAll}
-                className="mt-5 h-10 px-5 rounded-[8px] text-[13px] font-bold text-white shadow-[0_8px_18px_-8px_rgba(11,29,58,0.55)]"
+                className="mt-5 h-10 px-5 rounded-[8px] text-[13px] font-bold text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                 style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #1A3463 100%)` }}
               >
                 {t("Reset all filters")}

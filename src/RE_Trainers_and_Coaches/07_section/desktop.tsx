@@ -34,7 +34,7 @@ export default function Desktop() {
   const activeTabData =
     data.tabs.find((t) => t.id === activeTab) || data.tabs[0];
   return (
-    <section className="w-full py-16 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+    <section className="w-full py-16 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden fare-noise-overlay">
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -83,7 +83,7 @@ export default function Desktop() {
                   className={`relative p-6 rounded-[4px] flex items-center gap-5 text-left transition-all duration-500 w-full overflow-hidden group ${
                     isActive
                       ? "bg-gradient-to-r from-[#0B1D3A] to-[#132D5F] luxury-shadow-float border border-transparent scale-[1.02]"
-                      : "bg-white border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/10 hover:bg-white shadow-sm hover:shadow-md"
+                      : "bg-white border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/10 hover:bg-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                   }`}
                 >
                   {isActive && (
@@ -107,7 +107,7 @@ export default function Desktop() {
                   <div
                     className={`w-14 h-14 rounded-[4px] flex items-center justify-center shrink-0 transition-all duration-500 relative overflow-hidden ${
                       isActive
-                        ? "text-white shadow-[0_8px_16px_-4px_rgba(0,0,0,0.3)] scale-110"
+                        ? "text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 scale-110"
                         : "bg-[#F8FAFD] text-[#0B1D3A]/40 group-hover:scale-105"
                     }`}
                     style={isActive ? { backgroundColor: tab.color } : {}}
@@ -183,7 +183,7 @@ export default function Desktop() {
                       className="group flex items-start gap-4 p-4 rounded-[4px] hover:bg-[#F8FAFD] transition-colors duration-300 border border-transparent hover:border-[#0B1D3A]/5 cursor-default"
                     >
                       <div
-                        className="mt-1 shrink-0 p-1.5 rounded-[4px] transition-colors duration-300 shadow-sm text-white"
+                        className="mt-1 shrink-0 p-1.5 rounded-[4px] transition-colors duration-300 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 text-white"
                         style={{ backgroundColor: activeTabData.color }}
                       >
                         <CheckCircle2 size={18} strokeWidth={3} />

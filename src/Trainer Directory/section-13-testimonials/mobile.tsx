@@ -19,7 +19,7 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
+      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.05, 1] }}
@@ -48,7 +48,7 @@ export default function Mobile() {
         </motion.div>
 
         <motion.div variants={item} className="w-full">
-          <div className="rounded-[16px] border border-[#0B1D3A]/[0.08] bg-gradient-to-br from-white via-[#FBFCFE] to-[#F3F6FB] p-5 shadow-[0_12px_32px_-20px_rgba(11,29,58,0.35)]">
+          <div className="rounded-[16px] border border-[#0B1D3A]/[0.08] bg-gradient-to-br from-white via-[#FBFCFE] to-[#F3F6FB] p-5 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400">
             <div className="mb-4 flex items-center justify-between gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-[8px] border border-[#C99A2E]/20 bg-[#FBF4E4] text-[#A87918]">
                 <Building2 size={23} strokeWidth={1.8} aria-hidden="true" />

@@ -32,7 +32,7 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
+      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1, 1.05, 1] }}
@@ -88,10 +88,10 @@ export default function Mobile() {
                   {timelineItem.year}
                 </span>
                 <div
-                  className="absolute left-[47px] top-[23px] z-10 h-3 w-3 rounded-full border-[2px] border-white shadow-sm"
+                  className="absolute left-[47px] top-[23px] z-10 h-3 w-3 rounded-full border-[2px] border-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                   style={{ background: colors.accent }}
                 />
-                <div className="relative w-3/4 overflow-hidden rounded-[4px] border border-[#0B1D3A]/[0.08] bg-white p-4 shadow-[0_6px_18px_-14px_rgba(11,29,58,0.35)]">
+                <div className="relative w-3/4 overflow-hidden rounded-[4px] border border-[#0B1D3A]/[0.08] bg-white p-4 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400">
                   <div className="absolute inset-x-0 top-0 h-[3px]" style={{ background: colors.bg }} />
                   <div className="flex min-w-0 items-center gap-3">
                     <div

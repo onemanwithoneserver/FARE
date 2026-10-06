@@ -34,7 +34,7 @@ export default function Mobile() {
   const activeTabData =
     data.tabs.find((t) => t.id === activeTab) || data.tabs[0];
   return (
-    <section className="w-full py-10 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+    <section className="w-full py-10 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden fare-noise-overlay">
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -78,7 +78,7 @@ export default function Mobile() {
                   className={`relative px-5 py-4 rounded-[4px] flex flex-col items-center justify-center gap-3 text-center transition-all duration-300 min-w-[130px] shrink-0 snap-start overflow-hidden ${
                     isActive
                       ? "bg-gradient-to-br from-[#0B1D3A] to-[#132D5F] luxury-shadow-float border border-transparent scale-[1.02]"
-                      : "bg-white border border-[#0B1D3A]/[0.06] hover:bg-[#F1F5FB] shadow-sm"
+                      : "bg-white border border-[#0B1D3A]/[0.06] hover:bg-[#F1F5FB] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                   }`}
                 >
                   {isActive && (
@@ -99,7 +99,7 @@ export default function Mobile() {
                   <div
                     className={`w-12 h-12 rounded-[4px] flex items-center justify-center transition-all duration-300 relative z-10 ${
                       isActive
-                        ? "text-white shadow-md scale-110"
+                        ? "text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 scale-110"
                         : "bg-[#F8FAFD] text-[#0B1D3A]/40"
                     }`}
                     style={isActive ? { backgroundColor: tab.color } : {}}
@@ -157,7 +157,7 @@ export default function Mobile() {
                       className="bg-[#F8FAFD] p-4 rounded-[4px] border border-[#0B1D3A]/[0.03] flex items-start gap-3.5"
                     >
                       <div
-                        className="mt-0.5 shrink-0 p-1 rounded-[4px] shadow-sm text-white"
+                        className="mt-0.5 shrink-0 p-1 rounded-[4px] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 text-white"
                         style={{ backgroundColor: activeTabData.color }}
                       >
                         <CheckCircle2 size={16} strokeWidth={3} />

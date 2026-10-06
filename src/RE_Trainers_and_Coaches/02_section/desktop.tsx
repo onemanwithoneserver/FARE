@@ -105,10 +105,10 @@ export default function Desktop() {
   const sectionTitle = data.title;
   return (
     <section
-      className="w-full py-16 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-16 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
-          "linear-gradient(180deg, #FFF1F2 0%, #FFE4E6 25%, #FDF2F4 60%, #FFF5F7 100%)",
+          "linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 50%, #F5F5F5 100%)",
       }}
     >
       <motion.div
@@ -163,7 +163,7 @@ export default function Desktop() {
             ease: "easeInOut",
             delay: item.delay,
           }}
-          className={`absolute pointer-events-none select-none z-0 ${item.size} filter drop-shadow-[0_0_12px_rgba(239,68,68,0.3)]`}
+          className={`absolute pointer-events-none select-none z-0 ${item.size} filter drop-luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400`}
           style={{ top: item.top, left: item.left, right: item.right }}
         >
           {item.emoji}
@@ -178,7 +178,7 @@ export default function Desktop() {
           className="flex flex-col items-center text-center mb-12"
         >
           <motion.div variants={item} className="mb-6">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-red-300/80 bg-red-100/70 text-red-700 shadow-[0_2px_10px_rgba(239,68,68,0.12)] backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase border border-red-300/80 bg-red-100/70 text-red-700 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
               {data.overline}
             </span>
@@ -227,7 +227,7 @@ export default function Desktop() {
                   {emoji}
                 </span>
                 <div
-                  className="mb-3 w-10 h-10 rounded-[8px] shadow-md flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 relative overflow-hidden ring-2 ring-red-100/60"
+                  className="mb-3 w-10 h-10 rounded-[8px] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 relative overflow-hidden ring-2 ring-red-100/60"
                   style={{ backgroundColor: color }}
                 >
                   <Icon size={20} className="text-white relative z-10" />

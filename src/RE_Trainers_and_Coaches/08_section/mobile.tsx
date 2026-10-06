@@ -39,7 +39,7 @@ export default function Mobile() {
   };
   return (
     <section
-      className="w-full py-12 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-12 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
           "linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 45%, #EFF5FF 85%, #F4F8FF 100%)",
@@ -71,7 +71,7 @@ export default function Mobile() {
           className="flex flex-col items-center text-center mb-10"
         >
           <motion.div variants={item} className="mb-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#C99A2E]/30 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] shadow-[0_2px_10px_rgba(201,154,46,0.1)] backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#C99A2E]/30 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 backdrop-blur-sm">
               <Sparkles
                 size={12}
                 className="text-[#C99A2E] animate-pulse"
@@ -85,7 +85,7 @@ export default function Mobile() {
           <motion.h2 variants={item} className="text-[#0B1D3A] text-[1.95rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.03em] mb-1.5 bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#162E56] to-[#0B1D3A]" >
             {data.headline}
           </motion.h2>
-          <motion.h2 variants={item} className="text-[#0B1D3A] text-[1.95rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.03em] bg-clip-text text-transparent bg-gradient-to-r from-[#C99A2E] via-[#E2BA55] to-[#B88A22] drop-shadow-[0_2px_16px_rgba(201,154,46,0.25)]" >
+          <motion.h2 variants={item} className="text-[#0B1D3A] text-[1.95rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.03em] bg-clip-text text-transparent bg-gradient-to-r from-[#C99A2E] via-[#E2BA55] to-[#B88A22] drop-luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" >
             {data.headlineAccent}
           </motion.h2>
         </motion.div>
@@ -100,7 +100,7 @@ export default function Mobile() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#C99A2E]/10 rounded-bl-full blur-[25px] pointer-events-none" />
             <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C99A2E] to-transparent opacity-80" />
             <div className="flex items-center gap-3.5 mb-5 relative z-10">
-              <div className="w-13 h-13 rounded-[4px] bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center text-white shadow-[0_6px_16px_rgba(201,154,46,0.35)] shrink-0">
+              <div className="w-13 h-13 rounded-[4px] bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 shrink-0">
                 <User size={24} strokeWidth={2.4} />
               </div>
               <div>
@@ -125,7 +125,7 @@ export default function Mobile() {
                   variants={listItem}
                   className="flex items-start gap-3 text-[14.5px] font-medium text-[#475569]"
                 >
-                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#C99A2E] shrink-0 shadow-[0_0_6px_rgba(201,154,46,0.8)]" />
+                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#C99A2E] shrink-0 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" />
                   <span className="leading-snug">{it}</span>
                 </motion.div>
               ))}
@@ -136,12 +136,12 @@ export default function Mobile() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[16px] p-6 relative overflow-hidden luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-1 transition-all duration-400 ease-out"
+            className="mt-6 bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.08] rounded-[16px] p-6 relative overflow-hidden luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 hover:-translate-y-1 transition-all duration-400 ease-out"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#3B82F6]/10 rounded-bl-full blur-[25px] pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#3B82F6] to-transparent opacity-80" />
             <div className="flex items-center gap-3.5 mb-5 relative z-10 flex-row-reverse text-right">
-              <div className="w-13 h-13 rounded-[4px] bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] flex items-center justify-center text-white shadow-[0_6px_16px_rgba(59,130,246,0.35)] shrink-0">
+              <div className="w-13 h-13 rounded-[4px] bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 shrink-0">
                 <Server size={24} strokeWidth={2.4} />
               </div>
               <div>
@@ -166,7 +166,7 @@ export default function Mobile() {
                   variants={listItem}
                   className="flex items-start gap-3 text-[14.5px] font-medium text-[#475569] flex-row-reverse text-right"
                 >
-                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#3B82F6] shrink-0 shadow-[0_0_6px_rgba(96,165,250,0.8)]" />
+                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#3B82F6] shrink-0 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" />
                   <span className="leading-snug">{it}</span>
                 </motion.div>
               ))}
@@ -180,7 +180,7 @@ export default function Mobile() {
           transition={{ duration: 0.6 }}
           className="mt-8 mb-6 text-center flex items-center justify-center relative z-10 w-full"
         >
-          <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/95 border border-[#C99A2E]/30 shadow-[0_4px_16px_rgba(201,154,46,0.18)] backdrop-blur-md">
+          <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/95 border border-[#C99A2E]/30 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 backdrop-blur-md">
             <Sparkles size={14} className="text-[#C99A2E]" strokeWidth={2.2} />
             <p className="text-[17px] sm:text-[19px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
               {data.footerText}
@@ -205,7 +205,7 @@ export default function Mobile() {
             <div className="absolute top-0 right-0 w-36 h-36 bg-[#C99A2E]/15 rounded-full blur-[35px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-36 h-36 bg-[#3B82F6]/15 rounded-full blur-[35px] pointer-events-none" />
           </div>
-          <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] border-[3px] border-white shadow-lg flex items-center justify-center z-30 font-black text-white text-xl leading-none">
+          <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-[#C99A2E] to-[#B88A22] border-[3px] border-white luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 flex items-center justify-center z-30 font-black text-white text-xl leading-none">
             =
           </div>
           <div className="p-6 flex flex-col items-center relative w-full">
@@ -243,7 +243,7 @@ export default function Mobile() {
                         transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
                       },
                     }}
-                    className="text-[15px] font-bold text-white bg-white/[0.08] px-5 py-3.5 rounded-[8px] border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25)] w-full text-center tracking-wide backdrop-blur-md relative overflow-hidden"
+                    className="text-[15px] font-bold text-white bg-white/[0.08] px-5 py-3.5 rounded-[8px] border border-white/10 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 w-full text-center tracking-wide backdrop-blur-md relative overflow-hidden"
                   >
                     <span className="relative z-10">{step}</span>
                   </motion.div>
@@ -256,7 +256,7 @@ export default function Mobile() {
                         ease: "easeInOut",
                         delay: idx * 0.2,
                       }}
-                      className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/15 flex items-center justify-center shrink-0 shadow-sm relative"
+                      className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/15 flex items-center justify-center shrink-0 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 relative"
                     >
                       <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#E2BA55] rotate-90"}`} style={{ fontSize: `${15}px` }}>
       <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />

@@ -41,7 +41,7 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-10 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden"
+      className="w-full py-10 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden fare-noise-overlay"
       style={{ background: "linear-gradient(175deg, #FFFFFF 0%, #F8FAFD 100%)" }}
     >
       <motion.div
@@ -77,7 +77,7 @@ export default function Mobile() {
                     />
                   )}
                   <div
-                    className="w-8 h-8 rounded-[4px] ring-1 ring-black/5 flex items-center justify-center text-white shadow-sm mb-2"
+                    className="w-8 h-8 rounded-[4px] ring-1 ring-black/5 flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 mb-2"
                     style={{ background: mode.disabled ? "#CBD5E1" : colors.bg }}
                   >
                     {getIcon(mode.icon)}
@@ -109,7 +109,7 @@ export default function Mobile() {
                   ];
                   const s = styles[idx % styles.length];
                   return (
-                    <div key={idx} className="bg-white rounded-[4px] border border-[#0B1D3A]/[0.06] shadow-sm relative overflow-hidden flex flex-col p-4">
+                    <div key={idx} className="bg-white rounded-[4px] border border-[#0B1D3A]/[0.06] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden flex flex-col p-4">
                       <div
                         className="absolute top-0 left-0 right-0 h-[2px]"
                         style={{ background: s.color }}
@@ -136,7 +136,7 @@ export default function Mobile() {
                 {data.delivery.durations.map((dur, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-2 px-3.5 py-2 rounded-[4px] border border-[#0B1D3A]/[0.06] bg-white shadow-sm"
+                    className="flex items-center gap-2 px-3.5 py-2 rounded-[4px] border border-[#0B1D3A]/[0.06] bg-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                   >
                     <Clock size={14} strokeWidth={2.5} className="text-[#3B82F6]" />
                     <span className="text-[13px] font-bold text-[#0B1D3A]/90">{dur}</span>

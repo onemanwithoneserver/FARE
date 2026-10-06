@@ -52,7 +52,7 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full py-16 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-16 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background: "linear-gradient(180deg, #F8FAFD 0%, #EEF4FF 100%)",
       }}
@@ -108,7 +108,7 @@ export default function Desktop() {
               />
               <div className="absolute top-1/2 left-0 right-0 h-[1.5px] -translate-y-1/2 bg-gradient-to-r from-transparent via-[#C99A2E]/40 to-transparent" />
             </div>
-            <div className="shrink-0 w-0 h-0 border-y-[22px] border-y-transparent border-l-[26px] border-l-[#C99A2E]/50 drop-shadow-sm -ml-[1px]" />
+            <div className="shrink-0 w-0 h-0 border-y-[22px] border-y-transparent border-l-[26px] border-l-[#C99A2E]/50 drop-luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 -ml-[1px]" />
           </div>
           {[20, 40, 60, 80].map((leftPos, i) => (
             <div

@@ -28,7 +28,7 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
+      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1, 1.05, 1] }}
@@ -72,7 +72,7 @@ export default function Mobile() {
                 <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full opacity-[0.15] blur-xl pointer-events-none" style={{ background: metricIcons[idx]?.bg || metricIcons[0].bg }} />
                 
                 <div
-                  className="w-10 h-10 rounded-[4px] flex items-center justify-center text-white shadow-md mb-4 relative z-10"
+                  className="w-10 h-10 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 mb-4 relative z-10"
                   style={{ background: metricIcons[idx]?.bg || metricIcons[0].bg }}
                 >
                   {metricIcons[idx]?.icon || metricIcons[0].icon}

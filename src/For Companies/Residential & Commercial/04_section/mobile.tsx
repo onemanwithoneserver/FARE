@@ -26,7 +26,7 @@ export default function Mobile() {
   const data = getData(language);
   return (
     <section
-      className="w-full py-12 text-[#0B1D3A] relative font-['Outfit'] overflow-hidden"
+      className="w-full py-12 text-[#0B1D3A] relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
           "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",
@@ -46,7 +46,7 @@ export default function Mobile() {
       />
       <div className="w-full px-5 relative z-10">
         <div className="flex flex-col items-center text-center mb-10">
-          <h2 className="text-[#0B1D3A] text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-4">
+          <h2 className="text-[#0B1D3A] text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-4 tracking-tight">
             {data.headline}
           </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
@@ -83,7 +83,7 @@ export default function Mobile() {
                   <div className="flex flex-col">
                     <div className="flex items-center gap-4 mb-5">
                       <div
-                        className="w-12 h-12 shrink-0 rounded-[8px] flex items-center justify-center shadow-md"
+                        className="w-12 h-12 shrink-0 rounded-[8px] flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                         style={{ backgroundColor: activeColor }}
                       >
                         {TAB_ICONS[tab.id]}
@@ -122,7 +122,7 @@ export default function Mobile() {
                               style={{ color: activeColor }}
                             >
                               <div
-                                className="w-1.5 h-1.5 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)]"
+                                className="w-1.5 h-1.5 rounded-full luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                                 style={{ backgroundColor: activeColor }}
                               ></div>
                               {section.heading}
@@ -136,7 +136,7 @@ export default function Mobile() {
                                   className="flex items-start gap-2.5 text-[13.5px] text-[#334155] font-medium"
                                 >
                                   <div
-                                    className="w-4.5 h-4.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-sm bg-white border border-[#0B1D3A]/10"
+                                    className="w-4.5 h-4.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 bg-white border border-[#0B1D3A]/10"
                                     style={{ color: activeColor }}
                                   >
                                     <CheckCircle2
@@ -207,7 +207,7 @@ export default function Mobile() {
                                 .map((tag: string, i: number) => (
                                   <span
                                     key={i}
-                                    className="px-3 py-1.5 rounded-[4px] bg-white border border-[#0B1D3A]/10 text-[12px] font-semibold text-[#475569] shadow-sm"
+                                    className="px-3 py-1.5 rounded-[4px] bg-white border border-[#0B1D3A]/10 text-[12px] font-semibold text-[#475569] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                                   >
                                     {tag}
                                   </span>
@@ -236,7 +236,7 @@ export default function Mobile() {
                               key={idx}
                               className={`w-full py-3.5 px-4 rounded-[8px] text-[13.5px] font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
                                 idx === 0
-                                  ? "text-[#0B1D3A] bg-white shadow-md active:scale-[0.98]"
+                                  ? "text-[#0B1D3A] bg-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 active:scale-[0.98]"
                                   : "text-white border border-white/20 active:scale-[0.98]"
                               }`}
                             >

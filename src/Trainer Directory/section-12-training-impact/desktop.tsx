@@ -28,7 +28,7 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full py-20 px-10 font-['Outfit'] flex justify-center relative overflow-hidden"
+      className="w-full py-20 px-10 font-['Outfit'] flex justify-center relative overflow-hidden fare-noise-overlay"
       style={{ background: `linear-gradient(170deg, ${NAVY} 0%, #071A49 50%, #0D2240 100%)` }}
     >
       
@@ -99,7 +99,7 @@ export default function Desktop() {
                 />
 
                 <div
-                  className="w-12 h-12 rounded-[4px] flex items-center justify-center text-white shadow-lg mb-6 group-hover:scale-110 transition-transform duration-400"
+                  className="w-12 h-12 rounded-[4px] flex items-center justify-center text-white luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 mb-6 group-hover:scale-110 transition-transform duration-400"
                   style={{ background: m.accent }}
                 >
                   {m.icon}

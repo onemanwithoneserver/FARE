@@ -28,7 +28,7 @@ export default function Mobile() {
     ? data.headline.split(". ")
     : [data.headline];
   return (
-    <section className="w-full py-10 bg-white relative font-['Outfit'] overflow-hidden">
+    <section className="w-full py-10 bg-white relative font-['Outfit'] overflow-hidden fare-noise-overlay">
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -48,7 +48,7 @@ export default function Mobile() {
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-[#C99A2E]/20 bg-[#C99A2E]/[0.05]"
                 style={{ color: GOLD }}
               >
-                <div className="w-5 h-5 rounded-[4px] bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white shadow-sm shrink-0">
+                <div className="w-5 h-5 rounded-[4px] bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 shrink-0">
                   <Settings2 size={11} className="text-white" />
                 </div>
                 {data.title === data.overline
@@ -135,7 +135,7 @@ export default function Mobile() {
                 return (
                   <div key={idx} className="flex items-center gap-3.5">
                     <div
-                      className={`w-8 h-8 rounded-[4px] ${bgColors[idx % bgColors.length]} flex items-center justify-center shrink-0 shadow-sm`}
+                      className={`w-8 h-8 rounded-[4px] ${bgColors[idx % bgColors.length]} flex items-center justify-center shrink-0 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400`}
                     >
                       <Check
                         size={14}
@@ -166,7 +166,7 @@ export default function Mobile() {
             <p className="text-[13.5px] font-medium text-white/70 mb-6 relative z-10">
               {data.ctaDesc}
             </p>
-            <button className="group w-full bg-white text-[#0B1D3A] px-6 py-4 rounded-[8px] text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all relative z-10 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
+            <button className="group w-full bg-white text-[#0B1D3A] px-6 py-4 rounded-[8px] text-[14px] font-bold flex items-center justify-center gap-2 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 active:scale-[0.98] transition-all relative z-10 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
               {data.ctaButton}{" "}
               <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"group-hover:translate-x-1"}`} style={{ fontSize: `${15}px` }}>
       <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />

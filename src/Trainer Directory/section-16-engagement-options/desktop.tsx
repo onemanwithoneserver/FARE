@@ -51,7 +51,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
 
   return (
     <section
-      className="w-full py-16 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
+      className="w-full py-16 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white fare-noise-overlay"
     >
       
       <motion.div
@@ -92,8 +92,8 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
               whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
               className={`rounded-[4px] p-8 flex flex-col relative overflow-hidden transition-all duration-400 ease-out group ${
                 card.featured
-                  ? "border-2 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)]"
-                  : "border border-[#0B1D3A]/[0.06] luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:border-[#0B1D3A]/[0.15]"
+                  ? "border-2 luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
+                  : "border border-[#0B1D3A]/[0.06] luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 hover:border-[#0B1D3A]/[0.15]"
               }`}
               style={{
                 background: card.featured
@@ -132,7 +132,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
 
               <div className="relative z-10 flex flex-col h-full">
                 <div
-                  className="w-11 h-11 rounded-[4px] flex items-center justify-center text-white shadow-lg mb-5"
+                  className="w-11 h-11 rounded-[4px] flex items-center justify-center text-white luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 mb-5"
                   style={{ background: card.accent }}
                 >
                   {card.icon}
@@ -199,7 +199,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
           </p>
           <button
             onClick={onRequestPricing}
-            className="relative z-10 px-8 py-3 rounded-[8px] font-black text-[14px] text-white transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center gap-2.5 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] group/btn"
+            className="relative z-10 px-8 py-3 rounded-[8px] font-black text-[14px] text-white transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center gap-2.5 luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] group/btn"
             style={{ background: `linear-gradient(135deg, ${NAVY}, #132A4D)` }}
           >
             {t("Request Pricing")}

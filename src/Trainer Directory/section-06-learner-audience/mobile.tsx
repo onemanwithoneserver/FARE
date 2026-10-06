@@ -28,7 +28,7 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-10 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden"
+      className="w-full py-10 px-5 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden fare-noise-overlay"
       style={{ background: "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)" }}
     >
       <motion.div
@@ -49,14 +49,14 @@ export default function Mobile() {
             <motion.div
               key={idx}
               variants={item}
-              className="bg-white/90 backdrop-blur-xl rounded-[4px] p-5 border border-[#0B1D3A]/[0.08] shadow-[0_2px_8px_-2px_rgba(11,29,58,0.04)] relative overflow-hidden"
+              className="bg-white/90 backdrop-blur-xl rounded-[4px] p-5 border border-[#0B1D3A]/[0.08] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden"
             >
               <div
                 className="absolute top-0 left-0 right-0 h-1"
                 style={{ background: audienceColors[idx % audienceColors.length].bg }}
               />
               <div
-                className="w-9 h-9 rounded-[4px] flex items-center justify-center text-white shadow-sm mb-3"
+                className="w-9 h-9 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 mb-3"
                 style={{ background: audienceColors[idx % audienceColors.length].bg }}
               >
                 <Users size={16} strokeWidth={2.2} />

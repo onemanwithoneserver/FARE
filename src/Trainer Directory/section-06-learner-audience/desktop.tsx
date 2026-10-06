@@ -28,7 +28,7 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full py-14 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative"
+      className="w-full py-14 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative fare-noise-overlay"
       style={{ background: "linear-gradient(175deg, #F8FAFD 0%, #FFFFFF 45%, #EEF4FA 100%)" }}
     >
       <motion.div
@@ -57,7 +57,7 @@ export default function Desktop() {
                 style={{ background: audienceColors[idx % audienceColors.length].bg }}
               />
               <div
-                className="w-10 h-10 rounded-[4px] flex items-center justify-center text-white shadow-sm mb-4 group-hover:scale-110 transition-transform duration-300"
+                className="w-10 h-10 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 mb-4 group-hover:scale-110 transition-transform duration-300"
                 style={{ background: audienceColors[idx % audienceColors.length].bg }}
               >
                 <Users size={18} strokeWidth={2.2} />

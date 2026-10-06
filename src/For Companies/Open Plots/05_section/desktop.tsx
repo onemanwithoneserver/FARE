@@ -35,7 +35,7 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full py-10 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-10 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background: "linear-gradient(135deg, #F8FAFD 0%, #EEF4FF 100%)",
       }}
@@ -220,13 +220,13 @@ export default function Desktop() {
                     className="flex items-center gap-4 group cursor-default"
                   >
                     <div
-                      className={`w-12 h-12 rounded-[4px] ${color.bg} flex items-center justify-center text-white font-black text-[16px] shadow-sm shrink-0 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden`}
+                      className={`w-12 h-12 rounded-[4px] ${color.bg} flex items-center justify-center text-white font-black text-[16px] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 shrink-0 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden`}
                     >
                       <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-300"></div>
                       <span className="relative z-10">{i + 1}</span>
                     </div>
                     <div
-                      className={`flex-1 bg-white border border-[#0B1D3A]/[0.06] shadow-sm rounded-[4px] p-4 group-hover:luxury-shadow-float group-hover:border-[#C99A2E]/30 transition-all duration-300 relative overflow-hidden`}
+                      className={`flex-1 bg-white border border-[#0B1D3A]/[0.06] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 rounded-[4px] p-4 group-hover:luxury-shadow-float group-hover:border-[#C99A2E]/30 transition-all duration-300 relative overflow-hidden`}
                     >
                       <div
                         className={`absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${color.bg}`}
@@ -258,7 +258,7 @@ export default function Desktop() {
                     ease: "easeInOut",
                     delay: i * 0.18,
                   }}
-                  className="w-[10%] bg-gradient-to-t from-[#C99A2E]/45 via-[#E2C068]/30 to-[#C99A2E]/15 rounded-t shadow-[0_0_10px_rgba(201,154,46,0.12)]"
+                  className="w-[10%] bg-gradient-to-t from-[#C99A2E]/45 via-[#E2C068]/30 to-[#C99A2E]/15 rounded-t luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                 />
               ))}
             </div>

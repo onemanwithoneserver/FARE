@@ -22,7 +22,7 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
+      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.05, 1] }}
@@ -82,7 +82,7 @@ export default function Mobile() {
                     {prog.format}
                   </span>
                   <span
-                    className="text-[10px] font-black px-2.5 py-1 rounded-full shadow-sm"
+                    className="text-[10px] font-black px-2.5 py-1 rounded-full luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                     style={{
                       background: `${NAVY}08`,
                       color: `${NAVY}CC`,
@@ -102,7 +102,7 @@ export default function Mobile() {
                     { icon: <Clock size={12} strokeWidth={2.5} />, text: prog.duration, bg: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` },
                   ].map((meta, mIdx) => (
                     <div key={mIdx} className="flex items-center gap-3 p-2.5 rounded-[4px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">
-                      <div className="w-7 h-7 rounded-[4px] flex items-center justify-center text-white shadow-sm shrink-0" style={{ background: meta.bg }}>
+                      <div className="w-7 h-7 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 shrink-0" style={{ background: meta.bg }}>
                         {meta.icon}
                       </div>
                       <span className="text-[12px] font-bold text-[#3B4D66] truncate w-full" title={meta.text}>{meta.text}</span>

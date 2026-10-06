@@ -30,7 +30,7 @@ export default function Desktop() {
   const data = getData(language);
   return (
     <section
-      className="w-full py-16 text-[#0B1D3A] relative font-['Outfit'] overflow-hidden"
+      className="w-full py-16 text-[#0B1D3A] relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
           "linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)",
@@ -55,7 +55,7 @@ export default function Desktop() {
       />
       <div className="max-w-[1320px] mx-auto px-12 relative z-10">
         <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.05] font-black tracking-[-0.02em] mb-6 max-w-[850px]">
+          <h2 className="text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.05] font-black tracking-[-0.02em] mb-6 max-w-[850px] tracking-tight">
             {data.headline}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
@@ -77,7 +77,7 @@ export default function Desktop() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-100px" }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-white/80 border border-[#0B1D3A]/10 rounded-[16px] overflow-hidden backdrop-blur-xl luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-shadow duration-500 relative group/card"
+                className="bg-white/80 border border-[#0B1D3A]/10 rounded-[16px] overflow-hidden backdrop-blur-xl luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-shadow duration-500 relative group/card"
               >
                 <div
                   className="absolute top-0 left-1/4 w-1/2 h-[2px] opacity-70 group-hover/card:w-2/3 group-hover/card:left-1/6 transition-all duration-700"
@@ -95,7 +95,7 @@ export default function Desktop() {
                   <div className="flex-1 flex flex-col">
                     <div className="flex items-center gap-4 mb-6">
                       <div
-                        className="w-14 h-14 shrink-0 rounded-[8px] flex items-center justify-center shadow-lg group-hover/card:scale-105 transition-transform duration-500"
+                        className="w-14 h-14 shrink-0 rounded-[8px] flex items-center justify-center luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 group-hover/card:scale-105 transition-transform duration-500"
                         style={{ backgroundColor: activeColor }}
                       >
                         {TAB_ICONS[tab.id]}
@@ -134,7 +134,7 @@ export default function Desktop() {
                               ></div>
                               <h4 className="text-[13px] font-bold uppercase tracking-[0.15em] mb-4 flex items-center gap-3 relative z-10" style={{ color: activeColor }} >
                                 <div
-                                  className="w-2 h-2 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)] group-hover/section:scale-150 transition-transform duration-300"
+                                  className="w-2 h-2 rounded-full luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 group-hover/section:scale-150 transition-transform duration-300"
                                   style={{ backgroundColor: activeColor }}
                                 ></div>
                                 {section.heading}
@@ -149,7 +149,7 @@ export default function Desktop() {
                                       className="flex items-start gap-3 text-[14.5px] lg:text-[15px] text-[#334155] font-medium group/item hover:text-[#0B1D3A] transition-colors p-1.5 -ml-1.5 rounded-[8px] hover:bg-[#0B1D3A]/[0.02]"
                                     >
                                       <div
-                                        className="w-5.5 h-5.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-sm bg-white border border-[#0B1D3A]/10 group-hover/item:scale-110 group-hover/item:border-transparent transition-all duration-300"
+                                        className="w-5.5 h-5.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 bg-white border border-[#0B1D3A]/10 group-hover/item:scale-110 group-hover/item:border-transparent transition-all duration-300"
                                         style={{ color: activeColor }}
                                       >
                                         <CheckCircle2
@@ -230,7 +230,7 @@ export default function Desktop() {
                                 .map((tag: string, i: number) => (
                                   <span
                                     key={i}
-                                    className="px-3.5 py-2 rounded-[8px] bg-white border border-[#0B1D3A]/10 text-[13px] font-semibold text-[#475569] shadow-sm hover:text-[#0B1D3A] hover:border-[#0B1D3A]/20 hover:shadow-md transition-all cursor-default"
+                                    className="px-3.5 py-2 rounded-[8px] bg-white border border-[#0B1D3A]/10 text-[13px] font-semibold text-[#475569] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 hover:text-[#0B1D3A] hover:border-[#0B1D3A]/20 hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all cursor-default"
                                   >
                                     {tag}
                                   </span>
@@ -268,7 +268,7 @@ export default function Desktop() {
                               }}
                               className={`group relative overflow-hidden w-full py-4 px-6 rounded-[8px] text-[14px] font-bold transition-all duration-300 flex items-center justify-center gap-3 ${
                                 idx === 0
-                                  ? "text-[#0B1D3A] shadow-lg active:scale-[0.98] bg-white hover:bg-[#F8FAFD]"
+                                  ? "text-[#0B1D3A] luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 active:scale-[0.98] bg-white hover:bg-[#F8FAFD]"
                                   : "text-white border border-white/20 hover:bg-white/10 active:scale-[0.98]"
                               }`}
                             >

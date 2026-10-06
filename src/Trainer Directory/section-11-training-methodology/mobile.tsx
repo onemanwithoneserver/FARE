@@ -29,7 +29,7 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
+      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.05, 1] }}
@@ -91,9 +91,9 @@ export default function Mobile() {
               {data.methodology.tags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="text-[11px] font-bold px-3 py-1.5 rounded-[4px] bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/80 shadow-[0_2px_8px_rgba(11,29,58,0.04)]"
+                  className="text-[11px] font-bold px-3 py-1.5 rounded-[4px] bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] text-[#0B1D3A]/80 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full inline-block mr-1.5 shadow-sm" style={{ background: GOLD }} />
+                  <span className="w-1.5 h-1.5 rounded-full inline-block mr-1.5 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" style={{ background: GOLD }} />
                   {tag}
                 </span>
               ))}
@@ -111,9 +111,9 @@ export default function Mobile() {
                 className="flex items-start gap-4 relative z-10 pb-8 last:pb-0"
               >
                 
-                <div className="w-10 h-10 rounded-[4px] bg-white border border-[#0B1D3A]/[0.08] shadow-sm flex items-center justify-center shrink-0 relative overflow-hidden">
+                <div className="w-10 h-10 rounded-[4px] bg-white border border-[#0B1D3A]/[0.08] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 flex items-center justify-center shrink-0 relative overflow-hidden">
                   <div className="absolute inset-0 opacity-10" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }} />
-                  <div className="text-white relative z-10 w-7 h-7 rounded-[4px] flex items-center justify-center shadow-sm" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
+                  <div className="text-white relative z-10 w-7 h-7 rounded-[4px] flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" style={{ background: FORMAT_ICONS[idx % FORMAT_ICONS.length].bg }}>
                     {FORMAT_ICONS[idx % FORMAT_ICONS.length].icon}
                   </div>
                 </div>

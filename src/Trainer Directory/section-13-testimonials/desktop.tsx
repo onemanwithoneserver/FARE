@@ -19,7 +19,7 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
+      className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
@@ -49,7 +49,7 @@ export default function Desktop() {
 
         <motion.div variants={item} className="w-full max-w-[900px] mx-auto">
           <div className="grid gap-6 rounded-[16px] border border-[#0B1D3A]/[0.08] bg-gradient-to-br from-white via-[#FBFCFE] to-[#F3F6FB] p-8 luxury-shadow-float md:grid-cols-[auto_1fr] md:items-center md:gap-8 md:p-10">
-            <div className="flex h-20 w-20 items-center justify-center rounded-[16px] border border-[#C99A2E]/20 bg-[#FBF4E4] text-[#A87918] shadow-sm">
+            <div className="flex h-20 w-20 items-center justify-center rounded-[16px] border border-[#C99A2E]/20 bg-[#FBF4E4] text-[#A87918] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400">
               <Building2 size={32} strokeWidth={1.8} aria-hidden="true" />
             </div>
             <div>

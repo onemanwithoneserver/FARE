@@ -33,7 +33,7 @@ export default function Desktop() {
   };
 
   return (
-    <section className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white">
+    <section className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white fare-noise-overlay">
       
       <motion.div
         animate={{ x: [0, 25, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
@@ -74,7 +74,7 @@ export default function Desktop() {
                 key={idx}
                 variants={item}
                 whileHover={{ y: -4, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-                className="group flex rounded-[4px] overflow-hidden border border-[#0B1D3A]/[0.07] bg-white/90 backdrop-blur-xl luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-500 relative"
+                className="group flex rounded-[4px] overflow-hidden border border-[#0B1D3A]/[0.07] bg-white/90 backdrop-blur-xl luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-500 relative"
               >
                 
                 <div

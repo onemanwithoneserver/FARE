@@ -22,7 +22,7 @@ export default function Mobile() {
 
   return (
     <section
-      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
+      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, 15, 0], y: [0, -15, 0], scale: [1, 1.05, 1] }}
@@ -80,7 +80,7 @@ export default function Mobile() {
                 )}
 
                 <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform duration-300 z-10 relative"
+                  className="w-12 h-12 rounded-full flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 active:scale-95 transition-transform duration-300 z-10 relative"
                   style={{
                     background: video.thumbnail === 'navy'
                       ? `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})`
@@ -102,7 +102,7 @@ export default function Mobile() {
 
                 {video.thumbnail === 'navy' && (
                   <div
-                    className="absolute top-3 left-3 text-[10px] font-black px-2 py-0.5 rounded-[4px] z-10 shadow-lg tracking-wider"
+                    className="absolute top-3 left-3 text-[10px] font-black px-2 py-0.5 rounded-[4px] z-10 luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 tracking-wider"
                     style={{ background: GOLD, color: NAVY }}
                   >
                     {t("NEW")}

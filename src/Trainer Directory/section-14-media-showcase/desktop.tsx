@@ -22,7 +22,7 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white"
+      className="w-full py-20 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, 20, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
@@ -80,7 +80,7 @@ export default function Desktop() {
                 )}
 
                 <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-400 ease-out z-10 relative"
+                  className="w-14 h-14 rounded-full flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 group-hover:scale-110 transition-transform duration-400 ease-out z-10 relative"
                   style={{
                     background: video.thumbnail === 'navy'
                       ? `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})`
@@ -102,7 +102,7 @@ export default function Desktop() {
 
                 {video.thumbnail === 'navy' && (
                   <div
-                    className="absolute top-3 left-3 text-[10px] font-black px-2.5 py-1 rounded-[4px] z-10 shadow-lg tracking-wider"
+                    className="absolute top-3 left-3 text-[10px] font-black px-2.5 py-1 rounded-[4px] z-10 luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 tracking-wider"
                     style={{ background: GOLD, color: NAVY }}
                   >
                     {t("NEW")}

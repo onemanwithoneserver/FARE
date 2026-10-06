@@ -48,7 +48,7 @@ interface FilterSectionProps {
 export const Checkbox = ({ checked, size = 16 }: { checked: boolean; size?: number }) => (
   <div
     className={`rounded-[4px] border flex items-center justify-center transition-all duration-300 shrink-0 ${
-      checked ? "border-transparent shadow-[0_2px_8px_rgba(11,29,58,0.25)]" : "border-[#0B1D3A]/15 bg-white group-hover/item:border-[#C99A2E]/60"
+      checked ? "border-transparent luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" : "border-[#0B1D3A]/15 bg-white group-hover/item:border-[#C99A2E]/60"
     }`}
     style={{ width: size, height: size, ...(checked ? { background: `linear-gradient(135deg, ${NAVY}, #1A3463)` } : {}) }}
   >
@@ -64,7 +64,7 @@ export const CountBadge = ({ count, size = 18 }: { count: number; size?: number 
   <motion.span
     initial={{ scale: 0 }}
     animate={{ scale: 1 }}
-    className="inline-flex items-center justify-center rounded-[4px] text-[10px] font-black px-1.5 shadow-[0_2px_6px_rgba(201,154,46,0.35)]"
+    className="inline-flex items-center justify-center rounded-[4px] text-[10px] font-black px-1.5 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
     style={{ minWidth: size, height: size, background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})`, color: NAVY }}
   >
     {count}
@@ -79,7 +79,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ title, options, selectedO
   return (
     <div className="py-3.5 border-b border-[#0B1D3A]/[0.07] last:border-b-0">
       <button
-        className="w-full flex items-center justify-between cursor-pointer rounded-[8px] px-2 -mx-2 py-1 hover:bg-[#0B1D3A]/[0.03] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
+        className=" flex items-center justify-between cursor-pointer rounded-[8px] px-2 -mx-2 py-1 hover:bg-[#0B1D3A]/[0.03] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
@@ -140,7 +140,7 @@ export default function Desktop({ selected, onToggle, onClear }: SidebarFiltersP
 
   return (
     <aside className="w-[272px] shrink-0 sticky top-[96px] self-start font-['Outfit']">
-      <div className="bg-white rounded-[8px] border border-[#0B1D3A]/[0.07] shadow-[0_2px_6px_-2px_rgba(11,29,58,0.06),0_10px_30px_-12px_rgba(11,29,58,0.12)] overflow-hidden">
+      <div className="bg-white rounded-[8px] border border-[#0B1D3A]/[0.07] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 overflow-hidden">
         <div
           className="relative flex items-center justify-between px-5 py-4 overflow-hidden"
           style={{ background: `linear-gradient(120deg, ${NAVY} 0%, #15315C 100%)` }}

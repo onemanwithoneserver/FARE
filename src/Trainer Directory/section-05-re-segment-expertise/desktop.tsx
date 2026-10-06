@@ -35,7 +35,7 @@ const SegmentAccordion = ({ segment, defaultOpen }: { segment: any; defaultOpen:
             <div className="px-3.5 pb-3.5 pt-1">
               <div className="flex flex-wrap gap-1.5">
                 {segment.items.map((it: string, i: number) => (
-                  <span key={i} className="text-[12px] font-semibold px-2.5 py-1 rounded-[4px] bg-white border border-[#0B1D3A]/[0.06] text-[#5A6B82] shadow-sm">
+                  <span key={i} className="text-[12px] font-semibold px-2.5 py-1 rounded-[4px] bg-white border border-[#0B1D3A]/[0.06] text-[#5A6B82] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400">
                     {it}
                   </span>
                 ))}
@@ -69,7 +69,7 @@ export default function Desktop() {
 
   return (
     <section
-      className="w-full py-16 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative bg-white overflow-hidden"
+      className="w-full py-16 px-10 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] flex justify-center relative bg-white overflow-hidden fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, 20, 0], y: [0, 25, 0], scale: [1, 1.05, 1] }}
@@ -92,10 +92,10 @@ export default function Desktop() {
         className="max-w-[1200px] w-full grid grid-cols-3 gap-8 relative z-10"
       >
         
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded-[4px] p-6 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-300 ease-out relative overflow-hidden group">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded-[4px] p-6 luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-300 ease-out relative overflow-hidden group">
           <div className="absolute top-0 left-0 right-0 h-[3px] opacity-70 group-hover:opacity-100 transition-opacity" style={{ background: sectionColors[0].bg }} />
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[0].bg }}>
+            <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[0].bg }}>
               {sectionColors[0].icon}
             </div>
             <h2 className=" text-[#0B1D3A] text-[18px] font-black leading-tight">
@@ -111,10 +111,10 @@ export default function Desktop() {
         </motion.div>
 
         
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded-[4px] p-6 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-300 ease-out relative overflow-hidden group">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded-[4px] p-6 luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-300 ease-out relative overflow-hidden group">
           <div className="absolute top-0 left-0 right-0 h-[3px] opacity-70 group-hover:opacity-100 transition-opacity" style={{ background: sectionColors[1].bg }} />
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[1].bg }}>
+            <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[1].bg }}>
               {sectionColors[1].icon}
             </div>
             <h2 className=" text-[#0B1D3A] text-[18px] font-black leading-tight">
@@ -135,10 +135,10 @@ export default function Desktop() {
         </motion.div>
 
         
-        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded-[4px] p-6 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-300 ease-out relative overflow-hidden group">
+        <motion.div variants={item} className="bg-white/90 backdrop-blur-xl border border-[#0B1D3A]/[0.06] hover:border-[#0B1D3A]/[0.15] rounded-[4px] p-6 luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-300 ease-out relative overflow-hidden group">
           <div className="absolute top-0 left-0 right-0 h-[3px] opacity-70 group-hover:opacity-100 transition-opacity" style={{ background: sectionColors[2].bg }} />
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[2].bg }}>
+            <div className="w-11 h-11 shrink-0 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 group-hover:scale-110 transition-transform duration-300 ease-out" style={{ background: sectionColors[2].bg }}>
               {sectionColors[2].icon}
             </div>
             <h2 className=" text-[#0B1D3A] text-[18px] font-black leading-tight">
@@ -151,7 +151,7 @@ export default function Desktop() {
               <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-wider">{t("Primary Language")}</span>
               <span className="text-[16px] font-black" style={{ color: NAVY }}>{t("English")}</span>
             </div>
-            <div className="flex flex-col gap-1.5 p-3.5 rounded-[4px] bg-white border border-[#0B1D3A]/[0.06] shadow-sm">
+            <div className="flex flex-col gap-1.5 p-3.5 rounded-[4px] bg-white border border-[#0B1D3A]/[0.06] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400">
               <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-wider">{t("Secondary Languages")}</span>
               <div className="flex flex-wrap gap-1.5 mt-0.5">
                 {["Telugu", "Hindi"].map(lang => (

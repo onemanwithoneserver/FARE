@@ -50,7 +50,7 @@ export default function Desktop() {
     Settings: <Settings size={24} className="text-white relative z-10" />,
   };
   return (
-    <section className="w-full py-16 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+    <section className="w-full py-16 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden fare-noise-overlay">
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -106,7 +106,7 @@ export default function Desktop() {
                 delay: index * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-10 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 break-inside-avoid relative overflow-hidden group cursor-default"
+              className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-10 luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-400 break-inside-avoid relative overflow-hidden group cursor-default"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -124,7 +124,7 @@ export default function Desktop() {
               ></div>
               <div className="flex items-center gap-5 mb-8 relative z-10">
                 <div
-                  className="w-16 h-16 rounded-[4px] flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 relative overflow-hidden"
+                  className="w-16 h-16 rounded-[4px] flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 shrink-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 relative overflow-hidden"
                   style={{ backgroundColor: category.color }}
                 >
                   <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
@@ -153,7 +153,7 @@ export default function Desktop() {
                       {sub.skills.map((skill, sIdx) => (
                         <span
                           key={sIdx}
-                          className="bg-white border border-[#0B1D3A]/[0.06] px-3.5 py-1.5 rounded-[4px] text-[14px] font-medium text-[#3A4A63] hover:border-[#C99A2E]/40 hover:text-[#C99A2E] hover:shadow-[0_2px_8px_rgba(201,154,46,0.1)] transition-all duration-300 shadow-sm cursor-default"
+                          className="bg-white border border-[#0B1D3A]/[0.06] px-3.5 py-1.5 rounded-[4px] text-[14px] font-medium text-[#3A4A63] hover:border-[#C99A2E]/40 hover:text-[#C99A2E] hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-300 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 cursor-default"
                         >
                           {skill}
                         </span>

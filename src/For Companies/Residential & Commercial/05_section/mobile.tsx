@@ -52,7 +52,7 @@ export default function Mobile() {
   };
   return (
     <section
-      className="w-full py-12 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-12 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background: "linear-gradient(180deg, #F8FAFD 0%, #EEF4FF 100%)",
       }}
@@ -103,7 +103,7 @@ export default function Mobile() {
               />
               <div className="absolute left-1/2 top-0 bottom-0 w-[1.5px] -translate-x-1/2 bg-gradient-to-b from-transparent via-[#C99A2E]/40 to-transparent" />
             </div>
-            <div className="shrink-0 w-0 h-0 border-x-[14px] border-x-transparent border-t-[16px] border-t-[#C99A2E]/50 drop-shadow-sm -mt-[1px]" />
+            <div className="shrink-0 w-0 h-0 border-x-[14px] border-x-transparent border-t-[16px] border-t-[#C99A2E]/50 drop-luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 -mt-[1px]" />
           </div>
           {data.steps.map((step, index) => (
             <motion.div
@@ -111,7 +111,7 @@ export default function Mobile() {
               variants={item}
               className="flex items-start gap-5 relative z-10"
             >
-              <div className="w-[50px] h-[50px] shrink-0 rounded-full bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 flex items-center justify-center shadow-[0_4px_12px_-4px_rgba(11,29,58,0.1)] relative">
+              <div className="w-[50px] h-[50px] shrink-0 rounded-full bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/10 flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 relative">
                 <div className="absolute inset-0 rounded-full border border-[#C99A2E]/20 scale-[1.1]"></div>
                 <div className="w-[38px] h-[38px] rounded-full bg-gradient-to-br from-[#0B1D3A] to-[#0F2751] flex items-center justify-center shadow-inner">
                   <span className="text-white text-[16px] font-bold font-serif">
@@ -119,7 +119,7 @@ export default function Mobile() {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col pt-1 bg-white/40 backdrop-blur-sm border border-[#0B1D3A]/[0.04] p-4 rounded-[4px] shadow-[0_2px_10px_-2px_rgba(11,29,58,0.03)] w-full">
+              <div className="flex flex-col pt-1 bg-white/40 backdrop-blur-sm border border-[#0B1D3A]/[0.04] p-4 rounded-[4px] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 w-full">
                 <h3 className="text-[17px] font-bold text-[#0B1D3A] mb-2">
                   {step.title}
                 </h3>
@@ -137,7 +137,7 @@ export default function Mobile() {
                       ease: "easeInOut",
                       delay: index * 0.2,
                     }}
-                    className="w-5 h-5 rounded-full bg-white/95 border border-[#C99A2E]/40 flex items-center justify-center shadow-sm"
+                    className="w-5 h-5 rounded-full bg-white/95 border border-[#C99A2E]/40 flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                   >
                     <ChevronDown
                       size={12}
@@ -170,7 +170,7 @@ export default function Mobile() {
                     transition={{ duration: 0.3 }}
                     className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-300 cursor-default select-none ${
                       isActive
-                        ? "bg-[#0B1D3A] text-white border-[#C99A2E]/60 shadow-[0_4px_14px_rgba(11,29,58,0.22)]"
+                        ? "bg-[#0B1D3A] text-white border-[#C99A2E]/60 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
                         : "bg-[#F8FAFD] text-[#475569] border-[#0B1D3A]/[0.06]"
                     }`}
                   >

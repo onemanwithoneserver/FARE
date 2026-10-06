@@ -51,7 +51,7 @@ export default function Mobile() {
   };
   return (
     <section
-      className="w-full py-10 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-10 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{ background: "#FFFFFF" }}
     >
       <motion.div
@@ -98,7 +98,7 @@ export default function Mobile() {
             <motion.div
               key={index}
               variants={item}
-              className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-6 shadow-[0_2px_12px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
+              className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-6 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -116,7 +116,7 @@ export default function Mobile() {
               ></div>
               <div className="flex items-center justify-between mb-5 relative z-10">
                 <div
-                  className="w-12 h-12 rounded-[4px] flex items-center justify-center shadow-md relative overflow-hidden"
+                  className="w-12 h-12 rounded-[4px] flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden"
                   style={{ backgroundColor: card.color }}
                 >
                   <div className="absolute inset-0 bg-white/0 translate-y-[100%] transition-transform duration-500"></div>
@@ -158,7 +158,7 @@ export default function Mobile() {
         >
           <button className="flex flex-col items-center gap-2 text-[13px] font-semibold text-[#475569] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
             <span>{data.cta.replace(" ↓", "")}</span>
-            <div className="w-8 h-8 rounded-full bg-[#F1F5FB] flex items-center justify-center shadow-sm">
+            <div className="w-8 h-8 rounded-full bg-[#F1F5FB] flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400">
               <ArrowDown
                 size={16}
                 strokeWidth={2.5}

@@ -22,7 +22,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
 
   return (
     <section
-      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white"
+      className="w-full py-12 px-6 border-b border-[#0B1D3A]/[0.06] font-['Outfit'] relative overflow-hidden bg-white fare-noise-overlay"
     >
       <motion.div
         animate={{ x: [0, -15, 0], y: [0, 15, 0], scale: [1, 1.05, 1] }}
@@ -125,7 +125,7 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
           <p className="text-[12px] font-medium text-white/80 text-center relative z-10 leading-relaxed">{data.investment.footerNote}</p>
           <button
             onClick={onRequestPricing}
-            className="w-full bg-white text-[#0B1D3A] px-6 py-3.5 rounded-[8px] font-black text-[14px] transition-transform duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center justify-center gap-2.5 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-[0.98] relative z-10 group"
+            className="w-full bg-white text-[#0B1D3A] px-6 py-3.5 rounded-[8px] font-black text-[14px] transition-transform duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 flex items-center justify-center gap-2.5 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 active:scale-[0.98] relative z-10 group"
           >
             {t("Request Pricing")}
             <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#C99A2E]"}`} style={{ fontSize: `${15}px` }}>

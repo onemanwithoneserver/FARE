@@ -47,7 +47,7 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full py-10 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-10 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{
         background:
           "linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 40%, #EFF5FF 80%, #F4F8FF 100%)",
@@ -99,7 +99,7 @@ export default function Desktop() {
           className="flex flex-col items-center text-center mb-16"
         >
           <motion.div variants={item} className="mb-5">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-gradient-to-r from-[#C99A2E]/[0.08] via-[#C99A2E]/[0.04] to-[#C99A2E]/[0.08] shadow-[0_2px_12px_rgba(201,154,46,0.12)] backdrop-blur-md">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#C99A2E]/30 bg-gradient-to-r from-[#C99A2E]/[0.08] via-[#C99A2E]/[0.04] to-[#C99A2E]/[0.08] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 backdrop-blur-md">
               <Sparkles
                 size={13}
                 className="text-[#C99A2E] animate-pulse"
@@ -167,7 +167,7 @@ export default function Desktop() {
                     variants={listItem}
                     className="group/item flex items-start gap-3.5 text-[15px] xl:text-[16px] font-medium text-[#475569] hover:text-[#0B1D3A] transition-all duration-200 hover:translate-x-1.5"
                   >
-                    <div className="mt-2 shrink-0 w-2 h-2 rounded-full bg-[#C99A2E] shadow-[0_0_8px_rgba(201,154,46,0.7)] group-hover/item:scale-125 transition-all duration-300" />
+                    <div className="mt-2 shrink-0 w-2 h-2 rounded-full bg-[#C99A2E] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 group-hover/item:scale-125 transition-all duration-300" />
                     <span className="leading-snug">{it}</span>
                   </motion.div>
                 ))}
@@ -224,7 +224,7 @@ export default function Desktop() {
                     variants={listItemReverse}
                     className="group/item flex items-start gap-3.5 text-[15px] xl:text-[16px] font-medium text-[#475569] hover:text-[#0B1D3A] transition-all duration-200 hover:translate-x-1.5"
                   >
-                    <div className="mt-2 shrink-0 w-2 h-2 rounded-full bg-[#3B82F6] shadow-[0_0_8px_rgba(59,130,246,0.7)] group-hover/item:scale-125 transition-all duration-300" />
+                    <div className="mt-2 shrink-0 w-2 h-2 rounded-full bg-[#3B82F6] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 group-hover/item:scale-125 transition-all duration-300" />
                     <span className="leading-snug">{it}</span>
                   </motion.div>
                 ))}
@@ -344,7 +344,7 @@ export default function Desktop() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-60px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-[1000px] w-full mx-auto rounded-[16px] flex flex-col items-center relative transition-all duration-500 group luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] z-20"
+            className="max-w-[1000px] w-full mx-auto rounded-[16px] flex flex-col items-center relative transition-all duration-500 group luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 z-20"
           >
             <div
               className="absolute inset-0 rounded-[16px] overflow-hidden pointer-events-none border border-white/10 group-hover:border-[#C99A2E]/40 transition-colors duration-500"
@@ -449,7 +449,7 @@ export default function Desktop() {
                             ease: [0.16, 1, 0.3, 1],
                           },
                         }}
-                        className="group/chip text-[17px] xl:text-[19px] font-bold text-white bg-white/[0.07] hover:bg-white/[0.14] px-7 py-4.5 rounded-[8px] border border-white/10 hover:border-[#C99A2E]/60 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-300 cursor-default relative overflow-hidden backdrop-blur-md"
+                        className="group/chip text-[17px] xl:text-[19px] font-bold text-white bg-white/[0.07] hover:bg-white/[0.14] px-7 py-4.5 rounded-[8px] border border-white/10 hover:border-[#C99A2E]/60 luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-300 cursor-default relative overflow-hidden backdrop-blur-md"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent translate-x-[-120%] group-hover/chip:translate-x-[120%] transition-transform duration-700 pointer-events-none" />
                         <span className="relative z-10 tracking-wide group-hover/chip:text-[#E2BA55] transition-colors">
@@ -473,7 +473,7 @@ export default function Desktop() {
                             ease: "easeInOut",
                             delay: idx * 0.2,
                           }}
-                          className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/15 flex items-center justify-center shrink-0 shadow-[0_4px_12px_rgba(0,0,0,0.3)] backdrop-blur-sm relative"
+                          className="w-10 h-10 rounded-full bg-white/[0.08] border border-white/15 flex items-center justify-center shrink-0 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 backdrop-blur-sm relative"
                         >
                           <div className="absolute inset-0 rounded-full bg-[#C99A2E]/10 animate-pulse pointer-events-none" />
                           <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"text-[#E2BA55] relative z-10"}`} style={{ fontSize: `${18}px` }}>

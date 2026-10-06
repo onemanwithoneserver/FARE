@@ -13,7 +13,7 @@ export default function Mobile() {
   const data = getData(language);
   
   return (
-    <section className="w-full relative overflow-hidden font-['Outfit'] pt-16 pb-12 px-6" style={{ background: NAVY }}>
+    <section className="w-full relative overflow-hidden font-['Outfit'] pt-16 pb-12 px-6 fare-noise-overlay" style={{ background: NAVY }}>
       
       
       <div className="absolute top-[-5%] right-[-10%] w-[300px] h-[300px] rounded-full blur-[90px] pointer-events-none z-0 opacity-40"
@@ -74,7 +74,7 @@ export default function Mobile() {
             }}
           >
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#6366F1] to-[#4F46E5] opacity-80" />
-            <div className="w-8 h-8 rounded-[4px] bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center shadow-lg mb-3">
+            <div className="w-8 h-8 rounded-[4px] bg-gradient-to-br from-[#6366F1] to-[#4F46E5] flex items-center justify-center luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 mb-3">
               <Briefcase size={14} className="text-white" strokeWidth={2.5} />
             </div>
             <div className="text-[26px] font-black text-white mb-1 leading-none tracking-tight">{data.experience.industry}</div>
@@ -90,7 +90,7 @@ export default function Mobile() {
             }}
           >
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C99A2E] to-[#B88A22] opacity-80" />
-            <div className="w-8 h-8 rounded-[4px] bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center shadow-lg mb-3">
+            <div className="w-8 h-8 rounded-[4px] bg-gradient-to-br from-[#C99A2E] to-[#B88A22] flex items-center justify-center luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 mb-3">
               <GraduationCap size={16} className="text-white" strokeWidth={2.5} />
             </div>
             <div className="text-[26px] font-black text-white mb-1 leading-none tracking-tight">{data.experience.training}</div>
@@ -106,7 +106,7 @@ export default function Mobile() {
             }}
           >
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#06B6D4] to-[#0891B2] opacity-80" />
-            <div className="w-8 h-8 rounded-[4px] bg-gradient-to-br from-[#06B6D4] to-[#0891B2] flex items-center justify-center shadow-lg mb-3">
+            <div className="w-8 h-8 rounded-[4px] bg-gradient-to-br from-[#06B6D4] to-[#0891B2] flex items-center justify-center luxury-shadow-md hover:luxury-shadow-float transition-all duration-400 mb-3">
               <Users size={16} className="text-white" strokeWidth={2.5} />
             </div>
             <div className="text-[28px] font-black text-white mb-1 leading-none tracking-tight">{data.experience.professionalsTrained}</div>

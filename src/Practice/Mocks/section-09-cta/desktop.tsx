@@ -14,9 +14,6 @@ export default function Desktop() {
           {sectionData.title}
         </h2>
         <div className="w-16 h-[3px] rounded-full bg-gradient-to-r from-[#C99A2E] to-[#E4C46A] mx-auto mb-6" />
-        <p className="text-[18px] text-[#475569] font-medium whitespace-pre-line leading-[1.7]">
-          {sectionData.description}
-        </p>
       </motion.div>
       
       <motion.div

@@ -51,7 +51,7 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full py-16 relative font-['Outfit'] overflow-hidden"
+      className="w-full py-16 relative font-['Outfit'] overflow-hidden fare-noise-overlay"
       style={{ background: "#FFFFFF" }}
     >
       <motion.div
@@ -106,7 +106,7 @@ export default function Desktop() {
                 y: -6,
                 transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
               }}
-              className="group bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-10 luxury-shadow-float hover:shadow-[0_24px_60px_-15px_rgba(201,154,46,0.15)] transition-all duration-400 relative overflow-hidden flex flex-col cursor-default"
+              className="group bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-10 luxury-shadow-float hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 transition-all duration-400 relative overflow-hidden flex flex-col cursor-default"
             >
               <motion.div
                 animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -124,7 +124,7 @@ export default function Desktop() {
               ></div>
               <div className="flex items-start justify-between mb-8 relative z-10">
                 <div
-                  className="w-16 h-16 rounded-[4px] flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
+                  className="w-16 h-16 rounded-[4px] flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative overflow-hidden"
                   style={{ backgroundColor: card.color }}
                 >
                   <div className="absolute inset-0 bg-white/0 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500"></div>
@@ -163,7 +163,7 @@ export default function Desktop() {
         >
           <button className="group flex flex-col items-center gap-3 text-[14px] font-semibold text-[#475569] hover:text-[#0B1D3A] transition-colors duration-300 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out">
             <span>{data.cta.replace(" ↓", "")}</span>
-            <div className="w-10 h-10 rounded-full bg-[#F1F5FB] flex items-center justify-center group-hover:bg-[#E2E8F0] transition-colors shadow-sm">
+            <div className="w-10 h-10 rounded-full bg-[#F1F5FB] flex items-center justify-center group-hover:bg-[#E2E8F0] transition-colors luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400">
               <ArrowDown
                 size={18}
                 strokeWidth={2.5}

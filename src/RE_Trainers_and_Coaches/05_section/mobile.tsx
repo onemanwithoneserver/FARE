@@ -55,7 +55,7 @@ export default function Mobile() {
     Settings: <Settings size={20} className="text-white relative z-10" />,
   };
   return (
-    <section className="w-full py-10 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden">
+    <section className="w-full py-10 bg-[#F8FAFD] relative font-['Outfit'] overflow-hidden fare-noise-overlay">
       <motion.div
         animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -104,7 +104,7 @@ export default function Mobile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: 0 }}
-                className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] shadow-[0_4px_15px_-4px_rgba(11,29,58,0.05)] relative overflow-hidden"
+                className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 relative overflow-hidden"
               >
                 <motion.div
                   animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.05, 1] }}
@@ -122,7 +122,7 @@ export default function Mobile() {
                 >
                   <div className="flex items-center gap-4">
                     <div
-                      className="w-14 h-14 rounded-[4px] flex items-center justify-center shadow-md shrink-0 transition-transform duration-300"
+                      className="w-14 h-14 rounded-[4px] flex items-center justify-center luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 shrink-0 transition-transform duration-300"
                       style={{
                         backgroundColor: category.color,
                         transform: isOpen ? "scale(1.05)" : "scale(1)",
@@ -180,7 +180,7 @@ export default function Mobile() {
                               {sub.skills.map((skill, sIdx) => (
                                 <span
                                   key={sIdx}
-                                  className="bg-white border border-[#0B1D3A]/[0.06] px-3 py-1.5 rounded-[4px] text-[13px] font-medium text-[#3A4A63] shadow-sm hover:shadow transition-shadow duration-300"
+                                  className="bg-white border border-[#0B1D3A]/[0.06] px-3 py-1.5 rounded-[4px] text-[13px] font-medium text-[#3A4A63] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 hover:shadow transition-shadow duration-300"
                                 >
                                   {skill}
                                 </span>
