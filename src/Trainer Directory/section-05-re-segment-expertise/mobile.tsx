@@ -101,7 +101,6 @@ export default function Mobile() {
             <h2 className="text-[#0B1D3A] text-[17px] font-black leading-tight">
               {t("Real Estate Segment")}<br/>{t("Expertise")}
             </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
           </div>
           <div className="flex flex-col gap-3">
             {data.segments.map((segment, idx) => (
@@ -120,7 +119,6 @@ export default function Mobile() {
             <h2 className="text-[#0B1D3A] text-[17px] font-black leading-tight">
               {t("Learner")}<br/>{t("Audience")}
             </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
           </div>
           <div className="flex flex-col gap-3">
             {data.learnerAudience.map((audience, idx) => (
@@ -144,7 +142,6 @@ export default function Mobile() {
             <h2 className="text-[#0B1D3A] text-[17px] font-black leading-tight">
               {t("Training")}<br/>{t("Language")}
             </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
           </div>
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-1.5 p-3 rounded-[4px] bg-[#F8FAFD] border border-[#0B1D3A]/[0.04]">

@@ -24,7 +24,6 @@ export default function Mobile() {
           <h2 className="text-white text-3xl font-black tracking-tight leading-tight mb-4">
             {data.title}
           </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full shadow-[0_0_15px_rgba(201,154,46,0.4)]" />
           <p className="text-[15px] text-white/70 font-medium">
             {data.subtitle}
           </p>

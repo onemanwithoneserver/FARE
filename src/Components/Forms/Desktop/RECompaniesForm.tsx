@@ -38,7 +38,6 @@ export default function RECompaniesForm() {
             Partner with{" "}
             <span className="text-[#C99A2E] gold-underline">FARE</span>
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           <p className="text-[#475569] text-[15px] max-w-lg mx-auto">
             Empower your sales team and channel partners with our
             industry-leading real estate training solutions.

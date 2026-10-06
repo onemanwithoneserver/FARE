@@ -1,8 +1,8 @@
-import { ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-import { accentAt, IconBadge, Section, VIEWPORT, fadeUp, staggerContainer } from "../../../Practice/ui";
+import { PrimaryButton, accentAt, IconBadge, Section, VIEWPORT, fadeUp, staggerContainer } from "../../../Practice/ui";
 
 export default function Desktop() {
   const { language } = useLanguage();
@@ -24,7 +24,6 @@ export default function Desktop() {
           <h2 className="text-white text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
             {data.title}
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full shadow-[0_0_15px_rgba(201,154,46,0.4)]" />
           <p className="text-[17px] text-white/70 font-medium max-w-2xl mx-auto leading-relaxed">
             {data.subtitle}
           </p>
@@ -62,19 +61,12 @@ export default function Desktop() {
                   </p>
                 </div>
 
-                <button 
-                  className={`relative z-10 w-full py-4 px-6 rounded-[12px] font-bold text-[15px] flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer overflow-hidden group/btn ${
-                    i === 0 
-                      ? "bg-gradient-to-r from-[#22C55E] to-[#16A34A] text-white hover:shadow-[0_0_20px_rgba(34,197,94,0.3)]" 
-                      : "bg-gradient-to-r from-[#C99A2E] to-[#B8892A] text-white hover:shadow-[0_0_20px_rgba(201,154,46,0.3)]"
-                  }`}
-                >
-                  <span className="relative z-10">{itemData.cta}</span>
-                  <span className="relative z-10 inline-flex items-center justify-center shrink-0 w-[1em] h-[1em]" style={{ fontSize: "18px" }}>
-                    <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover/btn:opacity-0 group-hover/btn:-translate-x-1" />
-                    <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover/btn:opacity-100 group-hover/btn:translate-x-0" />
-                  </span>
-                </button>
+                <div className="flex items-center justify-start mt-4">
+                  <PrimaryButton variant={i === 0 ? "light" : "gold"} className={i === 0 ? "text-[#16A34A]" : ""}>
+                    {itemData.cta}
+                    <ChevronRight size={18} strokeWidth={2.5} className="ml-1" />
+                  </PrimaryButton>
+                </div>
               </motion.div>
             );
           })}

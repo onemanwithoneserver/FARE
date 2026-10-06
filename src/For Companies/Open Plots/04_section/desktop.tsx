@@ -51,7 +51,6 @@ export default function Desktop() {
           <h2 className=" text-[#0B1D3A] text-[3rem] lg:text-[3.5rem] leading-[1.05] font-black tracking-[-0.02em] mb-6 max-w-[850px] bg-clip-text text-transparent bg-gradient-to-b from-[#0B1D3A] to-[#0B1D3A]/70 tracking-tight">
             {data.headline}
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           <p className="text-[18px] font-medium leading-[1.6] text-[#475569] max-w-[650px]">
             {data.subtitle}
           </p>

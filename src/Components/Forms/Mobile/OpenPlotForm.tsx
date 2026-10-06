@@ -36,7 +36,6 @@ export default function OpenPlotForm() {
           Find Your Perfect{" "}
           <span className="text-[#C99A2E] gold-underline">Open Plot</span>
         </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
         <p className="text-[#475569] mb-10 leading-relaxed text-[15px] relative z-10">
           Discover premium open plots with FARE. Tell us your preferences and
           we'll match you with the best available properties.

@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Target, Users, Clock, CheckCircle, Sparkles } from "lucide-react";
 import { data } from "../data";
 import { ACCENTS, CARD_BASE, HoverGlow, IconBadge, PrimaryButton, Reveal, Section, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
+import mockImage from "../../../assets/live_mocks_hero.jpg";
 
 export default function Desktop() {
   const s = data.scenarioDetail;
@@ -40,6 +41,10 @@ export default function Desktop() {
               <p className="text-[16px] text-[#475569] leading-relaxed font-medium mb-7 italic border-l-2 border-[#C99A2E] pl-4">
                 "{s.situation}"
               </p>
+
+              <div className="w-full rounded-[12px] overflow-hidden luxury-shadow-sm mb-7">
+                <img src={mockImage} alt="Scenario Context" className="w-full h-[220px] object-cover" />
+              </div>
 
               <div className="grid grid-cols-2 gap-6 mt-auto">
                 <div>

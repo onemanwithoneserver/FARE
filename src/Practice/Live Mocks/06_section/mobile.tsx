@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Target, Users, Clock, CheckCircle, Sparkles } from "lucide-react";
 import { data } from "../data";
 import { ACCENTS, IconBadge, PrimaryButton, Reveal, Section, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
+import mockImage from "../../../assets/live_mocks_hero.jpg";
 
 export default function Mobile() {
   const s = data.scenarioDetail;
@@ -37,6 +38,10 @@ export default function Mobile() {
             <p className="text-[14px] text-[#475569] leading-relaxed font-medium mb-6 italic border-l-2 border-[#C99A2E] pl-3">
               "{s.situation}"
             </p>
+
+            <div className="w-full rounded-[10px] overflow-hidden luxury-shadow-sm mb-6">
+              <img src={mockImage} alt="Scenario Context" className="w-full h-[180px] object-cover" />
+            </div>
 
             <div className="grid grid-cols-1 gap-5">
               <div>

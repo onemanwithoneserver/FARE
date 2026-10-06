@@ -64,7 +64,6 @@ export default function RETrainersForm() {
               Registration
             </span>
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           <p className="text-[#475569] text-[14px]">
             Join the FARE network of elite real estate coaches
           </p>

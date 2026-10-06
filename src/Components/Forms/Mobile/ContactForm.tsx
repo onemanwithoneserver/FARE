@@ -38,7 +38,6 @@ export default function ContactForm() {
               Get in{" "}
               <span className="text-[#C99A2E] gold-underline">Touch</span>
             </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
           </div>
           <p className="text-[#475569] text-[15px]">
             Have questions about our platform or services? Send us a message and

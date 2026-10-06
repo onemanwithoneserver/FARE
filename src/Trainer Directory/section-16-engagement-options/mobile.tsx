@@ -47,7 +47,6 @@ export default function Mobile({ onRequestPricing }: { onRequestPricing?: () => 
         <motion.div variants={item} className="flex items-center gap-3 mb-8">
           <div className="w-[3px] h-6 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
           <h2 className="text-[#0B1D3A] text-[24px] font-black tracking-[-0.02em]">{t("Training Investment")}</h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
         </motion.div>
 
         <div className="flex flex-col gap-5 mb-6">

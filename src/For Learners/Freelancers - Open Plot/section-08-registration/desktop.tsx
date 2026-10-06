@@ -25,7 +25,6 @@ export default function Desktop() {
             <h2 className="text-white text-[40px] lg:text-[48px] font-black tracking-tight leading-tight mb-5">
               {data.title}
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 rounded-full shadow-[0_0_15px_rgba(201,154,46,0.4)]" />
             <p className="text-[20px] font-bold text-[#C99A2E] mb-6 tracking-wide">
               {data.subtitle}
             </p>
