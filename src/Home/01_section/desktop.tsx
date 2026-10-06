@@ -293,10 +293,9 @@ export default function Desktop() {
                 <div>
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <h2 className=" text-[#0B1D3A] text-[17px] font-bold leading-snug">
+                      <h2 className=" text-[#FFF] text-[17px] font-bold leading-snug">
                         {data.dashboard.greeting}
                       </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
                       <p className="text-white/40 text-[10px] font-medium mt-0.5">
                         {data.dashboard.date}
                       </p>

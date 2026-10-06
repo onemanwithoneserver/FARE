@@ -51,6 +51,7 @@ export const dataEn = {
       subItems: [
         { title: "Knowledge Bank", href: "fare-knowledge-bank" },
         { title: "Mocks", href: "fare-mocks" },
+        { title: "Live Mocks", href: "fare-live-mocks" },
       ],
     },
     { title: "Courses", href: "courses" },
@@ -108,6 +109,7 @@ export const dataTe = {
       subItems: [
         { title: "నాలెడ్జ్ బ్యాంక్", href: "fare-knowledge-bank" },
         { title: "మాక్స్", href: "fare-mocks" },
+        { title: "లైవ్ మాక్స్", href: "fare-live-mocks" },
       ],
     },
     { title: "కోర్సులు", href: "courses" },

@@ -1,0 +1,140 @@
+import { motion } from "motion/react";
+import type { Variants } from "motion/react";
+import { ChevronRight, Sparkles, ArrowRight, Video } from "lucide-react";
+import { data } from "../data";
+import liveMocksHero from "../../../assets/live_mocks_hero.jpg";
+
+const NAVY = "#0B1D3A";
+
+export default function Desktop() {
+  const s = data.hero;
+
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.07, delayChildren: 0.1 },
+    },
+  };
+
+  const item: Variants = {
+    hidden: { opacity: 0, y: 22 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
+  return (
+    <section
+      className="w-full flex items-center justify-between overflow-x-clip relative font-['Outfit'] fare-noise-overlay"
+      style={{
+        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
+      }}
+    >
+      <motion.div
+        animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[5%] right-[10%] w-[700px] h-[700px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[140px] pointer-events-none z-0"
+      />
+      <motion.div
+        animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
+      />
+      <div
+        className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
+        style={{
+          backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-4 lg:pt-8 pb-8 lg:pb-12 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false }}
+          className="w-full lg:w-[48%] xl:w-[46%] flex flex-col items-start text-left shrink-0 py-4 lg:py-6 pr-6 lg:pr-10"
+        >
+          <motion.div
+            variants={item}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-5"
+          >
+            <Sparkles size={12} className="text-[#C99A2E]" strokeWidth={2.5} />
+            <span className="font-bold text-[11px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">
+              ✨ {s.supportingLine}
+            </span>
+          </motion.div>
+
+          <motion.h1
+            variants={item}
+            className="text-[2.6rem] lg:text-[3rem] xl:text-[3.4rem] font-black mb-4 tracking-tight leading-[1.08]"
+            style={{ color: NAVY }}
+          >
+            {s.title}
+          </motion.h1>
+
+          <motion.p
+            variants={item}
+            className="text-[17px] font-semibold text-[#0B1D3A]/85 mb-3"
+          >
+            {s.subtitle}
+          </motion.p>
+
+          <motion.p
+            variants={item}
+            className="text-[15px] xl:text-[16px] font-medium text-[#475569] leading-[1.65] whitespace-pre-wrap mb-8 max-w-[520px]"
+          >
+            {s.description}
+          </motion.p>
+
+          <motion.div variants={item} className="flex items-center gap-4 mb-5">
+            <button
+              className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[8px] flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out relative overflow-hidden group cursor-pointer"
+              style={{
+                background: NAVY,
+                boxShadow: `0 4px 16px rgba(11,29,58,0.2), 0 2px 4px rgba(0,0,0,0.1)`,
+              }}
+            >
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
+              <span className="relative z-10 flex items-center gap-2">🎯 {s.cta}</span>
+              <span className="relative z-10 inline-flex items-center justify-center shrink-0 w-[15px] h-[15px] group-hover:translate-x-1 transition-transform">
+                <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+                <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+              </span>
+            </button>
+            <button
+              className="text-[#0B1D3A] text-[14px] font-semibold px-7 py-3.5 rounded-[8px] flex items-center gap-2.5 border-2 border-[#0B1D3A]/20 hover:border-[#C99A2E] hover:text-[#C99A2E] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer group"
+            >
+              <Video size={16} strokeWidth={2.5} />
+              {s.secondaryCta}
+              <ArrowRight size={14} strokeWidth={2.5} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+            </button>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 40, scale: 0.96 }}
+          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end pl-0"
+        >
+          <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] sm:rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80 group">
+            <motion.img
+              animate={{ scale: [1, 1.04, 1] }}
+              transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+              src={liveMocksHero}
+              alt="Live mock practice session with real estate expert"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/15 via-transparent to-transparent pointer-events-none" />
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

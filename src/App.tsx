@@ -20,6 +20,7 @@ import FAREForCareerSwitchers from "./For Learners/Career Switchers";
 import FAREForStudentsFreshers from "./For Learners/Students & Freshers";
 import FAREKnowledgeBank from "./Practice/Knowledge Bank";
 import FAREMocks from "./Practice/Mocks";
+import FARELiveMocks from "./Practice/Live Mocks";
 import TrainerDirectory from "./Trainer Directory";
 import Courses from "./Courses";
 export default function App() {
@@ -124,6 +125,10 @@ export default function App() {
             <Route
               path="/:mode/fare-mocks"
               element={<FAREMocks isMobile={isMobile} />}
+            />
+            <Route
+              path="/:mode/fare-live-mocks"
+              element={<FARELiveMocks isMobile={isMobile} />}
             />
             <Route
               path="/:mode/trainer-directory"

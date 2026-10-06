@@ -40,6 +40,7 @@ export const getData = (lang: "en" | "te" = "en") => {
           links: [
             { label: "ప్లాట్‌ఫారమ్", path: "home" },
             { label: "నాలెడ్జ్ బ్యాంక్", path: "fare-knowledge-bank" },
+            { label: "లైవ్ మాక్స్", path: "fare-live-mocks" },
             { label: "సంప్రదించండి", path: "contact-us" },
             { label: "గోప్యత", path: "#" },
             { label: "నిబంధనలు", path: "#" },
@@ -88,6 +89,7 @@ export const getData = (lang: "en" | "te" = "en") => {
         links: [
           { label: "Platform", path: "home" },
           { label: "Knowledge Bank", path: "fare-knowledge-bank" },
+          { label: "Live Mocks", path: "fare-live-mocks" },
           { label: "Contact Us", path: "contact-us" },
           { label: "Privacy Policy", path: "#" },
           { label: "Terms of Service", path: "#" },
