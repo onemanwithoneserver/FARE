@@ -505,3 +505,43 @@ export function Chip({ children, accent, mobile = false }: { children: ReactNode
     </span>
   );
 }
+
+export function PageTransition({ children }: { children: ReactNode }) {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <AnimatePresence mode="wait">
+      {loading ? (
+        <motion.div
+          key="loader"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: EASE }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#FAFBFF] backdrop-blur-md"
+        >
+          <motion.div
+            animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#C99A2E] to-[#E4C46A] blur-[10px]"
+          />
+        </motion.div>
+      ) : (
+        <motion.div
+          key="content"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE }}
+          className="w-full h-full flex flex-col"
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
