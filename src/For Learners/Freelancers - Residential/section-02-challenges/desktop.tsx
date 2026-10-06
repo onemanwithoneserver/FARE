@@ -1,105 +1,52 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
-import { getData, ICONS, GRADIENTS } from "./data";
+import { ArrowRightLeft } from "lucide-react";
+import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
+import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer, accentAt } from "../../../Practice/ui";
 
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
 
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 18 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
   return (
-    <section className="w-full bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC] py-24 px-10 font-['Outfit'] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[100px] pointer-events-none" />
-      
-      <div className="max-w-[1200px] mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="flex justify-center mb-4">
-            <span className="text-[#10B981] bg-[#ECFDF5] border border-[#A7F3D0] px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase flex items-center gap-1.5">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              Real Challenges
-            </span>
-          </div>
-          <h2 className=" text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight max-w-4xl mx-auto">
-            {data.title}
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
-        </motion.div>
+    <Section tone="soft" ariaLabel="The Transition">
+      <SectionHeader eyebrow="The Transition" icon={ArrowRightLeft} accent={ACCENTS[5]} title={data.title} />
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: false, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12"
-        >
-          {data.challenges.map((c, i) => {
-            const Icon = ICONS[i % ICONS.length];
-            const gradient = GRADIENTS[i % GRADIENTS.length];
-            
-            return (
-              <motion.div
-                key={i}
-                variants={item}
-                className="bg-white p-7 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.03)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-12 h-12 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-md group-hover:scale-105 transition-transform duration-300`}>
-                    <Icon size={22} className="text-white" strokeWidth={2.5} />
-                  </div>
-                  <h3 className=" text-[17px] font-bold text-[#0B1D3A] tracking-wide leading-snug">
+      <motion.div
+        variants={staggerContainer(0.08)}
+        initial="hidden"
+        whileInView="show"
+        viewport={VIEWPORT}
+        className="flex flex-wrap justify-center items-stretch gap-6 max-w-[1300px] mx-auto mb-16"
+      >
+        {data.challenges.map((c, i) => {
+          const a = accentAt(i);
+          const Icon = ICONS[i % ICONS.length];
+          
+          return (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              className={`w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] ${CARD_BASE} ${CARD_HOVER} p-8 flex flex-col relative overflow-hidden group text-left`}
+            >
+              <AccentHairline accent={a} />
+              <HoverGlow accent={a} />
+              
+              <div className="flex flex-col mb-5">
+                <IconBadge icon={Icon} accent={a} size="md" className="mb-6" />
+                <h3 className="text-[19px] font-bold text-[#0B1D3A] leading-tight">
                   {c.title}
                 </h3>
-                </div>
-                
-                <p className="text-[14px] text-[#64748B] font-medium leading-relaxed flex-grow">
-                  {c.text}
-                </p>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+              </div>
+              
+              <p className="text-[15px] text-[#475569] font-medium leading-relaxed flex-grow">
+                {c.text}
+              </p>
+            </motion.div>
+          );
+        })}
+      </motion.div>
 
-        {data.quotes && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {data.quotes.map((q, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="p-6 rounded-[4px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-white font-medium text-[15px] leading-relaxed relative overflow-hidden"
-              >
-                <span className="text-[#C99A2E] text-2xl font-serif mr-2">“</span>
-                {q}
-              </motion.div>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
+      </Section>
   );
 }

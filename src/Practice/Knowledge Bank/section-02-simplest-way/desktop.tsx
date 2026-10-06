@@ -1,95 +1,62 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
-import { getData, ICONS, GRADIENTS } from "./data";
+import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-
-const NAVY = "#0B1D3A";
-const GOLD = "#C99A2E";
+import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer, accentAt } from "../../ui";
 
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
 
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.06, delayChildren: 0.15 },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
   return (
-    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="absolute top-0 right-[20%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.03] to-transparent rounded-full blur-[100px] pointer-events-none" />
+    <Section tone="soft" ariaLabel="The Simplest Way">
+      <SectionHeader eyebrow={data.badge} accent={ACCENTS[8]} title={data.title} description={data.intro} />
 
       <motion.div
-        variants={container}
+        variants={staggerContainer(0.08)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false, amount: 0.15 }}
-        className="max-w-[1200px] mx-auto relative z-10"
+        viewport={VIEWPORT}
+        className="flex flex-wrap justify-center gap-6 max-w-[1240px] mx-auto mb-16"
       >
-        <div className="text-center mb-16">
-          <motion.span
-            variants={item}
-            className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-4 block"
-          >
-            {data.badge}
-          </motion.span>
-          <motion.h2 variants={item} className=" text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight">
-            {data.title}
-          </motion.h2>
-          <motion.div variants={item} className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
-          <motion.p
-            variants={item}
-            className="text-lg text-[#64748B] font-medium max-w-3xl mx-auto whitespace-pre-wrap leading-relaxed"
-          >
-            {data.intro}
-          </motion.p>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-5 mb-16">
-          {data.features.map((f, i) => {
-            const Icon = ICONS[i % ICONS.length];
-            const colorGradient = GRADIENTS[i % GRADIENTS.length];
-            
-            return (
-              <motion.div
-                key={i}
-                variants={item}
-                className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] bg-white p-8 rounded-[4px] border border-[#E2E8F0]/80 hover:luxury-shadow-float hover:-translate-y-1 transition-all duration-300 group"
-              >
-                <div className="flex items-center gap-3 mb-5">
-                  <div className={`w-11 h-11 rounded-[4px] flex shrink-0 items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-gradient-to-br ${colorGradient} shadow-sm`}>
-                    <Icon size={20} className="text-white" strokeWidth={2.5} />
-                  </div>
-                  <h3 className=" text-lg font-bold" style={{ color: NAVY }}>
+        {data.features.map((f, i) => {
+          const a = accentAt(i);
+          const Icon = ICONS[i % ICONS.length];
+          
+          return (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              className={`w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] ${CARD_BASE} ${CARD_HOVER} p-8 flex flex-col relative overflow-hidden group`}
+            >
+              <AccentHairline accent={a} />
+              <HoverGlow accent={a} />
+              
+              <div className="flex flex-col mb-5">
+                <IconBadge icon={Icon} accent={a} size="md" className="mb-6" />
+                <h3 className="text-[19px] font-bold text-[#0B1D3A] leading-tight">
                   {f.title}
                 </h3>
-                </div>
-                <p className="text-sm text-[#64748B] font-medium leading-relaxed">
-                  {f.text}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        <motion.div variants={item} className="text-center">
-          <p className="text-2xl font-bold italic" style={{ color: GOLD }}>
-            "{data.quote}"
-          </p>
-        </motion.div>
+              </div>
+              <p className="text-[15px] text-[#475569] font-medium leading-relaxed">
+                {f.text}
+              </p>
+            </motion.div>
+          );
+        })}
       </motion.div>
-    </section>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VIEWPORT}
+        transition={{ duration: 0.6 }}
+        className="text-center bg-white p-8 rounded-[16px] border border-[#E6EBF3] luxury-shadow-sm max-w-[800px] mx-auto relative overflow-hidden"
+      >
+        <div className="text-[80px] text-[#C99A2E]/10 absolute -top-4 -left-2 font-serif leading-none select-none">"</div>
+        <p className="text-[20px] md:text-[24px] font-medium italic relative z-10 leading-snug text-[#0B1D3A]">
+          "{data.quote.replace(/"/g, '')}"
+        </p>
+      </motion.div>
+    </Section>
   );
 }

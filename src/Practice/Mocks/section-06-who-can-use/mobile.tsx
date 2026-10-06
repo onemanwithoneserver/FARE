@@ -6,7 +6,7 @@ import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, fadeScale, stagge
 const icons = [Users, Briefcase, GraduationCap, Building];
 
 export default function Mobile() {
-  const sectionData = data.whoIsThisFor || data.whoCanUse;
+  const sectionData = data.whoCanUse;
 
   return (
     <Section tone="white" mobile ariaLabel="Who Can Use">

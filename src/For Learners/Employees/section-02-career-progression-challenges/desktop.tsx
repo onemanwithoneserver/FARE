@@ -1,99 +1,52 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
-import { AlertCircle, Target, TrendingDown, Users, Briefcase, Zap, Search } from "lucide-react";
-import { getData } from "./data";
+import { ArrowRightLeft } from "lucide-react";
+import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-
-const ICONS = [AlertCircle, Target, TrendingDown, Users, Briefcase, Zap, Search];
-const GRADIENTS = [
-  "from-[#F87171] to-[#DC2626]", "from-[#FBBF24] to-[#D97706]", "from-[#38BDF8] to-[#0284C7]", 
-  "from-[#C084FC] to-[#9333EA]", "from-[#34D399] to-[#059669]", "from-[#F472B6] to-[#DB2777]",
-  "from-[#60A5FA] to-[#2563EB]"
-];
+import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer, accentAt } from "../../../Practice/ui";
 
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
 
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
   return (
-    <section className="w-full bg-gradient-to-br from-white via-[#FEFAF3] to-[#FFF8EC] py-24 px-10 font-['Outfit'] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[100px] pointer-events-none" />
-      
-      <div className="max-w-[1200px] mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.7 }}
-          className="mb-16"
-        >
-          <h2 className=" text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black text-center tracking-tight leading-tight max-w-4xl mx-auto">
-            {data.title}
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
-        </motion.div>
+    <Section tone="soft" ariaLabel="The Transition">
+      <SectionHeader eyebrow="The Transition" icon={ArrowRightLeft} accent={ACCENTS[5]} title={data.title} />
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: false, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16"
-        >
-          {data.challenges.map((c, i) => {
-            const Icon = ICONS[i % ICONS.length];
-            const gradient = GRADIENTS[i % GRADIENTS.length];
-            
-            return (
-              <motion.div
-                key={i}
-                variants={item}
-                className="bg-white p-7 rounded-[4px] luxury-shadow-float border border-[#E2E8F0]/60 hover:luxury-shadow-float hover:-translate-y-1.5 hover:border-[#C99A2E]/20 transition-all duration-300 group flex flex-col h-full"
-              >
-                <div className="flex items-center gap-3 mb-5">
-                  <div className={`w-12 h-12 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon size={22} className="text-white" strokeWidth={2.5} />
-                  </div>
-                  <h3 className=" text-[17px] font-bold text-[#0B1D3A] leading-tight">{c.title}</h3>
-                </div>
-                <p className="text-[14.5px] text-[#475569] font-medium leading-relaxed flex-grow">{c.text}</p>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+      <motion.div
+        variants={staggerContainer(0.08)}
+        initial="hidden"
+        whileInView="show"
+        viewport={VIEWPORT}
+        className="flex flex-wrap justify-center items-stretch gap-6 max-w-[1300px] mx-auto mb-16"
+      >
+        {data.challenges.map((c, i) => {
+          const a = accentAt(i);
+          const Icon = ICONS[i % ICONS.length];
+          
+          return (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              className={`w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] ${CARD_BASE} ${CARD_HOVER} p-8 flex flex-col relative overflow-hidden group text-left`}
+            >
+              <AccentHairline accent={a} />
+              <HoverGlow accent={a} />
+              
+              <div className="flex flex-col mb-5">
+                <IconBadge icon={Icon} accent={a} size="md" className="mb-6" />
+                <h3 className="text-[19px] font-bold text-[#0B1D3A] leading-tight">
+                  {c.title}
+                </h3>
+              </div>
+              
+              <p className="text-[15px] text-[#475569] font-medium leading-relaxed flex-grow">
+                {c.text}
+              </p>
+            </motion.div>
+          );
+        })}
+      </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center"
-        >
-          <div className="inline-block bg-white px-8 py-5 rounded-[4px] border border-[#E2E8F0]/50 shadow-sm relative overflow-hidden group hover:border-[#C99A2E]/30 transition-colors duration-300">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#C99A2E]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <p className="text-[18px] font-bold text-[#0B1D3A] whitespace-pre-wrap leading-relaxed relative z-10">
-              {data.closing}
-            </p>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+      </Section>
   );
 }

@@ -1,108 +1,62 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
-import { ChevronRight, Sparkles, ArrowRight } from "lucide-react";
+
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
+import { PrimaryButton, VIEWPORT, staggerContainer, fadeUp } from "../../../Practice/ui";
 import careerSwitchersHero from "../../../assets/career_switchers_hero.jpg";
-
-const NAVY = "#0B1D3A";
 
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
 
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.07, delayChildren: 0.1 },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 22 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
   return (
-    <section
-      className="w-full flex items-center justify-between overflow-x-clip relative font-['Outfit']"
-      style={{
-        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
-      }}
-    >
+    <section className="w-full flex items-center justify-between overflow-x-clip relative font-['Outfit'] fare-noise-overlay bg-[#FAFBFF]">
       <motion.div
-        animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
+        animate={{ opacity: [0.15, 0.3, 0.15], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[5%] right-[10%] w-[700px] h-[700px] bg-gradient-radial from-[#C5D9FF]/40 to-transparent rounded-full blur-[140px] pointer-events-none z-0"
+        className="absolute top-0 right-[10%] w-[800px] h-[800px] bg-gradient-radial from-[#C5D9FF] to-transparent rounded-full blur-[140px] pointer-events-none z-0"
       />
-      <motion.div
-        animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none z-0"
-      />
-      <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
-        style={{
-          backgroundImage: `linear-gradient(${NAVY} 1px, transparent 1px), linear-gradient(90deg, ${NAVY} 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-4 lg:pt-8 pb-8 lg:pb-12 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0">
+      
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-16 pb-20 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0 max-w-[1500px] mx-auto min-h-[85vh]">
         <motion.div
-          variants={container}
+          variants={staggerContainer(0.08, 0.1)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false }}
-          className="w-full lg:w-[48%] xl:w-[46%] flex flex-col items-start text-left shrink-0 py-4 lg:py-6 pr-6 lg:pr-10"
+          viewport={VIEWPORT}
+          className="w-full lg:w-[48%] xl:w-[45%] flex flex-col items-start text-left shrink-0 pr-6 lg:pr-10"
         >
-          <motion.div
-            variants={item}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] backdrop-blur-sm shadow-sm mb-5"
-          >
-            <Sparkles size={12} className="text-[#C99A2E]" strokeWidth={2.5} />
-            <span className="font-bold text-[11px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">
-             {data.badge}
-            </span>
+          <motion.div variants={fadeUp}>
+            <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-[#E6EBF3] luxury-shadow-sm mb-6">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C99A2E] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C99A2E]"></span>
+              </span>
+              <span className="font-bold text-[11px] tracking-[0.15em] uppercase text-[#C99A2E] leading-none pt-0.5">
+                {data.badge}
+              </span>
+            </div>
           </motion.div>
 
           <motion.h1
-            variants={item}
-            className="text-[2.6rem] lg:text-[3rem] xl:text-[3.4rem] font-black mb-6 tracking-tight leading-[1.08]"
-            style={{ color: NAVY }}
+            variants={fadeUp}
+            className="text-[42px] lg:text-[48px] xl:text-[56px] font-black mb-5 tracking-tight leading-[1.08] text-[#0B1D3A]"
           >
             {data.headline}
           </motion.h1>
 
           <motion.p
-            variants={item}
-            className="text-[15px] xl:text-[16px] font-medium text-[#475569] leading-[1.65] whitespace-pre-wrap mb-8 max-w-[520px]"
+            variants={fadeUp}
+            className="text-[16px] xl:text-[17px] font-medium text-[#475569] leading-relaxed mb-10 max-w-[540px] whitespace-pre-wrap"
           >
             {data.description}
           </motion.p>
 
-          <motion.div variants={item} className="flex items-center gap-4 mb-5">
+          <motion.div variants={fadeUp} className="flex items-center gap-4">
+            <PrimaryButton className="px-8 py-4 text-[15px]">
+              {data.buttons.primary}
+            </PrimaryButton>
             <button
-              className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[8px] flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
-              style={{
-                background: NAVY,
-                boxShadow: `0 4px 16px rgba(11,29,58,0.2), 0 2px 4px rgba(0,0,0,0.1)`,
-              }}
-            >
-              🚀 {data.buttons.primary}
-              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px` }}>
-      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-    </span>
-            </button>
-            <button
-              className="text-[14px] font-semibold px-7 py-3.5 rounded-[8px] border border-[#0B1D3A]/15 bg-white hover:bg-[#F8FAFD] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out"
-              style={{ color: NAVY }}
+              className="text-[15px] font-bold px-8 py-4 rounded-[12px] border border-[#0B1D3A]/15 bg-white hover:bg-[#F8FAFD] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 ease-out text-[#0B1D3A]"
             >
               {data.buttons.secondary}
             </button>
@@ -112,19 +66,19 @@ export default function Desktop() {
         <motion.div
           initial={{ opacity: 0, x: 40, scale: 0.96 }}
           whileInView={{ opacity: 1, x: 0, scale: 1 }}
-          viewport={{ once: false }}
+          viewport={VIEWPORT}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end pl-0"
+          className="w-full lg:w-[52%] xl:w-[55%] flex items-center justify-end pl-0 relative"
         >
-          <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[480px] xl:h-[510px] rounded-tl-[120px] sm:rounded-tl-[160px] lg:rounded-tl-[220px] xl:rounded-tl-[260px] rounded-bl-[60px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] xl:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80 group">
+          <div className="relative w-full h-[400px] lg:h-[550px] xl:h-[600px] rounded-tl-[120px] lg:rounded-tl-[240px] rounded-bl-[60px] lg:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l-4 border-t-4 border-b-4 border-white">
             <motion.img
-              animate={{ scale: [1, 1.04, 1] }}
-              transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
               src={careerSwitchersHero}
               alt="Professional looking out window"
               className="w-full h-full object-cover object-[center_38%]"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/15 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/20 via-transparent to-transparent pointer-events-none" />
           </div>
         </motion.div>
       </div>

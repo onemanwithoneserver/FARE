@@ -1,69 +1,53 @@
 import { motion } from "motion/react";
-import { getData, ICONS, GRADIENTS } from "./data";
+import { ChevronRight, Target } from "lucide-react";
+import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
+import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, accentAt, fadeUp, staggerContainer } from "../../../Practice/ui";
 
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-6 font-['Outfit'] fare-noise-overlay">
-      <div className="max-w-full mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10"
-        >
-          <h2 className="text-[#0B1D3A] text-[1.75rem] font-black tracking-tight leading-tight">
-            {data.title}
-          </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
-        </motion.div>
+    <Section tone="soft" mobile ariaLabel="Career Outcomes">
+      <SectionHeader mobile eyebrow="Outcomes" icon={Target} accent={ACCENTS[0]} title={data.title} />
 
-        <div className="flex flex-col gap-4 mb-10">
-          {data.outcomes.map((o, i) => {
-            const Icon = ICONS[i % ICONS.length];
-            const gradient = GRADIENTS[i % GRADIENTS.length];
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px] border border-[#E2E8F0]/60 shadow-[0_2px_8px_rgba(11,29,58,0.02)]"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-11 h-11 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-sm`}>
-                    <Icon size={20} className="text-white" strokeWidth={2.5} />
-                  </div>
-                  <h3 className="text-[15px] font-bold text-[#0B1D3A] uppercase tracking-wide">
-                  {o.title}
-                </h3>
+      <motion.div variants={staggerContainer(0.08)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col gap-4">
+        {data.outcomes.map((itemData, i) => {
+          const a = accentAt(i);
+          const Icon = ICONS[i % ICONS.length];
+          
+          return (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              className="bg-white p-6 rounded-[16px] border border-[#E6EBF3] luxury-shadow-sm flex flex-col relative overflow-hidden group h-full"
+            >
+              <span aria-hidden="true" className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full" style={{ background: `linear-gradient(90deg, ${a.from}, ${a.to})` }} />
+              
+              <div className="flex items-start gap-4 mb-5 pt-1">
+                <IconBadge icon={Icon} accent={a} size="md" interactive={false} className="shrink-0" />
+                <div>
+                  
+                  <h3 className="text-[17px] font-bold text-[#0B1D3A] tracking-tight leading-snug">
+                    {itemData.title}
+                  </h3>
                 </div>
-                
-                <p className="text-[14px] text-[#475569] font-medium leading-relaxed">
-                  {o.text}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <p className="text-[15px] font-bold text-[#C99A2E] bg-[#C99A2E]/5 inline-block px-5 py-3 rounded-[4px] leading-relaxed">
-            "{data.closing}"
-          </p>
-        </motion.div>
-      </div>
-    </section>
+              </div>
+              
+              <p className="text-[14.5px] text-[#475569] font-medium leading-relaxed mb-6 flex-grow">
+                {itemData.text}
+              </p>
+              
+              <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-sm border border-[#E6EBF3] mt-auto self-end">
+                <span className="relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] text-[#0B1D3A]" style={{ fontSize: "16px" }}>
+                  <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0" />
+                </span>
+              </div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </Section>
   );
 }

@@ -1,61 +1,58 @@
 import { motion } from "motion/react";
 import { data } from "../data";
-import { ChevronRight } from "lucide-react";
+import { FlowStrip, PrimaryButton, Reveal, Section, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 export default function Mobile() {
   const sectionData = data.finalCta;
+  const flowSteps = sectionData.coreMessage.split("→").map(x => x.trim()).filter(Boolean);
+
   return (
-    <section className="w-full bg-white py-16 relative overflow-hidden">
-      <div className="w-full px-5 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center justify-center px-3 py-1.5 rounded-[4px] bg-[#0B1D3A]/5 border border-[#0B1D3A]/10 mb-6">
-            <span className="text-[10px] font-bold text-[#C99A2E] tracking-widest">{sectionData.coreMessage}</span>
-          </div>
-          <h2 className="text-[#0B1D3A] text-[28px] font-bold mb-4 leading-tight">
-            {sectionData.title}
-          </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
-          <p className="text-[15px] text-gray-600">
-            {sectionData.description}
-          </p>
-        </motion.div>
-        
-        <div className="flex flex-col gap-5">
-          {sectionData.sections.map((sec, index) => (
+    <Section tone="white" mobile ariaLabel="Get Started" className="border-t border-[#E6EBF3]">
+      <Reveal className="text-center mb-12">
+        <FlowStrip steps={flowSteps} mobile highlight="PRACTICE" className="mb-8" />
+        <h2 className="text-[#0B1D3A] text-[28px] font-black mb-5 leading-tight tracking-tight">
+          {sectionData.title}
+        </h2>
+        <div className="w-12 h-1 rounded-full bg-gradient-to-r from-[#C99A2E] to-[#E4C46A] mx-auto mb-5" />
+        <p className="text-[15px] text-[#475569] font-medium whitespace-pre-line leading-relaxed">
+          {sectionData.description}
+        </p>
+      </Reveal>
+      
+      <motion.div variants={staggerContainer(0.08)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col gap-4">
+        {sectionData.sections.map((sec, index) => {
+          const isFeatured = index === 2;
+          return (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-[#0B1D3A] text-white p-6 rounded-[4px] shadow-lg flex flex-col relative overflow-hidden"
+              key={sec.title}
+              variants={fadeUp}
+              className={`p-6 rounded-[16px] flex flex-col relative overflow-hidden ${
+                isFeatured
+                  ? "bg-[#0B1D3A] text-white luxury-shadow-lg"
+                  : "bg-[#F8F9FC] border border-[#E6EBF3]"
+              }`}
             >
-              <div className="absolute -right-8 -top-8 w-32 h-32 bg-[#C99A2E]/10 rounded-full blur-[20px]" />
-              <div className="relative z-10 mb-6">
-                <div className="text-[11px] font-bold tracking-widest text-[#E2C068] uppercase mb-3">
+              {isFeatured && (
+                <div aria-hidden="true" className="absolute -right-10 -top-10 w-40 h-40 bg-[#C99A2E]/20 rounded-full blur-[30px]" />
+              )}
+              <div className="relative z-10 mb-8">
+                <div className={`text-[11px] font-bold tracking-widest uppercase mb-2 ${isFeatured ? "text-[#E2C068]" : "text-[#0B1D3A]/50"}`}>
                   {sec.title}
                 </div>
-                <h3 className="text-[20px] font-bold mb-3 leading-snug">
+                <h3 className={`text-[18px] font-bold leading-snug mb-2.5 ${isFeatured ? "text-white" : "text-[#0B1D3A]"}`}>
                   {sec.subtitle}
                 </h3>
-                <p className="text-[14px] text-white/70 leading-relaxed">
+                <p className={`text-[14px] leading-relaxed font-medium ${isFeatured ? "text-white/70" : "text-[#475569]"}`}>
                   {sec.desc}
                 </p>
               </div>
-              <button className="relative z-10 w-full flex items-center justify-center gap-2 bg-white/10 active:bg-white border border-white/20 active:border-white text-white active:text-[#0B1D3A] py-3.5 rounded-[8px] font-semibold text-[15px] transition-all duration-300 mt-auto">
+              <PrimaryButton full mobile variant={isFeatured ? "gold" : "navy"} className="relative z-10">
                 {sec.cta}
-                <ChevronRight size={16} strokeWidth={2.5} />
-              </button>
+              </PrimaryButton>
             </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+          );
+        })}
+      </motion.div>
+    </Section>
   );
 }

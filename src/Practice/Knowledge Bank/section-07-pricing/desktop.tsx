@@ -1,106 +1,86 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
 import { ChevronRight, Check, ArrowRight } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-
-const GOLD = "#C99A2E";
+import { Section, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
 
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    show: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="absolute top-0 left-0 w-full h-[60%] bg-[#0B1D3A] rounded-b-[40px] pointer-events-none" />
+    <Section tone="white" ariaLabel="Pricing" className="relative">
+      <div className="absolute top-0 left-0 w-full h-[65%] bg-[#0B1D3A] rounded-b-[60px] pointer-events-none" />
       
-      <div className="max-w-[1200px] mx-auto relative z-10">
+      <div className="max-w-[1300px] mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={VIEWPORT}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className=" text-[#FFF] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight mb-4">
+          <h2 className="text-white text-[32px] md:text-[38px] lg:text-[44px] font-black tracking-tight leading-tight mb-5">
             {data.title}
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
-          <p className="text-lg text-white/70 max-w-2xl mx-auto font-medium">
+          <div className="w-20 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 rounded-full" />
+          <p className="text-[17px] text-white/80 font-medium max-w-2xl mx-auto">
             {data.subtitle}
           </p>
         </motion.div>
 
         <motion.div
-          variants={container}
+          variants={staggerContainer(0.08)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false, amount: 0.2 }}
-          className="flex flex-col md:flex-row justify-center items-stretch gap-8 mb-16 max-w-4xl mx-auto"
+          viewport={VIEWPORT}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
         >
           {data.plans.map((plan, i) => (
             <motion.div
               key={i}
-              variants={item}
-              className={`flex-1 relative bg-white rounded-[4px] p-8 flex flex-col hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${
+              variants={fadeUp}
+              className={`relative bg-white rounded-[24px] p-10 flex flex-col hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${
                 plan.bestValue 
-                  ? "border-2 border-[#C99A2E] luxury-shadow-float" 
-                  : "border border-[#E2E8F0] luxury-shadow-float"
+                  ? "border-2 border-[#C99A2E] shadow-[0_30px_60px_-15px_rgba(201,154,46,0.3)]" 
+                  : "border border-[#E6EBF3] luxury-shadow-float"
               }`}
             >
               {plan.bestValue && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-[#C99A2E] to-[#B8892A] text-white text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-[4px] whitespace-nowrap shadow-md">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-[#C99A2E] to-[#B8892A] text-white text-[12px] font-bold tracking-[0.15em] uppercase px-5 py-2 rounded-full whitespace-nowrap shadow-md">
                   {plan.highlight}
                 </div>
               )}
               
-              <h3 className=" text-xl font-bold text-[#64748B] mb-2">{plan.title}</h3>
+              <h3 className="text-[20px] font-bold text-[#475569] mb-3">{plan.title}</h3>
               <div className="flex items-baseline gap-1 mb-2">
-                <span className="text-4xl font-black text-[#0B1D3A]">{plan.price}</span>
+                <span className="text-[44px] font-black text-[#0B1D3A] leading-none tracking-tight">{plan.price}</span>
               </div>
-              <p className="text-[14px] font-bold text-[#C99A2E] mb-6 border-b border-[#F1F5F9] pb-6">
+              <p className="text-[15px] font-bold text-[#C99A2E] mb-8 border-b border-[#E6EBF3] pb-8">
                 {plan.daily}
               </p>
               
-              <ul className="space-y-4 mb-8 flex-grow">
-                <li className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-[4px] bg-[#10B981]/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <Check size={12} className="text-[#10B981]" strokeWidth={3} />
+              <ul className="space-y-5 mb-10 flex-grow">
+                <li className="flex items-start gap-3.5">
+                  <div className="w-5 h-5 rounded-full bg-[#10B981]/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <Check size={14} className="text-[#10B981]" strokeWidth={3} />
                   </div>
-                  <span className="text-[#475569] font-medium">{plan.text}</span>
+                  <span className="text-[15px] text-[#475569] font-medium leading-relaxed">{plan.text}</span>
                 </li>
               </ul>
               
               <button
-                className={`w-full py-4 rounded-[8px] font-bold text-[14px] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] ${
+                className={`w-full py-4 rounded-[12px] font-bold text-[15px] transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer ${
                   plan.bestValue 
-                    ? "bg-[#0B1D3A] text-white hover:luxury-shadow-float" 
-                    : "bg-[#F8FAFD] text-[#0B1D3A] border border-[#E2E8F0] hover:border-[#0B1D3A]/20 hover:bg-white"
+                    ? "bg-[#0B1D3A] text-white hover:bg-[#152c53] shadow-md" 
+                    : "bg-[#FAFBFF] text-[#0B1D3A] border border-[#E6EBF3] hover:border-[#0B1D3A]/20 hover:bg-white"
                 }`}
               >
                 {plan.cta}
-                <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${16}px` }}>
-      <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-      <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-    </span>
+                <span className="relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em]" style={{ fontSize: "16px" }}>
+                  <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+                  <ArrowRight size={16} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+                </span>
               </button>
             </motion.div>
           ))}
@@ -109,18 +89,18 @@ export default function Desktop() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={VIEWPORT}
           transition={{ duration: 0.7, delay: 0.3 }}
           className="text-center max-w-3xl mx-auto"
         >
-          <p className="text-[13px] font-semibold text-[#64748B] uppercase tracking-[0.1em] mb-4">
+          <p className="text-[14px] font-semibold text-[#475569] uppercase tracking-[0.15em] mb-5">
             {data.footer}
           </p>
-          <p className="text-2xl font-bold italic" style={{ color: GOLD }}>
+          <p className="text-[24px] font-bold italic text-[#C99A2E] leading-snug">
             "{data.quote}"
           </p>
         </motion.div>
       </div>
-    </section>
+    </Section>
   );
 }

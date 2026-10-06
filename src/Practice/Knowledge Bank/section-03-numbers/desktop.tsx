@@ -1,41 +1,21 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
+import { Section, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
 
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, scale: 0.95, y: 15 },
-    show: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
   return (
-    <section className="w-full bg-[#0B1D3A] py-28 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay border-y border-white/5">
+    <Section tone="navy" ariaLabel="By The Numbers" className="border-y border-white/5">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-[#C99A2E]/10 to-transparent blur-[80px] pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-[#38BDF8]/5 to-transparent blur-[60px] pointer-events-none" />
-      <div className="absolute inset-0 opacity-[0.1]" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
       
       <div className="max-w-[1200px] mx-auto text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={VIEWPORT}
           transition={{ duration: 0.7 }}
           className="mb-20"
         >
@@ -49,17 +29,17 @@ export default function Desktop() {
         </motion.div>
 
         <motion.div
-          variants={container}
+          variants={staggerContainer(0.08)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={VIEWPORT}
           className="grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8"
         >
           {data.stats.map((s, i) => (
             <motion.div
               key={i}
-              variants={item}
-              className="flex flex-col items-center justify-center p-10 lg:py-12 border border-white/[0.06] rounded-[8px] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] backdrop-blur-sm transition-all duration-500 group relative overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.2)]"
+              variants={fadeUp}
+              className="flex flex-col items-center justify-center p-10 lg:py-12 border border-white/[0.06] rounded-[16px] bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#C99A2E]/30 backdrop-blur-sm transition-all duration-500 group relative overflow-hidden luxury-shadow-float"
             >
               <div className="absolute -inset-full bg-gradient-to-br from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 group-hover:-inset-0 transition-all duration-700 pointer-events-none" />
               
@@ -73,6 +53,6 @@ export default function Desktop() {
           ))}
         </motion.div>
       </div>
-    </section>
+    </Section>
   );
 }

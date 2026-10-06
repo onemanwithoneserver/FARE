@@ -6,7 +6,7 @@ import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, S
 const icons = [Users, Briefcase, GraduationCap, Building];
 
 export default function Desktop() {
-  const sectionData = data.whoIsThisFor || data.whoCanUse;
+  const sectionData = data.whoCanUse;
 
   return (
     <Section tone="white" ariaLabel="Who Can Use">

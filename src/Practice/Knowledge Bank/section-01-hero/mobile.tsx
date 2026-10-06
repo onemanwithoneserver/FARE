@@ -1,70 +1,67 @@
 import { motion } from "motion/react";
-import { ChevronRight, Sparkles, ArrowRight } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
+import { PrimaryButton, VIEWPORT, staggerContainer, fadeUp } from "../../ui";
 import knowledgeBankHero from "../../../assets/knowledge_bank_hero.jpg";
-
-const GOLD = "#C99A2E";
 
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
 
   return (
-    <section
-      className="w-full relative overflow-hidden font-['Outfit']"
-      style={{
-        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
-      }}
-    >
-      <div className="py-10 px-6 relative z-10">
+    <section className="w-full relative overflow-hidden font-['Outfit'] bg-[#FAFBFF]">
+      <div className="py-12 px-5 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          variants={staggerContainer(0.08)}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
           className="flex flex-col items-start"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] mb-5">
-            <Sparkles size={11} className="text-[#C99A2E]" strokeWidth={2.5} />
-            <span className="font-bold text-[10px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">
-            {data.badge}
-            </span>
-          </span>
+          <motion.div variants={fadeUp}>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#E6EBF3] shadow-sm mb-6 max-w-full">
+              <span className="relative flex h-1.5 w-1.5 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C99A2E] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#C99A2E]"></span>
+              </span>
+              <span className="font-bold text-[9.5px] tracking-[0.12em] uppercase text-[#C99A2E] leading-snug pt-0.5">
+                {data.badge}
+              </span>
+            </div>
+          </motion.div>
 
-          <h1 className="text-[1.85rem] font-black text-[#0B1D3A] mb-5 tracking-tight leading-[1.12]">
-            {data.headline}
-          </h1>
-
-          <p className="text-[14px] text-[#475569] font-medium whitespace-pre-wrap leading-relaxed mb-6">
-            {data.description}
-          </p>
-
-          <div className="w-full rounded-[16px] overflow-hidden luxury-shadow-float mb-6">
-            <img
-              src={knowledgeBankHero}
-              alt="Knowledge Bank"
-              className="w-full h-[220px] object-cover object-center"
-            />
-          </div>
-
-          <button
-            className="text-white text-[14px] font-semibold px-8 py-3.5 rounded-[8px] w-full flex items-center justify-center gap-2.5 active:scale-[0.98] transition-all duration-300"
-            style={{
-              background: `linear-gradient(135deg, ${GOLD}, #B8892A)`,
-              boxShadow: `0 4px 16px rgba(201,154,46,0.2)`,
-            }}
+          <motion.h1
+            variants={fadeUp}
+            className="text-[32px] font-black text-[#0B1D3A] mb-4 tracking-tight leading-[1.12]"
           >
-            🚀 {data.buttons.primary}
-            <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px` }}>
-      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-    </span>
-          </button>
+            {data.headline}
+          </motion.h1>
 
-          <span className="text-[9px] font-semibold text-[#0B1D3A]/30 uppercase tracking-[0.15em] mt-5 leading-relaxed self-center">
-            {data.supporting}
-          </span>
+          <motion.p
+            variants={fadeUp}
+            className="text-[14.5px] text-[#475569] font-medium whitespace-pre-wrap leading-relaxed mb-8"
+          >
+            {data.description}
+          </motion.p>
+
+          <motion.div variants={fadeUp} className="w-full mb-8">
+            <div className="w-full rounded-[16px] overflow-hidden border-2 border-white luxury-shadow-sm">
+              <img
+                src={knowledgeBankHero}
+                alt="Knowledge Bank"
+                className="w-full h-[240px] object-cover object-center"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="w-full flex flex-col items-center gap-4">
+            <PrimaryButton full mobile variant="gold">
+              {data.buttons.primary}
+            </PrimaryButton>
+            <span className="text-[10px] font-semibold text-[#0B1D3A]/40 uppercase tracking-[0.15em] leading-relaxed text-center">
+              {data.supporting}
+            </span>
+          </motion.div>
         </motion.div>
       </div>
     </section>

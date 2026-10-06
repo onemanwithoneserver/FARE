@@ -1,97 +1,60 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
-import { getData, ICONS, GRADIENTS } from "./data";
+import { ChevronRight, ArrowRight, Target } from "lucide-react";
+import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
+import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Section, SectionHeader, VIEWPORT, accentAt, fadeUp, staggerContainer } from "../../../Practice/ui";
 
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
 
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 18 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
   return (
-    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="max-w-[1200px] mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-3 block">
-            Impact
-          </span>
-          <h2 className=" text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight">
-            {data.title}
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
-        </motion.div>
+    <Section tone="soft" ariaLabel="Career Outcomes">
+      <SectionHeader eyebrow="Outcomes" icon={Target} accent={ACCENTS[0]} title={data.title} />
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: false, amount: 0.1 }}
-          className="flex flex-wrap justify-center gap-6 mb-12"
-        >
-          {data.outcomes.map((itemData, i) => {
-            const Icon = ICONS[i % ICONS.length];
-            const gradient = GRADIENTS[i % GRADIENTS.length];
-            
-            return (
-              <motion.div
-                key={i}
-                variants={item}
-                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white p-7 rounded-[4px] border border-[#E2E8F0] shadow-[0_2px_10px_rgba(11,29,58,0.03)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-12 h-12 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-md group-hover:scale-105 transition-transform duration-300`}>
-                    <Icon size={22} className="text-white" strokeWidth={2.5} />
-                  </div>
-                  <h3 className=" text-[18px] font-bold text-[#0B1D3A] tracking-wide leading-snug">
+      <motion.div
+        variants={staggerContainer(0.08)}
+        initial="hidden"
+        whileInView="show"
+        viewport={VIEWPORT}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto"
+      >
+        {data.outcomes.map((itemData, i) => {
+          const a = accentAt(i);
+          const Icon = ICONS[i % ICONS.length];
+          
+          return (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              className={`${CARD_BASE} ${CARD_HOVER} p-8 flex flex-col h-full group relative overflow-hidden`}
+            >
+              <AccentHairline accent={a} />
+              <HoverGlow accent={a} />
+              
+              <div className="mb-6">
+                <IconBadge icon={Icon} accent={a} size="lg" className="mb-4" />
+                
+                <h3 className="text-[19px] font-bold text-[#0B1D3A] tracking-wide leading-tight">
                   {itemData.title}
                 </h3>
-                </div>
-                
-                <p className="text-[14px] text-[#64748B] font-medium leading-relaxed flex-grow">
-                  {itemData.text}
-                </p>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        {data.quote && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.6 }}
-            className="p-8 rounded-[4px] bg-[#0B1D3A] border border-[#C99A2E]/30 text-center relative overflow-hidden shadow-lg"
-          >
-            <div className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[80px] pointer-events-none" />
-            <p className="text-[17px] md:text-[19px] font-bold text-white relative z-10 tracking-wide max-w-3xl mx-auto">
-              "{data.quote}"
-            </p>
-          </motion.div>
-        )}
-      </div>
-    </section>
+              </div>
+              
+              <p className="text-[15px] text-[#475569] font-medium leading-relaxed mb-8 flex-grow">
+                {itemData.text}
+              </p>
+              
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm border border-[#E6EBF3] mt-auto self-end transition-colors duration-300 group-hover:border-transparent cursor-pointer" style={{ backgroundColor: "white" }}>
+                <span className="relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] text-[#0B1D3A] group-hover:text-white z-10" style={{ fontSize: "18px" }}>
+                  <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+                  <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+                </span>
+                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: `linear-gradient(135deg, ${a.from}, ${a.to})` }} />
+              </div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </Section>
   );
 }

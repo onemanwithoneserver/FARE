@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { data } from "../data";
-import { PrimaryButton, Reveal, VIEWPORT, staggerContainer, fadeUp } from "../../ui";
+import { PrimaryButton, VIEWPORT, staggerContainer, fadeUp } from "../../ui";
 import mocksHero from "../../../assets/mocks_hero.jpg";
 
 export default function Mobile() {

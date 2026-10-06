@@ -1,78 +1,77 @@
 import { motion } from "motion/react";
-import { ChevronRight, Sparkles, ArrowRight } from "lucide-react";
+
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
+import { PrimaryButton, VIEWPORT, staggerContainer, fadeUp } from "../../../Practice/ui";
 import studentsHero from "../../../assets/students_hero.jpg";
-
-const NAVY = "#0B1D3A";
 
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
 
   return (
-    <section
-      className="w-full relative overflow-hidden font-['Outfit']"
-      style={{
-        background: `linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)`,
-      }}
-    >
-      <div className="py-10 px-6 relative z-10">
+    <section className="w-full relative overflow-hidden font-['Outfit'] bg-[#FAFBFF]">
+      <div className="py-12 px-5 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          variants={staggerContainer(0.08)}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
           className="flex flex-col items-start"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] mb-5">
-            <Sparkles size={11} className="text-[#C99A2E]" strokeWidth={2.5} />
-            <span className="font-bold text-[10px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">
-            {data.badge}
-            </span>
-          </span>
+          <motion.div variants={fadeUp}>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#E6EBF3] shadow-sm mb-6 max-w-full">
+              <span className="relative flex h-1.5 w-1.5 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C99A2E] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#C99A2E]"></span>
+              </span>
+              <span className="font-bold text-[9.5px] tracking-[0.12em] uppercase text-[#C99A2E] leading-snug pt-0.5">
+                {data.badge}
+              </span>
+            </div>
+          </motion.div>
 
-          <h1 className="text-[1.85rem] font-black text-[#0B1D3A] mb-4 tracking-tight leading-[1.12]">
+          <motion.h1
+            variants={fadeUp}
+            className="text-[32px] font-black text-[#0B1D3A] mb-4 tracking-tight leading-[1.12]"
+          >
             {data.headline}
-          </h1>
+          </motion.h1>
 
-          <p className="text-[15px] font-semibold text-[#0B1D3A]/80 mb-3">
+          <motion.p
+            variants={fadeUp}
+            className="text-[16px] font-semibold text-[#0B1D3A]/85 mb-3"
+          >
             {data.subheadline}
-          </p>
+          </motion.p>
 
-          <p className="text-[14px] text-[#475569] font-medium whitespace-pre-wrap leading-relaxed mb-6">
+          <motion.p
+            variants={fadeUp}
+            className="text-[14.5px] text-[#475569] font-medium whitespace-pre-wrap leading-relaxed mb-8"
+          >
             {data.description}
-          </p>
+          </motion.p>
 
-          <div className="w-full rounded-[16px] overflow-hidden luxury-shadow-float mb-6">
-            <img
-              src={studentsHero}
-              alt="Students & Freshers in Real Estate"
-              className="w-full h-[220px] object-cover object-center"
-            />
-          </div>
+          <motion.div variants={fadeUp} className="w-full mb-8">
+            <div className="w-full rounded-[16px] overflow-hidden border-2 border-white luxury-shadow-sm">
+              <img
+                src={studentsHero}
+                alt="Students and freshers"
+                className="w-full h-[240px] object-cover object-center"
+              />
+            </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-3 w-full">
+          <motion.div variants={fadeUp} className="w-full flex flex-col gap-3">
+            <PrimaryButton full mobile>
+              {data.buttons.primary}
+            </PrimaryButton>
             <button
-              className="text-white text-[14px] font-semibold px-7 py-3.5 rounded-[8px] w-full flex items-center justify-center gap-2.5 active:scale-[0.98] transition-all duration-300"
-              style={{
-                background: NAVY,
-                boxShadow: `0 4px 16px rgba(11,29,58,0.2)`,
-              }}
-            >
-              🚀 {data.buttons.primary}
-              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px` }}>
-      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-    </span>
-            </button>
-            <button
-              className="text-[14px] font-semibold px-7 py-3.5 rounded-[8px] w-full border border-[#0B1D3A]/15 bg-white active:scale-[0.98] transition-all duration-300"
-              style={{ color: NAVY }}
+              className="w-full text-[14px] font-bold px-5 py-3.5 rounded-[10px] border border-[#0B1D3A]/15 bg-white active:scale-[0.98] transition-all duration-300 ease-out text-[#0B1D3A]"
             >
               {data.buttons.secondary}
             </button>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

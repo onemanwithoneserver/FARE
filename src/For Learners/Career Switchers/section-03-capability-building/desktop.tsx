@@ -1,11 +1,14 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
 import { useState } from "react";
-import { getData, ICONS, GRADIENTS } from "./data";
+import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
+import { ChevronDown, GraduationCap } from "lucide-react";
+import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Section, SectionHeader, VIEWPORT, accentAt, fadeScale, staggerContainer } from "../../../Practice/ui";
 
 export default function Desktop() {
   const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
+  const { language } = useLanguage();
+  const data = getData(language);
 
   const toggleCard = (index: number) => {
     setExpandedCards(prev => {
@@ -16,106 +19,70 @@ export default function Desktop() {
     });
   };
 
-  const { language } = useLanguage();
-  const data = getData(language);
-
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.05, delayChildren: 0.1 },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 18 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
-
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-24 px-10 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="max-w-[1300px] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="text-[#C99A2E] text-[11px] font-bold tracking-[0.2em] uppercase mb-3 block">
-            Capabilities
-          </span>
-          <h2 className=" text-[#0B1D3A] text-4xl lg:text-[2.75rem] font-black tracking-tight leading-tight max-w-4xl mx-auto">
-            {data.title}
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 mt-4 rounded-full" />
-        </motion.div>
+    <Section tone="soft" ariaLabel="Capability Building">
+      <SectionHeader eyebrow="Capabilities" icon={GraduationCap} accent={ACCENTS[6]} title={data.title} />
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: false, amount: 0.1 }}
-          className="flex flex-wrap justify-center gap-6"
-        >
-          {data.categories.map((cat, i) => {
-            const Icon = ICONS[i % ICONS.length];
-            const gradient = GRADIENTS[i % GRADIENTS.length];
-            return (
-              <motion.div
-                key={i}
-                variants={item}
-                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] bg-gradient-to-br from-[#F8FAFD] to-[#F0F4FF] p-6 rounded-[4px] border border-[#E2E8F0]/60 shadow-[0_2px_10px_rgba(11,29,58,0.02)] hover:luxury-shadow-float hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300"
-              >
-                <div className="flex items-center gap-4 mb-5 border-b border-[#E2E8F0] pb-4">
-                  <div className={`w-12 h-12 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
-                    <Icon size={22} className="text-white" strokeWidth={2.5} />
-                  </div>
-                  <div>
-                    <h3 className=" text-[16px] font-bold text-[#0B1D3A] leading-tight">
-                      {cat.name}
-                    </h3>
-                  </div>
+      <motion.div
+        variants={staggerContainer(0.08)}
+        initial="hidden"
+        whileInView="show"
+        viewport={VIEWPORT}
+        className="flex flex-wrap justify-center gap-6 max-w-[1300px] mx-auto"
+      >
+        {data.categories.map((cat, i) => {
+          const a = accentAt(i);
+          const Icon = ICONS[i % ICONS.length];
+          const isExpanded = expandedCards.has(i);
+          const visibleSkills = isExpanded ? cat.skills : cat.skills.slice(0, 5);
+          const hiddenCount = cat.skills.length - 5;
+          
+          return (
+            <motion.div
+              key={i}
+              variants={fadeScale}
+              className={`w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] ${CARD_BASE} ${CARD_HOVER} p-6 flex flex-col relative overflow-hidden group`}
+            >
+              <AccentHairline accent={a} />
+              <HoverGlow accent={a} />
+              
+              <div className="flex items-center gap-3.5 mb-5 border-b border-[#E6EBF3] pb-4">
+                <IconBadge icon={Icon} accent={a} size="sm" />
+                <h3 className="text-[16px] font-bold leading-tight text-[#0B1D3A]">
+                  {cat.name}
+                </h3>
+              </div>
+              
+              <ul className="space-y-2.5">
+                {visibleSkills.map((skillStr, j) => (
+                  <motion.li
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    key={j}
+                    className="flex items-start gap-2.5"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-[1px] mt-1.5 shrink-0" style={{ background: a.glow }} />
+                    <span className="text-[14px] text-[#475569] font-medium leading-snug">
+                      {skillStr}
+                    </span>
+                  </motion.li>
+                ))}
+              </ul>
+              {hiddenCount > 0 && (
+                <div className="mt-4 pt-2">
+                  <button
+                    onClick={() => toggleCard(i)}
+                    className="text-[13px] font-bold text-[#C99A2E] hover:text-[#0B1D3A] transition-colors flex items-center gap-1 cursor-pointer"
+                  >
+                    {isExpanded ? "Show less" : `+${hiddenCount} more`}
+                    <ChevronDown size={14} className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
+                  </button>
                 </div>
-                {(() => {
-                  const isExpanded = expandedCards.has(i);
-                  const visibleSkills = isExpanded ? cat.skills : cat.skills.slice(0, 5);
-                  const hiddenCount = cat.skills.length - 5;
-                  
-                  return (
-                    <>
-                      <ul className="space-y-2.5">
-                        {visibleSkills.map((skill: string, j: number) => (
-                          <li key={j} className="flex items-start gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-[1px] bg-[#C99A2E] mt-1.5 shrink-0" />
-                            <span className="text-[14px] text-[#475569] font-medium leading-snug">
-                              {skill}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                      {hiddenCount > 0 && (
-                        <div className="mt-4">
-                          <button
-                            onClick={() => toggleCard(i)}
-                            className="text-[13px] font-bold text-[#0B1D3A] underline underline-offset-4 decoration-[#0B1D3A]/30 hover:decoration-[#C99A2E] hover:text-[#C99A2E] transition-colors duration-300 inline-block cursor-pointer outline-none"
-                          >
-                            {isExpanded ? "- Show less" : `+${hiddenCount} more`}
-                          </button>
-                        </div>
-                      )}
-                    </>
-                  );
-                })()}
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </div>
-    </section>
+              )}
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </Section>
   );
 }

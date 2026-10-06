@@ -1,112 +1,51 @@
 import { motion } from "motion/react";
-import { ChevronRight, UserPlus, ArrowRight, Sparkles } from "lucide-react";
+import { ChevronRight, ArrowRight, FileText } from "lucide-react";
 import { getData } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-
-const GOLD = "#C99A2E";
+import { PrimaryButton, Section, VIEWPORT } from "../../../Practice/ui";
 
 export default function Desktop() {
   const { language } = useLanguage();
   const data = getData(language);
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-32 px-10 font-['Outfit'] relative overflow-hidden flex items-center justify-center fare-noise-overlay">
-
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#C99A2E]/[0.08] to-transparent rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#0B1D3A]/[0.05] to-transparent rounded-full blur-[100px] pointer-events-none" />
-      
-      <div className="w-full max-w-[1100px] mx-auto relative z-10">
+    <Section tone="soft" ariaLabel="Registration">
+      <div className="max-w-[1000px] mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-[24px] overflow-hidden luxury-shadow-float group"
+          viewport={VIEWPORT}
+          transition={{ duration: 0.6 }}
+          className="bg-[#0B1D3A] rounded-[24px] p-16 text-center relative overflow-hidden luxury-shadow-float border border-[#C99A2E]/20"
         >
-
-          <div className="absolute inset-0 bg-[#0B1D3A]" />
-
-          <motion.div 
-            animate={{ 
-              x: ["-20%", "20%", "-20%"], 
-              y: ["-20%", "20%", "-20%"],
-            }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-[200px] -right-[200px] w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/30 to-transparent rounded-full blur-[100px]"
-          />
-          <motion.div 
-            animate={{ 
-              x: ["20%", "-20%", "20%"], 
-              y: ["20%", "-20%", "20%"],
-            }}
-            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            className="absolute -bottom-[150px] -left-[150px] w-[400px] h-[400px] bg-gradient-radial from-[#38BDF8]/20 to-transparent rounded-full blur-[100px]"
-          />
-
-          <div 
-            className="absolute inset-0 opacity-[0.05]"
-            style={{
-              backgroundImage: `linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)`,
-              backgroundSize: "40px 40px",
-            }}
-          />
-
-          <div className="relative z-10 p-16 md:p-20 flex flex-col items-center text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8 shadow-[0_4px_16px_rgba(0,0,0,0.1)]"
-            >
-              <Sparkles size={14} className="text-[#C99A2E]" strokeWidth={2.5} />
-              <span className="font-bold text-[12px] tracking-[0.2em] uppercase text-white/90">
-                Join the Future
-              </span>
-            </motion.div>
-            
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }} className=" text-[#0B1D3A] text-4xl md:text-[3.5rem] font-black tracking-tight leading-[1.1] mb-6 max-w-3xl">
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-[80px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-radial from-[#38BDF8]/10 to-transparent rounded-full blur-[80px] pointer-events-none -translate-x-1/3 translate-y-1/3" />
+          
+          <div className="relative z-10">
+            <h2 className="text-white text-[40px] lg:text-[48px] font-black tracking-tight leading-tight mb-5">
               {data.title}
-            </motion.h2>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-[18px] md:text-[20px] text-white/70 font-medium leading-relaxed whitespace-pre-wrap mb-12 max-w-2xl"
-            >
+            </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-6 rounded-full shadow-[0_0_15px_rgba(201,154,46,0.4)]" />
+            <p className="text-[17px] text-white/80 font-medium max-w-2xl mx-auto mb-12 leading-relaxed whitespace-pre-wrap">
               {data.subtitle}
-            </motion.p>
+            </p>
             
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto"
-            >
-              <button 
-                className="w-full sm:w-auto h-[60px] px-10 rounded-[8px] font-bold text-[16px] text-[#0B1D3A] flex items-center justify-center gap-3 group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] luxury-shadow-float"
-                style={{ background: `linear-gradient(135deg, ${GOLD}, #E5C370)` }}
-              >
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
-                <span className="relative z-10 flex items-center gap-2">
-                  {data.buttons.primary}
-                  <UserPlus size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform duration-300" />
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-8">
+              <PrimaryButton className="px-8 py-4 text-[15px] group">
+                <FileText size={18} strokeWidth={2.5} className="mr-2 inline-block" />
+                {data.buttons.primary}
+              </PrimaryButton>
+              <button className="w-full sm:w-auto px-8 py-4 bg-white/10 text-white rounded-[12px] font-bold text-[15px] hover:bg-white/20 border border-white/20 transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 group cursor-pointer backdrop-blur-sm">
+                {data.buttons.secondary}
+                <span className="relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em]" style={{ fontSize: "18px" }}>
+                  <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+                  <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
                 </span>
               </button>
-              
-              <button className="w-full sm:w-auto h-[60px] px-10 bg-white/5 border border-white/20 text-white rounded-[8px] font-bold text-[16px] hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 group backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98]">
-                {data.buttons.secondary}
-                <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"group-hover:translate-x-1"}`} style={{ fontSize: `${18}px` }}>
-      <ChevronRight size={18} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-      <ArrowRight size={18} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-    </span>
-              </button>
-            </motion.div>
+            </div>
           </div>
-
-          <div className="absolute inset-0 border border-white/10 rounded-[24px] pointer-events-none" />
         </motion.div>
       </div>
-    </section>
+    </Section>
   );
 }

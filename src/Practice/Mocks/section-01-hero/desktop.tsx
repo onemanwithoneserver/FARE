@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
-import { Sparkles } from "lucide-react";
+
 import { data } from "../data";
-import { PrimaryButton, Reveal, VIEWPORT, staggerContainer, fadeUp } from "../../ui";
+import { PrimaryButton, VIEWPORT, staggerContainer, fadeUp } from "../../ui";
 import mocksHero from "../../../assets/mocks_hero.jpg";
 
 export default function Desktop() {
@@ -18,8 +18,7 @@ export default function Desktop() {
         className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
         style={{
           backgroundImage: `linear-gradient(#0B1D3A 1px, transparent 1px), linear-gradient(90deg, #0B1D3A 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
+          backgroundSize: "60px 60px" }}
       />
 
       <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-16 pb-20 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0 max-w-[1500px] mx-auto min-h-[85vh]">

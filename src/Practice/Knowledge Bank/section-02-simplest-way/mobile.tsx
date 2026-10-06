@@ -1,67 +1,55 @@
 import { motion } from "motion/react";
-import { getData, ICONS, GRADIENTS } from "./data";
+import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-
-const NAVY = "#0B1D3A";
-const GOLD = "#C99A2E";
+import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer, accentAt } from "../../ui";
 
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#F8FAFD] via-[#F0F4FF] to-[#FAFBFF] py-16 px-6 font-['Outfit'] fare-noise-overlay">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="text-center mb-10">
-          <span className="text-[#C99A2E] text-[10px] font-bold tracking-[0.2em] uppercase mb-3 block">
-            {data.badge}
-          </span>
-          <h2 className="text-[#0B1D3A] text-[1.75rem] font-black tracking-tight leading-tight">
-            {data.title}
-          </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
-          <p className="text-[15px] text-[#64748B] font-medium whitespace-pre-wrap leading-relaxed">
-            {data.intro}
-          </p>
-        </div>
+    <Section tone="soft" mobile ariaLabel="The Simplest Way">
+      <SectionHeader mobile eyebrow={data.badge} accent={ACCENTS[8]} title={data.title} description={data.intro} />
 
-        <div className="flex flex-col gap-3.5 mb-10">
-          {data.features.map((f, i) => {
-            const Icon = ICONS[i % ICONS.length];
-            const colorGradient = GRADIENTS[i % GRADIENTS.length];
-            
-            return (
-              <div
-                key={i}
-                className="bg-white p-6 rounded-[4px] border border-[#E2E8F0]/80 shadow-[0_2px_8px_rgba(11,29,58,0.03)]"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-10 h-10 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${colorGradient} shadow-sm`}>
-                    <Icon size={18} className="text-white" strokeWidth={2.5} />
-                  </div>
-                  <h3 className="text-[17px] font-bold" style={{ color: NAVY }}>
+      <motion.div variants={staggerContainer(0.08)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col gap-4 mb-10">
+        {data.features.map((f, i) => {
+          const a = accentAt(i);
+          const Icon = ICONS[i % ICONS.length];
+          
+          return (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              className="bg-white rounded-[16px] border border-[#E6EBF3] p-6 relative overflow-hidden flex flex-col"
+            >
+              <span aria-hidden="true" className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full" style={{ background: `linear-gradient(90deg, ${a.from}, ${a.to})` }} />
+              
+              <div className="flex items-center gap-3.5 mb-4 pt-1">
+                <IconBadge icon={Icon} accent={a} size="sm" interactive={false} />
+                <h3 className="text-[16.5px] font-bold text-[#0B1D3A] leading-tight">
                   {f.title}
                 </h3>
-                </div>
-                <p className="text-sm text-[#64748B] font-medium leading-relaxed">
-                  {f.text}
-                </p>
               </div>
-            );
-          })}
-        </div>
-
-        <div className="text-center">
-          <p className="text-xl font-bold italic" style={{ color: GOLD }}>
-            "{data.quote}"
-          </p>
-        </div>
+              <p className="text-[14.5px] text-[#475569] leading-relaxed font-medium">
+                {f.text}
+              </p>
+            </motion.div>
+          );
+        })}
       </motion.div>
-    </section>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VIEWPORT}
+        transition={{ duration: 0.6 }}
+        className="bg-white p-6 rounded-[16px] border border-[#E6EBF3] luxury-shadow-sm relative overflow-hidden"
+      >
+        <div className="text-[60px] text-[#C99A2E]/10 absolute -top-4 -left-1 font-serif leading-none select-none">"</div>
+        <p className="text-[17px] font-medium italic relative z-10 leading-snug text-[#0B1D3A]">
+          "{data.quote.replace(/"/g, '')}"
+        </p>
+      </motion.div>
+    </Section>
   );
 }

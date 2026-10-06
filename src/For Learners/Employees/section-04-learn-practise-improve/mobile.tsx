@@ -1,64 +1,48 @@
 import { motion } from "motion/react";
-import { getData, ICONS, GRADIENTS } from "./data";
+import { BookOpen } from "lucide-react";
+import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
-
-const NAVY = "#0B1D3A";
+import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, accentAt, fadeScale, staggerContainer } from "../../../Practice/ui";
 
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
 
   return (
-    <section className="w-full bg-gradient-to-br from-[#FAFBFF] via-white to-[#F5F7FF] py-16 px-6 font-['Outfit'] fare-noise-overlay">
-      <div className="max-w-full mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 text-center"
-        >
-          <h2 className="text-[#0B1D3A] text-[1.75rem] font-black tracking-tight leading-tight">
-            {data.title}
-          </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
-        </motion.div>
+    <Section tone="white" mobile ariaLabel="Learning Experience">
+      <SectionHeader mobile eyebrow="Learning Experience" icon={BookOpen} accent={ACCENTS[7]} title={data.title} />
 
-        <div className="flex flex-col gap-4">
-          {data.experiences.map((exp, i) => {
-            const Icon = ICONS[i % ICONS.length];
-            const gradient = GRADIENTS[i % GRADIENTS.length];
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-[#F8FAFD] p-6 rounded-[4px] shadow-[0_2px_8px_rgba(11,29,58,0.02)] border border-[#E2E8F0]/80 flex flex-col"
-              >
-                <div className="flex items-center gap-3.5 mb-4">
-                  <div className={`w-11 h-11 rounded-[4px] flex items-center justify-center bg-gradient-to-br ${gradient} shadow-sm shrink-0`}>
-                    <Icon size={20} className="text-white" strokeWidth={2.5} />
-                  </div>
-                  <div>
-                    <span className="text-[9px] font-bold tracking-[0.2em] uppercase block mb-0.5" style={{ color: "#C99A2E" }}>
-                      {exp.label}
-                    </span>
-                    <h3 className="text-[16px] font-bold leading-tight" style={{ color: NAVY }}>
-                      {exp.title}
-                    </h3>
-                  </div>
-                </div>
-                
-                <p className="text-[14px] text-[#475569] font-medium leading-relaxed">
-                  {exp.text}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
+      <motion.div variants={staggerContainer(0.08)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col gap-4">
+        {data.experiences.map((exp, i) => {
+          const a = accentAt(i);
+          const Icon = ICONS[i % ICONS.length];
+          
+          return (
+            <motion.div
+              key={i}
+              variants={fadeScale}
+              className="bg-white rounded-[16px] border border-[#E6EBF3] p-5 relative overflow-hidden flex flex-col h-full"
+            >
+              <span aria-hidden="true" className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full" style={{ background: `linear-gradient(90deg, ${a.from}, ${a.to})` }} />
+              
+              <div className="flex items-center justify-between mb-4 pt-1">
+                <IconBadge icon={Icon} accent={a} size="sm" interactive={false} />
+                <span className="text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-full border" style={{ color: a.to, backgroundColor: `${a.from}15`, borderColor: `${a.to}30` }}>
+                  {exp.label}
+                </span>
+              </div>
+              
+              <h3 className="text-[16px] font-bold text-[#0B1D3A] mb-2 leading-snug">
+                {exp.title}
+              </h3>
+              
+              <p className="text-[14px] text-[#475569] font-medium leading-relaxed">
+                {exp.text}
+              </p>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </Section>
   );
 }

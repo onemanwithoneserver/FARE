@@ -1,90 +1,82 @@
 import { motion } from "motion/react";
-import { ChevronRight, ArrowRight } from "lucide-react";
-import { getData, ICONS, GRADIENTS } from "./data";
+import { ChevronRight } from "lucide-react";
+import { getData, ICONS } from "./data";
 import { useLanguage } from "../../../context/LanguageContext";
+import {  IconBadge, Section, VIEWPORT, accentAt, fadeUp, staggerContainer } from "../../../Practice/ui";
 
 export default function Mobile() {
   const { language } = useLanguage();
   const data = getData(language);
 
   return (
-    <section className="w-full bg-[#0B1D3A] py-16 px-6 font-['Outfit'] relative overflow-hidden fare-noise-overlay">
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[80px] pointer-events-none" />
-
+    <Section tone="navy" mobile ariaLabel="Start Free">
       <div className="max-w-full mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={VIEWPORT}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
-          <h2 className="text-white text-[1.75rem] font-black tracking-tight leading-tight mb-3">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D5AA45] to-[#C99A2E] text-[10px] font-bold tracking-[0.2em] uppercase mb-3 block">
+            Start Free
+          </span>
+          <h2 className="text-white text-3xl font-black tracking-tight leading-tight mb-4">
             {data.title}
           </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full" />
-          <p className="text-[15px] text-white/70 font-medium leading-relaxed">
+          <div className="w-12 h-1 bg-gradient-to-r from-[#C99A2E] to-[#E2C068] mx-auto mb-5 mt-4 rounded-full shadow-[0_0_15px_rgba(201,154,46,0.4)]" />
+          <p className="text-[15px] text-white/70 font-medium">
             {data.subtitle}
           </p>
         </motion.div>
 
-        <div className="flex flex-col gap-5 mb-10">
+        <motion.div
+          variants={staggerContainer(0.08)}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+          className="flex flex-col gap-5 mb-10"
+        >
           {data.items.map((itemData, i) => {
-            const isFirst = i === 0;
             const Icon = ICONS[i % ICONS.length];
-            const gradient = GRADIENTS[i % GRADIENTS.length];
-            
+            const a = accentAt(i + 2); // Different accents for these specific cards
+
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white/5 backdrop-blur-sm p-6 rounded-[4px] border border-white/10 flex flex-col items-center text-center"
+                variants={fadeUp}
+                className="bg-white/[0.03] backdrop-blur-md p-6 rounded-[16px] border border-white/[0.08] flex flex-col justify-between"
               >
-                <div className="flex items-center gap-4 mb-5">
-                  <div className={`w-14 h-14 rounded-[4px] flex shrink-0 items-center justify-center bg-gradient-to-br ${gradient} shadow-md`}>
-                    <Icon size={26} className="text-white" strokeWidth={2.5} />
+                <div>
+                  <div className="flex items-center gap-3.5 mb-5">
+                    <IconBadge icon={Icon} accent={a} size="md" interactive={false} />
+                    <h3 className="text-[18px] font-bold text-white tracking-wide">
+                      {itemData.title}
+                    </h3>
                   </div>
-                  <h3 className="text-lg font-bold text-white tracking-wider uppercase">
-                  {itemData.title}
-                </h3>
+                  <p className="text-[14.5px] text-white/70 leading-relaxed mb-6 font-normal">
+                    {itemData.text}
+                  </p>
                 </div>
-                <p className="text-[14px] text-white/70 font-medium leading-relaxed mb-6">
-                  {itemData.text}
-                </p>
-                
+
                 <button 
-                  className={`w-full py-3.5 rounded-[8px] font-bold text-[13px] transition-all duration-300 flex items-center justify-center gap-2 ${
-                    isFirst
-                      ? "bg-[#10B981] text-white"
-                      : "bg-[#C99A2E] text-[#0B1D3A]"
+                  className={`w-full py-3.5 px-6 rounded-[10px] font-bold text-[14.5px] flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
+                    i === 0 
+                      ? "bg-gradient-to-r from-[#22C55E] to-[#16A34A] text-white" 
+                      : "bg-gradient-to-r from-[#C99A2E] to-[#B8892A] text-white"
                   }`}
                 >
-                  {itemData.cta}
-                  <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${""}`} style={{ fontSize: `${15}px` }}>
-      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-    </span>
+                  <span>{itemData.cta}</span>
+                  <span className="relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em]" style={{ fontSize: "16px" }}>
+                    <ChevronRight size={16} strokeWidth={2.5} className="absolute inset-0" />
+                  </span>
                 </button>
               </motion.div>
             );
           })}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <p className="text-xl font-bold italic text-[#C99A2E]">
-            "{data.closing}"
-          </p>
         </motion.div>
-      </div>
-    </section>
+
+        </div>
+    </Section>
   );
 }

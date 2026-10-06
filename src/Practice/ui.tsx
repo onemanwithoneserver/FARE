@@ -6,7 +6,8 @@
  * consistent across the whole page.
  */
 import type { ReactNode } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { useState, useEffect } from "react";
+import { motion, useReducedMotion, AnimatePresence } from "motion/react";
 import type { Variants } from "motion/react";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, ChevronRight } from "lucide-react";
@@ -492,12 +493,12 @@ export function HoverGlow({ accent }: { accent: Accent }) {
   );
 }
 
-export function Chip({ children, accent, mobile = false }: { children: ReactNode; accent: Accent; mobile?: boolean }) {
+export function Chip({ children, accent, mobile = false, className = "" }: { children: ReactNode; accent: Accent; mobile?: boolean; className?: string }) {
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-[8px] font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
         mobile ? "text-[12px] px-2.5 py-1.5" : "text-[13px] px-3 py-1.5"
-      }`}
+      } ${className}`}
       style={{ background: accent.soft, color: accent.ink, boxShadow: `inset 0 0 0 1px ${accent.glow.replace(/0\.\d+\)$/, "0.14)")}` }}
     >
       <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: accent.to }} />
