@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { CheckCircle2, UserCheck } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, Section, SectionHeader, VIEWPORT, fadeScale, staggerContainer } from "../ui";
+import { ACCENTS, Section, SectionHeader, VIEWPORT, fadeScale, staggerContainer } from "../../ui";
 
 export default function Mobile() {
   const s = data.whoIsThisFor;

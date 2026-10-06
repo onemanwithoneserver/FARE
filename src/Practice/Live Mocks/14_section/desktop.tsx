@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Search, Compass, Users, UserCheck, Calendar, Video, Target, MessageSquare, Repeat } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, accentAt, fadeScale, staggerContainer } from "../ui";
+import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, accentAt, fadeScale, staggerContainer } from "../../ui";
 
 const ICONS = [Search, Compass, Users, UserCheck, Calendar, Video, Target, MessageSquare, Repeat];
 

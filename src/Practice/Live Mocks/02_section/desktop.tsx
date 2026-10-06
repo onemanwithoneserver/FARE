@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { MessageSquareX, AlertTriangle, UserX, TrendingDown, Clock, HelpCircle, Quote } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
+import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 const ICONS = [MessageSquareX, AlertTriangle, UserX, TrendingDown, Clock];
 const TONES = [ACCENTS[4], ACCENTS[7], ACCENTS[6], ACCENTS[8], ACCENTS[3]];

@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Briefcase, Users, Crown, Award, ShieldCheck, ArrowRight } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
+import { ACCENTS, IconBadge, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 const ICONS = [Briefcase, Users, Crown, Award];
 

@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Clock, CheckCircle } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
+import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 export default function Desktop() {
   const s = data.chooseSession;

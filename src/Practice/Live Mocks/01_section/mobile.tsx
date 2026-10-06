@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Clock, Video, Target, MessageSquare, Radio } from "lucide-react";
 import { data } from "../data";
 import liveMocksHero from "../../../assets/live_mocks_hero.jpg";
-import { ACCENTS, IconBadge, PrimaryButton, SecondaryButton, accentAt, fadeUp, staggerContainer } from "../ui";
+import { ACCENTS, IconBadge, PrimaryButton, SecondaryButton, accentAt, fadeUp, staggerContainer } from "../../ui";
 
 const CHIP_ICONS = [Clock, Video, Target, MessageSquare];
 

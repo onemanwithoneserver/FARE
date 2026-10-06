@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Target, Users, Clock, CheckCircle, Sparkles } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, CARD_BASE, HoverGlow, IconBadge, PrimaryButton, Reveal, Section, VIEWPORT, fadeUp, staggerContainer } from "../ui";
+import { ACCENTS, CARD_BASE, HoverGlow, IconBadge, PrimaryButton, Reveal, Section, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 export default function Desktop() {
   const s = data.scenarioDetail;

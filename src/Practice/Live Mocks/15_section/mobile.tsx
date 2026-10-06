@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { UserPlus, CheckCircle2, UserCheck } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, Chip, PrimaryButton, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
+import { ACCENTS, Chip, PrimaryButton, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 export default function Mobile() {
   const s = data.forExperts;

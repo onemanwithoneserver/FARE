@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Video, Target, MessageSquare } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, FlowStrip, IconBadge, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
+import { ACCENTS, FlowStrip, IconBadge, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 const ICONS = [Target, Video, MessageSquare];
 const TONES = [ACCENTS[7], ACCENTS[3], ACCENTS[5]];

@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { data } from "../data";
-import { FlowStrip, PrimaryButton, Reveal, Section, VIEWPORT, fadeUp, staggerContainer } from "../ui";
+import { FlowStrip, PrimaryButton, Reveal, Section, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 export default function Desktop() {
   const s = data.finalCta;

@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { MapPin, Info } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, Chip, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
+import { ACCENTS, Chip, Reveal, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 export default function Desktop() {
   const s = data.segments;

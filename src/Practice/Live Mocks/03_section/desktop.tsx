@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Users, UserCheck, Handshake, Store, Plus, Equal } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../ui";
+import { ACCENTS, AccentHairline, CARD_BASE, CARD_HOVER, HoverGlow, IconBadge, Section, SectionHeader, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 const ICONS = [Users, UserCheck, Handshake];
 const TONES = [ACCENTS[2], ACCENTS[3], ACCENTS[1]];

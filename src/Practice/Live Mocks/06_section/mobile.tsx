@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Target, Users, Clock, CheckCircle, Sparkles } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, IconBadge, PrimaryButton, Reveal, Section, VIEWPORT, fadeUp, staggerContainer } from "../ui";
+import { ACCENTS, IconBadge, PrimaryButton, Reveal, Section, VIEWPORT, fadeUp, staggerContainer } from "../../ui";
 
 export default function Mobile() {
   const s = data.scenarioDetail;

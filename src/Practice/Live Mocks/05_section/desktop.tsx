@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Compass } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, Chip, Section, SectionHeader, VIEWPORT, accentAt, fadeUp, staggerContainer } from "../ui";
+import { ACCENTS, Chip, Section, SectionHeader, VIEWPORT, accentAt, fadeUp, staggerContainer } from "../../ui";
 
 export default function Desktop() {
   const s = data.browseScenarios;

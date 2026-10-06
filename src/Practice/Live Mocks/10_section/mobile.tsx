@@ -1,6 +1,6 @@
 import { Repeat } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, FlowStrip, Reveal, Section, SectionHeader } from "../ui";
+import { ACCENTS, FlowStrip, Reveal, Section, SectionHeader } from "../../ui";
 
 export default function Mobile() {
   const s = data.multiplePractice;

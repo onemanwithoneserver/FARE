@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { MousePointerClick, User, Calendar, Video, MessageCircle, CheckCircle, Lightbulb } from "lucide-react";
 import { data } from "../data";
-import { ACCENTS, FlowStrip, IconBadge, Reveal, Section, SectionHeader, VIEWPORT, accentAt, fadeScale, staggerContainer } from "../ui";
+import { ACCENTS, FlowStrip, IconBadge, Reveal, Section, SectionHeader, VIEWPORT, accentAt, fadeScale, staggerContainer } from "../../ui";
 
 const ICONS = [MousePointerClick, User, Calendar, Video, MessageCircle, CheckCircle];
 
