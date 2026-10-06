@@ -65,7 +65,7 @@ export default function Desktop() {
           >
             <Sparkles size={12} className="text-[#C99A2E]" strokeWidth={2.5} />
             <span className="font-bold text-[11px] tracking-[0.18em] uppercase text-[#C99A2E] leading-none pt-0.5">
-              ✨ {s.supportingLine}
+              {s.supportingLine}
             </span>
           </motion.div>
 

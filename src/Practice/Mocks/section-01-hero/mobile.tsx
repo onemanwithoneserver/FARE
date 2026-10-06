@@ -26,7 +26,7 @@ export default function Mobile() {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C99A2E]/25 bg-gradient-to-r from-[#C99A2E]/[0.08] to-[#C99A2E]/[0.02] mb-5 max-w-full">
             <Sparkles size={11} className="text-[#C99A2E] shrink-0" strokeWidth={2.5} />
             <span className="font-bold text-[10px] tracking-[0.12em] uppercase text-[#C99A2E] leading-snug pt-0.5">
-              ✨ {sectionData.supportingLine}
+              {sectionData.supportingLine}
             </span>
           </span>
 

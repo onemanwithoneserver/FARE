@@ -166,7 +166,7 @@ export default function Desktop() {
             </div>
           </motion.div>
 
-          <div className="lg:col-span-8 xl:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="lg:col-span-8 xl:col-span-9 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8">
             {data.footerGroups.map((group, gIdx) => (
               <motion.div key={gIdx} variants={itemVariants} className="flex flex-col">
                 <h4 className=" text-[17px] font-serif mb-6 tracking-wide" style={{ color: "#E2C068" }}>
