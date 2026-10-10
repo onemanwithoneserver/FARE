@@ -1,13 +1,22 @@
-import { useState } from "react";
-import { motion } from "motion/react";
-import { ShieldCheck, Target, MessageSquare, Calendar, ChevronDown } from "lucide-react";
-import { data, raviKumarDetails } from "./data";
+import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ShieldCheck, Target, MessageSquare, Calendar, ChevronDown, Search } from "lucide-react";
+import { data, raviKumarDetails, getSortedAndFilteredExperts } from "./data";
 import { ACCENTS, fadeUp, staggerContainer, Section, PrimaryButton, SecondaryButton, HoverGlow } from "../../ui";
 import ExpertProfileDialog, { type ExpertProfileData } from "../ExpertProfileDialog";
 
-export default function Mobile() {
+interface Props {
+  searchQuery?: string;
+  sortBy?: string;
+}
+
+export default function Mobile({ searchQuery = "", sortBy = "Most Relevant" }: Props) {
   const s = data;
   const [selectedExpert, setSelectedExpert] = useState<ExpertProfileData | null>(null);
+
+  const displayedExperts = useMemo(() => {
+    return getSortedAndFilteredExperts(s.experts, searchQuery, sortBy);
+  }, [s.experts, searchQuery, sortBy]);
 
   const handleOpenProfile = (expert: typeof s.experts[0]) => {
     if (expert.name === raviKumarDetails.name) {
@@ -29,36 +38,59 @@ export default function Mobile() {
         viewport={{ once: true, amount: 0.1 }}
         className="flex flex-col gap-6"
       >
-        {s.experts.map((expert, i) => (
-          <motion.div 
-            key={expert.name} 
-            variants={fadeUp} 
-            className="bg-white rounded-[24px] border border-[#E6EBF3] shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden flex flex-col relative"
-          >
-            <HoverGlow accent={ACCENTS[i % ACCENTS.length]} />
-            
-            {/* Top Area: Profile & Basics */}
-            <div className="p-5 flex flex-col relative z-10 border-b border-[#E6EBF3]">
-              <div className="flex items-center gap-4 mb-4">
-                <div 
-                  onClick={() => handleOpenProfile(expert)}
-                  className="w-[64px] h-[64px] rounded-full bg-[#F8F9FC] overflow-hidden border-2 border-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] shrink-0 cursor-pointer active:scale-95 transition-transform"
-                >
-                  <img src={`https://i.pravatar.cc/150?u=${expert.name.replace(' ', '')}`} alt={expert.name} className="w-full h-full object-cover" />
-                </div>
-                <div 
-                  onClick={() => handleOpenProfile(expert)}
-                  className="flex flex-col cursor-pointer"
-                >
-                  <h3 className="text-[18px] font-black text-[#0B1D3A] tracking-tight leading-none mb-1.5 active:text-[#C99A2E]">{expert.name}</h3>
-                  {expert.verified && (
-                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#10B981] bg-[#10B981]/10 px-2 py-0.5 rounded-full w-fit">
-                      <ShieldCheck size={12} />
-                      Verified
-                    </span>
-                  )}
-                </div>
+        <AnimatePresence mode="popLayout">
+          {displayedExperts.length === 0 ? (
+            <motion.div
+              key="empty"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="py-12 px-5 bg-white rounded-[24px] border border-[#E6EBF3] text-center flex flex-col items-center justify-center shadow-sm"
+            >
+              <div className="w-14 h-14 rounded-full bg-[#C99A2E]/10 flex items-center justify-center text-[#C99A2E] mb-3">
+                <Search size={24} />
               </div>
+              <h3 className="text-[18px] font-black text-[#0B1D3A] mb-1.5 tracking-tight">No Experts Found</h3>
+              <p className="text-[13px] text-[#7B8DAA] max-w-xs font-medium">
+                No experts matched your search query. Try adjusting your search keywords.
+              </p>
+            </motion.div>
+          ) : (
+            displayedExperts.map((expert, i) => (
+              <motion.div 
+                layout
+                key={expert.name} 
+                variants={fadeUp} 
+                initial="hidden"
+                animate="show"
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="bg-white rounded-[24px] border border-[#E6EBF3] shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden flex flex-col relative"
+              >
+                <HoverGlow accent={ACCENTS[i % ACCENTS.length]} />
+                
+                {/* Top Area: Profile & Basics */}
+                <div className="p-5 flex flex-col relative z-10 border-b border-[#E6EBF3]">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div 
+                      onClick={() => handleOpenProfile(expert)}
+                      className="w-[64px] h-[64px] rounded-full bg-[#F8F9FC] overflow-hidden border-2 border-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] shrink-0 cursor-pointer active:scale-95 transition-transform"
+                    >
+                      <img src={expert.image} alt={expert.name} className="w-full h-full object-cover" />
+                    </div>
+                    <div 
+                      onClick={() => handleOpenProfile(expert)}
+                      className="flex flex-col cursor-pointer"
+                    >
+                      <h3 className="text-[18px] font-black text-[#0B1D3A] tracking-tight leading-none mb-1.5 active:text-[#C99A2E]">{expert.name}</h3>
+                      {expert.verified && (
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#10B981] bg-[#10B981]/10 px-2 py-0.5 rounded-full w-fit">
+                          <ShieldCheck size={12} />
+                          Verified
+                        </span>
+                      )}
+                    </div>
+                  </div>
 
               <div className="flex flex-col gap-1">
                 <p className="text-[14px] font-bold text-[#0B1D3A] leading-snug">{expert.role}</p>
@@ -138,8 +170,10 @@ export default function Mobile() {
                 </PrimaryButton>
               </div>
             </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))
+        )}
+        </AnimatePresence>
       </motion.div>
 
       <motion.div 

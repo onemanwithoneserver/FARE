@@ -6,6 +6,7 @@ import { PrimaryButton } from "../ui";
 export interface ExpertProfileData {
   name: string;
   role: string;
+  image?: string;
   experience: string;
   verified?: boolean;
   languages: string[];
@@ -133,7 +134,7 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert }: Props) 
             <div className="w-full md:w-[280px] bg-[#F8FAFD] p-6 sm:p-7 flex flex-col items-center text-center border-b md:border-b-0 md:border-r border-[#E6EBF3] shrink-0 overflow-y-auto">
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-white shadow-md mb-4 shrink-0">
                 <img
-                  src={`https://i.pravatar.cc/150?u=${expert.name.replace(" ", "")}`}
+                  src={expert.image || `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300`}
                   alt={expert.name}
                   className="w-full h-full object-cover"
                 />

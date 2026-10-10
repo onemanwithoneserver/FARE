@@ -115,7 +115,7 @@ export default function Desktop() {
                         <div className="flex flex-col items-center">
                           <div className="w-16 h-16 rounded-full bg-white overflow-hidden border-2 border-white shadow-md mb-3 ring-2 ring-[#E6EBF3]">
                             <img
-                              src={`https://i.pravatar.cc/150?u=${exp.name.replace(" ", "")}`}
+                              src={exp.image}
                               alt={exp.name}
                               className="w-full h-full object-cover"
                             />
@@ -290,7 +290,7 @@ export default function Desktop() {
                       <div className="flex items-center gap-3">
                         <div className="w-11 h-11 rounded-full overflow-hidden border border-white shadow-sm shrink-0">
                           <img
-                            src={`https://i.pravatar.cc/150?u=${exp.name.replace(" ", "")}`}
+                            src={exp.image}
                             alt={exp.name}
                             className="w-full h-full object-cover"
                           />

@@ -1,13 +1,22 @@
-import { useState } from "react";
-import { motion } from "motion/react";
-import { ShieldCheck, Target, Calendar } from "lucide-react";
-import { data, raviKumarDetails } from "./data";
+import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ShieldCheck, Target, Calendar, Search } from "lucide-react";
+import { data, raviKumarDetails, getSortedAndFilteredExperts } from "./data";
 import { ACCENTS, fadeUp, staggerContainer, PrimaryButton, SecondaryButton, HoverGlow } from "../../ui";
 import ExpertProfileDialog, { type ExpertProfileData } from "../ExpertProfileDialog";
 
-export default function Desktop() {
+interface Props {
+  searchQuery?: string;
+  sortBy?: string;
+}
+
+export default function Desktop({ searchQuery = "", sortBy = "Most Relevant" }: Props) {
   const s = data;
   const [selectedExpert, setSelectedExpert] = useState<ExpertProfileData | null>(null);
+
+  const displayedExperts = useMemo(() => {
+    return getSortedAndFilteredExperts(s.experts, searchQuery, sortBy);
+  }, [s.experts, searchQuery, sortBy]);
 
   const handleOpenProfile = (expert: typeof s.experts[0]) => {
     if (expert.name === raviKumarDetails.name) {
@@ -29,35 +38,58 @@ export default function Desktop() {
         viewport={{ once: true, amount: 0.1 }}
         className="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
-        {s.experts.map((expert, i) => (
-          <motion.div 
-            key={expert.name} 
-            variants={fadeUp} 
-            className="bg-white rounded-[24px] border border-[#E6EBF3] shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:border-[#C99A2E]/30 transition-all duration-300 overflow-hidden flex flex-col relative group"
-          >
-            <HoverGlow accent={ACCENTS[i % ACCENTS.length]} />
-            
-            {/* Header / Profile Clickable */}
-            <div className="p-6 border-b border-[#E6EBF3] relative z-10 flex flex-col items-center text-center">
-              <div 
-                onClick={() => handleOpenProfile(expert)}
-                className="w-[84px] h-[84px] rounded-full bg-[#F8F9FC] overflow-hidden border-2 border-white shadow-sm mb-4 cursor-pointer hover:scale-105 hover:ring-4 hover:ring-[#C99A2E]/25 transition-all"
-                title="View full profile dialog"
-              >
-                <img src={`https://i.pravatar.cc/150?u=${expert.name.replace(' ', '')}`} alt={expert.name} className="w-full h-full object-cover" />
+        <AnimatePresence mode="popLayout">
+          {displayedExperts.length === 0 ? (
+            <motion.div
+              key="empty"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="col-span-full py-16 px-6 bg-white rounded-[24px] border border-[#E6EBF3] text-center flex flex-col items-center justify-center shadow-sm"
+            >
+              <div className="w-16 h-16 rounded-full bg-[#C99A2E]/10 flex items-center justify-center text-[#C99A2E] mb-4">
+                <Search size={28} />
               </div>
-              
-              <div 
-                onClick={() => handleOpenProfile(expert)}
-                className="flex items-center gap-1.5 justify-center mb-1 cursor-pointer group/name"
+              <h3 className="text-[20px] font-black text-[#0B1D3A] mb-2 tracking-tight">No Experts Found</h3>
+              <p className="text-[14px] text-[#7B8DAA] max-w-md font-medium">
+                No experts matched your search query. Try searching for a different name, role, or skillset.
+              </p>
+            </motion.div>
+          ) : (
+            displayedExperts.map((expert, i) => (
+              <motion.div 
+                layout
+                key={expert.name} 
+                variants={fadeUp} 
+                initial="hidden"
+                animate="show"
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="bg-white rounded-[24px] border border-[#E6EBF3] shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:border-[#C99A2E]/30 transition-all duration-300 overflow-hidden flex flex-col relative group"
               >
-                <h3 className="text-[20px] font-black text-[#0B1D3A] group-hover/name:text-[#C99A2E] tracking-tight leading-none transition-colors">
-                  {expert.name}
-                </h3>
-                {expert.verified && (
-                  <ShieldCheck size={16} className="text-[#10B981]" />
-                )}
-              </div>
+                <HoverGlow accent={ACCENTS[i % ACCENTS.length]} />
+                
+                {/* Header / Profile Clickable */}
+                <div className="p-6 border-b border-[#E6EBF3] relative z-10 flex flex-col items-center text-center">
+                  <div 
+                    onClick={() => handleOpenProfile(expert)}
+                    className="w-[84px] h-[84px] rounded-full bg-[#F8F9FC] overflow-hidden border-2 border-white shadow-sm mb-4 cursor-pointer hover:scale-105 hover:ring-4 hover:ring-[#C99A2E]/25 transition-all"
+                    title="View full profile dialog"
+                  >
+                    <img src={expert.image} alt={expert.name} className="w-full h-full object-cover" />
+                  </div>
+                  
+                  <div 
+                    onClick={() => handleOpenProfile(expert)}
+                    className="flex items-center gap-1.5 justify-center mb-1 cursor-pointer group/name"
+                  >
+                    <h3 className="text-[20px] font-black text-[#0B1D3A] group-hover/name:text-[#C99A2E] tracking-tight leading-none transition-colors">
+                      {expert.name}
+                    </h3>
+                    {expert.verified && (
+                      <ShieldCheck size={16} className="text-[#10B981]" />
+                    )}
+                  </div>
               
               <p className="text-[14px] font-bold text-[#0B1D3A] leading-snug">{expert.role}</p>
               <p className="text-[13px] font-medium text-[#7B8DAA] mt-1">{expert.experience}</p>
@@ -129,8 +161,10 @@ export default function Desktop() {
                 </PrimaryButton>
               </div>
             </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))
+        )}
+        </AnimatePresence>
       </motion.div>
 
       {/* Expert Profile Dialog Modal */}

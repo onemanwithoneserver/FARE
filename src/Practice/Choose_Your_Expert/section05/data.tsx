@@ -1,5 +1,21 @@
+export interface Expert {
+  name: string;
+  image: string;
+  verified: boolean;
+  role: string;
+  experience: string;
+  specialisedIn: string[];
+  canPractise: string[];
+  languages: string[];
+  sessionsCompleted: number;
+  price: string;
+  nextAvailable: string;
+  relevance: string[];
+}
+
 export const raviKumarDetails = {
   name: "Ravi Kumar",
+  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300",
   role: "Sales Manager · Residential Real Estate",
   experience: "12+ Years Experience",
   verified: true,
@@ -28,10 +44,63 @@ export const raviKumarDetails = {
   ]
 };
 
+export function getSortedAndFilteredExperts(
+  experts: Expert[],
+  searchQuery: string,
+  sortBy: string
+): Expert[] {
+  let result = [...experts];
+
+  if (searchQuery && searchQuery.trim()) {
+    const q = searchQuery.toLowerCase().trim();
+    result = result.filter(
+      (e) =>
+        e.name.toLowerCase().includes(q) ||
+        e.role.toLowerCase().includes(q) ||
+        e.specialisedIn.some((s) => s.toLowerCase().includes(q)) ||
+        e.canPractise.some((s) => s.toLowerCase().includes(q)) ||
+        e.languages.some((l) => l.toLowerCase().includes(q))
+    );
+  }
+
+  if (sortBy === "Experience") {
+    result.sort((a, b) => {
+      const expA = parseInt(a.experience.match(/\d+/)?.[0] || "0", 10);
+      const expB = parseInt(b.experience.match(/\d+/)?.[0] || "0", 10);
+      return expB - expA;
+    });
+  } else if (sortBy === "Lowest Price") {
+    result.sort((a, b) => {
+      const priceA = parseInt(a.price.replace(/[^\d]/g, "") || "0", 10);
+      const priceB = parseInt(b.price.replace(/[^\d]/g, "") || "0", 10);
+      return priceA - priceB;
+    });
+  } else if (sortBy === "Most Sessions Completed") {
+    result.sort((a, b) => b.sessionsCompleted - a.sessionsCompleted);
+  } else if (sortBy === "Earliest Availability") {
+    const parseAvailability = (avail: string) => {
+      const isToday = avail.toLowerCase().includes("today");
+      const dayScore = isToday ? 0 : 1000;
+      const timeMatch = avail.match(/(\d+):(\d+)\s*(AM|PM)/i);
+      if (!timeMatch) return dayScore;
+      let hours = parseInt(timeMatch[1], 10);
+      const minutes = parseInt(timeMatch[2], 10);
+      const period = timeMatch[3].toUpperCase();
+      if (period === "PM" && hours !== 12) hours += 12;
+      if (period === "AM" && hours === 12) hours = 0;
+      return dayScore + hours * 60 + minutes;
+    };
+    result.sort((a, b) => parseAvailability(a.nextAvailable) - parseAvailability(b.nextAvailable));
+  }
+
+  return result;
+}
+
 export const data = {
   experts: [
     {
       name: "Ravi Kumar",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300",
       verified: true,
       role: "Sales Manager · Residential Real Estate",
       experience: "12+ Years Real Estate Experience",
@@ -50,6 +119,7 @@ export const data = {
     },
     {
       name: "Suresh Rao",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300",
       verified: true,
       role: "Channel Partner · Plotted Development",
       experience: "9+ Years Real Estate Experience",
@@ -66,6 +136,7 @@ export const data = {
     },
     {
       name: "Anita Desai",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300",
       verified: true,
       role: "Senior Consultant · Commercial Spaces",
       experience: "15+ Years Real Estate Experience",
@@ -83,6 +154,7 @@ export const data = {
     },
     {
       name: "Mohammad Ali",
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=300",
       verified: true,
       role: "Team Lead · Premium Residential",
       experience: "8+ Years Real Estate Experience",
@@ -100,6 +172,7 @@ export const data = {
     },
     {
       name: "Priya Sharma",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300",
       verified: true,
       role: "Sales Executive · Apartments",
       experience: "5+ Years Real Estate Experience",
