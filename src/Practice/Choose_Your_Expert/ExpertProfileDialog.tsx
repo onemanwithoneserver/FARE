@@ -25,9 +25,10 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   expert: ExpertProfileData | null;
+  onBookExpert?: (expert: any) => void;
 }
 
-export default function ExpertProfileDialog({ isOpen, onClose, expert }: Props) {
+export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExpert }: Props) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -281,14 +282,28 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert }: Props) 
                 </div>
 
                 <div className="flex items-center gap-2.5">
-                  <button className="h-11 px-4 flex items-center justify-center gap-1.5 bg-white hover:bg-[#F8FAFD] border border-[#CBD5E1] rounded-[10px] text-[13px] font-bold text-[#0B1D3A] transition-all shadow-xs cursor-pointer">
+                  <button 
+                    onClick={() => {
+                      onClose();
+                      if (onBookExpert && expert) onBookExpert(expert);
+                      const el = document.getElementById("booking-section");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="h-11 px-4 flex items-center justify-center gap-1.5 bg-white hover:bg-[#F8FAFD] border border-[#CBD5E1] rounded-[10px] text-[13px] font-bold text-[#0B1D3A] transition-all shadow-xs cursor-pointer"
+                  >
                     <Calendar size={14} />
                     View Available Slots
                     <ArrowRight size={13} />
                   </button>
                   <PrimaryButton
                     variant="gold"
-                    className="!h-11 !px-5 text-[13px] !rounded-[10px] font-bold"
+                    onClick={() => {
+                      onClose();
+                      if (onBookExpert && expert) onBookExpert(expert);
+                      const el = document.getElementById("booking-section");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="!h-11 !px-5 text-[13px] !rounded-[10px] font-bold cursor-pointer"
                   >
                     Book a Mock Session
                   </PrimaryButton>

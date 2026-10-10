@@ -9,7 +9,7 @@ import Section05 from "./section05";
 import Section06 from "./section06";
 import Section07 from "./section07";
 import Section08 from "./section08";
-import { data as expertData, getSortedAndFilteredExperts } from "./section05/data";
+import { data as expertData, getSortedAndFilteredExperts, type Expert } from "./section05/data";
 
 interface Props {
   isMobile: boolean;
@@ -18,6 +18,15 @@ interface Props {
 export default function ChooseYourExpert({ isMobile }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("Most Relevant");
+  const [selectedBookingExpert, setSelectedBookingExpert] = useState<Expert>(expertData.experts[0]);
+
+  const handleBookExpert = (expert: Expert) => {
+    setSelectedBookingExpert(expert);
+    const bookingEl = document.getElementById("booking-section");
+    if (bookingEl) {
+      bookingEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   const filteredExperts = useMemo(() => {
     return getSortedAndFilteredExperts(expertData.experts, searchQuery, sortBy);
@@ -43,6 +52,7 @@ export default function ChooseYourExpert({ isMobile }: Props) {
             isMobile={isMobile}
             searchQuery={searchQuery}
             sortBy={sortBy}
+            onBookExpert={handleBookExpert}
           />
         </>
       ) : (
@@ -66,14 +76,19 @@ export default function ChooseYourExpert({ isMobile }: Props) {
                 isMobile={isMobile}
                 searchQuery={searchQuery}
                 sortBy={sortBy}
+                onBookExpert={handleBookExpert}
               />
             </main>
           </div>
         </section>
       )}
-      <Section06 isMobile={isMobile} />
+      <Section06 isMobile={isMobile} onBookExpert={handleBookExpert} />
       <Section07 isMobile={isMobile} />
-      <Section08 isMobile={isMobile} />
+      <Section08 
+        isMobile={isMobile} 
+        selectedExpert={selectedBookingExpert}
+        onSelectExpert={setSelectedBookingExpert}
+      />
       <Footer isMobile={isMobile} />
     </div>
   );

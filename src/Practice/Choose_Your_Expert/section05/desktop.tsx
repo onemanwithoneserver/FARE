@@ -5,12 +5,15 @@ import { data, raviKumarDetails, getSortedAndFilteredExperts } from "./data";
 import { ACCENTS, fadeUp, staggerContainer, PrimaryButton, SecondaryButton, HoverGlow } from "../../ui";
 import ExpertProfileDialog, { type ExpertProfileData } from "../ExpertProfileDialog";
 
+import type { Expert } from "./data";
+
 interface Props {
   searchQuery?: string;
   sortBy?: string;
+  onBookExpert?: (expert: Expert) => void;
 }
 
-export default function Desktop({ searchQuery = "", sortBy = "Most Relevant" }: Props) {
+export default function Desktop({ searchQuery = "", sortBy = "Most Relevant", onBookExpert }: Props) {
   const s = data;
   const [selectedExpert, setSelectedExpert] = useState<ExpertProfileData | null>(null);
 
@@ -172,7 +175,15 @@ export default function Desktop({ searchQuery = "", sortBy = "Most Relevant" }: 
                 <PrimaryButton
                   full
                   variant="gold"
-                  className="!h-11 !py-0 !px-2 text-[13px] !rounded-[10px] font-bold"
+                  onClick={() => {
+                    if (onBookExpert) {
+                      onBookExpert(expert);
+                    } else {
+                      const el = document.getElementById("booking-section");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="!h-11 !py-0 !px-2 text-[13px] !rounded-[10px] font-bold cursor-pointer"
                 >
                   Book Session
                 </PrimaryButton>
@@ -189,6 +200,7 @@ export default function Desktop({ searchQuery = "", sortBy = "Most Relevant" }: 
         isOpen={!!selectedExpert}
         onClose={() => setSelectedExpert(null)}
         expert={selectedExpert}
+        onBookExpert={onBookExpert}
       />
     </>
   );

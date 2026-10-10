@@ -3,8 +3,13 @@ import { motion, AnimatePresence } from "motion/react";
 import { Check, Users, Plus, X, Calendar, RotateCcw } from "lucide-react";
 import { data } from "./data";
 import { ACCENTS, staggerContainer, Section, SectionHeader, PrimaryButton } from "../../ui";
+import { data as allExpertsData, type Expert } from "../section05/data";
 
-export default function Desktop() {
+interface Props {
+  onBookExpert?: (expert: Expert) => void;
+}
+
+export default function Desktop({ onBookExpert }: Props) {
   const s = data;
   // By default: 0 experts selected with 3 columns visible
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
@@ -219,7 +224,16 @@ export default function Desktop() {
                         <PrimaryButton
                           full
                           variant="gold"
-                          className="!h-10 !py-0 !px-3 text-[13px] !rounded-[10px] font-bold"
+                          onClick={() => {
+                            const found = allExpertsData.experts.find((e) => e.name === exp.name);
+                            if (found && onBookExpert) {
+                              onBookExpert(found);
+                            } else {
+                              const el = document.getElementById("booking-section");
+                              if (el) el.scrollIntoView({ behavior: "smooth" });
+                            }
+                          }}
+                          className="!h-10 !py-0 !px-3 text-[13px] !rounded-[10px] font-bold cursor-pointer"
                         >
                           Choose {exp.name.split(" ")[0]}
                         </PrimaryButton>

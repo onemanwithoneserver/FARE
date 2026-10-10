@@ -10,6 +10,7 @@ export interface Expert {
   verified: boolean;
   role: string;
   experience: string;
+  age: number;
   specialisedIn: string[];
   canPractise: string[];
   languages: string[];
@@ -24,6 +25,7 @@ export const raviKumarDetails = {
   image: raviKumarImg,
   role: "Sales Manager · Residential Real Estate",
   experience: "12+ Years Experience",
+  age: 38,
   verified: true,
   about: "Real estate sales professional with 12+ years of experience across residential sales, customer handling, negotiation and team management.",
   reExperience: "Residential — Apartments · Villas · Gated Communities",
@@ -110,6 +112,7 @@ export const data = {
       verified: true,
       role: "Sales Manager · Residential Real Estate",
       experience: "12+ Years Real Estate Experience",
+      age: 38,
       specialisedIn: ["Residential Sales", "Customer Handling", "Negotiation", "Objection Handling"],
       canPractise: ["Price Objection", "Need Analysis", "Negotiation", "Site Visit", "Closing"],
       languages: ["English", "Telugu", "Hindi"],
@@ -129,6 +132,7 @@ export const data = {
       verified: true,
       role: "Channel Partner · Plotted Development",
       experience: "9+ Years Real Estate Experience",
+      age: 35,
       specialisedIn: ["Open Plots", "Customer Handling", "Negotiation", "Investment Sales"],
       canPractise: ["Price Objection", "Investment Objection", "Negotiation", "Customer Profiling"],
       languages: ["English", "Telugu"],
@@ -146,6 +150,7 @@ export const data = {
       verified: true,
       role: "Senior Consultant · Commercial Spaces",
       experience: "15+ Years Real Estate Experience",
+      age: 42,
       specialisedIn: ["Commercial Real Estate", "B2B Sales", "Leasing", "High-ticket Negotiation"],
       canPractise: ["Price Objection", "ROI Analysis", "Corporate Presentations", "Closing"],
       languages: ["English", "Hindi", "Marathi"],
@@ -164,6 +169,7 @@ export const data = {
       verified: true,
       role: "Team Lead · Premium Residential",
       experience: "8+ Years Real Estate Experience",
+      age: 34,
       specialisedIn: ["Luxury Villas", "Customer Handling", "NRI Sales", "Remote Presentations"],
       canPractise: ["Price Objection", "Trust Building", "NRI Sales Pitch", "Virtual Tours"],
       languages: ["English", "Hindi", "Urdu"],
@@ -182,6 +188,7 @@ export const data = {
       verified: true,
       role: "Sales Executive · Apartments",
       experience: "5+ Years Real Estate Experience",
+      age: 29,
       specialisedIn: ["Apartment Sales", "First-time Buyers", "Follow-ups", "Site Visit Conversions"],
       canPractise: ["Price Objection", "Site Visit Pitch", "Follow-up calls", "Competitor Comparison"],
       languages: ["English", "Hindi"],
