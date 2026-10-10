@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { ShieldCheck, Target, MessageSquare, Calendar, ChevronDown } from "lucide-react";
-import { data } from "./data";
-import { data as expert07Data } from "../section07/data";
+import { data, raviKumarDetails } from "./data";
 import { ACCENTS, fadeUp, staggerContainer, Section, PrimaryButton, SecondaryButton, HoverGlow } from "../../ui";
 import ExpertProfileDialog, { type ExpertProfileData } from "../ExpertProfileDialog";
 
@@ -11,10 +10,10 @@ export default function Mobile() {
   const [selectedExpert, setSelectedExpert] = useState<ExpertProfileData | null>(null);
 
   const handleOpenProfile = (expert: typeof s.experts[0]) => {
-    if (expert.name === expert07Data.name) {
+    if (expert.name === raviKumarDetails.name) {
       setSelectedExpert({
         ...expert,
-        ...expert07Data,
+        ...raviKumarDetails,
       });
     } else {
       setSelectedExpert(expert);

@@ -5,6 +5,6 @@ interface Props {
   isMobile: boolean;
 }
 
-export default function Section13({ isMobile }: Props) {
+export default function RecommendedFinalFlow({ isMobile }: Props) {
   return isMobile ? <Mobile /> : <Desktop />;
 }
