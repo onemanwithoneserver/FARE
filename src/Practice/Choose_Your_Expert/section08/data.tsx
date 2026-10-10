@@ -1,6 +1,12 @@
+export interface CompareExpert {
+  name: string;
+  role: string;
+  values: string[];
+}
+
 export const data = {
   title: "Compare Experts",
-  subtitle: "For learners who are unsure, allow comparison of a maximum of 3 experts.",
+  subtitle: "For learners who are unsure, allow comparison of up to 3 experts side-by-side.",
   criteria: [
     "RE Experience",
     "Segment",
@@ -11,18 +17,31 @@ export const data = {
     "30 min Price",
     "Availability"
   ],
-  experts: [
+  allExperts: [
     {
       name: "Ravi Kumar",
-      values: ["12+ yrs", "Residential", "Sales & Negotiation", "✓", "126", "3", "₹999", "Today"]
+      role: "Sales Manager · Residential",
+      values: ["12+ yrs", "Residential", "Sales & Negotiation", "✓", "126 Sessions", "English, Telugu, Hindi", "₹999", "Today · 6:30 PM"]
     },
     {
       name: "Suresh Rao",
-      values: ["9+ yrs", "Plotted", "Sales & Investment", "✓", "84", "2", "₹799", "Tomorrow"]
+      role: "Channel Partner · Plotted Development",
+      values: ["9+ yrs", "Plotted Development", "Sales & Investment", "✓", "84 Sessions", "English, Telugu", "₹799", "Tomorrow · 10:00 AM"]
+    },
+    {
+      name: "Anita Desai",
+      role: "Senior Consultant · Commercial",
+      values: ["15+ yrs", "Commercial Spaces", "B2B Sales & Leasing", "✓", "210 Sessions", "English, Hindi, Marathi", "₹1,499", "Today · 4:00 PM"]
+    },
+    {
+      name: "Mohammad Ali",
+      role: "Team Lead · Premium Residential",
+      values: ["8+ yrs", "Luxury Villas & NRI", "High-ticket Sales", "✓", "142 Sessions", "English, Hindi, Urdu", "₹1,199", "Tomorrow · 2:00 PM"]
     },
     {
       name: "Priya Sharma",
-      values: ["11+ yrs", "Residential", "Sales & CX", "✓", "143", "2", "₹899", "Today"]
+      role: "Sales Executive · Apartments",
+      values: ["5+ yrs", "Apartments", "First-time Buyers & CX", "✓", "56 Sessions", "English, Hindi", "₹599", "Today · 8:00 PM"]
     }
   ]
 };

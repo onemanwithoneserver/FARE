@@ -1,45 +1,37 @@
 import { motion } from "motion/react";
-import { ArrowUpDown } from "lucide-react";
-import { data } from "./data";
-import { Section } from "../../ui";
+import { ArrowUpDown, Search, ChevronDown } from "lucide-react";
 
 export default function Desktop() {
-  const s = data;
 
   return (
-    <Section tone="white" ariaLabel="Sort Results" className="!py-4">
-      <div className="max-w-[1200px] mx-auto w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center justify-between"
-        >
-          <span className="text-[15px] font-bold text-[#0B1D3A]">{s.expertsFound}</span>
-          
-          <div className="flex items-center gap-4 text-[14px]">
-            <span className="font-semibold text-[#475569] flex items-center gap-1.5">
-              <ArrowUpDown size={14} />
-              Sort by:
-            </span>
-            <div className="flex items-center gap-1.5 bg-[#F8F9FC] p-1 rounded-[10px] border border-[#E6EBF3]">
-              {s.sortByOptions.map((opt, i) => (
-                <button
-                  key={opt}
-                  className={`px-3.5 py-1.5 rounded-[8px] text-[13px] font-semibold transition-all ${
-                    i === 0 
-                      ? "bg-white text-[#0B1D3A] shadow-sm border border-[#E6EBF3]" 
-                      : "text-[#475569] hover:text-[#0B1D3A] hover:bg-white/50 border border-transparent"
-                  }`}
-                >
-                  {opt}
-                </button>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="w-full flex items-center justify-between bg-white rounded-[20px] border border-[#E6EBF3] p-3 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+    >
+      <div className="relative flex-1 max-w-[300px]">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7B8DAA]" size={16} />
+        <input 
+          type="text" 
+          placeholder="Search by name, expertise..."
+          className="w-full h-10 pl-10 pr-4 bg-transparent text-[14px] font-medium text-[#0B1D3A] placeholder-[#7B8DAA] outline-none"
+        />
       </div>
-    </Section>
+      
+      <div className="flex items-center gap-4 text-[14px]">
+        <span className="font-bold text-[#475569] flex items-center gap-1.5 uppercase tracking-wider text-[11px]">
+          <ArrowUpDown size={14} />
+          Sort by:
+        </span>
+        <div className="relative group">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#F8F9FC] border border-[#E6EBF3] rounded-[10px] text-[13px] font-semibold text-[#0B1D3A] hover:bg-white hover:border-[#C99A2E] transition-all">
+            Most Relevant
+            <ChevronDown size={14} className="text-[#7B8DAA]" />
+          </button>
+        </div>
+      </div>
+    </motion.div>
   );
 }

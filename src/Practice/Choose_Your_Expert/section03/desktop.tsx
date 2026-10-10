@@ -1,64 +1,127 @@
+import { useState } from "react";
 import { motion } from "motion/react";
-import { Search, ChevronDown, SlidersHorizontal } from "lucide-react";
-import { data } from "./data";
-import { fadeUp, staggerContainer, Section, PrimaryButton } from "../../ui";
+import { SlidersHorizontal, RotateCcw } from "lucide-react";
+import { fadeUp, staggerContainer } from "../../ui";
+import { ModernCheckbox } from "./ModernCheckbox";
 
 export default function Desktop() {
-  const s = data;
+  const [selectedFilters, setSelectedFilters] = useState<Set<string>>(
+    new Set(["Residential Sales", "5-10 Years", "English"])
+  );
+
+  const toggleFilter = (option: string) => {
+    setSelectedFilters((prev) => {
+      const next = new Set(prev);
+      if (next.has(option)) {
+        next.delete(option);
+      } else {
+        next.add(option);
+      }
+      return next;
+    });
+  };
+
+  const clearAll = () => {
+    setSelectedFilters(new Set());
+  };
+
+  const filterGroups = [
+    {
+      name: "Expertise",
+      options: [
+        { label: "Residential Sales", count: 18 },
+        { label: "Commercial Real Estate", count: 12 },
+        { label: "Plotted Development", count: 9 },
+        { label: "Luxury Villas", count: 6 },
+      ],
+    },
+    {
+      name: "Experience",
+      options: [
+        { label: "Any Experience", count: 24 },
+        { label: "1-5 Years", count: 8 },
+        { label: "5-10 Years", count: 11 },
+        { label: "10+ Years", count: 5 },
+      ],
+    },
+    {
+      name: "Language",
+      options: [
+        { label: "English", count: 22 },
+        { label: "Hindi", count: 19 },
+        { label: "Telugu", count: 14 },
+        { label: "Marathi", count: 7 },
+      ],
+    },
+    {
+      name: "Session Price",
+      options: [
+        { label: "Free Sessions", count: 4 },
+        { label: "Paid Sessions", count: 20 },
+      ],
+    },
+  ];
 
   return (
-    <Section tone="white" ariaLabel="Search and Filters" className="!pt-12 !pb-6">
-      <div className="max-w-[1200px] mx-auto w-full">
-        <motion.div
-          variants={staggerContainer(0.05)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="flex flex-col gap-6"
-        >
-          <motion.h2 variants={fadeUp} className="text-[26px] font-black text-[#0B1D3A] tracking-tight">
-            {s.title}
-          </motion.h2>
+    <div className="w-full flex flex-col gap-6">
+      <motion.div
+        variants={staggerContainer(0.05)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="bg-white rounded-[20px] border border-[#E6EBF3] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between pb-5 mb-6 border-b border-[#E6EBF3]">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-[8px] bg-[#C99A2E]/10 flex items-center justify-center text-[#C99A2E]">
+              <SlidersHorizontal size={16} />
+            </div>
+            <div>
+              <h2 className="text-[17px] font-black text-[#0B1D3A] tracking-tight leading-none">
+                Filters
+              </h2>
+              {selectedFilters.size > 0 && (
+                <span className="text-[11px] font-bold text-[#7B8DAA] mt-0.5 block">
+                  {selectedFilters.size} active
+                </span>
+              )}
+            </div>
+          </div>
 
-          <motion.div 
-            variants={fadeUp} 
-            className="flex items-center p-3 bg-white border border-[#E6EBF3] rounded-[16px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] w-full"
-          >
-            {/* Search Input */}
-            <div className="relative flex-1 min-w-[300px]">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7B8DAA]" size={18} />
-              <input 
-                type="text" 
-                placeholder={s.searchPlaceholder}
-                className="w-full h-11 pl-11 pr-4 bg-[#F8F9FC] rounded-[10px] text-[15px] text-[#0B1D3A] placeholder-[#7B8DAA] outline-none focus:bg-white focus:border-[#C99A2E] focus:ring-1 focus:ring-[#C99A2E] transition-all"
-              />
-            </div>
-            
-            <div className="w-px h-8 bg-[#E6EBF3] mx-4 shrink-0" />
-            
-            {/* Filters */}
-            <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
-              <div className="flex items-center gap-2 mr-3 text-[#475569] shrink-0">
-                <SlidersHorizontal size={16} />
-                <span className="text-[13px] font-bold uppercase tracking-widest">Filters</span>
+          {selectedFilters.size > 0 && (
+            <button
+              onClick={clearAll}
+              className="flex items-center gap-1.5 text-[12px] font-bold text-[#C99A2E] hover:text-[#8A5A00] transition-colors py-1 px-2 rounded-[6px] hover:bg-[#FBF5E7]"
+            >
+              <RotateCcw size={12} />
+              Reset
+            </button>
+          )}
+        </div>
+
+        {/* Filter Groups */}
+        <div className="flex flex-col gap-7">
+          {filterGroups.map((group) => (
+            <motion.div key={group.name} variants={fadeUp} className="flex flex-col gap-2.5">
+              <h3 className="text-[11px] font-black uppercase tracking-[0.1em] text-[#7B8DAA]">
+                {group.name}
+              </h3>
+              <div className="flex flex-col gap-1">
+                {group.options.map((opt) => (
+                  <ModernCheckbox
+                    key={opt.label}
+                    label={opt.label}
+                    count={opt.count}
+                    checked={selectedFilters.has(opt.label)}
+                    onChange={() => toggleFilter(opt.label)}
+                  />
+                ))}
               </div>
-              {s.filters.map((filter) => (
-                <button 
-                  key={filter.name}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-[10px] hover:bg-[#F8F9FC] transition-colors whitespace-nowrap group shrink-0"
-                >
-                  <span className="text-[14px] font-semibold text-[#0B1D3A] group-hover:text-[#8A5A00]">{filter.name}</span>
-                  <ChevronDown size={14} className="text-[#7B8DAA] group-hover:text-[#8A5A00]" />
-                </button>
-              ))}
-            </div>
-            
-            <div className="ml-auto pl-4 shrink-0">
-              <PrimaryButton icon={Search} className="!rounded-[10px] h-11 px-8">Find</PrimaryButton>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-    </Section>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
   );
 }
