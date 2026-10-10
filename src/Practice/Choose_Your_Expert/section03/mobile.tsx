@@ -91,9 +91,6 @@ export default function Mobile() {
           <div className="px-4 py-1 max-h-[360px] overflow-y-auto">
             {s.filters.map((filter) => {
               const isOpen = openGroups.has(filter.name);
-              const activeCountInGroup = filter.options.filter((opt) =>
-                selectedFilters.has(opt)
-              ).length;
 
               return (
                 <div
@@ -110,20 +107,6 @@ export default function Mobile() {
                       <span className="text-[11px] font-black tracking-[0.12em] text-[#0B1D3A]/80 uppercase">
                         {filter.name}
                       </span>
-                      {activeCountInGroup > 0 && (
-                        <span
-                          className="inline-flex items-center justify-center rounded-[4px] text-[9px] font-black px-1.5"
-                          style={{
-                            minWidth: 15,
-                            height: 15,
-                            background:
-                              "linear-gradient(135deg, rgb(213, 170, 69), rgb(201, 154, 46))",
-                            color: "rgb(11, 29, 58)",
-                          }}
-                        >
-                          {activeCountInGroup}
-                        </span>
-                      )}
                     </div>
                     <ChevronDown
                       size={13}

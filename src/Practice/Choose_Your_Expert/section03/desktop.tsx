@@ -8,7 +8,7 @@ const GOLD_MID = "#D5AA45";
 export default function Desktop() {
   const s = data;
   const [openGroups, setOpenGroups] = useState<Set<string>>(
-    new Set(["RE Segment", "Expertise"])
+    new Set(["RE Segment"])
   );
   // Expertise is unchecked by default
   const [selectedFilters, setSelectedFilters] = useState<Set<string>>(
@@ -100,9 +100,6 @@ export default function Desktop() {
         <div className="px-5 py-1 max-h-[calc(100vh-200px)] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {s.filters.map((filter) => {
             const isOpen = openGroups.has(filter.name);
-            const activeCountInGroup = filter.options.filter((opt) =>
-              selectedFilters.has(opt)
-            ).length;
 
             return (
               <div
@@ -120,22 +117,6 @@ export default function Desktop() {
                     <span className="text-[11px] font-black tracking-[0.14em] text-[#0B1D3A]/80 uppercase">
                       {filter.name}
                     </span>
-                    {activeCountInGroup > 0 && (
-                      <motion.span
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="inline-flex items-center justify-center rounded-[4px] text-[10px] font-black px-1.5 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
-                        style={{
-                          minWidth: 16,
-                          height: 16,
-                          background:
-                            "linear-gradient(135deg, rgb(213, 170, 69), rgb(201, 154, 46))",
-                          color: "rgb(11, 29, 58)",
-                        }}
-                      >
-                        {activeCountInGroup}
-                      </motion.span>
-                    )}
                   </div>
                   <ChevronDown
                     size={14}
