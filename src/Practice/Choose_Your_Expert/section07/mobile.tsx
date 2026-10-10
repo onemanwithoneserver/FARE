@@ -17,7 +17,7 @@ export default function Mobile() {
       >
         <div className="bg-[#F8F9FC] p-6 flex flex-col items-center text-center border-b border-[#E6EBF3]">
           <div className="w-24 h-24 rounded-full overflow-hidden border-[3px] border-white luxury-shadow-sm mb-4">
-            <img src={`https://i.pravatar.cc/150?u=${s.name}`} alt={s.name} className="w-full h-full object-cover" />
+            <img src={`https://i.pravatar.cc/150?u=${s.name.replace(' ', '')}`} alt={s.name} className="w-full h-full object-cover" />
           </div>
           <h2 className="text-[20px] font-black text-[#0B1D3A] mb-1">{s.name}</h2>
           {s.verified && (

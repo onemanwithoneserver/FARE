@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Search, Filter, ChevronDown } from "lucide-react";
+import { Search, ChevronDown, SlidersHorizontal } from "lucide-react";
 import { data } from "./data";
 import { fadeUp, staggerContainer, Section } from "../../ui";
 
@@ -24,18 +24,19 @@ export default function Mobile() {
           <input 
             type="text" 
             placeholder="Search experts..."
-            className="w-full h-11 pl-10 pr-4 rounded-[10px] bg-[#F8F9FC] border border-[#E6EBF3] text-[14px] text-[#0B1D3A] placeholder-[#7B8DAA] outline-none focus:bg-white focus:border-[#C99A2E] focus:ring-2 focus:ring-[#C99A2E]/20 transition-all"
+            className="w-full h-11 pl-10 pr-4 rounded-[10px] bg-white border border-[#E6EBF3] text-[14px] text-[#0B1D3A] placeholder-[#7B8DAA] outline-none focus:border-[#C99A2E] focus:ring-2 focus:ring-[#C99A2E]/20 transition-all shadow-sm"
           />
         </motion.div>
 
         <motion.div variants={fadeUp} className="flex items-center gap-2.5 overflow-x-auto pb-1 scrollbar-hide -mx-5 px-5">
-          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#0B1D3A] text-white shrink-0 shadow-md">
-            <Filter size={16} />
+          <div className="flex items-center gap-1.5 justify-center px-3 py-2 rounded-[8px] bg-[#F8F9FC] text-[#475569] border border-[#E6EBF3] shrink-0">
+            <SlidersHorizontal size={14} />
+            <span className="text-[12px] font-bold">Filters</span>
           </div>
           {s.filters.map((filter) => (
             <button 
               key={filter.name}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white border border-[#E6EBF3] shadow-sm whitespace-nowrap shrink-0"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white border border-[#E6EBF3] shadow-sm whitespace-nowrap shrink-0 hover:border-[#C99A2E] transition-all"
             >
               <span className="text-[12px] font-semibold text-[#0B1D3A]">{filter.name}</span>
               <ChevronDown size={12} className="text-[#7B8DAA]" />

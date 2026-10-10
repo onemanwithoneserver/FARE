@@ -11,7 +11,7 @@ export default function Desktop() {
         {/* Left Side: Photo & Quick Info */}
         <div className="w-[320px] bg-[#F8F9FC] p-8 flex flex-col items-center text-center border-r border-[#E6EBF3] shrink-0">
           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white luxury-shadow-sm mb-5">
-            <img src={`https://i.pravatar.cc/150?u=${s.name}`} alt={s.name} className="w-full h-full object-cover" />
+            <img src={`https://i.pravatar.cc/150?u=${s.name.replace(' ', '')}`} alt={s.name} className="w-full h-full object-cover" />
           </div>
           <h2 className="text-[24px] font-black text-[#0B1D3A] mb-1">{s.name}</h2>
           {s.verified && (

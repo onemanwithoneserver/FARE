@@ -21,7 +21,7 @@ export default function Mobile() {
         <div className="flex items-center gap-3.5 p-5 border-b border-[#E6EBF3]">
           <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
             <img
-              src={`https://i.pravatar.cc/150?u=${s.example.name}`}
+              src={`https://i.pravatar.cc/150?u=${s.example.name.replace(' ', '')}`}
               alt={s.example.name}
               className="w-full h-full object-cover"
             />

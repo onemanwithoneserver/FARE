@@ -24,7 +24,7 @@ export default function Desktop() {
             <div className="relative z-10 flex items-center gap-5 mb-7">
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white luxury-shadow-sm shrink-0">
                 <img
-                  src={`https://i.pravatar.cc/150?u=${s.example.name}`}
+                  src={`https://i.pravatar.cc/150?u=${s.example.name.replace(' ', '')}`}
                   alt={s.example.name}
                   className="w-full h-full object-cover"
                 />

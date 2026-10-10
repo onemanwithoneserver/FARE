@@ -34,7 +34,7 @@ export default function Desktop() {
                   <th key={exp.name} className="p-6 bg-[#F8F9FC] border-b border-[#E6EBF3] w-[26.6%] text-center">
                     <div className="flex flex-col items-center">
                       <div className="w-16 h-16 rounded-full bg-slate-200 overflow-hidden border-2 border-white shadow-sm mb-3">
-                        <img src={`https://i.pravatar.cc/150?u=${exp.name}`} alt={exp.name} className="w-full h-full object-cover" />
+                        <img src={`https://i.pravatar.cc/150?u=${exp.name.replace(' ', '')}`} alt={exp.name} className="w-full h-full object-cover" />
                       </div>
                       <span className="text-[18px] font-bold text-[#0B1D3A]">{exp.name}</span>
                     </div>

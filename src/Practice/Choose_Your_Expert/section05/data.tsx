@@ -29,7 +29,60 @@ export const data = {
       sessionsCompleted: 84,
       price: "From ₹799",
       nextAvailable: "Tomorrow · 10:00 AM",
-      relevance: []
+      relevance: [
+        "9+ years in plotted developments",
+        "Great for investment objections"
+      ]
+    },
+    {
+      name: "Anita Desai",
+      verified: true,
+      role: "Senior Consultant · Commercial Spaces",
+      experience: "15+ Years Real Estate Experience",
+      specialisedIn: ["Commercial Real Estate", "B2B Sales", "Leasing", "High-ticket Negotiation"],
+      canPractise: ["Price Objection", "ROI Analysis", "Corporate Presentations", "Closing"],
+      languages: ["English", "Hindi", "Marathi"],
+      sessionsCompleted: 210,
+      price: "From ₹1499",
+      nextAvailable: "Today · 4:00 PM",
+      relevance: [
+        "Specialist in commercial segments",
+        "Handles complex ROI objections",
+        "Top rated for B2B role-plays"
+      ]
+    },
+    {
+      name: "Mohammad Ali",
+      verified: true,
+      role: "Team Lead · Premium Residential",
+      experience: "8+ Years Real Estate Experience",
+      specialisedIn: ["Luxury Villas", "Customer Handling", "NRI Sales", "Remote Presentations"],
+      canPractise: ["Price Objection", "Trust Building", "NRI Sales Pitch", "Virtual Tours"],
+      languages: ["English", "Hindi", "Urdu"],
+      sessionsCompleted: 142,
+      price: "From ₹1199",
+      nextAvailable: "Tomorrow · 2:00 PM",
+      relevance: [
+        "Expert in luxury and NRI sales",
+        "Focus on high-ticket price objections",
+        "Highly rated for trust-building exercises"
+      ]
+    },
+    {
+      name: "Priya Sharma",
+      verified: true,
+      role: "Sales Executive · Apartments",
+      experience: "5+ Years Real Estate Experience",
+      specialisedIn: ["Apartment Sales", "First-time Buyers", "Follow-ups", "Site Visit Conversions"],
+      canPractise: ["Price Objection", "Site Visit Pitch", "Follow-up calls", "Competitor Comparison"],
+      languages: ["English", "Hindi"],
+      sessionsCompleted: 56,
+      price: "From ₹599",
+      nextAvailable: "Today · 8:00 PM",
+      relevance: [
+        "Great for beginner level practice",
+        "Focuses on first-time home buyers"
+      ]
     }
   ]
 };

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { CheckCircle2, ShieldCheck, Target, Sparkles, MessageSquare, Calendar } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Target, Sparkles, MessageSquare, Calendar, ChevronDown } from "lucide-react";
 import { data } from "./data";
 import { ACCENTS, fadeUp, staggerContainer, Section, PrimaryButton, SecondaryButton, CARD_BASE, CARD_HOVER, HoverGlow, AccentHairline } from "../../ui";
 
@@ -14,7 +14,7 @@ export default function Desktop() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 gap-8"
+          className="grid grid-cols-1 gap-8 mb-10"
         >
           {s.experts.map((expert, i) => (
             <motion.div key={expert.name} variants={fadeUp} className={`${CARD_BASE} ${CARD_HOVER} p-8 overflow-hidden flex flex-col lg:flex-row gap-8`}>
@@ -25,7 +25,7 @@ export default function Desktop() {
               <div className="w-full lg:w-[280px] shrink-0 flex flex-col relative z-10">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-20 h-20 rounded-full bg-slate-200 overflow-hidden border border-[#E6EBF3] shadow-sm">
-                    <img src={`https://i.pravatar.cc/150?u=${expert.name}`} alt={expert.name} className="w-full h-full object-cover" />
+                    <img src={`https://i.pravatar.cc/150?u=${expert.name.replace(' ', '')}`} alt={expert.name} className="w-full h-full object-cover" />
                   </div>
                   <div className="flex flex-col">
                     <h3 className="text-[20px] font-bold text-[#0B1D3A]">{expert.name}</h3>
@@ -124,6 +124,15 @@ export default function Desktop() {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="w-full flex justify-center mt-12"
+        >
+          <SecondaryButton icon={ChevronDown}>Load More Experts</SecondaryButton>
         </motion.div>
       </div>
     </Section>

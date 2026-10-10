@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { CheckCircle2, ShieldCheck, Target, Sparkles, MessageSquare, Calendar } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Target, Sparkles, MessageSquare, Calendar, ChevronDown } from "lucide-react";
 import { data } from "./data";
 import { fadeUp, staggerContainer, Section, PrimaryButton, SecondaryButton } from "../../ui";
 
@@ -19,7 +19,7 @@ export default function Mobile() {
           <motion.div key={expert.name} variants={fadeUp} className="bg-white rounded-[16px] border border-[#E6EBF3] p-5 luxury-shadow-sm flex flex-col relative overflow-hidden">
             <div className="flex items-start gap-3.5 mb-4">
               <div className="w-14 h-14 rounded-full bg-slate-200 overflow-hidden border border-[#E6EBF3] shrink-0">
-                <img src={`https://i.pravatar.cc/150?u=${expert.name}`} alt={expert.name} className="w-full h-full object-cover" />
+                <img src={`https://i.pravatar.cc/150?u=${expert.name.replace(' ', '')}`} alt={expert.name} className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col pt-0.5">
                 <div className="flex items-center gap-2">
@@ -93,6 +93,15 @@ export default function Mobile() {
             </div>
           </motion.div>
         ))}
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="w-full flex justify-center mt-6"
+        >
+          <SecondaryButton mobile icon={ChevronDown}>Load More Experts</SecondaryButton>
+        </motion.div>
       </motion.div>
     </Section>
   );

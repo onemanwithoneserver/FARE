@@ -35,7 +35,7 @@ export default function Mobile() {
                   <th key={exp.name} className="p-4 bg-[#F8F9FC] border-b border-[#E6EBF3] text-center w-[25%]">
                     <div className="flex flex-col items-center">
                       <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden border border-white shadow-sm mb-2">
-                        <img src={`https://i.pravatar.cc/150?u=${exp.name}`} alt={exp.name} className="w-full h-full object-cover" />
+                        <img src={`https://i.pravatar.cc/150?u=${exp.name.replace(' ', '')}`} alt={exp.name} className="w-full h-full object-cover" />
                       </div>
                       <span className="text-[13px] font-bold text-[#0B1D3A] leading-tight">{exp.name}</span>
                     </div>
