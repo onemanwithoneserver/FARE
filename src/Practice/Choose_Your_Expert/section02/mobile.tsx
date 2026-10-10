@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Clock, Video } from "lucide-react";
+import { Clock, Video, Award } from "lucide-react";
 import { data } from "./data";
 import { fadeUp, staggerContainer } from "../../ui";
 
@@ -22,9 +22,9 @@ export default function Mobile() {
           className="flex flex-col gap-6"
         >
         <motion.div variants={fadeUp} className="flex flex-col items-center text-center gap-3">
-          <div className="flex flex-col items-center justify-center w-20 h-20 rounded-full bg-white border-2 border-[#C99A2E]/30 shadow-[0_0_15px_rgba(201,154,46,0.15)] text-[#0B1D3A] shrink-0">
-            <span className="text-[28px] font-black leading-none tracking-tight">{s.expertCount}</span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#475569] mt-0.5">{s.expertLabel}</span>
+          <div className="flex flex-col items-center justify-center w-20 h-20 rounded-full bg-white border-2 border-[#C99A2E]/30 shadow-[0_0_15px_rgba(201,154,46,0.15)] text-[#C99A2E] shrink-0">
+            <Award size={32} strokeWidth={2.5} className="mb-0.5" />
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#475569]">{s.expertLabel}</span>
           </div>
           <div className="flex flex-col">
             <h2 className="text-[18px] font-bold text-white mb-1.5 leading-tight">{s.title}</h2>
