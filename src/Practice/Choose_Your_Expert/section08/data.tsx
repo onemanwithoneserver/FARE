@@ -1,47 +1,65 @@
-export interface CompareExpert {
-  name: string;
-  role: string;
-  values: string[];
-}
-
 export const data = {
-  title: "Compare Experts",
-  subtitle: "For learners who are unsure, allow comparison of up to 3 experts side-by-side.",
-  criteria: [
-    "RE Experience",
-    "Segment",
-    "Expertise",
-    "This Scenario",
-    "Mock Sessions",
-    "Languages",
-    "30 min Price",
-    "Availability"
+  title: "Book Your Mock Session",
+  subtitle: "Select your session duration, date & time slot to schedule your 1-on-1 practice.",
+  durations: [
+    {
+      id: "30",
+      duration: "30 MIN",
+      label: "Quick Practice",
+      desc: "One focused mock + instant feedback",
+      price: "₹999",
+      amount: 999,
+      recommended: false,
+    },
+    {
+      id: "45",
+      duration: "45 MIN",
+      label: "Focused Practice",
+      desc: "One or more mocks + detailed structured feedback",
+      price: "₹1,399",
+      amount: 1399,
+      recommended: true,
+    },
+    {
+      id: "60",
+      duration: "60 MIN",
+      label: "Deep Practice",
+      desc: "Multiple mock attempts + comprehensive feedback & guide",
+      price: "₹1,799",
+      amount: 1799,
+      recommended: false,
+    },
   ],
-  allExperts: [
+  dates: [
+    { label: "Today", date: "10 Oct", day: "Sat" },
+    { label: "Tomorrow", date: "11 Oct", day: "Sun" },
+    { label: "Mon, 12 Oct", date: "12 Oct", day: "Mon" },
+    { label: "Tue, 13 Oct", date: "13 Oct", day: "Tue" },
+    { label: "Wed, 14 Oct", date: "14 Oct", day: "Wed" },
+  ],
+  timeSlots: [
     {
-      name: "Ravi Kumar",
-      role: "Sales Manager · Residential",
-      values: ["12+ yrs", "Residential", "Sales & Negotiation", "✓", "126 Sessions", "English, Telugu, Hindi", "₹999", "Today · 6:30 PM"]
+      period: "Morning",
+      slots: ["10:00 AM", "11:30 AM"],
     },
     {
-      name: "Suresh Rao",
-      role: "Channel Partner · Plotted Development",
-      values: ["9+ yrs", "Plotted Development", "Sales & Investment", "✓", "84 Sessions", "English, Telugu", "₹799", "Tomorrow · 10:00 AM"]
+      period: "Afternoon",
+      slots: ["2:00 PM", "3:30 PM"],
     },
     {
-      name: "Anita Desai",
-      role: "Senior Consultant · Commercial",
-      values: ["15+ yrs", "Commercial Spaces", "B2B Sales & Leasing", "✓", "210 Sessions", "English, Hindi, Marathi", "₹1,499", "Today · 4:00 PM"]
+      period: "Evening",
+      slots: ["5:30 PM", "6:30 PM", "7:30 PM"],
     },
-    {
-      name: "Mohammad Ali",
-      role: "Team Lead · Premium Residential",
-      values: ["8+ yrs", "Luxury Villas & NRI", "High-ticket Sales", "✓", "142 Sessions", "English, Hindi, Urdu", "₹1,199", "Tomorrow · 2:00 PM"]
-    },
-    {
-      name: "Priya Sharma",
-      role: "Sales Executive · Apartments",
-      values: ["5+ yrs", "Apartments", "First-time Buyers & CX", "✓", "56 Sessions", "English, Hindi", "₹599", "Today · 8:00 PM"]
-    }
-  ]
+  ],
+  defaultScenario: "Handling a Price Objection",
+  defaultExpert: {
+    name: "Ravi Kumar",
+    role: "Sales Manager · Residential",
+    experience: "12+ Years Experience",
+  },
+  whatHappens: [
+    { phase: "Before session", desc: "Review scenario briefs & buyer personas." },
+    { phase: "During session", desc: "Expert acts as real buyer & conducts mock role-play." },
+    { phase: "After session", desc: "Receive structured feedback & practice recommendations." },
+  ],
 };

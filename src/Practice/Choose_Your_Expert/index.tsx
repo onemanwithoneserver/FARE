@@ -5,9 +5,9 @@ import Section02 from "./section02";
 import Section03 from "./section03";
 import Section04 from "./section04";
 import Section05 from "./section05";
+import Section06 from "./section06";
+import Section07 from "./section07";
 import Section08 from "./section08";
-import Section10 from "./section10";
-import RecommendedFinalFlow from "./RecommendedFinalFlow";
 
 interface Props {
   isMobile: boolean;
@@ -40,9 +40,9 @@ export default function ChooseYourExpert({ isMobile }: Props) {
           </div>
         </section>
       )}
+      <Section06 isMobile={isMobile} />
+      <Section07 isMobile={isMobile} />
       <Section08 isMobile={isMobile} />
-      <Section10 isMobile={isMobile} />
-      <RecommendedFinalFlow isMobile={isMobile} />
       <Footer isMobile={isMobile} />
     </div>
   );

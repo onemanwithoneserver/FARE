@@ -1,34 +1,39 @@
 export const data = {
-  title: "Find the Right Expert",
+  title: "Filters",
   searchPlaceholder: "Search by name, expertise, RE segment...",
   filters: [
     {
       name: "RE Segment",
-      options: ["All", "Residential", "Plotted Development", "Commercial", "Other Real Estate"]
+      options: ["Residential", "Plotted", "Commercial", "Corporate Real Estate"],
     },
     {
-      name: "Expert Role",
-      options: ["Sales Professional", "Sales Manager", "Channel Partner", "Real Estate Agent", "Builder / Developer Professional", "Marketing Professional", "Functional Expert", "Leadership"]
+      name: "Expertise",
+      options: [
+        "Sales Skills",
+        "Digital & Technology",
+        "Communication",
+        "Leadership & Management",
+        "Customer Experience",
+        "Marketing",
+        "Product & Project Knowledge",
+        "Functional Skills",
+      ],
     },
     {
-      name: "Experience",
-      options: ["3–5 Years", "5–10 Years", "10+ Years"]
-    },
-    {
-      name: "Language",
-      options: ["English", "Telugu", "Hindi", "Other"]
-    },
-    {
-      name: "Session Duration",
-      options: ["30 min", "45 min", "60 min"]
-    },
-    {
-      name: "Price",
-      options: ["Any", "₹500–₹1,000", "₹1,000–₹2,000", "₹2,000+"]
+      name: "Delivery Mode",
+      options: ["1-on-1 Live Video", "Group Simulation", "Audio Role-Play"],
     },
     {
       name: "Availability",
-      options: ["Today", "This Week", "Choose Date"]
-    }
-  ]
+      options: ["Today", "Tomorrow", "This Weekend", "Choose Date"],
+    },
+    {
+      name: "Language",
+      options: ["English", "Telugu", "Hindi", "Marathi", "Other"],
+    },
+    {
+      name: "Experience",
+      options: ["3–5 Years", "5–10 Years", "10+ Years"],
+    },
+  ],
 };
