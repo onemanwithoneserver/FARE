@@ -113,12 +113,14 @@ export default function Desktop() {
                         </button>
 
                         <div className="flex flex-col items-center">
-                          <div className="w-16 h-16 rounded-full bg-white overflow-hidden border-2 border-white shadow-md mb-3 ring-2 ring-[#E6EBF3]">
-                            <img
-                              src={exp.image}
-                              alt={exp.name}
-                              className="w-full h-full object-cover"
-                            />
+                          <div className="p-[2.5px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-md mb-3">
+                            <div className="w-16 h-16 rounded-full bg-white overflow-hidden border-2 border-white">
+                              <img
+                                src={exp.image}
+                                alt={exp.name}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
                           </div>
                           <h4 className="text-[17px] font-black text-[#0B1D3A] tracking-tight mb-1">
                             {exp.name}
@@ -288,12 +290,14 @@ export default function Desktop() {
                       className="flex items-center justify-between p-3 rounded-[12px] bg-[#F8FAFD] hover:bg-[#F1F5F9] border border-[#E6EBF3] transition-colors"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-11 h-11 rounded-full overflow-hidden border border-white shadow-sm shrink-0">
-                          <img
-                            src={exp.image}
-                            alt={exp.name}
-                            className="w-full h-full object-cover"
-                          />
+                        <div className="p-[2px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-xs shrink-0">
+                          <div className="w-11 h-11 rounded-full overflow-hidden border border-white">
+                            <img
+                              src={exp.image}
+                              alt={exp.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
                         </div>
                         <div className="flex flex-col">
                           <span className="text-[14px] font-black text-[#0B1D3A] leading-tight">

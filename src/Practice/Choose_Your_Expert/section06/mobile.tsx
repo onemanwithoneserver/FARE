@@ -106,12 +106,14 @@ export default function Mobile() {
                         </button>
 
                         <div className="flex flex-col items-center">
-                          <div className="w-12 h-12 rounded-full overflow-hidden border border-white shadow-sm mb-1.5 ring-2 ring-[#E6EBF3]">
-                            <img
-                              src={exp.image}
-                              alt={exp.name}
-                              className="w-full h-full object-cover"
-                            />
+                          <div className="p-[2px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-xs mb-1.5">
+                            <div className="w-12 h-12 rounded-full overflow-hidden border border-white">
+                              <img
+                                src={exp.image}
+                                alt={exp.name}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
                           </div>
                           <span className="text-[13px] font-black text-[#0B1D3A] leading-tight mb-0.5">
                             {exp.name}
@@ -280,12 +282,14 @@ export default function Mobile() {
                       className="flex items-center justify-between p-2.5 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3]"
                     >
                       <div className="flex items-center gap-2.5">
-                        <div className="w-10 h-10 rounded-full overflow-hidden border border-white shadow-sm shrink-0">
-                          <img
-                            src={exp.image}
-                            alt={exp.name}
-                            className="w-full h-full object-cover"
-                          />
+                        <div className="p-[1.5px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-xs shrink-0">
+                          <div className="w-10 h-10 rounded-full overflow-hidden border border-white">
+                            <img
+                              src={exp.image}
+                              alt={exp.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
                         </div>
                         <div className="flex flex-col">
                           <span className="text-[13px] font-black text-[#0B1D3A] leading-tight">

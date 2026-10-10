@@ -74,9 +74,18 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant" }: P
                   <div className="flex items-center gap-4 mb-4">
                     <div 
                       onClick={() => handleOpenProfile(expert)}
-                      className="w-[64px] h-[64px] rounded-full bg-[#F8F9FC] overflow-hidden border-2 border-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] shrink-0 cursor-pointer active:scale-95 transition-transform"
+                      className="relative shrink-0 cursor-pointer active:scale-95 transition-transform"
                     >
-                      <img src={expert.image} alt={expert.name} className="w-full h-full object-cover" />
+                      <div className="p-[2.5px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-sm">
+                        <div className="w-[66px] h-[66px] rounded-full overflow-hidden bg-[#F8F9FC] border-2 border-white">
+                          <img src={expert.image} alt={expert.name} className="w-full h-full object-cover" />
+                        </div>
+                      </div>
+                      {expert.verified && (
+                        <div className="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-white shadow-xs flex items-center justify-center border border-[#E6EBF3]">
+                          <ShieldCheck size={12} className="text-[#10B981] fill-[#10B981]/20" />
+                        </div>
+                      )}
                     </div>
                     <div 
                       onClick={() => handleOpenProfile(expert)}

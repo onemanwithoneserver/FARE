@@ -73,10 +73,30 @@ export default function Desktop({ searchQuery = "", sortBy = "Most Relevant" }: 
                 <div className="p-6 border-b border-[#E6EBF3] relative z-10 flex flex-col items-center text-center">
                   <div 
                     onClick={() => handleOpenProfile(expert)}
-                    className="w-[84px] h-[84px] rounded-full bg-[#F8F9FC] overflow-hidden border-2 border-white shadow-sm mb-4 cursor-pointer hover:scale-105 hover:ring-4 hover:ring-[#C99A2E]/25 transition-all"
+                    className="relative mb-4 cursor-pointer group/avatar"
                     title="View full profile dialog"
                   >
-                    <img src={expert.image} alt={expert.name} className="w-full h-full object-cover" />
+                    {/* Subtle Luxury Gradient Outer Ring */}
+                    <div className="p-[3px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-[0_8px_20px_rgba(201,154,46,0.18)] group-hover/avatar:scale-105 group-hover/avatar:shadow-[0_12px_28px_rgba(201,154,46,0.28)] transition-all duration-300">
+                      <div className="w-[82px] h-[82px] rounded-full overflow-hidden bg-[#F8F9FC] border-2 border-white">
+                        <img 
+                          src={expert.image} 
+                          alt={expert.name} 
+                          className="w-full h-full object-cover group-hover/avatar:scale-110 transition-transform duration-500" 
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Floating Verified Badge */}
+                    {expert.verified && (
+                      <div 
+                        className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-white shadow-md flex items-center justify-center border border-[#E6EBF3]"
+                        title="Verified Expert"
+                      >
+                        <ShieldCheck size={14} className="text-[#10B981] fill-[#10B981]/20" />
+                      </div>
+                    )}
                   </div>
                   
                   <div 
@@ -86,9 +106,6 @@ export default function Desktop({ searchQuery = "", sortBy = "Most Relevant" }: 
                     <h3 className="text-[20px] font-black text-[#0B1D3A] group-hover/name:text-[#C99A2E] tracking-tight leading-none transition-colors">
                       {expert.name}
                     </h3>
-                    {expert.verified && (
-                      <ShieldCheck size={16} className="text-[#10B981]" />
-                    )}
                   </div>
               
               <p className="text-[14px] font-bold text-[#0B1D3A] leading-snug">{expert.role}</p>

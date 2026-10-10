@@ -132,12 +132,21 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert }: Props) 
 
             {/* Left Sidebar: Photo & Quick Info */}
             <div className="w-full md:w-[280px] bg-[#F8FAFD] p-6 sm:p-7 flex flex-col items-center text-center border-b md:border-b-0 md:border-r border-[#E6EBF3] shrink-0 overflow-y-auto">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-white shadow-md mb-4 shrink-0">
-                <img
-                  src={expert.image || `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300`}
-                  alt={expert.name}
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative mb-4 shrink-0">
+                <div className="p-[3.5px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-lg">
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-white bg-white">
+                    <img
+                      src={expert.image}
+                      alt={expert.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                {expert.verified && (
+                  <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-white shadow-md flex items-center justify-center border border-[#E6EBF3]">
+                    <ShieldCheck size={16} className="text-[#10B981] fill-[#10B981]/20" />
+                  </div>
+                )}
               </div>
 
               <h2 className="text-[20px] sm:text-[22px] font-black text-[#0B1D3A] tracking-tight mb-1">

@@ -1,3 +1,9 @@
+import raviKumarImg from "../../../assets/experts/ravi_kumar.jpg";
+import sureshRaoImg from "../../../assets/experts/suresh_rao.jpg";
+import anitaDesaiImg from "../../../assets/experts/anita_desai.jpg";
+import mohammadAliImg from "../../../assets/experts/mohammad_ali.jpg";
+import priyaSharmaImg from "../../../assets/experts/priya_sharma.jpg";
+
 export interface Expert {
   name: string;
   image: string;
@@ -15,7 +21,7 @@ export interface Expert {
 
 export const raviKumarDetails = {
   name: "Ravi Kumar",
-  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300",
+  image: raviKumarImg,
   role: "Sales Manager · Residential Real Estate",
   experience: "12+ Years Experience",
   verified: true,
@@ -100,7 +106,7 @@ export const data = {
   experts: [
     {
       name: "Ravi Kumar",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300",
+      image: raviKumarImg,
       verified: true,
       role: "Sales Manager · Residential Real Estate",
       experience: "12+ Years Real Estate Experience",
@@ -119,7 +125,7 @@ export const data = {
     },
     {
       name: "Suresh Rao",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300",
+      image: sureshRaoImg,
       verified: true,
       role: "Channel Partner · Plotted Development",
       experience: "9+ Years Real Estate Experience",
@@ -136,7 +142,7 @@ export const data = {
     },
     {
       name: "Anita Desai",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300",
+      image: anitaDesaiImg,
       verified: true,
       role: "Senior Consultant · Commercial Spaces",
       experience: "15+ Years Real Estate Experience",
@@ -154,7 +160,7 @@ export const data = {
     },
     {
       name: "Mohammad Ali",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=300",
+      image: mohammadAliImg,
       verified: true,
       role: "Team Lead · Premium Residential",
       experience: "8+ Years Real Estate Experience",
@@ -172,7 +178,7 @@ export const data = {
     },
     {
       name: "Priya Sharma",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300",
+      image: priyaSharmaImg,
       verified: true,
       role: "Sales Executive · Apartments",
       experience: "5+ Years Real Estate Experience",
