@@ -21,6 +21,7 @@ import FAREForStudentsFreshers from "./For Learners/Students & Freshers";
 import FAREKnowledgeBank from "./Practice/Knowledge Bank";
 import FAREMocks from "./Practice/Mocks";
 import FARELiveMocks from "./Practice/Live Mocks";
+import FAREChooseYourExpert from "./Practice/Choose_Your_Expert";
 import TrainerDirectory from "./Trainer Directory";
 import Courses from "./Courses";
 export default function App() {
@@ -129,6 +130,10 @@ export default function App() {
             <Route
               path="/:mode/fare-live-mocks"
               element={<FARELiveMocks isMobile={isMobile} />}
+            />
+            <Route
+              path="/:mode/choose-your-expert"
+              element={<FAREChooseYourExpert isMobile={isMobile} />}
             />
             <Route
               path="/:mode/trainer-directory"

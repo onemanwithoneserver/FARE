@@ -24,6 +24,7 @@ export default function Header({
     { value: "fare-knowledge-bank", label: "Knowledge Bank" },
     { value: "fare-mocks", label: "Mocks" },
     { value: "fare-live-mocks", label: "Live Mocks" },
+    { value: "choose-your-expert", label: "Choose Your Expert" },
     { value: "fare-for-students-freshers", label: "Students & Freshers" },
     { value: "fare-for-employees", label: "Employees" },
     { value: "fare-for-freelancers-open-plot", label: "Freelancers - Open Plot" },

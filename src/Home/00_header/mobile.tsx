@@ -20,6 +20,7 @@ import {
   Target,
   Video,
   Check,
+  UserCheck,
 } from "lucide-react";
 import logo from "../../Components/FARE_Logo/SVG/Primary Logo.svg";
 import { getData } from "./data";
@@ -31,6 +32,8 @@ const subIconMap: Record<string, React.ElementType> = {
   "మాక్స్": Target,
   "Live Mocks": Video,
   "లైవ్ మాక్స్": Video,
+  "Choose Your Expert": UserCheck,
+  "నిపుణుడిని ఎంచుకోండి": UserCheck,
   "Residential & Commercial": Building2,
   "రెసిడెన్షియల్ & కమర్షియల్": Building2,
   "Open Plots": MapPin,
@@ -53,6 +56,8 @@ const subColorMap: Record<string, string> = {
   "మాక్స్": "#F472B6",
   "Live Mocks": "#38BDF8",
   "లైవ్ మాక్స్": "#38BDF8",
+  "Choose Your Expert": "#F59E0B",
+  "నిపుణుడిని ఎంచుకోండి": "#F59E0B",
   "Residential & Commercial": "#34D399",
   "రెసిడెన్షియల్ & కమర్షియల్": "#34D399",
   "Open Plots": "#E2C068",
