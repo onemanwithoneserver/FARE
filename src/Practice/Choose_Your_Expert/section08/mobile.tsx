@@ -688,23 +688,28 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
       <AnimatePresence>
         {isBooked && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 font-['Outfit']">
-            <div onClick={() => setIsBooked(false)} className="fixed inset-0 bg-black/60" />
-            <div className="relative z-10 w-full max-w-sm bg-white rounded-[22px] p-5 text-center flex flex-col items-center gap-3">
-              <div className="w-13 h-13 rounded-full bg-[#E8FBF3] text-[#059669] flex items-center justify-center">
-                <Check size={24} strokeWidth={2.6} />
+            <div onClick={() => setIsBooked(false)} className="fixed inset-0 bg-black/60 backdrop-blur-xs" />
+            <div className="relative z-10 w-full max-w-sm bg-white rounded-[24px] p-6 text-center flex flex-col items-center gap-3.5 border border-[#E6EBF3] shadow-2xl overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#0B1D3A]" />
+              <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#ECFDF5] to-[#D1FAE5] border border-[#10B981]/30 text-[#059669] flex items-center justify-center shadow-xs">
+                <Check size={26} strokeWidth={2.8} />
               </div>
-              <h3 className="text-[18px] font-bold text-[#0B1D3A]">Slot Confirmed!</h3>
-              <p className="text-[12px] text-[#5A6B82]">
-                Your 1-on-1 session with {activeExpert?.name || "your mentor"} is reserved.
-              </p>
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-[0.14em] text-[#C99A2E] block mb-0.5">
+                  Booking Confirmed
+                </span>
+                <h3 className="text-[19px] font-black text-[#0B1D3A]">Slot Confirmed!</h3>
+                <p className="text-[12.5px] text-[#5A6B82] mt-0.5 leading-snug">
+                  Your session with <span className="font-bold text-[#0B1D3A]">{activeExpert?.name || "your mentor"}</span> is reserved.
+                </p>
+              </div>
               <PrimaryButton
-                full
                 variant="gold"
                 onClick={() => {
                   setIsBooked(false);
                   goToStep(1);
                 }}
-                className="!h-9.5 !rounded-[10px] font-bold mt-1.5 cursor-pointer"
+                className="!w-36 !h-10 !rounded-[11px] font-extrabold text-[13px] mt-1 cursor-pointer shadow-md"
               >
                 Done
               </PrimaryButton>

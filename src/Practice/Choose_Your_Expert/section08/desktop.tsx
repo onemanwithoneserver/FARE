@@ -905,56 +905,99 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsBooked(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-xs"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 16 }}
+              initial={{ opacity: 0, scale: 0.92, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 16 }}
-              className="relative z-10 w-full max-w-md bg-white rounded-[26px] p-6.5 border border-[#E6EBF3] shadow-2xl flex flex-col items-center text-center gap-3.5"
+              exit={{ opacity: 0, scale: 0.92, y: 16 }}
+              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 w-full max-w-[430px] bg-white rounded-[28px] p-7 sm:p-8 border border-[#E6EBF3] shadow-[0_25px_60px_-15px_rgba(11,29,58,0.22)] overflow-hidden flex flex-col items-center text-center gap-4"
             >
-              <div className="w-14 h-14 rounded-full bg-[#E8FBF3] border-3 border-[#A7F3D0] text-[#059669] flex items-center justify-center shadow-xs">
-                <Check size={28} strokeWidth={2.6} />
+              <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#0B1D3A]" />
+
+              <button
+                type="button"
+                onClick={() => setIsBooked(false)}
+                aria-label="Close"
+                className="absolute top-4 right-4 w-7 h-7 rounded-full bg-[#F3F6FB] hover:bg-[#E2E8F0] text-[#7B8DAA] hover:text-[#0B1D3A] flex items-center justify-center transition-colors cursor-pointer"
+              >
+                <X size={14} />
+              </button>
+
+              <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#ECFDF5] to-[#D1FAE5] border-2 border-[#10B981]/30 text-[#059669] flex items-center justify-center shadow-[0_8px_20px_rgba(16,185,129,0.18)] mb-0.5">
+                <Check size={30} strokeWidth={2.8} />
               </div>
 
               <div>
-                <span className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#C99A2E] block mb-1">
+                <span className="text-[11px] font-black uppercase tracking-[0.16em] text-[#C99A2E] block mb-1">
                   Booking Confirmed
                 </span>
-                <h3 className="text-[20px] font-black text-[#0B1D3A] tracking-tight">
+                <h3 className="text-[22px] font-black text-[#0B1D3A] tracking-tight leading-tight">
                   Your Slot is Reserved!
                 </h3>
-                <p className="text-[12.5px] text-[#5A6B82] mt-0.5">
-                  A Google Meet invitation has been generated for your session with {activeExpert?.name || "your mentor"}.
+                <p className="text-[13px] text-[#5A6B82] mt-1 leading-relaxed max-w-[320px] font-medium">
+                  A Google Meet invitation has been generated for your session with <span className="font-bold text-[#0B1D3A]">{activeExpert?.name || "your mentor"}</span>.
                 </p>
               </div>
 
-              <div className="w-full p-3.5 rounded-[15px] bg-[#F8FAFD] border border-[#E6EBF3] flex flex-col gap-2 text-left text-[12px]">
-                <div className="flex justify-between">
-                  <span className="text-[#7B8DAA] font-medium">Date & Time:</span>
-                  <span className="font-bold text-[#0B1D3A]">{selectedDate} · {selectedSlot}</span>
+              <div className="w-full rounded-[18px] bg-[#F8FAFD] border border-[#E6EBF3] p-4 flex flex-col gap-2.5 text-left text-[12.5px] shadow-2xs">
+                {activeExpert && (
+                  <div className="flex items-center gap-2.5 pb-2.5 border-b border-[#E6EBF3]/70">
+                    <img
+                      src={activeExpert.image}
+                      alt={activeExpert.name}
+                      className="w-8 h-8 rounded-full object-cover border border-[#CBD5E1]"
+                    />
+                    <div className="min-w-0">
+                      <span className="block text-[12.5px] font-bold text-[#0B1D3A] truncate leading-tight">
+                        {activeExpert.name}
+                      </span>
+                      <span className="block text-[11px] text-[#7B8DAA] truncate">
+                        {activeExpert.role.split("·")[0]}
+                      </span>
+                    </div>
+                  </div>
+                )}
+                <div className="flex items-center justify-between">
+                  <span className="text-[#7B8DAA] font-semibold flex items-center gap-1.5">
+                    <Calendar size={13} className="text-[#C99A2E]" />
+                    Date & Time
+                  </span>
+                  <span className="font-black text-[#0B1D3A]">{selectedDate} · {selectedSlot}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-[#7B8DAA] font-medium">Duration:</span>
-                  <span className="font-bold text-[#0B1D3A]">{selectedDuration?.duration || "45 MIN"}</span>
+                <div className="flex items-center justify-between">
+                  <span className="text-[#7B8DAA] font-semibold flex items-center gap-1.5">
+                    <Clock size={13} className="text-[#0891B2]" />
+                    Duration
+                  </span>
+                  <span className="font-black text-[#0B1D3A] bg-white px-2 py-0.5 rounded-[6px] border border-[#E6EBF3]">
+                    {selectedDuration?.duration || "45 MIN"}
+                  </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-[#7B8DAA] font-medium">Scenario:</span>
-                  <span className="font-bold text-[#0B1D3A] truncate max-w-[180px]">{scenarioText}</span>
+                <div className="flex items-start justify-between gap-2">
+                  <span className="text-[#7B8DAA] font-semibold flex items-center gap-1.5 shrink-0">
+                    <Sparkles size={13} className="text-[#7C3AED]" />
+                    Scenario
+                  </span>
+                  <span className="font-bold text-[#0B1D3A] text-right truncate max-w-[190px]">
+                    {scenarioText}
+                  </span>
                 </div>
               </div>
 
-              <PrimaryButton
-                full
-                variant="gold"
-                onClick={() => {
-                  setIsBooked(false);
-                  goToStep(1);
-                }}
-                className="!h-10.5 !rounded-[11px] font-bold mt-1.5 cursor-pointer"
-              >
-                Done
-              </PrimaryButton>
+              <div className="pt-1">
+                <PrimaryButton
+                  variant="gold"
+                  onClick={() => {
+                    setIsBooked(false);
+                    goToStep(1);
+                  }}
+                  className="!w-44 !h-11 !rounded-[12px] font-extrabold text-[13.5px] shadow-md hover:shadow-lg transition-all cursor-pointer"
+                >
+                  Done
+                </PrimaryButton>
+              </div>
             </motion.div>
           </div>
         )}
