@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Calendar,
@@ -68,6 +68,15 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
   const [isBooked, setIsBooked] = useState(false);
   const [isSwitchExpertOpen, setIsSwitchExpertOpen] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!isBooked) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isBooked]);
 
   const quickScenarios = useMemo(
     () => [

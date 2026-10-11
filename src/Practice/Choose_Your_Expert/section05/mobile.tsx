@@ -258,7 +258,7 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", onB
                         onClick={() => handleBook(expert)}
                         className="!h-10 !py-0 !px-3 text-[12.5px] !rounded-[10px] font-extrabold cursor-pointer shadow-sm"
                       >
-                        Book Practice
+                        Book Session
                       </PrimaryButton>
                     </div>
                   </div>
