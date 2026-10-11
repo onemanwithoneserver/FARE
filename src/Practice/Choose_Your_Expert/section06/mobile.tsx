@@ -133,7 +133,6 @@ export default function Mobile({ onBookExpert }: Props) {
   const s = data;
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // 4 slots fixed array allowing each slot to be filled or null
   const [slots, setSlots] = useState<(string | null)[]>([
     s.defaultCompareNames[0] || null,
     s.defaultCompareNames[1] || null,
@@ -218,7 +217,6 @@ export default function Mobile({ onBookExpert }: Props) {
       className="!pt-6 !pb-6 font-['Outfit']"
     >
       <div className="flex flex-col gap-4">
-        {/* Toggle Card */}
         <div className="bg-white rounded-[16px] border border-[#E6EBF3] p-4 shadow-xs flex flex-col gap-3 relative overflow-hidden">
           <div
             onClick={() => setIsExpanded((prev) => !prev)}
@@ -284,7 +282,6 @@ export default function Mobile({ onBookExpert }: Props) {
           </div>
         </div>
 
-        {/* Matrix Body */}
         <AnimatePresence>
           {isExpanded && (
             <motion.div
@@ -315,7 +312,6 @@ export default function Mobile({ onBookExpert }: Props) {
                             >
                               {exp ? (
                                 <div className="flex flex-col items-center gap-2 relative">
-                                  {/* Allow user to clear all mentors down to 0 */}
                                   <button
                                     type="button"
                                     onClick={() => handleRemoveExpert(idx)}
@@ -358,7 +354,6 @@ export default function Mobile({ onBookExpert }: Props) {
                                     Book Session
                                   </PrimaryButton>
 
-                                  {/* Dropdown trigger to swap mentor */}
                                   <div className="relative mentor-dropdown-container w-full">
                                     <button
                                       type="button"
@@ -399,7 +394,6 @@ export default function Mobile({ onBookExpert }: Props) {
                                   </div>
                                 </div>
                               ) : (
-                                /* Empty Slot with dropdown trigger */
                                 <div className="py-5 flex flex-col items-center justify-center text-center gap-1.5 relative mentor-dropdown-container">
                                   <button
                                     type="button"

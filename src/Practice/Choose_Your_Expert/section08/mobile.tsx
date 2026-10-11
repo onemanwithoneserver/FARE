@@ -14,6 +14,7 @@ import {
   Clock,
   Layers,
   Star,
+  ChevronRight,
 } from "lucide-react";
 import { data, getExpertDurationPrice } from "./data";
 import { data as allExpertsData, type Expert } from "../section05/data";
@@ -161,15 +162,15 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
       <div className="flex flex-col gap-4">
         <SectionHeader
           mobile
+          compact
           eyebrow="Reserve 1-on-1 Practice"
           icon={Calendar}
           accent={ACCENTS[1]}
           title="Choose Session, Date & Time"
           description="Select duration, realistic scenario, and preferred slot to practice with your mentor."
-          className="!mb-3"
+          className="!mb-2"
         />
 
-        {/* Mentor VIP Card */}
         {activeExpert ? (
           <div className="bg-gradient-to-r from-[#0B1D3A] to-[#122A50] rounded-[16px] p-3.5 text-white shadow-xs flex items-center justify-between gap-3 border border-[#C99A2E]/30">
             <div className="flex items-center gap-3 min-w-0">
@@ -244,19 +245,24 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
           </div>
         )}
 
-        {/* Wizard Stepper Bar */}
-        <div className="bg-white rounded-[16px] border border-[#E6EBF3] p-3.5 shadow-xs relative overflow-hidden">
+        <div className="relative py-2 select-none">
           <div className="relative">
-            <div className="absolute top-4 left-[12.5%] right-[12.5%] -translate-y-1/2 h-[2.5px] bg-[#E8EDF5] rounded-full pointer-events-none" />
+            <div className="absolute top-4 left-[12.5%] right-[12.5%] -translate-y-1/2 h-[2.5px] bg-[#E2E8F0]/85 rounded-full pointer-events-none" />
 
             <motion.div
-              className="absolute top-4 left-[12.5%] -translate-y-1/2 h-[2.5px] rounded-full bg-gradient-to-r from-[#10B981] to-[#C99A2E] pointer-events-none"
+              className="absolute top-4 left-[12.5%] -translate-y-1/2 h-[3px] rounded-full bg-gradient-to-r from-[#10B981] via-[#059669] to-[#C99A2E] pointer-events-none"
               initial={false}
               animate={{
                 width: `${((currentStep - 1) / (STEPS.length - 1)) * 75}%`,
               }}
               transition={{ type: "spring", stiffness: 220, damping: 28 }}
-            />
+            >
+              <motion.span
+                animate={{ scale: [1, 1.25, 1], opacity: [0.8, 1, 0.8] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -right-1 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[#E4C46A] shadow-[0_0_10px_2px_rgba(201,154,46,0.7)] border-1.5 border-white pointer-events-none"
+              />
+            </motion.div>
 
             <div className="grid grid-cols-4 relative z-10">
               {STEPS.map((step) => {
@@ -265,44 +271,97 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                 const Icon = step.icon;
 
                 return (
-                  <button
+                  <motion.button
                     key={step.id}
                     type="button"
                     onClick={() => isPast && goToStep(step.id)}
                     disabled={!isPast}
-                    className={`flex flex-col items-center select-none ${
-                      isPast ? "cursor-pointer" : isCurrent ? "cursor-default" : "cursor-not-allowed opacity-50"
+                    whileHover={isPast ? { y: -1, scale: 1.04 } : undefined}
+                    whileTap={isPast ? { scale: 0.96 } : undefined}
+                    className={`flex flex-col items-center select-none outline-none ${
+                      isPast
+                        ? "cursor-pointer"
+                        : isCurrent
+                        ? "cursor-default"
+                        : "cursor-not-allowed opacity-60"
                     }`}
                   >
-                    <div className="relative flex items-center justify-center w-8 h-8 mb-1">
+                    <div className="relative flex items-center justify-center w-9 h-9 mb-1.5">
+                      {isCurrent && (
+                        <>
+                          <motion.span
+                            animate={{ scale: [1, 1.3, 1], opacity: [0.35, 0.7, 0.35] }}
+                            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -inset-1.5 rounded-full bg-[#C99A2E]/30 blur-xs pointer-events-none"
+                          />
+                          <motion.span
+                            animate={{ scale: [1, 1.4], opacity: [0.6, 0] }}
+                            transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+                            className="absolute -inset-0.5 rounded-full border-1.5 border-[#C99A2E] pointer-events-none"
+                          />
+                        </>
+                      )}
+
                       <div
-                        className={`w-8 h-8 rounded-full flex items-center justify-center text-[12px] font-bold transition-all ${
-                          isPast
-                            ? "bg-[#10B981] text-white shadow-2xs"
-                            : isCurrent
-                            ? "bg-[#0B1D3A] text-white shadow-xs ring-2 ring-[#C99A2E]"
-                            : "bg-white border-2 border-[#CBD5E1] text-[#7B8DAA]"
+                        className={`w-9 h-9 rounded-full flex items-center justify-center text-[12px] font-bold transition-all relative z-10 ${
+                          isCurrent
+                            ? "p-[2px] bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#996F19] shadow-[0_6px_16px_-3px_rgba(201,154,46,0.55)]"
+                            : isPast
+                            ? "bg-gradient-to-tr from-[#059669] to-[#10B981] text-white shadow-xs border-1.5 border-white"
+                            : "bg-white/80 backdrop-blur-xs border-1.5 border-[#CBD5E1] text-[#94A3B8]"
                         }`}
                       >
-                        {isPast ? <Check size={14} strokeWidth={3} /> : <Icon size={14} strokeWidth={2.4} />}
+                        {isCurrent ? (
+                          <div className="w-full h-full rounded-full bg-[#0B1D3A] flex items-center justify-center text-white">
+                            <Icon size={14} strokeWidth={2.4} className="text-[#E4C46A]" />
+                          </div>
+                        ) : isPast ? (
+                          <Check size={14} strokeWidth={3.2} className="text-white drop-shadow-xs" />
+                        ) : (
+                          <Icon size={13} strokeWidth={2.2} />
+                        )}
                       </div>
                     </div>
 
-                    <span
-                      className={`text-[11px] font-bold block ${
-                        isCurrent ? "text-[#0B1D3A]" : isPast ? "text-[#059669]" : "text-[#7B8DAA]"
-                      }`}
-                    >
-                      {step.title}
-                    </span>
-                  </button>
+                    <div className="text-center px-0.5 flex flex-col items-center">
+                      <span
+                        className={`text-[9.5px] font-extrabold uppercase tracking-wider mb-0.5 ${
+                          isCurrent
+                            ? "text-[#C99A2E]"
+                            : isPast
+                            ? "text-[#059669]"
+                            : "text-[#94A3B8]"
+                        }`}
+                      >
+                        {isPast ? "Done" : `0${step.id}`}
+                      </span>
+
+                      <span
+                        className={`text-[11.5px] font-bold block leading-tight ${
+                          isCurrent
+                            ? "text-[#0B1D3A]"
+                            : isPast
+                            ? "text-[#1E293B]"
+                            : "text-[#64748B]"
+                        }`}
+                      >
+                        {step.title.split("&")[0].trim()}
+                      </span>
+
+                      {isCurrent && (
+                        <motion.div
+                          layoutId="mobileStepperActivePill"
+                          className="h-[2px] w-4 mt-1 rounded-full bg-[#C99A2E]"
+                        />
+                      )}
+                    </div>
+                  </motion.button>
                 );
               })}
             </div>
           </div>
         </div>
 
-        {/* Validation error */}
         {validationError && (
           <div className="p-3 rounded-[12px] bg-red-50 border border-red-200 text-red-700 text-[12px] font-bold flex items-center gap-2.5">
             <AlertCircle size={15} className="shrink-0" />
@@ -310,10 +369,8 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
           </div>
         )}
 
-        {/* Step Card Content */}
         <div className="bg-white rounded-[16px] border border-[#E6EBF3] p-5 shadow-xs overflow-hidden">
           <AnimatePresence mode="wait" custom={slideDirection}>
-            {/* STEP 1 */}
             {currentStep === 1 && (
               <motion.div
                 key="step-1"
@@ -389,7 +446,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
               </motion.div>
             )}
 
-            {/* STEP 2 */}
             {currentStep === 2 && (
               <motion.div
                 key="step-2"
@@ -458,7 +514,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
               </motion.div>
             )}
 
-            {/* STEP 3 */}
             {currentStep === 3 && (
               <motion.div
                 key="step-3"
@@ -549,7 +604,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
               </motion.div>
             )}
 
-            {/* STEP 4 */}
             {currentStep === 4 && (
               <motion.div
                 key="step-4"
@@ -621,7 +675,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
             )}
           </AnimatePresence>
 
-          {/* Buttons */}
           <div className="pt-4 border-t border-[#F0F4FA] flex items-center justify-between mt-4">
             {currentStep > 1 ? (
               <SecondaryButton
@@ -658,7 +711,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
         </div>
       </div>
 
-      {/* Switch expert modal */}
       <AnimatePresence>
         {isSwitchExpertOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 font-['Outfit']">
@@ -721,7 +773,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
         )}
       </AnimatePresence>
 
-      {/* Confirmation modal */}
       <AnimatePresence>
         {isBooked && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 font-['Outfit']">
@@ -736,47 +787,106 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
               initial={{ opacity: 0, scale: 0.92, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 16 }}
-              transition={{ duration: 0.28, ease: EASE }}
-              className="relative z-10 w-full max-w-[340px] bg-white rounded-[22px] p-6 border border-[#E6EBF3] shadow-xl flex flex-col items-center text-center gap-3.5"
+              transition={{ duration: 0.26, ease: EASE }}
+              className="relative z-10 w-full max-w-[350px] bg-white rounded-[24px] p-5.5 border border-[#E6EBF3] shadow-2xl flex flex-col items-center text-center gap-3.5 overflow-hidden"
             >
-              <div className="w-14 h-14 rounded-full bg-[#10B981] text-white flex items-center justify-center shadow-md">
-                <Check size={28} strokeWidth={3.4} />
+              <div className="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r from-[#10B981] via-[#C99A2E] to-[#0B1D3A]" />
+
+              <button
+                type="button"
+                onClick={() => setIsBooked(false)}
+                aria-label="Close modal"
+                className="absolute top-3.5 right-3.5 w-7 h-7 rounded-full bg-[#F3F6FB] text-[#7B8DAA] flex items-center justify-center cursor-pointer"
+              >
+                <X size={13} />
+              </button>
+
+              <div className="relative mt-1">
+                <motion.span
+                  animate={{ scale: [1, 1.25, 1], opacity: [0.35, 0.7, 0.35] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -inset-2 rounded-full bg-[#10B981]/30 blur-xs pointer-events-none"
+                />
+                <div className="w-13 h-13 rounded-full bg-gradient-to-tr from-[#059669] via-[#10B981] to-[#34D399] text-white flex items-center justify-center shadow-md border-2 border-white relative z-10">
+                  <Check size={26} strokeWidth={3.4} />
+                </div>
               </div>
 
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#C99A2E] block">
-                  Slot Reserved
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#F0FDF4] border border-[#10B981]/30 text-[#047857] text-[10px] font-extrabold uppercase tracking-wider mb-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+                  Booking Confirmed
                 </span>
-                <h3 className="text-[18px] font-bold text-[#0B1D3A] leading-tight mt-0.5">
-                  Booking Confirmed!
+                <h3 className="text-[19px] font-extrabold text-[#0B1D3A] leading-tight">
+                  Your Slot is Reserved!
                 </h3>
-                <p className="text-[12px] text-[#5A6B82] mt-1 leading-relaxed">
-                  Google Meet details generated for your session with {activeExpert?.name || "your mentor"}.
+                <p className="text-[11.5px] text-[#5A6B82] mt-1 leading-relaxed">
+                  Google Meet details prepared for your session with{" "}
+                  <span className="font-bold text-[#0B1D3A]">
+                    {activeExpert?.name || "your mentor"}
+                  </span>.
                 </p>
               </div>
 
-              <div className="w-full rounded-[14px] bg-[#F8FAFD] border border-[#E6EBF3] p-3 text-left text-[12px] flex flex-col gap-2">
-                <div className="flex justify-between">
-                  <span className="text-[#7B8DAA]">Slot:</span>
-                  <span className="font-bold text-[#0B1D3A]">{selectedDate} · {selectedSlot}</span>
+              <div className="w-full rounded-[14px] bg-[#F8FAFD] border border-[#E6EBF3] p-3 text-left text-[11.5px] flex flex-col gap-2 shadow-2xs">
+                {activeExpert && (
+                  <div className="flex items-center gap-2.5 pb-2 border-b border-[#E6EBF3]">
+                    <div className="relative shrink-0">
+                      <img
+                        src={activeExpert.image}
+                        alt={activeExpert.name}
+                        className="w-8 h-8 rounded-full object-cover border"
+                      />
+                      <VerifiedBadge
+                        size={12}
+                        className="absolute -bottom-0.5 -right-0.5 ring-1 ring-white rounded-full"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="block font-bold text-[#0B1D3A] truncate leading-tight">
+                        {activeExpert.name}
+                      </span>
+                      <span className="block text-[10.5px] text-[#7B8DAA] truncate">
+                        {activeExpert.role.split("·")[0]}
+                      </span>
+                    </div>
+                  </div>
+                )}
+                <div className="flex justify-between items-center">
+                  <span className="text-[#7B8DAA] font-medium">Date &amp; Time</span>
+                  <span className="font-bold text-[#0B1D3A]">
+                    {selectedDate} · {selectedSlot}
+                  </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-[#7B8DAA]">Duration:</span>
-                  <span className="font-bold text-[#0B1D3A]">{selectedDuration?.duration || "45 MIN"}</span>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#7B8DAA] font-medium">Duration</span>
+                  <span className="font-bold text-[#0B1D3A] bg-white px-2 py-0.5 rounded border border-[#CBD5E1]/60">
+                    {selectedDuration?.duration || "45 MIN"}
+                  </span>
+                </div>
+                <div className="flex justify-between items-start gap-2">
+                  <span className="text-[#7B8DAA] font-medium shrink-0">Scenario</span>
+                  <span className="font-bold text-[#0B1D3A] text-right truncate max-w-[170px]">
+                    {scenarioText}
+                  </span>
                 </div>
               </div>
 
-              <PrimaryButton
-                full
-                variant="gold"
-                onClick={() => {
-                  setIsBooked(false);
-                  goToStep(1);
-                }}
-                className="!h-10 !rounded-[10px] font-bold text-[13px]"
-              >
-                Done
-              </PrimaryButton>
+              <div className="pt-0.5 flex justify-center w-full">
+                <motion.button
+                  type="button"
+                  whileHover={{ scale: 1.04, y: -1 }}
+                  whileTap={{ scale: 0.96 }}
+                  onClick={() => {
+                    setIsBooked(false);
+                    goToStep(1);
+                  }}
+                  className="w-auto min-w-[140px] h-9.5 px-6 rounded-[10px] bg-gradient-to-r from-[#C99A2E] via-[#D8AA38] to-[#C99A2E] hover:from-[#B8871F] hover:to-[#B8871F] text-[#0B1D3A] font-bold text-[12.5px] shadow-sm cursor-pointer flex items-center justify-center gap-1.5 transition-all outline-none"
+                >
+                  <span>Done</span>
+                  <ChevronRight size={14} strokeWidth={2.6} />
+                </motion.button>
+              </div>
             </motion.div>
           </div>
         )}

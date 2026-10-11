@@ -32,7 +32,6 @@ const MATCHERS: Record<string, Record<string, (e: FilterableExpert) => boolean>>
   "RE Segment": {},
   Expertise: {},
   "Delivery Mode": {
-    // Every expert currently runs 1-on-1 live sessions.
     "1-on-1 Live Video": () => true,
     "Group Simulation": () => false,
     "Audio Role-Play": () => false,
@@ -64,7 +63,6 @@ function optionMatches(group: string, option: string, e: FilterableExpert): bool
   return re ? re.test(haystack(e)) : true;
 }
 
-/** OR within a group, AND across groups. No selection => everything matches. */
 export function matchesFilters(e: FilterableExpert, selected: ReadonlySet<string>): boolean {
   if (selected.size === 0) return true;
   return data.filters.every((g) => {

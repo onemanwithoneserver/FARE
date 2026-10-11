@@ -151,7 +151,6 @@ export default function Desktop({ onBookExpert }: Props) {
   const s = data;
   const [isExpanded, setIsExpanded] = useState(true);
 
-  // 4 slots fixed array allowing each slot to be filled or null
   const [slots, setSlots] = useState<(string | null)[]>([
     s.defaultCompareNames[0] || null,
     s.defaultCompareNames[1] || null,
@@ -159,16 +158,13 @@ export default function Desktop({ onBookExpert }: Props) {
     null,
   ]);
 
-  // Tracks active open dropdown: index 0-3 for slots, "toolbar" for header, or `footer-${index}`
   const [openDropdown, setOpenDropdown] = useState<
-    number | "toolbar" | `footer-${number}` | null
+    number | `footer-${number}` | null
   >(null);
 
   const activeCount = slots.filter(Boolean).length;
   const maxSlots = 4;
-  const hasEmptySlot = slots.some((name) => name === null);
 
-  // Listen for clicks outside open dropdown
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (!(e.target as HTMLElement).closest(".mentor-dropdown-container")) {
@@ -189,7 +185,6 @@ export default function Desktop({ onBookExpert }: Props) {
   const handleSelectExpertForSlot = (name: string, slotIdx: number) => {
     setSlots((prev) => {
       const next = [...prev];
-      // If mentor was in another slot, clear that previous slot
       const existingIdx = next.findIndex((n) => n === name);
       if (existingIdx !== -1 && existingIdx !== slotIdx) {
         next[existingIdx] = null;
@@ -198,13 +193,6 @@ export default function Desktop({ onBookExpert }: Props) {
       return next;
     });
     setOpenDropdown(null);
-  };
-
-  const handleToolbarAddMentor = (name: string) => {
-    const firstEmpty = slots.findIndex((s) => s === null);
-    if (firstEmpty !== -1) {
-      handleSelectExpertForSlot(name, firstEmpty);
-    }
   };
 
   const handleRemoveExpert = (slotIdx: number) => {
@@ -245,18 +233,18 @@ export default function Desktop({ onBookExpert }: Props) {
     <Section
       tone="soft"
       ariaLabel="Side-by-Side Evaluation"
-      className="!pt-12 lg:!pt-16 !pb-12 font-['Outfit'] relative overflow-hidden"
+      className="!pt-6 lg:!pt-8 !pb-10 font-['Outfit'] relative overflow-hidden"
     >
-      <div className="flex flex-col gap-6 max-w-[1240px] mx-auto w-full">
+      <div className="flex flex-col gap-3.5 max-w-[1240px] mx-auto w-full">
         <SectionHeader
           eyebrow="Side-by-Side Evaluation"
           icon={Scale}
           accent={ACCENTS[1]}
           title="Compare Verified Mentors"
-          className="!mb-4 lg:!mb-6"
+          compact
+          className="!mb-0"
         />
 
-        {/* Toolbar Header Card */}
         <div className="bg-white rounded-[16px] border border-[#E6EBF3] p-4 sm:p-5 luxury-shadow-sm flex flex-col md:flex-row items-center justify-between gap-4 relative">
           <div className="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r from-[#C99A2E] via-[#E4C46A] to-[#0B1D3A] rounded-t-[16px]" />
           <HoverGlow accent={ACCENTS[1]} />
@@ -286,40 +274,6 @@ export default function Desktop({ onBookExpert }: Props) {
           </div>
 
           <div className="relative z-10 flex items-center gap-2.5 w-full md:w-auto justify-end flex-wrap">
-            {hasEmptySlot && (
-              <div className="relative mentor-dropdown-container">
-                <button
-                  type="button"
-                  onClick={() =>
-                    setOpenDropdown((prev) => (prev === "toolbar" ? null : "toolbar"))
-                  }
-                  aria-expanded={openDropdown === "toolbar"}
-                  className={`h-9 px-3.5 rounded-[10px] bg-[#0B1D3A] text-white hover:bg-[#122A50] text-[12.5px] font-semibold transition-all cursor-pointer flex items-center gap-1.5 shadow-xs ${FOCUS_RING}`}
-                >
-                  <Plus size={14} strokeWidth={2.6} />
-                  <span>Add Mentor</span>
-                  <ChevronDown
-                    size={12}
-                    strokeWidth={2.6}
-                    className={`transition-transform duration-200 ${
-                      openDropdown === "toolbar" ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-
-                <AnimatePresence>
-                  {openDropdown === "toolbar" && (
-                    <MentorDropdownMenu
-                      slots={slots}
-                      onSelect={handleToolbarAddMentor}
-                      onClose={() => setOpenDropdown(null)}
-                      align="right"
-                    />
-                  )}
-                </AnimatePresence>
-              </div>
-            )}
-
             {activeCount > 0 && (
               <button
                 type="button"
@@ -364,7 +318,6 @@ export default function Desktop({ onBookExpert }: Props) {
           </div>
         </div>
 
-        {/* Comparison Table View */}
         <AnimatePresence>
           {isExpanded && (
             <motion.div
@@ -379,7 +332,6 @@ export default function Desktop({ onBookExpert }: Props) {
                   <table className="w-full text-left border-collapse table-fixed">
                     <thead>
                       <tr>
-                        {/* Criteria header column */}
                         <th className="p-5 bg-gradient-to-b from-[#F8FAFD] to-[#F1F5F9] border-b border-r border-[#E6EBF3] w-[24%] align-bottom">
                           <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#7B8DAA] block mb-1">
                             Matrix Dimensions
@@ -392,7 +344,6 @@ export default function Desktop({ onBookExpert }: Props) {
                           </span>
                         </th>
 
-                        {/* 4 Expert header columns */}
                         {slots.map((mentorName, idx) => {
                           const exp = mentorName
                             ? s.allExperts.find((e) => e.name === mentorName)
@@ -406,7 +357,6 @@ export default function Desktop({ onBookExpert }: Props) {
                             >
                               {exp ? (
                                 <div className="flex flex-col items-center text-center gap-3 relative">
-                                  {/* Allow user to clear ANY mentor down to 0 */}
                                   <button
                                     type="button"
                                     onClick={() => handleRemoveExpert(idx)}
@@ -461,7 +411,6 @@ export default function Desktop({ onBookExpert }: Props) {
                                       Book Session
                                     </PrimaryButton>
 
-                                    {/* Inline Dropdown trigger for swapping mentor */}
                                     <div className="relative mentor-dropdown-container w-full">
                                       <button
                                         type="button"
@@ -506,7 +455,6 @@ export default function Desktop({ onBookExpert }: Props) {
                                   </div>
                                 </div>
                               ) : (
-                                /* Empty Slot with inline dropdown */
                                 <div className="py-7 flex flex-col items-center justify-center text-center gap-2 relative mentor-dropdown-container">
                                   <button
                                     type="button"

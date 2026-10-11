@@ -129,7 +129,7 @@ export default function ChooseYourExpert({ isMobile }: Props) {
           {results}
         </>
       ) : (
-        <section className="bg-[#FAFAFA] w-full pt-8 pb-16">
+        <section className="bg-[#FAFAFA] w-full pt-8 pb-6 lg:pb-8">
           <div className="max-w-[1240px] mx-auto w-full flex items-start gap-8 px-4 xl:px-0">
             <aside className="w-[300px] shrink-0" aria-label="Filters">
               <Section03 isMobile={isMobile} selected={filters} onToggle={toggleFilter} onClear={clearFilters} resultCount={expertCount} />

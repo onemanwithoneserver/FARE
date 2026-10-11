@@ -17,6 +17,7 @@ import {
   Layers,
   Star,
   Video,
+  ChevronRight,
 } from "lucide-react";
 import { data, getExpertDurationPrice } from "./data";
 import { data as allExpertsData, type Expert } from "../section05/data";
@@ -186,7 +187,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
       tone="soft"
       ariaLabel="Choose Session, Date & Time"
       id="booking-section"
-      className="!pt-12 lg:!pt-16 !pb-20 relative font-['Outfit']"
+      className="!pt-8 lg:!pt-10 !pb-16 relative font-['Outfit']"
     >
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-[#C99A2E]/[0.03] blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#0B1D3A]/[0.03] blur-[120px] rounded-full pointer-events-none" />
@@ -197,11 +198,11 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
         accent={ACCENTS[1]}
         title="Choose Session, Date & Time"
         description="Select duration, realistic scenario challenge, and preferred time slot to schedule live 1-on-1 practice with your verified real estate mentor."
-        className="!mb-6 lg:!mb-8"
+        compact
+        className="!mb-3"
       />
 
       <div className="max-w-[1240px] mx-auto w-full flex flex-col gap-6">
-        {/* VIP Active Mentor Concierge Card */}
         <div className="bg-gradient-to-r from-[#0B1D3A] via-[#122A50] to-[#0B1D3A] rounded-[18px] p-5 sm:p-6 text-white flex flex-col md:flex-row items-center justify-between gap-5 shadow-[0_16px_36px_-12px_rgba(11,29,58,0.4)] border border-[#C99A2E]/35 relative overflow-hidden">
           <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-[#C99A2E]/15 blur-2xl pointer-events-none" />
           <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#C99A2E] to-transparent" />
@@ -294,7 +295,6 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
           </div>
         </div>
 
-        {/* Mentor Switcher Drawer / Grid */}
         <AnimatePresence>
           {isSwitchExpertOpen && (
             <motion.div
@@ -357,19 +357,24 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
           )}
         </AnimatePresence>
 
-        {/* Wizard Stepper Bar */}
-        <div className="bg-white rounded-[16px] border border-[#E6EBF3] p-4 sm:p-5 luxury-shadow-sm relative overflow-hidden">
+        <div className="relative py-2 sm:py-3 select-none">
           <div className="relative">
-            <div className="absolute top-5 left-[12.5%] right-[12.5%] -translate-y-1/2 h-[3px] bg-[#E8EDF5] rounded-full pointer-events-none" />
+            <div className="absolute top-6 left-[12.5%] right-[12.5%] -translate-y-1/2 h-[3px] bg-[#E2E8F0]/85 rounded-full pointer-events-none" />
 
             <motion.div
-              className="absolute top-5 left-[12.5%] -translate-y-1/2 h-[3px] rounded-full bg-gradient-to-r from-[#10B981] via-[#059669] to-[#C99A2E] pointer-events-none"
+              className="absolute top-6 left-[12.5%] -translate-y-1/2 h-[3.5px] rounded-full bg-gradient-to-r from-[#10B981] via-[#059669] to-[#C99A2E] pointer-events-none"
               initial={false}
               animate={{
                 width: `${((currentStep - 1) / (STEPS.length - 1)) * 75}%`,
               }}
               transition={{ type: "spring", stiffness: 220, damping: 28 }}
-            />
+            >
+              <motion.span
+                animate={{ scale: [1, 1.25, 1], opacity: [0.8, 1, 0.8] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#E4C46A] shadow-[0_0_12px_3px_rgba(201,154,46,0.7)] border-2 border-white pointer-events-none"
+              />
+            </motion.div>
 
             <div className="grid grid-cols-4 relative z-10">
               {STEPS.map((step) => {
@@ -378,65 +383,113 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                 const Icon = step.icon;
 
                 return (
-                  <button
+                  <motion.button
                     key={step.id}
                     type="button"
                     onClick={() => isPast && goToStep(step.id)}
                     disabled={!isPast}
-                    className={`flex flex-col items-center group select-none transition-all duration-200 ${
+                    whileHover={isPast ? { y: -2, scale: 1.04 } : undefined}
+                    whileTap={isPast ? { scale: 0.96 } : undefined}
+                    className={`flex flex-col items-center group relative transition-all duration-200 outline-none ${
                       isPast
                         ? "cursor-pointer"
                         : isCurrent
                         ? "cursor-default"
-                        : "cursor-not-allowed opacity-60"
+                        : "cursor-not-allowed opacity-65"
                     }`}
                   >
-                    <div className="relative flex items-center justify-center w-10 h-10 mb-2">
+                    <div className="relative flex items-center justify-center w-12 h-12 mb-2.5">
                       {isCurrent && (
-                        <span className="absolute -inset-1 rounded-full ring-2 ring-[#C99A2E] ring-offset-2 ring-offset-white pointer-events-none animate-pulse" />
+                        <>
+                          <motion.span
+                            animate={{ scale: [1, 1.35, 1], opacity: [0.35, 0.7, 0.35] }}
+                            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -inset-2 rounded-full bg-[#C99A2E]/30 blur-md pointer-events-none"
+                          />
+                          <motion.span
+                            animate={{ scale: [1, 1.45], opacity: [0.65, 0] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+                            className="absolute -inset-1 rounded-full border-2 border-[#C99A2E] pointer-events-none"
+                          />
+                        </>
                       )}
 
                       <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center text-[13px] font-bold transition-all duration-300 relative z-10 ${
-                          isPast
-                            ? "bg-[#10B981] text-white shadow-xs"
-                            : isCurrent
-                            ? "bg-[#0B1D3A] text-white shadow-md ring-2 ring-[#C99A2E]"
-                            : "bg-white border-2 border-[#CBD5E1] text-[#7B8DAA]"
+                        className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 relative z-10 ${
+                          isCurrent
+                            ? "p-[2.5px] bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#996F19] shadow-[0_10px_24px_-4px_rgba(201,154,46,0.6)]"
+                            : isPast
+                            ? "bg-gradient-to-tr from-[#059669] to-[#10B981] text-white shadow-[0_6px_16px_-4px_rgba(16,185,129,0.45)] border-2 border-white"
+                            : "bg-white/80 backdrop-blur-xs border-2 border-[#CBD5E1] text-[#94A3B8] shadow-2xs hover:border-[#94A3B8]"
                         }`}
                       >
-                        {isPast ? (
-                          <Check size={16} strokeWidth={3.2} />
+                        {isCurrent ? (
+                          <div className="w-full h-full rounded-full bg-[#0B1D3A] flex items-center justify-center text-white">
+                            <motion.div
+                              animate={{ rotate: [0, 6, -6, 0], scale: [1, 1.08, 1] }}
+                              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                              <Icon size={18} strokeWidth={2.4} className="text-[#E4C46A]" />
+                            </motion.div>
+                          </div>
+                        ) : isPast ? (
+                          <motion.div
+                            initial={{ scale: 0.8 }}
+                            animate={{ scale: 1 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                          >
+                            <Check size={18} strokeWidth={3.4} className="text-white drop-shadow-xs" />
+                          </motion.div>
                         ) : (
-                          <Icon size={16} strokeWidth={2.4} />
+                          <Icon size={17} strokeWidth={2.2} />
                         )}
                       </div>
                     </div>
 
-                    <div className="text-center px-1">
+                    <div className="text-center px-1 flex flex-col items-center">
                       <span
-                        className={`text-[12.5px] font-bold block tracking-tight leading-tight ${
+                        className={`text-[10px] font-extrabold uppercase tracking-[0.14em] mb-0.5 transition-colors ${
                           isCurrent
-                            ? "text-[#0B1D3A]"
+                            ? "text-[#C99A2E]"
                             : isPast
                             ? "text-[#059669]"
+                            : "text-[#94A3B8]"
+                        }`}
+                      >
+                        {isPast ? "Done" : `Step 0${step.id}`}
+                      </span>
+
+                      <h5
+                        className={`text-[13px] font-bold block tracking-tight leading-tight transition-colors ${
+                          isCurrent
+                            ? "text-[#0B1D3A] font-extrabold"
+                            : isPast
+                            ? "text-[#1E293B] group-hover:text-[#059669]"
                             : "text-[#64748B]"
                         }`}
                       >
                         {step.title}
-                      </span>
+                      </h5>
+
                       <span className="text-[11px] font-medium text-[#7B8DAA] hidden sm:block mt-0.5">
                         {step.subtitle}
                       </span>
+
+                      {isCurrent && (
+                        <motion.div
+                          layoutId="stepperActivePill"
+                          className="h-[2px] w-6 mt-1.5 rounded-full bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#C99A2E]"
+                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        />
+                      )}
                     </div>
-                  </button>
+                  </motion.button>
                 );
               })}
             </div>
           </div>
         </div>
 
-        {/* Validation error message */}
         {validationError && (
           <motion.div
             initial={{ opacity: 0, y: -6 }}
@@ -450,10 +503,8 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
           </motion.div>
         )}
 
-        {/* Step Content Container */}
         <div className="bg-white rounded-[16px] border border-[#E6EBF3] luxury-shadow-sm p-6 sm:p-8 overflow-hidden">
           <AnimatePresence mode="wait" custom={slideDirection}>
-            {/* STEP 1: DURATION & FORMAT */}
             {currentStep === 1 && (
               <motion.div
                 key="step-1"
@@ -604,7 +655,6 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
               </motion.div>
             )}
 
-            {/* STEP 2: PRACTICE SCENARIO */}
             {currentStep === 2 && (
               <motion.div
                 key="step-2"
@@ -688,7 +738,6 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
               </motion.div>
             )}
 
-            {/* STEP 3: DATE & TIME SLOT */}
             {currentStep === 3 && (
               <motion.div
                 key="step-3"
@@ -806,7 +855,6 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
               </motion.div>
             )}
 
-            {/* STEP 4: REVIEW & CONFIRM */}
             {currentStep === 4 && (
               <motion.div
                 key="step-4"
@@ -831,7 +879,6 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Left Column: Specifications */}
                   <div className="p-6 rounded-[16px] bg-[#F8FAFD] border border-[#E6EBF3] flex flex-col gap-4">
                     {activeExpert ? (
                       <div className="flex items-center justify-between pb-3.5 border-b border-[#E6EBF3]">
@@ -915,7 +962,6 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                     </div>
                   </div>
 
-                  {/* Right Column: Investment Summary */}
                   <div className="p-6 rounded-[16px] bg-white border border-[#E6EBF3] luxury-shadow-sm flex flex-col justify-between">
                     <div>
                       <h4 className="text-[16px] font-bold text-[#0B1D3A] mb-3.5">
@@ -975,7 +1021,6 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
             )}
           </AnimatePresence>
 
-          {/* Wizard Action Footer */}
           <div className="pt-6 border-t border-[#F0F4FA] flex items-center justify-between mt-6">
             {currentStep > 1 ? (
               <SecondaryButton
@@ -1012,7 +1057,6 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
         </div>
       </div>
 
-      {/* Confirmation Celebration Modal */}
       <AnimatePresence>
         {isBooked && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 font-['Outfit']">
@@ -1024,13 +1068,14 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
               className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.92, y: 16 }}
+              initial={{ opacity: 0, scale: 0.92, y: 18 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 16 }}
+              exit={{ opacity: 0, scale: 0.92, y: 18 }}
               transition={{ duration: 0.28, ease: EASE }}
-              className="relative z-10 w-full max-w-[440px] bg-white rounded-[24px] p-7 border border-[#E6EBF3] shadow-[0_24px_60px_-12px_rgba(11,29,58,0.25)] overflow-hidden flex flex-col items-center text-center gap-4"
+              className="relative z-10 w-full max-w-[460px] bg-white rounded-[26px] p-6 sm:p-7 border border-[#E6EBF3] shadow-[0_28px_70px_-16px_rgba(11,29,58,0.3)] overflow-hidden flex flex-col items-center text-center gap-4.5"
             >
-              <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#0B1D3A]" />
+              <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-72 h-40 rounded-full bg-gradient-to-b from-[#C99A2E]/20 via-[#10B981]/15 to-transparent blur-2xl pointer-events-none" />
+              <div className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-[#10B981] via-[#C99A2E] to-[#0B1D3A]" />
 
               <button
                 type="button"
@@ -1041,18 +1086,31 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                 <X size={14} />
               </button>
 
-              <div className="w-16 h-16 rounded-full bg-[#10B981] text-white flex items-center justify-center shadow-lg mb-1">
-                <Check size={32} strokeWidth={3.4} />
+              <div className="relative mt-1 mb-0.5">
+                <motion.span
+                  animate={{ scale: [1, 1.25, 1], opacity: [0.35, 0.7, 0.35] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -inset-2 rounded-full bg-[#10B981]/30 blur-md pointer-events-none"
+                />
+                <motion.div
+                  initial={{ scale: 0.7, rotate: -8 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ type: "spring", stiffness: 280, damping: 18 }}
+                  className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#059669] via-[#10B981] to-[#34D399] text-white flex items-center justify-center shadow-[0_12px_24px_-6px_rgba(16,185,129,0.5)] border-3 border-white relative z-10"
+                >
+                  <Check size={32} strokeWidth={3.4} className="drop-shadow-xs" />
+                </motion.div>
               </div>
 
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#C99A2E] block mb-1">
+                <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#F0FDF4] border border-[#10B981]/30 text-[#047857] text-[11px] font-extrabold uppercase tracking-[0.14em] mb-1.5 shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
                   Booking Confirmed
                 </span>
-                <h3 className="text-[22px] font-bold text-[#0B1D3A] tracking-tight leading-tight">
+                <h3 className="text-[23px] font-extrabold text-[#0B1D3A] tracking-tight leading-tight">
                   Your Slot is Reserved!
                 </h3>
-                <p className="text-[13px] text-[#5A6B82] mt-1 leading-relaxed max-w-[340px] font-medium">
+                <p className="text-[13px] text-[#5A6B82] mt-1.5 leading-relaxed max-w-[360px] font-medium">
                   Google Meet invitation details have been prepared for your session with{" "}
                   <span className="font-bold text-[#0B1D3A]">
                     {activeExpert?.name || "your verified mentor"}
@@ -1061,56 +1119,93 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                 </p>
               </div>
 
-              <div className="w-full rounded-[16px] bg-[#F8FAFD] border border-[#E6EBF3] p-4 flex flex-col gap-2.5 text-left text-[12.5px] shadow-2xs">
+              <div className="w-full rounded-[18px] bg-gradient-to-b from-[#F8FAFD] to-[#F3F7FC] border border-[#E2E8F0] p-4.5 flex flex-col gap-3 text-left shadow-xs relative overflow-hidden">
                 {activeExpert && (
-                  <div className="flex items-center gap-3 pb-3 border-b border-[#E6EBF3]">
-                    <img
-                      src={activeExpert.image}
-                      alt={activeExpert.name}
-                      className="w-9 h-9 rounded-full object-cover border border-[#CBD5E1]"
-                    />
-                    <div className="min-w-0">
-                      <span className="block text-[13.5px] font-bold text-[#0B1D3A] truncate leading-tight">
-                        {activeExpert.name}
-                      </span>
-                      <span className="block text-[11.5px] text-[#7B8DAA] truncate font-medium">
-                        {activeExpert.role.split("·")[0]}
-                      </span>
+                  <div className="flex items-center justify-between gap-3 pb-3 border-b border-[#E2E8F0]/80">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="relative shrink-0">
+                        <img
+                          src={activeExpert.image}
+                          alt={activeExpert.name}
+                          className="w-11 h-11 rounded-full object-cover border-2 border-[#C99A2E]/60 shadow-xs"
+                        />
+                        <VerifiedBadge
+                          size={15}
+                          className="absolute -bottom-1 -right-1 ring-1.5 ring-white rounded-full shadow-2xs"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="block text-[14px] font-bold text-[#0B1D3A] truncate leading-tight">
+                          {activeExpert.name}
+                        </span>
+                        <span className="block text-[12px] text-[#64748B] truncate font-medium mt-0.5">
+                          {activeExpert.role.split("·")[0]}
+                        </span>
+                      </div>
                     </div>
+                    <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-[#0B1D3A] text-white shrink-0 shadow-2xs">
+                      Verified Coach
+                    </span>
                   </div>
                 )}
-                <div className="flex items-center justify-between">
-                  <span className="text-[#7B8DAA] font-medium">Date &amp; Time</span>
-                  <span className="font-bold text-[#0B1D3A]">
-                    {selectedDate} · {selectedSlot}
-                  </span>
+
+                <div className="grid grid-cols-1 gap-2.5 text-[12.5px]">
+                  <div className="flex items-center justify-between gap-2 p-2 rounded-[10px] bg-white border border-[#E8EEF5]">
+                    <div className="flex items-center gap-2 text-[#64748B] font-medium">
+                      <span className="w-6 h-6 rounded-[6px] bg-[#EEF2F9] text-[#0B1D3A] flex items-center justify-center shrink-0">
+                        <Calendar size={13} strokeWidth={2.4} />
+                      </span>
+                      <span>Date &amp; Time</span>
+                    </div>
+                    <span className="font-bold text-[#0B1D3A] text-[13px]">
+                      {selectedDate} · {selectedSlot}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-2 p-2 rounded-[10px] bg-white border border-[#E8EEF5]">
+                    <div className="flex items-center gap-2 text-[#64748B] font-medium">
+                      <span className="w-6 h-6 rounded-[6px] bg-[#FFFBF0] text-[#8A5A00] flex items-center justify-center shrink-0">
+                        <Clock size={13} strokeWidth={2.4} />
+                      </span>
+                      <span>Duration</span>
+                    </div>
+                    <span className="font-bold text-[#0B1D3A] px-2.5 py-0.5 rounded-[6px] bg-[#F1F5F9] text-[11.5px] border border-[#CBD5E1]/60">
+                      {selectedDuration?.duration || "45 MIN"}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-2 p-2 rounded-[10px] bg-white border border-[#E8EEF5]">
+                    <div className="flex items-center gap-2 text-[#64748B] font-medium shrink-0">
+                      <span className="w-6 h-6 rounded-[6px] bg-[#F4EFFF] text-[#6D28D9] flex items-center justify-center shrink-0">
+                        <Sparkles size={13} strokeWidth={2.4} />
+                      </span>
+                      <span>Scenario</span>
+                    </div>
+                    <span className="font-bold text-[#0B1D3A] text-right truncate max-w-[210px] text-[12.5px]">
+                      {scenarioText}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-[#7B8DAA] font-medium">Duration</span>
-                  <span className="font-bold text-[#0B1D3A] bg-white px-2.5 py-0.5 rounded-[6px] border border-[#E6EBF3]">
-                    {selectedDuration?.duration || "45 MIN"}
-                  </span>
-                </div>
-                <div className="flex items-start justify-between gap-2">
-                  <span className="text-[#7B8DAA] font-medium shrink-0">Scenario</span>
-                  <span className="font-bold text-[#0B1D3A] text-right truncate max-w-[200px]">
-                    {scenarioText}
-                  </span>
+
+                <div className="pt-1 flex items-center justify-center gap-1.5 text-[11px] font-medium text-[#7B8DAA] text-center">
+                  <span>✉️ Calendar invite &amp; Meet link sent to your email</span>
                 </div>
               </div>
 
-              <div className="pt-1 w-full">
-                <PrimaryButton
-                  full
-                  variant="gold"
+              <div className="pt-1 flex justify-center w-full">
+                <motion.button
+                  type="button"
+                  whileHover={{ scale: 1.04, y: -1 }}
+                  whileTap={{ scale: 0.96 }}
                   onClick={() => {
                     setIsBooked(false);
                     goToStep(1);
                   }}
-                  className="!h-11 !rounded-[12px] font-bold text-[13.5px] shadow-sm cursor-pointer"
+                  className="w-auto min-w-[160px] h-11 px-7 rounded-[12px] bg-gradient-to-r from-[#C99A2E] via-[#D8AA38] to-[#C99A2E] hover:from-[#B8871F] hover:to-[#B8871F] text-[#0B1D3A] font-bold text-[13.5px] shadow-[0_8px_20px_-4px_rgba(201,154,46,0.55)] cursor-pointer flex items-center justify-center gap-2 transition-all outline-none"
                 >
-                  Done
-                </PrimaryButton>
+                  <span>Done</span>
+                  <ChevronRight size={16} strokeWidth={2.6} />
+                </motion.button>
               </div>
             </motion.div>
           </div>

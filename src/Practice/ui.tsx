@@ -257,6 +257,7 @@ export function SectionHeader({
   mobile = false,
   dark = false,
   className = "",
+  compact = false,
 }: {
   eyebrow?: ReactNode;
   icon?: LucideIcon;
@@ -267,16 +268,17 @@ export function SectionHeader({
   mobile?: boolean;
   dark?: boolean;
   className?: string;
+  compact?: boolean;
 }) {
   const center = align === "center";
   return (
     <Reveal
       className={`flex flex-col ${center ? "items-center text-center mx-auto" : "items-start text-left"} ${
-        mobile ? "mb-9" : "mb-14 max-w-[820px]"
+        compact ? "mb-3 max-w-[820px]" : mobile ? "mb-6" : "mb-10 max-w-[820px]"
       } ${className}`}
     >
       {eyebrow && (
-        <div className={mobile ? "mb-4" : "mb-6"}>
+        <div className={compact ? "mb-2.5" : mobile ? "mb-3" : "mb-3.5"}>
           <Eyebrow icon={icon} accent={accent} dark={dark} mobile={mobile}>
             {eyebrow}
           </Eyebrow>
@@ -284,7 +286,11 @@ export function SectionHeader({
       )}
       <h2
         className={`font-black tracking-[-0.02em] leading-[1.12] ${
-          mobile ? "text-[26px] mb-4" : "text-[34px] md:text-[40px] lg:text-[46px] mb-5"
+          compact
+            ? "text-[28px] md:text-[34px] lg:text-[40px] mb-2.5"
+            : mobile
+            ? "text-[26px] mb-3"
+            : "text-[34px] md:text-[40px] lg:text-[46px] mb-3.5"
         } ${dark ? "text-white" : "text-[#0B1D3A]"}`}
       >
         {title}
@@ -293,7 +299,11 @@ export function SectionHeader({
       {description && (
         <p
           className={`font-medium leading-[1.7] whitespace-pre-line ${
-            mobile ? "text-[14.5px] mt-5" : "text-[17px] lg:text-[18px] mt-6 max-w-[680px]"
+            compact
+              ? "text-[14px] lg:text-[15px] mt-2.5 max-w-[620px]"
+              : mobile
+              ? "text-[14.5px] mt-3.5"
+              : "text-[16px] lg:text-[17px] mt-4 max-w-[680px]"
           } ${dark ? "text-white/70" : "text-[#475569]"}`}
         >
           {description}
