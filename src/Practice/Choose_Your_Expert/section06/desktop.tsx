@@ -65,7 +65,7 @@ export default function Desktop({ onBookExpert }: Props) {
 
   return (
     <Section tone="soft" ariaLabel="Compare Experts" className="!pt-6 lg:!pt-8 !pb-2.5 font-['Outfit']">
-      <div className="flex flex-col gap-6 max-w-[1200px] mx-auto w-full">
+      <div className="flex flex-col gap-6 max-w-[1240px] mx-auto w-full">
         <div
           onClick={() => setIsExpanded((prev) => !prev)}
           className="bg-white rounded-[24px] border border-[#E6EBF3] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-[#C99A2E]/40 hover:shadow-[0_12px_36px_rgba(11,29,58,0.08)] transition-all duration-300 cursor-pointer flex flex-col md:flex-row items-center justify-between gap-5 relative overflow-hidden group"

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Search, ChevronDown, Check, X, Sparkles } from "lucide-react";
+import { Search, ChevronDown, Check, X, SlidersHorizontal } from "lucide-react";
 import {
   VIEW_TABS,
   SEARCH_PLACEHOLDERS,
@@ -17,11 +17,6 @@ export interface ToolbarProps {
   sortBy: string;
   onSortChange: (sort: string) => void;
 }
-
-const QUICK_FILTERS: Record<ViewMode, string[]> = {
-  experts: ["Residential", "Negotiation", "Price Objection", "Villas", "Commercial"],
-  scenarios: ["Price Objection", "Margin Defense", "Investor ROI", "Site Visit", "First-Time Buyer"],
-};
 
 export default function Desktop({
   viewMode,
@@ -59,8 +54,9 @@ export default function Desktop({
   const activeOption = sortOptions.find((o) => o.label === sortBy) || sortOptions[0];
   const ActiveIcon = activeOption.icon;
 
+
   return (
-    <div className="w-full flex flex-col gap-5 font-['Outfit']">
+    <div className="w-full flex flex-col gap-4.5 font-['Outfit']">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {VIEW_TABS.map((tab, idx) => {
           const isActive = tab.id === viewMode;
@@ -92,7 +88,7 @@ export default function Desktop({
                 style={{ background: "linear-gradient(90deg, #C99A2E, #E4C46A, #C99A2E)" }}
               />
 
-              <div className="relative z-10 flex items-start justify-between gap-3 mb-3">
+              <div className="relative z-10 flex items-start justify-between gap-3 mb-2.5">
                 <div className="flex items-center gap-3">
                   <div
                     className={`w-11 h-11 rounded-[14px] flex items-center justify-center transition-all duration-300 ${
@@ -129,13 +125,13 @@ export default function Desktop({
                   }`}
                 >
                   {isActive && <Check size={12} strokeWidth={3} className="text-[#F5C451]" />}
-                  <span>{isActive ? "Selected View" : "Click to View"}</span>
+                  <span>{isActive ? "Active View" : "Switch View"}</span>
                 </div>
               </div>
 
               <p
                 className={`relative z-10 text-[13px] leading-relaxed font-medium ${
-                  isActive ? "text-white/75" : "text-[#5A6B82]"
+                  isActive ? "text-white/80" : "text-[#5A6B82]"
                 }`}
               >
                 {tab.description}
@@ -158,7 +154,7 @@ export default function Desktop({
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder={SEARCH_PLACEHOLDERS[viewMode]}
-              className="w-full h-12 pl-11 pr-10 rounded-[14px] bg-[#F8FAFD] border border-[#E6EBF3] hover:border-[#CBD5E1] focus:bg-white focus:border-[#C99A2E] focus:ring-2 focus:ring-[#C99A2E]/20 text-[14px] font-medium text-[#0B1D3A] placeholder-[#8A9BB3] outline-none transition-all font-['Outfit']"
+              className="w-full h-12 pl-11 pr-10 rounded-[14px] bg-[#F8FAFD] border border-[#E6EBF3] hover:border-[#CBD5E1] focus:bg-white focus:border-[#C99A2E] focus:ring-2 focus:ring-[#C99A2E]/20 text-[14px] font-semibold text-[#0B1D3A] placeholder-[#8A9BB3] outline-none transition-all font-['Outfit']"
             />
             {searchQuery && (
               <button
@@ -181,7 +177,8 @@ export default function Desktop({
               className="w-full md:w-auto flex items-center justify-between gap-3 h-12 px-4 rounded-[14px] bg-[#F8FAFD] hover:bg-[#F0F4FA] border border-[#E6EBF3] hover:border-[#CBD5E1] text-[#0B1D3A] transition-all cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/60"
             >
               <div className="flex items-center gap-2">
-                <span className="text-[12px] font-bold text-[#7B8DAA] uppercase tracking-wider">
+                <SlidersHorizontal size={14} className="text-[#C99A2E]" />
+                <span className="text-[11.5px] font-black text-[#7B8DAA] uppercase tracking-wider">
                   Sort:
                 </span>
                 <span
@@ -208,11 +205,12 @@ export default function Desktop({
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 8, scale: 0.98 }}
                   transition={{ duration: 0.16, ease: "easeOut" }}
-                  className="absolute right-0 top-full mt-2 w-full md:w-72 bg-white rounded-[18px] border border-[#E6EBF3] shadow-[0_18px_48px_-10px_rgba(11,29,58,0.22)] p-2 z-50 flex flex-col gap-1"
+                  className="absolute right-0 top-full mt-2 w-full md:w-76 bg-white rounded-[18px] border border-[#E6EBF3] shadow-[0_20px_50px_-12px_rgba(11,29,58,0.25)] p-2 z-50 flex flex-col gap-1"
                   role="listbox"
                 >
-                  <div className="px-3 py-2 text-[10.5px] font-black uppercase tracking-[0.14em] text-[#7B8DAA] border-b border-[#F0F4FA] mb-1">
-                    Sort Options
+                  <div className="px-3 py-2 text-[10.5px] font-black uppercase tracking-[0.14em] text-[#7B8DAA] border-b border-[#F0F4FA] mb-1 flex items-center justify-between">
+                    <span>Sort Options</span>
+                    <span className="text-[10px] text-[#C99A2E] font-bold">5 Criteria</span>
                   </div>
                   {sortOptions.map((option) => {
                     const isSelected = option.label === sortBy;
@@ -229,7 +227,7 @@ export default function Desktop({
                         }}
                         className={`w-full flex items-center justify-between p-2.5 rounded-[12px] transition-all text-left cursor-pointer ${
                           isSelected
-                            ? "bg-[#FFFDF7] text-[#0B1D3A] border border-[#C99A2E]/40"
+                            ? "bg-[#FFFDF7] text-[#0B1D3A] border border-[#C99A2E]/50 shadow-2xs"
                             : "hover:bg-[#F8FAFD] text-[#475569]"
                         }`}
                       >
@@ -257,23 +255,6 @@ export default function Desktop({
               )}
             </AnimatePresence>
           </div>
-        </div>
-
-        <div className="flex items-center gap-2 flex-wrap pt-1 border-t border-[#F0F4FA]">
-          <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#7B8DAA] flex items-center gap-1 mr-1">
-            <Sparkles size={12} className="text-[#C99A2E]" />
-            Quick:
-          </span>
-          {QUICK_FILTERS[viewMode].map((kw) => (
-            <button
-              key={kw}
-              type="button"
-              onClick={() => onSearchChange(kw)}
-              className="text-[11.5px] font-bold px-2.5 py-1 rounded-[8px] bg-[#F8FAFD] hover:bg-[#EEF2F9] text-[#475569] hover:text-[#0B1D3A] border border-[#E6EBF3] transition-colors cursor-pointer"
-            >
-              {kw}
-            </button>
-          ))}
         </div>
       </div>
     </div>

@@ -1,14 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronDown, Search, Check, X, Sparkles } from "lucide-react";
+import { ChevronDown, Search, Check, X, SlidersHorizontal } from "lucide-react";
 import { Section } from "../../ui";
 import { VIEW_TABS, SEARCH_PLACEHOLDERS, SORT_OPTIONS_BY_MODE } from "./data";
 import type { ToolbarProps } from "./desktop";
 
-const QUICK_FILTERS = {
-  experts: ["Residential", "Negotiation", "Price Objection", "Commercial"],
-  scenarios: ["Price Objection", "Margin Defense", "Site Visit", "First-Time"],
-};
 
 export default function Mobile({
   viewMode,
@@ -111,13 +107,13 @@ export default function Mobile({
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
                 placeholder={SEARCH_PLACEHOLDERS[viewMode]}
-                className="w-full h-11 pl-9 pr-8 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] text-[13px] font-medium text-[#0B1D3A] placeholder-[#8A9BB3] outline-none focus:border-[#C99A2E] focus:bg-white font-['Outfit']"
+                className="w-full h-11 pl-9 pr-8 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] text-[13px] font-semibold text-[#0B1D3A] placeholder-[#8A9BB3] outline-none focus:border-[#C99A2E] focus:bg-white font-['Outfit']"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => onSearchChange("")}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#E2E8F0] text-[#475569] flex items-center justify-center"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#E2E8F0] text-[#475569] flex items-center justify-center cursor-pointer"
                 >
                   <X size={11} strokeWidth={2.5} />
                 </button>
@@ -127,28 +123,13 @@ export default function Mobile({
             <button
               type="button"
               onClick={() => setIsOpen(true)}
-              className="h-11 px-3 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] text-[#0B1D3A] flex items-center gap-1.5 shrink-0"
+              className="h-11 px-3 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] text-[#0B1D3A] flex items-center gap-1.5 shrink-0 cursor-pointer shadow-2xs"
             >
               <ActiveIcon size={14} style={{ color: activeOption.color }} strokeWidth={2.4} />
               <ChevronDown size={14} className="text-[#7B8DAA]" />
             </button>
           </div>
 
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-hide">
-            <span className="text-[10px] font-black uppercase tracking-wider text-[#7B8DAA] flex items-center gap-0.5 shrink-0">
-              <Sparkles size={11} className="text-[#C99A2E]" />
-            </span>
-            {QUICK_FILTERS[viewMode].map((kw) => (
-              <button
-                key={kw}
-                type="button"
-                onClick={() => onSearchChange(kw)}
-                className="text-[11px] font-bold px-2 py-0.5 rounded-[6px] bg-[#F8FAFD] text-[#475569] border border-[#E6EBF3] whitespace-nowrap"
-              >
-                {kw}
-              </button>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -171,10 +152,13 @@ export default function Mobile({
             >
               <div className="w-12 h-1 bg-[#CBD5E1] rounded-full mx-auto mb-4" />
               <div className="flex items-center justify-between pb-3 mb-2 border-b border-[#F0F4FA]">
-                <h3 className="text-[16px] font-black text-[#0B1D3A]">Sort Options</h3>
+                <div className="flex items-center gap-2">
+                  <SlidersHorizontal size={16} className="text-[#C99A2E]" />
+                  <h3 className="text-[16px] font-black text-[#0B1D3A]">Sort Options</h3>
+                </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="w-7 h-7 rounded-full bg-[#F3F6FB] flex items-center justify-center text-[#5A6B82]"
+                  className="w-7 h-7 rounded-full bg-[#F3F6FB] flex items-center justify-center text-[#5A6B82] cursor-pointer"
                 >
                   <X size={15} />
                 </button>
@@ -190,9 +174,9 @@ export default function Mobile({
                         onSortChange(option.label);
                         setIsOpen(false);
                       }}
-                      className={`w-full flex items-center justify-between p-3 rounded-[14px] text-left transition-all ${
+                      className={`w-full flex items-center justify-between p-3 rounded-[14px] text-left transition-all cursor-pointer ${
                         isSelected
-                          ? "bg-[#FFFDF7] border border-[#C99A2E] text-[#0B1D3A]"
+                          ? "bg-[#FFFDF7] border border-[#C99A2E] text-[#0B1D3A] shadow-xs"
                           : "bg-white border border-[#E6EBF3] text-[#475569]"
                       }`}
                     >
