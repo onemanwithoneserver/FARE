@@ -10,7 +10,7 @@ import Section05 from "./section05";
 import ScenarioResults from "./section05/ScenarioResults";
 import Section06 from "./section06";
 import Section08 from "./section08";
-import { type Expert } from "./section05/data";
+import { type Expert, data as expertData, getSortedAndFilteredExperts } from "./section05/data";
 import {
   SCENARIOS,
   getSortedAndFilteredScenarios,
@@ -28,6 +28,21 @@ export default function ChooseYourExpert({ isMobile }: Props) {
   const [scenarioSearch, setScenarioSearch] = useState("");
   const [scenarioSortBy, setScenarioSortBy] = useState("Most Relevant");
   const [selectedBookingExpert, setSelectedBookingExpert] = useState<Expert | null>(null);
+  const [filters, setFilters] = useState<ReadonlySet<string>>(new Set());
+
+  const toggleFilter = (option: string) =>
+    setFilters((prev) => {
+      const next = new Set(prev);
+      if (next.has(option)) next.delete(option);
+      else next.add(option);
+      return next;
+    });
+  const clearFilters = () => setFilters(new Set());
+
+  const expertCount = useMemo(
+    () => getSortedAndFilteredExperts(expertData.experts, expertSearch, expertSortBy, filters).length,
+    [expertSearch, expertSortBy, filters]
+  );
 
   const handleBookExpert = (expert: Expert) => {
     setSelectedBookingExpert(expert);
@@ -60,6 +75,10 @@ export default function ChooseYourExpert({ isMobile }: Props) {
         onSearchChange={isExperts ? setExpertSearch : setScenarioSearch}
         sortBy={isExperts ? expertSortBy : scenarioSortBy}
         onSortChange={isExperts ? setExpertSortBy : setScenarioSortBy}
+        activeFilters={Array.from(filters)}
+        onRemoveFilter={toggleFilter}
+        onClearFilters={clearFilters}
+        resultCount={expertCount}
       />
     </div>
   );
@@ -79,6 +98,8 @@ export default function ChooseYourExpert({ isMobile }: Props) {
               isMobile={isMobile}
               searchQuery={expertSearch}
               sortBy={expertSortBy}
+              filters={filters}
+              onClearFilters={clearFilters}
               onBookExpert={handleBookExpert}
             />
           </div>
@@ -103,15 +124,15 @@ export default function ChooseYourExpert({ isMobile }: Props) {
       <Section02 isMobile={isMobile} />
       {isMobile ? (
         <>
-          <Section03 isMobile={isMobile} />
+          <Section03 isMobile={isMobile} selected={filters} onToggle={toggleFilter} onClear={clearFilters} resultCount={expertCount} />
           {toolbar}
           {results}
         </>
       ) : (
         <section className="bg-[#FAFAFA] w-full pt-8 pb-16">
           <div className="max-w-[1240px] mx-auto w-full flex items-start gap-8 px-4 xl:px-0">
-            <aside className="w-[280px] shrink-0 sticky top-24">
-              <Section03 isMobile={isMobile} />
+            <aside className="w-[300px] shrink-0" aria-label="Filters">
+              <Section03 isMobile={isMobile} selected={filters} onToggle={toggleFilter} onClear={clearFilters} resultCount={expertCount} />
             </aside>
             <main className="flex-1 flex flex-col min-w-0 gap-6">
               {toolbar}

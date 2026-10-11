@@ -151,7 +151,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
   };
 
   return (
-    <Section tone="soft" ariaLabel="Choose Session, Date & Time" id="booking-section" className="!pt-6 !pb-14 relative font-['Outfit']">
+    <Section tone="soft" ariaLabel="Choose Session, Date & Time" id="booking-section" className="!pt-16 !pb-20 relative font-['Outfit']">
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-[#C99A2E]/[0.02] blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#0B1D3A]/[0.02] blur-[100px] rounded-full pointer-events-none" />
 
@@ -161,11 +161,11 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
         accent={ACCENTS[7]}
         title="Choose Session, Date & Time"
         description="Select duration, realistic scenario, and preferred time slot to practice with your verified real estate mentor."
-        className="!mb-3 lg:!mb-4"
+        className="!mb-8 lg:!mb-10"
       />
 
-      <div className="max-w-[1240px] mx-auto w-full flex flex-col gap-3">
-        <div className="bg-gradient-to-r from-[#0B1D3A] via-[#122B54] to-[#0B1D3A] rounded-[18px] p-3 sm:p-3.5 text-white flex flex-col md:flex-row items-center justify-between gap-3 shadow-md border border-[#C99A2E]/25 relative overflow-hidden">
+      <div className="max-w-[1240px] mx-auto w-full flex flex-col gap-6">
+        <div className="bg-gradient-to-r from-[#0B1D3A] via-[#122B54] to-[#0B1D3A] rounded-[16px] p-5 sm:p-6 text-white flex flex-col md:flex-row items-center justify-between gap-5 shadow-md border border-[#C99A2E]/25 relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-[#C99A2E]/10 blur-xl pointer-events-none" />
 
           {activeExpert ? (
@@ -244,9 +244,9 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="overflow-hidden bg-white rounded-[18px] border border-[#E6EBF3] p-4 shadow-lg"
+              className="overflow-hidden bg-white rounded-[16px] border border-[#E6EBF3] p-6 shadow-lg"
             >
-              <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-[#E6EBF3]">
+              <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E6EBF3]">
                 <div className="flex items-center gap-2">
                   <span className="text-[13px] font-medium text-[#0B1D3A]">Available Verified Mentors</span>
                   <span className="text-[11.5px] text-[#7B8DAA] font-normal">(Select a mentor for your 1-on-1 session)</span>
@@ -261,14 +261,14 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                   </button>
                 )}
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
                 {expertsList.map((exp, idx) => {
                   const isCurrent = activeExpert?.name === exp.name;
                   return (
                     <div
                       key={exp.name}
                       onClick={() => handleSelectExpert(exp, idx)}
-                      className={`p-2.5 rounded-[13px] border cursor-pointer transition-all flex items-center gap-2.5 ${
+                      className={`p-3.5 rounded-[12px] border cursor-pointer transition-all flex items-center gap-3 ${
                         isCurrent
                           ? "border-[#C99A2E] bg-[#FFFDF7] ring-1 ring-[#C99A2E]/25 shadow-2xs"
                           : "border-[#E6EBF3] bg-white hover:border-[#CBD5E1] hover:bg-[#F8FAFD]"
@@ -291,7 +291,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
           )}
         </AnimatePresence>
 
-        <div className="bg-white/95 backdrop-blur-md rounded-[16px] border border-[#E6EBF3] p-2.5 sm:p-3 shadow-2xs relative overflow-hidden">
+        <div className="bg-white/95 backdrop-blur-md rounded-[16px] border border-[#E6EBF3] p-5 sm:p-6 shadow-sm relative overflow-hidden">
           <div className="relative">
             <div className="absolute top-4 left-[12.5%] right-[12.5%] -translate-y-1/2 h-[2px] bg-[#E8EDF5] rounded-full pointer-events-none" />
 
@@ -361,7 +361,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
           <motion.div
             initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-2.5 rounded-[11px] bg-red-50 border border-red-200 text-red-700 text-[12px] font-medium flex items-center gap-2"
+            className="p-4 rounded-[12px] bg-red-50 border border-red-200 text-red-700 text-[13px] font-medium flex items-center gap-3"
           >
             <span className="w-4 h-4 rounded-full bg-red-600 text-white flex items-center justify-center shrink-0">
               <AlertCircle size={10} />
@@ -370,7 +370,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
           </motion.div>
         )}
 
-        <div className="bg-white rounded-[20px] border border-[#E6EBF3] shadow-[0_10px_30px_rgba(11,29,58,0.04)] p-5 sm:p-6 overflow-hidden">
+        <div className="bg-white rounded-[16px] border border-[#E6EBF3] luxury-shadow-sm p-6 sm:p-8 overflow-hidden">
           <AnimatePresence mode="wait" custom={slideDirection}>
             {currentStep === 1 && (
               <motion.div
@@ -381,7 +381,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="flex flex-col gap-4"
+                className="flex flex-col gap-7"
               >
                 <div>
                   <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#C99A2E] block mb-0.5">
@@ -395,7 +395,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                   {s.durations.map((dur) => {
                     const isSelected = selectedDurationId === dur.id;
                     const durPrice = getExpertDurationPrice(activeExpert?.price, dur.id);
@@ -409,7 +409,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                           setSelectedDurationId(dur.id);
                           setValidationError(null);
                         }}
-                        className={`p-3.5 rounded-[16px] border transition-all duration-300 cursor-pointer flex flex-col justify-between relative overflow-hidden ${
+                        className={`p-5 rounded-[16px] border transition-all duration-300 cursor-pointer flex flex-col justify-between relative overflow-hidden ${
                           isSelected
                             ? "bg-gradient-to-b from-[#FFFDF7] to-white border-[#C99A2E] ring-1 ring-[#C99A2E]/30 shadow-xs"
                             : "bg-white border-[#E6EBF3] hover:border-[#CBD5E1]"
@@ -431,7 +431,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                         )}
 
                         <div>
-                          <div className="flex items-center justify-between mb-2 mt-0.5">
+                          <div className="flex items-center justify-between mb-4 mt-1">
                             <span className="text-[20px] font-medium text-[#0B1D3A] leading-none tracking-tight">
                               {dur.duration}
                             </span>
@@ -466,12 +466,12 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                           <span className="text-[11.5px] font-medium text-[#0B1D3A] block mb-1">
                             {dur.label}
                           </span>
-                          <p className="text-[11px] text-[#5A6B82] leading-relaxed mb-3 font-normal">
+                          <p className="text-[12px] text-[#5A6B82] leading-relaxed mb-5 font-normal">
                             {dur.desc}
                           </p>
                         </div>
 
-                        <div className="pt-2.5 border-t border-[#F0F4FA] flex flex-col gap-1 text-[11px]">
+                        <div className="pt-4 border-t border-[#F0F4FA] flex flex-col gap-2 text-[12px]">
                           {dur.features.map((feat) => (
                             <div key={feat} className="flex items-center gap-1.5 text-[#334155] font-normal">
                               <span className="w-3.5 h-3.5 rounded-full bg-[#10B981] text-white flex items-center justify-center shrink-0">
@@ -487,7 +487,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                 </div>
 
                 {!activeExpert ? (
-                  <div className="p-3 rounded-[13px] bg-gradient-to-r from-[#FFFDF7] via-white to-[#F8FAFD] border border-[#C99A2E]/30 flex flex-col sm:flex-row items-center justify-between gap-2.5 shadow-2xs">
+                  <div className="p-5 rounded-[16px] bg-gradient-to-r from-[#FFFDF7] via-white to-[#F8FAFD] border border-[#C99A2E]/30 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xs">
                     <div className="flex items-center gap-2.5">
                       <span className="w-7 h-7 rounded-full bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
                         <Sparkles size={13} />
@@ -508,7 +508,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                     </button>
                   </div>
                 ) : (
-                  <div className="flex items-center justify-between px-3 py-2 rounded-[11px] bg-[#F8FAFD] border border-[#E6EBF3] text-[11.5px] text-[#5A6B82]">
+                  <div className="flex items-center justify-between px-5 py-4 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] text-[12.5px] text-[#5A6B82]">
                     <div className="flex items-center gap-1.5">
                       <span className="font-medium text-[#0B1D3A]">Custom mentor rates applied:</span>
                       <span className="font-medium text-[#C99A2E]">{activeExpert.name}</span>
@@ -536,7 +536,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="flex flex-col gap-4"
+                className="flex flex-col gap-7"
               >
                 <div>
                   <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#C99A2E] block mb-0.5">
@@ -550,18 +550,18 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                   </p>
                 </div>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-5">
                   <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#7B8DAA]">
                     Recommended Simulation Scenarios
                   </span>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {quickScenarios.map((sc) => {
                       const isSelected = scenarioText === sc.title;
                       return (
                         <div
                           key={sc.title}
                           onClick={() => setScenarioText(sc.title)}
-                          className={`p-2.5 rounded-[13px] border transition-all cursor-pointer flex items-center justify-between gap-2.5 ${
+                          className={`p-4 rounded-[12px] border transition-all cursor-pointer flex items-center justify-between gap-3 ${
                             isSelected
                               ? "bg-[#FFFDF7] border-[#C99A2E] ring-1 ring-[#C99A2E]/20"
                               : "bg-[#F8FAFD] border-[#E6EBF3] hover:border-[#CBD5E1]"
@@ -587,7 +587,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                     })}
                   </div>
 
-                  <div className="flex flex-col gap-1 pt-1">
+                  <div className="flex flex-col gap-2.5 pt-2">
                     <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#7B8DAA] flex items-center gap-1.5">
                       <span className="w-4 h-4 rounded-[3px] bg-[#C99A2E] text-white flex items-center justify-center">
                         <Edit3 size={9} />
@@ -599,7 +599,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                       onChange={(e) => setScenarioText(e.target.value)}
                       rows={2.5}
                       placeholder="e.g., A client is comparing my project with a cheaper competitor and refuses to pay the booking token..."
-                      className="w-full p-2.5 rounded-[11px] bg-[#F8FAFD] border border-[#E6EBF3] focus:bg-white focus:border-[#C99A2E] text-[12.5px] font-normal text-[#0B1D3A] outline-none transition-all resize-none font-['Outfit']"
+                      className="w-full p-4 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] focus:bg-white focus:border-[#C99A2E] focus:ring-4 focus:ring-[#C99A2E]/15 text-[13.5px] font-normal text-[#0B1D3A] outline-none transition-all resize-none font-['Outfit']"
                     />
                   </div>
                 </div>
@@ -615,7 +615,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="flex flex-col gap-4"
+                className="flex flex-col gap-7"
               >
                 <div>
                   <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#C99A2E] block mb-0.5">
@@ -629,12 +629,12 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                   </p>
                 </div>
 
-                <div className="flex flex-col gap-3.5">
+                <div className="flex flex-col gap-8">
                   <div>
-                    <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#7B8DAA] block mb-1.5">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#7B8DAA] block mb-3">
                       1. Choose Date
                     </span>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
                       {s.dates.map((d) => {
                         const isSelected = selectedDate === d.label;
                         return (
@@ -642,7 +642,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                             key={d.label}
                             type="button"
                             onClick={() => setSelectedDate(d.label)}
-                            className={`p-2 rounded-[11px] border text-center transition-all cursor-pointer flex flex-col items-center gap-0.5 ${
+                            className={`px-3 py-4 rounded-[12px] border text-center transition-all cursor-pointer flex flex-col items-center gap-1 ${
                               isSelected
                                 ? "bg-[#0B1D3A] text-white border-[#0B1D3A] shadow-xs"
                                 : "bg-[#F8FAFD] border-[#E6EBF3] hover:border-[#CBD5E1] text-[#0B1D3A]"
@@ -662,14 +662,14 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                   </div>
 
                   <div>
-                    <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#7B8DAA] block mb-1.5">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#7B8DAA] block mb-3">
                       2. Choose Time Slot
                     </span>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-3">
                       {s.timeSlots.map((period) => (
                         <div
                           key={period.period}
-                          className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 p-2.5 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3]"
+                          className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 p-4 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3]"
                         >
                           <span className="text-[10.5px] font-medium text-[#7B8DAA] uppercase tracking-wider w-24 shrink-0 flex items-center gap-1.5">
                             {period.period === "Morning" ? (
@@ -683,7 +683,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                             )}
                             {period.period}
                           </span>
-                          <div className="flex flex-wrap gap-1.5">
+                          <div className="flex flex-wrap gap-2.5">
                             {period.slots.map((slot) => {
                               const isSelected = selectedSlot === slot.time;
                               return (
@@ -691,7 +691,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                                   key={slot.time}
                                   type="button"
                                   onClick={() => setSelectedSlot(slot.time)}
-                                  className={`px-2.5 py-1 rounded-[7px] text-[11px] font-medium transition-all cursor-pointer ${
+                                  className={`px-4 py-2 rounded-[10px] text-[12.5px] font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E] ${
                                     isSelected
                                       ? "bg-[#C99A2E] text-white shadow-xs"
                                       : "bg-white border border-[#E6EBF3] text-[#0B1D3A] hover:border-[#CBD5E1]"
@@ -719,7 +719,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="flex flex-col gap-4"
+                className="flex flex-col gap-7"
               >
                 <div>
                   <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#C99A2E] block mb-0.5">
@@ -733,8 +733,8 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-3.5 rounded-[15px] bg-[#F8FAFD] border border-[#E6EBF3] flex flex-col gap-2.5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="p-5 rounded-[16px] bg-[#F8FAFD] border border-[#E6EBF3] flex flex-col gap-4">
                     {activeExpert ? (
                       <div className="flex items-center justify-between pb-2.5 border-b border-[#E6EBF3]">
                         <div className="flex items-center gap-2.5">

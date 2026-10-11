@@ -3,6 +3,7 @@ import sureshRaoImg from "../../../assets/experts/suresh_rao.jpg";
 import anitaDesaiImg from "../../../assets/experts/anita_desai.jpg";
 import mohammadAliImg from "../../../assets/experts/mohammad_ali.jpg";
 import priyaSharmaImg from "../../../assets/experts/priya_sharma.jpg";
+import { matchesFilters } from "../section03/data";
 
 export interface SampleScenario {
   title: string;
@@ -64,9 +65,10 @@ export const raviKumarDetails = {
 export function getSortedAndFilteredExperts(
   experts: Expert[],
   searchQuery: string,
-  sortBy: string
+  sortBy: string,
+  filters: ReadonlySet<string> = new Set()
 ): Expert[] {
-  let result = [...experts];
+  let result = experts.filter((e) => matchesFilters(e, filters));
 
   if (searchQuery && searchQuery.trim()) {
     const q = searchQuery.toLowerCase().trim();

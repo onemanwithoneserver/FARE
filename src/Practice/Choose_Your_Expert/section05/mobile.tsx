@@ -17,16 +17,19 @@ import { ACCENTS, fadeUp, staggerContainer, Section, PrimaryButton, HoverGlow, C
 interface Props {
   searchQuery?: string;
   sortBy?: string;
+  filters?: ReadonlySet<string>;
   onBookExpert?: (expert: Expert) => void;
 }
 
-export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", onBookExpert }: Props) {
+const NO_FILTERS: ReadonlySet<string> = new Set();
+
+export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", filters = NO_FILTERS, onBookExpert }: Props) {
   const s = data;
   const [expandedExpert, setExpandedExpert] = useState<string | null>(null);
 
   const displayedExperts = useMemo(() => {
-    return getSortedAndFilteredExperts(s.experts, searchQuery, sortBy);
-  }, [s.experts, searchQuery, sortBy]);
+    return getSortedAndFilteredExperts(s.experts, searchQuery, sortBy, filters);
+  }, [s.experts, searchQuery, sortBy, filters]);
 
   const handleBook = (expert: Expert) => {
     if (onBookExpert) {
