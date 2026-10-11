@@ -508,3 +508,5 @@ export function PageTransition({ children }: { children: ReactNode }) {
     </AnimatePresence>
   );
 }
+
+export { VerifiedBadge, type VerifiedBadgeProps } from "./VerifiedBadge";

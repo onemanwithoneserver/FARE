@@ -28,6 +28,7 @@ import {
   IconBadge,
   accentAt,
   accentGradient,
+  VerifiedBadge,
 } from "../../ui";
 
 interface Props {
@@ -203,14 +204,10 @@ export default function Desktop({
                                 </div>
                               </div>
                               {expert.verified && (
-                                <span
-                                  className="absolute -bottom-0.5 -right-0.5 w-6 h-6 rounded-full bg-[#10B981] border-2 border-white shadow-sm flex items-center justify-center text-white"
-                                  title="Verified Real Estate Mentor"
-                                  role="img"
-                                  aria-label="Verified mentor"
-                                >
-                                  <Check size={12} strokeWidth={3.4} />
-                                </span>
+                                <VerifiedBadge
+                                  size={20}
+                                  className="absolute -bottom-0.5 -right-0.5 ring-2 ring-white rounded-full shadow-xs"
+                                />
                               )}
                             </div>
 
@@ -370,9 +367,10 @@ export default function Desktop({
                               <img src={selectedExpert.image} alt={`Portrait of ${selectedExpert.name}`} className="w-full h-full object-cover" />
                             </div>
                             {selectedExpert.verified && (
-                              <span className="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-[#10B981] border-2 border-[#0B1D3A] flex items-center justify-center text-white">
-                                <Check size={10} strokeWidth={3.4} />
-                              </span>
+                              <VerifiedBadge
+                                size={22}
+                                className="absolute -bottom-0.5 -right-0.5 ring-2 ring-[#0B1D3A] rounded-full shadow-md"
+                              />
                             )}
                           </div>
                           <div className="min-w-0 flex-1">
@@ -406,7 +404,7 @@ export default function Desktop({
                         {[
                           { icon: Globe2, label: selectedExpert.languages.join(", "), bg: "#C99A2E" },
                           { icon: Target, label: `${selectedExpert.sessionsCompleted} sessions`, bg: "#0891B2" },
-                          { icon: ShieldCheck, label: "Verified coach", bg: "#10B981" },
+                          { icon: ShieldCheck, label: "Verified coach", bg: "#2563EB" },
                         ].map(({ icon: Icon, label, bg }) => (
                           <div key={label} className="flex items-center gap-2 bg-white/[0.07] border border-white/10 rounded-[12px] p-2 min-w-0">
                             <span aria-hidden="true" className="w-7 h-7 rounded-[8px] text-white flex items-center justify-center shrink-0" style={{ background: bg }}>

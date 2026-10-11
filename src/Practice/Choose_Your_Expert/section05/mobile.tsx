@@ -1,7 +1,6 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  ShieldCheck,
   Target,
   Calendar,
   Search,
@@ -12,7 +11,7 @@ import {
   Check,
 } from "lucide-react";
 import { data, getSortedAndFilteredExperts, type Expert } from "./data";
-import { ACCENTS, fadeUp, staggerContainer, Section, PrimaryButton, HoverGlow, CARD_BASE, AccentHairline } from "../../ui";
+import { ACCENTS, fadeUp, staggerContainer, Section, PrimaryButton, HoverGlow, CARD_BASE, AccentHairline, VerifiedBadge } from "../../ui";
 
 interface Props {
   searchQuery?: string;
@@ -104,12 +103,10 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", fil
                         </div>
 
                         {expert.verified && (
-                          <div
-                            className="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-[#10B981] text-white shadow-xs flex items-center justify-center border border-white"
-                            title="Verified"
-                          >
-                            <ShieldCheck size={10} />
-                          </div>
+                          <VerifiedBadge
+                            size={18}
+                            className="absolute -bottom-1 -right-1 ring-1.5 ring-white rounded-full shadow-xs"
+                          />
                         )}
                       </div>
 
