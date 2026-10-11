@@ -25,7 +25,7 @@ export default function Mobile({
   onPractice,
 }: ScenarioResultsProps) {
   return (
-    <Section tone="white" mobile ariaLabel="Practice scenarios" className="!pt-4 !pb-12 bg-[#F8FAFD]">
+    <Section tone="white" mobile ariaLabel="Practice scenarios" className="!pt-4 !pb-12 bg-[#F8FAFD] font-['Outfit']">
       <div id="cye-results" role="tabpanel" aria-labelledby="cye-tab-mobile-scenarios">
         <div className="flex flex-col gap-4">
           <motion.div layout className="grid grid-cols-1 gap-5">

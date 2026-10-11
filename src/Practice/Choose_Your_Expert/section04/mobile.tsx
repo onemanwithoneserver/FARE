@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowUpDown, ChevronDown, Search, Check, X } from "lucide-react";
+import { ChevronDown, Search, Check, X, Sparkles } from "lucide-react";
 import { Section } from "../../ui";
 import { VIEW_TABS, SEARCH_PLACEHOLDERS, SORT_OPTIONS_BY_MODE } from "./data";
 import type { ToolbarProps } from "./desktop";
+
+const QUICK_FILTERS = {
+  experts: ["Residential", "Negotiation", "Price Objection", "Commercial"],
+  scenarios: ["Price Objection", "Margin Defense", "Site Visit", "First-Time"],
+};
 
 export default function Mobile({
   viewMode,
@@ -32,186 +37,178 @@ export default function Mobile({
   const sortOptions = SORT_OPTIONS_BY_MODE[viewMode];
   const activeOption = sortOptions.find((o) => o.label === sortBy) || sortOptions[0];
   const ActiveIcon = activeOption.icon;
-  const activeTab = VIEW_TABS.find((t) => t.id === viewMode)!;
 
   return (
     <Section tone="white" mobile ariaLabel="Browse experts and scenarios" className="!py-3">
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="flex flex-col gap-3"
-      >
-        <div
-          role="tablist"
-          aria-label="Browse mode"
-          className="relative grid grid-cols-2 p-1 rounded-[16px] bg-[#F3F6FB] border border-[#E6EBF3]"
-        >
+      <div className="flex flex-col gap-3 font-['Outfit']">
+        <div className="grid grid-cols-2 gap-2.5">
           {VIEW_TABS.map((tab) => {
             const isActive = tab.id === viewMode;
             const TabIcon = tab.icon;
+
             return (
               <button
                 key={tab.id}
-                id={`cye-tab-mobile-${tab.id}`}
                 type="button"
+                id={`cye-tab-mobile-${tab.id}`}
                 role="tab"
                 aria-selected={isActive}
-                aria-controls="cye-results"
                 onClick={() => onViewModeChange(tab.id)}
-                className={`relative flex items-center justify-center gap-2 h-11 rounded-[12px] text-[13px] font-extrabold transition-colors cursor-pointer active:scale-[0.98] ${
-                  isActive ? "text-white" : "text-[#5A6B82]"
+                className={`relative p-3.5 rounded-[18px] text-left transition-all border flex flex-col justify-between min-h-[96px] cursor-pointer ${
+                  isActive
+                    ? "bg-gradient-to-br from-[#0B1D3A] via-[#122B54] to-[#0B1D3A] text-white border-[#C99A2E]/60 shadow-md ring-1 ring-[#C99A2E]/30"
+                    : "bg-white text-[#0B1D3A] border-[#E6EBF3]"
                 }`}
               >
-                {isActive && (
-                  <motion.span
-                    layoutId="cye-tab-pill-mobile"
-                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                    className="absolute inset-0 rounded-[12px] shadow-[0_8px_18px_-6px_rgba(11,29,58,0.45)]"
-                    style={{ background: "linear-gradient(120deg, #0B1D3A 0%, #1A3463 100%)" }}
-                  />
-                )}
-                <TabIcon size={15} strokeWidth={2.4} className={`relative z-10 ${isActive ? "text-[#D5AA45]" : ""}`} />
-                <span className="relative z-10">{tab.label}</span>
+                <div className="flex items-center justify-between w-full mb-1">
+                  <div
+                    className={`w-8 h-8 rounded-[10px] flex items-center justify-center ${
+                      isActive
+                        ? "bg-gradient-to-tr from-[#C99A2E] to-[#F0D58C] text-[#0B1D3A]"
+                        : "bg-[#F3F6FB] text-[#1E3A74]"
+                    }`}
+                  >
+                    <TabIcon size={16} strokeWidth={2.4} />
+                  </div>
+                  {isActive && (
+                    <span className="w-5 h-5 rounded-full bg-[#C99A2E]/25 border border-[#C99A2E]/50 flex items-center justify-center">
+                      <Check size={11} strokeWidth={3} className="text-[#F5C451]" />
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <span
+                    className={`text-[9.5px] font-black uppercase tracking-wider block ${
+                      isActive ? "text-[#E0B550]" : "text-[#7B8DAA]"
+                    }`}
+                  >
+                    {tab.eyebrow}
+                  </span>
+                  <span
+                    className={`text-[15px] font-black leading-tight block ${
+                      isActive ? "text-white" : "text-[#0B1D3A]"
+                    }`}
+                  >
+                    {tab.label}
+                  </span>
+                </div>
               </button>
             );
           })}
         </div>
 
-        <div className="relative w-full group/search">
-          <Search
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7B8DAA] group-focus-within/search:text-[#C99A2E] transition-colors"
-            size={16}
-          />
-          <input
-            id="cye-search-input-mobile"
-            type="text"
-            value={searchQuery}
-            onChange={(e) => onSearchChange(e.target.value)}
-            placeholder={SEARCH_PLACEHOLDERS[viewMode]}
-            aria-label={SEARCH_PLACEHOLDERS[viewMode]}
-            className="w-full h-11 pl-10 pr-9 bg-[#F8F9FC] focus:bg-white rounded-[14px] border border-[#E6EBF3] focus:border-[#C99A2E] text-[13px] font-medium text-[#0B1D3A] placeholder-[#7B8DAA] outline-none transition-all shadow-inner focus:ring-4 focus:ring-[#C99A2E]/12"
-          />
-          {searchQuery && (
+        <div className="bg-white rounded-[18px] border border-[#E6EBF3] p-3 shadow-sm flex flex-col gap-2.5">
+          <div className="flex items-center gap-2">
+            <div className="relative flex-1">
+              <Search
+                size={16}
+                className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7B8DAA] pointer-events-none"
+                strokeWidth={2.2}
+              />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => onSearchChange(e.target.value)}
+                placeholder={SEARCH_PLACEHOLDERS[viewMode]}
+                className="w-full h-11 pl-9 pr-8 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] text-[13px] font-medium text-[#0B1D3A] placeholder-[#8A9BB3] outline-none focus:border-[#C99A2E] focus:bg-white font-['Outfit']"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => onSearchChange("")}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#E2E8F0] text-[#475569] flex items-center justify-center"
+                >
+                  <X size={11} strokeWidth={2.5} />
+                </button>
+              )}
+            </div>
+
             <button
               type="button"
-              onClick={() => onSearchChange("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#E6EBF3] text-[#475569] flex items-center justify-center cursor-pointer"
-              aria-label="Clear search"
+              onClick={() => setIsOpen(true)}
+              className="h-11 px-3 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] text-[#0B1D3A] flex items-center gap-1.5 shrink-0"
             >
-              <X size={12} />
+              <ActiveIcon size={14} style={{ color: activeOption.color }} strokeWidth={2.4} />
+              <ChevronDown size={14} className="text-[#7B8DAA]" />
             </button>
-          )}
-        </div>
+          </div>
 
-        <div className="flex items-center justify-end">
-          <button
-            type="button"
-            id="cye-sort-trigger-mobile"
-            onClick={() => setIsOpen(true)}
-            className="flex items-center gap-2.5 px-3.5 py-2 rounded-[14px] bg-white border border-[#E2E8F0] active:scale-95 transition-all cursor-pointer shadow-xs hover:border-[#C99A2E]/50"
-          >
-            <div
-              className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
-              style={{ backgroundColor: activeOption.bg, color: activeOption.color }}
-            >
-              <ActiveIcon size={12} />
-            </div>
-            <div className="flex flex-col text-left leading-none">
-              <span className="text-[9px] font-extrabold uppercase tracking-wider text-[#7B8DAA]">Sort By</span>
-              <span className="text-[12px] font-black text-[#0B1D3A] max-w-[130px] truncate">{activeOption.label}</span>
-            </div>
-            <ChevronDown size={14} className="text-[#7B8DAA] ml-0.5" />
-          </button>
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-hide">
+            <span className="text-[10px] font-black uppercase tracking-wider text-[#7B8DAA] flex items-center gap-0.5 shrink-0">
+              <Sparkles size={11} className="text-[#C99A2E]" />
+            </span>
+            {QUICK_FILTERS[viewMode].map((kw) => (
+              <button
+                key={kw}
+                type="button"
+                onClick={() => onSearchChange(kw)}
+                className="text-[11px] font-bold px-2 py-0.5 rounded-[6px] bg-[#F8FAFD] text-[#475569] border border-[#E6EBF3] whitespace-nowrap"
+              >
+                {kw}
+              </button>
+            ))}
+          </div>
         </div>
-      </motion.div>
+      </div>
 
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-50 flex items-end justify-center">
+          <div className="fixed inset-0 z-50 flex items-end">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-[#0B1D3A]/60 backdrop-blur-xs"
+              className="fixed inset-0 bg-black/50 backdrop-blur-xs"
             />
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              role="dialog"
-              aria-modal="true"
-              aria-label={`Sort ${activeTab.label}`}
-              className="relative w-full max-w-lg bg-white rounded-t-[26px] p-5 pb-7 shadow-2xl z-10 border-t border-[#E6EBF3]"
+              transition={{ type: "spring", damping: 28, stiffness: 300 }}
+              className="relative z-10 w-full bg-white rounded-t-[24px] p-5 border-t border-[#E6EBF3] max-h-[80vh] overflow-y-auto"
             >
-              <div className="w-10 h-1 bg-[#E2E8F0] rounded-full mx-auto mb-4" />
-              <div className="flex items-center justify-between pb-3.5 border-b border-[#E6EBF3] mb-3">
-                <div className="flex items-center gap-2">
-                  <ArrowUpDown size={16} className="text-[#C99A2E]" />
-                  <h3 className="text-[16px] font-black text-[#0B1D3A] tracking-tight">Sort {activeTab.label}</h3>
-                </div>
+              <div className="w-12 h-1 bg-[#CBD5E1] rounded-full mx-auto mb-4" />
+              <div className="flex items-center justify-between pb-3 mb-2 border-b border-[#F0F4FA]">
+                <h3 className="text-[16px] font-black text-[#0B1D3A]">Sort Options</h3>
                 <button
-                  type="button"
                   onClick={() => setIsOpen(false)}
-                  className="w-8 h-8 rounded-full bg-[#F1F5F9] text-[#64748B] flex items-center justify-center cursor-pointer"
-                  aria-label="Close"
+                  className="w-7 h-7 rounded-full bg-[#F3F6FB] flex items-center justify-center text-[#5A6B82]"
                 >
                   <X size={15} />
                 </button>
               </div>
-
-              <div role="listbox" className="flex flex-col gap-2 max-h-[60vh] overflow-y-auto">
-                {sortOptions.map((opt) => {
-                  const isSelected = opt.label === activeOption.label;
-                  const ItemIcon = opt.icon;
+              <div className="flex flex-col gap-1.5">
+                {sortOptions.map((option) => {
+                  const isSelected = option.label === sortBy;
+                  const Icon = option.icon;
                   return (
                     <button
-                      key={opt.label}
-                      type="button"
-                      role="option"
-                      aria-selected={isSelected}
+                      key={option.label}
                       onClick={() => {
-                        onSortChange(opt.label);
+                        onSortChange(option.label);
                         setIsOpen(false);
                       }}
-                      className={`w-full flex items-center justify-between p-3 rounded-[16px] text-left transition-all cursor-pointer ${
+                      className={`w-full flex items-center justify-between p-3 rounded-[14px] text-left transition-all ${
                         isSelected
-                          ? "bg-gradient-to-r from-[#C99A2E]/12 via-[#C99A2E]/6 to-transparent border border-[#C99A2E]/30"
-                          : "bg-[#F8FAFD] border border-[#E6EBF3]/60 active:bg-[#F1F5F9]"
+                          ? "bg-[#FFFDF7] border border-[#C99A2E] text-[#0B1D3A]"
+                          : "bg-white border border-[#E6EBF3] text-[#475569]"
                       }`}
                     >
-                      <div className="flex items-center gap-3 min-w-0">
-                        <div
-                          className="w-10 h-10 rounded-[12px] flex items-center justify-center shrink-0"
-                          style={{ backgroundColor: opt.bg, color: opt.color }}
+                      <div className="flex items-center gap-3">
+                        <span
+                          className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0"
+                          style={{ background: option.bg }}
                         >
-                          <ItemIcon size={18} />
-                        </div>
-                        <div className="flex flex-col min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span className={`text-[13px] leading-tight truncate ${isSelected ? "font-black text-[#0B1D3A]" : "font-bold text-[#334155]"}`}>
-                              {opt.label}
-                            </span>
-                            <span
-                              className="text-[9px] font-extrabold uppercase px-1.5 rounded-full"
-                              style={{ backgroundColor: opt.bg, color: opt.color }}
-                            >
-                              {opt.tag}
-                            </span>
-                          </div>
-                          <span className="text-[11px] font-medium text-[#7B8DAA] truncate mt-0.5">{opt.caption}</span>
+                          <Icon size={16} style={{ color: option.color }} strokeWidth={2.4} />
+                        </span>
+                        <div>
+                          <span className="text-[13.5px] font-bold block">{option.label}</span>
+                          <span className="text-[11px] text-[#7B8DAA] block">{option.caption}</span>
                         </div>
                       </div>
-                      {isSelected ? (
-                        <div className="w-5 h-5 rounded-full bg-[#C99A2E] text-white flex items-center justify-center shrink-0 ml-2">
-                          <Check size={12} strokeWidth={3} />
-                        </div>
-                      ) : (
-                        <div className="w-5 h-5 rounded-full border-2 border-[#CBD5E1] shrink-0 ml-2" />
-                      )}
+                      {isSelected && <Check size={16} className="text-[#C99A2E]" strokeWidth={3} />}
                     </button>
                   );
                 })}

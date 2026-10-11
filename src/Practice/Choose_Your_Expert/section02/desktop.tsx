@@ -7,7 +7,7 @@ export default function Desktop() {
   const s = data;
 
   return (
-    <section aria-label="Quick Summary" className="w-full relative bg-[#0B1D3A] py-4 border-y border-[#1A2E50] overflow-hidden shadow-inner">
+    <section aria-label="Quick Summary" className="w-full relative bg-[#0B1D3A] py-4 border-y border-[#1A2E50] overflow-hidden shadow-inner font-['Outfit']">
       <div className="max-w-[1200px] mx-auto w-full px-6 relative z-10">
         <motion.div
           variants={staggerContainer(0.05)}

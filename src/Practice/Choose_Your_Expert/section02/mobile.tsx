@@ -7,7 +7,7 @@ export default function Mobile() {
   const s = data;
 
   return (
-    <section aria-label="Quick Summary" className="w-full relative bg-[#0B1D3A] py-5 px-5 border-y border-[#1A2E50] overflow-hidden shadow-inner">
+    <section aria-label="Quick Summary" className="w-full relative bg-[#0B1D3A] py-5 px-5 border-y border-[#1A2E50] overflow-hidden shadow-inner font-['Outfit']">
       <motion.div
         variants={staggerContainer(0.08)}
         initial="hidden"

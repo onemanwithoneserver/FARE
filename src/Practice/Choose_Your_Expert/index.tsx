@@ -10,7 +10,7 @@ import Section05 from "./section05";
 import ScenarioResults from "./section05/ScenarioResults";
 import Section06 from "./section06";
 import Section08 from "./section08";
-import { data as expertData, type Expert } from "./section05/data";
+import { type Expert } from "./section05/data";
 import {
   SCENARIOS,
   getSortedAndFilteredScenarios,
@@ -27,7 +27,7 @@ export default function ChooseYourExpert({ isMobile }: Props) {
   const [expertSortBy, setExpertSortBy] = useState("Most Relevant");
   const [scenarioSearch, setScenarioSearch] = useState("");
   const [scenarioSortBy, setScenarioSortBy] = useState("Most Relevant");
-  const [selectedBookingExpert, setSelectedBookingExpert] = useState<Expert>(expertData.experts[0]);
+  const [selectedBookingExpert, setSelectedBookingExpert] = useState<Expert | null>(null);
 
   const handleBookExpert = (expert: Expert) => {
     setSelectedBookingExpert(expert);

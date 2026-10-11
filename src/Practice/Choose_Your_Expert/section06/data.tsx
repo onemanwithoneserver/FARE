@@ -13,7 +13,7 @@ export interface CompareExpert {
 
 export const data = {
   title: "Compare Experts",
-  subtitle: "For learners who are unsure, allow comparison of up to 3 experts side-by-side.",
+  subtitle: "Evaluate 4 top verified real estate mentors across experience, methodology, pricing, and availability side-by-side.",
   criteria: [
     "RE Experience",
     "Segment",

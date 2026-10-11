@@ -25,7 +25,7 @@ export default function Desktop({
   onPractice,
 }: ScenarioResultsProps) {
   return (
-    <div id="cye-results" role="tabpanel" aria-labelledby="cye-tab-scenarios">
+    <div id="cye-results" role="tabpanel" aria-labelledby="cye-tab-scenarios" className="font-['Outfit']">
       <div className="flex flex-col gap-6">
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <AnimatePresence mode="popLayout">

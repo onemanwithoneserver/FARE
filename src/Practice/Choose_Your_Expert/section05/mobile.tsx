@@ -1,11 +1,17 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ShieldCheck, Target, MessageSquare, Calendar, ChevronDown, Search } from "lucide-react";
-import { data, raviKumarDetails, getSortedAndFilteredExperts } from "./data";
-import { ACCENTS, fadeUp, staggerContainer, Section, PrimaryButton, SecondaryButton, HoverGlow } from "../../ui";
-import ExpertProfileDialog, { type ExpertProfileData } from "../ExpertProfileDialog";
-
-import type { Expert } from "./data";
+import {
+  ShieldCheck,
+  Target,
+  Calendar,
+  Search,
+  Building2,
+  Sparkles,
+  Clock,
+  Globe2,
+} from "lucide-react";
+import { data, getSortedAndFilteredExperts, type Expert } from "./data";
+import { ACCENTS, fadeUp, staggerContainer, Section, PrimaryButton, HoverGlow, CARD_BASE, AccentHairline } from "../../ui";
 
 interface Props {
   searchQuery?: string;
@@ -15,31 +21,28 @@ interface Props {
 
 export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", onBookExpert }: Props) {
   const s = data;
-  const [selectedExpert, setSelectedExpert] = useState<ExpertProfileData | null>(null);
 
   const displayedExperts = useMemo(() => {
     return getSortedAndFilteredExperts(s.experts, searchQuery, sortBy);
   }, [s.experts, searchQuery, sortBy]);
 
-  const handleOpenProfile = (expert: typeof s.experts[0]) => {
-    if (expert.name === raviKumarDetails.name) {
-      setSelectedExpert({
-        ...expert,
-        ...raviKumarDetails,
-      });
+  const handleBook = (expert: Expert) => {
+    if (onBookExpert) {
+      onBookExpert(expert);
     } else {
-      setSelectedExpert(expert);
+      const el = document.getElementById("booking-section");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   return (
-    <Section tone="white" mobile ariaLabel="Expert Cards" className="!pt-4 !pb-12 bg-[#F8FAFD]">
+    <Section tone="white" mobile ariaLabel="Expert Cards" className="!pt-4 !pb-12 bg-[#F8FAFD] font-['Outfit']">
       <motion.div
         variants={staggerContainer(0.08)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.1 }}
-        className="flex flex-col gap-6"
+        viewport={{ once: true, amount: 0.05 }}
+        className="flex flex-col gap-5"
       >
         <AnimatePresence mode="popLayout">
           {displayedExperts.length === 0 ? (
@@ -48,7 +51,7 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", onB
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="py-12 px-5 bg-white rounded-[24px] border border-[#E6EBF3] text-center flex flex-col items-center justify-center shadow-sm"
+              className="py-12 px-5 bg-white rounded-[22px] border border-[#E6EBF3] text-center flex flex-col items-center justify-center shadow-sm"
             >
               <div className="w-14 h-14 rounded-full bg-[#C99A2E]/10 flex items-center justify-center text-[#C99A2E] mb-3">
                 <Search size={24} />
@@ -59,155 +62,175 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", onB
               </p>
             </motion.div>
           ) : (
-            displayedExperts.map((expert, i) => (
-              <motion.div 
-                layout
-                key={expert.name} 
-                variants={fadeUp} 
-                initial="hidden"
-                animate="show"
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="bg-white rounded-[24px] border border-[#E6EBF3] shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden flex flex-col relative"
-              >
-                <HoverGlow accent={ACCENTS[i % ACCENTS.length]} />
-                
-                <div className="p-5 flex flex-col relative z-10 border-b border-[#E6EBF3]">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div 
-                      onClick={() => handleOpenProfile(expert)}
-                      className="relative shrink-0 cursor-pointer active:scale-95 transition-transform"
-                    >
-                      <div className="p-[2.5px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-sm">
-                        <div className="w-[66px] h-[66px] rounded-full overflow-hidden bg-[#F8F9FC] border-2 border-white">
-                          <img src={expert.image} alt={expert.name} className="w-full h-full object-cover" />
+            displayedExperts.map((expert, i) => {
+              const a = ACCENTS[i % ACCENTS.length];
+              return (
+                <motion.article
+                  layout
+                  key={expert.name}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate="show"
+                  exit={{ opacity: 0, scale: 0.92 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className={`${CARD_BASE} overflow-hidden flex flex-col shadow-sm`}
+                >
+                  <AccentHairline accent={a} />
+                  <HoverGlow accent={a} />
+
+                  <div className="p-5 pb-4 border-b border-[#E6EBF3] relative z-10 flex flex-col gap-3.5">
+                    <div className="flex items-start gap-3.5">
+                      <div className="relative shrink-0">
+                        <div className="p-[2px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-md">
+                          <div className="w-[64px] h-[64px] rounded-full overflow-hidden bg-[#F8F9FC] border-2 border-white">
+                            <img
+                              src={expert.image}
+                              alt={expert.name}
+                              className="w-full h-full object-cover"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+
+                        {expert.verified && (
+                          <div
+                            className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-white shadow-xs flex items-center justify-center border border-[#E6EBF3]"
+                            title="Verified"
+                          >
+                            <ShieldCheck size={12} className="text-[#10B981] fill-[#10B981]/20" />
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-1 mb-0.5">
+                          <h3 className="text-[17px] font-black text-[#0B1D3A] tracking-tight truncate">
+                            {expert.name}
+                          </h3>
+                          <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#FBF5E7] text-[#8A5A00] border border-[#F1DFB0] shrink-0">
+                            {expert.experience.split(" ")[0]} Exp
+                          </span>
+                        </div>
+
+                        <p className="text-[12.5px] font-bold text-[#0B1D3A] leading-snug truncate">
+                          {expert.role}
+                        </p>
+
+                        {expert.reExperience && (
+                          <div className="flex items-center gap-1 mt-1 text-[11px] font-semibold text-[#5A6B82]">
+                            <Building2 size={12} className="text-[#7C3AED] shrink-0" />
+                            <span className="truncate">{expert.reExperience}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {expert.about && (
+                      <p className="text-[12.5px] text-[#475569] leading-relaxed font-medium bg-[#F8FAFD] p-2.5 rounded-[10px] border border-[#E6EBF3]">
+                        {expert.about}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="p-5 pt-4 flex flex-col gap-3.5 flex-1 relative z-10">
+                    <div className="flex flex-col gap-1.5">
+                      <span className="text-[10px] font-black uppercase tracking-[0.12em] text-[#7B8DAA]">
+                        Specialised In
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {expert.specialisedIn.map((spec) => (
+                          <span
+                            key={spec}
+                            className="px-2 py-0.5 rounded-[6px] bg-[#F8F9FC] border border-[#E6EBF3] text-[11px] font-bold text-[#3B4D66]"
+                          >
+                            {spec}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {expert.sampleScenarios && expert.sampleScenarios.length > 0 && (
+                      <div className="flex flex-col gap-1.5 pt-1">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] font-black uppercase tracking-[0.12em] text-[#C99A2E] flex items-center gap-1">
+                            <Sparkles size={11} className="text-[#C99A2E]" />
+                            Sample Practice Scenarios
+                          </span>
+                          <span className="text-[10px] font-bold text-[#7B8DAA]">Role-Play</span>
+                        </div>
+
+                        <div className="flex flex-col gap-1.5">
+                          {expert.sampleScenarios.slice(0, 2).map((sc, sIdx) => (
+                            <div
+                              key={sc.title}
+                              className="p-2 rounded-[10px] bg-gradient-to-r from-[#FFFDF7] to-[#F8FAFD] border border-[#E6EBF3] flex items-center justify-between gap-2"
+                            >
+                              <div className="flex items-center gap-2 min-w-0">
+                                <span className="w-5 h-5 rounded-full bg-[#0B1D3A] text-white flex items-center justify-center text-[9px] font-black shrink-0">
+                                  {sIdx + 1}
+                                </span>
+                                <span className="text-[12px] font-bold text-[#0B1D3A] truncate leading-tight">
+                                  {sc.title}
+                                </span>
+                              </div>
+                              <span className="text-[10px] font-bold text-[#0891B2] bg-[#E8F8FC] px-1.5 py-0.5 rounded-[4px] shrink-0 flex items-center gap-0.5">
+                                <Clock size={10} />
+                                {sc.duration}
+                              </span>
+                            </div>
+                          ))}
                         </div>
                       </div>
-                      {expert.verified && (
-                        <div className="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-white shadow-xs flex items-center justify-center border border-[#E6EBF3]">
-                          <ShieldCheck size={12} className="text-[#10B981] fill-[#10B981]/20" />
-                        </div>
-                      )}
+                    )}
+
+                    <div className="flex items-center justify-between text-[11.5px] font-bold text-[#475569] pt-3 border-t border-[#E6EBF3] mt-auto">
+                      <span className="flex items-center gap-1 text-[#5A6B82] truncate">
+                        <Globe2 size={12} className="text-[#7B8DAA]" />
+                        {expert.languages.join(" · ")}
+                      </span>
+                      <div className="flex items-center gap-1 text-[#06B6D4] shrink-0">
+                        <Target size={12} />
+                        <span>{expert.sessionsCompleted} Sessions</span>
+                      </div>
                     </div>
-                    <div 
-                      onClick={() => handleOpenProfile(expert)}
-                      className="flex flex-col cursor-pointer"
-                    >
-                      <h3 className="text-[18px] font-black text-[#0B1D3A] tracking-tight leading-none mb-1.5 active:text-[#C99A2E]">{expert.name}</h3>
-                      {expert.verified && (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#10B981] bg-[#10B981]/10 px-2 py-0.5 rounded-full w-fit">
-                          <ShieldCheck size={12} />
-                          Verified
+                  </div>
+
+                  <div className="p-5 pt-3.5 bg-[#F8FAFD] border-t border-[#E6EBF3] relative z-10 flex flex-col gap-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-[9.5px] font-bold text-[#7B8DAA] uppercase tracking-wider">
+                          Session Fee
                         </span>
-                      )}
+                        <span className="text-[18px] font-black text-[#0B1D3A] leading-tight">
+                          {expert.price}
+                        </span>
+                      </div>
+                      <div className="flex flex-col items-end">
+                        <span className="text-[9.5px] font-bold text-[#7B8DAA] uppercase tracking-wider">
+                          Next Available
+                        </span>
+                        <span className="flex items-center gap-1 text-[11.5px] font-bold text-[#0B1D3A]">
+                          <Calendar size={12} className="text-[#10B981]" />
+                          {expert.nextAvailable.split("·")[0]}
+                        </span>
+                      </div>
                     </div>
+
+                    <PrimaryButton
+                      full
+                      variant="gold"
+                      onClick={() => handleBook(expert)}
+                      className="!h-11 !py-0 !px-4 text-[13px] !rounded-[12px] font-extrabold cursor-pointer"
+                    >
+                      Book Practice Session
+                    </PrimaryButton>
                   </div>
-
-              <div className="flex flex-col gap-1">
-                <p className="text-[14px] font-bold text-[#0B1D3A] leading-snug">{expert.role}</p>
-                <p className="text-[13px] font-medium text-[#7B8DAA]">{expert.experience}</p>
-              </div>
-            </div>
-
-            <div className="p-5 flex flex-col relative z-10 border-b border-[#E6EBF3]">
-              <div className="flex flex-col gap-5 mb-5">
-                <div className="flex flex-col gap-2">
-                  <h4 className="text-[10px] font-black uppercase tracking-[0.1em] text-[#475569]">Specialised In</h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {expert.specialisedIn.map((spec) => (
-                      <span key={spec} className="px-2.5 py-1 rounded-[6px] bg-[#F8F9FC] border border-[#E6EBF3] text-[12px] font-semibold text-[#475569]">
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h4 className="text-[10px] font-black uppercase tracking-[0.1em] text-[#475569]">Can Practise</h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {expert.canPractise.map((prac) => (
-                      <span key={prac} className={`px-2.5 py-1 rounded-[6px] border text-[12px] font-bold ${prac === 'Price Objection' ? 'bg-[#FFF0F3] border-[#FDA4AF] text-[#BE123C]' : 'bg-white border-[#E6EBF3] text-[#0B1D3A]'}`}>
-                        {prac}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="flex items-center gap-1.5 text-[12px] font-bold text-[#475569]">
-                  <MessageSquare size={14} className="text-[#C99A2E]" />
-                  {expert.languages.join(' · ')}
-                </div>
-                <div className="w-1 h-1 rounded-full bg-[#CBD5E1]" />
-                <div className="flex items-center gap-1.5 text-[12px] font-bold text-[#475569]">
-                  <Target size={14} />
-                  {expert.sessionsCompleted} Sessions
-                </div>
-              </div>
-            </div>
-
-            <div className="p-5 bg-[#F8FAFD] flex flex-col relative z-10">
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex flex-col">
-                  <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-wider mb-0.5">Session Price</span>
-                  <span className="text-[24px] font-black text-[#0B1D3A] leading-none tracking-tight">{expert.price}</span>
-                </div>
-                <div className="flex flex-col items-end">
-                  <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-wider mb-0.5">Next Available</span>
-                  <span className="flex items-center gap-1.5 text-[13px] font-bold text-[#0B1D3A]">
-                    <Calendar size={14} className="text-[#10B981]" />
-                    {expert.nextAvailable.split('•')[0]}
-                  </span>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-2 pt-1">
-                <SecondaryButton
-                  full
-                  mobile
-                  onClick={() => handleOpenProfile(expert)}
-                  className="!h-11 !py-0 !px-1.5 text-[12px] !rounded-[10px] font-bold bg-white"
-                >
-                  View Profile
-                </SecondaryButton>
-                <PrimaryButton
-                  full
-                  mobile
-                  variant="gold"
-                  onClick={() => {
-                    if (onBookExpert) {
-                      onBookExpert(expert);
-                    } else {
-                      const el = document.getElementById("booking-section");
-                      if (el) el.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }}
-                  className="!h-11 !py-0 !px-1.5 text-[12px] !rounded-[10px] font-bold cursor-pointer"
-                >
-                  Book Session
-                </PrimaryButton>
-              </div>
-            </div>
-            </motion.div>
-          ))
-        )}
+                </motion.article>
+              );
+            })
+          )}
         </AnimatePresence>
       </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="w-full flex justify-center mt-8"
-      >
-        <SecondaryButton mobile icon={ChevronDown}>Load More Experts</SecondaryButton>
-      </motion.div>
-
-      <ExpertProfileDialog
-        isOpen={!!selectedExpert}
-        onClose={() => setSelectedExpert(null)}
-        expert={selectedExpert}
-        onBookExpert={onBookExpert}
-      />
     </Section>
   );
 }

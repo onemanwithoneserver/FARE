@@ -5,7 +5,7 @@ import Mobile from "./mobile";
 interface Props {
   isMobile: boolean;
   selectedExpert?: Expert | null;
-  onSelectExpert?: (expert: Expert) => void;
+  onSelectExpert?: (expert: Expert | null) => void;
 }
 
 export default function Section08({ isMobile, selectedExpert, onSelectExpert }: Props) {

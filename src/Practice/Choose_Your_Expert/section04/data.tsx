@@ -51,9 +51,21 @@ export interface Scenario {
 }
 
 
-export const VIEW_TABS: { id: ViewMode; label: string; icon: LucideIcon }[] = [
-  { id: "experts", label: "Experts By", icon: Users },
-  { id: "scenarios", label: "Scenarios By", icon: Layers },
+export const VIEW_TABS: { id: ViewMode; label: string; eyebrow: string; description: string; icon: LucideIcon }[] = [
+  {
+    id: "experts",
+    label: "Experts By",
+    eyebrow: "Verified Mentors",
+    description: "Browse verified mentors by segment, experience & specialty",
+    icon: Users,
+  },
+  {
+    id: "scenarios",
+    label: "Scenarios By",
+    eyebrow: "Practice Scenarios",
+    description: "Explore realistic objection handling & sales simulations",
+    icon: Layers,
+  },
 ];
 
 export const SEARCH_PLACEHOLDERS: Record<ViewMode, string> = {

@@ -46,7 +46,7 @@ export default function Desktop() {
 
   return (
     <div className="w-full font-['Outfit'] select-none">
-      <div className="bg-white rounded-[8px] border border-[#0B1D3A]/[0.07] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 overflow-hidden">
+      <div className="bg-white rounded-[22px] border border-[#0B1D3A]/[0.08] shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
         <div
           className="relative flex items-center justify-between px-5 py-4 overflow-hidden"
           style={{

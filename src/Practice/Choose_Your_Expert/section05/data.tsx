@@ -4,6 +4,12 @@ import anitaDesaiImg from "../../../assets/experts/anita_desai.jpg";
 import mohammadAliImg from "../../../assets/experts/mohammad_ali.jpg";
 import priyaSharmaImg from "../../../assets/experts/priya_sharma.jpg";
 
+export interface SampleScenario {
+  title: string;
+  category: string;
+  duration: string;
+}
+
 export interface Expert {
   name: string;
   image: string;
@@ -11,6 +17,9 @@ export interface Expert {
   role: string;
   experience: string;
   age: number;
+  about?: string;
+  reExperience?: string;
+  sampleScenarios?: SampleScenario[];
   specialisedIn: string[];
   canPractise: string[];
   languages: string[];
@@ -113,6 +122,20 @@ export const data = {
       role: "Sales Manager · Residential Real Estate",
       experience: "12+ Years Real Estate Experience",
       age: 38,
+      about: "12+ years closing residential high-rises and gated communities across Hyderabad & Bengaluru. Specialist in high-stakes price objections and margin protection.",
+      reExperience: "Residential — Gated Communities, Premium High-Rises & Villas",
+      sampleScenarios: [
+        {
+          title: "Handling a 15% Price Objection",
+          category: "Sales & Objection",
+          duration: "30 min",
+        },
+        {
+          title: "Negotiation & Margin Protection",
+          category: "Closing Strategy",
+          duration: "45 min",
+        },
+      ],
       specialisedIn: ["Residential Sales", "Customer Handling", "Negotiation", "Objection Handling"],
       canPractise: ["Price Objection", "Need Analysis", "Negotiation", "Site Visit", "Closing"],
       languages: ["English", "Telugu", "Hindi"],
@@ -133,6 +156,20 @@ export const data = {
       role: "Channel Partner · Plotted Development",
       experience: "9+ Years Real Estate Experience",
       age: 35,
+      about: "Land advisory and open plot investment expert. Helps sales consultants defend land valuations, zoning clearances, and long-term capital appreciation.",
+      reExperience: "Plotted Land — HMDA/DTCP Approved Layouts & Farmland",
+      sampleScenarios: [
+        {
+          title: "Defending Land Valuation vs Nearby Layouts",
+          category: "Plot Sales",
+          duration: "30 min",
+        },
+        {
+          title: "Investor 2-Year ROI Justification",
+          category: "Investor Pitch",
+          duration: "45 min",
+        },
+      ],
       specialisedIn: ["Open Plots", "Customer Handling", "Negotiation", "Investment Sales"],
       canPractise: ["Price Objection", "Investment Objection", "Negotiation", "Customer Profiling"],
       languages: ["English", "Telugu"],
@@ -151,6 +188,20 @@ export const data = {
       role: "Senior Consultant · Commercial Spaces",
       experience: "15+ Years Real Estate Experience",
       age: 42,
+      about: "Institutional leasing and Grade-A commercial specialist. Master of corporate presentations, lease tenure terms, and defending office cap rates.",
+      reExperience: "Commercial — Grade-A Tech Parks, Retail & Bare Shell Leasing",
+      sampleScenarios: [
+        {
+          title: "Commercial Lease Rate & CAM Defense",
+          category: "B2B Leasing",
+          duration: "45 min",
+        },
+        {
+          title: "Corporate C-Suite Presentation & Closing",
+          category: "Executive Sales",
+          duration: "60 min",
+        },
+      ],
       specialisedIn: ["Commercial Real Estate", "B2B Sales", "Leasing", "High-ticket Negotiation"],
       canPractise: ["Price Objection", "ROI Analysis", "Corporate Presentations", "Closing"],
       languages: ["English", "Hindi", "Marathi"],
@@ -170,6 +221,20 @@ export const data = {
       role: "Team Lead · Premium Residential",
       experience: "8+ Years Real Estate Experience",
       age: 34,
+      about: "Luxury real estate and NRI sales strategist. Expertise in virtual walkthrough presentations, trust building across time zones, and closing high-ticket villas.",
+      reExperience: "Luxury Residential — Ultra-Luxury Villas & Golf Estates",
+      sampleScenarios: [
+        {
+          title: "Overcoming NRI Remote Trust Hesitations",
+          category: "NRI Role-Play",
+          duration: "45 min",
+        },
+        {
+          title: "High-Ticket Luxury Villa Value Defense",
+          category: "Luxury Sales",
+          duration: "45 min",
+        },
+      ],
       specialisedIn: ["Luxury Villas", "Customer Handling", "NRI Sales", "Remote Presentations"],
       canPractise: ["Price Objection", "Trust Building", "NRI Sales Pitch", "Virtual Tours"],
       languages: ["English", "Hindi", "Urdu"],
@@ -189,6 +254,20 @@ export const data = {
       role: "Sales Executive · Apartments",
       experience: "5+ Years Real Estate Experience",
       age: 29,
+      about: "First-time homebuyer consultant. Specializes in empathetic consultation, site visit urgency, and overcoming down-payment / EMI anxiety.",
+      reExperience: "Residential — Mid-Segment 2BHK & 3BHK Family Homes",
+      sampleScenarios: [
+        {
+          title: "First-Time Buyer EMI & Budget Anxiety",
+          category: "Consultative Sales",
+          duration: "30 min",
+        },
+        {
+          title: "Converting Weekend Walkthrough to Advance Token",
+          category: "Site Visit Closing",
+          duration: "30 min",
+        },
+      ],
       specialisedIn: ["Apartment Sales", "First-time Buyers", "Follow-ups", "Site Visit Conversions"],
       canPractise: ["Price Objection", "Site Visit Pitch", "Follow-up calls", "Competitor Comparison"],
       languages: ["English", "Hindi"],
