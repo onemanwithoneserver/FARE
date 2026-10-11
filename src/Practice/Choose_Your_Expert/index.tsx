@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import Header from "../../Home/00_header";
 import Footer from "../../Home/05_section";
 import Section01 from "./section01";
@@ -6,18 +7,28 @@ import Section02 from "./section02";
 import Section03 from "./section03";
 import Section04 from "./section04";
 import Section05 from "./section05";
+import ScenarioResults from "./section05/ScenarioResults";
 import Section06 from "./section06";
 import Section07 from "./section07";
 import Section08 from "./section08";
-import { data as expertData, getSortedAndFilteredExperts, type Expert } from "./section05/data";
+import { data as expertData, type Expert } from "./section05/data";
+import {
+  SCENARIOS,
+  getSortedAndFilteredScenarios,
+  type ViewMode,
+} from "./section04/data";
 
 interface Props {
   isMobile: boolean;
 }
 
 export default function ChooseYourExpert({ isMobile }: Props) {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState("Most Relevant");
+  const [viewMode, setViewMode] = useState<ViewMode>("experts");
+  // Each tab keeps its own search & sort so switching never loses context.
+  const [expertSearch, setExpertSearch] = useState("");
+  const [expertSortBy, setExpertSortBy] = useState("Most Relevant");
+  const [scenarioSearch, setScenarioSearch] = useState("");
+  const [scenarioSortBy, setScenarioSortBy] = useState("Most Relevant");
   const [selectedBookingExpert, setSelectedBookingExpert] = useState<Expert>(expertData.experts[0]);
 
   const handleBookExpert = (expert: Expert) => {
@@ -28,9 +39,65 @@ export default function ChooseYourExpert({ isMobile }: Props) {
     }
   };
 
-  const filteredExperts = useMemo(() => {
-    return getSortedAndFilteredExperts(expertData.experts, searchQuery, sortBy);
-  }, [searchQuery, sortBy]);
+  const filteredScenarios = useMemo(() => {
+    return getSortedAndFilteredScenarios(SCENARIOS, scenarioSearch, scenarioSortBy);
+  }, [scenarioSearch, scenarioSortBy]);
+
+  /** From a scenario card: jump to the Experts tab pre-filtered to who can run it. */
+  const handleFindExperts = (keyword: string) => {
+    setExpertSearch(keyword);
+    setExpertSortBy("Most Relevant");
+    setViewMode("experts");
+    document.getElementById("cye-toolbar")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const isExperts = viewMode === "experts";
+
+  const toolbar = (
+    <div id="cye-toolbar" className="scroll-mt-24">
+      <Section04
+        isMobile={isMobile}
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+        searchQuery={isExperts ? expertSearch : scenarioSearch}
+        onSearchChange={isExperts ? setExpertSearch : setScenarioSearch}
+        sortBy={isExperts ? expertSortBy : scenarioSortBy}
+        onSortChange={isExperts ? setExpertSortBy : setScenarioSortBy}
+      />
+    </div>
+  );
+
+  const results = (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={viewMode}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -12 }}
+        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {isExperts ? (
+          <div id="cye-results" role="tabpanel" aria-labelledby={isMobile ? "cye-tab-mobile-experts" : "cye-tab-experts"}>
+            <Section05
+              isMobile={isMobile}
+              searchQuery={expertSearch}
+              sortBy={expertSortBy}
+              onBookExpert={handleBookExpert}
+            />
+          </div>
+        ) : (
+          <ScenarioResults
+            isMobile={isMobile}
+            scenarios={filteredScenarios}
+            searchQuery={scenarioSearch}
+            onClearSearch={() => setScenarioSearch("")}
+            onFindExperts={handleFindExperts}
+            onPractice={handleBookExpert}
+          />
+        )}
+      </motion.div>
+    </AnimatePresence>
+  );
 
   return (
     <div className="w-full min-h-screen flex flex-col font-['Outfit'] bg-[#FAFAFA]">
@@ -40,20 +107,8 @@ export default function ChooseYourExpert({ isMobile }: Props) {
       {isMobile ? (
         <>
           <Section03 isMobile={isMobile} />
-          <Section04
-            isMobile={isMobile}
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            sortBy={sortBy}
-            onSortChange={setSortBy}
-            totalCount={filteredExperts.length}
-          />
-          <Section05
-            isMobile={isMobile}
-            searchQuery={searchQuery}
-            sortBy={sortBy}
-            onBookExpert={handleBookExpert}
-          />
+          {toolbar}
+          {results}
         </>
       ) : (
         <section className="bg-[#FAFAFA] w-full pt-10 pb-20">
@@ -64,20 +119,8 @@ export default function ChooseYourExpert({ isMobile }: Props) {
             </aside>
             {/* Right Main Content */}
             <main className="flex-1 flex flex-col min-w-0 gap-6">
-              <Section04
-                isMobile={isMobile}
-                searchQuery={searchQuery}
-                onSearchChange={setSearchQuery}
-                sortBy={sortBy}
-                onSortChange={setSortBy}
-                totalCount={filteredExperts.length}
-              />
-              <Section05
-                isMobile={isMobile}
-                searchQuery={searchQuery}
-                sortBy={sortBy}
-                onBookExpert={handleBookExpert}
-              />
+              {toolbar}
+              {results}
             </main>
           </div>
         </section>

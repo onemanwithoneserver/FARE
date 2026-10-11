@@ -1,38 +1,10 @@
-import Desktop from "./desktop";
+import Desktop, { type ToolbarProps } from "./desktop";
 import Mobile from "./mobile";
 
-interface Props {
+interface Props extends ToolbarProps {
   isMobile: boolean;
-  searchQuery: string;
-  onSearchChange: (query: string) => void;
-  sortBy: string;
-  onSortChange: (sort: string) => void;
-  totalCount?: number;
 }
 
-export default function Section04({
-  isMobile,
-  searchQuery,
-  onSearchChange,
-  sortBy,
-  onSortChange,
-  totalCount,
-}: Props) {
-  return isMobile ? (
-    <Mobile
-      searchQuery={searchQuery}
-      onSearchChange={onSearchChange}
-      sortBy={sortBy}
-      onSortChange={onSortChange}
-      totalCount={totalCount}
-    />
-  ) : (
-    <Desktop
-      searchQuery={searchQuery}
-      onSearchChange={onSearchChange}
-      sortBy={sortBy}
-      onSortChange={onSortChange}
-      totalCount={totalCount}
-    />
-  );
+export default function Section04({ isMobile, ...props }: Props) {
+  return isMobile ? <Mobile {...props} /> : <Desktop {...props} />;
 }

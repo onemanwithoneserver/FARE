@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
-import { Target, Users, Settings, Filter, Star, Clock, UserCheck } from "lucide-react";
+import { Target, Filter, Star, Clock, UserCheck } from "lucide-react";
 import { data } from "./data";
 import mockExpertHero from "../../../assets/mock_expert_hero_bg.jpg";
-import { ACCENTS, IconBadge, SecondaryButton, fadeUp, staggerContainer } from "../../ui";
+import { ACCENTS, IconBadge, fadeUp, staggerContainer } from "../../ui";
 
 const CHIP_ICONS = [Target, Filter, Star, Clock];
 
@@ -53,28 +53,6 @@ export default function Mobile() {
             <IconBadge icon={UserCheck} accent={ACCENTS[3]} size="xs" interactive={false} />
             <span className="text-[12px] font-bold text-[#0B1D3A]">Top Experts</span>
           </div>
-        </motion.div>
-
-        <motion.div variants={fadeUp} className="bg-white/70 backdrop-blur-md rounded-[16px] border border-[#E6EBF3] p-5 luxury-shadow-sm w-full mb-7">
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#475569]">Selected Scenario</span>
-            <IconBadge icon={Target} accent={ACCENTS[4]} size="xs" interactive={false} />
-          </div>
-          
-          <h3 className="text-[18px] font-bold text-[#0B1D3A] mb-3 leading-tight">{s.scenarioInfo.title}</h3>
-          
-          <div className="flex flex-wrap items-center gap-2 mb-5">
-            <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-[4px] bg-[#E11D48]/10 text-[#BE123C] text-[12px] font-bold">
-              <Target size={12} />
-              {s.scenarioInfo.type}
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-[4px] bg-[#0B1D3A]/5 text-[#0B1D3A] text-[12px] font-bold">
-              <Users size={12} />
-              {s.scenarioInfo.role}
-            </span>
-          </div>
-
-          <SecondaryButton full mobile icon={Settings}>{s.cta}</SecondaryButton>
         </motion.div>
 
         <motion.ul variants={fadeUp} className="w-full grid grid-cols-2 gap-2.5">
