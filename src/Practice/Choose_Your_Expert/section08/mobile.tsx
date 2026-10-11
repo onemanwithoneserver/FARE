@@ -635,9 +635,7 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                 onClick={handlePrevStep}
                 className="!h-8.5 !px-2.5 text-[11.5px] !rounded-[8px] font-medium flex items-center gap-1 cursor-pointer hover:bg-white"
               >
-                <span className="w-3.5 h-3.5 rounded-[3px] bg-[#0B1D3A] text-white flex items-center justify-center shrink-0">
-                  <ArrowLeft size={8.5} />
-                </span>
+                <ArrowLeft size={12} className="shrink-0" />
                 <span>Back</span>
               </SecondaryButton>
             ) : (

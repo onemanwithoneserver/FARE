@@ -860,9 +860,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                 onClick={handlePrevStep}
                 className="!h-9 !px-3.5 text-[12px] !rounded-[10px] font-medium flex items-center gap-1.5 cursor-pointer hover:bg-white"
               >
-                <span className="w-3.5 h-3.5 rounded-[3px] bg-[#0B1D3A] text-white flex items-center justify-center shrink-0">
-                  <ArrowLeft size={9} />
-                </span>
+                <ArrowLeft size={13} className="shrink-0" />
                 <span>Back</span>
               </SecondaryButton>
             ) : (

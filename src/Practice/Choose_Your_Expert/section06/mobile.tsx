@@ -85,13 +85,12 @@ export default function Mobile({ onBookExpert }: Props) {
               </div>
             </div>
 
-            <span
-              className={`w-7 h-7 rounded-full bg-[#0B1D3A] text-white flex items-center justify-center transition-transform duration-300 shadow-xs ${
+            <ChevronDown
+              size={18}
+              className={`text-[#7B8DAA] transition-transform duration-300 ${
                 isExpanded ? "rotate-180" : ""
               }`}
-            >
-              <ChevronDown size={14} />
-            </span>
+            />
           </div>
 
           <div className="flex items-center justify-between pt-1.5 border-t border-[#F0F4FA]">

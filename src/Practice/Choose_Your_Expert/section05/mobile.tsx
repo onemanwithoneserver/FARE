@@ -254,7 +254,7 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", onB
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-between gap-2">
                       <button
                         type="button"
                         onClick={() => toggleExpand(expert.name)}
@@ -265,10 +265,9 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", onB
                       </button>
 
                       <PrimaryButton
-                        full
                         variant="gold"
                         onClick={() => handleBook(expert)}
-                        className="!h-9 !py-0 !px-3 text-[12px] !rounded-[9px] font-medium cursor-pointer shadow-xs"
+                        className="!h-9 !py-0 !px-3 text-[12px] !rounded-[9px] font-medium cursor-pointer shadow-xs shrink-0 !w-auto"
                       >
                         Book Session
                       </PrimaryButton>

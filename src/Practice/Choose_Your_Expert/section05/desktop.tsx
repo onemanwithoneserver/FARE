@@ -263,7 +263,7 @@ export default function Desktop({
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center justify-between gap-2">
                           <button
                             type="button"
                             onClick={() => handleToggleDetails(expert.name)}
@@ -275,21 +275,16 @@ export default function Desktop({
                           >
                             <span>{isSelected ? "Viewing" : "View Details"}</span>
                             {isSelected ? (
-                              <span className="w-3.5 h-3.5 rounded-[3px] bg-[#D5AA45] text-[#0B1D3A] flex items-center justify-center">
-                                <Check size={9} strokeWidth={3} />
-                              </span>
+                              <Check size={12} strokeWidth={3} className="text-[#D5AA45]" />
                             ) : (
-                              <span className="w-3.5 h-3.5 rounded-[3px] bg-[#0B1D3A] text-white flex items-center justify-center">
-                                <ChevronRight size={9} />
-                              </span>
+                              <ChevronRight size={13} className="text-current transition-transform group-hover:translate-x-0.5" />
                             )}
                           </button>
 
                           <PrimaryButton
-                            full
                             variant="gold"
                             onClick={() => handleBook(expert)}
-                            className="!h-9 !py-0 !px-3.5 text-[12px] !rounded-[10px] font-medium cursor-pointer shadow-xs transition-all"
+                            className="!h-9 !py-0 !px-3 text-[12px] !rounded-[10px] font-medium cursor-pointer shadow-xs transition-all shrink-0 !w-auto"
                           >
                             Book Session
                           </PrimaryButton>
@@ -494,7 +489,7 @@ export default function Desktop({
                       <PrimaryButton
                         variant="gold"
                         onClick={() => handleBook(selectedExpert)}
-                        className="!h-9.5 !py-0 !px-4 text-[12px] !rounded-[10px] font-medium cursor-pointer shadow-xs transition-all"
+                        className="!h-9 !py-0 !px-3.5 text-[12px] !rounded-[10px] font-medium cursor-pointer shadow-xs transition-all shrink-0 !w-auto"
                       >
                         Book Session
                       </PrimaryButton>
