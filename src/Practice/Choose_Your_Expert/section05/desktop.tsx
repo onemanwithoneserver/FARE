@@ -72,14 +72,12 @@ export default function Desktop({ searchQuery = "", sortBy = "Most Relevant", on
               >
                 <HoverGlow accent={ACCENTS[i % ACCENTS.length]} />
                 
-                {/* Header / Profile Clickable */}
                 <div className="p-6 border-b border-[#E6EBF3] relative z-10 flex flex-col items-center text-center">
                   <div 
                     onClick={() => handleOpenProfile(expert)}
                     className="relative mb-4 cursor-pointer group/avatar"
                     title="View full profile dialog"
                   >
-                    {/* Subtle Luxury Gradient Outer Ring */}
                     <div className="p-[3px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-[0_8px_20px_rgba(201,154,46,0.18)] group-hover/avatar:scale-105 group-hover/avatar:shadow-[0_12px_28px_rgba(201,154,46,0.28)] transition-all duration-300">
                       <div className="w-[82px] h-[82px] rounded-full overflow-hidden bg-[#F8F9FC] border-2 border-white">
                         <img 
@@ -91,7 +89,6 @@ export default function Desktop({ searchQuery = "", sortBy = "Most Relevant", on
                       </div>
                     </div>
                     
-                    {/* Floating Verified Badge */}
                     {expert.verified && (
                       <div 
                         className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-white shadow-md flex items-center justify-center border border-[#E6EBF3]"
@@ -115,7 +112,6 @@ export default function Desktop({ searchQuery = "", sortBy = "Most Relevant", on
               <p className="text-[13px] font-medium text-[#7B8DAA] mt-1">{expert.experience}</p>
             </div>
 
-            {/* Body */}
             <div className="p-6 flex flex-col gap-5 flex-1 relative z-10">
               <div className="flex flex-col gap-2">
                 <h4 className="text-[11px] font-black uppercase tracking-[0.1em] text-[#7B8DAA]">Specialised In</h4>
@@ -148,7 +144,6 @@ export default function Desktop({ searchQuery = "", sortBy = "Most Relevant", on
               </div>
             </div>
 
-            {/* Footer */}
             <div className="p-6 bg-[#F8FAFD] border-t border-[#E6EBF3] relative z-10 flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <div className="flex flex-col">
@@ -195,7 +190,6 @@ export default function Desktop({ searchQuery = "", sortBy = "Most Relevant", on
         </AnimatePresence>
       </motion.div>
 
-      {/* Expert Profile Dialog Modal */}
       <ExpertProfileDialog
         isOpen={!!selectedExpert}
         onClose={() => setSelectedExpert(null)}

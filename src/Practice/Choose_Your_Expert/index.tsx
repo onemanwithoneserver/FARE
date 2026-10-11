@@ -9,7 +9,6 @@ import Section04 from "./section04";
 import Section05 from "./section05";
 import ScenarioResults from "./section05/ScenarioResults";
 import Section06 from "./section06";
-import Section07 from "./section07";
 import Section08 from "./section08";
 import { data as expertData, type Expert } from "./section05/data";
 import {
@@ -24,7 +23,6 @@ interface Props {
 
 export default function ChooseYourExpert({ isMobile }: Props) {
   const [viewMode, setViewMode] = useState<ViewMode>("experts");
-  // Each tab keeps its own search & sort so switching never loses context.
   const [expertSearch, setExpertSearch] = useState("");
   const [expertSortBy, setExpertSortBy] = useState("Most Relevant");
   const [scenarioSearch, setScenarioSearch] = useState("");
@@ -43,7 +41,6 @@ export default function ChooseYourExpert({ isMobile }: Props) {
     return getSortedAndFilteredScenarios(SCENARIOS, scenarioSearch, scenarioSortBy);
   }, [scenarioSearch, scenarioSortBy]);
 
-  /** From a scenario card: jump to the Experts tab pre-filtered to who can run it. */
   const handleFindExperts = (keyword: string) => {
     setExpertSearch(keyword);
     setExpertSortBy("Most Relevant");
@@ -113,11 +110,9 @@ export default function ChooseYourExpert({ isMobile }: Props) {
       ) : (
         <section className="bg-[#FAFAFA] w-full pt-10 pb-20">
           <div className="max-w-[1200px] mx-auto w-full flex items-start gap-8 px-4 xl:px-0">
-            {/* Left Sidebar */}
             <aside className="w-[280px] shrink-0 sticky top-24">
               <Section03 isMobile={isMobile} />
             </aside>
-            {/* Right Main Content */}
             <main className="flex-1 flex flex-col min-w-0 gap-6">
               {toolbar}
               {results}
@@ -126,7 +121,6 @@ export default function ChooseYourExpert({ isMobile }: Props) {
         </section>
       )}
       <Section06 isMobile={isMobile} onBookExpert={handleBookExpert} />
-      <Section07 isMobile={isMobile} />
       <Section08 
         isMobile={isMobile} 
         selectedExpert={selectedBookingExpert}

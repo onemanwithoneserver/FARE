@@ -115,7 +115,6 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
     return sorted;
   }, [searchQuery, activeTag, filters, sortBy, language]);
 
-  // Demo listing: repeat sample trainers to simulate a full directory when no filters are applied.
   const totalListing = isFiltering ? filteredTrainers.length : Math.min(DEMO_LISTING_CAP, Math.max(filteredTrainers.length, DEMO_LISTING_CAP));
   const hasMore = visibleCount < totalListing;
 
@@ -392,7 +391,6 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
         />
 
         <div className="flex-1 min-w-0 flex flex-col">
-          {/* ───── Results toolbar ───── */}
           <div className="relative z-30 flex flex-col gap-3 mb-6">
             {!isMobile && (
               <div className="flex items-center justify-end gap-3 shrink-0">
@@ -493,7 +491,6 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
             </AnimatePresence>
           </div>
 
-          {/* ───── Results ───── */}
           {displayedTrainers.length === 0 ? (
             <motion.div
               initial={{ opacity: 0, y: 12 }}

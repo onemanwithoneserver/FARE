@@ -41,7 +41,6 @@ export default function Mobile() {
     <Section tone="white" mobile ariaLabel="Filters" className="!pt-4 !pb-2">
       <div className="w-full font-['Outfit'] select-none">
         <div className="bg-white rounded-[8px] border border-[#0B1D3A]/[0.07] luxury-shadow-sm overflow-hidden">
-          {/* Header Bar */}
           <div
             className="relative flex items-center justify-between px-4 py-3.5 overflow-hidden"
             style={{
@@ -87,7 +86,6 @@ export default function Mobile() {
             )}
           </div>
 
-          {/* Accordion Categories */}
           <div className="px-4 py-1 max-h-[360px] overflow-y-auto">
             {s.filters.map((filter) => {
               const isOpen = openGroups.has(filter.name);

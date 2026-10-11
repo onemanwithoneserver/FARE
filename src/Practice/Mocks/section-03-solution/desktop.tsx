@@ -13,7 +13,6 @@ export default function Desktop() {
       <SectionHeader eyebrow="The Solution" icon={Lightbulb} accent={ACCENTS[7]} title={sectionData.title} description={sectionData.description} dark />
 
       <div className="relative mt-20 mb-12 max-w-[1240px] mx-auto">
-        {/* Track Line */}
         <div aria-hidden="true" className="absolute top-6 left-[10%] right-[10%] h-[2px] bg-white/10 z-0" />
         <motion.div
           aria-hidden="true"

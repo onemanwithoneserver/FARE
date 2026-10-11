@@ -11,11 +11,9 @@ interface Props {
 
 export default function Desktop({ onBookExpert }: Props) {
   const s = data;
-  // By default: 0 experts selected with 3 columns visible
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
 
-  // Always render 3 columns (slots 0, 1, 2)
   const slots = [0, 1, 2];
 
   const selectedExperts = selectedNames
@@ -100,7 +98,6 @@ export default function Desktop({ onBookExpert }: Props) {
                     </span>
                   </th>
 
-                  {/* Exactly 3 columns for 3 slots */}
                   {slots.map((slotIdx) => {
                     const exp = selectedExperts[slotIdx];
 
@@ -165,7 +162,6 @@ export default function Desktop({ onBookExpert }: Props) {
                       <span className="text-[13px] font-bold text-[#475569]">{crit}</span>
                     </td>
 
-                    {/* 3 columns matching the 3 slots */}
                     {slots.map((slotIdx) => {
                       const exp = selectedExperts[slotIdx];
 
@@ -205,7 +201,6 @@ export default function Desktop({ onBookExpert }: Props) {
                   </tr>
                 ))}
 
-                {/* Bottom Action Row */}
                 <tr>
                   <td className="p-6 bg-[#F8FAFD] border-r border-[#E6EBF3]">
                     <span className="text-[11px] font-black uppercase tracking-[0.1em] text-[#7B8DAA]">
@@ -259,7 +254,6 @@ export default function Desktop({ onBookExpert }: Props) {
         </div>
       </div>
 
-      {/* Expert Picker Modal */}
       <AnimatePresence>
         {isPickerOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

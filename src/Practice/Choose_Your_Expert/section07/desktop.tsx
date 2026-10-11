@@ -15,7 +15,6 @@ export default function Desktop() {
 
   return (
     <Section tone="soft" ariaLabel="Recommended Final Flow" className="!py-24 relative overflow-hidden">
-      {/* Background decorations */}
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-[#C99A2E]/[0.03] blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[#0B1D3A]/[0.02] blur-[100px] rounded-full pointer-events-none" />
 
@@ -29,14 +28,11 @@ export default function Desktop() {
 
       <div className="max-w-[1200px] mx-auto w-full relative mt-16 px-4 xl:px-0">
         
-        {/* The Wiring Background (Desktop only) */}
         <div className="absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-          {/* Horizontal lines connecting the 3 columns */}
           <div className="absolute top-[160px] left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-transparent via-[#C99A2E]/30 to-transparent shadow-[0_0_8px_rgba(201,154,46,0.5)]" />
           <div className="absolute top-[480px] left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-transparent via-[#0B1D3A]/20 to-transparent" />
           <div className="absolute top-[800px] left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-transparent via-[#C99A2E]/30 to-transparent shadow-[0_0_8px_rgba(201,154,46,0.5)]" />
           
-          {/* Vertical curving connections could be added here, but horizontal logic implies row reading */}
         </div>
 
         <motion.div
@@ -57,7 +53,6 @@ export default function Desktop() {
                 variants={fadeUp}
                 className="group relative bg-white rounded-[16px] border border-[#0B1D3A]/[0.07] shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(11,29,58,0.12)] hover:-translate-y-1.5 transition-all duration-400 overflow-hidden flex flex-col h-full"
               >
-                {/* Header Style matching the image/request */}
                 <div
                   className="relative flex items-center justify-between px-6 py-5 overflow-hidden shrink-0"
                   style={{
@@ -77,7 +72,6 @@ export default function Desktop() {
                         isGold ? "bg-white/10 border border-white/15" : "bg-white shadow-sm border border-[#E6EBF3]"
                       }`}
                     >
-                      {/* Icon Badge with Distinct Color + White Shade */}
                       <div className={`p-0.5 rounded-[10px] ${isGold ? '' : 'ring-2 ring-[#F5F7FB]'} transition-transform duration-300 group-hover:scale-105`}>
                         <div
                           className="w-10 h-10 rounded-[8px] flex items-center justify-center relative overflow-hidden"
@@ -109,7 +103,6 @@ export default function Desktop() {
                   </div>
                 </div>
 
-                {/* Body */}
                 <div className="p-6 flex flex-col flex-1 bg-white">
                   <div className="mb-3">
                     <span className="text-[13px] font-bold text-[#C99A2E] leading-snug block">

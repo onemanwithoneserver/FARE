@@ -10,7 +10,6 @@ export default function Desktop() {
   const [openGroups, setOpenGroups] = useState<Set<string>>(
     new Set(["RE Segment"])
   );
-  // Expertise is unchecked by default
   const [selectedFilters, setSelectedFilters] = useState<Set<string>>(
     new Set(["Residential"])
   );
@@ -48,7 +47,6 @@ export default function Desktop() {
   return (
     <div className="w-full font-['Outfit'] select-none">
       <div className="bg-white rounded-[8px] border border-[#0B1D3A]/[0.07] luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 overflow-hidden">
-        {/* Header Bar */}
         <div
           className="relative flex items-center justify-between px-5 py-4 overflow-hidden"
           style={{
@@ -96,7 +94,6 @@ export default function Desktop() {
           )}
         </div>
 
-        {/* Scrollable Filter Categories */}
         <div className="px-5 py-1 max-h-[calc(100vh-200px)] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {s.filters.map((filter) => {
             const isOpen = openGroups.has(filter.name);
@@ -106,7 +103,6 @@ export default function Desktop() {
                 key={filter.name}
                 className="py-3.5 border-b border-[#0B1D3A]/[0.07] last:border-b-0"
               >
-                {/* Accordion Group Header */}
                 <button
                   type="button"
                   onClick={() => toggleGroup(filter.name)}
@@ -128,7 +124,6 @@ export default function Desktop() {
                   />
                 </button>
 
-                {/* Collapsible Options Body */}
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
@@ -150,7 +145,6 @@ export default function Desktop() {
                               className="w-full flex items-center gap-3 cursor-pointer group/item px-2 py-1.5 -mx-2 rounded-[8px] text-left hover:bg-[#F5F7FB] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/50"
                               aria-pressed={isSelected}
                             >
-                              {/* Custom Checked/Unchecked Box */}
                               <div
                                 className={`rounded-[4px] border flex items-center justify-center transition-all duration-300 shrink-0 ${
                                   isSelected
@@ -187,7 +181,6 @@ export default function Desktop() {
                                 )}
                               </div>
 
-                              {/* Label text */}
                               <span
                                 className={`text-[13px] leading-snug transition-colors duration-200 ${
                                   isSelected

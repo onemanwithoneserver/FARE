@@ -1,10 +1,3 @@
-/**
- * FARE Live Mocks — shared design system.
- *
- * Every section (desktop + mobile) is composed from these primitives so that
- * typography, spacing, radii, shadows, accent colours and motion stay
- * consistent across the whole page.
- */
 import type { ReactNode } from "react";
 import { useState, useEffect } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "motion/react";
@@ -12,9 +5,6 @@ import type { Variants } from "motion/react";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, ChevronRight } from "lucide-react";
 
-/* ------------------------------------------------------------------ */
-/* Tokens                                                              */
-/* ------------------------------------------------------------------ */
 
 export const NAVY = "#0B1D3A";
 export const GOLD = "#C99A2E";
@@ -24,18 +14,11 @@ export type Accent = {
   name: string;
   from: string;
   to: string;
-  /** rgba glow used for coloured shadows */
   glow: string;
-  /** very light tint for chip / surface backgrounds */
   soft: string;
-  /** readable text colour on the soft tint */
   ink: string;
 };
 
-/**
- * Cohesive jewel-tone palette anchored by FARE navy + gold.
- * Icons / text placed on these gradients are always white.
- */
 export const ACCENTS: Accent[] = [
   { name: "navy", from: "#1E3A74", to: "#0B1D3A", glow: "rgba(11,29,58,0.38)", soft: "#EEF2F9", ink: "#0B1D3A" },
   { name: "gold", from: "#E0B550", to: "#B8871F", glow: "rgba(201,154,46,0.42)", soft: "#FBF5E7", ink: "#8A5A00" },
@@ -54,9 +37,6 @@ export const accentGradient = (a: Accent, deg = 135) => `linear-gradient(${deg}d
 export const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E] focus-visible:ring-offset-2 focus-visible:ring-offset-white";
 
-/* ------------------------------------------------------------------ */
-/* Motion                                                              */
-/* ------------------------------------------------------------------ */
 
 export const staggerContainer = (stagger = 0.08, delay = 0.05): Variants => ({
   hidden: {},
@@ -75,7 +55,6 @@ export const fadeScale: Variants = {
 
 export const VIEWPORT = { once: true, amount: 0.15 } as const;
 
-/** Fades + lifts its children into view once. Respects reduced motion. */
 export function Reveal({
   children,
   delay = 0,
@@ -101,9 +80,6 @@ export function Reveal({
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Icon badge                                                          */
-/* ------------------------------------------------------------------ */
 
 const BADGE_SIZES = {
   xs: { box: "w-8 h-8 rounded-[8px]", icon: 15 },
@@ -112,7 +88,6 @@ const BADGE_SIZES = {
   lg: { box: "w-14 h-14 rounded-[14px]", icon: 26 },
 } as const;
 
-/** Gradient accent tile with a white icon. Animates on parent `group` hover. */
 export function IconBadge({
   icon: Icon,
   accent,
@@ -145,9 +120,6 @@ export function IconBadge({
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Section shell                                                       */
-/* ------------------------------------------------------------------ */
 
 type Tone = "white" | "soft" | "tint" | "navy";
 
@@ -218,9 +190,6 @@ export function Section({
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Headings                                                            */
-/* ------------------------------------------------------------------ */
 
 export function Eyebrow({
   children,
@@ -334,9 +303,6 @@ export function SectionHeader({
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Buttons                                                             */
-/* ------------------------------------------------------------------ */
 
 type BtnProps = {
   children: ReactNode;
@@ -347,10 +313,12 @@ type BtnProps = {
   className?: string;
 };
 
-export function PrimaryButton({ children, icon: Icon, full, mobile, onClick, className = "", variant = "navy" }: BtnProps & { variant?: "navy" | "gold" | "light" }) {
+export function PrimaryButton({ children, icon: Icon, full, mobile, onClick, className = "", variant = "navy" }: BtnProps & { variant?: "navy" | "gold" | "green" | "light" }) {
   const styles =
     variant === "gold"
       ? { background: "linear-gradient(135deg, #E0B550 0%, #C99A2E 55%, #B8871F 100%)", boxShadow: "0 10px 28px -8px rgba(201,154,46,0.55)", color: "#0B1D3A" }
+      : variant === "green"
+        ? { background: "linear-gradient(135deg, #10B981 0%, #059669 55%, #047857 100%)", boxShadow: "0 10px 28px -8px rgba(16,185,129,0.4)", color: "#FFFFFF" }
       : variant === "light"
         ? { background: "#FFFFFF", boxShadow: "0 10px 28px -10px rgba(0,0,0,0.45)", color: "#0B1D3A" }
         : { background: "linear-gradient(135deg, #16316A 0%, #0B1D3A 100%)", boxShadow: "0 10px 28px -10px rgba(11,29,58,0.55), inset 0 1px 0 rgba(255,255,255,0.12)", color: "#FFFFFF" };
@@ -395,9 +363,6 @@ export function SecondaryButton({ children, icon: Icon, full, mobile, onClick, c
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Flow strip  (e.g. "SCENARIO → EXPERT → BOOK")                        */
-/* ------------------------------------------------------------------ */
 
 export const splitFlow = (flow: string) =>
   flow
@@ -463,11 +428,7 @@ export function FlowStrip({
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Surfaces                                                            */
-/* ------------------------------------------------------------------ */
 
-/** Standard light card: lifts on hover, reveals an accent hairline on top. */
 export const CARD_BASE =
   "group relative bg-white rounded-[16px] border border-[#E6EBF3] luxury-shadow-sm transition-[translate,box-shadow,border-color,background-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]";
 export const CARD_HOVER = "hover:-translate-y-1.5 hover:border-transparent hover:shadow-[0_24px_48px_-20px_rgba(11,29,58,0.22)]";
@@ -482,7 +443,6 @@ export function AccentHairline({ accent }: { accent: Accent }) {
   );
 }
 
-/** Soft accent glow that fades in behind card content on hover. */
 export function HoverGlow({ accent }: { accent: Accent }) {
   return (
     <span
@@ -545,4 +505,3 @@ export function PageTransition({ children }: { children: ReactNode }) {
     </AnimatePresence>
   );
 }
-

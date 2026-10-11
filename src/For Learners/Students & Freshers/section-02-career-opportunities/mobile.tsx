@@ -28,7 +28,7 @@ export default function Mobile() {
 
       <motion.div variants={staggerContainer(0.08)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col gap-5 mb-10">
         {data.opportunities.map((opp, i) => {
-          const a = accentAt(i * 2 + 1); // Use distinct accents
+          const a = accentAt(i * 2 + 1);
           
           return (
             <motion.div

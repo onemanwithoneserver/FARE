@@ -38,7 +38,7 @@ export default function Desktop() {
         >
           {data.items.map((itemData, i) => {
             const Icon = ICONS[i % ICONS.length];
-            const a = accentAt(i + 2); // Different accents for these specific cards
+            const a = accentAt(i + 2);
 
             return (
               <motion.div

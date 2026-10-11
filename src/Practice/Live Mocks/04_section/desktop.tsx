@@ -14,7 +14,6 @@ export default function Desktop() {
       <SectionHeader eyebrow="How It Works" icon={Lightbulb} accent={ACCENTS[7]} title={s.title} />
 
       <div className="relative mt-20 mb-24 max-w-[1100px] mx-auto">
-        {/* Track Line */}
         <div aria-hidden="true" className="absolute top-6 left-[8%] right-[8%] h-[2px] bg-[#E2E8F0] z-0" />
         <motion.div
           aria-hidden="true"

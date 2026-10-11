@@ -15,7 +15,6 @@ export default function Mobile() {
 
   return (
     <Section tone="soft" mobile ariaLabel="Recommended Final Flow" className="!py-14 relative overflow-hidden">
-      {/* Background decorations */}
       <div className="absolute top-0 right-0 w-3/4 h-64 bg-[#C99A2E]/[0.03] blur-[100px] rounded-full pointer-events-none" />
 
       <SectionHeader
@@ -28,7 +27,6 @@ export default function Mobile() {
       />
 
       <div className="w-full relative mt-8 px-2">
-        {/* Vertical Wiring Background for Mobile */}
         <div className="absolute top-10 bottom-10 left-8 w-px bg-gradient-to-b from-transparent via-[#C99A2E]/30 to-transparent shadow-[0_0_8px_rgba(201,154,46,0.3)] z-0 hidden sm:block" aria-hidden="true" />
         
         <motion.div
@@ -49,7 +47,6 @@ export default function Mobile() {
                 variants={fadeUp}
                 className="group relative bg-white rounded-[16px] border border-[#0B1D3A]/[0.07] shadow-xs overflow-hidden flex flex-col"
               >
-                {/* Header */}
                 <div
                   className="relative flex items-center justify-between px-4 py-3.5 overflow-hidden shrink-0"
                   style={{
@@ -100,7 +97,6 @@ export default function Mobile() {
                   </div>
                 </div>
 
-                {/* Body */}
                 <div className="p-4 flex flex-col flex-1 bg-white">
                   <div className="mb-2">
                     <span className="text-[12px] font-bold text-[#C99A2E] leading-snug block">

@@ -6,7 +6,6 @@ interface EnrollButtonProps {
   className?: string;
 }
 
-/** Matches the "For Learners" start-learning CTA: green for free, gold + navy text for paid. */
 export default function EnrollButton({ free, title, className = "" }: EnrollButtonProps) {
   return (
     <button

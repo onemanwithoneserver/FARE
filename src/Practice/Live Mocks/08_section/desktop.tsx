@@ -18,7 +18,7 @@ export default function Desktop() {
         className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1100px] mx-auto mb-16"
       >
         {s.sessions.map((session, i) => {
-          const a = ACCENTS[(i * 3 + 1) % ACCENTS.length]; // skip around for varied colours
+          const a = ACCENTS[(i * 3 + 1) % ACCENTS.length];
           return (
             <motion.article
               key={session.duration}

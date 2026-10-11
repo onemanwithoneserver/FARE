@@ -43,7 +43,6 @@ export default function Mobile({
         transition={{ duration: 0.5 }}
         className="flex flex-col gap-3"
       >
-        {/* Segmented tabs */}
         <div
           role="tablist"
           aria-label="Browse mode"
@@ -80,7 +79,6 @@ export default function Mobile({
           })}
         </div>
 
-        {/* Search */}
         <div className="relative w-full group/search">
           <Search
             className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7B8DAA] group-focus-within/search:text-[#C99A2E] transition-colors"
@@ -107,7 +105,6 @@ export default function Mobile({
           )}
         </div>
 
-        {/* Sort trigger */}
         <div className="flex items-center justify-end">
           <button
             type="button"
@@ -130,7 +127,6 @@ export default function Mobile({
         </div>
       </motion.div>
 
-      {/* Bottom sheet */}
       <AnimatePresence>
         {isOpen && (
           <div className="fixed inset-0 z-50 flex items-end justify-center">

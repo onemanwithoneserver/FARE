@@ -49,7 +49,6 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExp
 
   if (!expert) return null;
 
-  // Rich defaults or specific expert details
   const about =
     expert.about ||
     `Real estate sales professional with ${expert.experience.toLowerCase()} across residential sales, customer handling, negotiation and team management.`;
@@ -105,7 +104,6 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExp
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -114,7 +112,6 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExp
             className="fixed inset-0 bg-[#0B1D3A]/60 backdrop-blur-sm transition-opacity"
           />
 
-          {/* Dialog Container */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -122,7 +119,6 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExp
             transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
             className="relative w-full max-w-[940px] bg-white rounded-[24px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] border border-[#E6EBF3] overflow-hidden flex flex-col md:flex-row max-h-[90vh] z-10"
           >
-            {/* Close Button */}
             <button
               onClick={onClose}
               className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-[#475569] hover:text-[#0B1D3A] flex items-center justify-center border border-[#E6EBF3] shadow-sm transition-all cursor-pointer"
@@ -131,7 +127,6 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExp
               <X size={18} />
             </button>
 
-            {/* Left Sidebar: Photo & Quick Info */}
             <div className="w-full md:w-[280px] bg-[#F8FAFD] p-6 sm:p-7 flex flex-col items-center text-center border-b md:border-b-0 md:border-r border-[#E6EBF3] shrink-0 overflow-y-auto">
               <div className="relative mb-4 shrink-0">
                 <div className="p-[3.5px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-lg">
@@ -193,9 +188,7 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExp
               </div>
             </div>
 
-            {/* Right Side: Main Profile Details */}
             <div className="flex-1 p-6 sm:p-8 flex flex-col gap-6 overflow-y-auto">
-              {/* About */}
               <div>
                 <h3 className="text-[16px] font-black text-[#0B1D3A] mb-2">About</h3>
                 <p className="text-[13.5px] font-medium text-[#475569] leading-relaxed">
@@ -203,7 +196,6 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExp
                 </p>
               </div>
 
-              {/* Real Estate Experience */}
               <div>
                 <h3 className="text-[16px] font-black text-[#0B1D3A] mb-2">
                   Real Estate Experience
@@ -213,7 +205,6 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExp
                 </p>
               </div>
 
-              {/* Areas of Expertise */}
               <div>
                 <h3 className="text-[16px] font-black text-[#0B1D3A] mb-2.5">
                   Areas of Expertise
@@ -230,7 +221,6 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExp
                 </div>
               </div>
 
-              {/* Scenarios Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {scenarios.map((cat) => (
                   <div key={cat.category}>
@@ -253,7 +243,6 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExp
                 ))}
               </div>
 
-              {/* Highlight Box: How I Conduct Mocks */}
               <div className="bg-[#FFFDF5] p-5 rounded-[14px] border border-[#F5D98B]">
                 <h4 className="text-[14px] font-black text-[#8A5A00] mb-1">
                   How I Conduct Mocks
@@ -266,7 +255,6 @@ export default function ExpertProfileDialog({ isOpen, onClose, expert, onBookExp
                 </p>
               </div>
 
-              {/* Footer: Session Options & Action Buttons */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-5 border-t border-[#E6EBF3] mt-auto">
                 <div className="flex items-center gap-4 sm:gap-6">
                   {sessionOptions.map((opt) => (

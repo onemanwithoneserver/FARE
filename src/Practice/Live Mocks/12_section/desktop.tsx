@@ -18,7 +18,7 @@ export default function Desktop() {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1240px] mx-auto mb-16"
       >
         {s.items.map((segment, i) => {
-          const a = ACCENTS[(i + 4) % ACCENTS.length]; // Offset accent so it doesn't match nearby sections perfectly
+          const a = ACCENTS[(i + 4) % ACCENTS.length];
           return (
             <motion.div
               key={segment.title}

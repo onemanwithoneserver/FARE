@@ -72,7 +72,6 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", onB
               >
                 <HoverGlow accent={ACCENTS[i % ACCENTS.length]} />
                 
-                {/* Top Area: Profile & Basics */}
                 <div className="p-5 flex flex-col relative z-10 border-b border-[#E6EBF3]">
                   <div className="flex items-center gap-4 mb-4">
                     <div 
@@ -110,7 +109,6 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", onB
               </div>
             </div>
 
-            {/* Middle Area: Details */}
             <div className="p-5 flex flex-col relative z-10 border-b border-[#E6EBF3]">
               <div className="flex flex-col gap-5 mb-5">
                 <div className="flex flex-col gap-2">
@@ -148,7 +146,6 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", onB
               </div>
             </div>
 
-            {/* Bottom Action Area */}
             <div className="p-5 bg-[#F8FAFD] flex flex-col relative z-10">
               <div className="flex items-center justify-between mb-5">
                 <div className="flex flex-col">
@@ -205,7 +202,6 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", onB
         <SecondaryButton mobile icon={ChevronDown}>Load More Experts</SecondaryButton>
       </motion.div>
 
-      {/* Profile Dialog */}
       <ExpertProfileDialog
         isOpen={!!selectedExpert}
         onClose={() => setSelectedExpert(null)}

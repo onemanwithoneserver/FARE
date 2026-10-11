@@ -11,11 +11,9 @@ interface Props {
 
 export default function Mobile({ onBookExpert }: Props) {
   const s = data;
-  // By default: 0 experts selected with 3 columns visible
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
 
-  // Always render 3 columns (slots 0, 1, 2)
   const slots = [0, 1, 2];
 
   const selectedExperts = selectedNames
@@ -94,7 +92,6 @@ export default function Mobile({ onBookExpert }: Props) {
                     </span>
                   </th>
 
-                  {/* Exactly 3 columns for 3 slots */}
                   {slots.map((slotIdx) => {
                     const exp = selectedExperts[slotIdx];
 
@@ -156,7 +153,6 @@ export default function Mobile({ onBookExpert }: Props) {
                       <span className="text-[11.5px] font-bold text-[#475569]">{crit}</span>
                     </td>
 
-                    {/* 3 columns matching the 3 slots */}
                     {slots.map((slotIdx) => {
                       const exp = selectedExperts[slotIdx];
 
@@ -250,7 +246,6 @@ export default function Mobile({ onBookExpert }: Props) {
         </div>
       </div>
 
-      {/* Expert Picker Modal for Mobile */}
       <AnimatePresence>
         {isPickerOpen && (
           <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">

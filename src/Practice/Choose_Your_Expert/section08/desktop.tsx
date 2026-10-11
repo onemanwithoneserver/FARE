@@ -28,11 +28,9 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
   const s = data;
   const expertsList = allExpertsData.experts;
 
-  // Active expert (controlled or fallback to first expert)
   const [internalExpertIndex, setInternalExpertIndex] = useState(0);
   const activeExpert: Expert = propExpert || expertsList[internalExpertIndex] || (s.defaultExpert as unknown as Expert);
 
-  // Booking options - UNSELECTED BY DEFAULT
   const [selectedDurationId, setSelectedDurationId] = useState<string | null>(null);
   const [scenarioText, setScenarioText] = useState("");
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -87,7 +85,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
 
   return (
     <Section tone="soft" ariaLabel="Choose Session, Date & Time" id="booking-section" className="!py-20 relative">
-      {/* Background ambient lighting */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#C99A2E]/[0.03] blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-[#0B1D3A]/[0.03] blur-[120px] rounded-full pointer-events-none" />
 
@@ -99,13 +96,11 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
         description="Select duration, realistic scenario, and preferred time slot to practice with your verified real estate mentor."
       />
 
-      {/* Active Mentor Bar */}
       <div className="max-w-[1200px] mx-auto w-full mb-10 px-4 xl:px-0">
         <div className="bg-gradient-to-r from-[#0B1D3A] via-[#122B54] to-[#0B1D3A] rounded-[20px] p-4 sm:p-5 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-[0_12px_36px_rgba(11,29,58,0.12)] border border-[#C99A2E]/20 relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-[#C99A2E]/15 blur-2xl pointer-events-none" />
           
           <div className="flex items-center gap-4 relative z-10 w-full md:w-auto">
-            {/* Mentor Avatar */}
             <div className="relative shrink-0">
               <div className="w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-[#C99A2E] to-white/40 shadow-md">
                 <img 
@@ -117,7 +112,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
               <span className="absolute bottom-0 right-0 w-4 h-4 bg-[#10B981] border-2 border-[#0B1D3A] rounded-full" title="Online & Available" />
             </div>
 
-            {/* Mentor Details */}
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
                 <span className="text-[11px] font-black tracking-wider uppercase text-[#D5AA45]">
@@ -140,7 +134,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
             </div>
           </div>
 
-          {/* Quick Mentor Switcher Button */}
           <div className="flex items-center gap-3 relative z-10 w-full md:w-auto justify-end">
             <button
               onClick={() => setIsSwitchExpertOpen((prev) => !prev)}
@@ -155,7 +148,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
           </div>
         </div>
 
-        {/* Dropdown list for changing mentor */}
         <AnimatePresence>
           {isSwitchExpertOpen && (
             <motion.div
@@ -202,7 +194,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
 
       <div className="max-w-[1200px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start px-4 xl:px-0">
         
-        {/* LEFT COLUMN: 2 Steps (Step 1 Duration, Step 2 Date & Time Slot moved second) (7 cols) */}
         <motion.div
           variants={staggerContainer(0.06)}
           initial="hidden"
@@ -210,7 +201,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
           viewport={{ once: true }}
           className="lg:col-span-7 flex flex-col gap-6"
         >
-          {/* Validation Alert */}
           {validationError && (
             <motion.div
               initial={{ opacity: 0, y: -6 }}
@@ -222,7 +212,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
             </motion.div>
           )}
 
-          {/* STEP 1: Duration Selector (Unselected by default) */}
           <motion.div 
             variants={fadeUp}
             className="bg-white rounded-[24px] border border-[#0B1D3A]/[0.08] shadow-[0_6px_24px_rgba(11,29,58,0.04)] p-6 sm:p-7"
@@ -314,12 +303,10 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
             </div>
           </motion.div>
 
-          {/* STEP 2: MOVED TO THE SECOND - Merged Date & Time Slot Selector */}
           <motion.div 
             variants={fadeUp}
             className="bg-white rounded-[24px] border border-[#0B1D3A]/[0.08] shadow-[0_6px_24px_rgba(11,29,58,0.04)] p-6 sm:p-7 flex flex-col gap-6"
           >
-            {/* Header */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <span className="w-7 h-7 rounded-full bg-[#0B1D3A] text-white flex items-center justify-center text-[12px] font-black shadow-xs">
@@ -338,7 +325,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
               </span>
             </div>
 
-            {/* Part A: Date Strip */}
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[11.5px] font-black uppercase tracking-wider text-[#7B8DAA]">
@@ -382,10 +368,8 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
               </div>
             </div>
 
-            {/* Divider */}
             <div className="border-t border-[#E6EBF3]" />
 
-            {/* Part B: Time Slots */}
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-[11.5px] font-black uppercase tracking-wider text-[#7B8DAA]">
@@ -445,7 +429,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
           </motion.div>
         </motion.div>
 
-        {/* RIGHT COLUMN: "Choose Practice Scenario" REPLACES "Assigned Mentor" (5 cols) */}
         <div className="lg:col-span-5 sticky top-24">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -453,10 +436,8 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
             viewport={{ once: true }}
             className="bg-white rounded-[24px] border border-[#0B1D3A]/[0.1] shadow-[0_16px_48px_rgba(11,29,58,0.08)] p-6 sm:p-7 flex flex-col gap-5 overflow-hidden relative"
           >
-            {/* Top gold header shimmer */}
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]" />
 
-            {/* Title */}
             <div className="pb-3 border-b border-[#E6EBF3]">
               <span className="text-[11px] font-black uppercase tracking-[0.1em] text-[#C99A2E] block mb-1">
                 Reservation Overview
@@ -469,7 +450,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
               </p>
             </div>
 
-            {/* REPLACING "Assigned Mentor" WITH "Choose Practice Scenario" */}
             <div className="p-4 rounded-[18px] bg-[#F8FAFD] border border-[#E6EBF3] flex flex-col gap-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1.5 text-[12px] font-black uppercase text-[#0B1D3A] tracking-wider">
@@ -483,7 +463,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                 </span>
               </div>
 
-              {/* Quick suggestions pills (Name only) */}
               <div>
                 <span className="text-[10.5px] font-bold text-[#7B8DAA] uppercase block mb-1.5">
                   Quick Suggestions:
@@ -509,7 +488,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                 </div>
               </div>
 
-              {/* Multi-line edit field */}
               <div className="relative">
                 <textarea
                   value={scenarioText}
@@ -533,7 +511,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
               </div>
             </div>
 
-            {/* Session Schedule Breakdown */}
             <div className="grid grid-cols-2 gap-2.5 text-[12px]">
               <div className="p-3 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] flex flex-col">
                 <span className="text-[10px] font-bold uppercase text-[#7B8DAA]">When</span>
@@ -556,7 +533,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
               </div>
             </div>
 
-            {/* Total Fee & Action Button */}
             <div className="pt-2 border-t border-[#E6EBF3] flex flex-col gap-3">
               <div className="flex items-baseline justify-between">
                 <div>
@@ -584,7 +560,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
               </PrimaryButton>
             </div>
 
-            {/* Trust and Guarantee Badges */}
             <div className="pt-1 flex flex-col gap-1.5 text-[11px] text-[#64748B]">
               <div className="flex items-center gap-2">
                 <ShieldCheck size={13} className="text-[#10B981] shrink-0" />
@@ -603,7 +578,6 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
         </div>
       </div>
 
-      {/* Booking Confirmation Success Modal */}
       <AnimatePresence>
         {isBooked && selectedDuration && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

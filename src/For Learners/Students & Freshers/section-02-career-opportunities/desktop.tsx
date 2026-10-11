@@ -34,7 +34,7 @@ export default function Desktop() {
         className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1200px] mx-auto mb-16"
       >
         {data.opportunities.map((opp, i) => {
-          const a = accentAt(i * 2 + 1); // Use distinct accents
+          const a = accentAt(i * 2 + 1);
           
           return (
             <motion.div

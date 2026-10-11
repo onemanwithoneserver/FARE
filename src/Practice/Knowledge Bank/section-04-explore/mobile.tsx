@@ -28,7 +28,7 @@ export default function Mobile() {
           const a = accentAt(i);
           const Icon = ICONS[i % ICONS.length];
           const isExpanded = expandedCards.has(i);
-          const visibleItems = isExpanded ? cat.items : cat.items.slice(0, 4); // show fewer on mobile
+          const visibleItems = isExpanded ? cat.items : cat.items.slice(0, 4);
           const hiddenCount = cat.items.length - 4;
           
           return (

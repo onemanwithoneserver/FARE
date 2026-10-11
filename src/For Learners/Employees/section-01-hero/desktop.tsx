@@ -21,7 +21,6 @@ export default function Desktop() {
       aria-label={headline}
       className="w-full relative overflow-x-clip font-['Outfit'] fare-noise-overlay bg-[#FAFBFF]"
     >
-      {/* ambient light */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[4%] right-[8%] w-[680px] h-[680px] rounded-full blur-[140px] animate-pulse-glow" style={{ background: "rgba(129,140,248,0.18)" }} />
         <div className="absolute bottom-[6%] left-[2%] w-[460px] h-[460px] rounded-full blur-[120px] animate-pulse-glow" style={{ background: "rgba(201,154,46,0.1)", animationDelay: "1.2s" }} />
@@ -36,7 +35,6 @@ export default function Desktop() {
       </div>
 
       <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pt-6 lg:pt-10 pb-12 lg:pb-16 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0 max-w-[1500px] mx-auto">
-        {/* Copy */}
         <motion.div
           variants={staggerContainer(0.08, 0.1)}
           initial="hidden"
@@ -78,7 +76,6 @@ export default function Desktop() {
           </motion.div>
         </motion.div>
 
-        {/* Visual */}
         <motion.div
           initial={{ opacity: 0, x: reduce ? 0 : 48, scale: 0.97 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}

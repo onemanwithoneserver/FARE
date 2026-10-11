@@ -28,7 +28,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
   const [internalExpertIndex, setInternalExpertIndex] = useState(0);
   const activeExpert: Expert = propExpert || expertsList[internalExpertIndex] || (s.defaultExpert as unknown as Expert);
 
-  // UNSELECTED BY DEFAULT
   const [selectedDurationId, setSelectedDurationId] = useState<string | null>(null);
   const [scenarioText, setScenarioText] = useState("");
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -92,7 +91,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
         description="Select duration, scenario & available time slot to reserve your live mock."
       />
 
-      {/* Active Mentor Banner for Mobile */}
       <div className="w-full mb-6 px-1">
         <div className="bg-[#0B1D3A] rounded-[18px] p-4 text-white flex flex-col gap-3 shadow-md border border-[#C99A2E]/20 relative overflow-hidden">
           <div className="flex items-center justify-between">
@@ -136,7 +134,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
           </div>
         </div>
 
-        {/* Mentor Switcher Carousel for Mobile */}
         <AnimatePresence>
           {isSwitchExpertOpen && (
             <motion.div
@@ -180,7 +177,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
         viewport={{ once: true }}
         className="flex flex-col gap-5"
       >
-        {/* Validation Warning */}
         {validationError && (
           <div className="p-3 rounded-[12px] bg-amber-50 border border-amber-200 text-amber-900 text-[12px] font-bold flex items-center gap-2">
             <AlertCircle size={15} className="text-amber-600 shrink-0" />
@@ -188,7 +184,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
           </div>
         )}
 
-        {/* Step 1: Duration Selector (Unselected by default) */}
         <motion.div 
           variants={fadeUp}
           className="bg-white rounded-[20px] border border-[#E6EBF3] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-4 sm:p-5"
@@ -260,12 +255,10 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
           </div>
         </motion.div>
 
-        {/* Step 2: MOVED TO THE SECOND - Merged Date & Time Slots Selector */}
         <motion.div 
           variants={fadeUp}
           className="bg-white rounded-[20px] border border-[#E6EBF3] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-4 sm:p-5 flex flex-col gap-4"
         >
-          {/* Header */}
           <div className="flex items-center justify-between">
             <h3 className="text-[13px] font-black uppercase tracking-[0.1em] text-[#7B8DAA] flex items-center gap-1.5">
               <Calendar size={15} className="text-[#C99A2E]" />
@@ -278,7 +271,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
             </span>
           </div>
 
-          {/* Part A: Dates */}
           <div>
             <span className="text-[11px] font-black uppercase tracking-wider text-[#7B8DAA] block mb-2">
               Select Date
@@ -313,7 +305,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
 
           <div className="border-t border-[#E6EBF3]" />
 
-          {/* Part B: Time Slots */}
           <div>
             <span className="text-[11px] font-black uppercase tracking-wider text-[#7B8DAA] block mb-2">
               Available Slots (IST)
@@ -351,7 +342,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
           </div>
         </motion.div>
 
-        {/* Reservation Review Card - "Choose Practice Scenario" REPLACES "Assigned Mentor" */}
         <motion.div
           variants={fadeUp}
           className="bg-white rounded-[20px] border border-[#E6EBF3] p-5 flex flex-col gap-4 shadow-sm"
@@ -368,7 +358,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
             </p>
           </div>
 
-          {/* CHOOSE PRACTICE SCENARIO (Replaces Assigned Mentor) */}
           <div className="p-3.5 rounded-[16px] bg-[#F8FAFD] border border-[#E6EBF3] flex flex-col gap-2.5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5 text-[11.5px] font-black uppercase text-[#0B1D3A] tracking-wider">
@@ -382,7 +371,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
               </span>
             </div>
 
-            {/* Quick Suggestions (Name only) */}
             <div>
               <span className="text-[10px] font-bold text-[#7B8DAA] uppercase block mb-1">
                 Suggestions (tap to fill):
@@ -408,7 +396,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
               </div>
             </div>
 
-            {/* Multi-line edit field */}
             <div className="relative">
               <textarea
                 value={scenarioText}
@@ -432,7 +419,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
             </div>
           </div>
 
-          {/* Details breakdown */}
           <div className="grid grid-cols-2 gap-2 text-[12px]">
             <div className="p-2.5 rounded-[10px] bg-[#F8FAFD] border border-[#E6EBF3]">
               <span className="text-[10px] text-[#7B8DAA] block">Date & Time</span>
@@ -448,7 +434,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
             </div>
           </div>
 
-          {/* Total & Action */}
           <div className="pt-3 border-t border-[#E6EBF3] flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <span className="text-[12px] font-bold text-[#7B8DAA] uppercase">Total Fee</span>
@@ -472,7 +457,6 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
         </motion.div>
       </motion.div>
 
-      {/* Booking Confirmation Success Modal */}
       <AnimatePresence>
         {isBooked && selectedDuration && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

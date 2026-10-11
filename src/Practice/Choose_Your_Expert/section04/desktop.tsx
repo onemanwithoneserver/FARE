@@ -43,7 +43,6 @@ export default function Desktop({
     };
   }, []);
 
-  // Close the dropdown when switching tabs so options never mismatch the mode.
   useEffect(() => setIsOpen(false), [viewMode]);
 
   const sortOptions = SORT_OPTIONS_BY_MODE[viewMode];
@@ -59,9 +58,7 @@ export default function Desktop({
       transition={{ duration: 0.5 }}
       className="w-full bg-white rounded-[22px] border border-[#E6EBF3] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-30 flex flex-col gap-3.5"
     >
-      {/* Row 1: Tabs + Sort */}
       <div className="flex flex-wrap items-center justify-between gap-3">
-        {/* Segmented tabs */}
         <div
           role="tablist"
           aria-label="Browse mode"
@@ -98,7 +95,6 @@ export default function Desktop({
           })}
         </div>
 
-        {/* Sort dropdown */}
         <div className="relative" ref={dropdownRef}>
           <button
             type="button"
@@ -213,7 +209,6 @@ export default function Desktop({
           </div>
         </div>
 
-      {/* Row 2: Search */}
       <div className="relative w-full group/search">
         <Search
           className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7B8DAA] group-focus-within/search:text-[#C99A2E] transition-colors"

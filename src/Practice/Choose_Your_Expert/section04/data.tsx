@@ -13,9 +13,6 @@ import {
   Layers,
 } from "lucide-react";
 
-/* ------------------------------------------------------------------ */
-/* Types                                                               */
-/* ------------------------------------------------------------------ */
 
 export type ViewMode = "experts" | "scenarios";
 
@@ -50,13 +47,9 @@ export interface Scenario {
   rating: number;
   relevance: number;
   tag?: string;
-  /** Keyword used to find matching experts (matches expert `canPractise` / `specialisedIn`). */
   expertKeyword: string;
 }
 
-/* ------------------------------------------------------------------ */
-/* Tabs                                                                */
-/* ------------------------------------------------------------------ */
 
 export const VIEW_TABS: { id: ViewMode; label: string; icon: LucideIcon }[] = [
   { id: "experts", label: "Experts By", icon: Users },
@@ -68,9 +61,6 @@ export const SEARCH_PLACEHOLDERS: Record<ViewMode, string> = {
   scenarios: "Search scenarios, skills, customer personas...",
 };
 
-/* ------------------------------------------------------------------ */
-/* Sort options                                                        */
-/* ------------------------------------------------------------------ */
 
 export const EXPERT_SORT_OPTIONS: SortOption[] = [
   { label: "Most Relevant", caption: "Best match for practice & scenario", tag: "Recommended", icon: Sparkles, color: "#C99A2E", bg: "rgba(201, 154, 46, 0.12)" },
@@ -93,9 +83,6 @@ export const SORT_OPTIONS_BY_MODE: Record<ViewMode, SortOption[]> = {
   scenarios: SCENARIO_SORT_OPTIONS,
 };
 
-/* ------------------------------------------------------------------ */
-/* Practice questions & scenarios                                      */
-/* ------------------------------------------------------------------ */
 
 export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   { id: "q-price", short: "Price Objection", question: "How do I handle a customer's price objection?" },
@@ -106,7 +93,6 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
 ];
 
 export const SCENARIOS: Scenario[] = [
-  // Price objection
   {
     id: "sc-price-1", questionId: "q-price", tag: "Most Popular",
     title: "\u201CYour price is 15% above the market\u201D",
@@ -134,7 +120,6 @@ export const SCENARIOS: Scenario[] = [
     skills: ["Premium Positioning", "Lifestyle Selling", "Closing"],
     practisedCount: 640, rating: 4.8, relevance: 86, expertKeyword: "Price Objection",
   },
-  // Negotiation
   {
     id: "sc-neg-1", questionId: "q-negotiation", tag: "Closing",
     title: "\u201CGive me 10% off and I'll book today\u201D",
@@ -162,7 +147,6 @@ export const SCENARIOS: Scenario[] = [
     skills: ["High-ticket Negotiation", "Stakeholder Mapping", "Leasing"],
     practisedCount: 410, rating: 4.9, relevance: 84, expertKeyword: "Negotiation",
   },
-  // Site visit
   {
     id: "sc-site-1", questionId: "q-site-visit", tag: "Most Popular",
     title: "\u201CWe'll think about it and get back\u201D",
@@ -181,7 +165,6 @@ export const SCENARIOS: Scenario[] = [
     skills: ["Need Analysis", "Product Presentation", "Rapport"],
     practisedCount: 1105, rating: 4.7, relevance: 89, expertKeyword: "Site Visit",
   },
-  // Trust
   {
     id: "sc-trust-1", questionId: "q-trust", tag: "Consultative",
     title: "Fear of possession delays",
@@ -200,7 +183,6 @@ export const SCENARIOS: Scenario[] = [
     skills: ["NRI Sales", "Virtual Tours", "Documentation"],
     practisedCount: 530, rating: 4.9, relevance: 88, expertKeyword: "Trust",
   },
-  // ROI
   {
     id: "sc-roi-1", questionId: "q-roi", tag: "Commercial",
     title: "\u201CRental yield is too low for this price\u201D",
@@ -268,7 +250,6 @@ export function getSortedAndFilteredScenarios(
   return result;
 }
 
-/** Legacy export retained for backwards compatibility. */
 export const data = {
   expertsFound: "18 Experts Found",
   sortByOptions: EXPERT_SORT_OPTIONS.map((o) => o.label),

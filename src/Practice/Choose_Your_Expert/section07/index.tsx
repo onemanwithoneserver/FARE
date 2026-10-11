@@ -1,10 +1,3 @@
-import Desktop from "./desktop";
-import Mobile from "./mobile";
-
-interface Props {
-  isMobile: boolean;
-}
-
-export default function Section07({ isMobile }: Props) {
-  return isMobile ? <Mobile /> : <Desktop />;
+export default function Section07() {
+  return null;
 }

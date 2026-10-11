@@ -101,54 +101,6 @@ export default function Desktop() {
           </motion.div>
 
           
-         {/*  <motion.div variants={item} className="w-[340px] shrink-0 flex flex-col gap-4">
-            <div className="flex items-center gap-2 mb-1">
-              <div className="w-8 h-8 rounded-[4px] flex items-center justify-center text-white luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" style={{ background: `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` }}>
-                <Mic size={15} strokeWidth={2.5} />
-              </div>
-              <span className="text-[13px] font-bold text-[#7B8DAA] uppercase tracking-[0.1em]">{t("Audio Snippets")}</span>
-            </div>
-
-            {audioClips.map((clip, idx) => (
-              <div
-                key={idx}
-                className="group bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-4 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 hover:luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 hover:border-[#0B1D3A]/[0.15] transition-all duration-300 cursor-pointer"
-                onClick={() => setPlayingIdx(playingIdx === idx ? null : idx)}
-              >
-                <div className="flex items-center gap-3">
-                  <motion.div
-                    animate={playingIdx === idx ? { scale: [1, 1.1, 1] } : {}}
-                    transition={{ duration: 1.2, repeat: Infinity }}
-                    className="w-9 h-9 rounded-full flex items-center justify-center text-white shrink-0 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400"
-                    style={{ background: playingIdx === idx ? `linear-gradient(135deg, ${GOLD_MID}, ${GOLD})` : "#F1F5F9" }}
-                  >
-                    {playingIdx === idx
-                      ? <Volume2 size={15} strokeWidth={2.5} className="text-white" />
-                      : <PlayCircle size={15} strokeWidth={2.5} className="text-[#7B8DAA]" />
-                    }
-                  </motion.div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[13px] font-black leading-tight truncate" style={{ color: NAVY }}>{clip.title}</p>
-                    <p className="text-[11px] text-[#7B8DAA] font-medium mt-0.5">{clip.desc}</p>
-                  </div>
-                  <span className="text-[11px] font-bold text-[#7B8DAA] shrink-0">{clip.duration}</span>
-                </div>
-                {playingIdx === idx && (
-                  <div className="mt-3 flex gap-0.5 items-end h-6 px-1">
-                    {[3, 5, 8, 4, 7, 5, 9, 6, 4, 7, 5, 8, 3, 6, 9, 5, 7, 4, 8, 6].map((h, i) => (
-                      <motion.div
-                        key={i}
-                        animate={{ scaleY: [1, 0.4, 1] }}
-                        transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.05, ease: "easeInOut" }}
-                        className="flex-1 rounded-full origin-bottom"
-                        style={{ height: `${h * 10}%`, background: `linear-gradient(to top, ${GOLD}, ${GOLD_MID})` }}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </motion.div> */}
         </div>
       </motion.div>
 

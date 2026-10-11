@@ -36,7 +36,7 @@ export const FLOW_PHASES = [
         description: "Pinpoint the specific real-world challenge—price objection, need discovery, or high-stakes closing—you want to master.",
         tag: "Targeted Skill",
         icon: Target,
-        accent: ACCENTS[0], // Navy
+        accent: ACCENTS[0],
       },
       {
         stepNumber: "02",
@@ -46,7 +46,7 @@ export const FLOW_PHASES = [
         description: "Filter verified specialists by domain, compare experience side-by-side, and choose your ideal mentor.",
         tag: "Verified Mentor",
         icon: Users,
-        accent: ACCENTS[1], // Gold
+        accent: ACCENTS[1],
       },
       {
         stepNumber: "03",
@@ -56,7 +56,7 @@ export const FLOW_PHASES = [
         description: "Select standard 45-min simulation or 60-min intensive practice with thorough coaching tailored to your goals.",
         tag: "Flexible Depth",
         icon: Clock,
-        accent: ACCENTS[2], // Indigo
+        accent: ACCENTS[2],
       },
     ],
   },
@@ -72,7 +72,7 @@ export const FLOW_PHASES = [
         description: "Pick from live open calendar slots across Morning, Afternoon, or Evening with guaranteed mentor availability.",
         tag: "Instant Slots",
         icon: Calendar,
-        accent: ACCENTS[3], // Teal
+        accent: ACCENTS[3],
       },
       {
         stepNumber: "05",
@@ -82,7 +82,7 @@ export const FLOW_PHASES = [
         description: "Transparent single-fee pricing with zero hidden platform charges and encrypted payment protection.",
         tag: "Secure Checkout",
         icon: CreditCard,
-        accent: ACCENTS[4], // Rose
+        accent: ACCENTS[4],
       },
       {
         stepNumber: "06",
@@ -92,7 +92,7 @@ export const FLOW_PHASES = [
         description: "Instant calendar invite sync, Google Meet video link, and preparation rubric delivered directly to your inbox.",
         tag: "Automated Sync",
         icon: CheckCircle,
-        accent: ACCENTS[5], // Emerald
+        accent: ACCENTS[5],
       },
     ],
   },
@@ -108,7 +108,7 @@ export const FLOW_PHASES = [
         description: "High-fidelity 1-on-1 video simulation where the expert plays a realistic, demanding customer in real-time.",
         tag: "Realistic Simulation",
         icon: Video,
-        accent: ACCENTS[6], // Violet
+        accent: ACCENTS[6],
       },
       {
         stepNumber: "08",
@@ -118,7 +118,7 @@ export const FLOW_PHASES = [
         description: "In-depth debrief and structured rubric scorecard highlighting communication, missed cues, and tactical fixes.",
         tag: "Actionable Scoring",
         icon: MessageSquare,
-        accent: ACCENTS[7], // Amber
+        accent: ACCENTS[7],
       },
       {
         stepNumber: "09",
@@ -128,7 +128,7 @@ export const FLOW_PHASES = [
         description: "Re-test with tougher objections or advance to higher-ticket scenarios until you achieve complete deal confidence.",
         tag: "Continuous Mastery",
         icon: RefreshCw,
-        accent: ACCENTS[8], // Sky
+        accent: ACCENTS[8],
       },
     ],
   },
