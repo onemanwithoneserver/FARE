@@ -27,17 +27,66 @@ export interface CriterionItem {
   label: string;
   icon: LucideIcon;
   hint: string;
+  bg: string;
 }
 
 export const CRITERIA_ITEMS: CriterionItem[] = [
-  { id: "exp", label: "RE Experience", icon: Briefcase, hint: "Total verified real estate tenure" },
-  { id: "segment", label: "RE Segment", icon: Building2, hint: "Primary property specialization" },
-  { id: "skills", label: "Core Expertise", icon: Sparkles, hint: "Strengths & coaching focus" },
-  { id: "scenario", label: "Scenario Fit", icon: Target, hint: "High-pressure objection handling" },
-  { id: "sessions", label: "Mock Sessions", icon: Users, hint: "Completed candidate drills" },
-  { id: "languages", label: "Languages", icon: Globe2, hint: "Fluency for role-play practice" },
-  { id: "price", label: "30-Min Rate", icon: Coins, hint: "Starting 1-on-1 session fee" },
-  { id: "availability", label: "Next Slot", icon: Calendar, hint: "Earliest verified availability" },
+  {
+    id: "exp",
+    label: "RE Experience",
+    icon: Briefcase,
+    hint: "Total verified real estate tenure",
+    bg: "linear-gradient(135deg, #1E3A74 0%, #0B1D3A 100%)",
+  },
+  {
+    id: "segment",
+    label: "RE Segment",
+    icon: Building2,
+    hint: "Primary property specialization",
+    bg: "linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)",
+  },
+  {
+    id: "skills",
+    label: "Core Expertise",
+    icon: Sparkles,
+    hint: "Strengths & coaching focus",
+    bg: "linear-gradient(135deg, #E0B550 0%, #B8871F 100%)",
+  },
+  {
+    id: "scenario",
+    label: "Scenario Fit",
+    icon: Target,
+    hint: "High-pressure objection handling",
+    bg: "linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)",
+  },
+  {
+    id: "sessions",
+    label: "Mock Sessions",
+    icon: Users,
+    hint: "Completed candidate drills",
+    bg: "linear-gradient(135deg, #10B981 0%, #047857 100%)",
+  },
+  {
+    id: "languages",
+    label: "Languages",
+    icon: Globe2,
+    hint: "Fluency for role-play practice",
+    bg: "linear-gradient(135deg, #38BDF8 0%, #0284C7 100%)",
+  },
+  {
+    id: "price",
+    label: "30-Min Rate",
+    icon: Coins,
+    hint: "Starting 1-on-1 session fee",
+    bg: "linear-gradient(135deg, #F43F5E 0%, #BE123C 100%)",
+  },
+  {
+    id: "availability",
+    label: "Next Slot",
+    icon: Calendar,
+    hint: "Earliest verified availability",
+    bg: "linear-gradient(135deg, #F59E0B 0%, #B45309 100%)",
+  },
 ];
 
 export const data = {

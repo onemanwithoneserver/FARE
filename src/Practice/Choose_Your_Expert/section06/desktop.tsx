@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Check,
@@ -8,6 +8,7 @@ import {
   Scale,
   RotateCcw,
   Sparkles,
+  Trash2,
 } from "lucide-react";
 import { data, CRITERIA_ITEMS } from "./data";
 import {
@@ -28,54 +29,205 @@ interface Props {
   onBookExpert?: (expert: Expert) => void;
 }
 
+interface MentorDropdownProps {
+  slots: (string | null)[];
+  currentSlotIdx?: number;
+  onSelect: (name: string) => void;
+  onClose: () => void;
+  align?: "left" | "center" | "right";
+  direction?: "down" | "up";
+}
+
+function MentorDropdownMenu({
+  slots,
+  currentSlotIdx,
+  onSelect,
+  onClose,
+  align = "center",
+  direction = "down",
+}: MentorDropdownProps) {
+  const alignClass =
+    align === "right"
+      ? "right-0 left-auto"
+      : align === "left"
+      ? "left-0 right-auto"
+      : "left-1/2 -translate-x-1/2";
+
+  const dirClass = direction === "up" ? "bottom-full mb-2" : "top-full mt-2";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: direction === "up" ? 6 : -6, scale: 0.97 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: direction === "up" ? 6 : -6, scale: 0.97 }}
+      transition={{ duration: 0.18, ease: EASE }}
+      className={`absolute ${dirClass} ${alignClass} z-50 w-72 sm:w-80 bg-white rounded-[16px] border border-[#CBD5E1] shadow-[0_22px_48px_-12px_rgba(11,29,58,0.28)] p-2.5 font-['Outfit'] select-none text-left`}
+    >
+      <div className="flex items-center justify-between px-2 py-1.5 border-b border-[#F0F4FA] mb-1.5">
+        <div className="flex items-center gap-1.5">
+          <Sparkles size={13} className="text-[#C99A2E]" />
+          <span className="text-[12px] font-bold text-[#0B1D3A] tracking-tight">
+            Select Mentor for Comparison
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close dropdown"
+          className="w-5 h-5 rounded-full hover:bg-[#F1F5F9] text-[#7B8DAA] flex items-center justify-center cursor-pointer transition-colors"
+        >
+          <X size={12} strokeWidth={2.4} />
+        </button>
+      </div>
+
+      <div className="max-h-64 overflow-y-auto flex flex-col gap-1 [scrollbar-width:thin] [scrollbar-color:#CBD5E1_transparent] pr-0.5">
+        {data.allExperts.map((exp) => {
+          const isCurrent =
+            currentSlotIdx !== undefined && slots[currentSlotIdx] === exp.name;
+          const assignedSlotIdx = slots.findIndex((name) => name === exp.name);
+          const isAssignedElsewhere =
+            assignedSlotIdx !== -1 && assignedSlotIdx !== currentSlotIdx;
+
+          return (
+            <div
+              key={exp.name}
+              onClick={() => onSelect(exp.name)}
+              className={`p-2 rounded-[12px] transition-all cursor-pointer flex items-center justify-between gap-2.5 border ${
+                isCurrent
+                  ? "bg-[#FFFDF7] border-[#C99A2E] ring-1 ring-[#C99A2E]/30"
+                  : isAssignedElsewhere
+                  ? "bg-[#F8FAFD] border-transparent opacity-75 hover:opacity-100 hover:border-[#CBD5E1]"
+                  : "bg-white border-transparent hover:border-[#C99A2E]/50 hover:bg-[#FFFDF7]"
+              }`}
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="relative shrink-0">
+                  <img
+                    src={exp.image}
+                    alt={exp.name}
+                    className="w-9 h-9 rounded-full object-cover border border-[#CBD5E1]"
+                  />
+                  <VerifiedBadge
+                    size={13}
+                    className="absolute -bottom-0.5 -right-0.5 ring-1.5 ring-white rounded-full"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[13px] font-bold text-[#0B1D3A] truncate">
+                      {exp.name}
+                    </span>
+                    {isCurrent && (
+                      <span className="text-[9.5px] font-bold px-1.5 py-0.2 rounded-full bg-[#E4C46A]/25 text-[#8A5A00]">
+                        Current
+                      </span>
+                    )}
+                    {isAssignedElsewhere && (
+                      <span className="text-[9.5px] font-bold px-1.5 py-0.2 rounded-full bg-[#E2E8F0] text-[#475569]">
+                        Slot {assignedSlotIdx + 1}
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-[11px] text-[#5A6B82] truncate block">
+                    {exp.role.split("·")[0].trim()}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-1 shrink-0">
+                <span className="text-[11.5px] font-bold text-[#8A5A00] bg-[#FFFBF0] px-2 py-0.5 rounded border border-[#C99A2E]/25">
+                  {exp.values[6]}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Desktop({ onBookExpert }: Props) {
   const s = data;
   const [isExpanded, setIsExpanded] = useState(true);
-  const [selectedNames, setSelectedNames] = useState<string[]>(s.defaultCompareNames);
-  const [isPickerOpen, setIsPickerOpen] = useState(false);
-  const [pickerSlotIndex, setPickerSlotIndex] = useState<number | null>(null);
 
+  // 4 slots fixed array allowing each slot to be filled or null
+  const [slots, setSlots] = useState<(string | null)[]>([
+    s.defaultCompareNames[0] || null,
+    s.defaultCompareNames[1] || null,
+    s.defaultCompareNames[2] || null,
+    null,
+  ]);
+
+  // Tracks active open dropdown: index 0-3 for slots, "toolbar" for header, or `footer-${index}`
+  const [openDropdown, setOpenDropdown] = useState<
+    number | "toolbar" | `footer-${number}` | null
+  >(null);
+
+  const activeCount = slots.filter(Boolean).length;
   const maxSlots = 4;
-  const slots = [0, 1, 2, 3];
+  const hasEmptySlot = slots.some((name) => name === null);
 
-  const selectedExperts = selectedNames
-    .map((name) => s.allExperts.find((exp) => exp.name === name))
-    .filter(Boolean) as typeof s.allExperts;
+  // Listen for clicks outside open dropdown
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest(".mentor-dropdown-container")) {
+        setOpenDropdown(null);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenDropdown(null);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
-  const handleSwapExpert = (slotIdx: number) => {
-    setPickerSlotIndex(slotIdx);
-    setIsPickerOpen(true);
+  const handleSelectExpertForSlot = (name: string, slotIdx: number) => {
+    setSlots((prev) => {
+      const next = [...prev];
+      // If mentor was in another slot, clear that previous slot
+      const existingIdx = next.findIndex((n) => n === name);
+      if (existingIdx !== -1 && existingIdx !== slotIdx) {
+        next[existingIdx] = null;
+      }
+      next[slotIdx] = name;
+      return next;
+    });
+    setOpenDropdown(null);
   };
 
-  const handleSelectExpertForSlot = (name: string) => {
-    if (pickerSlotIndex !== null) {
-      setSelectedNames((prev) => {
-        const next = [...prev];
-        next[pickerSlotIndex] = name;
-        return next;
-      });
-    } else {
-      setSelectedNames((prev) => {
-        if (prev.length < maxSlots && !prev.includes(name)) {
-          return [...prev, name];
-        }
-        return prev;
-      });
+  const handleToolbarAddMentor = (name: string) => {
+    const firstEmpty = slots.findIndex((s) => s === null);
+    if (firstEmpty !== -1) {
+      handleSelectExpertForSlot(name, firstEmpty);
     }
-    setIsPickerOpen(false);
-    setPickerSlotIndex(null);
   };
 
   const handleRemoveExpert = (slotIdx: number) => {
-    setSelectedNames((prev) => {
+    setSlots((prev) => {
       const next = [...prev];
-      next.splice(slotIdx, 1);
+      next[slotIdx] = null;
       return next;
     });
   };
 
+  const handleClearAll = () => {
+    setSlots([null, null, null, null]);
+    setOpenDropdown(null);
+  };
+
   const handleResetToDefault = () => {
-    setSelectedNames(s.defaultCompareNames);
+    setSlots([
+      s.defaultCompareNames[0] || null,
+      s.defaultCompareNames[1] || null,
+      s.defaultCompareNames[2] || null,
+      null,
+    ]);
+    setOpenDropdown(null);
   };
 
   const handleBook = (expertName: string) => {
@@ -83,7 +235,9 @@ export default function Desktop({ onBookExpert }: Props) {
     if (found && onBookExpert) {
       onBookExpert(found);
     } else {
-      document.getElementById("booking-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document
+        .getElementById("booking-section")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -103,8 +257,8 @@ export default function Desktop({ onBookExpert }: Props) {
         />
 
         {/* Toolbar Header Card */}
-        <div className="bg-white rounded-[16px] border border-[#E6EBF3] p-4 sm:p-5 luxury-shadow-sm flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden">
-          <div className="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r from-[#C99A2E] via-[#E4C46A] to-[#0B1D3A]" />
+        <div className="bg-white rounded-[16px] border border-[#E6EBF3] p-4 sm:p-5 luxury-shadow-sm flex flex-col md:flex-row items-center justify-between gap-4 relative">
+          <div className="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r from-[#C99A2E] via-[#E4C46A] to-[#0B1D3A] rounded-t-[16px]" />
           <HoverGlow accent={ACCENTS[1]} />
 
           <div className="relative z-10 flex items-center gap-3.5 w-full md:w-auto">
@@ -122,7 +276,7 @@ export default function Desktop({ onBookExpert }: Props) {
                   Interactive Comparison Matrix
                 </span>
                 <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#EEF2F9] text-[#0B1D3A]">
-                  {selectedNames.length} / {maxSlots} Mentors Active
+                  {activeCount} / {maxSlots} Mentors Active
                 </span>
               </div>
               <h3 className="text-[18px] font-bold text-[#0B1D3A] tracking-tight">
@@ -132,17 +286,49 @@ export default function Desktop({ onBookExpert }: Props) {
           </div>
 
           <div className="relative z-10 flex items-center gap-2.5 w-full md:w-auto justify-end flex-wrap">
-            {selectedNames.length < maxSlots && (
+            {hasEmptySlot && (
+              <div className="relative mentor-dropdown-container">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setOpenDropdown((prev) => (prev === "toolbar" ? null : "toolbar"))
+                  }
+                  aria-expanded={openDropdown === "toolbar"}
+                  className={`h-9 px-3.5 rounded-[10px] bg-[#0B1D3A] text-white hover:bg-[#122A50] text-[12.5px] font-semibold transition-all cursor-pointer flex items-center gap-1.5 shadow-xs ${FOCUS_RING}`}
+                >
+                  <Plus size={14} strokeWidth={2.6} />
+                  <span>Add Mentor</span>
+                  <ChevronDown
+                    size={12}
+                    strokeWidth={2.6}
+                    className={`transition-transform duration-200 ${
+                      openDropdown === "toolbar" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {openDropdown === "toolbar" && (
+                    <MentorDropdownMenu
+                      slots={slots}
+                      onSelect={handleToolbarAddMentor}
+                      onClose={() => setOpenDropdown(null)}
+                      align="right"
+                    />
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
+
+            {activeCount > 0 && (
               <button
                 type="button"
-                onClick={() => {
-                  setPickerSlotIndex(selectedNames.length);
-                  setIsPickerOpen(true);
-                }}
-                className={`h-9 px-3.5 rounded-[10px] bg-[#0B1D3A] text-white hover:bg-[#122A50] text-[12.5px] font-semibold transition-all cursor-pointer flex items-center gap-1.5 shadow-xs ${FOCUS_RING}`}
+                onClick={handleClearAll}
+                className={`h-9 px-3 rounded-[10px] bg-red-50 hover:bg-red-100 text-red-600 border border-red-200/80 text-[12px] font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${FOCUS_RING}`}
+                title="Clear all mentors from comparison"
               >
-                <Plus size={14} strokeWidth={2.6} />
-                <span>Add Mentor</span>
+                <Trash2 size={12} strokeWidth={2.4} />
+                <span>Clear All</span>
               </button>
             )}
 
@@ -170,7 +356,9 @@ export default function Desktop({ onBookExpert }: Props) {
               <ChevronDown
                 size={14}
                 strokeWidth={2.6}
-                className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                className={`transition-transform duration-300 ${
+                  isExpanded ? "rotate-180" : ""
+                }`}
               />
             </button>
           </div>
@@ -184,10 +372,10 @@ export default function Desktop({ onBookExpert }: Props) {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.35, ease: EASE }}
-              className="overflow-hidden"
+              className="overflow-visible"
             >
               <div className="w-full overflow-x-auto pb-4 pt-1 [scrollbar-width:thin] [scrollbar-color:#CBD5E1_transparent]">
-                <div className="min-w-[1040px] bg-white rounded-[16px] border border-[#E6EBF3] luxury-shadow-sm overflow-hidden">
+                <div className="min-w-[1040px] bg-white rounded-[16px] border border-[#E6EBF3] luxury-shadow-sm overflow-visible">
                   <table className="w-full text-left border-collapse table-fixed">
                     <thead>
                       <tr>
@@ -204,9 +392,11 @@ export default function Desktop({ onBookExpert }: Props) {
                           </span>
                         </th>
 
-                        {/* Expert header columns */}
-                        {slots.map((idx) => {
-                          const exp = selectedExperts[idx];
+                        {/* 4 Expert header columns */}
+                        {slots.map((mentorName, idx) => {
+                          const exp = mentorName
+                            ? s.allExperts.find((e) => e.name === mentorName)
+                            : null;
                           const a = accentAt(idx + 1);
 
                           return (
@@ -216,23 +406,25 @@ export default function Desktop({ onBookExpert }: Props) {
                             >
                               {exp ? (
                                 <div className="flex flex-col items-center text-center gap-3 relative">
-                                  {selectedExperts.length > 2 && (
-                                    <button
-                                      type="button"
-                                      onClick={() => handleRemoveExpert(idx)}
-                                      aria-label={`Remove ${exp.name} from comparison`}
-                                      className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[#F3F6FB] hover:bg-red-50 hover:text-red-600 text-[#7B8DAA] flex items-center justify-center transition-colors cursor-pointer border border-[#E6EBF3]"
-                                    >
-                                      <X size={12} strokeWidth={2.8} />
-                                    </button>
-                                  )}
+                                  {/* Allow user to clear ANY mentor down to 0 */}
+                                  <button
+                                    type="button"
+                                    onClick={() => handleRemoveExpert(idx)}
+                                    aria-label={`Remove ${exp.name} from slot ${idx + 1}`}
+                                    className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[#F3F6FB] hover:bg-red-50 hover:text-red-600 text-[#7B8DAA] flex items-center justify-center transition-colors cursor-pointer border border-[#E6EBF3] shadow-xs"
+                                    title="Remove from comparison"
+                                  >
+                                    <X size={12} strokeWidth={2.8} />
+                                  </button>
 
                                   <div className="relative">
                                     <div
                                       className="w-16 h-16 rounded-full p-[2.5px] transition-transform duration-300 hover:scale-105"
                                       style={{
-                                        background: "linear-gradient(135deg, #C99A2E, #F4D068 50%, #0B1D3A)",
-                                        boxShadow: "0 8px 18px -6px rgba(201,154,46,0.5)",
+                                        background:
+                                          "linear-gradient(135deg, #C99A2E, #F4D068 50%, #0B1D3A)",
+                                        boxShadow:
+                                          "0 8px 18px -6px rgba(201,154,46,0.5)",
                                       }}
                                     >
                                       <img
@@ -268,30 +460,109 @@ export default function Desktop({ onBookExpert }: Props) {
                                     >
                                       Book Session
                                     </PrimaryButton>
-                                    <button
-                                      type="button"
-                                      onClick={() => handleSwapExpert(idx)}
-                                      className="text-[11.5px] font-medium text-[#7B8DAA] hover:text-[#0B1D3A] transition-colors cursor-pointer"
-                                    >
-                                      Swap Mentor
-                                    </button>
+
+                                    {/* Inline Dropdown trigger for swapping mentor */}
+                                    <div className="relative mentor-dropdown-container w-full">
+                                      <button
+                                        type="button"
+                                        onClick={() =>
+                                          setOpenDropdown((prev) =>
+                                            prev === idx ? null : idx
+                                          )
+                                        }
+                                        aria-expanded={openDropdown === idx}
+                                        className="text-[11.5px] font-medium text-[#7B8DAA] hover:text-[#0B1D3A] transition-colors cursor-pointer flex items-center justify-center gap-1 w-full"
+                                      >
+                                        <span>Swap Mentor</span>
+                                        <ChevronDown
+                                          size={11}
+                                          strokeWidth={2.4}
+                                          className={`transition-transform duration-200 ${
+                                            openDropdown === idx ? "rotate-180" : ""
+                                          }`}
+                                        />
+                                      </button>
+
+                                      <AnimatePresence>
+                                        {openDropdown === idx && (
+                                          <MentorDropdownMenu
+                                            slots={slots}
+                                            currentSlotIdx={idx}
+                                            onSelect={(name) =>
+                                              handleSelectExpertForSlot(name, idx)
+                                            }
+                                            onClose={() => setOpenDropdown(null)}
+                                            align={
+                                              idx === 3
+                                                ? "right"
+                                                : idx === 0
+                                                ? "left"
+                                                : "center"
+                                            }
+                                          />
+                                        )}
+                                      </AnimatePresence>
+                                    </div>
                                   </div>
                                 </div>
                               ) : (
-                                <div className="py-8 flex flex-col items-center justify-center text-center gap-2">
+                                /* Empty Slot with inline dropdown */
+                                <div className="py-7 flex flex-col items-center justify-center text-center gap-2 relative mentor-dropdown-container">
                                   <button
                                     type="button"
-                                    onClick={() => handleSwapExpert(idx)}
+                                    onClick={() =>
+                                      setOpenDropdown((prev) =>
+                                        prev === idx ? null : idx
+                                      )
+                                    }
+                                    aria-expanded={openDropdown === idx}
                                     className={`w-12 h-12 rounded-full border-2 border-dashed border-[#CBD5E1] hover:border-[#C99A2E] bg-[#F8FAFD] hover:bg-[#FFFDF7] text-[#7B8DAA] hover:text-[#C99A2E] flex items-center justify-center transition-all cursor-pointer shadow-xs ${FOCUS_RING}`}
+                                    title="Choose a mentor for this slot"
                                   >
                                     <Plus size={20} strokeWidth={2.5} />
                                   </button>
-                                  <span className="text-[13px] font-bold text-[#0B1D3A] mt-1">
-                                    Add Mentor
+                                  <span className="text-[13px] font-bold text-[#0B1D3A] mt-0.5">
+                                    Slot {idx + 1} Available
                                   </span>
-                                  <span className="text-[11px] text-[#7B8DAA] font-medium">
-                                    Slot {idx + 1} of {maxSlots}
-                                  </span>
+
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      setOpenDropdown((prev) =>
+                                        prev === idx ? null : idx
+                                      )
+                                    }
+                                    className="text-[11.5px] font-bold text-[#8A5A00] hover:text-[#0B1D3A] bg-[#FFFDF7] hover:bg-[#FFFBF0] px-3 py-1 rounded-full border border-[#C99A2E]/35 transition-all cursor-pointer flex items-center gap-1 shadow-2xs mt-1"
+                                  >
+                                    <span>Select Mentor</span>
+                                    <ChevronDown
+                                      size={12}
+                                      strokeWidth={2.4}
+                                      className={`transition-transform duration-200 ${
+                                        openDropdown === idx ? "rotate-180" : ""
+                                      }`}
+                                    />
+                                  </button>
+
+                                  <AnimatePresence>
+                                    {openDropdown === idx && (
+                                      <MentorDropdownMenu
+                                        slots={slots}
+                                        currentSlotIdx={idx}
+                                        onSelect={(name) =>
+                                          handleSelectExpertForSlot(name, idx)
+                                        }
+                                        onClose={() => setOpenDropdown(null)}
+                                        align={
+                                          idx === 3
+                                            ? "right"
+                                            : idx === 0
+                                            ? "left"
+                                            : "center"
+                                        }
+                                      />
+                                    )}
+                                  </AnimatePresence>
                                 </div>
                               )}
                             </th>
@@ -300,7 +571,7 @@ export default function Desktop({ onBookExpert }: Props) {
                       </tr>
                     </thead>
 
-                    <tbody className="divide-y divide-[#E6EBF3]">
+                    <tbody>
                       {CRITERIA_ITEMS.map((item, rowIdx) => {
                         const Icon = item.icon;
                         const isEven = rowIdx % 2 === 0;
@@ -308,63 +579,61 @@ export default function Desktop({ onBookExpert }: Props) {
                         return (
                           <tr
                             key={item.id}
-                            className={`group/row transition-colors ${
+                            className={`border-b border-[#E6EBF3] transition-colors hover:bg-[#F8FAFD]/70 ${
                               isEven ? "bg-white" : "bg-[#FBFDFF]"
-                            } hover:bg-[#F3F6FD]/50`}
+                            }`}
                           >
-                            <td className="p-4 px-5 bg-[#F8FAFD] group-hover/row:bg-[#EEF3FA] transition-colors border-r border-[#E6EBF3]">
-                              <div className="flex items-center gap-3">
+                            <td className="p-4 px-5 bg-gradient-to-r from-[#F8FAFD] to-transparent border-r border-[#E6EBF3] align-middle">
+                              <div className="flex items-center gap-2.5">
                                 <span
-                                  aria-hidden="true"
-                                  className="w-8 h-8 rounded-[8px] bg-white border border-[#E6EBF3] text-[#0B1D3A] flex items-center justify-center shrink-0 shadow-2xs"
+                                  className="w-8 h-8 rounded-[10px] text-white flex items-center justify-center shrink-0 shadow-xs"
+                                  style={{ background: item.bg }}
                                 >
-                                  <Icon size={15} strokeWidth={2.3} />
+                                  <Icon size={15} strokeWidth={2.4} className="text-white" />
                                 </span>
                                 <div>
-                                  <span className="text-[13px] font-bold text-[#0B1D3A] block leading-tight">
+                                  <span className="text-[13px] font-bold text-[#0B1D3A] block">
                                     {item.label}
                                   </span>
-                                  <span className="text-[11px] font-medium text-[#7B8DAA] block mt-0.5">
+                                  <span className="text-[11px] text-[#7B8DAA] font-medium block">
                                     {item.hint}
                                   </span>
                                 </div>
                               </div>
                             </td>
 
-                            {slots.map((idx) => {
-                              const exp = selectedExperts[idx];
+                            {slots.map((mentorName, idx) => {
+                              const exp = mentorName
+                                ? s.allExperts.find((e) => e.name === mentorName)
+                                : null;
                               const val = exp?.values[rowIdx] || "—";
                               const isCheck = val.includes("✓");
                               const isPrice = item.id === "price";
-                              const isAvail = item.id === "availability";
 
                               return (
                                 <td
                                   key={idx}
-                                  className="p-4 px-5 text-[13px] font-medium text-[#334155] border-r border-[#E6EBF3] last:border-r-0 text-center"
+                                  className="p-4 px-5 text-center border-r border-[#E6EBF3] last:border-r-0 align-middle"
                                 >
                                   {exp ? (
                                     isCheck ? (
-                                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E9FBF3] text-[#047857] font-semibold text-[12px]">
-                                        <Check size={12} strokeWidth={3.2} />
-                                        <span>Specialist</span>
+                                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E9FBF3] text-[#047857] font-bold text-[12px] border border-[#10B981]/20">
+                                        <Check size={13} strokeWidth={3} />
+                                        <span>Yes</span>
                                       </span>
                                     ) : isPrice ? (
-                                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#FFFBF0] border border-[#C99A2E]/40 text-[#8A5A00] font-bold text-[13.5px]">
-                                        {val}
-                                      </span>
-                                    ) : isAvail ? (
-                                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] text-[#15803D] font-semibold text-[12px]">
-                                        <span className="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse" />
+                                      <span className="inline-block font-bold text-[#0B1D3A] text-[14px] bg-[#FFFBF0] px-3 py-1 rounded-full border border-[#C99A2E]/40 text-shadow-xs">
                                         {val}
                                       </span>
                                     ) : (
-                                      <span className="font-semibold text-[#0B1D3A]">
+                                      <span className="text-[13px] font-semibold text-[#334155]">
                                         {val}
                                       </span>
                                     )
                                   ) : (
-                                    <span className="text-[#CBD5E1] text-[15px]">—</span>
+                                    <span className="text-[#CBD5E1] text-[14px] font-medium">
+                                      —
+                                    </span>
                                   )}
                                 </td>
                               );
@@ -375,34 +644,65 @@ export default function Desktop({ onBookExpert }: Props) {
                     </tbody>
 
                     <tfoot>
-                      <tr className="bg-[#F8FAFD] border-t border-[#E6EBF3]">
+                      <tr className="bg-gradient-to-b from-[#FAFBFD] to-[#F1F5F9]">
                         <td className="p-4 px-5 border-r border-[#E6EBF3] text-[12px] font-bold uppercase tracking-wider text-[#7B8DAA]">
-                          Confirm Action
+                          Ready to Practise?
                         </td>
-                        {slots.map((idx) => {
-                          const exp = selectedExperts[idx];
+                        {slots.map((mentorName, idx) => {
+                          const exp = mentorName
+                            ? s.allExperts.find((e) => e.name === mentorName)
+                            : null;
+
                           return (
                             <td
                               key={idx}
-                              className="p-4 px-5 border-r border-[#E6EBF3] last:border-r-0 text-center bg-white"
+                              className="p-4 px-5 border-r border-[#E6EBF3] last:border-r-0 text-center relative"
                             >
                               {exp ? (
                                 <PrimaryButton
                                   full
                                   variant="gold"
                                   onClick={() => handleBook(exp.name)}
-                                  className="!h-9 !py-0 !px-3 !text-[12.5px] !rounded-[10px] font-semibold"
+                                  className="!h-8 !py-0 !px-2 !text-[12px] !rounded-[8px] font-semibold"
                                 >
-                                  Reserve Slot
+                                  Book Session
                                 </PrimaryButton>
                               ) : (
-                                <button
-                                  type="button"
-                                  onClick={() => handleSwapExpert(idx)}
-                                  className="text-[12px] font-semibold text-[#C99A2E] hover:underline cursor-pointer"
-                                >
-                                  + Select Mentor
-                                </button>
+                                <div className="relative mentor-dropdown-container">
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      setOpenDropdown((prev) =>
+                                        prev === `footer-${idx}` ? null : `footer-${idx}`
+                                      )
+                                    }
+                                    className="text-[11.5px] font-semibold text-[#8A5A00] hover:text-[#0B1D3A] flex items-center justify-center gap-1 w-full py-1 cursor-pointer"
+                                  >
+                                    <span>+ Select Mentor</span>
+                                    <ChevronDown size={11} strokeWidth={2.4} />
+                                  </button>
+
+                                  <AnimatePresence>
+                                    {openDropdown === `footer-${idx}` && (
+                                      <MentorDropdownMenu
+                                        slots={slots}
+                                        currentSlotIdx={idx}
+                                        onSelect={(name) =>
+                                          handleSelectExpertForSlot(name, idx)
+                                        }
+                                        onClose={() => setOpenDropdown(null)}
+                                        align={
+                                          idx === 3
+                                            ? "right"
+                                            : idx === 0
+                                            ? "left"
+                                            : "center"
+                                        }
+                                        direction="up"
+                                      />
+                                    )}
+                                  </AnimatePresence>
+                                </div>
                               )}
                             </td>
                           );
@@ -416,107 +716,6 @@ export default function Desktop({ onBookExpert }: Props) {
           )}
         </AnimatePresence>
       </div>
-
-      {/* Mentor Picker Modal */}
-      <AnimatePresence>
-        {isPickerOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 font-['Outfit']">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsPickerOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm"
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 12 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 12 }}
-              transition={{ duration: 0.22, ease: EASE }}
-              className="relative z-10 w-full max-w-xl bg-white rounded-[20px] p-6 border border-[#E6EBF3] shadow-[0_24px_60px_-16px_rgba(11,29,58,0.25)] flex flex-col gap-4 max-h-[85vh] overflow-y-auto"
-            >
-              <div className="flex items-center justify-between pb-3 border-b border-[#F0F4FA]">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-8 h-8 rounded-[8px] bg-[#0B1D3A] text-white flex items-center justify-center">
-                    <Sparkles size={16} />
-                  </span>
-                  <div>
-                    <h3 className="text-[17px] font-bold text-[#0B1D3A]">
-                      Select Mentor for Comparison
-                    </h3>
-                    <p className="text-[12px] text-[#5A6B82] font-medium">
-                      Pick any verified mentor to populate into your matrix
-                    </p>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setIsPickerOpen(false)}
-                  aria-label="Close mentor selector"
-                  className="w-8 h-8 rounded-full bg-[#F3F6FB] hover:bg-[#E2E8F0] flex items-center justify-center text-[#5A6B82] cursor-pointer transition-colors"
-                >
-                  <X size={15} />
-                </button>
-              </div>
-
-              <div className="flex flex-col gap-2.5">
-                {s.allExperts.map((exp, idx) => {
-                  const isAlreadySelected = selectedNames.includes(exp.name);
-                  const a = accentAt(idx);
-
-                  return (
-                    <div
-                      key={exp.name}
-                      onClick={() => handleSelectExpertForSlot(exp.name)}
-                      className={`p-3.5 rounded-[14px] border transition-all cursor-pointer flex items-center justify-between gap-3 ${
-                        isAlreadySelected
-                          ? "bg-[#F8FAFD] border-[#CBD5E1] opacity-75"
-                          : "bg-white border-[#E6EBF3] hover:border-[#C99A2E] hover:bg-[#FFFDF7] hover:shadow-xs"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3 min-w-0">
-                        <img
-                          src={exp.image}
-                          alt={exp.name}
-                          className="w-11 h-11 rounded-full object-cover border-2 border-white shadow-xs shrink-0"
-                        />
-                        <div className="min-w-0">
-                          <div className="flex items-center gap-2">
-                            <h4 className="text-[14.5px] font-bold text-[#0B1D3A] truncate">
-                              {exp.name}
-                            </h4>
-                            {isAlreadySelected && (
-                              <span className="text-[10.5px] font-bold px-2 py-0.5 rounded-full bg-[#E2E8F0] text-[#475569]">
-                                In Matrix
-                              </span>
-                            )}
-                          </div>
-                          <p className="text-[12px] text-[#5A6B82] truncate font-medium">
-                            {exp.role}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-3 shrink-0">
-                        <span
-                          className="text-[12.5px] font-bold px-3 py-1 rounded-full"
-                          style={{ background: a.soft, color: a.ink }}
-                        >
-                          {exp.values[6]}
-                        </span>
-                        <span className="text-[12px] font-bold text-[#C99A2E]">
-                          Select →
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </Section>
   );
 }
