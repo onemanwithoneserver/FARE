@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronDown, SlidersHorizontal, RotateCcw } from "lucide-react";
+import { ChevronDown, SlidersHorizontal, Check, RotateCcw } from "lucide-react";
 import { data } from "./data";
 
 export default function Desktop() {
@@ -44,77 +44,61 @@ export default function Desktop() {
 
   return (
     <div className="w-full font-['Outfit'] select-none">
-      <div className="bg-white rounded-[20px] border border-[#0B1D3A]/[0.08] shadow-[0_6px_24px_rgb(0,0,0,0.03)] overflow-hidden">
+      <div className="bg-white rounded-[20px] border border-[#E6EBF3] shadow-[0_4px_24px_rgba(11,29,58,0.06)] overflow-hidden">
         <div
-          className="relative flex items-center justify-between px-4 py-2.5 overflow-hidden"
+          className="relative flex items-center justify-between px-5 py-4 overflow-hidden"
           style={{
-            background: "linear-gradient(120deg, rgb(11, 29, 58) 0%, rgb(21, 49, 92) 100%)",
+            background: "linear-gradient(115deg, rgb(11, 29, 58) 0%, rgb(18, 42, 80) 60%, rgb(25, 54, 98) 100%)",
           }}
         >
-          <div className="absolute -top-8 -right-6 w-28 h-28 rounded-full bg-[#C99A2E]/25 blur-2xl pointer-events-none" />
-          
-          <div className="relative flex items-center gap-2">
-            <div className="w-7 h-7 rounded-[7px] flex items-center justify-center bg-[#C99A2E] text-white shadow-xs">
+          <div className="relative flex items-center gap-3">
+            <div className="w-9 h-9 rounded-[10px] flex items-center justify-center bg-white/[0.08] border border-white/15 shadow-inner shrink-0">
               <SlidersHorizontal
-                size={13}
+                size={16}
                 strokeWidth={2.4}
+                className="text-[#EAB308]"
                 aria-hidden="true"
               />
             </div>
-            <span className="text-[14px] font-medium text-white">Filters</span>
-            {totalActive > 0 && (
-              <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="inline-flex items-center justify-center rounded-[5px] text-[10px] font-medium px-1.5 shadow-xs"
-                style={{
-                  minWidth: 19,
-                  height: 19,
-                  background: "#C99A2E",
-                  color: "#FFFFFF",
-                }}
-              >
-                {totalActive}
-              </motion.span>
-            )}
+            <h3 className="text-[18px] font-bold text-white tracking-tight leading-none">
+              Filters
+            </h3>
           </div>
 
           {totalActive > 0 && (
             <button
               type="button"
               onClick={clearAll}
-              className="relative flex items-center gap-1.5 text-[11px] font-medium text-white/90 hover:text-white bg-white/10 hover:bg-white/20 px-2 py-1 rounded-[6px] transition-all cursor-pointer"
+              className="relative flex items-center gap-1 text-[11px] font-medium text-white/80 hover:text-white bg-white/10 hover:bg-white/20 px-2 py-0.5 rounded-[6px] transition-all cursor-pointer"
             >
-              <RotateCcw size={11} strokeWidth={2.4} aria-hidden="true" />
-              Clear
+              <RotateCcw size={10} strokeWidth={2.4} aria-hidden="true" />
+              Clear ({totalActive})
             </button>
           )}
         </div>
 
-        <div className="px-4 py-1 max-h-[calc(100vh-220px)] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="px-5 py-2 max-h-[calc(100vh-220px)] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {s.filters.map((filter) => {
             const isOpen = openGroups.has(filter.name);
 
             return (
               <div
                 key={filter.name}
-                className="py-2.5 border-b border-[#0B1D3A]/[0.06] last:border-b-0"
+                className="py-3.5 border-b border-[#F0F4FA] last:border-b-0"
               >
                 <button
                   type="button"
                   onClick={() => toggleGroup(filter.name)}
-                  className="w-full flex items-center justify-between cursor-pointer rounded-[7px] px-1.5 -mx-1.5 py-0.5 hover:bg-[#0B1D3A]/[0.03] transition-colors"
+                  className="flex items-center gap-1.5 cursor-pointer text-left group select-none focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10.5px] font-medium tracking-[0.14em] text-[#0B1D3A]/85 uppercase">
-                      {filter.name}
-                    </span>
-                  </div>
+                  <span className="text-[12px] font-bold tracking-[0.12em] text-[#1E293B] group-hover:text-[#C99A2E] transition-colors uppercase">
+                    {filter.name}
+                  </span>
                   <ChevronDown
-                    size={13}
+                    size={14}
                     strokeWidth={2.4}
-                    className={`text-[#7B8DAA] transition-transform duration-300 ${
+                    className={`text-[#64748B] group-hover:text-[#1E293B] transition-transform duration-200 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                     aria-hidden="true"
@@ -127,10 +111,10 @@ export default function Desktop() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
-                      <div className="flex flex-col gap-0.5 pt-1.5">
+                      <div className="flex flex-col gap-1 pt-2 pb-0.5">
                         {filter.options.map((option) => {
                           const isSelected = selectedFilters.has(option);
 
@@ -139,42 +123,26 @@ export default function Desktop() {
                               type="button"
                               key={option}
                               onClick={() => toggleFilter(option)}
-                              className="w-full flex items-center gap-2.5 cursor-pointer group/item px-1.5 py-1 -mx-1.5 rounded-[6px] text-left hover:bg-[#F5F7FB] transition-colors"
+                              className="w-full flex items-center gap-2.5 py-1 text-left cursor-pointer group/item select-none focus:outline-none"
                               aria-pressed={isSelected}
                             >
                               <div
-                                className={`rounded-[4px] flex items-center justify-center transition-all duration-200 shrink-0 ${
+                                className={`w-4 h-4 rounded-[4px] flex items-center justify-center transition-all shrink-0 ${
                                   isSelected
-                                    ? "bg-[#0B1D3A] text-white border border-[#0B1D3A]"
+                                    ? "bg-[#0B1D3A] border border-[#0B1D3A] text-white"
                                     : "border border-[#CBD5E1] bg-white group-hover/item:border-[#C99A2E]"
                                 }`}
-                                style={{
-                                  width: 15,
-                                  height: 15,
-                                }}
                               >
                                 {isSelected && (
-                                  <svg
-                                    className="w-[65%] h-[65%] text-white"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth={3.5}
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M5 13l4 4L19 7"
-                                    />
-                                  </svg>
+                                  <Check size={11} strokeWidth={3.2} className="text-white" />
                                 )}
                               </div>
 
                               <span
-                                className={`text-[12px] leading-snug font-medium transition-colors ${
+                                className={`text-[12.5px] leading-snug transition-colors ${
                                   isSelected
-                                    ? "text-[#0B1D3A]"
-                                    : "text-[#5A6B82] group-hover/item:text-[#0B1D3A]"
+                                    ? "text-[#0B1D3A] font-medium"
+                                    : "text-[#5A6B82] font-normal group-hover/item:text-[#0B1D3A]"
                                 }`}
                               >
                                 {option}
