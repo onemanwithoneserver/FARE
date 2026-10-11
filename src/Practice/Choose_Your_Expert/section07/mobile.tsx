@@ -14,7 +14,7 @@ export default function Mobile() {
   const allSteps = FLOW_PHASES.flatMap((p) => p.steps);
 
   return (
-    <Section tone="soft" mobile ariaLabel="Recommended Final Flow" className="!py-14 relative overflow-hidden">
+    <Section tone="soft" mobile ariaLabel="Recommended Final Flow" className="!py-14 relative overflow-hidden font-['Outfit']">
       <div className="absolute top-0 right-0 w-3/4 h-64 bg-[#C99A2E]/[0.03] blur-[100px] rounded-full pointer-events-none" />
 
       <SectionHeader
@@ -86,11 +86,11 @@ export default function Mobile() {
 
                     <div className="flex flex-col">
                       <div className="flex items-center gap-1.5 mb-0.5">
-                        <span className={`text-[9px] font-black tracking-wider uppercase ${isGold ? 'text-[#D5AA45]' : 'text-[#0B1D3A]/60'}`}>
+                        <span className={`text-[9px] font-medium tracking-wider uppercase ${isGold ? 'text-[#D5AA45]' : 'text-[#0B1D3A]/60'}`}>
                           Step {step.stepNumber}
                         </span>
                       </div>
-                      <h4 className={`text-[15px] font-black tracking-tight leading-none ${isGold ? 'text-white' : 'text-[#0B1D3A]'}`}>
+                      <h4 className={`text-[15px] font-medium tracking-tight leading-none ${isGold ? 'text-white' : 'text-[#0B1D3A]'}`}>
                         {step.title}
                       </h4>
                     </div>
@@ -99,17 +99,17 @@ export default function Mobile() {
 
                 <div className="p-4 flex flex-col flex-1 bg-white">
                   <div className="mb-2">
-                    <span className="text-[12px] font-bold text-[#C99A2E] leading-snug block">
+                    <span className="text-[12px] font-medium text-[#C99A2E] leading-snug block">
                       {step.subtitle}
                     </span>
                   </div>
-                  <p className="text-[12.5px] font-medium text-[#475569] leading-relaxed mb-4">
+                  <p className="text-[12.5px] font-normal text-[#475569] leading-relaxed mb-4">
                     {step.description}
                   </p>
 
                   <div className="mt-auto pt-3 border-t border-[#0B1D3A]/[0.06] flex items-center justify-between">
                     <span
-                      className="px-2.5 py-1 rounded-[6px] text-[10px] font-bold uppercase tracking-wider"
+                      className="px-2.5 py-1 rounded-[6px] text-[10px] font-medium uppercase tracking-wider"
                       style={{
                         background: a.soft,
                         color: a.ink,
@@ -117,8 +117,10 @@ export default function Mobile() {
                     >
                       {step.tag}
                     </span>
-                    <span className="text-[10.5px] font-bold text-[#7B8DAA] flex items-center gap-1">
-                      <Sparkles size={11} className="text-[#C99A2E]" />
+                    <span className="text-[10.5px] font-medium text-[#7B8DAA] flex items-center gap-1">
+                      <span className="w-3.5 h-3.5 rounded-[3px] bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
+                        <Sparkles size={8} />
+                      </span>
                       {step.phase}
                     </span>
                   </div>

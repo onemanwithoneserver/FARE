@@ -64,62 +64,62 @@ export default function Desktop({ onBookExpert }: Props) {
   };
 
   return (
-    <Section tone="soft" ariaLabel="Compare Experts" className="!pt-6 lg:!pt-8 !pb-2.5 font-['Outfit']">
-      <div className="flex flex-col gap-6 max-w-[1240px] mx-auto w-full">
+    <Section tone="soft" ariaLabel="Compare Experts" className="!pt-4 lg:!pt-6 !pb-2 font-['Outfit']">
+      <div className="flex flex-col gap-4 max-w-[1240px] mx-auto w-full">
         <div
           onClick={() => setIsExpanded((prev) => !prev)}
-          className="bg-white rounded-[24px] border border-[#E6EBF3] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-[#C99A2E]/40 hover:shadow-[0_12px_36px_rgba(11,29,58,0.08)] transition-all duration-300 cursor-pointer flex flex-col md:flex-row items-center justify-between gap-5 relative overflow-hidden group"
+          className="bg-white rounded-[20px] border border-[#E6EBF3] p-4 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-[#C99A2E]/40 hover:shadow-[0_8px_24px_rgba(11,29,58,0.06)] transition-all duration-300 cursor-pointer flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden group"
         >
-          <div className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-[#C99A2E] via-[#E0B550] to-[#0B1D3A]" />
+          <div className="absolute top-0 inset-x-0 h-[2.5px] bg-gradient-to-r from-[#C99A2E] via-[#E0B550] to-[#0B1D3A]" />
           <HoverGlow accent={ACCENTS[0]} />
 
-          <div className="relative z-10 flex items-center gap-4.5 w-full md:w-auto">
-            <div className="w-13 h-13 rounded-[16px] bg-gradient-to-tr from-[#0B1D3A] to-[#1E3A74] text-[#D5AA45] flex items-center justify-center shrink-0 shadow-md">
-              <Users size={24} strokeWidth={2.4} />
+          <div className="relative z-10 flex items-center gap-3.5 w-full md:w-auto">
+            <div className="w-10 h-10 rounded-[12px] bg-[#0B1D3A] text-white flex items-center justify-center shrink-0 shadow-xs">
+              <Users size={19} strokeWidth={2.2} />
             </div>
 
             <div className="flex flex-col">
               <div className="flex items-center gap-2 mb-0.5">
-                <span className="text-[11px] font-black uppercase tracking-[0.16em] text-[#C99A2E]">
+                <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#C99A2E]">
                   Side-by-Side Evaluation
                 </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#EEF2F9] text-[#1E3A74]">
+                <span className="text-[9.5px] font-medium px-2 py-0.5 rounded-full bg-[#EEF2F9] text-[#1E3A74]">
                   {selectedNames.length} / 4 Selected
                 </span>
               </div>
-              <h3 className="text-[20px] font-black text-[#0B1D3A] tracking-tight group-hover:text-[#C99A2E] transition-colors">
+              <h3 className="text-[17px] font-medium text-[#0B1D3A] tracking-tight group-hover:text-[#C99A2E] transition-colors">
                 Compare Experts
               </h3>
-              <p className="text-[13.5px] font-medium text-[#5A6B82] max-w-xl">
+              <p className="text-[12.5px] font-normal text-[#5A6B82] max-w-xl">
                 {s.subtitle}
               </p>
             </div>
           </div>
 
-          <div className="relative z-10 flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
+          <div className="relative z-10 flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
             {selectedExperts.length > 0 ? (
-              <div className="flex -space-x-3 items-center">
+              <div className="flex -space-x-2.5 items-center">
                 {selectedExperts.slice(0, 4).map((exp) => (
                   <img
                     key={exp.name}
                     src={exp.image}
                     alt={exp.name}
-                    className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm"
+                    className="w-8 h-8 rounded-full object-cover border-2 border-white shadow-2xs"
                     title={exp.name}
                   />
                 ))}
               </div>
             ) : (
-              <span className="text-[12px] font-bold text-[#7B8DAA] italic">
+              <span className="text-[11.5px] font-medium text-[#7B8DAA] italic">
                 0 mentors selected
               </span>
             )}
 
             <button
               type="button"
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-[12px] text-[13px] font-extrabold transition-all duration-300 cursor-pointer ${
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-[10px] text-[12px] font-medium transition-all duration-300 cursor-pointer ${
                 isExpanded
-                  ? "bg-[#0B1D3A] text-white shadow-md"
+                  ? "bg-[#0B1D3A] text-white shadow-xs"
                   : "bg-[#F3F6FB] hover:bg-[#E6EBF3] text-[#0B1D3A] border border-[#CBD5E1]"
               }`}
             >
@@ -131,9 +131,9 @@ export default function Desktop({ onBookExpert }: Props) {
                   : `Expand Comparison (${selectedNames.length}/4)`}
               </span>
               <ChevronDown
-                size={16}
+                size={14}
                 className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
-                strokeWidth={2.5}
+                strokeWidth={2.4}
               />
             </button>
           </div>
@@ -145,19 +145,19 @@ export default function Desktop({ onBookExpert }: Props) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <div className="w-full overflow-x-auto pb-4 scrollbar-hide pt-2">
-                <div className="min-w-[1040px] bg-white rounded-[24px] border border-[#E6EBF3] shadow-[0_12px_36px_rgba(11,29,58,0.06)] overflow-hidden">
+              <div className="w-full overflow-x-auto pb-3 scrollbar-hide pt-1">
+                <div className="min-w-[960px] bg-white rounded-[20px] border border-[#E6EBF3] shadow-[0_8px_24px_rgba(11,29,58,0.04)] overflow-hidden">
                   <table className="w-full text-left border-collapse table-fixed">
                     <thead>
                       <tr>
-                        <th className="p-5 bg-[#F8FAFD] border-b border-r border-[#E6EBF3] w-[20%] align-bottom">
-                          <span className="text-[11px] font-black uppercase tracking-[0.14em] text-[#7B8DAA] block mb-1">
+                        <th className="p-3.5 bg-[#F8FAFD] border-b border-r border-[#E6EBF3] w-[20%] align-bottom">
+                          <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#7B8DAA] block mb-0.5">
                             Evaluation Criteria
                           </span>
-                          <span className="text-[15px] font-black text-[#0B1D3A]">
+                          <span className="text-[14px] font-medium text-[#0B1D3A]">
                             Compare 4 Experts
                           </span>
                         </th>
@@ -167,21 +167,21 @@ export default function Desktop({ onBookExpert }: Props) {
                           return (
                             <th
                               key={idx}
-                              className="p-5 bg-white border-b border-r border-[#E6EBF3] last:border-r-0 w-[20%] align-top relative"
+                              className="p-3.5 bg-white border-b border-r border-[#E6EBF3] last:border-r-0 w-[20%] align-top relative"
                             >
                               {exp ? (
-                                <div className="flex flex-col items-center text-center gap-3 relative">
+                                <div className="flex flex-col items-center text-center gap-2 relative">
                                   <button
                                     type="button"
                                     onClick={() => handleRemoveExpert(idx)}
-                                    className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#F3F6FB] hover:bg-[#FEE2E2] text-[#7B8DAA] hover:text-[#EF4444] flex items-center justify-center transition-colors cursor-pointer"
+                                    className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#EF4444] text-white flex items-center justify-center transition-colors cursor-pointer"
                                     title="Remove from comparison"
                                   >
-                                    <X size={12} strokeWidth={2.5} />
+                                    <X size={10} strokeWidth={2.5} />
                                   </button>
 
                                   <div className="relative">
-                                    <div className="w-16 h-16 rounded-full p-[2px] bg-gradient-to-tr from-[#C99A2E] to-[#0B1D3A] shadow-md">
+                                    <div className="w-13 h-13 rounded-full p-[2px] bg-gradient-to-tr from-[#C99A2E] to-[#0B1D3A] shadow-xs">
                                       <img
                                         src={exp.image}
                                         alt={exp.name}
@@ -189,52 +189,52 @@ export default function Desktop({ onBookExpert }: Props) {
                                       />
                                     </div>
                                     <span
-                                      className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-white shadow-xs border border-[#E6EBF3] flex items-center justify-center"
+                                      className="absolute -bottom-1 -right-1 w-4.5 h-4.5 rounded-full bg-[#10B981] text-white shadow-xs border border-white flex items-center justify-center"
                                       title="Verified"
                                     >
-                                      <ShieldCheck size={11} className="text-[#10B981] fill-[#10B981]/20" />
+                                      <ShieldCheck size={9} />
                                     </span>
                                   </div>
 
                                   <div className="flex flex-col min-w-0 w-full">
-                                    <h4 className="text-[15px] font-black text-[#0B1D3A] truncate leading-tight">
+                                    <h4 className="text-[13.5px] font-medium text-[#0B1D3A] truncate leading-tight">
                                       {exp.name}
                                     </h4>
-                                    <p className="text-[11.5px] font-bold text-[#7B8DAA] truncate mt-0.5">
+                                    <p className="text-[11px] font-normal text-[#7B8DAA] truncate mt-0.5">
                                       {exp.role.split("·")[0]}
                                     </p>
                                   </div>
 
-                                  <div className="w-full flex items-center gap-1.5 pt-1">
+                                  <div className="w-full flex items-center gap-1.5 pt-0.5">
                                     <button
                                       type="button"
                                       onClick={() => handleSwapExpert(idx)}
-                                      className="flex-1 h-7.5 px-2 rounded-[8px] bg-[#F8FAFD] hover:bg-[#EEF2F9] text-[11px] font-bold text-[#5A6B82] border border-[#E6EBF3] transition-colors cursor-pointer flex items-center justify-center"
+                                      className="flex-1 h-7 px-2 rounded-[7px] bg-[#F8FAFD] hover:bg-[#EEF2F9] text-[10.5px] font-medium text-[#5A6B82] border border-[#E6EBF3] transition-colors cursor-pointer flex items-center justify-center"
                                     >
                                       Change
                                     </button>
                                     <button
                                       type="button"
                                       onClick={() => handleBook(exp.name)}
-                                      className="flex-1 h-7.5 px-2 rounded-[8px] bg-gradient-to-r from-[#E0B550] to-[#C99A2E] hover:from-[#EAC260] hover:to-[#D5AA45] text-[#0B1D3A] text-[11px] font-black shadow-xs hover:shadow-sm border border-[#C99A2E]/30 transition-all cursor-pointer flex items-center justify-center active:scale-[0.98]"
+                                      className="flex-1 h-7 px-2 rounded-[7px] bg-[#C99A2E] hover:bg-[#D5AA45] text-white text-[10.5px] font-medium shadow-xs border border-[#C99A2E]/30 transition-all cursor-pointer flex items-center justify-center"
                                     >
                                       Book
                                     </button>
                                   </div>
                                 </div>
                               ) : (
-                                <div className="py-7 flex flex-col items-center justify-center text-center">
+                                <div className="py-5 flex flex-col items-center justify-center text-center">
                                   <button
                                     type="button"
                                     onClick={() => handleSwapExpert(idx)}
-                                    className="w-12 h-12 rounded-full border-2 border-dashed border-[#CBD5E1] hover:border-[#C99A2E] flex items-center justify-center text-[#7B8DAA] hover:text-[#C99A2E] transition-all cursor-pointer mb-2"
+                                    className="w-10 h-10 rounded-full bg-[#C99A2E] text-white flex items-center justify-center transition-all cursor-pointer mb-1.5 shadow-xs"
                                   >
-                                    <Plus size={20} />
+                                    <Plus size={16} />
                                   </button>
-                                  <span className="text-[12px] font-bold text-[#0B1D3A]">
+                                  <span className="text-[11.5px] font-medium text-[#0B1D3A]">
                                     + Add Mentor
                                   </span>
-                                  <span className="text-[10px] text-[#7B8DAA]">
+                                  <span className="text-[9.5px] text-[#7B8DAA] font-normal">
                                     Slot {idx + 1} of 4
                                   </span>
                                 </div>
@@ -248,7 +248,7 @@ export default function Desktop({ onBookExpert }: Props) {
                     <tbody className="divide-y divide-[#E6EBF3]">
                       {s.criteria.map((crit, rowIdx) => (
                         <tr key={crit} className={rowIdx % 2 === 0 ? "bg-white" : "bg-[#FBFDFF]"}>
-                          <td className="p-4 px-5 font-bold text-[13px] text-[#0B1D3A] bg-[#F8FAFD] border-r border-[#E6EBF3]">
+                          <td className="p-3 px-4 font-medium text-[12px] text-[#0B1D3A] bg-[#F8FAFD] border-r border-[#E6EBF3]">
                             {crit}
                           </td>
 
@@ -261,14 +261,14 @@ export default function Desktop({ onBookExpert }: Props) {
                             return (
                               <td
                                 key={idx}
-                                className="p-4 px-5 text-[13px] font-medium text-[#475569] border-r border-[#E6EBF3] last:border-r-0 text-center"
+                                className="p-3 px-4 text-[12px] font-normal text-[#475569] border-r border-[#E6EBF3] last:border-r-0 text-center"
                               >
                                 {isCheck ? (
-                                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#E8FBF3] text-[#059669]">
-                                    <Check size={14} strokeWidth={3} />
+                                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#10B981] text-white">
+                                    <Check size={11} strokeWidth={3} />
                                   </span>
                                 ) : isPrice && exp ? (
-                                  <span className="font-black text-[#0B1D3A] text-[14px]">
+                                  <span className="font-medium text-[#0B1D3A] text-[13px]">
                                     {val}
                                   </span>
                                 ) : (
@@ -283,7 +283,7 @@ export default function Desktop({ onBookExpert }: Props) {
 
                     <tfoot>
                       <tr>
-                        <td className="p-4 px-5 bg-[#F8FAFD] border-r border-[#E6EBF3] text-[12px] font-black uppercase tracking-wider text-[#7B8DAA]">
+                        <td className="p-3 px-4 bg-[#F8FAFD] border-r border-[#E6EBF3] text-[11px] font-medium uppercase tracking-wider text-[#7B8DAA]">
                           Action
                         </td>
                         {slots.map((idx) => {
@@ -291,14 +291,14 @@ export default function Desktop({ onBookExpert }: Props) {
                           return (
                             <td
                               key={idx}
-                              className="p-4 px-5 border-r border-[#E6EBF3] last:border-r-0 text-center bg-white"
+                              className="p-3 px-4 border-r border-[#E6EBF3] last:border-r-0 text-center bg-white"
                             >
                               {exp ? (
                                 <PrimaryButton
                                   full
                                   variant="gold"
                                   onClick={() => handleBook(exp.name)}
-                                  className="!h-9 !py-0 !px-3 text-[12px] !rounded-[10px] font-extrabold cursor-pointer"
+                                  className="!h-8 !py-0 !px-2.5 text-[11.5px] !rounded-[8px] font-medium cursor-pointer"
                                 >
                                   Reserve Slot
                                 </PrimaryButton>
@@ -306,7 +306,7 @@ export default function Desktop({ onBookExpert }: Props) {
                                 <button
                                   type="button"
                                   onClick={() => handleSwapExpert(idx)}
-                                  className="text-[11.5px] font-bold text-[#7B8DAA] hover:text-[#C99A2E] cursor-pointer"
+                                  className="text-[11px] font-medium text-[#7B8DAA] hover:text-[#C99A2E] cursor-pointer"
                                 >
                                   + Select Mentor
                                 </button>
@@ -338,39 +338,39 @@ export default function Desktop({ onBookExpert }: Props) {
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="relative z-10 w-full max-w-lg bg-white rounded-[24px] p-6 border border-[#E6EBF3] shadow-2xl flex flex-col gap-4 max-h-[85vh] overflow-y-auto"
+              className="relative z-10 w-full max-w-lg bg-white rounded-[20px] p-5 border border-[#E6EBF3] shadow-xl flex flex-col gap-3.5 max-h-[85vh] overflow-y-auto"
             >
-              <div className="flex items-center justify-between pb-3 border-b border-[#F0F4FA]">
-                <h3 className="text-[17px] font-black text-[#0B1D3A]">
+              <div className="flex items-center justify-between pb-2.5 border-b border-[#F0F4FA]">
+                <h3 className="text-[15.5px] font-medium text-[#0B1D3A]">
                   Select Mentor for Comparison
                 </h3>
                 <button
                   onClick={() => setIsPickerOpen(false)}
-                  className="w-8 h-8 rounded-full bg-[#F3F6FB] flex items-center justify-center text-[#5A6B82]"
+                  className="w-7 h-7 rounded-full bg-[#F3F6FB] flex items-center justify-center text-[#5A6B82] cursor-pointer"
                 >
-                  <X size={16} />
+                  <X size={14} />
                 </button>
               </div>
 
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2">
                 {s.allExperts.map((exp) => (
                   <div
                     key={exp.name}
                     onClick={() => handleSelectExpertForSlot(exp.name)}
-                    className="p-3 rounded-[14px] border border-[#E6EBF3] hover:border-[#C99A2E] hover:bg-[#FFFDF7] flex items-center justify-between gap-3 cursor-pointer transition-all"
+                    className="p-2.5 rounded-[12px] border border-[#E6EBF3] hover:border-[#C99A2E] hover:bg-[#FFFDF7] flex items-center justify-between gap-3 cursor-pointer transition-all"
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2.5">
                       <img
                         src={exp.image}
                         alt={exp.name}
-                        className="w-11 h-11 rounded-full object-cover border border-[#CBD5E1]"
+                        className="w-9 h-9 rounded-full object-cover border border-[#CBD5E1]"
                       />
                       <div>
-                        <h4 className="text-[14px] font-black text-[#0B1D3A]">{exp.name}</h4>
-                        <p className="text-[11.5px] text-[#7B8DAA]">{exp.role}</p>
+                        <h4 className="text-[13px] font-medium text-[#0B1D3A]">{exp.name}</h4>
+                        <p className="text-[11px] text-[#7B8DAA] font-normal">{exp.role}</p>
                       </div>
                     </div>
-                    <span className="text-[12px] font-black text-[#C99A2E]">{exp.values[6]}</span>
+                    <span className="text-[11.5px] font-medium text-[#C99A2E]">{exp.values[6]}</span>
                   </div>
                 ))}
               </div>

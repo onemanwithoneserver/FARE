@@ -14,7 +14,7 @@ export default function Desktop() {
   const allSteps = FLOW_PHASES.flatMap((p) => p.steps);
 
   return (
-    <Section tone="soft" ariaLabel="Recommended Final Flow" className="!py-24 relative overflow-hidden">
+    <Section tone="soft" ariaLabel="Recommended Final Flow" className="!py-24 relative overflow-hidden font-['Outfit']">
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-[#C99A2E]/[0.03] blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[#0B1D3A]/[0.02] blur-[100px] rounded-full pointer-events-none" />
 
@@ -27,12 +27,10 @@ export default function Desktop() {
       />
 
       <div className="max-w-[1200px] mx-auto w-full relative mt-16 px-4 xl:px-0">
-        
         <div className="absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
           <div className="absolute top-[160px] left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-transparent via-[#C99A2E]/30 to-transparent shadow-[0_0_8px_rgba(201,154,46,0.5)]" />
           <div className="absolute top-[480px] left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-transparent via-[#0B1D3A]/20 to-transparent" />
           <div className="absolute top-[800px] left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-transparent via-[#C99A2E]/30 to-transparent shadow-[0_0_8px_rgba(201,154,46,0.5)]" />
-          
         </div>
 
         <motion.div
@@ -92,11 +90,11 @@ export default function Desktop() {
 
                     <div className="flex flex-col">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className={`text-[11px] font-black tracking-wider uppercase ${isGold ? 'text-[#D5AA45]' : 'text-[#0B1D3A]/60'}`}>
+                        <span className={`text-[11px] font-medium tracking-wider uppercase ${isGold ? 'text-[#D5AA45]' : 'text-[#0B1D3A]/60'}`}>
                           Step {step.stepNumber}
                         </span>
                       </div>
-                      <h4 className={`text-[17px] font-black tracking-tight leading-none ${isGold ? 'text-white' : 'text-[#0B1D3A]'}`}>
+                      <h4 className={`text-[17px] font-medium tracking-tight leading-none ${isGold ? 'text-white' : 'text-[#0B1D3A]'}`}>
                         {step.title}
                       </h4>
                     </div>
@@ -105,17 +103,17 @@ export default function Desktop() {
 
                 <div className="p-6 flex flex-col flex-1 bg-white">
                   <div className="mb-3">
-                    <span className="text-[13px] font-bold text-[#C99A2E] leading-snug block">
+                    <span className="text-[13px] font-medium text-[#C99A2E] leading-snug block">
                       {step.subtitle}
                     </span>
                   </div>
-                  <p className="text-[14px] font-medium text-[#475569] leading-relaxed mb-6">
+                  <p className="text-[14px] font-normal text-[#475569] leading-relaxed mb-6">
                     {step.description}
                   </p>
 
                   <div className="mt-auto pt-5 border-t border-[#0B1D3A]/[0.06] flex items-center justify-between">
                     <span
-                      className="px-3 py-1.5 rounded-[8px] text-[11px] font-bold uppercase tracking-wider"
+                      className="px-3 py-1.5 rounded-[8px] text-[11px] font-medium uppercase tracking-wider"
                       style={{
                         background: a.soft,
                         color: a.ink,
@@ -123,8 +121,10 @@ export default function Desktop() {
                     >
                       {step.tag}
                     </span>
-                    <span className="text-[11.5px] font-bold text-[#7B8DAA] flex items-center gap-1.5">
-                      <Sparkles size={12} className="text-[#C99A2E]" />
+                    <span className="text-[11.5px] font-medium text-[#7B8DAA] flex items-center gap-1.5">
+                      <span className="w-3.5 h-3.5 rounded-[3px] bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
+                        <Sparkles size={8.5} />
+                      </span>
                       {step.phase}
                     </span>
                   </div>

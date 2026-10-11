@@ -4,8 +4,6 @@ import { ChevronDown, SlidersHorizontal, RotateCcw } from "lucide-react";
 import { data } from "./data";
 import { Section } from "../../ui";
 
-const GOLD_MID = "#D5AA45";
-
 export default function Mobile() {
   const s = data;
   const [openGroups, setOpenGroups] = useState<Set<string>>(new Set(["RE Segment"]));
@@ -38,35 +36,34 @@ export default function Mobile() {
   const totalActive = selectedFilters.size;
 
   return (
-    <Section tone="white" mobile ariaLabel="Filters" className="!pt-4 !pb-2">
+    <Section tone="white" mobile ariaLabel="Filters" className="!pt-3 !pb-2">
       <div className="w-full font-['Outfit'] select-none">
-        <div className="bg-white rounded-[8px] border border-[#0B1D3A]/[0.07] luxury-shadow-sm overflow-hidden">
+        <div className="bg-white rounded-[14px] border border-[#0B1D3A]/[0.07] shadow-xs overflow-hidden">
           <div
-            className="relative flex items-center justify-between px-4 py-3.5 overflow-hidden"
+            className="relative flex items-center justify-between px-3.5 py-2 overflow-hidden"
             style={{
               background: "linear-gradient(120deg, rgb(11, 29, 58) 0%, rgb(21, 49, 92) 100%)",
             }}
           >
-            <div className="absolute -top-8 -right-6 w-24 h-24 rounded-full bg-[#C99A2E]/30 blur-2xl pointer-events-none" />
+            <div className="absolute -top-8 -right-6 w-24 h-24 rounded-full bg-[#C99A2E]/25 blur-2xl pointer-events-none" />
 
             <div className="relative flex items-center gap-2">
-              <div className="w-7 h-7 rounded-[6px] flex items-center justify-center bg-white/10 border border-white/15">
+              <div className="w-6.5 h-6.5 rounded-[6px] flex items-center justify-center bg-[#C99A2E] text-white shadow-xs">
                 <SlidersHorizontal
-                  size={13}
-                  strokeWidth={2.5}
-                  style={{ color: "rgb(213, 170, 69)" }}
+                  size={12}
+                  strokeWidth={2.4}
                   aria-hidden="true"
                 />
               </div>
-              <span className="text-[14px] font-black text-white">Filters</span>
+              <span className="text-[13.5px] font-medium text-white">Filters</span>
               {totalActive > 0 && (
                 <span
-                  className="inline-flex items-center justify-center rounded-[4px] text-[10px] font-black px-1.5"
+                  className="inline-flex items-center justify-center rounded-[4px] text-[10px] font-medium px-1.5"
                   style={{
                     minWidth: 18,
                     height: 18,
-                    background: "linear-gradient(135deg, rgb(213, 170, 69), rgb(201, 154, 46))",
-                    color: "rgb(11, 29, 58)",
+                    background: "#C99A2E",
+                    color: "#FFFFFF",
                   }}
                 >
                   {totalActive}
@@ -78,37 +75,37 @@ export default function Mobile() {
               <button
                 type="button"
                 onClick={clearAll}
-                className="relative flex items-center gap-1 text-[11px] font-bold text-white/80 hover:text-white bg-white/10 px-2 py-1 rounded-[6px]"
+                className="relative flex items-center gap-1 text-[11px] font-medium text-white/90 hover:text-white bg-white/10 px-2 py-0.5 rounded-[5px]"
               >
-                <RotateCcw size={11} strokeWidth={2.5} />
+                <RotateCcw size={10} strokeWidth={2.4} />
                 Clear
               </button>
             )}
           </div>
 
-          <div className="px-4 py-1 max-h-[360px] overflow-y-auto">
+          <div className="px-3.5 py-1 max-h-[320px] overflow-y-auto">
             {s.filters.map((filter) => {
               const isOpen = openGroups.has(filter.name);
 
               return (
                 <div
                   key={filter.name}
-                  className="py-3 border-b border-[#0B1D3A]/[0.07] last:border-b-0"
+                  className="py-2 border-b border-[#0B1D3A]/[0.06] last:border-b-0"
                 >
                   <button
                     type="button"
                     onClick={() => toggleGroup(filter.name)}
-                    className="w-full flex items-center justify-between py-1 text-left"
+                    className="w-full flex items-center justify-between py-0.5 text-left"
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-[11px] font-black tracking-[0.12em] text-[#0B1D3A]/80 uppercase">
+                      <span className="text-[10.5px] font-medium tracking-[0.12em] text-[#0B1D3A]/85 uppercase">
                         {filter.name}
                       </span>
                     </div>
                     <ChevronDown
-                      size={13}
-                      strokeWidth={3}
+                      size={12}
+                      strokeWidth={2.4}
                       className={`text-[#7B8DAA] transition-transform duration-300 ${
                         isOpen ? "rotate-180" : ""
                       }`}
@@ -121,10 +118,10 @@ export default function Mobile() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25 }}
+                        transition={{ duration: 0.22 }}
                         className="overflow-hidden"
                       >
-                        <div className="flex flex-col gap-1 pt-1.5 pb-0.5">
+                        <div className="flex flex-col gap-0.5 pt-1 pb-0.5">
                           {filter.options.map((option) => {
                             const isSelected = selectedFilters.has(option);
 
@@ -133,32 +130,26 @@ export default function Mobile() {
                                 type="button"
                                 key={option}
                                 onClick={() => toggleFilter(option)}
-                                className="w-full flex items-center gap-2.5 py-1.5 text-left"
+                                className="w-full flex items-center gap-2 py-1 text-left"
                               >
                                 <div
-                                  className={`rounded-[4px] border flex items-center justify-center shrink-0 ${
+                                  className={`rounded-[4px] flex items-center justify-center shrink-0 ${
                                     isSelected
-                                      ? "border-transparent"
-                                      : "border-[#0B1D3A]/15 bg-white"
+                                      ? "bg-[#0B1D3A] text-white border border-[#0B1D3A]"
+                                      : "border border-[#CBD5E1] bg-white"
                                   }`}
                                   style={{
-                                    width: 16,
-                                    height: 16,
-                                    ...(isSelected
-                                      ? {
-                                          background:
-                                            "linear-gradient(135deg, rgb(11, 29, 58), rgb(26, 52, 99))",
-                                        }
-                                      : {}),
+                                    width: 15,
+                                    height: 15,
                                   }}
                                 >
                                   {isSelected && (
                                     <svg
-                                      className="w-[65%] h-[65%]"
+                                      className="w-[65%] h-[65%] text-white"
                                       fill="none"
                                       viewBox="0 0 24 24"
-                                      stroke={GOLD_MID}
-                                      strokeWidth={4}
+                                      stroke="currentColor"
+                                      strokeWidth={3.5}
                                     >
                                       <path
                                         strokeLinecap="round"
@@ -169,10 +160,10 @@ export default function Mobile() {
                                   )}
                                 </div>
                                 <span
-                                  className={`text-[12.5px] leading-snug ${
+                                  className={`text-[12px] leading-snug font-medium ${
                                     isSelected
-                                      ? "text-[#0B1D3A] font-bold"
-                                      : "text-[#5A6B82] font-medium"
+                                      ? "text-[#0B1D3A]"
+                                      : "text-[#5A6B82]"
                                   }`}
                                 >
                                   {option}

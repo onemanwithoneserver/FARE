@@ -26,42 +26,29 @@ interface Props {
 }
 
 const STEPS = [
-  { id: 1, title: "Duration", label: "Session Duration", icon: Clock },
-  { id: 2, title: "Scenario", label: "Practice Scenario", icon: Layers },
-  { id: 3, title: "Date & Time", label: "Select Slot", icon: Calendar },
-  { id: 4, title: "Review", label: "Review & Confirm", icon: CheckCircle2 },
+  { id: 1, title: "Duration", subtitle: "Session Length", icon: Clock },
+  { id: 2, title: "Scenario", subtitle: "Practice Topic", icon: Sparkles },
+  { id: 3, title: "Date & Time", subtitle: "Schedule Slot", icon: Calendar },
+  { id: 4, title: "Review", subtitle: "Confirmation", icon: Layers },
 ];
 
-const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 30 : -30,
-    opacity: 0,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    x: direction < 0 ? 30 : -30,
-    opacity: 0,
-  }),
-};
-
-export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: Props) {
+export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
   const s = data;
   const expertsList = allExpertsData.experts;
 
+  const [activeExpert, setActiveExpert] = useState<Expert | null>(selectedExpert || null);
   const [currentStep, setCurrentStep] = useState(1);
-  const [slideDirection, setSlideDirection] = useState(1);
-  const [internalExpertIndex, setInternalExpertIndex] = useState<number | null>(null);
-  const activeExpert: Expert | null =
-    propExpert !== undefined
-      ? propExpert
-      : internalExpertIndex !== null
-      ? expertsList[internalExpertIndex]
-      : null;
+  const [slideDirection, setSlideDirection] = useState<"forward" | "backward">("forward");
 
-  const [selectedDurationId, setSelectedDurationId] = useState<string | null>("45");
+  useEffect(() => {
+    if (selectedExpert !== undefined) {
+      setActiveExpert(selectedExpert);
+    }
+  }, [selectedExpert]);
+
+  const [selectedDurationId, setSelectedDurationId] = useState<string>(
+    s.durations.find((d) => d.recommended)?.id || s.durations[0]?.id || ""
+  );
   const [scenarioText, setScenarioText] = useState("Handling a Price Objection");
   const [selectedDate, setSelectedDate] = useState<string>("Today");
   const [selectedSlot, setSelectedSlot] = useState<string>("6:30 PM");
@@ -95,80 +82,78 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
   );
 
   const currentDurationPrice = useMemo(() => {
-    return getExpertDurationPrice(activeExpert?.price, selectedDurationId);
-  }, [activeExpert?.price, selectedDurationId]);
+    if (!activeExpert || !selectedDurationId) return null;
+    return getExpertDurationPrice(activeExpert.price, selectedDurationId);
+  }, [activeExpert, selectedDurationId]);
 
-  const goToStep = (stepId: number) => {
-    setSlideDirection(stepId > currentStep ? 1 : -1);
+  const handleSelectExpert = (expert: Expert, _idx: number) => {
+    setActiveExpert(expert);
+    if (onSelectExpert) onSelectExpert(expert);
+    setIsSwitchExpertOpen(false);
+  };
+
+  const handleClearExpert = () => {
+    setActiveExpert(null);
+    if (onSelectExpert) onSelectExpert(null);
+  };
+
+  const goToStep = (stepNumber: number) => {
     setValidationError(null);
-    setCurrentStep(stepId);
+    setSlideDirection(stepNumber > currentStep ? "forward" : "backward");
+    setCurrentStep(stepNumber);
   };
 
   const handleNextStep = () => {
-    if (currentStep === 1 && !selectedDurationId) {
-      setValidationError("Please select a session duration to continue.");
-      return;
-    }
-    if (currentStep === 2 && !scenarioText.trim()) {
-      setValidationError("Please select or enter a practice scenario to continue.");
-      return;
-    }
-    if (currentStep === 3 && (!selectedDate || !selectedSlot)) {
-      setValidationError("Please select your preferred date and time slot to continue.");
-      return;
-    }
     setValidationError(null);
-    setSlideDirection(1);
+    if (currentStep === 1) {
+      if (!selectedDurationId) {
+        setValidationError("Please select a session duration to continue.");
+        return;
+      }
+    } else if (currentStep === 2) {
+      if (!scenarioText.trim()) {
+        setValidationError("Please specify or choose a practice scenario.");
+        return;
+      }
+    } else if (currentStep === 3) {
+      if (!selectedDate || !selectedSlot) {
+        setValidationError("Please choose both a date and a time slot.");
+        return;
+      }
+    }
+    setSlideDirection("forward");
     setCurrentStep((prev) => Math.min(prev + 1, 4));
   };
 
   const handlePrevStep = () => {
     setValidationError(null);
-    setSlideDirection(-1);
+    setSlideDirection("backward");
     setCurrentStep((prev) => Math.max(prev - 1, 1));
   };
 
   const handleConfirmBooking = () => {
-    if (!activeExpert) {
-      setValidationError("Please select a mentor to practice with before confirming your reservation.");
-      setIsSwitchExpertOpen(true);
-      return;
-    }
-    if (!selectedDurationId) {
-      setValidationError("Please select a session duration to confirm your reservation.");
-      goToStep(1);
-      return;
-    }
     setIsBooked(true);
   };
 
-  const handleSelectExpert = (exp: Expert, idx: number) => {
-    if (onSelectExpert) {
-      onSelectExpert(exp);
-    } else {
-      setInternalExpertIndex(idx);
-    }
-    setValidationError(null);
-    setIsSwitchExpertOpen(false);
-  };
-
-  const handleClearExpert = () => {
-    if (onSelectExpert) {
-      onSelectExpert(null);
-    } else {
-      setInternalExpertIndex(null);
-    }
+  const slideVariants = {
+    enter: (direction: "forward" | "backward") => ({
+      x: direction === "forward" ? 28 : -28,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: "forward" | "backward") => ({
+      x: direction === "forward" ? -28 : 28,
+      opacity: 0,
+    }),
   };
 
   return (
-    <Section
-      tone="soft"
-      ariaLabel="Choose Session, Date & Time"
-      id="booking-section"
-      className="!pt-4 lg:!pt-6 !pb-12 lg:!pb-14 relative font-['Outfit']"
-    >
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#C99A2E]/[0.03] blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-[#0B1D3A]/[0.03] blur-[120px] rounded-full pointer-events-none" />
+    <Section tone="soft" ariaLabel="Choose Session, Date & Time" id="booking-section" className="!pt-6 !pb-14 relative font-['Outfit']">
+      <div className="absolute top-1/4 right-0 w-80 h-80 bg-[#C99A2E]/[0.02] blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#0B1D3A]/[0.02] blur-[100px] rounded-full pointer-events-none" />
 
       <SectionHeader
         eyebrow="Reserve 1-on-1 Practice"
@@ -176,76 +161,78 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
         accent={ACCENTS[7]}
         title="Choose Session, Date & Time"
         description="Select duration, realistic scenario, and preferred time slot to practice with your verified real estate mentor."
-        className="!mb-4 lg:!mb-5"
+        className="!mb-3 lg:!mb-4"
       />
 
-      <div className="max-w-[1240px] mx-auto w-full flex flex-col gap-4">
-        <div className="bg-gradient-to-r from-[#0B1D3A] via-[#122B54] to-[#0B1D3A] rounded-[22px] p-4 sm:p-5 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-[0_12px_36px_rgba(11,29,58,0.12)] border border-[#C99A2E]/25 relative overflow-hidden">
-          <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-[#C99A2E]/15 blur-2xl pointer-events-none" />
+      <div className="max-w-[1240px] mx-auto w-full flex flex-col gap-3">
+        <div className="bg-gradient-to-r from-[#0B1D3A] via-[#122B54] to-[#0B1D3A] rounded-[18px] p-3 sm:p-3.5 text-white flex flex-col md:flex-row items-center justify-between gap-3 shadow-md border border-[#C99A2E]/25 relative overflow-hidden">
+          <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-[#C99A2E]/10 blur-xl pointer-events-none" />
 
           {activeExpert ? (
-            <div className="flex items-center gap-4 relative z-10 w-full md:w-auto">
+            <div className="flex items-center gap-3 relative z-10 w-full md:w-auto">
               <div className="relative shrink-0">
-                <div className="w-14 h-14 rounded-full p-[2.5px] bg-gradient-to-tr from-[#C99A2E] to-white/40 shadow-md">
+                <div className="w-11 h-11 rounded-full p-[2px] bg-gradient-to-tr from-[#C99A2E] to-white/40 shadow-xs">
                   <img
                     src={activeExpert.image}
                     alt={activeExpert.name}
                     className="w-full h-full object-cover rounded-full bg-slate-800"
                   />
                 </div>
-                <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[#10B981] border-2 border-[#0B1D3A] rounded-full" title="Online" />
+                <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#10B981] border-2 border-[#0B1D3A] rounded-full" title="Online" />
               </div>
 
               <div className="flex flex-col min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10.5px] font-black tracking-wider uppercase text-[#D5AA45]">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[10px] font-medium tracking-wider uppercase text-[#D5AA45]">
                     Selected Mentor
                   </span>
-                  <span className="text-[10px] font-medium text-white/50">·</span>
-                  <span className="text-[11.5px] font-bold text-white/90">{activeExpert.experience.split(" ")[0]} Experience</span>
+                  <span className="text-[9px] font-normal text-white/50">·</span>
+                  <span className="text-[11px] font-medium text-white/90">{activeExpert.experience.split(" ")[0]} Experience</span>
                 </div>
-                <h4 className="text-[19px] font-black tracking-tight leading-snug truncate">{activeExpert.name}</h4>
-                <p className="text-[12.5px] text-white/70 truncate">{activeExpert.role}</p>
+                <h4 className="text-[16px] font-medium tracking-tight leading-snug truncate">{activeExpert.name}</h4>
+                <p className="text-[11.5px] text-white/70 truncate font-normal">{activeExpert.role}</p>
               </div>
             </div>
           ) : (
-            <div className="flex items-center gap-4 relative z-10 w-full md:w-auto">
-              <div className="w-13 h-13 rounded-full border-2 border-dashed border-[#C99A2E]/60 bg-white/5 flex items-center justify-center text-[#D5AA45] shrink-0">
-                <User size={24} strokeWidth={2} />
-              </div>
+            <div className="flex items-center gap-3 relative z-10 w-full md:w-auto">
+              <span className="w-10 h-10 rounded-full bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
+                <User size={18} strokeWidth={2} />
+              </span>
               <div className="flex flex-col min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10.5px] font-black tracking-wider uppercase text-[#D5AA45]">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[10px] font-medium tracking-wider uppercase text-[#D5AA45]">
                     Mentor Status
                   </span>
-                  <span className="text-[10.5px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white/80">
+                  <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-white/10 text-white/80">
                     Not Selected
                   </span>
                 </div>
-                <h4 className="text-[18px] font-bold tracking-tight leading-snug">No Mentor Selected Yet</h4>
-                <p className="text-[12.5px] text-white/70">Pick a mentor anytime to see customized pricing and reserved time slots</p>
+                <h4 className="text-[15px] font-medium tracking-tight leading-snug">No Mentor Selected Yet</h4>
+                <p className="text-[11.5px] text-white/70 font-normal">Pick a mentor anytime to see customized pricing and reserved time slots</p>
               </div>
             </div>
           )}
 
-          <div className="flex items-center gap-2.5 relative z-10 shrink-0">
+          <div className="flex items-center gap-2 relative z-10 shrink-0">
             {activeExpert && (
               <button
                 type="button"
                 onClick={handleClearExpert}
-                className="px-3.5 py-2 rounded-[11px] bg-white/10 hover:bg-white/15 text-white/80 hover:text-white border border-white/15 text-[12px] font-bold transition-all cursor-pointer flex items-center gap-1.5"
+                className="px-3 py-1.5 rounded-[9px] bg-white/10 hover:bg-white/15 text-white/80 hover:text-white border border-white/15 text-[11.5px] font-medium transition-all cursor-pointer flex items-center gap-1.5"
                 title="Deselect mentor"
               >
-                <X size={13} />
+                <X size={12} />
                 <span>Clear</span>
               </button>
             )}
             <button
               type="button"
               onClick={() => setIsSwitchExpertOpen((prev) => !prev)}
-              className="px-4 py-2 rounded-[11px] bg-[#C99A2E] hover:bg-[#D5AA45] text-[#0B1D3A] font-extrabold text-[12.5px] transition-all cursor-pointer flex items-center gap-1.5 shadow-md hover:shadow-lg"
+              className="px-3.5 py-1.5 rounded-[9px] bg-[#C99A2E] hover:bg-[#D5AA45] text-[#0B1D3A] font-medium text-[12px] transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
             >
-              <User size={13} />
+              <span className="w-4 h-4 rounded-[3px] bg-[#0B1D3A] text-white flex items-center justify-center">
+                <User size={10} />
+              </span>
               <span>{activeExpert ? "Change Mentor" : "+ Choose Mentor"}</span>
             </button>
           </div>
@@ -257,44 +244,44 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="overflow-hidden bg-white rounded-[22px] border border-[#E6EBF3] p-5 shadow-xl"
+              className="overflow-hidden bg-white rounded-[18px] border border-[#E6EBF3] p-4 shadow-lg"
             >
-              <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-[#E6EBF3]">
+              <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-[#E6EBF3]">
                 <div className="flex items-center gap-2">
-                  <span className="text-[14px] font-bold text-[#0B1D3A]">Available Verified Mentors</span>
-                  <span className="text-[12px] text-[#7B8DAA]">(Select a mentor for your 1-on-1 session)</span>
+                  <span className="text-[13px] font-medium text-[#0B1D3A]">Available Verified Mentors</span>
+                  <span className="text-[11.5px] text-[#7B8DAA] font-normal">(Select a mentor for your 1-on-1 session)</span>
                 </div>
                 {activeExpert && (
                   <button
                     type="button"
                     onClick={handleClearExpert}
-                    className="text-[12px] font-bold text-red-500 hover:text-red-600 cursor-pointer"
+                    className="text-[11.5px] font-medium text-red-500 hover:text-red-600 cursor-pointer"
                   >
                     Deselect Mentor
                   </button>
                 )}
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2.5">
                 {expertsList.map((exp, idx) => {
                   const isCurrent = activeExpert?.name === exp.name;
                   return (
                     <div
                       key={exp.name}
                       onClick={() => handleSelectExpert(exp, idx)}
-                      className={`p-3 rounded-[16px] border cursor-pointer transition-all flex items-center gap-3 ${
+                      className={`p-2.5 rounded-[13px] border cursor-pointer transition-all flex items-center gap-2.5 ${
                         isCurrent
-                          ? "border-[#C99A2E] bg-[#FFFDF7] ring-2 ring-[#C99A2E]/25 shadow-xs"
+                          ? "border-[#C99A2E] bg-[#FFFDF7] ring-1 ring-[#C99A2E]/25 shadow-2xs"
                           : "border-[#E6EBF3] bg-white hover:border-[#CBD5E1] hover:bg-[#F8FAFD]"
                       }`}
                     >
                       <img
                         src={exp.image}
                         alt={exp.name}
-                        className="w-10 h-10 rounded-full object-cover shrink-0 border border-[#CBD5E1]"
+                        className="w-8 h-8 rounded-full object-cover shrink-0 border border-[#CBD5E1]"
                       />
                       <div className="flex flex-col min-w-0">
-                        <span className="text-[12.5px] font-bold text-[#0B1D3A] truncate">{exp.name}</span>
-                        <span className="text-[11px] font-extrabold text-[#C99A2E]">{exp.price}</span>
+                        <span className="text-[11.5px] font-medium text-[#0B1D3A] truncate">{exp.name}</span>
+                        <span className="text-[10.5px] font-medium text-[#C99A2E]">{exp.price}</span>
                       </div>
                     </div>
                   );
@@ -304,12 +291,12 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
           )}
         </AnimatePresence>
 
-        <div className="bg-white/95 backdrop-blur-md rounded-[20px] border border-[#E6EBF3] p-3.5 sm:p-4 shadow-[0_8px_24px_rgba(11,29,58,0.03)] relative overflow-hidden">
+        <div className="bg-white/95 backdrop-blur-md rounded-[16px] border border-[#E6EBF3] p-2.5 sm:p-3 shadow-2xs relative overflow-hidden">
           <div className="relative">
-            <div className="absolute top-5 left-[12.5%] right-[12.5%] -translate-y-1/2 h-[2.5px] bg-[#E8EDF5] rounded-full pointer-events-none" />
+            <div className="absolute top-4 left-[12.5%] right-[12.5%] -translate-y-1/2 h-[2px] bg-[#E8EDF5] rounded-full pointer-events-none" />
 
             <motion.div
-              className="absolute top-5 left-[12.5%] -translate-y-1/2 h-[2.5px] rounded-full bg-gradient-to-r from-[#10B981] via-[#059669] to-[#C99A2E] shadow-[0_0_10px_rgba(201,154,46,0.45)] pointer-events-none"
+              className="absolute top-4 left-[12.5%] -translate-y-1/2 h-[2px] rounded-full bg-gradient-to-r from-[#10B981] via-[#059669] to-[#C99A2E] pointer-events-none"
               initial={false}
               animate={{
                 width: `${((currentStep - 1) / (STEPS.length - 1)) * 75}%`,
@@ -332,42 +319,35 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                       isPast ? "cursor-pointer" : isCurrent ? "cursor-default" : "cursor-not-allowed opacity-65"
                     }`}
                   >
-                    <div className="relative flex items-center justify-center w-10 h-10 mb-1.5">
+                    <div className="relative flex items-center justify-center w-8 h-8 mb-1">
                       {isCurrent && (
-                        <span className="absolute -inset-0.5 rounded-full ring-2 ring-[#C99A2E] ring-offset-2 ring-offset-white pointer-events-none" />
+                        <span className="absolute -inset-0.5 rounded-full ring-1 ring-[#C99A2E] ring-offset-1 ring-offset-white pointer-events-none" />
                       )}
 
                       <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center text-[13px] font-bold transition-all duration-300 relative z-10 ${
+                        className={`w-8 h-8 rounded-full flex items-center justify-center text-[12px] font-medium transition-all duration-300 relative z-10 ${
                           isPast
-                            ? "bg-[#10B981] text-white shadow-xs"
+                            ? "bg-[#10B981] text-white shadow-2xs"
                             : isCurrent
-                            ? "bg-[#0B1D3A] text-[#D5AA45] shadow-md ring-2 ring-[#C99A2E]"
-                            : "bg-white border-2 border-[#CBD5E1] text-[#7B8DAA]"
+                            ? "bg-[#0B1D3A] text-white shadow-xs ring-1 ring-[#C99A2E]"
+                            : "bg-white border border-[#CBD5E1] text-[#7B8DAA]"
                         }`}
                       >
-                        {isPast ? <Check size={16} strokeWidth={2.8} /> : <span>{step.id}</span>}
+                        {isPast ? <Check size={13} strokeWidth={3} /> : <span>{step.id}</span>}
                       </div>
                     </div>
 
                     <div className="text-center px-1">
                       <span
-                        className={`text-[12px] font-bold block tracking-tight ${
+                        className={`text-[11px] font-medium block tracking-tight ${
                           isCurrent
                             ? "text-[#0B1D3A]"
                             : isPast
-                            ? "text-[#059669] group-hover:text-[#047857]"
+                            ? "text-[#059669]"
                             : "text-[#64748B]"
                         }`}
                       >
                         {step.title}
-                      </span>
-                      <span
-                        className={`text-[10px] hidden sm:block ${
-                          isCurrent ? "text-[#C99A2E] font-semibold" : "text-[#94A3B8]"
-                        }`}
-                      >
-                        {step.label}
                       </span>
                     </div>
                   </button>
@@ -381,14 +361,16 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
           <motion.div
             initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-3.5 rounded-[14px] bg-amber-50 border border-amber-200 text-amber-900 text-[13px] font-semibold flex items-center gap-2.5"
+            className="p-2.5 rounded-[11px] bg-red-50 border border-red-200 text-red-700 text-[12px] font-medium flex items-center gap-2"
           >
-            <AlertCircle size={17} className="text-amber-600 shrink-0" />
+            <span className="w-4 h-4 rounded-full bg-red-600 text-white flex items-center justify-center shrink-0">
+              <AlertCircle size={10} />
+            </span>
             <span>{validationError}</span>
           </motion.div>
         )}
 
-        <div className="bg-white rounded-[24px] border border-[#E6EBF3] shadow-[0_10px_30px_rgba(11,29,58,0.04)] p-5 sm:p-7 min-h-[380px] flex flex-col justify-between">
+        <div className="bg-white rounded-[20px] border border-[#E6EBF3] shadow-[0_10px_30px_rgba(11,29,58,0.04)] p-5 sm:p-6 overflow-hidden">
           <AnimatePresence mode="wait" custom={slideDirection}>
             {currentStep === 1 && (
               <motion.div
@@ -399,21 +381,21 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="flex flex-col gap-5"
+                className="flex flex-col gap-4"
               >
                 <div>
-                  <span className="text-[10.5px] font-black uppercase tracking-[0.14em] text-[#C99A2E] block mb-1">
+                  <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#C99A2E] block mb-0.5">
                     Step 1 of 4
                   </span>
-                  <h3 className="text-[21px] font-black text-[#0B1D3A] tracking-tight">
+                  <h3 className="text-[18px] font-medium text-[#0B1D3A] tracking-tight">
                     Select Session Duration & Format
                   </h3>
-                  <p className="text-[13px] text-[#5A6B82] mt-0.5">
+                  <p className="text-[12px] text-[#5A6B82] mt-0.5 font-normal">
                     Choose the duration that matches your practice objective and depth of feedback.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
                   {s.durations.map((dur) => {
                     const isSelected = selectedDurationId === dur.id;
                     const durPrice = getExpertDurationPrice(activeExpert?.price, dur.id);
@@ -421,36 +403,36 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                     return (
                       <motion.div
                         key={dur.id}
-                        whileHover={{ y: -3 }}
+                        whileHover={{ y: -2 }}
                         whileTap={{ scale: 0.99 }}
                         onClick={() => {
                           setSelectedDurationId(dur.id);
                           setValidationError(null);
                         }}
-                        className={`p-5 rounded-[22px] border transition-all duration-300 cursor-pointer flex flex-col justify-between relative overflow-hidden ${
+                        className={`p-3.5 rounded-[16px] border transition-all duration-300 cursor-pointer flex flex-col justify-between relative overflow-hidden ${
                           isSelected
-                            ? "bg-gradient-to-b from-[#FFFDF7] to-white border-[#C99A2E] ring-2 ring-[#C99A2E]/35 shadow-[0_12px_28px_rgba(201,154,46,0.12)]"
+                            ? "bg-gradient-to-b from-[#FFFDF7] to-white border-[#C99A2E] ring-1 ring-[#C99A2E]/30 shadow-xs"
                             : "bg-white border-[#E6EBF3] hover:border-[#CBD5E1]"
                         }`}
                       >
                         {isSelected && (
                           <div className="absolute top-0 right-0">
-                            <span className="inline-flex items-center gap-1 bg-[#0B1D3A] text-[#D5AA45] text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-[12px]">
-                              <Check size={11} strokeWidth={2.8} />
+                            <span className="inline-flex items-center gap-1 bg-[#0B1D3A] text-white text-[9.5px] font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-bl-[10px]">
+                              <Check size={9} strokeWidth={3} />
                               Selected
                             </span>
                           </div>
                         )}
 
                         {!isSelected && dur.recommended && (
-                          <span className="absolute top-0 right-0 bg-[#C99A2E]/15 text-[#C99A2E] text-[9.5px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-bl-[12px]">
+                          <span className="absolute top-0 right-0 bg-[#C99A2E]/15 text-[#C99A2E] text-[9px] font-medium uppercase tracking-wider px-2 py-0.5 rounded-bl-[10px]">
                             Recommended
                           </span>
                         )}
 
                         <div>
-                          <div className="flex items-center justify-between mb-2.5 mt-1">
-                            <span className="text-[26px] font-black text-[#0B1D3A] leading-none tracking-tight">
+                          <div className="flex items-center justify-between mb-2 mt-0.5">
+                            <span className="text-[20px] font-medium text-[#0B1D3A] leading-none tracking-tight">
                               {dur.duration}
                             </span>
 
@@ -460,10 +442,10 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                                 animate={{ opacity: 1, scale: 1 }}
                                 className="flex items-baseline gap-1"
                               >
-                                <span className="text-[20px] font-black text-[#C99A2E]">
+                                <span className="text-[17px] font-medium text-[#C99A2E]">
                                   {durPrice.price}
                                 </span>
-                                <span className="text-[10.5px] font-medium text-[#7B8DAA]">/session</span>
+                                <span className="text-[10px] font-normal text-[#7B8DAA]">/session</span>
                               </motion.div>
                             ) : (
                               <span
@@ -471,33 +453,31 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                                   e.stopPropagation();
                                   setIsSwitchExpertOpen(true);
                                 }}
-                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-[8px] bg-[#F8FAFD] border border-[#E6EBF3] text-[10.5px] font-bold text-[#5A6B82] hover:text-[#C99A2E]"
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[6px] bg-[#F8FAFD] border border-[#E6EBF3] text-[10px] font-medium text-[#5A6B82]"
                               >
-                                <User size={10} className="text-[#C99A2E]" />
+                                <span className="w-3.5 h-3.5 rounded-full bg-[#C99A2E] text-white flex items-center justify-center">
+                                  <User size={8} />
+                                </span>
                                 <span>Fee on select</span>
                               </span>
                             )}
                           </div>
 
-                          <div className="flex items-center gap-2 mb-1.5">
-                            <h4 className="text-[16px] font-bold text-[#0B1D3A]">{dur.label}</h4>
-                          </div>
-                          <p className="text-[12.5px] text-[#5A6B82] leading-relaxed mb-4">{dur.desc}</p>
+                          <span className="text-[11.5px] font-medium text-[#0B1D3A] block mb-1">
+                            {dur.label}
+                          </span>
+                          <p className="text-[11px] text-[#5A6B82] leading-relaxed mb-3 font-normal">
+                            {dur.desc}
+                          </p>
                         </div>
 
-                        <div className="pt-3.5 border-t border-[#F0F4FA] flex flex-col gap-2">
+                        <div className="pt-2.5 border-t border-[#F0F4FA] flex flex-col gap-1 text-[11px]">
                           {dur.features.map((feat) => (
-                            <div key={feat} className="flex items-center gap-2 text-[12px] text-[#3B4D66]">
-                              <div
-                                className={`w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 ${
-                                  isSelected ? "bg-[#10B981] text-white" : "bg-[#10B981]/15 text-[#10B981]"
-                                }`}
-                              >
-                                <Check size={9} strokeWidth={2.8} />
-                              </div>
-                              <span className={isSelected ? "font-bold text-[#0B1D3A]" : "font-medium text-[#5A6B82]"}>
-                                {feat}
+                            <div key={feat} className="flex items-center gap-1.5 text-[#334155] font-normal">
+                              <span className="w-3.5 h-3.5 rounded-full bg-[#10B981] text-white flex items-center justify-center shrink-0">
+                                <Check size={8} strokeWidth={3} />
                               </span>
+                              <span className="truncate">{feat}</span>
                             </div>
                           ))}
                         </div>
@@ -507,14 +487,14 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                 </div>
 
                 {!activeExpert ? (
-                  <div className="p-3.5 rounded-[16px] bg-gradient-to-r from-[#FFFDF7] via-white to-[#F8FAFD] border border-[#C99A2E]/35 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-2xs">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-[#C99A2E]/15 text-[#C99A2E] flex items-center justify-center shrink-0">
-                        <Sparkles size={15} />
-                      </div>
+                  <div className="p-3 rounded-[13px] bg-gradient-to-r from-[#FFFDF7] via-white to-[#F8FAFD] border border-[#C99A2E]/30 flex flex-col sm:flex-row items-center justify-between gap-2.5 shadow-2xs">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-7 h-7 rounded-full bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
+                        <Sparkles size={13} />
+                      </span>
                       <div>
-                        <h5 className="text-[13px] font-bold text-[#0B1D3A]">Custom Mentor Pricing</h5>
-                        <p className="text-[12px] text-[#5A6B82]">
+                        <h5 className="text-[12px] font-medium text-[#0B1D3A]">Custom Mentor Pricing</h5>
+                        <p className="text-[11px] text-[#5A6B82] font-normal">
                           Session rates adapt to each mentor's verified seniority. Select a mentor to preview exact rates.
                         </p>
                       </div>
@@ -522,23 +502,23 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                     <button
                       type="button"
                       onClick={() => setIsSwitchExpertOpen(true)}
-                      className="px-3.5 py-1.5 rounded-[10px] bg-[#0B1D3A] text-[#D5AA45] text-[12px] font-bold cursor-pointer shrink-0"
+                      className="px-3 py-1 rounded-[8px] bg-[#0B1D3A] text-white text-[11px] font-medium cursor-pointer shrink-0"
                     >
                       + Choose Mentor
                     </button>
                   </div>
                 ) : (
-                  <div className="flex items-center justify-between px-4 py-2.5 rounded-[14px] bg-[#F8FAFD] border border-[#E6EBF3] text-[12px] text-[#5A6B82]">
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold text-[#0B1D3A]">Custom mentor rates applied:</span>
-                      <span className="font-bold text-[#C99A2E]">{activeExpert.name}</span>
+                  <div className="flex items-center justify-between px-3 py-2 rounded-[11px] bg-[#F8FAFD] border border-[#E6EBF3] text-[11.5px] text-[#5A6B82]">
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-medium text-[#0B1D3A]">Custom mentor rates applied:</span>
+                      <span className="font-medium text-[#C99A2E]">{activeExpert.name}</span>
                       <span className="text-[#CBD5E1]">·</span>
-                      <span className="font-medium text-[#0B1D3A]">{activeExpert.experience}</span>
+                      <span className="font-normal text-[#0B1D3A]">{activeExpert.experience}</span>
                     </div>
                     <button
                       type="button"
                       onClick={() => setIsSwitchExpertOpen(true)}
-                      className="text-[#C99A2E] font-bold hover:underline cursor-pointer"
+                      className="text-[#C99A2E] font-medium hover:underline cursor-pointer"
                     >
                       Change
                     </button>
@@ -556,50 +536,50 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="flex flex-col gap-5"
+                className="flex flex-col gap-4"
               >
                 <div>
-                  <span className="text-[10.5px] font-black uppercase tracking-[0.14em] text-[#C99A2E] block mb-1">
+                  <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#C99A2E] block mb-0.5">
                     Step 2 of 4
                   </span>
-                  <h3 className="text-[21px] font-black text-[#0B1D3A] tracking-tight">
+                  <h3 className="text-[18px] font-medium text-[#0B1D3A] tracking-tight">
                     Choose Your Practice Scenario
                   </h3>
-                  <p className="text-[13px] text-[#5A6B82] mt-0.5">
+                  <p className="text-[12px] text-[#5A6B82] mt-0.5 font-normal">
                     Select a realistic objection drill or enter a custom customer challenge to practice live.
                   </p>
                 </div>
 
-                <div className="flex flex-col gap-4">
-                  <span className="text-[10.5px] font-black uppercase tracking-[0.14em] text-[#7B8DAA]">
+                <div className="flex flex-col gap-3">
+                  <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#7B8DAA]">
                     Recommended Simulation Scenarios
                   </span>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {quickScenarios.map((sc) => {
                       const isSelected = scenarioText === sc.title;
                       return (
                         <div
                           key={sc.title}
                           onClick={() => setScenarioText(sc.title)}
-                          className={`p-3.5 rounded-[16px] border transition-all cursor-pointer flex items-center justify-between gap-3 ${
+                          className={`p-2.5 rounded-[13px] border transition-all cursor-pointer flex items-center justify-between gap-2.5 ${
                             isSelected
-                              ? "bg-[#FFFDF7] border-[#C99A2E] ring-2 ring-[#C99A2E]/20"
+                              ? "bg-[#FFFDF7] border-[#C99A2E] ring-1 ring-[#C99A2E]/20"
                               : "bg-[#F8FAFD] border-[#E6EBF3] hover:border-[#CBD5E1]"
                           }`}
                         >
-                          <div className="flex items-center gap-2.5">
-                            <div
-                              className={`w-5.5 h-5.5 rounded-full flex items-center justify-center shrink-0 ${
-                                isSelected ? "bg-[#C99A2E] text-white" : "border-2 border-[#CBD5E1]"
+                          <div className="flex items-center gap-2">
+                            <span
+                              className={`w-4.5 h-4.5 rounded-full flex items-center justify-center shrink-0 ${
+                                isSelected ? "bg-[#C99A2E] text-white" : "border border-[#CBD5E1]"
                               }`}
                             >
-                              {isSelected && <Check size={12} strokeWidth={2.8} />}
-                            </div>
-                            <span className="text-[13px] font-bold text-[#0B1D3A] leading-snug">
+                              {isSelected && <Check size={10} strokeWidth={3} />}
+                            </span>
+                            <span className="text-[12px] font-medium text-[#0B1D3A] leading-snug">
                               {sc.title}
                             </span>
                           </div>
-                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-white border border-[#E6EBF3] text-[#7B8DAA] shrink-0">
+                          <span className="text-[9.5px] font-normal px-1.5 py-0.5 rounded-full bg-white border border-[#E6EBF3] text-[#7B8DAA] shrink-0">
                             {sc.tag}
                           </span>
                         </div>
@@ -607,17 +587,19 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                     })}
                   </div>
 
-                  <div className="flex flex-col gap-1.5 pt-1">
-                    <span className="text-[10.5px] font-black uppercase tracking-[0.14em] text-[#7B8DAA] flex items-center gap-1.5">
-                      <Edit3 size={12} className="text-[#C99A2E]" />
+                  <div className="flex flex-col gap-1 pt-1">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#7B8DAA] flex items-center gap-1.5">
+                      <span className="w-4 h-4 rounded-[3px] bg-[#C99A2E] text-white flex items-center justify-center">
+                        <Edit3 size={9} />
+                      </span>
                       Custom Scenario Description / Specific Goal
                     </span>
                     <textarea
                       value={scenarioText}
                       onChange={(e) => setScenarioText(e.target.value)}
-                      rows={3}
+                      rows={2.5}
                       placeholder="e.g., A client is comparing my project with a cheaper competitor and refuses to pay the booking token..."
-                      className="w-full p-3.5 rounded-[14px] bg-[#F8FAFD] border border-[#E6EBF3] focus:bg-white focus:border-[#C99A2E] focus:ring-2 focus:ring-[#C99A2E]/20 text-[13px] font-medium text-[#0B1D3A] outline-none transition-all resize-none font-['Outfit']"
+                      className="w-full p-2.5 rounded-[11px] bg-[#F8FAFD] border border-[#E6EBF3] focus:bg-white focus:border-[#C99A2E] text-[12.5px] font-normal text-[#0B1D3A] outline-none transition-all resize-none font-['Outfit']"
                     />
                   </div>
                 </div>
@@ -633,23 +615,23 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="flex flex-col gap-5"
+                className="flex flex-col gap-4"
               >
                 <div>
-                  <span className="text-[10.5px] font-black uppercase tracking-[0.14em] text-[#C99A2E] block mb-1">
+                  <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#C99A2E] block mb-0.5">
                     Step 3 of 4
                   </span>
-                  <h3 className="text-[21px] font-black text-[#0B1D3A] tracking-tight">
+                  <h3 className="text-[18px] font-medium text-[#0B1D3A] tracking-tight">
                     Select Date & Time Slot
                   </h3>
-                  <p className="text-[13px] text-[#5A6B82] mt-0.5">
+                  <p className="text-[12px] text-[#5A6B82] mt-0.5 font-normal">
                     Pick an upcoming date and time slot that fits your schedule.
                   </p>
                 </div>
 
-                <div className="flex flex-col gap-4.5">
+                <div className="flex flex-col gap-3.5">
                   <div>
-                    <span className="text-[10.5px] font-black uppercase tracking-[0.14em] text-[#7B8DAA] block mb-2">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#7B8DAA] block mb-1.5">
                       1. Choose Date
                     </span>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
@@ -660,17 +642,17 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                             key={d.label}
                             type="button"
                             onClick={() => setSelectedDate(d.label)}
-                            className={`p-2.5 rounded-[14px] border text-center transition-all cursor-pointer flex flex-col items-center gap-1 ${
+                            className={`p-2 rounded-[11px] border text-center transition-all cursor-pointer flex flex-col items-center gap-0.5 ${
                               isSelected
-                                ? "bg-[#0B1D3A] text-white border-[#0B1D3A] shadow-md -translate-y-0.5"
+                                ? "bg-[#0B1D3A] text-white border-[#0B1D3A] shadow-xs"
                                 : "bg-[#F8FAFD] border-[#E6EBF3] hover:border-[#CBD5E1] text-[#0B1D3A]"
                             }`}
                           >
-                            <span className={`text-[9.5px] font-bold uppercase ${isSelected ? "text-[#D5AA45]" : "text-[#7B8DAA]"}`}>
+                            <span className={`text-[9px] font-medium uppercase ${isSelected ? "text-[#D5AA45]" : "text-[#7B8DAA]"}`}>
                               {d.day}
                             </span>
-                            <span className="text-[14px] font-black leading-none">{d.date}</span>
-                            <span className={`text-[9.5px] font-semibold ${isSelected ? "text-white/80" : "text-[#10B981]"}`}>
+                            <span className="text-[13px] font-medium leading-none">{d.date}</span>
+                            <span className={`text-[9px] font-normal ${isSelected ? "text-white/80" : "text-[#10B981]"}`}>
                               {d.slotsCount} slots
                             </span>
                           </button>
@@ -680,20 +662,28 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                   </div>
 
                   <div>
-                    <span className="text-[10.5px] font-black uppercase tracking-[0.14em] text-[#7B8DAA] block mb-2">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#7B8DAA] block mb-1.5">
                       2. Choose Time Slot
                     </span>
-                    <div className="flex flex-col gap-2.5">
+                    <div className="flex flex-col gap-2">
                       {s.timeSlots.map((period) => (
                         <div
                           key={period.period}
-                          className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3.5 p-3 rounded-[14px] bg-[#F8FAFD] border border-[#E6EBF3]"
+                          className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 p-2.5 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3]"
                         >
-                          <span className="text-[11px] font-bold text-[#7B8DAA] uppercase tracking-wider w-24 shrink-0 flex items-center gap-1.5">
-                            {period.period === "Morning" ? <Sun size={13} className="text-[#F59E0B]" /> : <Moon size={13} className="text-[#6366F1]" />}
+                          <span className="text-[10.5px] font-medium text-[#7B8DAA] uppercase tracking-wider w-24 shrink-0 flex items-center gap-1.5">
+                            {period.period === "Morning" ? (
+                              <span className="w-4 h-4 rounded-[3px] bg-[#D97706] text-white flex items-center justify-center">
+                                <Sun size={9} />
+                              </span>
+                            ) : (
+                              <span className="w-4 h-4 rounded-[3px] bg-[#4338CA] text-white flex items-center justify-center">
+                                <Moon size={9} />
+                              </span>
+                            )}
                             {period.period}
                           </span>
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-1.5">
                             {period.slots.map((slot) => {
                               const isSelected = selectedSlot === slot.time;
                               return (
@@ -701,7 +691,7 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                                   key={slot.time}
                                   type="button"
                                   onClick={() => setSelectedSlot(slot.time)}
-                                  className={`px-3 py-1.5 rounded-[9px] text-[12px] font-bold transition-all cursor-pointer ${
+                                  className={`px-2.5 py-1 rounded-[7px] text-[11px] font-medium transition-all cursor-pointer ${
                                     isSelected
                                       ? "bg-[#C99A2E] text-white shadow-xs"
                                       : "bg-white border border-[#E6EBF3] text-[#0B1D3A] hover:border-[#CBD5E1]"
@@ -729,121 +719,121 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="flex flex-col gap-5"
+                className="flex flex-col gap-4"
               >
                 <div>
-                  <span className="text-[10.5px] font-black uppercase tracking-[0.14em] text-[#C99A2E] block mb-1">
+                  <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#C99A2E] block mb-0.5">
                     Step 4 of 4
                   </span>
-                  <h3 className="text-[21px] font-black text-[#0B1D3A] tracking-tight">
+                  <h3 className="text-[18px] font-medium text-[#0B1D3A] tracking-tight">
                     Review & Confirm Your Reservation
                   </h3>
-                  <p className="text-[13px] text-[#5A6B82] mt-0.5">
+                  <p className="text-[12px] text-[#5A6B82] mt-0.5 font-normal">
                     Verify session details and confirm to secure your mentor's Google Meet schedule.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div className="p-4.5 rounded-[18px] bg-[#F8FAFD] border border-[#E6EBF3] flex flex-col gap-3.5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-3.5 rounded-[15px] bg-[#F8FAFD] border border-[#E6EBF3] flex flex-col gap-2.5">
                     {activeExpert ? (
-                      <div className="flex items-center justify-between pb-3 border-b border-[#E6EBF3]">
-                        <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-between pb-2.5 border-b border-[#E6EBF3]">
+                        <div className="flex items-center gap-2.5">
                           <img
                             src={activeExpert.image}
                             alt={activeExpert.name}
-                            className="w-11 h-11 rounded-full object-cover border-2 border-white shadow-xs"
+                            className="w-9 h-9 rounded-full object-cover border border-[#CBD5E1]"
                           />
                           <div>
-                            <h4 className="text-[15px] font-bold text-[#0B1D3A]">{activeExpert.name}</h4>
-                            <p className="text-[11.5px] font-medium text-[#7B8DAA]">{activeExpert.role}</p>
+                            <h4 className="text-[13.5px] font-medium text-[#0B1D3A]">{activeExpert.name}</h4>
+                            <p className="text-[11px] font-normal text-[#7B8DAA]">{activeExpert.role}</p>
                           </div>
                         </div>
                         <button
                           type="button"
                           onClick={() => setIsSwitchExpertOpen(true)}
-                          className="text-[11.5px] font-bold text-[#C99A2E] hover:underline cursor-pointer"
+                          className="text-[11px] font-medium text-[#C99A2E] hover:underline cursor-pointer"
                         >
                           Change
                         </button>
                       </div>
                     ) : (
-                      <div className="p-3.5 rounded-[13px] bg-amber-50/70 border border-amber-200/80 flex items-center justify-between gap-3">
-                        <div className="flex items-center gap-2.5">
-                          <div className="w-9 h-9 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-                            <User size={16} />
-                          </div>
+                      <div className="p-2.5 rounded-[11px] bg-amber-50/70 border border-amber-200/80 flex items-center justify-between gap-2.5">
+                        <div className="flex items-center gap-2">
+                          <span className="w-7 h-7 rounded-full bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
+                            <User size={13} />
+                          </span>
                           <div>
-                            <span className="text-[13px] font-bold text-amber-900 block leading-tight">No Mentor Selected</span>
-                            <span className="text-[11px] text-amber-700">Please choose a mentor to confirm</span>
+                            <span className="text-[12px] font-medium text-amber-900 block leading-tight">No Mentor Selected</span>
+                            <span className="text-[10.5px] text-amber-700 font-normal">Please choose a mentor to confirm</span>
                           </div>
                         </div>
                         <button
                           type="button"
                           onClick={() => setIsSwitchExpertOpen(true)}
-                          className="px-2.5 py-1 rounded-[9px] bg-[#0B1D3A] text-[#D5AA45] text-[11px] font-bold cursor-pointer"
+                          className="px-2 py-0.5 rounded-[7px] bg-[#0B1D3A] text-white text-[10.5px] font-medium cursor-pointer"
                         >
                           + Select
                         </button>
                       </div>
                     )}
 
-                    <div className="flex flex-col gap-2 text-[12.5px]">
+                    <div className="flex flex-col gap-1.5 text-[11.5px]">
                       <div className="flex justify-between">
-                        <span className="text-[#7B8DAA] font-medium">Duration:</span>
-                        <span className="font-bold text-[#0B1D3A]">
+                        <span className="text-[#7B8DAA] font-normal">Duration:</span>
+                        <span className="font-medium text-[#0B1D3A]">
                           {selectedDuration ? `${selectedDuration.duration} (${selectedDuration.label})` : "45 MIN"}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-[#7B8DAA] font-medium">Date & Time:</span>
-                        <span className="font-bold text-[#0B1D3A]">{selectedDate} · {selectedSlot}</span>
+                        <span className="text-[#7B8DAA] font-normal">Date & Time:</span>
+                        <span className="font-medium text-[#0B1D3A]">{selectedDate} · {selectedSlot}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-[#7B8DAA] font-medium">Format:</span>
-                        <span className="font-bold text-[#0B1D3A]">1-on-1 Live Role-Play (Google Meet)</span>
+                        <span className="text-[#7B8DAA] font-normal">Format:</span>
+                        <span className="font-medium text-[#0B1D3A]">1-on-1 Live Role-Play (Google Meet)</span>
                       </div>
                     </div>
 
-                    <div className="p-3 rounded-[12px] bg-white border border-[#E6EBF3]">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#7B8DAA] block mb-1">
+                    <div className="p-2.5 rounded-[10px] bg-white border border-[#E6EBF3]">
+                      <span className="text-[9.5px] font-medium uppercase tracking-wider text-[#7B8DAA] block mb-0.5">
                         Practice Scenario:
                       </span>
-                      <p className="text-[12px] font-semibold text-[#0B1D3A]">{scenarioText}</p>
+                      <p className="text-[11.5px] font-medium text-[#0B1D3A]">{scenarioText}</p>
                     </div>
                   </div>
 
-                  <div className="p-4.5 rounded-[18px] bg-white border border-[#E6EBF3] shadow-xs flex flex-col justify-between">
+                  <div className="p-3.5 rounded-[15px] bg-white border border-[#E6EBF3] shadow-2xs flex flex-col justify-between">
                     <div>
-                      <h4 className="text-[14.5px] font-bold text-[#0B1D3A] mb-3">Investment Summary</h4>
+                      <h4 className="text-[13px] font-medium text-[#0B1D3A] mb-2.5">Investment Summary</h4>
                       {activeExpert && selectedDuration && currentDurationPrice ? (
-                        <div className="flex flex-col gap-2 text-[12.5px]">
-                          <div className="flex justify-between text-[#5A6B82]">
+                        <div className="flex flex-col gap-1.5 text-[11.5px]">
+                          <div className="flex justify-between text-[#5A6B82] font-normal">
                             <span>Session Fee ({selectedDuration.duration}):</span>
-                            <span className="font-bold text-[#0B1D3A]">{currentDurationPrice.price}</span>
+                            <span className="font-medium text-[#0B1D3A]">{currentDurationPrice.price}</span>
                           </div>
-                          <div className="flex justify-between text-[#5A6B82]">
+                          <div className="flex justify-between text-[#5A6B82] font-normal">
                             <span>Platform & Meeting Setup:</span>
-                            <span className="text-[#10B981] font-semibold">Included</span>
+                            <span className="text-[#10B981] font-medium">Included</span>
                           </div>
-                          <div className="flex justify-between text-[#5A6B82]">
+                          <div className="flex justify-between text-[#5A6B82] font-normal">
                             <span>Detailed Rubric Scorecard:</span>
-                            <span className="text-[#10B981] font-semibold">Included</span>
+                            <span className="text-[#10B981] font-medium">Included</span>
                           </div>
-                          <div className="pt-2.5 border-t border-[#E6EBF3] flex justify-between text-[15px] font-bold text-[#0B1D3A]">
+                          <div className="pt-2 border-t border-[#E6EBF3] flex justify-between text-[13.5px] font-medium text-[#0B1D3A]">
                             <span>Total Investment:</span>
                             <span className="text-[#C99A2E]">{currentDurationPrice.price}</span>
                           </div>
                         </div>
                       ) : (
-                        <div className="p-3.5 rounded-[13px] bg-amber-50/70 border border-amber-200/80 flex flex-col gap-2">
-                          <span className="text-[12.5px] font-bold text-amber-900">Fee Calculation Pending</span>
-                          <p className="text-[11.5px] text-amber-800">
+                        <div className="p-2.5 rounded-[11px] bg-amber-50/70 border border-amber-200/80 flex flex-col gap-1.5">
+                          <span className="text-[11.5px] font-medium text-amber-900">Fee Calculation Pending</span>
+                          <p className="text-[11px] text-amber-800 font-normal">
                             Please select a mentor to calculate your exact session fee.
                           </p>
                           <button
                             type="button"
                             onClick={() => setIsSwitchExpertOpen(true)}
-                            className="mt-1 px-3 py-1.5 rounded-[9px] bg-[#0B1D3A] text-[#D5AA45] text-[11px] font-bold w-fit cursor-pointer"
+                            className="mt-0.5 px-2.5 py-1 rounded-[7px] bg-[#0B1D3A] text-white text-[10.5px] font-medium w-fit cursor-pointer"
                           >
                             + Choose Mentor
                           </button>
@@ -851,8 +841,10 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                       )}
                     </div>
 
-                    <div className="pt-3.5 flex items-center gap-2 text-[11.5px] font-medium text-[#475569]">
-                      <ShieldCheck size={16} className="text-[#10B981] shrink-0" />
+                    <div className="pt-2.5 flex items-center gap-1.5 text-[11px] font-normal text-[#475569]">
+                      <span className="w-4 h-4 rounded-full bg-[#10B981] text-white flex items-center justify-center shrink-0">
+                        <ShieldCheck size={9} />
+                      </span>
                       <span>100% Satisfaction Guarantee. Full session retry if unsatisfied.</span>
                     </div>
                   </div>
@@ -861,14 +853,16 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
             )}
           </AnimatePresence>
 
-          <div className="pt-5 border-t border-[#F0F4FA] flex items-center justify-between mt-5">
+          <div className="pt-3.5 border-t border-[#F0F4FA] flex items-center justify-between mt-3.5">
             {currentStep > 1 ? (
               <SecondaryButton
                 showArrow={false}
                 onClick={handlePrevStep}
-                className="!h-10.5 !px-4 text-[13px] !rounded-[11px] font-bold flex items-center gap-1.5 cursor-pointer hover:bg-white"
+                className="!h-9 !px-3.5 text-[12px] !rounded-[10px] font-medium flex items-center gap-1.5 cursor-pointer hover:bg-white"
               >
-                <ArrowLeft size={14} className="shrink-0 transition-transform duration-200 group-hover:-translate-x-0.5" />
+                <span className="w-3.5 h-3.5 rounded-[3px] bg-[#0B1D3A] text-white flex items-center justify-center shrink-0">
+                  <ArrowLeft size={9} />
+                </span>
                 <span>Back</span>
               </SecondaryButton>
             ) : (
@@ -879,7 +873,7 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
               <PrimaryButton
                 variant="gold"
                 onClick={handleNextStep}
-                className="!h-10.5 !px-5 text-[13px] !rounded-[11px] font-extrabold shadow-sm cursor-pointer"
+                className="!h-9 !px-4 text-[12px] !rounded-[10px] font-medium shadow-xs cursor-pointer"
               >
                 Continue to Next Step
               </PrimaryButton>
@@ -888,7 +882,7 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
                 variant="gold"
                 icon={CheckCircle2}
                 onClick={handleConfirmBooking}
-                className="!h-11 !px-7 text-[13.5px] !rounded-[11px] font-extrabold shadow-md cursor-pointer"
+                className="!h-9.5 !px-5 text-[12.5px] !rounded-[10px] font-medium shadow-xs cursor-pointer"
               >
                 Confirm & Reserve Slot
               </PrimaryButton>
@@ -912,88 +906,94 @@ export default function Desktop({ selectedExpert: propExpert, onSelectExpert }: 
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 16 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full max-w-[430px] bg-white rounded-[28px] p-7 sm:p-8 border border-[#E6EBF3] shadow-[0_25px_60px_-15px_rgba(11,29,58,0.22)] overflow-hidden flex flex-col items-center text-center gap-4"
+              className="relative z-10 w-full max-w-[400px] bg-white rounded-[24px] p-6 border border-[#E6EBF3] shadow-[0_20px_50px_-12px_rgba(11,29,58,0.2)] overflow-hidden flex flex-col items-center text-center gap-3.5"
             >
-              <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#0B1D3A]" />
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#0B1D3A]" />
 
               <button
                 type="button"
                 onClick={() => setIsBooked(false)}
                 aria-label="Close"
-                className="absolute top-4 right-4 w-7 h-7 rounded-full bg-[#F3F6FB] hover:bg-[#E2E8F0] text-[#7B8DAA] hover:text-[#0B1D3A] flex items-center justify-center transition-colors cursor-pointer"
+                className="absolute top-3.5 right-3.5 w-6 h-6 rounded-full bg-[#F3F6FB] hover:bg-[#E2E8F0] text-[#7B8DAA] hover:text-[#0B1D3A] flex items-center justify-center transition-colors cursor-pointer"
               >
-                <X size={14} />
+                <X size={12} />
               </button>
 
-              <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#ECFDF5] to-[#D1FAE5] border-2 border-[#10B981]/30 text-[#059669] flex items-center justify-center shadow-[0_8px_20px_rgba(16,185,129,0.18)] mb-0.5">
-                <Check size={30} strokeWidth={2.8} />
+              <div className="w-13 h-13 rounded-full bg-[#10B981] text-white flex items-center justify-center shadow-md mb-0.5">
+                <Check size={26} strokeWidth={3} />
               </div>
 
               <div>
-                <span className="text-[11px] font-black uppercase tracking-[0.16em] text-[#C99A2E] block mb-1">
+                <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#C99A2E] block mb-0.5">
                   Booking Confirmed
                 </span>
-                <h3 className="text-[22px] font-black text-[#0B1D3A] tracking-tight leading-tight">
+                <h3 className="text-[19px] font-medium text-[#0B1D3A] tracking-tight leading-tight">
                   Your Slot is Reserved!
                 </h3>
-                <p className="text-[13px] text-[#5A6B82] mt-1 leading-relaxed max-w-[320px] font-medium">
-                  A Google Meet invitation has been generated for your session with <span className="font-bold text-[#0B1D3A]">{activeExpert?.name || "your mentor"}</span>.
+                <p className="text-[12px] text-[#5A6B82] mt-0.5 leading-relaxed max-w-[300px] font-normal">
+                  A Google Meet invitation has been generated for your session with <span className="font-medium text-[#0B1D3A]">{activeExpert?.name || "your mentor"}</span>.
                 </p>
               </div>
 
-              <div className="w-full rounded-[18px] bg-[#F8FAFD] border border-[#E6EBF3] p-4 flex flex-col gap-2.5 text-left text-[12.5px] shadow-2xs">
+              <div className="w-full rounded-[15px] bg-[#F8FAFD] border border-[#E6EBF3] p-3 flex flex-col gap-2 text-left text-[11.5px] shadow-2xs">
                 {activeExpert && (
-                  <div className="flex items-center gap-2.5 pb-2.5 border-b border-[#E6EBF3]/70">
+                  <div className="flex items-center gap-2 pb-2 border-b border-[#E6EBF3]/70">
                     <img
                       src={activeExpert.image}
                       alt={activeExpert.name}
-                      className="w-8 h-8 rounded-full object-cover border border-[#CBD5E1]"
+                      className="w-7 h-7 rounded-full object-cover border border-[#CBD5E1]"
                     />
                     <div className="min-w-0">
-                      <span className="block text-[12.5px] font-bold text-[#0B1D3A] truncate leading-tight">
+                      <span className="block text-[12px] font-medium text-[#0B1D3A] truncate leading-tight">
                         {activeExpert.name}
                       </span>
-                      <span className="block text-[11px] text-[#7B8DAA] truncate">
+                      <span className="block text-[10.5px] text-[#7B8DAA] truncate font-normal">
                         {activeExpert.role.split("·")[0]}
                       </span>
                     </div>
                   </div>
                 )}
                 <div className="flex items-center justify-between">
-                  <span className="text-[#7B8DAA] font-semibold flex items-center gap-1.5">
-                    <Calendar size={13} className="text-[#C99A2E]" />
+                  <span className="text-[#7B8DAA] font-normal flex items-center gap-1.5">
+                    <span className="w-4 h-4 rounded-[3px] bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
+                      <Calendar size={9} />
+                    </span>
                     Date & Time
                   </span>
-                  <span className="font-black text-[#0B1D3A]">{selectedDate} · {selectedSlot}</span>
+                  <span className="font-medium text-[#0B1D3A]">{selectedDate} · {selectedSlot}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[#7B8DAA] font-semibold flex items-center gap-1.5">
-                    <Clock size={13} className="text-[#0891B2]" />
+                  <span className="text-[#7B8DAA] font-normal flex items-center gap-1.5">
+                    <span className="w-4 h-4 rounded-[3px] bg-[#0891B2] text-white flex items-center justify-center shrink-0">
+                      <Clock size={9} />
+                    </span>
                     Duration
                   </span>
-                  <span className="font-black text-[#0B1D3A] bg-white px-2 py-0.5 rounded-[6px] border border-[#E6EBF3]">
+                  <span className="font-medium text-[#0B1D3A] bg-white px-2 py-0.5 rounded-[5px] border border-[#E6EBF3]">
                     {selectedDuration?.duration || "45 MIN"}
                   </span>
                 </div>
                 <div className="flex items-start justify-between gap-2">
-                  <span className="text-[#7B8DAA] font-semibold flex items-center gap-1.5 shrink-0">
-                    <Sparkles size={13} className="text-[#7C3AED]" />
+                  <span className="text-[#7B8DAA] font-normal flex items-center gap-1.5 shrink-0">
+                    <span className="w-4 h-4 rounded-[3px] bg-[#7C3AED] text-white flex items-center justify-center shrink-0">
+                      <Sparkles size={9} />
+                    </span>
                     Scenario
                   </span>
-                  <span className="font-bold text-[#0B1D3A] text-right truncate max-w-[190px]">
+                  <span className="font-medium text-[#0B1D3A] text-right truncate max-w-[180px]">
                     {scenarioText}
                   </span>
                 </div>
               </div>
 
-              <div className="pt-1">
+              <div className="pt-0.5">
                 <PrimaryButton
                   variant="gold"
                   onClick={() => {
                     setIsBooked(false);
                     goToStep(1);
                   }}
-                  className="!w-44 !h-11 !rounded-[12px] font-extrabold text-[13.5px] shadow-md hover:shadow-lg transition-all cursor-pointer"
+                  className="!w-40 !h-9.5 !rounded-[10px] font-medium text-[12.5px] shadow-xs cursor-pointer"
                 >
                   Done
                 </PrimaryButton>

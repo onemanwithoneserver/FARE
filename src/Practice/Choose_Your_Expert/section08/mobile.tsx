@@ -13,6 +13,7 @@ import {
   Sun,
   Moon,
   ShieldCheck,
+  Clock,
 } from "lucide-react";
 import { data, getExpertDurationPrice } from "./data";
 import { data as allExpertsData, type Expert } from "../section05/data";
@@ -150,8 +151,8 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
   };
 
   return (
-    <Section tone="soft" mobile ariaLabel="Choose Session, Date & Time" id="booking-section" className="!pt-3 !pb-10 font-['Outfit']">
-      <div className="flex flex-col gap-3.5">
+    <Section tone="soft" mobile ariaLabel="Choose Session, Date & Time" id="booking-section" className="!pt-2.5 !pb-8 font-['Outfit']">
+      <div className="flex flex-col gap-3">
         <SectionHeader
           mobile
           eyebrow="Reserve 1-on-1 Practice"
@@ -159,23 +160,23 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
           accent={ACCENTS[7]}
           title="Choose Session, Date & Time"
           description="Select duration, realistic scenario, and preferred slot to practice with your mentor."
-          className="!mb-3"
+          className="!mb-2"
         />
 
         {activeExpert ? (
-          <div className="bg-gradient-to-r from-[#0B1D3A] to-[#163567] rounded-[20px] p-3.5 text-white shadow-md flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3 min-w-0">
+          <div className="bg-gradient-to-r from-[#0B1D3A] to-[#163567] rounded-[16px] p-2.5 sm:p-3 text-white shadow-xs flex items-center justify-between gap-2.5">
+            <div className="flex items-center gap-2.5 min-w-0">
               <img
                 src={activeExpert.image}
                 alt={activeExpert.name}
-                className="w-12 h-12 rounded-full object-cover border-2 border-white/40 shrink-0"
+                className="w-10 h-10 rounded-full object-cover border-2 border-white/40 shrink-0"
               />
               <div className="min-w-0">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#D5AA45] block">
+                <span className="text-[9.5px] font-medium uppercase tracking-wider text-[#D5AA45] block">
                   Selected Mentor
                 </span>
-                <h4 className="text-[15px] font-bold truncate">{activeExpert.name}</h4>
-                <p className="text-[11px] text-white/70 truncate">{activeExpert.role.split("·")[0]}</p>
+                <h4 className="text-[14px] font-medium truncate">{activeExpert.name}</h4>
+                <p className="text-[10.5px] text-white/70 truncate font-normal">{activeExpert.role.split("·")[0]}</p>
               </div>
             </div>
 
@@ -183,55 +184,55 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
               <button
                 type="button"
                 onClick={handleClearExpert}
-                className="px-2.5 py-1.5 rounded-[9px] bg-white/10 text-white/80 text-[11px] font-semibold"
+                className="px-2 py-1 rounded-[7px] bg-white/10 text-white/80 text-[10.5px] font-medium"
               >
                 Clear
               </button>
               <button
                 type="button"
                 onClick={() => setIsSwitchExpertOpen(true)}
-                className="px-3 py-1.5 rounded-[9px] bg-[#C99A2E] text-[#0B1D3A] text-[11px] font-bold shadow-xs"
+                className="px-2.5 py-1 rounded-[7px] bg-[#C99A2E] text-white text-[10.5px] font-medium shadow-xs"
               >
                 Change
               </button>
             </div>
           </div>
         ) : (
-          <div className="bg-gradient-to-r from-[#0B1D3A] to-[#163567] rounded-[20px] p-3.5 text-white shadow-md flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="w-11 h-11 rounded-full border-2 border-dashed border-[#C99A2E]/50 bg-white/5 flex items-center justify-center text-[#D5AA45] shrink-0">
-                <User size={20} strokeWidth={2} />
+          <div className="bg-gradient-to-r from-[#0B1D3A] to-[#163567] rounded-[16px] p-2.5 sm:p-3 text-white shadow-xs flex items-center justify-between gap-2.5">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-9 h-9 rounded-full bg-[#0B1D3A] text-white border border-[#C99A2E]/50 flex items-center justify-center shrink-0">
+                <User size={16} strokeWidth={2} />
               </div>
               <div className="min-w-0">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#D5AA45]">
+                  <span className="text-[9.5px] font-medium uppercase tracking-wider text-[#D5AA45]">
                     Mentor Status
                   </span>
-                  <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded-full bg-white/10 text-white/90">
+                  <span className="text-[9px] font-normal px-1.5 py-0.2 rounded-full bg-white/10 text-white/90">
                     0 Selected
                   </span>
                 </div>
-                <h4 className="text-[14px] font-bold truncate">No Mentor Selected</h4>
-                <p className="text-[11px] text-white/70 truncate">Tap to pick your mentor</p>
+                <h4 className="text-[13.5px] font-medium truncate">No Mentor Selected</h4>
+                <p className="text-[10.5px] text-white/70 truncate font-normal">Tap to pick your mentor</p>
               </div>
             </div>
 
             <button
               type="button"
               onClick={() => setIsSwitchExpertOpen(true)}
-              className="px-3 py-1.5 rounded-[9px] bg-[#C99A2E] text-[#0B1D3A] text-[11px] font-bold shrink-0 shadow-xs"
+              className="px-2.5 py-1 rounded-[7px] bg-[#C99A2E] text-white text-[10.5px] font-medium shrink-0 shadow-xs"
             >
               + Choose
             </button>
           </div>
         )}
 
-        <div className="bg-white/95 backdrop-blur-md rounded-[18px] border border-[#E6EBF3] p-3 shadow-xs relative overflow-hidden">
+        <div className="bg-white/95 backdrop-blur-md rounded-[16px] border border-[#E6EBF3] p-2.5 shadow-xs relative overflow-hidden">
           <div className="relative">
-            <div className="absolute top-4 left-[12.5%] right-[12.5%] -translate-y-1/2 h-[2px] bg-[#E8EDF5] rounded-full pointer-events-none" />
+            <div className="absolute top-3.5 left-[12.5%] right-[12.5%] -translate-y-1/2 h-[2px] bg-[#E8EDF5] rounded-full pointer-events-none" />
 
             <motion.div
-              className="absolute top-4 left-[12.5%] -translate-y-1/2 h-[2px] rounded-full bg-gradient-to-r from-[#10B981] to-[#C99A2E] shadow-[0_0_8px_rgba(201,154,46,0.4)] pointer-events-none"
+              className="absolute top-3.5 left-[12.5%] -translate-y-1/2 h-[2px] rounded-full bg-gradient-to-r from-[#10B981] to-[#C99A2E] shadow-[0_0_8px_rgba(201,154,46,0.4)] pointer-events-none"
               initial={false}
               animate={{
                 width: `${((currentStep - 1) / (STEPS.length - 1)) * 75}%`,
@@ -252,26 +253,26 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                     disabled={!isPast}
                     className="flex flex-col items-center group cursor-pointer select-none"
                   >
-                    <div className="relative flex items-center justify-center w-8 h-8 mb-1">
+                    <div className="relative flex items-center justify-center w-7 h-7 mb-1">
                       {isCurrent && (
                         <span className="absolute -inset-1 rounded-full ring-2 ring-[#C99A2E] ring-offset-1 ring-offset-white pointer-events-none" />
                       )}
 
                       <div
-                        className={`w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold transition-all ${
+                        className={`w-7 h-7 rounded-full flex items-center justify-center text-[10.5px] font-medium transition-all ${
                           isPast
                             ? "bg-[#10B981] text-white shadow-xs"
                             : isCurrent
-                            ? "bg-[#0B1D3A] text-[#D5AA45] shadow-xs"
+                            ? "bg-[#0B1D3A] text-white shadow-xs"
                             : "bg-white border border-[#CBD5E1] text-[#7B8DAA]"
                         }`}
                       >
-                        {isPast ? <Check size={13} strokeWidth={2.8} /> : step.id}
+                        {isPast ? <Check size={12} strokeWidth={2.8} /> : step.id}
                       </div>
                     </div>
 
                     <span
-                      className={`text-[11px] font-semibold block leading-tight ${
+                      className={`text-[10.5px] font-medium block leading-tight ${
                         isCurrent ? "text-[#0B1D3A]" : isPast ? "text-[#059669]" : "text-[#7B8DAA]"
                       }`}
                     >
@@ -285,13 +286,15 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
         </div>
 
         {validationError && (
-          <div className="p-3 rounded-[12px] bg-amber-50 border border-amber-200 text-amber-900 text-[12px] font-semibold flex items-center gap-2">
-            <AlertCircle size={15} className="text-amber-600 shrink-0" />
+          <div className="p-2.5 rounded-[10px] bg-amber-50 border border-amber-200 text-amber-900 text-[11.5px] font-medium flex items-center gap-2">
+            <span className="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0">
+              <AlertCircle size={10} />
+            </span>
             <span>{validationError}</span>
           </div>
         )}
 
-        <div className="bg-white rounded-[20px] border border-[#E6EBF3] p-4 shadow-xs min-h-[360px] flex flex-col justify-between">
+        <div className="bg-white rounded-[18px] border border-[#E6EBF3] p-3 shadow-xs min-h-[320px] flex flex-col justify-between">
           <AnimatePresence mode="wait" custom={slideDirection}>
             {currentStep === 1 && (
               <motion.div
@@ -302,16 +305,16 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.22 }}
-                className="flex flex-col gap-3.5"
+                className="flex flex-col gap-3"
               >
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C99A2E] block">
+                  <span className="text-[9.5px] font-medium uppercase tracking-wider text-[#C99A2E] block">
                     Step 1 of 4
                   </span>
-                  <h3 className="text-[17px] font-black text-[#0B1D3A]">Select Session Duration</h3>
+                  <h3 className="text-[16px] font-medium text-[#0B1D3A]">Select Session Duration</h3>
                 </div>
 
-                <div className="flex flex-col gap-2.5">
+                <div className="flex flex-col gap-2">
                   {s.durations.map((dur) => {
                     const isSelected = selectedDurationId === dur.id;
                     const durPrice = getExpertDurationPrice(activeExpert?.price, dur.id);
@@ -324,32 +327,32 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                           setSelectedDurationId(dur.id);
                           setValidationError(null);
                         }}
-                        className={`p-3.5 rounded-[16px] border transition-all relative overflow-hidden ${
+                        className={`p-2.5 rounded-[14px] border transition-all relative overflow-hidden ${
                           isSelected
-                            ? "bg-gradient-to-b from-[#FFFDF7] to-white border-[#C99A2E] ring-2 ring-[#C99A2E]/30 shadow-xs"
+                            ? "bg-gradient-to-b from-[#FFFDF7] to-white border-[#C99A2E] ring-1 ring-[#C99A2E]/30 shadow-xs"
                             : "bg-white border-[#E6EBF3] active:bg-slate-50"
                         }`}
                       >
                         {isSelected && (
                           <div className="absolute top-0 right-0">
-                            <span className="inline-flex items-center gap-1 bg-[#0B1D3A] text-[#D5AA45] text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-bl-[10px]">
-                              <Check size={10} strokeWidth={2.6} />
+                            <span className="inline-flex items-center gap-1 bg-[#0B1D3A] text-white text-[8.5px] font-medium uppercase tracking-wider px-2 py-0.5 rounded-bl-[8px]">
+                              <Check size={9} strokeWidth={2.6} />
                               Selected
                             </span>
                           </div>
                         )}
 
                         {!isSelected && dur.recommended && (
-                          <span className="absolute top-0 right-0 bg-[#C99A2E]/15 text-[#C99A2E] text-[8.5px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-bl-[10px]">
+                          <span className="absolute top-0 right-0 bg-[#C99A2E]/15 text-[#C99A2E] text-[8px] font-medium uppercase tracking-wider px-1.5 py-0.5 rounded-bl-[8px]">
                             Recommended
                           </span>
                         )}
 
-                        <div className="flex items-center justify-between mb-1 mt-0.5">
-                          <span className="text-[18px] font-black text-[#0B1D3A]">{dur.duration}</span>
+                        <div className="flex items-center justify-between mb-0.5 mt-0.5">
+                          <span className="text-[16px] font-medium text-[#0B1D3A]">{dur.duration}</span>
 
                           {activeExpert && durPrice ? (
-                            <span className="text-[15px] font-bold text-[#C99A2E]">
+                            <span className="text-[14px] font-medium text-[#C99A2E]">
                               {durPrice.price}
                             </span>
                           ) : (
@@ -358,29 +361,31 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                                 e.stopPropagation();
                                 setIsSwitchExpertOpen(true);
                               }}
-                              className="px-2 py-0.5 rounded-[7px] bg-[#F8FAFD] border border-[#E6EBF3] text-[9.5px] font-semibold text-[#5A6B82]"
+                              className="px-1.5 py-0.5 rounded-[6px] bg-[#F8FAFD] border border-[#E6EBF3] text-[9px] font-normal text-[#5A6B82]"
                             >
                               Fee on mentor select
                             </span>
                           )}
                         </div>
-                        <h4 className="text-[13.5px] font-bold text-[#0B1D3A]">{dur.label}</h4>
-                        <p className="text-[11.5px] text-[#5A6B82] mt-0.5 leading-snug">{dur.desc}</p>
+                        <h4 className="text-[12.5px] font-medium text-[#0B1D3A]">{dur.label}</h4>
+                        <p className="text-[11px] text-[#5A6B82] mt-0.5 leading-snug font-normal">{dur.desc}</p>
                       </motion.div>
                     );
                   })}
                 </div>
 
                 {!activeExpert && (
-                  <div className="p-3 rounded-[12px] bg-[#FFFDF7] border border-[#C99A2E]/35 flex items-center justify-between gap-2 shadow-2xs">
+                  <div className="p-2.5 rounded-[10px] bg-[#FFFDF7] border border-[#C99A2E]/35 flex items-center justify-between gap-2 shadow-2xs">
                     <div className="flex items-center gap-2">
-                      <Sparkles size={14} className="text-[#C99A2E] shrink-0" />
-                      <p className="text-[11.5px] text-[#5A6B82]">Select a mentor to view exact session rates.</p>
+                      <span className="w-4 h-4 rounded-[3px] bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
+                        <Sparkles size={9} />
+                      </span>
+                      <p className="text-[11px] text-[#5A6B82] font-normal">Select a mentor to view exact session rates.</p>
                     </div>
                     <button
                       type="button"
                       onClick={() => setIsSwitchExpertOpen(true)}
-                      className="px-2.5 py-1 rounded-[8px] bg-[#0B1D3A] text-[#D5AA45] text-[10.5px] font-bold shrink-0"
+                      className="px-2 py-0.5 rounded-[6px] bg-[#0B1D3A] text-white text-[10px] font-medium shrink-0"
                     >
                       + Choose
                     </button>
@@ -398,23 +403,23 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.22 }}
-                className="flex flex-col gap-3.5"
+                className="flex flex-col gap-3"
               >
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C99A2E] block">
+                  <span className="text-[9.5px] font-medium uppercase tracking-wider text-[#C99A2E] block">
                     Step 2 of 4
                   </span>
-                  <h3 className="text-[17px] font-black text-[#0B1D3A]">Select Practice Scenario</h3>
+                  <h3 className="text-[16px] font-medium text-[#0B1D3A]">Select Practice Scenario</h3>
                 </div>
 
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1.5">
                   {quickScenarios.map((sc) => {
                     const isSelected = scenarioText === sc.title;
                     return (
                       <div
                         key={sc.title}
                         onClick={() => setScenarioText(sc.title)}
-                        className={`p-3 rounded-[14px] border flex items-center justify-between gap-2 ${
+                        className={`p-2.5 rounded-[12px] border flex items-center justify-between gap-2 ${
                           isSelected
                             ? "bg-[#FFFDF7] border-[#C99A2E] ring-1 ring-[#C99A2E]/20"
                             : "bg-[#F8FAFD] border-[#E6EBF3]"
@@ -422,24 +427,26 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                       >
                         <div className="flex items-center gap-2 min-w-0">
                           <div
-                            className={`w-4.5 h-4.5 rounded-full flex items-center justify-center shrink-0 ${
-                              isSelected ? "bg-[#C99A2E] text-white" : "border border-[#CBD5E1]"
+                            className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
+                              isSelected ? "bg-[#10B981] text-white" : "border border-[#CBD5E1]"
                             }`}
                           >
-                            {isSelected && <Check size={10} strokeWidth={2.8} />}
+                            {isSelected && <Check size={9} strokeWidth={2.8} />}
                           </div>
-                          <span className="text-[12px] font-bold text-[#0B1D3A] truncate">
+                          <span className="text-[11.5px] font-medium text-[#0B1D3A] truncate">
                             {sc.title}
                           </span>
                         </div>
-                        <span className="text-[9.5px] font-semibold text-[#7B8DAA] shrink-0">{sc.tag}</span>
+                        <span className="text-[9px] font-normal text-[#7B8DAA] shrink-0">{sc.tag}</span>
                       </div>
                     );
                   })}
 
-                  <div className="flex flex-col gap-1 pt-1">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-[#7B8DAA] flex items-center gap-1">
-                      <Edit3 size={11} className="text-[#C99A2E]" />
+                  <div className="flex flex-col gap-1 pt-0.5">
+                    <span className="text-[9.5px] font-medium uppercase tracking-wider text-[#7B8DAA] flex items-center gap-1.5">
+                      <span className="w-3.5 h-3.5 rounded-[3px] bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
+                        <Edit3 size={8.5} />
+                      </span>
                       Custom Scenario Description
                     </span>
                     <textarea
@@ -447,7 +454,7 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                       onChange={(e) => setScenarioText(e.target.value)}
                       rows={2}
                       placeholder="e.g., Objection handling regarding property pricing..."
-                      className="w-full p-2.5 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] text-[12px] font-medium outline-none"
+                      className="w-full p-2 rounded-[10px] bg-[#F8FAFD] border border-[#E6EBF3] text-[11.5px] font-medium outline-none"
                     />
                   </div>
                 </div>
@@ -463,16 +470,16 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.22 }}
-                className="flex flex-col gap-3.5"
+                className="flex flex-col gap-3"
               >
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C99A2E] block">
+                  <span className="text-[9.5px] font-medium uppercase tracking-wider text-[#C99A2E] block">
                     Step 3 of 4
                   </span>
-                  <h3 className="text-[17px] font-black text-[#0B1D3A]">Select Date & Slot</h3>
+                  <h3 className="text-[16px] font-medium text-[#0B1D3A]">Select Date & Slot</h3>
                 </div>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-2.5">
                   <div className="grid grid-cols-3 gap-1.5">
                     {s.dates.slice(0, 6).map((d) => {
                       const isSelected = selectedDate === d.label;
@@ -481,28 +488,36 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                           key={d.label}
                           type="button"
                           onClick={() => setSelectedDate(d.label)}
-                          className={`p-2 rounded-[12px] border text-center ${
+                          className={`p-1.5 rounded-[10px] border text-center ${
                             isSelected
                               ? "bg-[#0B1D3A] text-white border-[#0B1D3A]"
                               : "bg-[#F8FAFD] border-[#E6EBF3] text-[#0B1D3A]"
                           }`}
                         >
-                          <span className="text-[9px] font-bold block uppercase text-[#D5AA45]">{d.day}</span>
-                          <span className="text-[12.5px] font-black block leading-none my-0.5">{d.date}</span>
-                          <span className="text-[9px] text-[#10B981] block">{d.slotsCount} slots</span>
+                          <span className={`text-[8.5px] font-medium block uppercase ${isSelected ? "text-[#D5AA45]" : "text-[#7B8DAA]"}`}>{d.day}</span>
+                          <span className="text-[12px] font-medium block leading-none my-0.5">{d.date}</span>
+                          <span className={`text-[8.5px] block ${isSelected ? "text-white/80" : "text-[#10B981]"}`}>{d.slotsCount} slots</span>
                         </button>
                       );
                     })}
                   </div>
 
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1.5">
                     {s.timeSlots.map((period) => (
-                      <div key={period.period} className="p-2.5 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3]">
-                        <span className="text-[10px] font-black uppercase text-[#7B8DAA] block mb-1.5 flex items-center gap-1">
-                          {period.period === "Morning" ? <Sun size={11} className="text-[#F59E0B]" /> : <Moon size={11} className="text-[#6366F1]" />}
+                      <div key={period.period} className="p-2 rounded-[10px] bg-[#F8FAFD] border border-[#E6EBF3]">
+                        <span className="text-[9.5px] font-medium uppercase text-[#7B8DAA] block mb-1 flex items-center gap-1.5">
+                          {period.period === "Morning" ? (
+                            <span className="w-3.5 h-3.5 rounded-[3px] bg-[#D97706] text-white flex items-center justify-center shrink-0">
+                              <Sun size={8.5} />
+                            </span>
+                          ) : (
+                            <span className="w-3.5 h-3.5 rounded-[3px] bg-[#4338CA] text-white flex items-center justify-center shrink-0">
+                              <Moon size={8.5} />
+                            </span>
+                          )}
                           {period.period}
                         </span>
-                        <div className="flex flex-wrap gap-1.5">
+                        <div className="flex flex-wrap gap-1">
                           {period.slots.map((slot) => {
                             const isSelected = selectedSlot === slot.time;
                             return (
@@ -510,7 +525,7 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                                 key={slot.time}
                                 type="button"
                                 onClick={() => setSelectedSlot(slot.time)}
-                                className={`px-2.5 py-1 rounded-[8px] text-[11px] font-bold ${
+                                className={`px-2 py-0.5 rounded-[6px] text-[10.5px] font-medium ${
                                   isSelected
                                     ? "bg-[#C99A2E] text-white"
                                     : "bg-white border border-[#E6EBF3] text-[#0B1D3A]"
@@ -537,73 +552,92 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.22 }}
-                className="flex flex-col gap-3.5"
+                className="flex flex-col gap-3"
               >
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C99A2E] block">
+                  <span className="text-[9.5px] font-medium uppercase tracking-wider text-[#C99A2E] block">
                     Step 4 of 4
                   </span>
-                  <h3 className="text-[17px] font-black text-[#0B1D3A]">Review & Confirm</h3>
+                  <h3 className="text-[16px] font-medium text-[#0B1D3A]">Review & Confirm</h3>
                 </div>
 
-                <div className="p-3.5 rounded-[16px] bg-[#F8FAFD] border border-[#E6EBF3] flex flex-col gap-2.5 text-[12px]">
+                <div className="p-3 rounded-[14px] bg-[#F8FAFD] border border-[#E6EBF3] flex flex-col gap-2 text-[11.5px]">
                   {activeExpert ? (
-                    <div className="flex items-center justify-between pb-2 border-b border-[#E6EBF3]">
+                    <div className="flex items-center justify-between pb-1.5 border-b border-[#E6EBF3]">
                       <div className="flex items-center gap-2">
-                        <img src={activeExpert.image} alt={activeExpert.name} className="w-8 h-8 rounded-full object-cover" />
+                        <img src={activeExpert.image} alt={activeExpert.name} className="w-7 h-7 rounded-full object-cover" />
                         <div>
-                          <span className="font-bold text-[#0B1D3A] block">{activeExpert.name}</span>
-                          <span className="text-[10.5px] text-[#7B8DAA]">{activeExpert.role.split("·")[0]}</span>
+                          <span className="font-medium text-[#0B1D3A] block">{activeExpert.name}</span>
+                          <span className="text-[10px] text-[#7B8DAA] font-normal">{activeExpert.role.split("·")[0]}</span>
                         </div>
                       </div>
-                      <button onClick={() => setIsSwitchExpertOpen(true)} className="text-[11px] font-bold text-[#C99A2E]">
+                      <button onClick={() => setIsSwitchExpertOpen(true)} className="text-[10.5px] font-medium text-[#C99A2E]">
                         Change
                       </button>
                     </div>
                   ) : (
-                    <div className="p-2 rounded-[8px] bg-amber-50 text-amber-900 text-[11px] flex justify-between items-center">
+                    <div className="p-1.5 rounded-[7px] bg-amber-50 text-amber-900 text-[10.5px] flex justify-between items-center">
                       <span>No mentor selected</span>
-                      <button onClick={() => setIsSwitchExpertOpen(true)} className="font-bold underline">+ Select</button>
+                      <button onClick={() => setIsSwitchExpertOpen(true)} className="font-medium underline">+ Select</button>
                     </div>
                   )}
 
-                  <div className="flex justify-between">
-                    <span className="text-[#7B8DAA]">Duration:</span>
-                    <span className="font-bold text-[#0B1D3A]">{selectedDuration?.duration || "45 MIN"}</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#7B8DAA] flex items-center gap-1.5 font-normal">
+                      <span className="w-3.5 h-3.5 rounded-[3px] bg-[#0891B2] text-white flex items-center justify-center shrink-0">
+                        <Clock size={8.5} />
+                      </span>
+                      Duration
+                    </span>
+                    <span className="font-medium text-[#0B1D3A]">{selectedDuration?.duration || "45 MIN"}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-[#7B8DAA]">Slot:</span>
-                    <span className="font-bold text-[#0B1D3A]">{selectedDate} · {selectedSlot}</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#7B8DAA] flex items-center gap-1.5 font-normal">
+                      <span className="w-3.5 h-3.5 rounded-[3px] bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
+                        <Calendar size={8.5} />
+                      </span>
+                      Date & Time
+                    </span>
+                    <span className="font-medium text-[#0B1D3A]">{selectedDate} · {selectedSlot}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-[#7B8DAA]">Scenario:</span>
-                    <span className="font-bold text-[#0B1D3A] truncate max-w-[140px]">{scenarioText}</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#7B8DAA] flex items-center gap-1.5 font-normal">
+                      <span className="w-3.5 h-3.5 rounded-[3px] bg-[#10B981] text-white flex items-center justify-center shrink-0">
+                        <Check size={8.5} strokeWidth={2.5} />
+                      </span>
+                      Scenario
+                    </span>
+                    <span className="font-medium text-[#0B1D3A] truncate max-w-[140px]">{scenarioText}</span>
                   </div>
 
                   {activeExpert && currentDurationPrice && (
-                    <div className="pt-2 border-t border-[#E6EBF3] flex justify-between font-bold text-[13px]">
-                      <span>Total Investment:</span>
+                    <div className="pt-1.5 border-t border-[#E6EBF3] flex justify-between font-medium text-[12px]">
+                      <span>Total Investment</span>
                       <span className="text-[#C99A2E]">{currentDurationPrice.price}</span>
                     </div>
                   )}
                 </div>
 
-                <div className="flex items-center gap-1.5 text-[11px] text-[#475569]">
-                  <ShieldCheck size={14} className="text-[#10B981] shrink-0" />
+                <div className="flex items-center gap-1.5 text-[10.5px] text-[#475569] font-normal">
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#10B981] text-white flex items-center justify-center shrink-0">
+                    <ShieldCheck size={8.5} />
+                  </span>
                   <span>100% Satisfaction Guarantee.</span>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
 
-          <div className="pt-3.5 border-t border-[#F0F4FA] flex items-center justify-between mt-3">
+          <div className="pt-2.5 border-t border-[#F0F4FA] flex items-center justify-between mt-2.5">
             {currentStep > 1 ? (
               <SecondaryButton
                 showArrow={false}
                 onClick={handlePrevStep}
-                className="!h-9 !px-3 text-[12px] !rounded-[9px] font-bold flex items-center gap-1 cursor-pointer hover:bg-white"
+                className="!h-8.5 !px-2.5 text-[11.5px] !rounded-[8px] font-medium flex items-center gap-1 cursor-pointer hover:bg-white"
               >
-                <ArrowLeft size={13} className="shrink-0" />
+                <span className="w-3.5 h-3.5 rounded-[3px] bg-[#0B1D3A] text-white flex items-center justify-center shrink-0">
+                  <ArrowLeft size={8.5} />
+                </span>
                 <span>Back</span>
               </SecondaryButton>
             ) : (
@@ -614,7 +648,7 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
               <PrimaryButton
                 variant="gold"
                 onClick={handleNextStep}
-                className="!h-9 !px-4 text-[12px] !rounded-[9px] font-bold cursor-pointer"
+                className="!h-8.5 !px-3.5 text-[11.5px] !rounded-[8px] font-medium cursor-pointer"
               >
                 Next
               </PrimaryButton>
@@ -623,7 +657,7 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
                 variant="gold"
                 icon={CheckCircle2}
                 onClick={handleConfirmBooking}
-                className="!h-9.5 !px-4 text-[12px] !rounded-[9px] font-extrabold cursor-pointer"
+                className="!h-8.5 !px-3.5 text-[11.5px] !rounded-[8px] font-medium cursor-pointer"
               >
                 Confirm Slot
               </PrimaryButton>
@@ -639,43 +673,45 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
               onClick={() => setIsSwitchExpertOpen(false)}
               className="fixed inset-0 bg-black/50"
             />
-            <div className="relative z-10 w-full bg-white rounded-t-[20px] p-4.5 max-h-[70vh] overflow-y-auto">
-              <div className="flex items-center justify-between pb-2.5 border-b mb-2.5">
-                <div className="flex items-center gap-2">
-                  <h4 className="font-bold text-[#0B1D3A]">Choose Mentor</h4>
-                  <span className="text-[11px] text-[#7B8DAA]">(Select 1)</span>
+            <div className="relative z-10 w-full bg-white rounded-t-[18px] p-4 max-h-[70vh] overflow-y-auto">
+              <div className="flex items-center justify-between pb-2 border-b mb-2">
+                <div className="flex items-center gap-1.5">
+                  <h4 className="font-medium text-[13.5px] text-[#0B1D3A]">Choose Mentor</h4>
+                  <span className="text-[10px] text-[#7B8DAA]">(Select 1)</span>
                 </div>
                 <div className="flex items-center gap-2">
                   {activeExpert && (
                     <button
                       type="button"
                       onClick={handleClearExpert}
-                      className="text-[11px] font-semibold text-red-500 cursor-pointer"
+                      className="text-[10.5px] font-medium text-red-500 cursor-pointer"
                     >
                       Clear
                     </button>
                   )}
-                  <button onClick={() => setIsSwitchExpertOpen(false)} className="cursor-pointer"><X size={16} /></button>
+                  <button onClick={() => setIsSwitchExpertOpen(false)} className="w-6 h-6 rounded-full bg-[#EF4444] text-white flex items-center justify-center cursor-pointer">
+                    <X size={12} />
+                  </button>
                 </div>
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1.5">
                 {expertsList.map((exp, idx) => {
                   const isCurrent = activeExpert?.name === exp.name;
                   return (
                     <div
                       key={exp.name}
                       onClick={() => handleSelectExpert(exp, idx)}
-                      className={`p-2.5 rounded-[12px] border flex items-center justify-between cursor-pointer ${
+                      className={`p-2 rounded-[10px] border flex items-center justify-between cursor-pointer ${
                         isCurrent
                           ? "border-[#C99A2E] bg-[#FFFDF7] ring-1 ring-[#C99A2E]/25"
                           : "border-[#E6EBF3] bg-white"
                       }`}
                     >
                       <div className="flex items-center gap-2">
-                        <img src={exp.image} alt={exp.name} className="w-8 h-8 rounded-full object-cover" />
-                        <span className="text-[12.5px] font-bold text-[#0B1D3A]">{exp.name}</span>
+                        <img src={exp.image} alt={exp.name} className="w-7 h-7 rounded-full object-cover" />
+                        <span className="text-[12px] font-medium text-[#0B1D3A]">{exp.name}</span>
                       </div>
-                      <span className="text-[10.5px] font-bold text-[#C99A2E]">{exp.price}</span>
+                      <span className="text-[10px] font-medium text-[#C99A2E]">{exp.price}</span>
                     </div>
                   );
                 })}
@@ -689,27 +725,68 @@ export default function Mobile({ selectedExpert: propExpert, onSelectExpert }: P
         {isBooked && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 font-['Outfit']">
             <div onClick={() => setIsBooked(false)} className="fixed inset-0 bg-black/60 backdrop-blur-xs" />
-            <div className="relative z-10 w-full max-w-sm bg-white rounded-[24px] p-6 text-center flex flex-col items-center gap-3.5 border border-[#E6EBF3] shadow-2xl overflow-hidden">
-              <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#0B1D3A]" />
-              <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#ECFDF5] to-[#D1FAE5] border border-[#10B981]/30 text-[#059669] flex items-center justify-center shadow-xs">
-                <Check size={26} strokeWidth={2.8} />
+            <div className="relative z-10 w-full max-w-sm bg-white rounded-[20px] p-5 text-center flex flex-col items-center gap-3 border border-[#E6EBF3] shadow-2xl overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#0B1D3A]" />
+              
+              <button
+                type="button"
+                onClick={() => setIsBooked(false)}
+                className="absolute top-3 right-3 w-6 h-6 rounded-full bg-[#F3F6FB] flex items-center justify-center text-[#7B8DAA]"
+              >
+                <X size={12} />
+              </button>
+
+              <div className="w-12 h-12 rounded-full bg-[#10B981] text-white flex items-center justify-center shadow-md">
+                <Check size={24} strokeWidth={3} />
               </div>
+
               <div>
-                <span className="text-[10px] font-black uppercase tracking-[0.14em] text-[#C99A2E] block mb-0.5">
+                <span className="text-[9.5px] font-medium uppercase tracking-[0.14em] text-[#C99A2E] block mb-0.5">
                   Booking Confirmed
                 </span>
-                <h3 className="text-[19px] font-black text-[#0B1D3A]">Slot Confirmed!</h3>
-                <p className="text-[12.5px] text-[#5A6B82] mt-0.5 leading-snug">
-                  Your session with <span className="font-bold text-[#0B1D3A]">{activeExpert?.name || "your mentor"}</span> is reserved.
+                <h3 className="text-[17px] font-medium text-[#0B1D3A]">Slot Confirmed!</h3>
+                <p className="text-[11.5px] text-[#5A6B82] mt-0.5 leading-snug font-normal">
+                  Your session with <span className="font-medium text-[#0B1D3A]">{activeExpert?.name || "your mentor"}</span> is reserved.
                 </p>
               </div>
+
+              <div className="w-full rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] p-2.5 flex flex-col gap-1.5 text-left text-[11px]">
+                <div className="flex items-center justify-between">
+                  <span className="text-[#7B8DAA] flex items-center gap-1.5 font-normal">
+                    <span className="w-3.5 h-3.5 rounded-[3px] bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
+                      <Calendar size={8.5} />
+                    </span>
+                    Date & Time
+                  </span>
+                  <span className="font-medium text-[#0B1D3A]">{selectedDate} · {selectedSlot}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-[#7B8DAA] flex items-center gap-1.5 font-normal">
+                    <span className="w-3.5 h-3.5 rounded-[3px] bg-[#0891B2] text-white flex items-center justify-center shrink-0">
+                      <Clock size={8.5} />
+                    </span>
+                    Duration
+                  </span>
+                  <span className="font-medium text-[#0B1D3A]">{selectedDuration?.duration || "45 MIN"}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-[#7B8DAA] flex items-center gap-1.5 font-normal">
+                    <span className="w-3.5 h-3.5 rounded-[3px] bg-[#10B981] text-white flex items-center justify-center shrink-0">
+                      <Check size={8.5} strokeWidth={2.5} />
+                    </span>
+                    Scenario
+                  </span>
+                  <span className="font-medium text-[#0B1D3A] truncate max-w-[140px]">{scenarioText}</span>
+                </div>
+              </div>
+
               <PrimaryButton
                 variant="gold"
                 onClick={() => {
                   setIsBooked(false);
                   goToStep(1);
                 }}
-                className="!w-36 !h-10 !rounded-[11px] font-extrabold text-[13px] mt-1 cursor-pointer shadow-md"
+                className="!w-36 !h-9 !rounded-[9px] font-medium text-[12px] mt-0.5 cursor-pointer shadow-xs"
               >
                 Done
               </PrimaryButton>

@@ -54,10 +54,9 @@ export default function Desktop({
   const activeOption = sortOptions.find((o) => o.label === sortBy) || sortOptions[0];
   const ActiveIcon = activeOption.icon;
 
-
   return (
-    <div className="w-full flex flex-col gap-4.5 font-['Outfit']">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="w-full flex flex-col gap-3 font-['Outfit']">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
         {VIEW_TABS.map((tab, idx) => {
           const isActive = tab.id === viewMode;
           const TabIcon = tab.icon;
@@ -71,44 +70,44 @@ export default function Desktop({
               role="tab"
               aria-selected={isActive}
               onClick={() => onViewModeChange(tab.id)}
-              whileHover={{ y: -2 }}
+              whileHover={{ y: -1 }}
               whileTap={{ scale: 0.99 }}
-              className={`relative text-left p-5 rounded-[22px] transition-all duration-300 cursor-pointer overflow-hidden border ${
+              className={`relative text-left p-3.5 rounded-[18px] transition-all duration-300 cursor-pointer overflow-hidden border ${
                 isActive
-                  ? "bg-gradient-to-br from-[#0B1D3A] via-[#122B54] to-[#0B1D3A] text-white border-[#C99A2E]/60 shadow-[0_16px_36px_-12px_rgba(11,29,58,0.35)] ring-2 ring-[#C99A2E]/25"
-                  : "bg-white text-[#0B1D3A] border-[#E6EBF3] hover:border-[#CBD5E1] shadow-[0_6px_20px_rgba(11,29,58,0.03)]"
+                  ? "bg-gradient-to-br from-[#0B1D3A] via-[#122B54] to-[#0B1D3A] text-white border-[#C99A2E]/60 shadow-md ring-1 ring-[#C99A2E]/25"
+                  : "bg-white text-[#0B1D3A] border-[#E6EBF3] hover:border-[#CBD5E1] shadow-2xs"
               }`}
             >
               <HoverGlow accent={a} />
               
               <div
-                className={`absolute top-0 inset-x-0 h-[3px] transition-opacity duration-300 ${
+                className={`absolute top-0 inset-x-0 h-[2.5px] transition-opacity duration-300 ${
                   isActive ? "opacity-100" : "opacity-0"
                 }`}
                 style={{ background: "linear-gradient(90deg, #C99A2E, #E4C46A, #C99A2E)" }}
               />
 
-              <div className="relative z-10 flex items-start justify-between gap-3 mb-2.5">
-                <div className="flex items-center gap-3">
+              <div className="relative z-10 flex items-start justify-between gap-3 mb-2">
+                <div className="flex items-center gap-2.5">
                   <div
-                    className={`w-11 h-11 rounded-[14px] flex items-center justify-center transition-all duration-300 ${
+                    className={`w-9 h-9 rounded-[10px] flex items-center justify-center transition-all duration-300 text-white ${
                       isActive
-                        ? "bg-gradient-to-tr from-[#C99A2E] to-[#F0D58C] text-[#0B1D3A] shadow-md shadow-[#C99A2E]/25"
-                        : "bg-[#F3F6FB] text-[#1E3A74] border border-[#E6EBF3]"
+                        ? "bg-[#C99A2E] shadow-sm"
+                        : "bg-[#0B1D3A]"
                     }`}
                   >
-                    <TabIcon size={20} strokeWidth={2.4} />
+                    <TabIcon size={17} strokeWidth={2.2} />
                   </div>
                   <div>
                     <span
-                      className={`text-[10.5px] font-black uppercase tracking-[0.16em] block ${
+                      className={`text-[10px] font-medium uppercase tracking-[0.14em] block ${
                         isActive ? "text-[#E0B550]" : "text-[#7B8DAA]"
                       }`}
                     >
                       {tab.eyebrow}
                     </span>
                     <h3
-                      className={`text-[18px] font-black tracking-tight leading-snug ${
+                      className={`text-[16px] font-medium tracking-tight leading-snug ${
                         isActive ? "text-white" : "text-[#0B1D3A]"
                       }`}
                     >
@@ -118,19 +117,23 @@ export default function Desktop({
                 </div>
 
                 <div
-                  className={`px-2.5 py-1 rounded-full text-[11px] font-black flex items-center gap-1.5 transition-all ${
+                  className={`px-2 py-0.5 rounded-full text-[10.5px] font-medium flex items-center gap-1.5 transition-all ${
                     isActive
                       ? "bg-[#C99A2E]/20 text-[#F5C451] border border-[#C99A2E]/40"
                       : "bg-[#F3F6FB] text-[#7B8DAA] border border-[#E6EBF3]"
                   }`}
                 >
-                  {isActive && <Check size={12} strokeWidth={3} className="text-[#F5C451]" />}
+                  {isActive && (
+                    <span className="w-3.5 h-3.5 rounded-full bg-[#10B981] text-white flex items-center justify-center">
+                      <Check size={8} strokeWidth={3} />
+                    </span>
+                  )}
                   <span>{isActive ? "Active View" : "Switch View"}</span>
                 </div>
               </div>
 
               <p
-                className={`relative z-10 text-[13px] leading-relaxed font-medium ${
+                className={`relative z-10 text-[12px] leading-relaxed font-normal ${
                   isActive ? "text-white/80" : "text-[#5A6B82]"
                 }`}
               >
@@ -141,29 +144,27 @@ export default function Desktop({
         })}
       </div>
 
-      <div className="w-full bg-white rounded-[22px] border border-[#E6EBF3] p-4 sm:p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-20 flex flex-col gap-3.5">
-        <div className="flex flex-col md:flex-row items-center gap-3">
+      <div className="w-full bg-white rounded-[18px] border border-[#E6EBF3] p-3 shadow-xs relative z-20 flex flex-col gap-2.5">
+        <div className="flex flex-col md:flex-row items-center gap-2.5">
           <div className="relative flex-1 w-full">
-            <Search
-              size={17}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7B8DAA] pointer-events-none"
-              strokeWidth={2.4}
-            />
+            <span className="absolute left-2.5 top-1/2 -translate-y-1/2 w-6 h-6 rounded-[6px] bg-[#0B1D3A] text-white flex items-center justify-center pointer-events-none">
+              <Search size={12} />
+            </span>
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder={SEARCH_PLACEHOLDERS[viewMode]}
-              className="w-full h-12 pl-11 pr-10 rounded-[14px] bg-[#F8FAFD] border border-[#E6EBF3] hover:border-[#CBD5E1] focus:bg-white focus:border-[#C99A2E] focus:ring-2 focus:ring-[#C99A2E]/20 text-[14px] font-semibold text-[#0B1D3A] placeholder-[#8A9BB3] outline-none transition-all font-['Outfit']"
+              className="w-full h-9.5 pl-10 pr-9 rounded-[11px] bg-[#F8FAFD] border border-[#E6EBF3] hover:border-[#CBD5E1] focus:bg-white focus:border-[#C99A2E] text-[13px] font-medium text-[#0B1D3A] placeholder-[#8A9BB3] outline-none transition-all font-['Outfit']"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => onSearchChange("")}
                 aria-label="Clear search"
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#E2E8F0] hover:bg-[#CBD5E1] text-[#475569] flex items-center justify-center transition-colors cursor-pointer"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#E2E8F0] hover:bg-[#CBD5E1] text-[#475569] flex items-center justify-center transition-colors cursor-pointer"
               >
-                <X size={12} strokeWidth={2.5} />
+                <X size={10} strokeWidth={2.5} />
               </button>
             )}
           </div>
@@ -174,43 +175,41 @@ export default function Desktop({
               aria-haspopup="listbox"
               aria-expanded={isOpen}
               onClick={() => setIsOpen((prev) => !prev)}
-              className="w-full md:w-auto flex items-center justify-between gap-3 h-12 px-4 rounded-[14px] bg-[#F8FAFD] hover:bg-[#F0F4FA] border border-[#E6EBF3] hover:border-[#CBD5E1] text-[#0B1D3A] transition-all cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C99A2E]/60"
+              className="w-full md:w-auto flex items-center justify-between gap-2.5 h-9.5 px-3 rounded-[11px] bg-[#F8FAFD] hover:bg-[#F0F4FA] border border-[#E6EBF3] hover:border-[#CBD5E1] text-[#0B1D3A] transition-all cursor-pointer shadow-2xs"
             >
               <div className="flex items-center gap-2">
-                <SlidersHorizontal size={14} className="text-[#C99A2E]" />
-                <span className="text-[11.5px] font-black text-[#7B8DAA] uppercase tracking-wider">
+                <span className="w-5 h-5 rounded-[5px] bg-[#C99A2E] text-white flex items-center justify-center shrink-0">
+                  <SlidersHorizontal size={11} />
+                </span>
+                <span className="text-[11px] font-medium text-[#7B8DAA] uppercase tracking-wider">
                   Sort:
                 </span>
-                <span
-                  className="w-6 h-6 rounded-[6px] flex items-center justify-center shrink-0"
-                  style={{ background: activeOption.bg }}
-                >
-                  <ActiveIcon size={13} style={{ color: activeOption.color }} strokeWidth={2.5} />
+                <span className="w-5 h-5 rounded-[5px] bg-[#0B1D3A] text-white flex items-center justify-center shrink-0">
+                  <ActiveIcon size={11} className="text-white" />
                 </span>
-                <span className="text-[13.5px] font-extrabold text-[#0B1D3A]">
+                <span className="text-[12.5px] font-medium text-[#0B1D3A]">
                   {activeOption.label}
                 </span>
               </div>
               <ChevronDown
-                size={15}
+                size={13}
                 className={`text-[#7B8DAA] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-                strokeWidth={2.4}
               />
             </button>
 
             <AnimatePresence>
               {isOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                  initial={{ opacity: 0, y: 6, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                  transition={{ duration: 0.16, ease: "easeOut" }}
-                  className="absolute right-0 top-full mt-2 w-full md:w-76 bg-white rounded-[18px] border border-[#E6EBF3] shadow-[0_20px_50px_-12px_rgba(11,29,58,0.25)] p-2 z-50 flex flex-col gap-1"
+                  exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                  transition={{ duration: 0.15, ease: "easeOut" }}
+                  className="absolute right-0 top-full mt-1.5 w-full md:w-72 bg-white rounded-[16px] border border-[#E6EBF3] shadow-xl p-1.5 z-50 flex flex-col gap-1"
                   role="listbox"
                 >
-                  <div className="px-3 py-2 text-[10.5px] font-black uppercase tracking-[0.14em] text-[#7B8DAA] border-b border-[#F0F4FA] mb-1 flex items-center justify-between">
+                  <div className="px-2.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-[#7B8DAA] border-b border-[#F0F4FA] mb-0.5 flex items-center justify-between">
                     <span>Sort Options</span>
-                    <span className="text-[10px] text-[#C99A2E] font-bold">5 Criteria</span>
+                    <span className="text-[9.5px] text-[#C99A2E] font-medium">5 Criteria</span>
                   </div>
                   {sortOptions.map((option) => {
                     const isSelected = option.label === sortBy;
@@ -225,29 +224,30 @@ export default function Desktop({
                           onSortChange(option.label);
                           setIsOpen(false);
                         }}
-                        className={`w-full flex items-center justify-between p-2.5 rounded-[12px] transition-all text-left cursor-pointer ${
+                        className={`w-full flex items-center justify-between p-2 rounded-[10px] transition-all text-left cursor-pointer ${
                           isSelected
-                            ? "bg-[#FFFDF7] text-[#0B1D3A] border border-[#C99A2E]/50 shadow-2xs"
+                            ? "bg-[#FFFDF7] text-[#0B1D3A] border border-[#C99A2E]/50"
                             : "hover:bg-[#F8FAFD] text-[#475569]"
                         }`}
                       >
-                        <div className="flex items-center gap-2.5 min-w-0">
-                          <span
-                            className="w-7 h-7 rounded-[8px] flex items-center justify-center shrink-0"
-                            style={{ background: option.bg }}
-                          >
-                            <Icon size={14} style={{ color: option.color }} strokeWidth={2.4} />
+                        <div className="flex items-center gap-2 min-w-0">
+                          <span className="w-5 h-5 rounded-[5px] bg-[#0B1D3A] text-white flex items-center justify-center shrink-0">
+                            <Icon size={11} className="text-white" />
                           </span>
                           <div className="min-w-0">
-                            <span className="block text-[13px] font-bold truncate leading-tight">
+                            <span className="block text-[12px] font-medium truncate leading-tight">
                               {option.label}
                             </span>
-                            <span className="block text-[10.5px] text-[#7B8DAA] truncate">
+                            <span className="block text-[10px] text-[#7B8DAA] truncate font-normal">
                               {option.caption}
                             </span>
                           </div>
                         </div>
-                        {isSelected && <Check size={14} className="text-[#C99A2E] shrink-0" strokeWidth={3} />}
+                        {isSelected && (
+                          <span className="w-4 h-4 rounded-full bg-[#10B981] text-white flex items-center justify-center shrink-0">
+                            <Check size={8} strokeWidth={3} />
+                          </span>
+                        )}
                       </button>
                     );
                   })}
