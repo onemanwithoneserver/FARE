@@ -64,7 +64,7 @@ export default function Mobile({ onBookExpert }: Props) {
   };
 
   return (
-    <Section tone="soft" mobile ariaLabel="Compare Experts" className="!pt-6 !pb-12 font-['Outfit']">
+    <Section tone="soft" mobile ariaLabel="Compare Experts" className="!pt-6 !pb-4 font-['Outfit']">
       <div className="flex flex-col gap-4">
         <div
           onClick={() => setIsExpanded((prev) => !prev)}
@@ -241,7 +241,7 @@ export default function Mobile({ onBookExpert }: Props) {
 
       <AnimatePresence>
         {isPickerOpen && (
-          <div className="fixed inset-0 z-50 flex items-end">
+          <div className="fixed inset-0 z-50 flex items-end font-['Outfit']">
             <div
               onClick={() => setIsPickerOpen(false)}
               className="fixed inset-0 bg-black/50"

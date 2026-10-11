@@ -311,6 +311,7 @@ type BtnProps = {
   mobile?: boolean;
   onClick?: () => void;
   className?: string;
+  showArrow?: boolean;
 };
 
 export function PrimaryButton({ children, icon: Icon, full, mobile, onClick, className = "", variant = "navy" }: BtnProps & { variant?: "navy" | "gold" | "green" | "light" }) {
@@ -345,20 +346,22 @@ export function PrimaryButton({ children, icon: Icon, full, mobile, onClick, cla
   );
 }
 
-export function SecondaryButton({ children, icon: Icon, full, mobile, onClick, className = "", dark = false }: BtnProps & { dark?: boolean }) {
+export function SecondaryButton({ children, icon: Icon, full, mobile, onClick, className = "", dark = false, showArrow = true }: BtnProps & { dark?: boolean }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`group inline-flex items-center justify-center gap-2.5 font-semibold rounded-[10px] border cursor-pointer select-none transition-all duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${FOCUS_RING} ${
+      className={`group inline-flex items-center justify-center gap-2 font-semibold rounded-[10px] border cursor-pointer select-none transition-all duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${FOCUS_RING} ${
         dark
           ? "text-white border-white/25 bg-white/[0.06] hover:bg-white/[0.12] hover:border-white/45 backdrop-blur-md"
           : "text-[#0B1D3A] border-[#0B1D3A]/15 bg-white/70 hover:border-[#C99A2E] hover:text-[#8A5A00] hover:shadow-[0_10px_24px_-12px_rgba(201,154,46,0.6)] backdrop-blur-md"
       } ${mobile ? "text-[14px] px-6 py-3.5" : "text-[15px] px-7 py-4"} ${full ? "w-full" : ""} ${className}`}
     >
-      {Icon && <Icon size={17} strokeWidth={2.4} className="shrink-0 transition-transform duration-300 group-hover:scale-110" />}
-      <span>{children}</span>
-      <ArrowRight size={15} strokeWidth={2.6} className="shrink-0 transition-all duration-300 opacity-60 group-hover:opacity-100 group-hover:translate-x-1" />
+      {Icon && <Icon size={16} strokeWidth={2.4} className="shrink-0 transition-transform duration-300 group-hover:scale-110" />}
+      <span className="inline-flex items-center gap-1.5 whitespace-nowrap">{children}</span>
+      {showArrow && (
+        <ArrowRight size={15} strokeWidth={2.6} className="shrink-0 transition-all duration-300 opacity-60 group-hover:opacity-100 group-hover:translate-x-1" />
+      )}
     </button>
   );
 }

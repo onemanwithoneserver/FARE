@@ -100,3 +100,20 @@ export const data = {
     phone: "+91 98765 43210",
   },
 };
+
+export function getExpertDurationPrice(expertPrice?: string | null, durationId?: string | null) {
+  if (!expertPrice || !durationId) return null;
+  const base = parseInt(expertPrice.replace(/[^\d]/g, ""), 10) || 999;
+  if (durationId === "30") {
+    return { price: `₹${base.toLocaleString("en-IN")}`, amount: base };
+  }
+  if (durationId === "45") {
+    const p45 = Math.round((base * 1.4) / 10) * 10 - 1;
+    return { price: `₹${p45.toLocaleString("en-IN")}`, amount: p45 };
+  }
+  if (durationId === "60") {
+    const p60 = Math.round((base * 1.8) / 10) * 10 - 1;
+    return { price: `₹${p60.toLocaleString("en-IN")}`, amount: p60 };
+  }
+  return { price: `₹${base.toLocaleString("en-IN")}`, amount: base };
+}

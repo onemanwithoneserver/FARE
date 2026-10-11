@@ -64,7 +64,7 @@ export default function Desktop({ onBookExpert }: Props) {
   };
 
   return (
-    <Section tone="soft" ariaLabel="Compare Experts" className="!py-14 font-['Outfit']">
+    <Section tone="soft" ariaLabel="Compare Experts" className="!pt-6 lg:!pt-8 !pb-2.5 font-['Outfit']">
       <div className="flex flex-col gap-6 max-w-[1200px] mx-auto w-full">
         <div
           onClick={() => setIsExpanded((prev) => !prev)}
@@ -326,7 +326,7 @@ export default function Desktop({ onBookExpert }: Props) {
 
       <AnimatePresence>
         {isPickerOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 font-['Outfit']">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

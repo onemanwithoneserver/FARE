@@ -12,7 +12,7 @@ export default function Mobile() {
 
       <motion.div variants={staggerContainer(0.08)} initial="hidden" whileInView="show" viewport={VIEWPORT} className="flex flex-col gap-4 mb-10">
         {s.sessions.map((session, i) => {
-          const a = ACCENTS[(i * 3 + 1) % ACCENTS.length];
+          const a = i === 1 ? ACCENTS[8] : i === 2 ? ACCENTS[5] : ACCENTS[(i * 3 + 1) % ACCENTS.length];
           return (
             <motion.article key={session.duration} variants={fadeUp} className="bg-white rounded-[16px] border border-[#E6EBF3] luxury-shadow-sm p-5 relative overflow-hidden flex items-center gap-5">
               <span aria-hidden="true" className="absolute left-0 top-6 bottom-6 w-[3px] rounded-r-full" style={{ background: `linear-gradient(${a.from}, ${a.to})` }} />
