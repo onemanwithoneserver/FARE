@@ -9,6 +9,10 @@ import {
   Globe2,
   ChevronDown,
   Check,
+  Home,
+  MapPin,
+  Briefcase,
+  Crown,
 } from "lucide-react";
 import { data, getSortedAndFilteredExperts, type Expert } from "./data";
 import { ACCENTS, fadeUp, staggerContainer, Section, PrimaryButton, HoverGlow, CARD_BASE, AccentHairline, VerifiedBadge } from "../../ui";
@@ -21,6 +25,15 @@ interface Props {
 }
 
 const NO_FILTERS: ReadonlySet<string> = new Set();
+
+const getDomainIcon = (expert: Expert) => {
+  const text = `${expert.reExperience || ""} ${expert.role || ""}`.toLowerCase();
+  if (text.includes("luxury")) return Crown;
+  if (text.includes("plot") || text.includes("land") || text.includes("farmland")) return MapPin;
+  if (text.includes("commercial") || text.includes("retail") || text.includes("tech park")) return Briefcase;
+  if (text.includes("residential") || text.includes("apartment") || text.includes("home") || text.includes("villa")) return Home;
+  return Building2;
+};
 
 export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", filters = NO_FILTERS, onBookExpert }: Props) {
   const s = data;
@@ -73,6 +86,7 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", fil
             displayedExperts.map((expert, i) => {
               const a = ACCENTS[i % ACCENTS.length];
               const isExpanded = expandedExpert === expert.name;
+              const DomainIcon = getDomainIcon(expert);
 
               return (
                 <motion.article
@@ -127,7 +141,7 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", fil
                         {expert.reExperience && (
                           <div className="flex items-center gap-1.5 mt-1 text-[11px] font-normal text-[#5A6B82]">
                             <span className="w-3.5 h-3.5 rounded-[3px] bg-[#7C3AED] text-white flex items-center justify-center shrink-0">
-                              <Building2 size={8.5} />
+                              <DomainIcon size={8.5} />
                             </span>
                             <span className="truncate">{expert.reExperience}</span>
                           </div>

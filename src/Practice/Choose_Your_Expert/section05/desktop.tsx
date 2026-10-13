@@ -2,7 +2,6 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   ShieldCheck,
-  Target,
   Calendar,
   Building2,
   Sparkles,
@@ -13,6 +12,10 @@ import {
   Check,
   Star,
   SearchX,
+  Home,
+  MapPin,
+  Briefcase,
+  Crown,
 } from "lucide-react";
 import { data, getSortedAndFilteredExperts, type Expert } from "./data";
 import {
@@ -20,14 +23,9 @@ import {
   EASE,
   FOCUS_RING,
   PrimaryButton,
-  HoverGlow,
-  CARD_BASE,
-  CARD_HOVER,
-  AccentHairline,
   Chip,
   IconBadge,
   accentAt,
-  accentGradient,
   VerifiedBadge,
 } from "../../ui";
 
@@ -40,6 +38,15 @@ interface Props {
 }
 
 const NO_FILTERS: ReadonlySet<string> = new Set();
+
+const getDomainIcon = (expert: Expert) => {
+  const text = `${expert.reExperience || ""} ${expert.role || ""}`.toLowerCase();
+  if (text.includes("luxury")) return Crown;
+  if (text.includes("plot") || text.includes("land") || text.includes("farmland")) return MapPin;
+  if (text.includes("commercial") || text.includes("retail") || text.includes("tech park")) return Briefcase;
+  if (text.includes("residential") || text.includes("apartment") || text.includes("home") || text.includes("villa")) return Home;
+  return Building2;
+};
 
 export default function Desktop({
   searchQuery = "",
@@ -133,68 +140,73 @@ export default function Desktop({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: EASE }}
-            className="w-full py-16 px-6 bg-white rounded-[16px] border border-dashed border-[#CBD5E1] text-center flex flex-col items-center justify-center luxury-shadow-sm"
+            className="w-full py-14 px-6 bg-white rounded-[16px] border border-dashed border-[#CBD5E1] text-center flex flex-col items-center justify-center luxury-shadow-sm max-w-[640px] mx-auto"
           >
             <IconBadge icon={SearchX} accent={ACCENTS[1]} size="md" interactive={false} />
-            <h3 className="text-[20px] font-bold text-[#0B1D3A] mt-5 mb-2 tracking-tight">No experts found</h3>
-            <p className="text-[14px] text-[#5A6B82] max-w-md font-medium leading-relaxed">
-              Nothing matches your current search and filters. Try a different keyword or loosen a filter.
+            <h3 className="text-[19px] font-bold text-[#0B1D3A] mt-4 mb-2 tracking-tight">No experts found</h3>
+            <p className="text-[13.5px] text-[#5A6B82] max-w-sm font-medium leading-relaxed">
+              Nothing matches your current search. Try a different keyword or name.
             </p>
             {filters.size > 0 && onClearFilters && (
               <button
                 type="button"
                 onClick={onClearFilters}
-                className={`mt-6 h-11 px-5 rounded-[12px] bg-[#0B1D3A] text-white text-[13.5px] font-semibold hover:bg-[#122A50] transition-colors cursor-pointer ${FOCUS_RING}`}
+                className={`mt-5 h-10 px-5 rounded-[10px] bg-[#0B1D3A] text-white text-[13px] font-semibold hover:bg-[#122A50] transition-colors cursor-pointer ${FOCUS_RING}`}
               >
                 Clear all filters
               </button>
             )}
           </motion.div>
         ) : (
-          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div className={`w-full ${isSplit ? "grid grid-cols-1 lg:grid-cols-12 gap-5 items-start" : ""}`}>
+            
+            {/* Left Side: 4-Column Grid when normal, 1-column when profile panel is open */}
             <motion.div
               layout
               transition={{ duration: 0.35, ease: EASE }}
-              className={`w-full ${isSplit ? "lg:col-span-5" : "lg:col-span-12"}`}
+              className={`w-full ${isSplit ? "lg:col-span-5" : ""}`}
             >
               <ul
-                className={`grid gap-5 ${isSplit ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"}`}
-                aria-label="Mock experts"
+                className={`grid gap-4 ${isSplit ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-1" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"}`}
+                aria-label="Verified experts list"
               >
                 {displayedExperts.map((expert, i) => {
-                  const a = accentAt(i + 2);
                   const isSelected = selectedExpertName === expert.name;
                   const years = expert.experience.split(" ")[0];
+                  const shortDomain = expert.reExperience
+                    ? expert.reExperience.split("—")[0].trim()
+                    : "";
+                  const DomainIcon = getDomainIcon(expert);
 
                   return (
                     <motion.li
                       layout
                       key={expert.name}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.94 }}
-                      transition={{ duration: 0.4, ease: EASE, delay: Math.min(i * 0.05, 0.25) }}
+                      transition={{ duration: 0.35, ease: EASE, delay: Math.min(i * 0.04, 0.2) }}
                       className="list-none flex"
                     >
                       <article
-                        className={`${CARD_BASE} ${CARD_HOVER} w-full overflow-hidden flex flex-col ${
-                          isSelected ? "!border-[#C99A2E] ring-2 ring-[#C99A2E]/25 !bg-[#FFFDF8]" : ""
+                        className={`w-full bg-white rounded-[18px] border transition-all duration-200 flex flex-col overflow-hidden ${
+                          isSelected
+                            ? "border-[#C99A2E] ring-2 ring-[#C99A2E]/30 bg-[#FFFDF9] shadow-[0_16px_36px_-12px_rgba(201,154,46,0.2)]"
+                            : "border-[#E2E8F0] shadow-xs hover:shadow-[0_14px_30px_-10px_rgba(11,29,58,0.1)] hover:border-[#CBD5E1] hover:-translate-y-0.5"
                         }`}
                       >
-                        <AccentHairline accent={a} />
-                        <HoverGlow accent={a} />
-
-                        <div className="relative z-10 p-5 pb-4 flex flex-col gap-4">
-                          <div className="flex items-start gap-4">
+                        {/* Compact Profile Header */}
+                        <div className="p-4.5 pb-3 flex flex-col gap-3">
+                          <div className="flex items-start gap-3.5">
+                            {/* Avatar */}
                             <div className="relative shrink-0">
                               <div
-                                className="p-[2.5px] rounded-full transition-transform duration-500 group-hover:scale-105"
+                                className="p-[2px] rounded-full"
                                 style={{
-                                  background: "linear-gradient(135deg,#C99A2E,#F4D068 50%,#0B1D3A)",
-                                  boxShadow: "0 10px 22px -10px rgba(201,154,46,0.6)",
+                                  background: "linear-gradient(135deg, #C99A2E, #F4D068 50%, #0B1D3A)",
                                 }}
                               >
-                                <div className="w-[64px] h-[64px] rounded-full overflow-hidden bg-[#F8F9FC] border-2 border-white">
+                                <div className="w-[52px] h-[52px] rounded-full overflow-hidden bg-[#F8F9FC] border-2 border-white">
                                   <img
                                     src={expert.image}
                                     alt={`Portrait of ${expert.name}`}
@@ -205,130 +217,94 @@ export default function Desktop({
                               </div>
                               {expert.verified && (
                                 <VerifiedBadge
-                                  size={20}
-                                  className="absolute -bottom-0.5 -right-0.5 ring-2 ring-white rounded-full shadow-xs"
+                                  size={18}
+                                  className="absolute -bottom-0.5 -right-0.5 ring-2 ring-white rounded-full"
                                 />
                               )}
                             </div>
 
+                            {/* Name, Role & Seniority badge */}
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-start justify-between gap-2">
-                                <h3 className="text-[19px] font-bold text-[#0B1D3A] tracking-tight leading-tight truncate group-hover:text-[#8A5A00] transition-colors">
+                              <div className="flex items-center justify-between gap-1.5 flex-wrap">
+                                <h3 className="text-[17px] font-bold text-[#0B1D3A] tracking-tight leading-snug truncate">
                                   {expert.name}
                                 </h3>
-                                <span
-                                  className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11.5px] font-bold"
-                                  style={{ background: ACCENTS[1].soft, color: ACCENTS[1].ink, boxShadow: "inset 0 0 0 1px rgba(201,154,46,0.25)" }}
-                                >
-                                  <Star size={11} strokeWidth={2.6} className="fill-current" aria-hidden="true" />
-                                  {years} yrs
+                                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10.5px] font-bold bg-[#FBF5E7] text-[#8A5A00] border border-[#F1DFB0] shrink-0">
+                                  <Star size={10.5} className="fill-[#C99A2E] text-[#C99A2E]" aria-hidden="true" />
+                                  {years} Yrs
                                 </span>
                               </div>
-                              <p className="text-[13.5px] font-semibold text-[#3B4D66] leading-snug mt-1 line-clamp-2">
+                              <p className="text-[12px] font-medium text-[#64748B] leading-snug mt-0.5 truncate">
                                 {expert.role}
                               </p>
+                              {shortDomain && (
+                                <div className="flex items-center gap-1.5 mt-1 text-[11px] font-semibold text-[#1E293B]">
+                                  <DomainIcon size={11} className="text-[#C99A2E] shrink-0" />
+                                  <span className="truncate">{shortDomain}</span>
+                                </div>
+                              )}
                             </div>
                           </div>
 
-                          {expert.reExperience && (
-                            <div
-                              className="flex items-center gap-2.5 px-3 py-2.5 rounded-[12px]"
-                              style={{ background: a.soft }}
-                            >
+                          {/* Minimal Core Skills Chips */}
+                          <div className="flex flex-wrap items-center gap-1 pt-0.5">
+                            {expert.specialisedIn.slice(0, 3).map((spec) => (
                               <span
-                                aria-hidden="true"
-                                className="w-7 h-7 rounded-[8px] flex items-center justify-center text-white shrink-0"
-                                style={{ background: accentGradient(a), boxShadow: `0 6px 12px -6px ${a.glow}` }}
+                                key={spec}
+                                className="px-2 py-0.5 rounded-[6px] bg-[#F1F5F9] border border-[#E2E8F0] text-[11px] font-semibold text-[#334155]"
                               >
-                                <Building2 size={14} strokeWidth={2.3} />
-                              </span>
-                              <span className="text-[12.5px] font-semibold leading-snug line-clamp-2" style={{ color: a.ink }}>
-                                {expert.reExperience}
-                              </span>
-                            </div>
-                          )}
-
-                          <div className="flex flex-wrap items-center gap-1.5">
-                            {expert.specialisedIn.slice(0, 3).map((spec, si) => (
-                              <Chip key={spec} accent={accentAt(i + si + 3)}>
                                 {spec}
-                              </Chip>
+                              </span>
                             ))}
                             {expert.specialisedIn.length > 3 && (
-                              <span className="text-[12px] font-semibold text-[#7B8DAA] px-1">
-                                +{expert.specialisedIn.length - 3} more
+                              <span className="text-[10.5px] font-semibold text-[#7B8DAA] px-1.5 py-0.5 rounded-[5px] bg-[#F8FAFC] border border-[#E2E8F0]">
+                                +{expert.specialisedIn.length - 3}
                               </span>
                             )}
                           </div>
                         </div>
 
-                        <div className="relative z-10 grid grid-cols-2 border-y border-[#F0F4FA] bg-[#FAFBFE]">
-                          <div className="flex items-center gap-2.5 px-5 py-3 border-r border-[#F0F4FA] min-w-0">
-                            <span aria-hidden="true" className="w-7 h-7 rounded-[8px] bg-[#0B1D3A] text-white flex items-center justify-center shrink-0">
-                              <Globe2 size={14} strokeWidth={2.3} />
-                            </span>
-                            <span className="text-[12.5px] font-semibold text-[#3B4D66] truncate">
-                              {expert.languages.join(" · ")}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2.5 px-5 py-3 min-w-0">
-                            <span aria-hidden="true" className="w-7 h-7 rounded-[8px] text-white flex items-center justify-center shrink-0" style={{ background: accentGradient(ACCENTS[3]) }}>
-                              <Target size={14} strokeWidth={2.3} />
-                            </span>
-                            <span className="text-[12.5px] font-semibold text-[#3B4D66] truncate">
-                              {expert.sessionsCompleted} sessions
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="relative z-10 p-5 pt-4 flex flex-col gap-4 mt-auto">
-                          <div className="flex items-end justify-between gap-3">
-                            <div className="flex flex-col">
-                              <span className="text-[10.5px] font-bold text-[#7B8DAA] uppercase tracking-[0.14em] mb-1">
-                                Session fee
-                              </span>
-                              <span className="text-[22px] font-extrabold text-[#0B1D3A] leading-none tracking-tight">
+                        {/* Pricing & Action Row */}
+                        <div className="p-4.5 pt-2.5 mt-auto border-t border-[#F1F5F9] flex flex-col gap-2.5 bg-[#FAFBFE]">
+                          <div className="flex items-center justify-between text-[12px]">
+                            <div className="flex items-baseline gap-1">
+                              <span className="text-[17px] font-black text-[#0B1D3A] leading-none">
                                 {expert.price}
                               </span>
+                              <span className="text-[11px] font-medium text-[#64748B]">/ 45 min</span>
                             </div>
-                            <div className="flex flex-col items-end">
-                              <span className="text-[10.5px] font-bold text-[#7B8DAA] uppercase tracking-[0.14em] mb-1">
-                                Next available
-                              </span>
-                              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E9FBF3] text-[#047857] text-[12.5px] font-bold">
-                                <Calendar size={12} strokeWidth={2.6} aria-hidden="true" />
-                                {expert.nextAvailable.split("·")[0].trim()}
-                              </span>
-                            </div>
+
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0] text-[10.5px] font-bold">
+                              <Calendar size={11} strokeWidth={2.5} aria-hidden="true" />
+                              {expert.nextAvailable.split("·")[0].trim()}
+                            </span>
                           </div>
 
-                          <div className="flex items-center gap-2.5">
+                          <div className="grid grid-cols-2 gap-2">
                             <button
                               type="button"
                               onClick={() => handleToggleDetails(expert.name)}
                               aria-pressed={isSelected}
                               aria-label={`${isSelected ? "Hide" : "View"} details for ${expert.name}`}
-                              className={`group/btn flex-1 h-11 px-4 rounded-[12px] border text-[13.5px] font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${FOCUS_RING} ${
+                              title={`View full profile and scenarios for ${expert.name}`}
+                              className={`h-9 px-3 rounded-[10px] border text-[12px] font-bold transition-all cursor-pointer flex items-center justify-center gap-1 ${FOCUS_RING} ${
                                 isSelected
                                   ? "bg-[#0B1D3A] text-[#E4C46A] border-[#0B1D3A]"
-                                  : "bg-white hover:bg-[#F8FAFD] border-[#E6EBF3] hover:border-[#C99A2E] text-[#0B1D3A]"
+                                  : "bg-white hover:bg-[#F8FAFD] border-[#CBD5E1] text-[#0B1D3A]"
                               }`}
                             >
-                              {isSelected ? "Viewing" : "View details"}
-                              {isSelected ? (
-                                <Check size={14} strokeWidth={3} aria-hidden="true" />
-                              ) : (
-                                <ChevronRight size={15} strokeWidth={2.6} aria-hidden="true" className="transition-transform group-hover/btn:translate-x-0.5" />
-                              )}
+                              {isSelected ? "Viewing Profile" : "View Profile"}
+                              <ChevronRight size={13} strokeWidth={2.4} aria-hidden="true" />
                             </button>
 
-                            <PrimaryButton
-                              variant="gold"
+                            <button
+                              type="button"
                               onClick={() => handleBook(expert)}
-                              className="!h-11 !py-0 !px-4 !text-[13.5px] !rounded-[12px] flex-1 !w-auto"
+                              title={`Book a live session with ${expert.name}`}
+                              className={`h-9 px-3 rounded-[10px] bg-gradient-to-r from-[#C99A2E] via-[#D8AB3A] to-[#B8871F] hover:from-[#B8871F] hover:to-[#C99A2E] text-white text-[12px] font-bold shadow-xs transition-all flex items-center justify-center cursor-pointer ${FOCUS_RING}`}
                             >
-                              Book session
-                            </PrimaryButton>
+                              Book Session
+                            </button>
                           </div>
                         </div>
                       </article>
@@ -338,133 +314,156 @@ export default function Desktop({
               </ul>
             </motion.div>
 
+            {/* Right Side: Selected Profile Panel (Shows Only ONE Profile at a time) */}
             <AnimatePresence mode="wait">
               {selectedExpert && (
                 <motion.aside
                   key={selectedExpert.name}
-                  aria-label={`${selectedExpert.name} details`}
-                  initial={{ opacity: 0, x: 24, scale: 0.98 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: 24, scale: 0.98 }}
-                  transition={{ duration: 0.3, ease: EASE }}
-                  className="w-full lg:col-span-7 lg:sticky lg:top-24 z-20"
+                  aria-label={`${selectedExpert.name} profile details`}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.28, ease: EASE }}
+                  className="w-full lg:col-span-7 lg:sticky lg:top-20 z-20"
                 >
                   <div
                     ref={dialogRef}
-                    className="w-full bg-white rounded-[16px] border border-[#E6EBF3] shadow-[0_28px_56px_-20px_rgba(11,29,58,0.3)] overflow-hidden flex flex-col max-h-[calc(100vh-130px)] h-[calc(100vh-140px)]"
+                    className="w-full bg-white rounded-[20px] border border-[#E2E8F0] shadow-[0_24px_50px_-16px_rgba(11,29,58,0.22)] overflow-hidden flex flex-col max-h-[calc(100vh-110px)]"
                   >
-                    <div className="h-1 w-full shrink-0 bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#0B1D3A]" />
+                    {/* Top Gold Hairline */}
+                    <div className="h-[3px] w-full shrink-0 bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#0B1D3A]" />
 
+                    {/* Dark Executive Header */}
                     <div
                       className="p-5 text-white relative shrink-0 overflow-hidden"
-                      style={{ background: "linear-gradient(135deg,#0B1D3A 0%,#122A50 55%,#1B3A6B 100%)" }}
+                      style={{ background: "linear-gradient(135deg, #07152B 0%, #0F254B 50%, #17376D 100%)" }}
                     >
-                      <span aria-hidden="true" className="absolute -top-12 -right-10 w-44 h-44 rounded-full blur-[48px]" style={{ background: "rgba(201,154,46,0.28)" }} />
-                      <div className="relative flex items-start justify-between gap-3 mb-4">
-                        <div className="flex items-center gap-4 min-w-0">
+                      <span
+                        aria-hidden="true"
+                        className="absolute -top-12 -right-8 w-44 h-44 rounded-full blur-[48px]"
+                        style={{ background: "rgba(201,154,46,0.28)" }}
+                      />
+
+                      <div className="relative flex items-start justify-between gap-3 mb-3.5">
+                        <div className="flex items-center gap-3.5 min-w-0">
                           <div className="relative shrink-0">
-                            <div className="w-16 h-16 rounded-full overflow-hidden bg-white/10 border-2 border-[#C99A2E]">
-                              <img src={selectedExpert.image} alt={`Portrait of ${selectedExpert.name}`} className="w-full h-full object-cover" />
+                            <div className="w-14 h-14 rounded-full overflow-hidden bg-white/10 border-2 border-[#C99A2E]">
+                              <img
+                                src={selectedExpert.image}
+                                alt={`Portrait of ${selectedExpert.name}`}
+                                className="w-full h-full object-cover"
+                              />
                             </div>
                             {selectedExpert.verified && (
                               <VerifiedBadge
-                                size={22}
-                                className="absolute -bottom-0.5 -right-0.5 ring-2 ring-[#0B1D3A] rounded-full shadow-md"
+                                size={19}
+                                className="absolute -bottom-0.5 -right-0.5 ring-2 ring-[#0B1D3A] rounded-full shadow-xs"
                               />
                             )}
                           </div>
+
                           <div className="min-w-0 flex-1">
-                            <h3 className="text-[21px] font-bold text-white tracking-tight truncate">{selectedExpert.name}</h3>
-                            <p className="text-[13.5px] font-semibold text-[#E4C46A] leading-snug line-clamp-1 mt-0.5">{selectedExpert.role}</p>
-                            <div className="flex items-center gap-2 mt-2 flex-wrap">
-                              <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/15 text-white">
-                                {selectedExpert.experience}
+                            <div className="flex items-center gap-2">
+                              <h3 className="text-[19px] font-black text-white tracking-tight truncate">
+                                {selectedExpert.name}
+                              </h3>
+                              <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/15 text-white shrink-0">
+                                ⭐ {selectedExpert.experience.split(" ")[0]} Yrs
                               </span>
-                              {selectedExpert.reExperience && (
-                                <span className="text-[12px] text-white/80 truncate flex items-center gap-1.5 font-medium">
-                                  <Building2 size={12} aria-hidden="true" className="text-[#E4C46A]" />
-                                  <span className="truncate">{selectedExpert.reExperience.split("—")[0]}</span>
-                                </span>
-                              )}
                             </div>
+                            <p className="text-[12.5px] font-semibold text-[#E4C46A] leading-snug line-clamp-1 mt-0.5">
+                              {selectedExpert.role}
+                            </p>
                           </div>
                         </div>
 
+                        {/* Close Panel Button */}
                         <button
                           type="button"
                           onClick={() => setSelectedExpertName(null)}
-                          aria-label="Close details"
-                          className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E4C46A]"
+                          aria-label="Close profile panel"
+                          title="Close profile panel"
+                          className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E4C46A]"
                         >
-                          <X size={16} />
+                          <X size={15} />
                         </button>
                       </div>
 
-                      <div className="relative grid grid-cols-2 sm:grid-cols-3 gap-2 text-[12.5px] font-semibold">
-                        {[
-                          { icon: Globe2, label: selectedExpert.languages.join(", "), bg: "#C99A2E" },
-                          { icon: Target, label: `${selectedExpert.sessionsCompleted} sessions`, bg: "#0891B2" },
-                          { icon: ShieldCheck, label: "Verified coach", bg: "#2563EB" },
-                        ].map(({ icon: Icon, label, bg }) => (
-                          <div key={label} className="flex items-center gap-2 bg-white/[0.07] border border-white/10 rounded-[12px] p-2 min-w-0">
-                            <span aria-hidden="true" className="w-7 h-7 rounded-[8px] text-white flex items-center justify-center shrink-0" style={{ background: bg }}>
-                              <Icon size={14} />
-                            </span>
-                            <span className="truncate">{label}</span>
-                          </div>
-                        ))}
+                      <div className="relative grid grid-cols-2 gap-2 text-[11.5px] font-semibold">
+                        <div className="flex items-center gap-2 bg-white/[0.07] border border-white/10 rounded-[10px] p-2 min-w-0">
+                          <Globe2 size={13} className="text-[#E4C46A] shrink-0" />
+                          <span className="truncate">{selectedExpert.languages.join(", ")}</span>
+                        </div>
+                        <div className="flex items-center gap-2 bg-white/[0.07] border border-white/10 rounded-[10px] p-2 min-w-0">
+                          <ShieldCheck size={13} className="text-[#34D399] shrink-0" />
+                          <span className="truncate">Verified Executive Coach</span>
+                        </div>
                       </div>
                     </div>
 
+                    {/* Scrollable Content Body */}
                     <div
                       ref={scrollBodyRef}
-                      className="p-5 flex flex-col gap-5 flex-1 min-h-0 overflow-y-auto overscroll-contain"
+                      className="p-5 flex flex-col gap-4.5 flex-1 min-h-0 overflow-y-auto overscroll-contain bg-[#FAFAFA]"
                       style={{ scrollbarWidth: "thin", scrollbarColor: "#CBD5E1 transparent" }}
                     >
                       {selectedExpert.about && (
-                        <section className="flex flex-col gap-2">
-                          <h4 className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">About the mentor</h4>
-                          <p className="p-4 rounded-[12px] bg-[#F8FAFD] border border-[#E6EBF3] border-l-4 border-l-[#C99A2E] text-[14px] text-[#334155] leading-relaxed font-medium italic">
+                        <section className="flex flex-col gap-1.5">
+                          <h4 className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">
+                            About the Mentor
+                          </h4>
+                          <p className="p-3.5 rounded-[12px] bg-white border border-[#E2E8F0] border-l-4 border-l-[#C99A2E] text-[13px] text-[#334155] leading-relaxed font-medium italic">
                             "{selectedExpert.about}"
                           </p>
                         </section>
                       )}
 
-                      <section className="flex flex-col gap-2">
-                        <h4 className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">Core domains &amp; specialization</h4>
-                        <div className="flex flex-wrap gap-2">
+                      <section className="flex flex-col gap-1.5">
+                        <h4 className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">
+                          Specialization Domains
+                        </h4>
+                        <div className="flex flex-wrap gap-1.5">
                           {selectedExpert.specialisedIn.map((spec, i) => (
-                            <Chip key={spec} accent={accentAt(i + 2)}>{spec}</Chip>
+                            <Chip key={spec} accent={accentAt(i + 2)} className="!text-[12px] !py-1">
+                              {spec}
+                            </Chip>
                           ))}
                         </div>
                       </section>
 
                       {selectedExpert.sampleScenarios && selectedExpert.sampleScenarios.length > 0 && (
-                        <section className="flex flex-col gap-2.5">
+                        <section className="flex flex-col gap-2">
                           <div className="flex items-center justify-between">
-                            <h4 className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#8A5A00] flex items-center gap-2">
-                              <Sparkles size={13} aria-hidden="true" />
-                              Sample practice scenarios
+                            <h4 className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#8A5A00] flex items-center gap-1.5">
+                              <Sparkles size={12} aria-hidden="true" />
+                              Sample Practice Scenarios
                             </h4>
-                            <span className="text-[12px] font-semibold text-[#7B8DAA]">1-on-1 simulation</span>
+                            <span className="text-[11px] font-semibold text-[#7B8DAA]">1-on-1 Simulation</span>
                           </div>
                           <ul className="flex flex-col gap-2">
                             {selectedExpert.sampleScenarios.map((sc, idx) => (
                               <li
                                 key={sc.title}
-                                className="p-3 rounded-[12px] bg-white border border-[#E6EBF3] flex items-center justify-between gap-3 hover:border-[#C99A2E]/50 hover:shadow-[0_10px_24px_-14px_rgba(201,154,46,0.5)] transition-all"
+                                className="p-3 rounded-[12px] bg-white border border-[#E2E8F0] flex items-center justify-between gap-3 hover:border-[#C99A2E]/50 transition-all"
                               >
-                                <div className="flex items-center gap-3 min-w-0">
-                                  <span aria-hidden="true" className="w-7 h-7 rounded-full bg-[#0B1D3A] text-white flex items-center justify-center text-[12px] font-bold shrink-0">
+                                <div className="flex items-center gap-2.5 min-w-0">
+                                  <span
+                                    aria-hidden="true"
+                                    className="w-6 h-6 rounded-full bg-[#0B1D3A] text-white flex items-center justify-center text-[11px] font-bold shrink-0"
+                                  >
                                     {idx + 1}
                                   </span>
                                   <div className="min-w-0">
-                                    <span className="block text-[13.5px] font-semibold text-[#0B1D3A] truncate">{sc.title}</span>
-                                    <span className="block text-[12px] font-medium text-[#7B8DAA]">{sc.category}</span>
+                                    <span className="block text-[13px] font-bold text-[#0B1D3A] truncate">
+                                      {sc.title}
+                                    </span>
+                                    <span className="block text-[11.5px] font-medium text-[#7B8DAA]">
+                                      {sc.category}
+                                    </span>
                                   </div>
                                 </div>
-                                <span className="text-[12px] font-bold text-[#0E7490] bg-[#E8F8FC] px-2.5 py-1 rounded-full shrink-0 flex items-center gap-1.5">
-                                  <Clock size={12} aria-hidden="true" />
+                                <span className="text-[11px] font-bold text-[#0E7490] bg-[#E8F8FC] px-2.5 py-1 rounded-full shrink-0 flex items-center gap-1">
+                                  <Clock size={11} aria-hidden="true" />
                                   {sc.duration}
                                 </span>
                               </li>
@@ -474,15 +473,21 @@ export default function Desktop({
                       )}
 
                       {selectedExpert.relevance && selectedExpert.relevance.length > 0 && (
-                        <section className="flex flex-col gap-2">
-                          <h4 className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">
-                            Why practice with {selectedExpert.name.split(" ")[0]}
+                        <section className="flex flex-col gap-1.5">
+                          <h4 className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#7B8DAA]">
+                            Why Practice with {selectedExpert.name.split(" ")[0]}
                           </h4>
                           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {selectedExpert.relevance.map((rel) => (
-                              <li key={rel} className="flex items-start gap-2.5 text-[13px] font-medium text-[#334155] bg-[#F8FAFD] p-3 rounded-[12px] border border-[#E6EBF3]">
-                                <span aria-hidden="true" className="w-5 h-5 rounded-full bg-[#10B981] text-white flex items-center justify-center shrink-0 mt-px">
-                                  <Check size={11} strokeWidth={3.2} />
+                              <li
+                                key={rel}
+                                className="flex items-start gap-2 text-[12px] font-medium text-[#334155] bg-white p-2.5 rounded-[10px] border border-[#E2E8F0]"
+                              >
+                                <span
+                                  aria-hidden="true"
+                                  className="w-4 h-4 rounded-full bg-[#10B981] text-white flex items-center justify-center shrink-0 mt-0.5"
+                                >
+                                  <Check size={9} strokeWidth={3.2} />
                                 </span>
                                 <span>{rel}</span>
                               </li>
@@ -492,23 +497,30 @@ export default function Desktop({
                       )}
                     </div>
 
-                    <div className="p-4 bg-white border-t border-[#F0F4FA] flex items-center justify-between gap-3 shadow-[0_-8px_20px_rgba(11,29,58,0.04)] shrink-0 mt-auto">
+                    {/* Sticky Footer with Fee & Book Session CTA */}
+                    <div className="p-4 bg-white border-t border-[#E2E8F0] flex items-center justify-between gap-3 shrink-0 shadow-xs">
                       <div className="flex flex-col">
-                        <span className="text-[10.5px] font-bold text-[#7B8DAA] uppercase tracking-[0.14em] mb-1">Fee</span>
-                        <span className="text-[22px] font-extrabold text-[#0B1D3A] leading-none">{selectedExpert.price}</span>
+                        <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.14em]">
+                          Session Fee
+                        </span>
+                        <span className="text-[20px] font-black text-[#0B1D3A] leading-tight">
+                          {selectedExpert.price}{" "}
+                          <span className="text-[12px] font-normal text-[#64748B]">/ 45 min</span>
+                        </span>
                       </div>
                       <PrimaryButton
                         variant="gold"
                         onClick={() => handleBook(selectedExpert)}
-                        className="!h-11 !py-0 !px-6 !text-[14px] !rounded-[12px] !w-auto"
+                        className="!h-10 !py-0 !px-5 !text-[13px] !rounded-[10px] !w-auto"
                       >
-                        Book session
+                        Book Session
                       </PrimaryButton>
                     </div>
                   </div>
                 </motion.aside>
               )}
             </AnimatePresence>
+
           </div>
         )}
       </AnimatePresence>
