@@ -4,7 +4,6 @@ import Header from "../../Home/00_header";
 import Footer from "../../Home/05_section";
 import Section01 from "./section01";
 import Section02 from "./section02";
-import Section03 from "./section03";
 import Section04 from "./section04";
 import Section05 from "./section05";
 import ScenarioResults from "./section05/ScenarioResults";
@@ -122,25 +121,12 @@ export default function ChooseYourExpert({ isMobile }: Props) {
       <Header isMobile={isMobile} />
       <Section01 isMobile={isMobile} />
       <Section02 isMobile={isMobile} />
-      {isMobile ? (
-        <>
-          <Section03 isMobile={isMobile} selected={filters} onToggle={toggleFilter} onClear={clearFilters} resultCount={expertCount} />
+      <section className="bg-[#FAFAFA] w-full pt-8 pb-6 lg:pb-8">
+        <div className="max-w-[1240px] mx-auto w-full flex flex-col gap-6 px-4 xl:px-0">
           {toolbar}
           {results}
-        </>
-      ) : (
-        <section className="bg-[#FAFAFA] w-full pt-8 pb-6 lg:pb-8">
-          <div className="max-w-[1240px] mx-auto w-full flex items-start gap-8 px-4 xl:px-0">
-            <aside className="w-[300px] shrink-0" aria-label="Filters">
-              <Section03 isMobile={isMobile} selected={filters} onToggle={toggleFilter} onClear={clearFilters} resultCount={expertCount} />
-            </aside>
-            <main className="flex-1 flex flex-col min-w-0 gap-6">
-              {toolbar}
-              {results}
-            </main>
-          </div>
-        </section>
-      )}
+        </div>
+      </section>
       <Section06 isMobile={isMobile} onBookExpert={handleBookExpert} />
       <Section08 
         isMobile={isMobile} 

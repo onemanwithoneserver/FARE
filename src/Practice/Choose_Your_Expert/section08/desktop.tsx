@@ -674,7 +674,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                     Choose Your Practice Scenario
                   </h3>
                   <p className="text-[13.5px] text-[#5A6B82] mt-1 font-medium">
-                    Pick a proven objection handling drill or enter a custom challenge you face in your daily customer meetings.
+                    Pick a proven objection handling scenario or enter a custom challenge you face in your daily customer meetings.
                   </p>
                 </div>
 
@@ -757,7 +757,7 @@ export default function Desktop({ selectedExpert, onSelectExpert }: Props) {
                     Select Date &amp; Time Slot
                   </h3>
                   <p className="text-[13.5px] text-[#5A6B82] mt-1 font-medium">
-                    Pick an upcoming date and time slot that fits your schedule for the 1-on-1 Google Meet drill.
+                    Pick an upcoming date and time slot that fits your schedule for the 1-on-1 Google Meet session.
                   </p>
                 </div>
 

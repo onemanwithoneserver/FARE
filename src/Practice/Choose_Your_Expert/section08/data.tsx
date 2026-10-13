@@ -8,7 +8,7 @@ export const data = {
       id: "30",
       duration: "30 MIN",
       label: "Quick Practice",
-      desc: "One focused objection drill + rapid structured evaluation",
+      desc: "One focused objection session + rapid structured evaluation",
       price: "₹999",
       amount: 999,
       recommended: false,

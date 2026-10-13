@@ -182,7 +182,7 @@ function ScenarioCard({
         <div className="grid grid-cols-2 gap-2">
           <SecondaryButton
             full
-            onClick={() => onFindExperts(sc.expertKeyword)}
+            onClick={() => onFindExperts?.(sc.expertKeyword)}
             className="!h-8.5 !py-0 !px-2 text-[11.5px] !rounded-[8px] font-medium bg-white"
           >
             {scenarioResultsLabels.viewExperts}
@@ -199,7 +199,7 @@ function ScenarioCard({
             }}
             className="!h-8.5 !py-0 !px-2 text-[11.5px] !rounded-[8px] font-medium cursor-pointer"
           >
-            Book Drill
+            Book Session
           </PrimaryButton>
         </div>
       </div>
