@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { Target, Filter, Star, Clock, UserCheck } from "lucide-react";
+import { Target, Filter, Star, Clock, UserCheck, Play } from "lucide-react";
 import { data } from "./data";
 import mockExpertHero from "../../../assets/mock_expert_hero_bg.jpg";
-import { ACCENTS, EASE, IconBadge, fadeUp, staggerContainer } from "../../ui";
+import { ACCENTS, EASE, IconBadge, FOCUS_RING, fadeUp, staggerContainer } from "../../ui";
+import VideoModal from "../../../Components/Forms/VideoModal";
 
 const CHIP_ICONS = [Target, Filter, Star, Clock];
 
 export default function Desktop() {
   const s = data;
   const reduce = useReducedMotion();
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const chips = ["Compare Experience", "Filter by Language", "Check Availability", "Read Reviews"];
 
   return (
@@ -72,6 +75,25 @@ export default function Desktop() {
               </li>
             ))}
           </motion.ul>
+
+          {/* Watch Now Control */}
+          <motion.div variants={fadeUp} className="mt-8 flex items-center gap-4">
+            <button
+              type="button"
+              onClick={() => setIsVideoModalOpen(true)}
+              aria-label="Watch how mock expert simulation works"
+              className={`group relative inline-flex items-center gap-3.5 px-6 py-3.5 rounded-full bg-[#0B1D3A] hover:bg-[#122A50] text-white font-bold text-[14px] transition-all shadow-[0_6px_24px_rgba(11,29,58,0.22)] hover:shadow-[0_10px_32px_rgba(11,29,58,0.32)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer ${FOCUS_RING}`}
+            >
+              <span className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-tr from-[#C99A2E] to-[#F4D068] text-[#0B1D3A] shadow-xs group-hover:scale-105 transition-transform">
+                <span aria-hidden="true" className="absolute inset-0 rounded-full animate-ping bg-[#C99A2E]/40" />
+                <Play size={13} className="fill-[#0B1D3A] text-[#0B1D3A] ml-0.5 relative z-10" />
+              </span>
+              <span>Watch Now</span>
+              <span className="text-[11px] font-semibold text-[#E4C46A] px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15">
+                Preview
+              </span>
+            </button>
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -80,7 +102,7 @@ export default function Desktop() {
           transition={{ duration: 1, delay: 0.2, ease: EASE }}
           className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end relative mt-10 lg:mt-0"
         >
-          <div className="relative w-full h-[450px] lg:h-[550px] xl:h-[600px] rounded-tl-[160px] lg:rounded-tl-[240px] xl:rounded-tl-[280px] rounded-bl-[70px] lg:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80">
+          <div className="relative w-full h-[450px] lg:h-[550px] xl:h-[600px] rounded-tl-[160px] lg:rounded-tl-[240px] xl:rounded-tl-[280px] rounded-bl-[70px] lg:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80 group/image">
             <motion.img
               animate={reduce ? undefined : { scale: [1, 1.05, 1] }}
               transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
@@ -89,6 +111,19 @@ export default function Desktop() {
               className="w-full h-full object-cover object-[center_30%]"
             />
             <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/35 via-[#0B1D3A]/5 to-transparent" />
+
+            {/* Centered Play / Watch Now overlay on image */}
+            <button
+              type="button"
+              onClick={() => setIsVideoModalOpen(true)}
+              aria-label="Play video preview"
+              className="group/play absolute inset-0 m-auto w-20 h-20 rounded-full bg-[#0B1D3A]/75 hover:bg-[#0B1D3A]/90 backdrop-blur-md border border-white/30 text-white flex flex-col items-center justify-center gap-1 shadow-[0_12px_40px_rgba(11,29,58,0.4)] transition-all hover:scale-110 cursor-pointer z-10"
+            >
+              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#C99A2E] to-[#F4D068] flex items-center justify-center text-[#0B1D3A] shadow-md group-hover/play:scale-105 transition-transform">
+                <Play size={16} className="fill-[#0B1D3A] text-[#0B1D3A] ml-0.5" />
+              </div>
+              <span className="text-[10px] font-extrabold uppercase tracking-widest text-white/95">Watch</span>
+            </button>
           </div>
 
           <motion.div
@@ -122,6 +157,13 @@ export default function Desktop() {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        title="Choose Your Mock Expert — Live Simulation Preview"
+      />
     </section>
   );
 }

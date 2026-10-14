@@ -131,23 +131,17 @@ export default function Desktop({
                 ))}
               </div>
 
-              {/* Load More Button - keeps at least 4 initially */}
+              {/* Load More Button */}
               {visibleCount < scenarios.length && (
-                <div className="flex flex-col items-center justify-center gap-2 pt-6 pb-2">
+                <div className="flex justify-center pt-5 pb-2">
                   <button
                     type="button"
                     onClick={() => setVisibleCount((prev) => Math.min(prev + 4, scenarios.length))}
-                    className={`h-11 px-6 rounded-[12px] bg-white border border-[#CBD5E1] hover:bg-[#F8FAFD] hover:border-[#C99A2E] text-[#0B1D3A] font-bold text-[13.5px] transition-all shadow-2xs hover:shadow-sm flex items-center gap-2.5 cursor-pointer ${FOCUS_RING}`}
+                    className={`h-11 px-6 rounded-[12px] bg-white border border-[#CBD5E1] hover:bg-[#F8FAFD] hover:border-[#C99A2E] text-[#0B1D3A] font-bold text-[13.5px] transition-all shadow-2xs hover:shadow-sm flex items-center gap-2 cursor-pointer ${FOCUS_RING}`}
                   >
                     <span>Load More Scenarios</span>
-                    <span className="text-[11.5px] font-bold text-[#8A5A00] px-2 py-0.5 rounded-full bg-[#FBF5E7] border border-[#F1DFB0]">
-                      +{Math.min(4, scenarios.length - visibleCount)} more
-                    </span>
                     <ChevronDown size={15} className="text-[#64748B]" />
                   </button>
-                  <span className="text-[12px] font-medium text-[#7B8DAA]">
-                    Showing {displayedScenarios.length} of {scenarios.length} practice scenarios
-                  </span>
                 </div>
               )}
             </motion.div>

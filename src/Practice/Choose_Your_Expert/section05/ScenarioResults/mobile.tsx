@@ -98,23 +98,17 @@ export default function Mobile({
           </AnimatePresence>
         </motion.div>
 
-        {/* Load More Button - keeps at least 4 initially */}
+        {/* Load More Button */}
         {visibleCount < scenarios.length && (
-          <div className="flex flex-col items-center justify-center gap-1.5 pt-2">
+          <div className="flex justify-center pt-2">
             <button
               type="button"
               onClick={() => setVisibleCount((prev) => Math.min(prev + 4, scenarios.length))}
               className="h-9 px-4 rounded-[10px] bg-white border border-[#CBD5E1] text-[#0B1D3A] font-bold text-[12px] flex items-center gap-1.5 shadow-2xs"
             >
               <span>Load More Scenarios</span>
-              <span className="text-[10.5px] font-bold text-[#8A5A00] px-1.5 py-0.2 rounded-full bg-[#FBF5E7]">
-                +{Math.min(4, scenarios.length - visibleCount)}
-              </span>
               <ChevronDown size={14} className="text-[#64748B]" />
             </button>
-            <span className="text-[11px] text-[#7B8DAA]">
-              Showing {displayedScenarios.length} of {scenarios.length} scenarios
-            </span>
           </div>
         )}
       </div>
