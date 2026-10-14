@@ -103,14 +103,14 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", fil
                   <HoverGlow accent={a} />
 
                   <div className="p-3.5 pb-2.5 border-b border-[#F0F4FA] relative z-10 flex flex-col gap-2.5">
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-start gap-3.5">
                       <div className="relative shrink-0">
-                        <div className="p-[2px] rounded-full bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-xs">
-                          <div className="w-[50px] h-[50px] rounded-full overflow-hidden bg-[#F8F9FC] border-2 border-white">
+                        <div className="p-[2px] rounded-[18px] bg-gradient-to-tr from-[#C99A2E] via-[#F4D068] to-[#0B1D3A] shadow-xs">
+                          <div className="w-[68px] h-[68px] rounded-[16px] overflow-hidden bg-[#F8F9FC] border-2 border-white">
                             <img
                               src={expert.image}
                               alt={expert.name}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-cover object-top"
                               loading="lazy"
                             />
                           </div>
@@ -118,7 +118,7 @@ export default function Mobile({ searchQuery = "", sortBy = "Most Relevant", fil
 
                         {expert.verified && (
                           <VerifiedBadge
-                            size={18}
+                            size={20}
                             className="absolute -bottom-1 -right-1 ring-1.5 ring-white rounded-full shadow-xs"
                           />
                         )}

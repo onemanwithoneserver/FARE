@@ -1,27 +1,60 @@
-import { useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Clock,
   SearchX,
   Target,
   Check,
+  ChevronDown,
 } from "lucide-react";
 import { ACCENTS, HoverGlow, PrimaryButton, SecondaryButton, Section } from "../../../ui";
 import { data as expertData, getSortedAndFilteredExperts, type Expert } from "../data";
-import { DIFFICULTY_STYLES } from "../../section04/data";
+import { DIFFICULTY_STYLES, type Scenario } from "../../section04/data";
 import {
   scenarioResultsLabels,
   type ScenarioResultsProps,
   type ScenarioCardProps,
 } from "./data";
+import { AdjacentExpertsCard } from "./desktop";
 
 export default function Mobile({
   scenarios,
   searchQuery,
   onClearSearch,
-  onFindExperts,
   onPractice,
 }: ScenarioResultsProps) {
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [bookingScenario, setBookingScenario] = useState<Scenario | null>(null);
+
+  // Reset count on search change
+  useEffect(() => {
+    setVisibleCount(4);
+  }, [searchQuery]);
+
+  // Lock body scroll when booking modal is open
+  useEffect(() => {
+    if (!bookingScenario) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [bookingScenario]);
+
+  const displayedScenarios = useMemo(() => {
+    return scenarios.slice(0, Math.max(4, visibleCount));
+  }, [scenarios, visibleCount]);
+
+  const matchedExperts = useMemo(() => {
+    if (!bookingScenario) return [];
+    const matched = getSortedAndFilteredExperts(
+      expertData.experts,
+      bookingScenario.expertKeyword,
+      "Most Relevant"
+    );
+    return matched.length > 0 ? matched : expertData.experts;
+  }, [bookingScenario]);
+
   return (
     <Section tone="white" mobile ariaLabel="Practice scenarios" className="!pt-2.5 !pb-8 bg-[#F8FAFD] font-['Outfit']">
       <div id="cye-results" role="tabpanel" aria-labelledby="cye-tab-mobile-scenarios" className="flex flex-col gap-3">
@@ -52,19 +85,76 @@ export default function Mobile({
                 </SecondaryButton>
               </motion.div>
             ) : (
-              scenarios.map((sc, i) => (
+              displayedScenarios.map((sc, i) => (
                 <ScenarioCard
                   key={sc.id}
                   scenario={sc}
                   index={i}
-                  onFindExperts={onFindExperts}
+                  onBookSession={(scenario) => setBookingScenario(scenario)}
                   onPractice={onPractice}
                 />
               ))
             )}
           </AnimatePresence>
         </motion.div>
+
+        {/* Load More Button - keeps at least 4 initially */}
+        {visibleCount < scenarios.length && (
+          <div className="flex flex-col items-center justify-center gap-1.5 pt-2">
+            <button
+              type="button"
+              onClick={() => setVisibleCount((prev) => Math.min(prev + 4, scenarios.length))}
+              className="h-9 px-4 rounded-[10px] bg-white border border-[#CBD5E1] text-[#0B1D3A] font-bold text-[12px] flex items-center gap-1.5 shadow-2xs"
+            >
+              <span>Load More Scenarios</span>
+              <span className="text-[10.5px] font-bold text-[#8A5A00] px-1.5 py-0.2 rounded-full bg-[#FBF5E7]">
+                +{Math.min(4, scenarios.length - visibleCount)}
+              </span>
+              <ChevronDown size={14} className="text-[#64748B]" />
+            </button>
+            <span className="text-[11px] text-[#7B8DAA]">
+              Showing {displayedScenarios.length} of {scenarios.length} scenarios
+            </span>
+          </div>
+        )}
       </div>
+
+      {/* Modal / Bottom Drawer for mobile displaying specialists upon activating Book Session */}
+      <AnimatePresence>
+        {bookingScenario && (
+          <div
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Specialists ready for ${bookingScenario.title}`}
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setBookingScenario(null)}
+              className="fixed inset-0 bg-[#0B1D3A]/65 backdrop-blur-xs"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: "100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: "100%" }}
+              transition={{ duration: 0.25 }}
+              className="relative z-10 w-full max-h-[88vh] bg-white rounded-t-[22px] sm:rounded-[22px] shadow-2xl overflow-hidden flex flex-col"
+            >
+              <AdjacentExpertsCard
+                scenario={bookingScenario}
+                experts={matchedExperts}
+                onPractice={(expert) => {
+                  setBookingScenario(null);
+                  onPractice(expert);
+                }}
+                onClose={() => setBookingScenario(null)}
+              />
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </Section>
   );
 }
@@ -72,7 +162,7 @@ export default function Mobile({
 function ScenarioCard({
   scenario: sc,
   index,
-  onFindExperts,
+  onBookSession,
   onPractice,
 }: ScenarioCardProps) {
   const diff = DIFFICULTY_STYLES[sc.difficulty];
@@ -159,49 +249,34 @@ function ScenarioCard({
         </div>
       </div>
 
-      <div className="relative z-10 bg-[#FAFBFE] border-t border-[#E6EBF3] flex flex-col gap-2 p-2.5 mt-auto">
-        <div className="flex items-center justify-between text-[11px] font-medium text-[#475569]">
-          <div className="flex items-center gap-1.5">
-            <div className="flex -space-x-1.5">
-              {shownAvatars.map((ex: Expert) => (
-                <img
-                  key={ex.name}
-                  src={ex.image}
-                  alt={ex.name}
-                  title={ex.name}
-                  loading="lazy"
-                  className="w-5.5 h-5.5 rounded-full object-cover border-2 border-white shadow-2xs"
-                />
-              ))}
-            </div>
-            <span>{matchedExperts.length} mentors ready</span>
+      {/* Footer: Mentors ready on left, reduced-width Book Session button on right */}
+      <div className="relative z-10 bg-[#FAFBFE] border-t border-[#E6EBF3] flex items-center justify-between gap-2.5 p-3 mt-auto">
+        <div className="flex items-center gap-1.5 min-w-0">
+          <div className="flex -space-x-1.5 shrink-0">
+            {shownAvatars.map((ex: Expert) => (
+              <img
+                key={ex.name}
+                src={ex.image}
+                alt={ex.name}
+                title={ex.name}
+                loading="lazy"
+                className="w-5.5 h-5.5 rounded-full object-cover border-2 border-white shadow-2xs"
+              />
+            ))}
           </div>
-          <span className="text-[9.5px] font-medium text-[#059669]">Role-Play</span>
+          <span className="text-[11px] font-medium text-[#475569] truncate">
+            {matchedExperts.length} mentors ready
+          </span>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
-          <SecondaryButton
-            full
-            onClick={() => onFindExperts?.(sc.expertKeyword)}
-            className="!h-8.5 !py-0 !px-2 text-[11.5px] !rounded-[8px] font-medium bg-white"
-          >
-            {scenarioResultsLabels.viewExperts}
-          </SecondaryButton>
-          <PrimaryButton
-            full
-            variant="gold"
-            onClick={() => {
-              if (matchedExperts[0]) {
-                onPractice(matchedExperts[0]);
-              } else {
-                document.getElementById("booking-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
-            }}
-            className="!h-8.5 !py-0 !px-2 text-[11.5px] !rounded-[8px] font-medium cursor-pointer"
-          >
-            Book Session
-          </PrimaryButton>
-        </div>
+        {/* Reduced width Book Session button */}
+        <PrimaryButton
+          variant="gold"
+          onClick={() => (onBookSession ? onBookSession(sc) : onPractice(matchedExperts[0]))}
+          className="!h-8 !py-0 !px-3.5 !w-auto text-[11.5px] !rounded-[8px] font-bold cursor-pointer shrink-0"
+        >
+          Book Session
+        </PrimaryButton>
       </div>
     </motion.article>
   );

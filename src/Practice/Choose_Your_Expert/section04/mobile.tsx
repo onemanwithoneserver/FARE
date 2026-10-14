@@ -36,7 +36,12 @@ export default function Mobile({
   return (
     <Section tone="white" mobile ariaLabel="Browse experts and scenarios" className="!py-2.5">
       <div className="flex flex-col gap-2.5 font-['Outfit']">
-        <div className="grid grid-cols-2 gap-2">
+        {/* Centered Tab Controls without background */}
+        <div
+          role="tablist"
+          aria-label="Browse mode"
+          className="flex items-center justify-center gap-8 py-2 relative"
+        >
           {VIEW_TABS.map((tab) => {
             const isActive = tab.id === viewMode;
             const TabIcon = tab.icon;
@@ -49,88 +54,64 @@ export default function Mobile({
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => onViewModeChange(tab.id)}
-                className={`relative p-2.5 rounded-[15px] text-left transition-all border flex flex-col justify-between min-h-[78px] cursor-pointer ${
-                  isActive
-                    ? "bg-gradient-to-br from-[#0B1D3A] via-[#122B54] to-[#0B1D3A] text-white border-[#C99A2E]/60 shadow-sm ring-1 ring-[#C99A2E]/30"
-                    : "bg-white text-[#0B1D3A] border-[#E6EBF3]"
+                className={`relative pb-2.5 pt-1 px-3 text-[16px] font-bold flex items-center gap-2 transition-colors cursor-pointer bg-transparent ${
+                  isActive ? "text-[#0B1D3A]" : "text-[#64748B]"
                 }`}
               >
-                <div className="flex items-center justify-between w-full mb-1">
-                  <div
-                    className={`w-7 h-7 rounded-[8px] flex items-center justify-center ${
-                      isActive
-                        ? "bg-[#C99A2E] text-white"
-                        : "bg-[#0B1D3A] text-white"
-                    }`}
-                  >
-                    <TabIcon size={14} strokeWidth={2.2} />
-                  </div>
-                  {isActive && (
-                    <span className="w-4 h-4 rounded-full bg-[#10B981] text-white flex items-center justify-center">
-                      <Check size={10} strokeWidth={3} />
-                    </span>
-                  )}
-                </div>
-
-                <div>
-                  <span
-                    className={`text-[9.5px] font-medium uppercase tracking-wider block ${
-                      isActive ? "text-[#E0B550]" : "text-[#7B8DAA]"
-                    }`}
-                  >
-                    {tab.eyebrow}
-                  </span>
-                  <span
-                    className={`text-[13.5px] font-medium leading-tight block ${
-                      isActive ? "text-white" : "text-[#0B1D3A]"
-                    }`}
-                  >
-                    {tab.label}
-                  </span>
-                </div>
+                <TabIcon
+                  size={19}
+                  strokeWidth={2.4}
+                  className={isActive ? "text-[#C99A2E]" : "text-[#7B8DAA]"}
+                />
+                <span>{tab.label}</span>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeMobileTabIndicator"
+                    className="absolute -bottom-0.5 left-0 right-0 h-[3px] bg-[#C99A2E] rounded-full shadow-[0_2px_8px_rgba(201,154,46,0.35)]"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
               </button>
             );
           })}
         </div>
 
-        <div className="bg-white rounded-[15px] border border-[#E6EBF3] p-2 shadow-xs flex flex-col gap-2">
-          <div className="flex items-center gap-1.5">
-            <div className="relative flex-1">
-              <span className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 rounded-[4px] bg-[#0B1D3A] text-white flex items-center justify-center pointer-events-none">
-                <Search size={10} strokeWidth={2.4} />
-              </span>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => onSearchChange(e.target.value)}
-                placeholder={SEARCH_PLACEHOLDERS[viewMode]}
-                className="w-full h-9 pl-9 pr-7 rounded-[10px] bg-[#F8FAFD] border border-[#E6EBF3] text-[12px] font-medium text-[#0B1D3A] placeholder-[#8A9BB3] outline-none focus:border-[#C99A2E] focus:bg-white font-['Outfit']"
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => onSearchChange("")}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 w-4.5 h-4.5 rounded-full bg-[#E2E8F0] text-[#475569] flex items-center justify-center cursor-pointer"
-                >
-                  <X size={10} strokeWidth={2.5} />
-                </button>
-              )}
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setIsOpen(true)}
-              className="h-9 px-2.5 rounded-[10px] bg-[#F8FAFD] border border-[#E6EBF3] text-[#0B1D3A] flex items-center gap-1.5 shrink-0 cursor-pointer shadow-2xs"
-            >
-              <span
-                className="w-4.5 h-4.5 rounded-[4px] flex items-center justify-center text-white shrink-0"
-                style={{ background: activeOption.color }}
+        <div className="flex items-center gap-2">
+          <div className="relative flex-1">
+            <span className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 rounded-[4px] bg-[#0B1D3A] text-white flex items-center justify-center pointer-events-none">
+              <Search size={10} strokeWidth={2.4} />
+            </span>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => onSearchChange(e.target.value)}
+              placeholder={SEARCH_PLACEHOLDERS[viewMode]}
+              className="w-full h-9 pl-9 pr-7 rounded-[10px] bg-transparent border border-[#CBD5E1] text-[12px] font-medium text-[#0B1D3A] placeholder-[#8A9BB3] outline-none focus:border-[#C99A2E] font-['Outfit']"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => onSearchChange("")}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-4.5 h-4.5 rounded-full bg-[#E2E8F0] text-[#475569] flex items-center justify-center cursor-pointer"
               >
-                <ActiveIcon size={10} strokeWidth={2.4} />
-              </span>
-              <ChevronDown size={13} className="text-[#7B8DAA]" />
-            </button>
+                <X size={10} strokeWidth={2.5} />
+              </button>
+            )}
           </div>
+
+          <button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            className="h-9 px-2.5 rounded-[10px] bg-transparent border border-[#CBD5E1] text-[#0B1D3A] flex items-center gap-1.5 shrink-0 cursor-pointer"
+          >
+            <span
+              className="w-4.5 h-4.5 rounded-[4px] flex items-center justify-center text-white shrink-0"
+              style={{ background: activeOption.color }}
+            >
+              <ActiveIcon size={10} strokeWidth={2.4} />
+            </span>
+            <ChevronDown size={13} className="text-[#7B8DAA]" />
+          </button>
         </div>
       </div>
 

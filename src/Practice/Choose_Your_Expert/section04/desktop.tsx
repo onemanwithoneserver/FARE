@@ -71,15 +71,13 @@ export default function Desktop({
   const activeOption = sortOptions.find((o) => o.label === sortBy) || sortOptions[0];
 
   return (
-    <div className="w-full font-['Outfit']">
-      {/* Single Row: Tab Switcher, Search Bar, and Sort Action Button */}
-      <div className="w-full flex items-center gap-3 p-2 bg-white rounded-[16px] border border-[#E2E8F0] shadow-sm relative z-20">
-        
-        {/* Two Tab Controls: Experts By & Scenarios By */}
+    <div className="w-full font-['Outfit'] flex flex-col gap-5">
+      {/* Centered Tab Controls (No Background, Increased Tab Size) */}
+      <div className="w-full flex justify-center items-center">
         <div
           role="tablist"
           aria-label="Browse mode"
-          className="flex items-center p-1 bg-[#F1F5F9] rounded-[11px] shrink-0 border border-[#E2E8F0]"
+          className="flex items-center gap-8 sm:gap-12 relative"
         >
           {TABS.map((tab) => {
             const isActive = tab.id === viewMode;
@@ -94,18 +92,29 @@ export default function Desktop({
                   aria-selected={isActive}
                   aria-controls="cye-results"
                   onClick={() => onViewModeChange(tab.id)}
-                  className={`h-9 px-3.5 rounded-[9px] text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${FOCUS_RING} ${
+                  className={`relative pb-3 pt-1.5 px-4 text-[17px] sm:text-[18px] lg:text-[19px] font-bold flex items-center gap-2.5 transition-colors cursor-pointer select-none bg-transparent ${FOCUS_RING} ${
                     isActive
-                      ? "bg-[#0B1D3A] text-white shadow-xs"
-                      : "text-[#5A6B82] hover:text-[#0B1D3A] hover:bg-white/70"
+                      ? "text-[#0B1D3A]"
+                      : "text-[#64748B] hover:text-[#0B1D3A]"
                   }`}
                 >
                   <TabIcon
-                    size={14}
+                    size={22}
                     strokeWidth={2.4}
-                    className={isActive ? "text-[#E4C46A]" : "text-[#7B8DAA]"}
+                    className={`transition-colors ${
+                      isActive ? "text-[#C99A2E]" : "text-[#7B8DAA] group-hover/tab:text-[#0B1D3A]"
+                    }`}
                   />
                   <span>{tab.label}</span>
+
+                  {/* Active Underline Indicator */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTabUnderline"
+                      className="absolute -bottom-1 left-0 right-0 h-[3.5px] bg-[#C99A2E] rounded-full shadow-[0_2px_8px_rgba(201,154,46,0.35)]"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
                 </button>
 
                 {/* Floating Tooltip */}
@@ -119,7 +128,10 @@ export default function Desktop({
             );
           })}
         </div>
+      </div>
 
+      {/* Row: Search Bar and Sort Action Button (No Background) */}
+      <div className="w-full flex items-center gap-3 relative z-20">
         {/* Search Bar */}
         <div className="relative flex-1 group/search">
           <label htmlFor="cye-search" className="sr-only">
@@ -129,7 +141,7 @@ export default function Desktop({
             aria-hidden="true"
             className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7B8DAA] pointer-events-none transition-colors group-focus-within/search:text-[#0B1D3A]"
           >
-            <Search size={15} strokeWidth={2.4} />
+            <Search size={16} strokeWidth={2.4} />
           </span>
           <input
             id="cye-search"
@@ -137,7 +149,7 @@ export default function Desktop({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder={SEARCH_PLACEHOLDERS[viewMode]}
-            className="w-full h-10 pl-10 pr-9 rounded-[10px] bg-[#F8FAFD] border border-[#E2E8F0] hover:border-[#CBD5E1] focus:bg-white focus:border-[#C99A2E] focus:ring-2 focus:ring-[#C99A2E]/15 text-[13.5px] font-semibold text-[#0B1D3A] placeholder-[#8A9BB3] outline-none transition-all [&::-webkit-search-cancel-button]:hidden"
+            className="w-full h-11 pl-10.5 pr-9 rounded-[10px] bg-transparent border border-[#CBD5E1] hover:border-[#94A3B8] focus:border-[#C99A2E] focus:ring-2 focus:ring-[#C99A2E]/15 text-[14px] font-semibold text-[#0B1D3A] placeholder-[#8A9BB3] outline-none transition-all [&::-webkit-search-cancel-button]:hidden"
           />
 
           {searchQuery && (
@@ -168,13 +180,13 @@ export default function Desktop({
             aria-expanded={isOpen}
             aria-label={`Sort by ${activeOption.label}`}
             onClick={() => setIsOpen((p) => !p)}
-            className={`h-10 px-3.5 rounded-[10px] border bg-[#F8FAFD] hover:bg-white text-[13px] font-bold text-[#0B1D3A] flex items-center gap-2 transition-all cursor-pointer ${FOCUS_RING} ${
+            className={`h-11 px-4 rounded-[10px] border bg-transparent text-[13.5px] font-bold text-[#0B1D3A] flex items-center gap-2 transition-all cursor-pointer ${FOCUS_RING} ${
               isOpen
-                ? "border-[#C99A2E] bg-white ring-2 ring-[#C99A2E]/15 shadow-xs"
-                : "border-[#E2E8F0] hover:border-[#CBD5E1]"
+                ? "border-[#C99A2E] ring-2 ring-[#C99A2E]/15 shadow-xs"
+                : "border-[#CBD5E1] hover:border-[#94A3B8]"
             }`}
           >
-            <ArrowUpDown size={14} strokeWidth={2.4} className="text-[#C99A2E]" />
+            <ArrowUpDown size={15} strokeWidth={2.4} className="text-[#C99A2E]" />
             <span>Sort: {activeOption.label}</span>
             <ChevronDown
               size={14}

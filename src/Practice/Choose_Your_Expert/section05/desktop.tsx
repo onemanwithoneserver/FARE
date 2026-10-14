@@ -160,14 +160,14 @@ export default function Desktop({
         ) : (
           <div className={`w-full ${isSplit ? "grid grid-cols-1 lg:grid-cols-12 gap-5 items-start" : ""}`}>
             
-            {/* Left Side: 4-Column Grid when normal, 1-column when profile panel is open */}
+            {/* Left Side: 3-Column Grid when normal, 1-column when profile panel is open */}
             <motion.div
               layout
               transition={{ duration: 0.35, ease: EASE }}
               className={`w-full ${isSplit ? "lg:col-span-5" : ""}`}
             >
               <ul
-                className={`grid gap-4 ${isSplit ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-1" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"}`}
+                className={`grid gap-5 lg:gap-6 ${isSplit ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-1" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"}`}
                 aria-label="Verified experts list"
               >
                 {displayedExperts.map((expert, i) => {
@@ -176,7 +176,11 @@ export default function Desktop({
                   const shortDomain = expert.reExperience
                     ? expert.reExperience.split("—")[0].trim()
                     : "";
+                  const subDomain = expert.reExperience && expert.reExperience.includes("—")
+                    ? expert.reExperience.split("—")[1].trim()
+                    : "";
                   const DomainIcon = getDomainIcon(expert);
+                  const isAvailableToday = expert.nextAvailable.toLowerCase().includes("today");
 
                   return (
                     <motion.li
@@ -189,111 +193,157 @@ export default function Desktop({
                       className="list-none flex"
                     >
                       <article
-                        className={`w-full bg-white rounded-[18px] border transition-all duration-200 flex flex-col overflow-hidden ${
+                        className={`w-full bg-white rounded-[22px] border transition-all duration-300 flex flex-col overflow-hidden group/card ${
                           isSelected
-                            ? "border-[#C99A2E] ring-2 ring-[#C99A2E]/30 bg-[#FFFDF9] shadow-[0_16px_36px_-12px_rgba(201,154,46,0.2)]"
-                            : "border-[#E2E8F0] shadow-xs hover:shadow-[0_14px_30px_-10px_rgba(11,29,58,0.1)] hover:border-[#CBD5E1] hover:-translate-y-0.5"
+                            ? "border-[#C99A2E] ring-2 ring-[#C99A2E]/30 bg-[#FFFDF9] shadow-[0_20px_45px_-12px_rgba(201,154,46,0.22)]"
+                            : "border-[#E2E8F0] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.06)] hover:shadow-[0_22px_45px_-12px_rgba(11,29,58,0.13)] hover:border-[#CBD5E1] hover:-translate-y-1"
                         }`}
                       >
-                        {/* Compact Profile Header */}
-                        <div className="p-4.5 pb-3 flex flex-col gap-3">
-                          <div className="flex items-start gap-3.5">
-                            {/* Avatar */}
+                        {/* Card Header & Profile Info */}
+                        <div className="p-5 pb-4 flex flex-col gap-3.5">
+                          {/* Top: Avatar + Key Identity */}
+                          <div className="flex items-start gap-4">
+                            {/* Increased Avatar Size: 88px x 88px */}
                             <div className="relative shrink-0">
                               <div
-                                className="p-[2px] rounded-full"
+                                className="p-[2.5px] rounded-[22px] transition-transform duration-300 group-hover/card:scale-102"
                                 style={{
                                   background: "linear-gradient(135deg, #C99A2E, #F4D068 50%, #0B1D3A)",
                                 }}
                               >
-                                <div className="w-[52px] h-[52px] rounded-full overflow-hidden bg-[#F8F9FC] border-2 border-white">
+                                <div className="w-[88px] h-[88px] rounded-[19px] overflow-hidden bg-[#F8F9FC] border-2 border-white shadow-xs">
                                   <img
                                     src={expert.image}
                                     alt={`Portrait of ${expert.name}`}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/card:scale-105"
                                     loading="lazy"
                                   />
                                 </div>
                               </div>
                               {expert.verified && (
                                 <VerifiedBadge
-                                  size={18}
-                                  className="absolute -bottom-0.5 -right-0.5 ring-2 ring-white rounded-full"
+                                  size={22}
+                                  className="absolute -bottom-1 -right-1 ring-2 ring-white rounded-full shadow-sm"
                                 />
                               )}
                             </div>
 
-                            {/* Name, Role & Seniority badge */}
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center justify-between gap-1.5 flex-wrap">
-                                <h3 className="text-[17px] font-bold text-[#0B1D3A] tracking-tight leading-snug truncate">
-                                  {expert.name}
-                                </h3>
-                                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10.5px] font-bold bg-[#FBF5E7] text-[#8A5A00] border border-[#F1DFB0] shrink-0">
-                                  <Star size={10.5} className="fill-[#C99A2E] text-[#C99A2E]" aria-hidden="true" />
+                            {/* Details on the right of avatar */}
+                            <div className="flex-1 min-w-0 flex flex-col gap-1">
+                              {/* Badges row: Seniority + Availability */}
+                              <div className="flex items-center gap-1.5 flex-wrap">
+                                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#FBF5E7] text-[#8A5A00] border border-[#F1DFB0] shrink-0">
+                                  <Star size={11} className="fill-[#C99A2E] text-[#C99A2E]" aria-hidden="true" />
                                   {years} Yrs
                                 </span>
+
+                                <span
+                                  className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10.5px] font-bold border shrink-0 ${
+                                    isAvailableToday
+                                      ? "bg-[#ECFDF5] text-[#047857] border-[#A7F3D0]"
+                                      : "bg-[#F0FDF4] text-[#15803D] border-[#BBF7D0]"
+                                  }`}
+                                >
+                                  <Calendar size={11} strokeWidth={2.4} aria-hidden="true" />
+                                  {expert.nextAvailable.split("·")[0].trim()}
+                                </span>
                               </div>
-                              <p className="text-[12px] font-medium text-[#64748B] leading-snug mt-0.5 truncate">
+
+                              {/* Name */}
+                              <h3 className="text-[19px] sm:text-[20px] font-bold text-[#0B1D3A] tracking-tight leading-snug truncate mt-0.5">
+                                {expert.name}
+                              </h3>
+
+                              {/* Role */}
+                              <p className="text-[12.5px] font-medium text-[#64748B] leading-snug line-clamp-2">
                                 {expert.role}
                               </p>
-                              {shortDomain && (
-                                <div className="flex items-center gap-1.5 mt-1 text-[11px] font-semibold text-[#1E293B]">
-                                  <DomainIcon size={11} className="text-[#C99A2E] shrink-0" />
-                                  <span className="truncate">{shortDomain}</span>
-                                </div>
-                              )}
                             </div>
                           </div>
 
-                          {/* Minimal Core Skills Chips */}
-                          <div className="flex flex-wrap items-center gap-1 pt-0.5">
+                          {/* Domain Highlight Pill */}
+                          {shortDomain && (
+                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-[10px] bg-[#F8FAFD] border border-[#E9EFF8] text-[12px] font-semibold text-[#0B1D3A]">
+                              <span className="w-5 h-5 rounded-[6px] bg-[#C99A2E]/15 text-[#C99A2E] flex items-center justify-center shrink-0">
+                                <DomainIcon size={12} strokeWidth={2.4} />
+                              </span>
+                              <span className="font-bold text-[#0B1D3A]">{shortDomain}</span>
+                              {subDomain && (
+                                <span className="text-[#64748B] font-medium truncate text-[11.5px]">
+                                  · {subDomain}
+                                </span>
+                              )}
+                            </div>
+                          )}
+
+                          {/* Core Skills Chips */}
+                          <div className="flex flex-wrap items-center gap-1.5">
                             {expert.specialisedIn.slice(0, 3).map((spec) => (
                               <span
                                 key={spec}
-                                className="px-2 py-0.5 rounded-[6px] bg-[#F1F5F9] border border-[#E2E8F0] text-[11px] font-semibold text-[#334155]"
+                                className="px-2.5 py-1 rounded-[7px] bg-[#F1F5F9] border border-[#E2E8F0] text-[11px] font-semibold text-[#334155]"
                               >
                                 {spec}
                               </span>
                             ))}
                             {expert.specialisedIn.length > 3 && (
-                              <span className="text-[10.5px] font-semibold text-[#7B8DAA] px-1.5 py-0.5 rounded-[5px] bg-[#F8FAFC] border border-[#E2E8F0]">
-                                +{expert.specialisedIn.length - 3}
+                              <span className="text-[10.5px] font-semibold text-[#7B8DAA] px-2 py-1 rounded-[7px] bg-[#F8FAFC] border border-[#E2E8F0]">
+                                +{expert.specialisedIn.length - 3} more
                               </span>
                             )}
+                          </div>
+
+                          {/* Social Proof / Stats Line: Sessions & Languages */}
+                          <div className="flex items-center justify-between text-[11px] font-medium text-[#64748B] pt-1.5 border-t border-[#F1F5F9]">
+                            <span className="inline-flex items-center gap-1.5">
+                              <Sparkles size={12} className="text-[#C99A2E] shrink-0" />
+                              <strong className="text-[#0B1D3A] font-bold">{expert.sessionsCompleted}</strong> sessions completed
+                            </span>
+                            <span className="inline-flex items-center gap-1 text-[#64748B]">
+                              <Globe2 size={11} className="text-[#7B8DAA] shrink-0" />
+                              <span className="truncate max-w-[130px]">{expert.languages.join(", ")}</span>
+                            </span>
                           </div>
                         </div>
 
                         {/* Pricing & Action Row */}
-                        <div className="p-4.5 pt-2.5 mt-auto border-t border-[#F1F5F9] flex flex-col gap-2.5 bg-[#FAFBFE]">
-                          <div className="flex items-center justify-between text-[12px]">
-                            <div className="flex items-baseline gap-1">
-                              <span className="text-[17px] font-black text-[#0B1D3A] leading-none">
-                                {expert.price}
+                        <div className="p-5 pt-3.5 mt-auto border-t border-[#F1F5F9] flex flex-col gap-3 bg-[#FAFBFE]">
+                          <div className="flex items-center justify-between">
+                            <div className="flex flex-col">
+                              <span className="text-[10px] uppercase font-bold tracking-[0.1em] text-[#7B8DAA]">
+                                Starting from
                               </span>
-                              <span className="text-[11px] font-medium text-[#64748B]">/ 45 min</span>
+                              <div className="flex items-baseline gap-1 mt-0.5">
+                                <span className="text-[19px] sm:text-[20px] font-black text-[#0B1D3A] leading-none">
+                                  {expert.price}
+                                </span>
+                                <span className="text-[11.5px] font-medium text-[#64748B]">/ 45 min</span>
+                              </div>
                             </div>
 
-                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0] text-[10.5px] font-bold">
-                              <Calendar size={11} strokeWidth={2.5} aria-hidden="true" />
-                              {expert.nextAvailable.split("·")[0].trim()}
-                            </span>
+                            {/* Slot time hint */}
+                            {expert.nextAvailable.includes("·") && (
+                              <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#0B1D3A] bg-white px-2.5 py-1 rounded-[8px] border border-[#E2E8F0] shadow-2xs">
+                                <Clock size={11} className="text-[#C99A2E]" />
+                                <span>{expert.nextAvailable.split("·")[1]?.trim()}</span>
+                              </span>
+                            )}
                           </div>
 
-                          <div className="grid grid-cols-2 gap-2">
+                          <div className="grid grid-cols-2 gap-2.5">
                             <button
                               type="button"
                               onClick={() => handleToggleDetails(expert.name)}
                               aria-pressed={isSelected}
                               aria-label={`${isSelected ? "Hide" : "View"} details for ${expert.name}`}
                               title={`View full profile and scenarios for ${expert.name}`}
-                              className={`h-9 px-3 rounded-[10px] border text-[12px] font-bold transition-all cursor-pointer flex items-center justify-center gap-1 ${FOCUS_RING} ${
+                              className={`h-10 px-3.5 rounded-[11px] border text-[12.5px] font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${FOCUS_RING} ${
                                 isSelected
-                                  ? "bg-[#0B1D3A] text-[#E4C46A] border-[#0B1D3A]"
-                                  : "bg-white hover:bg-[#F8FAFD] border-[#CBD5E1] text-[#0B1D3A]"
+                                  ? "bg-[#0B1D3A] text-[#E4C46A] border-[#0B1D3A] shadow-xs"
+                                  : "bg-white hover:bg-[#F8FAFD] border-[#CBD5E1] hover:border-[#94A3B8] text-[#0B1D3A]"
                               }`}
                             >
-                              {isSelected ? "Viewing Profile" : "View Profile"}
+                              <span>{isSelected ? "Viewing Profile" : "View Profile"}</span>
                               <ChevronRight size={13} strokeWidth={2.4} aria-hidden="true" />
                             </button>
 
@@ -301,9 +351,9 @@ export default function Desktop({
                               type="button"
                               onClick={() => handleBook(expert)}
                               title={`Book a live session with ${expert.name}`}
-                              className={`h-9 px-3 rounded-[10px] bg-gradient-to-r from-[#C99A2E] via-[#D8AB3A] to-[#B8871F] hover:from-[#B8871F] hover:to-[#C99A2E] text-white text-[12px] font-bold shadow-xs transition-all flex items-center justify-center cursor-pointer ${FOCUS_RING}`}
+                              className={`h-10 px-3.5 rounded-[11px] bg-gradient-to-r from-[#C99A2E] via-[#D8AB3A] to-[#B8871F] hover:from-[#B8871F] hover:to-[#C99A2E] text-white text-[12.5px] font-bold shadow-xs transition-all flex items-center justify-center gap-1 cursor-pointer hover:shadow-[0_4px_14px_rgba(201,154,46,0.35)] active:scale-[0.98] ${FOCUS_RING}`}
                             >
-                              Book Session
+                              <span>Book Session</span>
                             </button>
                           </div>
                         </div>

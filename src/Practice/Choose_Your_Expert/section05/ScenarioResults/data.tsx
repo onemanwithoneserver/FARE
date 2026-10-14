@@ -16,6 +16,7 @@ export interface ScenarioCardProps {
   index: number;
   isSelected?: boolean;
   onSelect?: () => void;
+  onBookSession?: (scenario: Scenario) => void;
   onFindExperts?: (keyword: string) => void;
   onPractice: (expert: Expert) => void;
 }
