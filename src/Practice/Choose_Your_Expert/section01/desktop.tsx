@@ -82,16 +82,13 @@ export default function Desktop() {
               type="button"
               onClick={() => setIsVideoModalOpen(true)}
               aria-label="Watch how mock expert simulation works"
-              className={`group relative inline-flex items-center gap-3.5 px-6 py-3.5 rounded-full bg-[#0B1D3A] hover:bg-[#122A50] text-white font-bold text-[14px] transition-all shadow-[0_6px_24px_rgba(11,29,58,0.22)] hover:shadow-[0_10px_32px_rgba(11,29,58,0.32)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer ${FOCUS_RING}`}
+              className={`group relative inline-flex items-center gap-3.5 px-6 py-3.5 rounded-[8px] bg-[#0B1D3A] hover:bg-[#122A50] text-white font-bold text-[14px] transition-all shadow-[0_6px_24px_rgba(11,29,58,0.22)] hover:shadow-[0_10px_32px_rgba(11,29,58,0.32)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer ${FOCUS_RING}`}
             >
               <span className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-tr from-[#C99A2E] to-[#F4D068] text-[#0B1D3A] shadow-xs group-hover:scale-105 transition-transform">
                 <span aria-hidden="true" className="absolute inset-0 rounded-full animate-ping bg-[#C99A2E]/40" />
                 <Play size={13} className="fill-[#0B1D3A] text-[#0B1D3A] ml-0.5 relative z-10" />
               </span>
               <span>Watch Now</span>
-              <span className="text-[11px] font-semibold text-[#E4C46A] px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15">
-                Preview
-              </span>
             </button>
           </motion.div>
         </motion.div>
