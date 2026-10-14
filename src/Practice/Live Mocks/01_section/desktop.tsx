@@ -1,14 +1,36 @@
+import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion, useReducedMotion } from "motion/react";
-import { Clock, Video, Target, MessageSquare, Radio } from "lucide-react";
+import { Clock, Video, Target, MessageSquare, Radio, ArrowRight, Play } from "lucide-react";
 import { data } from "../data";
 import liveMocksHero from "../../../assets/live_mocks_hero.jpg";
-import { ACCENTS, EASE, IconBadge, PrimaryButton, SecondaryButton, accentAt, fadeUp, staggerContainer } from "../../ui";
+import { ACCENTS, EASE, IconBadge, accentAt, fadeUp, staggerContainer } from "../../ui";
+import VideoModal from "../../../Components/Forms/VideoModal";
 
 const CHIP_ICONS = [Clock, Video, Target, MessageSquare];
 
 export default function Desktop() {
   const s = data.hero;
   const reduce = useReducedMotion();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  const mode = location.pathname.startsWith("/mobile") ? "mobile" : "desktop";
+
+  const handleExploreScenarios = () => {
+    navigate(`/${mode}/choose-your-expert?tab=scenarios`);
+  };
+
+  const handleBecomeExpert = () => {
+    const el = document.getElementById("become-mock-expert");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      navigate(`/${mode}/fare-live-mocks#become-mock-expert`);
+    }
+  };
+
   const [lead, stepsLine = ""] = s.description.split("\n\n");
   const steps = stepsLine.split(".").map((x) => x.trim()).filter(Boolean);
   const chips = s.supportingLine.split("|").map((x) => x.trim());
@@ -67,11 +89,22 @@ export default function Desktop() {
           </motion.p>
 
           {steps.length > 0 && (
-            <motion.ol variants={fadeUp} className="flex flex-wrap items-center gap-2 mb-9 max-w-[560px]" aria-label="How a live mock works">
+            <motion.ol variants={fadeUp} className="flex flex-wrap items-center gap-2 mb-8 max-w-[560px]" aria-label="How a live mock works">
               {steps.map((st, i) => {
                 const a = accentAt(i);
+                const isScenarioStep = i === 0;
+                const isExpertStep = i === 1;
                 return (
-                  <li key={st} className="inline-flex items-center gap-2 pl-1 pr-3 py-1 rounded-full bg-white/80 border border-[#E6EBF3] shadow-sm text-[13px] font-semibold text-[#0B1D3A]/85 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-0.5">
+                  <li
+                    key={st}
+                    onClick={() => {
+                      if (isScenarioStep) handleExploreScenarios();
+                      else if (isExpertStep) navigate(`/${mode}/choose-your-expert?tab=experts`);
+                    }}
+                    className={`inline-flex items-center gap-2 pl-1 pr-3 py-1 rounded-full bg-white/80 border border-[#E6EBF3] shadow-sm text-[13px] font-semibold text-[#0B1D3A]/85 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-0.5 ${
+                      isScenarioStep || isExpertStep ? "cursor-pointer hover:border-[#C99A2E]/50" : ""
+                    }`}
+                  >
                     <span className="w-5 h-5 rounded-full text-white text-[10px] font-black inline-flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${a.from}, ${a.to})` }}>
                       {i + 1}
                     </span>
@@ -82,9 +115,29 @@ export default function Desktop() {
             </motion.ol>
           )}
 
+          {/* Primary Action Controls - styled per media_1791990454109.png */}
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mb-9">
-            <PrimaryButton icon={Target}>{s.cta}</PrimaryButton>
-            <SecondaryButton icon={Video}>{s.secondaryCta}</SecondaryButton>
+            <button
+              type="button"
+              onClick={handleExploreScenarios}
+              aria-label="Explore Mock Scenarios"
+              className="group inline-flex items-center gap-3.5 px-6 sm:px-7 py-3.5 rounded-[14px] bg-[#0B1D3A] hover:bg-[#122A50] text-white font-bold text-[15px] sm:text-[16px] transition-all duration-200 shadow-[0_8px_24px_rgba(11,29,58,0.25)] hover:shadow-[0_12px_32px_rgba(11,29,58,0.35)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            >
+              <Target size={20} strokeWidth={2.2} className="text-white shrink-0" />
+              <span>{s.cta}</span>
+              <ArrowRight size={17} strokeWidth={2.2} className="text-white/80 group-hover:translate-x-1 transition-transform shrink-0" />
+            </button>
+
+            <button
+              type="button"
+              onClick={handleBecomeExpert}
+              aria-label="Become a Mock Expert"
+              className="group inline-flex items-center gap-3.5 px-6 sm:px-7 py-3.5 rounded-[14px] bg-white hover:bg-[#F8FAFC] text-[#0B1D3A] font-bold text-[15px] sm:text-[16px] border border-[#CBD5E1] hover:border-[#94A3B8] transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            >
+              <Video size={20} strokeWidth={2.2} className="text-[#0B1D3A] shrink-0" />
+              <span>{s.secondaryCta}</span>
+              <ArrowRight size={17} strokeWidth={2.2} className="text-[#0B1D3A]/80 group-hover:translate-x-1 transition-transform shrink-0" />
+            </button>
           </motion.div>
 
           <motion.ul variants={fadeUp} className="grid grid-cols-2 gap-x-6 gap-y-3 max-w-[520px]">
@@ -103,7 +156,7 @@ export default function Desktop() {
           transition={{ duration: 1, delay: 0.2, ease: EASE }}
           className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-end relative mt-10 lg:mt-0"
         >
-          <div className="relative w-full h-[400px] lg:h-[500px] xl:h-[540px] rounded-tl-[160px] lg:rounded-tl-[240px] xl:rounded-tl-[280px] rounded-bl-[70px] lg:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80">
+          <div className="relative w-full h-[400px] lg:h-[500px] xl:h-[540px] rounded-tl-[160px] lg:rounded-tl-[240px] xl:rounded-tl-[280px] rounded-bl-[70px] lg:rounded-bl-[100px] overflow-hidden luxury-shadow-float border-l border-t border-b border-white/80 group/image">
             <motion.img
               animate={reduce ? undefined : { scale: [1, 1.05, 1] }}
               transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
@@ -112,6 +165,19 @@ export default function Desktop() {
               className="w-full h-full object-cover object-center"
             />
             <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/35 via-[#0B1D3A]/5 to-transparent" />
+
+            {/* Circular Watch / Play overlay matching media_1791990777925.png */}
+            <button
+              type="button"
+              onClick={() => setIsVideoModalOpen(true)}
+              aria-label="Watch how live mock sessions work"
+              className="group/watch absolute inset-0 m-auto w-22 h-22 sm:w-24 sm:h-24 rounded-full bg-[#0B1D3A]/85 hover:bg-[#0B1D3A] backdrop-blur-md border border-white/25 text-white flex flex-col items-center justify-center gap-1 shadow-[0_14px_40px_rgba(11,29,58,0.5)] hover:shadow-[0_18px_50px_rgba(11,29,58,0.65)] transition-all duration-300 hover:scale-108 active:scale-95 cursor-pointer z-20"
+            >
+              <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-[#C99A2E] to-[#F4D068] flex items-center justify-center text-[#0B1D3A] shadow-md group-hover/watch:scale-105 transition-transform">
+                <Play size={16} className="fill-[#0B1D3A] text-[#0B1D3A] ml-0.5" />
+              </div>
+              <span className="text-[10.5px] font-black uppercase tracking-[0.16em] text-white">WATCH</span>
+            </button>
           </div>
 
           <motion.div
@@ -145,6 +211,13 @@ export default function Desktop() {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Video Preview Modal */}
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        title="Live Mock Sessions Demo"
+      />
     </section>
   );
 }

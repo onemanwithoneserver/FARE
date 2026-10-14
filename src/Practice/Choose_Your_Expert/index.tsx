@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import Header from "../../Home/00_header";
 import Footer from "../../Home/05_section";
@@ -21,7 +22,27 @@ interface Props {
 }
 
 export default function ChooseYourExpert({ isMobile }: Props) {
+  const location = useLocation();
   const [viewMode, setViewMode] = useState<ViewMode>("experts");
+
+  // Sync tab from URL params (e.g. ?tab=scenarios) and scroll to section
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tabParam = params.get("tab");
+    if (tabParam === "scenarios" || location.hash === "#scenarios" || location.hash === "#cye-tab-scenarios") {
+      setViewMode("scenarios");
+      setTimeout(() => {
+        const el = document.getElementById("cye-toolbar") || document.getElementById("cye-results");
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 250);
+    } else if (tabParam === "experts" || location.hash === "#experts") {
+      setViewMode("experts");
+      setTimeout(() => {
+        const el = document.getElementById("cye-toolbar") || document.getElementById("cye-results");
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 250);
+    }
+  }, [location.search, location.hash]);
   const [expertSearch, setExpertSearch] = useState("");
   const [expertSortBy, setExpertSortBy] = useState("Most Relevant");
   const [scenarioSearch, setScenarioSearch] = useState("");

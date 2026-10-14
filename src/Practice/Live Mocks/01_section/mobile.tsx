@@ -1,13 +1,35 @@
+import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "motion/react";
-import { Clock, Video, Target, MessageSquare, Radio } from "lucide-react";
+import { Clock, Video, Target, MessageSquare, Radio, ArrowRight, Play } from "lucide-react";
 import { data } from "../data";
 import liveMocksHero from "../../../assets/live_mocks_hero.jpg";
-import { ACCENTS, IconBadge, PrimaryButton, SecondaryButton, accentAt, fadeUp, staggerContainer } from "../../ui";
+import { ACCENTS, IconBadge, accentAt, fadeUp, staggerContainer } from "../../ui";
+import VideoModal from "../../../Components/Forms/VideoModal";
 
 const CHIP_ICONS = [Clock, Video, Target, MessageSquare];
 
 export default function Mobile() {
   const s = data.hero;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  const mode = location.pathname.startsWith("/mobile") ? "mobile" : "desktop";
+
+  const handleExploreScenarios = () => {
+    navigate(`/${mode}/choose-your-expert?tab=scenarios`);
+  };
+
+  const handleBecomeExpert = () => {
+    const el = document.getElementById("become-mock-expert");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      navigate(`/${mode}/fare-live-mocks#become-mock-expert`);
+    }
+  };
+
   const [lead, stepsLine = ""] = s.description.split("\n\n");
   const steps = stepsLine.split(".").map((x) => x.trim()).filter(Boolean);
   const chips = s.supportingLine.split("|").map((x) => x.trim());
@@ -46,12 +68,26 @@ export default function Mobile() {
           {lead}
         </motion.p>
 
+        {/* Hero image with Circular Watch / Play button matching media_1791990777925.png */}
         <motion.div variants={fadeUp} className="relative w-full mb-6">
-          <div className="w-full rounded-[20px] overflow-hidden luxury-shadow-float border border-white">
+          <div className="w-full rounded-[20px] overflow-hidden luxury-shadow-float border border-white relative">
             <img src={liveMocksHero} alt="Learner practising a live mock session with a real estate expert" className="w-full h-[230px] object-cover object-center" />
             <div aria-hidden="true" className="absolute inset-0 rounded-[20px] bg-gradient-to-t from-[#0B1D3A]/40 via-transparent to-transparent" />
+
+            {/* Circular Watch button */}
+            <button
+              type="button"
+              onClick={() => setIsVideoModalOpen(true)}
+              aria-label="Watch how live mock sessions work"
+              className="group/watch absolute inset-0 m-auto w-18 h-18 rounded-full bg-[#0B1D3A]/85 hover:bg-[#0B1D3A] backdrop-blur-md border border-white/25 text-white flex flex-col items-center justify-center gap-1 shadow-[0_8px_26px_rgba(11,29,58,0.5)] active:scale-95 cursor-pointer z-10"
+            >
+              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#C99A2E] to-[#F4D068] flex items-center justify-center text-[#0B1D3A] shadow-xs">
+                <Play size={14} className="fill-[#0B1D3A] text-[#0B1D3A] ml-0.5" />
+              </div>
+              <span className="text-[9.5px] font-black uppercase tracking-[0.16em] text-white">WATCH</span>
+            </button>
           </div>
-          <div className="absolute left-3 bottom-3 glass-light rounded-[12px] pl-2 pr-3.5 py-2 flex items-center gap-2.5 animate-float">
+          <div className="absolute left-3 bottom-3 glass-light rounded-[12px] pl-2 pr-3.5 py-2 flex items-center gap-2.5 animate-float z-10">
             <IconBadge icon={Video} accent={ACCENTS[3]} size="xs" interactive={false} />
             <span className="text-[12px] font-bold text-[#0B1D3A]">{chips[1]}</span>
           </div>
@@ -61,8 +97,19 @@ export default function Mobile() {
           <motion.ol variants={fadeUp} className="flex flex-wrap gap-1.5 mb-6" aria-label="How a live mock works">
             {steps.map((st, i) => {
               const a = accentAt(i);
+              const isScenarioStep = i === 0;
+              const isExpertStep = i === 1;
               return (
-                <li key={st} className="inline-flex items-center gap-1.5 pl-1 pr-2.5 py-1 rounded-full bg-white border border-[#E6EBF3] shadow-sm text-[12px] font-semibold text-[#0B1D3A]/85">
+                <li
+                  key={st}
+                  onClick={() => {
+                    if (isScenarioStep) handleExploreScenarios();
+                    else if (isExpertStep) navigate(`/${mode}/choose-your-expert?tab=experts`);
+                  }}
+                  className={`inline-flex items-center gap-1.5 pl-1 pr-2.5 py-1 rounded-full bg-white border border-[#E6EBF3] shadow-sm text-[12px] font-semibold text-[#0B1D3A]/85 ${
+                    isScenarioStep || isExpertStep ? "cursor-pointer" : ""
+                  }`}
+                >
                   <span className="w-[18px] h-[18px] rounded-full text-white text-[9px] font-black inline-flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${a.from}, ${a.to})` }}>
                     {i + 1}
                   </span>
@@ -73,13 +120,33 @@ export default function Mobile() {
           </motion.ol>
         )}
 
+        {/* Action Buttons matching media_1791990454109.png */}
         <motion.div variants={fadeUp} className="w-full flex flex-col gap-3 mb-7">
-          <PrimaryButton icon={Target} full mobile>
-            {s.cta}
-          </PrimaryButton>
-          <SecondaryButton icon={Video} full mobile>
-            {s.secondaryCta}
-          </SecondaryButton>
+          <button
+            type="button"
+            onClick={handleExploreScenarios}
+            aria-label="Explore Mock Scenarios"
+            className="w-full inline-flex items-center justify-between px-5 py-3.5 rounded-[14px] bg-[#0B1D3A] text-white font-bold text-[15px] shadow-[0_6px_20px_rgba(11,29,58,0.22)] active:scale-[0.99] cursor-pointer"
+          >
+            <span className="inline-flex items-center gap-3">
+              <Target size={19} strokeWidth={2.2} className="text-white shrink-0" />
+              <span>{s.cta}</span>
+            </span>
+            <ArrowRight size={17} strokeWidth={2.2} className="text-white/80 shrink-0" />
+          </button>
+
+          <button
+            type="button"
+            onClick={handleBecomeExpert}
+            aria-label="Become a Mock Expert"
+            className="w-full inline-flex items-center justify-between px-5 py-3.5 rounded-[14px] bg-white text-[#0B1D3A] font-bold text-[15px] border border-[#CBD5E1] shadow-xs active:scale-[0.99] cursor-pointer"
+          >
+            <span className="inline-flex items-center gap-3">
+              <Video size={19} strokeWidth={2.2} className="text-[#0B1D3A] shrink-0" />
+              <span>{s.secondaryCta}</span>
+            </span>
+            <ArrowRight size={17} strokeWidth={2.2} className="text-[#0B1D3A]/80 shrink-0" />
+          </button>
         </motion.div>
 
         <motion.ul variants={fadeUp} className="w-full grid grid-cols-2 gap-2.5">
@@ -91,6 +158,13 @@ export default function Mobile() {
           ))}
         </motion.ul>
       </motion.div>
+
+      {/* Video Preview Modal */}
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        title="Live Mock Sessions Demo"
+      />
     </section>
   );
 }

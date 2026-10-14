@@ -7,7 +7,8 @@ export default function Mobile() {
   const s = data.forExperts;
 
   return (
-    <Section tone="white" mobile ariaLabel="For Experts">
+    <div id="become-mock-expert" className="scroll-mt-20">
+      <Section tone="white" mobile ariaLabel="For Experts">
       <SectionHeader mobile eyebrow="Become an Expert" icon={UserPlus} accent={ACCENTS[5]} title={s.title} description={s.description} />
 
       <Reveal delay={0.1}>
@@ -42,6 +43,7 @@ export default function Mobile() {
           <PrimaryButton full mobile>{s.cta}</PrimaryButton>
         </div>
       </Reveal>
-    </Section>
+      </Section>
+    </div>
   );
 }

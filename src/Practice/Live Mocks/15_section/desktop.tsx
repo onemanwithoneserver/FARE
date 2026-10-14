@@ -7,8 +7,9 @@ export default function Desktop() {
   const s = data.forExperts;
 
   return (
-    <Section tone="white" ariaLabel="For Experts">
-      <SectionHeader eyebrow="Become an Expert" icon={UserPlus} accent={ACCENTS[5]} title={s.title} description={s.description} />
+    <div id="become-mock-expert" className="scroll-mt-20">
+      <Section tone="white" ariaLabel="For Experts">
+        <SectionHeader eyebrow="Become an Expert" icon={UserPlus} accent={ACCENTS[5]} title={s.title} description={s.description} />
 
       <Reveal delay={0.1}>
         <div className="max-w-[1000px] mx-auto bg-[#F8F9FC] border border-[#E6EBF3] rounded-[24px] p-10 lg:p-12 overflow-hidden relative">
@@ -50,6 +51,7 @@ export default function Desktop() {
           </div>
         </div>
       </Reveal>
-    </Section>
+      </Section>
+    </div>
   );
 }

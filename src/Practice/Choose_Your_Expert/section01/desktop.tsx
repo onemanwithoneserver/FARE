@@ -108,19 +108,6 @@ export default function Desktop() {
               className="w-full h-full object-cover object-[center_30%]"
             />
             <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/35 via-[#0B1D3A]/5 to-transparent" />
-
-            {/* Centered Play / Watch Now overlay on image */}
-            <button
-              type="button"
-              onClick={() => setIsVideoModalOpen(true)}
-              aria-label="Play video preview"
-              className="group/play absolute inset-0 m-auto w-20 h-20 rounded-full bg-[#0B1D3A]/75 hover:bg-[#0B1D3A]/90 backdrop-blur-md border border-white/30 text-white flex flex-col items-center justify-center gap-1 shadow-[0_12px_40px_rgba(11,29,58,0.4)] transition-all hover:scale-110 cursor-pointer z-10"
-            >
-              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#C99A2E] to-[#F4D068] flex items-center justify-center text-[#0B1D3A] shadow-md group-hover/play:scale-105 transition-transform">
-                <Play size={16} className="fill-[#0B1D3A] text-[#0B1D3A] ml-0.5" />
-              </div>
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-white/95">Watch</span>
-            </button>
           </div>
 
           <motion.div

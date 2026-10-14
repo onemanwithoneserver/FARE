@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Header from "../../Home/00_header";
 import Footer from "../../Home/05_section";
 import Section01Desktop from "./01_section/desktop";
@@ -40,6 +42,19 @@ interface Props {
 }
 
 export default function LiveMocks({ isMobile }: Props) {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace("#", "");
+      const timer = setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash]);
+
   return (
     <div className="w-full min-h-screen flex flex-col font-['Outfit'] bg-[#FAFAFA]">
       <Header isMobile={isMobile} />
