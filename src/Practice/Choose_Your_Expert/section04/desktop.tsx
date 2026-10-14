@@ -72,7 +72,6 @@ export default function Desktop({
 
   return (
     <div className="w-full font-['Outfit'] flex flex-col gap-5">
-      {/* Centered Capsule Pill Toggle Switch (Inspired by User Reference) */}
       <div className="w-full flex justify-center items-center py-1">
         <div
           role="tablist"
@@ -98,7 +97,6 @@ export default function Desktop({
                       : "text-[#8297B0] hover:text-white"
                   }`}
                 >
-                  {/* Glassmorphic Sliding Pill Background */}
                   {isActive && (
                     <motion.div
                       layoutId="activeTabPill"
@@ -117,7 +115,6 @@ export default function Desktop({
                   <span className="relative z-10">{tab.label}</span>
                 </button>
 
-                {/* Floating Tooltip */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2.5 hidden group-hover/tab:flex flex-col items-center z-50 pointer-events-none">
                   <div className="w-2 h-2 bg-[#0B1D3A] rotate-45 -mb-1" />
                   <span className="bg-[#0B1D3A] text-white text-[11px] font-semibold px-2.5 py-1 rounded-[6px] shadow-lg whitespace-nowrap border border-white/10">
@@ -130,9 +127,7 @@ export default function Desktop({
         </div>
       </div>
 
-      {/* Row: Search Bar and Sort Action Button (No Background) */}
       <div className="w-full flex items-center gap-3 relative z-20">
-        {/* Search Bar */}
         <div className="relative flex-1 group/search">
           <label htmlFor="cye-search" className="sr-only">
             {isExperts ? "Search experts" : "Search scenarios"}
@@ -172,7 +167,6 @@ export default function Desktop({
           )}
         </div>
 
-        {/* Sort Action Button with Tooltip & Dropdown */}
         <div className="relative shrink-0 group/sort" ref={dropdownRef}>
           <button
             type="button"
@@ -195,7 +189,6 @@ export default function Desktop({
             />
           </button>
 
-          {/* Sort Tooltip (shown on hover when dropdown is closed) */}
           {!isOpen && (
             <div className="absolute right-0 top-full mt-2 hidden group-hover/sort:flex flex-col items-end z-50 pointer-events-none">
               <div className="w-2 h-2 bg-[#0B1D3A] rotate-45 -mb-1 mr-4" />
@@ -205,7 +198,6 @@ export default function Desktop({
             </div>
           )}
 
-          {/* Sort Dropdown Menu */}
           <AnimatePresence>
             {isOpen && (
               <motion.div

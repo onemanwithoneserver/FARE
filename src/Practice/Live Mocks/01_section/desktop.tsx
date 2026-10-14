@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, useReducedMotion } from "motion/react";
-import { Clock, Video, Target, MessageSquare, Radio, ArrowRight, Play } from "lucide-react";
+import { Clock, Video, Target, MessageSquare, Radio, ArrowRight, ChevronRight, Play } from "lucide-react";
 import { data } from "../data";
 import liveMocksHero from "../../../assets/live_mocks_hero.jpg";
 import { ACCENTS, EASE, IconBadge, accentAt, fadeUp, staggerContainer } from "../../ui";
@@ -20,15 +20,6 @@ export default function Desktop() {
 
   const handleExploreScenarios = () => {
     navigate(`/${mode}/choose-your-expert?tab=scenarios`);
-  };
-
-  const handleBecomeExpert = () => {
-    const el = document.getElementById("become-mock-expert");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      navigate(`/${mode}/fare-live-mocks#become-mock-expert`);
-    }
   };
 
   const [lead, stepsLine = ""] = s.description.split("\n\n");
@@ -115,28 +106,26 @@ export default function Desktop() {
             </motion.ol>
           )}
 
-          {/* Primary Action Controls - styled per media_1791990454109.png */}
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mb-9">
             <button
               type="button"
               onClick={handleExploreScenarios}
               aria-label="Explore Mock Scenarios"
-              className="group inline-flex items-center gap-3.5 px-6 sm:px-7 py-3.5 rounded-[14px] bg-[#0B1D3A] hover:bg-[#122A50] text-white font-bold text-[15px] sm:text-[16px] transition-all duration-200 shadow-[0_8px_24px_rgba(11,29,58,0.25)] hover:shadow-[0_12px_32px_rgba(11,29,58,0.35)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="group inline-flex items-center gap-3.5 px-4 py-3.5 rounded-[14px] bg-[#0B1D3A] hover:bg-[#122A50] text-white font-bold text-[15px] sm:text-[16px] transition-all duration-200 shadow-[0_8px_24px_rgba(11,29,58,0.25)] hover:shadow-[0_12px_32px_rgba(11,29,58,0.35)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
-              <Target size={20} strokeWidth={2.2} className="text-white shrink-0" />
               <span>{s.cta}</span>
-              <ArrowRight size={17} strokeWidth={2.2} className="text-white/80 group-hover:translate-x-1 transition-transform shrink-0" />
-            </button>
-
-            <button
-              type="button"
-              onClick={handleBecomeExpert}
-              aria-label="Become a Mock Expert"
-              className="group inline-flex items-center gap-3.5 px-6 sm:px-7 py-3.5 rounded-[14px] bg-white hover:bg-[#F8FAFC] text-[#0B1D3A] font-bold text-[15px] sm:text-[16px] border border-[#CBD5E1] hover:border-[#94A3B8] transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
-            >
-              <Video size={20} strokeWidth={2.2} className="text-[#0B1D3A] shrink-0" />
-              <span>{s.secondaryCta}</span>
-              <ArrowRight size={17} strokeWidth={2.2} className="text-[#0B1D3A]/80 group-hover:translate-x-1 transition-transform shrink-0" />
+              <span className="relative flex items-center justify-center w-4 h-4 ml-0.5 shrink-0">
+                <ChevronRight
+                  size={18}
+                  strokeWidth={2.4}
+                  className="text-white/80 transition-all duration-200 group-hover:opacity-0 group-hover:translate-x-1"
+                />
+                <ArrowRight
+                  size={18}
+                  strokeWidth={2.4}
+                  className="absolute text-white transition-all duration-200 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0.5"
+                />
+              </span>
             </button>
           </motion.div>
 
@@ -165,19 +154,6 @@ export default function Desktop() {
               className="w-full h-full object-cover object-center"
             />
             <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-tr from-[#0B1D3A]/35 via-[#0B1D3A]/5 to-transparent" />
-
-            {/* Circular Watch / Play overlay matching media_1791990777925.png */}
-            <button
-              type="button"
-              onClick={() => setIsVideoModalOpen(true)}
-              aria-label="Watch how live mock sessions work"
-              className="group/watch absolute inset-0 m-auto w-22 h-22 sm:w-24 sm:h-24 rounded-full bg-[#0B1D3A]/85 hover:bg-[#0B1D3A] backdrop-blur-md border border-white/25 text-white flex flex-col items-center justify-center gap-1 shadow-[0_14px_40px_rgba(11,29,58,0.5)] hover:shadow-[0_18px_50px_rgba(11,29,58,0.65)] transition-all duration-300 hover:scale-108 active:scale-95 cursor-pointer z-20"
-            >
-              <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-[#C99A2E] to-[#F4D068] flex items-center justify-center text-[#0B1D3A] shadow-md group-hover/watch:scale-105 transition-transform">
-                <Play size={16} className="fill-[#0B1D3A] text-[#0B1D3A] ml-0.5" />
-              </div>
-              <span className="text-[10.5px] font-black uppercase tracking-[0.16em] text-white">WATCH</span>
-            </button>
           </div>
 
           <motion.div
@@ -212,7 +188,6 @@ export default function Desktop() {
         </motion.div>
       </div>
 
-      {/* Video Preview Modal */}
       <VideoModal
         isOpen={isVideoModalOpen}
         onClose={() => setIsVideoModalOpen(false)}

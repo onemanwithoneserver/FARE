@@ -25,7 +25,6 @@ export default function ChooseYourExpert({ isMobile }: Props) {
   const location = useLocation();
   const [viewMode, setViewMode] = useState<ViewMode>("experts");
 
-  // Sync tab from URL params (e.g. ?tab=scenarios) and scroll to section
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const tabParam = params.get("tab");

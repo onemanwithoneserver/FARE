@@ -52,7 +52,6 @@ export default function Mobile() {
             <img src={mockExpertHero} alt="Choose your real estate mock expert" className="w-full h-[230px] object-cover object-[center_30%]" />
             <div aria-hidden="true" className="absolute inset-0 rounded-[20px] bg-gradient-to-t from-[#0B1D3A]/45 via-transparent to-transparent" />
 
-            {/* Centered Play Button overlay on mobile */}
             <button
               type="button"
               onClick={() => setIsVideoModalOpen(true)}
@@ -80,7 +79,6 @@ export default function Mobile() {
           ))}
         </motion.ul>
 
-        {/* Watch Now Control for mobile */}
         <motion.div variants={fadeUp} className="w-full">
           <button
             type="button"
@@ -98,7 +96,6 @@ export default function Mobile() {
         </motion.div>
       </motion.div>
 
-      {/* Video Modal */}
       <VideoModal
         isOpen={isVideoModalOpen}
         onClose={() => setIsVideoModalOpen(false)}

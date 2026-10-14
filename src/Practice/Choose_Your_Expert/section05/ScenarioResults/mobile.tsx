@@ -26,12 +26,10 @@ export default function Mobile({
   const [visibleCount, setVisibleCount] = useState(4);
   const [bookingScenario, setBookingScenario] = useState<Scenario | null>(null);
 
-  // Reset count on search change
   useEffect(() => {
     setVisibleCount(4);
   }, [searchQuery]);
 
-  // Lock body scroll when booking modal is open
   useEffect(() => {
     if (!bookingScenario) return;
     const prevOverflow = document.body.style.overflow;
@@ -98,7 +96,6 @@ export default function Mobile({
           </AnimatePresence>
         </motion.div>
 
-        {/* Load More Button */}
         {visibleCount < scenarios.length && (
           <div className="flex justify-center pt-2">
             <button
@@ -113,7 +110,6 @@ export default function Mobile({
         )}
       </div>
 
-      {/* Modal / Bottom Drawer for mobile displaying specialists upon activating Book Session */}
       <AnimatePresence>
         {bookingScenario && (
           <div
@@ -243,7 +239,6 @@ function ScenarioCard({
         </div>
       </div>
 
-      {/* Footer: Mentors ready on left, reduced-width Book Session button on right */}
       <div className="relative z-10 bg-[#FAFBFE] border-t border-[#E6EBF3] flex items-center justify-between gap-2.5 p-3 mt-auto">
         <div className="flex items-center gap-1.5 min-w-0">
           <div className="flex -space-x-1.5 shrink-0">
@@ -263,7 +258,6 @@ function ScenarioCard({
           </span>
         </div>
 
-        {/* Reduced width Book Session button */}
         <PrimaryButton
           variant="gold"
           onClick={() => (onBookSession ? onBookSession(sc) : onPractice(matchedExperts[0]))}

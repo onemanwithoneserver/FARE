@@ -36,7 +36,6 @@ export default function Mobile({
   return (
     <Section tone="white" mobile ariaLabel="Browse experts and scenarios" className="!py-2.5">
       <div className="flex flex-col gap-2.5 font-['Outfit']">
-        {/* Centered Capsule Pill Toggle Switch (Inspired by User Reference) */}
         <div className="w-full flex justify-center items-center py-1">
           <div
             role="tablist"
@@ -59,7 +58,6 @@ export default function Mobile({
                     isActive ? "text-white" : "text-[#8297B0] hover:text-white"
                   }`}
                 >
-                  {/* Glassmorphic Sliding Pill Background */}
                   {isActive && (
                     <motion.div
                       layoutId="activeMobileTabPill"

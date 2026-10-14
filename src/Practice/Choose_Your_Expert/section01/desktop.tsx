@@ -76,7 +76,6 @@ export default function Desktop() {
             ))}
           </motion.ul>
 
-          {/* Watch Now Control */}
           <motion.div variants={fadeUp} className="mt-8 flex items-center gap-4">
             <button
               type="button"
@@ -142,7 +141,6 @@ export default function Desktop() {
         </motion.div>
       </div>
 
-      {/* Video Modal */}
       <VideoModal
         isOpen={isVideoModalOpen}
         onClose={() => setIsVideoModalOpen(false)}

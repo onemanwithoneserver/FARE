@@ -39,13 +39,11 @@ export default function Desktop({
   const [selectedScenarioId, setSelectedScenarioId] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(4);
 
-  // Reset count and close split view on search query change
   useEffect(() => {
     setVisibleCount(4);
     setSelectedScenarioId(null);
   }, [searchQuery]);
 
-  // Handle Escape key to close split view
   useEffect(() => {
     if (!selectedScenarioId) return;
     const onKey = (e: KeyboardEvent) => {
@@ -107,7 +105,6 @@ export default function Desktop({
           </motion.div>
         ) : (
           <div className={`w-full ${isSplit ? "grid grid-cols-1 lg:grid-cols-12 gap-6 items-start" : ""}`}>
-            {/* Left side: Scenario Cards (2-column grid initially, 1-column when split) */}
             <motion.div
               layout
               transition={{ duration: 0.35, ease: EASE }}
@@ -131,7 +128,6 @@ export default function Desktop({
                 ))}
               </div>
 
-              {/* Load More Button */}
               {visibleCount < scenarios.length && (
                 <div className="flex justify-center pt-5 pb-2">
                   <button
@@ -146,7 +142,6 @@ export default function Desktop({
               )}
             </motion.div>
 
-            {/* Right side: Matched specialists panel upon activating Book Session */}
             <AnimatePresence mode="wait">
               {activeScenario && (
                 <motion.aside
@@ -203,7 +198,6 @@ function ScenarioCard({
           : "border-[#E2E8F0] shadow-[0_4px_24px_rgba(11,29,58,0.04)] hover:shadow-[0_16px_36px_-12px_rgba(11,29,58,0.1)] hover:border-[#CBD5E1] hover:-translate-y-0.5"
       }`}
     >
-      {/* Top Accent Hairline */}
       <div
         aria-hidden="true"
         className="h-[3.5px] w-full"
@@ -214,7 +208,6 @@ function ScenarioCard({
         }}
       />
 
-      {/* Header Info */}
       <div className="p-5 pb-3.5 flex flex-col gap-3">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-2 flex-wrap">
@@ -244,7 +237,6 @@ function ScenarioCard({
           “{cleanTitle}”
         </h3>
 
-        {/* Buyer Objection Quotation Card */}
         <div className="p-3.5 rounded-[12px] bg-[#FFFDF8] border-l-3 border-[#C99A2E] border-y border-r border-[#F3ECD9] shadow-2xs flex flex-col gap-1">
           <span className="text-[9.5px] font-bold uppercase tracking-[0.14em] text-[#8A5A00]">
             Customer Objection
@@ -255,7 +247,6 @@ function ScenarioCard({
         </div>
       </div>
 
-      {/* Body: Buyer Persona & Skills */}
       <div className="flex flex-col gap-3.5 flex-1 px-5 pb-4">
         <div className="flex items-center gap-3 p-3 rounded-[12px] bg-[#F8FAFD] border border-[#E2E8F0]">
           <span aria-hidden="true" className="w-7 h-7 rounded-[7px] bg-[#0B1D3A] text-[#E4C46A] flex items-center justify-center shrink-0 shadow-2xs">
@@ -292,7 +283,6 @@ function ScenarioCard({
         </div>
       </div>
 
-      {/* Footer & Actions: "View Mentors" REMOVED, Reduced-width Book Session button beside avatars */}
       <div className="bg-[#FAFBFE] border-t border-[#EEF2F6] flex items-center justify-between gap-3 p-3.5 px-5 mt-auto">
         <div className="flex items-center gap-2.5 min-w-0">
           <div className="flex -space-x-2 shrink-0">
@@ -312,7 +302,6 @@ function ScenarioCard({
           </span>
         </div>
 
-        {/* Reduced width Book Session button */}
         <button
           type="button"
           onClick={(e) => {
@@ -348,7 +337,6 @@ export function AdjacentExpertsCard({ scenario, experts, onPractice, onClose }: 
     <div className="w-full bg-white rounded-[22px] border border-[#E2E8F0] shadow-[0_12px_40px_-10px_rgba(11,29,58,0.1)] overflow-hidden flex flex-col font-['Outfit']">
       <div className="h-[3.5px] w-full shrink-0 bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#0B1D3A]" />
 
-      {/* Luxury Dark Header */}
       <div
         className="p-5 sm:p-6 text-white relative shrink-0 overflow-hidden"
         style={{ background: "linear-gradient(135deg, #07152B 0%, #0F254B 50%, #17376D 100%)" }}
@@ -403,7 +391,6 @@ export function AdjacentExpertsCard({ scenario, experts, onPractice, onClose }: 
         </div>
       </div>
 
-      {/* Experts List inside Adjacent Card */}
       <div className="p-4 sm:p-5 flex flex-col gap-3.5 max-h-[calc(100vh-210px)] overflow-y-auto bg-[#FAFAFA]">
         {experts.map((expert) => {
           return (
@@ -457,7 +444,6 @@ export function AdjacentExpertsCard({ scenario, experts, onPractice, onClose }: 
                 </div>
               </div>
 
-              {/* Match Highlight Pill */}
               <div className="px-3 py-1.5 rounded-[9px] bg-[#FBF5E7] border border-[#F1DFB0] text-[11.5px] font-semibold text-[#8A5A00] flex items-center gap-2">
                 <Sparkles size={12} className="text-[#C99A2E] shrink-0" />
                 <span className="truncate">
@@ -465,7 +451,6 @@ export function AdjacentExpertsCard({ scenario, experts, onPractice, onClose }: 
                 </span>
               </div>
 
-              {/* Specialization Tags */}
               {expert.specialisedIn && expert.specialisedIn.length > 0 && (
                 <div className="flex flex-wrap gap-1.5">
                   {expert.specialisedIn.slice(0, 3).map((spec) => (
@@ -479,7 +464,6 @@ export function AdjacentExpertsCard({ scenario, experts, onPractice, onClose }: 
                 </div>
               )}
 
-              {/* Price & Action Row */}
               <div className="flex items-center justify-between gap-3 pt-2.5 border-t border-[#F1F5F9]">
                 <div className="flex flex-col">
                   <span className="text-[9.5px] font-bold uppercase tracking-[0.1em] text-[#7B8DAA]">
@@ -505,7 +489,6 @@ export function AdjacentExpertsCard({ scenario, experts, onPractice, onClose }: 
         })}
       </div>
 
-      {/* Footer */}
       <div className="p-3.5 bg-[#F8FAFD] border-t border-[#E2E8F0] text-center">
         <p className="text-[11.5px] font-medium text-[#5A6B82] flex items-center justify-center gap-1.5">
           <Award size={13} className="text-[#C99A2E] shrink-0" />

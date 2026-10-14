@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "motion/react";
-import { Clock, Video, Target, MessageSquare, Radio, ArrowRight, Play } from "lucide-react";
+import { Clock, Video, Target, MessageSquare, Radio, ArrowRight, ChevronRight, Play } from "lucide-react";
 import { data } from "../data";
 import liveMocksHero from "../../../assets/live_mocks_hero.jpg";
 import { ACCENTS, IconBadge, accentAt, fadeUp, staggerContainer } from "../../ui";
@@ -19,15 +19,6 @@ export default function Mobile() {
 
   const handleExploreScenarios = () => {
     navigate(`/${mode}/choose-your-expert?tab=scenarios`);
-  };
-
-  const handleBecomeExpert = () => {
-    const el = document.getElementById("become-mock-expert");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      navigate(`/${mode}/fare-live-mocks#become-mock-expert`);
-    }
   };
 
   const [lead, stepsLine = ""] = s.description.split("\n\n");
@@ -68,13 +59,11 @@ export default function Mobile() {
           {lead}
         </motion.p>
 
-        {/* Hero image with Circular Watch / Play button matching media_1791990777925.png */}
         <motion.div variants={fadeUp} className="relative w-full mb-6">
           <div className="w-full rounded-[20px] overflow-hidden luxury-shadow-float border border-white relative">
             <img src={liveMocksHero} alt="Learner practising a live mock session with a real estate expert" className="w-full h-[230px] object-cover object-center" />
             <div aria-hidden="true" className="absolute inset-0 rounded-[20px] bg-gradient-to-t from-[#0B1D3A]/40 via-transparent to-transparent" />
 
-            {/* Circular Watch button */}
             <button
               type="button"
               onClick={() => setIsVideoModalOpen(true)}
@@ -120,32 +109,29 @@ export default function Mobile() {
           </motion.ol>
         )}
 
-        {/* Action Buttons matching media_1791990454109.png */}
         <motion.div variants={fadeUp} className="w-full flex flex-col gap-3 mb-7">
           <button
             type="button"
             onClick={handleExploreScenarios}
             aria-label="Explore Mock Scenarios"
-            className="w-full inline-flex items-center justify-between px-5 py-3.5 rounded-[14px] bg-[#0B1D3A] text-white font-bold text-[15px] shadow-[0_6px_20px_rgba(11,29,58,0.22)] active:scale-[0.99] cursor-pointer"
+            className="group w-full inline-flex items-center justify-between px-5 py-3.5 rounded-[14px] bg-[#0B1D3A] text-white font-bold text-[15px] shadow-[0_6px_20px_rgba(11,29,58,0.22)] active:scale-[0.99] cursor-pointer"
           >
             <span className="inline-flex items-center gap-3">
               <Target size={19} strokeWidth={2.2} className="text-white shrink-0" />
               <span>{s.cta}</span>
             </span>
-            <ArrowRight size={17} strokeWidth={2.2} className="text-white/80 shrink-0" />
-          </button>
-
-          <button
-            type="button"
-            onClick={handleBecomeExpert}
-            aria-label="Become a Mock Expert"
-            className="w-full inline-flex items-center justify-between px-5 py-3.5 rounded-[14px] bg-white text-[#0B1D3A] font-bold text-[15px] border border-[#CBD5E1] shadow-xs active:scale-[0.99] cursor-pointer"
-          >
-            <span className="inline-flex items-center gap-3">
-              <Video size={19} strokeWidth={2.2} className="text-[#0B1D3A] shrink-0" />
-              <span>{s.secondaryCta}</span>
+            <span className="relative flex items-center justify-center w-4 h-4 shrink-0">
+              <ChevronRight
+                size={18}
+                strokeWidth={2.4}
+                className="text-white/80 transition-all duration-200 group-hover:opacity-0 group-hover:translate-x-1"
+              />
+              <ArrowRight
+                size={18}
+                strokeWidth={2.4}
+                className="absolute text-white transition-all duration-200 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0.5"
+              />
             </span>
-            <ArrowRight size={17} strokeWidth={2.2} className="text-[#0B1D3A]/80 shrink-0" />
           </button>
         </motion.div>
 
@@ -159,7 +145,6 @@ export default function Mobile() {
         </motion.ul>
       </motion.div>
 
-      {/* Video Preview Modal */}
       <VideoModal
         isOpen={isVideoModalOpen}
         onClose={() => setIsVideoModalOpen(false)}

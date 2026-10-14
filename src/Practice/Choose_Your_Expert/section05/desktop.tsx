@@ -160,7 +160,6 @@ export default function Desktop({
         ) : (
           <div className={`w-full ${isSplit ? "grid grid-cols-1 lg:grid-cols-12 gap-5 items-start" : ""}`}>
             
-            {/* Left Side: 3-Column Grid when normal, 1-column when profile panel is open */}
             <motion.div
               layout
               transition={{ duration: 0.35, ease: EASE }}
@@ -199,11 +198,8 @@ export default function Desktop({
                             : "border-[#E2E8F0] shadow-[0_4px_20px_-4px_rgba(11,29,58,0.06)] hover:shadow-[0_22px_45px_-12px_rgba(11,29,58,0.13)] hover:border-[#CBD5E1] hover:-translate-y-1"
                         }`}
                       >
-                        {/* Card Header & Profile Info */}
                         <div className="p-5 pb-4 flex flex-col gap-3.5">
-                          {/* Top: Avatar + Key Identity */}
                           <div className="flex items-start gap-4">
-                            {/* Increased Avatar Size: 88px x 88px */}
                             <div className="relative shrink-0">
                               <div
                                 className="p-[2.5px] rounded-[22px] transition-transform duration-300 group-hover/card:scale-102"
@@ -228,9 +224,7 @@ export default function Desktop({
                               )}
                             </div>
 
-                            {/* Details on the right of avatar */}
                             <div className="flex-1 min-w-0 flex flex-col gap-1">
-                              {/* Badges row: Seniority + Availability */}
                               <div className="flex items-center gap-1.5 flex-wrap">
                                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#FBF5E7] text-[#8A5A00] border border-[#F1DFB0] shrink-0">
                                   <Star size={11} className="fill-[#C99A2E] text-[#C99A2E]" aria-hidden="true" />
@@ -249,19 +243,16 @@ export default function Desktop({
                                 </span>
                               </div>
 
-                              {/* Name */}
                               <h3 className="text-[19px] sm:text-[20px] font-bold text-[#0B1D3A] tracking-tight leading-snug truncate mt-0.5">
                                 {expert.name}
                               </h3>
 
-                              {/* Role */}
                               <p className="text-[12.5px] font-medium text-[#64748B] leading-snug line-clamp-2">
                                 {expert.role}
                               </p>
                             </div>
                           </div>
 
-                          {/* Domain Highlight Pill */}
                           {shortDomain && (
                             <div className="flex items-center gap-2 px-3 py-1.5 rounded-[10px] bg-[#F8FAFD] border border-[#E9EFF8] text-[12px] font-semibold text-[#0B1D3A]">
                               <span className="w-5 h-5 rounded-[6px] bg-[#C99A2E]/15 text-[#C99A2E] flex items-center justify-center shrink-0">
@@ -276,7 +267,6 @@ export default function Desktop({
                             </div>
                           )}
 
-                          {/* Core Skills Chips */}
                           <div className="flex flex-wrap items-center gap-1.5">
                             {expert.specialisedIn.slice(0, 3).map((spec) => (
                               <span
@@ -293,7 +283,6 @@ export default function Desktop({
                             )}
                           </div>
 
-                          {/* Social Proof / Stats Line: Sessions & Languages */}
                           <div className="flex items-center justify-between text-[11px] font-medium text-[#64748B] pt-1.5 border-t border-[#F1F5F9]">
                             <span className="inline-flex items-center gap-1.5">
                               <Sparkles size={12} className="text-[#C99A2E] shrink-0" />
@@ -306,7 +295,6 @@ export default function Desktop({
                           </div>
                         </div>
 
-                        {/* Pricing & Action Row */}
                         <div className="p-5 pt-3.5 mt-auto border-t border-[#F1F5F9] flex flex-col gap-3 bg-[#FAFBFE]">
                           <div className="flex items-center justify-between">
                             <div className="flex flex-col">
@@ -321,7 +309,6 @@ export default function Desktop({
                               </div>
                             </div>
 
-                            {/* Slot time hint */}
                             {expert.nextAvailable.includes("·") && (
                               <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#0B1D3A] bg-white px-2.5 py-1 rounded-[8px] border border-[#E2E8F0] shadow-2xs">
                                 <Clock size={11} className="text-[#C99A2E]" />
@@ -364,7 +351,6 @@ export default function Desktop({
               </ul>
             </motion.div>
 
-            {/* Right Side: Selected Profile Panel (Shows Only ONE Profile at a time) */}
             <AnimatePresence mode="wait">
               {selectedExpert && (
                 <motion.aside
@@ -380,10 +366,8 @@ export default function Desktop({
                     ref={dialogRef}
                     className="w-full bg-white rounded-[20px] border border-[#E2E8F0] shadow-[0_24px_50px_-16px_rgba(11,29,58,0.22)] overflow-hidden flex flex-col max-h-[calc(100vh-110px)]"
                   >
-                    {/* Top Gold Hairline */}
                     <div className="h-[3px] w-full shrink-0 bg-gradient-to-r from-[#C99A2E] via-[#F4D068] to-[#0B1D3A]" />
 
-                    {/* Dark Executive Header */}
                     <div
                       className="p-5 text-white relative shrink-0 overflow-hidden"
                       style={{ background: "linear-gradient(135deg, #07152B 0%, #0F254B 50%, #17376D 100%)" }}
@@ -427,7 +411,6 @@ export default function Desktop({
                           </div>
                         </div>
 
-                        {/* Close Panel Button */}
                         <button
                           type="button"
                           onClick={() => setSelectedExpertName(null)}
@@ -451,7 +434,6 @@ export default function Desktop({
                       </div>
                     </div>
 
-                    {/* Scrollable Content Body */}
                     <div
                       ref={scrollBodyRef}
                       className="p-5 flex flex-col gap-4.5 flex-1 min-h-0 overflow-y-auto overscroll-contain bg-[#FAFAFA]"
@@ -547,7 +529,6 @@ export default function Desktop({
                       )}
                     </div>
 
-                    {/* Sticky Footer with Fee & Book Session CTA */}
                     <div className="p-4 bg-white border-t border-[#E2E8F0] flex items-center justify-between gap-3 shrink-0 shadow-xs">
                       <div className="flex flex-col">
                         <span className="text-[10px] font-bold text-[#7B8DAA] uppercase tracking-[0.14em]">
