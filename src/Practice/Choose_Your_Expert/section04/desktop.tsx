@@ -72,12 +72,12 @@ export default function Desktop({
 
   return (
     <div className="w-full font-['Outfit'] flex flex-col gap-5">
-      {/* Centered Tab Controls (No Background, Increased Tab Size) */}
-      <div className="w-full flex justify-center items-center">
+      {/* Centered Capsule Pill Toggle Switch (Inspired by User Reference) */}
+      <div className="w-full flex justify-center items-center py-1">
         <div
           role="tablist"
           aria-label="Browse mode"
-          className="flex items-center gap-8 sm:gap-12 relative"
+          className="inline-flex items-center p-1.5 rounded-full bg-[#081528] border border-[#142642] shadow-[0_6px_28px_rgba(8,21,40,0.28)] relative"
         >
           {TABS.map((tab) => {
             const isActive = tab.id === viewMode;
@@ -92,35 +92,35 @@ export default function Desktop({
                   aria-selected={isActive}
                   aria-controls="cye-results"
                   onClick={() => onViewModeChange(tab.id)}
-                  className={`relative pb-3 pt-1.5 px-4 text-[17px] sm:text-[18px] lg:text-[19px] font-bold flex items-center gap-2.5 transition-colors cursor-pointer select-none bg-transparent ${FOCUS_RING} ${
+                  className={`relative px-7 py-2.5 sm:px-8 sm:py-3 rounded-full text-[15px] sm:text-[16px] font-bold tracking-tight transition-colors duration-200 flex items-center gap-2 cursor-pointer select-none z-10 ${FOCUS_RING} ${
                     isActive
-                      ? "text-[#0B1D3A]"
-                      : "text-[#64748B] hover:text-[#0B1D3A]"
+                      ? "text-white"
+                      : "text-[#8297B0] hover:text-white"
                   }`}
                 >
-                  <TabIcon
-                    size={22}
-                    strokeWidth={2.4}
-                    className={`transition-colors ${
-                      isActive ? "text-[#C99A2E]" : "text-[#7B8DAA] group-hover/tab:text-[#0B1D3A]"
-                    }`}
-                  />
-                  <span>{tab.label}</span>
-
-                  {/* Active Underline Indicator */}
+                  {/* Glassmorphic Sliding Pill Background */}
                   {isActive && (
                     <motion.div
-                      layoutId="activeTabUnderline"
-                      className="absolute -bottom-1 left-0 right-0 h-[3.5px] bg-[#C99A2E] rounded-full shadow-[0_2px_8px_rgba(201,154,46,0.35)]"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      layoutId="activeTabPill"
+                      className="absolute inset-0 rounded-full bg-white/[0.12] border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] backdrop-blur-xs"
+                      transition={{ type: "spring", stiffness: 450, damping: 35 }}
                     />
                   )}
+
+                  <TabIcon
+                    size={17}
+                    strokeWidth={2.4}
+                    className={`relative z-10 transition-colors ${
+                      isActive ? "text-[#E4C46A]" : "text-[#6C839F] group-hover/tab:text-white"
+                    }`}
+                  />
+                  <span className="relative z-10">{tab.label}</span>
                 </button>
 
                 {/* Floating Tooltip */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 hidden group-hover/tab:flex flex-col items-center z-50 pointer-events-none">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2.5 hidden group-hover/tab:flex flex-col items-center z-50 pointer-events-none">
                   <div className="w-2 h-2 bg-[#0B1D3A] rotate-45 -mb-1" />
-                  <span className="bg-[#0B1D3A] text-white text-[11px] font-semibold px-2.5 py-1 rounded-[6px] shadow-lg whitespace-nowrap">
+                  <span className="bg-[#0B1D3A] text-white text-[11px] font-semibold px-2.5 py-1 rounded-[6px] shadow-lg whitespace-nowrap border border-white/10">
                     {tab.tooltip}
                   </span>
                 </div>

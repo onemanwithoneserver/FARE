@@ -36,44 +36,48 @@ export default function Mobile({
   return (
     <Section tone="white" mobile ariaLabel="Browse experts and scenarios" className="!py-2.5">
       <div className="flex flex-col gap-2.5 font-['Outfit']">
-        {/* Centered Tab Controls without background */}
-        <div
-          role="tablist"
-          aria-label="Browse mode"
-          className="flex items-center justify-center gap-8 py-2 relative"
-        >
-          {VIEW_TABS.map((tab) => {
-            const isActive = tab.id === viewMode;
-            const TabIcon = tab.icon;
+        {/* Centered Capsule Pill Toggle Switch (Inspired by User Reference) */}
+        <div className="w-full flex justify-center items-center py-1">
+          <div
+            role="tablist"
+            aria-label="Browse mode"
+            className="inline-flex items-center p-1 rounded-full bg-[#081528] border border-[#142642] shadow-[0_4px_18px_rgba(8,21,40,0.22)] relative"
+          >
+            {VIEW_TABS.map((tab) => {
+              const isActive = tab.id === viewMode;
+              const TabIcon = tab.icon;
 
-            return (
-              <button
-                key={tab.id}
-                type="button"
-                id={`cye-tab-mobile-${tab.id}`}
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => onViewModeChange(tab.id)}
-                className={`relative pb-2.5 pt-1 px-3 text-[16px] font-bold flex items-center gap-2 transition-colors cursor-pointer bg-transparent ${
-                  isActive ? "text-[#0B1D3A]" : "text-[#64748B]"
-                }`}
-              >
-                <TabIcon
-                  size={19}
-                  strokeWidth={2.4}
-                  className={isActive ? "text-[#C99A2E]" : "text-[#7B8DAA]"}
-                />
-                <span>{tab.label}</span>
-                {isActive && (
-                  <motion.div
-                    layoutId="activeMobileTabIndicator"
-                    className="absolute -bottom-0.5 left-0 right-0 h-[3px] bg-[#C99A2E] rounded-full shadow-[0_2px_8px_rgba(201,154,46,0.35)]"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  id={`cye-tab-mobile-${tab.id}`}
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => onViewModeChange(tab.id)}
+                  className={`relative px-4 py-1.5 sm:px-5 sm:py-2 rounded-full text-[13.5px] font-bold tracking-tight transition-colors duration-200 flex items-center gap-1.5 cursor-pointer select-none z-10 ${
+                    isActive ? "text-white" : "text-[#8297B0] hover:text-white"
+                  }`}
+                >
+                  {/* Glassmorphic Sliding Pill Background */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeMobileTabPill"
+                      className="absolute inset-0 rounded-full bg-white/[0.12] border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] backdrop-blur-xs"
+                      transition={{ type: "spring", stiffness: 450, damping: 35 }}
+                    />
+                  )}
+
+                  <TabIcon
+                    size={14}
+                    strokeWidth={2.4}
+                    className={`relative z-10 ${isActive ? "text-[#E4C46A]" : "text-[#6C839F]"}`}
                   />
-                )}
-              </button>
-            );
-          })}
+                  <span className="relative z-10">{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <div className="flex items-center gap-2">
