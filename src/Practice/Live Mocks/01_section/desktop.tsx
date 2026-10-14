@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, useReducedMotion } from "motion/react";
-import { Clock, Video, Target, MessageSquare, Radio, ArrowRight, ChevronRight, Play } from "lucide-react";
+import { Clock, Video, Target, MessageSquare, Radio, ArrowRight, ChevronRight } from "lucide-react";
 import { data } from "../data";
 import liveMocksHero from "../../../assets/live_mocks_hero.jpg";
 import { ACCENTS, EASE, IconBadge, accentAt, fadeUp, staggerContainer } from "../../ui";
-import VideoModal from "../../../Components/Forms/VideoModal";
 
 const CHIP_ICONS = [Clock, Video, Target, MessageSquare];
 
@@ -14,7 +12,6 @@ export default function Desktop() {
   const reduce = useReducedMotion();
   const navigate = useNavigate();
   const location = useLocation();
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   const mode = location.pathname.startsWith("/mobile") ? "mobile" : "desktop";
 
@@ -187,12 +184,6 @@ export default function Desktop() {
           </motion.div>
         </motion.div>
       </div>
-
-      <VideoModal
-        isOpen={isVideoModalOpen}
-        onClose={() => setIsVideoModalOpen(false)}
-        title="Live Mock Sessions Demo"
-      />
     </section>
   );
 }
