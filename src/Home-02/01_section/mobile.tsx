@@ -7,7 +7,12 @@ export default function Mobile() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   return (
-    <section className="fare-hero-mobile">
+    <section
+      className="w-full p-6 relative overflow-hidden font-['Outfit'] text-[#0B1D3A]"
+      style={{
+        background: "radial-gradient(ellipse at 90% 10%, rgba(238, 231, 212, 0.25), transparent 48%), linear-gradient(145deg, #FFFEFA, #F4F7FB)",
+      }}
+    >
       <HeroIntro mobile onPlay={() => setIsVideoModalOpen(true)} />
       <DashboardPreview mobile />
       <VideoModal isOpen={isVideoModalOpen} onClose={() => setIsVideoModalOpen(false)} />

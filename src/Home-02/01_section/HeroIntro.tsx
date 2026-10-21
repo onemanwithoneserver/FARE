@@ -4,7 +4,6 @@ import type { PointerEvent } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import primaryLogo from "../../Components/FARE_Logo/SVG/Primary Logo Trimmed.svg";
 import { getData } from "./data";
-import "./hero.css";
 
 const capabilityIcons = [
   {
@@ -39,28 +38,18 @@ const capabilityIcons = [
   },
 ];
 
+const sequence: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+
 const reveal: Variants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 150, damping: 24, mass: 0.8 },
+    transition: { type: "spring", stiffness: 160, damping: 22, mass: 0.8 },
   },
-};
-
-const sequence: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.09 } },
-};
-
-const iconInteraction: Variants = {
-  visible: { y: 0, rotate: 0, scale: 1 },
-  hover: { y: -3, rotate: -6, scale: 1.07 },
-};
-
-const buttonInteraction: Variants = {
-  rest: { y: 0 },
-  hover: { y: -2 },
 };
 
 export default function HeroIntro({ mobile = false, onPlay }: { mobile?: boolean; onPlay: () => void }) {
@@ -68,8 +57,8 @@ export default function HeroIntro({ mobile = false, onPlay }: { mobile?: boolean
   const reduceMotion = useReducedMotion();
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
-  const glowX = useSpring(pointerX, { stiffness: 110, damping: 25 });
-  const glowY = useSpring(pointerY, { stiffness: 110, damping: 25 });
+  const glowX = useSpring(pointerX, { stiffness: 120, damping: 24 });
+  const glowY = useSpring(pointerY, { stiffness: 120, damping: 24 });
   const glowOpacity = useSpring(0, { stiffness: 120, damping: 24 });
   const data = getData(language);
 
@@ -90,7 +79,7 @@ export default function HeroIntro({ mobile = false, onPlay }: { mobile?: boolean
 
   return (
     <motion.div
-      className={`fare-hero-intro${language === "te" ? " fare-hero-telugu" : ""}`}
+      className="relative z-10 w-full min-w-0 font-['Outfit'] select-none"
       variants={sequence}
       initial={reduceMotion ? false : "hidden"}
       whileInView="visible"
@@ -100,88 +89,137 @@ export default function HeroIntro({ mobile = false, onPlay }: { mobile?: boolean
     >
       {!mobile && !reduceMotion && (
         <motion.div
-          className="fare-hero-pointer-glow"
+          className="absolute top-0 left-0 w-[300px] h-[300px] -z-10 pointer-events-none rounded-full bg-gradient-to-br from-[#BFD6F6]/30 via-[#B9DDDD]/15 to-transparent blur-2xl"
           aria-hidden="true"
           style={{ x: glowX, y: glowY, opacity: glowOpacity }}
         />
       )}
-      <motion.div className="fare-hero-brand" variants={reveal}>
+
+      <motion.div className="flex items-center mb-5 sm:mb-6" variants={reveal}>
         <motion.img
           src={primaryLogo}
           alt="FARE — Skill Enhancement for Real Estate"
-          whileHover={reduceMotion ? undefined : { y: -3, scale: 1.025, rotate: -1 }}
-          transition={{ type: "spring", stiffness: 220, damping: 18 }}
+          className="block w-[160px] sm:w-[196px] max-w-full h-auto cursor-pointer"
+          whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300, damping: 18 }}
         />
       </motion.div>
-      <motion.div className="fare-hero-eyebrow" variants={reveal}>
+
+      <motion.div className="flex items-center gap-2 mb-3" variants={reveal}>
         <motion.span
-          aria-hidden="true"
-          variants={{ hidden: { scaleX: 0 }, visible: { scaleX: 1, transition: { duration: 0.5 } } }}
+          className="w-[19px] h-[2px] bg-[#B48A34] rounded-full shrink-0"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ transformOrigin: "left" }}
         />
-        {language === "te" ? "మీ ఎదుగుదలకు తదుపరి అడుగు" : "YOUR NEXT CHAPTER STARTS HERE"}
+        <span className="text-[10px] font-semibold tracking-[0.17em] uppercase text-[#6B737F]">
+          {language === "te" ? "మీ ఎదుగుదలకు తదుపరి అడుగు" : "YOUR NEXT CHAPTER STARTS HERE"}
+        </span>
       </motion.div>
-      <motion.h1 className="fare-hero-title" variants={sequence}>
-        <motion.span variants={reveal}>{data.headline.line1}</motion.span>{" "}
-        <motion.span className="fare-hero-gold" variants={reveal}>
-          {data.headline.line2}
+
+      <motion.h1
+        className="m-0 text-[#0B1D3A] font-extrabold text-[30px] sm:text-[38px] md:text-[46px] lg:text-[52px] xl:text-[58px] tracking-[-0.045em] leading-[1.12]"
+        variants={sequence}
+      >
+        <motion.span variants={reveal} className="block">
+          {data.headline.line1}
+        </motion.span>
+        <motion.span
+          variants={reveal}
+          className="relative inline-block mt-1"
+        >
+          <span
+            className="text-[#AA7A20] font-extrabold bg-gradient-to-r from-[#AA7A20] via-[#D7AD58] to-[#AA7A20] bg-clip-text text-transparent animate-gradient-x"
+          >
+            {data.headline.line2}
+          </span>
           <motion.span
-            className="fare-hero-title-accent"
+            className="absolute left-0 -bottom-1 h-[2px] w-[36%] rounded-full bg-gradient-to-r from-[#B58C3B]/80 to-transparent pointer-events-none"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 0.35, duration: 0.7, ease: "easeOut" }}
+            style={{ transformOrigin: "left" }}
             aria-hidden="true"
-            variants={{ hidden: { scaleX: 0, opacity: 0 }, visible: { scaleX: 1, opacity: 1, transition: { delay: 0.35, duration: 0.7, ease: "easeOut" } } }}
           />
         </motion.span>
       </motion.h1>
-      <motion.p className="fare-hero-subtitle" variants={reveal}>{data.subtitle}</motion.p>
-      <motion.div className="fare-hero-toolkit" variants={sequence}>
-        <motion.p variants={reveal}>{language === "te" ? "మీ ఎదుగుదలకు కావలసినవన్నీ" : "ONE PLATFORM. EVERY STEP OF YOUR GROWTH."}</motion.p>
-        <motion.ul className="fare-hero-capabilities" variants={sequence}>
+
+      <motion.p
+        className="text-[#546175] text-[15px] sm:text-[16px] leading-[1.7] mt-3.5 sm:mt-4 mb-5 sm:mb-6 max-w-[440px] font-medium"
+        variants={reveal}
+      >
+        {data.subtitle}
+      </motion.p>
+
+      <motion.div className="border-b border-[#0B1D3A]/[0.08] mb-4 pb-4" variants={sequence}>
+        <motion.p
+          className="m-0 mb-3 text-[9px] font-bold tracking-[0.13em] uppercase text-[#657185]"
+          variants={reveal}
+        >
+          {language === "te" ? "మీ ఎదుగుదలకు కావలసినవన్నీ" : "ONE PLATFORM. EVERY STEP OF YOUR GROWTH."}
+        </motion.p>
+        <motion.ul
+          className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 list-none p-0 m-0"
+          variants={sequence}
+        >
           {data.capabilities.map((capability, index) => {
             const { icon: Icon, bg, shadow } = capabilityIcons[index];
             return (
-              <motion.li key={capability} variants={reveal} whileHover={reduceMotion ? undefined : "hover"}>
+              <motion.li
+                key={capability}
+                variants={reveal}
+                whileHover={reduceMotion ? undefined : { scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 350, damping: 22 }}
+                className="group relative flex items-center gap-2.5 px-3 py-2 transition-all duration-200 cursor-default"
+              >
                 <motion.span
-                  className="fare-hero-capability-icon"
+                  className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-white shadow-xs transition-transform duration-200 group-hover:scale-110 group-hover:-rotate-3"
                   style={{ background: bg, boxShadow: shadow }}
                   aria-hidden="true"
-                  variants={iconInteraction}
-                  transition={{ type: "spring", stiffness: 260, damping: 16 }}
                 >
                   <Icon size={16} strokeWidth={2} />
                 </motion.span>
-                <span>{capability}</span>
+                <span className="text-[11.5px] font-semibold text-[#1E293B] group-hover:text-[#0B1D3A] transition-colors leading-snug">
+                  {capability}
+                </span>
               </motion.li>
             );
           })}
         </motion.ul>
       </motion.div>
-      <motion.div className="fare-hero-actions" variants={reveal}>
+
+      <motion.div className="flex items-center gap-3 sm:gap-5 pt-1.5" variants={reveal}>
         <motion.button
           type="button"
-          className="fare-hero-primary"
           onClick={explore}
-          variants={buttonInteraction}
-          initial="rest"
-          animate="rest"
-          whileHover={reduceMotion ? undefined : "hover"}
+          whileHover={reduceMotion ? undefined : { y: -2, scale: 1.01 }}
           whileTap={reduceMotion ? undefined : { scale: 0.97 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="relative overflow-hidden inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl font-semibold text-xs sm:text-[13px] text-white bg-[#0B1D3A] hover:bg-[#19385E] shadow-[0_6px_16px_rgba(11,29,58,0.16)] hover:shadow-[0_10px_24px_rgba(11,29,58,0.26)] transition-all cursor-pointer group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB]"
         >
-          {data.buttons.primary}
-          <motion.span className="fare-hero-button-arrow" variants={{ rest: { x: 0 }, hover: { x: 3 } }} aria-hidden="true">
-            <ArrowRight size={18} />
-          </motion.span>
+          <motion.span
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
+          />
+          <span className="tracking-wide">{data.buttons.primary}</span>
+          <ArrowRight size={17} className="transition-transform duration-200 group-hover:translate-x-1" />
         </motion.button>
-        <button
+
+        <motion.button
           type="button"
-          className="fare-hero-video"
           onClick={onPlay}
+          whileHover={reduceMotion ? undefined : { y: -2, scale: 1.01 }}
+          whileTap={reduceMotion ? undefined : { scale: 0.97 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-xs sm:text-[13px] text-[#0B1D3A] bg-white/80 hover:bg-white backdrop-blur-md border border-[#0B1D3A]/10 hover:border-[#0B1D3A]/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_2px_8px_rgba(11,29,58,0.05)] hover:shadow-[0_8px_20px_rgba(11,29,58,0.08)] transition-all cursor-pointer group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB]"
         >
-          <span>
-            <Play size={12} fill="currentColor" aria-hidden="true" />
+          <span className="relative flex items-center justify-center w-8 h-8 rounded-full bg-[#0B1D3A] text-white shrink-0 group-hover:scale-105 transition-transform">
+            <span className="absolute -inset-1 rounded-full border border-[#0B1D3A]/30 animate-ping opacity-50 pointer-events-none" />
+            <Play size={11} fill="currentColor" className="ml-0.5" />
           </span>
-          {data.buttons.secondary}
-        </button>
+          <span>{data.buttons.secondary}</span>
+        </motion.button>
       </motion.div>
     </motion.div>
   );
