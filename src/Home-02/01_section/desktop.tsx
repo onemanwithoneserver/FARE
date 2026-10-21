@@ -20,6 +20,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import logo from "../../Components/FARE_Logo/SVG/Primary Logo.svg";
+import primaryLogoTrimmed from "../../Components/FARE_Logo/SVG/Primary Logo Trimmed.svg";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import React, { useState } from "react";
@@ -99,65 +100,74 @@ export default function Desktop() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: false }}
-          className="flex flex-col items-start w-[42%] min-w-[420px] relative z-40"
+          className="flex flex-col items-start w-[45%] min-w-[430px] max-w-[560px] relative z-40"
         >
+          <motion.div variants={item} className="mb-5 relative">
+            <div className="absolute -inset-4 bg-gradient-radial from-[#C99A2E]/20 via-[#C99A2E]/5 to-transparent rounded-full blur-2xl pointer-events-none" />
+            <img
+              src={primaryLogoTrimmed}
+              alt="FARE - Skill Enhancement for Real Estate"
+              className="relative h-18 sm:h-20 lg:h-22 xl:h-24 w-auto object-contain filter drop-shadow-sm transition-transform duration-300 hover:scale-[1.02]"
+            />
+          </motion.div>
+
           <h1
-            className={`font-black mb-5 flex flex-col gap-1.5 md:gap-2 ${
+            className={`font-black mb-4 flex flex-col gap-1 md:gap-1.5 ${
               language === "te"
-                ? "text-[3.6rem] leading-[1.2] tracking-wider my-2"
-                : "text-[4.85rem] leading-[1.05] tracking-[-0.03em]"
+                ? "text-[2.2rem] lg:text-[2.6rem] leading-[1.2] tracking-wider my-2"
+                : "text-[2.65rem] lg:text-[3.15rem] xl:text-[3.45rem] leading-[1.06] tracking-[-0.03em]"
             }`}
           >
             <motion.span
               variants={item}
-              className={`block ${language === "te" ? "py-1" : ""}`}
+              className={`block ${language === "te" ? "py-0.5" : ""}`}
               style={{ color: NAVY }}
             >
               {data.headline.line1}
             </motion.span>
             <motion.span
               variants={item}
-              className={`inline-block text-[#C99A2E] ${language === "te" ? "py-1" : ""}`}
+              className={`inline-block text-[#C99A2E] ${language === "te" ? "py-0.5" : ""}`}
             >
               {data.headline.line2}
             </motion.span>
             <motion.span
               variants={item}
-              className={`block ${language === "te" ? "py-1" : ""}`}
+              className={`block ${language === "te" ? "py-0.5" : ""}`}
               style={{ color: NAVY }}
             >
               {data.headline.line3}
             </motion.span>
           </h1>
-          <motion.div variants={item} className="mb-5">
+          <motion.div variants={item} className="mb-6">
             <p
-              className="text-[17px] font-medium leading-[1.6] max-w-[420px]"
+              className="text-[16px] lg:text-[17px] font-medium leading-[1.65] max-w-[460px]"
               style={{ color: "#3A4A63" }}
             >
               {data.subtitle}
             </p>
           </motion.div>
-          <motion.div variants={item} className="flex items-center gap-4 mb-6">
+          <motion.div variants={item} className="flex items-center gap-3.5 mb-6">
             <button
-              className="text-white text-[13.5px] font-semibold px-7 py-3.5 rounded-[8px] hover:luxury-shadow-float transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out relative overflow-hidden group cursor-pointer"
+              className="text-white text-[13.5px] font-bold px-7 py-3.5 rounded-[8px] hover:luxury-shadow-float transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out relative overflow-hidden group cursor-pointer"
               style={{
                 background: NAVY,
-                boxShadow: `0 2px 8px rgba(11,29,58,0.15), 0 8px 24px rgba(11,29,58,0.08)`,
+                boxShadow: `0 4px 14px rgba(11,29,58,0.18), 0 10px 28px rgba(11,29,58,0.1)`,
               }}
             >
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
               <span className="relative z-10">{data.buttons.primary}</span>
               <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"relative z-10 group-hover:translate-x-1"}`} style={{ fontSize: `${15}px` }}>
-      <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-      <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-    </span>
+                <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
+                <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+              </span>
             </button>
             <button
               onClick={() => setIsVideoModalOpen(true)}
-              className="text-[13.5px] font-semibold px-7 py-3.5 rounded-[4px] hover:bg-[#F8FAFD] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out cursor-pointer group hover:shadow-[0_4px_12px_rgba(11,29,58,0.05)]"
+              className="text-[13.5px] font-bold px-7 py-3.5 rounded-[8px] hover:bg-[#F8FAFD] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out cursor-pointer group hover:shadow-[0_4px_14px_rgba(11,29,58,0.06)]"
               style={{
                 color: NAVY,
-                borderColor: `${NAVY}15`,
+                borderColor: `${NAVY}18`,
                 background: "white",
                 boxShadow: "0 1px 3px rgba(11,29,58,0.03)",
               }}
@@ -170,12 +180,12 @@ export default function Desktop() {
           </motion.div>
           <motion.div
             variants={item}
-            className="flex flex-wrap gap-2 mb-2 max-w-[440px]"
+            className="flex flex-wrap gap-2 mb-2 max-w-[480px]"
           >
             {data.capabilities.map((cap, i) => (
               <div
                 key={i}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_6px_rgba(11,29,58,0.03)] text-[#0B1D3A]/80 text-[11.5px] font-semibold"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_8px_rgba(11,29,58,0.04)] text-[#0B1D3A] text-[11.5px] font-semibold transition-all hover:bg-white hover:shadow-sm"
               >
                 <span
                   className="w-1.5 h-1.5 rounded-full"

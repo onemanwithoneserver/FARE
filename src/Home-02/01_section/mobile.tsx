@@ -22,6 +22,7 @@ import {
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import logo from "../../Components/FARE_Logo/SVG/Primary Logo.svg";
+import primaryLogoTrimmed from "../../Components/FARE_Logo/SVG/Primary Logo Trimmed.svg";
 import React, { useState } from "react";
 import VideoModal from "../../Components/Forms/VideoModal";
 const NAVY = "#0B1D3A";
@@ -64,11 +65,22 @@ export default function Mobile() {
         viewport={{ once: false }}
         className="w-full flex flex-col items-center relative z-40"
       >
+        <motion.div
+          variants={item}
+          className="mb-3 relative flex items-center justify-center"
+        >
+          <div className="absolute -inset-2 bg-gradient-radial from-[#C99A2E]/20 to-transparent rounded-full blur-xl pointer-events-none" />
+          <img
+            src={primaryLogoTrimmed}
+            alt="FARE Logo"
+            className="relative h-13 sm:h-15 w-auto object-contain filter drop-shadow-xs"
+          />
+        </motion.div>
         <h1
-          className={`font-black mb-3.5 flex flex-col gap-1 sm:gap-1.5 ${
+          className={`font-black mb-3 flex flex-col gap-0.5 sm:gap-1 ${
             language === "te"
-              ? "text-[2.1rem] leading-[1.25] tracking-wide my-1.5"
-              : "text-[2.65rem] leading-[1.08] tracking-[-0.02em]"
+              ? "text-[1.95rem] leading-[1.25] tracking-wide my-1"
+              : "text-[2.25rem] sm:text-[2.45rem] leading-[1.08] tracking-[-0.02em]"
           }`}
         >
           <motion.span
