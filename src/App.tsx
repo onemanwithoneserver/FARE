@@ -9,6 +9,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import Home from "./Home";
+import Home02 from "./Home-02";
 import OpenPlot from "./For Companies/Open Plots";
 import RE_Companies from "./For Companies/Residential & Commercial";
 import RE_Trainers_and_Coaches from "./RE_Trainers_and_Coaches";
@@ -83,6 +84,10 @@ export default function App() {
               element={<Navigate to={`/${viewMode}/home`} replace />}
             />
             <Route path="/:mode/home" element={<Home isMobile={isMobile} />} />
+            <Route
+              path="/:mode/home-02"
+              element={<Home02 isMobile={isMobile} />}
+            />
             <Route
               path="/:mode/open-plots"
               element={<OpenPlot isMobile={isMobile} />}

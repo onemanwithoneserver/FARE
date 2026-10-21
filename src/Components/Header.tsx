@@ -18,6 +18,7 @@ export default function Header({
   const isMobile = viewMode === "mobile";
   const dropdownOptions = [
     { value: "home", label: "Home" },
+    { value: "home-02", label: "Home-02" },
     { value: "re-companies", label: "Residential & Commercial" },
     { value: "open-plots", label: "Open Plots" },
     { value: "re-trainers-coaches", label: "For Trainers" },
