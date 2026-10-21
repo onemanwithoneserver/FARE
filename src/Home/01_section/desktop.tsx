@@ -51,7 +51,7 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full flex items-center justify-center overflow-hidden relative font-['Outfit'] pb-16 fare-noise-overlay"
+      className="w-full flex items-center justify-center overflow-hidden relative font-['Outfit'] pb-6 lg:pb-8 fare-noise-overlay shrink-0"
       style={{
         background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)`,
       }}

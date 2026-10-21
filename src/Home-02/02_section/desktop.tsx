@@ -42,7 +42,7 @@ export default function Section02Desktop() {
     <section
       id="section-02-coming-soon"
       aria-label="FARE Coming Soon Section"
-      className="w-full relative overflow-hidden font-['Outfit'] fare-noise-overlay py-8 lg:py-10 flex flex-col justify-center"
+      className="w-full relative overflow-hidden font-['Outfit'] fare-noise-overlay pt-4 pb-8 lg:pt-6 lg:pb-10 flex flex-col justify-center shrink-0"
       style={{
         background:
           "linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)",
@@ -61,14 +61,13 @@ export default function Section02Desktop() {
         }}
       />
 
-      <div className="w-full max-w-[1440px] mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 xl:col-span-7 flex flex-col pr-0 lg:pr-6"
-          >
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between relative z-10 pl-6 sm:pl-10 lg:pl-14 xl:pl-20 pr-0">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full lg:w-[48%] xl:w-[46%] flex flex-col shrink-0 pr-6 lg:pr-10 max-w-[660px]"
+        >
             <h2 className="text-3xl sm:text-4xl xl:text-[3.2rem] font-black text-[#0B1D3A] tracking-tight leading-[1.12] mb-4">
               {data.headline}
             </h2>
@@ -227,9 +226,9 @@ export default function Section02Desktop() {
             initial={{ opacity: 0, x: 40, scale: 0.96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 xl:col-span-5 relative flex items-center justify-center"
+            className="w-full lg:w-[52%] xl:w-[54%] relative flex items-center justify-end mt-10 lg:mt-0"
           >
-            <div className="relative w-full h-[510px] xl:h-[540px] rounded-tl-[180px] xl:rounded-tl-[220px] rounded-bl-[70px] xl:rounded-bl-[90px] rounded-tr-3xl rounded-br-3xl overflow-hidden shadow-2xl border-l-2 border-t-2 border-white/90">
+            <div className="relative w-full h-[510px] xl:h-[550px] rounded-tl-[180px] lg:rounded-tl-[240px] xl:rounded-tl-[280px] rounded-bl-[70px] lg:rounded-bl-[100px] rounded-tr-none rounded-br-none overflow-hidden shadow-2xl border-l-2 border-t-2 border-b-2 border-white/90">
               <motion.img
                 animate={{ scale: [1, 1.04, 1] }}
                 transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
@@ -246,7 +245,7 @@ export default function Section02Desktop() {
                   opacity: { delay: 1, duration: 0.6 },
                   y: { delay: 1, duration: 4, repeat: Infinity, ease: "easeInOut" },
                 }}
-                className="absolute top-4 right-4 xl:top-5 xl:right-5 bg-white/95 backdrop-blur-xl rounded-[12px] px-3.5 py-2 border border-white shadow-xl flex items-center gap-2.5 z-40"
+                className="absolute top-4 right-4 xl:top-5 xl:right-6 bg-white/95 backdrop-blur-xl rounded-[12px] px-3.5 py-2 border border-white shadow-xl flex items-center gap-2.5 z-40"
               >
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#C99A2E] to-[#E2C068] text-white flex items-center justify-center shrink-0 shadow-xs">
                   <Sparkles size={15} strokeWidth={2.4} className="text-white" />
@@ -266,7 +265,7 @@ export default function Section02Desktop() {
               initial={{ scale: 0.92, opacity: 0, y: 16 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute z-30 max-w-[350px] sm:max-w-[375px] xl:max-w-[385px] sm:left-4 md:left-5 lg:left-5 xl:left-7 sm:top-1/2 sm:-translate-y-1/2 rounded-2xl border border-white/85 bg-white/90 p-5 sm:p-6 text-center shadow-[0_20px_50px_rgba(11,29,58,0.25)] backdrop-blur-xl overflow-hidden"
+              className="absolute z-30 max-w-[350px] sm:max-w-[375px] xl:max-w-[385px] left-4 md:left-6 lg:left-4 xl:left-8 top-1/2 -translate-y-1/2 rounded-2xl border border-white/85 bg-white/90 p-5 sm:p-6 text-center shadow-[0_20px_50px_rgba(11,29,58,0.25)] backdrop-blur-xl overflow-hidden"
             >
               <motion.div
                 aria-hidden="true"
@@ -314,7 +313,6 @@ export default function Section02Desktop() {
             </motion.div>
           </motion.div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
+    );
+  }

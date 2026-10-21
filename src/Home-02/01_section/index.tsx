@@ -1,3 +1,5 @@
-import Section01 from "../../Home/01_section";
-
-export default Section01;
+﻿import Desktop from "./desktop";
+import Mobile from "./mobile";
+export default function Section({ isMobile }: { isMobile: boolean }) {
+  return isMobile ? <Mobile /> : <Desktop />;
+}

@@ -51,7 +51,7 @@ export default function Mobile() {
   };
   return (
     <section
-      className="w-full px-4 pb-12 pt-2 flex flex-col items-center justify-center overflow-hidden text-center relative font-['Outfit']"
+      className="w-full px-4 pb-6 pt-2 flex flex-col items-center justify-center overflow-hidden text-center relative font-['Outfit'] shrink-0"
       style={{
         background: "linear-gradient(180deg, #FFFFFF 0%, #EEF4FF 100%)",
       }}
