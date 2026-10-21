@@ -1,0 +1,43 @@
+/* Mounted in the page viewport, outside its scrolling content. */
+.fare-coming-soon-track {
+  position: absolute;
+  inset: 10px 0 10px auto;
+  width: 52px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.fare-coming-soon-float {
+  position: absolute;
+  right: 0;
+  top: 0;
+  max-height: 100%;
+  pointer-events: auto;
+  animation: fare-coming-soon-travel 16s ease-in-out infinite alternate;
+}
+
+.fare-coming-soon-float:hover,
+.fare-coming-soon-float:focus-within {
+  animation-play-state: paused;
+}
+
+.fare-coming-soon-button {
+  max-height: 100%;
+}
+
+@keyframes fare-coming-soon-travel {
+  from { top: 0; transform: translateY(0); }
+  to { top: 100%; transform: translateY(-100%); }
+}
+
+@media (max-height: 320px) {
+  .fare-coming-soon-button { padding-block: 12px; gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fare-coming-soon-float {
+    animation: none;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

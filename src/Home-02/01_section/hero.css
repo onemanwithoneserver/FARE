@@ -19,12 +19,11 @@
 .fare-hero-subtitle { color: #546175; max-width: 370px; font-size: 16px; line-height: 1.7; margin: 16px 0 24px; }
 .fare-hero-intro:not(.fare-hero-telugu) .fare-hero-subtitle { max-width: none; font-size: min(16px, 3.4cqi); white-space: nowrap; }
 .fare-hero-actions { display: flex; align-items: center; gap: 24px; }
-.fare-hero-actions button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; min-height: 50px; transition: background .2s, transform .2s; }
+.fare-hero-actions button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; min-height: 50px; transition: background .2s, box-shadow .2s; }
 .fare-hero-primary { border: 1px solid #0b1d3a; border-radius: 10px; color: white; background: #0b1d3a; padding: 14px 23px; box-shadow: 0 6px 16px #0b1d3a16; }
-.fare-hero-primary:hover { background: #19385e; transform: translateY(-2px); }
-.fare-hero-video { color: #0b1d3a; background: transparent; border: 0; padding: 6px 0; }
+.fare-hero-primary:hover { background: #19385e; box-shadow: 0 10px 24px #0b1d3a26; }
+.fare-hero-video { color: #0b1d3a; background: #ffffff80; border: 1px solid #0b1d3a1a; border-radius: 10px; padding: 10px 18px; box-shadow: inset 0 1px 0 #ffffffcc, 0 2px 8px #0b1d3a05; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .fare-hero-video > span { display: grid; place-items: center; height: 32px; width: 32px; flex-shrink: 0; border-radius: 50%; background: #0b1d3a; color: white; }
-.fare-hero-video:hover > span { background: #2563eb; }
 .fare-hero-actions button:focus-visible { outline: 3px solid #2563eb; outline-offset: 5px; }
 .fare-hero-toolkit { border-bottom: 1px solid #0b1d3a14; margin-bottom: 16px; padding-bottom: 16px; }
 .fare-hero-toolkit > p { margin: 0 0 12px; font-size: 9px; letter-spacing: .13em; color: #657185; font-weight: 600; }
@@ -46,7 +45,8 @@
 .fare-hero-mobile .fare-hero-actions button { min-width: 0; min-height: 48px; gap: 8px; font-size: 12px; line-height: 1.4; }
 .fare-hero-mobile .fare-hero-telugu .fare-hero-actions button { overflow-wrap: anywhere; }
 .fare-hero-mobile .fare-hero-primary { padding: 12px; }
-.fare-hero-mobile .fare-hero-primary > svg { flex-shrink: 0; width: 16px; }
+.fare-hero-mobile .fare-hero-video { padding: 10px 8px; }
+.fare-hero-mobile .fare-hero-button-arrow svg { width: 16px; }
 .fare-hero-mobile .fare-hero-video > span { width: 25px; height: 25px; }
 .fare-hero-mobile .fare-hero-toolkit > p { font-size: 8px; letter-spacing: .08em; }
 .fare-hero-mobile .fare-hero-capabilities { gap: 12px; grid-template-columns: 1fr 1fr; }
@@ -77,36 +77,53 @@
   background: radial-gradient(ellipse at 18% 30%, #88b6f51c, transparent 45%), radial-gradient(ellipse at 80% 75%, #79c6c51a, transparent 45%);
   animation: fare-hero-ambient 12s ease-in-out infinite alternate;
 }
-.fare-hero-brand,
-.fare-hero-eyebrow,
-.fare-hero-title > span,
-.fare-hero-subtitle,
-.fare-hero-toolkit > p,
-.fare-hero-capabilities li,
-.fare-hero-actions {
-  animation: fare-hero-enter .65s cubic-bezier(.16, 1, .3, 1) backwards;
+.fare-hero-pointer-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 280px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, #bfd6f64d 0%, #b9dddd24 35%, transparent 70%);
 }
-.fare-hero-eyebrow { animation-delay: .08s; }
-.fare-hero-title > span:first-child { animation-delay: .16s; }
 .fare-hero-title > .fare-hero-gold {
   background: linear-gradient(110deg, #aa7a20 25%, #d7ad58 46%, #aa7a20 65%);
   background-size: 220% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  animation: fare-hero-enter .65s cubic-bezier(.16, 1, .3, 1) .24s backwards, fare-hero-shine 5s ease-in-out 1s 2;
+  position: relative;
+  animation: fare-hero-shine 6s ease-in-out 1s 2;
 }
-.fare-hero-subtitle { animation-delay: .32s; }
-.fare-hero-toolkit > p { animation-delay: .4s; }
-.fare-hero-capabilities li:nth-child(1) { animation-delay: .44s; }
-.fare-hero-capabilities li:nth-child(2) { animation-delay: .49s; }
-.fare-hero-capabilities li:nth-child(3) { animation-delay: .54s; }
-.fare-hero-capabilities li:nth-child(4) { animation-delay: .59s; }
-.fare-hero-capabilities li:nth-child(5) { animation-delay: .64s; }
-.fare-hero-capabilities li:nth-child(6) { animation-delay: .69s; }
-.fare-hero-actions { animation-delay: .76s; }
-.fare-hero-brand img { transform-origin: left center; transition: transform .35s ease, filter .35s ease; }
-.fare-hero-capability-icon { transition: transform .25s ease, box-shadow .25s ease; }
+.fare-hero-title-accent {
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 36%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #b58c3b80, #b58c3b00);
+  transform-origin: left;
+  pointer-events: none;
+}
+.fare-hero-brand img { transform-origin: left center; transition: filter .3s ease; }
+.fare-hero-capabilities li { position: relative; isolation: isolate; }
+.fare-hero-capabilities li::before {
+  content: "";
+  position: absolute;
+  inset: -5px -6px;
+  z-index: -1;
+  border: 1px solid #365f9e12;
+  border-radius: 10px;
+  background: linear-gradient(100deg, #ffffffd9, #eaf1fa66);
+  box-shadow: 0 4px 12px #0b1d3a05;
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+.fare-hero-capability-icon { transition: box-shadow .25s ease; }
 .fare-hero-capabilities li > span:last-child { transition: color .25s ease; }
 .fare-hero-primary { position: relative; isolation: isolate; overflow: hidden; }
 .fare-hero-primary::before {
@@ -118,31 +135,14 @@
   background: linear-gradient(110deg, transparent 25%, #ffffff26 50%, transparent 75%);
   transform: translateX(-110%);
 }
-.fare-hero-primary > svg { transition: transform .25s ease; }
-.fare-hero-video > span { position: relative; transition: background .25s ease, transform .25s ease; }
-.fare-hero-video > span::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border: 1px solid #365f9e60;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  animation: fare-hero-play-ring 1.8s ease-out 1.4s 2;
-}
+.fare-hero-button-arrow { display: inline-flex; align-items: center; flex-shrink: 0; }
 .fare-hero-primary:focus-visible::before { animation: fare-hero-button-shine .65s ease-out; }
-.fare-hero-primary:active { transform: scale(.98); }
 @media (hover: hover) and (pointer: fine) {
-  .fare-hero-brand img:hover { transform: translateY(-2px) scale(1.025); filter: drop-shadow(0 6px 9px #0b1d3a18); }
-  .fare-hero-capabilities li:hover .fare-hero-capability-icon { transform: translateY(-3px) rotate(-5deg); box-shadow: 0 6px 12px #0b1d3a20; }
+  .fare-hero-brand img:hover { filter: drop-shadow(0 6px 9px #0b1d3a18); }
+  .fare-hero-capabilities li:hover::before { opacity: 1; }
+  .fare-hero-capabilities li:hover .fare-hero-capability-icon { box-shadow: 0 6px 12px #0b1d3a20; }
   .fare-hero-capabilities li:hover > span:last-child { color: #365f9e; }
   .fare-hero-primary:hover::before { animation: fare-hero-button-shine .65s ease-out; }
-  .fare-hero-primary:hover > svg { transform: translateX(3px); }
-  .fare-hero-video:hover > span { transform: scale(1.08); }
-}
-@keyframes fare-hero-enter {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fare-hero-ambient {
   from { opacity: .5; transform: translate3d(-12px, -8px, 0); }
@@ -154,11 +154,6 @@
 }
 @keyframes fare-hero-button-shine {
   to { transform: translateX(110%); }
-}
-@keyframes fare-hero-play-ring {
-  0% { opacity: 0; transform: scale(.9); }
-  20% { opacity: .55; }
-  100% { opacity: 0; transform: scale(1.4); }
 }
 
 @media (max-width: 1150px) {
@@ -182,10 +177,5 @@
     transition: none !important;
   }
   .fare-hero-title > .fare-hero-gold { background: none; color: #aa7a20; }
-  .fare-hero-brand img:hover,
-  .fare-hero-capabilities li:hover .fare-hero-capability-icon,
-  .fare-hero-actions button:hover,
-  .fare-hero-actions button:active,
-  .fare-hero-primary:hover > svg,
-  .fare-hero-video:hover > span { transform: none; }
+  .fare-hero-pointer-glow { display: none; }
 }
