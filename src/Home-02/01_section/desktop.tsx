@@ -1,11 +1,9 @@
 import { motion } from "motion/react";
-import type { Variants } from "motion/react";
 import {
   BookOpen,
   Target,
   CheckCircle,
   ArrowRight,
-  Play,
   Search,
   Bell,
   Lock,
@@ -20,7 +18,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import logo from "../../Components/FARE_Logo/SVG/Primary Logo.svg";
-import primaryLogoTrimmed from "../../Components/FARE_Logo/SVG/Primary Logo Trimmed.svg";
+import HeroIntro from "./HeroIntro";
 import { getData } from "./data";
 import { useLanguage } from "../../context/LanguageContext";
 import React, { useState } from "react";
@@ -35,27 +33,9 @@ export default function Desktop() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const { language } = useLanguage();
   const data = getData(language);
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.15 },
-    },
-  };
-  const item: Variants = {
-    hidden: { opacity: 0, y: 18 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
   return (
     <section
-      className="w-full flex items-center justify-center overflow-hidden relative font-['Outfit'] pb-8 lg:pb-10 fare-noise-overlay shrink-0"
-      style={{
-        background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)`,
-      }}
+      className="fare-hero-desktop w-full flex items-center justify-center overflow-hidden relative shrink-0"
     >
       <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-[#DDEAFF]/60 to-transparent rounded-full blur-[100px] pointer-events-none z-0"></div>
       <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/[0.06] to-transparent rounded-full blur-[90px] pointer-events-none z-0"></div>
@@ -94,144 +74,10 @@ export default function Desktop() {
           fill="none"
         />
       </svg>
-      <div className="max-w-360 w-full px-12 flex items-center justify-between gap-10 relative z-20">
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="flex flex-col items-start w-[45%] min-w-[430px] max-w-[560px] relative z-40"
-        >
-          <motion.div variants={item} className="mb-5 relative">
-            <div className="absolute -inset-4 bg-gradient-radial from-[#C99A2E]/20 via-[#C99A2E]/5 to-transparent rounded-full blur-2xl pointer-events-none" />
-            <img
-              src={primaryLogoTrimmed}
-              alt="FARE - Skill Enhancement for Real Estate"
-              className="relative h-18 sm:h-20 lg:h-22 xl:h-24 w-auto object-contain filter drop-shadow-sm transition-transform duration-300 hover:scale-[1.02]"
-            />
-          </motion.div>
-
-          <h1
-            className={`font-black mb-4 flex flex-col gap-1 md:gap-1.5 ${
-              language === "te"
-                ? "text-[2.2rem] lg:text-[2.6rem] leading-[1.2] tracking-wider my-2"
-                : "text-[2.65rem] lg:text-[3.15rem] xl:text-[3.45rem] leading-[1.06] tracking-[-0.03em]"
-            }`}
-          >
-            <motion.div variants={item}>
-              <motion.span
-                animate={{ y: [0, -3.5, 0] }}
-                transition={{
-                  duration: 3.6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className={`block cursor-default ${language === "te" ? "py-0.5" : ""}`}
-                style={{ color: NAVY }}
-              >
-                {data.headline.line1}
-              </motion.span>
-            </motion.div>
-
-            <motion.div variants={item}>
-              <motion.span
-                animate={{
-                  y: [0, -4.5, 0],
-                  backgroundPosition: ["0% center", "200% center"],
-                }}
-                transition={{
-                  y: { duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.4 },
-                  backgroundPosition: { duration: 4.5, repeat: Infinity, ease: "linear" },
-                }}
-                className={`inline-block cursor-default ${language === "te" ? "py-0.5" : ""}`}
-                style={{
-                  background:
-                    "linear-gradient(110deg, #B8860B 0%, #C99A2E 25%, #FDE047 50%, #C99A2E 75%, #B8860B 100%)",
-                  backgroundSize: "200% auto",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  filter: "drop-shadow(0 2px 8px rgba(201,154,46,0.25))",
-                }}
-              >
-                {data.headline.line2}
-              </motion.span>
-            </motion.div>
-
-            <motion.div variants={item}>
-              <motion.span
-                animate={{ y: [0, -3.5, 0] }}
-                transition={{
-                  duration: 3.6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.8,
-                }}
-                className={`block cursor-default ${language === "te" ? "py-0.5" : ""}`}
-                style={{ color: NAVY }}
-              >
-                {data.headline.line3}
-              </motion.span>
-            </motion.div>
-          </h1>
-          <motion.div variants={item} className="mb-6">
-            <p
-              className="text-[16px] lg:text-[17px] font-medium leading-[1.65] max-w-[460px]"
-              style={{ color: "#3A4A63" }}
-            >
-              {data.subtitle}
-            </p>
-          </motion.div>
-          <motion.div variants={item} className="flex items-center gap-3.5 mb-6">
-            <button
-              className="text-white text-[13.5px] font-bold px-7 py-3.5 rounded-[8px] hover:luxury-shadow-float transition-all duration-300 flex items-center gap-2.5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out relative overflow-hidden group cursor-pointer"
-              style={{
-                background: NAVY,
-                boxShadow: `0 4px 14px rgba(11,29,58,0.18), 0 10px 28px rgba(11,29,58,0.1)`,
-              }}
-            >
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer" />
-              <span className="relative z-10">{data.buttons.primary}</span>
-              <span className={`relative inline-flex items-center justify-center shrink-0 w-[1em] h-[1em] ${"relative z-10 group-hover:translate-x-1"}`} style={{ fontSize: `${15}px` }}>
-                <ChevronRight size={15} strokeWidth={2.5} className="absolute inset-0 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-1" />
-                <ArrowRight size={15} strokeWidth={2.5} className="absolute inset-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-              </span>
-            </button>
-            <button
-              onClick={() => setIsVideoModalOpen(true)}
-              className="text-[13.5px] font-bold px-7 py-3.5 rounded-[8px] hover:bg-[#F8FAFD] transition-all duration-300 flex items-center gap-2.5 border hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ease-out cursor-pointer group hover:shadow-[0_4px_14px_rgba(11,29,58,0.06)]"
-              style={{
-                color: NAVY,
-                borderColor: `${NAVY}18`,
-                background: "white",
-                boxShadow: "0 1px 3px rgba(11,29,58,0.03)",
-              }}
-            >
-              <div className="w-5 h-5 rounded-full flex items-center justify-center transition-colors duration-300 group-hover:bg-[#C99A2E]/10 bg-[#0B1D3A]/5">
-                <Play size={10} className="ml-[1px] transition-colors duration-300 group-hover:text-[#C99A2E] text-[#0B1D3A]" fill="currentColor" />
-              </div>
-              <span>{data.buttons.secondary}</span>
-            </button>
-          </motion.div>
-          <motion.div
-            variants={item}
-            className="flex flex-wrap gap-2 mb-2 max-w-[480px]"
-          >
-            {data.capabilities.map((cap, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-[#0B1D3A]/[0.08] shadow-[0_2px_8px_rgba(11,29,58,0.04)] text-[#0B1D3A] text-[11.5px] font-semibold transition-all hover:bg-white hover:shadow-sm"
-              >
-                <span
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{ background: GOLD }}
-                ></span>
-                <span>{cap}</span>
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
+      <div className="fare-hero-layout">
+        <HeroIntro onPlay={() => setIsVideoModalOpen(true)} />
         <div
-          className="flex-1 relative flex items-center justify-end z-20"
+          className="fare-hero-preview-desktop flex-1 relative flex items-center justify-end z-20"
           style={{ minHeight: "600px" }}
         >
           <motion.div

@@ -9,9 +9,8 @@ import type { Language } from "../../context/LanguageContext";
 export const dataEn = {
   title: "01_section",
   headline: {
-    line1: "LEARN",
-    line2: "PRACTISE",
-    line3: "BUILD HABITS",
+    line1: "Build your skills.",
+    line2: "Grow your career.",
   },
   subtitle: "A custom learning platform built specifically for real estate.",
   capabilities: [
@@ -104,9 +103,8 @@ export const dataEn = {
 export const dataTe = {
   title: "01_section",
   headline: {
-    line1: "నేర్చుకోండి.",
-    line2: "ప్రాక్టీస్ చేయండి.",
-    line3: "అలవాట్లు పెంచుకోండి.",
+    line1: "నైపుణ్యం పెంచుకోండి.",
+    line2: "కెరీర్‌లో ఎదగండి.",
   },
   subtitle:
     "రియల్ ఎస్టేట్ కోసం ప్రత్యేకంగా నిర్మించిన కస్టమ్ లెర్నింగ్ ప్లాట్‌ఫారమ్.",
