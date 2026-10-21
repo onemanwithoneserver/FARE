@@ -31,7 +31,7 @@ export default function ComingSoonStickyBar({ isMobile = false }: { isMobile?: b
       <button
         type="button"
         onClick={scrollToSection}
-        className="flex min-h-11 w-full shrink-0 items-center justify-center gap-2.5 border-b border-[#C99A2E]/20 bg-[#F5EEDC] px-4 py-2 text-[11px] font-semibold text-[#70531A] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-[#0B1D3A]"
+        className="sticky top-0 z-[60] flex min-h-11 w-full shrink-0 items-center justify-center gap-2.5 border-b border-[#C99A2E]/20 bg-[#F5EEDC] px-4 py-2 text-[11px] font-semibold text-[#70531A] shadow-[0_2px_8px_rgba(11,29,58,0.06)] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-[#0B1D3A]"
       >
         <BellRing size={14} aria-hidden="true" />
         <span>{language === "te" ? "త్వరలో రాబోతోంది · వివరాలు తెలుసుకోండి" : "Coming soon · Discover what's next"}</span>

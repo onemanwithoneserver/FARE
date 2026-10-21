@@ -4,7 +4,7 @@ import ComingSoonStickyBar from "./ComingSoonStickyBar";
 
 export default function Home02({ isMobile }: { isMobile: boolean }) {
   return (
-    <div className="w-full min-h-full flex flex-col font-['Outfit'] relative">
+    <div className="w-full min-h-full shrink-0 flex flex-col font-['Outfit'] relative">
       <ComingSoonStickyBar isMobile={isMobile} />
       <div className="w-full shrink-0">
         <Section01 isMobile={isMobile} />

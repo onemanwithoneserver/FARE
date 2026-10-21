@@ -29,7 +29,7 @@ export default function Section02Mobile() {
     <section
       id="section-02-coming-soon-mobile"
       aria-label="FARE Coming Soon Section"
-      className="w-full relative overflow-hidden font-['Outfit'] fare-noise-overlay pt-3 pb-8 px-4 flex flex-col justify-center shrink-0"
+      className="w-full relative scroll-mt-14 overflow-hidden font-['Outfit'] fare-noise-overlay pt-3 pb-8 px-4 flex flex-col justify-center shrink-0"
       style={{
         background:
           "linear-gradient(165deg, #FFFFFF 0%, #F8FAFD 30%, #F0F4FF 60%, #E6EEFF 100%)",

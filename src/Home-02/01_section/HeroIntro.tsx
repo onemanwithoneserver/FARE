@@ -79,7 +79,7 @@ export default function HeroIntro({ mobile = false, onPlay }: { mobile?: boolean
 
   return (
     <motion.div
-      className="relative z-10 w-full min-w-0 font-['Outfit'] select-none"
+      className="@container relative z-10 w-full min-w-0 font-['Outfit'] select-none"
       variants={sequence}
       initial={reduceMotion ? false : "hidden"}
       whileInView="visible"
@@ -119,15 +119,16 @@ export default function HeroIntro({ mobile = false, onPlay }: { mobile?: boolean
       </motion.div>
 
       <motion.h1
-        className="m-0 text-[#0B1D3A] font-extrabold text-[30px] sm:text-[38px] md:text-[46px] lg:text-[52px] xl:text-[58px] tracking-[-0.045em] leading-[1.12]"
+        className="m-0 text-[#0B1D3A] font-extrabold text-[min(64px,11cqi)] tracking-[-0.045em] leading-[1.12]"
+        style={language === "te" ? { fontSize: "min(58px, 9cqi)" } : undefined}
         variants={sequence}
       >
-        <motion.span variants={reveal} className="block">
+        <motion.span variants={reveal} className="block whitespace-nowrap">
           {data.headline.line1}
         </motion.span>
         <motion.span
           variants={reveal}
-          className="relative inline-block mt-1"
+          className="relative block w-fit mt-1 whitespace-nowrap"
         >
           <span
             className="text-[#AA7A20] font-extrabold bg-gradient-to-r from-[#AA7A20] via-[#D7AD58] to-[#AA7A20] bg-clip-text text-transparent animate-gradient-x"
@@ -146,7 +147,8 @@ export default function HeroIntro({ mobile = false, onPlay }: { mobile?: boolean
       </motion.h1>
 
       <motion.p
-        className="text-[#546175] text-[15px] sm:text-[16px] leading-[1.7] mt-3.5 sm:mt-4 mb-5 sm:mb-6 max-w-[440px] font-medium"
+        className="text-[#546175] text-[min(16px,3.3cqi)] leading-[1.7] mt-3.5 sm:mt-4 mb-5 sm:mb-6 font-medium whitespace-nowrap"
+        style={language === "te" ? { fontSize: "min(16px, 3.15cqi)" } : undefined}
         variants={reveal}
       >
         {data.subtitle}
