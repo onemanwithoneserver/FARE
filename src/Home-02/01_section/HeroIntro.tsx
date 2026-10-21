@@ -7,12 +7,36 @@ import { getData } from "./data";
 import "./hero.css";
 
 const capabilityIcons = [
-  { icon: GraduationCap, color: "#365F9E" },
-  { icon: BookOpen, color: "#365F9E" },
-  { icon: HelpCircle, color: "#575C9E" },
-  { icon: Target, color: "#575C9E" },
-  { icon: CheckCheck, color: "#247977" },
-  { icon: ChartNoAxesCombined, color: "#247977" },
+  {
+    icon: GraduationCap,
+    bg: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+    shadow: "0 4px 12px rgba(37, 99, 235, 0.28)",
+  },
+  {
+    icon: BookOpen,
+    bg: "linear-gradient(135deg, #0284C7 0%, #0369A1 100%)",
+    shadow: "0 4px 12px rgba(2, 132, 199, 0.28)",
+  },
+  {
+    icon: HelpCircle,
+    bg: "linear-gradient(135deg, #FB923C 0%, #EA580C 100%)",
+    shadow: "0 4px 12px rgba(234, 88, 12, 0.32)",
+  },
+  {
+    icon: Target,
+    bg: "linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)",
+    shadow: "0 4px 12px rgba(124, 58, 237, 0.28)",
+  },
+  {
+    icon: CheckCheck,
+    bg: "linear-gradient(135deg, #10B981 0%, #047857 100%)",
+    shadow: "0 4px 12px rgba(16, 185, 129, 0.28)",
+  },
+  {
+    icon: ChartNoAxesCombined,
+    bg: "linear-gradient(135deg, #F43F5E 0%, #BE123C 100%)",
+    shadow: "0 4px 12px rgba(244, 63, 94, 0.28)",
+  },
 ];
 
 const reveal: Variants = {
@@ -113,17 +137,17 @@ export default function HeroIntro({ mobile = false, onPlay }: { mobile?: boolean
         <motion.p variants={reveal}>{language === "te" ? "మీ ఎదుగుదలకు కావలసినవన్నీ" : "ONE PLATFORM. EVERY STEP OF YOUR GROWTH."}</motion.p>
         <motion.ul className="fare-hero-capabilities" variants={sequence}>
           {data.capabilities.map((capability, index) => {
-            const { icon: Icon, color } = capabilityIcons[index];
+            const { icon: Icon, bg, shadow } = capabilityIcons[index];
             return (
               <motion.li key={capability} variants={reveal} whileHover={reduceMotion ? undefined : "hover"}>
                 <motion.span
                   className="fare-hero-capability-icon"
-                  style={{ backgroundColor: color }}
+                  style={{ background: bg, boxShadow: shadow }}
                   aria-hidden="true"
                   variants={iconInteraction}
                   transition={{ type: "spring", stiffness: 260, damping: 16 }}
                 >
-                  <Icon size={16} strokeWidth={1.8} />
+                  <Icon size={16} strokeWidth={2} />
                 </motion.span>
                 <span>{capability}</span>
               </motion.li>

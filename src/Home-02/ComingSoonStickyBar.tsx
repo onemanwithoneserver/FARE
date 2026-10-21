@@ -19,9 +19,9 @@ export default function ComingSoonStickyBar({ isMobile = false }: { isMobile?: b
     const el = document.getElementById(targetId);
     if (el) {
       el.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
-      el.classList.add("ring-4", "ring-[#C99A2E]", "ring-offset-4", "transition-all", "duration-500");
+      el.classList.add("ring-4", "ring-[#F97316]", "ring-offset-4", "transition-all", "duration-500");
       setTimeout(() => {
-        el.classList.remove("ring-4", "ring-[#C99A2E]", "ring-offset-4");
+        el.classList.remove("ring-4", "ring-[#F97316]", "ring-offset-4");
       }, 2500);
     }
   };
@@ -31,7 +31,7 @@ export default function ComingSoonStickyBar({ isMobile = false }: { isMobile?: b
       <button
         type="button"
         onClick={scrollToSection}
-        className="flex min-h-11 w-full shrink-0 items-center justify-center gap-2.5 border-b border-[#C99A2E]/20 bg-[#F5EEDC] px-4 py-2 text-[11px] font-semibold text-[#70531A] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-[#0B1D3A]"
+        className="flex min-h-11 w-full shrink-0 items-center justify-center gap-2.5 border-b border-[#F97316]/20 bg-[#FFF5EE] px-4 py-2 text-[11px] font-semibold text-[#C2410C] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-[#0B1D3A]"
       >
         <BellRing size={14} aria-hidden="true" />
         <span>{language === "te" ? "త్వరలో రాబోతోంది · వివరాలు తెలుసుకోండి" : "Coming soon · Discover what's next"}</span>
@@ -54,9 +54,9 @@ export default function ComingSoonStickyBar({ isMobile = false }: { isMobile?: b
               onClick={scrollToSection}
               whileHover={reduceMotion ? undefined : { x: -6 }}
               whileTap={reduceMotion ? undefined : { scale: 0.95 }}
-              className="fare-coming-soon-button relative overflow-hidden flex flex-col items-center gap-3 py-6 px-3 rounded-l-[10px] text-white border-l border-y border-white/40 cursor-pointer group shadow-[-10px_10px_30px_rgba(11,29,58,0.3)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-white"
+              className="fare-coming-soon-button relative overflow-hidden flex flex-col items-center gap-3 py-6 px-3 rounded-l-[10px] text-white border-l border-y border-white/40 cursor-pointer group shadow-[-10px_10px_30px_rgba(234,88,12,0.35)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-white"
               style={{
-                background: "linear-gradient(180deg, #D4AF37 0%, #C99A2E 40%, #A87A18 100%)",
+                background: "linear-gradient(180deg, #FF6B35 0%, #F97316 45%, #EA580C 100%)",
               }}
               aria-label="Scroll to Coming Soon section"
               title="Explore Coming Soon Section"

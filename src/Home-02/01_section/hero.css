@@ -115,16 +115,16 @@
   position: absolute;
   inset: -5px -6px;
   z-index: -1;
-  border: 1px solid #365f9e12;
+  border: 1px solid rgba(11, 29, 58, 0.07);
   border-radius: 10px;
-  background: linear-gradient(100deg, #ffffffd9, #eaf1fa66);
-  box-shadow: 0 4px 12px #0b1d3a05;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.7));
+  box-shadow: 0 4px 14px rgba(11, 29, 58, 0.05);
   opacity: 0;
   transition: opacity .25s ease;
   pointer-events: none;
 }
-.fare-hero-capability-icon { transition: box-shadow .25s ease; }
-.fare-hero-capabilities li > span:last-child { transition: color .25s ease; }
+.fare-hero-capability-icon { transition: transform .25s ease, box-shadow .25s ease; }
+.fare-hero-capabilities li > span:last-child { transition: color .2s ease; font-weight: 600; color: #1e293b; }
 .fare-hero-primary { position: relative; isolation: isolate; overflow: hidden; }
 .fare-hero-primary::before {
   content: "";
@@ -140,8 +140,8 @@
 @media (hover: hover) and (pointer: fine) {
   .fare-hero-brand img:hover { filter: drop-shadow(0 6px 9px #0b1d3a18); }
   .fare-hero-capabilities li:hover::before { opacity: 1; }
-  .fare-hero-capabilities li:hover .fare-hero-capability-icon { box-shadow: 0 6px 12px #0b1d3a20; }
-  .fare-hero-capabilities li:hover > span:last-child { color: #365f9e; }
+  .fare-hero-capabilities li:hover .fare-hero-capability-icon { transform: translateY(-2px) scale(1.05); }
+  .fare-hero-capabilities li:hover > span:last-child { color: #0b1d3a; }
   .fare-hero-primary:hover::before { animation: fare-hero-button-shine .65s ease-out; }
 }
 @keyframes fare-hero-ambient {
