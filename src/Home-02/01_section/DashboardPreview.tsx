@@ -45,34 +45,52 @@ export default function DashboardPreview({ mobile = false }: { mobile?: boolean 
     return () => observer.disconnect();
   }, [mobile]);
 
+  const mobileScale = Math.min(0.52, Math.max(0.46, (previewWidth || 360) / 740));
+
   return (
     <div
       ref={viewportRef}
-      className={mobile ? "fare-dashboard-preview fare-dashboard-preview-mobile" : "fare-dashboard-preview"}
+      className={
+        mobile
+          ? "relative w-full flex justify-center mt-2 z-20 h-[245px] sm:h-[265px] select-none"
+          : "w-full relative flex-1"
+      }
       role="img"
       aria-label={language === "te" ? "FARE ప్లాట్‌ఫారమ్ ప్రివ్యూ: కోర్సులు, క్విజ్‌లు, స్కిల్ ప్రాక్టీస్, హ్యాబిట్ ట్రాకర్ మరియు షెడ్యూల్" : "FARE platform preview with courses, quizzes, skill practice, habit tracking, and upcoming schedule"}
     >
       <div
-        className="fare-dashboard-preview-stage"
+        className={
+          mobile
+            ? "max-w-none"
+            : "w-full relative flex items-center justify-end z-20"
+        }
         aria-hidden="true"
-        style={mobile ? { transform: `scale(${previewWidth / 840})` } : undefined}
+        style={
+          mobile
+            ? {
+                width: "760px",
+                transform: `scale(${mobileScale})`,
+                transformOrigin: "top center",
+              }
+            : { minHeight: "600px" }
+        }
       >
         <div
-          className="fare-hero-preview-desktop flex-1 relative flex items-center justify-end z-20"
-          style={{ minHeight: "600px" }}
+          className={mobile ? "w-full relative flex items-center justify-center z-20" : "w-full relative"}
+          style={mobile ? { minHeight: "480px" } : undefined}
         >
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 40, scale: 0.95, rotateY: 5, rotateX: 3 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1, rotateY: 5, rotateX: 3 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 30, scale: 0.97, rotateY: 4, rotateX: 2 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1, rotateY: 4, rotateX: 2 }}
             whileHover={reduceMotion ? undefined : { scale: 1.01, rotateY: 2, rotateX: 1, y: -5 }}
             viewport={{ once: true }}
             transition={{ duration: reduceMotion ? 0 : 0.8, ease: "easeOut" }}
-            className="relative w-full max-w-[780px] safari-shadow rounded-[4px] overflow-hidden bg-white/80 backdrop-blur-md"
+            className={`relative ${mobile ? "w-[760px]" : "w-full max-w-[780px]"} safari-shadow rounded-[4px] overflow-hidden bg-white/80 backdrop-blur-md`}
             style={{
               transformPerspective: 2000,
               border: "1px solid rgba(11, 29, 58, 0.08)",
               boxShadow:
-                "0 30px 60px -12px rgba(11,29,58,0.25), 0 18px 36px -18px rgba(11,29,58,0.15)",
+                "0 20px 40px -10px rgba(11,29,58,0.2), 0 10px 20px -10px rgba(11,29,58,0.1)",
             }}
           >
             <div className="glass-safari border-b border-black/[0.06]">
@@ -249,7 +267,7 @@ export default function DashboardPreview({ mobile = false }: { mobile?: boolean 
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="absolute top-6 left-[-45px] z-30 pointer-events-auto"
+            className={`absolute ${mobile ? "top-1 -left-2" : "top-6 left-[-45px]"} z-30 pointer-events-auto`}
           >
             <motion.div
               animate={reduceMotion ? { y: 0 } : { y: [0, -10, 0] }}
@@ -280,7 +298,7 @@ export default function DashboardPreview({ mobile = false }: { mobile?: boolean 
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="absolute top-24 -right-4 z-30"
+            className={`absolute ${mobile ? "top-14 -right-1" : "top-24 -right-4"} z-30`}
           >
             <motion.div
               animate={reduceMotion ? { y: 0 } : { y: [0, -15, 0] }}
@@ -319,7 +337,7 @@ export default function DashboardPreview({ mobile = false }: { mobile?: boolean 
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 1.1, duration: 0.6 }}
-            className="absolute bottom-16 right-0 z-30"
+            className={`absolute ${mobile ? "bottom-2 right-1" : "bottom-16 right-0"} z-30`}
           >
             <motion.div
               animate={reduceMotion ? { y: 0 } : { y: [0, -10, 0] }}
@@ -363,7 +381,7 @@ export default function DashboardPreview({ mobile = false }: { mobile?: boolean 
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 1.8, duration: 1.2 }}
-            className="absolute bottom-1 right-6 z-20 -rotate-[3deg] pointer-events-none"
+            className={`absolute ${mobile ? "-bottom-8 right-3 -rotate-[4deg]" : "bottom-1 right-6 -rotate-[3deg]"} z-20 pointer-events-none`}
           >
             <span
               className="text-[24px] xl:text-[26px] italic font-semibold drop-shadow-sm whitespace-pre-line leading-[1.3] block"
