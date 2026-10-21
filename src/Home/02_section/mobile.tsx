@@ -146,7 +146,7 @@ export default function Mobile() {
             </div>
           </div>
 
-          <div className="relative z-30 w-full max-w-[360px] rounded-2xl border border-white/85 bg-white/95 backdrop-blur-xl p-5 sm:p-6 text-center shadow-[0_16px_40px_rgba(11,29,58,0.25)]">
+          <div className="relative z-30 w-full max-w-[360px] mb-6 sm:mb-8 rounded-2xl border border-white/85 bg-white/95 backdrop-blur-xl p-5 sm:p-6 text-center shadow-[0_16px_40px_rgba(11,29,58,0.25)]">
             <div className="w-full flex items-center justify-center overflow-hidden h-22 sm:h-24 mb-1">
               <img
                 src={primaryLogo}
