@@ -5,12 +5,12 @@ import { getData } from "./data";
 import "./hero.css";
 
 const capabilityIcons = [
-  { icon: GraduationCap, color: "#2563EB" },
-  { icon: BookOpen, color: "#0891B2" },
-  { icon: HelpCircle, color: "#7C3AED" },
-  { icon: Target, color: "#0F766E" },
-  { icon: CheckCheck, color: "#4F46E5" },
-  { icon: ChartNoAxesCombined, color: "#334155" },
+  { icon: GraduationCap, color: "#365F9E" },
+  { icon: BookOpen, color: "#365F9E" },
+  { icon: HelpCircle, color: "#575C9E" },
+  { icon: Target, color: "#575C9E" },
+  { icon: CheckCheck, color: "#247977" },
+  { icon: ChartNoAxesCombined, color: "#247977" },
 ];
 
 export default function HeroIntro({ mobile = false, onPlay }: { mobile?: boolean; onPlay: () => void }) {
