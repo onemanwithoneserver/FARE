@@ -52,7 +52,7 @@ export default function Desktop() {
   };
   return (
     <section
-      className="w-full flex items-center justify-center overflow-hidden relative font-['Outfit'] pb-6 lg:pb-8 fare-noise-overlay shrink-0"
+      className="w-full flex items-center justify-center overflow-hidden relative font-['Outfit'] pb-8 lg:pb-10 fare-noise-overlay shrink-0"
       style={{
         background: `linear-gradient(135deg, #FFFFFF 0%, #F8FAFD 50%, #EEF4FF 100%)`,
       }}
@@ -99,7 +99,7 @@ export default function Desktop() {
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           className="flex flex-col items-start w-[45%] min-w-[430px] max-w-[560px] relative z-40"
         >
           <motion.div variants={item} className="mb-5 relative">
@@ -118,26 +118,60 @@ export default function Desktop() {
                 : "text-[2.65rem] lg:text-[3.15rem] xl:text-[3.45rem] leading-[1.06] tracking-[-0.03em]"
             }`}
           >
-            <motion.span
-              variants={item}
-              className={`block ${language === "te" ? "py-0.5" : ""}`}
-              style={{ color: NAVY }}
-            >
-              {data.headline.line1}
-            </motion.span>
-            <motion.span
-              variants={item}
-              className={`inline-block text-[#C99A2E] ${language === "te" ? "py-0.5" : ""}`}
-            >
-              {data.headline.line2}
-            </motion.span>
-            <motion.span
-              variants={item}
-              className={`block ${language === "te" ? "py-0.5" : ""}`}
-              style={{ color: NAVY }}
-            >
-              {data.headline.line3}
-            </motion.span>
+            <motion.div variants={item}>
+              <motion.span
+                animate={{ y: [0, -3.5, 0] }}
+                transition={{
+                  duration: 3.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className={`block cursor-default ${language === "te" ? "py-0.5" : ""}`}
+                style={{ color: NAVY }}
+              >
+                {data.headline.line1}
+              </motion.span>
+            </motion.div>
+
+            <motion.div variants={item}>
+              <motion.span
+                animate={{
+                  y: [0, -4.5, 0],
+                  backgroundPosition: ["0% center", "200% center"],
+                }}
+                transition={{
+                  y: { duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.4 },
+                  backgroundPosition: { duration: 4.5, repeat: Infinity, ease: "linear" },
+                }}
+                className={`inline-block cursor-default ${language === "te" ? "py-0.5" : ""}`}
+                style={{
+                  background:
+                    "linear-gradient(110deg, #B8860B 0%, #C99A2E 25%, #FDE047 50%, #C99A2E 75%, #B8860B 100%)",
+                  backgroundSize: "200% auto",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  filter: "drop-shadow(0 2px 8px rgba(201,154,46,0.25))",
+                }}
+              >
+                {data.headline.line2}
+              </motion.span>
+            </motion.div>
+
+            <motion.div variants={item}>
+              <motion.span
+                animate={{ y: [0, -3.5, 0] }}
+                transition={{
+                  duration: 3.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.8,
+                }}
+                className={`block cursor-default ${language === "te" ? "py-0.5" : ""}`}
+                style={{ color: NAVY }}
+              >
+                {data.headline.line3}
+              </motion.span>
+            </motion.div>
           </h1>
           <motion.div variants={item} className="mb-6">
             <p
@@ -204,7 +238,7 @@ export default function Desktop() {
             initial={{ opacity: 0, y: 40, scale: 0.95, rotateY: 5, rotateX: 3 }}
             whileInView={{ opacity: 1, y: 0, scale: 1, rotateY: 5, rotateX: 3 }}
             whileHover={{ scale: 1.01, rotateY: 2, rotateX: 1, y: -5 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative w-full max-w-[780px] safari-shadow rounded-[4px] overflow-hidden bg-white/80 backdrop-blur-md"
             style={{
@@ -386,7 +420,7 @@ export default function Desktop() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.6 }}
             className="absolute top-6 left-[-45px] z-30 pointer-events-auto"
           >
@@ -417,7 +451,7 @@ export default function Desktop() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ delay: 0.7, duration: 0.6 }}
             className="absolute top-24 -right-4 z-30"
           >
@@ -456,12 +490,12 @@ export default function Desktop() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ delay: 1.1, duration: 0.6 }}
-            className="absolute bottom-4 right-0 z-30"
+            className="absolute bottom-16 right-0 z-30"
           >
             <motion.div
-              animate={{ y: [0, -12, 0] }}
+              animate={{ y: [0, -10, 0] }}
               transition={{
                 duration: 5.5,
                 repeat: Infinity,
@@ -500,16 +534,17 @@ export default function Desktop() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ delay: 1.8, duration: 1.2 }}
-            className="absolute -bottom-12 right-4 z-30 -rotate-[4deg]"
+            className="absolute bottom-1 right-6 z-20 -rotate-[3deg] pointer-events-none"
           >
             <span
-              className="text-[26px] italic font-medium drop-shadow-sm whitespace-pre-line"
+              className="text-[24px] xl:text-[26px] italic font-semibold drop-shadow-sm whitespace-pre-line leading-[1.3] block"
               style={{
-                color: GOLD,
+                color: "#C99A2E",
                 fontFamily: "'Georgia', 'Times New Roman', serif",
-                opacity: 0.7,
+                textShadow: "0 1px 4px rgba(201,154,46,0.25)",
+                opacity: 0.95,
               }}
             >
               {data.signature}
