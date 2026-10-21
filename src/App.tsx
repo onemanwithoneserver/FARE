@@ -71,7 +71,7 @@ export default function App() {
         />
       )}
       <main
-        className={`flex-1 w-full overflow-hidden bg-[#f0f2f5] relative ${isHeaderVisible ? "h-[calc(100vh-60px)]" : "h-screen"}`}
+        className="flex-1 min-h-0 w-full overflow-hidden bg-fare-bg relative"
       >
         <MobileViewport isMobile={isMobile}>
           <Routes>
