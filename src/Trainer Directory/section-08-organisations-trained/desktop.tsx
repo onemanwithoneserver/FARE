@@ -51,12 +51,12 @@ export default function Desktop() {
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-40px" }}
+        viewport={{ once: true, amount: 0.05 }}
         className="max-w-[1200px] w-full relative z-10"
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-10">
           <div className="w-[4px] h-7 rounded-full" style={{ background: `linear-gradient(to bottom, ${GOLD}, ${GOLD_MID})` }} />
-          <h2 className=" text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Experience \u0026amp; Track Record")}</h2>
+          <h2 className=" text-[#0B1D3A] text-[28px] font-black tracking-[-0.02em]">{t("Experience & Track Record")}</h2>
         </motion.div>
 
         <div className="mx-auto w-full max-w-[1040px]">
@@ -68,7 +68,7 @@ export default function Desktop() {
             <motion.div
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="absolute bottom-8 left-[100px] top-8 w-[2px] origin-top"
               style={{

@@ -65,7 +65,7 @@ export default function Mobile() {
         className="w-full flex flex-col items-center relative z-40"
       >
         <h1
-          className={`font-black mb-3.5 flex flex-col gap-1 sm:gap-1.5 ${
+          className={`font-black mb-3.5 flex flex-col gap-1 ${
             language === "te"
               ? "text-[2.1rem] leading-[1.25] tracking-wide my-1.5"
               : "text-[2.65rem] leading-[1.08] tracking-[-0.02em]"
@@ -147,7 +147,7 @@ export default function Mobile() {
             </div>
           ))}
         </motion.div>
-        <div className="relative w-full flex justify-center mt-2 z-20 h-[235px] sm:h-[250px]">
+        <div className="relative w-full flex justify-center mt-2 z-20 h-[235px] ">
           <div
             style={{
               transform: "scale(0.44)",

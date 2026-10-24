@@ -19,7 +19,7 @@ export default function Mobile() {
         initial="hidden"
         whileInView="show"
         viewport={VIEWPORT}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1200px] mx-auto"
+        className="grid grid-cols-1 gap-6 max-w-[1200px] mx-auto"
       >
         {data.cards.map((card: any, i: number) => {
           const a = accentAt(i);
@@ -28,7 +28,7 @@ export default function Mobile() {
             <motion.article
               key={i}
               variants={fadeUp}
-              className={`${CARD_BASE} ${CARD_HOVER} p-7 lg:p-8 overflow-hidden flex flex-col`}
+              className={`${CARD_BASE} ${CARD_HOVER} p-7 overflow-hidden flex flex-col`}
             >
               <AccentHairline accent={a} />
               <HoverGlow accent={a} />
@@ -38,8 +38,8 @@ export default function Mobile() {
                 <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-[#64748B] pt-0.5">{card.tag}</span>
               </div>
               
-              <h3 className="text-[19px] lg:text-[21px] font-bold text-[#0B1D3A] mb-3 leading-snug">{card.title}</h3>
-              <p className="text-[15px] lg:text-[16px] text-[#475569] font-medium leading-[1.6] flex-grow">{card.desc}</p>
+              <h3 className="text-[19px] font-bold text-[#0B1D3A] mb-3 leading-snug">{card.title}</h3>
+              <p className="text-[15px] text-[#475569] font-medium leading-[1.6] flex-grow">{card.desc}</p>
             </motion.article>
           );
         })}

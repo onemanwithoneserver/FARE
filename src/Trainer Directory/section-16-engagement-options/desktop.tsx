@@ -71,7 +71,7 @@ export default function Desktop({ onRequestPricing }: { onRequestPricing?: () =>
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-40px" }}
+        viewport={{ once: true, amount: 0.05 }}
         className="max-w-[1200px] w-full relative z-10"
       >
         <motion.div variants={item} className="flex items-center gap-4 mb-4">

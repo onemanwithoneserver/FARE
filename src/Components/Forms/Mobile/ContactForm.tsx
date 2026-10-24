@@ -27,14 +27,14 @@ export default function ContactForm() {
     );
   }
   return (
-    <div className="p-8 md:p-12 bg-white flex flex-col relative overflow-hidden">
+    <div className="p-8 bg-white flex flex-col relative overflow-hidden">
       <div className="max-w-2xl mx-auto w-full relative z-10">
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-[#F8FAFD] flex items-center justify-center border border-[#0B1D3A]/10">
               <MessageSquare size={18} className="text-[#0B1D3A]" />
             </div>
-            <h2 className="text-[#0B1D3A] text-2xl md:text-3xl font-black ">
+            <h2 className="text-[#0B1D3A] text-2xl font-black ">
               Get in{" "}
               <span className="text-[#C99A2E] gold-underline">Touch</span>
             </h2>
@@ -45,7 +45,7 @@ export default function ContactForm() {
           </p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             <div className="relative group">
               <input
                 required
@@ -111,7 +111,7 @@ export default function ContactForm() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full sm:w-auto px-10 py-4 mt-6 bg-[#0B1D3A] text-white rounded-full font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_8px_16px_-8px_rgba(11,29,58,0.4)] hover:luxury-shadow-float transition-all ml-auto"
+            className="w-full px-10 py-4 mt-6 bg-[#0B1D3A] text-white rounded-full font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_8px_16px_-8px_rgba(11,29,58,0.4)] hover:luxury-shadow-float transition-all ml-auto"
           >
             Send Message <Send size={16} />
           </motion.button>

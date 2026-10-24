@@ -51,7 +51,7 @@ export default function Mobile() {
               {data.overline}
             </span>
           </motion.div>
-          <motion.h2 variants={item} className="text-[#0B1D3A] text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }} >
+          <motion.h2 variants={item} className="text-[#0B1D3A] text-[2rem] leading-[1.12] font-black tracking-[-0.02em] mb-4" style={{ color: NAVY }} >
             {data.headline.split(" ").map((word, i, arr) => (
               <span
                 key={i}
@@ -111,7 +111,7 @@ export default function Mobile() {
               );
             })}
           </div>
-          <div className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-6 sm:p-8 relative overflow-hidden luxury-shadow-float">
+          <div className="bg-white border border-[#0B1D3A]/[0.06] rounded-[4px] p-6 relative overflow-hidden luxury-shadow-float">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}

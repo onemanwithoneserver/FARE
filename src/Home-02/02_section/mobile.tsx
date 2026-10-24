@@ -41,7 +41,7 @@ export default function Section02Mobile() {
             {data.headline}
           </h2>
 
-          <p className="text-xs sm:text-sm font-normal text-[#475569] leading-relaxed">
+          <p className="text-xs font-normal text-[#475569] leading-relaxed">
             {data.subtitle}
           </p>
         </div>
@@ -116,7 +116,7 @@ export default function Section02Mobile() {
               <div className="w-7 h-7 rounded-full bg-[#C99A2E] text-white flex items-center justify-center shrink-0 shadow-2xs">
                 <Mail size={13} strokeWidth={2.4} className="text-white" />
               </div>
-              <span className="text-[11px] sm:text-xs font-bold text-[#0B1D3A] tracking-tight truncate">
+              <span className="text-[11px] font-bold text-[#0B1D3A] tracking-tight truncate">
                 {data.contact.email}
               </span>
             </a>
@@ -129,7 +129,7 @@ export default function Section02Mobile() {
               <div className="w-7 h-7 rounded-full bg-[#2563EB] text-white flex items-center justify-center shrink-0 shadow-2xs">
                 <Phone size={13} strokeWidth={2.4} className="text-white" />
               </div>
-              <span className="text-[11px] sm:text-xs font-bold text-[#0B1D3A] tracking-tight truncate">
+              <span className="text-[11px] font-bold text-[#0B1D3A] tracking-tight truncate">
                 {data.contact.phone}
               </span>
             </a>
@@ -140,7 +140,7 @@ export default function Section02Mobile() {
           </p>
         </div>
 
-        <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-white/90 flex flex-col items-center justify-end p-4 pt-16 pb-4 min-h-[500px] sm:min-h-[530px]">
+        <div className="relative w-full rounded-2xl overflow-hidden shadow-xl border border-white/90 flex flex-col items-center justify-end p-4 pt-16 pb-4 min-h-[500px] ">
           <img
             src={coursesHero}
             alt="FARE Experts"
@@ -162,15 +162,15 @@ export default function Section02Mobile() {
             </div>
           </div>
 
-          <div className="relative z-30 w-full max-w-[360px] mb-6 sm:mb-8 rounded-2xl border border-white/85 bg-white/95 backdrop-blur-xl p-5 sm:p-6 text-center shadow-[0_16px_40px_rgba(11,29,58,0.25)]">
+          <div className="relative z-30 w-full max-w-[360px] mb-6 rounded-2xl border border-white/85 bg-white/95 backdrop-blur-xl p-5 text-center shadow-[0_16px_40px_rgba(11,29,58,0.25)]">
             <div className="w-full flex items-center justify-center mb-2">
               <img
                 src={primaryLogo}
                 alt="FARE Logo"
-                className="w-[210px] sm:w-[230px] max-w-[85%] h-auto object-contain filter drop-shadow-xs"
+                className="w-[210px] max-w-[85%] h-auto object-contain filter drop-shadow-xs"
               />
             </div>
-            <h3 className="text-xl sm:text-2xl font-black text-[#0B1D3A] tracking-tight mb-3">
+            <h3 className="text-xl font-black text-[#0B1D3A] tracking-tight mb-3">
               {data.comingSoonCard.title}
             </h3>
 

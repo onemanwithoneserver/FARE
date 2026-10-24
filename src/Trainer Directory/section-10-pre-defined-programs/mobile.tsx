@@ -41,7 +41,7 @@ export default function Mobile() {
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-40px" }}
+        viewport={{ once: true, amount: 0.05 }}
         className="relative z-10 w-full"
       >
         <div className="flex items-end justify-between mb-8">

@@ -50,7 +50,7 @@ export default function RETrainersForm() {
     );
   }
   return (
-    <div className="p-8 md:p-12 bg-gradient-to-br from-white via-[#F8FAFD] to-[#EEF4FF] flex flex-col relative overflow-hidden">
+    <div className="p-8 bg-gradient-to-br from-white via-[#F8FAFD] to-[#EEF4FF] flex flex-col relative overflow-hidden">
       <div className="absolute top-[-20%] left-[-10%] w-[400px] h-[400px] bg-gradient-radial from-[#3B82F6]/[0.05] to-transparent rounded-full blur-[60px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] bg-gradient-radial from-[#C99A2E]/[0.05] to-transparent rounded-full blur-[50px] pointer-events-none" />
       <div className="flex items-center gap-4 mb-8 relative z-10">
@@ -58,7 +58,7 @@ export default function RETrainersForm() {
           <GraduationCap size={28} />
         </div>
         <div>
-          <h2 className="text-[#0B1D3A] text-2xl md:text-3xl font-black leading-tight">
+          <h2 className="text-[#0B1D3A] text-2xl font-black leading-tight">
             Trainer{" "}
             <span className="text-[#3B82F6] underline decoration-[#3B82F6]/30 decoration-[3px] underline-offset-4">
               Registration
@@ -70,7 +70,7 @@ export default function RETrainersForm() {
         </div>
       </div>
       <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           <div className="space-y-2">
             <label className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-wider">
               Full Name

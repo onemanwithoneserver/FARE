@@ -146,7 +146,7 @@ export default function Mobile() {
         className="w-full max-w-[480px] relative z-20"
       >
         <div
-          className="w-full rounded-[4px] pt-9 pb-8 px-4.5 sm:px-6 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-float"
+          className="w-full rounded-[4px] pt-9 pb-8 px-4.5 flex flex-col items-center text-center relative overflow-hidden luxury-shadow-float"
           style={{
             background:
               "linear-gradient(135deg, rgba(8,22,48,0.96) 0%, rgba(4,12,30,0.98) 100%)",

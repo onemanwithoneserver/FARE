@@ -43,7 +43,7 @@ export default function Mobile() {
       />
       <div className="w-full px-5 relative z-10">
         <div className="flex flex-col items-center text-center mb-10">
-          <h2 className="text-[#0B1D3A] text-[2rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.02em] mb-4 bg-clip-text text-transparent bg-gradient-to-b from-[#0B1D3A] to-[#0B1D3A]/70 tracking-tight">
+          <h2 className="text-[#0B1D3A] text-[2rem] leading-[1.12] font-black tracking-[-0.02em] mb-4 bg-clip-text text-transparent bg-gradient-to-b from-[#0B1D3A] to-[#0B1D3A]/70 tracking-tight">
             {data.headline}
           </h2>
           <p className="text-[14.5px] font-medium leading-[1.65] text-[#475569]">
@@ -123,7 +123,7 @@ export default function Mobile() {
                               {section.heading}
                             </h4>
                             <ul
-                              className={`grid relative z-10 ${section.items.length > 3 ? "grid-cols-1 sm:grid-cols-2 gap-2.5" : "grid-cols-1 gap-2.5"}`}
+                              className={`grid relative z-10 ${section.items.length > 3 ? "grid-cols-1 gap-2.5" : "grid-cols-1 gap-2.5"}`}
                             >
                               {section.items.map((item: string, i: number) => (
                                 <li

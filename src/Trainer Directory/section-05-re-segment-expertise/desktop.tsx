@@ -88,7 +88,7 @@ export default function Desktop() {
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-40px" }}
+        viewport={{ once: true, amount: 0.05 }}
         className="max-w-[1200px] w-full grid grid-cols-3 gap-8 relative z-10"
       >
         

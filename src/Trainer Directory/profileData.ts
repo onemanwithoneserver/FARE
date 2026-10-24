@@ -467,7 +467,6 @@ const profileTranslations: Record<string, string> = {
   "Primary Language": "ప్రధాన భాష",
   "Secondary Languages": "ఇతర భాషలు",
   "Experience & Track Record": "అనుభవం & పని రికార్డు",
-  "Experience &amp; Track Record": "అనుభవం & పని రికార్డు",
   "Selected Engagements": "ఎంచుకున్న శిక్షణ కార్యక్రమాలు",
   "Training Delivery": "శిక్షణ అందించే విధానం",
   "Training Durations": "శిక్షణ వ్యవధులు",

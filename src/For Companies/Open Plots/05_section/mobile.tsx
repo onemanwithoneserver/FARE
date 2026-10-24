@@ -23,7 +23,7 @@ export default function Mobile() {
         initial="hidden"
         whileInView="show"
         viewport={VIEWPORT}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto mb-10"
+        className="grid grid-cols-1 gap-6 max-w-[1200px] mx-auto mb-10"
       >
         {data.testAreas.map((area: string, i: number) => {
           const a = accentAt(i);

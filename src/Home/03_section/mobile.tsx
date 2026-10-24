@@ -145,7 +145,7 @@ export default function Mobile() {
                 />
                 <button
                   onClick={() => toggleCard(persona.id)}
-                  className="w-full p-4.5 sm:p-5 flex items-center justify-between gap-3 text-left cursor-pointer"
+                  className="w-full p-4.5 flex items-center justify-between gap-3 text-left cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <div className="flex items-center gap-3.5">
@@ -157,7 +157,7 @@ export default function Mobile() {
                     >
                       {getIcon(persona.id, 20)}
                     </div>
-                    <h3 className="text-[16px] sm:text-[17px] font-black tracking-tight text-[#0B1D3A] leading-tight">
+                    <h3 className="text-[16px] font-black tracking-tight text-[#0B1D3A] leading-tight">
                       {persona.tag}
                     </h3>
                   </div>

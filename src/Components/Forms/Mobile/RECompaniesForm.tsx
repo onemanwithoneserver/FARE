@@ -27,14 +27,14 @@ export default function RECompaniesForm() {
     );
   }
   return (
-    <div className="p-8 md:p-12 bg-white flex flex-col relative overflow-hidden">
+    <div className="p-8 bg-white flex flex-col relative overflow-hidden">
       <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-gradient-radial from-[#0B1D3A]/[0.03] to-transparent rounded-full blur-[60px] pointer-events-none" />
       <div className="max-w-2xl mx-auto w-full relative z-10">
         <div className="mb-10 text-center">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-[16px] bg-[#0B1D3A]/5 text-[#0B1D3A] mb-5">
             <Building2 size={24} />
           </div>
-          <h2 className="text-[#0B1D3A] text-3xl md:text-4xl font-black leading-tight mb-3">
+          <h2 className="text-[#0B1D3A] text-3xl font-black leading-tight mb-3">
             Partner with{" "}
             <span className="text-[#C99A2E] gold-underline">FARE</span>
           </h2>
@@ -44,7 +44,7 @@ export default function RECompaniesForm() {
           </p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             <div className="space-y-2">
               <label className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-wider">
                 Company Name
@@ -68,7 +68,7 @@ export default function RECompaniesForm() {
               />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             <div className="space-y-2">
               <label className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-wider">
                 Work Email
@@ -96,7 +96,7 @@ export default function RECompaniesForm() {
             <label className="text-[12px] font-bold text-[#0B1D3A] uppercase tracking-wider">
               Team Size (Sales & Channel Partners)
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 gap-3">
               {["1-10", "11-50", "51-200", "200+"].map((size) => (
                 <label
                   key={size}

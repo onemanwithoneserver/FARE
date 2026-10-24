@@ -169,7 +169,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
 
   if (selectedTrainerId) {
     return (
-      <div ref={profileContainerRef} className="w-full flex flex-col min-h-screen bg-[#F8FAFD] font-['Outfit']">
+      <div ref={profileContainerRef} className="w-full flex flex-col min-h-screen shrink-0 bg-[#F8FAFD] font-['Outfit']">
         <Header isMobile={isMobile} />
         <TrainerProfile isMobile={isMobile} onBack={() => setSelectedTrainerId(null)} trainerId={selectedTrainerId} />
         <Footer isMobile={isMobile} />
@@ -178,7 +178,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
   }
 
   return (
-    <div className="w-full min-h-screen bg-[#F8FAFD] flex flex-col font-['Outfit']">
+    <div className="w-full min-h-screen shrink-0 bg-[#F8FAFD] flex flex-col font-['Outfit']">
       <Header isMobile={isMobile} />
 
       <section
@@ -519,7 +519,7 @@ export default function TrainerDirectory({ isMobile }: TrainerDirectoryProps) {
                   key={trainer.uniqueId}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
+                  viewport={{ once: true, amount: 0.05 }}
                   transition={{ duration: 0.6, delay: (index % 6) * 0.06, ease: [0.16, 1, 0.3, 1] }}
                   className="h-full"
                 >

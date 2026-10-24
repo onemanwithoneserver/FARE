@@ -41,7 +41,7 @@ export default function Desktop({ onBack }: TrainerProfileProps) {
   const [isRequestFormOpen, setIsRequestFormOpen] = useState(false);
 
   return (
-    <div className="w-full min-h-screen bg-[#0B1D3A]/[0.02] flex flex-col font-['Outfit'] relative overflow-hidden">
+    <div className="w-full min-h-screen shrink-0 bg-[#0B1D3A]/[0.02] flex flex-col font-['Outfit'] relative overflow-hidden">
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#8B5CF6]/5 to-transparent rounded-full blur-[100px] pointer-events-none z-0 fixed" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-full blur-[100px] pointer-events-none z-0 fixed" />
 

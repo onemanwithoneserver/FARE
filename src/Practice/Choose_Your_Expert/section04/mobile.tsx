@@ -54,7 +54,7 @@ export default function Mobile({
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => onViewModeChange(tab.id)}
-                  className={`relative px-4 py-1.5 sm:px-5 sm:py-2 rounded-full text-[13.5px] font-bold tracking-tight transition-colors duration-200 flex items-center gap-1.5 cursor-pointer select-none z-10 ${
+                  className={`relative px-4 py-1.5 rounded-full text-[13.5px] font-bold tracking-tight transition-colors duration-200 flex items-center gap-1.5 cursor-pointer select-none z-10 ${
                     isActive ? "text-white" : "text-[#8297B0] hover:text-white"
                   }`}
                 >

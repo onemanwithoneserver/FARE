@@ -31,7 +31,7 @@ const MobileViewport = forwardRef<HTMLDivElement, MobileViewportProps>(
           ref={setRef}
           role="main"
           aria-label="Desktop Viewport"
-          className={`h-full w-full overflow-y-auto scrollbar-hide flex flex-col bg-fare-bg @container transition-base ${className}`}
+          className={`h-full w-full overflow-y-auto scrollbar-hide flex flex-col [&>*]:shrink-0 bg-fare-bg @container transition-base ${className}`}
           {...props}
         >
           {children}
@@ -59,7 +59,7 @@ const MobileViewport = forwardRef<HTMLDivElement, MobileViewportProps>(
         >
           <div
             ref={mobileInnerRef}
-            className="h-full w-full overflow-y-auto overflow-x-hidden scrollbar-hide flex flex-col @container bg-fare-bg"
+            className="h-full w-full overflow-y-auto overflow-x-hidden scrollbar-hide flex flex-col [&>*]:shrink-0 @container bg-fare-bg"
           >
             {children}
           </div>

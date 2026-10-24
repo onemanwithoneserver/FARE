@@ -113,7 +113,7 @@ export default function Mobile({
       <AnimatePresence>
         {bookingScenario && (
           <div
-            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
+            className="fixed inset-0 z-50 flex items-end justify-center p-0 "
             role="dialog"
             aria-modal="true"
             aria-label={`Specialists ready for ${bookingScenario.title}`}
@@ -130,7 +130,7 @@ export default function Mobile({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: "100%" }}
               transition={{ duration: 0.25 }}
-              className="relative z-10 w-full max-h-[88vh] bg-white rounded-t-[22px] sm:rounded-[22px] shadow-2xl overflow-hidden flex flex-col"
+              className="relative z-10 w-full max-h-[88vh] bg-white rounded-t-[22px] shadow-2xl overflow-hidden flex flex-col"
             >
               <AdjacentExpertsCard
                 scenario={bookingScenario}

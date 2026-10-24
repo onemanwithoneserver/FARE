@@ -35,7 +35,7 @@ export default function Mobile() {
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-40px" }}
+        viewport={{ once: true, amount: 0.05 }}
         className="relative z-10 w-full"
       >
         <motion.div variants={item} className="flex items-center gap-3 mb-8">

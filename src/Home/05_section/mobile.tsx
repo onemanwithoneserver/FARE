@@ -80,7 +80,7 @@ export default function Mobile() {
           viewport={{ once: false, amount: 0.1 }}
           className="w-full mx-auto relative z-10 flex flex-col gap-8"
         >
-          <motion.div variants={itemVariants} className="flex flex-col items-center sm:items-start w-full">
+          <motion.div variants={itemVariants} className="flex flex-col items-center w-full">
             <div
               onClick={() => handleNavigation("home")}
               className="cursor-pointer group inline-block -mt-10 -mb-8"
@@ -103,7 +103,7 @@ export default function Mobile() {
             
             <h4 className="text-[16px] font-serif mb-3" style={{ color: "#E2C068" }}>Contact FARE</h4>
             
-            <div className="flex flex-col items-center sm:items-start gap-2.5 mb-5 w-full">
+            <div className="flex flex-col items-center gap-2.5 mb-5 w-full">
               <a href={`/${currentMode}/contact-us`} onClick={(event) => { event.preventDefault(); handleNavigation("contact-us"); }} className="text-[13.5px] font-bold text-white hover:text-[#E2C068] transition-colors flex items-center gap-1.5 w-fit group/link">
                 Contact us <span className="text-[11px] font-normal leading-none transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">↗</span>
               </a>
@@ -152,7 +152,7 @@ export default function Mobile() {
             </div>
           </motion.div>
 
-          <div className="flex flex-col sm:flex-row flex-wrap gap-x-6 gap-y-8">
+          <div className="flex flex-col flex-wrap gap-x-6 gap-y-8">
             {data.footerGroups.map((group, gIdx) => (
               <motion.div key={gIdx} variants={itemVariants} className="flex flex-col min-w-[140px] flex-1">
                 <h4 className="text-[16px] font-serif mb-4 tracking-wide" style={{ color: "#E2C068" }}>

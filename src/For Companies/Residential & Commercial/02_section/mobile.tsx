@@ -19,7 +19,7 @@ export default function Mobile() {
         initial="hidden"
         whileInView="show"
         viewport={VIEWPORT}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto mb-16"
+        className="grid grid-cols-1 gap-6 max-w-[1200px] mx-auto mb-16"
       >
         {data.challenges.map((c: string, i: number) => {
           const a = accentAt(i);
@@ -28,7 +28,7 @@ export default function Mobile() {
             <motion.article
               key={i}
               variants={fadeUp}
-              className={`${CARD_BASE} ${CARD_HOVER} p-7 lg:p-8 overflow-hidden`}
+              className={`${CARD_BASE} ${CARD_HOVER} p-7 overflow-hidden`}
             >
               <AccentHairline accent={a} />
               <HoverGlow accent={a} />
@@ -38,19 +38,19 @@ export default function Mobile() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
-              <h3 className="relative text-[18px] lg:text-[19px] font-bold text-[#0B1D3A] leading-snug mb-3">{c}</h3>
+              <h3 className="relative text-[18px] font-bold text-[#0B1D3A] leading-snug mb-3">{c}</h3>
             </motion.article>
           );
         })}
       </motion.div>
 
-      <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={VIEWPORT} className="max-w-[850px] mx-auto text-center rounded-[20px] p-10 lg:p-14 luxury-shadow-float relative overflow-hidden" style={{ background: "linear-gradient(135deg, #16316A 0%, #0B1D3A 50%, #132D5F 100%)" }}>
+      <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={VIEWPORT} className="max-w-[850px] mx-auto text-center rounded-[20px] p-10 luxury-shadow-float relative overflow-hidden" style={{ background: "linear-gradient(135deg, #16316A 0%, #0B1D3A 50%, #132D5F 100%)" }}>
         <div className="absolute top-0 right-0 w-72 h-72 bg-[#C99A2E]/10 rounded-full blur-[60px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#60A5FA]/10 rounded-full blur-[60px] pointer-events-none" />
-        <h3 className="text-[24px] lg:text-[32px] font-bold text-white mb-5 relative z-10 leading-snug">
+        <h3 className="text-[24px] font-bold text-white mb-5 relative z-10 leading-snug">
           {""}
         </h3>
-        <p className="text-[18px] lg:text-[20px] font-semibold text-[#C99A2E] flex items-center justify-center gap-3 relative z-10">
+        <p className="text-[18px] font-semibold text-[#C99A2E] flex items-center justify-center gap-3 relative z-10">
           {""}
         </p>
       </motion.div>

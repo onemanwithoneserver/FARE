@@ -82,10 +82,10 @@ export default function Mobile() {
               </span>
             </div>
           </motion.div>
-          <motion.h2 variants={item} className="text-[#0B1D3A] text-[1.95rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.03em] mb-1.5 bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#162E56] to-[#0B1D3A]" >
+          <motion.h2 variants={item} className="text-[#0B1D3A] text-[1.95rem] leading-[1.12] font-black tracking-[-0.03em] mb-1.5 bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#162E56] to-[#0B1D3A]" >
             {data.headline}
           </motion.h2>
-          <motion.h2 variants={item} className="text-[#0B1D3A] text-[1.95rem] sm:text-[2.25rem] leading-[1.12] font-black tracking-[-0.03em] bg-clip-text text-transparent bg-gradient-to-r from-[#C99A2E] via-[#E2BA55] to-[#B88A22] drop-luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" >
+          <motion.h2 variants={item} className="text-[#0B1D3A] text-[1.95rem] leading-[1.12] font-black tracking-[-0.03em] bg-clip-text text-transparent bg-gradient-to-r from-[#C99A2E] via-[#E2BA55] to-[#B88A22] drop-luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400" >
             {data.headlineAccent}
           </motion.h2>
         </motion.div>
@@ -182,7 +182,7 @@ export default function Mobile() {
         >
           <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/95 border border-[#C99A2E]/30 luxury-shadow-sm hover:luxury-shadow-float transition-all duration-400 backdrop-blur-md">
             <Sparkles size={14} className="text-[#C99A2E]" strokeWidth={2.2} />
-            <p className="text-[17px] sm:text-[19px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
+            <p className="text-[17px] font-black tracking-[-0.01em] bg-clip-text text-transparent bg-gradient-to-r from-[#0B1D3A] via-[#C99A2E] to-[#0B1D3A]">
               {data.footerText}
             </p>
           </div>

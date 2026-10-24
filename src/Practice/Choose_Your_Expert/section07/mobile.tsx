@@ -27,7 +27,7 @@ export default function Mobile() {
       />
 
       <div className="w-full relative mt-8 px-2">
-        <div className="absolute top-10 bottom-10 left-8 w-px bg-gradient-to-b from-transparent via-[#C99A2E]/30 to-transparent shadow-[0_0_8px_rgba(201,154,46,0.3)] z-0 hidden sm:block" aria-hidden="true" />
+        <div className="absolute top-10 bottom-10 left-8 w-px bg-gradient-to-b from-transparent via-[#C99A2E]/30 to-transparent shadow-[0_0_8px_rgba(201,154,46,0.3)] z-0 hidden " aria-hidden="true" />
         
         <motion.div
           variants={staggerContainer(0.06, 0.08)}

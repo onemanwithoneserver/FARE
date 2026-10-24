@@ -17,7 +17,7 @@ export default function Mobile() {
         initial="hidden"
         whileInView="show"
         viewport={VIEWPORT}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1200px] mx-auto mb-10"
+        className="grid grid-cols-1 gap-6 max-w-[1200px] mx-auto mb-10"
       >
         {data.steps.map((step: any, i: number) => {
           const a = accentAt(i);

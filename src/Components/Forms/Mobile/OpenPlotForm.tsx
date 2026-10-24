@@ -29,8 +29,8 @@ export default function OpenPlotForm() {
     );
   }
   return (
-    <div className="flex flex-col lg:flex-row w-full min-h-[500px]">
-      <div className="hidden lg:flex flex-col w-[40%] p-12 bg-gradient-to-b from-[#F8FAFD] to-[#EEF4FF] border-r border-[#0B1D3A]/5 relative overflow-hidden">
+    <div className="flex flex-col w-full min-h-[500px]">
+      <div className="hidden flex-col w-[40%] p-12 bg-gradient-to-b from-[#F8FAFD] to-[#EEF4FF] border-r border-[#0B1D3A]/5 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-[#C99A2E]/10 to-transparent blur-[40px] pointer-events-none" />
         <h2 className="text-[#0B1D3A] text-3xl font-black leading-tight mb-4 relative z-10">
           Find Your Perfect{" "}
@@ -69,12 +69,12 @@ export default function OpenPlotForm() {
           </div>
         </div>
       </div>
-      <div className="flex-1 p-8 lg:p-12 bg-white relative">
-        <h3 className="text-2xl font-black text-[#0B1D3A] mb-8 lg:hidden">
+      <div className="flex-1 p-8 bg-white relative">
+        <h3 className="text-2xl font-black text-[#0B1D3A] mb-8 ">
           Request Info
         </h3>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             <div className="space-y-2">
               <label className="text-[13px] font-bold text-[#0B1D3A] uppercase tracking-wider">
                 Full Name
