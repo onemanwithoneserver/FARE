@@ -92,7 +92,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
     };
     return (
       <div
-        className={`relative inline-block ${className}`}
+        className={`relative block w-full ${className}`}
         ref={(node) => {
           (
             containerRef as React.MutableRefObject<HTMLDivElement | null>
@@ -108,7 +108,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           disabled={disabled}
           onClick={toggleOpen}
           className={`
-            w-full flex items-center justify-between gap-2
+            w-full min-w-0 flex items-center justify-between gap-2
             ${sizeClasses[size]}
             bg-white/80 dark:bg-fare-surface/80 backdrop-blur-md
             border border-fare-border rounded-[8px] font-semibold text-fare-text-primary
@@ -120,7 +120,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           aria-haspopup="listbox"
           aria-expanded={isOpen}
         >
-          <span className="truncate">
+          <span className="truncate min-w-0 text-left">
             {selectedOption?.label || "Select..."}
           </span>
           <ChevronDown
@@ -136,7 +136,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute z-99999 w-full min-w-max mt-2 py-1.5 bg-white/95 dark:bg-fare-surface/95 backdrop-blur-xl backdrop-saturate-150 border border-white/20 dark:border-white/10 rounded-[4px] luxury-shadow-float dark:luxury-shadow-float overflow-y-auto overflow-x-hidden max-h-[60vh] scrollbar-thin"
+              className="absolute right-0 z-99999 w-full min-w-max mt-2 py-1.5 bg-white/95 dark:bg-fare-surface/95 backdrop-blur-xl backdrop-saturate-150 border border-white/20 dark:border-white/10 rounded-[4px] luxury-shadow-float dark:luxury-shadow-float overflow-y-auto overflow-x-hidden max-h-[60vh] scrollbar-thin"
               role="listbox"
             >
               {options.map((opt) => {

@@ -25,6 +25,7 @@ import FARELiveMocks from "./Practice/Live Mocks";
 import FAREChooseYourExpert from "./Practice/Choose_Your_Expert";
 import TrainerDirectory from "./Trainer Directory";
 import Courses from "./Courses";
+import Dashboard from "./Dashboard";
 export default function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const navigate = useNavigate();
@@ -39,7 +40,10 @@ export default function App() {
       : pathSegments[0] === "desktop"
         ? "desktop"
         : defaultInitialMode;
-  const currentViewFromUrl = pathSegments[1] || "home";
+  const currentViewFromUrl =
+    pathSegments[0] === "mobile" || pathSegments[0] === "desktop"
+      ? pathSegments[1] || "home"
+      : pathSegments[0] || "home";
   const viewMode: ViewMode = currentModeFromUrl;
   const isMobile = viewMode === "mobile";
   const view = currentViewFromUrl;
@@ -78,6 +82,63 @@ export default function App() {
             <Route
               path="/"
               element={<Navigate to={`/${defaultInitialMode}/home`} replace />}
+            />
+            {/* Direct top-level routes without mode prefix */}
+            <Route
+              path="/courses"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-courses`} replace />}
+            />
+            <Route
+              path="/dashboard"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-courses`} replace />}
+            />
+            <Route
+              path="/dashboard-courses"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-courses`} replace />}
+            />
+            <Route
+              path="/dashboard/courses"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-courses`} replace />}
+            />
+            <Route
+              path="/dashboard/main"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-main`} replace />}
+            />
+            <Route
+              path="/dashboard-main"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-main`} replace />}
+            />
+            <Route
+              path="/dashboard-programs"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-programs`} replace />}
+            />
+            <Route
+              path="/dashboard/programs"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-programs`} replace />}
+            />
+            <Route
+              path="/dashboard-skill-assessment"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-skill-assessment`} replace />}
+            />
+            <Route
+              path="/dashboard/skill-assessment"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-skill-assessment`} replace />}
+            />
+            <Route
+              path="/dashboard-knowledge-bank"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-knowledge-bank`} replace />}
+            />
+            <Route
+              path="/dashboard/knowledge-bank"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-knowledge-bank`} replace />}
+            />
+            <Route
+              path="/dashboard-my-learning"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-my-learning`} replace />}
+            />
+            <Route
+              path="/dashboard/my-learning"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-my-learning`} replace />}
             />
             <Route
               path="/:mode"
@@ -147,6 +208,62 @@ export default function App() {
             <Route
               path="/:mode/courses"
               element={<Courses isMobile={isMobile} />}
+            />
+            <Route
+              path="/:mode/dashboard-main"
+              element={<Dashboard isMobile={isMobile} initialSection="dashboard" />}
+            />
+            <Route
+              path="/:mode/dashboard/main"
+              element={<Dashboard isMobile={isMobile} initialSection="dashboard" />}
+            />
+            <Route
+              path="/:mode/dashboard-programs"
+              element={<Dashboard isMobile={isMobile} initialSection="programs" />}
+            />
+            <Route
+              path="/:mode/dashboard/programs"
+              element={<Dashboard isMobile={isMobile} initialSection="programs" />}
+            />
+            <Route
+              path="/:mode/dashboard-skill-assessment"
+              element={<Dashboard isMobile={isMobile} initialSection="skill-assessment" />}
+            />
+            <Route
+              path="/:mode/dashboard/skill-assessment"
+              element={<Dashboard isMobile={isMobile} initialSection="skill-assessment" />}
+            />
+            <Route
+              path="/:mode/dashboard-my-learning"
+              element={<Dashboard isMobile={isMobile} initialSection="my-learning" />}
+            />
+            <Route
+              path="/:mode/dashboard/my-learning"
+              element={<Dashboard isMobile={isMobile} initialSection="my-learning" />}
+            />
+            <Route
+              path="/:mode/dashboard-courses"
+              element={<Dashboard isMobile={isMobile} initialSection="courses" />}
+            />
+            <Route
+              path="/:mode/dashboard/courses"
+              element={<Dashboard isMobile={isMobile} initialSection="courses" />}
+            />
+            <Route
+              path="/:mode/dashboard-knowledge-bank"
+              element={<Dashboard isMobile={isMobile} initialSection="knowledge-bank" />}
+            />
+            <Route
+              path="/:mode/dashboard/knowledge-bank"
+              element={<Dashboard isMobile={isMobile} initialSection="knowledge-bank" />}
+            />
+            <Route
+              path="/:mode/dashboard/:section"
+              element={<Dashboard isMobile={isMobile} />}
+            />
+            <Route
+              path="/:mode/dashboard"
+              element={<Dashboard isMobile={isMobile} initialSection="courses" />}
             />
             <Route
               path="*"

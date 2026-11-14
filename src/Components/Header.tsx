@@ -33,6 +33,12 @@ export default function Header({
     { value: "fare-for-career-switchers", label: "Career Switchers" },
     { value: "trainer-directory", label: "Trainer Directory" },
     { value: "courses", label: "Courses" },
+    { value: "dashboard-main", label: "Dashboard - Main" },
+    { value: "dashboard-my-learning", label: "Dashboard - My Learning" },
+    { value: "dashboard-programs", label: "Dashboard - Programs" },
+    { value: "dashboard-skill-assessment", label: "Dashboard - Skill Assessment" },
+    { value: "dashboard-courses", label: "Dashboard - Courses" },
+    { value: "dashboard-knowledge-bank", label: "Dashboard - Knowledge Bank" },
   ];
   return (
     <header className="h-[60px] bg-white border-b border-[#e2e8f0] px-3 sm:px-4 md:px-6 flex items-center justify-between shrink-0 shadow-sm relative z-[100] gap-2 sm:gap-4 pointer-events-auto">
@@ -74,12 +80,13 @@ export default function Header({
           <span className="text-[10px] font-bold tracking-widest text-[#94a3b8] uppercase hidden md:block">
             View
           </span>
-          <div className="w-[120px] sm:w-[145px] md:w-[160px]">
+          <div className="w-[170px] sm:w-[210px] md:w-[240px]">
             <Dropdown
               options={dropdownOptions}
               value={view}
               onChange={onViewChange}
               size="sm"
+              className="w-full"
             />
           </div>
         </div>
