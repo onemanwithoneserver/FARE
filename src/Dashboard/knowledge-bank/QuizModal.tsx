@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { type TestItem } from "./data";
 import AdBanner from "../components/AdBanner";
+import { dispatchOpenCompanyProfile } from "../company-profile/useCompanyProfile";
 
 export interface QuizModalProps {
   isOpen: boolean;
@@ -266,11 +267,14 @@ export default function QuizModal({
 
                   <button
                     type="button"
-                    onClick={() => alert("Redirecting to Join FARE Pro Network...")}
+                    onClick={() => {
+                      onClose();
+                      dispatchOpenCompanyProfile(specializationTitle);
+                    }}
                     className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0B1D3A] hover:bg-[#162C4E] text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
                   >
                     <Sparkles className="w-3.5 h-3.5 text-[#E2C068]" />
-                    <span>Join Now - Pro Guild</span>
+                    <span>View Company</span>
                   </button>
 
                   <button

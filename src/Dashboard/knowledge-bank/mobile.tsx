@@ -29,6 +29,7 @@ import {
 } from "./data";
 import SpecializationDetail from "./SpecializationDetail";
 import AdBanner from "../components/AdBanner";
+import { dispatchOpenCompanyProfile } from "../company-profile/useCompanyProfile";
 
 export interface KnowledgeBankMobileProps {
   hideSidebar?: boolean;
@@ -168,10 +169,10 @@ export default function KnowledgeBankMobile({
           </div>
           <button
             type="button"
-            onClick={() => alert("Partner program inquiry submitted")}
-            className="px-2.5 py-1 rounded-[6px] bg-[#0B1D3A] text-white text-[10px] font-bold shrink-0"
+            onClick={() => dispatchOpenCompanyProfile("Knowledge Bank Partner Program")}
+            className="px-2.5 py-1 rounded-[6px] bg-[#0B1D3A] text-white text-[10px] font-bold shrink-0 cursor-pointer"
           >
-            Join Now
+            View Company
           </button>
         </div>
       </div>
@@ -306,7 +307,8 @@ export default function KnowledgeBankMobile({
                 variant="card"
                 label="SPONSORED"
                 primaryCtaText="Apply Now"
-                secondaryCtaText="Join Now"
+                secondaryCtaText="View Company"
+                onJoin={() => dispatchOpenCompanyProfile("Knowledge Bank Partner")}
               />
             )}
           </React.Fragment>

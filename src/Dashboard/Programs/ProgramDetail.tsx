@@ -19,6 +19,7 @@ import { coursesData, allCoursesData, type Course } from "../courses/data";
 import AdBanner from "../components/AdBanner";
 import AdActionModal from "../components/AdActionModal";
 import QuizModal from "../knowledge-bank/QuizModal";
+import { dispatchOpenCompanyProfile } from "../company-profile/useCompanyProfile";
 
 export interface ProgramDetailProps {
   program: ProgramItem;
@@ -112,6 +113,10 @@ export default function ProgramDetail({
   const [adMandateTitle, setAdMandateTitle] = useState("");
 
   const handleOpenAdAction = (type: "apply" | "join", title: string) => {
+    if (type === "join") {
+      dispatchOpenCompanyProfile(title);
+      return;
+    }
     setAdActionType(type);
     setAdMandateTitle(title);
     setAdModalOpen(true);
@@ -206,7 +211,7 @@ export default function ProgramDetail({
         variant="banner"
         label="SPONSORED"
         primaryCtaText="Apply Now"
-        secondaryCtaText="Join Now"
+        secondaryCtaText="View Company"
         onApply={() => handleOpenAdAction("apply", "Program Hiring Partners")}
         onJoin={() => handleOpenAdAction("join", "Program Hiring Partners")}
       />
@@ -316,7 +321,7 @@ export default function ProgramDetail({
                       onClick={() => handleOpenAdAction("join", "Team Leader Roles")}
                       className="px-3 py-1.5 rounded-[6px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold cursor-pointer"
                     >
-                      Join Now
+                      View Company
                     </button>
                     <button
                       type="button"
@@ -385,7 +390,7 @@ export default function ProgramDetail({
             variant="banner"
             label="SPONSORED"
             primaryCtaText="Apply Now"
-            secondaryCtaText="Join Now"
+            secondaryCtaText="View Company"
             onApply={() => handleOpenAdAction("apply", "Program Partner")}
             onJoin={() => handleOpenAdAction("join", "Program Partner")}
           />
@@ -452,7 +457,7 @@ export default function ProgramDetail({
             variant="banner"
             label="SPONSORED"
             primaryCtaText="Apply Now"
-            secondaryCtaText="Join Now"
+            secondaryCtaText="View Company"
             onApply={() => handleOpenAdAction("apply", "Program Partner")}
             onJoin={() => handleOpenAdAction("join", "Program Partner")}
           />
@@ -516,7 +521,7 @@ export default function ProgramDetail({
             variant="banner"
             label="SPONSORED"
             primaryCtaText="Apply Now"
-            secondaryCtaText="Join Now"
+            secondaryCtaText="View Company"
             onApply={() => handleOpenAdAction("apply", "Program Partner")}
             onJoin={() => handleOpenAdAction("join", "Program Partner")}
           />
@@ -726,7 +731,7 @@ export default function ProgramDetail({
                             variant="banner"
                             label="SPONSORED"
                             primaryCtaText="Apply Now"
-                            secondaryCtaText="Join Now"
+                            secondaryCtaText="View Company"
                             onApply={() => handleOpenAdAction("apply", "Module Partner Program")}
                             onJoin={() => handleOpenAdAction("join", "Module Partner Program")}
                           />
@@ -825,7 +830,7 @@ export default function ProgramDetail({
         />
       )}
 
-      {/* Sponsored Ad Action Modal (Apply Now & Join Now) */}
+      {/* Sponsored Ad Action Modal (Apply Now) */}
       <AdActionModal
         isOpen={adModalOpen}
         onClose={() => setAdModalOpen(false)}

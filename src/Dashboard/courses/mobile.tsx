@@ -29,6 +29,7 @@ import AddLessonModal from "./AddLessonModal";
 import Sidebar from "../sidebar";
 import AdBanner from "../components/AdBanner";
 import AdActionModal from "../components/AdActionModal";
+import { dispatchOpenCompanyProfile } from "../company-profile/useCompanyProfile";
 
 export interface MobileProps {
   hideSidebar?: boolean;
@@ -135,6 +136,10 @@ export default function Mobile({
   const [adMandateTitle, setAdMandateTitle] = useState("");
 
   const handleOpenAdAction = (type: "apply" | "join", title: string) => {
+    if (type === "join") {
+      dispatchOpenCompanyProfile(title);
+      return;
+    }
     setAdActionType(type);
     setAdMandateTitle(title);
     setAdModalOpen(true);
@@ -481,7 +486,7 @@ export default function Mobile({
                 variant="banner"
                 label="SPONSORED"
                 primaryCtaText="Apply Now"
-                secondaryCtaText="Join Now"
+                secondaryCtaText="View Company"
                 onApply={() => handleOpenAdAction("apply", "Partner Program")}
                 onJoin={() => handleOpenAdAction("join", "Partner Program")}
               />
@@ -578,7 +583,7 @@ export default function Mobile({
                       variant="card"
                       label="SPONSORED"
                       primaryCtaText="Apply Now"
-                      secondaryCtaText="Join Now"
+                      secondaryCtaText="View Company"
                       onApply={() => handleOpenAdAction("apply", "Partner Program")}
                       onJoin={() => handleOpenAdAction("join", "Partner Program")}
                     />
@@ -636,7 +641,7 @@ export default function Mobile({
                 variant="banner"
                 label="SPONSORED"
                 primaryCtaText="Apply Now"
-                secondaryCtaText="Join Now"
+                secondaryCtaText="View Company"
                 onApply={() => handleOpenAdAction("apply", "Module Partner Program")}
                 onJoin={() => handleOpenAdAction("join", "Module Partner Program")}
               />
@@ -695,7 +700,7 @@ export default function Mobile({
                       variant="card"
                       label="SPONSORED"
                       primaryCtaText="Apply Now"
-                      secondaryCtaText="Join Now"
+                      secondaryCtaText="View Company"
                       onApply={() => handleOpenAdAction("apply", "Module Partner Program")}
                       onJoin={() => handleOpenAdAction("join", "Module Partner Program")}
                     />
@@ -753,7 +758,7 @@ export default function Mobile({
                 variant="banner"
                 label="SPONSORED"
                 primaryCtaText="Apply Now"
-                secondaryCtaText="Join Now"
+                secondaryCtaText="View Company"
                 onApply={() => handleOpenAdAction("apply", "Lesson Partner Program")}
                 onJoin={() => handleOpenAdAction("join", "Lesson Partner Program")}
               />
@@ -809,7 +814,7 @@ export default function Mobile({
                           variant="banner"
                           label="SPONSORED"
                           primaryCtaText="Apply Now"
-                          secondaryCtaText="Join Now"
+                          secondaryCtaText="View Company"
                           onApply={() => handleOpenAdAction("apply", "Lesson Partner Program")}
                           onJoin={() => handleOpenAdAction("join", "Lesson Partner Program")}
                         />
@@ -851,7 +856,7 @@ export default function Mobile({
         onAddLesson={handleAddLesson}
       />
 
-      {/* Sponsored Ad Action Modal (Apply Now & Join Now) */}
+      {/* Sponsored Ad Action Modal (Apply Now) */}
       <AdActionModal
         isOpen={adModalOpen}
         onClose={() => setAdModalOpen(false)}

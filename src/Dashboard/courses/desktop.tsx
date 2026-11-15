@@ -27,6 +27,7 @@ import AddLessonModal from "./AddLessonModal";
 import Sidebar from "../sidebar";
 import AdBanner from "../components/AdBanner";
 import AdActionModal from "../components/AdActionModal";
+import { dispatchOpenCompanyProfile } from "../company-profile/useCompanyProfile";
 
 export interface DesktopProps {
   hideSidebar?: boolean;
@@ -140,6 +141,10 @@ export default function Desktop({
   const [adMandateTitle, setAdMandateTitle] = useState("");
 
   const handleOpenAdAction = (type: "apply" | "join", title: string) => {
+    if (type === "join") {
+      dispatchOpenCompanyProfile(title);
+      return;
+    }
     setAdActionType(type);
     setAdMandateTitle(title);
     setAdModalOpen(true);
@@ -503,7 +508,7 @@ export default function Desktop({
                       variant="banner"
                       label="SPONSORED"
                       primaryCtaText="Apply Now"
-                      secondaryCtaText="Join Now"
+                      secondaryCtaText="View Company"
                       onApply={() => handleOpenAdAction("apply", "Partner Program")}
                       onJoin={() => handleOpenAdAction("join", "Partner Program")}
                     />
@@ -606,7 +611,7 @@ export default function Desktop({
                               variant="card"
                               label="SPONSORED"
                               primaryCtaText="Apply Now"
-                              secondaryCtaText="Join Now"
+                              secondaryCtaText="View Company"
                               onApply={() => handleOpenAdAction("apply", "Partner Program")}
                               onJoin={() => handleOpenAdAction("join", "Partner Program")}
                             />
@@ -666,7 +671,7 @@ export default function Desktop({
                       variant="banner"
                       label="SPONSORED"
                       primaryCtaText="Apply Now"
-                      secondaryCtaText="Join Now"
+                      secondaryCtaText="View Company"
                       onApply={() => handleOpenAdAction("apply", "Partner Program")}
                       onJoin={() => handleOpenAdAction("join", "Partner Program")}
                     />
@@ -733,7 +738,7 @@ export default function Desktop({
                               variant="card"
                               label="SPONSORED"
                               primaryCtaText="Apply Now"
-                              secondaryCtaText="Join Now"
+                              secondaryCtaText="View Company"
                               onApply={() => handleOpenAdAction("apply", "Module Partner Program")}
                               onJoin={() => handleOpenAdAction("join", "Module Partner Program")}
                             />
@@ -793,7 +798,7 @@ export default function Desktop({
                       variant="banner"
                       label="SPONSORED"
                       primaryCtaText="Apply Now"
-                      secondaryCtaText="Join Now"
+                      secondaryCtaText="View Company"
                       onApply={() => handleOpenAdAction("apply", "Partner Program")}
                       onJoin={() => handleOpenAdAction("join", "Partner Program")}
                     />
@@ -855,7 +860,7 @@ export default function Desktop({
                                 variant="banner"
                                 label="SPONSORED"
                                 primaryCtaText="Apply Now"
-                                secondaryCtaText="Join Now"
+                                secondaryCtaText="View Company"
                                 onApply={() => handleOpenAdAction("apply", "Partner Program")}
                                 onJoin={() => handleOpenAdAction("join", "Partner Program")}
                               />

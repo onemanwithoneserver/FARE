@@ -26,6 +26,76 @@ import FAREChooseYourExpert from "./Practice/Choose_Your_Expert";
 import TrainerDirectory from "./Trainer Directory";
 import Courses from "./Courses";
 import Dashboard from "./Dashboard";
+import CompanyProfile from "./Dashboard/company-profile";
+
+function CompanyProfileRoute({
+  isMobile,
+  viewMode,
+}: {
+  isMobile: boolean;
+  viewMode: ViewMode;
+}) {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const searchParams = new URLSearchParams(location.search);
+  const routeState = location.state as {
+    companyName?: string;
+    returnUrl?: string;
+  } | null;
+  const companyName =
+    routeState?.companyName || searchParams.get("company") || undefined;
+
+  useEffect(() => {
+    if (location.search) {
+      navigate(location.pathname, {
+        replace: true,
+        state: { companyName, returnUrl: routeState?.returnUrl },
+      });
+    }
+  }, [location.pathname, location.search, companyName, routeState?.returnUrl, navigate]);
+
+  const handleBack = () => {
+    // 1. Check history state returnUrl
+    let returnUrl = routeState?.returnUrl;
+
+    // 2. Check storage for the respective page where company profile was invoked from
+    if (!returnUrl || returnUrl.includes("company-profile")) {
+      try {
+        const stored =
+          sessionStorage.getItem("fare_company_profile_return_url") ||
+          localStorage.getItem("fare_company_profile_return_url");
+        if (stored && !stored.includes("company-profile")) {
+          returnUrl = stored;
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    // 3. Fallback to dashboard courses
+    if (!returnUrl || returnUrl.includes("company-profile")) {
+      returnUrl = `/${viewMode}/dashboard/courses`;
+    }
+
+    // Adapt mode prefix if current mode differs
+    if (returnUrl.startsWith("/mobile/") && viewMode === "desktop") {
+      returnUrl = returnUrl.replace("/mobile/", "/desktop/");
+    } else if (returnUrl.startsWith("/desktop/") && viewMode === "mobile") {
+      returnUrl = returnUrl.replace("/desktop/", "/mobile/");
+    }
+
+    navigate(returnUrl);
+  };
+
+  return (
+    <CompanyProfile
+      isMobile={isMobile}
+      companyName={companyName}
+      onBack={handleBack}
+    />
+  );
+}
+
 export default function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const navigate = useNavigate();
@@ -47,6 +117,12 @@ export default function App() {
   const viewMode: ViewMode = currentModeFromUrl;
   const isMobile = viewMode === "mobile";
   const view = currentViewFromUrl;
+
+  const isCompanyProfilePath = location.pathname.includes("company-profile");
+  const isStandaloneWindow =
+    isCompanyProfilePath &&
+    typeof window !== "undefined" &&
+    (window.opener !== null || window.history.length <= 2);
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "m") {
@@ -57,6 +133,38 @@ export default function App() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+  useEffect(() => {
+    const openCompanyPage = (companyName?: string) => {
+      const currentPath = location.pathname + location.search;
+      if (!currentPath.includes("company-profile")) {
+        try {
+          sessionStorage.setItem("fare_company_profile_return_url", currentPath);
+          localStorage.setItem("fare_company_profile_return_url", currentPath);
+        } catch {
+          // ignore
+        }
+      }
+      navigate(`/${viewMode}/company-profile`, {
+        state: { companyName, returnUrl: currentPath },
+      });
+    };
+    const handleOpenCompany = (e: Event) => {
+      const custom = e as CustomEvent<{ companyName?: string }>;
+      openCompanyPage(custom.detail?.companyName);
+    };
+    const handleAdAction = (e: Event) => {
+      const custom = e as CustomEvent<{ action?: "apply" | "join"; title?: string }>;
+      if (custom.detail?.action === "join") {
+        openCompanyPage(custom.detail?.title);
+      }
+    };
+    window.addEventListener("open-fare-company-profile", handleOpenCompany);
+    window.addEventListener("open-fare-ad-action", handleAdAction);
+    return () => {
+      window.removeEventListener("open-fare-company-profile", handleOpenCompany);
+      window.removeEventListener("open-fare-ad-action", handleAdAction);
+    };
+  }, [navigate, viewMode, location.pathname, location.search]);
   const handleViewModeChange = (newMode: ViewMode) => {
     navigate(`/${newMode}/${currentViewFromUrl}`);
   };
@@ -65,7 +173,7 @@ export default function App() {
   };
   return (
     <div className="flex flex-col h-screen w-full bg-[#eef2f6] font-sans relative">
-      {isHeaderVisible && (
+      {isHeaderVisible && !isStandaloneWindow && (
         <Header
           viewMode={viewMode}
           onViewModeChange={handleViewModeChange}
@@ -139,6 +247,18 @@ export default function App() {
             <Route
               path="/dashboard/my-learning"
               element={<Navigate to={`/${defaultInitialMode}/dashboard-my-learning`} replace />}
+            />
+            <Route
+              path="/dashboard-company-profile"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-company-profile`} replace />}
+            />
+            <Route
+              path="/dashboard/company-profile"
+              element={<Navigate to={`/${defaultInitialMode}/dashboard-company-profile`} replace />}
+            />
+            <Route
+              path="/company-profile"
+              element={<Navigate to={`/${defaultInitialMode}/company-profile`} replace />}
             />
             <Route
               path="/:mode"
@@ -256,6 +376,18 @@ export default function App() {
             <Route
               path="/:mode/dashboard/knowledge-bank"
               element={<Dashboard isMobile={isMobile} initialSection="knowledge-bank" />}
+            />
+            <Route
+              path="/:mode/dashboard-company-profile"
+              element={<Dashboard isMobile={isMobile} initialSection="company-profile" />}
+            />
+            <Route
+              path="/:mode/dashboard/company-profile"
+              element={<Dashboard isMobile={isMobile} initialSection="company-profile" />}
+            />
+            <Route
+              path="/:mode/company-profile"
+              element={<CompanyProfileRoute isMobile={isMobile} viewMode={viewMode} />}
             />
             <Route
               path="/:mode/dashboard/:section"

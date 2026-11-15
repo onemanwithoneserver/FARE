@@ -16,6 +16,7 @@ import trimmedLogo from "../../Components/FARE_Logo/SVG/Primary Logo Trimmed.svg
 import Sidebar from "../sidebar";
 import ProgramDetail from "./ProgramDetail";
 import AdBanner from "../components/AdBanner";
+import { dispatchOpenCompanyProfile } from "../company-profile/useCompanyProfile";
 
 export interface ProgramsMobileProps {
   hideSidebar?: boolean;
@@ -178,7 +179,8 @@ export default function ProgramsMobile({
                   variant="card"
                   label="SPONSORED"
                   primaryCtaText="Apply Now"
-                  secondaryCtaText="Join Now"
+                  secondaryCtaText="View Company"
+                  onJoin={() => dispatchOpenCompanyProfile("Program Partner")}
                 />
               )}
             </React.Fragment>

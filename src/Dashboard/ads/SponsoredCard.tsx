@@ -1,6 +1,7 @@
 import type { MouseEvent, CSSProperties } from "react";
-import { Sparkles, ArrowRight, UserPlus } from "lucide-react";
+import { Sparkles, ArrowRight, Building2 } from "lucide-react";
 import type { SponsoredCardProps } from "./types";
+import { dispatchOpenCompanyProfile } from "../company-profile/router";
 
 export default function SponsoredCard({
   size = "card",
@@ -11,11 +12,16 @@ export default function SponsoredCard({
   className = "",
   showControls = true,
   primaryCtaText = "Apply Now",
-  secondaryCtaText = "Join Now",
+  secondaryCtaText = "View Company",
   onApply,
   onJoin,
   align: _align,
 }: SponsoredCardProps) {
+  const resolvedSecondaryText =
+    !secondaryCtaText || secondaryCtaText === "Join Now"
+      ? "View Company"
+      : secondaryCtaText;
+
   const handleApplyClick = (e: MouseEvent) => {
     e.stopPropagation();
     if (onApply) {
@@ -31,14 +37,9 @@ export default function SponsoredCard({
 
   const handleJoinClick = (e: MouseEvent) => {
     e.stopPropagation();
+    dispatchOpenCompanyProfile(tagline || label);
     if (onJoin) {
       onJoin();
-    } else {
-      window.dispatchEvent(
-        new CustomEvent("open-fare-ad-action", {
-          detail: { action: "join", title: label },
-        })
-      );
     }
   };
 
@@ -79,8 +80,8 @@ export default function SponsoredCard({
               onClick={handleJoinClick}
               className="px-5 py-2.5 rounded-[8px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-2xs hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap"
             >
-              <UserPlus className="w-4 h-4 text-[#D5AA45]" />
-              <span>{secondaryCtaText}</span>
+              <Building2 className="w-4 h-4 text-[#D5AA45]" />
+              <span>{resolvedSecondaryText}</span>
             </button>
             <button
               type="button"
@@ -131,8 +132,8 @@ export default function SponsoredCard({
               onClick={handleJoinClick}
               className="px-4 py-2 rounded-[7px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold flex items-center gap-1.5 shadow-2xs hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap"
             >
-              <UserPlus className="w-3.5 h-3.5 text-[#D5AA45]" />
-              <span>{secondaryCtaText}</span>
+              <Building2 className="w-3.5 h-3.5 text-[#D5AA45]" />
+              <span>{resolvedSecondaryText}</span>
             </button>
           </div>
         )}
@@ -163,8 +164,8 @@ export default function SponsoredCard({
               onClick={handleJoinClick}
               className="px-5 py-2.5 rounded-[8px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold flex items-center gap-2 shadow-2xs hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap"
             >
-              <UserPlus className="w-4 h-4 text-[#D5AA45]" />
-              <span>{secondaryCtaText}</span>
+              <Building2 className="w-4 h-4 text-[#D5AA45]" />
+              <span>{resolvedSecondaryText}</span>
             </button>
             <button
               type="button"
@@ -205,7 +206,7 @@ export default function SponsoredCard({
               onClick={handleJoinClick}
               className="px-3 py-1.5 rounded-[6px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-[11px] font-bold transition-all cursor-pointer"
             >
-              {secondaryCtaText}
+              {resolvedSecondaryText}
             </button>
             <button
               type="button"
@@ -244,8 +245,8 @@ export default function SponsoredCard({
               onClick={handleJoinClick}
               className="w-full py-2.5 px-3 rounded-[7px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-2xs hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer"
             >
-              <UserPlus className="w-3.5 h-3.5 text-[#D5AA45]" />
-              <span>{secondaryCtaText}</span>
+              <Building2 className="w-3.5 h-3.5 text-[#D5AA45]" />
+              <span>{resolvedSecondaryText}</span>
             </button>
             <button
               type="button"
@@ -285,8 +286,8 @@ export default function SponsoredCard({
               onClick={handleJoinClick}
               className="w-full py-2 px-3 rounded-[7px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-2xs hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer"
             >
-              <UserPlus className="w-3 h-3 text-[#D5AA45]" />
-              <span>{secondaryCtaText}</span>
+              <Building2 className="w-3 h-3 text-[#D5AA45]" />
+              <span>{resolvedSecondaryText}</span>
             </button>
             <button
               type="button"
@@ -326,8 +327,8 @@ export default function SponsoredCard({
               onClick={handleJoinClick}
               className="w-full py-2 px-3 rounded-[7px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-2xs hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer"
             >
-              <UserPlus className="w-3.5 h-3.5 text-[#D5AA45]" />
-              <span>{secondaryCtaText}</span>
+              <Building2 className="w-3.5 h-3.5 text-[#D5AA45]" />
+              <span>{resolvedSecondaryText}</span>
             </button>
             <button
               type="button"
@@ -366,7 +367,7 @@ export default function SponsoredCard({
           onClick={handleJoinClick}
           className="px-3 py-1 rounded-[6px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-[11px] font-bold cursor-pointer transition-colors shadow-2xs shrink-0"
         >
-          {secondaryCtaText}
+          {resolvedSecondaryText}
         </button>
       )}
     </div>

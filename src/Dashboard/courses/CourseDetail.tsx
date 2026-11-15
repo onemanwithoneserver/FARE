@@ -24,6 +24,7 @@ import {
 } from "./data";
 import AdBanner from "../components/AdBanner";
 import AdActionModal from "../components/AdActionModal";
+import { dispatchOpenCompanyProfile } from "../company-profile/useCompanyProfile";
 
 export interface CourseDetailProps {
   course: Course;
@@ -116,6 +117,10 @@ export default function CourseDetail({
   const [adMandateTitle, setAdMandateTitle] = useState("");
 
   const handleOpenAdAction = (type: "apply" | "join", title: string) => {
+    if (type === "join") {
+      dispatchOpenCompanyProfile(title);
+      return;
+    }
     setAdActionType(type);
     setAdMandateTitle(title);
     setAdModalOpen(true);
@@ -297,7 +302,7 @@ export default function CourseDetail({
                   onClick={() => handleOpenAdAction("join", "Horizon Plots - Medchal Team Leaders")}
                   className="px-3.5 py-1.5 rounded-[7px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold transition-all cursor-pointer shadow-2xs"
                 >
-                  Join Now
+                  View Company
                 </button>
                 <button
                   type="button"
@@ -465,7 +470,7 @@ export default function CourseDetail({
                     onClick={() => handleOpenAdAction("join", "Team Leader Openings")}
                     className="w-full py-1.5 rounded-[6px] border border-[#E2E8F0] hover:bg-slate-50 text-slate-700 text-xs font-bold transition-all cursor-pointer text-center"
                   >
-                    Join Now
+                    View Company
                   </button>
                   <button
                     type="button"
@@ -738,7 +743,7 @@ export default function CourseDetail({
                 variant="banner"
                 label="SPONSORED"
                 primaryCtaText="Apply Now"
-                secondaryCtaText="Join Now"
+                secondaryCtaText="View Company"
                 onApply={() => handleOpenAdAction("apply", "Course Partner Program")}
                 onJoin={() => handleOpenAdAction("join", "Course Partner Program")}
               />
@@ -870,7 +875,7 @@ export default function CourseDetail({
                             variant="banner"
                             label="SPONSORED"
                             primaryCtaText="Apply Now"
-                            secondaryCtaText="Join Now"
+                            secondaryCtaText="View Company"
                             onApply={() => handleOpenAdAction("apply", "Module Partner Program")}
                             onJoin={() => handleOpenAdAction("join", "Module Partner Program")}
                           />
@@ -906,7 +911,7 @@ export default function CourseDetail({
                 variant="banner"
                 label="SPONSORED"
                 primaryCtaText="Apply Now"
-                secondaryCtaText="Join Now"
+                secondaryCtaText="View Company"
                 onApply={() => handleOpenAdAction("apply", "Assignments Partner Program")}
                 onJoin={() => handleOpenAdAction("join", "Assignments Partner Program")}
               />
@@ -937,7 +942,7 @@ export default function CourseDetail({
                 variant="banner"
                 label="SPONSORED"
                 primaryCtaText="Apply Now"
-                secondaryCtaText="Join Now"
+                secondaryCtaText="View Company"
                 onApply={() => handleOpenAdAction("apply", "Resources Partner Program")}
                 onJoin={() => handleOpenAdAction("join", "Resources Partner Program")}
               />
@@ -973,7 +978,7 @@ export default function CourseDetail({
                 variant="banner"
                 label="SPONSORED"
                 primaryCtaText="Apply Now"
-                secondaryCtaText="Join Now"
+                secondaryCtaText="View Company"
                 onApply={() => handleOpenAdAction("apply", "Discussion Partner Program")}
                 onJoin={() => handleOpenAdAction("join", "Discussion Partner Program")}
               />
@@ -1214,7 +1219,7 @@ export default function CourseDetail({
         </div>
       )}
 
-      {/* Sponsored Ad Action Modal (Apply Now & Join Now) */}
+      {/* Sponsored Ad Action Modal (Apply Now) */}
       <AdActionModal
         isOpen={adModalOpen}
         onClose={() => setAdModalOpen(false)}

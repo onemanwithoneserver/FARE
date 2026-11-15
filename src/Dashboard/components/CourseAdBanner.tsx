@@ -20,7 +20,7 @@ export default function CourseAdBanner({
   variant = "breakout",
   badge = "SPONSORED",
   primaryActionText = "Apply Now",
-  secondaryActionText = "Join Now",
+  secondaryActionText = "View Company",
   onApplyNow,
   onJoinNow,
   className = "",

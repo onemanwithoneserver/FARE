@@ -26,7 +26,7 @@ export interface AdBannerProps {
   showControls?: boolean;
   /** Primary CTA button text (defaults to "Apply Now") */
   primaryCtaText?: string;
-  /** Secondary CTA button text (defaults to "Join Now") */
+  /** Secondary CTA button text (defaults to "View Company") */
   secondaryCtaText?: string;
   /** Primary CTA click handler */
   onApply?: () => void;

@@ -13,6 +13,7 @@ import {
 import Sidebar from "../sidebar";
 import ProgramDetail from "./ProgramDetail";
 import AdBanner from "../components/AdBanner";
+import { dispatchOpenCompanyProfile } from "../company-profile/useCompanyProfile";
 
 export interface ProgramsDesktopProps {
   hideSidebar?: boolean;
@@ -144,7 +145,8 @@ export default function ProgramsDesktop({
                 variant="card"
                 label="SPONSORED"
                 primaryCtaText="Apply Now"
-                secondaryCtaText="Join Now"
+                secondaryCtaText="View Company"
+                onJoin={() => dispatchOpenCompanyProfile("Program Partner")}
               />
             )}
           </React.Fragment>

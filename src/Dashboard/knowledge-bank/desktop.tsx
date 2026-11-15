@@ -30,6 +30,7 @@ import {
 import SpecializationDetail from "./SpecializationDetail";
 import Sidebar from "../sidebar";
 import AdBanner from "../components/AdBanner";
+import { dispatchOpenCompanyProfile } from "../company-profile/useCompanyProfile";
 
 export interface KnowledgeBankDesktopProps {
   hideSidebar?: boolean;
@@ -169,10 +170,10 @@ export default function KnowledgeBankDesktop({
           </div>
           <button
             type="button"
-            onClick={() => alert("Partner program inquiry submitted")}
+            onClick={() => dispatchOpenCompanyProfile("Knowledge Bank Partner Program")}
             className="ml-1 px-3 py-1 rounded-[6px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-[11px] font-bold cursor-pointer transition-colors shadow-2xs"
           >
-            Join Now
+            View Company
           </button>
         </div>
       </div>
@@ -313,7 +314,8 @@ export default function KnowledgeBankDesktop({
                 variant="card"
                 label="SPONSORED"
                 primaryCtaText="Apply Now"
-                secondaryCtaText="Join Now"
+                secondaryCtaText="View Company"
+                onJoin={() => dispatchOpenCompanyProfile("Knowledge Bank Partner")}
               />
             )}
           </React.Fragment>

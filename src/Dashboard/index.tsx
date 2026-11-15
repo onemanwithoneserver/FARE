@@ -19,6 +19,7 @@ import SkillAssessmentMobile from "./Skill_Assessment/mobile";
 import MyLearningDesktop from "./My_Learning/desktop";
 import MyLearningMobile from "./My_Learning/mobile";
 import Sidebar from "./sidebar";
+import CompanyProfile from "./company-profile";
 import {
   SkillPracticeSection,
   MockTemplatesSection,
@@ -36,7 +37,8 @@ export type DashboardSection =
   | "skill-practice"
   | "mock-templates"
   | "daily-habits"
-  | "sales-planner";
+  | "sales-planner"
+  | "company-profile";
 
 export interface DashboardProps {
   isMobile?: boolean;
@@ -54,6 +56,7 @@ const sectionTitleMap: Record<DashboardSection, string> = {
   "mock-templates": "Mock Templates",
   "daily-habits": "Daily Habits",
   "sales-planner": "Sales Planner",
+  "company-profile": "About the Company",
 };
 
 export default function Dashboard({
@@ -84,6 +87,38 @@ export default function Dashboard({
       setIsMobileDrawerOpen(false);
     }
   };
+
+  const handleCloseCompanyProfile = () => {
+    let returnUrl = `/${currentMode}/dashboard/courses`;
+    try {
+      const stored =
+        sessionStorage.getItem("fare_company_profile_return_url") ||
+        localStorage.getItem("fare_company_profile_return_url");
+      if (stored && !stored.includes("company-profile")) {
+        returnUrl = stored;
+      }
+    } catch {
+      // ignore
+    }
+    if (returnUrl.startsWith("/mobile/") && currentMode === "desktop") {
+      returnUrl = returnUrl.replace("/mobile/", "/desktop/");
+    } else if (returnUrl.startsWith("/desktop/") && currentMode === "mobile") {
+      returnUrl = returnUrl.replace("/desktop/", "/mobile/");
+    }
+    setInternalSection("courses");
+    navigate(returnUrl);
+  };
+
+  if (activeSection === "company-profile") {
+    return (
+      <CompanyProfile
+        isMobile={isMobile}
+        onBack={handleCloseCompanyProfile}
+      />
+    );
+  }
+
+  const currentHeaderTitle = sectionTitleMap[activeSection] || "Dashboard";
 
   const renderSectionContent = () => {
     switch (activeSection) {
@@ -170,7 +205,7 @@ export default function Dashboard({
               />
             </div>
             <span className="font-bold text-sm text-[#0B1D3A]">
-              {sectionTitleMap[activeSection] || "Dashboard"}
+              {currentHeaderTitle}
             </span>
           </div>
 
@@ -223,7 +258,7 @@ export default function Dashboard({
         {/* Top Header */}
         <header className="h-[60px] bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] px-6 xl:px-8 flex items-center justify-between gap-4 shrink-0 z-40 shadow-[0_2px_10px_rgba(11,29,58,0.03)]">
           <h1 className="text-[17px] font-extrabold text-[#0B1D3A] tracking-tight shrink-0">
-            {sectionTitleMap[activeSection] || "Dashboard"}
+            {currentHeaderTitle}
           </h1>
 
           <div className="flex-1 max-w-[380px] relative">
@@ -272,3 +307,4 @@ export { default as DashboardMain } from "./Dashboard_Main";
 export { default as Programs } from "./Programs";
 export { default as SkillAssessment } from "./Skill_Assessment";
 export { default as MyLearning } from "./My_Learning";
+export { default as CompanyProfile } from "./company-profile";

@@ -24,6 +24,7 @@ import SpecializationDetail from "./SpecializationDetail";
 import trimmedLogo from "../../Components/FARE_Logo/SVG/Primary Logo Trimmed.svg";
 import Sidebar from "../sidebar";
 import AdBanner from "../components/AdBanner";
+import { dispatchOpenCompanyProfile } from "../company-profile/useCompanyProfile";
 
 export interface SkillAssessmentMobileProps {
   hideSidebar?: boolean;
@@ -178,10 +179,10 @@ export default function SkillAssessmentMobile({
             </div>
             <button
               type="button"
-              onClick={() => alert("Assessment inquiry submitted")}
+              onClick={() => dispatchOpenCompanyProfile("Skill Assessment Partner Program")}
               className="px-2.5 py-1 rounded-[6px] bg-[#0B1D3A] text-white text-[10px] font-bold shrink-0 cursor-pointer"
             >
-              Join Now
+              View Company
             </button>
           </div>
 
@@ -296,7 +297,8 @@ export default function SkillAssessmentMobile({
                   variant="card"
                   label="SPONSORED"
                   primaryCtaText="Apply Now"
-                  secondaryCtaText="Join Now"
+                  secondaryCtaText="View Company"
+                  onJoin={() => dispatchOpenCompanyProfile("Skill Assessment Partner")}
                 />
               )}
             </React.Fragment>

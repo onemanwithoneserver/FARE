@@ -39,6 +39,8 @@ export default function Header({
     { value: "dashboard-skill-assessment", label: "Dashboard - Skill Assessment" },
     { value: "dashboard-courses", label: "Dashboard - Courses" },
     { value: "dashboard-knowledge-bank", label: "Dashboard - Knowledge Bank" },
+    { value: "company-profile", label: "About the Company" },
+    { value: "dashboard-company-profile", label: "Dashboard - Company Profile" },
   ];
   return (
     <header className="h-[60px] bg-white border-b border-[#e2e8f0] px-3 sm:px-4 md:px-6 flex items-center justify-between shrink-0 shadow-sm relative z-[100] gap-2 sm:gap-4 pointer-events-auto">
