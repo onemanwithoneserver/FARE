@@ -207,19 +207,30 @@ export function CompanyProfile({
   return (
     <div
       ref={rootRef}
-      className="w-full min-h-full bg-[#F8FAFD] flex flex-col font-['Outfit'] relative overflow-x-clip select-text"
+      className="w-full min-h-full bg-[#0B1D3A]/[0.02] flex flex-col font-['Outfit'] relative overflow-x-clip select-text"
     >
+      <div
+        className={`fixed top-0 left-0 bg-gradient-radial from-[#8B5CF6]/5 to-transparent rounded-full pointer-events-none z-0 ${
+          isMobile ? "w-[300px] h-[300px] blur-[80px]" : "w-[500px] h-[500px] blur-[100px]"
+        }`}
+      />
+      <div
+        className={`fixed bottom-0 right-0 bg-gradient-radial from-[#C99A2E]/5 to-transparent rounded-full pointer-events-none z-0 ${
+          isMobile ? "w-[300px] h-[300px] blur-[80px]" : "w-[500px] h-[500px] blur-[100px]"
+        }`}
+      />
+
       {/* Sticky Navy Glassmorphic Top Breadcrumb & Scroll-Triggered Section Tab Bar */}
       <motion.div
         ref={stickyHeaderRef}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="sticky top-0 z-30 backdrop-blur-2xl border-b relative"
         style={{
           background:
-            "linear-gradient(135deg, rgba(11,29,58,0.96) 0%, rgba(15,40,71,0.96) 100%)",
-          borderColor: "rgba(255,255,255,0.08)",
+            "linear-gradient(135deg, rgba(11,29,58,0.95) 0%, rgba(15,40,71,0.95) 100%)",
+          borderColor: "rgba(255,255,255,0.06)",
           boxShadow:
             "0 8px 32px -8px rgba(0,0,0,0.3), inset 0 -1px 0 rgba(255,255,255,0.05)",
         }}
@@ -230,15 +241,15 @@ export function CompanyProfile({
             <button
               type="button"
               onClick={handleBackClick}
-              className="flex items-center justify-center w-8 h-8 rounded-[8px] transition-all duration-200 hover:bg-white/10 hover:scale-105 active:scale-95 cursor-pointer shrink-0"
+              className="flex items-center justify-center w-8 h-8 rounded-[8px] transition-all duration-300 hover:bg-white/10 hover:scale-105 active:scale-95 cursor-pointer shrink-0"
               style={{
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.1)",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.08)",
               }}
               title="Back"
               aria-label="Go back"
             >
-              <ArrowLeft size={16} className="text-white/80" strokeWidth={2.5} />
+              <ArrowLeft size={16} className="text-white/60" strokeWidth={2.5} />
             </button>
           </div>
 
@@ -253,7 +264,7 @@ export function CompanyProfile({
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -10, scale: 0.96 }}
                   transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                  className="hidden lg:flex items-center gap-1 bg-white/[0.06] p-1 rounded-[10px] border border-white/10 shadow-inner"
+                  className="hidden lg:flex items-center gap-1 bg-white/[0.05] p-1 rounded-[8px] border border-white/[0.08] shadow-inner"
                 >
                   {sectionNavItems.map((item) => {
                     const isActive = activeNavId === item.id;
@@ -262,7 +273,7 @@ export function CompanyProfile({
                         key={item.id}
                         type="button"
                         onClick={() => scrollToSection(item.id)}
-                        className={`relative px-3 py-1.5 rounded-[7px] text-[11px] font-bold transition-colors cursor-pointer whitespace-nowrap z-10 ${
+                        className={`relative px-3 py-1.5 rounded-[4px] text-[11px] font-bold transition-colors duration-300 cursor-pointer whitespace-nowrap z-10 ${
                           isActive ? "text-white" : "text-white/65 hover:text-white"
                         }`}
                       >
@@ -274,10 +285,10 @@ export function CompanyProfile({
                               stiffness: 420,
                               damping: 34,
                             }}
-                            className="absolute inset-0 rounded-[7px] -z-10 shadow-[0_4px_12px_rgba(201,154,46,0.35)]"
+                            className="absolute inset-0 rounded-[4px] -z-10 shadow-[0_4px_12px_rgba(201,154,46,0.35)]"
                             style={{
                               background:
-                                "linear-gradient(135deg, #C99A2E 0%, #A87A18 100%)",
+                                "linear-gradient(135deg, #D5AA45 0%, #C99A2E 100%)",
                             }}
                           />
                         )}
@@ -303,7 +314,7 @@ export function CompanyProfile({
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className={`${isMobile ? "block" : "lg:hidden"} overflow-hidden border-t border-white/10 bg-[#08152B]/90`}
+              className={`${isMobile ? "block" : "lg:hidden"} overflow-hidden border-t border-white/[0.06] bg-[#0B1D3A]/95`}
             >
               <div className="px-4 py-2 flex items-center gap-1.5 overflow-x-auto scrollbar-hide">
                 {sectionNavItems.map((item) => {
@@ -313,7 +324,7 @@ export function CompanyProfile({
                       key={item.id}
                       type="button"
                       onClick={() => scrollToSection(item.id)}
-                      className={`relative px-3 py-1 rounded-full text-[11px] font-bold whitespace-nowrap transition-colors cursor-pointer shrink-0 z-10 ${
+                      className={`relative px-3 py-1 rounded-full text-[11px] font-bold whitespace-nowrap transition-colors duration-300 cursor-pointer shrink-0 z-10 ${
                         isActive ? "text-white" : "text-white/65 hover:text-white"
                       }`}
                     >
@@ -328,7 +339,7 @@ export function CompanyProfile({
                           className="absolute inset-0 rounded-full -z-10"
                           style={{
                             background:
-                              "linear-gradient(135deg, #C99A2E 0%, #A87A18 100%)",
+                              "linear-gradient(135deg, #D5AA45 0%, #C99A2E 100%)",
                           }}
                         />
                       )}
@@ -398,14 +409,14 @@ export function CompanyProfile({
             exit={{ opacity: 0, scale: 0.8, y: 16 }}
             whileHover={{ y: -3, scale: 1.06 }}
             whileTap={{ scale: 0.94 }}
-            className="fixed bottom-5 right-5 z-40 w-10 h-10 rounded-full text-white flex items-center justify-center shadow-[0_8px_24px_rgba(11,29,58,0.35)] border border-[#D5AA45]/40 cursor-pointer"
+            className="fixed bottom-5 right-5 z-40 w-10 h-10 rounded-full text-white flex items-center justify-center luxury-shadow-float border border-[#C99A2E]/40 cursor-pointer"
             style={{
-              background: "linear-gradient(135deg, #0B1D3A 0%, #1A3463 100%)",
+              background: "linear-gradient(135deg, #0B1D3A 0%, #071A49 100%)",
             }}
             title="Back to top"
             aria-label="Scroll back to top"
           >
-            <ArrowUp size={16} className="text-[#E5C158]" />
+            <ArrowUp size={16} className="text-[#D5AA45]" />
           </motion.button>
         )}
       </AnimatePresence>
