@@ -154,28 +154,22 @@ export default function KnowledgeBankDesktop({
           </p>
         </div>
 
-        {/* Position B1 - HEADER PROMO SWAP: White card with gray border */}
-        <div className="bg-white border border-[#E2E8F0] rounded-[8px] px-3.5 py-2 flex items-center gap-3 shadow-2xs">
-          <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#64748B] px-2 py-0.5 bg-[#F1F5F9] rounded-[4px] border border-slate-200/90 flex items-center gap-1">
-            <Sparkles className="w-2.5 h-2.5 text-[#C99A2E]" />
-            <span>SPONSORED</span>
-          </span>
+        {/* Top-Right Warm Cream Promo Card (matching Knowledge Bank reference) */}
+        <button
+          type="button"
+          onClick={() => dispatchOpenCompanyProfile("Knowledge Bank Partner Program")}
+          className="bg-[#FFFBEB] hover:bg-[#FEF6D8] border border-[#F5E0A3] rounded-[10px] px-4 py-2.5 flex items-center gap-2.5 text-left transition-colors cursor-pointer shrink-0"
+        >
+          <Sparkles className="w-4 h-4 text-[#C99A2E] shrink-0" />
           <div>
-            <div className="text-xs font-bold text-[#0B1D3A] leading-tight">
+            <div className="text-xs font-extrabold text-[#0B1D3A] leading-tight">
               Build your knowledge.
             </div>
-            <div className="text-[11px] text-slate-500 font-medium">
+            <div className="text-[11px] text-[#B88A22] font-semibold mt-0.5">
               Grow your career.
             </div>
           </div>
-          <button
-            type="button"
-            onClick={() => dispatchOpenCompanyProfile("Knowledge Bank Partner Program")}
-            className="ml-1 px-3 py-1 rounded-[6px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-[11px] font-bold cursor-pointer transition-colors shadow-2xs"
-          >
-            View Company
-          </button>
-        </div>
+        </button>
       </div>
 
       {/* Top 3 Stat Cards Row */}
@@ -203,9 +197,15 @@ export default function KnowledgeBankDesktop({
         ))}
       </div>
 
-      {/* Sponsored Advertisement Banner */}
+      {/* Format J Leaderboard Advertisement Banner */}
       <div className="mt-6">
-        <AdBanner variant="leaderboard" label="SPONSORED" height={96} />
+        <AdBanner
+          variant="leaderboard"
+          brand="kalpavana"
+          title="Kalpavana Group is hiring 15 plot sales executives"
+          tagline="Top Knowledge Bank scorers get a direct interview call"
+          primaryCtaText="Apply now"
+        />
       </div>
 
       {/* Choose a Specialization Header & Filter Dropdown */}
@@ -258,13 +258,13 @@ export default function KnowledgeBankDesktop({
         </div>
       </div>
 
-      {/* Specializations Grid with In-Grid Sponsored Employer Card B2 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* Specializations Grid (2-column layout) with Format K In-Grid Horizontal Logo Card */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredSpecializations.map((spec, index) => (
           <React.Fragment key={spec.id}>
             <div
               onClick={() => setSelectedSpecialization(spec)}
-              className="bg-white rounded-[8px] border border-[#E2E8F0] p-5 flex flex-col justify-between shadow-[0_4px_16px_rgba(11,29,58,0.04)] hover:shadow-[0_18px_40px_rgba(11,29,58,0.12)] hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group min-h-[150px]"
+              className="bg-white rounded-[12px] border border-[#E2E8F0] p-5 flex flex-col justify-between shadow-[0_4px_16px_rgba(11,29,58,0.04)] hover:shadow-[0_18px_40px_rgba(11,29,58,0.12)] hover:border-[#C99A2E]/50 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group min-h-[150px]"
             >
               <div>
                 {/* Icon Box */}
@@ -283,14 +283,6 @@ export default function KnowledgeBankDesktop({
                 <p className="text-xs text-slate-500 font-normal mt-1 line-clamp-2 leading-relaxed">
                   {spec.description}
                 </p>
-
-                {/* B3 - DEMAND CHIP: White chip with gray border */}
-                <div className="mt-2.5">
-                  <span className="inline-flex items-center gap-1 bg-white border border-[#E2E8F0] text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-[4px] shadow-2xs">
-                    <Sparkles className="w-2.5 h-2.5 text-[#C99A2E]" />
-                    <span>Asked for in {index % 2 === 0 ? 14 : 8} roles</span>
-                  </span>
-                </div>
               </div>
 
               {/* Bottom Status Row */}
@@ -308,14 +300,13 @@ export default function KnowledgeBankDesktop({
               </div>
             </div>
 
-            {/* Position B2 - IN-GRID EMPLOYER CARD: White card with gray border */}
-            {index === 2 && (
+            {/* Position K - IN-GRID HORIZONTAL LOGO CARD (160x130 logo) */}
+            {index === 1 && (
               <AdBanner
-                variant="card"
-                label="SPONSORED"
-                primaryCtaText="Apply Now"
-                secondaryCtaText="View Company"
-                onJoin={() => dispatchOpenCompanyProfile("Knowledge Bank Partner")}
+                variant="in-grid-horizontal"
+                brand="skyline"
+                title="Score 80%+ in Legal & Approvals for a priority interview"
+                onJoin={() => dispatchOpenCompanyProfile("Skyline Plotworks")}
               />
             )}
           </React.Fragment>

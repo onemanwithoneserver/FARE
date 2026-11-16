@@ -130,28 +130,22 @@ export default function SkillAssessmentDesktop({
           </p>
         </div>
 
-        {/* Top-Right Sponsored Promo Box: White card with gray border */}
-        <div className="bg-white border border-[#E2E8F0] rounded-[8px] px-3.5 py-2 flex items-center gap-3 shadow-2xs shrink-0">
-          <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#64748B] px-2 py-0.5 bg-[#F1F5F9] rounded-[4px] border border-slate-200/90 flex items-center gap-1">
-            <Sparkles className="w-2.5 h-2.5 text-[#C99A2E]" />
-            <span>SPONSORED</span>
-          </span>
+        {/* Top-Right Warm Promo Card */}
+        <button
+          type="button"
+          onClick={() => dispatchOpenCompanyProfile("Skill Assessment Partner Program")}
+          className="bg-[#FFFBEB] hover:bg-[#FEF6D8] border border-[#F5E0A3] rounded-[10px] px-4 py-2.5 flex items-center gap-2.5 shadow-2xs shrink-0 cursor-pointer transition-colors text-left"
+        >
+          <Sparkles className="w-4 h-4 text-[#C99A2E] shrink-0" />
           <div>
-            <div className="text-xs font-black text-[#0B1D3A] leading-tight">
+            <div className="text-xs font-extrabold text-[#0B1D3A] leading-tight">
               {skillAssessmentHeader.promoTitle}
             </div>
-            <div className="text-[11px] text-[#64748B] font-medium">
+            <div className="text-[11px] text-[#B4821E] font-medium mt-0.5">
               {skillAssessmentHeader.promoSubtitle}
             </div>
           </div>
-          <button
-            type="button"
-            onClick={() => dispatchOpenCompanyProfile("Skill Assessment Partner Program")}
-            className="ml-1 px-3 py-1 rounded-[6px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-[11px] font-bold cursor-pointer transition-colors shadow-2xs"
-          >
-            View Company
-          </button>
-        </div>
+        </button>
       </div>
 
       {/* Top 3 Stat Cards Row */}
@@ -179,6 +173,15 @@ export default function SkillAssessmentDesktop({
           </div>
         ))}
       </div>
+
+      {/* Format J - Leaderboard Banner */}
+      <AdBanner
+        variant="leaderboard"
+        brand="kalpavana"
+        title="Kalpavana Group is hiring 15 plot sales executives"
+        tagline="Top Skill Assessment scorers get a direct interview call"
+        primaryCtaText="Apply now"
+      />
 
       {/* Specialization Section Header & Filter Dropdown */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pt-2">
@@ -233,8 +236,8 @@ export default function SkillAssessmentDesktop({
         </div>
       </div>
 
-      {/* 3x3 Grid of 9 Specialization Cards with In-Grid Sponsored Card */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* 2-Column Grid of Specialization Cards with In-Grid Horizontal Logo Card */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredSpecializations.map((spec: SkillSpecialization, index: number) => (
           <React.Fragment key={spec.id}>
             <div
@@ -256,14 +259,6 @@ export default function SkillAssessmentDesktop({
                 <p className="text-xs text-[#64748B] font-normal mt-0.5 line-clamp-2">
                   {spec.description}
                 </p>
-
-                {/* Demand Chip: White chip with gray border */}
-                <div className="mt-2.5">
-                  <span className="inline-flex items-center gap-1 bg-white border border-[#E2E8F0] text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-[4px] shadow-2xs">
-                    <Sparkles className="w-2.5 h-2.5 text-[#C99A2E]" />
-                    <span>Asked for in {index % 2 === 0 ? 12 : 9} roles</span>
-                  </span>
-                </div>
               </div>
 
               <div className="flex items-center justify-between mt-4 pt-3 border-t border-[#E2E8F0]">
@@ -274,14 +269,13 @@ export default function SkillAssessmentDesktop({
               </div>
             </div>
 
-            {/* In-Grid Sponsored Role Card */}
-            {index === 0 && (
+            {/* Format K - In-Grid Horizontal Logo Ad */}
+            {index === 1 && (
               <AdBanner
-                variant="card"
-                label="SPONSORED"
-                primaryCtaText="Apply Now"
-                secondaryCtaText="View Company"
-                onJoin={() => dispatchOpenCompanyProfile("Skill Assessment Partner")}
+                variant="in-grid-horizontal"
+                brand="skyline"
+                title="Score 80%+ in Legal & Approvals for a priority interview"
+                onJoin={() => dispatchOpenCompanyProfile("Skyline Plotworks")}
               />
             )}
           </React.Fragment>

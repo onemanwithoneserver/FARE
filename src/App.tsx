@@ -42,8 +42,20 @@ function CompanyProfileRoute({
     companyName?: string;
     returnUrl?: string;
   } | null;
+  let storedCompanyName: string | undefined;
+  try {
+    storedCompanyName =
+      sessionStorage.getItem("fare_company_profile_name") ||
+      localStorage.getItem("fare_company_profile_name") ||
+      undefined;
+  } catch {
+    // ignore
+  }
   const companyName =
-    routeState?.companyName || searchParams.get("company") || undefined;
+    routeState?.companyName ||
+    searchParams.get("company") ||
+    storedCompanyName ||
+    undefined;
 
   useEffect(() => {
     if (location.search) {
@@ -75,6 +87,13 @@ function CompanyProfileRoute({
     // 3. Fallback to dashboard courses
     if (!returnUrl || returnUrl.includes("company-profile")) {
       returnUrl = `/${viewMode}/dashboard/courses`;
+    }
+
+    // Strip Vite base prefix (/FARE) if stored with full pathname
+    const rawBase = import.meta.env.BASE_URL || "/";
+    const basePrefix = rawBase.endsWith("/") ? rawBase.slice(0, -1) : rawBase;
+    if (basePrefix && returnUrl.startsWith(basePrefix)) {
+      returnUrl = returnUrl.slice(basePrefix.length) || "/";
     }
 
     // Adapt mode prefix if current mode differs

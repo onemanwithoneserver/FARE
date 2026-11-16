@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   ChevronLeft,
   ChevronDown,
@@ -206,14 +206,15 @@ export default function ProgramDetail({
         </div>
       </div>
 
-      {/* Position P1 - PROGRAM HIRING PARTNERS: White card with gray shade, text SPONSORED, CTA controls */}
+      {/* Position P1 - FORMAT H: PROGRAM TITLE SPONSOR */}
       <AdBanner
-        variant="banner"
-        label="SPONSORED"
-        primaryCtaText="Apply Now"
-        secondaryCtaText="View Company"
-        onApply={() => handleOpenAdAction("apply", "Program Hiring Partners")}
-        onJoin={() => handleOpenAdAction("join", "Program Hiring Partners")}
+        variant="program-sponsor"
+        label={`LEAD HIRING PARTNER · ${program.title.toUpperCase()}`}
+        title="Northstone Projects will interview every graduate of this program"
+        tagline="Plus 11 more companies hiring Team Leaders"
+        primaryCtaText="See roles"
+        onApply={() => handleOpenAdAction("apply", "Program Graduate Hiring Roles")}
+        onJoin={() => handleOpenAdAction("join", "Northstone Projects")}
       />
 
       {/* Stepper Grid (3-column responsive grid matching reference screenshots) */}
@@ -226,121 +227,73 @@ export default function ProgramDetail({
           const isContinue = step.status === "continue";
 
           return (
-            <React.Fragment key={step.stepNumber}>
-              <div
-                onClick={() => handleStepClick(step)}
-                className={`rounded-[8px] p-4 flex flex-col justify-between gap-3 transition-all duration-200 cursor-pointer ${
-                  isActive
-                    ? "bg-[#FFFDF7] border-2 border-[#C99A2E] shadow-[0_4px_14px_rgba(201,154,46,0.12)]"
-                    : "bg-white border border-[#E2E8F0] hover:border-slate-300 shadow-2xs"
-                }`}
-              >
-                {/* Step Top Badge */}
-                <div className="flex items-center gap-2">
-                  {isCompleted ? (
-                    <CheckCircle2 className="w-4 h-4 text-[#16A34A] shrink-0" />
-                  ) : isContinue ? (
-                    <div className="w-4 h-4 rounded-full border-2 border-slate-400 shrink-0" />
-                  ) : (
-                    <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                  )}
-                  <span
-                    className={`text-[10px] font-black uppercase tracking-wider ${
-                      isActive
-                        ? "text-[#A16207]"
-                        : isCompleted
-                        ? "text-[#16A34A]"
-                        : "text-slate-400"
-                    }`}
-                  >
-                    {step.stepNumber}. {step.label}
-                  </span>
-                </div>
-
-                {/* Step Title */}
-                <h2
-                  className={`text-xs sm:text-[13px] leading-snug font-bold ${
-                    isActive ? "text-[#0B1D3A]" : "text-[#334155]"
+            <div
+              key={step.stepNumber}
+              onClick={() => handleStepClick(step)}
+              className={`rounded-[8px] p-4 flex flex-col justify-between gap-3 transition-all duration-200 cursor-pointer ${
+                isActive
+                  ? "bg-[#FFFDF7] border-2 border-[#C99A2E] shadow-[0_4px_14px_rgba(201,154,46,0.12)]"
+                  : "bg-white border border-[#E2E8F0] hover:border-slate-300 shadow-2xs"
+              }`}
+            >
+              {/* Step Top Badge */}
+              <div className="flex items-center gap-2">
+                {isCompleted ? (
+                  <CheckCircle2 className="w-4 h-4 text-[#16A34A] shrink-0" />
+                ) : isContinue ? (
+                  <div className="w-4 h-4 rounded-full border-2 border-slate-400 shrink-0" />
+                ) : (
+                  <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                )}
+                <span
+                  className={`text-[10px] font-black uppercase tracking-wider ${
+                    isActive
+                      ? "text-[#A16207]"
+                      : isCompleted
+                      ? "text-[#16A34A]"
+                      : "text-slate-400"
                   }`}
                 >
-                  {step.title}
-                </h2>
-
-                {/* Step Footer Type */}
-                <div className="flex items-center gap-1.5 text-[11px] font-medium text-slate-400">
-                  {isQuiz ? (
-                    <>
-                      <FileText className="w-3 h-3 text-slate-400" />
-                      <span>Quiz</span>
-                    </>
-                  ) : isMock ? (
-                    <>
-                      <Target className="w-3 h-3 text-slate-400" />
-                      <span>Mock</span>
-                    </>
-                  ) : (
-                    <>
-                      <BookOpen className="w-3 h-3 text-slate-400" />
-                      <span>Course</span>
-                    </>
-                  )}
-                </div>
+                  {step.stepNumber}. {step.label}
+                </span>
               </div>
 
-              {/* Position P2 - CAREER MILESTONE TILE: White card with gray border */}
-              {step.stepNumber === 3 && (
-                <div className="bg-white rounded-[8px] border border-[#E2E8F0] p-4 flex flex-col justify-between gap-3 shadow-2xs hover:border-[#C99A2E]/50 transition-colors">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[9.5px] font-extrabold uppercase tracking-wider text-[#A16207] bg-[#FFFDF5] border border-[#FDE68A] px-2 py-0.5 rounded-[3px]">
-                      CAREER UNLOCK · AFTER STEP 3
-                    </span>
-                    <span className="text-[9.5px] font-bold text-[#64748B] uppercase tracking-wider">
-                      SPONSORED
-                    </span>
-                  </div>
+              {/* Step Title */}
+              <h2
+                className={`text-xs sm:text-[13px] leading-snug font-bold ${
+                  isActive ? "text-[#0B1D3A]" : "text-[#334155]"
+                }`}
+              >
+                {step.title}
+              </h2>
 
-                  <h3 className="text-xs sm:text-[13px] font-bold text-[#0B1D3A] leading-snug">
-                    Pass Quiz 2 to apply to 5 Team Leader roles
-                  </h3>
-
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[10px] font-semibold text-[#0B1D3A] bg-[#F8FAFD] border border-[#E2E8F0] px-2 py-0.5 rounded-[4px]">
-                      Horizon Plots
-                    </span>
-                    <span className="text-[10px] font-semibold text-[#0B1D3A] bg-[#F8FAFD] border border-[#E2E8F0] px-2 py-0.5 rounded-[4px]">
-                      Greenline Layouts
-                    </span>
-                    <span className="text-[10px] font-bold text-[#C99A2E] bg-[#FEF9EE] border border-[#C99A2E]/30 px-1.5 py-0.5 rounded-[4px]">
-                      +3
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-2 pt-1 border-t border-[#E2E8F0]">
-                    <button
-                      type="button"
-                      onClick={() => handleOpenAdAction("join", "Team Leader Roles")}
-                      className="px-3 py-1.5 rounded-[6px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold cursor-pointer"
-                    >
-                      View Company
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleOpenAdAction("apply", "Team Leader Roles")}
-                      className="px-3 py-1.5 rounded-[6px] bg-gradient-to-r from-[#C99A2E] to-[#A87A18] text-white text-xs font-bold cursor-pointer"
-                    >
-                      Apply Now
-                    </button>
-                  </div>
-                </div>
-              )}
-            </React.Fragment>
+              {/* Step Footer Type */}
+              <div className="flex items-center gap-1.5 text-[11px] font-medium text-slate-400">
+                {isQuiz ? (
+                  <>
+                    <FileText className="w-3 h-3 text-slate-400" />
+                    <span>Quiz</span>
+                  </>
+                ) : isMock ? (
+                  <>
+                    <Target className="w-3 h-3 text-slate-400" />
+                    <span>Mock</span>
+                  </>
+                ) : (
+                  <>
+                    <BookOpen className="w-3 h-3 text-slate-400" />
+                    <span>Course</span>
+                  </>
+                )}
+              </div>
+            </div>
           );
         })}
       </div>
 
       {/* Main Content Area: Dynamically switches based on active step type & completion status */}
       {activeStep.type === "QUIZ" && activeStep.status === "completed" ? (
-        /* Branch 1: Completed Quiz View (Matching Reference Screenshot 2) */
+        /* Branch 1: Completed Quiz View with Format I Quiz Pass Logo Cards */
         <div className="w-full bg-white rounded-[12px] border border-[#E2E8F0] p-6 xl:p-8 flex flex-col gap-6 shadow-[0_4px_16px_rgba(11,29,58,0.03)]">
           {/* State Badges */}
           <div className="flex items-center gap-2">
@@ -357,17 +310,28 @@ export default function ProgramDetail({
             {activeStep.title}
           </h1>
 
-          {/* Green Completed Banner Container */}
-          <div className="w-full bg-[#F0FDF4] border border-[#DCFCE7] rounded-[10px] py-12 px-6 flex flex-col items-center justify-center text-center gap-3">
-            <div className="w-12 h-12 rounded-full border-2 border-emerald-500 flex items-center justify-center text-emerald-500 shadow-2xs">
-              <Check className="w-6 h-6 stroke-[3]" />
-            </div>
-            <div className="flex flex-col gap-1">
+          {/* Green Completed Banner Container with Embedded Format I Quiz-Pass Logo Cards */}
+          <div className="w-full bg-[#F0FDF4] border border-[#DCFCE7] rounded-[12px] p-5 sm:p-6 flex flex-col items-center justify-center text-center gap-5">
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-10 h-10 rounded-full border-2 border-emerald-500 flex items-center justify-center text-emerald-500 shadow-2xs">
+                <Check className="w-5 h-5 stroke-[3]" />
+              </div>
               <h3 className="text-base font-bold text-[#0B1D3A]">Quiz completed</h3>
-              <p className="text-xs text-[#64748B] font-medium">
-                {activeStep.quizCompletedNote || "Test ass is marked complete in this program."}
-              </p>
+              {activeStep.quizCompletedNote && (
+                <p className="text-xs text-[#64748B] font-medium">
+                  {activeStep.quizCompletedNote}
+                </p>
+              )}
             </div>
+
+            {/* FORMAT I: QUIZ-PASS LOGO CARDS (3 x 135px logo) */}
+            <AdBanner
+              variant="quiz-pass"
+              className="w-full"
+              title="You now qualify for roles at these companies"
+              onApply={() => handleOpenAdAction("apply", "Qualified Role Application")}
+              onJoin={() => handleOpenAdAction("join", "Program Hiring Partners")}
+            />
           </div>
 
           {/* Action Button: Retake Quiz */}
@@ -384,16 +348,6 @@ export default function ProgramDetail({
               <span>Retake Quiz</span>
             </button>
           </div>
-
-          {/* Position L3 - QUIZ-COMPLETE SPONSORED BANNER: White card with gray shade, text SPONSORED, CTA controls */}
-          <AdBanner
-            variant="banner"
-            label="SPONSORED"
-            primaryCtaText="Apply Now"
-            secondaryCtaText="View Company"
-            onApply={() => handleOpenAdAction("apply", "Program Partner")}
-            onJoin={() => handleOpenAdAction("join", "Program Partner")}
-          />
         </div>
       ) : activeStep.type === "QUIZ" ? (
         /* Branch 2: In-Progress / Locked Quiz View */
@@ -452,13 +406,11 @@ export default function ProgramDetail({
             </button>
           </div>
 
-          {/* Position L3 - QUIZ-COMPLETE SPONSORED BANNER: White card with gray shade, text SPONSORED, CTA controls */}
+          {/* Format I Preview for Passing Candidates */}
           <AdBanner
-            variant="banner"
-            label="SPONSORED"
-            primaryCtaText="Apply Now"
-            secondaryCtaText="View Company"
-            onApply={() => handleOpenAdAction("apply", "Program Partner")}
+            variant="quiz-pass"
+            title="Score 70%+ to unlock interviews at these companies"
+            onApply={() => handleOpenAdAction("apply", "Qualified Role Application")}
             onJoin={() => handleOpenAdAction("join", "Program Partner")}
           />
         </div>
@@ -516,13 +468,11 @@ export default function ProgramDetail({
             </button>
           </div>
 
-          {/* Position L3 - QUIZ-COMPLETE SPONSORED BANNER: White card with gray shade, text SPONSORED, CTA controls */}
+          {/* Format I Preview for Passing Candidates */}
           <AdBanner
-            variant="banner"
-            label="SPONSORED"
-            primaryCtaText="Apply Now"
-            secondaryCtaText="View Company"
-            onApply={() => handleOpenAdAction("apply", "Program Partner")}
+            variant="quiz-pass"
+            title="Score 70%+ to unlock interviews at these companies"
+            onApply={() => handleOpenAdAction("apply", "Qualified Role Application")}
             onJoin={() => handleOpenAdAction("join", "Program Partner")}
           />
         </div>
@@ -545,11 +495,11 @@ export default function ProgramDetail({
             </span>
           </div>
 
-          {/* Hero Banner Card */}
-          <div className="w-full shrink-0 min-h-[190px] bg-gradient-to-r from-[#0B1D3A] via-[#102548] to-[#1A3463] rounded-[10px] overflow-hidden shadow-[0_10px_30px_rgba(11,29,58,0.2)] border border-[#1A3463]/50 relative flex flex-col justify-between p-6 xl:p-8 text-white">
+          {/* Hero Banner Card with Format F Hero Sponsor Tile */}
+          <div className="w-full shrink-0 min-h-[190px] bg-gradient-to-r from-[#0B1D3A] via-[#102548] to-[#1A3463] rounded-[12px] overflow-hidden shadow-[0_10px_30px_rgba(11,29,58,0.2)] border border-[#1A3463]/50 relative flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 p-6 xl:p-8 text-white">
             <HeroCityscapeGraphic />
 
-            <div className="relative z-10 flex flex-col gap-3 max-w-[75%]">
+            <div className="relative z-10 flex flex-col gap-3 flex-1 min-w-0 w-full">
               {/* Top Category Badge */}
               <div>
                 <span className="bg-[#FFFDF5] text-[#A16207] border border-[#FDE68A] text-[10px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-[4px]">
@@ -584,6 +534,17 @@ export default function ProgramDetail({
                   <span>Start Course</span>
                 </button>
               </div>
+            </div>
+
+            {/* FORMAT F: HERO SPONSOR TILE */}
+            <div className="relative z-10 shrink-0 w-full sm:w-auto">
+              <AdBanner
+                variant="hero-tile"
+                brand="amaravana"
+                label="COURSE HIRING PARTNER"
+                title="Amaravana Estates hires Team Leaders from this course →"
+                onJoin={() => handleOpenAdAction("join", "Amaravana Estates")}
+              />
             </div>
           </div>
 
@@ -724,16 +685,18 @@ export default function ProgramDetail({
                         )}
                       </div>
 
-                      {/* Position C4 - MODULE-BOUNDARY CARD (Between Module 1 and Module 2) */}
+                      {/* Position C4 - FORMAT A BILLBOARD (Between Module 1 and Module 2) */}
                       {idx === 0 && (
                         <div className="my-1">
                           <AdBanner
-                            variant="banner"
-                            label="SPONSORED"
-                            primaryCtaText="Apply Now"
-                            secondaryCtaText="View Company"
-                            onApply={() => handleOpenAdAction("apply", "Module Partner Program")}
-                            onJoin={() => handleOpenAdAction("join", "Module Partner Program")}
+                            variant="billboard"
+                            brand="northstone"
+                            title="Northstone Projects is hiring 6 Team Leaders"
+                            tagline="Medchal · Freelance or full-time · Prefers learners of this course"
+                            primaryCtaText="Apply now"
+                            secondaryCtaText="View company"
+                            onApply={() => handleOpenAdAction("apply", "Northstone Projects — 6 Team Leaders")}
+                            onJoin={() => handleOpenAdAction("join", "Northstone Projects")}
                           />
                         </div>
                       )}
@@ -780,11 +743,13 @@ export default function ProgramDetail({
                 </button>
               </div>
 
-              {/* ADVERTISEMENT: Positioned Below the Progress Card */}
+              {/* FORMAT G: SIDEBAR 2x2 LOGO GRID BELOW PROGRESS */}
               <AdBanner
-                variant="sidebar"
-                label="SPONSORED AD"
-                height={160}
+                variant="sidebar-grid"
+                label="HIRING FROM THIS COURSE"
+                primaryCtaText="See all 23 openings"
+                onApply={() => handleOpenAdAction("apply", "Course Hiring Openings (23 roles)")}
+                onJoin={() => handleOpenAdAction("join", "Course Hiring Partners")}
                 className="w-full"
               />
 

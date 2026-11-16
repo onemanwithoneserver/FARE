@@ -364,7 +364,7 @@ export default function SpecializationDetail({
       </div>
 
       {/* ADVERTISEMENT: Positioned alongside the action controls & tests in Knowledge Bank */}
-      <AdBanner variant="inline" label="ADVERTISEMENT" height={70} />
+      <AdBanner variant="leaderboard" />
 
       {/* Tests Content List / Empty State */}
       {filteredTests.length === 0 ? (

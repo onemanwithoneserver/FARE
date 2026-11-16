@@ -160,31 +160,23 @@ export default function SkillAssessmentMobile({
 
       {/* Main Content */}
       <div className="p-4 flex flex-col gap-4">
-        {/* Title & Promo Box */}
+        {/* Title & Warm Promo Card */}
         <div className="flex flex-col gap-2.5">
-          <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-2.5 flex items-center justify-between gap-2 shadow-2xs">
-            <div className="flex items-center gap-2">
-              <span className="text-[9.5px] font-extrabold uppercase tracking-widest text-[#64748B] px-1.5 py-0.5 bg-[#F1F5F9] rounded-[3px] border border-slate-200/90 flex items-center gap-1">
-                <Sparkles className="w-2.5 h-2.5 text-[#C99A2E]" />
-                <span>SPONSORED</span>
-              </span>
-              <div>
-                <div className="text-xs font-bold text-slate-900 leading-tight">
-                  {skillAssessmentHeader.promoTitle}
-                </div>
-                <div className="text-[10px] text-slate-500 font-medium">
-                  {skillAssessmentHeader.promoSubtitle}
-                </div>
+          <button
+            type="button"
+            onClick={() => dispatchOpenCompanyProfile("Skill Assessment Partner Program")}
+            className="bg-[#FFFBEB] border border-[#F5E0A3] rounded-[10px] p-3 flex items-center gap-2.5 shadow-2xs text-left cursor-pointer"
+          >
+            <Sparkles className="w-4 h-4 text-[#C99A2E] shrink-0" />
+            <div>
+              <div className="text-xs font-extrabold text-[#0B1D3A] leading-tight">
+                {skillAssessmentHeader.promoTitle}
+              </div>
+              <div className="text-[10.5px] text-[#B4821E] font-medium mt-0.5">
+                {skillAssessmentHeader.promoSubtitle}
               </div>
             </div>
-            <button
-              type="button"
-              onClick={() => dispatchOpenCompanyProfile("Skill Assessment Partner Program")}
-              className="px-2.5 py-1 rounded-[6px] bg-[#0B1D3A] text-white text-[10px] font-bold shrink-0 cursor-pointer"
-            >
-              View Company
-            </button>
-          </div>
+          </button>
 
           <div>
             <h1 className="text-xl font-extrabold text-[#0A1833] tracking-tight">
@@ -217,6 +209,15 @@ export default function SkillAssessmentMobile({
             </div>
           ))}
         </div>
+
+        {/* Format J - Leaderboard Banner */}
+        <AdBanner
+          variant="leaderboard"
+          brand="kalpavana"
+          title="Kalpavana Group is hiring 15 plot sales executives"
+          tagline="Top Skill Assessment scorers get a direct interview call"
+          primaryCtaText="Apply now"
+        />
 
         {/* Specialization Filter Dropdown */}
         <div className="relative">
@@ -252,7 +253,7 @@ export default function SkillAssessmentMobile({
           )}
         </div>
 
-        {/* Stack of Cards with In-Grid Sponsored Card */}
+        {/* Stack of Cards with In-Grid Horizontal Logo Ad */}
         <div className="flex flex-col gap-3">
           {filteredSpecializations.map((spec: SkillSpecialization, index: number) => (
             <React.Fragment key={spec.id}>
@@ -275,14 +276,6 @@ export default function SkillAssessmentMobile({
                   <p className="text-[11px] text-slate-500 font-normal mt-0.5 line-clamp-2">
                     {spec.description}
                   </p>
-
-                  {/* Demand Chip: White chip with gray border */}
-                  <div className="mt-2">
-                    <span className="inline-flex items-center gap-1 bg-white border border-[#E2E8F0] text-slate-700 text-[9.5px] font-bold px-2 py-0.5 rounded-[4px] shadow-2xs">
-                      <Sparkles className="w-2 h-2 text-[#C99A2E]" />
-                      <span>Asked for in {index % 2 === 0 ? 12 : 9} roles</span>
-                    </span>
-                  </div>
                 </div>
 
                 <div className="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 text-[11px] text-slate-400 font-medium">
@@ -291,14 +284,13 @@ export default function SkillAssessmentMobile({
                 </div>
               </div>
 
-              {/* In-Grid Sponsored Role Card */}
-              {index === 0 && (
+              {/* Format K - In-Grid Horizontal Logo Ad */}
+              {index === 1 && (
                 <AdBanner
-                  variant="card"
-                  label="SPONSORED"
-                  primaryCtaText="Apply Now"
-                  secondaryCtaText="View Company"
-                  onJoin={() => dispatchOpenCompanyProfile("Skill Assessment Partner")}
+                  variant="in-grid-horizontal"
+                  brand="skyline"
+                  title="Score 80%+ in Legal & Approvals for a priority interview"
+                  onJoin={() => dispatchOpenCompanyProfile("Skyline Plotworks")}
                 />
               )}
             </React.Fragment>

@@ -69,7 +69,7 @@ export default function ProgramsDesktop({
       </div>
 
       {/* ADVERTISEMENT: Programs Leaderboard Banner */}
-      <AdBanner variant="leaderboard" label="SPONSORED" height={90} />
+      <AdBanner variant="leaderboard" />
 
       {/* Program Cards Grid with In-Grid Sponsored Card */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">

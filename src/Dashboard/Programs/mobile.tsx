@@ -111,8 +111,8 @@ export default function ProgramsMobile({
           </p>
         </div>
 
-        {/* ADVERTISEMENT: Mobile Inline Banner */}
-        <AdBanner variant="inline" label="SPONSORED" height={64} />
+        {/* ADVERTISEMENT: Mobile Leaderboard Banner */}
+        <AdBanner variant="leaderboard" />
 
         {/* Stack of Cards */}
         <div className="flex flex-col gap-4">

@@ -1,8 +1,10 @@
 import SponsoredCard from "./SponsoredCard";
+import BrandLogoTile from "./BrandLogoTile";
+import { SPONSOR_BRANDS, type SponsorBrandId, type SponsorBrandConfig } from "./sponsorBrands";
 import type { SponsoredCardProps, AdSize } from "./types";
 
-export type { SponsoredCardProps, AdSize };
-export { SponsoredCard };
+export type { SponsoredCardProps, AdSize, SponsorBrandId, SponsorBrandConfig };
+export { SponsoredCard, BrandLogoTile, SPONSOR_BRANDS };
 export default SponsoredCard;
 
 // Convenience size wrappers for clean semantic usage across pages
@@ -28,6 +30,30 @@ export const SidebarTowerAd = (props: Omit<SponsoredCardProps, "size">) => (
 
 export const SidebarWidgetAd = (props: Omit<SponsoredCardProps, "size">) => (
   <SponsoredCard size="sidebar-widget" {...props} />
+);
+
+export const SidebarLogoGridAd = (props: Omit<SponsoredCardProps, "size">) => (
+  <SponsoredCard size="sidebar-grid" {...props} />
+);
+
+export const HiringPartnersWallAd = (props: Omit<SponsoredCardProps, "size">) => (
+  <SponsoredCard size="hiring-wall" {...props} />
+);
+
+export const HeroSponsorTileAd = (props: Omit<SponsoredCardProps, "size">) => (
+  <SponsoredCard size="hero-tile" {...props} />
+);
+
+export const ProgramTitleSponsorAd = (props: Omit<SponsoredCardProps, "size">) => (
+  <SponsoredCard size="program-sponsor" {...props} />
+);
+
+export const QuizPassCardsAd = (props: Omit<SponsoredCardProps, "size">) => (
+  <SponsoredCard size="quiz-pass" {...props} />
+);
+
+export const InGridHorizontalLogoAd = (props: Omit<SponsoredCardProps, "size">) => (
+  <SponsoredCard size="in-grid-horizontal" {...props} />
 );
 
 export const SquareAd = (props: Omit<SponsoredCardProps, "size">) => (

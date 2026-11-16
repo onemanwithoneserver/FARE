@@ -11,7 +11,6 @@ import {
   FileText,
   MessageSquare,
   FolderDown,
-  Sparkles,
   ArrowRight,
   Check,
 } from "lucide-react";
@@ -22,6 +21,7 @@ import {
   type CourseDetailTab,
   courseDetailTabs,
 } from "./data";
+import { BrandLogoTile } from "../ads";
 import AdBanner from "../components/AdBanner";
 import AdActionModal from "../components/AdActionModal";
 import { dispatchOpenCompanyProfile } from "../company-profile/useCompanyProfile";
@@ -223,6 +223,8 @@ export default function CourseDetail({
   );
 
   // Lesson Player View (Positions L1, L2, L3)
+  const [isL3Saved, setIsL3Saved] = useState(false);
+
   if (activeLesson) {
     return (
       <div
@@ -275,45 +277,17 @@ export default function CourseDetail({
               </div>
             </div>
 
-            {/* Position L1 - BELOW VIDEO STRIP: White card with gray border */}
-            <div className="w-full bg-white border border-[#E2E8F0] rounded-[8px] p-3.5 shadow-2xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#0B1D3A] text-white flex items-center justify-center text-[10px] font-bold shrink-0 shadow-2xs">
-                  HP
-                </div>
-                <div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-[9.5px] font-extrabold uppercase tracking-widest text-[#A16207] bg-[#FFFDF5] border border-[#FDE68A] px-1.5 py-0.5 rounded-[3px]">
-                      NOW HIRING · MATCHED TO THIS COURSE
-                    </span>
-                    <span className="text-[9.5px] font-bold text-[#64748B] uppercase tracking-wider">
-                      SPONSORED
-                    </span>
-                  </div>
-                  <div className="text-xs font-bold text-[#0B1D3A] mt-0.5">
-                    Horizon Plots is hiring 6 Team Leaders · Medchal
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 shrink-0 self-end sm:self-auto">
-                <button
-                  type="button"
-                  onClick={() => handleOpenAdAction("join", "Horizon Plots - Medchal Team Leaders")}
-                  className="px-3.5 py-1.5 rounded-[7px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold transition-all cursor-pointer shadow-2xs"
-                >
-                  View Company
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleOpenAdAction("apply", "Horizon Plots - Medchal Team Leaders")}
-                  className="px-3.5 py-1.5 rounded-[7px] bg-gradient-to-r from-[#C99A2E] to-[#A87A18] hover:from-[#D5AA45] text-white text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs"
-                >
-                  <span>View role</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
+            {/* Position L1 - FORMAT A: LOGO BILLBOARD (160x110 logo) */}
+            <AdBanner
+              variant="billboard"
+              brand="northstone"
+              title="Northstone Projects is hiring 6 Team Leaders"
+              tagline="Medchal · Freelance or full-time · Prefers learners of this course"
+              primaryCtaText="Apply now"
+              secondaryCtaText="View company"
+              onApply={() => handleOpenAdAction("apply", "Northstone Projects — 6 Team Leaders")}
+              onJoin={() => handleOpenAdAction("join", "Northstone Projects")}
+            />
 
             {/* Lesson Title Header Row & Mark Complete Button */}
             <div className="bg-white rounded-[8px] border border-[#E2E8F0] p-5 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -437,50 +411,15 @@ export default function CourseDetail({
                 </div>
               </div>
 
-              {/* Position L2 - BETWEEN MODULES: White card with gray border */}
-              <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-3.5 shadow-2xs flex flex-col gap-2.5 my-1">
-                <div className="flex items-center justify-between">
-                  <span className="text-[9.5px] font-extrabold uppercase tracking-widest text-[#A16207] bg-[#FFFDF5] border border-[#FDE68A] px-2 py-0.5 rounded-[3px]">
-                    FINISH MODULE 1 TO UNLOCK
-                  </span>
-                  <span className="text-[9.5px] font-bold text-[#64748B] uppercase tracking-wider">
-                    SPONSORED
-                  </span>
-                </div>
-
-                <div className="text-xs font-bold text-[#0B1D3A] leading-snug">
-                  3 companies are hiring Team Leaders who completed this module
-                </div>
-
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-[10px] font-semibold text-[#0B1D3A] bg-[#F8FAFD] border border-[#E2E8F0] px-2 py-0.5 rounded-[4px]">
-                    Horizon Plots
-                  </span>
-                  <span className="text-[10px] font-semibold text-[#0B1D3A] bg-[#F8FAFD] border border-[#E2E8F0] px-2 py-0.5 rounded-[4px]">
-                    Greenline Layouts
-                  </span>
-                  <span className="text-[10px] font-bold text-[#C99A2E] bg-[#FEF9EE] border border-[#C99A2E]/30 px-1.5 py-0.5 rounded-[4px]">
-                    +1
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2 pt-1 border-t border-[#E2E8F0]">
-                  <button
-                    type="button"
-                    onClick={() => handleOpenAdAction("join", "Team Leader Openings")}
-                    className="w-full py-1.5 rounded-[6px] border border-[#E2E8F0] hover:bg-slate-50 text-slate-700 text-xs font-bold transition-all cursor-pointer text-center"
-                  >
-                    View Company
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleOpenAdAction("apply", "Team Leader Openings")}
-                    className="w-full py-1.5 rounded-[6px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold transition-all cursor-pointer text-center"
-                  >
-                    See openings
-                  </button>
-                </div>
-              </div>
+              {/* Position L2 - FORMAT B: SIDEBAR LOGO CARD */}
+              <AdBanner
+                variant="sidebar"
+                brand="kalpavana"
+                title="Kalpavana Group: Sales Managers, Shadnagar"
+                primaryCtaText="See 4 openings"
+                onApply={() => handleOpenAdAction("apply", "Kalpavana Group — Sales Managers")}
+                onJoin={() => handleOpenAdAction("join", "Kalpavana Group")}
+              />
 
               {/* Module 2 */}
               <div className="border border-[#E2E8F0] rounded-[6px] p-3 flex items-center justify-between text-xs text-slate-500">
@@ -503,104 +442,111 @@ export default function CourseDetail({
           </div>
         </div>
 
-        {/* Position L3 - LESSON-COMPLETE INTERSTITIAL MODAL */}
+        {/* Position L3 - FORMAT D: LESSON-COMPLETE LOGO TAKEOVER MODAL */}
         {isL3ModalOpen && (
           <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-            <div className="bg-white rounded-[12px] border border-[#E2E8F0] shadow-[0_24px_60px_rgba(11,29,58,0.25)] max-w-md w-full overflow-hidden animate-in fade-in zoom-in-95 relative">
-              <button
-                type="button"
-                onClick={() => setIsL3ModalOpen(false)}
-                className="absolute top-3.5 right-3.5 z-10 text-white/70 hover:text-white p-1 rounded-full cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              {/* Header */}
-              <div className="bg-gradient-to-r from-[#0B1D3A] via-[#102548] to-[#1A3463] p-6 text-center flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-full bg-[#E5B242] text-[#0B1D3A] flex items-center justify-center shadow-lg">
-                  <Check className="w-6 h-6 stroke-[3]" />
-                </div>
-                <h2 className="text-lg font-black text-white tracking-tight">
-                  Lesson 1 complete
-                </h2>
-                <p className="text-xs text-white/80 font-medium">
-                  {activeLesson.title}
-                </p>
-              </div>
-
-              {/* Body */}
-              <div className="p-5 flex flex-col gap-4 bg-white">
-                <div className="text-[11px] font-extrabold uppercase tracking-wider text-[#64748B]">
-                  HIRING FROM THIS COURSE
-                </div>
-
-                <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-3 flex items-center justify-between gap-3 shadow-2xs hover:border-[#C99A2E]/50 transition-colors">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-full bg-[#0B1D3A] text-white flex items-center justify-center text-[10px] font-bold shrink-0">
-                      HP
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-xs font-bold text-[#0B1D3A] truncate">
-                        Horizon Plots · Team Leader
-                      </div>
-                      <div className="text-[10.5px] text-slate-500 truncate">
-                        Medchal · Freelance / Full-time
-                      </div>
-                    </div>
+            <div className="bg-white rounded-[16px] border border-[#E2E8F0] shadow-[0_24px_60px_rgba(11,29,58,0.28)] max-w-[680px] w-full p-6 sm:p-7 flex flex-col gap-5 animate-in fade-in zoom-in-95 relative">
+              {/* Modal Top Bar */}
+              <div className="flex items-center justify-between gap-3 border-b border-slate-100 pb-3.5">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-7 h-7 rounded-full bg-[#D2AC47] text-[#0B1D3A] flex items-center justify-center shrink-0">
+                    <Check className="w-4 h-4 stroke-[3]" />
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => handleOpenAdAction("apply", "Horizon Plots - Team Leader")}
-                    className="px-3 py-1.5 rounded-[6px] bg-[#0B1D3A] hover:bg-[#1A3463] text-white text-xs font-bold cursor-pointer shrink-0"
-                  >
-                    Apply
-                  </button>
+                  <h2 className="text-sm sm:text-base font-extrabold text-[#0B1D3A] tracking-tight">
+                    Lesson 1 complete
+                  </h2>
                 </div>
 
-                <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-3 flex items-center justify-between gap-3 shadow-2xs hover:border-[#C99A2E]/50 transition-colors">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-full bg-[#0B1D3A] text-white flex items-center justify-center text-[10px] font-bold shrink-0">
-                      GL
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-xs font-bold text-[#0B1D3A] truncate">
-                        Greenline Layouts · Sales Manager
-                      </div>
-                      <div className="text-[10.5px] text-slate-500 truncate">
-                        Shadnagar · Full-time
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => alert("Job saved to your profile")}
-                    className="px-3 py-1.5 rounded-[6px] border border-[#E2E8F0] hover:bg-slate-50 text-[#0B1D3A] text-xs font-bold cursor-pointer shrink-0"
-                  >
-                    Save
-                  </button>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2.5 pt-2">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="text-xs text-[#64748B] font-medium truncate max-w-[160px] sm:max-w-[260px]">
+                    {activeLesson.title}
+                  </span>
                   <button
                     type="button"
                     onClick={() => setIsL3ModalOpen(false)}
-                    className="w-full py-2.5 rounded-[8px] bg-gradient-to-r from-[#C99A2E] to-[#A87A18] hover:from-[#D5AA45] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                    className="text-slate-400 hover:text-[#0B1D3A] p-1 rounded-full cursor-pointer transition-colors"
+                    aria-label="Close modal"
                   >
-                    <span>Next lesson</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsL3ModalOpen(false);
-                      handleOpenAdAction("apply", "Partner Openings");
-                    }}
-                    className="w-full py-2.5 rounded-[8px] bg-white border border-[#E2E8F0] hover:bg-slate-50 text-[#0B1D3A] text-xs font-bold cursor-pointer shadow-2xs"
-                  >
-                    View all openings
+                    <X className="w-4 h-4" />
                   </button>
                 </div>
               </div>
+
+              {/* Middle Sponsor Feature Block */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                <BrandLogoTile
+                  brand="riverbend"
+                  size="lg"
+                  onClick={() => {
+                    handleOpenAdAction("join", "Riverbend Layouts");
+                  }}
+                  className="w-full sm:w-[250px] h-[155px] rounded-[10px] shrink-0"
+                />
+
+                <div className="flex-1 min-w-0">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#8C7A5B]">
+                    HIRING FROM THIS COURSE · SPONSORED
+                  </div>
+                  <h3 className="text-base sm:text-lg font-extrabold text-[#0B1D3A] leading-snug mt-0.5">
+                    Riverbend Layouts wants Team Leaders
+                  </h3>
+                  <p className="text-xs text-[#64748B] mt-1 leading-relaxed">
+                    Kompally &amp; Medchal · 8 openings · Training-to-hire track for FARE learners
+                  </p>
+
+                  {/* Category Pills */}
+                  <div className="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    {["Freelance", "Full-time", "Incentives"].map((pill) => (
+                      <span
+                        key={pill}
+                        className="bg-[#FAF3DD] text-[#8A6518] text-[10.5px] font-bold px-2.5 py-0.5 rounded-full"
+                      >
+                        {pill}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-wrap items-center gap-2 mt-3.5">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsL3ModalOpen(false);
+                        handleOpenAdAction("apply", "Riverbend Layouts — Team Leaders");
+                      }}
+                      className="px-4 py-2 rounded-[6px] bg-[#0B1D3A] hover:bg-[#162E56] text-white text-xs font-bold cursor-pointer transition-colors"
+                    >
+                      Apply now
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleOpenAdAction("join", "Riverbend Layouts");
+                      }}
+                      className="px-4 py-2 rounded-[6px] bg-[#D2AC47] hover:bg-[#DEC060] text-[#0B1D3A] text-xs font-bold cursor-pointer transition-colors"
+                    >
+                      Join Now
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setIsL3Saved((prev) => !prev)}
+                      className="px-4 py-2 rounded-[6px] border border-[#CBD5E1] bg-white hover:bg-slate-50 text-[#0B1D3A] text-xs font-bold cursor-pointer transition-colors"
+                    >
+                      {isL3Saved ? "Saved ✓" : "Save"}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Full-width Next Lesson Button */}
+              <button
+                type="button"
+                onClick={() => setIsL3ModalOpen(false)}
+                className="w-full py-3 rounded-[8px] bg-[#D2AC47] hover:bg-[#DEC060] text-[#0B1D3A] text-xs font-extrabold flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
+              >
+                <span>Next lesson</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
             </div>
           </div>
         )}
@@ -636,66 +582,70 @@ export default function CourseDetail({
         </span>
       </div>
 
-      {/* Hero Banner Card */}
-      <div className="w-full shrink-0 min-h-[210px] bg-gradient-to-r from-[#0B1D3A] via-[#102548] to-[#1A3463] rounded-[8px] overflow-hidden shadow-[0_10px_30px_rgba(11,29,58,0.2)] border border-[#1A3463]/50 relative flex flex-col justify-between">
+      {/* Hero Banner Card with Format F Hero Sponsor Tile */}
+      <div className="w-full shrink-0 min-h-[210px] bg-gradient-to-r from-[#0B1D3A] via-[#102548] to-[#1A3463] rounded-[12px] overflow-hidden shadow-[0_10px_30px_rgba(11,29,58,0.2)] border border-[#1A3463]/50 relative flex flex-col justify-between">
         <HeroCityscapeGraphic />
 
-        <div className="relative z-10 p-6 xl:p-8 flex flex-col gap-3.5 max-w-[75%]">
-          {/* Top Tag Badges */}
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="border border-[#C99A2E]/40 text-[#E2C068] bg-[#C99A2E]/10 text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-[4px]">
-              {course.program}
-            </span>
-            <span className="bg-white text-[#0B1D3A] text-[10px] font-bold px-2.5 py-0.5 rounded-[4px] shadow-2xs">
-              {course.category}
-            </span>
+        <div className="relative z-10 p-6 xl:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+          <div className="flex flex-col gap-3 flex-1 min-w-0 w-full">
+            {/* Top Tag Badges */}
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="border border-[#C99A2E]/40 text-[#E2C068] bg-[#C99A2E]/10 text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-[4px]">
+                {course.program}
+              </span>
+              <span className="bg-white text-[#0B1D3A] text-[10px] font-bold px-2.5 py-0.5 rounded-[4px] shadow-2xs">
+                {course.category}
+              </span>
+            </div>
+
+            {/* Watermark and Main Title */}
+            <div className="relative mt-1">
+              <span className="text-white/10 text-xl md:text-2xl font-serif font-black absolute -top-4 left-0 pointer-events-none select-none">
+                {course.coverTitle}
+              </span>
+              <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight leading-tight relative">
+                {course.title}
+              </h1>
+            </div>
+
+            {/* Meta Details */}
+            <p className="text-white/70 text-xs font-mono">
+              {course.id} · {modules.length} modules · {totalLessons} lessons · {course.duration}
+            </p>
+
+            {/* Resume Course & Apply For Batch CTA Row */}
+            <div className="mt-2 flex items-center gap-3 flex-wrap">
+              <button
+                type="button"
+                onClick={() => setActiveLesson(modules[0]?.lessons[0] || { id: "les-th-1", title: "Why Teams & Team Members Underperform", type: "VIDEO", durationMinutes: 20 })}
+                className="relative overflow-hidden group/btn inline-flex items-center gap-2 bg-gradient-to-r from-[#C99A2E] to-[#A87A18] hover:from-[#D5AA45] hover:to-[#B5851E] text-white text-xs font-bold px-5 py-2.5 rounded-[8px] shadow-[0_4px_14px_rgba(201,154,46,0.35)] cursor-pointer transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
+              >
+                <span className="absolute -inset-y-2 -left-1/2 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-all duration-700 group-hover/btn:left-[130%] group-hover/btn:opacity-100" />
+                <Play className="w-3.5 h-3.5 fill-current" />
+                <span>Resume Course</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => alert("Applied for fast-track batch enrollment.")}
+                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs font-bold px-4 py-2.5 rounded-[8px] transition-colors cursor-pointer"
+              >
+                Apply For Batch
+              </button>
+            </div>
           </div>
 
-          {/* Watermark and Main Title */}
-          <div className="relative mt-1">
-            <span className="text-white/10 text-xl md:text-2xl font-serif font-black absolute -top-4 left-0 pointer-events-none select-none">
-              {course.coverTitle}
-            </span>
-            <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight leading-tight relative">
-              {course.title}
-            </h1>
-          </div>
-
-          {/* Meta Details */}
-          <p className="text-white/70 text-xs font-mono">
-            {course.id} · {modules.length} modules · {totalLessons} lessons · {course.duration}
-          </p>
-
-          {/* C1 - Hero Sponsored Hiring Badge: White chip with gray border */}
-          <div className="inline-flex items-center gap-2 bg-white/95 border border-[#E2E8F0] rounded-full px-3 py-1 text-[11px] text-[#0B1D3A] font-bold w-fit shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#C99A2E]" />
-            <span>8 companies hiring from this course · 23 open roles</span>
-            <ArrowRight className="w-3 h-3 text-[#C99A2E]" />
-          </div>
-
-          {/* Resume Course Button & Action Controls */}
-          <div className="mt-2 flex items-center gap-3 flex-wrap">
-            <button
-              type="button"
-              onClick={() => setActiveLesson(modules[0]?.lessons[0] || { id: "les-th-1", title: "Why Teams & Team Members Underperform", type: "VIDEO", durationMinutes: 20 })}
-              className="relative overflow-hidden group/btn inline-flex items-center gap-2 bg-gradient-to-r from-[#C99A2E] to-[#A87A18] hover:from-[#D5AA45] hover:to-[#B5851E] text-white text-xs font-bold px-5 py-2.5 rounded-[8px] shadow-[0_4px_14px_rgba(201,154,46,0.35)] cursor-pointer transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
-            >
-              <span className="absolute -inset-y-2 -left-1/2 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-all duration-700 group-hover/btn:left-[130%] group-hover/btn:opacity-100" />
-              <Play className="w-3.5 h-3.5 fill-current" />
-              <span>Resume Course</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => alert("Applied for fast-track batch enrollment.")}
-              className="bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs font-bold px-4 py-2.5 rounded-[8px] transition-colors cursor-pointer"
-            >
-              Apply For Batch
-            </button>
-          </div>
+          {/* Format F: Hero Sponsor Tile on right */}
+          <AdBanner
+            variant="hero-tile"
+            brand="amaravana"
+            label="COURSE HIRING PARTNER"
+            title="Amaravana Estates hires Team Leaders from this course →"
+            onJoin={() => handleOpenAdAction("join", "Amaravana Estates")}
+          />
         </div>
 
         {/* Bottom Gold Progress Strip Bar */}
-        <div className="w-full h-2.5 bg-[#0B1D3A]/60 mt-4 relative shrink-0">
+        <div className="w-full h-2.5 bg-[#0B1D3A]/60 relative shrink-0">
           <div
             className="h-full bg-gradient-to-r from-[#C99A2E] to-[#E2C068] transition-all"
             style={{ width: `${course.progressPercent}%` }}
@@ -868,16 +818,18 @@ export default function CourseDetail({
                         )}
                       </div>
 
-                      {/* Position C4 - MODULE-BOUNDARY CARD (Between Module 1 and Module 2) */}
+                      {/* Position C4 - MODULE-BOUNDARY FORMAT A BILLBOARD (Between Module 1 and Module 2) */}
                       {mIdx === 0 && (
                         <div className="my-1">
                           <AdBanner
-                            variant="banner"
-                            label="SPONSORED"
-                            primaryCtaText="Apply Now"
-                            secondaryCtaText="View Company"
-                            onApply={() => handleOpenAdAction("apply", "Module Partner Program")}
-                            onJoin={() => handleOpenAdAction("join", "Module Partner Program")}
+                            variant="billboard"
+                            brand="northstone"
+                            title="Northstone Projects is hiring 6 Team Leaders"
+                            tagline="Medchal · Freelance or full-time · Prefers learners of this course"
+                            primaryCtaText="Apply now"
+                            secondaryCtaText="View company"
+                            onApply={() => handleOpenAdAction("apply", "Northstone Projects — 6 Team Leaders")}
+                            onJoin={() => handleOpenAdAction("join", "Northstone Projects")}
                           />
                         </div>
                       )}
@@ -1031,8 +983,14 @@ export default function CourseDetail({
             </button>
           </div>
 
-          {/* PROGRESS SECTION ADVERTISEMENT */}
-          <AdBanner variant="sidebar" label="SPONSORED" height={160} />
+          {/* FORMAT G: SIDEBAR 2x2 LOGO GRID */}
+          <AdBanner
+            variant="sidebar-grid"
+            label="HIRING FROM THIS COURSE"
+            primaryCtaText="See all 23 openings"
+            onApply={() => handleOpenAdAction("apply", "Course Hiring Openings (23 roles)")}
+            onJoin={() => handleOpenAdAction("join", "Course Hiring Partners")}
+          />
 
           {/* Card 2: Instructor */}
           <div className="bg-white rounded-[8px] border border-[#E2E8F0] p-5 shadow-[0_4px_16px_rgba(11,29,58,0.04)]">

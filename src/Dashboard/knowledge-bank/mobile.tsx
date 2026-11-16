@@ -151,30 +151,22 @@ export default function KnowledgeBankMobile({
           </p>
         </div>
 
-        {/* B1 - HEADER PROMO SWAP: White card with gray border */}
-        <div className="bg-white border border-[#E2E8F0] rounded-[8px] p-2.5 flex items-center justify-between gap-2 shadow-2xs">
-          <div className="flex items-center gap-2">
-            <span className="text-[9.5px] font-extrabold uppercase tracking-widest text-[#64748B] px-1.5 py-0.5 bg-[#F1F5F9] rounded-[3px] border border-slate-200/90 flex items-center gap-1">
-              <Sparkles className="w-2.5 h-2.5 text-[#C99A2E]" />
-              <span>SPONSORED</span>
-            </span>
-            <div>
-              <div className="text-xs font-bold text-[#0B1D3A] leading-tight">
-                Build your knowledge.
-              </div>
-              <div className="text-[10px] text-slate-500 font-medium">
-                Grow your career.
-              </div>
+        {/* Top Warm Cream Promo Card */}
+        <button
+          type="button"
+          onClick={() => dispatchOpenCompanyProfile("Knowledge Bank Partner Program")}
+          className="bg-[#FFFBEB] border border-[#F5E0A3] rounded-[10px] p-3 flex items-center gap-2.5 text-left cursor-pointer w-full"
+        >
+          <Sparkles className="w-4 h-4 text-[#C99A2E] shrink-0" />
+          <div>
+            <div className="text-xs font-extrabold text-[#0B1D3A] leading-tight">
+              Build your knowledge.
+            </div>
+            <div className="text-[11px] text-[#B88A22] font-semibold">
+              Grow your career.
             </div>
           </div>
-          <button
-            type="button"
-            onClick={() => dispatchOpenCompanyProfile("Knowledge Bank Partner Program")}
-            className="px-2.5 py-1 rounded-[6px] bg-[#0B1D3A] text-white text-[10px] font-bold shrink-0 cursor-pointer"
-          >
-            View Company
-          </button>
-        </div>
+        </button>
       </div>
 
       {/* Stats Cards Row */}
@@ -204,8 +196,14 @@ export default function KnowledgeBankMobile({
         ))}
       </div>
 
-      {/* Sponsored Advertisement */}
-      <AdBanner variant="inline" label="SPONSORED" height={64} />
+      {/* Format J Leaderboard Advertisement */}
+      <AdBanner
+        variant="leaderboard"
+        brand="kalpavana"
+        title="Kalpavana Group is hiring 15 plot sales executives"
+        tagline="Top Knowledge Bank scorers get a direct interview call"
+        primaryCtaText="Apply now"
+      />
 
       {/* Filter Row */}
       <div className="flex items-center justify-between mt-1">
@@ -254,13 +252,13 @@ export default function KnowledgeBankMobile({
         </div>
       </div>
 
-      {/* Specializations Cards Stack with In-Grid Sponsored Card B2 */}
+      {/* Specializations Cards Stack with Format K Horizontal Card */}
       <div className="flex flex-col gap-3">
         {filteredSpecializations.map((spec, index) => (
           <React.Fragment key={spec.id}>
             <div
               onClick={() => setSelectedSpecialization(spec)}
-              className="bg-white rounded-[8px] border border-[#E2E8F0] p-4 flex flex-col justify-between shadow-[0_4px_16px_rgba(11,29,58,0.04)] cursor-pointer hover:border-[#C99A2E]/50 transition-colors"
+              className="bg-white rounded-[12px] border border-[#E2E8F0] p-4 flex flex-col justify-between shadow-[0_4px_16px_rgba(11,29,58,0.04)] cursor-pointer hover:border-[#C99A2E]/50 transition-colors"
             >
               <div>
                 <div
@@ -277,14 +275,6 @@ export default function KnowledgeBankMobile({
                 <p className="text-[11px] text-slate-500 font-normal mt-0.5 line-clamp-2 leading-relaxed">
                   {spec.description}
                 </p>
-
-                {/* B3 - DEMAND CHIP: White chip with gray border */}
-                <div className="mt-2">
-                  <span className="inline-flex items-center gap-1 bg-white border border-[#E2E8F0] text-slate-700 text-[9.5px] font-bold px-2 py-0.5 rounded-[4px] shadow-2xs">
-                    <Sparkles className="w-2 h-2 text-[#C99A2E]" />
-                    <span>Asked for in {index % 2 === 0 ? 14 : 8} roles</span>
-                  </span>
-                </div>
               </div>
 
               <div className="flex items-center justify-between mt-3 pt-2 border-t border-[#E2E8F0]">
@@ -301,14 +291,13 @@ export default function KnowledgeBankMobile({
               </div>
             </div>
 
-            {/* Position B2 - IN-GRID EMPLOYER CARD for mobile: White card with gray border */}
+            {/* Position K - IN-GRID HORIZONTAL LOGO CARD */}
             {index === 1 && (
               <AdBanner
-                variant="card"
-                label="SPONSORED"
-                primaryCtaText="Apply Now"
-                secondaryCtaText="View Company"
-                onJoin={() => dispatchOpenCompanyProfile("Knowledge Bank Partner")}
+                variant="in-grid-horizontal"
+                brand="skyline"
+                title="Score 80%+ in Legal & Approvals for a priority interview"
+                onJoin={() => dispatchOpenCompanyProfile("Skyline Plotworks")}
               />
             )}
           </React.Fragment>

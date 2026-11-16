@@ -268,13 +268,12 @@ export default function QuizModal({
                   <button
                     type="button"
                     onClick={() => {
-                      onClose();
                       dispatchOpenCompanyProfile(specializationTitle);
                     }}
                     className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0B1D3A] hover:bg-[#162C4E] text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
                   >
                     <Sparkles className="w-3.5 h-3.5 text-[#E2C068]" />
-                    <span>View Company</span>
+                    <span>Join Now</span>
                   </button>
 
                   <button
@@ -288,11 +287,11 @@ export default function QuizModal({
                 </div>
               </div>
 
-              {/* ADVERTISEMENT INTEGRATION FOR QUIZ END (DIFFERENT DIMENSIONS) */}
-              <div className="flex flex-col gap-3">
-                <AdBanner variant="quiz-end" label="SPONSORED AD" height={130} />
-                <AdBanner variant="inline" label="ADVERTISEMENT" height={70} />
-              </div>
+              {/* ADVERTISEMENT INTEGRATION FOR QUIZ END (Format I) */}
+              <AdBanner
+                variant="quiz-pass"
+                title="You now qualify for roles at these companies"
+              />
             </div>
           )}
         </div>

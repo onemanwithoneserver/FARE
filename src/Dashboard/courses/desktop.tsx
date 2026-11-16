@@ -10,7 +10,6 @@ import {
   Layers,
   Play,
   Trash2,
-  Sparkles,
 } from "lucide-react";
 import {
   coursesData,
@@ -503,13 +502,10 @@ export default function Desktop({
                       })}
                     </div>
 
-                    {/* Position K1 - CATALOGUE HIRING BANNER: White card with gray shade, text SPONSORED, CTA controls */}
+                    {/* Position K1 - HIRING PARTNERS LOGO WALL (Format E) */}
                     <AdBanner
-                      variant="banner"
-                      label="SPONSORED"
-                      primaryCtaText="Apply Now"
-                      secondaryCtaText="View Company"
-                      onApply={() => handleOpenAdAction("apply", "Partner Program")}
+                      variant="hiring-wall"
+                      onApply={() => handleOpenAdAction("apply", "41 Active Hiring Companies")}
                       onJoin={() => handleOpenAdAction("join", "Partner Program")}
                     />
 
@@ -547,14 +543,6 @@ export default function Desktop({
                                 <p className="text-white/70 text-[9.5px] font-medium mt-0.5 line-clamp-1">
                                   {course.coverSubtitle}
                                 </p>
-                              </div>
-
-                              {/* K3 - HIRING CHIP: White chip with gray border */}
-                              <div className="absolute right-3.5 bottom-3 z-10">
-                                <span className="inline-flex items-center gap-1 bg-white/95 border border-[#E2E8F0] text-[#0B1D3A] text-[9.5px] font-bold px-2 py-0.5 rounded-[4px] shadow-2xs">
-                                  <Sparkles className="w-2.5 h-2.5 text-[#C99A2E]" />
-                                  <span>{course.id === "6a8bce1d5c501a3603065011" ? "5 companies hiring" : "3 companies hiring"}</span>
-                                </span>
                               </div>
                             </div>
 
